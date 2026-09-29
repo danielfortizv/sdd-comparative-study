@@ -71,3 +71,30 @@ Internal utility model:
 - Classification: Tool / CLI invocation issue
 - Recovery result: Successful
 - Final validation result: `Change 'stage1-requirements' is valid`
+
+## Event 004 - PowerShell test-command compatibility during Apply
+
+- Tool: OpenSpec + Gemini CLI
+- Stage: Stage 1
+- Phase: Apply / Functional verification
+- Result: Two test command attempts failed because of shell/PowerShell compatibility.
+- First issue: A shell command for testing an incorrect MFA code was blocked because command substitution was detected.
+- Second issue: `Invoke-WebRequest` failed because the installed PowerShell version did not support the `-SkipHttpErrorCheck` parameter.
+- Recovery: The agent switched to `curl.exe` and successfully verified both incorrect and correct MFA behavior.
+- Application code modified because of this event: No
+- Counts as correction: No
+- Classification: Test infrastructure / shell compatibility issue
+- Final result: Recovered successfully; functional verification continued.
+
+## Event 005 - SonarScanner PowerShell argument parsing
+
+- Tool: SonarScanner CLI via Docker
+- Stage: Stage 1
+- Target: OpenSpec implementation
+- Result: Initial scan did not start.
+- Error: `Unrecognized option: .projectKey=shift-bank-stage1-openspec`
+- Cause: SonarScanner `-D...` properties were not passed correctly through PowerShell.
+- Recovery: Re-ran the Docker command with each SonarScanner `-D...` property explicitly quoted.
+- Code modified: No
+- Counts as correction: No
+- Classification: Evaluation infrastructure / command invocation issue
