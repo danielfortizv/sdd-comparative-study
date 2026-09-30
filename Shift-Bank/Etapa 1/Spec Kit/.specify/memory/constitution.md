@@ -1,50 +1,93 @@
-# [PROJECT_NAME] Constitution
-<!-- Example: Spec Constitution, TaskFlow Constitution, etc. -->
+<!--
+=== SYNC IMPACT REPORT ===
+Version Change: 1.1.0 -> 1.2.0
+Bump Rationale: Amended the Governance section to preserve workflow and tool neutrality. Removed the requirement that compliance reviews must be conducted using Spec Kit tools or any other specific software. Compliance reviews may now use any suitable human or automated technique, provided they verify alignment between the approved specifications, planning artifacts, tasks, and implementation.
+Modified Principles: None
+Added Sections: None
+Modified Sections:
+  - Governance (redefined the Compliance Review rule to be completely tool-neutral)
+Removed Sections: None
+Follow-up TODOs: None
+==========================
+-->
+
+# Shift Bank Constitution
 
 ## Core Principles
 
-### [PRINCIPLE_1_NAME]
-<!-- Example: I. Library-First -->
-[PRINCIPLE_1_DESCRIPTION]
-<!-- Example: Every feature starts as a standalone library; Libraries must be self-contained, independently testable, documented; Clear purpose required - no organizational-only libraries -->
+### I. Specification Authority
+Approved specifications are the absolute source of truth for all implementation. Developers MUST NOT
+introduce any functionality, APIs, or behaviors outside of the explicitly approved scope. The
+approved specification defines the boundary of acceptable work.
+*Rationale: To prevent gold-plating and ensure that all stakeholders are aligned on what is being
+built.*
 
-### [PRINCIPLE_2_NAME]
-<!-- Example: II. CLI Interface -->
-[PRINCIPLE_2_DESCRIPTION]
-<!-- Example: Every library exposes functionality via CLI; Text in/out protocol: stdin/args → stdout, errors → stderr; Support JSON + human-readable formats -->
+### II. Specification-First Changes
+Any requirement change, addition, or refinement MUST be formally reflected in the specification
+and approved *before* implementation begins. Code changes MUST NEVER precede the specification.
+*Rationale: To avoid drift between documentation and the codebase, maintaining a single reliable
+source of truth.*
 
-### [PRINCIPLE_3_NAME]
-<!-- Example: III. Test-First (NON-NEGOTIABLE) -->
-[PRINCIPLE_3_DESCRIPTION]
-<!-- Example: TDD mandatory: Tests written → User approved → Tests fail → Then implement; Red-Green-Refactor cycle strictly enforced -->
+### III. Proportional Implementation
+Implementation MUST remain strictly proportional to the requested development stage (e.g., Etapa 1).
+Developers MUST prioritize simplicity and avoid unnecessary scope expansion, gold-plating, or
+speculative features.
+*Rationale: Keeps development fast, focused, and aligned with current phase objectives without
+adding maintenance overhead for unused features.*
 
-### [PRINCIPLE_4_NAME]
-<!-- Example: IV. Integration Testing -->
-[PRINCIPLE_4_DESCRIPTION]
-<!-- Example: Focus areas requiring integration tests: New library contract tests, Contract changes, Inter-service communication, Shared schemas -->
+### IV. Requirement-Driven Validation
+Every completed feature MUST be thoroughly validated against the exact approved requirements and
+acceptance scenarios documented in the specification. A feature is not complete until all criteria
+are verified as met.
+*Rationale: Ensures quality and guarantees that the system behaves exactly as agreed upon in the
+specification before it is considered done.*
 
-### [PRINCIPLE_5_NAME]
-<!-- Example: V. Observability, VI. Versioning & Breaking Changes, VII. Simplicity -->
-[PRINCIPLE_5_DESCRIPTION]
-<!-- Example: Text I/O ensures debuggability; Structured logging required; Or: MAJOR.MINOR.BUILD format; Or: Start simple, YAGNI principles -->
+### V. Strict Scope Compliance
+No unwritten agreements, assumptions, or hidden features are permitted. If a feature or logic
+is not explicitly documented in the approved specification, it MUST NOT be implemented.
+*Rationale: Avoids scope creep and maintains transparency across the development process.*
 
-## [SECTION_2_NAME]
-<!-- Example: Additional Constraints, Security Requirements, Performance Standards, etc. -->
+## Verification and Quality Gates
 
-[SECTION_2_CONTENT]
-<!-- Example: Technology stack requirements, compliance standards, deployment policies, etc. -->
+- **Validation Evidence Mapping Rule**: All validation evidence, regardless of the validation
+  technique used (e.g., manual walkthroughs, custom verification scripts, or automated tests),
+  MUST map directly to the approved requirements or acceptance scenarios defined in the
+  specification. Specific verification techniques like unit or integration testing are NOT
+  mandated unless they are explicitly required by an approved feature specification.
+- **Workflow Neutrality Statement**: Pull requests, unit tests, integration tests, or specific
+  review tools are supported but are NOT mandated under this Constitution unless explicitly required
+  by an approved feature specification. The development process remains fully compatible with
+  experimental or lightweight workflows.
+- **Pre-Implementation Alignment**: A general human review MUST be conducted prior to starting
+  implementation to ensure that the proposed approach is strictly proportional to the requested
+  stage and does not introduce unnecessary scope.
+- **Pre-Completion Compliance Review**: A general human review MUST be conducted prior to feature
+  completion to verify that the final implementation strictly complies with the approved specification.
 
-## [SECTION_3_NAME]
-<!-- Example: Development Workflow, Review Process, Quality Gates, etc. -->
+## Development & Specification Workflow
 
-[SECTION_3_CONTENT]
-<!-- Example: Code review requirements, testing gates, deployment approval process, etc. -->
+1. **Specification Drafting**: Generate or update specifications utilizing the `speckit.specify`
+   workflow when requirements change.
+2. **Approval & Sign-off**: Obtain explicit stakeholder approval of the specification.
+3. **Task Planning**: Deconstruct approved specifications into concrete development tasks using
+   the `speckit.tasks` workflow.
+4. **Precise Execution**: Implement the requested logic, keeping the codebase simple, stage-proportional,
+   and in alignment with the approved specification.
+5. **Validation & Verification**: Gather and document validation evidence (using any technique)
+   mapping back to the approved requirements and acceptance scenarios before considering the
+   feature complete.
 
 ## Governance
-<!-- Example: Constitution supersedes all other practices; Amendments require documentation, approval, migration plan -->
 
-[GOVERNANCE_RULES]
-<!-- Example: All PRs/reviews must verify compliance; Complexity must be justified; Use [GUIDANCE_FILE] for runtime development guidance -->
+- **Supreme Authority**: This Constitution is the supreme governing document for the Shift Bank
+  project. All development workflows and codebase modifications must comply with it.
+- **Amendment Procedure**: Any amendment to this Constitution must be proposed with a clear
+  rationale, a corresponding version bump, and a Sync Impact Report.
+- **Versioning Policy**: Semantic versioning is strictly applied to governance documentation (MAJOR
+  for backward-incompatible rule changes, MINOR for additions/refinements, PATCH for corrections).
+- **Compliance Review**: Compliance reviews MUST be conducted regularly to verify full alignment
+  between the approved specifications, planning artifacts, tasks, and implementation. These
+  reviews may use any suitable human or automated technique, and they are NOT mandated to use Spec
+  Kit tools or any other specific software.
 
-**Version**: [CONSTITUTION_VERSION] | **Ratified**: [RATIFICATION_DATE] | **Last Amended**: [LAST_AMENDED_DATE]
-<!-- Example: Version: 2.1.1 | Ratified: 2025-06-13 | Last Amended: 2025-07-16 -->
+**Version**: 1.2.0 | **Ratified**: 2026-09-30 | **Last Amended**: 2026-09-30
