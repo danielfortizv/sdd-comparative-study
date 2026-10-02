@@ -5,268 +5,207 @@
 - Initial requirement clarification rounds: 1
 - Human specification correction rounds: 5
 - Individual specification issues corrected: 13
-- Post-implementation correction rounds: 0
-- Manually edited application source files: 0
-
 - Human planning-artifact correction rounds: 3
 - Individual planning-artifact issues corrected/targeted: 6
+- Human task-artifact correction rounds: 1
+- Individual task issues targeted: 5
+- Post-implementation compliance review: 1 — no correction required
+- Final validation correction: 1 — T036 reverted to pending
+- Manually edited application source files during human correction rounds: 0
 
-## Planning Artifact Corrections
+## Specification Corrections
 
-- Human planning-artifact correction rounds: 2
-- Individual planning issues corrected: 5
+### Correction Round 001 — Constitution
 
-## Correction Round 001
+Issues:
+1. Generated constitution introduced mandatory unit/integration tests.
+2. Generated constitution introduced PR-specific review/compliance requirements.
 
-### Classification
-- Type: Human governance/specification review
-- Phase: Constitution
-- Artifact: `.specify/memory/constitution.md`
-
-### Issues Identified
-
-1. The generated constitution introduced mandatory unit and integration tests.
-2. The generated constitution introduced PR-specific review and compliance requirements.
-
-### Result
-
-- Both issues were corrected.
-- Validation was made technique-neutral.
-- PR-specific requirements were removed.
+Result:
+- Corrected.
+- Validation made technique-neutral.
+- PR-specific requirements removed.
 - Application code modified: No.
 
-## Correction Round 002
+### Correction Round 002 — Constitution
 
-### Classification
-- Type: Human governance/specification review
-- Phase: Constitution
-- Artifact: `.specify/memory/constitution.md`
+Issue:
+- Governance still required compliance reviews using Spec Kit tools.
 
-### Issue Identified
+Intervention:
+- Remove the Spec Kit-specific review mechanism while preserving general compliance review.
 
-1. The Governance section still mandated regular compliance reviews using Spec Kit tools, which conflicts with the requirement that the experimental workflow remain tool-neutral.
-
-### Human Intervention
-
-Requested removal of the Spec Kit-specific review mechanism while preserving general compliance review requirements.
-
-### Result
-
-- Pending.
+Result:
+- Corrected.
+- Governance compliance review became tool-neutral.
+- Constitution version: 1.2.0.
 - Application code modified: No.
 
-## Correction Round 002
+### Correction Round 003 — Feature Specification
 
-### Classification
-- Type: Human governance/specification review
-- Phase: Constitution
-- Artifact: `.specify/memory/constitution.md`
+Issues:
+1. Unnecessary account identifiers in the UI.
+2. Transaction-history scope expanded beyond transfers.
+3. Resulting balance field added without approval.
+4. Same-account transfers were not explicitly rejected.
+5. MFA lifecycle was incomplete.
+6. Seeded history did not match the frozen baseline.
+7. Arbitrary timing targets were introduced.
 
-### Issue Identified
-
-1. The Governance section still mandated regular compliance reviews using Spec Kit tools, which conflicted with the requirement that the experimental workflow remain tool-neutral.
-
-### Human Intervention
-
-Requested removal of the Spec Kit-specific review mechanism while preserving general compliance review requirements.
-
-### Result
-
-- Successfully corrected.
-- Governance compliance review is now tool-neutral.
-- Constitution version after correction: 1.2.0
+Result:
+- Corrected.
+- 7 individual issues targeted.
+- Requirements checklist passed.
 - Application code modified: No.
 
-## Correction Round 003
+### Correction Round 004 — Feature Specification
 
-### Classification
-- Type: Human feature specification review
-- Phase: After initial clarification, before planning
-- Artifact: `specs/001-shift-bank-stage1/spec.md`
+Issue:
+- Specification assumed non-persistent/in-memory state.
 
-### Issues Identified
-
-1. Account overview introduced display of account identifiers/account numbers that were not required by the Stage 1 scope.
-2. Transaction history expanded scope to deposits, withdrawals, salary deposits, and retail purchases.
-3. Transaction entities introduced a resulting balance field that was not part of the approved baseline.
-4. The specification did not explicitly reject transfers where source and destination are the same account.
-5. MFA lifecycle behavior was incomplete: expiration, invalid-code retry behavior, balance revalidation, and terminal states were not fully specified.
-6. Pre-seeded history was not aligned with the frozen experimental baseline.
-7. Success criteria introduced arbitrary timing thresholds that were not part of the experimental baseline.
-
-### Human Intervention
-
-Requested revision of the generated feature specification to restore the frozen
-Stage 1 experimental baseline and remove invented or expanded requirements.
-
-### Result
-
-- Successfully corrected.
-- Individual specification issues corrected: 7.
-- Requirements checklist: PASS.
+Result:
+- Persistent server-side state explicitly required.
+- Storage technology remained deferred to planning.
 - Application code modified: No.
 
-## Correction Round 004
+### Correction Round 005 — Feature Specification
 
-### Classification
-- Type: Human feature specification review
-- Phase: After Clarify, before Plan
-- Artifact: `specs/001-shift-bank-stage1/spec.md`
+Issues:
+1. MFA modal close/cancel behavior was ambiguous.
+2. Expiration semantics implied a background transition.
 
-### Issue Identified
-
-1. The specification still assumed in-memory or non-persistent application state,
-   which conflicted with the frozen experimental baseline requiring persistent
-   server-side state.
-
-### Human Intervention
-
-Requested removal of the non-persistent assumption and required persistent
-server-side storage for accounts, balances, transaction histories, transfer
-records, transfer states, and pending MFA transfers.
-
-### Result
-
-- Successfully corrected.
-- Persistent server-side state is now explicitly required.
-- Concrete storage technology remains deferred to implementation planning.
-- Requirements checklist: PASS.
+Result:
+- Corrected.
+- Closing/canceling leaves the transfer `PENDING_MFA`.
+- No `CANCELED` state.
+- No balance changes on cancellation.
+- Expiration evaluated on confirmation after five minutes.
+- No scheduler, worker, daemon, or active timer process required.
 - Application code modified: No.
-
-## Correction Round 005
-
-### Classification
-- Type: Human feature specification review
-- Phase: After Plan, before task generation
-- Artifact: `specs/001-shift-bank-stage1/spec.md`
-
-### Issues Identified
-
-1. Closing or cancelling the MFA modal had ambiguous persisted-state behavior.
-2. MFA expiration semantics implied a background transition despite no scheduler
-   being required for Stage 1.
-
-### Human Intervention
-
-Requested explicit lifecycle semantics:
-- Closing/cancelling the MFA modal leaves the transfer persisted as PENDING_MFA.
-- No CANCELED state is introduced.
-- No balance changes occur on cancellation.
-- Expiration is evaluated on demand when confirmation is attempted after
-  the five-minute deadline.
-- No background scheduler, worker, daemon, or active timer process is required.
-
-### Result
-
-- Successfully corrected.
-- Existing four-state lifecycle preserved:
-  PENDING_MFA, COMPLETED, FAILED, EXPIRED.
-- Requirements checklist: PASS.
-- Application code modified: No.
-
-
----
 
 ## Planning Artifact Corrections
 
 ### Planning Correction Round 001
 
-#### Classification
-- Type: Human planning artifact review
-- Phase: After initial Plan, before task generation
-- Artifacts: `plan.md`, `research.md`, `data-model.md`, `contracts/api.md`, `quickstart.md`
+Issues:
+1. `expires_at` was incorrectly required for every transfer.
+2. Atomicity was not explicit.
+3. Local frontend/backend communication was ambiguous.
 
-#### Issues Identified
-
-1. The persistence design required an `expires_at` value for all transfers, including standard and pre-seeded `COMPLETED` transfers, even though MFA expiration only applies to transfers entering `PENDING_MFA`.
-
-2. Database-level atomicity was not explicitly defined for successful transfer execution, leaving open the possibility of partial balance or state updates.
-
-3. The development-time communication strategy between the Vite frontend and FastAPI backend was not explicitly defined.
-
-#### Human Intervention
-
-Requested:
-- `expires_at` must be nullable and only populated when MFA applies.
-- Standard and pre-seeded completed transfers must not receive artificial MFA expiration timestamps.
-- Source debit, destination credit, and transfer-state update must execute atomically within a single SQLite transaction.
-- A minimal local frontend/backend communication strategy must be explicitly documented without introducing external infrastructure.
-
-#### Result
-
-- Successfully corrected.
-- `expires_at` is nullable and only used for `PENDING_MFA` transfers.
-- Transfer execution is explicitly defined as an atomic SQLite transaction.
-- Local Vite/FastAPI communication is explicitly documented.
-- Individual planning issues corrected: 3.
-- Application code modified: No.
-
----
+Result:
+- `expires_at` nullable and only used for `PENDING_MFA`.
+- Successful transfer execution defined as an atomic SQLite transaction.
+- Local Vite/FastAPI communication documented without external infrastructure.
 
 ### Planning Correction Round 002
 
-#### Classification
-- Type: Human planning artifact review
-- Phase: Final Plan review, before task generation
-- Artifacts: `plan.md`, `research.md`, `data-model.md`, `contracts/api.md`, `quickstart.md`
+Issues:
+1. Monetary arithmetic was described using SQLite `REAL` casts.
+2. CORS and Vite proxy were both presented as alternatives.
 
-#### Issues Identified
-
-1. The atomic transfer design performed monetary arithmetic inside SQLite using `REAL` casts, conflicting with the fixed technical baseline requiring all monetary calculations to use Python `Decimal`.
-
-2. The development-time frontend/backend communication strategy remained ambiguous because both FastAPI CORS middleware and a Vite development proxy were presented as alternatives.
-
-#### Human Intervention
-
-Requested:
-- Monetary arithmetic must occur exclusively in Python using `decimal.Decimal`.
-- Persisted decimal strings must be read from SQLite, converted to `Decimal`, calculated in Python, converted back to canonical decimal strings, and written using parameterized SQL statements.
-- Source debit, destination credit, and transfer-state update must remain within the same atomic SQLite transaction.
-- FastAPI `CORSMiddleware` allowing `http://localhost:5173` must be the single development-time communication strategy.
-- The Vite proxy alternative must be removed.
-- No external proxy, gateway, or additional infrastructure may be introduced.
-
-#### Result
-
-- Successfully corrected.
-- All monetary arithmetic is now performed exclusively in Python using `decimal.Decimal`.
-- SQLite receives pre-calculated decimal strings through parameterized statements.
-- SQLite `REAL` casts and SQL monetary arithmetic were removed.
-- FastAPI `CORSMiddleware` with `http://localhost:5173` is now the single development-time communication strategy.
-- The Vite proxy alternative was removed.
-- Individual planning issues corrected: 2.
-- Application code modified: No.
+Result:
+- Monetary arithmetic moved exclusively to Python `decimal.Decimal`.
+- SQLite stores canonical decimal strings through parameterized SQL.
+- FastAPI `CORSMiddleware` became the single local communication strategy.
+- Vite proxy alternative removed.
 
 ### Planning Correction Round 003
 
-#### Classification
-- Type: Human planning artifact review
-- Phase: Final Plan review, before task generation
-- Artifact: `data-model.md`
+Issue:
+- Insufficient funds during MFA confirmation was incorrectly associated with ROLLBACK, conflicting with the required persistent `FAILED` state.
 
-#### Issue Identified
+Result:
+- Successful confirmation commits balances and `COMPLETED` atomically.
+- Insufficient funds at confirmation leave balances unchanged but commit `FAILED`.
+- ROLLBACK reserved for unexpected technical/database failures.
 
-1. The atomicity design instructed the transaction to ROLLBACK when source-balance
-   re-validation fails during MFA confirmation. This conflicts with the approved
-   lifecycle requirement that an insufficient source balance at confirmation
-   must persist the transfer state as FAILED.
+## Task Correction Round 001
 
-#### Human Intervention
+Issues:
+1. Seed semantics were ambiguous.
+2. SQLite versus in-memory wording was inconsistent.
+3. T033 introduced unsupported backend-log requirements.
+4. T034/T035 imposed unsupported 100% coverage requirements.
+5. Generated tasks needed a traceability/scope review.
 
-Requested:
-- If balance re-validation succeeds, source debit, destination credit, and the
-  COMPLETED transition must be committed atomically.
-- If balance re-validation fails during valid MFA confirmation, account balances
-  must remain unchanged, but the transfer state must be updated to FAILED and
-  committed.
-- ROLLBACK must be reserved for unexpected database or technical failures.
-
-#### Result
-
-- Successfully corrected.
-- Insufficient funds during valid MFA confirmation now persist the transfer as FAILED.
-- Account balances remain unchanged in that business-failure path.
-- The FAILED state transition is committed.
-- ROLLBACK is reserved for unexpected database or technical failures.
-- Individual planning issues corrected: 1.
+Result:
+- T004 explicitly separates initial balances from historical transaction logs.
+- SQLite persistence consistently enforced.
+- T033 limited to user-facing ID exposure.
+- T034/T035 require implemented tests to pass without imposing artificial coverage.
+- No new functionality, technologies, architecture, or scope introduced.
 - Application code modified: No.
+
+## Post-Implementation Compliance Review — Human Correction Round 002
+
+Phase: Phase 6 implementation review.
+
+Scope:
+- HTTP status codes for MFA.
+- Pending Sensitive Transfers widget.
+- MFA state transitions.
+- Five-minute expiration.
+- Insufficient funds at initiation and confirmation.
+- Transactional atomicity.
+- Internal ID exposure.
+- Test traceability.
+- Technical scope.
+
+Result:
+- **NO CORRECTION REQUIRED**.
+- The implementation was allowed to remain unchanged.
+- No application source files were modified by the review.
+
+## Final Validation Correction — T036
+
+Issue:
+- Previous automated report claimed T036 was manually completed without evidence of an actual human browser walkthrough.
+
+Intervention:
+- T036 reverted from `[X]` to `[ ]`.
+- Application source code was not modified.
+- Approved specification, plan, contracts, data model, and quickstart were not modified.
+
+Current status:
+- Scenario 1 manually passed.
+- Scenarios 2–4 still require human execution.
+
+## Implementation Correction Round 003 — Manual MFA validation findings
+
+Observed during human browser validation after the initial Phase 7 report:
+
+1. Expired MFA confirmation did not provide a user-visible explanation of the expiration result.
+2. The frontend displayed `[object Object]` for structured backend errors.
+3. Resuming a pending MFA transfer restarted the countdown at five minutes instead of restoring the remaining time.
+4. The expired-confirmation scenario could not be exercised because the frontend disabled the Confirm action at zero seconds.
+
+Intervention:
+- First checked the approved Spec Kit artifacts before changing application code.
+- Classified the findings as **IMPLEMENTATION ISSUES**, because the expected behavior was already defined by FR-012, API contract Section 4.3, and quickstart Scenario 6.
+- Backend MFA errors were aligned with the approved structured response payloads for 401, 409, and 410 responses.
+- Frontend error handling was made robust to structured error payloads so user-facing messages no longer render as `[object Object]`.
+- MFA resume timing was changed to derive the remaining time from the persisted `expires_at` timestamp instead of resetting to 300 seconds.
+- The Confirm action remains usable at expiration so the confirmation request reaches the backend and the on-demand `EXPIRED` transition can occur as specified.
+
+Result:
+- Targeted source-code correction completed.
+- No specification, plan, data-model, contract, quickstart, or constitution change was required.
+- Backend tests: 12/12 passed after correction.
+- Frontend tests: 5/5 passed after correction.
+- Production build: passed.
+- T036 remains pending until the canonical quickstart scenarios are manually executed and evidenced.
+
+## Final static-analysis validation
+
+After implementation validation and correction, SonarQube was executed against the final Spec Kit implementation.
+
+- Project: `shift-bank-stage1-speckit`
+- Quality Gate: **Passed**
+- Security: A — 0 open issues
+- Reliability: C — 6 open issues
+- Maintainability: A — 27 open issues
+- Coverage: 0.0%
+- Duplications: 2.1%
+- Security Hotspots: 0
+
+These results are recorded as validation evidence and were not treated as automatic requirements for further implementation correction.
