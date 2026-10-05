@@ -12,7 +12,7 @@ Repository for an undergraduate thesis at Universidad de los Andes comparing fiv
 
 This repository is the reproducible evidence base for the study. It will preserve the requirements, prompts, native tool artifacts, generated code, tests, execution records, observations, and other evidence needed to compare the approaches under equivalent conditions.
 
-No experimental results are included at this stage. Results, measurements, rankings, scores, and conclusions will be added only after the corresponding experiments have been executed and documented.
+The repository now includes the completed Tetris Stage 1, option A snapshot under [`Tetris/Etapa 1`](Tetris/Etapa%201/). It contains separate OpenSpec, GitHub Spec Kit, Tessl, BMad Method, and Kiro implementations, their native specifications, tests, and recorded SonarQube evidence. Other cases and later stages remain in progress.
 
 ## Scenarios
 
@@ -38,6 +38,6 @@ Each experiment should be repeatable from the same functional requirements, acce
 
 ## Status
 
-**Work in progress.** The repository currently provides the study structure and documentation templates. The thesis cases, execution artifacts, and empirical findings are not yet finalized.
+**Work in progress.** Tetris Stage 1 has an initial verified snapshot. Its measurements, assumptions, gaps, and supporting evidence are documented in [`Tetris/Etapa 1/PROGRESS.md`](Tetris/Etapa%201/PROGRESS.md) and the case report. Other cases, later stages, and any cross-case conclusions are not yet finalized.
 
 > **Important:** Do not treat empty templates or pending placeholders as experimental evidence. Add evidence only after an experiment has actually been executed.

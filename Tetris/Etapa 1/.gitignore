@@ -1,0 +1,23 @@
+# Local toolchains and installed dependencies
+_toolchain/
+**/node_modules/
+**/.venv/
+**/venv/
+**/dist/
+**/build/
+
+# Session homes, scanner state, caches and credentials
+**/docs/gemini-home/
+**/.sonar/
+**/.sonar-user-home/
+**/.pytest_cache/
+**/__pycache__/
+**/.coverage
+**/.env
+**/.env.*
+**/*.pem
+**/*.key
+**/*.p12
+
+# The full thesis snapshot belongs to Overleaf, not this case export
+shared/report/tesis-overleaf-*.pdf
