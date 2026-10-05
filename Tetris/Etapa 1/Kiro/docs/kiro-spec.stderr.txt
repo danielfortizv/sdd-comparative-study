@@ -1,0 +1,43 @@
+[INFO] kas.server.starting {"product":"KAS (Kiro Agent Server)","version":"0.66.11"}
+[INFO] Auth: --auth=acp-callback (host-mediated refresh via _kiro/auth/getAccessToken)
+[INFO] acp.content_collection.resolved {"enabled":true}
+[INFO] acp.remote_sessions.enabled {"endpoint":"https://app.kiro.dev"}
+[INFO] [KiroAgent] MCP subsystem initialized
+[ERROR] (node:17756) ExperimentalWarning: SQLite is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+[INFO] [KRS] <-- GenerateAssistantResponseCommand done totalEvents=9
+[INFO] [KRS] <-- GenerateAssistantResponseCommand done totalEvents=79
+[INFO] [KRS] <-- GenerateAssistantResponseCommand done totalEvents=148
+[INFO] [KRS] <-- GenerateAssistantResponseCommand done totalEvents=2516
+[INFO] [KRS] <-- GenerateAssistantResponseCommand done totalEvents=1200
+[INFO] [KRS] <-- GenerateAssistantResponseCommand done totalEvents=596
+[INFO] [KRS] <-- GenerateAssistantResponseCommand done totalEvents=110
+[INFO] [KRS] <-- GenerateAssistantResponseCommand done totalEvents=180
+[INFO] [KRS] <-- GenerateAssistantResponseCommand done totalEvents=539
+[INFO] [KRS] <-- GenerateAssistantResponseCommand done totalEvents=833
+[INFO] [KRS] <-- GenerateAssistantResponseCommand done totalEvents=693
+[INFO] [KRS] <-- GenerateAssistantResponseCommand done totalEvents=1810
+[INFO] [KRS] <-- GenerateAssistantResponseCommand done totalEvents=36
+[INFO] [KRS] <-- GenerateAssistantResponseCommand done totalEvents=64
+[INFO] [KRS] <-- GenerateAssistantResponseCommand done totalEvents=44
+[INFO] [KRS] <-- GenerateAssistantResponseCommand done totalEvents=241
+[INFO] [KRS] <-- GenerateAssistantResponseCommand done totalEvents=52
+[INFO] [KRS] <-- GenerateAssistantResponseCommand done totalEvents=144
+[INFO] [KRS] <-- GenerateAssistantResponseCommand done totalEvents=407
+[INFO] [KRS] <-- GenerateAssistantResponseCommand done totalEvents=367
+[INFO] [KRS] <-- GenerateAssistantResponseCommand done totalEvents=604
+[INFO] [KRS] <-- GenerateAssistantResponseCommand done totalEvents=529
+[INFO] [KRS] <-- GenerateAssistantResponseCommand done totalEvents=47
+[INFO] [KRS] <-- GenerateAssistantResponseCommand done totalEvents=40
+[INFO] [KRS] <-- GenerateAssistantResponseCommand done totalEvents=45
+[INFO] [KRS] <-- GenerateAssistantResponseCommand done totalEvents=133
+[INFO] [KRS] <-- GenerateAssistantResponseCommand done totalEvents=842
+[INFO] [KRS] <-- GenerateAssistantResponseCommand done totalEvents=225
+[INFO] [KRS] <-- GenerateAssistantResponseCommand done totalEvents=87
+[INFO] [KRS] <-- GenerateAssistantResponseCommand done totalEvents=90
+[INFO] [KRS] <-- GenerateAssistantResponseCommand done totalEvents=70
+[INFO] [KRS] <-- GenerateAssistantResponseCommand done totalEvents=210
+[INFO] [KRS] <-- GenerateAssistantResponseCommand done totalEvents=56
+[INFO] [KRS] <-- GenerateAssistantResponseCommand done totalEvents=82
+[INFO] [KRS] <-- GenerateAssistantResponseCommand done totalEvents=43
+[INFO] [KRS] <-- GenerateAssistantResponseCommand done totalEvents=215

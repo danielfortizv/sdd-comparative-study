@@ -1,0 +1,168 @@
+{
+  "specification": {
+    "files": 8,
+    "lines": 1002,
+    "nonblank_lines": 768,
+    "characters": 56433,
+    "lines_per_file": 125.25,
+    "requirement_statements": 38
+  },
+  "source": {
+    "files": 27,
+    "lines": 1412,
+    "nonblank_lines": 1217,
+    "characters": 41297
+  },
+  "gemini_tokens": {
+    "transcript_files": 8,
+    "model_responses": 261,
+    "input": 13876620,
+    "output": 89088,
+    "cached": 10851203,
+    "thoughts": 113308,
+    "tool": 0,
+    "total": 14079016,
+    "sessions": [
+      {
+        "file": "docs\\gemini-home\\.gemini\\tmp\\spec-kit\\chats\\1d449fb5-2f90-4496-aa05-ac2e93abecef\\cb70267a-a802-4818-b829-6b8f3651199f.jsonl",
+        "started": "2026-09-29T12:20:24.204Z",
+        "model_responses": 21,
+        "input": 512570,
+        "output": 7597,
+        "cached": 409098,
+        "thoughts": 10242,
+        "tool": 0,
+        "total": 530409
+      },
+      {
+        "file": "docs\\gemini-home\\.gemini\\tmp\\spec-kit\\chats\\5b9b55fa-7796-41e8-af0d-3f92fbfc3e9e\\2d1b855c-bfef-4efb-bea1-3759bf05ca6e.jsonl",
+        "started": "2026-09-29T12:45:35.199Z",
+        "model_responses": 7,
+        "input": 133443,
+        "output": 3272,
+        "cached": 73908,
+        "thoughts": 18316,
+        "tool": 0,
+        "total": 155031
+      },
+      {
+        "file": "docs\\gemini-home\\.gemini\\tmp\\spec-kit\\chats\\5b9b55fa-7796-41e8-af0d-3f92fbfc3e9e\\ad7f4aa0-b652-4bab-a8a2-efc02ac1bc56.jsonl",
+        "started": "2026-09-29T12:49:20.378Z",
+        "model_responses": 15,
+        "input": 317877,
+        "output": 9618,
+        "cached": 200922,
+        "thoughts": 8366,
+        "tool": 0,
+        "total": 335861
+      },
+      {
+        "file": "docs\\gemini-home\\.gemini\\tmp\\spec-kit\\chats\\5b9b55fa-7796-41e8-af0d-3f92fbfc3e9e\\b799ec1c-1869-44d7-ad03-6efe57a4d6e0.jsonl",
+        "started": "2026-09-29T12:51:26.874Z",
+        "model_responses": 8,
+        "input": 125778,
+        "output": 4876,
+        "cached": 103339,
+        "thoughts": 4760,
+        "tool": 0,
+        "total": 135414
+      },
+      {
+        "file": "docs\\gemini-home\\.gemini\\tmp\\spec-kit\\chats\\session-2026-09-29T12-18-1d449fb5.jsonl",
+        "started": "2026-09-29T12:18:44.555Z",
+        "model_responses": 39,
+        "input": 1418595,
+        "output": 15141,
+        "cached": 960769,
+        "thoughts": 16260,
+        "tool": 0,
+        "total": 1449996
+      },
+      {
+        "file": "docs\\gemini-home\\.gemini\\tmp\\spec-kit\\chats\\session-2026-09-29T12-45-5b9b55fa.jsonl",
+        "started": "2026-09-29T12:45:18.399Z",
+        "model_responses": 13,
+        "input": 424015,
+        "output": 14210,
+        "cached": 252633,
+        "thoughts": 20185,
+        "tool": 0,
+        "total": 458410
+      },
+      {
+        "file": "docs\\gemini-home\\.gemini\\tmp\\spec-kit\\chats\\session-2026-09-29T12-58-5fcbfc3c.jsonl",
+        "started": "2026-09-29T12:58:14.779Z",
+        "model_responses": 91,
+        "input": 6777267,
+        "output": 28568,
+        "cached": 5636002,
+        "thoughts": 24938,
+        "tool": 0,
+        "total": 6830773
+      },
+      {
+        "file": "docs\\gemini-home\\.gemini\\tmp\\spec-kit\\chats\\session-2026-09-29T13-11-1dd0802d.jsonl",
+        "started": "2026-09-29T13:11:20.039Z",
+        "model_responses": 67,
+        "input": 4167075,
+        "output": 5806,
+        "cached": 3214532,
+        "thoughts": 10241,
+        "tool": 0,
+        "total": 4183122
+      }
+    ]
+  },
+  "runs": [
+    {
+      "file": "Spec Kit\\docs\\correct-plan-fresh.run.json",
+      "started": "2026-09-29T07:18:42.7456815-05:00",
+      "ended": "2026-09-29T07:27:25.6924114-05:00",
+      "duration_seconds": 522.947,
+      "exit_code": 0,
+      "seed_sha256": null
+    },
+    {
+      "file": "Spec Kit\\docs\\correct-spec.run.json",
+      "started": "2026-09-29T07:02:09.6117148-05:00",
+      "ended": "2026-09-29T07:02:20.5178145-05:00",
+      "duration_seconds": 10.906,
+      "exit_code": 0,
+      "seed_sha256": null
+    },
+    {
+      "file": "Spec Kit\\docs\\fix-test-build.run.json",
+      "started": "2026-09-29T08:11:18.2464586-05:00",
+      "ended": "2026-09-29T08:29:12.7366644-05:00",
+      "duration_seconds": 1074.49,
+      "exit_code": 0,
+      "seed_sha256": null
+    },
+    {
+      "file": "Spec Kit\\docs\\implement.run.json",
+      "started": "2026-09-29T07:58:13.0212985-05:00",
+      "ended": "2026-09-29T08:09:23.6141925-05:00",
+      "duration_seconds": 670.593,
+      "exit_code": 0,
+      "seed_sha256": null
+    },
+    {
+      "file": "Spec Kit\\docs\\specify.run.json",
+      "started": "2026-09-29T05:46:20.2442820-05:00",
+      "ended": "2026-09-29T05:56:38.5356193-05:00",
+      "duration_seconds": 618.291,
+      "exit_code": 0,
+      "seed_sha256": "2AE084C9C64FC41F65D0E07581CED9E30B6C68891D9F8688A37F34594ECFD1C5"
+    },
+    {
+      "file": "Spec Kit\\docs\\tasks.run.json",
+      "started": "2026-09-29T07:45:16.4791902-05:00",
+      "ended": "2026-09-29T07:52:57.8874740-05:00",
+      "duration_seconds": 461.408,
+      "exit_code": 0,
+      "seed_sha256": null
+    }
+  ],
+  "recorded_duration_seconds": 3358.635,
+  "recorded_prompt_count": 6
+}

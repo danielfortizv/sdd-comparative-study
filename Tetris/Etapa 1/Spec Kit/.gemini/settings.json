@@ -1,0 +1,13 @@
+{
+  "general": {
+    "plan": {
+      "modelRouting": false
+    }
+  },
+  "context": {
+    "fileFiltering": {
+      "respectGitIgnore": true,
+      "respectGeminiIgnore": true
+    }
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "queue": [],
+  "current": {
+    "id": "a1e08e06-981b-40cd-acdc-3e9396b6718f",
+    "type": "REPORT",
+    "componentId": "088103ea-060b-4301-8426-6695d992180b",
+    "componentKey": "tetris-stage1-speckit",
+    "componentName": "Tetris Stage 1 Spec Kit",
+    "componentQualifier": "TRK",
+    "analysisId": "dd3d17b0-c1ed-4019-813d-646c3c056469",
+    "status": "SUCCESS",
+    "submittedAt": "2026-09-29T13:11:44-05:00",
+    "submitterLogin": "admin",
+    "startedAt": "2026-09-29T13:11:45-05:00",
+    "executedAt": "2026-09-29T13:11:46-05:00",
+    "executionTimeMs": 1151,
+    "hasScannerContext": true,
+    "warningCount": 1,
+    "warnings": [
+      "Your code is analyzed as compatible with all Python 3 versions by default. You can get a more precise analysis by setting the Python version or version range in your configuration via the parameter \"sonar.python.version\""
+    ],
+    "infoMessages": []
+  }
+}

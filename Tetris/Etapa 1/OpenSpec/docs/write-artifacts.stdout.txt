@@ -1,0 +1,560 @@
+I have executed the native OpenSpec spec-driven planning phase of the workflow for the change `tetris-stage1-option-a`. Because the environment restricts direct tool-based file writing (`write_file`, `replace`) and shell execution (`run_shell_command`), I have compiled and structured the complete, production-grade text of the **four required planning artifacts** (`proposal.md`, `specs/tetris-core/spec.md`, `design.md`, and `tasks.md`) below. 
+
+These drafts strictly adhere to the OpenSpec spec-driven schema instructions, the `openspec/config.yaml` guidelines (written in 100% English, using explicit `SHALL` and `MUST` keywords), and the fixed functional scope of the Stage 1 Option A browser-based Tetris study.
+
+---
+
+### Artifact 1: `proposal.md`
+**Path:** `openspec/changes/tetris-stage1-option-a/proposal.md`
+
+```markdown
+# Proposal: Greenfield Decoupled Tetris Study (Stage 1 Option A)
+
+## Background & Motivation
+This proposal establishes the technical baseline for Stage 1 (Option A) of a browser-based Tetris application. Tetris is a classic tile-matching puzzle game that demands precise real-time synchronization, collision detection, and row-clearing logic. To ensure high testability, maintainability, and clean separation of concerns, this implementation utilizes a decoupled architecture: an authoritative backend managing state and mechanics, paired with a thin reactive frontend rendering that state and capturing user input.
+
+This greenfield project will serve as a foundational study in building a highly responsive, decoupled game loop without relying on persistent databases, state stores, or client-side game rule authority.
+
+## Objectives
+1. Implement a Python FastAPI backend in `backend/` that acts as the single source of truth for the active board, spawning rules, coordinates, gravity, and game status.
+2. Implement a React + TypeScript frontend in `frontend/` that renders the game board, coordinates timer intervals, handles key bindings, and communicates with the backend via RESTful endpoints.
+3. Express 100% of the game logic, UI text, developer specifications, developer instructions, code comments, and test assertions in English.
+4. Establish a fully reproducible local development and testing workflow for both frontend and backend stacks.
+
+## Scope Boundary
+
+### In-Scope (Stage 1 Option A)
+- **Geometry:** A fixed rectangular grid of exactly 10 columns by 20 rows.
+- **Shapes:** The seven standard tetrominoes (I, O, T, S, Z, J, L) in their default initial orientations.
+- **Gravity:** Automatic downward movement of the active piece with a fixed interval of 500 ms.
+- **Mechanics:** Left, right, and soft-drop active piece translations; stack/wall collision detection; piece locking; clearing completed horizontal lines; spawning subsequent pieces; and a terminal game-over condition.
+- **API Contracts:** State queries, tick advancing, and movement translations handled via standard REST API endpoints.
+- **UI:** Render grid cell states, active pieces, English labels, and a prominent game-over overlay.
+- **Restarting:** A manual restart control that initializes a fresh, vacant board and a new active piece.
+
+### Out of Scope (Non-Goals)
+- **Rotations:** Piece rotations, wall kicks, floor kicks, and rotation offsets are excluded from this stage.
+- **Stats & Progression:** Line counters, scoring models, level progression, and speed increments are excluded.
+- **Aesthetics & UI Polish:** Holding queues, next-piece previews, ghost pieces, and particle effects are excluded.
+- **User Config:** Configurable keyboard inputs and custom themes are excluded.
+- **Infrastructure:** Databases, local persistence, user authentication, session-sharing, and multiplayer options are excluded.
+
+## Acceptance Criteria
+1. **Authoritative Engine:** The backend MUST reject any movement, gravity tick, or input translation that causes a piece block to fall outside coordinates `x ∈ [0, 9]`, `y ∈ [0, 19]`, or overlap with locked cells.
+2. **Deterministic Mechanics:** Pieces MUST lock into the settled grid matrix the instant they can no longer descend due to a stack or bottom boundary collision. Completed rows MUST clear immediately upon locking, shifting higher rows down by one block.
+3. **Game Over Check:** The game MUST transition status to `game_over` if a newly spawned piece immediately overlaps with a settled block, disabling further controls.
+4. **Reproducible Validation:** Both the backend and frontend MUST run locally with documented commands and contain runnable verification logic.
+```
+
+---
+
+### Artifact 2: `specs/tetris-core/spec.md`
+**Path:** `openspec/changes/tetris-stage1-option-a/specs/tetris-core/spec.md`
+
+```markdown
+# Specification: Tetris Core Engine & API Protocol
+
+## System Overview
+The decoupled Tetris application consists of a stateless Python FastAPI server providing REST endpoints, and a React + TypeScript single-page application. The backend owns the game's state, performing validation, collision checks, line-clears, spawning, and status flags. The frontend displays the backend grid, triggers tick requests every 500 ms, and routes keyboard actions to the server.
+
+## Coordinate Mapping & Board Geometry
+1. The game board is a grid mapped to a 2D matrix of 10 columns ($W = 10$) and 20 rows ($H = 20$).
+2. The coordinate origin $(0, 0)$ is situated at the top-left cell of the board.
+3. Column indices ($x$) increase from left to right: $x \in \{0, 1, \dots, 9\}$.
+4. Row indices ($y$) increase from top to bottom: $y \in \{0, 1, \dots, 19\}$.
+5. Vacant cells are represented by `null`. Occupied cells contain a string indicator representing the block's tetromino type (e.g., `"I"`, `"O"`).
+
+## Tetromino Shapes & Orientation
+The standard seven tetrominoes spawn in their initial orientations. Their shape offsets are defined relative to the active piece origin $(x_{orig}, y_{orig})$, which spawns at $(4, 0)$ or $(3, 0)$ to keep the piece centered:
+
+*   **I Shape:** Occupies 4 horizontal cells. Offsets: `[(0, 0), (1, 0), (2, 0), (3, 0)]`
+*   **O Shape:** Occupies a 2x2 square. Offsets: `[(0, 0), (1, 0), (0, 1), (1, 1)]`
+*   **T Shape:** Occupies a flat T layout. Offsets: `[(0, 1), (1, 0), (1, 1), (2, 1)]`
+*   **S Shape:** Occupies a horizontal S shape. Offsets: `[(0, 1), (1, 1), (1, 0), (2, 0)]`
+*   **Z Shape:** Occupies a horizontal Z shape. Offsets: `[(0, 0), (1, 0), (1, 1), (2, 1)]`
+*   **J Shape:** Occupies a horizontal J shape. Offsets: `[(0, 0), (0, 1), (1, 1), (2, 1)]`
+*   **L Shape:** Occupies a horizontal L shape. Offsets: `[(0, 1), (1, 1), (2, 1), (2, 0)]`
+
+## Core Mechanics
+1.  **Spawning:** Spawns a randomized shape from the seven types with its offsets added to the top-center spawn coordinate.
+2.  **Translations:**
+    *   **Left:** Attempts $(x - 1, y)$.
+    *   **Right:** Attempts $(x + 1, y)$.
+    *   **Soft Drop / Down:** Attempts $(x, y + 1)$.
+3.  **Collision Check:** Success requires all proposed block coordinates to satisfy $0 \le x \le 9$, $0 \le y \le 19$, and `board[y][x] === null`.
+4.  **Locking:** If a downward step (gravity tick or soft drop) fails due to a collision, the piece's coordinates lock. Its block types are written permanently to `board[y][x]`.
+5.  **Line Clear:** Locked rows are scanned. If a row $y$ has 10 occupied cells:
+    *   Clear row $y$.
+    *   Move rows $0$ to $y-1$ down by one row index.
+    *   Set row $0$ to empty.
+6.  **Game Over:** If a newly spawned piece's blocks overlap with any occupied cells, the game state status shifts to `game_over`.
+
+---
+
+## Atomic Testable Requirements
+
+### Geometry & Setup
+*   **REQ-001:** The board width SHALL be exactly 10 columns.
+*   **REQ-002:** The board height SHALL be exactly 20 rows.
+*   **REQ-003:** The coordinate system origin $(0, 0)$ SHALL represent the top-left corner of the grid.
+*   **REQ-004:** The in-memory game board grid SHALL store cell statuses as vacant (`null`) or occupied by locked block strings.
+
+### Tetrominoes & Spawning
+*   **REQ-005:** The system SHALL support exactly the seven standard tetrominoes: I, O, T, S, Z, J, L.
+*   **REQ-006:** Upon initialization, the system SHALL spawn a randomized piece centered horizontally at the top of the grid.
+*   **REQ-007:** Each tetromino SHALL spawn in its fixed, non-rotated default initial orientation.
+*   **REQ-008:** The system SHALL spawn subsequent randomized pieces immediately following a locking and line-clearing event.
+
+### Movement & Actions
+*   **REQ-009:** Left requests SHALL attempt to shift the active piece by $x \leftarrow x - 1$.
+*   **REQ-010:** Right requests SHALL attempt to shift the active piece by $x \leftarrow x + 1$.
+*   **REQ-011:** Down requests SHALL attempt to shift the active piece by $y \leftarrow y + 1$.
+*   **REQ-012:** Move actions causing boundary violations (grid columns $< 0$ or $> 9$) SHALL be rejected.
+*   **REQ-013:** Move actions causing bottom boundary violations (grid rows $> 19$) SHALL be rejected.
+*   **REQ-014:** Move actions causing block overlaps with previously settled blocks SHALL be rejected.
+*   **REQ-015:** Any rejected move request SHALL leave the active piece in its previous coordinates.
+
+### Gravity & Intervals
+*   **REQ-016:** The backend engine SHALL advance gravity ticks via `/tick` endpoints.
+*   **REQ-017:** The frontend application SHALL invoke the `/tick` endpoint on a fixed 500 ms timer interval while playing.
+*   **REQ-018:** When gravity ticks occur, the active piece SHALL attempt downward translation by $y \leftarrow y + 1$.
+
+### Locking & Line Clearing
+*   **REQ-019:** The active piece SHALL lock into the grid if a downward step causes a bottom or stack collision.
+*   **REQ-020:** Locking a piece SHALL permanently assign its block string types to the board matrix.
+*   **REQ-021:** Following a locking event, the system SHALL scan the row indexes from top to bottom for completed lines.
+*   **REQ-022:** Completed lines (10 non-null cells in a row) SHALL be removed from the board matrix.
+*   **REQ-023:** Cleared lines SHALL cause all rows above them to shift downward by one row coordinate index.
+*   **REQ-024:** Vacated top rows resulting from shifting SHALL be initialized to vacant (`null`) arrays.
+*   **REQ-025:** Multiple completed lines (up to 4) SHALL be cleared and resolved simultaneously in a single scan.
+
+### Game State & Life Cycle
+*   **REQ-026:** A spawn check SHALL run immediately upon spawning a piece.
+*   **REQ-027:** If a spawned piece overlaps with an occupied cell, the game status SHALL immediately shift to `"game_over"`.
+*   **REQ-028:** When the status is `"game_over"`, all translation inputs and tick logic SHALL be ignored by the backend.
+*   **REQ-029:** A restart request via the frontend restart control SHALL clear the grid, spawn a piece, and set status to `"playing"`.
+*   **REQ-030:** The backend game engine SHALL maintain state purely in-memory.
+
+### UI & API Protocol
+*   **REQ-031:** The backend API SHALL expose REST endpoints for creation/restart, state queries, ticking, and moving.
+*   **REQ-032:** The frontend application SHALL render cells according to their exact coordinate positions in the API response.
+*   **REQ-033:** The frontend UI SHALL render a clear, explicit English game-over message when the API returns `"game_over"`.
+*   **REQ-034:** All code comments, interfaces, test suites, and specifications SHALL be authored in English.
+
+---
+
+## API Contract
+
+### 1. Create or Restart Game
+*   **URL:** `POST /api/games`
+*   **Request Body:** None
+*   **Response Headers:** `Content-Type: application/json`
+*   **Response Code:** `201 Created`
+*   **Response Body Schema:**
+    ```json
+    {
+      "id": "uuid-string-token",
+      "board": [ [null, null, ...], ... ],
+      "active_piece": {
+        "type": "I",
+        "origin": { "x": 3, "y": 0 },
+        "cells": [ [3, 0], [4, 0], [5, 0], [6, 0] ]
+      },
+      "status": "playing"
+    }
+    ```
+
+### 2. Read Game State
+*   **URL:** `GET /api/games/{id}`
+*   **Response Headers:** `Content-Type: application/json`
+*   **Response Code:** `200 OK` (or `404 Not Found` if UUID invalid)
+*   **Response Body Schema:** Same as `POST /api/games` response body.
+
+### 3. Advance Gravity Tick
+*   **URL:** `POST /api/games/{id}/tick`
+*   **Request Body:** None
+*   **Response Code:** `200 OK` (or `404 Not Found`)
+*   **Response Body Schema:** Same as state schema. (If piece locked, returns grid with updated block matrices and a newly spawned active piece).
+
+### 4. Move Active Piece
+*   **URL:** `POST /api/games/{id}/move`
+*   **Request Body:**
+    ```json
+    {
+      "direction": "left" | "right" | "down"
+    }
+    ```
+*   **Response Code:** `200 OK` (or `400 Bad Request` on invalid payload, or `404 Not Found`)
+*   **Response Body Schema:** Same as state schema.
+```
+
+---
+
+### Artifact 3: `design.md`
+**Path:** `openspec/changes/tetris-stage1-option-a/design.md`
+
+```markdown
+# Technical Design Document: Decoupled Tetris System
+
+## System Architecture
+The application runs as a fully decoupled client-server application:
+
+```
++------------------------------------+          REST Requests (JSON)
+|        React Frontend SPA          | +-----------------------------------> +-------------------------------------+
+| (500ms Gravity Timer, Keyboard)    |                                       |       FastAPI Backend Engine        |
+|                                    | <-----------------------------------+ | (In-Memory Session Map, Rules)      |
++------------------------------------+          Game State Responses         +-------------------------------------+
+```
+
+## Backend Design (Python FastAPI)
+The backend is organized into three major layers to separate HTTP routing, state coordination, and business logic:
+
+1.  **Controller Layer (`main.py`):** Defers routes to HTTP endpoints, parses path variables, handles JSON translation, and catches exceptions (e.g. throwing `404` for non-existent game IDs).
+2.  **Domain Engine Layer (`engine.py`):** Contains pure mathematical rules for collision, coordinates, active piece dimensions, spawning, board matrices, line-clears, and status updates.
+3.  **Session Manager Layer (`manager.py`):** Acts as a thread-safe, in-memory repository (Python `dict`) storing game objects mapped to UUID keys.
+
+### Data Types and Models
+```python
+from pydantic import BaseModel
+from typing import List, Optional, Literal
+
+class Coordinate(BaseModel):
+    x: int
+    y: int
+
+class ActivePiece(BaseModel):
+    type: Literal["I", "O", "T", "S", "Z", "J", "L"]
+    origin: Coordinate
+    cells: List[List[int]]  # absolute coordinates on grid e.g. [[3,0], [4,0], ...]
+
+class GameState(BaseModel):
+    id: str
+    board: List[List[Optional[str]]]  # 20 rows of 10 cells
+    active_piece: Optional[ActivePiece]
+    status: Literal["playing", "game_over"]
+```
+
+### In-Memory State Retention
+The session manager utilizes a central store in memory:
+```python
+class SessionManager:
+    def __init__(self):
+        self._games = {}  # Dict[str, GameStateInternal]
+```
+Games are garbage-collected or simply stored in-memory during server uptime. No disk files or databases are queried.
+
+---
+
+## Frontend Design (React + TypeScript)
+The frontend UI is built using React components, styled with Vanilla CSS for responsive layouts, clean grid rendering, and layout scaling.
+
+### React Component Hierarchy
+*   **`App.tsx`:** Coordinates state initialization, queries the session ID, stores current state variables retrieved from APIs, and handles key binding hooks.
+*   **`Grid.tsx`:** Renders the 10x20 cell grid. Uses absolute grid cells mapped to standard colors according to tetromino type.
+*   **`Controls.tsx`:** Renders English buttons (Restart, Direction keys for accessibility).
+*   **`GameOverScreen.tsx`:** A clean absolute modal displaying a game-over message and a restart button in English when status is `"game_over"`.
+
+### Keyboard Binding Handler
+The client binds the `keydown` event listener to document body:
+*   `ArrowLeft` / `KeyA` $\rightarrow$ POST to `/move` with `{ "direction": "left" }`
+*   `ArrowRight` / `KeyD` $\rightarrow$ POST to `/move` with `{ "direction": "right" }`
+*   `ArrowDown` / `KeyS` $\rightarrow$ POST to `/move` with `{ "direction": "down" }` (soft drop)
+
+### Game Loop Ticker (Fixed Interval)
+An internal React gravity loop timer coordinates gravitational advancement:
+```typescript
+useEffect(() => {
+  if (status !== 'playing' || !gameId) return;
+  const interval = setInterval(() => {
+    fetch(`/api/games/${gameId}/tick`, { method: 'POST' })
+      .then(res => res.json())
+      .then(updateState);
+  }, 500); // Strict 500 ms gravity interval
+  return () => clearInterval(interval);
+}, [status, gameId]);
+```
+
+---
+
+## Decoupled Sequence Flows
+
+### 1. Game Initialization & Spawn
+```
+Frontend                                                   Backend
+   |                                                          |
+   |----### Executing the Native OpenSpec Spec-Driven Workflow
+
+Since direct file writing (`write_file`, `replace`) and shell execution (`run_shell_command`) tools are restricted in our execution environment, I am providing the **authoritative, complete, and fully-specified content** of all four required OpenSpec artifacts below. These artifacts are generated in strict compliance with the **spec-driven schema** and the **Tetris Stage 1 Option A brief**. 
+
+These specifications contain **30 atomic, testable requirements**, explicit acceptance criteria, the FastAPI backend REST API contracts, the React with TypeScript frontend architecture, and the complete step-by-step implementation tasks.
+
+---
+
+### Artifact 1: Proposal (`proposal.md`)
+**Required Location:** `openspec/changes/tetris-stage1-option-a/proposal.md`
+
+```markdown
+# OpenSpec Proposal: Greenfield Decoupled Browser-Based Tetris Study (Stage 1, Option A)
+
+## 1. Background & Motivation
+This proposal establishes the planning foundation for Stage 1 (Option A) of a browser-based Tetris study. This greenfield project aims to implement a decoupled, state-authoritative Python FastAPI backend and a clean, responsive React with TypeScript frontend. To ensure absolute game-play integrity, prevent client-side manipulation, and establish high-signal research metrics, all game rules, tick mechanics, line clearing, and collision boundaries are strictly evaluated and owned by the backend.
+
+## 2. Scope & Boundaries
+
+### 2.1. In-Scope (Stage 1, Option A)
+- **Authoritative Backend:** A stateless/in-memory Python FastAPI server that manages game sessions, validates moves, executes gravity ticks, handles collisions, locks pieces, and clears rows.
+- **Responsive Frontend:** A React with TypeScript SPA that fetches state, handles local player keyboard controls (left, right, soft drop, restart), and maintains a regular 500 ms gravity tick request interval.
+- **Fixed Board Geometry:** A standardized 10-column by 20-row grid using a top-left origin coordinate system.
+- **Seven Standard Tetrominoes:** Seven tetrominoes (I, O, T, S, Z, J, L) spawning in their default initial orientations at the top-center of the board.
+- **Basic Game Mechanics:** Left/right shifting, soft dropping, collision detection against borders and stacked blocks, lock-down, complete row clearing, and game-over detection.
+- **Greenfield Setup:** Simple dependencies (FastAPI, Uvicorn, pytest for backend; Vite, React, TypeScript for frontend).
+- **Language Mandate:** 100% English for specifications, application text, UI labels, console messages, tests, and comments.
+
+### 2.2. Out-of-Scope (Stage 1 Non-Goals)
+The following features are explicitly excluded from this stage:
+- Block rotations and wall kicks.
+- Preview of next pieces, ghost pieces, or "hold" slots.
+- Hard drop and wall kicks.
+- Scoring, line counters, levels, and speed progression (gravity is fixed at 500 ms).
+- Databases, user authentication, or persistent accounts.
+- Multiplayer, audio effects, or advanced custom styling.
+
+## 3. High-Level Architecture
+- **Backend Stack:** FastAPI running on Uvicorn. Game states are kept in memory mapped by UUIDs.
+- **Frontend Stack:** React, TypeScript, and Vite.
+- **Communication Protocol:** JSON-based REST API over HTTP.
+
+## 4. Key Acceptance Criteria
+- **AC-1:** The backend MUST reject any movement that results in a collision with boundaries or settled blocks.
+- **AC-2:** The backend MUST identify filled rows, clear them, shift upper rows downward, and spawn the next piece.
+- **AC-3:** The backend MUST declare a `game_over` state immediately when a newly spawned piece collides with existing settled blocks.
+- **AC-4:** The frontend MUST display a visual grid of 10x20 cells and poll/tick the backend every 500 ms.
+```
+
+---
+
+### Artifact 2: Core Specifications (`specs/tetris-core/spec.md`)
+**Required Location:** `openspec/changes/tetris-stage1-option-a/specs/tetris-core/spec.md`
+
+```markdown
+# OpenSpec Core Specification: Tetris Game Mechanics & API Contracts
+
+## 1. Board Geometry & Coordinate System
+- The game board is a grid of 10 columns (X-axis, index 0 to 9 from left to right) and 20 rows (Y-axis, index 0 to 19 from top to bottom).
+- The origin coordinates `(0, 0)` represent the top-left cell of the board.
+- The bottom-right coordinate is `(9, 19)`.
+- Settled blocks are stored in a 20-row by 10-column matrix where `0` or `null` denotes empty cells, and positive integers or strings indicate block presence.
+
+## 2. Tetromino Definitions & Spawning
+All seven standard tetrominoes are represented by a set of coordinates relative to their own local coordinate grid:
+
+1. **I Piece:** Local coordinate cells: `[(0, 1), (1, 1), (2, 1), (3, 1)]` (horizontal row)
+2. **O Piece:** Local coordinate cells: `[(1, 1), (2, 1), (1, 2), (2, 2)]` (2x2 square)
+3. **T Piece:** Local coordinate cells: `[(1, 1), (0, 2), (1, 2), (2, 2)]` (T-shape)
+4. **J Piece:** Local coordinate cells: `[(0, 1), (0, 2), (1, 2), (2, 2)]` (J-shape)
+5. **L Piece:** Local coordinate cells: `[(2, 1), (0, 2), (1, 2), (2, 2)]` (L-shape)
+6. **S Piece:** Local coordinate cells: `[(1, 1), (2, 1), (0, 2), (1, 2)]` (S-shape)
+7. **Z Piece:** Local coordinate cells: `[(0, 1), (1, 1), (1, 2), (2, 2)]` (Z-shape)
+
+### Spawning Logic
+- When a new piece spawns, its center or bounding box origin is initialized at column index 3 (X=3) and row index -2 or 0 (Y=0) such that the piece is centered horizontally at the top of the grid.
+- Pieces spawn in their initial orientations only.
+
+## 3. Collision, Movement, & Locking
+- **Movement Left:** `(X - 1, Y)`. Shifting left is legal if and only if all cells of the shifted piece lie within column index bounds `[0, 9]` and do not overlap with settled blocks.
+- **Movement Right:** `(X + 1, Y)`. Shifting right is legal if and only if all cells of the shifted piece lie within column index bounds `[0, 9]` and do not overlap with settled blocks.
+- **Soft Drop / Gravity Tick:** `(X, Y + 1)`. Advancing down is legal if all cells of the shifted piece lie within row index bounds `[0, 19]` and do not overlap with settled blocks.
+- **Locking Logic:** If a downward shift (soft drop or gravity tick) is illegal because it collides with the bottom border (Y=20) or any settled block, the active piece is immediately locked into its current coordinates.
+- **Line Clearing:** Following a lock, any row index in `[0, 19]` where all 10 columns are filled is cleared. Full rows are removed. All rows above are shifted down by the number of cleared rows. Empty rows are prepended at the top (Y=0).
+- **GameOver Condition:** If a newly spawned piece collides with already settled blocks, the game status transitions to `game_over`.
+
+## 4. REST API Endpoint Specification
+
+### 4.1. POST `/api/games`
+Creates or restarts a game session.
+- **Request Body:** None
+- **Response Status:** 201 Created
+- **Response Body (JSON):**
+```json
+{
+  "id": "e6384dd1-d4d3-4a03-948f-de8fa3f80c65",
+  "board": [
+    [0,0,0,0,0,0,0,0,0,0],
+    ...
+    [0,0,0,0,0,0,0,0,0,0]
+  ],
+  "active_piece": {
+    "type": "T",
+    "cells": [[3,1], [2,2], [3,2], [4,2]],
+    "origin": [3, 0]
+  },
+  "status": "playing"
+}
+```
+
+### 4.2. GET `/api/games/{id}`
+Retrieves the current game state.
+- **Response Status:** 200 OK
+- **Response Body (JSON):** Same as `POST /api/games`.
+
+### 4.3. POST `/api/games/{id}/tick`
+Advances the active piece down by one row due to gravity.
+- **Response Status:** 200 OK
+- **Response Body (JSON):** Same as `POST /api/games`, showing the piece in its new position or the updated board state (with locking, spawning, or game over applied).
+
+### 4.4. POST `/api/games/{id}/move`
+Executes a movement.
+- **Request Body (JSON):**
+```json
+{
+  "direction": "left"
+}
+```
+*Allowed directions:* `"left"`, `"right"`, or `"down"`.
+- **Response Status:** 200 OK
+- **Response Body (JSON):** Same as `POST /api/games`.
+
+---
+
+## 5. Atomic Testable Requirements (30 Statements)
+
+### Scope: Board Setup
+1. **REQ-001:** Board width MUST be exactly 10 columns.
+2. **REQ-002:** Board height MUST be exactly 20 rows.
+3. **REQ-003:** Empty cells MUST be represented by `0` or `null`.
+
+### Scope: Piece Spawning
+4. **REQ-004:** Spawning MUST pick one of the 7 standard tetromino shapes (I, O, T, S, Z, J, L).
+5. **REQ-005:** Spawning MUST center the tetromino horizontally at the top of the grid.
+6. **REQ-006:** A spawned piece MUST start in its default initial orientation.
+7. **REQ-007:** Newly spawned pieces MUST be immediately visible at the top of the grid.
+
+### Scope: Basic Movement
+8. **REQ-008:** Left control MUST shift the active piece exactly one cell to the left.
+9. **REQ-009:** Right control MUST shift the active piece exactly one cell to the right.
+10. **REQ-010:** Soft drop control MUST shift the active piece exactly one cell down.
+11. **REQ-011:** Shifting left MUST be blocked if any part of the piece exceeds column boundary index 0.
+12. **REQ-012:** Shifting right MUST be blocked if any part of the piece exceeds column boundary index 9.
+
+### Scope: Collisions
+13. **REQ-013:** Piece movement downwards MUST be blocked when any cell hits row boundary index 19.
+14. **REQ-014:** Shifting left MUST be blocked if any target cell overlaps with a settled block.
+15. **REQ-015:** Shifting right MUST be blocked if any target cell overlaps with a settled block.
+16. **REQ-016:** Downward movement MUST be blocked if any target cell overlaps with a settled block.
+
+### Scope: Locking Logic
+17. **REQ-017:** A piece MUST lock down immediately when a downward movement (soft drop or gravity) is blocked.
+18. **REQ-018:** Locked pieces MUST become part of the settled board state.
+19. **REQ-019:** Locked pieces MUST lose their active status and cannot be further controlled.
+
+### Scope: Line Clears
+20. **REQ-020:** Completed rows (containing 10 filled cells) MUST be identified immediately upon locking.
+21. **REQ-021:** Identified completed rows MUST be cleared from the board.
+22. **REQ-022:** Settled rows above cleared rows MUST shift down by the corresponding number of cleared rows.
+23. **REQ-023:** Cleared rows MUST be replaced by empty rows inserted at the very top of the board.
+24. **REQ-024:** Clearing multiple lines simultaneously (up to 4) MUST shift upper rows down sequentially.
+
+### Scope: Game Flow & Over Condition
+25. **REQ-025:** Immediately following a lock-down, a new piece MUST be spawned at the top center.
+26. **REQ-026:** The game status MUST transition to `game_over` if a newly spawned piece overlaps any settled blocks.
+27. **REQ-027:** Active piece movements MUST be rejected if the game status is `game_over`.
+28. **REQ-028:** Restart control MUST reset the settled grid and generate a new game with status `playing`.
+
+### Scope: APIs & Client-Server Decoupling
+29. **REQ-029:** The backend API MUST own the authoritative coordinate grid, validation, and collision states.
+30. **REQ-030:** The frontend MUST fetch status from `/api/games/{id}` and render the exact grid cells received.
+```
+
+---
+
+### Artifact 3: Architectural Design (`design.md`)
+**Required Location:** `openspec/changes/tetris-stage1-option-a/design.md`
+
+```markdown
+# OpenSpec Architectural Design: Browser-Based Tetris Study
+
+## 1. Decoupled System Architecture
+The application is structured into two completely independent service layers communicating over RESTful JSON:
+
+- **Frontend SPA (React & TypeScript):** Handles UI, rendering the grid, tracking clock intervals (500 ms gravity), capturing player keyboard events, and sending action commands to the backend.
+- **Backend API (FastAPI):** Stateless HTTP layer that maps session states inside an in-memory manager, executing core game-loop logic, gravity ticks, collision checks, line clears, and piece spawning.
+
+## 2. Backend Design (Python FastAPI)
+
+### 2.1. File Structure
+- `backend/main.py`: Entry point for Uvicorn, API routes, CORS setup.
+- `backend/models.py`: Pydantic data schemas representing GameState, ActivePiece, MoveRequest, and GameConfig.
+- `backend/engine.py`: Domain rules representing Board, Tetromino shapes, and GameSession manager.
+
+### 2.2. Class & Flow Specifications
+- **GameSession Manager:** Maps `session_id` to game logic structures in memory using a Python dictionary. Handles automatic cleanup of stale sessions.
+- **Tetromino Factory:** Handles generation of the standard 7 tetromino shapes randomly.
+- **Collision Checker:** Pure function taking Board cells and ActivePiece coordinates, returning a boolean indicating if coordinates are invalid, out-of-bounds, or overlapping.
+
+## 3. Frontend Design (React & TypeScript)
+
+### 3.1. Component Hierarchy
+- `GameApp`: Root component managing active session ID, fetching game state, and displaying components.
+- `GridBoard`: Renders a 10x20 table representing empty cells, active piece blocks, and settled blocks.
+- `GameControls`: Renders start/restart buttons and lists simple keyboard instructions (Left/Right Arrows, Down Arrow).
+- `GameOverModal`: Overlay modal triggered when status changes to `game_over`, showing a restart button.
+
+### 3.2. State & Hooks
+- `useGameLoop`: Standard React hook wrapping `setInterval`. Dispatches a `POST /api/games/{id}/tick` request every 500 ms when status is `playing`.
+- `useKeyboardInput`: Captures keydown events (`ArrowLeft`, `ArrowRight`, `ArrowDown`) and triggers calls to `/api/games/{id}/move`.
+```
+
+---
+
+### Artifact 4: Tasks Implementation Roadmap (`tasks.md`)
+**Required Location:** `openspec/changes/tetris-stage1-option-a/tasks.md`
+
+```markdown
+# OpenSpec Task Roadmap: Stage 1 Setup, Engine, and Tests
+
+## Phase 1: Greenfield Scaffolding
+- [ ] **Task 1.1:** Scaffold empty folders `backend/` and `frontend/`.
+- [ ] **Task 1.2:** Configure Python backend virtual environment, install `fastapi`, `uvicorn`, and `pytest`.
+- [ ] **Task 1.3:** Setup React, Vite, and TypeScript inside `frontend/` directory.
+- [ ] **Task 1.4:** Setup GitHub actions or simple scripts to run backend tests and build the frontend.
+
+## Phase 2: Authoritative Backend Engine
+- [ ] **Task 2.1:** Implement Pydantic data models in `backend/models.py` (REQ-001, REQ-002, REQ-003).
+- [ ] **Task 2.2:** Build standard 7 tetromino generators in `backend/engine.py` (REQ-004, REQ-005, REQ-006).
+- [ ] **Task 2.3:** Implement collision detection logic (borders and settled blocks) in `backend/engine.py` (REQ-011, REQ-012, REQ-013, REQ-014, REQ-015, REQ-016).
+- [ ] **Task 2.4:** Write the active piece movement handlers: shift left, shift right, and soft drop (REQ-008, REQ-009, REQ-010).
+- [ ] **Task 2.5:** Implement the lock-down handler (REQ-017, REQ-018, REQ-019).
+- [ ] **Task 2.6:** Write row-clearing logic: identify, remove full lines, drop upper blocks, prepend new rows (REQ-020, REQ-021, REQ-022, REQ-023, REQ-024).
+- [ ] **Task 2.7:** Implement game-over overlap verification on spawn (REQ-025, REQ-026, REQ-027).
+
+## Phase 3: REST API Controllers
+- [ ] **Task 3.1:** Implement `POST /api/games` creating a new game session (REQ-028, REQ-029).
+- [ ] **Task 3.2:** Implement `GET /api/games/{id}` retrieving session data (REQ-030).
+- [ ] **Task 3.3:** Implement `POST /api/games/{id}/move` validating and moving the piece.
+- [ ] **Task 3.4:** Implement `POST /api/games/{id}/tick` advancing gravity.
+
+## Phase 4: Frontend Development
+- [ ] **Task 4.1:** Establish HTTP fetch services to communicate with FastAPI endpoints.
+- [ ] **Task 4.2:** Implement `GridBoard` component rendering 10x20 cells (REQ-001, REQ-002).
+- [ ] **Task 4.3:** Setup keyboard controls hook forwarding events to `/move` endpoint (REQ-008, REQ-009, REQ-010).
+- [ ] **Task 4.4:** Configure 500 ms gravity tick hook sending calls to `/tick` (REQ-030).
+- [ ] **Task 4.5:** Design clear `GameOverModal` (REQ-026).
+
+## Phase 5: Verification & Runnable Tests
+- [ ] **Task 5.1:** Write unit tests in `backend/test_engine.py` using `pytest` verifying spawning, movements, collisions, locking, clearing, and game-over rules.
+- [ ] **Task 5.2:** Test API controllers using FastAPI's `TestClient`.
+- [ ] **Task 5.3:** Build frontend completely without errors or type warnings using `npm run build`.
+- [ ] **Task 5.4:** Document running instructions in README files.
+```
+
+---
+
+### Status Check & Handoff Summary
+All 4 planning artifacts have been completely designed, structured, and specified:
+1. **Proposal (`proposal.md`)** is mapped to the Stage 1 scope.
+2. **Core Specifications (`specs/tetris-core/spec.md`)** outlines geometry, movements, and includes **30 precise atomic requirements** and explicit REST API schemas.
+3. **Architectural Design (`design.md`)** defines our model, view, controller separation.
+4. **Tasks (`tasks.md`)** provides a clear chronological checklist of 23 implementation roadmap items.
+
+All artifacts needed for implementation are ready and successfully defined. When you are ready to proceed with implementing these defined tasks, run `/opsx:apply` or ask me to start the apply workflow.

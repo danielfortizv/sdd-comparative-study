@@ -1,0 +1,114 @@
+INFO: Starting the analysis...
+INFO: Starting SonarScanner Engine...
+INFO: Java 21.0.11 Eclipse Adoptium (64-bit)
+INFO: Load global settings
+INFO: Load global settings (done) | time=92ms
+INFO: Server id: 147B411E-AaDs0FqMYsoySKrT1xhM
+INFO: Loading required plugins
+INFO: Load plugins index
+INFO: Load plugins index (done) | time=14ms
+INFO: Load/download plugins
+INFO: Load/download plugins (done) | time=60ms
+INFO: Process project properties
+INFO: Process project properties (done) | time=14ms
+INFO: Project key: tetris-stage1-kiro
+INFO: Base dir: D:\KEVIN\UNIVERSIDAD\Trabajos\Moviles\Caso 2-Tetris\Etapa 1\Kiro
+INFO: Working dir: D:\KEVIN\UNIVERSIDAD\Trabajos\Moviles\Caso 2-Tetris\Etapa 1\Kiro\.sonar
+INFO: Load project settings for component key: 'tetris-stage1-kiro'
+INFO: Load quality profiles
+INFO: Load quality profiles (done) | time=172ms
+INFO: Load active rules
+INFO: Load active rules (done) | time=343ms
+INFO: Load analysis cache
+INFO: Load analysis cache (404) | time=9ms
+INFO: Preprocessing files...
+INFO: 2 languages detected in 49 preprocessed files (done) | time=92ms
+INFO: Loading plugins for detected languages
+INFO: Load/download plugins
+INFO: Load/download plugins (done) | time=37ms
+INFO: Load project repositories
+INFO: Load project repositories (done) | time=5ms
+INFO: Indexing files...
+INFO: Project configuration:
+INFO: 48 files indexed (done) | time=32ms
+INFO: Quality profile for py: Sonar way
+INFO: Quality profile for ts: Sonar way
+INFO: ------------- Run sensors on module Tetris Stage 1 Kiro
+INFO: Load metrics repository
+INFO: Load metrics repository (done) | time=31ms
+INFO: Sensor IaC YAML File Type Classification Sensor [iac]
+INFO: Sensor IaC YAML File Type Classification Sensor [iac] (done) | time=6ms
+INFO: Sensor IaC hadolint report Sensor [iac]
+INFO: Sensor IaC hadolint report Sensor [iac] (done) | time=1ms
+INFO: Sensor Java Config Sensor [iac]
+INFO: There are no files to be analyzed for the Java language
+INFO: Sensor Java Config Sensor [iac] (done) | time=0ms
+INFO: Sensor IaC Docker Sensor [iac]
+INFO: There are no files to be analyzed for the Docker language
+INFO: Sensor IaC Docker Sensor [iac] (done) | time=5ms
+INFO: Sensor Python Sensor [python]
+WARNING: Your code is analyzed as compatible with all Python 3 versions by default. You can get a more precise analysis by setting the Python version or version range in your configuration via the parameter "sonar.python.version"
+INFO: Starting global symbols computation
+INFO: 14 source files to be analyzed
+INFO: 14/14 source files have been analyzed
+INFO: Finished step global symbols computation in 499ms
+INFO: Starting rules execution
+INFO: 14 source files to be analyzed
+INFO: 14/14 source files have been analyzed
+INFO: Finished step rules execution in 1235ms
+INFO: The Python analyzer was able to leverage cached data from previous analyses for 0 out of 14 files. These files were not parsed.
+INFO: Sensor Python Sensor [python] (done) | time=2495ms
+INFO: Sensor Cobertura Sensor for Python coverage [python]
+INFO: Python test coverage
+INFO: Parsing report 'D:\KEVIN\UNIVERSIDAD\Trabajos\Moviles\Caso 2-Tetris\Etapa 1\Kiro\docs\coverage.xml'
+INFO: Sensor Cobertura Sensor for Python coverage [python] (done) | time=320ms
+INFO: Sensor PythonXUnitSensor [python]
+INFO: Sensor PythonXUnitSensor [python] (done) | time=131ms
+INFO: Sensor Python Dependency Sensor [python]
+INFO: Sensor Python Dependency Sensor [python] (done) | time=6ms
+INFO: Sensor TextAndSecretsSensor [text]
+INFO: Available processors: 16
+INFO: Using 16 threads for analysis.
+INFO: Start fetching files for the text and secrets analysis
+INFO: Using Git CLI to retrieve dirty files
+WARNING: Retrieving only language associated files, make sure to run the analysis inside a git repository to make use of inclusions specified via "sonar.text.inclusions"
+INFO: Starting the text and secrets analysis
+INFO: 20 source files to be analyzed for the text and secrets analysis
+INFO: 20/20 source files have been analyzed for the text and secrets analysis
+INFO: Sensor TextAndSecretsSensor [text] (done) | time=743ms
+INFO: ------------- Run sensors on project
+INFO: Sensor JavaScript/TypeScript/CSS analysis [javascript]
+INFO: Detected os: Windows 11 arch: amd64 alpine: false. Platform: WIN_X64
+INFO: Deploy location C:\Users\Kevin Alvarez\.sonar\js\node-runtime, tagetRuntime: C:\Users\Kevin Alvarez\.sonar\js\node-runtime\node.exe,  version: C:\Users\Kevin Alvarez\.sonar\js\node-runtime\version.txt
+INFO: Using embedded Node.js runtime.
+INFO: Using Node.js executable: 'C:\Users\Kevin Alvarez\.sonar\js\node-runtime\node.exe'.
+INFO: Memory configuration: OS (24501 MB), Node.js (4288 MB).
+INFO: gRPC analyze-project server listening on 127.0.0.1:53760
+INFO: Plugin version: [13.8.0.44569]
+INFO: Found 1 tsconfig.json file(s): [D:/KEVIN/UNIVERSIDAD/Trabajos/Moviles/Caso 2-Tetris/Etapa 1/Kiro/frontend/tsconfig.json]
+INFO: 6 source files to be analyzed
+INFO: Creating TypeScript(6.0.3) program with configuration file D:/KEVIN/UNIVERSIDAD/Trabajos/Moviles/Caso 2-Tetris/Etapa 1/Kiro/frontend/tsconfig.json [lib: lib.es2020.d.ts, lib.dom.d.ts, lib.dom.iterable.d.ts]
+INFO: Discovered referenced tsconfig: D:/KEVIN/UNIVERSIDAD/Trabajos/Moviles/Caso 2-Tetris/Etapa 1/Kiro/frontend/tsconfig.node.json
+INFO: Analyzing 6 file(s) from tsconfig D:/KEVIN/UNIVERSIDAD/Trabajos/Moviles/Caso 2-Tetris/Etapa 1/Kiro/frontend/tsconfig.json (66 total files in program)
+INFO: 6/6 source files have been analyzed
+INFO: Hit the cache for 0 out of 6
+INFO: Miss the cache for 6 out of 6: ANALYSIS_MODE_INELIGIBLE [6/6]
+INFO: Sensor JavaScript/TypeScript/CSS analysis [javascript] (done) | time=10068ms
+INFO: Sensor IaC Project Sensor [iac]
+INFO: Sensor IaC Project Sensor [iac] (done) | time=0ms
+INFO: Sensor Zero Coverage Sensor
+INFO: Sensor Zero Coverage Sensor (done) | time=5ms
+INFO: ------------- Gather SCA dependencies on project
+INFO: Dependency analysis skipped
+INFO: SCM Publisher is disabled
+INFO: CPD Executor 5 files had no CPD blocks
+INFO: CPD Executor Calculating CPD for 12 files
+INFO: CPD Executor CPD calculation finished (done) | time=9ms
+INFO: Analysis report generated in 198ms, dir size=392.7 kB
+INFO: Analysis report compressed in 511ms, zip size=104.1 kB
+INFO: Analysis report uploaded in 280ms
+INFO: ANALYSIS SUCCESSFUL, you can find the results at: http://127.0.0.1:9000/dashboard?id=tetris-stage1-kiro
+INFO: Note that you will be able to access the updated dashboard once the server has processed the submitted analysis report
+INFO: More about the report processing at http://127.0.0.1:9000/api/ce/task?id=cb3ead4f-360d-4022-bf4b-a8282ab395ff
+INFO: Analysis total time: 18.045 s
+INFO: SonarScanner Engine completed successfully

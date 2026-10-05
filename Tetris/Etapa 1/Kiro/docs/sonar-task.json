@@ -1,0 +1,24 @@
+{
+  "queue": [],
+  "current": {
+    "id": "cb3ead4f-360d-4022-bf4b-a8282ab395ff",
+    "type": "REPORT",
+    "componentId": "9775e792-e7e1-4e76-b9b1-e8ec34535531",
+    "componentKey": "tetris-stage1-kiro",
+    "componentName": "Tetris Stage 1 Kiro",
+    "componentQualifier": "TRK",
+    "analysisId": "6307a37b-7ec9-4264-a4f5-5a61065609b2",
+    "status": "SUCCESS",
+    "submittedAt": "2026-09-29T08:09:59-05:00",
+    "submitterLogin": "admin",
+    "startedAt": "2026-09-29T08:10:00-05:00",
+    "executedAt": "2026-09-29T08:10:01-05:00",
+    "executionTimeMs": 1216,
+    "hasScannerContext": true,
+    "warningCount": 1,
+    "warnings": [
+      "Your code is analyzed as compatible with all Python 3 versions by default. You can get a more precise analysis by setting the Python version or version range in your configuration via the parameter \"sonar.python.version\""
+    ],
+    "infoMessages": []
+  }
+}

@@ -1,0 +1,195 @@
+{
+  "specification": {
+    "files": 2,
+    "lines": 136,
+    "nonblank_lines": 111,
+    "characters": 10093,
+    "lines_per_file": 68.0,
+    "requirement_statements": 34
+  },
+  "source": {
+    "files": 19,
+    "lines": 1299,
+    "nonblank_lines": 1110,
+    "characters": 37962
+  },
+  "gemini_tokens": {
+    "transcript_files": 9,
+    "model_responses": 110,
+    "input": 3682896,
+    "output": 28132,
+    "cached": 2013292,
+    "thoughts": 61714,
+    "tool": 0,
+    "total": 3772742,
+    "sessions": [
+      {
+        "file": "docs\\gemini-home\\.gemini\\tmp\\tessl\\chats\\16ff2d09-cebb-4a39-af97-80f1972bb0f3\\23734b8f-4e51-4890-8c57-acaecccbc795.jsonl",
+        "started": "2026-09-29T12:49:21.183Z",
+        "model_responses": 18,
+        "input": 643645,
+        "output": 9143,
+        "cached": 362661,
+        "thoughts": 15534,
+        "tool": 0,
+        "total": 668322
+      },
+      {
+        "file": "docs\\gemini-home\\.gemini\\tmp\\tessl\\chats\\16ff2d09-cebb-4a39-af97-80f1972bb0f3\\ae50b18a-4c7a-4bf9-88e4-9ac999a6d9a6.jsonl",
+        "started": "2026-09-29T12:26:10.948Z",
+        "model_responses": 4,
+        "input": 49172,
+        "output": 833,
+        "cached": 23661,
+        "thoughts": 7134,
+        "tool": 0,
+        "total": 57139
+      },
+      {
+        "file": "docs\\gemini-home\\.gemini\\tmp\\tessl\\chats\\16ff2d09-cebb-4a39-af97-80f1972bb0f3\\d3cf3a31-31cd-4110-9f1b-eb69b07a8e20.jsonl",
+        "started": "2026-09-29T12:46:40.804Z",
+        "model_responses": 2,
+        "input": 43615,
+        "output": 2332,
+        "cached": 16958,
+        "thoughts": 3359,
+        "tool": 0,
+        "total": 49306
+      },
+      {
+        "file": "docs\\gemini-home\\.gemini\\tmp\\tessl\\chats\\16ff2d09-cebb-4a39-af97-80f1972bb0f3\\e08083fe-481d-43d8-9fb2-db3cc57702d3.jsonl",
+        "started": "2026-09-29T13:16:59.670Z",
+        "model_responses": 4,
+        "input": 312249,
+        "output": 243,
+        "cached": 158694,
+        "thoughts": 705,
+        "tool": 0,
+        "total": 313197
+      },
+      {
+        "file": "docs\\gemini-home\\.gemini\\tmp\\tessl\\chats\\16ff2d09-cebb-4a39-af97-80f1972bb0f3\\e19a23a1-1ed0-4ba5-8213-b1c902fa7bb1.jsonl",
+        "started": "2026-09-29T12:47:59.300Z",
+        "model_responses": 2,
+        "input": 34831,
+        "output": 686,
+        "cached": 30919,
+        "thoughts": 1782,
+        "tool": 0,
+        "total": 37299
+      },
+      {
+        "file": "docs\\gemini-home\\.gemini\\tmp\\tessl\\chats\\16ff2d09-cebb-4a39-af97-80f1972bb0f3\\fee529c8-af5c-4e49-a02c-bf0608a75321.jsonl",
+        "started": "2026-09-29T12:26:54.475Z",
+        "model_responses": 6,
+        "input": 68160,
+        "output": 516,
+        "cached": 41226,
+        "thoughts": 2587,
+        "tool": 0,
+        "total": 71263
+      },
+      {
+        "file": "docs\\gemini-home\\.gemini\\tmp\\tessl\\chats\\session-2026-09-29T12-25-16ff2d09.jsonl",
+        "started": "2026-09-29T12:25:48.640Z",
+        "model_responses": 27,
+        "input": 633393,
+        "output": 9108,
+        "cached": 407405,
+        "thoughts": 13668,
+        "tool": 0,
+        "total": 656169
+      },
+      {
+        "file": "docs\\gemini-home\\.gemini\\tmp\\tessl\\chats\\session-2026-09-29T13-18-3026154f.jsonl",
+        "started": "2026-09-29T13:18:53.946Z",
+        "model_responses": 33,
+        "input": 1404726,
+        "output": 2923,
+        "cached": 632399,
+        "thoughts": 10180,
+        "tool": 0,
+        "total": 1417829
+      },
+      {
+        "file": "docs\\gemini-home\\.gemini\\tmp\\tessl\\chats\\session-2026-09-29T18-31-1cbeb045.jsonl",
+        "started": "2026-09-29T18:31:40.243Z",
+        "model_responses": 14,
+        "input": 493105,
+        "output": 2348,
+        "cached": 339369,
+        "thoughts": 6765,
+        "tool": 0,
+        "total": 502218
+      }
+    ]
+  },
+  "runs": [
+    {
+      "file": "Tessl\\docs\\apply-arrow-spec.run.json",
+      "started": "2026-09-29T13:31:37.0548746-05:00",
+      "ended": "2026-09-29T13:38:39.1657085-05:00",
+      "duration_seconds": 422.111,
+      "exit_code": 0,
+      "seed_sha256": null
+    },
+    {
+      "file": "Tessl\\docs\\complete-frontend-second-network.run.json",
+      "started": "2026-09-29T13:13:27.2135074-05:00",
+      "ended": "2026-09-29T13:17:04.6927767-05:00",
+      "duration_seconds": 217.479,
+      "exit_code": 0,
+      "seed_sha256": null
+    },
+    {
+      "file": "Tessl\\docs\\complete-frontend-second.run.json",
+      "started": "2026-09-29T13:12:39.0267073-05:00",
+      "ended": "2026-09-29T13:12:43.2452657-05:00",
+      "duration_seconds": 4.219,
+      "exit_code": 1,
+      "seed_sha256": null
+    },
+    {
+      "file": "Tessl\\docs\\correct-arrow-only.run.json",
+      "started": "2026-09-29T13:30:35.0737006-05:00",
+      "ended": "2026-09-29T13:30:47.1729959-05:00",
+      "duration_seconds": 12.099,
+      "exit_code": 0,
+      "seed_sha256": null
+    },
+    {
+      "file": "Tessl\\docs\\execute-approved-plan.run.json",
+      "started": "2026-09-29T13:21:46.7237117-05:00",
+      "ended": "2026-09-29T13:22:50.2198238-05:00",
+      "duration_seconds": 63.496,
+      "exit_code": 0,
+      "seed_sha256": null
+    },
+    {
+      "file": "Tessl\\docs\\finish-frontend.run.json",
+      "started": "2026-09-29T08:18:50.7885887-05:00",
+      "ended": "2026-09-29T08:30:17.3824426-05:00",
+      "duration_seconds": 686.594,
+      "exit_code": 0,
+      "seed_sha256": null
+    },
+    {
+      "file": "Tessl\\docs\\tessl-spec-build.run.json",
+      "started": "2026-09-29T07:25:45.0985754-05:00",
+      "ended": "2026-09-29T08:18:31.3930913-05:00",
+      "duration_seconds": 3166.295,
+      "exit_code": 130,
+      "seed_sha256": "2AE084C9C64FC41F65D0E07581CED9E30B6C68891D9F8688A37F34594ECFD1C5"
+    },
+    {
+      "file": "Tessl\\docs\\write-frontend-now.run.json",
+      "started": "2026-09-29T13:24:31.9964736-05:00",
+      "ended": "2026-09-29T13:30:00.3687027-05:00",
+      "duration_seconds": 328.372,
+      "exit_code": 0,
+      "seed_sha256": null
+    }
+  ],
+  "recorded_duration_seconds": 4900.665,
+  "recorded_prompt_count": 8
+}

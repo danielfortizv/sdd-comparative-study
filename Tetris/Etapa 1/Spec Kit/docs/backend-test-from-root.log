@@ -1,0 +1,28 @@
+..................                                                       [100%]
+============================== warnings summary ===============================
+..\_toolchain\venv\Lib\site-packages\fastapi\testclient.py:1
+  D:\KEVIN\UNIVERSIDAD\Trabajos\Moviles\Caso 2-Tetris\Etapa 1\_toolchain\venv\Lib\site-packages\fastapi\testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.
+    from starlette.testclient import TestClient as TestClient  # noqa
+
+backend\app\models\schemas.py:39
+  D:\KEVIN\UNIVERSIDAD\Trabajos\Moviles\Caso 2-Tetris\Etapa 1\Spec Kit\backend\app\models\schemas.py:39: PydanticDeprecatedSince20: Support for class-based `config` is deprecated, use ConfigDict instead. Deprecated in Pydantic V2.0 to be removed in V3.0. See Pydantic V2 Migration Guide at https://errors.pydantic.dev/2.13/migration/
+    class GameSessionSchema(BaseModel):
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=============================== tests coverage ================================
+______________ coverage: platform win32, python 3.12.14-final-0 _______________
+
+Name                                  Stmts   Miss  Cover
+---------------------------------------------------------
+backend\app\__init__.py                   0      0   100%
+backend\app\api\__init__.py               0      0   100%
+backend\app\api\endpoints.py             22      2    91%
+backend\app\main.py                      11      1    91%
+backend\app\models\__init__.py            0      0   100%
+backend\app\models\schemas.py            66     10    85%
+backend\app\services\__init__.py          0      0   100%
+backend\app\services\game_engine.py      80      3    96%
+---------------------------------------------------------
+TOTAL                                   179     16    91%
+Coverage XML written to file docs/coverage.xml
+18 passed, 2 warnings in 1.14s

@@ -1,0 +1,71 @@
+{
+  "component": {
+    "key": "tetris-stage1-kiro",
+    "name": "Tetris Stage 1 Kiro",
+    "qualifier": "TRK",
+    "measures": [
+      {
+        "metric": "coverage",
+        "value": "72.6",
+        "bestValue": false
+      },
+      {
+        "metric": "complexity",
+        "value": "92"
+      },
+      {
+        "metric": "reliability_rating",
+        "value": "1.0",
+        "bestValue": true
+      },
+      {
+        "metric": "code_smells",
+        "value": "10",
+        "bestValue": false
+      },
+      {
+        "metric": "duplicated_lines_density",
+        "value": "0.0",
+        "bestValue": true
+      },
+      {
+        "metric": "security_rating",
+        "value": "1.0",
+        "bestValue": true
+      },
+      {
+        "metric": "sqale_index",
+        "value": "38",
+        "bestValue": false
+      },
+      {
+        "metric": "sqale_rating",
+        "value": "1.0",
+        "bestValue": true
+      },
+      {
+        "metric": "bugs",
+        "value": "0",
+        "bestValue": true
+      },
+      {
+        "metric": "cognitive_complexity",
+        "value": "45",
+        "bestValue": false
+      },
+      {
+        "metric": "ncloc",
+        "value": "497"
+      },
+      {
+        "metric": "vulnerabilities",
+        "value": "0",
+        "bestValue": true
+      },
+      {
+        "metric": "lines",
+        "value": "807"
+      }
+    ]
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "queue": [],
+  "current": {
+    "id": "c1404a59-6744-4b5a-a106-b6ac937aae74",
+    "type": "REPORT",
+    "componentId": "bd0f4e6c-4979-41e0-aa1f-0a240a1c31b9",
+    "componentKey": "tetris-stage1-openspec",
+    "componentName": "Tetris Stage 1 OpenSpec",
+    "componentQualifier": "TRK",
+    "analysisId": "543cbc81-2ccd-484b-978e-d631a4af2883",
+    "status": "SUCCESS",
+    "submittedAt": "2026-09-29T08:15:09-05:00",
+    "submitterLogin": "admin",
+    "startedAt": "2026-09-29T08:15:10-05:00",
+    "executedAt": "2026-09-29T08:15:11-05:00",
+    "executionTimeMs": 1119,
+    "hasScannerContext": true,
+    "warningCount": 1,
+    "warnings": [
+      "Your code is analyzed as compatible with all Python 3 versions by default. You can get a more precise analysis by setting the Python version or version range in your configuration via the parameter \"sonar.python.version\""
+    ],
+    "infoMessages": []
+  }
+}

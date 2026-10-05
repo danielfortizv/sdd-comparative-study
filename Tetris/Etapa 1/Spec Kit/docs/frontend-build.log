@@ -1,0 +1,5 @@
+
+> tetris-frontend@0.1.0 build
+> tsc && vite build
+
+tests/GameOverModal.test.tsx(4,1): error TS6133: 'React' is declared but its value is never read.

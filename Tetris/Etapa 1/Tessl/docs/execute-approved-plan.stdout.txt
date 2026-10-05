@@ -1,0 +1,39 @@
+I have designed a comprehensive design document and complete implementation plan for the React (TypeScript) frontend of Tetris Stage 1 Option A. 
+
+Below is the structured plan and the exact implementation specifications. 
+
+---
+
+### Phase 1: Amend Requirements (`specs/requirements.md`)
+We will append **Group I** and update Section 2 with **Frontend Acceptance Criteria** as requested, incorporating the authoritative **500 ms gravity interval** and input serialization constraint.
+
+---
+
+### Phase 2: Create Build Configuration & Core HTML
+We will write the TypeScript, build-mode configuration files, and core HTML template:
+1. `frontend/tsconfig.json` — Maps project references for composite build compilation.
+2. `frontend/tsconfig.app.json` — Type compilation instructions for application files (`src`).
+3. `frontend/tsconfig.node.json` — Type compilation instructions for tool configs (`vite.config.ts`).
+4. `frontend/vite.config.ts` — Configures a development proxy routing `/api/*` to the FastAPI backend.
+5. `frontend/index.html` — Configures the standard entry point and bootstrapping module.
+
+---
+
+### Phase 3: Create Types & API Clients
+We will write clean, well-typed modules mirroring the backend's design and model contracts:
+1. `frontend/src/types.ts` — Authoritative interface contracts for `GameState`, `ActivePiece`, and `TetrominoType`.
+2. `frontend/src/api.ts` — Implements backend communication endpoints (`create`, `get`, `tick`, and `move`).
+
+---
+
+### Phase 4: Create Components & State Engine
+We will write React components incorporating standard keyboard interactions, the 500ms automatic timer, and robust input synchronization:
+1. `frontend/src/components/TetrisBoard.tsx` — Combines background board cells with active tetromino coordinates to render a unified, styled grid containing descriptive attributes.
+2. `frontend/src/components/GameStatus.tsx` — Panel displaying gameplay metadata and active tetromino information.
+3. `frontend/src/App.tsx` — The core logic manager of Approach 1. Uses a request semaphore lock (`pendingRequest.current`) to guarantee no overlapping network states occur during movement keyboard events or interval-based gravity ticks.
+4. `frontend/src/index.css` — High-fidelity Vanilla CSS styling implementing neutral typography, polished glass panels, structured flex layouts, and color indicators.
+5. `frontend/src/main.tsx` — Entry bootstrap component.
+
+---
+
+This plan is ready for action. Once you provide the next signal, I will write these files and run `npm run build` to verify compliance.

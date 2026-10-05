@@ -1,0 +1,15 @@
+
+> tetris-frontend@0.1.0 test
+> vitest run --run
+
+
+ RUN  v0.34.6 D:/KEVIN/UNIVERSIDAD/Trabajos/Moviles/Caso 2-Tetris/Etapa 1/Spec Kit/frontend
+
+ ✓ tests/useGame.test.ts  (2 tests) 15ms
+ ✓ tests/GameOverModal.test.tsx  (3 tests) 53ms
+
+ Test Files  2 passed (2)
+      Tests  5 passed (5)
+   Start at  13:14:04
+   Duration  1.44s (transform 74ms, setup 0ms, collect 607ms, tests 68ms, environment 1.36s, prepare 246ms)
+

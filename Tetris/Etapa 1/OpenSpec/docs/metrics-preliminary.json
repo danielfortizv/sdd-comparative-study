@@ -1,0 +1,168 @@
+{
+  "specification": {
+    "files": 4,
+    "lines": 442,
+    "nonblank_lines": 350,
+    "characters": 23969,
+    "lines_per_file": 110.5,
+    "requirement_statements": 30
+  },
+  "source": {
+    "files": 13,
+    "lines": 1366,
+    "nonblank_lines": 1172,
+    "characters": 39957
+  },
+  "gemini_tokens": {
+    "transcript_files": 8,
+    "model_responses": 152,
+    "input": 5720456,
+    "output": 39521,
+    "cached": 4177674,
+    "thoughts": 81559,
+    "tool": 0,
+    "total": 5841536,
+    "sessions": [
+      {
+        "file": "docs\\gemini-home\\.gemini\\tmp\\openspec\\chats\\bd2a4f05-2df5-4bf1-9a1e-4817319896f8\\2b40df1c-ab75-456b-a44a-d1450d109e12.jsonl",
+        "started": "2026-09-29T12:22:26.868Z",
+        "model_responses": 1,
+        "input": 3034,
+        "output": 815,
+        "cached": 0,
+        "thoughts": 639,
+        "tool": 0,
+        "total": 4488
+      },
+      {
+        "file": "docs\\gemini-home\\.gemini\\tmp\\openspec\\chats\\bd2a4f05-2df5-4bf1-9a1e-4817319896f8\\98a80317-22bf-47ac-8588-a7e0cb6d6099.jsonl",
+        "started": "2026-09-29T12:21:10.267Z",
+        "model_responses": 9,
+        "input": 97365,
+        "output": 1091,
+        "cached": 68522,
+        "thoughts": 4590,
+        "tool": 0,
+        "total": 103046
+      },
+      {
+        "file": "docs\\gemini-home\\.gemini\\tmp\\openspec\\chats\\bd2a4f05-2df5-4bf1-9a1e-4817319896f8\\ace45a03-ca23-4585-883d-ed6d94344877.jsonl",
+        "started": "2026-09-29T12:20:56.067Z",
+        "model_responses": 1,
+        "input": 8729,
+        "output": 248,
+        "cached": 0,
+        "thoughts": 1024,
+        "tool": 0,
+        "total": 10001
+      },
+      {
+        "file": "docs\\gemini-home\\.gemini\\tmp\\openspec\\chats\\bd2a4f05-2df5-4bf1-9a1e-4817319896f8\\c6fa4d0c-ed7d-41ff-a0b6-b6cfe1c07dba.jsonl",
+        "started": "2026-09-29T12:19:29.504Z",
+        "model_responses": 21,
+        "input": 517880,
+        "output": 1534,
+        "cached": 395214,
+        "thoughts": 6861,
+        "tool": 0,
+        "total": 526275
+      },
+      {
+        "file": "docs\\gemini-home\\.gemini\\tmp\\openspec\\chats\\session-2026-09-29T12-18-bd2a4f05.jsonl",
+        "started": "2026-09-29T12:18:35.947Z",
+        "model_responses": 44,
+        "input": 2085394,
+        "output": 7021,
+        "cached": 1501491,
+        "thoughts": 20591,
+        "tool": 0,
+        "total": 2113006
+      },
+      {
+        "file": "docs\\gemini-home\\.gemini\\tmp\\openspec\\chats\\session-2026-09-29T12-49-21d407d9.jsonl",
+        "started": "2026-09-29T12:49:36.644Z",
+        "model_responses": 14,
+        "input": 460317,
+        "output": 5274,
+        "cached": 338416,
+        "thoughts": 22200,
+        "tool": 0,
+        "total": 487791
+      },
+      {
+        "file": "docs\\gemini-home\\.gemini\\tmp\\openspec\\chats\\session-2026-09-29T12-58-d701f90f.jsonl",
+        "started": "2026-09-29T12:58:37.251Z",
+        "model_responses": 26,
+        "input": 932429,
+        "output": 13056,
+        "cached": 610261,
+        "thoughts": 14774,
+        "tool": 0,
+        "total": 960259
+      },
+      {
+        "file": "docs\\gemini-home\\.gemini\\tmp\\openspec\\chats\\session-2026-09-29T13-06-19805bad.jsonl",
+        "started": "2026-09-29T13:06:34.500Z",
+        "model_responses": 36,
+        "input": 1615308,
+        "output": 10482,
+        "cached": 1263770,
+        "thoughts": 10880,
+        "tool": 0,
+        "total": 1636670
+      }
+    ]
+  },
+  "runs": [
+    {
+      "file": "OpenSpec\\docs\\apply-complete.run.json",
+      "started": "2026-09-29T08:06:31.0482352-05:00",
+      "ended": "2026-09-29T08:12:08.7360299-05:00",
+      "duration_seconds": 337.688,
+      "exit_code": 0,
+      "seed_sha256": null
+    },
+    {
+      "file": "OpenSpec\\docs\\apply.run.json",
+      "started": "2026-09-29T07:58:35.4482862-05:00",
+      "ended": "2026-09-29T08:03:18.3063322-05:00",
+      "duration_seconds": 282.858,
+      "exit_code": 0,
+      "seed_sha256": null
+    },
+    {
+      "file": "OpenSpec\\docs\\execute-proposal.run.json",
+      "started": "2026-09-29T07:02:00.5209701-05:00",
+      "ended": "2026-09-29T07:02:12.8411855-05:00",
+      "duration_seconds": 12.32,
+      "exit_code": 0,
+      "seed_sha256": null
+    },
+    {
+      "file": "OpenSpec\\docs\\normalize-native-spec.run.json",
+      "started": "2026-09-29T07:49:34.8527964-05:00",
+      "ended": "2026-09-29T07:52:27.1492964-05:00",
+      "duration_seconds": 172.296,
+      "exit_code": 0,
+      "seed_sha256": null
+    },
+    {
+      "file": "OpenSpec\\docs\\propose.run.json",
+      "started": "2026-09-29T05:42:11.2771911-05:00",
+      "ended": "2026-09-29T05:52:57.0953172-05:00",
+      "duration_seconds": 645.818,
+      "exit_code": 0,
+      "seed_sha256": "2AE084C9C64FC41F65D0E07581CED9E30B6C68891D9F8688A37F34594ECFD1C5"
+    },
+    {
+      "file": "OpenSpec\\docs\\write-artifacts.run.json",
+      "started": "2026-09-29T07:18:34.0910812-05:00",
+      "ended": "2026-09-29T07:45:27.9206135-05:00",
+      "duration_seconds": 1613.83,
+      "exit_code": 0,
+      "seed_sha256": null
+    }
+  ],
+  "recorded_duration_seconds": 3064.81,
+  "recorded_prompt_count": 6
+}

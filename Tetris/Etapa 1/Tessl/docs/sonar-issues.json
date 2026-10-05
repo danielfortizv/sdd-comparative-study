@@ -1,0 +1,745 @@
+{
+  "total": 14,
+  "p": 1,
+  "ps": 500,
+  "paging": {
+    "pageIndex": 1,
+    "pageSize": 500,
+    "total": 14
+  },
+  "effortTotal": 81,
+  "issues": [
+    {
+      "key": "a25ee808-ce43-4eda-b7db-8378c2dfe082",
+      "rule": "python:S1192",
+      "severity": "CRITICAL",
+      "component": "tetris-stage1-tessl:backend/app/controllers/games.py",
+      "project": "tetris-stage1-tessl",
+      "line": 51,
+      "hash": "af5468cb264a9574bec4d0bc6e68373e",
+      "textRange": {
+        "startLine": 51,
+        "endLine": 51,
+        "startOffset": 52,
+        "endOffset": 76
+      },
+      "flows": [
+        {
+          "locations": [
+            {
+              "component": "tetris-stage1-tessl:backend/app/controllers/games.py",
+              "textRange": {
+                "startLine": 57,
+                "endLine": 57,
+                "startOffset": 52,
+                "endOffset": 76
+              },
+              "msg": "Duplication",
+              "msgFormattings": []
+            }
+          ]
+        },
+        {
+          "locations": [
+            {
+              "component": "tetris-stage1-tessl:backend/app/controllers/games.py",
+              "textRange": {
+                "startLine": 66,
+                "endLine": 66,
+                "startOffset": 52,
+                "endOffset": 76
+              },
+              "msg": "Duplication",
+              "msgFormattings": []
+            }
+          ]
+        }
+      ],
+      "status": "OPEN",
+      "message": "Define a constant instead of duplicating this literal \"Game session not found\" 3 times.",
+      "effort": "6min",
+      "debt": "6min",
+      "author": "",
+      "tags": [
+        "design"
+      ],
+      "creationDate": "2026-09-29T13:40:56-05:00",
+      "updateDate": "2026-09-29T13:40:56-05:00",
+      "type": "CODE_SMELL",
+      "scope": "MAIN",
+      "quickFixAvailable": false,
+      "messageFormattings": [],
+      "codeVariants": [],
+      "cleanCodeAttribute": "DISTINCT",
+      "cleanCodeAttributeCategory": "ADAPTABLE",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "HIGH"
+        }
+      ],
+      "issueStatus": "OPEN",
+      "prioritizedRule": false,
+      "fromSonarQubeUpdate": false,
+      "internalTags": [],
+      "linkedTicketStatus": "NOT_LINKED"
+    },
+    {
+      "key": "f7c0145e-d59c-493c-b62b-f20862d5b664",
+      "rule": "python:S8415",
+      "severity": "MAJOR",
+      "component": "tetris-stage1-tessl:backend/app/controllers/games.py",
+      "project": "tetris-stage1-tessl",
+      "line": 51,
+      "hash": "af5468cb264a9574bec4d0bc6e68373e",
+      "textRange": {
+        "startLine": 51,
+        "endLine": 51,
+        "startOffset": 14,
+        "endOffset": 27
+      },
+      "flows": [],
+      "status": "OPEN",
+      "message": "Document this HTTPException with status code 404 in the \"responses\" parameter.",
+      "effort": "5min",
+      "debt": "5min",
+      "author": "",
+      "tags": [
+        "fastapi",
+        "openapi",
+        "documentation"
+      ],
+      "creationDate": "2026-09-29T13:40:56-05:00",
+      "updateDate": "2026-09-29T13:40:56-05:00",
+      "type": "CODE_SMELL",
+      "scope": "MAIN",
+      "quickFixAvailable": false,
+      "messageFormattings": [],
+      "codeVariants": [],
+      "cleanCodeAttribute": "COMPLETE",
+      "cleanCodeAttributeCategory": "INTENTIONAL",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "HIGH"
+        }
+      ],
+      "issueStatus": "OPEN",
+      "prioritizedRule": false,
+      "fromSonarQubeUpdate": false,
+      "internalTags": [],
+      "linkedTicketStatus": "NOT_LINKED"
+    },
+    {
+      "key": "76da552d-2b35-4eae-a6e0-c5e513c2898c",
+      "rule": "python:S8415",
+      "severity": "MAJOR",
+      "component": "tetris-stage1-tessl:backend/app/controllers/games.py",
+      "project": "tetris-stage1-tessl",
+      "line": 57,
+      "hash": "af5468cb264a9574bec4d0bc6e68373e",
+      "textRange": {
+        "startLine": 57,
+        "endLine": 57,
+        "startOffset": 14,
+        "endOffset": 27
+      },
+      "flows": [],
+      "status": "OPEN",
+      "message": "Document this HTTPException with status code 404 in the \"responses\" parameter.",
+      "effort": "5min",
+      "debt": "5min",
+      "author": "",
+      "tags": [
+        "fastapi",
+        "openapi",
+        "documentation"
+      ],
+      "creationDate": "2026-09-29T13:40:56-05:00",
+      "updateDate": "2026-09-29T13:40:56-05:00",
+      "type": "CODE_SMELL",
+      "scope": "MAIN",
+      "quickFixAvailable": false,
+      "messageFormattings": [],
+      "codeVariants": [],
+      "cleanCodeAttribute": "COMPLETE",
+      "cleanCodeAttributeCategory": "INTENTIONAL",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "HIGH"
+        }
+      ],
+      "issueStatus": "OPEN",
+      "prioritizedRule": false,
+      "fromSonarQubeUpdate": false,
+      "internalTags": [],
+      "linkedTicketStatus": "NOT_LINKED"
+    },
+    {
+      "key": "ec4a88c5-0b26-44ab-836e-038eda012ef1",
+      "rule": "python:S8415",
+      "severity": "MAJOR",
+      "component": "tetris-stage1-tessl:backend/app/controllers/games.py",
+      "project": "tetris-stage1-tessl",
+      "line": 66,
+      "hash": "af5468cb264a9574bec4d0bc6e68373e",
+      "textRange": {
+        "startLine": 66,
+        "endLine": 66,
+        "startOffset": 14,
+        "endOffset": 27
+      },
+      "flows": [],
+      "status": "OPEN",
+      "message": "Document this HTTPException with status code 404 in the \"responses\" parameter.",
+      "effort": "5min",
+      "debt": "5min",
+      "author": "",
+      "tags": [
+        "fastapi",
+        "openapi",
+        "documentation"
+      ],
+      "creationDate": "2026-09-29T13:40:56-05:00",
+      "updateDate": "2026-09-29T13:40:56-05:00",
+      "type": "CODE_SMELL",
+      "scope": "MAIN",
+      "quickFixAvailable": false,
+      "messageFormattings": [],
+      "codeVariants": [],
+      "cleanCodeAttribute": "COMPLETE",
+      "cleanCodeAttributeCategory": "INTENTIONAL",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "HIGH"
+        }
+      ],
+      "issueStatus": "OPEN",
+      "prioritizedRule": false,
+      "fromSonarQubeUpdate": false,
+      "internalTags": [],
+      "linkedTicketStatus": "NOT_LINKED"
+    },
+    {
+      "key": "abd507d4-fef1-4369-b0ac-e55b378e7ebd",
+      "rule": "python:S2245",
+      "severity": "MAJOR",
+      "component": "tetris-stage1-tessl:backend/app/domain/pieces.py",
+      "project": "tetris-stage1-tessl",
+      "line": 16,
+      "hash": "2a022c8f37ae7a93966157591eaa0e4b",
+      "textRange": {
+        "startLine": 16,
+        "endLine": 16,
+        "startOffset": 11,
+        "endOffset": 45
+      },
+      "flows": [],
+      "status": "OPEN",
+      "message": "Make sure that using this pseudorandom number generator is safe here.",
+      "effort": "10min",
+      "debt": "10min",
+      "author": "",
+      "tags": [
+        "cwe",
+        "former-hotspot"
+      ],
+      "creationDate": "2026-09-29T13:40:56-05:00",
+      "updateDate": "2026-09-29T13:40:56-05:00",
+      "type": "VULNERABILITY",
+      "scope": "MAIN",
+      "quickFixAvailable": false,
+      "messageFormattings": [],
+      "codeVariants": [],
+      "cleanCodeAttribute": "TRUSTWORTHY",
+      "cleanCodeAttributeCategory": "RESPONSIBLE",
+      "impacts": [
+        {
+          "softwareQuality": "SECURITY",
+          "severity": "MEDIUM"
+        }
+      ],
+      "issueStatus": "OPEN",
+      "prioritizedRule": false,
+      "fromSonarQubeUpdate": false,
+      "internalTags": [],
+      "linkedTicketStatus": "NOT_LINKED"
+    },
+    {
+      "key": "98b7ae49-d652-4165-b442-5cbf2b24b111",
+      "rule": "python:S8396",
+      "severity": "CRITICAL",
+      "component": "tetris-stage1-tessl:backend/app/models/game.py",
+      "project": "tetris-stage1-tessl",
+      "line": 15,
+      "hash": "9aec9d95db89b441ed104e2b624d78e0",
+      "textRange": {
+        "startLine": 15,
+        "endLine": 15,
+        "startOffset": 18,
+        "endOffset": 44
+      },
+      "flows": [],
+      "status": "OPEN",
+      "message": "Add an explicit default value to this optional field.",
+      "effort": "5min",
+      "debt": "5min",
+      "author": "",
+      "tags": [
+        "pydantic",
+        "type-hint",
+        "validation"
+      ],
+      "creationDate": "2026-09-29T13:40:56-05:00",
+      "updateDate": "2026-09-29T13:40:56-05:00",
+      "type": "CODE_SMELL",
+      "scope": "MAIN",
+      "quickFixAvailable": false,
+      "messageFormattings": [],
+      "codeVariants": [],
+      "cleanCodeAttribute": "CLEAR",
+      "cleanCodeAttributeCategory": "INTENTIONAL",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "HIGH"
+        },
+        {
+          "softwareQuality": "RELIABILITY",
+          "severity": "HIGH"
+        }
+      ],
+      "issueStatus": "OPEN",
+      "prioritizedRule": false,
+      "fromSonarQubeUpdate": false,
+      "internalTags": [],
+      "linkedTicketStatus": "NOT_LINKED"
+    },
+    {
+      "key": "fcb2cd24-d415-41dd-a88c-8775c6b01b32",
+      "rule": "typescript:S6479",
+      "severity": "MAJOR",
+      "component": "tetris-stage1-tessl:frontend/src/components/TetrisBoard.tsx",
+      "project": "tetris-stage1-tessl",
+      "line": 16,
+      "hash": "ccbde785fef2c2c6be7e4843c31e0be2",
+      "textRange": {
+        "startLine": 16,
+        "endLine": 16,
+        "startOffset": 18,
+        "endOffset": 24
+      },
+      "flows": [],
+      "status": "OPEN",
+      "message": "Do not use Array index in keys",
+      "effort": "5min",
+      "debt": "5min",
+      "author": "",
+      "tags": [
+        "performance",
+        "react",
+        "jsx"
+      ],
+      "creationDate": "2026-09-29T13:40:56-05:00",
+      "updateDate": "2026-09-29T13:40:56-05:00",
+      "type": "CODE_SMELL",
+      "scope": "MAIN",
+      "quickFixAvailable": false,
+      "messageFormattings": [],
+      "codeVariants": [],
+      "cleanCodeAttribute": "LOGICAL",
+      "cleanCodeAttributeCategory": "INTENTIONAL",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "MEDIUM"
+        }
+      ],
+      "issueStatus": "OPEN",
+      "prioritizedRule": false,
+      "fromSonarQubeUpdate": false,
+      "internalTags": [],
+      "linkedTicketStatus": "NOT_LINKED"
+    },
+    {
+      "key": "73310889-849b-42c6-8e11-20e2db6803ef",
+      "rule": "typescript:S6479",
+      "severity": "MAJOR",
+      "component": "tetris-stage1-tessl:frontend/src/components/TetrisBoard.tsx",
+      "project": "tetris-stage1-tessl",
+      "line": 30,
+      "hash": "80fa4e5bc211122708d9059713c9e562",
+      "textRange": {
+        "startLine": 30,
+        "endLine": 30,
+        "startOffset": 21,
+        "endOffset": 27
+      },
+      "flows": [],
+      "status": "OPEN",
+      "message": "Do not use Array index in keys",
+      "effort": "5min",
+      "debt": "5min",
+      "author": "",
+      "tags": [
+        "performance",
+        "react",
+        "jsx"
+      ],
+      "creationDate": "2026-09-29T13:40:56-05:00",
+      "updateDate": "2026-09-29T13:40:56-05:00",
+      "type": "CODE_SMELL",
+      "scope": "MAIN",
+      "quickFixAvailable": false,
+      "messageFormattings": [],
+      "codeVariants": [],
+      "cleanCodeAttribute": "LOGICAL",
+      "cleanCodeAttributeCategory": "INTENTIONAL",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "MEDIUM"
+        }
+      ],
+      "issueStatus": "OPEN",
+      "prioritizedRule": false,
+      "fromSonarQubeUpdate": false,
+      "internalTags": [],
+      "linkedTicketStatus": "NOT_LINKED"
+    },
+    {
+      "key": "afacb422-475a-4ff7-b503-c386be42601e",
+      "rule": "typescript:S4624",
+      "severity": "MAJOR",
+      "component": "tetris-stage1-tessl:frontend/src/components/TetrisBoard.tsx",
+      "project": "tetris-stage1-tessl",
+      "line": 31,
+      "hash": "91d57ed7a813720baea2924cb80966de",
+      "textRange": {
+        "startLine": 31,
+        "endLine": 31,
+        "startOffset": 52,
+        "endOffset": 70
+      },
+      "flows": [],
+      "status": "OPEN",
+      "message": "Refactor this code to not use nested template literals.",
+      "effort": "10min",
+      "debt": "10min",
+      "author": "",
+      "tags": [
+        "es2015",
+        "brain-overload",
+        "editable-source",
+        "confusing"
+      ],
+      "creationDate": "2026-09-29T13:40:56-05:00",
+      "updateDate": "2026-09-29T13:40:56-05:00",
+      "type": "CODE_SMELL",
+      "scope": "MAIN",
+      "quickFixAvailable": false,
+      "messageFormattings": [],
+      "codeVariants": [],
+      "cleanCodeAttribute": "CLEAR",
+      "cleanCodeAttributeCategory": "INTENTIONAL",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "MEDIUM"
+        }
+      ],
+      "issueStatus": "OPEN",
+      "prioritizedRule": false,
+      "fromSonarQubeUpdate": false,
+      "internalTags": [],
+      "linkedTicketStatus": "NOT_LINKED"
+    },
+    {
+      "key": "908c6578-c9f7-46bd-9c45-bc7de45047fd",
+      "rule": "css:S7924",
+      "severity": "MAJOR",
+      "component": "tetris-stage1-tessl:frontend/src/index.css",
+      "project": "tetris-stage1-tessl",
+      "line": 237,
+      "hash": "1cdde5f88a8fc8c228a96983d8a05a4f",
+      "textRange": {
+        "startLine": 237,
+        "endLine": 237,
+        "startOffset": 2,
+        "endOffset": 35
+      },
+      "flows": [],
+      "status": "OPEN",
+      "message": "Text does not meet the minimal contrast requirement with its background.",
+      "effort": "5min",
+      "debt": "5min",
+      "author": "",
+      "tags": [
+        "css",
+        "accessibility",
+        "wcag",
+        "contrast"
+      ],
+      "creationDate": "2026-09-29T13:40:56-05:00",
+      "updateDate": "2026-09-29T13:40:56-05:00",
+      "type": "CODE_SMELL",
+      "scope": "MAIN",
+      "quickFixAvailable": false,
+      "messageFormattings": [],
+      "codeVariants": [],
+      "cleanCodeAttribute": "CONVENTIONAL",
+      "cleanCodeAttributeCategory": "CONSISTENT",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "MEDIUM"
+        }
+      ],
+      "issueStatus": "OPEN",
+      "prioritizedRule": false,
+      "fromSonarQubeUpdate": false,
+      "internalTags": [],
+      "linkedTicketStatus": "NOT_LINKED"
+    },
+    {
+      "key": "3c4f3729-8777-4ff6-a5c9-7c6e1ac39c4f",
+      "rule": "css:S7924",
+      "severity": "MAJOR",
+      "component": "tetris-stage1-tessl:frontend/src/index.css",
+      "project": "tetris-stage1-tessl",
+      "line": 245,
+      "hash": "cda5b61d15221da268fa8a4873049852",
+      "textRange": {
+        "startLine": 245,
+        "endLine": 245,
+        "startOffset": 2,
+        "endOffset": 35
+      },
+      "flows": [],
+      "status": "OPEN",
+      "message": "Text does not meet the minimal contrast requirement with its background.",
+      "effort": "5min",
+      "debt": "5min",
+      "author": "",
+      "tags": [
+        "css",
+        "accessibility",
+        "wcag",
+        "contrast"
+      ],
+      "creationDate": "2026-09-29T13:40:56-05:00",
+      "updateDate": "2026-09-29T13:40:56-05:00",
+      "type": "CODE_SMELL",
+      "scope": "MAIN",
+      "quickFixAvailable": false,
+      "messageFormattings": [],
+      "codeVariants": [],
+      "cleanCodeAttribute": "CONVENTIONAL",
+      "cleanCodeAttributeCategory": "CONSISTENT",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "MEDIUM"
+        }
+      ],
+      "issueStatus": "OPEN",
+      "prioritizedRule": false,
+      "fromSonarQubeUpdate": false,
+      "internalTags": [],
+      "linkedTicketStatus": "NOT_LINKED"
+    },
+    {
+      "key": "f6c3320d-36ec-4fc7-960e-68e17017604c",
+      "rule": "css:S7924",
+      "severity": "MAJOR",
+      "component": "tetris-stage1-tessl:frontend/src/index.css",
+      "project": "tetris-stage1-tessl",
+      "line": 279,
+      "hash": "b5927153362b2e76607b627440e12d45",
+      "textRange": {
+        "startLine": 279,
+        "endLine": 279,
+        "startOffset": 2,
+        "endOffset": 14
+      },
+      "flows": [],
+      "status": "OPEN",
+      "message": "Text does not meet the minimal contrast requirement with its background.",
+      "effort": "5min",
+      "debt": "5min",
+      "author": "",
+      "tags": [
+        "css",
+        "accessibility",
+        "wcag",
+        "contrast"
+      ],
+      "creationDate": "2026-09-29T13:40:56-05:00",
+      "updateDate": "2026-09-29T13:40:56-05:00",
+      "type": "CODE_SMELL",
+      "scope": "MAIN",
+      "quickFixAvailable": false,
+      "messageFormattings": [],
+      "codeVariants": [],
+      "cleanCodeAttribute": "CONVENTIONAL",
+      "cleanCodeAttributeCategory": "CONSISTENT",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "MEDIUM"
+        }
+      ],
+      "issueStatus": "OPEN",
+      "prioritizedRule": false,
+      "fromSonarQubeUpdate": false,
+      "internalTags": [],
+      "linkedTicketStatus": "NOT_LINKED"
+    },
+    {
+      "key": "9681b0ed-a7a0-49fc-b8fa-f615d18f171a",
+      "rule": "css:S7924",
+      "severity": "MAJOR",
+      "component": "tetris-stage1-tessl:frontend/src/index.css",
+      "project": "tetris-stage1-tessl",
+      "line": 295,
+      "hash": "a79fdd2b317ebd4c4d2f7bfcf4c64517",
+      "textRange": {
+        "startLine": 295,
+        "endLine": 295,
+        "startOffset": 2,
+        "endOffset": 17
+      },
+      "flows": [],
+      "status": "OPEN",
+      "message": "Text does not meet the minimal contrast requirement with its background.",
+      "effort": "5min",
+      "debt": "5min",
+      "author": "",
+      "tags": [
+        "css",
+        "accessibility",
+        "wcag",
+        "contrast"
+      ],
+      "creationDate": "2026-09-29T13:40:56-05:00",
+      "updateDate": "2026-09-29T13:40:56-05:00",
+      "type": "CODE_SMELL",
+      "scope": "MAIN",
+      "quickFixAvailable": false,
+      "messageFormattings": [],
+      "codeVariants": [],
+      "cleanCodeAttribute": "CONVENTIONAL",
+      "cleanCodeAttributeCategory": "CONSISTENT",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "MEDIUM"
+        }
+      ],
+      "issueStatus": "OPEN",
+      "prioritizedRule": false,
+      "fromSonarQubeUpdate": false,
+      "internalTags": [],
+      "linkedTicketStatus": "NOT_LINKED"
+    },
+    {
+      "key": "2eac4008-c34d-475c-907b-62dc599d9782",
+      "rule": "css:S7924",
+      "severity": "MAJOR",
+      "component": "tetris-stage1-tessl:frontend/src/index.css",
+      "project": "tetris-stage1-tessl",
+      "line": 301,
+      "hash": "b5927153362b2e76607b627440e12d45",
+      "textRange": {
+        "startLine": 301,
+        "endLine": 301,
+        "startOffset": 2,
+        "endOffset": 14
+      },
+      "flows": [],
+      "status": "OPEN",
+      "message": "Text does not meet the minimal contrast requirement with its background.",
+      "effort": "5min",
+      "debt": "5min",
+      "author": "",
+      "tags": [
+        "css",
+        "accessibility",
+        "wcag",
+        "contrast"
+      ],
+      "creationDate": "2026-09-29T13:40:56-05:00",
+      "updateDate": "2026-09-29T13:40:56-05:00",
+      "type": "CODE_SMELL",
+      "scope": "MAIN",
+      "quickFixAvailable": false,
+      "messageFormattings": [],
+      "codeVariants": [],
+      "cleanCodeAttribute": "CONVENTIONAL",
+      "cleanCodeAttributeCategory": "CONSISTENT",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "MEDIUM"
+        }
+      ],
+      "issueStatus": "OPEN",
+      "prioritizedRule": false,
+      "fromSonarQubeUpdate": false,
+      "internalTags": [],
+      "linkedTicketStatus": "NOT_LINKED"
+    }
+  ],
+  "components": [
+    {
+      "key": "tetris-stage1-tessl:backend/app/domain/pieces.py",
+      "enabled": true,
+      "qualifier": "FIL",
+      "name": "pieces.py",
+      "longName": "backend/app/domain/pieces.py",
+      "path": "backend/app/domain/pieces.py"
+    },
+    {
+      "key": "tetris-stage1-tessl:backend/app/models/game.py",
+      "enabled": true,
+      "qualifier": "FIL",
+      "name": "game.py",
+      "longName": "backend/app/models/game.py",
+      "path": "backend/app/models/game.py"
+    },
+    {
+      "key": "tetris-stage1-tessl:backend/app/controllers/games.py",
+      "enabled": true,
+      "qualifier": "FIL",
+      "name": "games.py",
+      "longName": "backend/app/controllers/games.py",
+      "path": "backend/app/controllers/games.py"
+    },
+    {
+      "key": "tetris-stage1-tessl:frontend/src/components/TetrisBoard.tsx",
+      "enabled": true,
+      "qualifier": "FIL",
+      "name": "TetrisBoard.tsx",
+      "longName": "frontend/src/components/TetrisBoard.tsx",
+      "path": "frontend/src/components/TetrisBoard.tsx"
+    },
+    {
+      "key": "tetris-stage1-tessl",
+      "enabled": true,
+      "qualifier": "TRK",
+      "name": "Tetris Stage 1 Tessl",
+      "longName": "Tetris Stage 1 Tessl"
+    },
+    {
+      "key": "tetris-stage1-tessl:frontend/src/index.css",
+      "enabled": true,
+      "qualifier": "FIL",
+      "name": "index.css",
+      "longName": "frontend/src/index.css",
+      "path": "frontend/src/index.css"
+    }
+  ],
+  "facets": []
+}

@@ -1,0 +1,71 @@
+{
+  "session_id": "1dc1162e-c5fb-492a-a014-541c48f74907",
+  "response": "",
+  "stats": {
+    "models": {
+      "gemini-3.5-flash": {
+        "api": {
+          "totalRequests": 2,
+          "totalErrors": 0,
+          "totalLatencyMs": 8437,
+          "errorsByType": {}
+        },
+        "tokens": {
+          "input": 107179,
+          "prompt": 201309,
+          "candidates": 39,
+          "total": 201907,
+          "cached": 94130,
+          "thoughts": 559,
+          "tool": 0
+        },
+        "roles": {
+          "main": {
+            "totalRequests": 2,
+            "totalErrors": 0,
+            "totalLatencyMs": 8437,
+            "tokens": {
+              "input": 107179,
+              "prompt": 201309,
+              "candidates": 39,
+              "total": 201907,
+              "cached": 94130,
+              "thoughts": 559,
+              "tool": 0
+            }
+          }
+        }
+      }
+    },
+    "tools": {
+      "totalCalls": 1,
+      "totalSuccess": 1,
+      "totalFail": 0,
+      "totalDurationMs": 10,
+      "totalDecisions": {
+        "accept": 1,
+        "reject": 0,
+        "modify": 0,
+        "auto_accept": 0
+      },
+      "byName": {
+        "read_file": {
+          "count": 1,
+          "success": 1,
+          "fail": 0,
+          "durationMs": 10,
+          "decisions": {
+            "accept": 1,
+            "reject": 0,
+            "modify": 0,
+            "auto_accept": 0
+          }
+        }
+      }
+    },
+    "files": {
+      "totalLinesAdded": 0,
+      "totalLinesRemoved": 0
+    }
+  }
+}

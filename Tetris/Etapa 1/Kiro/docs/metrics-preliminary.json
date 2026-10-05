@@ -1,0 +1,39 @@
+{
+  "specification": {
+    "files": 3,
+    "lines": 608,
+    "nonblank_lines": 388,
+    "characters": 28780,
+    "lines_per_file": 202.67,
+    "requirement_statements": 35
+  },
+  "source": {
+    "files": 23,
+    "lines": 1207,
+    "nonblank_lines": 913,
+    "characters": 33641
+  },
+  "gemini_tokens": {
+    "transcript_files": 0,
+    "model_responses": 0,
+    "input": 0,
+    "output": 0,
+    "cached": 0,
+    "thoughts": 0,
+    "tool": 0,
+    "total": 0,
+    "sessions": []
+  },
+  "runs": [
+    {
+      "file": "Kiro\\docs\\kiro-spec.run.json",
+      "started": "2026-09-29T07:56:40.2235915-05:00",
+      "ended": "2026-09-29T08:05:46.4615924-05:00",
+      "duration_seconds": 546.238,
+      "exit_code": 0,
+      "seed_sha256": "2AE084C9C64FC41F65D0E07581CED9E30B6C68891D9F8688A37F34594ECFD1C5"
+    }
+  ],
+  "recorded_duration_seconds": 546.238,
+  "recorded_prompt_count": 1
+}

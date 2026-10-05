@@ -1,0 +1,14 @@
+
+> tetris-frontend@1.0.0 test
+> vitest run
+
+
+ RUN  v2.1.9 D:/KEVIN/UNIVERSIDAD/Trabajos/Moviles/Caso 2-Tetris/Etapa 1/Tessl/frontend
+
+ ✓ src/components/TetrisBoard.test.tsx (2 tests) 54ms
+
+ Test Files  1 passed (1)
+      Tests  2 passed (2)
+   Start at  13:39:18
+   Duration  1.55s (transform 45ms, setup 0ms, collect 219ms, tests 54ms, environment 756ms, prepare 203ms)
+

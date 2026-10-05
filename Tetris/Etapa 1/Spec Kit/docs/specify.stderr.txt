@@ -1,0 +1,22 @@
+Warning: Basic terminal detected (TERM=dumb). Visual rendering will be limited. For the best experience, use a terminal emulator with truecolor support.
+Warning: 256-color support not detected. Using a terminal with at least 256-color support is recommended for a better visual experience.
+Ripgrep is not available. Falling back to GrepTool.
+Error executing tool read_file: File path 'D:\KEVIN\UNIVERSIDAD\Trabajos\Moviles\Caso 2-Tetris\Etapa 1\Spec Kit\docs\seed-submitted.txt' is ignored by configured ignore patterns.
+Error executing tool read_file: File path 'D:\KEVIN\UNIVERSIDAD\Trabajos\Moviles\Caso 2-Tetris\Etapa 1\Spec Kit\docs\SESSION.md' is ignored by configured ignore patterns.
+(node:21140) [DEP0190] DeprecationWarning: Passing args to a child process with shell option true can lead to security vulnerabilities, as the arguments are not escaped, only concatenated.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+[LocalAgentExecutor] Blocked call: Unauthorized tool call: 'write_file' is not available to this agent.
+[LocalAgentExecutor] Blocked call: Unauthorized tool call: 'run_shell_command' is not available to this agent.
+[LocalAgentExecutor] Blocked call: Unauthorized tool call: 'invoke_agent' is not available to this agent.
+Attempt 1 failed. Retrying with backoff... Error: exception TypeError: fetch failed sending request
+    at file:///D:/KEVIN/UNIVERSIDAD/Trabajos/Moviles/Caso%202-Tetris/Etapa%201/_toolchain/node_modules/@google/gemini-cli/bundle/chunk-M6NSK26M.js:267633:13
+    at async Models.generateContentStream (file:///D:/KEVIN/UNIVERSIDAD/Trabajos/Moviles/Caso%202-Tetris/Etapa%201/_toolchain/node_modules/@google/gemini-cli/bundle/chunk-M6NSK26M.js:268654:16)
+    at async file:///D:/KEVIN/UNIVERSIDAD/Trabajos/Moviles/Caso%202-Tetris/Etapa%201/_toolchain/node_modules/@google/gemini-cli/bundle/chunk-M6NSK26M.js:311023:19
+    at async file:///D:/KEVIN/UNIVERSIDAD/Trabajos/Moviles/Caso%202-Tetris/Etapa%201/_toolchain/node_modules/@google/gemini-cli/bundle/chunk-M6NSK26M.js:287832:23
+    at async retryWithBackoff (file:///D:/KEVIN/UNIVERSIDAD/Trabajos/Moviles/Caso%202-Tetris/Etapa%201/_toolchain/node_modules/@google/gemini-cli/bundle/chunk-M6NSK26M.js:307860:23)
+    at async GeminiChat.makeApiCallAndProcessStream (file:///D:/KEVIN/UNIVERSIDAD/Trabajos/Moviles/Caso%202-Tetris/Etapa%201/_toolchain/node_modules/@google/gemini-cli/bundle/chunk-M6NSK26M.js:331852:28)
+    at async GeminiChat.streamWithRetries (file:///D:/KEVIN/UNIVERSIDAD/Trabajos/Moviles/Caso%202-Tetris/Etapa%201/_toolchain/node_modules/@google/gemini-cli/bundle/chunk-M6NSK26M.js:331605:29)
+    at async _LocalAgentExecutor.callModel (file:///D:/KEVIN/UNIVERSIDAD/Trabajos/Moviles/Caso%202-Tetris/Etapa%201/_toolchain/node_modules/@google/gemini-cli/bundle/chunk-M6NSK26M.js:348783:22)
+    at async _LocalAgentExecutor.executeTurn (file:///D:/KEVIN/UNIVERSIDAD/Trabajos/Moviles/Caso%202-Tetris/Etapa%201/_toolchain/node_modules/@google/gemini-cli/bundle/chunk-M6NSK26M.js:348355:43)
+    at async _LocalAgentExecutor.runInternal (file:///D:/KEVIN/UNIVERSIDAD/Trabajos/Moviles/Caso%202-Tetris/Etapa%201/_toolchain/node_modules/@google/gemini-cli/bundle/chunk-M6NSK26M.js:348564:30)
+Error executing tool list_directory: Error: Failed to list directory.

@@ -1,0 +1,18 @@
+Warning: Basic terminal detected (TERM=dumb). Visual rendering will be limited. For the best experience, use a terminal emulator with truecolor support.
+Warning: 256-color support not detected. Using a terminal with at least 256-color support is recommended for a better visual experience.
+YOLO mode is enabled. All tool calls will be automatically approved.
+YOLO mode is enabled. All tool calls will be automatically approved.
+Ripgrep is not available. Falling back to GrepTool.
+Attempt 1 failed with status 429. Retrying with backoff... _ApiError: {"error":{"message":"{\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"Resource exhausted. Please try again later. Please refer to https://cloud.google.com/vertex-ai/generative-ai/docs/error-code-429 for more details.\",\n    \"status\": \"RESOURCE_EXHAUSTED\"\n  }\n}\n","code":429,"status":"Too Many Requests"}}
+    at throwErrorIfNotOK (file:///D:/KEVIN/UNIVERSIDAD/Trabajos/Moviles/Caso%202-Tetris/Etapa%201/_toolchain/node_modules/@google/gemini-cli/bundle/chunk-M6NSK26M.js:267795:24)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async file:///D:/KEVIN/UNIVERSIDAD/Trabajos/Moviles/Caso%202-Tetris/Etapa%201/_toolchain/node_modules/@google/gemini-cli/bundle/chunk-M6NSK26M.js:267558:7
+    at async Models.generateContentStream (file:///D:/KEVIN/UNIVERSIDAD/Trabajos/Moviles/Caso%202-Tetris/Etapa%201/_toolchain/node_modules/@google/gemini-cli/bundle/chunk-M6NSK26M.js:268654:16)
+    at async file:///D:/KEVIN/UNIVERSIDAD/Trabajos/Moviles/Caso%202-Tetris/Etapa%201/_toolchain/node_modules/@google/gemini-cli/bundle/chunk-M6NSK26M.js:311023:19
+    at async file:///D:/KEVIN/UNIVERSIDAD/Trabajos/Moviles/Caso%202-Tetris/Etapa%201/_toolchain/node_modules/@google/gemini-cli/bundle/chunk-M6NSK26M.js:287832:23
+    at async retryWithBackoff (file:///D:/KEVIN/UNIVERSIDAD/Trabajos/Moviles/Caso%202-Tetris/Etapa%201/_toolchain/node_modules/@google/gemini-cli/bundle/chunk-M6NSK26M.js:307860:23)
+    at async GeminiChat.makeApiCallAndProcessStream (file:///D:/KEVIN/UNIVERSIDAD/Trabajos/Moviles/Caso%202-Tetris/Etapa%201/_toolchain/node_modules/@google/gemini-cli/bundle/chunk-M6NSK26M.js:331852:28)
+    at async GeminiChat.streamWithRetries (file:///D:/KEVIN/UNIVERSIDAD/Trabajos/Moviles/Caso%202-Tetris/Etapa%201/_toolchain/node_modules/@google/gemini-cli/bundle/chunk-M6NSK26M.js:331605:29)
+    at async Turn.run (file:///D:/KEVIN/UNIVERSIDAD/Trabajos/Moviles/Caso%202-Tetris/Etapa%201/_toolchain/node_modules/@google/gemini-cli/bundle/chunk-M6NSK26M.js:332527:24) {
+  status: 429
+}

@@ -1,0 +1,5 @@
+Note: OpenSpec collects anonymous usage stats. Opt out: OPENSPEC_TELEMETRY=0 or openspec config set telemetry.enabled false
+- Creating change 'tetris-stage1-option-a' with schema 'spec-driven'...
+Created change 'tetris-stage1-option-a' at openspec\changes\tetris-stage1-option-a/
+Schema: spec-driven
+Next: openspec status --change tetris-stage1-option-a

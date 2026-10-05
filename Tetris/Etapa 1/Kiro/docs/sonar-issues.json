@@ -1,0 +1,532 @@
+{
+  "total": 10,
+  "p": 1,
+  "ps": 500,
+  "paging": {
+    "pageIndex": 1,
+    "pageSize": 500,
+    "total": 10
+  },
+  "effortTotal": 38,
+  "issues": [
+    {
+      "key": "07d0de56-8e68-4bce-881c-a41282df69ce",
+      "rule": "python:S8415",
+      "severity": "MAJOR",
+      "component": "tetris-stage1-kiro:backend/app/api/games.py",
+      "project": "tetris-stage1-kiro",
+      "line": 23,
+      "hash": "b33ba18132ce4f13cf72be9704137149",
+      "textRange": {
+        "startLine": 23,
+        "endLine": 23,
+        "startOffset": 14,
+        "endOffset": 27
+      },
+      "flows": [],
+      "status": "OPEN",
+      "message": "Document this HTTPException with status code 404 in the \"responses\" parameter.",
+      "effort": "5min",
+      "debt": "5min",
+      "author": "",
+      "tags": [
+        "fastapi",
+        "openapi",
+        "documentation"
+      ],
+      "creationDate": "2026-09-29T08:09:42-05:00",
+      "updateDate": "2026-09-29T08:09:42-05:00",
+      "type": "CODE_SMELL",
+      "scope": "MAIN",
+      "quickFixAvailable": false,
+      "messageFormattings": [],
+      "codeVariants": [],
+      "cleanCodeAttribute": "COMPLETE",
+      "cleanCodeAttributeCategory": "INTENTIONAL",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "HIGH"
+        }
+      ],
+      "issueStatus": "OPEN",
+      "prioritizedRule": false,
+      "fromSonarQubeUpdate": false,
+      "internalTags": [],
+      "linkedTicketStatus": "NOT_LINKED"
+    },
+    {
+      "key": "87e4faa5-2bc6-48c3-96a0-e3988dbce7ce",
+      "rule": "python:S8409",
+      "severity": "MINOR",
+      "component": "tetris-stage1-kiro:backend/app/api/games.py",
+      "project": "tetris-stage1-kiro",
+      "line": 27,
+      "hash": "fd0a5002029abb6a1599895c07251f7d",
+      "textRange": {
+        "startLine": 27,
+        "endLine": 27,
+        "startOffset": 17,
+        "endOffset": 44
+      },
+      "flows": [],
+      "status": "OPEN",
+      "message": "Remove this redundant \"response_model\" parameter; it duplicates the return type annotation.",
+      "effort": "2min",
+      "debt": "2min",
+      "author": "",
+      "tags": [
+        "fastapi",
+        "api",
+        "redundant"
+      ],
+      "creationDate": "2026-09-29T08:09:42-05:00",
+      "updateDate": "2026-09-29T08:09:42-05:00",
+      "type": "CODE_SMELL",
+      "scope": "MAIN",
+      "quickFixAvailable": false,
+      "messageFormattings": [],
+      "codeVariants": [],
+      "cleanCodeAttribute": "CLEAR",
+      "cleanCodeAttributeCategory": "INTENTIONAL",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "LOW"
+        }
+      ],
+      "issueStatus": "OPEN",
+      "prioritizedRule": false,
+      "fromSonarQubeUpdate": false,
+      "internalTags": [],
+      "linkedTicketStatus": "NOT_LINKED"
+    },
+    {
+      "key": "676c3d7c-b063-41b4-a471-96575ece8e1a",
+      "rule": "python:S8409",
+      "severity": "MINOR",
+      "component": "tetris-stage1-kiro:backend/app/api/games.py",
+      "project": "tetris-stage1-kiro",
+      "line": 35,
+      "hash": "4f0ad805bbb5def22b5f93a519cb0ee6",
+      "textRange": {
+        "startLine": 35,
+        "endLine": 35,
+        "startOffset": 26,
+        "endOffset": 53
+      },
+      "flows": [],
+      "status": "OPEN",
+      "message": "Remove this redundant \"response_model\" parameter; it duplicates the return type annotation.",
+      "effort": "2min",
+      "debt": "2min",
+      "author": "",
+      "tags": [
+        "fastapi",
+        "api",
+        "redundant"
+      ],
+      "creationDate": "2026-09-29T08:09:42-05:00",
+      "updateDate": "2026-09-29T08:09:42-05:00",
+      "type": "CODE_SMELL",
+      "scope": "MAIN",
+      "quickFixAvailable": false,
+      "messageFormattings": [],
+      "codeVariants": [],
+      "cleanCodeAttribute": "CLEAR",
+      "cleanCodeAttributeCategory": "INTENTIONAL",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "LOW"
+        }
+      ],
+      "issueStatus": "OPEN",
+      "prioritizedRule": false,
+      "fromSonarQubeUpdate": false,
+      "internalTags": [],
+      "linkedTicketStatus": "NOT_LINKED"
+    },
+    {
+      "key": "e7e4b4ac-5752-4903-81b1-79f466853be4",
+      "rule": "python:S8409",
+      "severity": "MINOR",
+      "component": "tetris-stage1-kiro:backend/app/api/games.py",
+      "project": "tetris-stage1-kiro",
+      "line": 43,
+      "hash": "9ab156d9521ba80ae8fbf1ebf449bb74",
+      "textRange": {
+        "startLine": 43,
+        "endLine": 43,
+        "startOffset": 32,
+        "endOffset": 59
+      },
+      "flows": [],
+      "status": "OPEN",
+      "message": "Remove this redundant \"response_model\" parameter; it duplicates the return type annotation.",
+      "effort": "2min",
+      "debt": "2min",
+      "author": "",
+      "tags": [
+        "fastapi",
+        "api",
+        "redundant"
+      ],
+      "creationDate": "2026-09-29T08:09:42-05:00",
+      "updateDate": "2026-09-29T08:09:42-05:00",
+      "type": "CODE_SMELL",
+      "scope": "MAIN",
+      "quickFixAvailable": false,
+      "messageFormattings": [],
+      "codeVariants": [],
+      "cleanCodeAttribute": "CLEAR",
+      "cleanCodeAttributeCategory": "INTENTIONAL",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "LOW"
+        }
+      ],
+      "issueStatus": "OPEN",
+      "prioritizedRule": false,
+      "fromSonarQubeUpdate": false,
+      "internalTags": [],
+      "linkedTicketStatus": "NOT_LINKED"
+    },
+    {
+      "key": "75a3d031-29a0-4f9d-b0b7-102f58f29bf2",
+      "rule": "python:S8409",
+      "severity": "MINOR",
+      "component": "tetris-stage1-kiro:backend/app/api/games.py",
+      "project": "tetris-stage1-kiro",
+      "line": 52,
+      "hash": "8e0c325e590e9eb45c930d300b8b2e78",
+      "textRange": {
+        "startLine": 52,
+        "endLine": 52,
+        "startOffset": 32,
+        "endOffset": 59
+      },
+      "flows": [],
+      "status": "OPEN",
+      "message": "Remove this redundant \"response_model\" parameter; it duplicates the return type annotation.",
+      "effort": "2min",
+      "debt": "2min",
+      "author": "",
+      "tags": [
+        "fastapi",
+        "api",
+        "redundant"
+      ],
+      "creationDate": "2026-09-29T08:09:42-05:00",
+      "updateDate": "2026-09-29T08:09:42-05:00",
+      "type": "CODE_SMELL",
+      "scope": "MAIN",
+      "quickFixAvailable": false,
+      "messageFormattings": [],
+      "codeVariants": [],
+      "cleanCodeAttribute": "CLEAR",
+      "cleanCodeAttributeCategory": "INTENTIONAL",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "LOW"
+        }
+      ],
+      "issueStatus": "OPEN",
+      "prioritizedRule": false,
+      "fromSonarQubeUpdate": false,
+      "internalTags": [],
+      "linkedTicketStatus": "NOT_LINKED"
+    },
+    {
+      "key": "6b7d700b-3af7-4b15-9a2d-0c4fe62f5630",
+      "rule": "python:S8396",
+      "severity": "CRITICAL",
+      "component": "tetris-stage1-kiro:backend/app/api/schemas.py",
+      "project": "tetris-stage1-kiro",
+      "line": 43,
+      "hash": "c8150ae3f9a1a76b3219d5313bebbe9e",
+      "textRange": {
+        "startLine": 43,
+        "endLine": 43,
+        "startOffset": 18,
+        "endOffset": 42
+      },
+      "flows": [],
+      "status": "OPEN",
+      "message": "Add an explicit default value to this optional field.",
+      "effort": "5min",
+      "debt": "5min",
+      "author": "",
+      "tags": [
+        "pydantic",
+        "type-hint",
+        "validation"
+      ],
+      "creationDate": "2026-09-29T08:09:42-05:00",
+      "updateDate": "2026-09-29T08:09:42-05:00",
+      "type": "CODE_SMELL",
+      "scope": "MAIN",
+      "quickFixAvailable": false,
+      "messageFormattings": [],
+      "codeVariants": [],
+      "cleanCodeAttribute": "CLEAR",
+      "cleanCodeAttributeCategory": "INTENTIONAL",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "HIGH"
+        },
+        {
+          "softwareQuality": "RELIABILITY",
+          "severity": "HIGH"
+        }
+      ],
+      "issueStatus": "OPEN",
+      "prioritizedRule": false,
+      "fromSonarQubeUpdate": false,
+      "internalTags": [],
+      "linkedTicketStatus": "NOT_LINKED"
+    },
+    {
+      "key": "683ee8a3-02ff-4265-b97d-609eca467c42",
+      "rule": "python:S9073",
+      "severity": "MAJOR",
+      "component": "tetris-stage1-kiro:backend/tests/test_api.py",
+      "project": "tetris-stage1-kiro",
+      "line": 26,
+      "hash": "294620e34ab03791a999a6c08b142445",
+      "textRange": {
+        "startLine": 26,
+        "endLine": 26,
+        "startOffset": 4,
+        "endOffset": 53
+      },
+      "flows": [],
+      "status": "OPEN",
+      "message": "Split this composite assertion into separate assertions.",
+      "effort": "5min",
+      "debt": "5min",
+      "author": "",
+      "tags": [
+        "pytest"
+      ],
+      "creationDate": "2026-09-29T08:09:42-05:00",
+      "updateDate": "2026-09-29T08:09:42-05:00",
+      "type": "CODE_SMELL",
+      "scope": "TEST",
+      "quickFixAvailable": false,
+      "messageFormattings": [],
+      "codeVariants": [],
+      "cleanCodeAttribute": "CLEAR",
+      "cleanCodeAttributeCategory": "INTENTIONAL",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "MEDIUM"
+        }
+      ],
+      "issueStatus": "OPEN",
+      "prioritizedRule": false,
+      "fromSonarQubeUpdate": false,
+      "internalTags": [],
+      "linkedTicketStatus": "NOT_LINKED"
+    },
+    {
+      "key": "13f6c1d0-db49-45a0-96ca-246f67d0170e",
+      "rule": "typescript:S6582",
+      "severity": "MINOR",
+      "component": "tetris-stage1-kiro:frontend/src/App.tsx",
+      "project": "tetris-stage1-kiro",
+      "line": 14,
+      "hash": "a5d58e54415c2f19505c65bf33d2bb97",
+      "textRange": {
+        "startLine": 14,
+        "endLine": 14,
+        "startOffset": 10,
+        "endOffset": 46
+      },
+      "flows": [],
+      "status": "OPEN",
+      "message": "Prefer using an optional chain expression instead, as it's more concise and easier to read.",
+      "effort": "5min",
+      "debt": "5min",
+      "author": "",
+      "tags": [
+        "editable-source",
+        "type-dependent",
+        "es2020"
+      ],
+      "creationDate": "2026-09-29T08:09:42-05:00",
+      "updateDate": "2026-09-29T08:09:42-05:00",
+      "type": "CODE_SMELL",
+      "scope": "MAIN",
+      "quickFixAvailable": true,
+      "messageFormattings": [],
+      "codeVariants": [],
+      "cleanCodeAttribute": "CLEAR",
+      "cleanCodeAttributeCategory": "INTENTIONAL",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "LOW"
+        }
+      ],
+      "issueStatus": "OPEN",
+      "prioritizedRule": false,
+      "fromSonarQubeUpdate": false,
+      "internalTags": [],
+      "linkedTicketStatus": "NOT_LINKED"
+    },
+    {
+      "key": "6d7fbf09-ae54-44c9-b285-fc1c81e8c39f",
+      "rule": "typescript:S6759",
+      "severity": "MINOR",
+      "component": "tetris-stage1-kiro:frontend/src/Board.tsx",
+      "project": "tetris-stage1-kiro",
+      "line": 36,
+      "hash": "b336ac58465143ddd9d4c30a5aa0d590",
+      "textRange": {
+        "startLine": 36,
+        "endLine": 36,
+        "startOffset": 22,
+        "endOffset": 43
+      },
+      "flows": [],
+      "status": "OPEN",
+      "message": "Mark the props of the component as read-only.",
+      "effort": "5min",
+      "debt": "5min",
+      "author": "",
+      "tags": [
+        "type-dependent",
+        "react"
+      ],
+      "creationDate": "2026-09-29T08:09:42-05:00",
+      "updateDate": "2026-09-29T08:09:42-05:00",
+      "type": "CODE_SMELL",
+      "scope": "MAIN",
+      "quickFixAvailable": true,
+      "messageFormattings": [],
+      "codeVariants": [],
+      "cleanCodeAttribute": "CONVENTIONAL",
+      "cleanCodeAttributeCategory": "CONSISTENT",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "LOW"
+        }
+      ],
+      "issueStatus": "OPEN",
+      "prioritizedRule": false,
+      "fromSonarQubeUpdate": false,
+      "internalTags": [],
+      "linkedTicketStatus": "NOT_LINKED"
+    },
+    {
+      "key": "e31297fa-2ce1-4582-b6be-2eb34b2c61a8",
+      "rule": "typescript:S6582",
+      "severity": "MINOR",
+      "component": "tetris-stage1-kiro:frontend/src/useGame.ts",
+      "project": "tetris-stage1-kiro",
+      "line": 54,
+      "hash": "a5d58e54415c2f19505c65bf33d2bb97",
+      "textRange": {
+        "startLine": 54,
+        "endLine": 54,
+        "startOffset": 8,
+        "endOffset": 44
+      },
+      "flows": [],
+      "status": "OPEN",
+      "message": "Prefer using an optional chain expression instead, as it's more concise and easier to read.",
+      "effort": "5min",
+      "debt": "5min",
+      "author": "",
+      "tags": [
+        "editable-source",
+        "type-dependent",
+        "es2020"
+      ],
+      "creationDate": "2026-09-29T08:09:42-05:00",
+      "updateDate": "2026-09-29T08:09:42-05:00",
+      "type": "CODE_SMELL",
+      "scope": "MAIN",
+      "quickFixAvailable": true,
+      "messageFormattings": [],
+      "codeVariants": [],
+      "cleanCodeAttribute": "CLEAR",
+      "cleanCodeAttributeCategory": "INTENTIONAL",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "LOW"
+        }
+      ],
+      "issueStatus": "OPEN",
+      "prioritizedRule": false,
+      "fromSonarQubeUpdate": false,
+      "internalTags": [],
+      "linkedTicketStatus": "NOT_LINKED"
+    }
+  ],
+  "components": [
+    {
+      "key": "tetris-stage1-kiro:backend/app/api/schemas.py",
+      "enabled": true,
+      "qualifier": "FIL",
+      "name": "schemas.py",
+      "longName": "backend/app/api/schemas.py",
+      "path": "backend/app/api/schemas.py"
+    },
+    {
+      "key": "tetris-stage1-kiro:frontend/src/useGame.ts",
+      "enabled": true,
+      "qualifier": "FIL",
+      "name": "useGame.ts",
+      "longName": "frontend/src/useGame.ts",
+      "path": "frontend/src/useGame.ts"
+    },
+    {
+      "key": "tetris-stage1-kiro",
+      "enabled": true,
+      "qualifier": "TRK",
+      "name": "Tetris Stage 1 Kiro",
+      "longName": "Tetris Stage 1 Kiro"
+    },
+    {
+      "key": "tetris-stage1-kiro:frontend/src/Board.tsx",
+      "enabled": true,
+      "qualifier": "FIL",
+      "name": "Board.tsx",
+      "longName": "frontend/src/Board.tsx",
+      "path": "frontend/src/Board.tsx"
+    },
+    {
+      "key": "tetris-stage1-kiro:backend/tests/test_api.py",
+      "enabled": true,
+      "qualifier": "UTS",
+      "name": "test_api.py",
+      "longName": "backend/tests/test_api.py",
+      "path": "backend/tests/test_api.py"
+    },
+    {
+      "key": "tetris-stage1-kiro:frontend/src/App.tsx",
+      "enabled": true,
+      "qualifier": "FIL",
+      "name": "App.tsx",
+      "longName": "frontend/src/App.tsx",
+      "path": "frontend/src/App.tsx"
+    },
+    {
+      "key": "tetris-stage1-kiro:backend/app/api/games.py",
+      "enabled": true,
+      "qualifier": "FIL",
+      "name": "games.py",
+      "longName": "backend/app/api/games.py",
+      "path": "backend/app/api/games.py"
+    }
+  ],
+  "facets": []
+}

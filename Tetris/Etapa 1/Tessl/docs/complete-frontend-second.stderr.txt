@@ -1,0 +1,97 @@
+Could not verify the current directory due to a file system error.
+Warning: Basic terminal detected (TERM=dumb). Visual rendering will be limited. For the best experience, use a terminal emulator with truecolor support.
+Warning: 256-color support not detected. Using a terminal with at least 256-color support is recommended for a better visual experience.
+Ripgrep is not available. Falling back to GrepTool.
+Warning: Could not read directory D:\KEVIN\UNIVERSIDAD\Trabajos\Moviles\Caso 2-Tetris\Etapa 1\Tessl\backend\.pytest_cache: EPERM: operation not permitted, scandir 'D:\KEVIN\UNIVERSIDAD\Trabajos\Moviles\Caso 2-Tetris\Etapa 1\Tessl\backend\.pytest_cache'
+Error when talking to Gemini API Full report available at: C:\Users\KEVINA~1\AppData\Local\Temp\gemini-client-error-Turn.run-sendMessageStream-2026-09-29T18-12-43-134Z.json _GaxiosError: request to https://oauth2.googleapis.com/token failed, reason: connect EACCES 108.177.12.95:443
+    at Gaxios._request (file:///D:/KEVIN/UNIVERSIDAD/Trabajos/Moviles/Caso%202-Tetris/Etapa%201/_toolchain/node_modules/@google/gemini-cli/bundle/chunk-M6NSK26M.js:6754:20)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async _UserRefreshClient.refreshTokenNoCache (file:///D:/KEVIN/UNIVERSIDAD/Trabajos/Moviles/Caso%202-Tetris/Etapa%201/_toolchain/node_modules/@google/gemini-cli/bundle/chunk-M6NSK26M.js:10836:17)
+    at async _UserRefreshClient.getRequestMetadataAsync (file:///D:/KEVIN/UNIVERSIDAD/Trabajos/Moviles/Caso%202-Tetris/Etapa%201/_toolchain/node_modules/@google/gemini-cli/bundle/chunk-M6NSK26M.js:10936:16)
+    at async _UserRefreshClient.getRequestHeaders (file:///D:/KEVIN/UNIVERSIDAD/Trabajos/Moviles/Caso%202-Tetris/Etapa%201/_toolchain/node_modules/@google/gemini-cli/bundle/chunk-M6NSK26M.js:10904:26)
+    at async NodeAuth.addGoogleAuthHeaders (file:///D:/KEVIN/UNIVERSIDAD/Trabajos/Moviles/Caso%202-Tetris/Etapa%201/_toolchain/node_modules/@google/gemini-cli/bundle/chunk-M6NSK26M.js:271305:25)
+    at async ApiClient.getHeadersInternal (file:///D:/KEVIN/UNIVERSIDAD/Trabajos/Moviles/Caso%202-Tetris/Etapa%201/_toolchain/node_modules/@google/gemini-cli/bundle/chunk-M6NSK26M.js:267654:5)
+    at async ApiClient.includeExtraHttpOptionsToRequestInit (file:///D:/KEVIN/UNIVERSIDAD/Trabajos/Moviles/Caso%202-Tetris/Etapa%201/_toolchain/node_modules/@google/gemini-cli/bundle/chunk-M6NSK26M.js:267541:27)
+    at async ApiClient.requestStream (file:///D:/KEVIN/UNIVERSIDAD/Trabajos/Moviles/Caso%202-Tetris/Etapa%201/_toolchain/node_modules/@google/gemini-cli/bundle/chunk-M6NSK26M.js:267518:19)
+    at async Models.generateContentStream (file:///D:/KEVIN/UNIVERSIDAD/Trabajos/Moviles/Caso%202-Tetris/Etapa%201/_toolchain/node_modules/@google/gemini-cli/bundle/chunk-M6NSK26M.js:268654:16) {
+  config: {
+    retry: true,
+    retryConfig: {
+      httpMethodsToRetry: [Array],
+      currentRetryAttempt: 2,
+      retry: 3,
+      noResponseRetries: 2,
+      retryDelayMultiplier: 2,
+      timeOfFirstRequest: 1790705562504,
+      totalTimeout: 9007199254740991,
+      maxRetryDelay: 9007199254740991,
+      statusCodesToRetry: [Array]
+    },
+    method: 'POST',
+    url: URL {
+      href: 'https://oauth2.googleapis.com/token',
+      origin: 'https://oauth2.googleapis.com',
+      protocol: 'https:',
+      username: '',
+      password: '',
+      host: 'oauth2.googleapis.com',
+      hostname: 'oauth2.googleapis.com',
+      port: '',
+      pathname: '/token',
+      search: '',
+      searchParams: URLSearchParams {},
+      hash: ''
+    },
+    data: URLSearchParams {
+      'refresh_token' => '1//05ZXwVMs-CXVCCgYIARAAGAUSNgF-L9IrkcXwDk_tIeGLOqxgRUa4Tp_kiGj2_ehCTgMTvaHWL_05zjC-McxzlwLWJLUqEGoQvQ',
+      'client_id' => '764086051850-6qr4p6gpi6hn506pt8ejuq83di341hur.apps.googleusercontent.com',
+      'client_secret' => '<<REDACTED> - See `errorRedactor` option in `gaxios` for configuration>.',
+      'grant_type' => '<<REDACTED> - See `errorRedactor` option in `gaxios` for configuration>.' },
+    body: URLSearchParams {
+      'refresh_token' => '1//05ZXwVMs-CXVCCgYIARAAGAUSNgF-L9IrkcXwDk_tIeGLOqxgRUa4Tp_kiGj2_ehCTgMTvaHWL_05zjC-McxzlwLWJLUqEGoQvQ',
+      'client_id' => '764086051850-6qr4p6gpi6hn506pt8ejuq83di341hur.apps.googleusercontent.com',
+      'client_secret' => '<<REDACTED> - See `errorRedactor` option in `gaxios` for configuration>.',
+      'grant_type' => '<<REDACTED> - See `errorRedactor` option in `gaxios` for configuration>.' },
+    validateStatus: [Function: validateStatus],
+    responseType: 'unknown',
+    errorRedactor: [Function: defaultErrorRedactor],
+    duplex: 'half',
+    headers: Headers {
+      'x-goog-api-client': 'gl-node/25.6.1',
+      'User-Agent': 'google-api-nodejs-client/10.5.0'
+    }
+  },
+  response: undefined,
+  code: 'EACCES',
+  status: undefined,
+  error: FetchError: request to https://oauth2.googleapis.com/token failed, reason: connect EACCES 108.177.12.95:443
+      at ClientRequest.<anonymous> (file:///D:/KEVIN/UNIVERSIDAD/Trabajos/Moviles/Caso%202-Tetris/Etapa%201/_toolchain/node_modules/@google/gemini-cli/bundle/src-U45KTUYT.js:1108:14)
+      at ClientRequest.emit (node:events:520:22)
+      at emitErrorEvent (node:_http_client:108:11)
+      at TLSSocket.socketErrorListener (node:_http_client:575:5)
+      at TLSSocket.emit (node:events:508:20)
+      at emitErrorNT (node:internal/streams/destroy:170:8)
+      at emitErrorCloseNT (node:internal/streams/destroy:129:3)
+      at process.processTicksAndRejections (node:internal/process/task_queues:90:21) {
+    type: 'system',
+    errno: 'EACCES',
+    code: 'EACCES',
+    erroredSysCall: 'connect'
+  },
+  Symbol(gaxios-gaxios-error): '7.1.3',
+  [cause]: FetchError: request to https://oauth2.googleapis.com/token failed, reason: connect EACCES 108.177.12.95:443
+      at ClientRequest.<anonymous> (file:///D:/KEVIN/UNIVERSIDAD/Trabajos/Moviles/Caso%202-Tetris/Etapa%201/_toolchain/node_modules/@google/gemini-cli/bundle/src-U45KTUYT.js:1108:14)
+      at ClientRequest.emit (node:events:520:22)
+      at emitErrorEvent (node:_http_client:108:11)
+      at TLSSocket.socketErrorListener (node:_http_client:575:5)
+      at TLSSocket.emit (node:events:508:20)
+      at emitErrorNT (node:internal/streams/destroy:170:8)
+      at emitErrorCloseNT (node:internal/streams/destroy:129:3)
+      at process.processTicksAndRejections (node:internal/process/task_queues:90:21) {
+    type: 'system',
+    errno: 'EACCES',
+    code: 'EACCES',
+    erroredSysCall: 'connect'
+  }
+}
+An unexpected critical error occurred:[object Object]

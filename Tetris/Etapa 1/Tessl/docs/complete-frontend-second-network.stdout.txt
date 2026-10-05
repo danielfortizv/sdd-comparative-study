@@ -1,0 +1,67 @@
+We have analyzed the current workspace state, requirements, and configurations for Stage 1 Option A of the Tetris study.
+
+### Current State Analysis
+1. **Backend (`backend/`):** A fully functioning FastAPI application exists. It features:
+   - Authoritative Pydantic models for game state and pieces.
+   - Domain logic for collisions, movement, gravity ticks, locking, line clearing, and game-over state.
+   - A complete suite of unit tests in `backend/tests/test_game.py` covering all Group A–H requirements.
+2. **Frontend (`frontend/`):** Only `package.json` exists, configured for React 19, TypeScript, Vite, and Vitest. No source files, styles, or build configs are present.
+
+---
+
+### Proposed UI & Visual Strategy
+To satisfy the mandate for a visually stunning and highly polished prototype with **Vanilla CSS**, we will implement a **Retro-Neon Arcade** theme:
+- **Neon-Glow Blocks:** Each Tetromino shape gets a specific color with a deep glow shadow:
+  - `I` (Cyan), `O` (Yellow), `T` (Purple), `S` (Green), `Z` (Red), `J` (Blue), `L` (Orange).
+- **Active Piece Styling:** Rendered with pulsing animations to distinguish them clearly from settled board blocks.
+- **Glassmorphic Layout:** Side cards with transparent frosted-glass backgrounds and subtle neon borders.
+- **Interactive Feedback:** Visual feedback on keys pressed and key states.
+- **Dynamic Overlays:** A neon-red pulsing game-over overlay when the session transitions to `game_over`.
+
+---
+
+### Architectural Alternatives
+
+To connect the React client to the FastAPI backend, we have evaluated two approaches:
+
+#### **Approach 1: Direct Authoritative Sync with Input Throttling (Recommended)**
+- **Concept:** The React state is directly driven by the server's authoritative state. A client-side `setInterval` timer triggers `POST /api/games/{id}/tick` every 1000ms. Keyboard inputs (`ArrowLeft`, `ArrowRight`, `ArrowDown`) call `POST /api/games/{id}/move`.
+- **Throttling:** To prevent race conditions from rapid key presses (which could cause overlapping async requests and inconsistent board states), we implement a lightweight boolean request lock (`isPending`).
+- **Pros:**
+  - Guaranteed 100% agreement with backend rules (no physics/collision replication needed on the frontend).
+  - Clean, minimal, and highly reliable.
+- **Cons:**
+  - Key movements depend on network round-trips (which is minimal on localhost).
+
+#### **Approach 2: Optimistic UI Client-Side Physics Simulation**
+- **Concept:** The frontend runs its own copy of the Tetris physics engine. Moves are rendered instantly on key presses, while sending a background request to sync with the server.
+- **Pros:**
+  - Instant visual feedback on extremely slow connections.
+- **Cons:**
+  - High code duplication of collision, locking, and line-clearing logic.
+  - High risk of client-server synchronization drift and glitching.
+
+---
+
+### Proposed File Structure to Create
+We will structure the frontend codebase cleanly:
+- `frontend/index.html`: Entry HTML structure.
+- `frontend/vite.config.ts`: Configures the dev server to proxy `/api` requests to `http://localhost:8000`.
+- `frontend/tsconfig.json` & `frontend/tsconfig.node.json`: Type-safe compiler rules.
+- `frontend/src/main.tsx`: Standard React 19 bootstrapper.
+- `frontend/src/index.css`: Modular custom CSS with the Retro-Neon styling.
+- `frontend/src/types.ts`: Type definitions mirroring the backend models.
+- `frontend/src/api.ts`: API helpers for fetching endpoints.
+- `frontend/src/App.tsx`: Main component managing game state, intervals, and keyboard listeners.
+- `frontend/src/components/TetrisBoard.tsx`: Modern cell-renderer grid.
+- `frontend/src/components/GameStatus.tsx`: Side panel displaying state metadata, instructions, and controls.
+
+---
+
+### Next Steps
+
+Please let us know:
+1. **Do you agree with our recommended Approach 1?**
+2. **Do you approve of the Retro-Neon styling and proposed file structure?**
+
+Once we reach an informal agreement, we will draft the formal plan in `plans/stage-1-option-a.md` and submit it for your formal approval.
