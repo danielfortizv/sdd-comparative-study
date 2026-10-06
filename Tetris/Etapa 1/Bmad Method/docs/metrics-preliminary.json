@@ -1,103 +1,85 @@
 {
   "specification": {
-    "files": 4,
-    "lines": 402,
-    "nonblank_lines": 327,
-    "characters": 25637,
-    "lines_per_file": 100.5,
+    "files": 6,
+    "lines": 1120,
+    "nonblank_lines": 878,
+    "characters": 68220,
+    "lines_per_file": 186.67,
     "requirement_statements": 30
   },
   "source": {
-    "files": 13,
-    "lines": 1210,
-    "nonblank_lines": 1041,
-    "characters": 35034
+    "files": 9,
+    "lines": 1036,
+    "nonblank_lines": 903,
+    "characters": 31549
   },
   "gemini_tokens": {
-    "transcript_files": 5,
-    "model_responses": 90,
-    "input": 4443575,
-    "output": 34646,
-    "cached": 3157729,
-    "thoughts": 40780,
+    "transcript_files": 19,
+    "model_responses": 358,
+    "input": 17653626,
+    "output": 237579,
+    "cached": 12533513,
+    "thoughts": 265403,
     "tool": 0,
-    "total": 4519001,
-    "sessions": [
-      {
-        "file": "docs\\gemini-home\\.gemini\\tmp\\bmad-method\\chats\\1e7d04d5-5f7f-4c01-ba5c-e7bc9224eecf\\081a093c-b66a-48a6-a3d7-14a3091a24e0.jsonl",
-        "started": "2026-09-29T10:49:17.409Z",
-        "model_responses": 6,
-        "input": 112387,
-        "output": 1248,
-        "cached": 53613,
-        "thoughts": 4097,
-        "tool": 0,
-        "total": 117732
-      },
-      {
-        "file": "docs\\gemini-home\\.gemini\\tmp\\bmad-method\\chats\\1e7d04d5-5f7f-4c01-ba5c-e7bc9224eecf\\833fae3c-a158-42ae-addd-92dfe8ddfa85.jsonl",
-        "started": "2026-09-29T10:51:10.905Z",
-        "model_responses": 9,
-        "input": 157063,
-        "output": 1618,
-        "cached": 127466,
-        "thoughts": 5456,
-        "tool": 0,
-        "total": 164137
-      },
-      {
-        "file": "docs\\gemini-home\\.gemini\\tmp\\bmad-method\\chats\\1e7d04d5-5f7f-4c01-ba5c-e7bc9224eecf\\8eb300a2-c87c-40eb-b0e6-e2b383420fd1.jsonl",
-        "started": "2026-09-29T10:52:03.825Z",
-        "model_responses": 1,
-        "input": 13761,
-        "output": 152,
-        "cached": 0,
-        "thoughts": 714,
-        "tool": 0,
-        "total": 14627
-      },
-      {
-        "file": "docs\\gemini-home\\.gemini\\tmp\\bmad-method\\chats\\session-2026-09-29T10-46-1e7d04d5.jsonl",
-        "started": "2026-09-29T10:46:47.510Z",
-        "model_responses": 57,
-        "input": 3571840,
-        "output": 25161,
-        "cached": 2591824,
-        "thoughts": 17761,
-        "tool": 0,
-        "total": 3614762
-      },
-      {
-        "file": "docs\\gemini-home\\.gemini\\tmp\\bmad-method\\chats\\session-2026-09-29T13-21-422c5b8d.jsonl",
-        "started": "2026-09-29T13:21:31.301Z",
-        "model_responses": 17,
-        "input": 588524,
-        "output": 6467,
-        "cached": 384826,
-        "thoughts": 12752,
-        "tool": 0,
-        "total": 607743
-      }
-    ]
+    "total": 18156608,
+    "sessions": []
   },
   "runs": [
     {
-      "file": "Bmad Method\\docs\\atomic-requirements-correction.run.json",
-      "started": "2026-09-29T08:21:29.3564495-05:00",
-      "ended": "2026-09-29T08:26:56.5514652-05:00",
-      "duration_seconds": 327.195,
+      "file": "full-architecture-ux.run.json",
+      "duration_seconds": 333.683,
+      "exit_code": 0,
+      "seed_sha256": "2AE084C9C64FC41F65D0E07581CED9E30B6C68891D9F8688A37F34594ECFD1C5"
+    },
+    {
+      "file": "full-build-auto-correction.run.json",
+      "duration_seconds": 705.325,
+      "exit_code": 0,
+      "seed_sha256": "2AE084C9C64FC41F65D0E07581CED9E30B6C68891D9F8688A37F34594ECFD1C5"
+    },
+    {
+      "file": "full-build-auto-iteration1.run.json",
+      "duration_seconds": 834.057,
+      "exit_code": 0,
+      "seed_sha256": "2AE084C9C64FC41F65D0E07581CED9E30B6C68891D9F8688A37F34594ECFD1C5"
+    },
+    {
+      "file": "full-build-implementation.run.json",
+      "duration_seconds": 12.111,
       "exit_code": 0,
       "seed_sha256": null
     },
     {
-      "file": "Bmad Method\\docs\\spec-build.run.json",
-      "started": "2026-09-29T05:46:45.4502135-05:00",
-      "ended": "2026-09-29T06:00:24.2928131-05:00",
-      "duration_seconds": 818.843,
+      "file": "full-build.run.json",
+      "duration_seconds": 133.575,
       "exit_code": 0,
+      "seed_sha256": "2AE084C9C64FC41F65D0E07581CED9E30B6C68891D9F8688A37F34594ECFD1C5"
+    },
+    {
+      "file": "full-epics-stories.run.json",
+      "duration_seconds": 267.555,
+      "exit_code": 0,
+      "seed_sha256": "2AE084C9C64FC41F65D0E07581CED9E30B6C68891D9F8688A37F34594ECFD1C5"
+    },
+    {
+      "file": "full-prd.run.json",
+      "duration_seconds": 519.78,
+      "exit_code": 0,
+      "seed_sha256": "2AE084C9C64FC41F65D0E07581CED9E30B6C68891D9F8688A37F34594ECFD1C5"
+    },
+    {
+      "file": "full-product-brief-escalated.run.json",
+      "duration_seconds": 491.001,
+      "exit_code": 0,
+      "seed_sha256": "2AE084C9C64FC41F65D0E07581CED9E30B6C68891D9F8688A37F34594ECFD1C5"
+    },
+    {
+      "file": "full-product-brief.run.json",
+      "duration_seconds": 2.424,
+      "exit_code": 1,
       "seed_sha256": "2AE084C9C64FC41F65D0E07581CED9E30B6C68891D9F8688A37F34594ECFD1C5"
     }
   ],
-  "recorded_duration_seconds": 1146.038,
-  "recorded_prompt_count": 2
+  "recorded_duration_seconds": 3299.511,
+  "recorded_prompt_count": 9
 }

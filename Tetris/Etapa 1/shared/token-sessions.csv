@@ -1,23 +1,22 @@
 tool,run,duration_seconds,exit_code,source,input_tokens,output_tokens,cached_tokens,model_responses
-OpenSpec,apply-complete.run.json,337.688,0,CLI JSON stats,1626768,10585,1263770,38
-OpenSpec,apply.run.json,282.858,0,CLI JSON stats,932429,13056,610261,27
-OpenSpec,execute-proposal.run.json,12.32,0,CLI JSON stats,84618,83,39750,2
-OpenSpec,normalize-native-spec.run.json,172.296,0,CLI JSON stats,460317,5274,338416,15
+OpenSpec,apply-complete.run.json,337.688,0,archived session evidence,1615308,10482,1263770,36
+OpenSpec,apply.run.json,282.858,0,archived session evidence,932429,13056,610261,26
+OpenSpec,execute-proposal.run.json,12.32,0,unavailable,,,,
+OpenSpec,normalize-native-spec.run.json,172.296,0,archived session evidence,460317,5274,338416,14
 OpenSpec,propose.run.json,645.818,0,unavailable,,,,
-OpenSpec,write-artifacts.run.json,1613.83,0,retained Gemini JSONL,2712402,10709,1965227,76
-Spec Kit,correct-plan-fresh.run.json,522.947,0,retained Gemini JSONL,1931165,22738,1369867,60
-Spec Kit,correct-spec.run.json,10.906,0,CLI JSON stats,217705,126,104815,2
-Spec Kit,fix-test-build.run.json,1074.49,0,CLI JSON stats,4191004,6210,3214532,90
-Spec Kit,implement.run.json,670.593,0,CLI JSON stats,6830484,29148,5636002,98
+OpenSpec,write-artifacts.run.json,1613.83,0,archived session evidence,2712402,10709,1965227,76
+Spec Kit,correct-plan-fresh.run.json,522.947,0,archived session evidence,1931165,22738,1369867,60
+Spec Kit,correct-spec.run.json,10.906,0,unavailable,,,,
+Spec Kit,fix-test-build.run.json,1074.49,0,archived session evidence,4167075,5806,3214532,67
+Spec Kit,implement.run.json,670.593,0,archived session evidence,6777267,28568,5636002,91
 Spec Kit,specify.run.json,618.291,0,unavailable,,,,
-Spec Kit,tasks.run.json,461.408,0,retained Gemini JSONL,1001113,31976,630802,43
-Tessl,apply-arrow-spec.run.json,422.111,0,CLI JSON stats,493105,2348,339369,30
+Spec Kit,tasks.run.json,461.408,0,archived session evidence,1001113,31976,630802,43
+Tessl,apply-arrow-spec.run.json,422.111,0,archived session evidence,493105,2348,339369,14
 Tessl,complete-frontend-second-network.run.json,217.479,0,unavailable,,,,
 Tessl,complete-frontend-second.run.json,4.219,1,unavailable,,,,
-Tessl,correct-arrow-only.run.json,12.099,0,CLI JSON stats,201309,39,94130,2
+Tessl,correct-arrow-only.run.json,12.099,0,unavailable,,,,
 Tessl,execute-approved-plan.run.json,63.496,0,unavailable,,,,
-Tessl,finish-frontend.run.json,686.594,0,CLI JSON stats,1407933,3018,632399,38
-Tessl,tessl-spec-build.run.json,3166.295,130,retained Gemini JSONL,1785065,22861,1041524,63
-Tessl,write-frontend-now.run.json,328.372,0,CLI JSON stats,2065506,13058,1788650,33
-Bmad Method,atomic-requirements-correction.run.json,327.195,0,CLI JSON stats,588524,6467,384826,22
-Bmad Method,spec-build.run.json,818.843,0,retained Gemini JSONL,3855051,28179,2772903,73
+Tessl,finish-frontend.run.json,686.594,0,archived session evidence,1404726,2923,632399,33
+Tessl,tessl-spec-build.run.json,3166.295,130,archived session evidence,1785065,22861,1041524,63
+Tessl,write-frontend-now.run.json,328.372,0,unavailable,,,,
+Bmad Method,all 9 invocations (aggregate),3299.511,mixed; startup failure included,19 retained Gemini JSONL transcripts,17653626,237579,12533513,358

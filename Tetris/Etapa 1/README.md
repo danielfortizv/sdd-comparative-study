@@ -1,16 +1,16 @@
 # Tetris Stage 1 experiment
 
-This directory contains five independent Stage 1 implementations of the same Tetris option A seed, plus an isolated BMAD planning-path rerun.
+This directory contains five independent Stage 1 implementations of the same Tetris option A seed. The single BMAD entry is the complete planning workflow.
 
 - `shared/seed.md` is the immutable English prompt used for the five-tool baseline.
 - `shared/protocol.md` defines the common scope and measurement rules.
-- `OpenSpec/`, `Spec Kit/`, `Tessl/`, `Bmad Method/`, and `Kiro/` hold the five original implementations, native specifications, tests, logs, and SonarQube evidence.
-- `Bmad Method Full/` is a separate BMAD Method 6.12.0 rerun through product brief, PRD, architecture, epics/stories, and implementation. It is a workflow sensitivity analysis, not a sixth tool.
-- `shared/bmad-full-metrics.json` and `shared/report/auditoria-bmad-calculadora-tetris.md` compare the compact and full BMAD paths.
+- `OpenSpec/`, `Spec Kit/`, `Tessl/`, `Bmad Method/`, and `Kiro/` hold the five implementations, native specifications, tests, logs, and SonarQube evidence.
+- `Bmad Method/` contains BMAD Method 6.12.0 through product brief, PRD, architecture, epics/stories, implementation, correction, and validation. The original generated filenames are preserved as provenance.
+- `shared/bmad-metrics.json` is the BMAD measurement source. `shared/metrics-preliminary.json` and `shared/token-sessions.csv` incorporate that same execution into the five-tool comparison.
 - `shared/report/guion-tetris-etapa1-asesor.md` is the advisor presentation script.
-- `shared/report/bmad-full-overleaf-addendum.tex` is the thesis addendum used by the shared Overleaf project.
-- `PROGRESS.md` is the chronological experimental record.
+- `shared/report/tetris-etapa1-overleaf.tex` is the current Tetris thesis section. `shared/report/Tetris-Etapa-1-comparacion.pdf` extracts its seven compiled pages, including the radar and tables. The full Overleaf thesis stays in the shared project.
+- `PROGRESS.md` records the current experiment and provenance. Earlier BMAD work remains available through Git history.
 
-The original five-tool baseline remains separate from the BMAD full-path sensitivity condition. SonarQube coverage values describe the scanner's complete project scope; backend-only pytest coverage is reported separately. Theoretical token costs are not Google Cloud invoices.
+SonarQube coverage values describe the scanner's complete project scope; backend-only pytest coverage is reported separately. Theoretical token costs are not Google Cloud invoices. The BMAD SonarQube project key remains `tetris-stage1-bmad-full` so its archived API evidence and dashboard resolve to the measured scan.
 
-Local dependencies, build outputs, private authentication/session files, and the complete shared thesis PDF are intentionally excluded from this repository snapshot. The export manifest lists the added files and hashes.
+Local dependencies, build outputs, private authentication/session files, and the complete shared thesis PDF are intentionally excluded from this repository snapshot.

@@ -11,7 +11,7 @@ ROOT = Path(__file__).resolve().parent.parent
 SPEC_DIRS = {
     "OpenSpec": ["openspec/changes"],
     "Spec Kit": ["specs"],
-    "Bmad Method": ["_bmad-output/specs"],
+    "Bmad Method": ["_bmad-output"],
     "Tessl": ["specs"],
     "Kiro": [".kiro/specs"],
 }
@@ -21,7 +21,7 @@ TOKEN_KEYS = ("input", "output", "cached", "thoughts", "tool", "total")
 REQUIREMENT_PATTERNS = {
     "OpenSpec": r"(?m)^### Requirement:",
     "Spec Kit": r"(?m)^\s*-\s*\*\*FR-\d{3}\*\*",
-    "Bmad Method": r"(?m)^\s*-\s*\*\*CAP-\d+:",
+    "Bmad Method": r"(?:FR|REQ)-[0-9]+",
     "Tessl": r"(?m)^\s*-\s*\*\*Req-\d+:",
     "Kiro": r"(?m)^### Requirement \d+:",
 }
@@ -112,8 +112,30 @@ def run_metadata(tool_root: Path) -> dict[str, object]:
 
 def main() -> None:
     result = {}
+    snapshot_path = ROOT / "shared" / "metrics-preliminary.json"
+    snapshot = json.loads(snapshot_path.read_text(encoding="utf-8")) if snapshot_path.exists() else {}
     for tool, spec_dirs in SPEC_DIRS.items():
         tool_root = ROOT / tool
+        if tool == "Bmad Method" and (ROOT / "Bmad Method Full").exists():
+            tool_root = ROOT / "Bmad Method Full"
+        if tool == "Bmad Method":
+            canonical = json.loads((ROOT / "shared" / "bmad-metrics.json").read_text(encoding="utf-8"))
+            spec = {key: canonical["specification"][key] for key in ("files", "lines", "nonblank_lines", "characters")}
+            spec["lines_per_file"] = round(spec["lines"] / spec["files"], 2)
+            spec["requirement_statements"] = canonical["specification"]["unique_prd_requirement_ids"]
+            model = canonical["model"]
+            result[tool] = {
+                "specification": spec,
+                "source": canonical["source"],
+                "gemini_tokens": {"transcript_files": model["transcript_files"], "model_responses": model["model_responses"], **{key: model[key] for key in TOKEN_KEYS}, "sessions": []},
+                "runs": canonical["execution"]["runs"],
+                "recorded_duration_seconds": canonical["execution"]["agent_seconds_including_failed_starts"],
+                "recorded_prompt_count": canonical["execution"]["invocations"],
+            }
+            docs = tool_root / "docs"
+            docs.mkdir(parents=True, exist_ok=True)
+            (docs / "metrics-preliminary.json").write_text(json.dumps(result[tool], indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+            continue
         spec_paths = [path for relative in spec_dirs for path in files_in(tool_root / relative, {".md"})]
         source_paths = [
             path
@@ -128,10 +150,13 @@ def main() -> None:
             requirements += len(re.findall(REQUIREMENT_PATTERNS[tool], content))
         spec["lines_per_file"] = round(spec["lines"] / spec["files"], 2) if spec["files"] else None
         spec["requirement_statements"] = requirements
+        tokens = gemini_tokens(tool_root)
+        if tokens["transcript_files"] == 0 and tool in snapshot:
+            tokens = snapshot[tool]["gemini_tokens"]
         result[tool] = {
             "specification": spec,
             "source": source,
-            "gemini_tokens": gemini_tokens(tool_root),
+            "gemini_tokens": tokens,
             **run_metadata(tool_root),
         }
         docs = tool_root / "docs"

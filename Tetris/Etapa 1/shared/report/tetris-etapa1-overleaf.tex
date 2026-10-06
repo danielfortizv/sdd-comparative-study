@@ -1,7 +1,7 @@
 \subsection{Caso de Estudio 1.2: Tetris Web}
 \label{subsec:tetris_init}
 
-La inicialización de Tetris se ejecutó cinco veces de forma independiente, una por herramienta, con una misma semilla en inglés (versión 1.1; SHA-256 cuyo prefijo es \texttt{2AE084C9C64F}). Se eligió la opción A de la matriz experimental: tablero de $10\times20$, siete tetrominós en orientación inicial, gravedad de 500 ms, desplazamientos izquierda/derecha/abajo, colisiones, fijación, eliminación de líneas, fin de partida y reinicio. El servidor FastAPI conserva el estado autoritativo en memoria y React con TypeScript representa ese estado. Rotación, puntuación, persistencia, clasificación y demás ampliaciones quedaron fuera de esta etapa. Las cinco implementaciones se conservaron en directorios separados y fueron verificadas mediante compilación del cliente, pruebas disponibles y análisis de SonarQube.
+La inicialización de Tetris se ejecutó cinco veces de forma independiente, una por herramienta, con una misma semilla en inglés (versión 1.1; SHA-256 cuyo prefijo es \texttt{2AE084C9C64F}). Se eligió la opción A de la matriz experimental: tablero de $10\times20$, siete tetrominós en orientación inicial, gravedad de 500 ms, desplazamientos izquierda/derecha/abajo, colisiones, fijación, eliminación de líneas, fin de partida y reinicio. El servidor FastAPI conserva el estado autoritativo en memoria y React con TypeScript representa ese estado. Rotación, puntuación, persistencia, clasificación y demás ampliaciones quedaron fuera de esta etapa. Las cinco implementaciones se conservaron en directorios separados y fueron verificadas mediante compilación del cliente, pruebas disponibles y análisis de SonarQube. Para BMAD se reporta únicamente la ejecución con planificación completa: \textit{product brief}, PRD, arquitectura, épicas e historias, construcción y corrección de alcance. Se utilizó BMAD Method 6.12.0 con los módulos \texttt{core} y \texttt{bmm} y la integración Gemini; la semilla y el alcance permanecieron iguales a los de las otras cuatro herramientas.
 
 La Tabla \ref{tab:versiones_tetris_init} precisa las versiones utilizadas en estas ejecuciones, que difieren de algunas versiones de referencia de la Tabla \ref{tab:stack_tecnologico}. En particular, la ejecución de Tessl utilizó la CLI vigente como gestor de contexto, con plugins públicos para FastAPI y React y su integración MCP con Gemini; no instaló el \textit{tile} SDD 2.0.1 presentado como referencia teórica en el capítulo. Esta diferencia metodológica debe conservarse al interpretar sus resultados.
 
@@ -40,7 +40,7 @@ La Tabla \ref{tab:consumo_tetris_init_costos} sigue las categorías empleadas pa
 OpenSpec & $\geq$ 5.816.534 & $\geq$ 4.217.424 & $\geq$ 39.707 & N/A & $\geq 3,3886$ \\
 Spec Kit & $\geq$ 14.171.471 & $\geq$ 10.956.018 & $\geq$ 90.198 & N/A & $\geq 7,2784$ \\
 Tessl & $\geq$ 5.952.918 & $\geq$ 3.896.072 & $\geq$ 41.324 & N/A & $\geq 4,0416$ \\
-BMAD & 4.443.575 & 3.157.729 & 34.646 & N/A & $2,7142$ \\
+BMAD & 17.653.626 & 12.533.513 & 237.579 & N/A & $11,6984$ \\
 Kiro & N/D & N/D & N/D & N/D & N/D \\
 \bottomrule
 \multicolumn{6}{p{\dimexpr\textwidth-2\tabcolsep}}{\footnotesize \textit{Nota:} N/A significa que la plataforma no usa esa unidad; N/D indica que la ejecución no dejó un dato verificable. En OpenSpec, Spec Kit y Tessl faltan 1/6, 1/6 y 3/8 registros de tokens, respectivamente. Los mínimos se refieren a sesiones registradas y no a la factura total.}
@@ -58,9 +58,9 @@ Kiro & N/D & N/D & N/D & N/D & N/D \\
     legend style={at={(0.5,-0.2)},anchor=north,legend columns=3},
     nodes near coords={},
 ]
-\addplot[fill=vdarkblue] coordinates {(OpenSpec,2.3987) (SpecKit,4.8232) (Tessl,3.0853) (BMAD,1.9288)};
-\addplot[fill=darkblue] coordinates {(OpenSpec,0.6326) (SpecKit,1.6434) (Tessl,0.5844) (BMAD,0.4737)};
-\addplot[fill=lightblue] coordinates {(OpenSpec,0.3574) (SpecKit,0.8118) (Tessl,0.3719) (BMAD,0.3118)};
+\addplot[fill=vdarkblue] coordinates {(OpenSpec,2.3987) (SpecKit,4.8232) (Tessl,3.0853) (BMAD,7.6802)};
+\addplot[fill=darkblue] coordinates {(OpenSpec,0.6326) (SpecKit,1.6434) (Tessl,0.5844) (BMAD,1.8800)};
+\addplot[fill=lightblue] coordinates {(OpenSpec,0.3574) (SpecKit,0.8118) (Tessl,0.3719) (BMAD,2.1382)};
 \legend{Entrada nueva,Entrada cacheada,Salida}
 \end{axis}
 \end{tikzpicture}
@@ -68,7 +68,7 @@ Kiro & N/D & N/D & N/D & N/D & N/D \\
 \label{fig:costos_tetris_init}
 \end{figure}
 
-Entre las sesiones medibles, Spec Kit registra la mayor entrada ($14,17$ millones de tokens) y el mayor costo teórico ($7,28$ USD); BMAD presenta el menor costo observado ($2,71$ USD). Esto no demuestra que BMAD haya sido la opción más barata en la cuenta real: las otras tres series tienen registros incompletos y parte del contexto vuelve a procesarse o recuperarse de caché. La diferencia sí muestra la importancia de conservar datos por ejecución antes de inferir eficiencia económica. Kiro permanece fuera de esta comparación monetaria por falta de créditos trazables, aunque su ejecución y sus artefactos son observables.
+Entre las sesiones medibles, BMAD registra la mayor entrada observada ($17,65$ millones de tokens) y el mayor costo teórico del tráfico ($11,70$ USD). Esta cifra suma entrada nueva, entrada cacheada y salida con las tarifas declaradas; no corresponde a una factura de GCP. Los importes de OpenSpec, Spec Kit y Tessl son mínimos por sus registros incompletos, de modo que la comparación económica no identifica un costo final ordenado para las cinco herramientas. Kiro permanece fuera de esta comparación monetaria por falta de créditos trazables, aunque su ejecución y sus artefactos son observables.
 
 \begin{table}[H]
 \centering
@@ -81,7 +81,7 @@ Entre las sesiones medibles, Spec Kit registra la mayor entrada ($14,17$ millone
 OpenSpec & 6 & 3.065 & $\geq$ 85 & 1 \\
 Spec Kit & 6 & 3.359 & $\geq$ 162 & 1 \\
 Tessl & 8 & 4.901 & $\geq$ 86 & 3 \\
-BMAD & 2 & 1.146 & $\geq$ 20 & 0 \\
+BMAD & 9 & 3.299,511 & $\geq$ 342 & 2 \\
 Kiro & 1 & 546 & 57 & N/A \\
 \bottomrule
 \multicolumn{5}{p{\dimexpr\textwidth-2\tabcolsep}}{\footnotesize \textit{Nota:} Solicitud = invocación registrada del agente, no cada mensaje interno del modelo. El tiempo suma la duración de esas invocaciones, incluso intentos fallidos; excluye instalaciones, pruebas independientes y escaneo. Los llamados mínimos de Gemini solo cubren salidas JSON con estadística de herramientas; en Kiro se contaron eventos \texttt{tool\_call} del protocolo ACP. Estas definiciones difieren de las interacciones por mensaje usadas para Calculadora, por lo cual sus valores absolutos no deben compararse directamente entre casos.}
@@ -98,14 +98,14 @@ Kiro & 1 & 546 & 57 & N/A \\
     ylabel={Tiempo registrado (minutos)},
     nodes near coords, every node near coord/.append style={font=\scriptsize},
 ]
-\addplot[fill=darkblue] coordinates {(OpenSpec,51.08) (SpecKit,55.98) (Tessl,81.68) (BMAD,19.10) (Kiro,9.10)};
+\addplot[fill=darkblue] coordinates {(OpenSpec,51.08) (SpecKit,55.98) (Tessl,81.68) (BMAD,54.99) (Kiro,9.10)};
 \end{axis}
 \end{tikzpicture}
 \caption{Duración acumulada de las invocaciones del agente en Tetris, sin tiempo de instalación ni validación externa.}
 \label{fig:tiempo_tetris_init}
 \end{figure}
 
-Tessl exigió ocho solicitudes y $81,7$ minutos de agente, el máximo del grupo; su ejecución incluyó respuestas de Vertex con error 429 o planes sin archivos, y después una corrección para restringir los controles a las flechas exigidas por la semilla. Kiro terminó su flujo nativo en una invocación de $9,1$ minutos, aunque ese tiempo no representa el esfuerzo total de preparación del entorno. OpenSpec y Spec Kit requirieron seis invocaciones cada uno. En Spec Kit se corrigió una prueba de aceptación imposible para una pieza I vertical sin rotación; en BMAD se desglosaron capacidades amplias en 30 requisitos atómicos. Por tanto, la duración refleja tanto la herramienta como la necesidad de corrección y las condiciones de servicio; no debe interpretarse como una medición aislada de velocidad de generación.
+Tessl exigió ocho solicitudes y $81,7$ minutos de agente, el máximo del grupo; su ejecución incluyó respuestas de Vertex con error 429 o planes sin archivos, y después una corrección para restringir los controles a las flechas exigidas por la semilla. Kiro terminó su flujo nativo en una invocación de $9,1$ minutos, aunque ese tiempo no representa el esfuerzo total de preparación del entorno. OpenSpec y Spec Kit requirieron seis invocaciones cada uno. En Spec Kit se corrigió una prueba de aceptación imposible para una pieza I vertical sin rotación; en BMAD se preservaron 30 requisitos funcionales y se eliminaron metas de capacidad y latencia añadidas por el agente sin estar en la semilla. Sus nueve invocaciones incluyen un arranque fallido por permisos y una reanudación vacía sin tokens, además de las fases de planificación y construcción. Por tanto, la duración refleja tanto la herramienta como la necesidad de corrección y las condiciones de servicio; no debe interpretarse como una medición aislada de velocidad de generación.
 
 \subsubsection{Dimensión B: Calidad del Código Generado (SonarQube)}
 
@@ -123,7 +123,7 @@ Las cinco variantes superaron su \textit{quality gate} en SonarQube Community Bu
 OpenSpec & 898 & 0 & 1 & 15 & 81 & 76 & 0\% & C/A/A \\
 Spec Kit & 748 & 0 & 2 & 7 & 35 & 78 & 0\% & C/A/A \\
 Tessl & 788 & 0 & 1 & 13 & 71 & 69 & 0\% & C/A/A \\
-BMAD & 778 & 0 & 2 & 8 & 45 & 64 & 0\% & C/A/A \\
+BMAD & 669 & 0 & 1 & 13 & 84 & 97 & 0\% & C/A/A \\
 Kiro & 497 & 0 & 0 & 10 & 38 & 45 & 0\% & A/A/A \\
 \bottomrule
 \end{tabularx}
@@ -144,11 +144,11 @@ Para construir un radar comparable en estructura con la Figura \ref{fig:radar_ca
   \node[anchor=east,align=right] at (216:3.35) {Complejidad\\cognitiva};
   \node[anchor=north] at (288:3.35) {Duplicación};
 
-  \draw[line width=1.3pt,color=vdarkblue] (0:3) -- (72:0.6) -- (144:2.7) -- (216:1.617) -- (288:3) -- cycle; % BMAD
-  \draw[line width=1.3pt,color=darkblue] (0:3) -- (72:1.8) -- (144:0.6) -- (216:0.744) -- (288:3) -- cycle; % OpenSpec
-  \draw[line width=1.3pt,color=blue] (0:3) -- (72:0.6) -- (144:3) -- (216:0.6) -- (288:3) -- cycle; % Spec Kit
+  \draw[line width=1.3pt,color=vdarkblue] (0:3) -- (72:1.8) -- (144:1.2) -- (216:0.6) -- (288:3) -- cycle; % BMAD
+  \draw[line width=1.3pt,color=darkblue] (0:3) -- (72:1.8) -- (144:0.6) -- (216:1.569) -- (288:3) -- cycle; % OpenSpec
+  \draw[line width=1.3pt,color=blue] (0:3) -- (72:0.6) -- (144:3) -- (216:1.477) -- (288:3) -- cycle; % Spec Kit
   \draw[line width=1.3pt,color=purple] (0:3) -- (72:3) -- (144:2.1) -- (216:3) -- (288:3) -- cycle; % Kiro
-  \draw[line width=1.3pt,color=lightblue] (0:3) -- (72:1.8) -- (144:1.2) -- (216:1.254) -- (288:3) -- cycle; % Tessl
+  \draw[line width=1.3pt,color=lightblue] (0:3) -- (72:1.8) -- (144:1.2) -- (216:1.892) -- (288:3) -- cycle; % Tessl
 \end{tikzpicture}
 \par\smallskip
 {\footnotesize
@@ -172,10 +172,10 @@ Para construir un radar comparable en estructura con la Figura \ref{fig:radar_ca
 OpenSpec & 16 & 17,82 & 60,2\% & 13/13 \\
 Spec Kit & 9 & 12,03 & 62,0\% & 18/18 \\
 Tessl & 14 & 17,77 & 60,4\% & 9/9 \\
-BMAD & 10 & 12,85 & 57,6\% & 7/7 \\
+BMAD & 14 & 20,93 & 63,2\% & 13/13 \\
 Kiro & 10 & 20,12 & 72,6\% & 39/39 \\
 \bottomrule
-\multicolumn{5}{p{\dimexpr\textwidth-2\tabcolsep}}{\footnotesize \textit{Nota:} Hallazgos clásicos $=$ bugs $+$ vulnerabilidades $+$ \textit{code smells}; Issues/KLOC $=$ hallazgos clásicos$/ (\text{ncloc}/1000)$. La cobertura se informa como evidencia complementaria, sin utilizarla para puntuar esta etapa según el protocolo de las Etapas 1 y 2. La cantidad de pruebas varía entre variantes y no constituye por sí sola una tasa de aceptación funcional común.}
+\multicolumn{5}{p{\dimexpr\textwidth-2\tabcolsep}}{\footnotesize \textit{Nota:} Hallazgos clásicos $=$ bugs $+$ vulnerabilidades $+$ \textit{code smells}; Issues/KLOC $=$ hallazgos clásicos $/\,(\mathrm{ncloc}/1000)$. La cobertura se informa como evidencia complementaria, sin utilizarla para puntuar esta etapa según el protocolo de las Etapas 1 y 2. La cantidad de pruebas varía entre variantes y no constituye por sí sola una tasa de aceptación funcional común.}
 \end{tabularx}
 \end{table}
 
@@ -190,8 +190,8 @@ Kiro & 10 & 20,12 & 72,6\% & 39/39 \\
     legend style={at={(0.5,-0.18)},anchor=north,legend columns=2},
     nodes near coords, every node near coord/.append style={font=\scriptsize},
 ]
-\addplot[fill=vdarkblue] coordinates {(OpenSpec,15) (SpecKit,7) (Tessl,13) (BMAD,8) (Kiro,10)};
-\addplot[fill=purple] coordinates {(OpenSpec,1) (SpecKit,2) (Tessl,1) (BMAD,2) (Kiro,0)};
+\addplot[fill=vdarkblue] coordinates {(OpenSpec,15) (SpecKit,7) (Tessl,13) (BMAD,13) (Kiro,10)};
+\addplot[fill=purple] coordinates {(OpenSpec,1) (SpecKit,2) (Tessl,1) (BMAD,1) (Kiro,0)};
 \legend{Code smells,Vulnerabilidades}
 \end{axis}
 \end{tikzpicture}
@@ -199,7 +199,7 @@ Kiro & 10 & 20,12 & 72,6\% & 39/39 \\
 \label{fig:hallazgos_tetris_init}
 \end{figure}
 
-La Figura \ref{fig:radar_tetris_init} muestra a Kiro en el extremo favorable para vulnerabilidades y complejidad cognitiva, mientras Spec Kit encabeza el eje de \textit{code smells}. Kiro produjo el menor volumen de código medido por SonarQube (497 LOC), la menor complejidad cognitiva (45) y ninguna vulnerabilidad; es la única variante con rating A/A/A. Sin embargo, sus diez \textit{code smells} repartidos en una base menor elevan su densidad a 20,12 hallazgos/KLOC, la mayor del conjunto. Por eso el radar de recuentos absolutos debe leerse junto con la densidad de la Tabla \ref{tab:sonar_tetris_init_adicional}. Spec Kit tiene el menor número absoluto de hallazgos (nueve) y la menor deuda técnica (35 minutos), aunque comparte con BMAD el máximo de dos vulnerabilidades y ambas obtienen C en seguridad. OpenSpec registra la mayor deuda (81 minutos) y 15 \textit{code smells}. La duplicación medida fue 0\% en las cinco variantes, por lo que no discrimina entre ellas en esta etapa. Las vulnerabilidades detectadas incluyen el uso de generación pseudoaleatoria para piezas; requieren interpretar el contexto del juego antes de equipararlas a un riesgo explotable. La cobertura global, aunque disponible, se mantiene fuera de la valoración formal de Etapa 1 conforme a la metodología del capítulo.
+La Figura \ref{fig:radar_tetris_init} muestra a Kiro en el extremo favorable para vulnerabilidades y complejidad cognitiva, mientras Spec Kit encabeza el eje de \textit{code smells}. Kiro produjo el menor volumen de código medido por SonarQube (497 LOC), la menor complejidad cognitiva (45) y ninguna vulnerabilidad; es la única variante con rating A/A/A. Sin embargo, sus diez \textit{code smells} repartidos en una base menor elevan su densidad a 20,12 hallazgos/KLOC, una de las más altas del conjunto. Por eso el radar de recuentos absolutos debe leerse junto con la densidad de la Tabla \ref{tab:sonar_tetris_init_adicional}. Spec Kit tiene el menor número absoluto de hallazgos (nueve) y la menor deuda técnica (35 minutos). BMAD presenta 14 hallazgos clásicos, 20,93 por mil LOC, la mayor complejidad cognitiva (97) y la mayor deuda estimada (84 minutos), aunque su \textit{quality gate} también fue aprobado. OpenSpec registra 15 \textit{code smells}, el máximo del grupo. La duplicación medida fue 0\% en las cinco variantes, por lo que no discrimina entre ellas en esta etapa. Las vulnerabilidades detectadas incluyen el uso de generación pseudoaleatoria para piezas; requieren interpretar el contexto del juego antes de equipararlas a un riesgo explotable. La cobertura global, aunque disponible, se mantiene fuera de la valoración formal de Etapa 1 conforme a la metodología del capítulo.
 
 \subsubsection{Dimensión C: Métricas de Especificación y Documentación}
 
@@ -216,7 +216,7 @@ Se contabilizaron los documentos de especificación nativos de cada herramienta 
 OpenSpec & 4 & 442 & 110,50 & 2,03 & 30 \\
 Spec Kit & 8 & 1.002 & 125,25 & 0,75 & 38 \\
 Tessl & 2 & 136 & 68,00 & 5,79 & 34 \\
-BMAD & 4 & 402 & 100,50 & 1,94 & 30 \\
+BMAD & 6 & 1.120 & 186,67 & 0,60 & 30 \\
 Kiro & 3 & 608 & 202,67 & 0,82 & 35 \\
 \bottomrule
 \end{tabularx}
@@ -227,7 +227,7 @@ Kiro & 3 & 608 & 202,67 & 0,82 & 35 \\
 \begin{tikzpicture}
 \begin{axis}[
     width=0.85\textwidth, height=7cm,
-    xmin=450, xmax=950, ymin=0, ymax=1100,
+    xmin=450, xmax=950, ymin=0, ymax=1250,
     xlabel={Líneas de código SonarQube (ncloc)},
     ylabel={Líneas de especificación},
     legend style={at={(0.5,-0.2)},anchor=north,legend columns=3},
@@ -235,9 +235,9 @@ Kiro & 3 & 608 & 202,67 & 0,82 & 35 \\
 \addplot[only marks,mark=square*,mark size=3pt,color=vdarkblue] coordinates {(898,442)};
 \addplot[only marks,mark=triangle*,mark size=3pt,color=darkblue] coordinates {(748,1002)};
 \addplot[only marks,mark=*,mark size=3pt,color=blue] coordinates {(788,136)};
-\addplot[only marks,mark=diamond*,mark size=3pt,color=lightblue] coordinates {(778,402)};
+\addplot[only marks,mark=diamond*,mark size=3pt,color=lightblue] coordinates {(669,1120)};
 \addplot[only marks,mark=pentagon*,mark size=3pt,color=purple] coordinates {(497,608)};
-\addplot[thick,dashed,gray,domain=497:898,samples=2] {963.627-0.600737*x};
+\addplot[thick,dashed,gray,domain=497:898,samples=2] {1279.359-0.857999*x};
 \legend{OpenSpec,Spec Kit,Tessl,BMAD,Kiro,Tendencia descriptiva}
 \end{axis}
 \end{tikzpicture}
@@ -245,7 +245,7 @@ Kiro & 3 & 608 & 202,67 & 0,82 & 35 \\
 \label{fig:scatter_tetris_init}
 \end{figure}
 
-Spec Kit es el caso más documentado (1.002 líneas en ocho archivos) y presenta un ratio inferior a uno: sus especificaciones superan en líneas al código medido por SonarQube. Tessl concentra solo 136 líneas en dos archivos y alcanza el ratio mayor (5,79), pero aun así cubre 34 enunciados de requisito; su menor volumen no prueba automáticamente una mejor abstracción. Kiro concentra 608 líneas en tres archivos, la densidad más alta (202,67 líneas por archivo), mientras OpenSpec y BMAD se sitúan en una zona intermedia de 442 y 402 líneas. El ajuste de la Figura \ref{fig:scatter_tetris_init} es levemente descendente en esta muestra; con cinco observaciones y flujos documentales distintos, no hay base para afirmar una relación general entre más especificación y más código. Las correcciones registradas demuestran además que contar requisitos no garantiza criterios de aceptación factibles ni fidelidad al alcance.
+BMAD es el caso más documentado: seis archivos principales y 1.120 líneas, con 30 requisitos funcionales trazables. El conteo excluye dos memorias de proceso y el estado YAML del sprint. Spec Kit conserva ocho archivos y 1.002 líneas; en ambas herramientas el ratio código/especificación es inferior a uno. Tessl concentra solo 136 líneas en dos archivos y alcanza el ratio mayor (5,79), pero aun así cubre 34 enunciados de requisito; su menor volumen no prueba automáticamente una mejor abstracción. Kiro concentra 608 líneas en tres archivos y la mayor densidad por archivo (202,67). El ajuste descriptivo de la Figura \ref{fig:scatter_tetris_init} desciende en esta muestra; con cinco observaciones y flujos documentales distintos, no permite inferir una relación causal. Las correcciones registradas muestran que contar requisitos no garantiza por sí solo fidelidad al alcance.
 
 \subsubsection{Dimensión D: Validación Funcional (Provisional)}
 
@@ -262,7 +262,7 @@ El protocolo definitivo de aceptación funcional aún está en revisión. Como e
 OpenSpec & 13 & 13 & 0 & N/D & N/D \\
 Spec Kit & 23 & 23 & 0 & N/D & N/D \\
 Tessl & 11 & 11 & 0 & N/D & N/D \\
-BMAD & 7 & 7 & 0 & N/D & N/D \\
+BMAD & 13 & 13 & 0 & N/D & N/D \\
 Kiro & 39 & 39 & 0 & N/D & N/D \\
 \bottomrule
 \multicolumn{6}{p{\dimexpr\textwidth-2\tabcolsep}}{\footnotesize \textit{Nota:} Casos = pruebas automatizadas propias de cada variante (\textit{backend} y, cuando existen, \textit{frontend}). FAR = \textit{Functional Acceptance Rate}. N/D significa que no existe aún una medición común auditada, no que se hayan encontrado cero defectos.}
@@ -271,7 +271,7 @@ Kiro & 39 & 39 & 0 & N/D & N/D \\
 
 \subsubsection{Dimensión E: Intervención Humana (Provisional)}
 
-Los registros de invocaciones permiten contar solicitudes posteriores a la semilla inicial, pero no clasifican de manera uniforme cuáles fueron correcciones, pasos ordinarios del método o reintentos por fallas del servicio. Por ello la Tabla \ref{tab:intervencion_tetris_init} presenta este indicador observable sin llamarlo número definitivo de rondas de corrección. No se cronometró por separado el tiempo de revisión humana ni se administró un protocolo común para registrar defectos hallados exclusivamente por personas; ambos resultados son N/D. Entre las intervenciones documentadas constan la reparación del escenario imposible de Spec Kit, la reducción del control por teclado de Tessl a las tres flechas requeridas y la descomposición de requisitos de BMAD. Estos ejemplos ilustran el papel de la revisión de especificaciones, pero no constituyen un recuento completo de defectos.
+Los registros de invocaciones permiten contar solicitudes posteriores a la semilla inicial, pero no clasifican de manera uniforme cuáles fueron correcciones, pasos ordinarios del método o reintentos por fallas del servicio. Por ello la Tabla \ref{tab:intervencion_tetris_init} presenta este indicador observable sin llamarlo número definitivo de rondas de corrección. No se cronometró por separado el tiempo de revisión humana ni se administró un protocolo común para registrar defectos hallados exclusivamente por personas; ambos resultados son N/D. Entre las intervenciones documentadas constan la reparación del escenario imposible de Spec Kit, la reducción del control por teclado de Tessl a las tres flechas requeridas y la eliminación de metas cuantitativas no solicitadas en PRD, épicas y especificación de BMAD. Estos ejemplos ilustran el papel de la revisión de especificaciones, pero no constituyen un recuento completo de defectos.
 
 \begin{table}[H]
 \centering
@@ -284,59 +284,9 @@ Los registros de invocaciones permiten contar solicitudes posteriores a la semil
 OpenSpec & 5 & N/D & N/D \\
 Spec Kit & 5 & N/D & N/D \\
 Tessl & 7 & N/D & N/D \\
-BMAD & 1 & N/D & N/D \\
+BMAD & 8 & N/D & N/D \\
 Kiro & 0 & N/D & N/D \\
 \bottomrule
 \end{tabularx}
 \end{table}
-\subsubsection{Análisis de sensibilidad: BMAD con planificación completa}
-\label{subsubsec:bmad_tetris_ruta_completa}
-
-La diferencia observada frente al caso de Calculadora motivó una auditoría de la ejecución BMAD. El manifiesto de la variante original de Tetris confirma una instalación válida de BMAD Method 6.12.0, con módulos \texttt{core} y \texttt{bmm} e integración con Gemini. Su solicitud inicial empleó el camino corto \texttt{bmad-spec} seguido de \texttt{bmad-build}. Para separar el efecto del camino de trabajo del de la instalación, se creó una segunda variante aislada, \texttt{Bmad Method Full}, con la misma semilla (SHA-256 \texttt{2AE084C9C64F}), alcance funcional de la opción A, Gemini CLI 0.60.0 y Vertex AI en el mismo proyecto GCP. Se reinstaló BMAD 6.12.0 con los módulos, la integración Gemini, el idioma inglés y el directorio de salida indicados explícitamente. Esta condición recorrió \textit{product brief}, PRD, arquitectura, épicas e historias, y construcción; no sustituyó los resultados de la variante original en las cinco comparaciones principales.
-
-\begin{table}[H]
-\centering
-\caption{Contraste de ruta BMAD en Tetris y referencia publicada para Calculadora -- Etapa 1}
-\label{tab:bmad_rutas_tetris_init}
-\small
-\begin{tabularx}{\textwidth}{l Y Y Y}
-\toprule
-\textbf{Indicador} & \textbf{Tetris, ruta corta} & \textbf{Tetris, ruta completa} & \textbf{Calculadora, tesis} \\
-\midrule
-Archivos principales de especificación & 4 & 6 & 18 \\
-Líneas físicas de especificación & 402 & 1.120 & 1.421 \\
-Invocaciones registradas & 2 & 9 & N/D en esta auditoría \\
-Tiempo acumulado de agente & 1.146,038 s (19,10 min) & 3.299,511 s (54,99 min) & 4.947 s (82,45 min) \\
-Entrada observable & 4.443.575 tokens & 17.653.626 tokens & N/D en esta auditoría \\
-Entrada cacheada & 3.157.729 tokens & 12.533.513 tokens & N/D en esta auditoría \\
-Salida observable & 34.646 tokens & 237.579 tokens & N/D en esta auditoría \\
-Costo teórico del tráfico & 2,7142 USD & 11,6984 USD & N/D en esta auditoría \\
-\bottomrule
-\multicolumn{4}{p{\dimexpr\textwidth-2\tabcolsep}}{\footnotesize \textit{Nota:} La ruta completa cuenta seis documentos principales en \texttt{\_bmad-output}; excluye dos memorias de proceso \texttt{.memlog.md} y el estado YAML del sprint. Las trazas crudas de Calculadora y su regla exacta de conteo de archivos no están disponibles aquí. Los tiempos de Tetris suman invocaciones del agente, incluidos intentos fallidos, sin instalación, pruebas externas ni SonarQube. El costo es una estimación sobre tokens registrados, no una factura de GCP.} \\
-\end{tabularx}
-\end{table}
-
-La repetición elevó el volumen documental de 402 a 1.120 líneas y el tiempo registrado de 19,10 a 54,99 minutos, sin reproducir los 18 archivos ni los 82,45 minutos comunicados para Calculadora. BMAD agrupó las historias de Tetris en un documento de épicas; una distinta división de los mismos contenidos podría alterar el número de archivos. También se contabilizaron el arranque fallido por permisos del entorno, una invocación detenida en modo de planificación, una reanudación vacía y una corrección posterior. Durante la revisión se eliminaron de PRD, épicas y especificación dos metas cuantitativas añadidas por el agente que no pertenecían a la semilla (100 sesiones/256 MB y latencia p95 inferior a 50 ms); se conservaron los 30 requisitos funcionales. La evidencia apoya que el camino corto explica parte de la diferencia \emph{dentro de Tetris}, pero no permite atribuir causalmente el tiempo de Calculadora al instalador, al modelo o a una única decisión sin sus trazas originales.
-
-\begin{table}[H]
-\centering
-\caption{Calidad y verificación de las dos rutas BMAD -- Tetris Etapa 1}
-\label{tab:bmad_calidad_rutas_tetris_init}
-\small
-\begin{tabularx}{\textwidth}{l Y Y}
-\toprule
-\textbf{Indicador} & \textbf{Ruta corta} & \textbf{Planificación completa} \\
-\midrule
-LOC SonarQube (\texttt{ncloc}) & 778 & 669 \\
-Bugs / vulnerabilidades / \textit{code smells} & 0 / 2 / 8 & 0 / 1 / 13 \\
-Complejidad cognitiva / deuda estimada & 64 / 45 min & 97 / 84 min \\
-Cobertura global / duplicación & 57,6\% / 0\% & 63,2\% / 0\% \\
-Pruebas de backend aprobadas & 7 & 13 \\
-\textit{Quality gate} SonarQube & OK & OK \\
-\bottomrule
-\end{tabularx}
-\end{table}
-
-Las 13 pruebas de la ruta completa pasaron con 98\% de cobertura del código Python de backend; además pasaron la compilación de React y una verificación independiente de tablero, colisiones, fijación, borrado de una a cuatro líneas, fin de partida, las cuatro rutas HTTP y reinicio. Este 98\% no debe confundirse con el 63,2\% de cobertura \emph{global} reportada por SonarQube, que también comprende el frontend sin una suite equivalente. La ruta completa tuvo una vulnerabilidad menos y mayor cobertura global que la corta, pero acumuló cinco \textit{code smells} adicionales, más complejidad cognitiva y 39 minutos más de deuda estimada. La vulnerabilidad restante corresponde a la regla \texttt{python:S2245}, asociada a la selección pseudoaleatoria de piezas; requiere interpretación en el contexto del juego. No se añadió esta sexta condición al radar de las cinco herramientas porque representa un cambio de flujo dentro de BMAD, no otra herramienta ni otra semilla.
-
 

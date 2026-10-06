@@ -9,7 +9,7 @@ from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parent.parent
-TOOLS = ("OpenSpec", "Spec Kit", "Tessl", "Bmad Method")
+TOOLS = ("OpenSpec", "Spec Kit", "Tessl")
 
 
 def parse_time(value: str | None) -> datetime | None:
@@ -57,6 +57,11 @@ def records_for_tool(tool_root: Path) -> list[tuple[datetime, str, dict[str, int
 
 def main() -> None:
     rows = []
+    prior = {}
+    output = ROOT / "shared" / "token-sessions.csv"
+    if output.exists():
+        with output.open(encoding="utf-8", newline="") as file:
+            prior = {(row["tool"], row["run"]): row for row in csv.DictReader(file)}
     for tool in TOOLS:
         tool_root = ROOT / tool
         records = records_for_tool(tool_root)
@@ -76,8 +81,13 @@ def main() -> None:
                         "model_responses": len(relevant),
                     }
             if tokens is None:
-                source = "unavailable"
-                tokens = {"input_tokens": None, "output_tokens": None, "cached_tokens": None, "model_responses": None}
+                archived = prior.get((tool, run_path.name))
+                if archived and archived.get("input_tokens"):
+                    source = "archived session evidence"
+                    tokens = {key: archived[key] for key in ("input_tokens", "output_tokens", "cached_tokens", "model_responses")}
+                else:
+                    source = "unavailable"
+                    tokens = {"input_tokens": None, "output_tokens": None, "cached_tokens": None, "model_responses": None}
             rows.append({
                 "tool": tool,
                 "run": run_path.name,
@@ -86,7 +96,19 @@ def main() -> None:
                 "source": source,
                 **tokens,
             })
-    output = ROOT / "shared" / "token-sessions.csv"
+    canonical = json.loads((ROOT / "shared" / "bmad-metrics.json").read_text(encoding="utf-8"))
+    model = canonical["model"]
+    rows.append({
+        "tool": "Bmad Method",
+        "run": "all 9 invocations (aggregate)",
+        "duration_seconds": canonical["execution"]["agent_seconds_including_failed_starts"],
+        "exit_code": "mixed; startup failure included",
+        "source": "19 retained Gemini JSONL transcripts",
+        "input_tokens": model["input"],
+        "output_tokens": model["output"],
+        "cached_tokens": model["cached"],
+        "model_responses": model["model_responses"],
+    })
     with output.open("w", encoding="utf-8", newline="") as file:
         writer = csv.DictWriter(file, fieldnames=list(rows[0]))
         writer.writeheader()

@@ -1,17 +1,17 @@
 {
   "component": {
-    "key": "tetris-stage1-bmad",
-    "name": "Tetris Stage 1 BMad Method",
+    "key": "tetris-stage1-bmad-full",
+    "name": "Tetris Stage 1 BMAD Full",
     "qualifier": "TRK",
     "measures": [
       {
         "metric": "coverage",
-        "value": "57.6",
+        "value": "63.2",
         "bestValue": false
       },
       {
         "metric": "complexity",
-        "value": "96"
+        "value": "83"
       },
       {
         "metric": "reliability_rating",
@@ -20,7 +20,7 @@
       },
       {
         "metric": "code_smells",
-        "value": "8",
+        "value": "13",
         "bestValue": false
       },
       {
@@ -35,7 +35,7 @@
       },
       {
         "metric": "sqale_index",
-        "value": "45",
+        "value": "84",
         "bestValue": false
       },
       {
@@ -50,21 +50,21 @@
       },
       {
         "metric": "cognitive_complexity",
-        "value": "64",
+        "value": "97",
         "bestValue": false
       },
       {
         "metric": "ncloc",
-        "value": "778"
+        "value": "669"
       },
       {
         "metric": "vulnerabilities",
-        "value": "2",
+        "value": "1",
         "bestValue": false
       },
       {
         "metric": "lines",
-        "value": "976"
+        "value": "789"
       }
     ]
   }

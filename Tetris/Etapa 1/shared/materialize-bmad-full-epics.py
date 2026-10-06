@@ -7,7 +7,7 @@ import json
 import re
 from pathlib import Path
 
-ROOT = Path(__file__).resolve().parent.parent / "Bmad Method Full"
+ROOT = Path(__file__).resolve().parent.parent / "Bmad Method"
 SOURCE = ROOT / "docs/full-epics-stories.stdout.json"
 OUTPUTS = [
     ("epics.md", "markdown", ROOT / "_bmad-output/planning-artifacts/epics.md"),

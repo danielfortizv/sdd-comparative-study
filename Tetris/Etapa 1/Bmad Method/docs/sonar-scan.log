@@ -2,70 +2,70 @@ INFO: Starting the analysis...
 INFO: Starting SonarScanner Engine...
 INFO: Java 21.0.11 Eclipse Adoptium (64-bit)
 INFO: Load global settings
-INFO: Load global settings (done) | time=139ms
+INFO: Load global settings (done) | time=119ms
 INFO: Server id: 147B411E-AaDs0FqMYsoySKrT1xhM
 INFO: Loading required plugins
 INFO: Load plugins index
-INFO: Load plugins index (done) | time=33ms
+INFO: Load plugins index (done) | time=39ms
 INFO: Load/download plugins
-INFO: Load/download plugins (done) | time=350ms
+INFO: Load/download plugins (done) | time=354ms
 INFO: Process project properties
-INFO: Process project properties (done) | time=13ms
-INFO: Project key: tetris-stage1-bmad
-INFO: Base dir: D:\KEVIN\UNIVERSIDAD\Trabajos\Moviles\Caso 2-Tetris\Etapa 1\Bmad Method
-INFO: Working dir: D:\KEVIN\UNIVERSIDAD\Trabajos\Moviles\Caso 2-Tetris\Etapa 1\Bmad Method\.sonar
-INFO: Load project settings for component key: 'tetris-stage1-bmad'
+INFO: Process project properties (done) | time=14ms
+INFO: Project key: tetris-stage1-bmad-full
+INFO: Base dir: D:\KEVIN\UNIVERSIDAD\Trabajos\Proyecto\Caso 2-Tetris\Etapa 1\Bmad Method Full
+INFO: Working dir: D:\KEVIN\UNIVERSIDAD\Trabajos\Proyecto\Caso 2-Tetris\Etapa 1\Bmad Method Full\.sonar
+INFO: Load project settings for component key: 'tetris-stage1-bmad-full'
 INFO: Load quality profiles
-INFO: Load quality profiles (done) | time=222ms
+INFO: Load quality profiles (done) | time=274ms
 WARNING: SCM provider autodetection failed. Please use "sonar.scm.provider" to define SCM of your project, or disable the SCM Sensor in the project settings.
 INFO: Load active rules
-INFO: Load active rules (done) | time=417ms
+INFO: Load active rules (done) | time=567ms
 INFO: Load analysis cache
-INFO: Load analysis cache (404) | time=10ms
+INFO: Load analysis cache (404) | time=12ms
 INFO: Preprocessing files...
-INFO: 3 languages detected in 17 preprocessed files (done) | time=49ms
+INFO: 3 languages detected in 11 preprocessed files (done) | time=49ms
 INFO: Loading plugins for detected languages
 INFO: Load/download plugins
-INFO: Load/download plugins (done) | time=1078ms
+INFO: Load/download plugins (done) | time=1304ms
 INFO: Load project repositories
-INFO: Load project repositories (done) | time=8ms
+INFO: Load project repositories (done) | time=11ms
 INFO: Indexing files...
 INFO: Project configuration:
-INFO: 16 files indexed (done) | time=26ms
+INFO: 11 files indexed (done) | time=27ms
 INFO: Quality profile for css: Sonar way
 INFO: Quality profile for py: Sonar way
 INFO: Quality profile for ts: Sonar way
-INFO: ------------- Run sensors on module Tetris Stage 1 BMad Method
+INFO: ------------- Run sensors on module Tetris Stage 1 BMAD Full
 INFO: Load metrics repository
-INFO: Load metrics repository (done) | time=37ms
+INFO: Load metrics repository (done) | time=44ms
 INFO: Sensor IaC YAML File Type Classification Sensor [iac]
-INFO: Sensor IaC YAML File Type Classification Sensor [iac] (done) | time=6ms
+INFO: Sensor IaC YAML File Type Classification Sensor [iac] (done) | time=4ms
 INFO: Sensor IaC hadolint report Sensor [iac]
 INFO: Sensor IaC hadolint report Sensor [iac] (done) | time=0ms
 INFO: Sensor Java Config Sensor [iac]
 INFO: There are no files to be analyzed for the Java language
-INFO: Sensor Java Config Sensor [iac] (done) | time=1ms
+INFO: Sensor Java Config Sensor [iac] (done) | time=0ms
 INFO: Sensor IaC Docker Sensor [iac]
 INFO: There are no files to be analyzed for the Docker language
-INFO: Sensor IaC Docker Sensor [iac] (done) | time=2ms
+INFO: Sensor IaC Docker Sensor [iac] (done) | time=1ms
 INFO: Sensor Python Sensor [python]
 WARNING: Your code is analyzed as compatible with all Python 3 versions by default. You can get a more precise analysis by setting the Python version or version range in your configuration via the parameter "sonar.python.version"
 INFO: Starting global symbols computation
-INFO: 6 source files to be analyzed
-INFO: 6/6 source files have been analyzed
-INFO: Finished step global symbols computation in 436ms
+INFO: 4 source files to be analyzed
+INFO: 4/4 source files have been analyzed
+INFO: Finished step global symbols computation in 505ms
 INFO: Starting rules execution
-INFO: 6 source files to be analyzed
-INFO: 6/6 source files have been analyzed
-INFO: Finished step rules execution in 1201ms
-INFO: The Python analyzer was able to leverage cached data from previous analyses for 0 out of 6 files. These files were not parsed.
-INFO: Sensor Python Sensor [python] (done) | time=2327ms
+INFO: 4 source files to be analyzed
+INFO: 4/4 source files have been analyzed
+INFO: Finished step rules execution in 1311ms
+INFO: The Python analyzer was able to leverage cached data from previous analyses for 0 out of 4 files. These files were not parsed.
+INFO: Sensor Python Sensor [python] (done) | time=3023ms
 INFO: Sensor Cobertura Sensor for Python coverage [python]
 INFO: Python test coverage
-INFO: Parsing report 'D:\KEVIN\UNIVERSIDAD\Trabajos\Moviles\Caso 2-Tetris\Etapa 1\Bmad Method\docs\coverage.xml'
-INFO: Sensor Cobertura Sensor for Python coverage [python] (done) | time=162ms
+INFO: Parsing report 'D:\KEVIN\UNIVERSIDAD\Trabajos\Proyecto\Caso 2-Tetris\Etapa 1\Bmad Method Full\docs\coverage.xml'
+INFO: Sensor Cobertura Sensor for Python coverage [python] (done) | time=359ms
 INFO: Sensor PythonXUnitSensor [python]
-INFO: Sensor PythonXUnitSensor [python] (done) | time=33ms
+INFO: Sensor PythonXUnitSensor [python] (done) | time=148ms
 INFO: Sensor Python Dependency Sensor [python]
 INFO: Sensor Python Dependency Sensor [python] (done) | time=4ms
 INFO: Sensor TextAndSecretsSensor [text]
@@ -75,41 +75,41 @@ INFO: Start fetching files for the text and secrets analysis
 INFO: Using Git CLI to retrieve dirty files
 WARNING: Retrieving only language associated files, make sure to run the analysis inside a git repository to make use of inclusions specified via "sonar.text.inclusions"
 INFO: Starting the text and secrets analysis
-INFO: 10 source files to be analyzed for the text and secrets analysis
-INFO: 10/10 source files have been analyzed for the text and secrets analysis
-INFO: Sensor TextAndSecretsSensor [text] (done) | time=1154ms
+INFO: 7 source files to be analyzed for the text and secrets analysis
+INFO: 7/7 source files have been analyzed for the text and secrets analysis
+INFO: Sensor TextAndSecretsSensor [text] (done) | time=722ms
 INFO: ------------- Run sensors on project
 INFO: Sensor JavaScript/TypeScript/CSS analysis [javascript]
 INFO: Detected os: Windows 11 arch: amd64 alpine: false. Platform: WIN_X64
-INFO: Deploy location C:\Users\Kevin Alvarez\.sonar\js\node-runtime, tagetRuntime: C:\Users\Kevin Alvarez\.sonar\js\node-runtime\node.exe,  version: C:\Users\Kevin Alvarez\.sonar\js\node-runtime\version.txt
+INFO: Deploy location D:\KEVIN\UNIVERSIDAD\Trabajos\Proyecto\Caso 2-Tetris\Etapa 1\Bmad Method Full\.sonar-user-home\js\node-runtime, tagetRuntime: D:\KEVIN\UNIVERSIDAD\Trabajos\Proyecto\Caso 2-Tetris\Etapa 1\Bmad Method Full\.sonar-user-home\js\node-runtime\node.exe,  version: D:\KEVIN\UNIVERSIDAD\Trabajos\Proyecto\Caso 2-Tetris\Etapa 1\Bmad Method Full\.sonar-user-home\js\node-runtime\version.txt
 INFO: Using embedded Node.js runtime.
-INFO: Using Node.js executable: 'C:\Users\Kevin Alvarez\.sonar\js\node-runtime\node.exe'.
+INFO: Using Node.js executable: 'D:\KEVIN\UNIVERSIDAD\Trabajos\Proyecto\Caso 2-Tetris\Etapa 1\Bmad Method Full\.sonar-user-home\js\node-runtime\node.exe'.
 INFO: Memory configuration: OS (24501 MB), Node.js (4288 MB).
-INFO: gRPC analyze-project server listening on 127.0.0.1:50979
+INFO: gRPC analyze-project server listening on 127.0.0.1:55109
 INFO: Plugin version: [13.8.0.44569]
-INFO: Found 1 tsconfig.json file(s): [D:/KEVIN/UNIVERSIDAD/Trabajos/Moviles/Caso 2-Tetris/Etapa 1/Bmad Method/frontend/tsconfig.json]
-INFO: 4 source files to be analyzed
-INFO: Creating TypeScript(6.0.3) program with configuration file D:/KEVIN/UNIVERSIDAD/Trabajos/Moviles/Caso 2-Tetris/Etapa 1/Bmad Method/frontend/tsconfig.json [lib: lib.dom.d.ts, lib.dom.iterable.d.ts, lib.es2020.d.ts]
-INFO: Analyzing 3 file(s) from tsconfig D:/KEVIN/UNIVERSIDAD/Trabajos/Moviles/Caso 2-Tetris/Etapa 1/Bmad Method/frontend/tsconfig.json (63 total files in program)
-INFO: 4/4 source files have been analyzed
-INFO: Hit the cache for 0 out of 3
-INFO: Miss the cache for 3 out of 3: ANALYSIS_MODE_INELIGIBLE [3/3]
-INFO: Sensor JavaScript/TypeScript/CSS analysis [javascript] (done) | time=11621ms
+INFO: Found 1 tsconfig.json file(s): [D:/KEVIN/UNIVERSIDAD/Trabajos/Proyecto/Caso 2-Tetris/Etapa 1/Bmad Method Full/frontend/tsconfig.json]
+INFO: 3 source files to be analyzed
+INFO: Creating TypeScript(6.0.3) program with configuration file D:/KEVIN/UNIVERSIDAD/Trabajos/Proyecto/Caso 2-Tetris/Etapa 1/Bmad Method Full/frontend/tsconfig.json [lib: lib.dom.d.ts, lib.dom.iterable.d.ts, lib.es2020.d.ts]
+INFO: Analyzing 2 file(s) from tsconfig D:/KEVIN/UNIVERSIDAD/Trabajos/Proyecto/Caso 2-Tetris/Etapa 1/Bmad Method Full/frontend/tsconfig.json (55 total files in program)
+INFO: 3/3 source files have been analyzed
+INFO: Hit the cache for 0 out of 2
+INFO: Miss the cache for 2 out of 2: ANALYSIS_MODE_INELIGIBLE [2/2]
+INFO: Sensor JavaScript/TypeScript/CSS analysis [javascript] (done) | time=15237ms
 INFO: Sensor IaC Project Sensor [iac]
-INFO: Sensor IaC Project Sensor [iac] (done) | time=1ms
+INFO: Sensor IaC Project Sensor [iac] (done) | time=2ms
 INFO: Sensor Zero Coverage Sensor
-INFO: Sensor Zero Coverage Sensor (done) | time=1ms
+INFO: Sensor Zero Coverage Sensor (done) | time=2ms
 INFO: ------------- Gather SCA dependencies on project
 INFO: Dependency analysis skipped
 INFO: SCM Publisher No SCM system was detected. You can use the 'sonar.scm.provider' property to explicitly specify it.
 INFO: CPD Executor 2 files had no CPD blocks
-INFO: CPD Executor Calculating CPD for 5 files
-INFO: CPD Executor CPD calculation finished (done) | time=11ms
-INFO: Analysis report generated in 256ms, dir size=382.7 kB
-INFO: Analysis report compressed in 322ms, zip size=85.1 kB
-INFO: Analysis report uploaded in 583ms
-INFO: ANALYSIS SUCCESSFUL, you can find the results at: http://127.0.0.1:9000/dashboard?id=tetris-stage1-bmad
+INFO: CPD Executor Calculating CPD for 3 files
+INFO: CPD Executor CPD calculation finished (done) | time=6ms
+INFO: Analysis report generated in 161ms, dir size=382.3 kB
+INFO: Analysis report compressed in 341ms, zip size=81.6 kB
+INFO: Analysis report uploaded in 647ms
+INFO: ANALYSIS SUCCESSFUL, you can find the results at: http://127.0.0.1:9000/dashboard?id=tetris-stage1-bmad-full
 INFO: Note that you will be able to access the updated dashboard once the server has processed the submitted analysis report
-INFO: More about the report processing at http://127.0.0.1:9000/api/ce/task?id=cfcb75cc-6456-4a8f-8325-8e863ac5f6e2
-INFO: Analysis total time: 20.570 s
+INFO: More about the report processing at http://127.0.0.1:9000/api/ce/task?id=db451e4a-a5d4-4572-a73a-86fd4d47f3cb
+INFO: Analysis total time: 25.344 s
 INFO: SonarScanner Engine completed successfully

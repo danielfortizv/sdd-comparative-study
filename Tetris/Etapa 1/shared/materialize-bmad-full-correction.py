@@ -8,7 +8,7 @@ import re
 from pathlib import Path
 
 
-TOOL = Path(__file__).resolve().parent.parent / "Bmad Method Full"
+TOOL = Path(__file__).resolve().parent.parent / "Bmad Method"
 SOURCE = TOOL / "docs/full-build-auto-correction.stdout.json"
 EXPECTED = {
     "_bmad-output/planning-artifacts/prds/prd-Bmad Method Full-2026-10-05/prd.md",

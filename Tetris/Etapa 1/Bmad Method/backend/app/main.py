@@ -1,102 +1,75 @@
 import uuid
-from typing import Dict, Optional, Literal
+from typing import Dict, Literal
 from fastapi import FastAPI, HTTPException, status
 from fastapi.middleware.cors import CORSMiddleware
+from pydantic import BaseModel
 
-from app.models import GameState, MoveRequest, ErrorResponse
-from app.rules import init_new_game, move_piece, process_gravity_tick
-
-app = FastAPI(
-    title="Tetris Study API",
-    description="Authoritative game state backend for Tetris Stage 1 Option A",
-    version="1.0.0"
+from app.core.domain import (
+    GameState,
+    create_new_game,
+    move_piece,
+    tick_game
 )
 
-# Enable CORS for frontend integration
+app = FastAPI(title="Stage 1 Tetris Study API", version="1.0.0")
+
+# CORS setup for local React development
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # Allows all origins in development
+    allow_origins=["http://localhost:5173", "http://localhost:3000"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
 
-# In-memory storage of game sessions
-games: Dict[str, GameState] = {}
+# Ephemeral in-memory sessions mapping UUID -> GameState
+sessions: Dict[str, GameState] = {}
 
-@app.post(
-    "/api/games",
-    response_model=GameState,
-    status_code=status.HTTP_201_CREATED,
-    summary="Create or restart a game session"
-)
-def create_game(test_piece: Optional[str] = None):
-    """
-    Creates a new game session with a unique UUID.
-    If 'test_piece' is provided, the first spawned piece will be forced to that type.
-    """
+class MoveRequest(BaseModel):
+    direction: Literal["left", "right", "down"]
+
+@app.post("/api/games", status_code=status.HTTP_201_CREATED, response_model=GameState)
+def create_game():
+    """Initializes a brand new game session in memory and spawns the first piece."""
     game_id = str(uuid.uuid4())
-    state = init_new_game(game_id, fixed_first_piece=test_piece)
-    games[game_id] = state
+    state = create_new_game(game_id)
+    sessions[game_id] = state
     return state
 
-@app.get(
-    "/api/games/{game_id}",
-    response_model=GameState,
-    summary="Get current game state"
-)
-def get_game(game_id: str):
-    """
-    Retrieves the current state of an active game session.
-    Throws a 404 error if the session ID is invalid.
-    """
-    if game_id not in games:
+@app.get("/api/games/{id}", response_model=GameState)
+def get_game(id: str):
+    """Retrieves the current game state of the given game session ID."""
+    if id not in sessions:
         raise HTTPException(
             status_code=status.HTTP_404_NOT_FOUND,
-            detail=f"Game session {game_id} not found"
+            detail="Game session not found"
         )
-    return games[game_id]
+    return sessions[id]
 
-@app.post(
-    "/api/games/{game_id}/tick",
-    response_model=GameState,
-    summary="Advance game state by one gravity tick"
-)
-def tick_game(game_id: str, test_next_piece: Optional[str] = None):
-    """
-    Advances gravity by one row. If the piece locks, a new one is spawned.
-    If 'test_next_piece' is provided, the subsequent spawned piece will be forced to that type.
-    Throws 404 if the session ID is invalid.
-    """
-    if game_id not in games:
+@app.post("/api/games/{id}/tick", response_model=GameState)
+def tick_game_session(id: str):
+    """Advances the game state by one gravity tick."""
+    if id not in sessions:
         raise HTTPException(
             status_code=status.HTTP_404_NOT_FOUND,
-            detail=f"Game session {game_id} not found"
+            detail="Game session not found"
         )
     
-    state = games[game_id]
-    updated_state = process_gravity_tick(state, fixed_next_piece=test_next_piece)
-    games[game_id] = updated_state
-    return updated_state
+    current_state = sessions[id]
+    new_state = tick_game(current_state)
+    sessions[id] = new_state
+    return new_state
 
-@app.post(
-    "/api/games/{game_id}/move",
-    response_model=GameState,
-    summary="Move the active piece"
-)
-def move_game_piece(game_id: str, request: MoveRequest):
-    """
-    Shifts the active falling tetromino left, right, or down by 1 cell.
-    If the requested move results in a collision, the command is ignored and state remains unchanged.
-    Throws 404 if the session ID is invalid.
-    """
-    if game_id not in games:
+@app.post("/api/games/{id}/move", response_model=GameState)
+def move_game_session(id: str, request: MoveRequest):
+    """Performs a manual shift in the specified direction if legal."""
+    if id not in sessions:
         raise HTTPException(
             status_code=status.HTTP_404_NOT_FOUND,
-            detail=f"Game session {game_id} not found"
+            detail="Game session not found"
         )
     
-    state = games[game_id]
-    updated_state = move_piece(state, request.direction)
-    games[game_id] = updated_state
-    return updated_state
+    current_state = sessions[id]
+    new_state = move_piece(current_state, request.direction)
+    sessions[id] = new_state
+    return new_state

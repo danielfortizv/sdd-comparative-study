@@ -13,7 +13,7 @@ Primary matrix: https://docs.google.com/document/d/1Fi7XAKY2Cd379spmq7ggxgoE0rEj
 - GCP project: `project-e6384dd1-d4d3-4a03-948`; Vertex AI location: `global`. Do not store tokens, credentials or service account keys in this workspace.
 - Use Python FastAPI for the backend and React with TypeScript for the frontend. Backend owns state and rules, frontend renders API state.
 - No manual edits to tool-generated application code after generation. Log each clarification and resulting specification change. Harness files, experiment logs, and external acceptance tests are researcher-created and clearly identified.
-- Do not use Git commits. Preserve raw session transcripts and tool output when available.
+- Preserve raw session transcripts and tool output when available. Repository publication was subsequently requested and authorized by the user; the current snapshot has one canonical BMAD entry.
 - Keep reports, screenshots and evaluation notes in each tool's `docs/` and in the shared `report/`. Place `.geminiignore` at each Gemini-driven tool root, ignoring `docs/`, `.env`, `node_modules/`, `build/` and `dist/`.
 
 ## Acceptance criteria and metrics
