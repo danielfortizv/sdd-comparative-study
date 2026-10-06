@@ -1,0 +1,15 @@
+{
+  "source": "docs\\full-prd.stdout.json",
+  "reason": "Gemini CLI authored the PRD and addendum in stdout but reported no writable tools; contents were copied verbatim from its fenced output.",
+  "files": {
+    "prd.md": {
+      "sha256": "dfd07a454f867450e87884ddd86f239d6e518277b782479d3ace94bb818fd6a4",
+      "lines": 352
+    },
+    "addendum.md": {
+      "sha256": "b9a3d00c6f136df13600f7b689b2063600e3a633c41ad144311128e904ca7551",
+      "lines": 42
+    }
+  },
+  "unique_requirement_ids": 30
+}

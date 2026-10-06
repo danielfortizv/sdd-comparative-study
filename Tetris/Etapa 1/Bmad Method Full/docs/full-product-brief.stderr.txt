@@ -1,0 +1,11 @@
+An unexpected critical error occurred:Error: EPERM: operation not permitted, realpath 'D:\KEVIN\UNIVERSIDAD\Trabajos\Proyecto\Caso 2-Tetris\Etapa 1\Bmad Method Full'
+    at node:fs:2821:18
+    at robustRealpath (file:///D:/KEVIN/UNIVERSIDAD/Trabajos/Proyecto/Caso%202-Tetris/Etapa%201/_toolchain/node_modules/@google/gemini-cli/bundle/chunk-M6NSK26M.js:252244:20)
+    at resolveToRealPath (file:///D:/KEVIN/UNIVERSIDAD/Trabajos/Proyecto/Caso%202-Tetris/Etapa%201/_toolchain/node_modules/@google/gemini-cli/bundle/chunk-M6NSK26M.js:252233:19)
+    at _Storage.isWorkspaceHomeDir (file:///D:/KEVIN/UNIVERSIDAD/Trabajos/Proyecto/Caso%202-Tetris/Etapa%201/_toolchain/node_modules/@google/gemini-cli/bundle/chunk-M6NSK26M.js:253229:26)
+    at _doLoadSettings (file:///D:/KEVIN/UNIVERSIDAD/Trabajos/Proyecto/Caso%202-Tetris/Etapa%201/_toolchain/node_modules/@google/gemini-cli/bundle/chunk-OCLZG6C5.js:16610:16)
+    at file:///D:/KEVIN/UNIVERSIDAD/Trabajos/Proyecto/Caso%202-Tetris/Etapa%201/_toolchain/node_modules/@google/gemini-cli/bundle/chunk-OCLZG6C5.js:16518:11
+    at CacheService.getOrCreate (file:///D:/KEVIN/UNIVERSIDAD/Trabajos/Proyecto/Caso%202-Tetris/Etapa%201/_toolchain/node_modules/@google/gemini-cli/bundle/chunk-M6NSK26M.js:310468:15)
+    at loadSettings (file:///D:/KEVIN/UNIVERSIDAD/Trabajos/Proyecto/Caso%202-Tetris/Etapa%201/_toolchain/node_modules/@google/gemini-cli/bundle/chunk-OCLZG6C5.js:16516:24)
+    at main (file:///D:/KEVIN/UNIVERSIDAD/Trabajos/Proyecto/Caso%202-Tetris/Etapa%201/_toolchain/node_modules/@google/gemini-cli/bundle/gemini-LUNNHKPJ.js:16945:20)
+    at run (file:///D:/KEVIN/UNIVERSIDAD/Trabajos/Proyecto/Caso%202-Tetris/Etapa%201/_toolchain/node_modules/@google/gemini-cli/bundle/gemini.js:121:5)

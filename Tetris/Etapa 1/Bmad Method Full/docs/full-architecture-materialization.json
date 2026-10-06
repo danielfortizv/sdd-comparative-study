@@ -1,0 +1,26 @@
+{
+  "source": "docs\\full-architecture-ux.stdout.json",
+  "reason": "Gemini authored corrected native documents in stdout because it reported no writable tools; the fenced contents were materialized verbatim.",
+  "files": {
+    "_bmad-output\\planning-artifacts\\briefs\\brief-Bmad Method Full-2026-10-05\\brief.md": {
+      "sha256": "980cd8f8012ee34d61bf3bb849d0cafda5e3235b5aaa011ad66e887e523b1481",
+      "lines": 181
+    },
+    "_bmad-output\\planning-artifacts\\prds\\prd-Bmad Method Full-2026-10-05\\prd.md": {
+      "sha256": "0ca867c8991d621b1e2c16e2535938098b478e7ab07fb4b33069aff55cbc6248",
+      "lines": 352
+    },
+    "_bmad-output\\planning-artifacts\\briefs\\brief-Bmad Method Full-2026-10-05\\.memlog.md": {
+      "sha256": "c0cb0b4b12d83f54128b4161434c30ae5dc395a5fe7248b2d22c356dca9308b0",
+      "lines": 17
+    },
+    "_bmad-output\\planning-artifacts\\architecture\\architecture-Bmad Method Full-2026-10-05\\.memlog.md": {
+      "sha256": "86e7e56ef6af11c9eb3b99d912344d7ccc6c3cf190fd778620f0e807aecc3381",
+      "lines": 17
+    },
+    "_bmad-output\\planning-artifacts\\architecture\\architecture-Bmad Method Full-2026-10-05\\ARCHITECTURE-SPINE.md": {
+      "sha256": "0ee12a1dca98ac2d55c8a9442db0f5a1f2e9516401899053079c19023171b4bc",
+      "lines": 126
+    }
+  }
+}

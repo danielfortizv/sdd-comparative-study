@@ -1,0 +1,104 @@
+I have reviewed the project specifications and requirements, completed our initial analysis of the planning artifacts, and formulated a comprehensive implementation strategy for Stage 1 Option A of the Tetris study.
+
+I have saved our detailed implementation plan at:
+`docs/gemini-home/.gemini/tmp/bmad-method-full/a6ac644b-e709-4592-bc03-59c2f5c55324/plans/stage_1_tetris_plan.md`
+
+Below is the complete text of our proposed implementation plan for your review and informal agreement:
+
+```markdown
+# Stage 1 Tetris Study Plan (Option A)
+
+This document contains the detailed plan for building Stage 1 (Option A) of the Tetris Study greenfield codebase, including planning-artifact amendments, backend state-machine execution, frontend stateless rendering, and rigorous verification.
+
+---
+
+## 1. Background & Motivation
+The Tetris Study aims to build a modern, high-fidelity classic Tetris game that demonstrates a strictly decoupled client-server architecture. To ensure robust performance, complete testability, and a clean baseline, we are implementing a greenfield setup with:
+- **Authoritative FastAPI Backend:** Controls all core physics, piece spawns, collisions, line clears, and session lifecycles.
+- **Stateless React TypeScript Frontend:** Listens to keyboard inputs (`ArrowLeft`, `ArrowRight`, `ArrowDown`), renders the board using a 10x20 dark grid, and dispatches ticks every 500ms.
+
+As part of setting up this greenfield development, we must first audit and amend our planning/specification artifacts to remove unsupported quantitative targets (such as handling exactly 100 concurrent sessions, a memory cap of 256MB, and p95 latencies under 50ms) to reflect realistic local execution expectations.
+
+---
+
+## 2. Scope & Impact
+- **Amendments:** Update `prd.md`, `addendum.md`, and `epics.md` to prune quantitative requirements, keeping the underlying architectural structure and clean local-first performance indicators.
+- **Backend (`backend/`):** Expose endpoints `/api/games`, `/api/games/{id}`, `/api/games/{id}/tick`, and `/api/games/{id}/move` using FastAPI. Run a background cleanup loop to evict idle sessions older than 15 minutes.
+- **Frontend (`frontend/`):** React functional component using TypeScript and Vanilla CSS. Implements centered grid layout with charcoal colors, neon blocks with glowing effects for active pieces, control shortcuts info, and restart controls.
+- **Verification:** Establish baseline unit and integration tests using `pytest` verifying spawning, movements, all boundaries, immediate locking, and line clears.
+
+---
+
+## 3. Proposed Solution
+
+### A. Artifact Amendments
+- **`prd.md`**: Remove NFR-3 (Memory ceiling) and NFR-4 (Latency budget). Update success metrics to reflect responsiveness on the local machine rather than arbitrary network constraints.
+- **`addendum.md`**: Update Section 3 "Capacity & Session Management Sizing" to delete the specific "100 concurrent sessions" and "256MB memory cap" claims, noting instead that the lightweight dict structure easily scales for local development sessions.
+- **`epics.md`**: Remove NFR-3 and NFR-4 from the inventory and Story 5.4.
+
+### B. Directory Structure (Greenfield Setup)
+```text
+backend/
+  app/
+    main.py          # FastAPI server, routing, lifespan cleanup task
+    core/
+      domain.py      # Authoritative Tetris domain (GameState, ActivePiece)
+  tests/
+    test_domain.py # Pytest unit and integration tests
+frontend/
+  src/
+    main.tsx         # React entrypoint
+    App.tsx          # Centered UI layout, controls listener, gravity interval timer
+    styles.css       # Neon dark layout CSS styles
+```
+
+---
+
+## 4. Alternatives Considered
+- **Client-Side Rotation Engine:** Standard Tetris requires SRS rotation. However, to keep Stage 1 highly focused on server-side authority, collision correctness, and basic layout, piece rotation is explicitly out-of-scope. Thus, fixed spawned orientations are implemented.
+- **Database/Redis Session State:** Utilizing Redis or a PostgreSQL database would solve persistence across server restarts. But for local study purposes, an in-memory dictionary is faster, simpler, database-free, and avoids heavy configuration overhead.
+
+---
+
+## 5. Phased Implementation Plan
+
+### Phase 1: Planning Artifacts Audit & Amendment
+- Use surgical file replacements/edits to strip unsupported NFRs from `prd.md`, `addendum.md`, and `epics.md`.
+- Record these updates cleanly in the specification directories.
+
+### Phase 2: Backend Core Domain Implementation (`backend/app/core/domain.py`)
+- Implement the seven Tetromino coordinates and shape mapping.
+- Centering on spawn (column centering).
+- Boundary collision check (lower than 0, greater than 9, row index greater than 19, settled block intersection).
+- Authoritative coordinate translation (Left/Right/Down move and Tick).
+- Immediate locking mechanism when moving down fails.
+- Complete row removal and upper row shifts (1 to 4 multi-line clears).
+- Spawning collision game-over trigger.
+
+### Phase 3: Backend API Setup (`backend/app/main.py`)
+- Standard FastAPI app using lifespan for an asyncio-based periodic task cleaning idle sessions older than 15 minutes.
+- Enable CORS for development (`http://localhost:5173` and `http://127.0.0.1:5173`).
+- Implement GET/POST endpoints according to the contracts.
+
+### Phase 4: Frontend Development (`frontend/src/...`)
+- Configure standard Vite + React TS scaffolding.
+- Centered grid rendering using a dark charcoal theme with colored neon cells representing settled blocks (indices 1-7).
+- Active piece styling with glowing/pulsing neon classes.
+- Fixed 500ms gravity interval tick dispatching while status is `playing`.
+- Lockout manual keyboard arrows `ArrowLeft`, `ArrowRight`, `ArrowDown` if status is `game_over` or before starting.
+- Reset button mapping to restart API endpoint.
+- Side keyboard shortcut panel.
+
+### Phase 5: Verification & Runnable Tests
+- Implement backend unit tests under `backend/tests/test_domain.py`.
+- Run pytest to verify all functional requirements.
+- Ensure the frontend builds correctly.
+
+---
+
+## 6. Verification
+- **Unit Tests:** `pytest` to run all backend tests, asserting shape spawning, boundary blocking, downward collision locking, line clears, and game over.
+- **Frontend Compilation:** Verify Vite builds successfully without TypeScript or CSS compilation errors.
+```
+
+Please review this plan. Once you give your informal agreement, I will proceed to exit Plan Mode and implement the complete solution!

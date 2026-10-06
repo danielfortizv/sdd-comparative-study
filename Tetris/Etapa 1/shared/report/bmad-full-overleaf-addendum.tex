@@ -1,0 +1,50 @@
+\subsubsection{Análisis de sensibilidad: BMAD con planificación completa}
+\label{subsubsec:bmad_tetris_ruta_completa}
+
+La diferencia observada frente al caso de Calculadora motivó una auditoría de la ejecución BMAD. El manifiesto de la variante original de Tetris confirma una instalación válida de BMAD Method 6.12.0, con módulos \texttt{core} y \texttt{bmm} e integración con Gemini. Su solicitud inicial empleó el camino corto \texttt{bmad-spec} seguido de \texttt{bmad-build}. Para separar el efecto del camino de trabajo del de la instalación, se creó una segunda variante aislada, \texttt{Bmad Method Full}, con la misma semilla (SHA-256 \texttt{2AE084C9C64F}), alcance funcional de la opción A, Gemini CLI 0.60.0 y Vertex AI en el mismo proyecto GCP. Se reinstaló BMAD 6.12.0 con los módulos, la integración Gemini, el idioma inglés y el directorio de salida indicados explícitamente. Esta condición recorrió \textit{product brief}, PRD, arquitectura, épicas e historias, y construcción; no sustituyó los resultados de la variante original en las cinco comparaciones principales.
+
+\begin{table}[H]
+\centering
+\caption{Contraste de ruta BMAD en Tetris y referencia publicada para Calculadora -- Etapa 1}
+\label{tab:bmad_rutas_tetris_init}
+\small
+\begin{tabularx}{\textwidth}{l Y Y Y}
+\toprule
+\textbf{Indicador} & \textbf{Tetris, ruta corta} & \textbf{Tetris, ruta completa} & \textbf{Calculadora, tesis} \\
+\midrule
+Archivos principales de especificación & 4 & 6 & 18 \\
+Líneas físicas de especificación & 402 & 1.120 & 1.421 \\
+Invocaciones registradas & 2 & 9 & N/D en esta auditoría \\
+Tiempo acumulado de agente & 1.146,038 s (19,10 min) & 3.299,511 s (54,99 min) & 4.947 s (82,45 min) \\
+Entrada observable & 4.443.575 tokens & 17.653.626 tokens & N/D en esta auditoría \\
+Entrada cacheada & 3.157.729 tokens & 12.533.513 tokens & N/D en esta auditoría \\
+Salida observable & 34.646 tokens & 237.579 tokens & N/D en esta auditoría \\
+Costo teórico del tráfico & 2,7142 USD & 11,6984 USD & N/D en esta auditoría \\
+\bottomrule
+\multicolumn{4}{p{\dimexpr\textwidth-2\tabcolsep}}{\footnotesize \textit{Nota:} La ruta completa cuenta seis documentos principales en \texttt{\_bmad-output}; excluye dos memorias de proceso \texttt{.memlog.md} y el estado YAML del sprint. Las trazas crudas de Calculadora y su regla exacta de conteo de archivos no están disponibles aquí. Los tiempos de Tetris suman invocaciones del agente, incluidos intentos fallidos, sin instalación, pruebas externas ni SonarQube. El costo es una estimación sobre tokens registrados, no una factura de GCP.} \\
+\end{tabularx}
+\end{table}
+
+La repetición elevó el volumen documental de 402 a 1.120 líneas y el tiempo registrado de 19,10 a 54,99 minutos, sin reproducir los 18 archivos ni los 82,45 minutos comunicados para Calculadora. BMAD agrupó las historias de Tetris en un documento de épicas; una distinta división de los mismos contenidos podría alterar el número de archivos. También se contabilizaron el arranque fallido por permisos del entorno, una invocación detenida en modo de planificación, una reanudación vacía y una corrección posterior. Durante la revisión se eliminaron de PRD, épicas y especificación dos metas cuantitativas añadidas por el agente que no pertenecían a la semilla (100 sesiones/256 MB y latencia p95 inferior a 50 ms); se conservaron los 30 requisitos funcionales. La evidencia apoya que el camino corto explica parte de la diferencia \emph{dentro de Tetris}, pero no permite atribuir causalmente el tiempo de Calculadora al instalador, al modelo o a una única decisión sin sus trazas originales.
+
+\begin{table}[H]
+\centering
+\caption{Calidad y verificación de las dos rutas BMAD -- Tetris Etapa 1}
+\label{tab:bmad_calidad_rutas_tetris_init}
+\small
+\begin{tabularx}{\textwidth}{l Y Y}
+\toprule
+\textbf{Indicador} & \textbf{Ruta corta} & \textbf{Planificación completa} \\
+\midrule
+LOC SonarQube (\texttt{ncloc}) & 778 & 669 \\
+Bugs / vulnerabilidades / \textit{code smells} & 0 / 2 / 8 & 0 / 1 / 13 \\
+Complejidad cognitiva / deuda estimada & 64 / 45 min & 97 / 84 min \\
+Cobertura global / duplicación & 57,6\% / 0\% & 63,2\% / 0\% \\
+Pruebas de backend aprobadas & 7 & 13 \\
+\textit{Quality gate} SonarQube & OK & OK \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+Las 13 pruebas de la ruta completa pasaron con 98\% de cobertura del código Python de backend; además pasaron la compilación de React y una verificación independiente de tablero, colisiones, fijación, borrado de una a cuatro líneas, fin de partida, las cuatro rutas HTTP y reinicio. Este 98\% no debe confundirse con el 63,2\% de cobertura \emph{global} reportada por SonarQube, que también comprende el frontend sin una suite equivalente. La ruta completa tuvo una vulnerabilidad menos y mayor cobertura global que la corta, pero acumuló cinco \textit{code smells} adicionales, más complejidad cognitiva y 39 minutos más de deuda estimada. La vulnerabilidad restante corresponde a la regla \texttt{python:S2245}, asociada a la selección pseudoaleatoria de piezas; requiere interpretación en el contexto del juego. No se añadió esta sexta condición al radar de las cinco herramientas porque representa un cambio de flujo dentro de BMAD, no otra herramienta ni otra semilla.
+

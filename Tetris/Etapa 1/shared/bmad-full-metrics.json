@@ -1,0 +1,111 @@
+{
+  "run_label": "BMAD 6.12.0 full planning path; separate from original quick path",
+  "specification": {
+    "files": 6,
+    "lines": 1120,
+    "nonblank_lines": 878,
+    "characters": 68220,
+    "paths": [
+      "_bmad-output\\implementation-artifacts\\spec-stage-1-tetris-study.md",
+      "_bmad-output\\planning-artifacts\\architecture\\architecture-Bmad Method Full-2026-10-05\\ARCHITECTURE-SPINE.md",
+      "_bmad-output\\planning-artifacts\\briefs\\brief-Bmad Method Full-2026-10-05\\brief.md",
+      "_bmad-output\\planning-artifacts\\epics.md",
+      "_bmad-output\\planning-artifacts\\prds\\prd-Bmad Method Full-2026-10-05\\addendum.md",
+      "_bmad-output\\planning-artifacts\\prds\\prd-Bmad Method Full-2026-10-05\\prd.md"
+    ],
+    "unique_prd_requirement_ids": 30,
+    "excluded_workflow_trace_files": 2
+  },
+  "source": {
+    "files": 9,
+    "lines": 1036,
+    "nonblank_lines": 903,
+    "characters": 31549
+  },
+  "model": {
+    "transcript_files": 19,
+    "model_responses": 358,
+    "tool_calls_observed": 342,
+    "input": 17653626,
+    "output": 237579,
+    "cached": 12533513,
+    "thoughts": 265403,
+    "tool": 0,
+    "total": 18156608
+  },
+  "execution": {
+    "invocations": 9,
+    "agent_seconds_including_failed_starts": 3299.511,
+    "runs": [
+      {
+        "file": "full-architecture-ux.run.json",
+        "duration_seconds": 333.683,
+        "exit_code": 0,
+        "seed_sha256": "2AE084C9C64FC41F65D0E07581CED9E30B6C68891D9F8688A37F34594ECFD1C5"
+      },
+      {
+        "file": "full-build-auto-correction.run.json",
+        "duration_seconds": 705.325,
+        "exit_code": 0,
+        "seed_sha256": "2AE084C9C64FC41F65D0E07581CED9E30B6C68891D9F8688A37F34594ECFD1C5"
+      },
+      {
+        "file": "full-build-auto-iteration1.run.json",
+        "duration_seconds": 834.057,
+        "exit_code": 0,
+        "seed_sha256": "2AE084C9C64FC41F65D0E07581CED9E30B6C68891D9F8688A37F34594ECFD1C5"
+      },
+      {
+        "file": "full-build-implementation.run.json",
+        "duration_seconds": 12.111,
+        "exit_code": 0,
+        "seed_sha256": null
+      },
+      {
+        "file": "full-build.run.json",
+        "duration_seconds": 133.575,
+        "exit_code": 0,
+        "seed_sha256": "2AE084C9C64FC41F65D0E07581CED9E30B6C68891D9F8688A37F34594ECFD1C5"
+      },
+      {
+        "file": "full-epics-stories.run.json",
+        "duration_seconds": 267.555,
+        "exit_code": 0,
+        "seed_sha256": "2AE084C9C64FC41F65D0E07581CED9E30B6C68891D9F8688A37F34594ECFD1C5"
+      },
+      {
+        "file": "full-prd.run.json",
+        "duration_seconds": 519.78,
+        "exit_code": 0,
+        "seed_sha256": "2AE084C9C64FC41F65D0E07581CED9E30B6C68891D9F8688A37F34594ECFD1C5"
+      },
+      {
+        "file": "full-product-brief-escalated.run.json",
+        "duration_seconds": 491.001,
+        "exit_code": 0,
+        "seed_sha256": "2AE084C9C64FC41F65D0E07581CED9E30B6C68891D9F8688A37F34594ECFD1C5"
+      },
+      {
+        "file": "full-product-brief.run.json",
+        "duration_seconds": 2.424,
+        "exit_code": 1,
+        "seed_sha256": "2AE084C9C64FC41F65D0E07581CED9E30B6C68891D9F8688A37F34594ECFD1C5"
+      }
+    ]
+  },
+  "sonar": {
+    "coverage": "63.2",
+    "complexity": "83",
+    "reliability_rating": "1.0",
+    "code_smells": "13",
+    "duplicated_lines_density": "0.0",
+    "security_rating": "3.0",
+    "sqale_index": "84",
+    "sqale_rating": "1.0",
+    "bugs": "0",
+    "cognitive_complexity": "97",
+    "ncloc": "669",
+    "vulnerabilities": "1",
+    "lines": "789"
+  }
+}

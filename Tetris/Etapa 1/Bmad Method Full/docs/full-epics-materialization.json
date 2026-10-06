@@ -1,0 +1,19 @@
+{
+  "artifacts": [
+    {
+      "path": "_bmad-output\\planning-artifacts\\epics.md",
+      "source": "docs\\full-epics-stories.stdout.json",
+      "sha256": "9b8f056a2a4f31a4d7bbdd0403fc97c691ce005015b89b1acd687611efbbfcab",
+      "lines": 399,
+      "characters": 23627
+    },
+    {
+      "path": "_bmad-output\\implementation-artifacts\\sprint-status.yaml",
+      "source": "docs\\full-epics-stories.stdout.json",
+      "sha256": "58ef8293791dda3a83a57af4ccb7e59ec4a23e42c07e9acf94deeaab63dd00d5",
+      "lines": 40,
+      "characters": 1351
+    }
+  ],
+  "unique_fr_ids": 30
+}

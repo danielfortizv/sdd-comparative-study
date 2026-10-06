@@ -1,0 +1,54 @@
+{
+  "files": [
+    {
+      "path": "_bmad-output/planning-artifacts/prds/prd-Bmad Method Full-2026-10-05/prd.md",
+      "source": "docs\\full-build-auto-correction.stdout.json",
+      "sha256_before": "657eae8784faba60777eae4d04ba7a72797c9481eddd46cb62d3319b4e65c6a0",
+      "sha256_after": "26ff81ef408be83a5ecaf36842bea138b60cc22321f25c0599337466c1209240",
+      "lines": 348
+    },
+    {
+      "path": "_bmad-output/planning-artifacts/prds/prd-Bmad Method Full-2026-10-05/addendum.md",
+      "source": "docs\\full-build-auto-correction.stdout.json",
+      "sha256_before": "c880a5030400e3fae8a0e49c5ba24937bef48bdb59b9dc25cd2ef02dc134c9ec",
+      "sha256_after": "d5120a5b520f253d11114fd3b0edb1d03f0ad595dd130a355640e840940b6b1d",
+      "lines": 32
+    },
+    {
+      "path": "_bmad-output/planning-artifacts/epics.md",
+      "source": "docs\\full-build-auto-correction.stdout.json",
+      "sha256_before": "6a9f25430ac40ac8a471f594f27647ed892795cb144143b08b2edc221a8dac0e",
+      "sha256_after": "a318f13802c2838987b1737877a68890b46ddcee8cbf0e9b58ddcf36b08a67c4",
+      "lines": 351
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/spec-stage-1-tetris-study.md",
+      "source": "docs\\full-build-auto-correction.stdout.json",
+      "sha256_before": "a74d91d904a3b7303729532f9aa6b456a37e012581968f6f994d2f0afe31da17",
+      "sha256_after": "c41a5ce4b570bda6ba429b33db8f3cf23edf6cd4bde786322c15b70c0b0c5505",
+      "lines": 82
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/sprint-status.yaml",
+      "source": "docs\\full-build-auto-correction.stdout.json",
+      "sha256_before": "f210ad463f01e9cbeba6183173fcb7756db4025f2d1b02af85ba1a6710448e90",
+      "sha256_after": "e21cecf92050dbb2ec940c09514fd0bed15b829a1e3817f24d08a8404f7e183c",
+      "lines": 40
+    },
+    {
+      "path": "backend/app/tests/test_domain.py",
+      "source": "docs\\full-build-auto-correction.stdout.json",
+      "sha256_before": "4fa0b1df8d8faed067022d8e749d2644573c91d2cafcf4388dfb43bd96d87d48",
+      "sha256_after": "d5eb5447fc97761aca1c621f7b5a447605c3834783c86c91862c3c0b6f5e7dcf",
+      "lines": 164
+    },
+    {
+      "path": "backend/app/tests/test_api.py",
+      "source": "docs\\full-build-auto-correction.stdout.json",
+      "sha256_before": null,
+      "sha256_after": "396a93aec5a2f2ef1b271c7979cca1d5010f07821bd09d23409994406b62de56",
+      "lines": 62
+    }
+  ],
+  "unique_prd_fr_ids": 30
+}

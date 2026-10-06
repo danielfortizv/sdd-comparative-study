@@ -1,0 +1,13 @@
+......                                                                   [100%]
+=============================== tests coverage ================================
+______________ coverage: platform win32, python 3.12.14-final-0 _______________
+
+Name                       Stmts   Miss  Cover   Missing
+--------------------------------------------------------
+app\core\domain.py            86     12    86%   110, 122, 127, 129, 136-141, 145-147
+app\main.py                   38     38     0%   1-75
+app\tests\test_domain.py      52      0   100%
+--------------------------------------------------------
+TOTAL                        176     50    72%
+Coverage XML written to file ../docs/coverage.xml
+6 passed in 1.23s
