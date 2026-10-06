@@ -9,6 +9,7 @@ This directory contains five independent Stage 1 implementations of the same Tet
 - `shared/bmad-metrics.json` is the BMAD measurement source. `shared/metrics-preliminary.json` and `shared/token-sessions.csv` incorporate that same execution into the five-tool comparison.
 - `shared/report/guion-tetris-etapa1-asesor.md` is the advisor presentation script.
 - `shared/report/tetris-etapa1-overleaf.tex` is the current Tetris thesis section. `shared/report/Tetris-Etapa-1-comparacion.pdf` extracts its seven compiled pages, including the radar and tables. The full Overleaf thesis stays in the shared project.
+- The [Google Docs comparative report](https://docs.google.com/document/d/1ccfD-2xwJw-CXM6Kny6EPiABqNVgeJ3h8A20ykhVfBg/edit) uses the same canonical BMAD figures and a rendered thesis radar/table image alongside the other tools' original SonarQube dashboard captures.
 - `PROGRESS.md` records the current experiment and provenance. Earlier BMAD work remains available through Git history.
 
 SonarQube coverage values describe the scanner's complete project scope; backend-only pytest coverage is reported separately. Theoretical token costs are not Google Cloud invoices. The BMAD SonarQube project key remains `tetris-stage1-bmad-full` so its archived API evidence and dashboard resolve to the measured scan.
