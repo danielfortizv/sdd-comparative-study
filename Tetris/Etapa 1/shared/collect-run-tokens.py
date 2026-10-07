@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import csv
 import json
+import re
 from datetime import datetime, timezone
 from pathlib import Path
 
@@ -15,7 +16,8 @@ TOOLS = ("OpenSpec", "Spec Kit", "Tessl")
 def parse_time(value: str | None) -> datetime | None:
     if not value:
         return None
-    return datetime.fromisoformat(value.replace("Z", "+00:00")).astimezone(timezone.utc)
+    normalized = re.sub(r"(\.\d{6})\d+(?=[+-]\d{2}:\d{2}$|$)", r"\1", value.replace("Z", "+00:00"))
+    return datetime.fromisoformat(normalized).astimezone(timezone.utc)
 
 
 def stats_from_stdout(path: Path) -> dict[str, int] | None:
@@ -34,6 +36,17 @@ def stats_from_stdout(path: Path) -> dict[str, int] | None:
         "cached_tokens": sum(int(model.get("tokens", {}).get("cached") or 0) for model in models.values()),
         "model_responses": sum(int(model.get("api", {}).get("totalRequests") or 0) for model in models.values()),
     }
+
+
+def resolve_stdout(run_path: Path, recorded_path: str | None) -> Path | None:
+    """Use the retained local output after a study checkout has been relocated."""
+    if not recorded_path:
+        return None
+    original = Path(recorded_path)
+    if original.exists():
+        return original
+    local_copy = run_path.parent / original.name
+    return local_copy if local_copy.exists() else None
 
 
 def records_for_tool(tool_root: Path) -> list[tuple[datetime, str, dict[str, int]]]:
@@ -68,7 +81,7 @@ def main() -> None:
         for run_path in sorted((tool_root / "docs").glob("*.run.json")):
             run = json.loads(run_path.read_text(encoding="utf-8-sig"))
             started, ended = parse_time(run.get("started")), parse_time(run.get("ended"))
-            stdout = Path(run["stdout"]) if run.get("stdout") else Path()
+            stdout = resolve_stdout(run_path, run.get("stdout"))
             tokens = stats_from_stdout(stdout) if stdout else None
             source = "CLI JSON stats" if tokens else "retained Gemini JSONL"
             if tokens is None and started and ended:
