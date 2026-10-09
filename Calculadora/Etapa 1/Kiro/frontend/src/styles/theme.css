@@ -1,0 +1,63 @@
+/*
+ * theme.css — the calculator's contrast-compliant color palette and shared
+ * design tokens (Task 13; Requirements 11.1-11.5).
+ *
+ * All colors are defined here as CSS custom properties so the layout and
+ * component stylesheets consume tokens rather than hard-coded values. Every
+ * foreground/background pair used for text or a UI boundary was checked with a
+ * WCAG relative-luminance contrast calculation; the measured ratios are noted
+ * inline next to each token. The design targets WCAG 2.1 AA:
+ *   - body text / control labels        >= 4.5:1  (Req 11.1)
+ *   - large text (>=18pt or 14pt bold)  >= 3:1    (Req 11.2)
+ *   - UI component boundaries           >= 3:1    (Req 11.3)
+ *   - focus indicator vs adjacent color >= 3:1    (Req 11.4)
+ *
+ * NOTE: These automated ratio checks verify color contrast only. Full WCAG
+ * conformance still requires manual testing with assistive technologies and
+ * expert accessibility review.
+ */
+
+:root {
+  /* Force a single, tuned dark palette so contrast is deterministic across
+     user/OS color-scheme preferences (avoids `light dark` flipping colors). */
+  color-scheme: dark;
+
+  /* ---- Surfaces ------------------------------------------------------- */
+  --color-page-bg: #0f1626;      /* app background (deep navy) */
+  --color-panel-bg: #16203a;     /* calculator shell panel */
+  --color-display-bg: #1b2440;   /* expression + result display face */
+
+  /* ---- Text ----------------------------------------------------------- */
+  --color-text: #f5f7fa;         /* on page bg  -> 16.82:1 (Req 11.1) */
+  --color-display-text: #ffffff; /* on display  -> 15.30:1 (Req 11.1) */
+  --color-result: #7ee0b8;       /* result text on display -> 9.64:1 (Req 11.1) */
+  --color-error: #ff8f8f;        /* error text on display  -> 6.98:1 (Req 11.1) */
+  --color-muted: #c3ccdf;        /* secondary labels on panel/page (>7:1) */
+
+  /* ---- Button faces & their label colors ------------------------------ */
+  /* Each label/face pair meets >= 4.5:1 for control labels (Req 11.1). */
+  --color-digit-bg: #303a5c;         --color-digit-text: #ffffff;   /* 11.14:1 */
+  --color-operator-bg: #f0a02a;      --color-operator-text: #1a1205;/*  8.62:1 */
+  --color-action-bg: #4fc78a;        --color-action-text: #0e1a12;  /*  8.40:1 */
+  --color-equals-bg: #37d98a;        --color-equals-text: #06130c;  /* 10.35:1 */
+
+  /* ---- Component boundaries (Req 11.3, each >= 3:1 vs adjacent face) --- */
+  --color-border-digit: #8b9bd4;   /* on digit face   -> 4.10:1; on page -> 6.65:1 */
+  --color-border-strong: #1a1205;  /* on operator/action faces -> >8:1 */
+  --color-border-display: #7c8ab5; /* on display face -> 4.49:1; on page -> 5.30:1 */
+
+  /* ---- Focus indicator (Req 11.4) ------------------------------------- */
+  /* A double ring: an inner dark ring and an outer light ring. Because the
+     two rings contrast 18.77:1 against each other AND, for every button face,
+     at least one ring exceeds 3:1 against that face (dark faces -> light ring
+     wins; light orange/green faces -> dark ring wins), the indicator is always
+     visible with >= 3:1 contrast against adjacent colors. */
+  --focus-ring-inner: #05070d;
+  --focus-ring-outer: #f5f7fa;
+  --focus-ring-width: 3px;
+
+  /* ---- Spacing / sizing tokens ---------------------------------------- */
+  --touch-min: 44px;             /* minimum touch target on mobile (Req 9.4) */
+  --radius: 10px;
+  --gap: clamp(0.4rem, 1.2vw, 0.6rem);
+}

@@ -1,0 +1,98 @@
+/*
+ * Structural CSS Grid arrangement for the physical-calculator keypad
+ * (Requirements 8.1-8.3). This file owns only the grid *structure*: the named
+ * areas that place digits 1-9 in a 3x3 block (7-8-9 / 4-5-6 / 1-2-3), the `0`
+ * in the row below that block, and the operators in a dedicated column region
+ * separated from the digit keypad. Full contrast/responsive theming (sizing,
+ * color, touch targets) is delivered by the styling task (Task 13).
+ */
+
+.keypad {
+  display: grid;
+  /*
+   * Four columns: three for the digit keypad plus one dedicated operator
+   * column on the right (Requirement 8.3).
+   *
+   * Rows:
+   *   1: parentheses spanning the digit columns + divide
+   *   2: 7 8 9 + multiply
+   *   3: 4 5 6 + minus
+   *   4: 1 2 3 + plus
+   *   5: 0 (spans two digit columns) . + clear
+   *   6: equals
+   */
+  grid-template-columns: repeat(3, 1fr) 1fr;
+  grid-template-areas:
+    "klparen krparen krparen kdiv"
+    "k7      k8      k9      kmul"
+    "k4      k5      k6      ksub"
+    "k1      k2      k3      kadd"
+    "k0      k0      kdot    kclear"
+    "kequals kequals kequals kequals";
+  gap: 0.5rem;
+}
+
+/* Digit 3x3 block: 7-8-9 / 4-5-6 / 1-2-3 (Requirement 8.2). */
+.keypad__key--k7 { grid-area: k7; }
+.keypad__key--k8 { grid-area: k8; }
+.keypad__key--k9 { grid-area: k9; }
+.keypad__key--k4 { grid-area: k4; }
+.keypad__key--k5 { grid-area: k5; }
+.keypad__key--k6 { grid-area: k6; }
+.keypad__key--k1 { grid-area: k1; }
+.keypad__key--k2 { grid-area: k2; }
+.keypad__key--k3 { grid-area: k3; }
+
+/* `0` positioned in the row below the 1-9 keypad (Requirement 8.2). */
+.keypad__key--k0 { grid-area: k0; }
+.keypad__key--kdot { grid-area: kdot; }
+
+/* Parentheses (Requirement 8.1). */
+.keypad__key--klparen { grid-area: klparen; }
+.keypad__key--krparen { grid-area: krparen; }
+
+/* Operators in a dedicated column region separated from the digits (Requirement 8.3). */
+.keypad__key--kdiv { grid-area: kdiv; }
+.keypad__key--kmul { grid-area: kmul; }
+.keypad__key--ksub { grid-area: ksub; }
+.keypad__key--kadd { grid-area: kadd; }
+
+/* Evaluate and reset controls (Requirement 8.1). */
+.keypad__key--kclear { grid-area: kclear; }
+.keypad__key--kequals { grid-area: kequals; }
+
+/* ==========================================================================
+ * Responsive theming for the keypad grid (Task 13; Requirements 9.1-9.4, 8.4).
+ * The named grid areas above define the *structure*; the rules below set the
+ * fluid gap and equal-height rows so the whole keypad fits without horizontal
+ * overflow or clipping at every breakpoint, and every key stays >= 44x44px on
+ * mobile (enforced per-button in CalcButton.css).
+ * ========================================================================== */
+
+.keypad {
+  /* Token-driven fluid gap (clamp) so keys stay separated without overflow. */
+  gap: var(--gap);
+  /* Equal-height rows sized to at least the touch-target floor; they grow to
+     fill available height so the keypad is comfortable on larger viewports
+     while never shrinking a key below 44px (Req 9.4). Uses grid-auto-rows so
+     every templated row (parentheses, digits, operators, 0/., equals) matches. */
+  grid-auto-rows: minmax(var(--touch-min), 1fr);
+  width: 100%;
+}
+
+/* Mobile (320-767px): keep the four-column layout but tighten the gap so three
+   digit columns + one operator column fit at 320px with no horizontal overflow
+   and no clipped keys (Req 9.1, 9.4). */
+@media (max-width: 767px) {
+  .keypad {
+    gap: clamp(0.3rem, 1.5vw, 0.5rem);
+  }
+}
+
+/* Tablet / desktop (>=768px): a touch more breathing room between keys while
+   the panel width cap in global.css prevents overflow (Req 9.2, 9.3). */
+@media (min-width: 768px) {
+  .keypad {
+    gap: 0.6rem;
+  }
+}

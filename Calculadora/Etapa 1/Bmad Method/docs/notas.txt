@@ -1,0 +1,1 @@
+para este primer caso sencillo, exagera en la implementación al elaborar testeo execivo dada la metodología agile.

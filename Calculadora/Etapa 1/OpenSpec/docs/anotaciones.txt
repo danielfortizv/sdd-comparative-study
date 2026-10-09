@@ -1,0 +1,1 @@
+Desconocimiento de las dependencias y la necesidad de definit un ambient virtual de python para el backend.

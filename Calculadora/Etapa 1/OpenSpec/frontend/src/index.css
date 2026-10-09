@@ -1,0 +1,224 @@
+/* CSS variables for high-contrast and professional styling */
+:root {
+  --bg-primary: #121212;
+  --bg-calculator: #1e1e1e;
+  --bg-screen: #0d0d0d;
+  --text-expr: #a0a0a0;
+  --text-res: #ffffff;
+  --text-err: #ff5252;
+  --btn-num: #2d2d2d;
+  --btn-num-hover: #3d3d3d;
+  --btn-num-active: #4d4d4d;
+  --btn-op: #f57c00;
+  --btn-op-hover: #ff9800;
+  --btn-op-active: #e65100;
+  --btn-ctrl: #37474f;
+  --btn-ctrl-hover: #455a64;
+  --btn-ctrl-active: #263238;
+  --btn-eval: #0288d1;
+  --btn-eval-hover: #039be5;
+  --btn-eval-active: #01579b;
+  --focus-outline: #29b6f6;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  background-color: var(--bg-primary);
+  color: #ffffff;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+#root {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Screen reader only utility class */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
+/* Container */
+.calculator-container {
+  width: 100%;
+  max-width: 400px;
+  padding: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Main Calculator Card */
+.calculator-card {
+  background-color: var(--bg-calculator);
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  padding: 24px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  border: 1px solid #333;
+}
+
+/* Display Screen */
+.calculator-screen {
+  background-color: var(--bg-screen);
+  border-radius: 12px;
+  padding: 20px;
+  min-height: 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-end;
+  word-wrap: break-word;
+  word-break: break-all;
+  overflow-y: auto;
+  border: 2px solid #333;
+}
+
+.expression-line {
+  font-size: 1.2rem;
+  color: var(--text-expr);
+  min-height: 1.5rem;
+  width: 100%;
+  text-align: right;
+  line-height: 1.5rem;
+}
+
+.result-line {
+  font-size: 2rem;
+  font-weight: bold;
+  color: var(--text-res);
+  min-height: 2.5rem;
+  width: 100%;
+  text-align: right;
+  line-height: 2.5rem;
+  margin-top: 8px;
+}
+
+.error-text {
+  color: var(--text-err);
+  font-size: 1.1rem;
+}
+
+/* Grid of Buttons */
+.button-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  width: 100%;
+}
+
+/* Buttons */
+.btn {
+  border: none;
+  border-radius: 12px;
+  font-size: 1.4rem;
+  font-weight: 600;
+  padding: 16px 0;
+  cursor: pointer;
+  color: #ffffff;
+  transition: background-color 0.15s ease, transform 0.05s ease;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  user-select: none;
+}
+
+.btn:active {
+  transform: scale(0.95);
+}
+
+.btn:focus-visible {
+  outline: 3px solid var(--focus-outline);
+  outline-offset: 2px;
+}
+
+/* Button Categories */
+.btn-num {
+  background-color: var(--btn-num);
+}
+.btn-num:hover {
+  background-color: var(--btn-num-hover);
+}
+.btn-num:active {
+  background-color: var(--btn-num-active);
+}
+
+.btn-operator {
+  background-color: var(--btn-op);
+}
+.btn-operator:hover {
+  background-color: var(--btn-op-hover);
+}
+.btn-operator:active {
+  background-color: var(--btn-op-active);
+}
+
+.btn-control {
+  background-color: var(--btn-ctrl);
+}
+.btn-control:hover {
+  background-color: var(--btn-ctrl-hover);
+}
+.btn-control:active {
+  background-color: var(--btn-ctrl-active);
+}
+
+.btn-evaluate {
+  background-color: var(--btn-eval);
+}
+.btn-evaluate:hover {
+  background-color: var(--btn-eval-hover);
+}
+.btn-evaluate:active {
+  background-color: var(--btn-eval-active);
+}
+
+/* Responsive media queries to adjust sizes nicely */
+@media (max-width: 480px) {
+  .calculator-card {
+    padding: 16px;
+    border-radius: 16px;
+  }
+  
+  .btn {
+    font-size: 1.25rem;
+    padding: 14px 0;
+  }
+  
+  .expression-line {
+    font-size: 1.1rem;
+  }
+  
+  .result-line {
+    font-size: 1.75rem;
+  }
+}
+
+@media (max-width: 360px) {
+  .btn {
+    font-size: 1.1rem;
+    padding: 12px 0;
+  }
+  
+  .button-grid {
+    gap: 8px;
+  }
+}

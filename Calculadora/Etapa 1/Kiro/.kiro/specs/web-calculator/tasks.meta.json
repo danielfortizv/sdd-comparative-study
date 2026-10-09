@@ -1,0 +1,472 @@
+{
+  "pbtResults": {},
+  "executionHistory": {
+    "1. Scaffold backend project structure and dependencies": [
+      {
+        "executionId": "41f3984c-f85b-4cd6-9522-ad554ff034bb",
+        "chatSessionId": "sess_7b9d8a98-ccc3-456c-97cd-c6072619b7f6",
+        "timestamp": 1790630788571
+      },
+      {
+        "executionId": "41f3984c-f85b-4cd6-9522-ad554ff034bb",
+        "chatSessionId": "sess_7b9d8a98-ccc3-456c-97cd-c6072619b7f6",
+        "timestamp": 1790630800583
+      },
+      {
+        "executionId": "41f3984c-f85b-4cd6-9522-ad554ff034bb",
+        "chatSessionId": "sess_7b9d8a98-ccc3-456c-97cd-c6072619b7f6",
+        "timestamp": 1790631462296
+      }
+    ],
+    "2.1 Define the EvaluationError hierarchy": [
+      {
+        "executionId": "41f3984c-f85b-4cd6-9522-ad554ff034bb",
+        "chatSessionId": "sess_7b9d8a98-ccc3-456c-97cd-c6072619b7f6",
+        "timestamp": 1790630789240
+      },
+      {
+        "executionId": "41f3984c-f85b-4cd6-9522-ad554ff034bb",
+        "chatSessionId": "sess_7b9d8a98-ccc3-456c-97cd-c6072619b7f6",
+        "timestamp": 1790631466469
+      },
+      {
+        "executionId": "41f3984c-f85b-4cd6-9522-ad554ff034bb",
+        "chatSessionId": "sess_7b9d8a98-ccc3-456c-97cd-c6072619b7f6",
+        "timestamp": 1790631794898
+      }
+    ],
+    "2.2 Implement the Token model and Tokenizer": [
+      {
+        "executionId": "41f3984c-f85b-4cd6-9522-ad554ff034bb",
+        "chatSessionId": "sess_7b9d8a98-ccc3-456c-97cd-c6072619b7f6",
+        "timestamp": 1790630789365
+      },
+      {
+        "executionId": "41f3984c-f85b-4cd6-9522-ad554ff034bb",
+        "chatSessionId": "sess_7b9d8a98-ccc3-456c-97cd-c6072619b7f6",
+        "timestamp": 1790631798585
+      },
+      {
+        "executionId": "41f3984c-f85b-4cd6-9522-ad554ff034bb",
+        "chatSessionId": "sess_7b9d8a98-ccc3-456c-97cd-c6072619b7f6",
+        "timestamp": 1790631892345
+      }
+    ],
+    "2.4 Implement the recursive-descent Parser and render() inverse": [
+      {
+        "executionId": "41f3984c-f85b-4cd6-9522-ad554ff034bb",
+        "chatSessionId": "sess_7b9d8a98-ccc3-456c-97cd-c6072619b7f6",
+        "timestamp": 1790630789448
+      },
+      {
+        "executionId": "41f3984c-f85b-4cd6-9522-ad554ff034bb",
+        "chatSessionId": "sess_7b9d8a98-ccc3-456c-97cd-c6072619b7f6",
+        "timestamp": 1790631896149
+      },
+      {
+        "executionId": "41f3984c-f85b-4cd6-9522-ad554ff034bb",
+        "chatSessionId": "sess_7b9d8a98-ccc3-456c-97cd-c6072619b7f6",
+        "timestamp": 1790632263194
+      }
+    ],
+    "2.6 Implement the Decimal Evaluator": [
+      {
+        "executionId": "41f3984c-f85b-4cd6-9522-ad554ff034bb",
+        "chatSessionId": "sess_7b9d8a98-ccc3-456c-97cd-c6072619b7f6",
+        "timestamp": 1790630789544
+      },
+      {
+        "executionId": "41f3984c-f85b-4cd6-9522-ad554ff034bb",
+        "chatSessionId": "sess_7b9d8a98-ccc3-456c-97cd-c6072619b7f6",
+        "timestamp": 1790632283953
+      },
+      {
+        "executionId": "41f3984c-f85b-4cd6-9522-ad554ff034bb",
+        "chatSessionId": "sess_7b9d8a98-ccc3-456c-97cd-c6072619b7f6",
+        "timestamp": 1790632795116
+      }
+    ],
+    "2.7 Implement the evaluate_expression entry point": [
+      {
+        "executionId": "41f3984c-f85b-4cd6-9522-ad554ff034bb",
+        "chatSessionId": "sess_7b9d8a98-ccc3-456c-97cd-c6072619b7f6",
+        "timestamp": 1790630789609
+      },
+      {
+        "executionId": "41f3984c-f85b-4cd6-9522-ad554ff034bb",
+        "chatSessionId": "sess_7b9d8a98-ccc3-456c-97cd-c6072619b7f6",
+        "timestamp": 1790632799591
+      },
+      {
+        "executionId": "41f3984c-f85b-4cd6-9522-ad554ff034bb",
+        "chatSessionId": "sess_7b9d8a98-ccc3-456c-97cd-c6072619b7f6",
+        "timestamp": 1790632922947
+      }
+    ],
+    "3. Backend engine checkpoint": [
+      {
+        "executionId": "41f3984c-f85b-4cd6-9522-ad554ff034bb",
+        "chatSessionId": "sess_7b9d8a98-ccc3-456c-97cd-c6072619b7f6",
+        "timestamp": 1790630789684
+      },
+      {
+        "executionId": "41f3984c-f85b-4cd6-9522-ad554ff034bb",
+        "chatSessionId": "sess_7b9d8a98-ccc3-456c-97cd-c6072619b7f6",
+        "timestamp": 1790632928484
+      },
+      {
+        "executionId": "41f3984c-f85b-4cd6-9522-ad554ff034bb",
+        "chatSessionId": "sess_7b9d8a98-ccc3-456c-97cd-c6072619b7f6",
+        "timestamp": 1790632942795
+      }
+    ],
+    "4.1 Define Pydantic request/response schemas": [
+      {
+        "executionId": "41f3984c-f85b-4cd6-9522-ad554ff034bb",
+        "chatSessionId": "sess_7b9d8a98-ccc3-456c-97cd-c6072619b7f6",
+        "timestamp": 1790630789814
+      },
+      {
+        "executionId": "41f3984c-f85b-4cd6-9522-ad554ff034bb",
+        "chatSessionId": "sess_7b9d8a98-ccc3-456c-97cd-c6072619b7f6",
+        "timestamp": 1790632952902
+      },
+      {
+        "executionId": "41f3984c-f85b-4cd6-9522-ad554ff034bb",
+        "chatSessionId": "sess_7b9d8a98-ccc3-456c-97cd-c6072619b7f6",
+        "timestamp": 1790633030054
+      }
+    ],
+    "4.2 Implement the evaluate route": [
+      {
+        "executionId": "41f3984c-f85b-4cd6-9522-ad554ff034bb",
+        "chatSessionId": "sess_7b9d8a98-ccc3-456c-97cd-c6072619b7f6",
+        "timestamp": 1790630789886
+      },
+      {
+        "executionId": "41f3984c-f85b-4cd6-9522-ad554ff034bb",
+        "chatSessionId": "sess_7b9d8a98-ccc3-456c-97cd-c6072619b7f6",
+        "timestamp": 1790633033860
+      },
+      {
+        "executionId": "41f3984c-f85b-4cd6-9522-ad554ff034bb",
+        "chatSessionId": "sess_7b9d8a98-ccc3-456c-97cd-c6072619b7f6",
+        "timestamp": 1790633109791
+      }
+    ],
+    "4.3 Implement application assembly, exception handlers, and CORS": [
+      {
+        "executionId": "41f3984c-f85b-4cd6-9522-ad554ff034bb",
+        "chatSessionId": "sess_7b9d8a98-ccc3-456c-97cd-c6072619b7f6",
+        "timestamp": 1790630789950
+      },
+      {
+        "executionId": "41f3984c-f85b-4cd6-9522-ad554ff034bb",
+        "chatSessionId": "sess_7b9d8a98-ccc3-456c-97cd-c6072619b7f6",
+        "timestamp": 1790633115977
+      },
+      {
+        "executionId": "41f3984c-f85b-4cd6-9522-ad554ff034bb",
+        "chatSessionId": "sess_7b9d8a98-ccc3-456c-97cd-c6072619b7f6",
+        "timestamp": 1790633313866
+      }
+    ],
+    "6.1 Implement Hypothesis strategies and reference oracle": [
+      {
+        "executionId": "41f3984c-f85b-4cd6-9522-ad554ff034bb",
+        "chatSessionId": "sess_7b9d8a98-ccc3-456c-97cd-c6072619b7f6",
+        "timestamp": 1790630790022
+      },
+      {
+        "executionId": "41f3984c-f85b-4cd6-9522-ad554ff034bb",
+        "chatSessionId": "sess_7b9d8a98-ccc3-456c-97cd-c6072619b7f6",
+        "timestamp": 1790633319163
+      },
+      {
+        "executionId": "41f3984c-f85b-4cd6-9522-ad554ff034bb",
+        "chatSessionId": "sess_7b9d8a98-ccc3-456c-97cd-c6072619b7f6",
+        "timestamp": 1790633625869
+      }
+    ],
+    "7. Backend completion checkpoint": [
+      {
+        "executionId": "41f3984c-f85b-4cd6-9522-ad554ff034bb",
+        "chatSessionId": "sess_7b9d8a98-ccc3-456c-97cd-c6072619b7f6",
+        "timestamp": 1790630790094
+      },
+      {
+        "executionId": "41f3984c-f85b-4cd6-9522-ad554ff034bb",
+        "chatSessionId": "sess_7b9d8a98-ccc3-456c-97cd-c6072619b7f6",
+        "timestamp": 1790633632581
+      },
+      {
+        "executionId": "41f3984c-f85b-4cd6-9522-ad554ff034bb",
+        "chatSessionId": "sess_7b9d8a98-ccc3-456c-97cd-c6072619b7f6",
+        "timestamp": 1790633656746
+      }
+    ],
+    "8. Scaffold frontend project structure and dependencies": [
+      {
+        "executionId": "41f3984c-f85b-4cd6-9522-ad554ff034bb",
+        "chatSessionId": "sess_7b9d8a98-ccc3-456c-97cd-c6072619b7f6",
+        "timestamp": 1790630790155
+      },
+      {
+        "executionId": "41f3984c-f85b-4cd6-9522-ad554ff034bb",
+        "chatSessionId": "sess_7b9d8a98-ccc3-456c-97cd-c6072619b7f6",
+        "timestamp": 1790633661582
+      },
+      {
+        "executionId": "41f3984c-f85b-4cd6-9522-ad554ff034bb",
+        "chatSessionId": "sess_7b9d8a98-ccc3-456c-97cd-c6072619b7f6",
+        "timestamp": 1790634521590
+      }
+    ],
+    "9.1 Define API types and narrowing guards": [
+      {
+        "executionId": "41f3984c-f85b-4cd6-9522-ad554ff034bb",
+        "chatSessionId": "sess_7b9d8a98-ccc3-456c-97cd-c6072619b7f6",
+        "timestamp": 1790630790220
+      },
+      {
+        "executionId": "41f3984c-f85b-4cd6-9522-ad554ff034bb",
+        "chatSessionId": "sess_7b9d8a98-ccc3-456c-97cd-c6072619b7f6",
+        "timestamp": 1790634526807
+      },
+      {
+        "executionId": "41f3984c-f85b-4cd6-9522-ad554ff034bb",
+        "chatSessionId": "sess_7b9d8a98-ccc3-456c-97cd-c6072619b7f6",
+        "timestamp": 1790634683696
+      }
+    ],
+    "9.2 Implement the typed API client": [
+      {
+        "executionId": "41f3984c-f85b-4cd6-9522-ad554ff034bb",
+        "chatSessionId": "sess_7b9d8a98-ccc3-456c-97cd-c6072619b7f6",
+        "timestamp": 1790630790293
+      },
+      {
+        "executionId": "41f3984c-f85b-4cd6-9522-ad554ff034bb",
+        "chatSessionId": "sess_7b9d8a98-ccc3-456c-97cd-c6072619b7f6",
+        "timestamp": 1790634690353
+      },
+      {
+        "executionId": "41f3984c-f85b-4cd6-9522-ad554ff034bb",
+        "chatSessionId": "sess_7b9d8a98-ccc3-456c-97cd-c6072619b7f6",
+        "timestamp": 1790634818409
+      }
+    ],
+    "10. Implement the pure calculator reducer": [
+      {
+        "executionId": "41f3984c-f85b-4cd6-9522-ad554ff034bb",
+        "chatSessionId": "sess_7b9d8a98-ccc3-456c-97cd-c6072619b7f6",
+        "timestamp": 1790630790364
+      },
+      {
+        "executionId": "41f3984c-f85b-4cd6-9522-ad554ff034bb",
+        "chatSessionId": "sess_7b9d8a98-ccc3-456c-97cd-c6072619b7f6",
+        "timestamp": 1790634527642
+      },
+      {
+        "executionId": "41f3984c-f85b-4cd6-9522-ad554ff034bb",
+        "chatSessionId": "sess_7b9d8a98-ccc3-456c-97cd-c6072619b7f6",
+        "timestamp": 1790634684922
+      }
+    ],
+    "11.1 Implement the useKeyboard hook": [
+      {
+        "executionId": "41f3984c-f85b-4cd6-9522-ad554ff034bb",
+        "chatSessionId": "sess_7b9d8a98-ccc3-456c-97cd-c6072619b7f6",
+        "timestamp": 1790630790434
+      },
+      {
+        "executionId": "41f3984c-f85b-4cd6-9522-ad554ff034bb",
+        "chatSessionId": "sess_7b9d8a98-ccc3-456c-97cd-c6072619b7f6",
+        "timestamp": 1790634691874
+      },
+      {
+        "executionId": "41f3984c-f85b-4cd6-9522-ad554ff034bb",
+        "chatSessionId": "sess_7b9d8a98-ccc3-456c-97cd-c6072619b7f6",
+        "timestamp": 1790634817330
+      }
+    ],
+    "11.2 Implement the useEvaluator hook": [
+      {
+        "executionId": "41f3984c-f85b-4cd6-9522-ad554ff034bb",
+        "chatSessionId": "sess_7b9d8a98-ccc3-456c-97cd-c6072619b7f6",
+        "timestamp": 1790630790499
+      },
+      {
+        "executionId": "41f3984c-f85b-4cd6-9522-ad554ff034bb",
+        "chatSessionId": "sess_7b9d8a98-ccc3-456c-97cd-c6072619b7f6",
+        "timestamp": 1790634824366
+      },
+      {
+        "executionId": "41f3984c-f85b-4cd6-9522-ad554ff034bb",
+        "chatSessionId": "sess_7b9d8a98-ccc3-456c-97cd-c6072619b7f6",
+        "timestamp": 1790635005845
+      }
+    ],
+    "12.1 Implement CalcButton": [
+      {
+        "executionId": "41f3984c-f85b-4cd6-9522-ad554ff034bb",
+        "chatSessionId": "sess_7b9d8a98-ccc3-456c-97cd-c6072619b7f6",
+        "timestamp": 1790630790582
+      },
+      {
+        "executionId": "41f3984c-f85b-4cd6-9522-ad554ff034bb",
+        "chatSessionId": "sess_7b9d8a98-ccc3-456c-97cd-c6072619b7f6",
+        "timestamp": 1790634692800
+      },
+      {
+        "executionId": "41f3984c-f85b-4cd6-9522-ad554ff034bb",
+        "chatSessionId": "sess_7b9d8a98-ccc3-456c-97cd-c6072619b7f6",
+        "timestamp": 1790634816044
+      }
+    ],
+    "12.2 Implement Keypad": [
+      {
+        "executionId": "41f3984c-f85b-4cd6-9522-ad554ff034bb",
+        "chatSessionId": "sess_7b9d8a98-ccc3-456c-97cd-c6072619b7f6",
+        "timestamp": 1790630790653
+      },
+      {
+        "executionId": "41f3984c-f85b-4cd6-9522-ad554ff034bb",
+        "chatSessionId": "sess_7b9d8a98-ccc3-456c-97cd-c6072619b7f6",
+        "timestamp": 1790634825304
+      },
+      {
+        "executionId": "41f3984c-f85b-4cd6-9522-ad554ff034bb",
+        "chatSessionId": "sess_7b9d8a98-ccc3-456c-97cd-c6072619b7f6",
+        "timestamp": 1790635003573
+      }
+    ],
+    "12.3 Implement ExpressionDisplay and ResultDisplay": [
+      {
+        "executionId": "41f3984c-f85b-4cd6-9522-ad554ff034bb",
+        "chatSessionId": "sess_7b9d8a98-ccc3-456c-97cd-c6072619b7f6",
+        "timestamp": 1790630790712
+      },
+      {
+        "executionId": "41f3984c-f85b-4cd6-9522-ad554ff034bb",
+        "chatSessionId": "sess_7b9d8a98-ccc3-456c-97cd-c6072619b7f6",
+        "timestamp": 1790634826744
+      },
+      {
+        "executionId": "41f3984c-f85b-4cd6-9522-ad554ff034bb",
+        "chatSessionId": "sess_7b9d8a98-ccc3-456c-97cd-c6072619b7f6",
+        "timestamp": 1790635004945
+      }
+    ],
+    "12.4 Implement Calculator container": [
+      {
+        "executionId": "41f3984c-f85b-4cd6-9522-ad554ff034bb",
+        "chatSessionId": "sess_7b9d8a98-ccc3-456c-97cd-c6072619b7f6",
+        "timestamp": 1790630790782
+      },
+      {
+        "executionId": "41f3984c-f85b-4cd6-9522-ad554ff034bb",
+        "chatSessionId": "sess_7b9d8a98-ccc3-456c-97cd-c6072619b7f6",
+        "timestamp": 1790635010452
+      },
+      {
+        "executionId": "41f3984c-f85b-4cd6-9522-ad554ff034bb",
+        "chatSessionId": "sess_7b9d8a98-ccc3-456c-97cd-c6072619b7f6",
+        "timestamp": 1790635109409
+      }
+    ],
+    "12.5 Implement App shell": [
+      {
+        "executionId": "41f3984c-f85b-4cd6-9522-ad554ff034bb",
+        "chatSessionId": "sess_7b9d8a98-ccc3-456c-97cd-c6072619b7f6",
+        "timestamp": 1790630790843
+      },
+      {
+        "executionId": "41f3984c-f85b-4cd6-9522-ad554ff034bb",
+        "chatSessionId": "sess_7b9d8a98-ccc3-456c-97cd-c6072619b7f6",
+        "timestamp": 1790635114285
+      },
+      {
+        "executionId": "41f3984c-f85b-4cd6-9522-ad554ff034bb",
+        "chatSessionId": "sess_7b9d8a98-ccc3-456c-97cd-c6072619b7f6",
+        "timestamp": 1790635201758
+      }
+    ],
+    "13. Implement responsive, accessible styling": [
+      {
+        "executionId": "41f3984c-f85b-4cd6-9522-ad554ff034bb",
+        "chatSessionId": "sess_7b9d8a98-ccc3-456c-97cd-c6072619b7f6",
+        "timestamp": 1790630790909
+      },
+      {
+        "executionId": "41f3984c-f85b-4cd6-9522-ad554ff034bb",
+        "chatSessionId": "sess_7b9d8a98-ccc3-456c-97cd-c6072619b7f6",
+        "timestamp": 1790635206644
+      },
+      {
+        "executionId": "41f3984c-f85b-4cd6-9522-ad554ff034bb",
+        "chatSessionId": "sess_7b9d8a98-ccc3-456c-97cd-c6072619b7f6",
+        "timestamp": 1790635576429
+      }
+    ],
+    "15. Final checkpoint": [
+      {
+        "executionId": "41f3984c-f85b-4cd6-9522-ad554ff034bb",
+        "chatSessionId": "sess_7b9d8a98-ccc3-456c-97cd-c6072619b7f6",
+        "timestamp": 1790630790970
+      },
+      {
+        "executionId": "41f3984c-f85b-4cd6-9522-ad554ff034bb",
+        "chatSessionId": "sess_7b9d8a98-ccc3-456c-97cd-c6072619b7f6",
+        "timestamp": 1790635581551
+      },
+      {
+        "executionId": "41f3984c-f85b-4cd6-9522-ad554ff034bb",
+        "chatSessionId": "sess_7b9d8a98-ccc3-456c-97cd-c6072619b7f6",
+        "timestamp": 1790635599813
+      }
+    ],
+    "2. Implement the backend Evaluation_Engine core": [
+      {
+        "executionId": "41f3984c-f85b-4cd6-9522-ad554ff034bb",
+        "chatSessionId": "sess_7b9d8a98-ccc3-456c-97cd-c6072619b7f6",
+        "timestamp": 1790632923022
+      }
+    ],
+    "4. Implement the backend API layer": [
+      {
+        "executionId": "41f3984c-f85b-4cd6-9522-ad554ff034bb",
+        "chatSessionId": "sess_7b9d8a98-ccc3-456c-97cd-c6072619b7f6",
+        "timestamp": 1790633313926
+      }
+    ],
+    "6. Backend property-based tests (Hypothesis)": [
+      {
+        "executionId": "41f3984c-f85b-4cd6-9522-ad554ff034bb",
+        "chatSessionId": "sess_7b9d8a98-ccc3-456c-97cd-c6072619b7f6",
+        "timestamp": 1790633626026
+      }
+    ],
+    "9. Implement the typed API contract and client": [
+      {
+        "executionId": "41f3984c-f85b-4cd6-9522-ad554ff034bb",
+        "chatSessionId": "sess_7b9d8a98-ccc3-456c-97cd-c6072619b7f6",
+        "timestamp": 1790634818512
+      }
+    ],
+    "11. Implement input hooks": [
+      {
+        "executionId": "41f3984c-f85b-4cd6-9522-ad554ff034bb",
+        "chatSessionId": "sess_7b9d8a98-ccc3-456c-97cd-c6072619b7f6",
+        "timestamp": 1790635005947
+      }
+    ],
+    "12. Implement UI components": [
+      {
+        "executionId": "41f3984c-f85b-4cd6-9522-ad554ff034bb",
+        "chatSessionId": "sess_7b9d8a98-ccc3-456c-97cd-c6072619b7f6",
+        "timestamp": 1790635201879
+      }
+    ]
+  }
+}

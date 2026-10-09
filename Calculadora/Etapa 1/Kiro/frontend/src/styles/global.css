@@ -1,0 +1,190 @@
+/*
+ * global.css — responsive, accessible layout for the web calculator (Task 13).
+ *
+ * Responsibilities:
+ *   - Import the color palette / design tokens (theme.css).
+ *   - Reset + base document styles.
+ *   - The app shell, calculator panel, and display layout.
+ *   - Responsive rules using clamp() + media queries for the three breakpoints
+ *     so the calculator never overflows horizontally and no control is clipped
+ *     at mobile (320-767), tablet (768-1023), or desktop (1024-2560) widths
+ *     (Requirements 9.1-9.3), keeping every control visible without scrolling
+ *     where feasible (Requirement 8.4).
+ *
+ * Keypad grid structure lives in components/Keypad.css and per-button theming in
+ * components/CalcButton.css; this file owns the page/panel/display + breakpoints.
+ *
+ * NOTE: Automated contrast checks verify color ratios only. Full WCAG
+ * conformance requires manual assistive-technology testing and expert review.
+ */
+
+@import './theme.css';
+
+/* ------------------------------------------------------------------ Reset */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  min-height: 100vh;
+  /* min-height:100dvh keeps the layout inside the *visible* viewport on mobile
+     browsers whose URL bar changes the usable height (supports Req 8.4). */
+  min-height: 100dvh;
+  background-color: var(--color-page-bg);
+  color: var(--color-text);
+  font-family: system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial,
+    sans-serif;
+  line-height: 1.4;
+  /* Prevent any accidental horizontal scrollbar at any width (Req 9.1-9.3). */
+  overflow-x: hidden;
+}
+
+#root {
+  min-height: 100vh;
+  min-height: 100dvh;
+}
+
+/* -------------------------------------------------------------- App shell */
+
+.app {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: clamp(0.75rem, 3vh, 1.5rem);
+  /* Vertical padding shrinks on short/mobile screens so the whole calculator
+     stays within the viewport without scrolling where feasible (Req 8.4). */
+  padding: clamp(0.75rem, 4vh, 2rem) clamp(0.5rem, 3vw, 1.5rem);
+  min-height: 100vh;
+  min-height: 100dvh;
+}
+
+.app h1 {
+  margin: 0;
+  /* Large text: contrast 16.82:1 on the page bg (>= 3:1, Req 11.2). */
+  color: var(--color-text);
+  font-size: clamp(1.25rem, 4vw, 2rem);
+  font-weight: 700;
+  text-align: center;
+}
+
+.app main {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+/* ---------------------------------------------------------- Calculator panel */
+
+.calculator {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap);
+  width: 100%;
+  /* Cap the width so the panel never stretches uncomfortably wide on desktop
+     up to 2560px; it stays centered and free of horizontal overflow (Req 9.3). */
+  max-width: 420px;
+  padding: clamp(0.6rem, 2.5vw, 1rem);
+  background-color: var(--color-panel-bg);
+  border: 1px solid var(--color-border-display); /* boundary >=3:1 vs page/panel (Req 11.3) */
+  border-radius: calc(var(--radius) + 4px);
+}
+
+/* --------------------------------------------------------------- Displays */
+
+.expression-display,
+.result-display {
+  width: 100%;
+  background-color: var(--color-display-bg);
+  border: 1px solid var(--color-border-display); /* boundary >=3:1 (Req 11.3) */
+  border-radius: var(--radius);
+  padding: clamp(0.5rem, 2vw, 0.85rem);
+  /* Never let long expressions/results push the layout wider (Req 9.1-9.3). */
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+/* Expression: right-aligned like a physical calculator, larger text. */
+.expression-display {
+  min-height: 2.25rem;
+  text-align: right;
+  color: var(--color-display-text);       /* 15.30:1 (Req 11.1) */
+  font-size: clamp(1.1rem, 4.5vw, 1.5rem); /* large text (Req 11.2) */
+  font-variant-numeric: tabular-nums;
+}
+
+.result-display {
+  min-height: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: right;
+}
+
+.result-display__result {
+  color: var(--color-result);              /* 9.64:1 on display (Req 11.1) */
+  font-size: clamp(1.3rem, 6vw, 2rem);     /* large text (Req 11.2) */
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  overflow-wrap: anywhere;
+}
+
+.result-display__error {
+  color: var(--color-error);               /* 6.98:1 on display (Req 11.1) */
+  font-size: clamp(0.95rem, 3.5vw, 1.1rem);
+  font-weight: 600;
+  text-align: left;
+  overflow-wrap: anywhere;
+}
+
+/* Only reserve vertical space for the two mutually-exclusive slots when they
+   actually carry content, so the empty initial state stays compact (Req 8.4). */
+.result-display__result:empty,
+.result-display__error:empty {
+  display: none;
+}
+
+/* =========================================================================
+ * Responsive breakpoints
+ * The layout is fluid by default (clamp() + %-widths + max-width cap), so it
+ * already avoids horizontal overflow at every width. These media queries tune
+ * spacing/sizing at the three named ranges from Requirement 9.
+ * ========================================================================= */
+
+/* Mobile: 320-767px. Tighten spacing so every control fits without scrolling;
+   button min sizing (>=44x44px touch targets) is enforced in CalcButton.css. */
+@media (max-width: 767px) {
+  .app {
+    /* Small side padding maximizes usable width at 320px without overflow. */
+    padding-left: clamp(0.4rem, 2vw, 0.75rem);
+    padding-right: clamp(0.4rem, 2vw, 0.75rem);
+  }
+
+  .calculator {
+    /* Fill the narrow viewport (minus the app's small side padding). */
+    max-width: 100%;
+  }
+}
+
+/* Tablet: 768-1023px. Comfortable fixed panel width, centered, no overflow. */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .calculator {
+    max-width: 440px;
+  }
+}
+
+/* Desktop: 1024-2560px. Slightly larger panel, capped so it never overflows
+   or stretches edge-to-edge on very wide screens (Req 9.3). */
+@media (min-width: 1024px) {
+  .calculator {
+    max-width: 460px;
+  }
+}
