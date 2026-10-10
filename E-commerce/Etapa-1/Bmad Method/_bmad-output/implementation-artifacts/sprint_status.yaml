@@ -1,0 +1,31 @@
+# Sprint Status Tracking - Stage 1 E-Commerce Case
+project: Stage 1 E-Commerce Case
+project_key: SEC1
+tracking_system: file-system
+story_location: "_bmad-output/planning-artifacts/epics_and_stories.md"
+
+development_status:
+  # Epic 1: Product Catalog
+  epic-1: done
+  1-1-browse-product-catalog: done
+  epic-1-retrospective: optional
+
+  # Epic 2: Shopping Cart
+  epic-2: done
+  2-1-add-products-to-cart: done
+  2-2-manage-shopping-cart-content: done
+  epic-2-retrospective: optional
+
+  # Epic 3: Basic Authentication
+  epic-3: done
+  3-1-user-registration-sign-in-out: done
+  3-2-guide-visitor-identification-checkout: done
+  epic-3-retrospective: optional
+
+  # Epic 4: Simulated Checkout
+  epic-4: done
+  4-1-simulated-purchase-confirmation: done
+  epic-4-retrospective: optional
+
+# Action items committed during retrospectives
+action_items: []

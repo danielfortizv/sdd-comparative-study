@@ -1,0 +1,34 @@
+[
+  {
+    "product_id": "prod_001",
+    "name": "Standard Coffee Maker",
+    "representative_image": "coffee_maker.png",
+    "short_description": "Brew delicious espresso and standard coffee at home with this simple-to-use espresso machine.",
+    "price": 89.99,
+    "general_availability": "In Stock"
+  },
+  {
+    "product_id": "prod_002",
+    "name": "Stainless Steel Kettle",
+    "representative_image": "steel_kettle.png",
+    "short_description": "Boils water within 3 minutes. Features automatic shut-off and high durability.",
+    "price": 34.50,
+    "general_availability": "Only 3 left"
+  },
+  {
+    "product_id": "prod_003",
+    "name": "Ergonomic Office Chair",
+    "representative_image": "office_chair.png",
+    "short_description": "Adjustable back support and high-density foam padding for all-day working comfort.",
+    "price": 149.00,
+    "general_availability": "In Stock"
+  },
+  {
+    "product_id": "prod_004",
+    "name": "Mechanical Keyboard",
+    "representative_image": "keyboard.png",
+    "short_description": "Tactile clicky keys and vibrant multi-mode background lighting.",
+    "price": 59.95,
+    "general_availability": "Out of Stock"
+  }
+]

@@ -1,0 +1,8 @@
+{
+  "name": "ecommerce-stage-1-tessl",
+  "mode": "vendored",
+  "agents": [
+    "gemini"
+  ],
+  "dependencies": {}
+}
