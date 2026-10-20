@@ -1,0 +1,60 @@
+# STATUS DEFINITIONS:
+# ==================
+# Epic Status:
+#   - backlog: Epic not yet started
+#   - in-progress: Epic actively being worked on
+#   - done: All stories in epic completed
+
+# Story Status:
+#   - backlog: Story only exists in epic file
+#   - ready-for-dev: Story file created, ready for development
+#   - in-progress: Developer actively working on implementation
+#   - review: Implementation complete, ready for review
+#   - done: Story completed
+
+# Retrospective Status:
+#   - optional: Can be completed but not required
+#   - done: Retrospective has been completed
+
+# Action Item Status:
+#   - open: Committed during a retrospective, not yet addressed
+#   - in-progress: Actively being worked on
+#   - done: Completed
+
+# WORKFLOW NOTES:
+# ===============
+# - Epic transitions to 'in-progress' automatically when its first story starts (via build's sprint sync)
+# - Stories can be worked in parallel if team capacity allows
+# - Developer typically creates the next story after the previous one is 'done' to incorporate learnings
+# - Dev moves story to 'review', then runs code-review (fresh context, different LLM recommended)
+# - Retrospective appends its action items to action_items; the status view surfaces open ones
+generated: 10-20-2026 14:00
+last_updated: 10-20-2026 14:15
+project: Shift Bank
+project_key: NOKEY
+tracking_system: file-system
+story_location: _bmad-output/implementation-artifacts
+development_status:
+  epic-1: in-progress
+  1-1-project-scaffolding-design-tokens-database-seeder: in-progress
+  1-2-account-portfolio-api-context-validation: backlog
+  1-3-responsive-account-portfolio-grid-selection-ui: backlog
+  epic-1-retrospective: optional
+
+  epic-2: backlog
+  2-1-transfer-form-ui-with-source-destination-locks-client-valida: backlog
+  2-2-atomic-transfer-service-balance-conservation-backend: backlog
+  2-3-end-to-end-transfer-execution-view-synchronization: backlog
+  epic-2-retrospective: optional
+
+  epic-3: backlog
+  3-1-sensitive-transfer-routing-challenge-issuance-backend: backlog
+  3-2-mfa-modal-dialog-verification-flow: backlog
+  3-3-mfa-retry-expiration-lockout-cancellation-handling: backlog
+  epic-3-retrospective: optional
+
+  epic-4: backlog
+  4-1-dual-entry-movement-persistence-history-api: backlog
+  4-2-chronological-movement-ledger-ui: backlog
+  4-3-zero-movement-state-presentation-fr-14-verification: backlog
+  epic-4-retrospective: optional
