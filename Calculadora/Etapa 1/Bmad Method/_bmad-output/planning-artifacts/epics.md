@@ -218,3 +218,123 @@ So that I can quickly recover and fix mistakes.
 **When** the client processes the HTTP error code
 **Then** the Result Display must render the descriptive message (e.g. `Error: Division by zero`) in high-contrast red/orange visual warning color
 **And** the on-screen `=` button must be disabled, forcing the user to tap `AC` or `Backspace` to clear the error state and restore active typing.
+
+---
+
+## Epic 3: Advanced Scientific Mathematics (Backend & API Core)
+
+Develop backend parser logic to securely process scientific operations, angle unit systems, and math constants in AST without exposing standard execution paths, including a comprehensive unit testing suite.
+
+### Story 3.1: AST Evaluation for Whitelisted Scientific Function Calls
+
+As a Scientific Calculator User,
+I want the parser to resolve scientific function calls (`sin`, `cos`, `tan`, `asin`, `acos`, `atan`, `sqrt`, `ln`, `log10`) securely inside AST,
+So that I can calculate advanced mathematics with exact high-precision decimal formatting.
+
+**Acceptance Criteria:**
+
+**Given** an expression string containing whitelisted scientific function calls (e.g. `sin(0.5)`, `sqrt(9)`, `ln(2)`)
+**When** the backend custom `SafeMathEvaluator` AST visitor evaluates the expression
+**Then** it must securely whitelist `ast.Call` nodes where `node.func` is `ast.Name`, and verify the function ID matches the allowed list
+**And** it must recursively evaluate the function's arguments and compute the result using high-precision logic, rejecting any un-whitelisted function execution.
+
+---
+
+### Story 3.2: Degrees & Radians Angle Modes and Conversions
+
+As a Physics Student,
+I want the calculator to support evaluating trigonometric expressions in both degrees and radians modes,
+So that I do not have to perform angle unit conversions manually.
+
+**Acceptance Criteria:**
+
+**Given** a request to `POST /api/v1/evaluate` with an optional `angle_unit` parameter set to `"degrees"` or `"radians"` (defaulting to `"radians"`)
+**When** executing a trigonometric function (`sin`, `cos`, `tan`, `asin`, `acos`, `atan`)
+**Then** the backend must convert degrees to radians prior to evaluating standard functions, and convert radians to degrees for inverse trigonometric results
+**And** it must return the mathematically exact converted result matching physical scientific calculators.
+
+---
+
+### Story 3.3: Exponentiation, Roots, and Mathematical Constants
+
+As a Financial Analyst,
+I want the backend to evaluate power operations (`x ** y`), roots, and mathematical constants (`pi`, `e`),
+So that I can model exponential decay and interest rates with absolute decimal precision.
+
+**Acceptance Criteria:**
+
+**Given** an expression using exponents (e.g. `2 ** 10`), Euler's constant `e`, or Archimedes' constant `pi`
+**When** parsed into an AST
+**Then** the evaluator must whitelist `ast.Pow` binary operations and resolve `ast.Name` constants for `pi` (evaluating to `3.141592653589793238462643383`) and `e` (evaluating to `2.718281828459045235360287471`)
+**And** it must evaluate operations securely with 28 digits of decimal precision, throwing standardized mathematical domain errors for invalid bounds (e.g., negative roots or logs of zero/negative numbers) prefixed with `"Error: "`.
+
+---
+
+## Epic 4: Integrated State Sync, Memory, and History Panel (Frontend & Client)
+
+Extend frontend React state management to store local memory registers and session history, synchronizing precise additions and subtractions via backend calculation requests, and displaying interactions within an interactive side panel.
+
+### Story 4.1: Client-Side High-Precision Memory Register (M+, M-, MR, MC)
+
+As a Retail Manager,
+I want a calculator memory register to accumulate sub-totals and add or subtract from a running memory storage,
+So that I can perform complex multi-step audits.
+
+**Acceptance Criteria:**
+
+**Given** a numeric display result (e.g. `120.50`) and a local running memory state (initially `0`)
+**When** clicking `M+` or `M-`
+**Then** the client must dispatch an API evaluate request to the backend representing `memory_value + display_result` or `memory_value - display_result` to ensure absolute precision
+**And** it must update the local memory state, displaying a high-contrast visual "M" badge on the bezel screen whenever memory is non-zero
+**And** clicking `MR` must append the current memory value to the active expression, while `MC` resets memory back to `0` and hides the badge.
+
+---
+
+### Story 4.2: Interactive Side Drawer Session Calculation History
+
+As a Data Clerk,
+I want an interactive history of evaluated expressions from my current session,
+So that I can review past calculations and easily reload previous inputs or results into my display.
+
+**Acceptance Criteria:**
+
+**Given** a series of successfully evaluated calculations in the current session
+**When** opening the side history drawer panel and clicking a previous calculation item
+**Then** the user must be presented with clear action targets allowing them to reload the entire historical expression or just the final evaluation result back into the main active screen area
+**And** the history state must persist throughout the session and feature a "Clear History" button that resets the log.
+
+---
+
+## Epic 5: Responsive Scientific Keypad Layout & Accessibility (Frontend Layout)
+
+Re-design the main keypad layout to cleanly support scientific functions and memory keys without layout shifts, expanding keyboard bindings, and enforcing accessibility.
+
+### Story 5.1: Collapsible Dual-Keypad Responsive Grid and Memory Badges
+
+As a Mobile Phone User,
+I want a scientific button panel that expands on desktop and collapses gracefully on mobile devices,
+So that the keypad layout remains clear and accessible on small screens.
+
+**Acceptance Criteria:**
+
+**Given** any viewport screen width
+**When** the calculator interface is rendered
+**Then** the scientific functions and memory keys must be arranged in a responsive grid (using an expandable/collapsible keypad drawer or tab system) that fits on small viewports without overlapping, clipping, or breaking the mobile minimum touch target clearance of `48px` x `48px`
+**And** a clear angle mode indicator ("DEG" or "RAD") and "M" memory badge must render on the display panel.
+
+---
+
+### Story 5.2: Keyboard Binding Expansion and a11y ARIA Announcements
+
+As a Power User operating with screen readers and a keyboard,
+I want expanded keyboard shortcuts for scientific keys and full screen reader live announcements for trigonometry results,
+So that I can navigate the advanced features quickly and audibly.
+
+**Acceptance Criteria:**
+
+**Given** the expanded scientific layout
+**When** keys are captured globally (`^` mapped to ` ** `, `p` or similar mapping for `pi`, etc.)
+**Then** the state controller must execute correct scientific transitions
+**And** every scientific and memory button must have a descriptive `aria-label` (e.g. `aria-label="Sine"`, `aria-label="Add current value to memory"`)
+**And** changing angle modes or clicking memory buttons must trigger immediate, polite screen reader live region announcements.
+

@@ -16,14 +16,21 @@ Error mapping (design Error Handling table)
 Every :class:`~app.engine.errors.EvaluationError` subclass
 (``EmptyExpressionError``, ``InvalidCharacterError``, ``InvalidSyntaxError``,
 ``UnbalancedParenthesesError``, ``DivisionByZeroError``) maps to HTTP ``422``
-with ``{"error": "<message>"}``.
+with ``{"error": "<message>"}``. The Stage 2 scientific extension adds two more
+``EvaluationError`` subclasses — ``DomainError`` (e.g. ``sqrt(-1)``,
+``asin(2)``, ``ln(0)``) and ``InvalidFunctionError`` (an unknown function name
+such as ``foo(1)``). Because the handler is registered against the
+``EvaluationError`` base class, these new subclasses are caught and mapped to
+the same 4xx ``ErrorResponse`` with no handler change (Requirements 17.7, 17.8,
+24.8).
 
 Pydantic/request validation failures map to the same ``ErrorResponse`` shape so
 the frontend contract stays uniform (Requirement 5.6, 13.5):
 
 * A malformed JSON body (unparseable request) maps to HTTP ``400``.
-* A missing field, wrong type, or an expression exceeding the 256-character
-  maximum maps to HTTP ``422``.
+* A missing field, wrong type, an expression exceeding the 256-character
+  maximum, or an ``angle_mode`` outside ``{"radians", "degrees"}`` maps to HTTP
+  ``422`` (Requirements 24.4, 17.10).
 
 No error path ever returns a ``result`` field (Requirement 5.5).
 """
@@ -50,11 +57,13 @@ ALLOWED_ORIGINS: list[str] = [
 ]
 
 #: Uniform message for any request-body validation failure. It covers a missing
-#: field, a wrong type, a malformed body, and an over-length expression so the
-#: frontend sees a single, stable error shape (Requirements 5.6, 13.5).
+#: field, a wrong type, a malformed body, an over-length expression, and an
+#: invalid ``angle_mode`` so the frontend sees a single, stable error shape
+#: (Requirements 5.6, 13.5, 24.4, 17.10).
 _VALIDATION_MESSAGE = (
-    "Request body is malformed or the expression exceeds the maximum length "
-    "of 256 characters."
+    "Request body is malformed, the expression exceeds the maximum length of "
+    "256 characters, or the angle mode is invalid (it must be 'radians' or "
+    "'degrees')."
 )
 
 #: HTTP status codes used by the error handlers. Literals are used (rather than
@@ -122,7 +131,11 @@ def create_app() -> FastAPI:
         Covers ``EmptyExpressionError``, ``InvalidCharacterError``,
         ``InvalidSyntaxError``, ``UnbalancedParenthesesError``, and
         ``DivisionByZeroError`` uniformly using each error's descriptive
-        ``message`` (Requirements 4.1-4.6, 5.4).
+        ``message`` (Requirements 4.1-4.6, 5.4). Because it is registered on the
+        ``EvaluationError`` base class, it also catches the Stage 2 scientific
+        subclasses ``DomainError`` and ``InvalidFunctionError`` and maps them to
+        the same 422 ``ErrorResponse`` with no additional handler
+        (Requirements 17.7, 17.8, 24.8).
         """
         return _error_response(exc.message, _HTTP_422_UNPROCESSABLE)
 

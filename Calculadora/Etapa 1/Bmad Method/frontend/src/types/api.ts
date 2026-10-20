@@ -1,5 +1,6 @@
 export interface EvaluateRequest {
   expression: string;
+  angle_unit?: 'radians' | 'degrees';
 }
 
 export interface EvaluateResponse {

@@ -1,1 +1,5 @@
 Desconocimiento de las dependencias y la necesidad de definit un ambient virtual de python para el backend.
+
+etapa 2
+
+ignorar reporte de cambios o arreglos de la etapa anterior

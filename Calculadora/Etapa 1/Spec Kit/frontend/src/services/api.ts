@@ -2,8 +2,14 @@ import { CalculationRequest, CalculationResponse, ErrorResponse } from '../types
 
 const API_BASE_URL = 'http://localhost:8000/api/v1';
 
-export async function evaluateExpression(expression: string): Promise<CalculationResponse> {
-  const requestPayload: CalculationRequest = { expression };
+export async function evaluateExpression(
+  expression: string,
+  angleUnit: 'radians' | 'degrees' = 'radians'
+): Promise<CalculationResponse> {
+  const requestPayload: CalculationRequest = {
+    expression,
+    angle_unit: angleUnit,
+  };
 
   try {
     const response = await fetch(`${API_BASE_URL}/evaluate`, {

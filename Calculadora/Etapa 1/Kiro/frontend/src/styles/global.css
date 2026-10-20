@@ -90,12 +90,42 @@ body {
   gap: var(--gap);
   width: 100%;
   /* Cap the width so the panel never stretches uncomfortably wide on desktop
-     up to 2560px; it stays centered and free of horizontal overflow (Req 9.3). */
+     up to 2560px; it stays centered and free of horizontal overflow (Req 9.3).
+     Stage 2 adds a scientific keypad + history panel; the per-breakpoint
+     max-width below is widened so the 3/4/5-column scientific grid, the Stage 1
+     keypad, and the history list all fit with no horizontal overflow or
+     clipping across 320-767 / 768-1023 / 1024-2560 (Req 22.3, 22.4, 22.9). */
   max-width: 420px;
+  /* Never allow a child grid/list to force the panel wider than its column. */
+  min-width: 0;
   padding: clamp(0.6rem, 2.5vw, 1rem);
   background-color: var(--color-panel-bg);
   border: 1px solid var(--color-border-display); /* boundary >=3:1 vs page/panel (Req 11.3) */
   border-radius: calc(var(--radius) + 4px);
+}
+
+/* -------------------------------------------- Display + memory badge (Stage 2)
+ * Calculator.tsx wraps the MemoryIndicator + the two displays in
+ * `.calculator__display`. Position the badge in the top-left corner of the
+ * display stack WITHOUT overlapping or clipping the right-aligned expression /
+ * result text: the displays are right-aligned, so a small badge pinned to the
+ * top-left sits over empty space. `position: relative` scopes the absolute
+ * badge to this wrapper. */
+.calculator__display {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap);
+  min-width: 0;
+}
+
+.calculator__display .memory-indicator {
+  position: absolute;
+  top: calc(var(--gap) / 2);
+  left: calc(var(--gap) / 2);
+  /* Above the display face but it never covers the right-aligned text. */
+  z-index: 1;
+  pointer-events: none;
 }
 
 /* --------------------------------------------------------------- Displays */
@@ -174,17 +204,20 @@ body {
   }
 }
 
-/* Tablet: 768-1023px. Comfortable fixed panel width, centered, no overflow. */
+/* Tablet: 768-1023px. Widen the panel so the scientific keypad can re-flow to
+   4 columns alongside the Stage 1 keypad and history list with no overflow
+   (Req 22.3, 22.4). Still a capped, centered column. */
 @media (min-width: 768px) and (max-width: 1023px) {
   .calculator {
-    max-width: 440px;
+    max-width: 560px;
   }
 }
 
-/* Desktop: 1024-2560px. Slightly larger panel, capped so it never overflows
-   or stretches edge-to-edge on very wide screens (Req 9.3). */
+/* Desktop: 1024-2560px. Wider still so the scientific keypad re-flows to 5
+   columns; capped so it never overflows or stretches edge-to-edge on very wide
+   screens up to 2560px (Req 22.4, 22.9). */
 @media (min-width: 1024px) {
   .calculator {
-    max-width: 460px;
+    max-width: 640px;
   }
 }

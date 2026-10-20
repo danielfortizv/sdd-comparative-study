@@ -17,8 +17,18 @@ This document defines the requirements for a modern, daily-use, responsive web c
 - **Expression_Display**: The Frontend_Client area that shows the full input Expression entered by the User.
 - **Result_Display**: The Frontend_Client area that shows the live or final calculated result.
 - **User**: A person interacting with the Frontend_Client via mouse, touch, or keyboard.
-- **Decimal_Precision**: Exact decimal arithmetic performed using Python's `decimal` module (or equivalent AST-based exact evaluation) that avoids binary floating-point representation errors.
+- **Decimal_Precision**: Exact decimal arithmetic performed using Python's `decimal` module (or equivalent AST-based exact evaluation) that avoids binary floating-point representation errors. For non-terminating results, values are rounded to a minimum of 10 significant decimal digits using round-half-to-even rounding.
 - **Error_Response**: A structured JSON payload returned by the Backend_Service describing a failed evaluation, including a descriptive error message.
+- **Scientific_Function**: A named mathematical operation beyond basic arithmetic supported by the Evaluation_Engine, comprising the trigonometric functions (`sin`, `cos`, `tan`, `asin`, `acos`, `atan`), the logarithmic functions (`ln`, `log10`), the square root function (`sqrt`), and the n-th root function.
+- **Angle_Mode**: The unit interpretation applied to the argument of trigonometric functions and to the result of inverse trigonometric functions, with the two permitted values `radians` and `degrees`.
+- **Mathematical_Constant**: A predefined exact mathematical value that can be inserted into an Expression, comprising pi (the ratio of a circle's circumference to its diameter) and e (Euler's number).
+- **Domain_Error**: A failure condition in which a Scientific_Function or arithmetic operation is applied to an operand outside its mathematical domain, including division by zero, square root of a negative operand, logarithm of a zero or negative operand, and tangent of an angle at which tangent is undefined.
+- **Memory_Register**: A single stored numeric value maintained in the Frontend_Client state that the User can add to, subtract from, recall, and clear using memory controls.
+- **Memory_Indicator**: A visual badge rendered by the Frontend_Client that signals a non-zero Memory_Register value.
+- **Calculation_History**: An ordered collection of evaluated Expression entries accumulated during the current User session, where each entry records the submitted Expression and its returned result.
+- **History_Entry**: A single record within the Calculation_History containing one submitted Expression and the corresponding returned result.
+- **History_Panel**: The Frontend_Client side drawer or collapsible panel that renders the Calculation_History and the controls to interact with it.
+- **Scientific_Keypad**: The region of the Frontend_Client interface that renders the controls for Scientific_Functions, Mathematical_Constants, powers, roots, and the Angle_Mode toggle.
 
 ## Requirements
 
@@ -203,3 +213,159 @@ This document defines the requirements for a modern, daily-use, responsive web c
 2. THE Backend_Service SHALL include pytest unit tests that verify each Error_Response case defined in Requirement 4, each asserting that the response is an Error_Response with a 4xx status code.
 3. THE Backend_Service SHALL include a pytest test verifying the round-trip parsing property defined in Requirement 6 across multiple sample expressions.
 4. WHEN the backend test suite is executed, THE Backend_Service test suite SHALL pass all defined tests.
+
+---
+
+## Stage 2 Requirements (Scientific Calculator Extension)
+
+The following requirements extend the system into a scientific calculator. All Stage 1 requirements (Requirements 1 through 15) remain in force and unchanged. Stage 2 behavior SHALL NOT weaken, remove, or override any Stage 1 requirement.
+
+### Requirement 16: Stage 1 Codebase Inspection and Defect Remediation
+
+**User Story:** As a developer, I want the Stage 1 codebase inspected and its defects documented before Stage 2 work begins, so that pre-existing issues are fixed without regressing baseline behavior.
+
+#### Acceptance Criteria
+
+1. THE System SHALL produce a written inspection report of the Stage 1 codebase in which each of the four defect categories (bug, architectural flaw, decimal precision issue, and missing edge-case handler) is explicitly covered either by one or more documented defects or by an explicit record that no defect was found in that category.
+2. WHEN a defect is documented in the inspection report, THE System SHALL record for that defect the affected component, the steps or input that trigger the defect, and the expected result contrasted with the actual result.
+3. WHEN a documented defect is remediated, THE System SHALL preserve the behavior defined in Requirements 1 through 15 such that every Stage 1 acceptance criterion continues to hold after remediation.
+4. THE Backend_Service SHALL include pytest tests that assert the corrected behavior for each remediated defect that affects the Evaluation_Engine.
+5. IF a remediation of a documented defect introduces a regression against any acceptance criterion in Requirements 1 through 15, THEN THE System SHALL reject or correct that remediation before the inspection activity is considered complete.
+6. WHEN the backend test suite is executed after defect remediation, THE Backend_Service test suite SHALL complete with zero test failures and zero errors across all Stage 1 tests defined in Requirement 15 together with the tests added in criterion 4.
+
+### Requirement 17: Trigonometric Functions and Angle Mode
+
+**User Story:** As a User, I want trigonometric functions with selectable angle units, so that I can perform trigonometry in radians or degrees.
+
+#### Acceptance Criteria
+
+1. WHEN an Expression containing a `sin`, `cos`, or `tan` function applied to an operand subexpression is submitted to the Evaluate_Endpoint, THE Evaluation_Engine SHALL return the value of that function evaluated at the operand interpreted in the active Angle_Mode, computed with Decimal_Precision.
+2. WHEN an Expression containing an `asin`, `acos`, or `atan` function applied to an operand subexpression is submitted to the Evaluate_Endpoint, THE Evaluation_Engine SHALL return the principal value of that inverse function expressed in the active Angle_Mode and computed with Decimal_Precision, where the principal value lies in the closed interval from negative 90 to positive 90 degrees for `asin` and `atan`, and in the closed interval from 0 to positive 180 degrees for `acos`, with the equivalent intervals in radians when the active Angle_Mode is `radians`.
+3. WHERE the active Angle_Mode is `degrees`, THE Evaluation_Engine SHALL interpret the argument of a trigonometric function as degrees and SHALL express the result of an inverse trigonometric function in degrees.
+4. WHERE the active Angle_Mode is `radians`, THE Evaluation_Engine SHALL interpret the argument of a trigonometric function as radians and SHALL express the result of an inverse trigonometric function in radians.
+5. WHEN the Evaluation_Engine converts an angle between degrees and radians, THE Evaluation_Engine SHALL perform the conversion using the Mathematical_Constant pi under Decimal_Precision.
+6. WHEN a trigonometric or inverse trigonometric result is a non-terminating decimal, THE Evaluation_Engine SHALL return the result rounded to a minimum of 10 significant decimal digits using round-half-to-even rounding.
+7. IF an Expression applies `asin` or `acos` to an operand whose value is outside the closed interval from negative one to positive one, THEN THE Backend_Service SHALL return an Error_Response with a descriptive message identifying the domain error and SHALL NOT return a calculated result.
+8. IF an Expression applies `tan` to an argument equal to an odd integer multiple of 90 degrees when the active Angle_Mode is `degrees`, or to an argument equal to an odd integer multiple of pi divided by 2 radians when the active Angle_Mode is `radians`, THEN THE Backend_Service SHALL return an Error_Response with a descriptive message identifying the domain error and SHALL NOT return a calculated result.
+9. WHEN an Expression is submitted to the Evaluate_Endpoint and no Angle_Mode has been explicitly selected for that request, THE Evaluation_Engine SHALL treat the active Angle_Mode as `radians`.
+10. IF a request specifies an Angle_Mode value other than `radians` or `degrees`, THEN THE Backend_Service SHALL return an Error_Response with a descriptive message identifying the invalid Angle_Mode and SHALL NOT return a calculated result.
+
+### Requirement 18: Powers, Roots, and Logarithms
+
+**User Story:** As a User, I want powers, roots, and logarithms, so that I can perform scientific calculations beyond basic arithmetic.
+
+#### Acceptance Criteria
+
+1. WHEN an Expression contains an exponentiation of a base operand raised to an exponent operand, and the base operand is non-negative or the exponent operand is an integer, THE Evaluation_Engine SHALL return the base raised to the exponent computed with Decimal_Precision.
+2. WHEN an Expression contains a square-root function applied to a non-negative operand, THE Evaluation_Engine SHALL return the non-negative square root of the operand computed with Decimal_Precision.
+3. WHEN an Expression contains an n-th root of a radicand operand with a non-zero degree operand, and the degree operand is an odd integer or the radicand operand is non-negative, THE Evaluation_Engine SHALL return the real n-th root of the radicand computed with Decimal_Precision.
+4. WHEN an Expression contains a natural logarithm function applied to a positive operand, THE Evaluation_Engine SHALL return the natural logarithm of the operand computed with Decimal_Precision.
+5. WHEN an Expression contains a base-10 logarithm function applied to a positive operand, THE Evaluation_Engine SHALL return the base-10 logarithm of the operand computed with Decimal_Precision.
+6. WHEN a power, root, or logarithm result is a non-terminating decimal, THE Evaluation_Engine SHALL return the result rounded to a minimum of 10 significant decimal digits using round-half-to-even rounding.
+7. IF an Expression applies a square-root function to a negative operand, or applies an n-th root with an even-integer degree operand to a negative radicand operand, THEN THE Backend_Service SHALL return an Error_Response with a descriptive message identifying the Domain_Error and SHALL NOT return a calculated result.
+8. IF an Expression applies a natural logarithm or base-10 logarithm function to a zero or negative operand, THEN THE Backend_Service SHALL return an Error_Response with a descriptive message identifying the Domain_Error and SHALL NOT return a calculated result.
+9. IF an Expression applies an exponentiation of a negative base operand raised to a non-integer exponent operand, THEN THE Backend_Service SHALL return an Error_Response with a descriptive message identifying the Domain_Error for a non-real result and SHALL NOT return a calculated result.
+10. IF an Expression applies an n-th root with a degree operand equal to zero, THEN THE Backend_Service SHALL return an Error_Response with a descriptive message identifying the Domain_Error for an undefined root degree and SHALL NOT return a calculated result.
+11. IF an Expression applies a logarithm, root, or exponentiation that produces a non-finite result, THEN THE Backend_Service SHALL return an Error_Response with a descriptive message identifying the Domain_Error and SHALL NOT return a calculated result.
+
+### Requirement 19: Mathematical Constants
+
+**User Story:** As a User, I want quick input of pi and e, so that I can use mathematical constants without typing their decimal values.
+
+#### Acceptance Criteria
+
+1. WHEN an Expression contains the Mathematical_Constant pi, THE Evaluation_Engine SHALL substitute the value of pi bounded by Decimal_Precision to a minimum of 10 significant decimal digits.
+2. WHEN an Expression contains the Mathematical_Constant e, THE Evaluation_Engine SHALL substitute the value of e bounded by Decimal_Precision to a minimum of 10 significant decimal digits.
+3. WHEN the User activates the pi control on the Scientific_Keypad, THE Frontend_Client SHALL insert the pi constant token into the Expression at the current cursor position.
+4. WHEN the User activates the e control on the Scientific_Keypad, THE Frontend_Client SHALL insert the e constant token into the Expression at the current cursor position.
+5. THE Frontend_Client SHALL render each Mathematical_Constant token in the Expression using a deterministic display representation (the symbol `pi` for pi and the symbol `e` for e) that is identical for every insertion of the same Mathematical_Constant.
+
+### Requirement 20: Memory Register System
+
+**User Story:** As a User, I want calculator memory operations, so that I can store and reuse values across calculations.
+
+#### Acceptance Criteria
+
+1. THE Frontend_Client SHALL maintain a Memory_Register initialized to a value of zero in the initial state before any memory operation is performed.
+2. WHEN the User activates the M+ control WHILE the Result_Display contains a numeric result, THE Frontend_Client SHALL set the Memory_Register to the sum of the current Memory_Register value and the current Result_Display value, retaining the full decimal value of the result with Decimal_Precision.
+3. WHEN the User activates the M- control WHILE the Result_Display contains a numeric result, THE Frontend_Client SHALL set the Memory_Register to the difference obtained by subtracting the current Result_Display value from the current Memory_Register value, retaining the full decimal value of the result with Decimal_Precision.
+4. WHEN the User activates the MR control, THE Frontend_Client SHALL insert the current Memory_Register value into the Expression at the current input position.
+5. WHEN the User activates the MC control, THE Frontend_Client SHALL set the Memory_Register value to zero.
+6. WHEN a memory operation changes the Memory_Register to a non-zero value, THE Frontend_Client SHALL render the Memory_Indicator within the same display update.
+7. WHEN a memory operation changes the Memory_Register to a value of zero, THE Frontend_Client SHALL hide the Memory_Indicator within the same display update.
+8. IF the User activates the M+ or M- control WHILE the Result_Display does not contain a numeric result, THEN THE Frontend_Client SHALL leave the Memory_Register value unchanged and SHALL present an error indication to the User identifying that no numeric result is available to store.
+9. IF the User activates the MR control WHILE inserting the Memory_Register value would cause the Expression to exceed 256 characters, THEN THE Frontend_Client SHALL leave the Expression and the Memory_Register value unchanged and SHALL present an error indication to the User identifying that the maximum Expression length would be exceeded.
+
+### Requirement 21: Session Calculation History
+
+**User Story:** As a User, I want a history of my calculations in the current session, so that I can review and reuse previous expressions and results.
+
+#### Acceptance Criteria
+
+1. WHEN the Backend_Service returns a calculated result for a submitted Expression, THE Frontend_Client SHALL append a History_Entry recording that Expression and the returned result as the most recent entry of the Calculation_History, and WHERE appending would cause the Calculation_History to exceed 100 History_Entry items, THE Frontend_Client SHALL first remove the oldest History_Entry so that the Calculation_History never holds more than 100 History_Entry items.
+2. THE Frontend_Client SHALL render the Calculation_History in a History_Panel with the most recently appended History_Entry displayed first and the oldest displayed last.
+3. WHEN the User selects the expression portion of a History_Entry, THE Frontend_Client SHALL replace the entire current content of the Expression with the recorded Expression of that History_Entry.
+4. WHEN the User selects the result portion of a History_Entry, THE Frontend_Client SHALL replace the entire current content of the Expression with the recorded result of that History_Entry.
+5. WHILE the active User session continues, THE Frontend_Client SHALL retain in the Calculation_History state, in append order, the most recent 100 History_Entry items accumulated during that session.
+6. WHEN the User activates the Clear History control, THE Frontend_Client SHALL remove every History_Entry from the Calculation_History.
+7. WHEN the Backend_Service returns an Error_Response for a submitted Expression, THE Frontend_Client SHALL leave the Calculation_History unchanged.
+8. WHILE the Calculation_History contains zero History_Entry items, THE Frontend_Client SHALL render an empty-state indication in the History_Panel indicating that no calculations are recorded.
+
+### Requirement 22: Enhanced Responsive Scientific Layout
+
+**User Story:** As a User, I want the scientific controls to fit my device, so that the expanded keypad remains usable on mobile, tablet, and desktop.
+
+#### Acceptance Criteria
+
+1. THE Frontend_Client SHALL render the Scientific_Keypad controls for trigonometric functions, inverse trigonometric functions, powers, roots, logarithms, Mathematical_Constants, the Angle_Mode toggle, and the memory controls.
+2. WHILE the viewport width is between 320 and 767 pixels (mobile), THE Frontend_Client SHALL render the Scientific_Keypad and the Stage 1 keypad without horizontal overflow and with every rendered control fully visible without clipping, using either a collapsible Scientific_Keypad or a responsive grid arrangement.
+3. WHILE the viewport width is between 768 and 1023 pixels (tablet), THE Frontend_Client SHALL render the Scientific_Keypad and the Stage 1 keypad without horizontal overflow and with every rendered control fully visible without clipping.
+4. WHILE the viewport width is between 1024 and 2560 pixels (desktop), THE Frontend_Client SHALL render the Scientific_Keypad and the Stage 1 keypad without horizontal overflow and with every rendered control fully visible without clipping.
+5. WHILE the viewport width is between 320 and 767 pixels (mobile), THE Frontend_Client SHALL render each interactive Scientific_Keypad and memory control with a touch target of at least 44 by 44 CSS pixels.
+6. THE Frontend_Client SHALL render an Angle_Mode toggle control that displays the active Angle_Mode as either `radians` or `degrees`.
+7. WHEN the User activates the Angle_Mode toggle control, THE Frontend_Client SHALL switch the active Angle_Mode to the other value between `radians` and `degrees` and update the displayed active Angle_Mode within 100 milliseconds.
+8. WHERE the Scientific_Keypad is rendered as collapsible, WHEN the User activates the Scientific_Keypad collapse or expand control, THE Frontend_Client SHALL toggle the visibility of the Scientific_Keypad controls and indicate the current collapsed or expanded state through the control.
+9. WHEN the viewport width changes across any of the 320-767, 768-1023, or 1024-2560 pixel ranges, THE Frontend_Client SHALL re-render the Scientific_Keypad and the Stage 1 keypad for the new range without horizontal overflow and with every rendered control fully visible without clipping.
+
+### Requirement 23: Scientific Keyboard Mapping
+
+**User Story:** As a User, I want keyboard shortcuts for scientific operations, so that I can enter scientific expressions without a mouse.
+
+#### Acceptance Criteria
+
+1. WHEN the User presses the `^` key, THE Frontend_Client SHALL append the exponentiation operator to the Expression.
+2. WHEN the User presses a key bound to a Mathematical_Constant (the `p` key for pi and the `e` key for e), THE Frontend_Client SHALL append the corresponding constant token to the Expression.
+3. WHEN the User completes a key sequence bound to a Scientific_Function within an inter-key timeout of 1000 milliseconds between consecutive keystrokes, THE Frontend_Client SHALL append the corresponding Scientific_Function token to the Expression.
+4. WHEN the User presses a single key that is not mapped to a calculator function, is not bound to a Mathematical_Constant, and is not a valid prefix or completion of a Scientific_Function key sequence, THE Frontend_Client SHALL leave the Expression and Result_Display unchanged.
+5. THE Frontend_Client SHALL preserve every Stage 1 keyboard mapping defined in Requirement 10 without alteration.
+6. IF the User begins a Scientific_Function key sequence and the inter-key timeout of 1000 milliseconds elapses before the sequence is completed, or the User presses a key that cannot continue the in-progress sequence, THEN THE Frontend_Client SHALL discard the in-progress sequence and SHALL leave the Expression and Result_Display unchanged.
+
+### Requirement 24: Scientific API Contract and State Serialization
+
+**User Story:** As a Frontend_Client developer, I want the evaluation API and state models to support scientific features with strict typing, so that scientific requests, memory values, and history are type-safe.
+
+#### Acceptance Criteria
+
+1. WHEN the Frontend_Client submits an Expression containing one or more Scientific_Functions or Mathematical_Constants to the Evaluate_Endpoint, THE Backend_Service SHALL evaluate the Expression and return either a success response containing the calculated result or an Error_Response, using the response structure defined in Requirement 5 in which the presence of the result field or the error message field unambiguously distinguishes the two outcomes.
+2. THE Evaluate_Endpoint request contract SHALL include an Angle_Mode field whose only permitted values are `radians` and `degrees`.
+3. WHEN a request is received at the Evaluate_Endpoint without an Angle_Mode field, THE Backend_Service SHALL interpret the request using the `radians` Angle_Mode as the default.
+4. IF a request is received at the Evaluate_Endpoint whose Angle_Mode field holds a value other than `radians` or `degrees`, THEN THE Backend_Service SHALL return an Error_Response with an HTTP status code in the 4xx range and a descriptive message identifying the invalid Angle_Mode, and SHALL NOT return a calculated result.
+5. WHEN the Evaluation_Engine returns a Scientific_Function result or a result derived from a Mathematical_Constant, THE Backend_Service SHALL return the result as a decimal string computed with Decimal_Precision, rounding any non-terminating result to a minimum of 10 significant decimal digits using round-half-to-even rounding.
+6. THE Frontend_Client SHALL define TypeScript interfaces for the scientific request payload, the Memory_Register value, the History_Entry, and the Calculation_History, each typed without using the `any` type, and the Angle_Mode field of the scientific request payload SHALL be typed as a union restricted to the literal values `radians` and `degrees`.
+7. THE Frontend_Client SHALL compute no Scientific_Function, power, root, logarithm, or angle conversion locally and SHALL obtain every scientific result exclusively from the Backend_Service through the Evaluate_Endpoint.
+8. IF an Expression submitted to the Evaluate_Endpoint applies a Scientific_Function, root, or logarithm to an operand outside its mathematical domain (a Domain_Error), THEN THE Backend_Service SHALL return an Error_Response with an HTTP status code in the 4xx range and a descriptive message identifying the Domain_Error, and SHALL NOT return a calculated result.
+
+### Requirement 25: Scientific Backend Test Coverage
+
+**User Story:** As a developer, I want automated backend tests for scientific features, so that scientific function correctness, angle conversions, and domain error handling are verified.
+
+#### Acceptance Criteria
+
+1. THE Backend_Service SHALL include pytest unit tests that verify each trigonometric and inverse trigonometric function defined in Requirement 17 in both the `radians` and `degrees` Angle_Modes, each asserting the returned result equals the expected value to at least 10 significant decimal digits.
+2. THE Backend_Service SHALL include pytest unit tests that verify degrees-to-radians and radians-to-degrees angle conversions, each asserting the converted value equals the expected value to at least 10 significant decimal digits.
+3. THE Backend_Service SHALL include pytest unit tests that verify each power, root, and logarithm function defined in Requirement 18, each asserting the returned result equals the expected value to at least 10 significant decimal digits.
+4. THE Backend_Service SHALL include pytest unit tests that verify each Scientific_Function Domain_Error defined in Requirements 17 and 18 returns an Error_Response with a 4xx status code.
+5. THE Backend_Service SHALL include pytest unit tests that verify the Mathematical_Constants pi and e are substituted to at least 10 significant decimal digits as defined in Requirement 19.
+6. THE Backend_Service SHALL include pytest unit tests that verify boundary-value behavior for domain-valid inputs immediately adjacent to each Domain_Error boundary defined in Requirements 17 and 18, including `asin` and `acos` at operands of negative one and positive one, `sqrt` at an operand of zero, and natural logarithm and base-10 logarithm at an operand immediately greater than zero, each asserting the returned result equals the expected value to at least 10 significant decimal digits.
+7. THE Backend_Service test suite SHALL achieve a measured line coverage of at least 90 percent across the scientific engine modules that implement Scientific_Functions, angle conversion, and Mathematical_Constant substitution.
+8. WHEN the backend test suite is executed, THE Backend_Service test suite SHALL complete with zero test failures and zero errors, and IF any test fails or the coverage threshold defined in criterion 7 is not met, THEN THE Backend_Service test suite SHALL report the failure and SHALL NOT report a successful outcome.

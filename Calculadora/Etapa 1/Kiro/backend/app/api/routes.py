@@ -40,13 +40,16 @@ def evaluate(request: EvaluateRequest) -> EvaluateSuccess:
     """Evaluate ``request.expression`` and return the exact decimal result.
 
     The request body is validated by Pydantic before this handler runs
-    (1-256 characters, present, string). The handler delegates the arithmetic
-    to :func:`app.engine.evaluate_expression` and serializes the resulting
-    :class:`~decimal.Decimal` as a string.
+    (1-256 characters, present, string; ``angle_mode`` one of ``"radians"`` /
+    ``"degrees"``, defaulting to radians when omitted). The handler delegates
+    the arithmetic to :func:`app.engine.evaluate_expression`, passing the
+    validated ``angle_mode`` through so trigonometric functions interpret their
+    arguments in the requested unit (Requirements 24.3, 24.5), and serializes
+    the resulting :class:`~decimal.Decimal` as a string.
 
     Args:
         request: The validated request body carrying the expression to
-            evaluate.
+            evaluate and the angle mode to interpret trig arguments with.
 
     Returns:
         An :class:`~app.api.schemas.EvaluateSuccess` whose ``result`` is the
@@ -54,11 +57,11 @@ def evaluate(request: EvaluateRequest) -> EvaluateSuccess:
 
     Raises:
         EvaluationError: Any subclass (empty input, invalid character, invalid
-            syntax, unbalanced parentheses, division by zero) propagates
-            unchanged to be mapped to a 4xx ``ErrorResponse`` by the
-            application-level exception handlers.
+            syntax, unbalanced parentheses, division by zero, domain error,
+            invalid function) propagates unchanged to be mapped to a 4xx
+            ``ErrorResponse`` by the application-level exception handlers.
     """
-    result = evaluate_expression(request.expression)
+    result = evaluate_expression(request.expression, angle_mode=request.angle_mode)
     return EvaluateSuccess(result=str(result))
 
 

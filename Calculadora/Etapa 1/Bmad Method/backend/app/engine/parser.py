@@ -6,7 +6,7 @@ class MathEvaluationError(ValueError):
     """Custom domain exception raised for mathematical evaluation or syntax errors."""
     pass
 
-def safe_parse_and_evaluate(expression: str) -> decimal.Decimal:
+def safe_parse_and_evaluate(expression: str, angle_unit: str = "radians") -> decimal.Decimal:
     """Parses a mathematical expression string into a Python AST and evaluates it safely
 
     using a custom safe visitor pattern.
@@ -31,7 +31,7 @@ def safe_parse_and_evaluate(expression: str) -> decimal.Decimal:
             raise MathEvaluationError("Error: Unbalanced parentheses") from err
         raise MathEvaluationError("Error: Invalid syntax structure") from err
         
-    evaluator = SafeMathEvaluator()
+    evaluator = SafeMathEvaluator(angle_unit=angle_unit)
     try:
         return evaluator.evaluate(tree)
     except (ZeroDivisionError, decimal.DivisionByZero) as err:

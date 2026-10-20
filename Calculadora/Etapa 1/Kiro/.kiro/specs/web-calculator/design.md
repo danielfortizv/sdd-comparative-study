@@ -462,3 +462,526 @@ frontend/
     components.test.tsx      # displays, layout presence, a11y (P12)
     client.test.ts          # P13, success/error/network handling
 ```
+
+---
+
+# Stage 2 Design (Scientific Calculator Extension)
+
+This part extends the Stage 1 web calculator into a scientific calculator. **All Stage 1 design above remains authoritative and unchanged** — the tokenizer → parser → evaluator pipeline, the `decimal.Decimal` precision model, the discriminated-union API contract, the pure React reducer, and the accessibility/responsiveness strategy all carry forward. Stage 2 is purely additive: new tokens, grammar productions, AST nodes, evaluator operations, one new request field, and new frontend surfaces (scientific keypad, memory register, history panel, angle-mode toggle). Nothing here weakens or overrides Requirements 1–15 (Requirement 16.3).
+
+Stage 2 keeps the same non-negotiable rules from the steering (`product.md`, `tech.md`, `structure.md`): **never use raw `float` in a calculation path**, **the frontend computes no evaluation result** (every scientific value comes from the backend — Requirement 24.7), the **success/error contract stays mutually exclusive**, and **accessibility is part of "done"**.
+
+## Stage 1 Codebase Inspection Report
+
+Requirement 16 mandates a written inspection of the Stage 1 codebase across four categories — **bugs**, **architectural flaws**, **decimal precision issues**, and **missing edge-case handlers** — with each category covered either by a documented defect (affected component, trigger, expected vs. actual) or an explicit "none found" record. The findings below are grounded in the actual Stage 1 source (`backend/app/engine/{tokenizer,parser,evaluator,errors}.py`, `backend/app/api/{routes,schemas}.py`, `backend/app/main.py`). Any remediation MUST preserve every Stage 1 acceptance criterion (Requirements 1–15) and must not be considered complete if it regresses one (Requirements 16.3, 16.5); corrected behavior for engine-affecting fixes is locked in with pytest tests (Requirement 16.4) and the full suite must pass with zero failures/errors (Requirement 16.6).
+
+### Category 1 — Bugs
+
+**No functional code bug found.** The tokenizer, parser, and evaluator were read end-to-end and cross-checked against Requirements 1–6. PEMDAS structure, left-associativity of `+ - * /`, right-associativity of `^`, unary-minus grouping, and the `-3^2 == -9` convention are all implemented correctly in `parser.py` (`_factor` wraps `_power`, so `^` binds tighter than unary minus). The evaluator's division-by-zero guard, `0 ** negative` guard, and `NaN`/`Infinity` rejection in `_power()` are correct. No incorrect-result or crash-inducing input was identified during inspection.
+
+### Category 2 — Architectural Flaws
+
+**One documentation/spec inconsistency found (not a code defect).**
+
+| Field | Finding |
+| --- | --- |
+| Affected component | Stage 1 design prose — "Data Models → Grammar" precedence sentence ("`+ -` < `* /` < `^` < unary `-` < parentheses") |
+| Trigger | Reading the Stage 1 design precedence table against `parser.py` and Requirement 2.6 |
+| Expected | Prose should state exponentiation binds **tighter** than unary minus (so `-3^2 == -9`), matching the grammar `factor = ("-" factor) | power` and `power = primary ["^" factor]` |
+| Actual | The prose lists `^` *below* unary `-`, which, read literally, would imply `-3^2 == 9`. The implementation is correct; only the prose ordering is misleading. `parser.py` already carries a `.. note::` flagging this. |
+| Assessment | Documentation inconsistency, **not** a code bug. The code and Requirement 2.6 agree. |
+| Recommended remediation | Correct the Stage 1 design prose to read `+ -` < `* /` < unary `-` < `^` < parentheses (unary minus looser than `^`), aligning the table with the grammar and the `parser.py` note. No code change; no risk to Requirements 1–15. |
+
+The layering (transport → validation → pure `engine`) is clean and matches `structure.md`; the `engine` package imports no HTTP concerns. No structural flaw found.
+
+### Category 3 — Decimal Precision Issues
+
+**No precision defect found; one forward-looking observation for Stage 2.**
+
+- The evaluator runs every walk under a module-level `decimal.Context(prec=50, rounding=ROUND_HALF_EVEN)` and constructs operands via `Decimal(lexeme)` directly from source text. A repository-wide reading found **no `float` in any calculation path** (consistent with the `product.md` rule). Terminating results are normalized (trailing zeros stripped, integers kept plain); non-terminating results are detected via the `Inexact` flag and rounded to ≥10 significant digits. This satisfies Requirements 3.1–3.4.
+- **Observation for Stage 2:** the `Inexact`-flag-based finalization means that any irrational result — which includes essentially every non-trivial `sin`/`cos`/`tan`/`ln`/`log10`/`sqrt` output — will always be flagged inexact and therefore always rounded to ≥10 significant digits. This is exactly the behavior Requirements 17.6 and 18.6 require, so the Stage 1 finalization strategy carries forward **unchanged** and already satisfies the Stage 2 rounding rule. No change needed.
+
+### Category 4 — Missing Edge-Case Handlers
+
+**One message-clarity edge case found (low severity).**
+
+| Field | Finding |
+| --- | --- |
+| Affected component | `tokenizer.py` number scan + `parser.py` `_primary`/`parse` |
+| Trigger | Input such as `1.2.3` |
+| Expected | A clearly worded error naming a malformed number |
+| Actual | The tokenizer stops the first number run at the second dot, producing `NUMBER "1.2"` then `NUMBER ".3"`. The parser then sees two adjacent NUMBER tokens and raises `InvalidSyntaxError` at the position of the second number. The outcome is correct (a 4xx error, no result — satisfying Requirement 4.2) but the message ("Invalid operator sequence near position N") points at a position rather than naming the malformed number. |
+| Assessment | Correct behavior, suboptimal message clarity. Edge case, not a correctness bug. |
+| Recommended remediation | Optionally detect adjacent NUMBER tokens (or a number lexeme containing two dots) and raise `InvalidSyntaxError` with a message like "Malformed number near position N." This is cosmetic; it must not change which inputs are accepted/rejected (preserve Requirement 4.2 behavior). |
+
+All Requirement 4 error paths (empty, invalid character, invalid syntax, unbalanced parentheses, division by zero) are present and mapped to 4xx in `main.py`. No missing handler that changes accept/reject outcomes was found.
+
+### Inspection Summary
+
+| Category | Outcome |
+| --- | --- |
+| Bugs | None found |
+| Architectural flaws | 1 documentation inconsistency (precedence prose); recommend prose correction, no code change |
+| Decimal precision | None found; Stage 1 finalization already satisfies Stage 2 rounding |
+| Missing edge-case handlers | 1 message-clarity edge case (`1.2.3`); optional cosmetic improvement |
+
+Remediation of the two cosmetic items is optional and, if performed, is covered by pytest tests asserting the corrected behavior (Requirement 16.4) while the existing Stage 1 suite continues to pass unchanged (Requirements 16.3, 16.6).
+
+## Stage 2 Architecture
+
+The shape of the system is unchanged — a stateful React client talking to a stateless FastAPI math oracle over one typed endpoint. Stage 2 adds an `angle_mode` field to the request, two new engine modules (`constants.py`, `scientific.py`), and new frontend surfaces. The frontend gains two pieces of **local-only UI state** (memory register, calculation history) that are explicitly *not* arithmetic evaluation (see the memory decision note below).
+
+```mermaid
+flowchart LR
+    subgraph Client["Frontend_Client (React + TS, Vite)"]
+        UI["Calculator UI\n(Keypad + ScientificKeypad,\nDisplays, HistoryPanel,\nMemoryIndicator, AngleModeToggle)"]
+        KB["Keyboard Handler\n(+ scientific sequences)"]
+        ST["Expression / Result / Error\n+ AngleMode\n+ MemoryRegister (local)\n+ History (local)"]
+        API["Typed API Client"]
+        UI --> ST
+        KB --> ST
+        ST --> API
+        API --> ST
+    end
+
+    subgraph Server["Backend_Service (FastAPI)"]
+        RT["POST /api/v1/evaluate\n(expression + angle_mode)"]
+        subgraph Engine["Evaluation_Engine"]
+            TK["Tokenizer\n(+ idents, constants)"]
+            PS["Parser (AST)\n(+ FunctionNode, RootNode,\nConstantNode)"]
+            EV["Evaluator (Decimal)\n(+ scientific.py, constants.py,\nangle_mode)"]
+            TK --> PS --> EV
+        end
+        RT --> TK
+        EV --> RT
+    end
+
+    API -- "JSON { expression, angle_mode }" --> RT
+    RT -- "JSON EvaluateSuccess | ErrorResponse" --> API
+```
+
+The layered ordering (transport → validation → tokenizer → parser → evaluator) and the purity of the `engine` package are preserved. `angle_mode` is threaded as a plain parameter from the route down to the evaluator; it introduces no HTTP coupling into the engine (the engine receives a validated string/enum, not a request object).
+
+## Stage 2 Components and Interfaces
+
+### Backend — Evaluation_Engine extension
+
+#### Tokenizer (`engine/tokenizer.py`) — new lexemes
+
+New `TokenType` members are added alongside the Stage 1 set: `IDENT` (function names and constant names) — or, if preferred, distinct `FUNCTION` and `CONSTANT` types resolved at lex time, and `COMMA` (for the two-argument n-th root). Single-character operator handling is unchanged.
+
+- **Lexing approach for multi-letter identifiers:** when the scanner sees an ASCII letter, it reads a maximal run of `[a-zA-Z]` (letters only; digits are not part of an identifier so `sin2` lexes as `sin` then `2`). The run is matched against a known-name table:
+  - Function names: `sin, cos, tan, asin, acos, atan, ln, log10, sqrt`, plus the n-th-root name `root` (see parser note).
+  - Constant names: `pi`, `e`.
+  - A matched function name becomes a function token; a matched constant becomes a constant token; **any unrecognized identifier run raises a descriptive `InvalidFunctionError`** (new, see Errors) naming the unknown identifier and its position.
+- The allowed character set expands to include ASCII letters and `,`. Characters still outside the expanded set continue to raise the Stage 1 `InvalidCharacterError` (Requirement 4.4 preserved). Whitespace handling and number scanning are unchanged.
+- **`log10` lexing note:** `log10` is read as a letter-run `log` immediately followed by digits `10`. Because an identifier run is letters-only, the tokenizer recognizes `log10` as a dedicated multi-character keyword (special-cased: after reading the `log` letter-run, if the next two characters are `10`, consume them as part of the `log10` function name). This keeps `log10(x)` unambiguous and avoids colliding with a hypothetical `log` name.
+
+#### Parser / Grammar (`engine/parser.py`) — new productions and nodes
+
+The Stage 1 grammar is extended only at the `primary` level, so all existing precedence/associativity is untouched:
+
+```
+primary   = number
+          | constant
+          | function
+          | "(" , expression , ")" ;
+constant  = "pi" | "e" ;
+function  = unaryfunc , "(" , expression , ")"
+          | "root" , "(" , expression , "," , expression , ")" ;
+unaryfunc = "sin" | "cos" | "tan" | "asin" | "acos" | "atan"
+          | "ln" | "log10" | "sqrt" ;
+```
+
+- **n-th root syntax decision:** use a **two-argument function `root(x, n)`** meaning "the n-th root of `x`" (radicand first, degree second). Rationale: it reuses the function-call machinery already needed for the unary functions (one grammar production, one parenthesized-arguments path), avoids inventing a new infix operator and its precedence/associativity rules, and keeps `render()` trivial (a function call always re-parses unambiguously). It also composes naturally with the existing exponentiation operator `^`, which remains the way to express powers (Requirement 18.1).
+- **New AST node types** (frozen dataclasses, matching the Stage 1 style):
+
+```python
+@dataclass(frozen=True)
+class ConstantNode:
+    name: str                 # "pi" | "e"
+
+@dataclass(frozen=True)
+class FunctionNode:
+    name: str                 # "sin" | "cos" | ... | "sqrt"  (unary scientific fns)
+    operand: "Node"
+
+@dataclass(frozen=True)
+class RootNode:
+    radicand: "Node"          # x in root(x, n)
+    degree: "Node"            # n in root(x, n)
+
+Node = NumberNode | UnaryOpNode | BinaryOpNode | ConstantNode | FunctionNode | RootNode
+```
+
+- **`render()` round-trip** is extended to cover the new nodes (Requirement 6.3 carried forward): a `ConstantNode` renders to `pi`/`e`; a `FunctionNode` renders to `name(render(operand))`; a `RootNode` renders to `root(render(radicand), render(degree))`. Function/constant forms are self-parenthesizing (a function call or bare constant is itself a `primary`), so they need no extra precedence wrapping and re-parse to a structurally equivalent tree.
+- A function name not followed by `(`, a missing comma in `root`, or a missing argument raises the Stage 1 `InvalidSyntaxError` with position (Requirement 4.2 preserved).
+
+#### Evaluator (`engine/evaluator.py` + `engine/scientific.py` + `engine/constants.py`) — Decimal scientific operations
+
+All scientific math runs under the same `decimal.Context(prec=50, ROUND_HALF_EVEN)` and reuses the Stage 1 `_finalize` path, so results are automatically rounded to ≥10 significant digits when non-terminating (Requirements 17.6, 18.6). The evaluator gains an `angle_mode` parameter (default `"radians"`) threaded through the walk.
+
+- **Constants (`engine/constants.py`):** `pi` and `e` are stored as high-precision `Decimal` literals well beyond 10 digits (≥50 significant digits, matching the working precision). They are returned as exact `Decimal` operands when a `ConstantNode` is evaluated (Requirements 19.1, 19.2). `pi` is also the basis for degree↔radian conversion (Requirement 17.5), computed as `radians = degrees * pi / 180` and `degrees = radians * 180 / pi` entirely in `Decimal`.
+- **`decimal`-native operations (no bridging needed):** `Decimal.ln()`, `Decimal.log10()`, `Decimal.sqrt()`, `Decimal.exp()`, and `Decimal.__pow__`/`Context.power` are used directly for `ln`, `log10`, `sqrt`, powers, and `e`-based work. These are exact-decimal and respect the context precision.
+- **Trig / inverse trig (`engine/scientific.py`) — Decimal-native algorithm:** `decimal` does **not** provide `sin/cos/tan/asin/acos/atan`. Per the `product.md` rule "never use raw `float` in calculation paths", these are implemented with a **`Decimal`-based algorithm**, not by bridging through `float`:
+  - Convert the argument to radians (if `angle_mode == "degrees"`, multiply by `pi/180` in `Decimal`).
+  - **Range-reduce** the radian argument into a small interval around 0 using the `Decimal` value of `pi` (e.g. reduce modulo `2*pi`, then into `[-pi/4, pi/4]` using quadrant identities), which keeps the series convergent and accurate.
+  - Evaluate a **Taylor/Maclaurin series** for `sin`/`cos` at the working precision (summing terms until the next term is below the precision's unit in the last place), then derive `tan = sin/cos`.
+  - Inverse functions: `atan` via its Taylor series with argument reduction (using the identity `atan(x) = pi/2 - atan(1/x)` for `|x|>1` to keep convergence fast), `asin`/`acos` derived from `atan` via `asin(x) = atan(x / sqrt(1 - x^2))` and `acos(x) = pi/2 - asin(x)`, all in `Decimal`. Inverse results are returned in the active angle mode (converted back to degrees via `180/pi` when `degrees`).
+  - Working precision is a few guard digits above the exposed precision so the ≥10-significant-digit result (Requirements 17.6, 18.6) is correct after `_finalize`. The guarantee delivered to the contract is **≥10 significant decimal digits** computed without any `float` step; this satisfies Requirement 17.6 and the `product.md` decimal-only rule.
+- **Angle conversion correctness:** performed only through the `Decimal` `pi` constant (Requirement 17.5); no `math.radians`/`math.degrees` (those use `float`).
+- **Domain checks** (each raises the new `DomainError`, see Errors — surfaced as 4xx, never a result):
+
+  | Operation | Domain rule | Requirement |
+  | --- | --- | --- |
+  | `asin(x)`, `acos(x)` | require `-1 ≤ x ≤ 1` | 17.7 |
+  | `tan(θ)` | undefined at odd multiples of 90° (degrees) / `pi/2` (radians) | 17.8 |
+  | `sqrt(x)` | require `x ≥ 0` | 18.2, 18.7 |
+  | `root(x, n)` even integer `n` | require `x ≥ 0` | 18.3, 18.7 |
+  | `root(x, 0)` | degree zero undefined | 18.10 |
+  | `ln(x)`, `log10(x)` | require `x > 0` | 18.8 |
+  | `a ^ b`, `a < 0`, `b` non-integer | non-real result rejected | 18.9 |
+  | any power/root/log producing non-finite | rejected | 18.11 |
+
+  The `tan` singularity check compares the reduced argument against an odd multiple of `pi/2` within a precision-aware tolerance (in `Decimal`), raising `DomainError` when it lands on the singularity. The existing `_power()` guards (`0 ** negative → DivisionByZeroError`; `InvalidOperation`/`Overflow`/`NaN`/`Infinity`) are kept and extended so a negative base with a non-integer exponent raises `DomainError` (Requirement 18.9) rather than the generic `InvalidSyntaxError`.
+
+- **New engine entry-point signature:**
+
+```python
+def evaluate_expression(expression: str, angle_mode: str = "radians") -> Decimal:
+    """Tokenize, parse, and evaluate an expression under the given angle mode.
+    angle_mode is "radians" (default) or "degrees"; any other value is rejected
+    upstream by the API schema (Requirements 24.2-24.4, 17.9)."""
+```
+
+`angle_mode` is passed to `evaluate(ast, angle_mode=...)` and only consulted by trig/inverse-trig nodes. Non-trig expressions are unaffected, so all Stage 1 behavior is identical regardless of mode.
+
+#### Errors (`engine/errors.py`) — new subclasses
+
+Two new `EvaluationError` subclasses, mapped to 4xx exactly like the Stage 1 ones (via the existing `EvaluationError` handler in `main.py`, which already catches the whole hierarchy — no handler change needed beyond the base class already being covered):
+
+- **`DomainError`** — `kind = "domain_error"`; raised for all Requirement 17/18 domain violations (asin/acos out of range, tan singularity, sqrt/even-root of negative, zero-degree root, log of non-positive, negative base to non-integer exponent, non-finite result). Descriptive message naming the violated domain (Requirements 17.7, 17.8, 18.7–18.11, 24.8).
+- **`InvalidFunctionError`** — `kind = "invalid_function"`; raised by the tokenizer/parser for an unrecognized identifier/function name, naming the unknown name and its position.
+
+Because `main.py` registers one handler for the `EvaluationError` base class, both new subclasses are automatically serialized to `422 {"error": "<message>"}`; no `main.py` change is required for the mapping, though a short docstring update documenting the new kinds is recommended.
+
+### Backend — API extension
+
+#### `api/schemas.py`
+
+`EvaluateRequest` gains an optional `angle_mode` field typed as a literal union, defaulting to `"radians"`:
+
+```python
+from typing import Literal
+
+class EvaluateRequest(BaseModel):
+    expression: str = Field(min_length=1, max_length=256)        # unchanged (Req 1.5, 5.2, 5.6)
+    angle_mode: Literal["radians", "degrees"] = "radians"        # Req 24.2, 24.3
+```
+
+- A missing `angle_mode` defaults to `"radians"` (Requirement 24.3, 17.9).
+- Any value other than `radians`/`degrees` fails Pydantic literal validation and is surfaced as a 4xx `ErrorResponse` (Requirements 24.4, 17.10). The validation-error handler message is broadened to also mention an invalid angle mode so the message stays descriptive.
+- `EvaluateSuccess` (result as string) and `ErrorResponse` are unchanged — the discriminated-union contract is preserved (Requirements 24.1, 24.5, 5.5).
+
+#### `api/routes.py`
+
+The handler passes the validated mode through: `result = evaluate_expression(request.expression, angle_mode=request.angle_mode)`. It remains a thin adapter; `DomainError`/`InvalidFunctionError` propagate to the `main.py` handler exactly like Stage 1 errors (Requirement 24.8). The result is still serialized as a string (Requirement 24.5).
+
+### Frontend extension
+
+#### `api/types.ts`
+
+```typescript
+export type AngleMode = "radians" | "degrees";                 // Req 24.6
+
+export interface EvaluateRequest {
+  expression: string;
+  angleMode: AngleMode;        // serialized to snake_case angle_mode in the client
+}
+
+export interface MemoryState { value: string; }               // Decimal as string (Req 20, 24.6)
+export interface HistoryEntry { expression: string; result: string; }   // Req 21, 24.6
+export type CalculationHistory = readonly HistoryEntry[];      // newest-first, ≤100 (Req 21)
+```
+
+All typed without `any`; `AngleMode` is a restricted literal union (Requirement 24.6). The `isSuccess`/`isError` guards are unchanged.
+
+#### `api/client.ts`
+
+`evaluateExpression` sends `angle_mode` in the JSON body (mapping the typed `angleMode` to the backend's snake_case field) and still returns the normalized `{ ok: true; result } | { ok: false; error }` shape. Scientific requests use the exact same call path (Requirement 24.1, 24.7); transport failure still yields a service-unavailable error, never a local result (Requirement 14.4 preserved).
+
+#### State (`state/`) — memory and history
+
+The Stage 1 `calculatorReducer` stays pure and keeps its `APPEND_CHAR`/`BACKSPACE`/`RESET`/`SUBMIT`/`SET_RESULT`/`SET_ERROR` actions with result/error mutual exclusion. Stage 2 adds two focused reducers (kept separate for cohesion, composed in the `Calculator` container):
+
+- **`state/memoryReducer.ts`** — holds a single `Decimal`-string register (initialized `"0"`, Requirement 20.1) with actions `MEM_ADD(result)`, `MEM_SUB(result)`, `MEM_RECALL`, `MEM_CLEAR`. `MEM_ADD`/`MEM_SUB` require a current numeric result (guarded; if absent, no change + error indication — Requirement 20.8). `MEM_CLEAR` zeroes it (Requirement 20.5). The **Memory_Indicator is derived state**: shown iff the register is non-zero (Requirements 20.6, 20.7). `MR` inserts the register value into the expression, guarded so the result never exceeds 256 characters (if it would, no change + error indication — Requirement 20.9).
+- **`state/historyReducer.ts`** — holds `CalculationHistory` (newest-first). `HISTORY_APPEND(entry)` prepends on a **successful** evaluation only and caps at 100 by dropping the oldest (Requirements 21.1, 21.2, 21.5); it is **not** dispatched on an error response (Requirement 21.7). `HISTORY_CLEAR` empties it (Requirement 21.6). Selecting an entry's expression or result replaces the entire current expression (Requirements 21.3, 21.4). Empty history renders an empty-state indication (Requirement 21.8).
+
+**Memory add/subtract decision (explicit, per the separation-of-concerns rule):** `M+`/`M-` aggregate **already-computed backend results** (the value currently shown in the Result_Display) into the register — they do **not** evaluate an expression. Requirement 24.7 forbids the client from computing *scientific functions, powers, roots, logarithms, or angle conversions*; it does not forbid holding and accumulating values the backend already produced. **Decision:** memory `+`/`-` of two prior backend-produced decimal strings is treated as **local aggregation of backend truth, not expression evaluation**, so it is permissible client-side. This keeps the memory feature responsive and offline-tolerant without violating "the backend is the single source of computed truth." To preserve exact decimals, the aggregation uses a small arbitrary-precision decimal helper on the string values (e.g. `decimal.js` or a minimal big-decimal add/subtract) — **never JavaScript `number`/`float`** — so Requirement 20.2/20.3's "full decimal value with Decimal_Precision" holds. (Rejected alternative: round-tripping `M+`/`M-` through the backend as an `a+b` expression. It is more purist but adds latency and a network dependency to a trivial, non-evaluation UI action; the chosen approach keeps the backend as the sole *evaluator* while treating memory as pure UI aggregation of its outputs.)
+
+#### Hooks (`hooks/`)
+
+- **`useKeyboard.ts`** — extended while **preserving every Stage 1 mapping** (Requirement 23.5). New: `^` appends the exponent operator (Requirement 23.1); `p` appends `pi` and `e` appends `e` (Requirement 23.2). Scientific function names are entered via a **key-sequence recognizer** with a **1000 ms inter-key timeout**: consecutive keystrokes that form a valid prefix of a function name are buffered; when the buffer matches a full function name the token (e.g. `sin(`) is appended (Requirement 23.3). If the timeout elapses or a key arrives that cannot continue the in-progress sequence, the buffer is **discarded** and the expression/display are left unchanged (Requirement 23.6). A single unmapped key that is neither a constant binding nor a valid sequence prefix is a no-op (Requirement 23.4, preserving Requirement 10.8). The hook keeps the Stage 1 "callbacks via ref" pattern for stable listeners.
+- **`useEvaluator.ts`** — passes the current `angleMode` into `evaluateExpression`; on success it also triggers the history append; unchanged otherwise (still the only path to a result — Requirement 24.7).
+
+#### Components (`components/`)
+
+- **`ScientificKeypad.tsx`** — renders trig, inverse-trig, `ln`/`log10`, `sqrt`, `root`, `^`, `pi`/`e`, the memory controls, and hosts the angle toggle (Requirement 22.1). Collapsible on mobile (Requirement 22.2, 22.8). Buttons reuse `CalcButton` so the Stage 1 accessibility pattern (visible label + matching `aria-label`, focus/pressed states) is inherited (Requirements 11, 12, carried to the new controls).
+- **`HistoryPanel.tsx`** — a side drawer / collapsible panel listing entries newest-first (Requirement 21.2), each entry's expression and result independently selectable to load into the expression (Requirements 21.3, 21.4), with a Clear History control (Requirement 21.6) and an empty-state indication (Requirement 21.8).
+- **`MemoryIndicator.tsx`** — a badge shown iff the register is non-zero, derived from memory state (Requirements 20.6, 20.7); contrast-compliant (Requirement 11.3).
+- **`AngleModeToggle.tsx`** — displays the active mode (`radians`/`degrees`) and flips it on activation, updating within 100 ms (Requirements 22.6, 22.7); contrast-compliant.
+- **`Calculator.tsx`** — composes the new reducers and components with the Stage 1 keypad/displays; passes `angleMode` to `useEvaluator`, wires memory/history dispatches, and routes keyboard events through the extended `useKeyboard`.
+
+#### Styles (`styles/`)
+
+A responsive scientific grid is added (collapsible on mobile per Requirement 22.2) with ≥44×44 px touch targets for every scientific and memory control at mobile widths (Requirement 22.5), re-flowing cleanly across the 320–767 / 768–1023 / 1024–2560 ranges with no overflow or clipping (Requirements 22.3, 22.4, 22.9). The angle toggle and memory indicator use theme tokens meeting WCAG contrast (Requirement 11.1–11.4). Color tokens stay in `theme.css`; scientific grid structure goes in a component CSS file alongside the existing `Keypad.css`.
+
+### Stage 2 API Contract
+
+**Endpoint:** `POST /api/v1/evaluate` (unchanged path).
+
+Request body (angle_mode optional, defaults to radians):
+```json
+{ "expression": "sin(pi / 2) + root(27, 3)", "angle_mode": "radians" }
+```
+Success — `200`:
+```json
+{ "result": "4" }
+```
+Domain error — `4xx`:
+```json
+{ "error": "asin is undefined for arguments outside [-1, 1]." }
+```
+Invalid angle mode — `4xx`:
+```json
+{ "error": "angle_mode must be either 'radians' or 'degrees'." }
+```
+The success/error shapes stay mutually exclusive (Requirements 24.1, 24.5, 5.5), result remains a precision-preserving string (Requirement 24.5).
+
+## Stage 2 Data Models
+
+### Extended Grammar (full, Stage 1 + Stage 2)
+
+```
+expression = term , { ("+" | "-") , term } ;
+term       = factor , { ("*" | "/") , factor } ;
+factor     = ("-" , factor) | power ;
+power      = primary , [ "^" , factor ] ;
+primary    = number | constant | function | "(" , expression , ")" ;
+constant   = "pi" | "e" ;
+function   = unaryfunc , "(" , expression , ")"
+           | "root" , "(" , expression , "," , expression , ")" ;
+unaryfunc  = "sin" | "cos" | "tan" | "asin" | "acos" | "atan"
+           | "ln" | "log10" | "sqrt" ;
+number     = digit , { digit } , [ "." , digit , { digit } ]
+           | "." , digit , { digit } ;
+```
+
+Precedence is unchanged for operators; functions and constants are `primary`-level (bind tightest), matching standard math notation. The precedence note is corrected here to match the implementation: `+ -` < `* /` < unary `-` < `^` < function/constant/parentheses.
+
+### New AST nodes and tokens
+
+See the parser/tokenizer sections above (`ConstantNode`, `FunctionNode`, `RootNode`; new `IDENT`/function/constant token types and `COMMA`). The Stage 1 `NumberNode`/`UnaryOpNode`/`BinaryOpNode` and all existing token types are unchanged.
+
+### High-precision constants
+
+`pi` and `e` are stored in `engine/constants.py` as `Decimal` string literals with ≥50 significant digits, exceeding the ≥10-digit contract (Requirements 19.1, 19.2), and are the sole basis for degree↔radian conversion (Requirement 17.5).
+
+## Stage 2 Correctness Properties
+
+*A property is a characteristic or behavior that should hold true across all valid executions of a system — essentially, a formal statement about what the system should do. Properties serve as the bridge between human-readable specifications and machine-verifiable correctness guarantees.*
+
+The scientific engine (now `tokenizer → parser → evaluator + scientific.py + constants.py`) stays a pure function over `(expression, angle_mode)`, so it remains an ideal property-based-testing target with Hypothesis. The frontend's memory and history reducers are pure, so they are tested with generator/table-driven reducer properties. These continue the Stage 1 numbering (P1–P13 above); Stage 2 adds **P14–P24**. Per the prework property reflection, trig criteria are consolidated into one reference property, all domain-error criteria into one, and so on, to avoid redundancy. Layout/timing/type-definition criteria (Requirements 22, 24.2, 24.6) are handled by non-PBT strategies (see Testing Strategy).
+
+### Property 14: Trigonometric and inverse-trig results match a high-precision reference in both angle modes
+
+*For any* operand (in-domain for inverse functions) and *for any* Angle_Mode in {radians, degrees}, evaluating a `sin`, `cos`, `tan`, `asin`, `acos`, or `atan` expression with the Evaluation_Engine SHALL produce a value equal, to at least 10 significant decimal digits, to an independent high-precision `Decimal` reference computed in the same Angle_Mode; and for `asin`/`atan` the result SHALL lie in the principal interval [−90°, +90°] (or the radian equivalent) and for `acos` in [0°, +180°] (or the radian equivalent).
+
+**Validates: Requirements 17.1, 17.2, 17.3, 17.4, 17.6, 24.5**
+
+### Property 15: Degree/radian conversion round-trips via Decimal pi
+
+*For any* angle value, converting it from degrees to radians and back to degrees (and the reverse direction) using the `Decimal` value of pi SHALL return the original angle to at least 10 significant decimal digits, and a single conversion SHALL equal the `Decimal` reference `angle * pi / 180` (or `angle * 180 / pi`) to at least 10 significant decimal digits.
+
+**Validates: Requirements 17.5**
+
+### Property 16: Powers, roots, and logarithms match a Decimal reference
+
+*For any* in-domain operands, evaluating an exponentiation, square root, n-th `root(x, n)`, natural logarithm, or base-10 logarithm with the Evaluation_Engine SHALL produce a value equal, to at least 10 significant decimal digits, to an independent exact `Decimal` reference (using `Decimal.sqrt`, `Decimal.ln`, `Decimal.log10`, and `Decimal` power) of the same operation.
+
+**Validates: Requirements 18.1, 18.2, 18.3, 18.4, 18.5, 18.6, 24.5**
+
+### Property 17: Domain errors always signal a 4xx and never return a result
+
+*For any* expression that applies a Scientific_Function, root, logarithm, or exponentiation to an operand outside its mathematical domain — `asin`/`acos` with |x| > 1; `tan` at an odd multiple of 90° (degrees) or pi/2 (radians); `sqrt` or an even-integer-degree `root` of a negative radicand; `ln`/`log10` of a zero or negative operand; a negative base raised to a non-integer exponent; an n-th root of degree zero; or any operation producing a non-finite result — the Backend_Service SHALL return an Error_Response with a 4xx HTTP status and a descriptive Domain_Error message, and SHALL NOT return a calculated result.
+
+**Validates: Requirements 17.7, 17.8, 18.7, 18.8, 18.9, 18.10, 18.11, 24.8**
+
+### Property 18: Mathematical constants are substituted to at least 10 significant digits
+
+*For any* valid expression containing the Mathematical_Constant pi (respectively e), evaluating it with the Evaluation_Engine SHALL produce a result equal, to at least 10 significant decimal digits, to the same expression evaluated with pi (respectively e) replaced by its high-precision `Decimal` reference value.
+
+**Validates: Requirements 19.1, 19.2**
+
+### Property 19: Round-trip render/parse preserves value over functions, constants, and roots
+
+*For any* valid AST generated by the extended grammar — including `FunctionNode`, `ConstantNode`, and `RootNode` — rendering it to an expression string and parsing that string again SHALL yield a structure that, when evaluated under the same Angle_Mode, produces a result equal to the original AST's evaluation to at least 10 significant decimal digits.
+
+**Validates: Requirements 6.3, 6.4**
+
+### Property 20: Memory register algebra and indicator invariant
+
+*For any* prior Memory_Register value and any numeric result value, applying M+ followed by M- of that same result value SHALL restore the register to its prior value exactly (full decimal value preserved); applying MC SHALL set the register to zero; and after any memory operation the Memory_Indicator SHALL be rendered if and only if the register value is non-zero.
+
+**Validates: Requirements 20.2, 20.3, 20.5, 20.6, 20.7**
+
+### Property 21: Calculation history invariants
+
+*For any* sequence of evaluation outcomes, the Calculation_History SHALL contain exactly the most recent successful entries in newest-first order, SHALL never hold more than 100 History_Entry items (the oldest dropped first), SHALL be left unchanged by every Error_Response outcome, and SHALL be empty after a Clear History operation.
+
+**Validates: Requirements 21.1, 21.2, 21.5, 21.6, 21.7**
+
+### Property 22: Angle mode defaults to radians and rejects invalid values
+
+*For any* trigonometric expression, a request that omits the Angle_Mode field SHALL produce the same response as a request that explicitly specifies `radians`; and *for any* Angle_Mode value other than `radians` or `degrees`, the Backend_Service SHALL return a 4xx Error_Response identifying the invalid Angle_Mode and SHALL NOT return a calculated result.
+
+**Validates: Requirements 17.9, 17.10, 24.3, 24.4**
+
+### Property 23: Scientific keys append their token and unmapped keys are no-ops
+
+*For any* scientific key input — the `^` key (appends the exponentiation operator), the `p` key (appends the `pi` constant token), and the `e` key (appends the `e` constant token) — pressing the key SHALL append exactly the corresponding token to the Expression while leaving every Stage 1 keyboard mapping unchanged; and *for any* single key that is neither a mapped function, a constant binding, nor a valid prefix/completion of a Scientific_Function sequence, pressing it SHALL leave the Expression and Result_Display unchanged.
+
+**Validates: Requirements 23.1, 23.2, 23.4, 23.5**
+
+### Property 24: Constant tokens render deterministically
+
+*For any* number of insertions of the same Mathematical_Constant, the Frontend_Client SHALL produce an identical display token for every insertion (`pi` for pi, `e` for e).
+
+**Validates: Requirements 19.5**
+
+## Stage 2 Error Handling
+
+Stage 2 adds two `EvaluationError` subclasses to the Stage 1 taxonomy. Because `main.py` registers a single exception handler for the `EvaluationError` **base class**, both are serialized to `422 {"error": "<message>"}` with no new handler required. Invalid `angle_mode` is caught by Pydantic literal validation and flows through the existing `RequestValidationError` handler.
+
+| Error class | Trigger | Layer | HTTP status | Message (descriptive) | Requirement |
+| --- | --- | --- | --- | --- | --- |
+| `DomainError` | asin/acos |x|>1; tan at singularity; sqrt/even-root of negative; ln/log10 of ≤0; negative base ^ non-integer; root degree 0; non-finite result | Evaluator / scientific | 422 | e.g. "asin is undefined for arguments outside [-1, 1]."; "Logarithm is undefined for non-positive arguments."; "Even root of a negative number is not real." | 17.7, 17.8, 18.7–18.11, 24.8 |
+| `InvalidFunctionError` | Unrecognized identifier / function name | Tokenizer / Parser | 422 | "Unknown function or name '{name}' at position {i}." | (supports 24.1 error path) |
+| Angle-mode validation (Pydantic) | `angle_mode` not in {radians, degrees} | API/transport | 422 | "angle_mode must be either 'radians' or 'degrees'." | 17.10, 24.4 |
+
+All Stage 1 error paths and their messages are unchanged. No error path returns a `result` field (Requirement 5.5 preserved). Frontend error handling is unchanged: 4xx `error` is shown in the Result_Display's assertive region, history is left unchanged on error (Requirement 21.7), and memory is unaffected by a failed evaluation.
+
+## Stage 2 Testing Strategy
+
+The dual approach carries forward: Hypothesis property tests for the pure scientific engine (≥100 iterations each, tagged `# Feature: web-calculator, Property N: ...`, cross-checked against an independent `Decimal` reference oracle) plus example-based pytest for specific values, boundaries, and error cases. The frontend memory/history reducers get generator/table-driven property-style tests plus component tests; layout, the 100 ms toggle timing, and type definitions use non-PBT strategies. Requirement 25 drives the backend coverage below.
+
+### Property-Based Testing (Backend, Hypothesis)
+
+| Property | Test focus | Requirements |
+| --- | --- | --- |
+| P14 | Trig/inverse-trig vs high-precision Decimal reference, both modes; principal-value range | 17.1–17.4, 17.6, 24.5 |
+| P15 | deg↔rad conversion round-trip via Decimal pi | 17.5 |
+| P16 | Powers/roots/logs vs Decimal reference | 18.1–18.6, 24.5 |
+| P17 | Per-category domain-error generators → 4xx, no result | 17.7, 17.8, 18.7–18.11, 24.8 |
+| P18 | pi/e substitution to ≥10 sig digits | 19.1, 19.2 |
+| P19 | Extended render/parse round-trip (functions/constants/root) | 6.3, 6.4 |
+| P22 | Default==radians; invalid angle_mode → 4xx | 17.9, 17.10, 24.3, 24.4 |
+
+- **Generators** (extend `tests/properties/strategies.py`): the recursive AST strategy gains `ConstantNode`, `FunctionNode` (in-domain operand strategies per function), and `RootNode`; separate strategies produce out-of-domain inputs per domain-error category. `render(ast)` is extended to serialize the new nodes for the round-trip and reference properties.
+- **Reference oracle:** an independent high-precision `Decimal` evaluator (trig via a documented series, powers/roots/logs via `Decimal` built-ins) provides expected values for P14/P16/P18 (model-based testing).
+
+### Example-Based Unit Tests (Backend, pytest) — Requirement 25
+
+- **25.1** each trig/inverse-trig function in **both** radians and degrees, asserting ≥10-sig-digit equality to known expected values (e.g. `sin(30°)=0.5`, `cos(0)=1`, `atan(1)=45°`).
+- **25.2** degrees↔radians conversions to ≥10 sig digits.
+- **25.3** each power/root/log to ≥10 sig digits (`sqrt(2)`, `root(27,3)=3`, `ln(e)=1`, `log10(1000)=3`).
+- **25.4** each Requirement 17/18 Domain_Error returns a 4xx Error_Response (asin(2), tan(90°), sqrt(−1), root(−8,2), ln(0), log10(−5), root(5,0), (−8)^0.5).
+- **25.5** pi and e substituted to ≥10 sig digits.
+- **25.6** boundary values immediately adjacent to each domain limit: `asin(−1)`, `asin(1)`, `acos(−1)`, `acos(1)`, `sqrt(0)`, `ln` and `log10` at an operand just above 0, each to ≥10 sig digits.
+- **Default/invalid angle mode** at the API layer: omitted mode behaves as radians; `angle_mode="grads"` → 4xx (17.9, 17.10, 24.3, 24.4).
+- **25.7** measured line coverage ≥90% across the scientific engine modules (`scientific.py`, `constants.py`, and the scientific branches of `evaluator.py`/`parser.py`/`tokenizer.py`), enforced via `pytest --cov` with a `--cov-fail-under` gate.
+- **25.8 / 16.6** the full suite (Stage 1 Requirement 15 tests + Stage 2 tests + remediation tests from 16.4) runs with **zero failures and zero errors**; a failed test or an unmet coverage threshold reports failure and SHALL NOT report success.
+
+### Frontend Testing
+
+- **Memory reducer** (P20): generator/table tests — `M+` then `M-` restores the register exactly; `MC` zeroes it; indicator visible ⟺ register ≠ 0; guards: `M+`/`M-` with no numeric result leave the register unchanged and raise an error indication (20.8); `MR` that would exceed 256 chars leaves state unchanged with an error indication (20.9). Decimal-string aggregation uses the arbitrary-precision helper, never `number`.
+- **History reducer** (P21): sequence tests — append on success only, ≤100 cap dropping oldest, newest-first order, unchanged on error (21.7), empty after clear (21.6), empty-state indication at zero entries (21.8); selecting an entry's expression/result replaces the whole expression (21.3, 21.4).
+- **Keyboard** (P23): `^`/`p`/`e` append their tokens; Stage 1 mappings preserved (23.5); function key sequences complete within the 1000 ms inter-key window (23.3) and are discarded on timeout or invalid continuation (23.6, fake timers); single unmapped key is a no-op (23.4).
+- **Constant rendering** (P24): repeated pi/e insertions yield identical token text (19.5); pi/e controls insert at the cursor (19.3, 19.4).
+- **Components:** `ScientificKeypad` renders all required controls with matching `aria-label`s; `HistoryPanel` lists newest-first with selectable expression/result and clear; `MemoryIndicator` shows/hides on register value; `AngleModeToggle` displays and flips the mode and updates within 100 ms (22.6, 22.7).
+- **API client:** sends `angle_mode`; scientific success renders result; domain 4xx renders error; results only ever come from the API call (24.7); malformed response treated as an error (P13 preserved).
+- **Type safety** (24.6): `AngleMode` literal union and all new interfaces typed without `any`, enforced by `tsc` strict mode and the ESLint `no-explicit-any` rule.
+
+### Layout, Responsiveness, Contrast, Timing (non-PBT)
+
+- **Responsive scientific layout** (22.2–22.5, 22.9): representative viewport widths (mobile 320–767, tablet 768–1023, desktop 1024–2560) checked for no horizontal overflow, no clipping, and ≥44×44 px touch targets on mobile for scientific and memory controls; collapsible keypad toggles visibility and reports state (22.8).
+- **Contrast** (11.1–11.4 extended to the new controls): axe-core audit plus manual review. Full WCAG conformance still requires manual assistive-technology testing beyond the automated checks.
+
+## Stage 2 Module / File Structure (additions)
+
+Only **additions/edits** are shown; every Stage 1 file above is retained.
+
+```
+backend/
+  app/
+    api/
+      schemas.py            # EvaluateRequest gains angle_mode: Literal["radians","degrees"] = "radians"
+      routes.py             # passes angle_mode to evaluate_expression
+    engine/
+      __init__.py           # evaluate_expression(expr, angle_mode="radians")
+      tokenizer.py          # + IDENT/function/constant tokens, COMMA, log10 keyword
+      parser.py             # + ConstantNode, FunctionNode, RootNode; extended render()
+      evaluator.py          # + angle_mode threading; dispatch to scientific/constants
+      scientific.py         # NEW — Decimal-based trig/inverse-trig, angle conversion, powers/roots/logs helpers, domain checks
+      constants.py          # NEW — high-precision Decimal pi and e
+      errors.py             # + DomainError, InvalidFunctionError
+    main.py                 # docstring note for new error kinds (handler already covers the base class)
+  tests/
+    test_scientific.py      # NEW — 25.1 functions both modes
+    test_conversions.py     # NEW — 25.2 angle conversions
+    test_powers_roots_logs.py  # NEW — 25.3
+    test_domain_errors.py   # NEW — 25.4 domain errors → 4xx
+    test_constants.py       # NEW — 25.5 pi/e substitution
+    test_boundaries.py      # NEW — 25.6 boundary values at domain limits
+    test_api_angle_mode.py  # NEW — default radians / invalid mode (17.9, 17.10, 24.3, 24.4)
+    test_inspection_fixes.py   # NEW — 16.4 corrected-behavior tests for any remediated defect
+    properties/
+      strategies.py         # + constant/function/root generators + extended render
+      test_scientific_property.py   # NEW — P14, P16, P18
+      test_conversion_property.py   # NEW — P15
+      test_roundtrip.py             # extended for P19 (functions/constants/root)
+      test_domain_property.py       # NEW — P17
+      test_angle_mode_property.py   # NEW — P22
+
+frontend/
+  src/
+    api/
+      types.ts              # + AngleMode, angleMode on EvaluateRequest, MemoryState, HistoryEntry, CalculationHistory
+      client.ts             # sends angle_mode
+    state/
+      calculatorReducer.ts  # unchanged core; wired alongside the new reducers
+      memoryReducer.ts      # NEW — register + MEM_ADD/SUB/RECALL/CLEAR, guards, indicator-derived
+      historyReducer.ts     # NEW — append-on-success, ≤100 cap, newest-first, clear
+    hooks/
+      useKeyboard.ts        # + ^, p/e, scientific sequence recognizer (1000ms timeout); Stage 1 mappings preserved
+      useEvaluator.ts       # passes angleMode; triggers history append on success
+    components/
+      Calculator.tsx        # composes scientific keypad, history, memory, angle toggle
+      ScientificKeypad.tsx  # NEW
+      ScientificKeypad.css  # NEW — responsive grid, 44px targets
+      HistoryPanel.tsx      # NEW
+      HistoryPanel.css      # NEW
+      MemoryIndicator.tsx   # NEW
+      AngleModeToggle.tsx   # NEW
+    styles/
+      theme.css             # + tokens for toggle/indicator (WCAG contrast)
+      global.css            # + scientific breakpoints
+  tests/
+    memory.test.ts          # NEW — P20 + guards (20.8, 20.9)
+    history.test.ts         # NEW — P21 + empty state / selection (21.3, 21.4, 21.8)
+    keyboard.test.ts        # NEW — P23 + sequence timing (23.3, 23.6)
+    scientificKeypad.test.tsx  # NEW — controls + a11y
+    historyPanel.test.tsx   # NEW
+    angleModeToggle.test.tsx   # NEW — display + 100ms flip (22.6, 22.7)
+    client.test.ts          # extended — sends angle_mode, scientific success/domain-error
+```

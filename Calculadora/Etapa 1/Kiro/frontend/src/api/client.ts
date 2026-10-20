@@ -11,10 +11,10 @@
  * successful backend response (Requirement 14.3). Any transport failure or
  * non-conforming payload is surfaced as an error (Requirements 13.5, 14.4).
  *
- * Requirements: 13.4, 13.5, 14.3, 14.4
+ * Requirements: 13.4, 13.5, 14.3, 14.4, 24.1, 24.7
  */
 
-import { isError, isSuccess, type EvaluateRequest } from "./types";
+import { isError, isSuccess, type AngleMode, type EvaluateRequest } from "./types";
 
 /** Endpoint path. Relative so the Vite dev server proxies `/api` to the backend. */
 const EVALUATE_ENDPOINT = "/api/v1/evaluate";
@@ -39,8 +39,9 @@ export type EvaluateResult =
 /**
  * Evaluate an arithmetic expression via the backend.
  *
- * Builds a typed {@link EvaluateRequest} (no `any`), POSTs it as JSON to the
- * Evaluate_Endpoint, and returns a normalized {@link EvaluateResult}:
+ * Builds a typed {@link EvaluateRequest} (no `any`) carrying the expression and
+ * the selected {@link AngleMode}, POSTs it as JSON to the Evaluate_Endpoint,
+ * and returns a normalized {@link EvaluateResult}:
  *
  * - A body narrowed by {@link isSuccess} → `{ ok: true, result }`.
  * - A body narrowed by {@link isError} → `{ ok: false, error }` (covers the
@@ -50,16 +51,33 @@ export type EvaluateResult =
  * - A network/transport failure (fetch rejects) → `{ ok: false }` with the
  *   service-unavailable message, and never a locally computed result
  *   (Requirement 14.4).
+ *
+ * `angleMode` defaults to `"radians"` so existing callers that pass only an
+ * expression keep working and match the backend default (Requirement 24.3).
+ * The typed camelCase `angleMode` is mapped to the backend's snake_case
+ * `angle_mode` wire field when serializing the body, so the selected mode
+ * actually reaches the backend rather than being silently dropped
+ * (Requirements 24.1, 24.7).
  */
-export async function evaluateExpression(expression: string): Promise<EvaluateResult> {
-  const requestBody: EvaluateRequest = { expression };
+export async function evaluateExpression(
+  expression: string,
+  angleMode: AngleMode = "radians",
+): Promise<EvaluateResult> {
+  const requestBody: EvaluateRequest = { expression, angleMode };
 
   let response: Response;
   try {
     response = await fetch(EVALUATE_ENDPOINT, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(requestBody),
+      // Map the typed camelCase `angleMode` to the backend's snake_case
+      // `angle_mode` field; FastAPI/Pydantic expects `angle_mode`, so sending
+      // camelCase here would drop the mode and silently default to radians
+      // (Requirements 24.1, 24.7).
+      body: JSON.stringify({
+        expression: requestBody.expression,
+        angle_mode: requestBody.angleMode,
+      }),
     });
   } catch {
     // The backend is unreachable (offline, DNS/connection failure, CORS, etc.).

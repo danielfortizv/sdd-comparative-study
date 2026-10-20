@@ -56,23 +56,70 @@ from hypothesis import strategies as st
 
 # Import the *real* AST node types and the *real* render so generated ASTs and
 # their serialization exercise the production engine (Requirement 6.1, 6.3).
-# NOTE: we intentionally do NOT import app.engine.evaluator -- the reference
-# oracle below must be an independent implementation for Property 1.
-from app.engine.parser import BinaryOpNode, NumberNode, UnaryOpNode, render
+# ``render`` already serializes ConstantNode/FunctionNode/RootNode (task 20.1),
+# so the scientific generators below reuse it unchanged.
+# NOTE: we intentionally do NOT import app.engine.evaluator or
+# app.engine.scientific -- the reference oracle below must be an INDEPENDENT
+# implementation for Properties 1, 14, 16, 18 to be real cross-checks. The only
+# thing we take from the engine are the AST node types and ``render``.
+from app.engine.parser import (
+    BinaryOpNode,
+    ConstantNode,
+    FunctionNode,
+    NumberNode,
+    RootNode,
+    UnaryOpNode,
+    render,
+)
 
 __all__ = [
     "PROPERTY_SETTINGS",
     "MAX_EXAMPLES",
     "render",
     "asts",
+    "scientific_asts",
     "numbers",
     "decimal_literals",
     "reference_evaluate",
     "ReferenceError",
     "ReferenceDivisionByZero",
+    "ReferenceDomainError",
     "expressions_with_invalid_character",
     "zero_divisor_expressions",
     "over_length_expressions",
+    # Stage 2 in-domain scientific node generators.
+    "constant_nodes",
+    "function_nodes",
+    "root_nodes",
+    "trig_operands",
+    "tan_safe_operands",
+    "asin_acos_operands",
+    "atan_operands",
+    "log_operands",
+    "sqrt_operands",
+    # Stage 2 out-of-domain (DomainError) generators.
+    "domain_error_expressions",
+    "asin_acos_out_of_domain_expressions",
+    "sqrt_negative_expressions",
+    "even_root_negative_expressions",
+    "zero_degree_root_expressions",
+    "log_non_positive_expressions",
+    "negative_base_fractional_exponent_expressions",
+    "tan_singularity_expressions",
+    # Stage 2 independent Decimal reference oracle.
+    "REFERENCE_PI",
+    "REFERENCE_E",
+    "reference_constant",
+    "reference_sin",
+    "reference_cos",
+    "reference_tan",
+    "reference_asin",
+    "reference_acos",
+    "reference_atan",
+    "reference_ln",
+    "reference_log10",
+    "reference_sqrt",
+    "reference_nth_root",
 ]
 
 
@@ -136,6 +183,18 @@ class ReferenceDivisionByZero(ReferenceError):
     Generated *valid* ASTs never trigger this (division subtrees are guarded),
     but the reference evaluator still detects it so it can be reused by the
     division-by-zero property (P4) and to guard exponentiation edge cases.
+    """
+
+
+class ReferenceDomainError(ReferenceError):
+    """Raised by the independent oracle when a scientific operation is undefined.
+
+    Mirrors the engine's :class:`~app.engine.errors.DomainError` *contract* (not
+    its code): ``asin``/``acos`` outside ``[-1, 1]``, ``sqrt`` of a negative,
+    even/ non-integer-degree root of a negative, a zero root degree,
+    ``ln``/``log10`` of a non-positive value, and ``tan`` at an odd multiple of
+    pi/2. Keeping an independent domain judgement here is what lets the oracle
+    cross-check the engine's domain handling (Property 17) rather than echo it.
     """
 
 
@@ -258,6 +317,325 @@ def asts(max_depth: int = _MAX_DEPTH) -> st.SearchStrategy:
 
 
 # --------------------------------------------------------------------------- #
+# Stage 2: in-domain operand strategies for scientific functions
+# --------------------------------------------------------------------------- #
+# Each strategy yields *Decimal* operands constrained to the function's real
+# domain, so a FunctionNode/RootNode wrapping one of these always evaluates
+# without a DomainError. They are built from string literals (never ``float``)
+# to stay exact, and bounded so series/root convergence is fast and the >=10
+# significant-digit contract is never at risk. Out-of-domain cases are covered
+# separately by the DomainError generators further below (Property 17).
+
+#: Bound for generic trig operands. Angles are modest Decimals in [-10, 10];
+#: the engine range-reduces internally, so a small window exercises every
+#: quadrant without generating unwieldy magnitudes.
+_TRIG_BOUND = 10
+
+
+def _signed(strategy: st.SearchStrategy[Decimal]) -> st.SearchStrategy[Decimal]:
+    """Attach a random sign to a non-negative Decimal strategy."""
+    return st.builds(
+        lambda value, negative: -value if negative else value,
+        strategy,
+        st.booleans(),
+    )
+
+
+def _bounded_decimals(
+    low: str, high: str, *, places: int = 6
+) -> st.SearchStrategy[Decimal]:
+    """Decimals in the closed interval ``[low, high]`` with ``places`` precision.
+
+    Produced from integer "ticks" scaled by ``10**-places`` and built via
+    ``Decimal(str)`` so the values stay exact and never touch ``float``.
+    """
+    scale = Decimal(10) ** places
+    low_d = Decimal(low)
+    high_d = Decimal(high)
+    min_tick = int((low_d * scale).to_integral_value())
+    max_tick = int((high_d * scale).to_integral_value())
+    quantum = Decimal(1).scaleb(-places)
+    return st.integers(min_value=min_tick, max_value=max_tick).map(
+        lambda tick: (Decimal(tick) * quantum).quantize(quantum)
+    )
+
+
+def trig_operands() -> st.SearchStrategy[Decimal]:
+    """In-domain operands for ``sin``/``cos`` (any bounded Decimal angle)."""
+    return _bounded_decimals(str(-_TRIG_BOUND), str(_TRIG_BOUND))
+
+
+def tan_safe_operands() -> st.SearchStrategy[Decimal]:
+    """Operands for ``tan`` that stay comfortably away from its singularities.
+
+    ``tan`` is undefined at odd multiples of pi/2 (radians). Rather than reason
+    about where those land for a generated Decimal, we restrict ``tan`` operands
+    to the open interval ``(-1.5, 1.5)`` radians: the nearest singularity is
+    ``pi/2 ~ 1.5708``, so ``cos`` is comfortably non-zero across the whole range
+    and the "valid" generator never hits the domain error. The singularity case
+    is exercised on purpose by :func:`tan_singularity_expressions` (Property 17).
+    """
+    return _bounded_decimals("-1.5", "1.5")
+
+
+def asin_acos_operands() -> st.SearchStrategy[Decimal]:
+    """In-domain operands for ``asin``/``acos`` (the closed interval [-1, 1])."""
+    return _bounded_decimals("-1", "1")
+
+
+def atan_operands() -> st.SearchStrategy[Decimal]:
+    """In-domain operands for ``atan`` (any bounded Decimal; domain is all reals)."""
+    return _bounded_decimals(str(-_TRIG_BOUND), str(_TRIG_BOUND))
+
+
+def log_operands() -> st.SearchStrategy[Decimal]:
+    """Strictly-positive operands for ``ln``/``log10`` (the interval (0, 1000])."""
+    return _bounded_decimals("0.000001", "1000")
+
+
+def sqrt_operands() -> st.SearchStrategy[Decimal]:
+    """Non-negative operands for ``sqrt`` (the interval [0, 1000])."""
+    return _bounded_decimals("0", "1000")
+
+
+#: Pairs each unary function name with the strategy producing its in-domain
+#: Decimal operand. ``tan`` deliberately uses the singularity-avoiding strategy.
+_FUNCTION_OPERANDS = {
+    "sin": trig_operands,
+    "cos": trig_operands,
+    "tan": tan_safe_operands,
+    "asin": asin_acos_operands,
+    "acos": asin_acos_operands,
+    "atan": atan_operands,
+    "ln": log_operands,
+    "log10": log_operands,
+    "sqrt": sqrt_operands,
+}
+
+
+def constant_nodes() -> st.SearchStrategy[ConstantNode]:
+    """A strategy of :class:`ConstantNode` leaves (``pi`` or ``e``)."""
+    return st.sampled_from([ConstantNode("pi"), ConstantNode("e")])
+
+
+def function_nodes() -> st.SearchStrategy[FunctionNode]:
+    """A strategy of in-domain :class:`FunctionNode` calls.
+
+    Each generated node pairs a function name with an operand drawn from that
+    function's in-domain operand strategy, wrapped in a :class:`NumberNode`, so
+    the node always evaluates without raising a domain error.
+    """
+    choices = [
+        operand_strategy().map(
+            lambda value, _name=name: FunctionNode(_name, NumberNode(value))
+        )
+        for name, operand_strategy in _FUNCTION_OPERANDS.items()
+    ]
+    return st.one_of(*choices)
+
+
+def root_nodes() -> st.SearchStrategy[RootNode]:
+    """A strategy of in-domain :class:`RootNode` ``root(radicand, degree)`` calls.
+
+    Degrees are small positive integers (2..5). For an even degree the radicand
+    is constrained non-negative (an even root of a negative has no real value);
+    for an odd degree the radicand may carry either sign. Radicands are bounded
+    so the ``exp(ln/n)`` root stays well inside the working precision.
+    """
+    radicand_magnitude = _bounded_decimals("0", "1000")
+
+    def _build(degree: int, magnitude: Decimal, negative: bool) -> RootNode:
+        radicand = -magnitude if (negative and degree % 2 == 1) else magnitude
+        return RootNode(NumberNode(radicand), NumberNode(Decimal(degree)))
+
+    return st.builds(
+        _build,
+        st.integers(min_value=2, max_value=5),
+        radicand_magnitude,
+        st.booleans(),
+    )
+
+
+# --------------------------------------------------------------------------- #
+# Stage 2: recursive scientific AST strategy
+# --------------------------------------------------------------------------- #
+def scientific_asts(max_depth: int = _MAX_DEPTH) -> st.SearchStrategy:
+    """A recursive strategy generating valid ASTs that include scientific nodes.
+
+    This is a *separate* generator from :func:`asts` on purpose: widening the
+    Stage 1 ``asts`` would destabilize the P1/P3 generators (which deliberately
+    stay within exact, terminating arithmetic). ``scientific_asts`` instead
+    builds trees that may contain constants, unary scientific functions, and
+    n-th roots *as subtrees*, while keeping every tree in-domain so it evaluates
+    without a :class:`~app.engine.errors.DomainError`.
+
+    In-domain nesting is preserved by applying a function to an *already
+    in-domain leaf operand* rather than to an arbitrary subtree (a nested
+    ``ln`` of an arbitrary subtree could easily go non-positive). Additive,
+    multiplicative, unary-minus, and (small positive integer) power combinators
+    still compose arbitrary scientific/arithmetic subtrees, so a generated tree
+    can look like ``sin(0.5) + 2 * root(8, 3)`` or ``-(pi ^ 2) / cos(1)``.
+
+    Args:
+        max_depth: Maximum recursion depth; ``0`` yields only leaves.
+
+    Returns:
+        A Hypothesis strategy producing ``Node`` values that evaluate in-domain.
+    """
+    # Leaves: plain numbers, named constants, in-domain function calls, and
+    # in-domain roots. Each leaf is self-contained and evaluable on its own.
+    leaves = st.one_of(numbers(), constant_nodes(), function_nodes(), root_nodes())
+
+    def _extend(children: st.SearchStrategy) -> st.SearchStrategy:
+        additive_multiplicative = st.builds(
+            BinaryOpNode,
+            st.sampled_from(["+", "-", "*"]),
+            children,
+            children,
+        )
+        division = st.builds(
+            lambda left, right: BinaryOpNode("/", left, right),
+            children,
+            numbers(allow_zero=False),
+        )
+        power = st.builds(
+            lambda base, exp: BinaryOpNode("^", base, exp),
+            children,
+            _exponents(),
+        )
+        unary = st.builds(lambda operand: UnaryOpNode("-", operand), children)
+        return st.one_of(additive_multiplicative, division, power, unary)
+
+    return st.recursive(leaves, _extend, max_leaves=max_depth * 2)
+
+
+# --------------------------------------------------------------------------- #
+# Stage 2: out-of-domain generators (Property 17, one per DomainError category)
+# --------------------------------------------------------------------------- #
+# Each strategy yields a *parseable* expression string the engine must reject
+# with a DomainError (mapped to a 4xx by the API). They are rendered with the
+# engine's ``render`` (or built directly) so they are guaranteed to tokenize and
+# parse -- the rejection is a genuine *domain* rejection, not a syntax error.
+
+
+def asin_acos_out_of_domain_expressions() -> st.SearchStrategy[str]:
+    """``asin``/``acos`` of a value with ``|x| > 1`` (Requirement 17.8)."""
+    out_of_range = _signed(_bounded_decimals("1.000001", "1000"))
+    return st.builds(
+        lambda name, value: render(FunctionNode(name, NumberNode(value))),
+        st.sampled_from(["asin", "acos"]),
+        out_of_range,
+    )
+
+
+def sqrt_negative_expressions() -> st.SearchStrategy[str]:
+    """``sqrt`` of a strictly negative value (Requirement 18.8)."""
+    negatives = _bounded_decimals("0.000001", "1000").map(lambda d: -d)
+    return st.builds(
+        lambda value: render(FunctionNode("sqrt", NumberNode(value))),
+        negatives,
+    )
+
+
+def even_root_negative_expressions() -> st.SearchStrategy[str]:
+    """Even-degree ``root`` of a strictly negative radicand (Requirement 18.8)."""
+    negatives = _bounded_decimals("0.000001", "1000").map(lambda d: -d)
+    even_degrees = st.sampled_from([2, 4, 6, 8]).map(lambda n: Decimal(n))
+    return st.builds(
+        lambda radicand, degree: render(
+            RootNode(NumberNode(radicand), NumberNode(degree))
+        ),
+        negatives,
+        even_degrees,
+    )
+
+
+def zero_degree_root_expressions() -> st.SearchStrategy[str]:
+    """``root`` with a degree of zero (Requirement 18.10)."""
+    radicands = _signed(_bounded_decimals("0", "1000"))
+    return st.builds(
+        lambda radicand: render(
+            RootNode(NumberNode(radicand), NumberNode(Decimal(0)))
+        ),
+        radicands,
+    )
+
+
+def log_non_positive_expressions() -> st.SearchStrategy[str]:
+    """``ln``/``log10`` of a non-positive value (<= 0) (Requirement 18.7)."""
+    non_positive = st.one_of(
+        st.just(Decimal(0)),
+        _bounded_decimals("0.000001", "1000").map(lambda d: -d),
+    )
+    return st.builds(
+        lambda name, value: render(FunctionNode(name, NumberNode(value))),
+        st.sampled_from(["ln", "log10"]),
+        non_positive,
+    )
+
+
+def negative_base_fractional_exponent_expressions() -> st.SearchStrategy[str]:
+    """A negative base raised to a non-integer exponent (Requirement 18.9).
+
+    Built directly as ``(-base) ^ exponent`` with a fractional exponent, which
+    has no real value and must be rejected with a DomainError.
+    """
+    bases = _bounded_decimals("0.5", "100")
+    # Non-integer exponents: an integer part plus a strictly fractional part.
+    frac_exponents = _bounded_decimals("0.1", "5").filter(
+        lambda d: d != d.to_integral_value()
+    )
+    return st.builds(
+        lambda base, exponent: render(
+            BinaryOpNode(
+                "^",
+                UnaryOpNode("-", NumberNode(base)),
+                NumberNode(exponent),
+            )
+        ),
+        bases,
+        frac_exponents,
+    )
+
+
+def tan_singularity_expressions() -> st.SearchStrategy[str]:
+    """``tan`` at an odd multiple of 90 degrees (Requirement 17.7).
+
+    Returns ``tan(<odd-multiple-of-90>)`` strings meant to be evaluated with the
+    engine in **degrees** mode, where the argument lands exactly on a tangent
+    singularity (90, 270, -90, ...). In degrees the singularity is exact, which
+    makes this a clean, deterministic domain-error case for Property 17.
+    """
+    odd_multiples = st.integers(min_value=-5, max_value=5).map(
+        lambda k: Decimal(90 + 180 * k)
+    )
+    return st.builds(
+        lambda angle: render(FunctionNode("tan", NumberNode(angle))),
+        odd_multiples,
+    )
+
+
+def domain_error_expressions() -> st.SearchStrategy[str]:
+    """Union of every out-of-domain generator (a one-stop Property 17 source).
+
+    .. note::
+       :func:`tan_singularity_expressions` is only a domain error in *degrees*
+       mode; the P17 test should drive the tan case (or this union) with the
+       engine configured for degrees. The other categories are domain errors in
+       either angle mode.
+    """
+    return st.one_of(
+        asin_acos_out_of_domain_expressions(),
+        sqrt_negative_expressions(),
+        even_root_negative_expressions(),
+        zero_degree_root_expressions(),
+        log_non_positive_expressions(),
+        negative_base_fractional_exponent_expressions(),
+        tan_singularity_expressions(),
+    )
+
+
+# --------------------------------------------------------------------------- #
 # Independent Decimal reference evaluator (Property 1 oracle)
 # --------------------------------------------------------------------------- #
 def reference_evaluate(node) -> Decimal:
@@ -365,6 +743,291 @@ def _strip_trailing_zeros(value: Decimal) -> Decimal:
     if isinstance(exponent, int) and exponent > 0:
         return normalized.quantize(Decimal(1), context=_REFERENCE_CONTEXT)
     return normalized
+
+
+# --------------------------------------------------------------------------- #
+# Independent high-precision Decimal oracle for the scientific ops (P14/P16/P18)
+# --------------------------------------------------------------------------- #
+# These functions compute the *expected* scientific values with their own math,
+# so agreement with ``app.engine.scientific`` is a real cross-check rather than
+# a tautology. They deliberately do NOT import ``app.engine.scientific`` (nor
+# ``math``/``float``). In particular:
+#
+#   * trig/inverse-trig use an INDEPENDENT Taylor/Maclaurin series with a simple
+#     modulo-2*pi range reduction -- a different algorithm from the engine's
+#     quadrant-octant reduction, so Property 14 compares two genuinely distinct
+#     implementations;
+#   * ln/log10/sqrt/nth_root use the ``Decimal`` built-ins (``.ln()``,
+#     ``.log10()``, ``.sqrt()``, ``exp(ln/n)``) -- these are the canonical
+#     correctly-rounded references for Property 16 and are independent of the
+#     engine's Newton-refined implementation.
+#
+# All work runs in a localcontext with ~10 guard digits above the Stage 1
+# precision so comparisons at >=10 significant digits are safe.
+
+#: Guard-digit working precision for the oracle (Stage 1 precision + slack).
+_ORACLE_PRECISION = _WORKING_PRECISION + 10
+_ORACLE_CONTEXT = Context(prec=_ORACLE_PRECISION, rounding=ROUND_HALF_EVEN)
+
+#: Independent high-precision literals for pi and e (>=50 significant digits).
+#: Using literal constant *values* is fine (a constant is a constant); what must
+#: be independent is the trig *algorithm*, which it is. These are kept here so
+#: the oracle does not import ``app.engine.constants`` either.
+REFERENCE_PI = Decimal(
+    "3.14159265358979323846264338327950288419716939937510582097494459"
+)
+REFERENCE_E = Decimal(
+    "2.71828182845904523536028747135266249775724709369995957496696763"
+)
+
+_ORACLE_RADIANS = "radians"
+_ORACLE_DEGREES = "degrees"
+
+
+def reference_constant(name: str) -> Decimal:
+    """Independent reference value for a named constant (``pi`` or ``e``)."""
+    with localcontext(_ORACLE_CONTEXT):
+        if name == "pi":
+            return +REFERENCE_PI
+        if name == "e":
+            return +REFERENCE_E
+        raise ReferenceError(f"Unknown constant {name!r}.")
+
+
+def _oracle_to_radians(value: Decimal, angle_mode: str) -> Decimal:
+    """Interpret ``value`` under ``angle_mode`` and return radians."""
+    if angle_mode == _ORACLE_DEGREES:
+        return value * REFERENCE_PI / Decimal(180)
+    return +value
+
+
+def _oracle_from_radians(value: Decimal, angle_mode: str) -> Decimal:
+    """Convert a radian ``value`` back into ``angle_mode`` units."""
+    if angle_mode == _ORACLE_DEGREES:
+        return value * Decimal(180) / REFERENCE_PI
+    return +value
+
+
+def _reduce_mod_two_pi(radians: Decimal) -> Decimal:
+    """Reduce an angle into ``(-pi, pi]`` by subtracting an integer * 2*pi.
+
+    A single exact Decimal remainder against ``2*pi`` -- a *different* strategy
+    from the engine's pi/2 octant reduction, keeping this oracle independent.
+    """
+    two_pi = REFERENCE_PI * 2
+    k = (radians / two_pi).to_integral_value(rounding=ROUND_HALF_EVEN)
+    return radians - k * two_pi
+
+
+def _series_sin(radians: Decimal) -> Decimal:
+    """Independent Maclaurin series for sin after modulo-2*pi reduction.
+
+    ``sin(x) = x - x^3/3! + x^5/5! - ...``; summation stops when a term stops
+    affecting the running total at the oracle precision.
+    """
+    x = _reduce_mod_two_pi(radians)
+    x_sq = x * x
+    term = +x
+    total = +x
+    n = 1
+    while True:
+        term = term * (-x_sq) / (Decimal(2 * n) * Decimal(2 * n + 1))
+        new_total = total + term
+        if new_total == total:
+            return total
+        total = new_total
+        n += 1
+
+
+def _series_cos(radians: Decimal) -> Decimal:
+    """Independent Maclaurin series for cos after modulo-2*pi reduction.
+
+    ``cos(x) = 1 - x^2/2! + x^4/4! - ...``.
+    """
+    x = _reduce_mod_two_pi(radians)
+    x_sq = x * x
+    term = Decimal(1)
+    total = Decimal(1)
+    n = 1
+    while True:
+        term = term * (-x_sq) / (Decimal(2 * n - 1) * Decimal(2 * n))
+        new_total = total + term
+        if new_total == total:
+            return total
+        total = new_total
+        n += 1
+
+
+def reference_sin(x: Decimal, angle_mode: str = _ORACLE_RADIANS) -> Decimal:
+    """Independent reference sine of ``x`` (interpreted in ``angle_mode``)."""
+    with localcontext(_ORACLE_CONTEXT):
+        return +_series_sin(_oracle_to_radians(x, angle_mode))
+
+
+def reference_cos(x: Decimal, angle_mode: str = _ORACLE_RADIANS) -> Decimal:
+    """Independent reference cosine of ``x`` (interpreted in ``angle_mode``)."""
+    with localcontext(_ORACLE_CONTEXT):
+        return +_series_cos(_oracle_to_radians(x, angle_mode))
+
+
+def reference_tan(x: Decimal, angle_mode: str = _ORACLE_RADIANS) -> Decimal:
+    """Independent reference tangent ``sin/cos`` (interpreted in ``angle_mode``).
+
+    Raises :class:`ReferenceDomainError` when ``cos`` is effectively zero (an
+    odd multiple of pi/2), matching the engine's singularity rejection.
+    """
+    with localcontext(_ORACLE_CONTEXT):
+        radians = _oracle_to_radians(x, angle_mode)
+        s = _series_sin(radians)
+        c = _series_cos(radians)
+        if abs(c) < Decimal(1).scaleb(-(_WORKING_PRECISION)):
+            raise ReferenceDomainError("tangent is undefined at this angle.")
+        return +(s / c)
+
+
+def _series_atan(x: Decimal) -> Decimal:
+    """atan in radians via an independent series with argument reduction.
+
+    Uses ``atan(x) = pi/2 - atan(1/x)`` for ``|x| > 1`` and a half-angle
+    reduction (``atan(y) = 2*atan(y/(1+sqrt(1+y^2)))``) to shrink the series
+    argument for fast convergence, then ``atan(y) = y - y^3/3 + y^5/5 - ...``.
+    """
+    if x == 0:
+        return Decimal(0)
+    negative = x < 0
+    y = abs(x)
+
+    use_complement = y > 1
+    if use_complement:
+        y = Decimal(1) / y
+
+    reductions = 0
+    while y > Decimal("0.42"):
+        y = y / (Decimal(1) + (Decimal(1) + y * y).sqrt())
+        reductions += 1
+
+    y_sq = y * y
+    power = +y
+    total = +y
+    sign = Decimal(-1)
+    n = 1
+    while True:
+        power = power * y_sq
+        n += 2
+        contribution = sign * power / Decimal(n)
+        new_total = total + contribution
+        if new_total == total:
+            break
+        total = new_total
+        sign = -sign
+
+    result = total * (Decimal(2) ** reductions)
+    if use_complement:
+        result = REFERENCE_PI / 2 - result
+    if negative:
+        result = -result
+    return result
+
+
+def reference_atan(x: Decimal, angle_mode: str = _ORACLE_RADIANS) -> Decimal:
+    """Independent reference arctangent; result expressed in ``angle_mode``."""
+    with localcontext(_ORACLE_CONTEXT):
+        return +_oracle_from_radians(_series_atan(+x), angle_mode)
+
+
+def reference_asin(x: Decimal, angle_mode: str = _ORACLE_RADIANS) -> Decimal:
+    """Independent reference arcsine; result in ``angle_mode``.
+
+    ``asin(x) = atan(x / sqrt(1 - x^2))`` with exact endpoints; requires
+    ``-1 <= x <= 1`` and raises :class:`ReferenceDomainError` otherwise.
+    """
+    with localcontext(_ORACLE_CONTEXT):
+        value = +x
+        if value < -1 or value > 1:
+            raise ReferenceDomainError("asin is undefined outside [-1, 1].")
+        if value == 1:
+            result = REFERENCE_PI / 2
+        elif value == -1:
+            result = -REFERENCE_PI / 2
+        else:
+            result = _series_atan(value / (Decimal(1) - value * value).sqrt())
+        return +_oracle_from_radians(result, angle_mode)
+
+
+def reference_acos(x: Decimal, angle_mode: str = _ORACLE_RADIANS) -> Decimal:
+    """Independent reference arccosine ``pi/2 - asin(x)``; result in ``angle_mode``.
+
+    Requires ``-1 <= x <= 1`` and raises :class:`ReferenceDomainError` otherwise.
+    """
+    with localcontext(_ORACLE_CONTEXT):
+        value = +x
+        if value < -1 or value > 1:
+            raise ReferenceDomainError("acos is undefined outside [-1, 1].")
+        if value == 1:
+            asin_r = Decimal(0)
+        elif value == -1:
+            asin_r = -REFERENCE_PI / 2
+        else:
+            asin_r = _series_atan(value / (Decimal(1) - value * value).sqrt())
+        return +_oracle_from_radians(REFERENCE_PI / 2 - asin_r, angle_mode)
+
+
+def reference_ln(x: Decimal) -> Decimal:
+    """Independent reference natural log via ``Decimal.ln`` (requires x > 0)."""
+    with localcontext(_ORACLE_CONTEXT):
+        value = +x
+        if value <= 0:
+            raise ReferenceDomainError("ln is undefined for non-positive x.")
+        return +value.ln()
+
+
+def reference_log10(x: Decimal) -> Decimal:
+    """Independent reference base-10 log via ``Decimal.log10`` (requires x > 0)."""
+    with localcontext(_ORACLE_CONTEXT):
+        value = +x
+        if value <= 0:
+            raise ReferenceDomainError("log10 is undefined for non-positive x.")
+        return +value.log10()
+
+
+def reference_sqrt(x: Decimal) -> Decimal:
+    """Independent reference square root via ``Decimal.sqrt`` (requires x >= 0)."""
+    with localcontext(_ORACLE_CONTEXT):
+        value = +x
+        if value < 0:
+            raise ReferenceDomainError("sqrt is undefined for negative x.")
+        return +value.sqrt()
+
+
+def reference_nth_root(radicand: Decimal, degree: Decimal) -> Decimal:
+    """Independent reference real ``degree``-th root via ``exp(ln(|x|)/n)``.
+
+    Domain rules mirror the engine's contract: a zero degree, an even/ non-
+    integer-degree root of a negative radicand are rejected with
+    :class:`ReferenceDomainError`; an odd-integer degree of a negative radicand
+    yields the negative real root.
+    """
+    with localcontext(_ORACLE_CONTEXT):
+        n = +degree
+        value = +radicand
+        if n == 0:
+            raise ReferenceDomainError("The root degree must be non-zero.")
+        if value == 0:
+            return Decimal(0)
+
+        n_is_integer = n == n.to_integral_value()
+        n_is_even_integer = n_is_integer and (int(n) % 2 == 0)
+        n_is_odd_integer = n_is_integer and (int(n) % 2 != 0)
+
+        if value < 0:
+            if n_is_even_integer or not n_is_odd_integer:
+                raise ReferenceDomainError(
+                    "Even/non-integer root of a negative number is not real."
+                )
+            magnitude = (-value).ln() / n
+            return +(-(magnitude.exp()))
+
+        return +((value.ln() / n).exp())
 
 
 # --------------------------------------------------------------------------- #

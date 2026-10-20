@@ -6,6 +6,8 @@ interface DisplayPanelProps {
   result: string;
   history: string;
   state: DisplayState;
+  angleUnit: 'radians' | 'degrees';
+  memory: string;
 }
 
 export const DisplayPanel: React.FC<DisplayPanelProps> = ({
@@ -13,6 +15,8 @@ export const DisplayPanel: React.FC<DisplayPanelProps> = ({
   result,
   history,
   state,
+  angleUnit,
+  memory,
 }) => {
   // Determine correct color styles for results based on active state
   let resultClass = 'preview';
@@ -22,15 +26,22 @@ export const DisplayPanel: React.FC<DisplayPanelProps> = ({
     resultClass = 'error';
   }
 
+  const isMemoryActive = memory !== '0';
+
   // Construct clear spoken text for screen readers (WCAG 2.1 AA)
   const getScreenReaderSpokenText = (): string => {
+    let spoken = '';
+    if (isMemoryActive) {
+      spoken += `Memory stored: ${memory}. `;
+    }
+    spoken += `Angle mode: ${angleUnit}. `;
     if (state === 'error') {
-      return `Error: ${result}`;
+      return `${spoken} Error: ${result}`;
     }
     if (state === 'evaluated') {
-      return `Result: ${result}`;
+      return `${spoken} Result: ${result}`;
     }
-    return `Expression: ${expression || 'empty'}`;
+    return `${spoken} Expression: ${expression || 'empty'}`;
   };
 
   return (
@@ -46,6 +57,26 @@ export const DisplayPanel: React.FC<DisplayPanelProps> = ({
         aria-live="polite"
       >
         {getScreenReaderSpokenText()}
+      </div>
+
+      {/* Top Bar for Indicators (Angle Mode & Memory Badge) */}
+      <div className="display-indicators-row">
+        {isMemoryActive && (
+          <span 
+            className="indicator-badge memory-badge" 
+            title={`Memory active: ${memory}`}
+            aria-label={`Memory active: ${memory}`}
+          >
+            M
+          </span>
+        )}
+        <span 
+          className="indicator-badge angle-badge"
+          title={`Angle units: ${angleUnit}`}
+          aria-label={`Angle units: ${angleUnit}`}
+        >
+          {angleUnit === 'radians' ? 'RAD' : 'DEG'}
+        </span>
       </div>
 
       {/* Faded History Display Slot */}

@@ -29,17 +29,22 @@ from decimal import Decimal
 
 from .errors import (
     DivisionByZeroError,
+    DomainError,
     EmptyExpressionError,
     EvaluationError,
     InvalidCharacterError,
+    InvalidFunctionError,
     InvalidSyntaxError,
     UnbalancedParenthesesError,
 )
 from .evaluator import evaluate
 from .parser import (
     BinaryOpNode,
+    ConstantNode,
+    FunctionNode,
     Node,
     NumberNode,
+    RootNode,
     UnaryOpNode,
     parse,
     render,
@@ -47,7 +52,7 @@ from .parser import (
 from .tokenizer import tokenize
 
 
-def evaluate_expression(expression: str) -> Decimal:
+def evaluate_expression(expression: str, angle_mode: str = "radians") -> Decimal:
     """Tokenize, parse, and evaluate an arithmetic ``expression``.
 
     This is the single public entry point into the Evaluation_Engine. It runs
@@ -58,14 +63,20 @@ def evaluate_expression(expression: str) -> Decimal:
        separate tokenize call here).
     2. :func:`app.engine.evaluator.evaluate` walks that AST and computes an
        exact, normalized :class:`~decimal.Decimal` under the engine's decimal
-       context.
+       context. ``angle_mode`` is threaded through to the evaluator so the
+       trigonometric functions interpret their arguments in the requested unit.
 
     Any failure in either stage surfaces as an :class:`EvaluationError`
     subclass, which is allowed to propagate to the caller unchanged; no error
-    path ever returns a calculated result (Requirements 1.1, 4.x, 14.2).
+    path ever returns a calculated result (Requirements 1.1, 4.x, 14.2). The
+    Stage 2 scientific operations add :class:`DomainError` and
+    :class:`InvalidFunctionError` to the set of propagated subclasses.
 
     Args:
         expression: The raw arithmetic expression string.
+        angle_mode: The unit used to interpret trigonometric arguments, either
+            ``"radians"`` or ``"degrees"``. Defaults to ``"radians"`` so callers
+            that omit it keep the Stage 1 / radians behavior (Requirement 24.3).
 
     Returns:
         The evaluated result as a :class:`~decimal.Decimal`, computed under
@@ -77,9 +88,11 @@ def evaluate_expression(expression: str) -> Decimal:
         InvalidSyntaxError: On an invalid operator sequence or malformed number.
         UnbalancedParenthesesError: On an unclosed or unmatched parenthesis.
         DivisionByZeroError: If a divisor subexpression evaluates to zero.
+        DomainError: If a scientific operation violates its mathematical domain.
+        InvalidFunctionError: If the expression names an unknown function.
     """
     ast = parse(expression)
-    return evaluate(ast)
+    return evaluate(ast, angle_mode)
 
 
 __all__ = [
@@ -95,6 +108,9 @@ __all__ = [
     "NumberNode",
     "UnaryOpNode",
     "BinaryOpNode",
+    "ConstantNode",
+    "FunctionNode",
+    "RootNode",
     # Error hierarchy.
     "EvaluationError",
     "EmptyExpressionError",
@@ -102,4 +118,6 @@ __all__ = [
     "InvalidSyntaxError",
     "UnbalancedParenthesesError",
     "DivisionByZeroError",
+    "DomainError",
+    "InvalidFunctionError",
 ]

@@ -47,6 +47,15 @@ export function useKeyboard({
       } else if (key === ')') {
         event.preventDefault();
         appendToken(')');
+      } else if (key === '^') {
+        event.preventDefault();
+        appendToken(' ** ');
+      } else if (key === 'p' || key === 'P') {
+        event.preventDefault();
+        appendToken('pi');
+      } else if (key === 'e' || key === 'E') {
+        event.preventDefault();
+        appendToken('e');
       } else if (key === 'Enter' || key === '=') {
         event.preventDefault();
         evaluateFinal();
