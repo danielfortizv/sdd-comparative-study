@@ -87,3 +87,83 @@ def test_non_string_rejection():
         with pytest.raises(MathEvaluationError) as exc:
             safe_parse_and_evaluate(val)
         assert str(exc.value) == "Error: Input expression must be a string"
+
+
+def test_scientific_constants():
+    # pi and e values should evaluate correctly
+    assert abs(safe_parse_and_evaluate("pi") - Decimal("3.141592653589793238462643383")) < Decimal("1e-15")
+    assert abs(safe_parse_and_evaluate("e") - Decimal("2.718281828459045235360287471")) < Decimal("1e-15")
+    # Expression containing constants should parse correctly
+    assert safe_parse_and_evaluate("2 * pi") > 6.28
+
+
+def test_scientific_trig_radians():
+    # In radians: sin(pi / 2) == 1, cos(pi) == -1, tan(0) == 0
+    assert abs(safe_parse_and_evaluate("sin(pi / 2)", angle_unit="radians") - 1) < Decimal("1e-10")
+    assert abs(safe_parse_and_evaluate("cos(pi)", angle_unit="radians") - (-1)) < Decimal("1e-10")
+    assert abs(safe_parse_and_evaluate("tan(0)", angle_unit="radians")) < Decimal("1e-10")
+
+
+def test_scientific_trig_degrees():
+    # In degrees: sin(90) == 1, cos(180) == -1, tan(45) == 1
+    assert abs(safe_parse_and_evaluate("sin(90)", angle_unit="degrees") - 1) < Decimal("1e-10")
+    assert abs(safe_parse_and_evaluate("cos(180)", angle_unit="degrees") - (-1)) < Decimal("1e-10")
+    assert abs(safe_parse_and_evaluate("tan(45)", angle_unit="degrees") - 1) < Decimal("1e-10")
+
+
+def test_scientific_inverse_trig():
+    # asin(1) in degrees should be 90, acos(0) should be 90, atan(1) should be 45
+    assert abs(safe_parse_and_evaluate("asin(1)", angle_unit="degrees") - 90) < Decimal("1e-10")
+    assert abs(safe_parse_and_evaluate("acos(0)", angle_unit="degrees") - 90) < Decimal("1e-10")
+    assert abs(safe_parse_and_evaluate("atan(1)", angle_unit="degrees") - 45) < Decimal("1e-10")
+
+    # In radians
+    assert abs(safe_parse_and_evaluate("asin(1)", angle_unit="radians") - safe_parse_and_evaluate("pi / 2")) < Decimal("1e-10")
+
+
+def test_scientific_exponents_and_roots():
+    # Exponentiation and roots
+    assert safe_parse_and_evaluate("2 ** 10") == 1024
+    assert safe_parse_and_evaluate("sqrt(16)") == 4
+    # Fractional exponent for negative number must throw error
+    with pytest.raises(MathEvaluationError) as exc:
+        safe_parse_and_evaluate("(-4) ** 0.5")
+    assert "Fractional power of a negative number is undefined" in str(exc.value)
+
+
+def test_scientific_logarithms():
+    assert abs(safe_parse_and_evaluate("ln(e)") - 1) < Decimal("1e-15")
+    assert safe_parse_and_evaluate("log10(100)") == 2
+    assert safe_parse_and_evaluate("log(1000)") == 3
+
+
+def test_scientific_domain_errors():
+    # sqrt(<0)
+    with pytest.raises(MathEvaluationError) as exc:
+        safe_parse_and_evaluate("sqrt(-9)")
+    assert "Square root of a negative number is undefined" in str(exc.value)
+
+    # log(<=0)
+    with pytest.raises(MathEvaluationError) as exc:
+        safe_parse_and_evaluate("ln(0)")
+    assert "Logarithm of zero or a negative number is undefined" in str(exc.value)
+
+    with pytest.raises(MathEvaluationError) as exc:
+        safe_parse_and_evaluate("log(-10)")
+    assert "Logarithm of zero or a negative number is undefined" in str(exc.value)
+
+    # asin out of range
+    with pytest.raises(MathEvaluationError) as exc:
+        safe_parse_and_evaluate("asin(1.5)")
+    assert "Inverse trigonometric function domain is [-1, 1]" in str(exc.value)
+
+    # tan(90 deg) vertical asymptote
+    with pytest.raises(MathEvaluationError) as exc:
+        safe_parse_and_evaluate("tan(90)", angle_unit="degrees")
+    assert "Tangent undefined at this angle" in str(exc.value)
+
+    # 0 ** -1 division by zero
+    with pytest.raises(MathEvaluationError) as exc:
+        safe_parse_and_evaluate("0 ** -1")
+    assert "Division by zero in power operation" in str(exc.value)
+

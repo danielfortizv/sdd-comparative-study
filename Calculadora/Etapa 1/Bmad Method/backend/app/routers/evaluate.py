@@ -7,7 +7,19 @@ from backend.app.engine.parser import safe_parse_and_evaluate, MathEvaluationErr
 router = APIRouter(prefix="/api/v1")
 
 class EvaluateRequest(BaseModel):
-    expression: str = Field(..., description="The mathematical expression to evaluate", example="12.5 + 3 * (4 - 1.5) / 2")
+    expression: str = Field(..., description="The mathematical expression to evaluate")
+    angle_unit: Literal["radians", "degrees"] = Field("radians", description="The angle unit system to use for trigonometric evaluations")
+
+    model_config = {
+        "json_schema_extra": {
+            "examples": [
+                {
+                    "expression": "12.5 + 3 * (4 - 1.5) / 2",
+                    "angle_unit": "radians"
+                }
+            ]
+        }
+    }
 
 class EvaluateResponse(BaseModel):
     status: Literal["success"] = Field("success", description="The status of the evaluation")
@@ -28,7 +40,7 @@ class ErrorResponse(BaseModel):
 )
 async def evaluate_expression(payload: EvaluateRequest):
     try:
-        result_decimal = safe_parse_and_evaluate(payload.expression)
+        result_decimal = safe_parse_and_evaluate(payload.expression, angle_unit=payload.angle_unit)
         return EvaluateResponse(
             expression=payload.expression,
             result=str(result_decimal)

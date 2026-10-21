@@ -45,20 +45,30 @@ Standard digital calculators suffer from frustrating binary floating-point repre
   - **intent:** System validates inputs and serializes exceptions (e.g., division by zero) into standard, clean error strings that trigger visual red warning states.
   - **success:** Evaluating an invalid operation like `10 / 0` triggers a visual error state (red typography, disabled `=` key) and displays a prominent `"Error: Division by zero"` message on the screen.
 
+- **CAP-7: Advanced Scientific & Constant Operations**
+  - **intent:** System evaluates trigonometric, logarithmic, root, and exponential functions, along with standard constants (pi, e), while adhering to standard math domains.
+  - **success:** Backend whitelists `ast.Call`, `ast.Name`, and `ast.Pow`. Evaluating functions (e.g. `sin(pi/2)` in Radian mode or `sin(90)` in Degree mode) returns exactly `"1"`. Attempting invalid domain math (e.g. `sqrt(-4)` or `ln(0)`) triggers user-friendly `"Error: <detail>"` responses.
+
+- **CAP-8: Exact Precision Memory Register System**
+  - **intent:** User can perform standard calculator memory functions (M+, M-, MR, MC) backed by high-precision decimal operations and track its state with a visual screen indicator.
+  - **success:** Clicking `M+` / `M-` dispatches a REST query to compute addition/subtraction, updating local memory state with absolute precision. A visual "M" indicator appears on screen when the memory value is non-zero.
+
+- **CAP-9: Interactive Session History Drawer**
+  - **intent:** Users can view, clear, and reload past calculations (either the expression or the result) from the current session.
+  - **success:** An interactive, accessible side drawer caches successfully evaluated expressions. Tapping an item opens a submenu to load either the expression or the result into the display, or clear history completely.
+
 ## Constraints
 
-- **Arbitrary-Precision Math:** All calculations must execute via Python's standard `decimal` module; raw floating-point calculations are banned.
-- **Secure AST Execution Only:** Parsing must traverse AST node expressions via a custom `NodeVisitor` subclass; raw `eval()` execution is forbidden.
-- **Stateless REST API Endpoint:** The calculation service endpoint `POST /api/v1/evaluate` must be completely stateless.
+- **Arbitrary-Precision Math:** All calculations must execute via Python's standard `decimal` module; raw floating-point calculations are banned. Trigonometric functions utilize standard float wrappers converted from/to `Decimal` safely.
+- **Secure AST Execution Only:** Parsing must traverse AST node expressions via a custom `NodeVisitor` subclass; raw `eval()` execution is forbidden. Whitelisted nodes are extended to support `ast.Call`, `ast.Name`, and `ast.Pow`.
+- **Stateless REST API Endpoint:** The calculation service endpoint `POST /api/v1/evaluate` must be completely stateless and accept an optional `angle_unit` parameter.
 - **Stable Monospace Readouts:** Monospace font families must be utilized inside display panels to prevent horizontal character jittering.
 - **Ergonomic Mobile Tap Targets:** Buttons must occupy at least `48px` x `48px` on mobile layouts.
 - **No Grid Tab Traversal:** Buttons must have `tabIndex="-1"` to keep keyboard navigation bound strictly to global window intercepts.
 
 ## Non-goals
 
-- **No Scientific Operations:** No scientific mathematical functions (trigonometric functions, square roots, logarithms) in v1.
-- **No State Persistence:** No user databases, accounts, cache histories, or cloud syncs.
-- **No Unit/Currency Conversions:** No multi-currency or weight/unit conversion.
+- **No Multi-currency/Unit Conversions:** No multi-currency or weight/unit conversion.
 - **No Standalone Offline Operation:** The application requires active REST API backend connectivity; offline local evaluations are out of scope.
 
 ## Success signal

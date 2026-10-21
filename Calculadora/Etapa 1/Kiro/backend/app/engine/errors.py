@@ -16,6 +16,10 @@ InvalidCharacterError   Character outside ``[0-9. +-*/^()]``                4.4
 InvalidSyntaxError      Invalid operator sequence / malformed structure     4.2
 UnbalancedParenthesesE. Unclosed / unmatched parenthesis                    4.3
 DivisionByZeroError     Divisor subexpression evaluates to zero             4.1
+DomainError             Mathematical domain violation (trig/root/log/...)   17.7, 17.8,
+                                                                            18.7-18.11,
+                                                                            24.8
+InvalidFunctionError    Unrecognized identifier / function name             24.1 path
 ======================  ==================================================  ===========
 """
 
@@ -142,6 +146,62 @@ class DivisionByZeroError(EvaluationError):
         super().__init__(message)
 
 
+class DomainError(EvaluationError):
+    """Raised when a scientific operation violates its mathematical domain.
+
+    Covers every Requirement 17/18 domain violation surfaced by the scientific
+    evaluator: ``asin``/``acos`` of an argument outside ``[-1, 1]``, ``tan`` at a
+    singularity, ``sqrt``/even-root of a negative number, an n-th root of degree
+    zero, ``ln``/``log10`` of a non-positive argument, a negative base raised to a
+    non-integer exponent, and any power/root/log producing a non-finite result.
+    Always surfaced as a 4xx ``ErrorResponse`` and never a calculated result.
+
+    Requirements 17.7, 17.8, 18.7, 18.8, 18.9, 18.10, 18.11, 24.8.
+    """
+
+    kind = "domain_error"
+
+    def __init__(
+        self,
+        message: str | None = None,
+    ) -> None:
+        if message is None:
+            message = "The expression contains a mathematical domain error."
+        super().__init__(message)
+
+
+class InvalidFunctionError(EvaluationError):
+    """Raised when the expression contains an unrecognized identifier/function.
+
+    The tokenizer/parser raises this for any identifier run that does not match a
+    known function name (``sin``, ``cos``, ``tan``, ``asin``, ``acos``, ``atan``,
+    ``ln``, ``log10``, ``sqrt``, ``root``) or constant (``pi``, ``e``). The
+    message names the unknown identifier and, when available, its position,
+    mirroring :class:`InvalidCharacterError`. Supports the Requirement 24.1 error
+    path.
+    """
+
+    kind = "invalid_function"
+
+    def __init__(
+        self,
+        message: str | None = None,
+        *,
+        name: str | None = None,
+        position: int | None = None,
+    ) -> None:
+        self.name = name
+        self.position = position
+        if message is None:
+            if name is not None and position is not None:
+                message = f"Unknown function or name '{name}' at position {position}."
+            elif name is not None:
+                message = f"Unknown function or name '{name}'."
+            else:
+                message = "The expression contains an unknown function or name."
+        super().__init__(message)
+
+
 __all__ = [
     "EvaluationError",
     "EmptyExpressionError",
@@ -149,4 +209,6 @@ __all__ = [
     "InvalidSyntaxError",
     "UnbalancedParenthesesError",
     "DivisionByZeroError",
+    "DomainError",
+    "InvalidFunctionError",
 ]

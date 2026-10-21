@@ -9,7 +9,7 @@ def evaluate(payload: CalculationRequest):
     """
     Evaluates a mathematical expression and returns the precise decimal result.
     """
-    result = evaluate_expression(payload.expression)
+    result = evaluate_expression(payload.expression, angle_unit=payload.angle_unit)
     return CalculationResponse(
         expression=payload.expression,
         result=str(result)

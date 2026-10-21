@@ -16,6 +16,7 @@ app.add_middleware(
 
 class EvaluateRequest(BaseModel):
     expression: str = Field(..., description="The mathematical expression to evaluate")
+    angle_unit: str = Field("radians", description="Angle unit for trig functions: 'radians' or 'degrees'")
 
 class EvaluateResponse(BaseModel):
     expression: str
@@ -25,7 +26,7 @@ class EvaluateResponse(BaseModel):
 def evaluate(request: EvaluateRequest):
     try:
         # Perform mathematical evaluation using our exact decimal parser
-        result = evaluate_expression(request.expression)
+        result = evaluate_expression(request.expression, request.angle_unit)
         return EvaluateResponse(
             expression=request.expression,
             result=f"{result:f}"

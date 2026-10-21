@@ -1,18 +1,17 @@
 import { describe, it, expect, beforeEach, vi } from 'vitest';
 import { render, screen, fireEvent, waitFor } from '@testing-library/react';
 import App from './App';
-import React from 'react';
 
 describe('Calculator Frontend Client', () => {
   beforeEach(() => {
     vi.restoreAllMocks();
   });
 
-  it('renders the physical-style calculator with a high-contrast display', () => {
+  it('renders the physical-style scientific calculator with a high-contrast display and history panel', () => {
     render(<App />);
     
     // Check main headings
-    expect(screen.getByText('High-Precision Calculator')).toBeInTheDocument();
+    expect(screen.getByText('Scientific Web Calculator')).toBeInTheDocument();
     
     // Check key calculator screen region
     const screenRegion = screen.getByRole('region', { name: 'Calculator screen' });
@@ -28,6 +27,19 @@ describe('Calculator Frontend Client', () => {
     expect(screen.getByRole('button', { name: 'Multiply' })).toBeInTheDocument();
     expect(screen.getByRole('button', { name: 'Subtract' })).toBeInTheDocument();
     expect(screen.getByRole('button', { name: 'Add' })).toBeInTheDocument();
+
+    // Check newly introduced scientific & memory buttons
+    expect(screen.getByRole('button', { name: 'Sine function' })).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: 'Cosine function' })).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: 'Tangent function' })).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: 'Power operator' })).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: 'Constant Pi' })).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: 'Constant e' })).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: 'Clear Memory register' })).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: 'Recall Memory register' })).toBeInTheDocument();
+
+    // Check history drawer heading
+    expect(screen.getByText('Session History')).toBeInTheDocument();
   });
 
   it('handles button clicks to append values and clear them', () => {
@@ -58,7 +70,7 @@ describe('Calculator Frontend Client', () => {
 
   it('calls the evaluate API and displays the result on success', async () => {
     const mockResponse = { result: 16.25 };
-    const fetchSpy = vi.spyOn(global, 'fetch').mockResolvedValue({
+    const fetchSpy = vi.spyOn(window, 'fetch').mockResolvedValue({
       ok: true,
       json: async () => mockResponse,
     } as Response);
@@ -90,7 +102,7 @@ describe('Calculator Frontend Client', () => {
       expect.objectContaining({
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ operation: '12.5+3' }),
+        body: JSON.stringify({ operation: '12.5+3', angle_unit: 'radians' }),
       })
     );
   });
@@ -102,7 +114,7 @@ describe('Calculator Frontend Client', () => {
         message: 'Division by zero is not allowed',
       },
     };
-    vi.spyOn(global, 'fetch').mockResolvedValue({
+    vi.spyOn(window, 'fetch').mockResolvedValue({
       ok: false,
       json: async () => mockErrorDetail,
     } as Response);
@@ -123,7 +135,7 @@ describe('Calculator Frontend Client', () => {
 
   it('supports full keyboard event mappings', async () => {
     const mockResponse = { result: 8 };
-    const fetchSpy = vi.spyOn(global, 'fetch').mockResolvedValue({
+    const fetchSpy = vi.spyOn(window, 'fetch').mockResolvedValue({
       ok: true,
       json: async () => mockResponse,
     } as Response);
@@ -144,5 +156,118 @@ describe('Calculator Frontend Client', () => {
     });
     
     expect(fetchSpy).toHaveBeenCalledTimes(1);
+  });
+
+  // ==========================================
+  // STAGE 2 FRONTEND COMPONENT TESTS
+  // ==========================================
+
+  it('supports toggling the angle unit and updates the query parameters', async () => {
+    const mockResponse = { result: 1 };
+    const fetchSpy = vi.spyOn(window, 'fetch').mockResolvedValue({
+      ok: true,
+      json: async () => mockResponse,
+    } as Response);
+
+    render(<App />);
+
+    // Default angle unit badge
+    expect(screen.getByLabelText('Current angle mode badge')).toHaveTextContent('Rad');
+
+    // Click the Deg toggle button
+    const toggleBtn = screen.getByRole('button', { name: 'Switch to Degrees angle unit' });
+    fireEvent.click(toggleBtn);
+
+    // Badge should update to Deg
+    expect(screen.getByLabelText('Current angle mode badge')).toHaveTextContent('Deg');
+
+    // Perform an evaluation and assert Degrees is transmitted
+    fireEvent.click(screen.getByRole('button', { name: 'Sine function' }));
+    fireEvent.click(screen.getByRole('button', { name: '9' }));
+    fireEvent.click(screen.getByRole('button', { name: '0' }));
+    fireEvent.click(screen.getByRole('button', { name: 'Close parenthesis' }));
+    fireEvent.click(screen.getByRole('button', { name: 'Evaluate expression' }));
+
+    await waitFor(() => {
+      expect(screen.getByText('1')).toBeInTheDocument();
+    });
+
+    expect(fetchSpy).toHaveBeenCalledWith(
+      expect.any(String),
+      expect.objectContaining({
+        body: JSON.stringify({ operation: 'sin(90)', angle_unit: 'degrees' }),
+      })
+    );
+  });
+
+  it('implements the Memory Register system and shows the memory badge', async () => {
+    render(<App />);
+
+    // Starts with no memory badge
+    expect(screen.queryByLabelText('Memory is not empty badge')).not.toBeInTheDocument();
+
+    // Set a simple number in expression and click M+
+    fireEvent.click(screen.getByRole('button', { name: '5' }));
+    fireEvent.click(screen.getByRole('button', { name: 'Add' }));
+    fireEvent.click(screen.getByRole('button', { name: '2' }));
+
+    // Mock successful eval for memory operations
+    const mockResponse = { result: 7 };
+    vi.spyOn(window, 'fetch').mockResolvedValue({
+      ok: true,
+      json: async () => mockResponse,
+    } as Response);
+
+    fireEvent.click(screen.getByRole('button', { name: 'Add display to memory' }));
+
+    await waitFor(() => {
+      // Memory badge should appear
+      expect(screen.getByLabelText('Memory is not empty badge')).toBeInTheDocument();
+    });
+
+    // Clear display
+    fireEvent.click(screen.getByRole('button', { name: 'Clear calculator' }));
+
+    // Recall memory should append '7' to the display
+    fireEvent.click(screen.getByRole('button', { name: 'Recall Memory register' }));
+    expect(screen.getByLabelText('Arithmetic expression')).toHaveTextContent('7');
+
+    // Clear memory
+    fireEvent.click(screen.getByRole('button', { name: 'Clear Memory register' }));
+    expect(screen.queryByLabelText('Memory is not empty badge')).not.toBeInTheDocument();
+  });
+
+  it('records successful evaluations in session history and allows reloading', async () => {
+    const mockResponse = { result: 0.5 };
+    vi.spyOn(window, 'fetch').mockResolvedValue({
+      ok: true,
+      json: async () => mockResponse,
+    } as Response);
+
+    render(<App />);
+
+    // Type "sin(pi/6)"
+    fireEvent.click(screen.getByRole('button', { name: 'Sine function' }));
+    fireEvent.click(screen.getByRole('button', { name: 'Constant Pi' }));
+    fireEvent.click(screen.getByRole('button', { name: 'Divide' }));
+    fireEvent.click(screen.getByRole('button', { name: '6' }));
+    fireEvent.click(screen.getByRole('button', { name: 'Close parenthesis' }));
+    fireEvent.click(screen.getByRole('button', { name: 'Evaluate expression' }));
+
+    await waitFor(() => {
+      expect(screen.getByText('0.5')).toBeInTheDocument();
+    });
+
+    // The session history panel should display the item
+    expect(screen.getByRole('button', { name: 'Load historical expression: sin(pi/6)' })).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: 'Append historical result: 0.5' })).toBeInTheDocument();
+
+    // Clear calculator display - the display should be blank/empty
+    fireEvent.click(screen.getByRole('button', { name: 'Clear calculator' }));
+    expect(screen.getByLabelText('Arithmetic expression')).toHaveTextContent('');
+
+    // Click historical expression to reload it
+    fireEvent.click(screen.getByRole('button', { name: 'Load historical expression: sin(pi/6)' }));
+    expect(screen.getByLabelText('Arithmetic expression')).toHaveTextContent('sin(pi/6)');
   });
 });

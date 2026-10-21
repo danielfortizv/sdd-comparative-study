@@ -13,9 +13,18 @@ precedence::
     term       = factor , { ("*" | "/") , factor } ;    (* mul/div, left-assoc  *)
     factor     = ("-" , factor) | power ;               (* unary minus          *)
     power      = primary , [ "^" , factor ] ;           (* exponent, right-assoc*)
-    primary    = number | "(" , expression , ")" ;
+    primary    = number | constant | function
+               | "(" , expression , ")" ;
+    constant   = "pi" | "e" ;                            (* Stage 2, Req 19.1/2  *)
+    function   = FUNCTION-name , "(" , expression , ")"  (* unary scientific fn  *)
+               | "root" , "(" , expression , "," , expression , ")" ;  (* n-th root *)
 
 Precedence, low -> high: ``+ -`` < ``* /`` < unary ``-`` < ``^`` < parentheses.
+Scientific constants (``pi``, ``e``) and function calls (``sin(..)``, ``log10(..)``,
+``root(x, n)``, ...) are introduced at the ``primary`` level, so they bind the
+tightest and the Stage 1 operator precedence/associativity is untouched. A bare
+constant or a function call is itself a ``primary`` (self-delimiting via its own
+parentheses), so it needs no extra wrapping when rendered (Requirement 6.3).
 Because ``power = primary , [ "^" , factor ]`` recurses on the right through
 ``factor``, ``^`` is right-associative and its right operand may itself carry a
 unary minus (``2^2^3 == 256`` and ``2^-3`` both parse; Requirement 2.4). Because
@@ -101,7 +110,54 @@ class BinaryOpNode:
     right: "Node"
 
 
-Node = Union[NumberNode, UnaryOpNode, BinaryOpNode]
+@dataclass(frozen=True)
+class ConstantNode:
+    """A named mathematical constant (Stage 2, Requirements 19.1, 19.2).
+
+    Attributes:
+        name: The constant identifier; either ``"pi"`` or ``"e"``. The numeric
+            value is resolved later by the evaluator, not here.
+    """
+
+    name: str
+
+
+@dataclass(frozen=True)
+class FunctionNode:
+    """A unary scientific function applied to a single operand (Requirement 17/18).
+
+    Attributes:
+        name: The function identifier (``"sin"``, ``"cos"``, ``"tan"``,
+            ``"asin"``, ``"acos"``, ``"atan"``, ``"ln"``, ``"log10"``,
+            ``"sqrt"``).
+        operand: The argument expression node.
+    """
+
+    name: str
+    operand: "Node"
+
+
+@dataclass(frozen=True)
+class RootNode:
+    """A two-argument n-th root ``root(radicand, degree)`` (Requirement 18.3).
+
+    Attributes:
+        radicand: The expression whose ``degree``-th root is taken.
+        degree: The expression giving the root's degree (n).
+    """
+
+    radicand: "Node"
+    degree: "Node"
+
+
+Node = Union[
+    NumberNode,
+    UnaryOpNode,
+    BinaryOpNode,
+    ConstantNode,
+    FunctionNode,
+    RootNode,
+]
 
 
 # --------------------------------------------------------------------------- #
@@ -193,12 +249,23 @@ class _Parser:
         return node
 
     def _primary(self) -> Node:
-        """primary = number | "(" , expression , ")" ;"""
+        """primary = number | constant | function | "(" , expression , ")" ;
+
+        Constants and function calls (Stage 2) are parsed here at the tightest
+        binding level, leaving the Stage 1 operator precedence untouched.
+        """
         token = self._peek()
 
         if token.type is TokenType.NUMBER:
             self._advance()
             return NumberNode(_decimal_from_lexeme(token))
+
+        if token.type is TokenType.CONSTANT:
+            self._advance()
+            return ConstantNode(name=token.lexeme)
+
+        if token.type is TokenType.FUNCTION:
+            return self._function(token)
 
         if token.type is TokenType.LPAREN:
             open_token = self._advance()
@@ -216,6 +283,44 @@ class _Parser:
                 raise EmptyExpressionError()
             raise InvalidSyntaxError(position=token.position)
         raise InvalidSyntaxError(position=token.position)
+
+    def _function(self, name_token: Token) -> Node:
+        """Parse a function call starting at the already-peeked FUNCTION token.
+
+        ``function = FUNCTION-name "(" expression ")"`` for the unary functions,
+        or ``"root" "(" expression "," expression ")"`` for the two-argument
+        n-th root. A function name not immediately followed by ``(`` and a root
+        call missing its comma are invalid operator sequences (Requirement 4.2);
+        a missing closing ``)`` is reported as an unbalanced parenthesis,
+        mirroring the ``"(" expression ")"`` primary path above (Requirement 4.3).
+        """
+        self._advance()  # consume the FUNCTION token
+
+        open_token = self._peek()
+        if open_token.type is not TokenType.LPAREN:
+            # A function name must be followed by a parenthesized argument list.
+            raise InvalidSyntaxError(position=open_token.position)
+        self._advance()  # consume "("
+
+        if name_token.lexeme == "root":
+            radicand = self._expression()
+            comma = self._peek()
+            if comma.type is not TokenType.COMMA:
+                raise InvalidSyntaxError(position=comma.position)
+            self._advance()  # consume ","
+            degree = self._expression()
+            closing = self._peek()
+            if closing.type is not TokenType.RPAREN:
+                raise UnbalancedParenthesesError(position=open_token.position)
+            self._advance()  # consume ")"
+            return RootNode(radicand=radicand, degree=degree)
+
+        operand = self._expression()
+        closing = self._peek()
+        if closing.type is not TokenType.RPAREN:
+            raise UnbalancedParenthesesError(position=open_token.position)
+        self._advance()  # consume ")"
+        return FunctionNode(name=name_token.lexeme, operand=operand)
 
 
 def _decimal_from_lexeme(token: Token) -> Decimal:
@@ -304,6 +409,20 @@ def render(node: "Node") -> str:
         right = _render_operand(node.right, parent_op=op, is_right=True)
         return f"{left} {op} {right}"
 
+    if isinstance(node, ConstantNode):
+        # A bare constant name ("pi"/"e") is itself a primary, so it re-parses
+        # as a leaf without any extra parentheses (Requirement 6.3).
+        return node.name
+
+    if isinstance(node, FunctionNode):
+        # "name(arg)" is self-delimiting: the call parentheses make the whole
+        # form a primary, so the argument needs no precedence wrapping.
+        return f"{node.name}({render(node.operand)})"
+
+    if isinstance(node, RootNode):
+        # "root(radicand, degree)" is likewise self-delimiting.
+        return f"root({render(node.radicand)}, {render(node.degree)})"
+
     raise TypeError(f"Cannot render unknown AST node: {node!r}")
 
 
@@ -317,8 +436,10 @@ def _render_operand(child: "Node", *, parent_op: str, is_right: bool) -> str:
     rendered = render(child)
     parent_prec = _BINARY_PRECEDENCE[parent_op]
 
-    if isinstance(child, NumberNode):
-        # Non-negative literal (unary minus is its own node); never needs wrapping.
+    if isinstance(child, (NumberNode, ConstantNode, FunctionNode, RootNode)):
+        # Primary-level nodes bind tighter than any binary operator and are
+        # self-delimiting (a literal, a bare constant, or a parenthesized
+        # function/root call), so they never need extra wrapping.
         return rendered
 
     if isinstance(child, UnaryOpNode):
@@ -367,6 +488,9 @@ __all__ = [
     "NumberNode",
     "UnaryOpNode",
     "BinaryOpNode",
+    "ConstantNode",
+    "FunctionNode",
+    "RootNode",
     "Node",
     "parse",
     "render",

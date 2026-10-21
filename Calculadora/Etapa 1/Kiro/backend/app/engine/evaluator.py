@@ -39,8 +39,23 @@ from decimal import (
     localcontext,
 )
 
-from .errors import DivisionByZeroError, InvalidSyntaxError
-from .parser import BinaryOpNode, Node, NumberNode, UnaryOpNode
+from . import scientific  # noqa: F401 - imported as module for dispatch
+from .constants import constant_value
+from .errors import DivisionByZeroError, DomainError, InvalidSyntaxError
+from .parser import (
+    BinaryOpNode,
+    ConstantNode,
+    FunctionNode,
+    Node,
+    NumberNode,
+    RootNode,
+    UnaryOpNode,
+)
+
+#: Default angle mode. Trig / inverse-trig nodes interpret/produce angles in
+#: radians unless the caller threads ``"degrees"`` through (Requirements 17.9,
+#: 24.3). Every other node ignores the mode entirely.
+_DEFAULT_ANGLE_MODE = "radians"
 
 # --------------------------------------------------------------------------- #
 # Precision configuration
@@ -60,7 +75,7 @@ _MIN_SIGNIFICANT_DIGITS = 10
 _CONTEXT = Context(prec=_WORKING_PRECISION, rounding=ROUND_HALF_EVEN)
 
 
-def evaluate(node: Node) -> Decimal:
+def evaluate(node: Node, angle_mode: str = _DEFAULT_ANGLE_MODE) -> Decimal:
     """Evaluate an AST ``node`` to an exact, normalized :class:`Decimal`.
 
     The whole walk runs inside a copy of the module-level decimal context so the
@@ -69,15 +84,25 @@ def evaluate(node: Node) -> Decimal:
 
     Args:
         node: The root AST node returned by :func:`app.engine.parser.parse`.
+        angle_mode: ``"radians"`` (default) or ``"degrees"``. Threaded through
+            the walk and consulted only by trig / inverse-trig
+            :class:`~app.engine.parser.FunctionNode` evaluation; every other node
+            (and all Stage 1 arithmetic) ignores it, so non-trig behavior is
+            identical regardless of mode (Requirements 17.9, 19.1, 19.2, 24.3).
 
     Returns:
         The result as a :class:`~decimal.Decimal`. Terminating results are
-        normalized (no misleading trailing zeros); non-terminating results are
-        rounded to at least 10 significant digits with ``ROUND_HALF_EVEN``.
+        normalized (no misleading trailing zeros); non-terminating results --
+        including irrational scientific results such as ``sqrt(2)`` or ``ln(2)``
+        -- are rounded to at least 10 significant digits with ``ROUND_HALF_EVEN``
+        (Requirements 3.4, 17.6, 18.6).
 
     Raises:
         DivisionByZeroError: If any divisor subexpression evaluates to zero
             (Requirement 4.1).
+        DomainError: If a scientific node violates its mathematical domain
+            (e.g. ``sqrt(-1)``, ``asin(2)``, ``tan(90 deg)``, a negative base to
+            a non-integer exponent) (Requirements 17.7, 17.8, 18.7-18.11).
         InvalidSyntaxError: If an operator or node shape is not recognized
             (defensive; a well-formed AST never triggers this).
     """
@@ -87,20 +112,32 @@ def evaluate(node: Node) -> Decimal:
         # that had to be rounded to the working precision). An exact result keeps
         # the flag clear no matter how many significant digits it carries.
         ctx.clear_flags()
-        raw = _eval(node, ctx)
+        raw = _eval(node, ctx, angle_mode)
         was_inexact = bool(ctx.flags[Inexact])
         return _finalize(raw, was_inexact, ctx)
 
 
-def _eval(node: Node, ctx: Context) -> Decimal:
-    """Recursively evaluate ``node`` under the active context ``ctx``."""
+def _eval(node: Node, ctx: Context, angle_mode: str) -> Decimal:
+    """Recursively evaluate ``node`` under the active context ``ctx``.
+
+    ``angle_mode`` is threaded through every recursive call so a nested trig
+    function anywhere in the tree sees the caller's mode; only
+    :class:`~app.engine.parser.FunctionNode` trig evaluation actually consults
+    it (Requirements 17.1-17.4).
+    """
     if isinstance(node, NumberNode):
         # The operand is already an exact Decimal built from its lexeme by the
         # parser; re-apply the context so it participates at working precision.
         return +node.value
 
+    if isinstance(node, ConstantNode):
+        # A named constant (pi / e) resolves to its exact >=50-digit Decimal;
+        # re-apply the context so it participates at the working precision, just
+        # like a NumberNode operand (Requirements 19.1, 19.2).
+        return +constant_value(node.name)
+
     if isinstance(node, UnaryOpNode):
-        operand = _eval(node.operand, ctx)
+        operand = _eval(node.operand, ctx, angle_mode)
         if node.op == "-":
             return ctx.minus(operand)
         raise InvalidSyntaxError(  # pragma: no cover - defensive
@@ -108,9 +145,29 @@ def _eval(node: Node, ctx: Context) -> Decimal:
         )
 
     if isinstance(node, BinaryOpNode):
-        left = _eval(node.left, ctx)
-        right = _eval(node.right, ctx)
+        left = _eval(node.left, ctx, angle_mode)
+        right = _eval(node.right, ctx, angle_mode)
         return _apply_binary(node.op, left, right, ctx)
+
+    if isinstance(node, FunctionNode):
+        # Evaluate the argument first (threading angle_mode so nested trig sees
+        # the caller's mode), then dispatch to the Decimal-native kernel. The
+        # scientific helper runs in its own guard-digit localcontext and returns
+        # a full-precision Decimal; re-apply our context via unary plus so the
+        # value participates at the evaluator's working precision and sets the
+        # Inexact flag when it is non-terminating (Requirements 17.1-17.4, 18.5).
+        operand_value = _eval(node.operand, ctx, angle_mode)
+        result = scientific.apply_function(node.name, operand_value, angle_mode)
+        return +result
+
+    if isinstance(node, RootNode):
+        # Evaluate both arguments, then dispatch to the n-th root kernel. As with
+        # FunctionNode, the helper runs in its own context and returns a
+        # full-precision Decimal re-applied here (Requirement 18.3).
+        radicand_value = _eval(node.radicand, ctx, angle_mode)
+        degree_value = _eval(node.degree, ctx, angle_mode)
+        result = scientific.nth_root(radicand_value, degree_value)
+        return +result
 
     raise InvalidSyntaxError(  # pragma: no cover - defensive
         message=f"Cannot evaluate unknown AST node: {node!r}."
@@ -144,15 +201,25 @@ def _power(base: Decimal, exponent: Decimal, ctx: Context) -> Decimal:
 
     * ``0 ** negative`` is a division by zero (``1 / 0**n``) and surfaces as
       :class:`DivisionByZeroError` (Requirement 4.1).
-    * A base/exponent combination with no real value (e.g. a negative base with
-      a fractional exponent) is an invalid operation and surfaces as
-      :class:`InvalidSyntaxError` rather than leaking a decimal ``NaN``.
+    * A negative base raised to a non-integer exponent has no real value and
+      surfaces as :class:`DomainError` (Requirement 18.9), e.g. ``(-8)^0.5``.
+      Integer-ness is decided in Decimal via
+      ``exponent == exponent.to_integral_value()`` so ``(-8)^2`` and ``(-8)^-1``
+      remain valid.
+    * Any other base/exponent combination with no real value, or a result that
+      overflows / comes back as ``NaN``/``Infinity``, surfaces as
+      :class:`InvalidSyntaxError` rather than leaking a decimal ``NaN`` (Stage 1
+      behavior, left intact to avoid regressing Stage 1 tests).
 
     A non-representable-but-valid power (irrational result) is left to
     :func:`_finalize`, which rounds it to >=10 significant digits.
     """
     if base == 0 and exponent < 0:
         raise DivisionByZeroError()
+    if base < 0 and exponent != exponent.to_integral_value():
+        raise DomainError(
+            message="A negative base cannot be raised to a non-integer power."
+        )
     try:
         result = ctx.power(base, exponent)
     except _DecimalDivisionByZero as exc:  # pragma: no cover - guarded above
@@ -229,14 +296,15 @@ def _strip_trailing_zeros(value: Decimal, ctx: Context) -> Decimal:
     return normalized
 
 
-def evaluate_ast(node: Node) -> Decimal:
+def evaluate_ast(node: Node, angle_mode: str = _DEFAULT_ANGLE_MODE) -> Decimal:
     """Alias for :func:`evaluate`.
 
     Provided for callers/tests that prefer an explicit ``evaluate_ast`` name to
     distinguish AST evaluation from the higher-level ``evaluate_expression``
-    entry point (see :mod:`app.engine`).
+    entry point (see :mod:`app.engine`). ``angle_mode`` is threaded through
+    unchanged (default radians).
     """
-    return evaluate(node)
+    return evaluate(node, angle_mode)
 
 
 __all__ = ["evaluate", "evaluate_ast"]

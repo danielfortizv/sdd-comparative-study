@@ -56,8 +56,37 @@
   --focus-ring-outer: #f5f7fa;
   --focus-ring-width: 3px;
 
+  /* ---- Scientific surfaces (Stage 2, Task 36) ------------------------- *
+   * Additive tokens for the Stage 2 scientific chrome. These do NOT replace
+   * or weaken any Stage 1 token above; they only name colors the scientific
+   * keypad / history panel / memory badge consume so their contrast is
+   * deterministic. Every pair below was contrast-checked with a WCAG
+   * relative-luminance calculation and the measured ratio is noted inline.
+   *
+   * The angle-mode toggle and the scientific/memory CONTROLS reuse the Stage 1
+   * `--color-action-*` face/label pair (8.40:1 label contrast, Req 11.1) and
+   * the Stage 1 focus ring + `--color-border-strong` boundary, so they are
+   * already covered; no new token is required for those controls.            */
+
+  /* Memory badge: the "M" chip near the display. A distinct accent face keeps
+     the badge readable and visually separate from the digit keys. */
+  --color-memory-badge-bg: #2d7d5a;     /* accent green, darker than action face */
+  --color-memory-badge-text: #ffffff;   /* label on badge face  -> 4.73:1 (Req 11.1) */
+  --color-memory-badge-border: #a7f0cc; /* boundary on badge face -> 4.52:1 (Req 11.3);
+                                            on panel bg #16203a     -> 9.97:1 (Req 11.3) */
+
+  /* Scientific keypad chrome: section heading + any keypad-specific border.
+     The heading is large/bold text; the border is a graphical boundary. */
+  --color-scientific-heading: #cdd6ea;  /* heading on panel bg  -> 10.67:1 (Req 11.1/11.2) */
+  --color-scientific-border: #7c8ab5;   /* boundary on panel bg -> 5.30:1 (Req 11.3);
+                                            reuses the measured display-border hue */
+
   /* ---- Spacing / sizing tokens ---------------------------------------- */
-  --touch-min: 44px;             /* minimum touch target on mobile (Req 9.4) */
+  --touch-min: 44px;             /* minimum touch target on mobile (Req 9.4 / 22.5) */
   --radius: 10px;
   --gap: clamp(0.4rem, 1.2vw, 0.6rem);
+  /* Tighter gap used by the dense 3-column scientific grid at the very
+     smallest widths so 3 x 44px targets + gaps fit within 320px without
+     shrinking any touch target below 44px (Req 22.3, 22.5). */
+  --gap-sci: clamp(0.3rem, 1vw, 0.5rem);
 }

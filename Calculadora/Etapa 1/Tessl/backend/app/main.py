@@ -1,13 +1,14 @@
 from fastapi import FastAPI, HTTPException, status
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel, Field
+from typing import Literal
 from decimal import Decimal
 from app.calculator import evaluate_expression
 
 app = FastAPI(
     title="High-Precision Web Calculator API",
-    description="A robust, PEMDAS-compliant arithmetic calculation backend",
-    version="1.0.0"
+    description="A robust, PEMDAS-compliant arithmetic and scientific calculation backend",
+    version="2.0.0"
 )
 
 # Configure CORS to allow frontend connection
@@ -20,7 +21,8 @@ app.add_middleware(
 )
 
 class EvaluateRequest(BaseModel):
-    operation: str = Field(..., description="The arithmetic expression to evaluate")
+    operation: str = Field(..., description="The arithmetic/scientific expression to evaluate")
+    angle_unit: Literal["radians", "degrees"] = Field("radians", description="The angle unit for trigonometric functions")
 
 class EvaluateResponse(BaseModel):
     result: float = Field(..., description="The numeric result of the evaluation")
@@ -29,16 +31,28 @@ class EvaluateResponse(BaseModel):
     "/api/v1/evaluate",
     response_model=EvaluateResponse,
     status_code=status.HTTP_200_OK,
-    summary="Evaluate an arithmetic expression"
+    summary="Evaluate an arithmetic or scientific expression"
 )
 async def evaluate(request: EvaluateRequest):
     expression = request.operation
+    angle_unit = request.angle_unit
     
     try:
-        decimal_result = evaluate_expression(expression)
+        decimal_result = evaluate_expression(expression, angle_unit)
+        
+        # Check for non-finite values (Infinity/NaN)
+        if decimal_result.is_infinite() or decimal_result.is_nan():
+            raise HTTPException(
+                status_code=status.HTTP_400_BAD_REQUEST,
+                detail={
+                    "type": "math error",
+                    "message": "Calculation resulted in an undefined or out-of-range value"
+                }
+            )
+            
         # Convert Decimal to float for JSON response serialization
         return EvaluateResponse(result=float(decimal_result))
-    
+        
     except ZeroDivisionError as e:
         raise HTTPException(
             status_code=status.HTTP_400_BAD_REQUEST,
