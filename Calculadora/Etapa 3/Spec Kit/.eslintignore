@@ -1,0 +1,9 @@
+node_modules/
+dist/
+build/
+coverage/
+*.min.js
+.venv/
+venv/
+__pycache__/
+src/tests/
