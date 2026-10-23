@@ -22,7 +22,7 @@ function App() {
   const displayRef = useRef<HTMLDivElement>(null);
 
   // Helper to call backend evaluation API
-  const evaluateExpressionOnBackend = async (expr: string, unit: string) => {
+  const evaluateExpressionOnBackend = async (expr: string, unit: string, signal?: AbortSignal) => {
     try {
       const response = await fetch("http://localhost:8000/api/v1/evaluate", {
         method: "POST",
@@ -30,6 +30,7 @@ function App() {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({ expression: expr, angle_unit: unit }),
+        signal,
       });
 
       const data = await response.json();
@@ -38,7 +39,10 @@ function App() {
       } else {
         return { success: false, error: (data.detail || "Invalid expression") as string };
       }
-    } catch (err) {
+    } catch (err: any) {
+      if (err.name === "AbortError") {
+        return { success: false, aborted: true };
+      }
       return { success: false, error: "Server connection error" };
     }
   };
@@ -80,9 +84,12 @@ function App() {
       return;
     }
 
+    const controller = new AbortController();
+
     // Do not show errors in live-preview mode for incomplete expressions
     const debounceTimer = setTimeout(async () => {
-      const outcome = await evaluateExpressionOnBackend(trimmed, angleUnit);
+      const outcome = await evaluateExpressionOnBackend(trimmed, angleUnit, controller.signal);
+      if (outcome.aborted) return;
       if (outcome.success && outcome.result !== undefined) {
         setResult(outcome.result);
         setError("");
@@ -92,7 +99,10 @@ function App() {
       }
     }, 200);
 
-    return () => clearTimeout(debounceTimer);
+    return () => {
+      clearTimeout(debounceTimer);
+      controller.abort();
+    };
   }, [expression, isFinal, angleUnit]);
 
   // Handle calculator input (digits, decimals, operators, parentheses, functions)

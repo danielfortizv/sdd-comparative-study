@@ -1,6 +1,6 @@
 import re
 import math
-from decimal import Decimal, InvalidOperation
+from decimal import Decimal, InvalidOperation, Overflow
 
 class ExpressionParser:
     """
@@ -133,7 +133,7 @@ class ExpressionParser:
                 else:
                     # Decimal native power is highly precise for integers
                     val = val ** int(exponent)
-            except OverflowError:
+            except (OverflowError, Overflow):
                 raise ValueError("Result of exponentiation is too large (Overflow)")
             except (InvalidOperation, ValueError, ZeroDivisionError) as e:
                 if "Negative number" in str(e):

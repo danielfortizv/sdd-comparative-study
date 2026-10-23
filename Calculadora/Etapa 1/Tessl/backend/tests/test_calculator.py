@@ -116,3 +116,47 @@ def test_inverse_trig_functions():
     
     with pytest.raises(ValueError, match="asin input must be between -1 and 1"):
         evaluate_expression("asin(2)")
+
+def test_trig_domain_and_undefined_values():
+    # acos domain validation
+    with pytest.raises(ValueError, match="acos input must be between -1 and 1"):
+        evaluate_expression("acos(1.5)")
+    with pytest.raises(ValueError, match="acos input must be between -1 and 1"):
+        evaluate_expression("acos(-1.1)")
+        
+    # tan undefined in degrees mode (90, 270, -90)
+    with pytest.raises(ZeroDivisionError, match="Tangent is undefined for this angle"):
+        evaluate_expression("tan(90)", "degrees")
+    with pytest.raises(ZeroDivisionError, match="Tangent is undefined for this angle"):
+        evaluate_expression("tan(270)", "degrees")
+    with pytest.raises(ZeroDivisionError, match="Tangent is undefined for this angle"):
+        evaluate_expression("tan(-90)", "degrees")
+        
+    # tan undefined in radians mode (pi/2, 3*pi/2, -pi/2)
+    with pytest.raises(ZeroDivisionError, match="Tangent is undefined for this angle"):
+        evaluate_expression("tan(pi / 2)", "radians")
+    with pytest.raises(ZeroDivisionError, match="Tangent is undefined for this angle"):
+        evaluate_expression("tan(3 * pi / 2)", "radians")
+
+def test_exponentiation_edge_cases():
+    # Negative number raised to a fractional power
+    with pytest.raises(ValueError, match="Negative number raised to a fractional power"):
+        evaluate_expression("(-4)^0.5")
+        
+    # Overflow in exponentiation
+    with pytest.raises(ValueError, match="Result of exponentiation is too large"):
+        evaluate_expression("10^100000000000000000000")
+
+def test_syntax_end_of_expression_errors():
+    # Unexpected end of expression in functions
+    with pytest.raises(ValueError, match="Expected '\\)' but reached end of expression"):
+        evaluate_expression("sin(1")
+    with pytest.raises(ValueError, match="Expected '\\)' but reached end of expression"):
+        evaluate_expression("1 + (2")
+    with pytest.raises(ValueError, match="Expected number, constant, function, or '\\(' but found 'EOF'"):
+        evaluate_expression("5 +")
+
+def test_unknown_function():
+    with pytest.raises(ValueError, match="Expected number, constant, function"):
+        evaluate_expression("invalidfunc(5)")
+

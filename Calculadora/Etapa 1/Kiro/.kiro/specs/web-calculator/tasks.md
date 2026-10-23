@@ -22,7 +22,7 @@ This plan builds the web calculator in two ordered halves connected by the typed
     - Raise `InvalidCharacterError` with a descriptive message identifying the offending character/position for any character outside the allowed set
     - _Requirements: 4.4, 6.1_
 
-  - [ ]* 2.3 Write unit tests for the Tokenizer
+  - [x]* 2.3 Write unit tests for the Tokenizer
     - Test recognition of numbers, all operators, parentheses, and whitespace skipping; test that disallowed characters raise `InvalidCharacterError`
     - _Requirements: 4.4_
 
@@ -32,7 +32,7 @@ This plan builds the web calculator in two ordered halves connected by the typed
     - Implement `render(node) -> str` as the inverse used by the round-trip property
     - _Requirements: 2.1, 2.2, 2.4, 2.5, 2.6, 4.2, 4.3, 4.5, 6.1, 6.2, 6.3_
 
-  - [ ]* 2.5 Write unit tests for the Parser
+  - [x]* 2.5 Write unit tests for the Parser
     - Test precedence/associativity structure, unary minus, parenthesization, and that grammar violations raise the correct error types
     - _Requirements: 2.1, 2.2, 2.4, 2.5, 2.6, 4.2, 4.3, 4.5_
 
@@ -62,12 +62,12 @@ This plan builds the web calculator in two ordered halves connected by the typed
     - Create `app/main.py` that instantiates the FastAPI app, mounts the router, configures CORS for the Vite dev server, and registers exception handlers that map `EvaluationError` subclasses and Pydantic validation failures (malformed JSON, missing field, >256 chars) to `ErrorResponse` bodies with 4xx status codes
     - _Requirements: 4.1, 4.2, 4.3, 4.4, 4.5, 4.6, 5.4, 5.6, 14.3_
 
-- [ ] 5. Backend example-based tests
-  - [ ]* 5.1 Write PEMDAS, associativity, and decimal-exactness unit tests
+- [x] 5. Backend example-based tests
+  - [x]* 5.1 Write PEMDAS, associativity, and decimal-exactness unit tests
     - Verify PEMDAS across ≥3 precedence levels (e.g. `2 + 3 * 4 ^ 2 == 50`, `12.5 + 3 * (4 - 1.5) / 2 == 16.25`), associativity (`2^2^3 == 256`, `8/4/2 == 1`, `8-4-2 == 2`, `-3^2 == -9`), and `0.1 + 0.2 == Decimal("0.3")`, asserting exact expected values (`tests/test_pemdas.py`)
     - _Requirements: 1.1, 1.2, 1.3, 1.4, 2.1, 2.2, 2.3, 2.4, 2.5, 2.6, 3.1, 3.2, 15.1_
 
-  - [ ]* 5.2 Write Requirement 4 error-case and boundary-length tests
+  - [x]* 5.2 Write Requirement 4 error-case and boundary-length tests
     - Verify each error case (division by zero, invalid operator sequence `3 + * 4`, unclosed parentheses `(1 + 2`, invalid characters `2 & 3`, empty/whitespace) returns an Error_Response with a 4xx status; verify lengths 1 and 256 accepted and 257 rejected (`tests/test_errors.py`)
     - _Requirements: 4.1, 4.2, 4.3, 4.4, 4.5, 4.6, 5.2, 5.6, 15.2_
 
@@ -76,27 +76,27 @@ This plan builds the web calculator in two ordered halves connected by the typed
     - Create `tests/properties/strategies.py` with a recursive strategy generating valid ASTs (Decimal-from-string numbers, unary minus, binary `+ - * / ^`, nested parens, bounded depth), a `render(ast)` serializer, invalid-input strategies (disallowed characters, zero divisors, over-length strings), and an independent Decimal AST reference evaluator; configure `@settings(max_examples=100)` (or higher)
     - _Requirements: 6.1, 6.3, 15.3_
 
-  - [ ]* 6.2 Write property test P1 (engine matches PEMDAS/Decimal reference)
+  - [x]* 6.2 Write property test P1 (engine matches PEMDAS/Decimal reference)
     - **Property 1: Engine matches PEMDAS/Decimal reference evaluation**
     - **Validates: Requirements 1.1, 1.2, 1.3, 1.4, 2.1, 2.2, 2.3, 2.4, 2.5, 2.6, 3.2, 3.3, 6.1**
     - Tag `# Feature: web-calculator, Property 1: ...` in `tests/properties/test_engine_property.py`
 
-  - [ ]* 6.3 Write property test P2 (non-terminating division rounding)
+  - [x]* 6.3 Write property test P2 (non-terminating division rounding)
     - **Property 2: Non-terminating division is rounded to ≥10 significant digits (round-half-even)**
     - **Validates: Requirements 3.4**
     - Tag `# Feature: web-calculator, Property 2: ...` in `tests/properties/test_engine_property.py`
 
-  - [ ]* 6.4 Write property test P3 (parser round-trip preserves value)
+  - [x]* 6.4 Write property test P3 (parser round-trip preserves value)
     - **Property 3: Parser round-trip preserves value** — `evaluate(parse(render(ast))) == evaluate(ast)` to ≥10 significant digits
     - **Validates: Requirements 6.3, 6.4**
     - Tag `# Feature: web-calculator, Property 3: ...` in `tests/properties/test_roundtrip.py`; satisfies the mandated round-trip test (Requirement 15.3)
 
-  - [ ]* 6.5 Write property tests P4 and P5 (division-by-zero and invalid character)
+  - [x]* 6.5 Write property tests P4 and P5 (division-by-zero and invalid character)
     - **Property 4: Division by zero always signals an error** — **Validates: Requirements 4.1**
     - **Property 5: Invalid characters always signal an error** — **Validates: Requirements 4.4**
     - Tag each `# Feature: web-calculator, Property N: ...` in `tests/properties/test_error_properties.py`
 
-  - [ ]* 6.6 Write property tests P6 and P7 (response discriminated union and length limit)
+  - [x]* 6.6 Write property tests P6 and P7 (response discriminated union and length limit)
     - **Property 6: Response shape is an unambiguous success-XOR-error discriminated union** — **Validates: Requirements 4.6, 5.3, 5.4, 5.5**
     - **Property 7: Expressions exceeding the length limit are rejected** — **Validates: Requirements 1.5, 5.6**
     - Use FastAPI's test client; tag each `# Feature: web-calculator, Property N: ...` in `tests/test_api.py`
@@ -404,6 +404,121 @@ Stage 2 extends the same web-calculator spec into a scientific calculator. All S
     { "id": 13, "tasks": ["35.2"] },
     { "id": 14, "tasks": ["35.3", "36"] },
     { "id": 15, "tasks": ["37.1"] }
+  ]
+}
+```
+---
+
+## Stage 3 Tasks (Testing Quality, Coverage & Containerization)
+
+Stage 3 adds **no new runtime behavior**: it adds a persisted audit, exhaustive edge-case tests, measured coverage gates on both layers, and container/orchestration artifacts around the unchanged Stage 1 + Stage 2 code. All Stage 1 tasks (1–15) and Stage 2 tasks (16–38) remain in force and unchanged. Per the design, the audit document is produced **first** (before any other Stage 3 change), then coverage tooling and tests, then the backward-compatibility/coverage gate, then the container images and compose orchestration, with verification and checkpoints last. Stage 3 introduces **no new PBT properties** (numbering stops at P24); the Requirement 1–25 regression guarantee is provided by re-running the existing P1–P24 suite and the Stage 1/2 example tests, and new edge-case tests reference existing property backstops by their existing numbers. Per the steering note, long-running servers (uvicorn `--reload`, `npm run dev`, `docker compose up`) are run manually in a terminal, never as blocking automation.
+
+- [x] 39. Produce the persisted Stage 1 + Stage 2 Audit_Log (before any other Stage 3 change)
+  - Create `docs/stage3-audit-log.md` persisted before the first Stage 3 edit so its creation provably precedes all other Stage 3 work (this is wave 0)
+  - Record the four inspection categories — functional bug, mathematical inaccuracy, state leakage, and unhandled edge case — each with an explicit "No defect found" record (the audit found no behavior-changing defects), using the per-defect schema (unique `D-NN` id, category, affected component, reproduction input/steps, distinct Expected vs. Actual) for any future entry
+  - Record the feature inventory enumerating every Stage 1 and Stage 2 operation, state surface, and endpoint, marking each present or absent — explicitly note the modulo/`%` operator is ABSENT from the grammar
+  - Document the remediation-gating ledger structure: no fix without a prior logged defect id, re-verify Requirements 1–25 recording pass/fail per criterion, reject on any regression; note that because no defect was found, no code remediation is required for Stage 3
+  - _Requirements: 26.1, 26.2, 26.3, 26.4, 26.5, 26.6, 26.7_
+
+- [x] 40. Add backend coverage tooling and gate (pytest-cov)
+  - Edit `backend/pyproject.toml` to add `pytest-cov` to the `[test]` optional dependencies
+  - Add pytest `addopts` `--cov=app --cov-branch --cov-report=term-missing --cov-fail-under=80` and a `[tool.coverage.report] fail_under = 80` branch gate so the run fails and reports the unmet metric when statement or branch coverage is below 80%
+  - Use `--cov=app` so `tests/` are excluded from the coverage denominator; keep the existing Stage 2 Requirement 25.7 ≥90% scientific-module gate as an additional stricter check (reconcile, do not replace)
+  - _Requirements: 30.1, 30.3, 30.5, 30.7_
+
+- [ ] 41. Add comprehensive backend edge-case tests (through the FastAPI TestClient)
+  - [ ]* 41.1 Add division-by-zero and syntactic error tests
+    - Add `backend/tests/test_errors.py` asserting that a division-by-zero Expression (`1/0`) returns an Error_Response with a 4xx status and no result (28.1), and one test each for an invalid operator sequence (`1++2`), an unclosed parenthesis (`(1+2`), an invalid character (`1+a`), and an empty Expression (`""`), each returning 4xx with no result (28.6)
+    - Document inline that modulo-by-zero (28.2) is N/A — the `%` operator is absent from the grammar so the WHERE guard is false and no test is written; reference property backstops P4 (division by zero) and P5 (invalid character) without creating new properties
+    - _Requirements: 28.1, 28.2, 28.6_
+  - [ ]* 41.2 Add inverse-trig and logarithm/square-root domain-error tests
+    - Add `backend/tests/test_domain_errors.py` asserting `asin(2)` and `acos(2)` (|x|>1) each return 4xx with no result (28.3), and that `ln(0)`, `log10(-5)`, and `sqrt(-1)` each return 4xx with no result (28.5); reference property backstop P17 without creating new properties
+    - _Requirements: 28.3, 28.5_
+  - [ ]* 41.3 Add boundary-success and non-finite overflow tests
+    - Add `backend/tests/test_boundaries.py` asserting `asin(±1)` and `acos(±1)` (|x|==1) each return 200 with a calculated result and no error (28.4), and that an arithmetic operation producing a non-finite result through overflow (e.g. a huge `^`) returns 4xx with no result (28.7); reference property backstop P17's non-finite clause without creating new properties
+    - Confirm the backend edge-case suite completes with zero failures and zero errors (28.8)
+    - _Requirements: 28.4, 28.7, 28.8_
+
+- [x] 42. Add frontend coverage tooling and gate (@vitest/coverage-v8)
+  - Edit `frontend/package.json` to add `@vitest/coverage-v8` as a devDependency and a `"coverage": "vitest run --coverage"` script
+  - Edit `frontend/vite.config.ts` `test.coverage` to use provider `'v8'`, `include: ['src/**']`, exclude test and setup files from the denominator, and set `thresholds.statements = 80` and `thresholds.branches = 80` so an unmet statement or branch threshold fails the run and reports it (30.2, 30.4, 30.6, 30.7)
+  - Edit `src/tests/setup.ts` to configure the MSW server with `onUnhandledRequest: 'error'` so any un-mocked network request fails the run
+  - _Requirements: 30.2, 30.4, 30.6, 30.7, 29.5_
+
+- [ ] 43. Add comprehensive frontend component and state tests (Vitest + RTL + MSW)
+  - [ ]* 43.1 Add expression input-handling tests
+    - Add `src/tests/input.test.tsx` asserting the `Expression_Display` text content equals the expected sequence exactly after appending a digit (0-9), an operator (`+ - * /`), a decimal point, and both opening and closing parentheses, and after backspace on a non-empty Expression (last character removed) and on an empty Expression (Expression stays `""`), with all backend calls MSW-mocked; reuse property backstops P8/P9 without creating new properties
+    - _Requirements: 29.1, 29.5_
+  - [ ]* 43.2 Add memory register and indicator tests
+    - Add `src/tests/memory.test.ts` asserting the register initialized to `0` and that M+, M-, MR, and MC each produce the expected register value and `Expression_Display` content, and `src/tests/memoryIndicator.test.tsx` asserting the Memory_Indicator renders iff the register value is non-zero; reuse property backstop P20 without creating new properties
+    - _Requirements: 29.2, 29.5_
+  - [ ]* 43.3 Add keyboard event-handling tests
+    - Add `src/tests/keyboard.test.ts` asserting handling of a digit key, an operator key, each evaluate key (`Enter` and `=`), backspace on a non-empty Expression (last char removed) and an empty Expression (stays `""`), `Escape` (Expression and result cleared), and an unmapped key (Expression, result, and error all unchanged); reuse property backstops P8/P10/P11 without creating new properties
+    - _Requirements: 29.3, 29.5_
+  - [ ]* 43.4 Add calculation-history panel tests
+    - Add `src/tests/historyPanel.test.tsx` asserting all stored entries render newest-first (most recent first), that selecting the expression portion and selecting the result portion of a History_Entry each populate the `Expression_Display` with the selected text, that clearing leaves zero entries, and that the empty-state indication renders at zero entries; reuse property backstop P21 without creating new properties
+    - Confirm the frontend component/state suite completes in a single non-interactive `vitest run` with zero failures and zero errors (29.6)
+    - _Requirements: 29.4, 29.5, 29.6_
+
+- [~] 44. Backward-compatibility and coverage-gate checkpoint
+  - Run the full combined suite — backend pytest with coverage (Stage 1 Requirement 15 tests + Stage 2 Requirement 25 tests + properties P1–P24 + the new Stage 3 edge-case tests) and frontend Vitest with coverage (Stage 1/2 component/reducer tests + the new Stage 3 tests) — and confirm zero failures and zero errors on both suites and ≥80% statement and branch coverage on both layers
+  - Perform the negative check once: run a deliberately under-covered subset to confirm the coverage gate actually fails below threshold and reports the unmet metric, then restore the full run
+  - Reject or correct any Stage 3 change that reports a failure or error against a Requirement 1–25 criterion, preserving the Stage 1 and Stage 2 baseline until resolved
+  - Ensure all tests pass, ask the user if questions arise.
+  - _Requirements: 27.1, 27.2, 27.3, 27.4, 26.6, 30.3, 30.4, 30.5, 30.6_
+
+- [~] 45. Create the backend container image artifacts
+  - Create `backend/Dockerfile` as a multi-stage build: a builder stage installs only runtime dependencies into `/opt/venv`, and a final stage based on `python:3.11-slim` copies the venv and `app/`, creates a non-root `appuser` with a uid that is not 0, sets `USER appuser`, sets `ENV PORT=8000`, `EXPOSE 8000`, and execs `uvicorn app.main:app --host 0.0.0.0 --port ${PORT:-8000}` so a startup failure exits with a non-zero status and an unset `PORT` falls back to the default port
+  - Create `backend/.dockerignore` excluding `.venv`, `tests/`, `.pytest_cache`, `.hypothesis`, and `__pycache__`
+  - _Requirements: 31.1, 31.2, 31.3, 31.4, 31.5, 31.6, 31.7_
+
+- [~] 46. Create the frontend container image artifacts
+  - Create `frontend/Dockerfile` as a multi-stage build: a `node:20-alpine` build stage runs `npm ci && npm run build` producing `dist/`, and a final `nginx:alpine` stage copies only `dist/` into `/usr/share/nginx/html` and copies `nginx.conf`
+  - Create `frontend/nginx.conf` with an SPA fallback `location / { try_files $uri $uri/ /index.html; }` (unknown routes return `index.html` with a success status; existing assets return the asset with a success status) and `location /api/ { proxy_pass http://backend:8000; }` to reverse-proxy the Evaluate_Endpoint to the backend service by name
+  - Create `frontend/.dockerignore` excluding `node_modules`, `dist`, and `coverage`
+  - _Requirements: 32.1, 32.2, 32.3, 32.4, 32.5, 32.6, 33.3_
+
+- [~] 47. Create the multi-container orchestration compose file
+  - Create `docker-compose.yml` at the repository root defining a backend service built from `./backend` and a frontend service built from `./frontend` on the shared default network so each service resolves the other by its service name
+  - Map exactly one host port to the frontend container's listening port (e.g. `8080:80`), do NOT host-publish the backend service, and set `restart: unless-stopped` on both services so an unexpected non-zero exit auto-restarts unless an operator stopped the container
+  - _Requirements: 33.1, 33.2, 33.5, 33.6_
+
+- [ ] 48. Verify the container stack (run manually, not blocking automation)
+  - [ ]* 48.1 Verify the backend image
+    - Build the Backend_Image and confirm it runs the Backend_Service process as a non-zero uid, that `POST /api/v1/evaluate` returns 200 for a valid expression, that an unset `PORT` falls back to the default port, and that a forced startup failure exits with a non-zero status
+    - _Requirements: 31.3, 31.4, 31.6, 31.7_
+  - [ ]* 48.2 Verify the frontend image
+    - Build the Frontend_Image and confirm an unknown SPA route returns `index.html` with a success status, and an existing static asset returns that asset with a success status
+    - _Requirements: 32.3, 32.4, 32.5_
+  - [ ]* 48.3 Verify compose orchestration end-to-end
+    - Bring the stack up and confirm both services start, the frontend reaches the backend by service name, a request through the frontend `/api` path returns a computed result, and with the backend stopped the `/api` path yields a service-unavailable error with no computed result
+    - _Requirements: 33.2, 33.3, 33.4_
+
+- [~] 49. Final Stage 3 checkpoint
+  - Confirm the full combined test suite passes with zero failures/errors and the ≥80% statement + branch coverage gate holds on both layers, and that the container stack (backend image, frontend image, compose orchestration) is verified
+  - Ensure all tests pass, ask the user if questions arise.
+  - _Requirements: 27.3, 30.3, 30.4, 31.1, 32.1, 33.1_
+
+## Stage 3 Notes
+
+- Core implementation artifacts — the Audit_Log (task 39), coverage configuration (tasks 40, 42), Dockerfiles and nginx.conf (tasks 45, 46), and the compose file (task 47) — are required (non-optional).
+- Test-writing sub-tasks (41.x, 43.x) and the manual container verification sub-tasks (48.x) are marked optional with `*` per the existing convention.
+- Stage 3 adds no new PBT properties (numbering stops at P24); edge-case tests reference the existing property backstops (P4, P5, P8, P9, P10, P11, P17, P20, P21) by their existing numbers.
+- Modulo-by-zero (Requirement 28.2) is N/A because the `%` operator is absent from the grammar (recorded in the feature inventory); the WHERE guard is false, so no test is written.
+- Long-running servers (uvicorn `--reload`, `npm run dev`, `docker compose up`) are run manually in a terminal, not as blocking automation.
+
+## Stage 3 Task Dependency Graph
+
+```json
+{
+  "waves": [
+    { "id": 0, "tasks": ["39"] },
+    { "id": 1, "tasks": ["40", "42"] },
+    { "id": 2, "tasks": ["41.1", "41.2", "41.3", "43.1", "43.2", "43.3", "43.4"] },
+    { "id": 3, "tasks": ["44"] },
+    { "id": 4, "tasks": ["45", "46"] },
+    { "id": 5, "tasks": ["47"] },
+    { "id": 6, "tasks": ["48.1", "48.2", "48.3"] }
   ]
 }
 ```

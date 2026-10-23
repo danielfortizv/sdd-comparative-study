@@ -167,3 +167,48 @@ def test_api_evaluate_invalid_characters():
     assert response.status_code == 400
     data = response.json()
     assert "Invalid characters in expression" in data["detail"]
+
+# ----------------------------------------------------
+# Expanded Stage 3 Quality Edge Case Tests
+# ----------------------------------------------------
+
+def test_expanded_edge_cases():
+    # Negative base with even root exponent domain errors
+    with pytest.raises(CalculatorError, match="Math domain error"):
+        evaluate_expression("root(-8, 2)")
+    with pytest.raises(CalculatorError, match="Math domain error"):
+        evaluate_expression("root(-8, 4)")
+        
+    # Division/Zero powers edge cases
+    with pytest.raises(CalculatorError, match="Division by zero"):
+        evaluate_expression("0 ** -2")
+    with pytest.raises(CalculatorError, match="Division by zero"):
+        evaluate_expression("root(5, 0)")
+        
+    # Trigos with extreme values / out of range
+    with pytest.raises(CalculatorError, match="Math domain error"):
+        evaluate_expression("asin(1.00000000001)")
+    with pytest.raises(CalculatorError, match="Math domain error"):
+        evaluate_expression("acos(-1.00000000001)")
+        
+    # Syntax sequences/Malformed calls
+    with pytest.raises(CalculatorError, match="sqrt\\(\\) requires exactly 1 argument"):
+        evaluate_expression("sqrt()")
+    with pytest.raises(CalculatorError, match="root\\(\\) requires exactly 2 arguments"):
+        evaluate_expression("root(5)")
+    with pytest.raises(CalculatorError, match="root\\(\\) requires exactly 2 arguments"):
+        evaluate_expression("root(5, 2, 3)")
+    with pytest.raises(CalculatorError, match="sin\\(\\) requires exactly 1 argument"):
+        evaluate_expression("sin(1, 2)")
+        
+    # Unsupported structures and unknown variables
+    with pytest.raises(CalculatorError, match="Unsupported unary operator: Not"):
+        evaluate_expression("not 3")
+    with pytest.raises(CalculatorError, match="Undefined variable"):
+        evaluate_expression("xyz")
+        
+    # Overflow/Underflow error handling
+    with pytest.raises(CalculatorError, match="(Math domain error|Error evaluating expression|decimal.Overflow)"):
+        # Extreme exponentiation causing decimal overflow or invalid operation
+        evaluate_expression("999999 ** 999999")
+

@@ -97,3 +97,38 @@ def test_evaluate_endpoint_math_domain_errors():
     detail = response.json()["detail"]
     assert detail["type"] == "syntax error"
     assert "Logarithm of non-positive number" in detail["message"]
+
+def test_evaluate_endpoint_trig_domain_limits():
+    # acos domain error
+    response = client.post(
+        "/api/v1/evaluate",
+        json={"operation": "acos(2)", "angle_unit": "radians"}
+    )
+    assert response.status_code == 400
+    detail = response.json()["detail"]
+    assert detail["type"] == "syntax error"
+    assert "acos input must be between -1 and 1" in detail["message"]
+
+    # tan undefined angle error (degrees)
+    response = client.post(
+        "/api/v1/evaluate",
+        json={"operation": "tan(90)", "angle_unit": "degrees"}
+    )
+    assert response.status_code == 400
+    detail = response.json()["detail"]
+    assert detail["type"] == "math error"
+    assert "Division by zero is not allowed" in detail["message"]
+
+def test_evaluate_endpoint_unexpected_error(monkeypatch):
+    from app import main
+    def mock_evaluate_expression(*args, **kwargs):
+        raise RuntimeError("Unexpected engine crash")
+    monkeypatch.setattr(main, "evaluate_expression", mock_evaluate_expression)
+    response = client.post(
+        "/api/v1/evaluate",
+        json={"operation": "1 + 1", "angle_unit": "radians"}
+    )
+    assert response.status_code == 500
+    detail = response.json()["detail"]
+    assert detail["type"] == "server error"
+    assert "Unexpected engine crash" in detail["message"]

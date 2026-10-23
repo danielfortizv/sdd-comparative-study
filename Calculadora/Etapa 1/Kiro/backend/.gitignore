@@ -5,6 +5,12 @@ __pycache__/
 .pytest_cache/
 .hypothesis/
 
+# Coverage (pytest-cov / coverage.py)
+.coverage
+.coverage.*
+coverage.xml
+htmlcov/
+
 # Virtual environment
 .venv/
 venv/

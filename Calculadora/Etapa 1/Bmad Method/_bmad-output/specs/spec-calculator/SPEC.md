@@ -2,6 +2,7 @@
 id: SPEC-calculator
 companions:
   - glossary.md
+  - code-inspection-report-stage-3.md
   - ../../planning-artifacts/prds/prd-Calculator-2026-09-28/prd.md
   - ../../planning-artifacts/prds/prd-Calculator-2026-09-28/addendum.md
   - ../../planning-artifacts/ux-designs/ux-Calculator-2026-09-28/DESIGN.md
@@ -13,11 +14,11 @@ sources: []
 
 > **Canonical contract.** This SPEC and the files in `companions:` are the complete, preservation-validated contract for what to build, test, and validate. Source documents listed in frontmatter are for traceability — consult them only if you need narrative rationale or prose color this contract intentionally omits.
 
-# Basic Web Calculator
+# Scientific Web Calculator
 
 ## Why
 
-Standard digital calculators suffer from frustrating binary floating-point representation errors (e.g. `0.1 + 0.2` evaluating to `0.30000000000000004`) and poor physical keyboard-only integration, which slows down high-speed administrative and financial operators. The Basic Web Calculator solves this by combining an arbitrary-precision, secure AST mathematical parser backend (Python/FastAPI) with a responsive, physical-inspired, accessible (WCAG 2.1 AA) React frontend. This setup provides absolute decimal accuracy and mouse-free ergonomics for daily administrative tasks, ensuring stable column alignments and immediate tactile feedback.
+Standard digital calculators suffer from frustrating binary floating-point representation errors (e.g. `0.1 + 0.2` evaluating to `0.30000000000000004`) and poor physical keyboard-only integration, which slows down high-speed administrative and financial operators. The Scientific Web Calculator solves this by combining an arbitrary-precision, secure AST mathematical parser backend (Python/FastAPI) with a responsive, physical-inspired, accessible (WCAG 2.1 AA) React frontend. This setup provides absolute decimal accuracy and mouse-free ergonomics for daily administrative tasks, ensuring stable column alignments and immediate tactile feedback.
 
 ## Capabilities
 
@@ -57,6 +58,14 @@ Standard digital calculators suffer from frustrating binary floating-point repre
   - **intent:** Users can view, clear, and reload past calculations (either the expression or the result) from the current session.
   - **success:** An interactive, accessible side drawer caches successfully evaluated expressions. Tapping an item opens a submenu to load either the expression or the result into the display, or clear history completely.
 
+- **CAP-10: High-Coverage Testing & Edge Case Verification**
+  - **intent:** Both frontend and backend logic are fully verified with exhaustive test coverage, ensuring 100% computational correctness under critical mathematical boundaries.
+  - **success:** Statement and branch code coverage strictly meets or exceeds **80%** across both the backend (`pytest` suite containing 27 passing tests) and frontend (`vitest` suite containing 17 passing tests) codebases.
+
+- **CAP-11: Secure Containerization & Orchestration**
+  - **intent:** Calculator services are isolated into secure runtime containers to enable standard continuous integration pipelines and simple, portable local development orchestrations.
+  - **success:** Multi-stage production `Dockerfile`s for the Python FastAPI server (running as a non-privileged system user) and the React web assets compiler (served via alpine-based Nginx with gzip compression) build and coordinate seamlessly under `docker-compose.yml`.
+
 ## Constraints
 
 - **Arbitrary-Precision Math:** All calculations must execute via Python's standard `decimal` module; raw floating-point calculations are banned. Trigonometric functions utilize standard float wrappers converted from/to `Decimal` safely.
@@ -65,6 +74,8 @@ Standard digital calculators suffer from frustrating binary floating-point repre
 - **Stable Monospace Readouts:** Monospace font families must be utilized inside display panels to prevent horizontal character jittering.
 - **Ergonomic Mobile Tap Targets:** Buttons must occupy at least `48px` x `48px` on mobile layouts.
 - **No Grid Tab Traversal:** Buttons must have `tabIndex="-1"` to keep keyboard navigation bound strictly to global window intercepts.
+- **Quality Gates Threshold:** Statement and branch code coverage must strictly exceed the 80% boundary across both software layers prior to production container deployment runs.
+- **Minimal Secure Runtimes:** Production containers must operate under non-privileged system accounts (UID `10001` for backend) and serve static assets via lightweight alpine web servers.
 
 ## Non-goals
 
@@ -73,4 +84,4 @@ Standard digital calculators suffer from frustrating binary floating-point repre
 
 ## Success signal
 
-- All backend mathematical precedence, decimal precision, and error validation unit tests run and pass under `pytest` with 100% correctness. All responsive layouts, active transitions, contrast hierarchies, keyboard event interceptions, and screen reader announcements conform to WCAG 2.1 AA specifications under audits with zero visual drift.
+- All backend mathematical precedence, decimal precision, and error validation unit tests run and pass under `pytest` with 100% correctness. All responsive layouts, active transitions, contrast hierarchies, keyboard event interceptions, and screen reader announcements conform to WCAG 2.1 AA specifications under audits with zero visual drift. Code statement and branch coverage exceeds the 80% threshold, and container deployments run stably under Docker Compose orchestration.

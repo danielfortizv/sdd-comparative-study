@@ -4,6 +4,8 @@ description: React-TypeScript scientific responsive daily-use calculator UI with
 targets:
   - ../frontend/src/App.tsx
   - ../frontend/src/components/Calculator.tsx
+  - ../frontend/Dockerfile
+  - ../docker-compose.yml
 ---
 
 # Calculator Frontend Client
@@ -85,5 +87,32 @@ targets:
   - Display the exact numeric result returned by the backend.
   - Append the evaluation pair (`expression = result`) to the Session History list.
 - Erroneous responses (e.g. math domain errors, syntax errors, division by zero) must display a clear, user-friendly error message on the display instead of breaking the app.
+- For async memory actions (`M+`/`M-` triggering background evaluations), network or validation errors must be caught gracefully and display clear, user-friendly error messages rather than breaking the application state.
 
 `[@test] ../frontend/src/App.test.tsx`
+
+---
+
+## Non-Functional & Containerized Deployment Specifications (Stage 3)
+
+### 1. Unified Test Quality Thresholds
+- Automated test suites must achieve and verify **$\ge 80\%$ Statement and Branch coverage** on the React client layer.
+  `[@test] ../frontend/src/App.test.tsx`
+
+### 2. Multi-Stage Production Frontend Dockerfile
+- The frontend codebase must compile and bundle assets into a high-performance web server container.
+- **Core Constraints:**
+  - **Stage 1 (Build):** Leverage minimal node base image (`node:20-alpine`) to install dependencies and run static compilers (`npm run build`).
+  - **Stage 3 (Runtime):** Copy built statics into Nginx runtime (`nginx:1.25-alpine`).
+  - **Nginx Gzip Rules:** Enable gzip compression for standard text/CSS/JS file formats to reduce page loading latencies.
+  - **Single Page Application Routing:** Configure Nginx's location settings so all client-side URL paths fallback to `index.html`.
+  - **Port Exposure:** Expose port `80`.
+  `[@test] ../frontend/Dockerfile`
+  `[@test] ../frontend/nginx.conf`
+
+### 3. Unified Orchestration Configuration
+- Provide a `docker-compose.yml` file at the root repository directory to wire together frontend and backend modules under a single command.
+- **Service Configuration:**
+  - `backend`: Binds local port `8000` to container `8000`.
+  - `frontend`: Binds local port `80` to container `80`, declaring dependency on `backend`.
+  `[@test] ../docker-compose.yml`

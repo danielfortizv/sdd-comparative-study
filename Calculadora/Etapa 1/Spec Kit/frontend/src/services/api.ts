@@ -1,6 +1,8 @@
 import { CalculationRequest, CalculationResponse, ErrorResponse } from '../types/calculator';
 
-const API_BASE_URL = 'http://localhost:8000/api/v1';
+const API_BASE_URL = typeof window !== 'undefined' && window.location.origin.includes('localhost:3000')
+  ? 'http://localhost:8000/api/v1'
+  : '/api/v1';
 
 export async function evaluateExpression(
   expression: string,

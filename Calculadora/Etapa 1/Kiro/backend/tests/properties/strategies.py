@@ -963,8 +963,11 @@ def reference_acos(x: Decimal, angle_mode: str = _ORACLE_RADIANS) -> Decimal:
         value = +x
         if value < -1 or value > 1:
             raise ReferenceDomainError("acos is undefined outside [-1, 1].")
+        # acos(x) = pi/2 - asin(x); at the endpoints asin(+1) = +pi/2 and
+        # asin(-1) = -pi/2, so acos(+1) = 0 and acos(-1) = pi (matches the
+        # engine fix for defect D-01 in docs/stage3-audit-log.md).
         if value == 1:
-            asin_r = Decimal(0)
+            asin_r = REFERENCE_PI / 2
         elif value == -1:
             asin_r = -REFERENCE_PI / 2
         else:

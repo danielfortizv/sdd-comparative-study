@@ -369,3 +369,130 @@ The following requirements extend the system into a scientific calculator. All S
 6. THE Backend_Service SHALL include pytest unit tests that verify boundary-value behavior for domain-valid inputs immediately adjacent to each Domain_Error boundary defined in Requirements 17 and 18, including `asin` and `acos` at operands of negative one and positive one, `sqrt` at an operand of zero, and natural logarithm and base-10 logarithm at an operand immediately greater than zero, each asserting the returned result equals the expected value to at least 10 significant decimal digits.
 7. THE Backend_Service test suite SHALL achieve a measured line coverage of at least 90 percent across the scientific engine modules that implement Scientific_Functions, angle conversion, and Mathematical_Constant substitution.
 8. WHEN the backend test suite is executed, THE Backend_Service test suite SHALL complete with zero test failures and zero errors, and IF any test fails or the coverage threshold defined in criterion 7 is not met, THEN THE Backend_Service test suite SHALL report the failure and SHALL NOT report a successful outcome.
+
+---
+
+## Stage 3 Requirements (Testing Quality, Coverage & Containerization)
+
+The following requirements extend the system per `docs/SEED-3.md` with non-functional goals covering code inspection, comprehensive edge-case testing, measured code-coverage thresholds, and container packaging. All Stage 1 requirements (Requirements 1 through 15) and all Stage 2 requirements (Requirements 16 through 25) remain in force and unchanged. Stage 3 behavior SHALL NOT weaken, remove, or override any Stage 1 or Stage 2 requirement. The current codebase already contains the Stage 1 arithmetic engine and the Stage 2 scientific engine, memory register, and session history; the Stage 3 audit and edge-case testing requirements apply to whichever math operations, state surfaces, and endpoints are actually present in the codebase at the time Stage 3 work begins.
+
+### Glossary Additions (Stage 3)
+
+- **Audit_Log**: A written document, stored in the repository, that records the result of inspecting the Stage 1 and Stage 2 codebase before Stage 3 implementation, including every discovered defect and every category explicitly cleared as having no defect.
+- **Coverage_Report**: A machine-generated measurement of statement coverage and branch coverage produced by executing the automated test suite of a repository layer.
+- **Coverage_Threshold**: The minimum acceptable coverage value of 80 percent applied independently to statement coverage and to branch coverage for each repository layer.
+- **Backend_Coverage_Tool**: The coverage measurement tool integrated with pytest (`pytest-cov`) that produces the backend Coverage_Report.
+- **Frontend_Coverage_Tool**: The coverage measurement tool integrated with Vitest (`@vitest/coverage-v8`) that produces the frontend Coverage_Report.
+- **Backend_Image**: The container image that packages the Backend_Service for execution.
+- **Frontend_Image**: The container image that packages the built Frontend_Client static assets served by a web server.
+- **Backend_Dockerfile**: The multi-stage Dockerfile that builds the Backend_Image.
+- **Frontend_Dockerfile**: The multi-stage Dockerfile that builds the Frontend_Image using Nginx to serve static assets.
+- **Compose_File**: The top-level `docker-compose.yml` file that orchestrates the Backend_Image and Frontend_Image as a multi-container application.
+- **Non_Root_User**: An operating-system user account inside a container that is not the `root` user and under which the container's main process runs.
+
+### Requirement 26: Stage 1 and Stage 2 Codebase Audit
+
+**User Story:** As a developer, I want the existing Stage 1 and Stage 2 codebase inspected and its defects documented before Stage 3 changes, so that pre-existing issues are recorded and fixed without regressing baseline behavior.
+
+#### Acceptance Criteria
+
+1. THE System SHALL produce an Audit_Log that records the inspection of the Stage 1 and Stage 2 codebase before any Stage 3 architectural change is applied, where the inspection covers every Stage 1 and Stage 2 source component and the Audit_Log is created and persisted before the first Stage 3 change.
+2. THE Audit_Log SHALL cover each of the four inspection categories (functional bug, mathematical inaccuracy, state leakage, and unhandled edge case) with, for each category, either one or more documented defect entries or an explicit record stating that no defect was found in that category, such that no category is left unaddressed.
+3. WHEN a defect is documented in the Audit_Log, THE System SHALL record for that defect a defect identifier that is unique within the Audit_Log, the inspection category (one of the four defined categories), the affected component, the input or ordered steps that reproduce the defect, the expected result, and the observed actual result, with the expected and actual results stated as distinct values.
+4. THE Audit_Log SHALL record the actual feature set present in the inspected codebase by enumerating each Stage 1 and Stage 2 operation, state surface, and endpoint that exists at the time of inspection, such that every such item is either listed as present or recorded as absent.
+5. IF a remediation is applied to a documented defect, THEN THE System SHALL require that the defect was recorded in the Audit_Log with its unique defect identifier before the remediation is applied, and SHALL reject any remediation whose corresponding defect has no prior Audit_Log entry.
+6. WHEN a documented defect is remediated, THE System SHALL re-verify every applicable Stage 1 and Stage 2 acceptance criterion defined in Requirements 1 through 25 and SHALL record, for each such criterion, a pass or fail outcome, where the remediation is accepted only if all applicable criteria record a pass outcome.
+7. IF a remediation of a documented defect causes any acceptance criterion in Requirements 1 through 25 to record a fail outcome, THEN THE System SHALL reject or correct that remediation before the audit activity is marked complete, SHALL retain the identifier and failing details of each affected criterion in the Audit_Log, and SHALL preserve the pre-remediation baseline behavior until the regression is resolved.
+
+### Requirement 27: Backward Compatibility
+
+**User Story:** As a User, I want every existing calculator feature to keep working after Stage 3, so that testing and deployment changes do not break functionality I rely on.
+
+#### Acceptance Criteria
+
+1. WHEN the full automated test suite is executed after the Stage 3 test and deployment changes are applied, THE Backend_Service SHALL satisfy every acceptance criterion defined in Requirements 1 through 25 that applies to the Backend_Service, evidenced by every automated test that verifies those criteria completing without failure or error.
+2. WHEN the full automated test suite is executed after the Stage 3 test and deployment changes are applied, THE Frontend_Client SHALL satisfy every acceptance criterion defined in Requirements 1 through 25 that applies to the Frontend_Client, evidenced by every automated test that verifies those criteria completing without failure or error.
+3. WHEN the full automated test suite, comprising the Backend_Service automated test suite and the Frontend_Client automated test suite, is executed after the Stage 3 changes are applied, THE System SHALL complete both suites with zero test failures and zero errors.
+4. IF executing the full automated test suite after a Stage 3 change reports one or more failures or errors against any acceptance criterion in Requirements 1 through 25, THEN THE System SHALL reject or correct that Stage 3 change before the Stage 3 change is considered complete, and SHALL preserve the Stage 1 and Stage 2 behavior defined in Requirements 1 through 25.
+
+### Requirement 28: Comprehensive Backend Edge-Case Testing
+
+**User Story:** As a developer, I want exhaustive backend edge-case tests, so that critical mathematical and syntactic failure conditions are verified.
+
+#### Acceptance Criteria
+
+1. THE Backend_Service SHALL include at least one pytest test that asserts a division-by-zero Expression returns an Error_Response with an HTTP status code in the 4xx range and no calculated result.
+2. WHERE a modulo operation is present in the Evaluation_Engine, THE Backend_Service SHALL include at least one pytest test that asserts a modulo-by-zero Expression returns an Error_Response with an HTTP status code in the 4xx range and no calculated result.
+3. WHERE the Evaluation_Engine implements inverse trigonometric functions, THE Backend_Service SHALL include at least one pytest test for `asin` and at least one pytest test for `acos`, each asserting that an operand whose absolute value is strictly greater than 1 returns an Error_Response with an HTTP status code in the 4xx range and no calculated result.
+4. WHERE the Evaluation_Engine implements inverse trigonometric functions, THE Backend_Service SHALL include at least one pytest test asserting that `asin` and `acos` applied to an operand whose absolute value is exactly 1 return a calculated result and no Error_Response.
+5. WHERE the Evaluation_Engine implements logarithm or square-root functions, THE Backend_Service SHALL include at least one pytest test asserting that a logarithm of a non-positive operand returns an Error_Response with an HTTP status code in the 4xx range and no calculated result, and at least one pytest test asserting that a square root of a negative operand returns an Error_Response with an HTTP status code in the 4xx range and no calculated result.
+6. THE Backend_Service SHALL include at least one pytest test for each of the following conditions — an invalid operator sequence, an unclosed parenthesis, an invalid character, and an empty Expression — asserting that each returns an Error_Response with an HTTP status code in the 4xx range and no calculated result.
+7. WHEN an arithmetic operation produces a non-finite result through overflow or underflow, THE Backend_Service SHALL include at least one pytest test that asserts the Backend_Service returns an Error_Response with an HTTP status code in the 4xx range and no calculated result.
+8. WHEN the backend edge-case test suite is executed to completion, THE Backend_Service test suite SHALL report zero test failures and zero test errors.
+
+### Requirement 29: Comprehensive Frontend Component and State Testing
+
+**User Story:** As a developer, I want frontend tests covering input, memory, keyboard, and history, so that UI state behavior is verified.
+
+#### Acceptance Criteria
+
+1. THE Frontend_Client SHALL include Vitest tests verifying expression input handling for appending a digit (0-9), an operator (one of +, -, *, /), a decimal point, and a parenthesis (opening and closing), and for removing a character via backspace on a non-empty Expression (asserting the last character is removed) and on an empty Expression (asserting the Expression remains the empty string), each test asserting the Expression_Display text content equals the expected character sequence exactly.
+2. WHERE the Frontend_Client implements a Memory_Register, THE Frontend_Client SHALL include Vitest tests verifying the register initialized to a value of zero, the M+, M-, MR, and MC operations each producing the expected register value and Expression_Display content, and the Memory_Indicator rendered when the register value is non-zero and not rendered when the register value equals zero, as defined in Requirement 20.
+3. THE Frontend_Client SHALL include Vitest tests verifying keyboard event handling for a digit key, an operator key, each evaluate key (Enter and =), backspace on a non-empty Expression (asserting the last character is removed) and on an empty Expression (asserting the Expression remains the empty string), the Escape reset key (asserting the Expression and result are cleared), and an unmapped key (asserting the Expression, result, and error state are all unchanged), as defined in Requirement 10.
+4. WHERE the Frontend_Client implements a Calculation_History, THE Frontend_Client SHALL include Vitest tests verifying history rendering of all stored History_Entry items, newest-first ordering (asserting the most recently added entry appears first), selection of the expression portion and selection of the result portion of a History_Entry each populating the Expression_Display with the selected text, clearing (asserting zero History_Entry items remain), and the empty-state indication rendered when zero History_Entry items exist, as defined in Requirement 21.
+5. THE Frontend_Client component and state tests SHALL execute with all Backend_Service network calls intercepted by a mock such that no test issues a network request to a live Backend_Service.
+6. WHEN the frontend component and state test suite is executed in a single non-interactive run, THE Frontend_Client test suite SHALL report zero test failures and zero test errors.
+
+### Requirement 30: Code Coverage Threshold
+
+**User Story:** As a developer, I want measured coverage gates on both layers, so that the test suites demonstrably exercise the code.
+
+#### Acceptance Criteria
+
+1. WHEN the Backend_Service test suite is executed with coverage measurement enabled, THE Backend_Service test tooling SHALL produce a Coverage_Report that reports a statement coverage percentage and a branch coverage percentage, each expressed as a value from 0 to 100 percent, using the Backend_Coverage_Tool.
+2. WHEN the Frontend_Client test suite is executed with coverage measurement enabled, THE Frontend_Client test tooling SHALL produce a Coverage_Report that reports a statement coverage percentage and a branch coverage percentage, each expressed as a value from 0 to 100 percent, using the Frontend_Coverage_Tool.
+3. WHEN the Backend_Service test suite is executed with coverage measurement enabled, THE Backend_Service SHALL achieve statement coverage of at least 80 percent and branch coverage of at least 80 percent, where the Coverage_Threshold is defined as 80 percent for both statement coverage and branch coverage.
+4. WHEN the Frontend_Client test suite is executed with coverage measurement enabled, THE Frontend_Client SHALL achieve statement coverage of at least 80 percent and branch coverage of at least 80 percent, where the Coverage_Threshold is defined as 80 percent for both statement coverage and branch coverage.
+5. IF the measured statement coverage of the Backend_Service is below the Coverage_Threshold, or the measured branch coverage of the Backend_Service is below the Coverage_Threshold, THEN THE Backend_Service test run SHALL terminate with a failing outcome and report an indication identifying that the coverage threshold was not met.
+6. IF the measured statement coverage of the Frontend_Client is below the Coverage_Threshold, or the measured branch coverage of the Frontend_Client is below the Coverage_Threshold, THEN THE Frontend_Client test run SHALL terminate with a failing outcome and report an indication identifying that the coverage threshold was not met.
+7. WHERE the Coverage_Report is produced for either the Backend_Service or the Frontend_Client, THE test tooling SHALL compute coverage over the source modules under test, excluding test files themselves from the coverage denominator.
+
+### Requirement 31: Backend Containerization
+
+**User Story:** As an operator, I want a secure production container image for the backend, so that the Backend_Service can be deployed consistently.
+
+#### Acceptance Criteria
+
+1. THE System SHALL provide a Backend_Dockerfile that uses a multi-stage build with at least one build stage and one final runtime stage to produce the Backend_Image.
+2. THE Backend_Dockerfile SHALL base the final image stage on a minimal Python base image at version 3.11 or higher.
+3. WHEN the Backend_Image runs the Backend_Service process, THE Backend_Image SHALL run that process as a Non_Root_User whose user identifier is not 0.
+4. WHEN the Backend_Image is started, THE Backend_Image SHALL launch the Backend_Service listening on a configured network port in the range 1 to 65535 that serves the Evaluate_Endpoint.
+5. THE Backend_Dockerfile SHALL install in the final image stage only the runtime dependencies required to run the Backend_Service, excluding build-time and test dependencies.
+6. WHEN the Backend_Image is started with its configured network port unset, THE Backend_Image SHALL launch the Backend_Service on a default network port in the range 1 to 65535.
+7. IF the Backend_Service process fails to start when the Backend_Image is started, THEN THE Backend_Image SHALL terminate with a non-zero exit status indicating startup failure.
+
+### Requirement 32: Frontend Containerization
+
+**User Story:** As an operator, I want a production container image for the frontend, so that the built client assets are served efficiently.
+
+#### Acceptance Criteria
+
+1. THE System SHALL provide a Frontend_Dockerfile that uses a multi-stage build to compile the Frontend_Client in a build stage and copy only the compiled static assets into the final stage that produces the Frontend_Image.
+2. THE Frontend_Dockerfile SHALL serve the compiled static assets of the Frontend_Client using Nginx in the final image stage.
+3. WHEN the Frontend_Image receives a request for a client-side route that does not correspond to an existing static asset file, THE Frontend_Image SHALL return the Frontend_Client entry document with a success status indication so that client-side routing resolves the route.
+4. WHEN the Frontend_Image receives a request for a path that matches an existing static asset file, THE Frontend_Image SHALL return that asset file with a success status indication.
+5. WHEN the Frontend_Image is started, THE Frontend_Image SHALL listen for HTTP requests on a single configured network port in the range 1 to 65535 within 30 seconds of container start.
+6. IF the configured network port is already in use or outside the range 1 to 65535 when the Frontend_Image starts, THEN THE Frontend_Image SHALL terminate startup and emit an error indication identifying the port binding failure.
+
+### Requirement 33: Multi-Container Orchestration
+
+**User Story:** As a developer, I want a single compose file to run the whole app locally, so that the backend and frontend start together with correct wiring.
+
+#### Acceptance Criteria
+
+1. THE System SHALL provide a Compose_File at the repository root that defines a Backend_Service container built from the Backend_Dockerfile and a Frontend_Client container built from the Frontend_Dockerfile.
+2. WHEN the Compose_File is brought up, THE System SHALL start both the Backend_Service container and the Frontend_Client container on a shared container network that resolves each service by its service name.
+3. WHEN the Frontend_Client container forwards a request addressed to the Evaluate_Endpoint, THE Compose_File SHALL route that request to the Backend_Service container over the shared container network.
+4. IF the Backend_Service container is not reachable over the shared container network when the Frontend_Client forwards a request addressed to the Evaluate_Endpoint, THEN THE Compose_File SHALL cause the forwarded request to fail with a service-unavailable error indicating the backend is unreachable, without returning a computed result.
+5. THE Compose_File SHALL map exactly one host network port to the Frontend_Client container's listening port so that the Frontend_Client is reachable from the host at that mapped port.
+6. WHEN a container defined in the Compose_File exits with a non-zero (unexpected) exit status, THE Compose_File SHALL apply a restart policy that automatically attempts to restart that container unless the container was explicitly stopped by an operator.

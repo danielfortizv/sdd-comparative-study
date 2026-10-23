@@ -381,8 +381,12 @@ def acos(x: Decimal, angle_mode: str = _RADIANS) -> Decimal:
             raise DomainError(
                 message="acos is undefined for arguments outside [-1, 1]."
             )
+        # acos(x) = pi/2 - asin(x). At the endpoints asin(+1) = +pi/2 and
+        # asin(-1) = -pi/2, so acos(+1) = 0 and acos(-1) = pi. (Defect D-01:
+        # the +1 endpoint previously used asin_r = 0, yielding acos(1) = pi/2;
+        # see docs/stage3-audit-log.md.)
         if value == _ONE:
-            asin_r = +_ZERO
+            asin_r = _half_pi()
         elif value == -_ONE:
             asin_r = -_half_pi()
         else:

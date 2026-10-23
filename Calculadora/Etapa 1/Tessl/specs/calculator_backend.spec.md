@@ -4,6 +4,7 @@ description: Parsing, PEMDAS evaluation, scientific functions, and high-precisio
 targets:
   - ../backend/app/main.py
   - ../backend/app/calculator.py
+  - ../backend/Dockerfile
 ---
 
 # Calculator Backend Engine
@@ -71,7 +72,28 @@ Response (200 OK):
   - Square root of a negative number (e.g., `sqrt(-1)`) must return HTTP 400 indicating a math domain error.
   - Logarithm of a zero or negative number (e.g., `ln(-5)` or `log(0)`) must return HTTP 400.
   - Inverse trig functions outside valid domain $[-1, 1]$ (e.g., `asin(2)`) must return HTTP 400.
+  - Undefined trigonometric tangent operations (e.g. `tan(90)` degrees or `tan(pi/2)` radians) must return HTTP 400 indicating a division by zero / undefined tangent error.
+  - Giant integer exponentiation triggering calculation overflows (such as `10^100000000000000000000` throwing a `decimal.Overflow`) must return HTTP 400.
   `[@test] ../backend/tests/test_api.py`
+  `[@test] ../backend/tests/test_calculator.py`
 - **Syntax or Parsing Errors:**
   - Invalid character sequences, unclosed parentheses, or unmatched operators must return HTTP 400.
   `[@test] ../backend/tests/test_api.py`
+
+---
+
+## Non-Functional & Containerized Deployment Specifications (Stage 3)
+
+### 1. High-Precision Test Coverage
+- Unit and integration test suites must enforce a strict **$\ge 80\%$ statement coverage** requirement for the backend codebase (`calculator.py` and `main.py`).
+  `[@test] ../backend/tests/test_calculator.py`
+  `[@test] ../backend/tests/test_api.py`
+
+### 2. Multi-Stage Production Docker Configuration
+- The backend application must package into a secure, multi-stage, minimized container image.
+- **Core Constraints:**
+  - **Base Image:** Utilize high-performance, minimal base images (`python:3.13-slim`).
+  - **Security Mandate:** Run all processes under a non-root system user (`appuser` with uid/gid `10001`) to protect host processes.
+  - **Health Monitoring:** Embed an automated HEALTHCHECK command verifying server socket responsiveness every 30s.
+  - **Port Exposure:** Expose and listen on port `8000` for REST requests.
+  `[@test] ../backend/Dockerfile`

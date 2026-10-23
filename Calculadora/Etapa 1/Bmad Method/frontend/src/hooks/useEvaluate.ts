@@ -67,6 +67,9 @@ export function useEvaluate() {
     }
 
     const trimmed = expression.trim();
+    if (state === 'evaluated' && trimmed === result) {
+      return;
+    }
     if (!trimmed) {
       setResult('0');
       setState('idle');
@@ -179,7 +182,7 @@ export function useEvaluate() {
   // Stage 2 Memory Handlers
   const handleMemoryOperation = async (op: 'add' | 'subtract') => {
     // Current display/result value to accumulate
-    const valueToOperate = state === 'error' ? '0' : (result && state !== 'idle' ? result : (expression || '0'));
+    const valueToOperate = state === 'error' ? '0' : (((state === 'evaluated' || state === 'preview') && result) ? result : (expression || '0'));
     
     // Extract only standard float digits
     const cleanedValue = valueToOperate.replace(/[^\d\.\-eE]/g, '');

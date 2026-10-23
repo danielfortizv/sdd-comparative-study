@@ -270,4 +270,150 @@ describe('Calculator Frontend Client', () => {
     fireEvent.click(screen.getByRole('button', { name: 'Load historical expression: sin(pi/6)' }));
     expect(screen.getByLabelText('Arithmetic expression')).toHaveTextContent('sin(pi/6)');
   });
+
+  it('handles advanced memory operations including M- and single number memory add', async () => {
+    render(<App />);
+
+    // 1. M+ with a single number (should not trigger API fetch)
+    fireEvent.click(screen.getByRole('button', { name: '9' }));
+    fireEvent.click(screen.getByRole('button', { name: 'Add display to memory' }));
+    
+    // Memory badge should appear, meaning memory is now 9
+    expect(screen.getByLabelText('Memory is not empty badge')).toBeInTheDocument();
+    
+    // Clear calculator
+    fireEvent.click(screen.getByRole('button', { name: 'Clear calculator' }));
+
+    // 2. M- with an unevaluated expression (triggers API fetch)
+    fireEvent.click(screen.getByRole('button', { name: '4' }));
+    fireEvent.click(screen.getByRole('button', { name: 'Subtract' }));
+    fireEvent.click(screen.getByRole('button', { name: '1' })); // "4-1" -> evaluates to 3
+
+    const mockResponse = { result: 3 };
+    const fetchSpy = vi.spyOn(window, 'fetch').mockResolvedValue({
+      ok: true,
+      json: async () => mockResponse,
+    } as Response);
+
+    fireEvent.click(screen.getByRole('button', { name: 'Subtract display from memory' }));
+
+    await waitFor(() => {
+      expect(screen.getByText('3')).toBeInTheDocument();
+    });
+
+    // Memory is 9 - 3 = 6. Recall memory to check it's 6
+    fireEvent.click(screen.getByRole('button', { name: 'Clear calculator' }));
+    fireEvent.click(screen.getByRole('button', { name: 'Recall Memory register' }));
+    expect(screen.getByLabelText('Arithmetic expression')).toHaveTextContent('6');
+
+    // 3. M+ or M- on empty expression (should do nothing)
+    fireEvent.click(screen.getByRole('button', { name: 'Clear calculator' }));
+    fetchSpy.mockClear();
+    fireEvent.click(screen.getByRole('button', { name: 'Add display to memory' }));
+    expect(fetchSpy).not.toHaveBeenCalled();
+  });
+
+  it('handles clicking historical results and clearing history', async () => {
+    const mockResponse = { result: 0.5 };
+    vi.spyOn(window, 'fetch').mockResolvedValue({
+      ok: true,
+      json: async () => mockResponse,
+    } as Response);
+
+    render(<App />);
+
+    // Add something to history
+    fireEvent.click(screen.getByRole('button', { name: '5' }));
+    fireEvent.click(screen.getByRole('button', { name: 'Evaluate expression' }));
+
+    await waitFor(() => {
+      expect(screen.getByText('0.5')).toBeInTheDocument();
+    });
+
+    // We have "Append historical result: 0.5" in document. Let's append it
+    fireEvent.click(screen.getByRole('button', { name: 'Clear calculator' }));
+    fireEvent.click(screen.getByRole('button', { name: '1' }));
+    fireEvent.click(screen.getByRole('button', { name: 'Add' }));
+    fireEvent.click(screen.getByRole('button', { name: 'Append historical result: 0.5' }));
+
+    expect(screen.getByLabelText('Arithmetic expression')).toHaveTextContent('1+0.5');
+
+    // Clear history drawer
+    fireEvent.click(screen.getByRole('button', { name: 'Clear calculations history' }));
+    expect(screen.queryByRole('button', { name: 'Clear calculations history' })).not.toBeInTheDocument();
+  });
+
+  it('handles advanced keyboard shortcuts for Backspace, Escape, and p key', () => {
+    render(<App />);
+
+    // Press 'p' to input 'pi'
+    fireEvent.keyDown(window, { key: 'p' });
+    expect(screen.getByLabelText('Arithmetic expression')).toHaveTextContent('pi');
+
+    // Press Backspace
+    fireEvent.keyDown(window, { key: 'Backspace' });
+    expect(screen.getByLabelText('Arithmetic expression')).toHaveTextContent('p');
+
+    // Press Escape
+    fireEvent.keyDown(window, { key: 'Escape' });
+    expect(screen.getByLabelText('Arithmetic expression')).toHaveTextContent('');
+  });
+
+  it('handles API errors in memory operations gracefully', async () => {
+    vi.spyOn(window, 'fetch').mockResolvedValue({
+      ok: false,
+      json: async () => ({
+        detail: {
+          type: 'error',
+          message: 'Failed to evaluate for memory add',
+        }
+      }),
+    } as Response);
+
+    render(<App />);
+
+    // Add complex expression and click M+
+    fireEvent.click(screen.getByRole('button', { name: '5' }));
+    fireEvent.click(screen.getByRole('button', { name: 'Add' }));
+    fireEvent.click(screen.getByRole('button', { name: '2' }));
+    fireEvent.click(screen.getByRole('button', { name: 'Add display to memory' }));
+
+    await waitFor(() => {
+      expect(screen.getByText('Failed to evaluate for memory add')).toBeInTheDocument();
+    });
+    
+    // Same for M-
+    vi.spyOn(window, 'fetch').mockResolvedValue({
+      ok: false,
+      json: async () => ({
+        detail: {
+          type: 'error',
+          message: 'Failed to evaluate for memory subtract',
+        }
+      }),
+    } as Response);
+
+    fireEvent.click(screen.getByRole('button', { name: 'Subtract display from memory' }));
+
+    await waitFor(() => {
+      expect(screen.getByText('Failed to evaluate for memory subtract')).toBeInTheDocument();
+    });
+  });
+
+  it('handles unexpected json parsing errors in API responses', async () => {
+    vi.spyOn(window, 'fetch').mockResolvedValue({
+      ok: false,
+      json: async () => { throw new Error('Bad JSON'); },
+    } as Response);
+
+    render(<App />);
+
+    // Evaluate
+    fireEvent.click(screen.getByRole('button', { name: '5' }));
+    fireEvent.click(screen.getByRole('button', { name: 'Evaluate expression' }));
+
+    await waitFor(() => {
+      expect(screen.getByText('Failed to evaluate expression')).toBeInTheDocument();
+    });
+  });
 });

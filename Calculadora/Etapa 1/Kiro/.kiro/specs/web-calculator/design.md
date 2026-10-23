@@ -985,3 +985,313 @@ frontend/
     angleModeToggle.test.tsx   # NEW — display + 100ms flip (22.6, 22.7)
     client.test.ts          # extended — sends angle_mode, scientific success/domain-error
 ```
+---
+
+# Stage 3 Design (Testing Quality, Coverage & Containerization)
+
+This part hardens the existing web calculator (Stage 1 arithmetic + Stage 2 scientific) with Non-Functional Requirements: an audit of the existing code, exhaustive edge-case and component tests, enforced ≥80% statement **and** branch coverage on both layers, and production container images orchestrated by Compose. **All Stage 1 and Stage 2 design above remains authoritative and unchanged** — the tokenizer → parser → evaluator pipeline, the `decimal.Decimal` precision model, the discriminated-union API contract, the pure React reducers, and the accessibility/responsiveness strategy all carry forward untouched. Stage 3 adds **no new runtime behavior** to the Evaluation_Engine or the Frontend_Client: it adds tests, coverage tooling, and deployment artifacts around the existing code. Nothing here weakens or overrides Requirements 1–25 (Requirements 27.1–27.4).
+
+The non-negotiable steering rules still hold: **never use raw `float` in a calculation path**, **the frontend computes no evaluation result** (every result still comes from the backend — Requirement 14), the **success/error contract stays mutually exclusive**, and **accessibility is part of "done"**. The container wiring preserves the local-dev contract: in the browser the client still calls the relative path `/api/v1/evaluate`; in the container that path is reverse-proxied by Nginx to the backend service instead of by the Vite dev proxy.
+
+## Stage 3 Overview
+
+Stage 3 has three pillars, each mapped to its requirements:
+
+1. **Audit (Requirements 26, 27).** Before any Stage 3 change, produce a persisted `Audit_Log` that inspects the Stage 1 + Stage 2 source across four categories (functional bug, mathematical inaccuracy, state leakage, unhandled edge case), inventories the actual feature set, and gates every remediation behind a prior logged defect id with a full Requirement 1–25 re-verification.
+2. **Testing quality & coverage (Requirements 28, 29, 30).** Add exhaustive backend edge-case pytest modules and frontend Vitest component/state suites (network mocked by MSW), and enforce a measured ≥80% statement + branch coverage gate on both layers that *fails the build* when unmet.
+3. **Containerization & orchestration (Requirements 31, 32, 33).** Multi-stage, non-root backend image (`python:3.11-slim`), multi-stage Nginx frontend image serving the built `dist/` with SPA fallback, and a root `docker-compose.yml` that runs both on a shared network with the frontend reverse-proxying `/api` to the backend.
+
+### Key Design Decisions
+
+| Decision | Rationale | Requirements |
+| --- | --- | --- |
+| `Audit_Log` is a persisted markdown doc at `docs/stage3-audit-log.md`, created before any Stage 3 edit | A durable, reviewable artifact that can be diffed and referenced by defect id; lives next to `docs/SEED*.md` | 26.1, 26.3, 26.5 |
+| Each defect entry carries a unique id (`D-01…`), category, affected component, reproduction input/steps, and distinct expected vs. actual | Makes every defect traceable and a remediation gate enforceable | 26.2, 26.3 |
+| Remediation gating: no fix without a prior logged defect id; re-run the full Requirement 1–25 suite and record pass/fail; reject on any regression | Preserves baseline behavior; turns "backward compatibility" into an executable gate | 26.5, 26.6, 26.7, 27.4 |
+| Full-suite regression = existing Stage 1/2 tests (property P1–P24 + example tests) run green on both layers | Requirements 1–25 are already encoded as properties/examples; re-running them *is* the compatibility proof | 27.1, 27.2, 27.3 |
+| Modulo-by-zero test is **N/A**: the grammar/engine has no `%` operator | Honest WHERE-gated conditional; the `%` in source is Python-internal (quadrant/parity), not a calculator operator | 28.2 |
+| Reuse existing correctness properties for edge-case *families*; add explicit example/edge tests for the specific cases Requirement 28/29 enumerate | Avoids redundant property restatement (prework property reflection); still satisfies the "at least one pytest test" wording | 28.1–28.7, 29.1–29.4 |
+| Backend coverage via `pytest-cov` (`--cov=app --cov-branch --cov-fail-under=80` + branch gate); denominator excludes `tests/` | Measured statement+branch gate that fails the run when unmet; config excludes test files | 30.1, 30.3, 30.5, 30.7 |
+| Frontend coverage via `@vitest/coverage-v8` with `thresholds.statements=80, thresholds.branches=80`, `include: ['src/**']` | v8 provider matches Vitest 2.x; a single under-threshold metric fails the run; test/setup files excluded | 30.2, 30.4, 30.6, 30.7 |
+| Reconcile with Stage 2 R25.7 (≥90% line on scientific modules): keep it as a stricter module-scoped gate *in addition to* the global ≥80% statement+branch gate | The two gates compose — the stronger local gate does not relax the global one | 30.3, 30.4 |
+| Backend image: multi-stage, build a wheel/venv in a builder, final `python:3.11-slim` runs as a created non-root `appuser` (uid ≠ 0) with runtime-only deps | Minimal attack surface, non-root execution, no test/build deps in the final image | 31.1–31.5 |
+| Backend port is `${PORT:-8000}`; `exec uvicorn` as PID 1 so a startup failure exits non-zero | Configurable port with a safe default; container exit code reflects process failure | 31.4, 31.6, 31.7 |
+| Frontend image: Node build stage runs `npm ci && npm run build`; final `nginx:alpine` copies only `dist/` + `nginx.conf` with `try_files $uri /index.html` | Ships only static assets; SPA fallback resolves client routes; Nginx serves efficiently | 32.1–32.4 |
+| `docker-compose.yml` at repo root: `backend` + `frontend` services on a shared default network, one host→frontend port map, Nginx proxies `/api → backend:8000`, `restart: unless-stopped` | Single-command local orchestration with service-name DNS and auto-restart; backend-down ⇒ 502/503 service-unavailable | 33.1–33.6 |
+
+## Stage 1 and Stage 2 Codebase Audit
+
+Requirement 26 mandates a persisted `Audit_Log` produced **before** any Stage 3 architectural change. This section is the design of that audit: where it lives, its structure, the four-category findings (grounded in the actual Stage 1 + Stage 2 source), the feature inventory, and the remediation gating. The canonical, persisted copy is written to **`docs/stage3-audit-log.md`** (alongside `docs/SEED.md`); this design section is its authoritative source. Every remediation MUST reference a defect id recorded here *before* it is applied (Requirement 26.5), and MUST re-verify Requirements 1–25 with a recorded pass/fail outcome, rejecting any regression (Requirements 26.6, 26.7, 27.4).
+
+### Audit_Log location and structure
+
+- **Location:** `docs/stage3-audit-log.md`, committed before the first Stage 3 edit so its creation provably precedes the Stage 3 changes (Requirement 26.1).
+- **Per-defect record schema** (Requirement 26.3): each defect is one row/entry with the fields — **Defect id** (unique within the log, `D-NN`), **Category** (exactly one of the four), **Affected component** (file/module), **Reproduction** (input string or ordered steps), **Expected**, and **Actual**, with Expected and Actual stated as *distinct* values.
+- **Category coverage** (Requirement 26.2): each of the four categories has either ≥1 defect entry or an explicit "No defect found" record, so no category is left unaddressed.
+- **Feature inventory** (Requirement 26.4): an explicit present/absent enumeration of every Stage 1 + Stage 2 operation, state surface, and endpoint (see the inventory table below).
+- **Re-verification ledger** (Requirements 26.6, 26.7): for any applied remediation, a recorded pass/fail outcome per applicable Requirement 1–25 criterion; acceptance requires all-pass, and a fail retains the failing criterion ids and preserves the pre-remediation baseline until resolved.
+
+```mermaid
+flowchart TD
+    A["Inspect Stage 1 + Stage 2 source"] --> B["Write Audit_Log\n(docs/stage3-audit-log.md)"]
+    B --> C{"Defect found?"}
+    C -- "No (record 'none found')" --> G["Audit complete for category"]
+    C -- "Yes" --> D["Record D-NN: id, category,\ncomponent, repro, expected≠actual"]
+    D --> E{"Apply remediation?"}
+    E -- "No prior logged id" --> X["Reject remediation (26.5)"]
+    E -- "Has logged id" --> F["Re-verify Requirements 1–25\n(full suite) → record pass/fail"]
+    F -- "All pass" --> G
+    F -- "Any fail" --> R["Reject/correct; retain failing ids;\npreserve baseline (26.7)"]
+    R --> E
+```
+
+### Category 1 — Functional Bugs
+
+**No functional code bug found.** The tokenizer, parser, evaluator, `scientific.py`, and `constants.py` were read end-to-end and cross-checked against Requirements 1–24. Stage 1 arithmetic (PEMDAS structure, `+ - * /` left-associativity, `^` right-associativity, unary-minus grouping, `-3^2 == -9`) and Stage 2 scientific dispatch (trig/inverse-trig with angle-mode threading, powers/roots/logs, `pi`/`e` substitution) are implemented consistently with the acceptance criteria and with the existing Stage 2 correctness properties P14–P24. No incorrect-result or crash-inducing input was identified during inspection. The two cosmetic items already recorded in the Stage 1 Codebase Inspection Report (precedence-prose wording; `1.2.3` message clarity) remain the only open observations; both are documentation/message-clarity only and change no accept/reject outcome.
+
+### Category 2 — Mathematical Inaccuracy
+
+**No mathematical inaccuracy found.** All calculation paths use exact `decimal.Decimal`; a repository-wide reading found **no `float` in any backend calculation path** and **no `number` arithmetic in the frontend calculation path** (the memory register aggregates backend results with arbitrary-precision decimal-string helpers in `memoryReducer.ts`, never `Number`/`parseFloat`).
+
+| Field | Finding |
+| --- | --- |
+| Affected component | `engine/evaluator.py` (`_finalize`, inexact-flag detection), `engine/scientific.py` (guard-digit localcontext, range reduction), `engine/constants.py` (≥50-digit `pi`/`e`) |
+| Trigger | Reading finalization and scientific kernels against Requirements 3.4, 17.6, 18.6 |
+| Expected | Terminating results exact (trailing zeros normalized); non-terminating results rounded to ≥10 significant digits, round-half-even |
+| Actual | Matches expected. Finalization keys off the `Inexact` flag, so irrational scientific outputs are always rounded to ≥10 sig digits; the scientific kernels run under their own guard-digit context and re-apply the evaluator context via unary plus. No precision defect. |
+| Assessment | No defect. |
+
+### Category 3 — State Leakage
+
+**No state leakage found on either layer.** This category was inspected with particular care per the Stage 3 directive.
+
+- **Backend — decimal context:** `evaluator.evaluate()` runs the entire walk inside `with localcontext(_CONTEXT)`. `decimal.localcontext` installs a **copy** of the context for the duration of the `with` block and restores the previous thread-local context on exit, so the caller's ambient context is never mutated and no rounding/precision state bleeds across requests. The module-level `_CONTEXT` is treated as read-only configuration (never mutated); each evaluation calls `ctx.clear_flags()` on its *local* copy, not on any shared object.
+- **Backend — module-level mutable state:** `main.py`, `api/routes.py`, `api/schemas.py`, and the `engine` package hold **no** mutable module-level request state. `constants.py` exposes immutable `Decimal` values. The FastAPI app is a stateless math oracle: a request's expression and `angle_mode` are passed as plain parameters down the pipeline and nothing is retained after the response. Two concurrent requests cannot observe each other's intermediate values.
+- **Frontend — session/render state:** `calculatorReducer.ts`, `memoryReducer.ts`, and `historyReducer.ts` are **pure** reducers with no module-level mutable state; `initialState`/`initialHistory` are fresh values. State is owned by React (`useReducer`) per component mount, so a new session/mount starts from the initial state and nothing leaks across sessions or re-renders. The history reducer returns new arrays (`slice`) rather than mutating, and the memory reducer returns new objects, so no shared reference is aliased across renders.
+
+| Field | Finding |
+| --- | --- |
+| Affected component | `engine/evaluator.py` decimal context; `app/main.py` app assembly; frontend `state/*Reducer.ts` |
+| Trigger | Searching for mutable module-level globals, in-place context mutation, and reducer aliasing across requests/renders |
+| Expected | No per-request or per-session state retained beyond the request/render that created it |
+| Actual | Matches expected — `localcontext` copies/restores; reducers are pure and React-owned; no mutable globals |
+| Assessment | No defect. "No state leakage found." |
+
+### Category 4 — Unhandled Edge Cases
+
+**No unhandled edge case that changes an accept/reject outcome was found.** Every Stage 1/Stage 2 domain and syntax failure maps to a 4xx `ErrorResponse` with no `result`: division by zero, invalid operator sequence, unclosed parenthesis, invalid character, empty input (Requirement 4); `asin`/`acos` with `|x|>1`, `tan` at a singularity, `sqrt`/even-root of a negative, `ln`/`log10` of a non-positive, negative base to a non-integer power, zero-degree root, and non-finite overflow results (Requirements 17–18). The only open edge-case observation remains the cosmetic `1.2.3` message-clarity item from the Stage 1 report. The Stage 3 work *adds explicit tests* for these edge cases (Requirement 28) rather than changing behavior.
+
+### Feature inventory (Requirement 26.4)
+
+| Item | Kind | Present? |
+| --- | --- | --- |
+| `+ - * /`, unary minus, `^`, parentheses, decimals | Stage 1 operations | Present |
+| `sin cos tan asin acos atan`, `ln log10`, `sqrt`, n-th `root(x,n)`, `pi`, `e` | Stage 2 operations | Present |
+| **Modulo (`%`) operator** | Operation | **Absent** (not in grammar/engine; `%` in source is Python-internal only) |
+| `angle_mode` (radians/degrees, default radians) | Backend request field / engine state | Present |
+| Expression input + display state | Frontend state surface | Present |
+| Memory_Register (M+/M-/MR/MC) + Memory_Indicator | Frontend state surface | Present |
+| Calculation_History (append-on-success, newest-first, ≤100, clear) | Frontend state surface | Present |
+| `POST /api/v1/evaluate` | Endpoint | Present |
+
+### Audit Summary
+
+| Category | Outcome |
+| --- | --- |
+| Functional bugs | None found (2 prior cosmetic items remain, no behavior change) |
+| Mathematical inaccuracy | None found; exact decimal throughout, no `float`/`number` in calc paths |
+| State leakage | None found; `localcontext` copies/restores, pure React-owned reducers, no mutable globals |
+| Unhandled edge cases | None changing accept/reject; all domain/syntax failures already map to 4xx |
+
+Because the audit found no behavior-changing defects, no remediation is required for Stage 3; if one were applied, it would follow the gating flow above (logged id → re-verify Requirements 1–25 → reject on regression).
+
+## Stage 3 Architecture
+
+Stage 3 adds a **deployment topology** around the unchanged application. At runtime the two images run as separate containers on a shared Compose network. The browser loads the frontend from the host-mapped port; the client still issues same-origin requests to `/api/v1/evaluate`, which Nginx inside the frontend container reverse-proxies to the backend service by its Compose DNS name. This replaces the Vite dev proxy (dev-only) with an Nginx proxy (container runtime) while keeping the client code's relative path identical.
+
+```mermaid
+flowchart LR
+    subgraph Host
+        Browser["Browser\n(client code: fetch /api/v1/evaluate)"]
+    end
+    subgraph Compose["docker-compose (shared network 'default')"]
+        subgraph FE["frontend container (nginx:alpine)"]
+            NG["Nginx\n:80\nstatic dist/ + try_files → /index.html\nlocation /api → proxy_pass http://backend:8000"]
+        end
+        subgraph BE["backend container (python:3.11-slim, non-root appuser)"]
+            UV["uvicorn app.main:app\n:${PORT:-8000}\nPOST /api/v1/evaluate"]
+        end
+    end
+    Browser -- "host:PORT → :80 (static + SPA)" --> NG
+    Browser -- "/api/... (same origin)" --> NG
+    NG -- "proxy /api → backend:8000\n(service-name DNS)" --> UV
+    NG -. "backend unreachable ⇒ 502/503\nservice-unavailable, no result" .-> Browser
+```
+
+```mermaid
+flowchart TB
+    subgraph BImg["Backend image (multi-stage)"]
+        B1["Stage 1: builder\npython:3.11-slim\npip install → /opt/venv (runtime deps only, no [test])"]
+        B2["Stage 2: runtime\npython:3.11-slim\nCOPY /opt/venv; COPY app/\nadduser appuser (uid≠0); USER appuser\nEXPOSE 8000; exec uvicorn"]
+        B1 --> B2
+    end
+    subgraph FImg["Frontend image (multi-stage)"]
+        F1["Stage 1: build\nnode:20-alpine\nnpm ci && npm run build → /app/dist"]
+        F2["Stage 2: serve\nnginx:alpine\nCOPY dist → /usr/share/nginx/html\nCOPY nginx.conf"]
+        F1 --> F2
+    end
+```
+
+The layered backend ordering (transport → validation → pure `engine`) is untouched; containerization wraps the existing `uvicorn app.main:app` entry point. The frontend build is the existing `npm run build` (`tsc --noEmit && vite build`); only the serving layer changes from the Vite dev server to Nginx.
+
+## Stage 3 Components and Interfaces
+
+### Audit artifact
+
+- **`docs/stage3-audit-log.md`** — the persisted `Audit_Log` whose structure and findings are specified above. It is a documentation artifact, not code; it is referenced by defect id from any remediation commit.
+
+### Backend coverage configuration (`backend/pyproject.toml`)
+
+- Add `pytest-cov>=5` to the `[project.optional-dependencies] test` list.
+- Add coverage options to `[tool.pytest.ini_options] addopts` (or a CI invocation): `--cov=app --cov-branch --cov-report=term-missing --cov-fail-under=80`. `--cov=app` scopes the denominator to the application package (test files under `tests/` are excluded, Requirement 30.7); `--cov-branch` enables branch measurement (Requirement 30.1); `--cov-fail-under=80` fails the run when statement coverage is below the threshold (Requirement 30.5). Branch coverage is gated by a `[tool.coverage.report] fail_under = 80` entry so an unmet branch metric also fails (Requirements 30.3, 30.5).
+- The Stage 2 R25.7 module-scoped ≥90% line gate on the scientific modules is retained as an additional, stricter check and composes with the global ≥80% statement+branch gate.
+
+### Frontend coverage configuration (`frontend/vite.config.ts`, `frontend/package.json`)
+
+- Add `@vitest/coverage-v8@^2.0.5` (matching the installed Vitest 2.x) to `devDependencies`.
+- Extend the existing `test` block with a `coverage` section: `provider: 'v8'`, `include: ['src/**']`, `exclude: ['src/tests/**', 'src/**/*.test.ts', 'src/**/*.test.tsx', 'src/vite-env.d.ts', 'src/main.tsx']`, and `thresholds: { statements: 80, branches: 80, functions: 80, lines: 80 }`. An unmet statement **or** branch threshold fails `vitest run` (Requirements 30.4, 30.6). `include: ['src/**']` with the test/setup exclusions keeps test files out of the denominator (Requirement 30.7).
+- Add a `"coverage": "vitest run --coverage"` script (and keep `test` as the plain run).
+
+### Backend container (`backend/Dockerfile`, `backend/.dockerignore`)
+
+- **Multi-stage** (Requirement 31.1): a `builder` stage on `python:3.11-slim` installs the project's **runtime** dependencies only (`pip install .` with no `[test]` extra) into an isolated `/opt/venv`; the final stage on `python:3.11-slim` (minimal, Python ≥3.11 — Requirement 31.2) copies `/opt/venv` and the `app/` package (Requirement 31.5, no build/test deps).
+- **Non-root** (Requirement 31.3): the final stage runs `adduser`/`useradd` to create `appuser` with a non-zero uid and sets `USER appuser` before the entry point, so the Backend_Service process runs as a Non_Root_User.
+- **Port + entry point** (Requirements 31.4, 31.6): `ENV PORT=8000`; `EXPOSE 8000`; the entry point is `exec uvicorn app.main:app --host 0.0.0.0 --port ${PORT:-8000}` so (a) the port is configurable and defaults into the 1–65535 range when unset, and (b) `exec` makes uvicorn PID 1 so a startup failure propagates a **non-zero exit** (Requirement 31.7).
+- **`.dockerignore`** excludes `.venv`, `.pytest_cache`, `.hypothesis`, `tests/`, `__pycache__`, so the build context stays minimal and no test artifacts leak into the image.
+
+### Frontend container (`frontend/Dockerfile`, `frontend/nginx.conf`, `frontend/.dockerignore`)
+
+- **Multi-stage** (Requirement 32.1): a `build` stage on `node:20-alpine` runs `npm ci` then `npm run build` producing `/app/dist`; the final stage on `nginx:alpine` (Requirement 32.2) copies **only** `dist/` to `/usr/share/nginx/html` and copies `nginx.conf`.
+- **`nginx.conf`** (Requirements 32.3, 32.4): a `server` listening on a configured port (default 80) with `location / { try_files $uri $uri/ /index.html; }` so an unknown client-side route returns `index.html` with 200 (SPA fallback) while an existing asset path returns the file with 200; plus `location /api/ { proxy_pass http://backend:8000; }` so forwarded `/api` requests reach the backend service over the Compose network (Requirement 33.3).
+- **Port/startup** (Requirements 32.5, 32.6): Nginx listens on a single configured port within the 1–65535 range and is reachable shortly after start; an in-use or out-of-range port makes Nginx fail to bind and the container exits with an error indication.
+- **`.dockerignore`** excludes `node_modules`, `dist`, and test output so `npm ci` runs clean in the build stage.
+
+### Orchestration (`docker-compose.yml` at repo root)
+
+- **Services** (Requirement 33.1): `backend` built from `./backend/Dockerfile` and `frontend` built from `./frontend/Dockerfile`.
+- **Shared network + DNS** (Requirement 33.2): both join the Compose default network; the frontend reaches the backend by the service name `backend` (resolved by Compose DNS), which is exactly the `proxy_pass http://backend:8000` target in `nginx.conf`.
+- **Host port map** (Requirement 33.5): exactly one `ports: ["8080:80"]`-style mapping on the frontend so it is reachable from the host; the backend is **not** host-published (reached only via the proxy), keeping a single ingress.
+- **Backend-unreachable behavior** (Requirement 33.4): when `backend` is down, the Nginx `proxy_pass` yields a 502/503, which the client's `evaluateExpression` normalizes to a **service-unavailable** error with no computed result — consistent with Requirement 14.4 and the existing client contract.
+- **Restart policy** (Requirement 33.6): `restart: unless-stopped` on both services so an unexpected non-zero exit auto-restarts the container unless an operator stopped it explicitly.
+
+## Stage 3 Data Models
+
+Stage 3 introduces **no new runtime data models** — the request/response contract (`EvaluateRequest`, `EvaluateSuccess`, `ErrorResponse`) and all AST/state types are unchanged. The only new structured "model" is the documentation schema of an `Audit_Log` defect entry (id, category, affected component, reproduction, expected, actual) specified above, and the configuration shapes of the coverage/Docker/Compose files.
+
+## Stage 3 Correctness Properties
+
+*A property is a characteristic or behavior that should hold true across all valid executions of a system — essentially, a formal statement about what the system should do. Properties serve as the bridge between human-readable specifications and machine-verifiable correctness guarantees.*
+
+**Stage 3 introduces no new property-based (Hypothesis) properties, and the Stage 2 numbering therefore stops at P24.** This is a deliberate outcome of the prework analysis and property reflection, not an omission:
+
+- The only genuinely universal, input-varying behaviors inside Requirements 26–33 are the backend error families (Requirement 28) and the frontend input/keyboard/memory/history invariants (Requirement 29). **Every one of these is already captured by an existing correctness property** — division by zero by **P4**, invalid characters by **P5**, character/key append by **P8**, backspace by **P9**, Escape reset by **P10**, unmapped-key no-op by **P11**, all scientific domain/non-finite errors by **P17**, the memory-register algebra and indicator invariant by **P20**, and the history ordering/cap/clear/empty invariants by **P21**. Re-stating any of them as a new Pxx would be redundant (the new property would be implied by the existing one), which the property-reflection step requires us to eliminate.
+- The remaining Stage 3 criteria are **process gates** (audit completeness and remediation gating — Requirements 26, 27), **tooling/configuration assertions** (coverage config, Dockerfiles, Compose — Requirements 30.1–30.2, 30.7, 31–33 structure), and **deterministic suite/container integration checks** (Requirements 26.6, 27.1–27.4, 30.3–30.6, 31.3–31.7, 32.3–32.6, 33.2–33.6). None of these is a "for all generated inputs X, property P(X) holds" statement over the application's own logic, so per the PBT-applicability guidance they are verified by configuration review, CI gates, and container smoke/integration tests rather than by Hypothesis.
+- The coverage gate's decision (fail iff statement% < 80 or branch% < 80) is a pure predicate, but its "input" is produced by the suite itself rather than freely generated; it is therefore verified by the fail-under configuration plus one deliberately-under-covered negative check, not by a property test.
+
+Consequently, the Requirement 1–25 regression guarantee that Requirement 27 demands is provided by **re-executing the existing P1–P24 property suite and the Stage 1/2 example tests** — the properties already encode the behaviors that must not regress.
+
+## Stage 3 Error Handling
+
+Stage 3 adds no new application error paths; all existing 4xx `ErrorResponse` mappings (Stage 1 syntax/division errors → 422; Stage 2 `DomainError`/`InvalidFunctionError` → 422; Pydantic validation → 400/422) are unchanged and are now *tested more exhaustively* (Requirement 28). The new error-handling surface is operational rather than in-process:
+
+| Condition | Layer | Behavior | Requirement |
+| --- | --- | --- | --- |
+| Backend process fails to start in container | Backend container | `exec uvicorn` as PID 1 ⇒ container exits non-zero | 31.7 |
+| Frontend port in use / out of range | Frontend container | Nginx fails to bind ⇒ startup terminates with a port-binding error | 32.6 |
+| Backend service unreachable from frontend | Compose / Nginx proxy | `proxy_pass` returns 502/503 ⇒ client shows a service-unavailable error, no result | 33.4 (with 14.4) |
+| Container exits unexpectedly (non-zero) | Compose | `restart: unless-stopped` auto-restarts unless operator-stopped | 33.6 |
+
+## Stage 3 Testing Strategy
+
+Stage 3 is dominated by **non-PBT verification** — example/edge tests, suite-completion gates, coverage gates, configuration review, and container smoke/integration checks — because its requirements concern test exhaustiveness, deployment artifacts, and process gates rather than new universally-quantified logic (see Stage 3 Correctness Properties). The existing Hypothesis properties P1–P24 continue to run unchanged and constitute the Requirement 1–25 regression proof (Requirement 27).
+
+### Backend edge-case tests (pytest, example/edge) — Requirement 28
+
+Each case below is an explicit example/edge test exercised through the FastAPI `TestClient` (asserting the 4xx status and the absence of a `result`), complementing the broader property coverage noted in brackets.
+
+| Case | Test module | Assertion | Requirement | Property backstop |
+| --- | --- | --- | --- | --- |
+| Division by zero (`1/0`) | `tests/test_errors.py` | 4xx, no result | 28.1 | P4 |
+| **Modulo by zero** | — | **N/A — `%` absent from the grammar** (documented in the feature inventory); the WHERE guard is false, so no test is written | 28.2 | — |
+| `asin(2)`, `acos(2)` (\|x\|>1) | `tests/test_domain_errors.py` | 4xx, no result | 28.3 | P17 |
+| `asin(±1)`, `acos(±1)` (\|x\|==1) | `tests/test_boundaries.py` | 200 with a result, no error | 28.4 | — (boundary) |
+| `ln(0)`, `log10(-5)`, `sqrt(-1)` | `tests/test_domain_errors.py` | 4xx, no result | 28.5 | P17 |
+| `1++2`, `(1+2`, `1+a`, `""` | `tests/test_errors.py` | 4xx, no result (one test each) | 28.6 | P5 (invalid char) |
+| Overflow → non-finite (e.g. huge `^`) | `tests/test_boundaries.py` | 4xx, no result | 28.7 | P17 non-finite clause |
+| Suite completes | all backend tests | zero failures, zero errors | 28.8 | — |
+
+### Frontend component/state tests (Vitest + RTL + MSW) — Requirement 29
+
+All frontend tests run with **MSW** intercepting every backend call; `src/tests/setup.ts` starts an MSW server with `onUnhandledRequest: 'error'` so any un-mocked network request fails the run (Requirement 29.5). Pure reducer/state behavior reuses the Stage 2 reducer property tests (P8/P9/P10/P11, P20, P21); the component tests below assert the concrete DOM/`Expression_Display` outcomes.
+
+- **Input handling** (`tests/input.test.tsx`, Requirement 29.1): append a digit, an operator (`+ - * /`), a decimal point, and both parentheses; backspace on a non-empty Expression removes exactly the last char; backspace on an empty Expression leaves `""`. Each asserts the `Expression_Display` text equals the expected sequence exactly. [reuses P8/P9]
+- **Memory** (`tests/memory.test.ts` + `tests/memoryIndicator.test.tsx`, Requirement 29.2): register initialized to `0`; M+/M-/MR/MC produce the expected register value and display content; the Memory_Indicator renders iff the register is non-zero. [reuses P20]
+- **Keyboard** (`tests/keyboard.test.ts`, Requirement 29.3): a digit key, an operator key, each evaluate key (`Enter` and `=`), backspace on non-empty (last char removed) and empty (stays `""`), `Escape` (Expression and result cleared), and an unmapped key (Expression, result, error all unchanged). [reuses P8/P10/P11]
+- **History** (`tests/historyPanel.test.tsx`, Requirement 29.4): renders all stored entries newest-first (most recent first); selecting the expression portion and selecting the result portion each populate the `Expression_Display` with the selected text; clearing leaves zero entries; the empty-state indication renders at zero entries. [reuses P21]
+- **Suite completes** in a single non-interactive `vitest run` with zero failures/errors (Requirement 29.6).
+
+### Coverage gates — Requirement 30
+
+- **Backend:** `pytest --cov=app --cov-branch --cov-fail-under=80` plus a `[tool.coverage.report] fail_under = 80` branch gate. The run **fails** if statement or branch coverage is below 80%, reporting the unmet metric (Requirements 30.1, 30.3, 30.5). `--cov=app` excludes `tests/` from the denominator (Requirement 30.7). The Stage 2 R25.7 ≥90% scientific-module line gate is kept as an additional stricter check.
+- **Frontend:** `vitest run --coverage` with the v8 provider and `thresholds.statements = 80`, `thresholds.branches = 80`; an unmet statement or branch threshold fails the run and reports it (Requirements 30.2, 30.4, 30.6). `include: ['src/**']` with the test/setup exclusions keeps test files out of the denominator (Requirement 30.7).
+- A deliberately under-covered negative check (run a subset of tests) is used once to confirm the gate actually fails below threshold.
+
+### Backward-compatibility regression — Requirements 26.6, 27
+
+The full suite — backend pytest (Stage 1 Requirement 15 tests + Stage 2 Requirement 25 tests + properties P1–P24 + the new Stage 3 edge-case tests) and frontend Vitest (Stage 1/2 component/reducer tests + the new Stage 3 tests) — is run as the regression gate. **Zero failures and zero errors on both suites** is the acceptance condition (Requirements 27.1–27.3); any failure against a Requirement 1–25 criterion rejects the Stage 3 change and the baseline is preserved until resolved (Requirements 26.7, 27.4).
+
+### Container verification (non-PBT) — Requirements 31–33
+
+Verified by configuration review plus container smoke/integration checks (these are deterministic infrastructure behaviors, not PBT targets):
+
+- **Backend image:** inspect the Dockerfile for ≥2 stages and a `python:3.11-slim` final base (31.1, 31.2); confirm the final stage installs runtime deps only (31.5); build and run, assert the process runs as a non-zero uid (`id -u` / inspect `USER`) (31.3), that `POST /api/v1/evaluate` returns 200 for a valid expression (31.4), that an unset `PORT` falls back to the default (31.6), and that a forced startup failure exits non-zero (31.7).
+- **Frontend image:** inspect for the Node build stage + `nginx:alpine` final stage copying only `dist/` (32.1, 32.2); run the container and assert an unknown SPA route returns `index.html`/200 (32.3), an existing asset returns 200 (32.4), the port is reachable shortly after start (32.5), and an invalid/in-use port fails to bind (32.6).
+- **Compose:** inspect `docker-compose.yml` for both services, a single frontend host-port map, and `restart: unless-stopped` (33.1, 33.5, 33.6); `compose up` and assert the frontend reaches the backend by service name (33.2), that a request through the frontend `/api` returns a computed result (33.3), and that with the backend stopped the `/api` path yields a service-unavailable error with no result (33.4).
+
+> Per the steering note, long-running servers (uvicorn `--reload`, `npm run dev`, `docker compose up`) are run manually in a terminal, not as blocking automation commands. Full WCAG conformance still requires manual assistive-technology testing beyond the automated checks.
+
+## Stage 3 Module / File Structure (additions)
+
+Only **additions/edits** are shown; every Stage 1 and Stage 2 file above is retained unchanged.
+
+```
+.                               # repository root
+  docker-compose.yml            # NEW — backend + frontend services, shared network, host→frontend port, restart: unless-stopped (33)
+  docs/
+    stage3-audit-log.md         # NEW — persisted Audit_Log (four categories, feature inventory, remediation ledger) (26)
+
+backend/
+  Dockerfile                    # NEW — multi-stage: builder (runtime deps → /opt/venv) → python:3.11-slim runtime; non-root appuser; exec uvicorn on ${PORT:-8000} (31)
+  .dockerignore                 # NEW — exclude .venv, tests/, .pytest_cache, .hypothesis, __pycache__
+  pyproject.toml                # EDIT — add pytest-cov to [test]; addopts += --cov=app --cov-branch --cov-fail-under=80; [tool.coverage.report] fail_under=80 (30)
+  tests/
+    test_errors.py              # NEW — 28.1 div-by-zero; 28.6 invalid seq / unclosed paren / invalid char / empty
+    test_domain_errors.py       # NEW — 28.3 asin/acos |x|>1; 28.5 ln(0)/log10(-5)/sqrt(-1)
+    test_boundaries.py          # NEW — 28.4 asin/acos |x|==1 succeed; 28.7 overflow → non-finite → 4xx
+    # (Stage 1/2 example + property tests P1–P24 run unchanged as the Req 1–25 regression gate)
+
+frontend/
+  Dockerfile                    # NEW — multi-stage: node:20-alpine (npm ci && npm run build → dist) → nginx:alpine (serve dist) (32)
+  nginx.conf                    # NEW — try_files $uri /index.html (SPA fallback); location /api → proxy_pass http://backend:8000 (32.3, 33.3)
+  .dockerignore                 # NEW — exclude node_modules, dist, coverage
+  package.json                  # EDIT — add @vitest/coverage-v8 devDep; add "coverage": "vitest run --coverage" (30)
+  vite.config.ts                # EDIT — test.coverage: provider v8, include ['src/**'], exclude tests/setup, thresholds statements/branches 80 (30)
+  src/
+    tests/
+      setup.ts                  # EDIT — MSW server with onUnhandledRequest:'error' (29.5)
+      input.test.tsx            # NEW — 29.1 input handling + exact Expression_Display text
+      keyboard.test.ts          # NEW — 29.3 digit/operator/Enter/=/backspace/Escape/unmapped
+      memory.test.ts            # NEW — 29.2 register init/M+/M-/MR/MC values + display
+      memoryIndicator.test.tsx  # NEW — 29.2 indicator shown iff register non-zero
+      historyPanel.test.tsx     # NEW — 29.4 render newest-first, select expr/result, clear, empty state
+```
