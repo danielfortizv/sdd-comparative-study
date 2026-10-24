@@ -90,3 +90,28 @@ Interaction completed successfully.
 
 BMAD recommends entering the PRD phase as the first formal planning gate.
 
+
+BMAD --- Experiment State Snapshot 001
+Date: 2026-10-20
+Project: Shift Bank --- Stage 1
+State at interruption
+- BMAD version: 6.12.2
+- Workflow: bmad-build
+- Epic: Epic 1 --- Account Portfolio & Real-Time Balance Overview
+- Story: 1.1 --- Project Scaffolding, Design Tokens & Database
+  Seeder
+- Epic status: in-progress
+- Story status: in-progress
+- Implementation: partial
+- Manual interruption: yes
+- Cross-method comparison: not started
+BMAD artifacts generated/updated
+- _bmad-output/implementation-artifacts/epic-1-context.md
+- _bmad-output/implementation-artifacts/spec-1-1-project-scaffolding-design-tokens-database-seeder.md
+- _bmad-output/implementation-artifacts/sprint-status.yaml
+Next action
+Resume BMAD from the persisted Story 1.1 state. Do not restart Story 1.1
+and do not begin Story 1.2 until the BMAD workflow completes/reviews
+Story 1.1.
+Resume
+gemini --resume ad3a58b6-b43a-4d9c-946e-2c30962f3761

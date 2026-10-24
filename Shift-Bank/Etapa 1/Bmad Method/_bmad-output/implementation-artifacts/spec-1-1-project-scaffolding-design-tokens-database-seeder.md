@@ -2,9 +2,9 @@
 title: 'Story 1.1: Project Scaffolding, Design Tokens & Database Seeder'
 type: 'feature'
 created: '2026-10-20'
-status: 'in-progress'
+status: 'done'
 route: 'dispatch'
-review_loop_iteration: 0
+review_loop_iteration: 1
 context:
   - '_bmad-output/planning-artifacts/architecture/architecture-shift-bank-2026-10-20/ARCHITECTURE-SPINE.md'
   - '_bmad-output/planning-artifacts/ux-designs/ux-shift-bank-2026-10-20/DESIGN.md'
@@ -60,16 +60,16 @@ context:
 ## Tasks & Acceptance
 
 **Execution:**
-- [ ] `backend/requirements.txt` -- Define pinned dependencies (FastAPI 0.115.0, Uvicorn 0.31.0, Pydantic 2.9.2, pytest 8.3.3)
-- [ ] `backend/app/config.py` -- Define system settings and constants
-- [ ] `backend/app/core/database.py` -- Implement SQLite table creation and connection manager
-- [ ] `backend/app/core/seed.py` -- Implement idempotent seeder for Alex Morgan and 3 accounts
-- [ ] `backend/app/main.py` -- FastAPI app with startup lifecycle seeder execution
-- [ ] `backend/tests/test_seed.py` -- Automated test verifying seeder and integer balance precision
-- [ ] `frontend/package.json` -- Configure Vite + React 18 + TypeScript
-- [ ] `frontend/vite.config.ts` -- Setup dev server and `/api` reverse proxy to port 8000
-- [ ] `frontend/src/styles/tokens.css` -- Implement design tokens from `DESIGN.md`
-- [ ] `frontend/src/App.tsx` -- Shell layout with top bar brand and token integration
+- [x] `backend/requirements.txt` -- Define pinned dependencies (FastAPI 0.115.0, Uvicorn 0.31.0, Pydantic 2.9.2, pytest 8.3.3)
+- [x] `backend/app/config.py` -- Define system settings and constants
+- [x] `backend/app/core/database.py` -- Implement SQLite table creation and connection manager
+- [x] `backend/app/core/seed.py` -- Implement idempotent seeder for Alex Morgan and 3 accounts
+- [x] `backend/app/main.py` -- FastAPI app with startup lifecycle seeder execution
+- [x] `backend/tests/test_seed.py` -- Automated test verifying seeder and integer balance precision
+- [x] `frontend/package.json` -- Configure Vite + React 18 + TypeScript
+- [x] `frontend/vite.config.ts` -- Setup dev server and `/api` reverse proxy to port 8000
+- [x] `frontend/src/styles/tokens.css` -- Implement design tokens from `DESIGN.md`
+- [x] `frontend/src/App.tsx` -- Shell layout with top bar brand and token integration
 
 **Acceptance Criteria:**
 - Given a clean environment, when backend tests run (`pytest`), then all seeder and schema assertions pass with 0 errors.
@@ -77,4 +77,15 @@ context:
 
 ## Implementation Notes
 
-*(Appended during implementation)*
+- **Backend Scaffolding & Database Seeder**:
+  - Implemented SQLite database layer with WAL mode and foreign key enforcement in `backend/app/core/database.py`.
+  - Created tables: `customer`, `account`, `transfer`, `mfa_challenge`, `movement`, and `idempotency_cache`.
+  - Created idempotent database seeder in `backend/app/core/seed.py`, establishing customer `cust_mock_001` ("Alex Morgan") and the three approved accounts: Primary Checking (`CHK-1001`, 250,000 cents), High-Yield Savings (`SAV-2001`, 1,245,075 cents), and Emergency Reserve (`RSV-3001`, 500,000 cents).
+  - Configured FastAPI startup lifespan in `backend/app/main.py` and healthcheck endpoint `GET /api/health`.
+  - Added automated test suite in `backend/tests/test_seed.py` verifying customer/account counts, balance precision, idempotency, non-negative balance constraints, and healthcheck. All 4 tests pass (`pytest`).
+- **Frontend Scaffolding & Design Tokens**:
+  - Initialized React 18.3.1 + TypeScript 5.5.3 + Vite 5.4.2 in `frontend/`.
+  - Configured `/api` reverse proxy to `http://127.0.0.1:8000` in `frontend/vite.config.ts`.
+  - Implemented `DESIGN.md` CSS custom properties and typography in `frontend/src/styles/tokens.css` (Navy `#0A2540`, Cyan `#00D4B2`, tabular numbers).
+  - Built shell header and layout in `frontend/src/App.tsx` displaying brand and Alex Morgan customer badge.
+  - Verified compilation and production build via `npm run build` (`tsc && vite build`) with 0 errors.

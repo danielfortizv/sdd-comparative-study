@@ -258,3 +258,154 @@ All PRD, UX, and architecture requirements were covered with no identified gaps.
 - Epic 4: 3 stories
 - Total: 12 stories
 - Implementation order: 1 → 12
+
+BMAD --- Session Metrics 001
+Date: 2026-10-20
+Method: BMAD Method v6.12.2
+Project: Shift Bank --- Stage 1
+Session ID: ad3a58b6-b43a-4d9c-946e-2c30962f3761
+Interaction Summary
+  Metric                                      Value
+  Tool calls                                    184
+  Success rate                                98.9%
+  Successful/reviewed calls                     182
+  User agreement                100% (182 reviewed)
+  Code changes added                         +4,380
+  Code changes removed                         -492
+Performance
+  Metric                        Value
+  Wall time                2h 41m 35s
+  Agent active             1h 13m 29s
+  API time         1h 08m 39s (93.4%)
+  Tool time             4m 49s (6.6%)
+Model Usage
+gemini-3.8-flash
+- Requests: 232
+- Input tokens: 34,063,095
+- Cache reads: 31,973,170
+- Output tokens: 104,278
+gemini-3-flash-preview
+- Requests: 1
+- Input tokens: 9,333
+- Cache reads: 0
+- Output tokens: 123
+Termination
+Manual interruption by researcher using Ctrl+C because the researcher
+needed to leave.
+
+The session remains resumable. Preserve these values as the raw BMAD
+session metrics; do not normalize or compare them with Kiro yet.
+
+BMAD --- Interaction Record 001 --- Implementation Session
+Date: 2026-10-20
+Method: BMAD Method v6.12.2
+Project: Shift Bank --- Stage 1
+Session ID: ad3a58b6-b43a-4d9c-946e-2c30962f3761
+Model(s): gemini-3.8-flash (main), gemini-3-flash-preview
+(utility)
+Objective
+Begin BMAD implementation of Shift Bank Stage 1 using BMAD's own
+planning artifacts, sprint planning, story backlog, and implementation
+workflow.
+Progress reached
+Started Story 1.1 --- Project Scaffolding, Design Tokens & Database
+Seeder.
+
+Completed before interruption: - Activated bmad-build. - Resolved the
+Windows renderer permission issue. - Generated
+_bmad-output/implementation-artifacts/epic-1-context.md. - Created
+_bmad-output/implementation-artifacts/spec-1-1-project-scaffolding-design-tokens-database-seeder.md. -
+Updated _bmad-output/implementation-artifacts/sprint-status.yaml to
+in-progress. - Created the initial backend foundation.
+
+Files created/modified: -
+_bmad-output/implementation-artifacts/epic-1-context.md -
+_bmad-output/implementation-artifacts/spec-1-1-project-scaffolding-design-tokens-database-seeder.md -
+_bmad-output/implementation-artifacts/sprint-status.yaml -
+backend/requirements.txt - backend/app/config.py -
+backend/app/domain/models.py - backend/app/core/database.py -
+backend/app/core/seed.py - backend/app/main.py
+
+Still pending for Story 1.1 at interruption: -
+backend/tests/test_seed.py - frontend/package.json -
+frontend/vite.config.ts - frontend/src/styles/tokens.css -
+frontend/src/App.tsx - Automated validation. - Story
+review/presentation and final status transition.
+Methodological controls
+- BMAD is an independent branch of the comparative study.
+- Do not use Kiro artifacts/source as implementation references.
+- Gemini must not modify experiment logs.
+- Do not perform cross-method comparison yet.
+Termination
+The researcher manually stopped the session with Ctrl+C because they
+needed to leave. This was not an implementation failure.
+
+The session is resumable with:
+
+gemini --resume ad3a58b6-b43a-4d9c-946e-2c30962f3761
+
+On return, verify the persisted filesystem and sprint-status.yaml and
+continue from the current BMAD state.
+
+## BMAD — Story 1.1 Completion
+
+- Story: 1-1-project-scaffolding-design-tokens-database-seeder
+- Status: DONE
+- Backend tests: 4 passed, 0 failed
+- Frontend production build: PASS
+- TypeScript compilation: PASS
+- Vite build: PASS
+- Sprint status validation: PASS
+- Sprint status problems: 0
+- Stories completed: 1
+- Stories remaining in backlog: 11
+- Active epic: epic-1
+- Next story: 1-2-account-portfolio-api-context-validation
+- Implementation scope: backend scaffolding, SQLite database/seeder, frontend Vite/React/TypeScript scaffold, design tokens
+- Automated verification covered: customer/account seeding, integer-cent precision, idempotency, non-negative balances, healthcheck, frontend compilation/build
+
+## BMAD — Story 1.2 Completion
+
+- Story: `1-2-account-portfolio-api-context-validation`
+- Status: DONE
+- Backend tests: 8 passed, 0 failed
+- Frontend TypeScript/Vite build: PASS — 0 errors, 0 warnings
+- Sprint status validation: PASS — 0 problems
+- Review findings: 0 Critical, 0 High, 0 Medium, 0 Low
+- Implementation: Account API schemas, customer-context validation, account service, `GET /api/accounts`, standardized HTTP 403 error envelope, automated API tests
+- Security/context validation: `X-Customer-Id` required; missing or unauthorized customer returns HTTP 403
+- Monetary precision: integer `balance_cents` plus exact `balance_formatted`; no floating-point conversion
+- API result: 3 pre-seeded accounts returned correctly for `cust_mock_001`
+- Stories completed: 2
+- Stories remaining in backlog: 10
+- Active epic: `epic-1`
+- Next story: `1-3-responsive-account-portfolio-grid-selection-ui`
+- Remaining issues: None
+
+### Story 2.2 — Atomic Transfer Service & Balance Conservation Backend
+
+- **Story:** `2-2-atomic-transfer-service-balance-conservation-backend`
+- **Status:** Done
+- **Acceptance criteria:** 8/8 passed
+- **Files created:** 5
+- **Files modified:** 2
+- **Backend tests:** 14 passed, 0 failed
+- **Frontend tests:** 15 passed, 0 failed
+- **Frontend production build:** Passed, 0 errors
+- **Sprint status validation:** Passed (`valid: true`)
+- **BMAD review findings:** 0 Critical, 0 High, 0 Medium, 0 Low
+- **Balance conservation:** Verified; portfolio total remained `1,995,075` cents (`$19,950.75`)
+- **Atomic rollback:** Verified; failed transaction left balances unchanged and created no orphan transfer/movement records
+- **Idempotency:** 60-second duplicate-request protection verified
+- **Monetary representation:** Integer cents
+- **Transaction boundary:** SQLite `BEGIN IMMEDIATE`
+- **Dual-entry movements:** DEBIT + CREDIT with shared `transfer_id`
+- **Kiro files accessed/modified:** 0
+- **Experiment logs accessed/modified:** 0
+
+### Sprint State After Story 2.2
+
+- Completed stories: 5
+- Remaining backlog stories: 7
+- Active epic: Epic 2 — In Progress
+- Next recommended story: `2-3-end-to-end-transfer-execution-view-synchronization`
