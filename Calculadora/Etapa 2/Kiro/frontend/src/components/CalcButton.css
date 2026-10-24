@@ -1,0 +1,120 @@
+/*
+ * CalcButton.css — theming, sizing, touch targets, focus + active state for a
+ * single calculator key (Task 13; Requirements 9.4, 11.1, 11.3, 11.4, 11.5).
+ *
+ * Consumes the design tokens from styles/theme.css. Every label/face color pair
+ * and every border was contrast-checked (ratios noted in theme.css). This file
+ * covers: base button chrome, the three variants (digit/operator/action), the
+ * >=44x44px mobile touch target (Req 9.4), the visible focus indicator
+ * (Req 11.4), and the visible pressed/active state (Req 11.5).
+ */
+
+.calc-button {
+  /* Layout / sizing */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  /* Fluid but never smaller than the mobile touch-target floor. The 44px min
+     applies at all widths and is reaffirmed for mobile below (Req 9.4). */
+  min-height: var(--touch-min);
+  min-width: var(--touch-min);
+  padding: clamp(0.35rem, 1.5vw, 0.6rem);
+
+  /* Typography: control label. Meets >= 4.5:1 for each variant (Req 11.1). */
+  font-family: inherit;
+  font-size: clamp(1rem, 3.5vw, 1.25rem);
+  font-weight: 600;
+  line-height: 1;
+
+  /* Chrome */
+  border: 2px solid var(--color-border-digit); /* boundary >= 3:1 (Req 11.3) */
+  border-radius: var(--radius);
+  cursor: pointer;
+  user-select: none;
+  touch-action: manipulation;
+  /* Animate only the active-state cues; respects reduced motion below. */
+  transition: filter 80ms ease, transform 80ms ease;
+}
+
+/* --------------------------------------------------------------- Variants */
+
+/* Digits: neutral navy face, white label -> 11.14:1 (Req 11.1). */
+.calc-button--digit {
+  background-color: var(--color-digit-bg);
+  color: var(--color-digit-text);
+  border-color: var(--color-border-digit); /* 4.10:1 on face (Req 11.3) */
+}
+
+/* Operators: amber face, near-black label -> 8.62:1 (Req 11.1).
+   A dark border keeps the boundary >= 3:1 against the light amber face. */
+.calc-button--operator {
+  background-color: var(--color-operator-bg);
+  color: var(--color-operator-text);
+  border-color: var(--color-border-strong);
+}
+
+/* Actions (parentheses, clear, equals): green face, near-black label -> 8.40:1.
+   Equals is emphasized with the brighter equals token below. */
+.calc-button--action {
+  background-color: var(--color-action-bg);
+  color: var(--color-action-text);
+  border-color: var(--color-border-strong);
+}
+
+/* Emphasize the evaluate (=) key with the brighter equals palette (10.35:1). */
+.calc-button--action.keypad__key--kequals {
+  background-color: var(--color-equals-bg);
+  color: var(--color-equals-text);
+}
+
+/* --------------------------------------------------- Focus indicator (11.4) */
+
+/*
+ * Double-ring focus indicator: an inner dark ring (box-shadow) plus an outer
+ * light ring (outline). The two rings contrast ~18.8:1 against each other, and
+ * for every button face at least one ring exceeds 3:1 against that face, so the
+ * focus indicator is always visible with >= 3:1 contrast (Req 11.4).
+ */
+.calc-button:focus-visible {
+  outline: var(--focus-ring-width) solid var(--focus-ring-outer);
+  outline-offset: var(--focus-ring-width);
+  box-shadow: 0 0 0 var(--focus-ring-width) var(--focus-ring-inner);
+}
+
+/* ------------------------------------------------ Active / pressed (11.5) */
+
+/*
+ * Visible active-state indication distinguishing a pressed control from its
+ * resting state (Req 11.5). Covers pointer/touch press (:active) and a
+ * `data-active` hook so a keyboard-triggered key can show the same pressed look.
+ */
+.calc-button:active,
+.calc-button[data-active='true'] {
+  transform: translateY(2px);
+  filter: brightness(0.85);
+}
+
+/* Respect users who prefer reduced motion: drop the transform/animation but
+   keep a clear brightness change so the pressed state stays visible (Req 11.5). */
+@media (prefers-reduced-motion: reduce) {
+  .calc-button {
+    transition: none;
+  }
+
+  .calc-button:active,
+  .calc-button[data-active='true'] {
+    transform: none;
+    filter: brightness(0.8);
+  }
+}
+
+/* ------------------------------------------------- Mobile touch targets (9.4) */
+
+/* Reaffirm the >= 44x44px CSS-pixel touch target on mobile widths (Req 9.4). */
+@media (max-width: 767px) {
+  .calc-button {
+    min-height: var(--touch-min);
+    min-width: var(--touch-min);
+  }
+}
