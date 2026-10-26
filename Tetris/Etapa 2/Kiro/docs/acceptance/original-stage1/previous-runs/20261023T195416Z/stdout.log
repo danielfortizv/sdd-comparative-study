@@ -1,0 +1,28 @@
+..........F............................                                  [100%]
+================================== FAILURES ===================================
+__________________________ test_state_payload_shape ___________________________
+
+    def test_state_payload_shape():
+        data = client.post("/api/games").json()
+>       assert set(data.keys()) == {"id", "status", "board", "active_piece"}
+E       AssertionError: assert {'active_piec...e', 'id', ...} == {'active_piec...id', 'status'}
+E         
+E         Extra items in the left set:
+E         'score'
+E         'hold_piece'
+E         'next_piece'
+E         'level'
+E         'total_lines'...
+E         
+E         ...Full output truncated (3 lines hidden), use '-vv' to show
+
+..\..\..\Etapa 1\Kiro\backend\tests\test_api.py:86: AssertionError
+============================== warnings summary ===============================
+.venv\lib\site-packages\starlette\testclient.py:40
+  D:\KEVIN\UNIVERSIDAD\Trabajos\Proyecto\Caso 2-Tetris\Etapa 2\Kiro\backend\.venv\lib\site-packages\starlette\testclient.py:40: DeprecationWarning: The anyio.abc.BlockingPortal alias is deprecated, use anyio.from_thread.BlockingPortal instead.
+    _PortalFactoryType = typing.Callable[[], typing.ContextManager[anyio.abc.BlockingPortal]]
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ===========================
+FAILED ::test_state_payload_shape - AssertionError: assert {'active_piec...e'...
+1 failed, 38 passed, 1 warning in 7.00s

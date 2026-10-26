@@ -1,0 +1,163 @@
+{
+  "researcher_created": true,
+  "measured_at_utc": "2026-10-21T14:23:31.812001+00:00",
+  "source": {
+    "files": 19,
+    "lines": 1299,
+    "nonblank_lines": 1110,
+    "characters": 37962,
+    "lines_per_file": 68.37,
+    "per_file": {
+      "backend/app/controllers/games.py": {
+        "lines": 70,
+        "nonblank_lines": 57,
+        "characters": 2186,
+        "sha256": "E66DD5A94799546EB4EB9A29B64F1741B5420D5682638C4236191EE564B57528"
+      },
+      "backend/app/core/config.py": {
+        "lines": 7,
+        "nonblank_lines": 5,
+        "characters": 173,
+        "sha256": "0EDCC679E16FF9D13B206B87A6C92CBC0CCCB75412D0D7F2AFFDD2D87DAFCBE7"
+      },
+      "backend/app/domain/pieces.py": {
+        "lines": 19,
+        "nonblank_lines": 16,
+        "characters": 652,
+        "sha256": "E57C05C961EFED813DFA1CA565166C50F8B62D9FB3A9FC37121FECC470EA6D0E"
+      },
+      "backend/app/domain/rules.py": {
+        "lines": 103,
+        "nonblank_lines": 84,
+        "characters": 4107,
+        "sha256": "B34A3EEBF32946630C8588A1CF7579A6185CAEC297AE7CA021B28A438362EEB5"
+      },
+      "backend/app/main.py": {
+        "lines": 30,
+        "nonblank_lines": 24,
+        "characters": 640,
+        "sha256": "D5D2B7CFF78C1FB186C3E17B8E6A43F044B95CA051DB52B98EFD59364EE3CB73"
+      },
+      "backend/app/models/game.py": {
+        "lines": 16,
+        "nonblank_lines": 13,
+        "characters": 520,
+        "sha256": "AA4EECB66FDF2A837F28D9D900471613CA9122C41A5D2DB9ED371E5FB51D609D"
+      },
+      "backend/tests/test_game.py": {
+        "lines": 245,
+        "nonblank_lines": 207,
+        "characters": 10178,
+        "sha256": "EE683A8C67076B8FFC4174B3A4F974370E064F955CC18CAA952A4DE27393A4A3"
+      },
+      "frontend/index.html": {
+        "lines": 12,
+        "nonblank_lines": 12,
+        "characters": 318,
+        "sha256": "BA65391726B23EA4914755E81DFAD88CD6E0825E7FA3BF39FAFC314600393E9E"
+      },
+      "frontend/src/api.ts": {
+        "lines": 51,
+        "nonblank_lines": 46,
+        "characters": 1358,
+        "sha256": "8549B363E487A861CA64B03376D6361A092E29034D92FBFCC55FFE3153391AD5"
+      },
+      "frontend/src/App.tsx": {
+        "lines": 139,
+        "nonblank_lines": 119,
+        "characters": 4242,
+        "sha256": "0D018C987B3C98F4E5A10903FFE145DE0B7E8CD5870328A9DC6108EF4755BC05"
+      },
+      "frontend/src/components/GameStatus.tsx": {
+        "lines": 64,
+        "nonblank_lines": 55,
+        "characters": 1900,
+        "sha256": "12B8EF0E0275B4BD162BBC2471054DB3A82F8878C7AB5D4500C026B41917AE5D"
+      },
+      "frontend/src/components/TetrisBoard.test.tsx": {
+        "lines": 41,
+        "nonblank_lines": 35,
+        "characters": 1527,
+        "sha256": "A0C8C47C9A23B24CCB4C0C6B07F1E080215E4B2E25862C00CD743A8E1EE121EF"
+      },
+      "frontend/src/components/TetrisBoard.tsx": {
+        "lines": 44,
+        "nonblank_lines": 39,
+        "characters": 1389,
+        "sha256": "1DDCE2645A3D6A55635AAD4906E45BB65ADC5FDAE0AF3C2DE4E5324AA6E0F845"
+      },
+      "frontend/src/index.css": {
+        "lines": 388,
+        "nonblank_lines": 334,
+        "characters": 7150,
+        "sha256": "B3FB2D598EB659561FEB22EF312259355C1944B58B892413E94734DA3E4883B6"
+      },
+      "frontend/src/main.tsx": {
+        "lines": 10,
+        "nonblank_lines": 9,
+        "characters": 236,
+        "sha256": "04BC6C664005D207F6C9A42CAC1A11810F6257A77604ECC9A2DFA1F0A68959BA"
+      },
+      "frontend/src/types.ts": {
+        "lines": 16,
+        "nonblank_lines": 13,
+        "characters": 457,
+        "sha256": "CC470DD66AFC9B7416106D7CF12A9EB97602264C96C81965B556262F596A2862"
+      },
+      "frontend/vite.config.d.ts": {
+        "lines": 2,
+        "nonblank_lines": 2,
+        "characters": 76,
+        "sha256": "4B96DD19FD2949D28CE80E913412B0026DC421E5BF6C31D87C7B5EB11B5753B4"
+      },
+      "frontend/vite.config.js": {
+        "lines": 15,
+        "nonblank_lines": 15,
+        "characters": 354,
+        "sha256": "74A1617BBA280B1E9325610B607E5882ECA0C9F9379B3D8036D1300952105651"
+      },
+      "frontend/vite.config.ts": {
+        "lines": 27,
+        "nonblank_lines": 25,
+        "characters": 499,
+        "sha256": "FCD91673C825B2E6D146CF01EF5E625C8258D5B3756BECF591E5E0F46022077A"
+      }
+    }
+  },
+  "specification": {
+    "files": 2,
+    "lines": 136,
+    "nonblank_lines": 111,
+    "characters": 10093,
+    "lines_per_file": 68.0,
+    "per_file": {
+      "specs/requirements.md": {
+        "lines": 115,
+        "nonblank_lines": 96,
+        "characters": 8778,
+        "sha256": "089245525ADD64E41B43498D3BA241B388DDA573AE1E92FD916F7E18ED4BB27D"
+      },
+      "specs/session_notes.md": {
+        "lines": 21,
+        "nonblank_lines": 15,
+        "characters": 1315,
+        "sha256": "7202548B9023A5EA3BEB27F2C87E41B4B4AC8670F5A6340D7FABD27707B96DA1"
+      }
+    }
+  },
+  "source_scope": "All .py/.ts/.tsx/.js/.jsx/.css/.html under backend and frontend, including tests and existing vite.config.js/.d.ts config snapshots; excludes dependencies, build directories and caches. Text counts use UTF-8 BOM removal and universal newline normalization.",
+  "dependency_manifests": [
+    {
+      "path": "backend/pyproject.toml",
+      "sha256": "6BD6C219916FE366AE78368A6D88E663B2326B197808E6E43C2D063B0990E212"
+    },
+    {
+      "path": "frontend/package-lock.json",
+      "sha256": "65A7C6CA9F367F5ADFEF2B175E404A05E5236249659609899CB65C285976799E"
+    },
+    {
+      "path": "frontend/package.json",
+      "sha256": "6E42009E2CD7C2EEDEA3F44AF04152B63497D2589B80D6747DCE38F4B796BFA0"
+    }
+  ]
+}

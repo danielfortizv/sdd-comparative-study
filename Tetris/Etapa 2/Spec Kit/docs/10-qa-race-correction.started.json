@@ -1,0 +1,8 @@
+{
+  "label": "10-qa-race-correction",
+  "workflow": "clarify",
+  "started": "2026-10-20T20:17:28.7238915-05:00",
+  "prompt_sha256": "212CD05E86F2C4532D5DEDA5E1C3F12177D7240BDA4B13F86A3FE6752EE681B0",
+  "seed_sha256": "63919779DD4104076FBABCB130CE296A160FA840E0B4755A2AA5D90757ADA8EF",
+  "submission_method": "direct clarification prompt"
+}

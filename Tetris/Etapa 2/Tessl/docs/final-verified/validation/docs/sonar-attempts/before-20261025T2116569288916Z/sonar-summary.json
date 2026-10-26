@@ -1,0 +1,18 @@
+﻿{
+    "project":  "tetris-stage2-tessl",
+    "gate":  "ERROR",
+    "coverage":  "85.2",
+    "complexity":  "148",
+    "reliability_rating":  "1.0",
+    "code_smells":  "10",
+    "duplicated_lines_density":  "0.0",
+    "security_rating":  "3.0",
+    "security_hotspots":  "0",
+    "sqale_index":  "52",
+    "sqale_rating":  "1.0",
+    "bugs":  "0",
+    "cognitive_complexity":  "136",
+    "ncloc":  "1119",
+    "vulnerabilities":  "1",
+    "lines":  "1394"
+}

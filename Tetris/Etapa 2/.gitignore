@@ -1,0 +1,41 @@
+# Snapshot público del experimento; los originales locales no se eliminan.
+**/node_modules/
+**/.venv/
+**/venv/
+**/__pycache__/
+**/.pytest_cache/
+**/.sonar/
+**/.sonar-user-home/
+**/gemini-home/
+**/transcripts-archive/
+**/pip-cache/
+**/uv-cache/
+**/npm-cache/
+**/*chrome*profile*/
+**/researcher-setup/
+**/quota-monitor/
+**/*quota-monitor*
+**/*quota-query*
+**/.env
+**/.env.*
+**/application_default_credentials.json
+**/oauth_creds.json
+**/*.exe
+**/*.dll
+**/*.sqlite
+**/*.db
+**/.coverage
+# Los logs de ejecución y Sonar son evidencia del experimento.
+!**/docs/*.log
+!**/docs/**/*.log
+shared/report/tesis-*.pdf
+shared/report/overleaf-*.zip
+
+# Cachés auxiliares detectadas durante la revisión de publicación
+**/.vitest-tmp/
+**/node-compile-cache/
+**/.ruff_cache/
+**/.mypy_cache/
+**/.vite/
+**/.vite-temp/
+**/*.tsbuildinfo

@@ -1,0 +1,370 @@
+{
+  "researcher_created": true,
+  "created_at_utc": "2026-10-21T20:19:37.660359+00:00",
+  "label": "specification-02",
+  "metrics_measured_at_utc": "2026-10-21T20:19:36.369725+00:00",
+  "unclosed_invocation_labels_at_measurement": [],
+  "scope": "own Kiro source/spec/dependency manifest state and retained researcher/CLI/native evidence; dependencies/auth/Git excluded. Private transcript evidence may contain incidental sensitive strings; public summaries require scoped review. Snapshot is not final acceptance.",
+  "files": [
+    {
+      "path": "files/.kiro/specs/tetris-stage1-option-a/design.md",
+      "bytes": 8055,
+      "sha256": "73E875D7EA930C39B275BECB7BE49AB153BB06536E886EEFA43E796D72F349DB"
+    },
+    {
+      "path": "files/.kiro/specs/tetris-stage1-option-a/requirements.md",
+      "bytes": 16856,
+      "sha256": "61E6234BDBC9CC1D7450827B9DAACCAC6C0A2B01C5060AED564E87A18F2A7C7D"
+    },
+    {
+      "path": "files/.kiro/specs/tetris-stage1-option-a/tasks.md",
+      "bytes": 3915,
+      "sha256": "26B03785E5B4A3C3EE71F8694EC669A03B1E4274083A6A275A98A3FF90E7A037"
+    },
+    {
+      "path": "files/.kiro/specs/tetris-stage2-option-a/design.md",
+      "bytes": 20130,
+      "sha256": "A04D7F890530C03A47A3C647E928D85F799D9E9673A57F111252594F1ECD2147"
+    },
+    {
+      "path": "files/.kiro/specs/tetris-stage2-option-a/requirements.md",
+      "bytes": 24269,
+      "sha256": "07A152B115479C2593EDA7582819C6037C0E7B75216DEE956363257309C664A9"
+    },
+    {
+      "path": "files/.kiro/specs/tetris-stage2-option-a/tasks.md",
+      "bytes": 8609,
+      "sha256": "8B251741256EF08D7895C4C79602CF60595D915860BA53E1885E735D77014479"
+    },
+    {
+      "path": "files/backend/app/__init__.py",
+      "bytes": 57,
+      "sha256": "E6D9CA44CA98FBA4E73DA6EF22243087B713902D8F51C11228DE31E1B97D5D8F"
+    },
+    {
+      "path": "files/backend/app/api/__init__.py",
+      "bytes": 53,
+      "sha256": "4531E4A5551A74ECF743FBEFB487472CBAF7E9A33265E4F16E8AAA275BC6D8D9"
+    },
+    {
+      "path": "files/backend/app/api/games.py",
+      "bytes": 1625,
+      "sha256": "E552376140AAFB67A62E37EF66251FC9939284C0A713EBAA4174F43829358C50"
+    },
+    {
+      "path": "files/backend/app/api/schemas.py",
+      "bytes": 1506,
+      "sha256": "D6F5EB2C9685E2B72347361EA59FDEB16A439D721C5088A16DCFD301B705F453"
+    },
+    {
+      "path": "files/backend/app/domain/__init__.py",
+      "bytes": 41,
+      "sha256": "FA4290DBFB9CA1C266DB445F5C4B3164FD7DD9D2F523324677FD95B7372A8FDE"
+    },
+    {
+      "path": "files/backend/app/domain/models.py",
+      "bytes": 1688,
+      "sha256": "4FDB9925B0F08157364E97EE893B41391A021981B9181007224A8D8793C5EB4B"
+    },
+    {
+      "path": "files/backend/app/main.py",
+      "bytes": 810,
+      "sha256": "72D146C1330457889185164A7921F1C20D19683EEA4405DFC649813A233476F1"
+    },
+    {
+      "path": "files/backend/app/rules/__init__.py",
+      "bytes": 49,
+      "sha256": "387543C055C2012B7110606F70C426036B5BA9F266F55AA5B8F14CCED1756333"
+    },
+    {
+      "path": "files/backend/app/rules/engine.py",
+      "bytes": 4347,
+      "sha256": "A8AFB5598F437AACE13C52C54052CE1BC9F7D2EBBDDC00FEF79B08D7DF3191E6"
+    },
+    {
+      "path": "files/backend/app/rules/pieces.py",
+      "bytes": 1583,
+      "sha256": "D034B5B88374FC0C0FA2883F9C9C2E96BD1ACFA51072314114B2312E229C7D48"
+    },
+    {
+      "path": "files/backend/app/store.py",
+      "bytes": 838,
+      "sha256": "99807535D9907A6E89B1375E7D274C1D1EB0E7207859CB34D3D0A5A09AAB21BF"
+    },
+    {
+      "path": "files/backend/pytest.ini",
+      "bytes": 52,
+      "sha256": "4551307F5B1A58ADB7EC215D513089BA670B1737B81ADA5A5863AFE796D67343"
+    },
+    {
+      "path": "files/backend/requirements.txt",
+      "bytes": 78,
+      "sha256": "5AD4496E40CDFE46AEAF03CD2596243FE5ECF0C8B9B2B6BD6FD19B704187C183"
+    },
+    {
+      "path": "files/backend/tests/__init__.py",
+      "bytes": 0,
+      "sha256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"
+    },
+    {
+      "path": "files/backend/tests/test_api.py",
+      "bytes": 3102,
+      "sha256": "C3BF981F0F1F2277ABC83F94ABFD2BBFA10BF97492C55B5B8F6A5BF7B307860D"
+    },
+    {
+      "path": "files/backend/tests/test_rules.py",
+      "bytes": 8709,
+      "sha256": "3DC7B6921EAD493CCBCA1022B11054C84A1D097B8248364D19118868DA586451"
+    },
+    {
+      "path": "files/frontend/index.html",
+      "bytes": 303,
+      "sha256": "2975D7EDAA83F110B023DE9F7CCA8E1F72877739B39902E940D0B22EFAB86033"
+    },
+    {
+      "path": "files/frontend/package-lock.json",
+      "bytes": 58261,
+      "sha256": "865984C6199FB8C57B0ABB7B3CEDFD850BFBE537AF7F0BAB102DF4EAA98CB84A"
+    },
+    {
+      "path": "files/frontend/package.json",
+      "bytes": 464,
+      "sha256": "9784382ED02897CB0ABFF930838B90AECCE9C7A3852F13263D96A905B697A547"
+    },
+    {
+      "path": "files/frontend/src/App.tsx",
+      "bytes": 2472,
+      "sha256": "5752E1EE90B34E04BDC9C5F67322F41E6C1A42D5E5508F298353BCEF29C636D2"
+    },
+    {
+      "path": "files/frontend/src/Board.tsx",
+      "bytes": 1827,
+      "sha256": "EEE153923E1AEF8A63FF53C1F8B7A43E78DF9E60219EC68491579E881592EABC"
+    },
+    {
+      "path": "files/frontend/src/api.ts",
+      "bytes": 1427,
+      "sha256": "86BA72BF1C5665878771B5D9B16DC140BC129B873380AFB3523B99ECE9CB6EA3"
+    },
+    {
+      "path": "files/frontend/src/main.tsx",
+      "bytes": 257,
+      "sha256": "EE7B63D2A6F58647FAC79B1FC870F5895284DBF14B1B375AEE6C4BC79FF2A2CE"
+    },
+    {
+      "path": "files/frontend/src/types.ts",
+      "bytes": 639,
+      "sha256": "888F47CB0FCC61C6B9756F4A92D77541E85C55B450B6BCC529A0F4B96590768B"
+    },
+    {
+      "path": "files/frontend/src/useGame.ts",
+      "bytes": 1919,
+      "sha256": "47E8AC28FFB25CFEC53FB2F1ABC855E4FD37616F69D8E0E1EDE1B2579C3E417C"
+    },
+    {
+      "path": "files/frontend/src/vite-env.d.ts",
+      "bytes": 159,
+      "sha256": "6600001F6B9E18657B3314FDCF2FAD48D4F74BFAFB27FC464BB57CE670CB8EC8"
+    },
+    {
+      "path": "files/frontend/tsconfig.json",
+      "bytes": 562,
+      "sha256": "E09B1D7398A757EAE35C19EFCD50710803FE8DF7E8D6414D2B6F595166EBF906"
+    },
+    {
+      "path": "files/frontend/tsconfig.node.json",
+      "bytes": 233,
+      "sha256": "BB9FD8592A9E364641441219F10D84DAAE9BA2CA5CC85DB798EFAD6913BB8257"
+    },
+    {
+      "path": "files/frontend/vite.config.ts",
+      "bytes": 230,
+      "sha256": "C53F382D6512434C5BD560297D35BA716A2B704554AE7DD3AA5F00687694B63B"
+    },
+    {
+      "path": "metrics.json",
+      "bytes": 47324,
+      "sha256": "62ADB9EF5325C0DBBBD452661C05FA805C2A7F49050C99A13B681DC78E21504F"
+    },
+    {
+      "path": "input-audit.json",
+      "bytes": 5135,
+      "sha256": "CE773D277ED66E0ACEC656DC8053CBDED7B78FEDC29BC256C08AF0792FC544B4"
+    },
+    {
+      "path": "question-audit.json",
+      "bytes": 27106,
+      "sha256": "E453B4F3F5E71B70A8B75AD757FB99850F9A179E0B980935C0B12C6173922372"
+    },
+    {
+      "path": "question-audit.md",
+      "bytes": 479,
+      "sha256": "63D4606479544EF980A8C451CB9159B281D108DA36609FB532DD129395DF723D"
+    },
+    {
+      "path": "question-review.json",
+      "bytes": 6767,
+      "sha256": "5AD35BF3FF320A5A3D5B250E649D26113DCE69FD2A610B5161C3DC1D20EC16A6"
+    },
+    {
+      "path": "baseline-metrics.json",
+      "bytes": 6745,
+      "sha256": "4C3DD0A713724E092D04335C2C7873B2479C5849B349756345B276B887461DA1"
+    },
+    {
+      "path": "baseline-copy-manifest.json",
+      "bytes": 7726,
+      "sha256": "1E536AF075438807D58BA88F840436E4ECDE77D71C8ABAF0480CF665412390EB"
+    },
+    {
+      "path": "baseline-hash-verification-after-environment.json",
+      "bytes": 7685,
+      "sha256": "731EB00E7814A606A0BD4697D5C4EF3F6867136FA1EA30BE4E9D1576099863B2"
+    },
+    {
+      "path": "baseline-coverage-instrumentation.json",
+      "bytes": 13118,
+      "sha256": "310823E659472A4CE7FA97CF3163CECEB98CAB8FE84854B63424668014E9F7D7"
+    },
+    {
+      "path": "run-classifications.json",
+      "bytes": 1095,
+      "sha256": "9756B12EF323B23999AA93332BD15ED56DE31B7774B7B53CE8E747AA1F40AD01"
+    },
+    {
+      "path": "kiro-runtime-pin.json",
+      "bytes": 203,
+      "sha256": "A9D44AC6A5D490B4A3021CE27959ECDCA740BE98BA7AEFE7BE1A8047E46BBD58"
+    },
+    {
+      "path": "kiro-cli-provenance.json",
+      "bytes": 989,
+      "sha256": "DDDD2F3E4AB772BE21DB02FCB9B873C6E531C0A55AF64986438EF4C167D5C5FB"
+    },
+    {
+      "path": "kiro-schema-validation.json",
+      "bytes": 1233,
+      "sha256": "F4D9858074C6B0218658360E7DCDCE0F3A71D67D95BBD68C1409CA2FBEA79C64"
+    },
+    {
+      "path": "BASELINE.md",
+      "bytes": 11894,
+      "sha256": "182F581EE27D225CA3C0CBC2C8F8447366233DBF5988DAAE5FF2E3FB48370E14"
+    },
+    {
+      "path": "MEASUREMENT_PROTOCOL.md",
+      "bytes": 8913,
+      "sha256": "66604E188F228AE2A00B1D74FC3F7A3FB3EE2E8B81A7492EA13A21107994426B"
+    },
+    {
+      "path": "RESEARCH_LOG.md",
+      "bytes": 11118,
+      "sha256": "4B80C719AD638B34E927CD96BE5D4E309F4F90F2E7572321791626F4194AAE24"
+    },
+    {
+      "path": "invocations/01-specify.prepared.json",
+      "bytes": 1260,
+      "sha256": "1CD02C763389ABD287903E33B44E3B4FDDB48B184F1667C9482E8A7D43E71D71"
+    },
+    {
+      "path": "invocations/01-specify.started.json",
+      "bytes": 1104,
+      "sha256": "48B6C8EA33F944B4B8A1A0656578097451AEDE55BF04CF6EB6B16ABB87D96258"
+    },
+    {
+      "path": "invocations/01-specify.run.json",
+      "bytes": 1388,
+      "sha256": "C238F3CCAF6AC96FDDC94495430F893DA1A1512D5108FF272B25060EE4AAFA80"
+    },
+    {
+      "path": "invocations/01-specify.prompt.txt",
+      "bytes": 9777,
+      "sha256": "13ECF3745FCEBDA4C986D17DF2A9A6C31727935F7D736A1D4E395CA22F12581A"
+    },
+    {
+      "path": "invocations/01-specify.stdout.jsonl",
+      "bytes": 271416,
+      "sha256": "72855489C6B4E0F27466132A272E6732698C1576F8F0633415B10F8D18BD2970"
+    },
+    {
+      "path": "invocations/01-specify.stderr.txt",
+      "bytes": 3112,
+      "sha256": "B5444FB0C79633FB9EEF2E09381B3185335F2A8DEC850BF85555DE1438FD3D34"
+    },
+    {
+      "path": "invocations/02-specify-student.started.json",
+      "bytes": 1129,
+      "sha256": "B81E16ED9027E0753E98DCB5D8BE6CF1A47881FC84DAC46359D73AF53A3DDBF9"
+    },
+    {
+      "path": "invocations/02-specify-student.run.json",
+      "bytes": 1404,
+      "sha256": "C6E46AFBB54A7DD17D7CE515831E5968038BA20FB5EA95529ECE3EEF27853D60"
+    },
+    {
+      "path": "invocations/02-specify-student.prompt.txt",
+      "bytes": 9777,
+      "sha256": "13ECF3745FCEBDA4C986D17DF2A9A6C31727935F7D736A1D4E395CA22F12581A"
+    },
+    {
+      "path": "invocations/02-specify-student.stdout.jsonl",
+      "bytes": 728218,
+      "sha256": "93BAC44DF56F171407144BCCA6A3AD62D35B0278BE255B4FFDFCB2F251E8ACB4"
+    },
+    {
+      "path": "invocations/02-specify-student.stderr.txt",
+      "bytes": 859,
+      "sha256": "AB06D42C91739A96A21588E78AFA75AAD18A2D44D8E13ACAED4F408AF5EEB6FA"
+    },
+    {
+      "path": "ACP_DRIVER.md",
+      "bytes": 3248,
+      "sha256": "BCF4A2D2D46979B38C77AED4310CD4987E71DA535C3FBDB26B4DB7A2F0B9E6E0"
+    },
+    {
+      "path": "01-baseline-preservation.json",
+      "bytes": 12444,
+      "sha256": "82C2BF1DCCBC43406AC55A663BE6BAB9D5DE750FF00ABF108EAD0871185A81D4"
+    },
+    {
+      "path": "02-baseline-preservation.json",
+      "bytes": 12395,
+      "sha256": "F49C7A5457F2372C8A2E40FF8A699396377D021E281D1ABF06049F6862997366"
+    },
+    {
+      "path": "transcripts-archive/manifest.json",
+      "bytes": 3141,
+      "sha256": "3BE4C982F10A186913536BEFA3BB432B7493429A66D45752E74B90C8098172ED"
+    },
+    {
+      "path": "transcripts-archive/01-specify.acp_stream.72855489C6B4E0F2.jsonl",
+      "bytes": 271416,
+      "sha256": "72855489C6B4E0F27466132A272E6732698C1576F8F0633415B10F8D18BD2970"
+    },
+    {
+      "path": "transcripts-archive/sess_bfb2da1c-8ba1-4be0-a8c5-bdbf919798f5.native_session.8EA2E9EC69B35152.json",
+      "bytes": 1026,
+      "sha256": "8EA2E9EC69B35152CD55AC729C144037F9D694322760E8A34CBE53F7960F09E8"
+    },
+    {
+      "path": "transcripts-archive/sess_bfb2da1c-8ba1-4be0-a8c5-bdbf919798f5.native_messages.80C1DF6B6D27E5D0.jsonl",
+      "bytes": 147178,
+      "sha256": "80C1DF6B6D27E5D082D0D601A03E074D783C58DFE31396B058EE09FEC20CC883"
+    },
+    {
+      "path": "transcripts-archive/02-specify-student.acp_stream.93BAC44DF56F1714.jsonl",
+      "bytes": 728218,
+      "sha256": "93BAC44DF56F171407144BCCA6A3AD62D35B0278BE255B4FFDFCB2F251E8ACB4"
+    },
+    {
+      "path": "transcripts-archive/sess_3a260d90-994e-415d-8540-078b3a99418a.native_session.AAA88D590CD29FA7.json",
+      "bytes": 1518,
+      "sha256": "AAA88D590CD29FA7635D9ED9BF7355570CD2A6D32723051B2106DFA7A4D1451C"
+    },
+    {
+      "path": "transcripts-archive/sess_3a260d90-994e-415d-8540-078b3a99418a.native_messages.C0062469328D8C22.jsonl",
+      "bytes": 247348,
+      "sha256": "C0062469328D8C22535066AE80565054E71FCC4954E53866D912607D665EA2B4"
+    }
+  ]
+}

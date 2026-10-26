@@ -1,0 +1,29 @@
+Browser tab: 6, Title: "Tetris Study - Stage 1 Option A", URL: "http://127.0.0.1:3000/".
+0 AXWebArea Tetris Study - Stage 1 Option A, URL: 127.0.0.1:3000/
+	1 container root
+		2 container
+			3 heading Tetris Study Studio, Value: 1
+				4 text Tetris Study Studio
+			5 text Stage 2 — Option A (Server-Authoritative, Rotation-Free)
+		6 container
+			7 text HOLD PIECE USED
+			8 button (disabled) Hold Piece
+			9 text NEXT PIECE
+			10 heading Game Status, Value: 2
+				11 text Game Status
+			12 text Session ID: 92dba840-c4d6-40fd-b44a-fba8a7c2a09b Status: PLAYING Score: 0 Lines: 0 Level: 1 Gravity: 500  ms Active Piece: T
+			13 button Start New Game
+			14 heading Controls, Value: 3
+				15 text Controls
+			16 content list
+				17 container
+					18 text Left: ArrowLeft ( ← )
+				19 container
+					20 text Right: ArrowRight ( → )
+				21 container
+					22 text Down: ArrowDown ( ↓ )
+				23 container
+					24 text Hold: C
+			25 text Note: Piece rotation is not supported in Stage 2 Option A.
+
+The focused UI element is 0 AXWebArea Tetris Study - Stage 1 Option A, URL: 127.0.0.1:3000/

@@ -1,0 +1,60 @@
+{
+  "01-specify": {
+    "category": "initial_specification",
+    "reason": "Initial Kiro native specification attempt manually interrupted by root after user reported wrong account and requested account switch; no application/test changes or completed specification claimed.",
+    "work_completion_status": "interrupted_for_account_switch",
+    "interruption_reason": "user_requested_account_switch",
+    "process_closed": true,
+    "native_specification_completion": "not completed; no new native files on disk at researcher checkpoint",
+    "qa_intent_id": null,
+    "retry_of": null
+  },
+  "02-specify-student": {
+    "category": "initial_specification",
+    "reason": "Fresh Student-account retry of interrupted initial specification01; three feature Markdown artifacts written, but observed Kiro mode remains vibe rather than Spec despite requested flag. Automated native workflow not proven.",
+    "work_completion_status": "specification_artifacts_written_native_workflow_unverified",
+    "retry_of": "01-specify",
+    "qa_intent_id": null,
+    "resumed": false
+  },
+  "03-native-spec-review": {
+    "category": "preimplementation_spec_revision",
+    "reason": "External researcher review corrected existing Stage2 requirements/design/tasks before any implementation; actual ACP Spec/Auto verified and native format validators used. Separate from postimplementation correction attempts.",
+    "work_completion_status": "spec_revision_turn_ended; implementation acceptance not claimed",
+    "qa_intent_id": null,
+    "retry_of": null,
+    "resumed": false
+  },
+  "04-implement": {
+    "category": "initial_implementation",
+    "reason": "Actual ACP Spec/Auto implementation after reviewed native03 artifacts. Native Sonar remediation scans are internal iterations, distinct from external QA prompts.",
+    "work_completion_status": "candidate only; independent hook races and full-tree audit findings require correction",
+    "qa_intent_id": null,
+    "retry_of": null,
+    "resumed": false
+  },
+  "05-qa": {
+    "category": "postimplementation_external_correction",
+    "reason": "Prepared external QA intent for three independently reproduced hook races, seven full-tree dependency advisories, production bootstrap coverage exclusion and document title; actual invocation is counted only when started/closed evidence exists.",
+    "work_completion_status": "interrupted before implementation; actual end/duration/exit and final consumption unknown",
+    "qa_intent_id": "kiro-stage2-qa-01",
+    "retry_of": null,
+    "resumed": false
+  },
+  "06-qa-retry": {
+    "category": "postimplementation_external_correction",
+    "reason": "Fresh retry of interrupted05, same external QA intent and full frozen seed. Complete native specification revision before application/tests/security/coverage fixes.",
+    "work_completion_status": "Candidate fixedR1-R3/pins/bootstrap/title, tests120/47 and audit0; externalR4/R5 failed, no current Sonar scan submitted",
+    "qa_intent_id": "kiro-stage2-qa-01",
+    "retry_of": "05-qa",
+    "resumed": false
+  },
+  "07-queued-timer-qa": {
+    "category": "postimplementation_external_correction",
+    "reason": "New external QA intent: two independently reproduced queued-manual timeout lifecycle defects R4/R5, plus current-source quality/report closure",
+    "work_completion_status": "prepared; not completed",
+    "qa_intent_id": "kiro-stage2-qa-02",
+    "retry_of": null,
+    "resumed": false
+  }
+}

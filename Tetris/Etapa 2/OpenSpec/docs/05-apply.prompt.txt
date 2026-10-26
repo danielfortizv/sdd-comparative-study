@@ -1,0 +1,3 @@
+/opsx:apply tetris-stage2-option-a
+
+Continue the exact common Stage 2 option A seed already submitted in this tool directory. Do not broaden scope. Update native specs before any code correction. Complete the requested native workflow.

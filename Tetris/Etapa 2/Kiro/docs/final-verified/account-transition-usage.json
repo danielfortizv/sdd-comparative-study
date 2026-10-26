@@ -1,0 +1,49 @@
+{
+  "researcher_created": true,
+  "scope": "Account usage snapshots, not exact invocation token/credit attribution",
+  "observations": [
+    {
+      "observed_at_utc": "2026-10-21T19:58:00Z",
+      "time_precision": "approximate minute",
+      "account_epoch": "prior-free-account",
+      "plan": "KIRO FREE",
+      "used_credits": 0.0,
+      "included_credits": 50,
+      "remaining_credits": 50,
+      "reset_date": "2026-11-01",
+      "source": "native CLI /usage exit0"
+    },
+    {
+      "observed_at_utc": "2026-10-21T20:00:00Z",
+      "time_precision": "approximate minute",
+      "account_epoch": "prior-free-account",
+      "plan": "KIRO FREE",
+      "used_credits": 2.63,
+      "included_credits": 50,
+      "remaining_credits": 47.37,
+      "source": "native CLI /usage exit0"
+    },
+    {
+      "observed_at_utc": "2026-10-21T20:03:25Z",
+      "time_precision": "UTC clock same tool call",
+      "account_epoch": "prior-free-account",
+      "plan": "KIRO FREE",
+      "used_credits": 3.09,
+      "included_credits": 50,
+      "remaining_credits": 46.91,
+      "source": "native CLI /usage exit0"
+    },
+    {
+      "observed_at_utc": "2026-10-21T20:03:00Z",
+      "time_precision": "approximate minute",
+      "account_epoch": "user-selected-student-browser-account",
+      "plan": "KIRO STUDENT",
+      "used_credits": 0,
+      "included_credits": 1000,
+      "remaining_credits": 1000,
+      "reset_display_local": "10/31",
+      "source": "actual browser usage page DOM",
+      "cli_connection_confirmed": false
+    }
+  ]
+}

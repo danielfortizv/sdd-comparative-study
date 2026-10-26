@@ -1,0 +1,9717 @@
+{
+  "researcher_created": true,
+  "version": "1.0",
+  "tool": "BMAD",
+  "captured_at_utc": "2026-10-26T01:45:21.327642+00:00",
+  "seed": 20260929,
+  "passed": true,
+  "checks": [
+    {
+      "name": "native-seven-shape-calibration",
+      "scope": "ordinary/native",
+      "passed": true,
+      "detail": {
+        "calibration_file_sha256": "30B6DF3CB815985A5CC504915A9F8C77FB4D4D956AC31E253D77BB7707BC311D",
+        "baseline_keys": [
+          "researcher_created",
+          "measured_at_utc",
+          "scope",
+          "checker_version",
+          "checker_sha256",
+          "canonical_templates",
+          "canonical_indices",
+          "protected_functions",
+          "calibration"
+        ]
+      },
+      "elapsed_seconds": 0.001944
+    },
+    {
+      "name": "initialization-two-draws",
+      "scope": "ordinary/native",
+      "passed": true,
+      "detail": {
+        "draws": 2,
+        "id": "2b907833-f49b-41e7-be17-aa24cab171f4"
+      },
+      "elapsed_seconds": 0.026274
+    },
+    {
+      "name": "repeated-reads-zero-draws",
+      "scope": "ordinary/native",
+      "passed": true,
+      "detail": {
+        "reads": 4,
+        "draws": 0
+      },
+      "elapsed_seconds": 0.011872
+    },
+    {
+      "name": "dirty-metadata-move-left",
+      "scope": "ordinary/native",
+      "passed": true,
+      "detail": {
+        "score": 777,
+        "total_lines": 23,
+        "level": 3,
+        "gravity_interval_ms": 400,
+        "next_piece": "J",
+        "hold_piece": "L",
+        "can_hold": false
+      },
+      "elapsed_seconds": 0.003604
+    },
+    {
+      "name": "dirty-metadata-move-right",
+      "scope": "ordinary/native",
+      "passed": true,
+      "detail": {
+        "score": 777,
+        "total_lines": 23,
+        "level": 3,
+        "gravity_interval_ms": 400,
+        "next_piece": "J",
+        "hold_piece": "L",
+        "can_hold": false
+      },
+      "elapsed_seconds": 0.004044
+    },
+    {
+      "name": "dirty-metadata-move-down",
+      "scope": "ordinary/native",
+      "passed": true,
+      "detail": {
+        "score": 777,
+        "total_lines": 23,
+        "level": 3,
+        "gravity_interval_ms": 400,
+        "next_piece": "J",
+        "hold_piece": "L",
+        "can_hold": false
+      },
+      "elapsed_seconds": 0.003428
+    },
+    {
+      "name": "dirty-metadata-tick-None",
+      "scope": "ordinary/native",
+      "passed": true,
+      "detail": {
+        "score": 777,
+        "total_lines": 23,
+        "level": 3,
+        "gravity_interval_ms": 400,
+        "next_piece": "J",
+        "hold_piece": "L",
+        "can_hold": false
+      },
+      "elapsed_seconds": 0.003235
+    },
+    {
+      "name": "legal-wall-no-op-200",
+      "scope": "ordinary/native",
+      "passed": true,
+      "detail": null,
+      "elapsed_seconds": 0.003278
+    },
+    {
+      "name": "clear-0-prelock-multiplier",
+      "scope": "ordinary/native",
+      "passed": true,
+      "detail": {
+        "rows": 0,
+        "before": {
+          "score": 137,
+          "total_lines": 0,
+          "level": 1
+        },
+        "after": {
+          "score": 137,
+          "total_lines": 0,
+          "level": 1,
+          "gravity_interval_ms": 500
+        },
+        "fixture_origin": {
+          "row": 18,
+          "col": 4
+        },
+        "draws": 1
+      },
+      "elapsed_seconds": 0.003328
+    },
+    {
+      "name": "clear-1-prelock-multiplier",
+      "scope": "ordinary/native",
+      "passed": true,
+      "detail": {
+        "rows": 1,
+        "before": {
+          "score": 137,
+          "total_lines": 0,
+          "level": 1
+        },
+        "after": {
+          "score": 237,
+          "total_lines": 1,
+          "level": 1,
+          "gravity_interval_ms": 500
+        },
+        "fixture_origin": {
+          "row": 18,
+          "col": 4
+        },
+        "draws": 1
+      },
+      "elapsed_seconds": 0.003615
+    },
+    {
+      "name": "clear-2-prelock-multiplier",
+      "scope": "ordinary/native",
+      "passed": true,
+      "detail": {
+        "rows": 2,
+        "before": {
+          "score": 137,
+          "total_lines": 0,
+          "level": 1
+        },
+        "after": {
+          "score": 437,
+          "total_lines": 2,
+          "level": 1,
+          "gravity_interval_ms": 500
+        },
+        "fixture_origin": {
+          "row": 18,
+          "col": 4
+        },
+        "draws": 1
+      },
+      "elapsed_seconds": 0.003152
+    },
+    {
+      "name": "clear-3-prelock-multiplier",
+      "scope": "isolated completed-row domain fixture",
+      "passed": true,
+      "detail": {
+        "rows": 3,
+        "before": {
+          "score": 137,
+          "total_lines": 0,
+          "level": 1
+        },
+        "after": {
+          "score": 637,
+          "total_lines": 3,
+          "level": 1,
+          "gravity_interval_ms": 500
+        },
+        "fixture_origin": {
+          "row": 15,
+          "col": 4
+        },
+        "draws": 1
+      },
+      "elapsed_seconds": 0.004057
+    },
+    {
+      "name": "clear-4-prelock-multiplier",
+      "scope": "isolated completed-row domain fixture",
+      "passed": true,
+      "detail": {
+        "rows": 4,
+        "before": {
+          "score": 137,
+          "total_lines": 0,
+          "level": 1
+        },
+        "after": {
+          "score": 937,
+          "total_lines": 4,
+          "level": 1,
+          "gravity_interval_ms": 500
+        },
+        "fixture_origin": {
+          "row": 14,
+          "col": 4
+        },
+        "draws": 1
+      },
+      "elapsed_seconds": 0.003308
+    },
+    {
+      "name": "threshold-nine-to-ten",
+      "scope": "ordinary/native",
+      "passed": true,
+      "detail": {
+        "rows": 1,
+        "before": {
+          "score": 137,
+          "total_lines": 9,
+          "level": 1
+        },
+        "after": {
+          "score": 237,
+          "total_lines": 10,
+          "level": 2,
+          "gravity_interval_ms": 450
+        },
+        "fixture_origin": {
+          "row": 18,
+          "col": 4
+        },
+        "draws": 1
+      },
+      "elapsed_seconds": 0.002986
+    },
+    {
+      "name": "threshold-nine-to-eleven",
+      "scope": "ordinary/native",
+      "passed": true,
+      "detail": {
+        "rows": 2,
+        "before": {
+          "score": 137,
+          "total_lines": 9,
+          "level": 1
+        },
+        "after": {
+          "score": 437,
+          "total_lines": 11,
+          "level": 2,
+          "gravity_interval_ms": 450
+        },
+        "fixture_origin": {
+          "row": 18,
+          "col": 4
+        },
+        "draws": 1
+      },
+      "elapsed_seconds": 0.002955
+    },
+    {
+      "name": "gravity-floor-at-level-nine",
+      "scope": "ordinary/native",
+      "passed": true,
+      "detail": {
+        "rows": 1,
+        "before": {
+          "score": 137,
+          "total_lines": 79,
+          "level": 8
+        },
+        "after": {
+          "score": 937,
+          "total_lines": 80,
+          "level": 9,
+          "gravity_interval_ms": 100
+        },
+        "fixture_origin": {
+          "row": 18,
+          "col": 4
+        },
+        "draws": 1
+      },
+      "elapsed_seconds": 0.002789
+    },
+    {
+      "name": "gravity-floor-beyond-level-nine",
+      "scope": "ordinary/native",
+      "passed": true,
+      "detail": {
+        "rows": 1,
+        "before": {
+          "score": 137,
+          "total_lines": 199,
+          "level": 20
+        },
+        "after": {
+          "score": 2137,
+          "total_lines": 200,
+          "level": 21,
+          "gravity_interval_ms": 100
+        },
+        "fixture_origin": {
+          "row": 18,
+          "col": 4
+        },
+        "draws": 1
+      },
+      "elapsed_seconds": 0.003257
+    },
+    {
+      "name": "empty-hold-and-rejection",
+      "scope": "ordinary/native",
+      "passed": true,
+      "detail": {
+        "occupied": false,
+        "blocked": false,
+        "expected_draws": 1
+      },
+      "elapsed_seconds": 0.005836
+    },
+    {
+      "name": "occupied-hold-and-rejection",
+      "scope": "ordinary/native",
+      "passed": true,
+      "detail": {
+        "occupied": true,
+        "blocked": false,
+        "expected_draws": 0
+      },
+      "elapsed_seconds": 0.005544
+    },
+    {
+      "name": "blocked-empty-hold",
+      "scope": "ordinary/native",
+      "passed": true,
+      "detail": {
+        "occupied": false,
+        "blocked": true,
+        "expected_draws": 1
+      },
+      "elapsed_seconds": 0.002812
+    },
+    {
+      "name": "blocked-occupied-hold",
+      "scope": "ordinary/native",
+      "passed": true,
+      "detail": {
+        "occupied": true,
+        "blocked": true,
+        "expected_draws": 0
+      },
+      "elapsed_seconds": 0.003695
+    },
+    {
+      "name": "blocked-normal-spawn-and-terminal-invariance",
+      "scope": "ordinary/native",
+      "passed": true,
+      "detail": null,
+      "elapsed_seconds": 0.019253
+    },
+    {
+      "name": "invalid-direction-and-missing-game-contract",
+      "scope": "ordinary/native",
+      "passed": true,
+      "detail": null,
+      "elapsed_seconds": 0.014078
+    },
+    {
+      "name": "restart-all-fields",
+      "scope": "ordinary/native",
+      "passed": true,
+      "detail": null,
+      "elapsed_seconds": 0.002912
+    }
+  ],
+  "total": 24,
+  "passed_count": 24,
+  "http_observations": [
+    {
+      "method": "POST",
+      "path": "/api/games",
+      "request": null,
+      "status": 201,
+      "response": {
+        "id": "2b907833-f49b-41e7-be17-aa24cab171f4",
+        "status": "playing",
+        "board": [
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        ],
+        "active_piece": {
+          "shape": "O",
+          "origin": {
+            "row": 0,
+            "col": 4
+          },
+          "cells": [
+            {
+              "row": 0,
+              "col": 4
+            },
+            {
+              "row": 0,
+              "col": 5
+            },
+            {
+              "row": 1,
+              "col": 4
+            },
+            {
+              "row": 1,
+              "col": 5
+            }
+          ]
+        },
+        "score": 0,
+        "total_lines": 0,
+        "level": 1,
+        "gravity_interval_ms": 500,
+        "next_piece": "I",
+        "hold_piece": null,
+        "can_hold": true
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/api/games/researcher-fixture",
+      "request": null,
+      "status": 200,
+      "response": {
+        "id": "researcher-fixture",
+        "status": "playing",
+        "board": [
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        ],
+        "active_piece": {
+          "shape": "O",
+          "origin": {
+            "row": 5,
+            "col": 4
+          },
+          "cells": [
+            {
+              "row": 5,
+              "col": 4
+            },
+            {
+              "row": 5,
+              "col": 5
+            },
+            {
+              "row": 6,
+              "col": 4
+            },
+            {
+              "row": 6,
+              "col": 5
+            }
+          ]
+        },
+        "score": 777,
+        "total_lines": 23,
+        "level": 3,
+        "gravity_interval_ms": 400,
+        "next_piece": "J",
+        "hold_piece": "L",
+        "can_hold": false
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/api/games/researcher-fixture",
+      "request": null,
+      "status": 200,
+      "response": {
+        "id": "researcher-fixture",
+        "status": "playing",
+        "board": [
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        ],
+        "active_piece": {
+          "shape": "O",
+          "origin": {
+            "row": 5,
+            "col": 4
+          },
+          "cells": [
+            {
+              "row": 5,
+              "col": 4
+            },
+            {
+              "row": 5,
+              "col": 5
+            },
+            {
+              "row": 6,
+              "col": 4
+            },
+            {
+              "row": 6,
+              "col": 5
+            }
+          ]
+        },
+        "score": 777,
+        "total_lines": 23,
+        "level": 3,
+        "gravity_interval_ms": 400,
+        "next_piece": "J",
+        "hold_piece": "L",
+        "can_hold": false
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/api/games/researcher-fixture",
+      "request": null,
+      "status": 200,
+      "response": {
+        "id": "researcher-fixture",
+        "status": "playing",
+        "board": [
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        ],
+        "active_piece": {
+          "shape": "O",
+          "origin": {
+            "row": 5,
+            "col": 4
+          },
+          "cells": [
+            {
+              "row": 5,
+              "col": 4
+            },
+            {
+              "row": 5,
+              "col": 5
+            },
+            {
+              "row": 6,
+              "col": 4
+            },
+            {
+              "row": 6,
+              "col": 5
+            }
+          ]
+        },
+        "score": 777,
+        "total_lines": 23,
+        "level": 3,
+        "gravity_interval_ms": 400,
+        "next_piece": "J",
+        "hold_piece": "L",
+        "can_hold": false
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/api/games/researcher-fixture",
+      "request": null,
+      "status": 200,
+      "response": {
+        "id": "researcher-fixture",
+        "status": "playing",
+        "board": [
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        ],
+        "active_piece": {
+          "shape": "O",
+          "origin": {
+            "row": 5,
+            "col": 4
+          },
+          "cells": [
+            {
+              "row": 5,
+              "col": 4
+            },
+            {
+              "row": 5,
+              "col": 5
+            },
+            {
+              "row": 6,
+              "col": 4
+            },
+            {
+              "row": 6,
+              "col": 5
+            }
+          ]
+        },
+        "score": 777,
+        "total_lines": 23,
+        "level": 3,
+        "gravity_interval_ms": 400,
+        "next_piece": "J",
+        "hold_piece": "L",
+        "can_hold": false
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/api/games/researcher-fixture/move",
+      "request": {
+        "direction": "left"
+      },
+      "status": 200,
+      "response": {
+        "id": "researcher-fixture",
+        "status": "playing",
+        "board": [
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        ],
+        "active_piece": {
+          "shape": "O",
+          "origin": {
+            "row": 5,
+            "col": 3
+          },
+          "cells": [
+            {
+              "row": 5,
+              "col": 3
+            },
+            {
+              "row": 5,
+              "col": 4
+            },
+            {
+              "row": 6,
+              "col": 3
+            },
+            {
+              "row": 6,
+              "col": 4
+            }
+          ]
+        },
+        "score": 777,
+        "total_lines": 23,
+        "level": 3,
+        "gravity_interval_ms": 400,
+        "next_piece": "J",
+        "hold_piece": "L",
+        "can_hold": false
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/api/games/researcher-fixture/move",
+      "request": {
+        "direction": "right"
+      },
+      "status": 200,
+      "response": {
+        "id": "researcher-fixture",
+        "status": "playing",
+        "board": [
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        ],
+        "active_piece": {
+          "shape": "O",
+          "origin": {
+            "row": 5,
+            "col": 5
+          },
+          "cells": [
+            {
+              "row": 5,
+              "col": 5
+            },
+            {
+              "row": 5,
+              "col": 6
+            },
+            {
+              "row": 6,
+              "col": 5
+            },
+            {
+              "row": 6,
+              "col": 6
+            }
+          ]
+        },
+        "score": 777,
+        "total_lines": 23,
+        "level": 3,
+        "gravity_interval_ms": 400,
+        "next_piece": "J",
+        "hold_piece": "L",
+        "can_hold": false
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/api/games/researcher-fixture/move",
+      "request": {
+        "direction": "down"
+      },
+      "status": 200,
+      "response": {
+        "id": "researcher-fixture",
+        "status": "playing",
+        "board": [
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        ],
+        "active_piece": {
+          "shape": "O",
+          "origin": {
+            "row": 6,
+            "col": 4
+          },
+          "cells": [
+            {
+              "row": 6,
+              "col": 4
+            },
+            {
+              "row": 6,
+              "col": 5
+            },
+            {
+              "row": 7,
+              "col": 4
+            },
+            {
+              "row": 7,
+              "col": 5
+            }
+          ]
+        },
+        "score": 777,
+        "total_lines": 23,
+        "level": 3,
+        "gravity_interval_ms": 400,
+        "next_piece": "J",
+        "hold_piece": "L",
+        "can_hold": false
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/api/games/researcher-fixture/tick",
+      "request": null,
+      "status": 200,
+      "response": {
+        "id": "researcher-fixture",
+        "status": "playing",
+        "board": [
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        ],
+        "active_piece": {
+          "shape": "O",
+          "origin": {
+            "row": 6,
+            "col": 4
+          },
+          "cells": [
+            {
+              "row": 6,
+              "col": 4
+            },
+            {
+              "row": 6,
+              "col": 5
+            },
+            {
+              "row": 7,
+              "col": 4
+            },
+            {
+              "row": 7,
+              "col": 5
+            }
+          ]
+        },
+        "score": 777,
+        "total_lines": 23,
+        "level": 3,
+        "gravity_interval_ms": 400,
+        "next_piece": "J",
+        "hold_piece": "L",
+        "can_hold": false
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/api/games/researcher-fixture/move",
+      "request": {
+        "direction": "left"
+      },
+      "status": 200,
+      "response": {
+        "id": "researcher-fixture",
+        "status": "playing",
+        "board": [
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        ],
+        "active_piece": {
+          "shape": "O",
+          "origin": {
+            "row": 5,
+            "col": 0
+          },
+          "cells": [
+            {
+              "row": 5,
+              "col": 0
+            },
+            {
+              "row": 5,
+              "col": 1
+            },
+            {
+              "row": 6,
+              "col": 0
+            },
+            {
+              "row": 6,
+              "col": 1
+            }
+          ]
+        },
+        "score": 777,
+        "total_lines": 23,
+        "level": 3,
+        "gravity_interval_ms": 400,
+        "next_piece": "J",
+        "hold_piece": "L",
+        "can_hold": false
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/api/games/researcher-fixture/tick",
+      "request": null,
+      "status": 200,
+      "response": {
+        "id": "researcher-fixture",
+        "status": "playing",
+        "board": [
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            4,
+            4,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            4,
+            4,
+            0,
+            0,
+            0,
+            0
+          ]
+        ],
+        "active_piece": {
+          "shape": "J",
+          "origin": {
+            "row": 0,
+            "col": 3
+          },
+          "cells": [
+            {
+              "row": 0,
+              "col": 3
+            },
+            {
+              "row": 1,
+              "col": 3
+            },
+            {
+              "row": 1,
+              "col": 4
+            },
+            {
+              "row": 1,
+              "col": 5
+            }
+          ]
+        },
+        "score": 137,
+        "total_lines": 0,
+        "level": 1,
+        "gravity_interval_ms": 500,
+        "next_piece": "T",
+        "hold_piece": "S",
+        "can_hold": true
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/api/games/researcher-fixture/tick",
+      "request": null,
+      "status": 200,
+      "response": {
+        "id": "researcher-fixture",
+        "status": "playing",
+        "board": [
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            4,
+            4,
+            0,
+            0,
+            0,
+            0
+          ]
+        ],
+        "active_piece": {
+          "shape": "J",
+          "origin": {
+            "row": 0,
+            "col": 3
+          },
+          "cells": [
+            {
+              "row": 0,
+              "col": 3
+            },
+            {
+              "row": 1,
+              "col": 3
+            },
+            {
+              "row": 1,
+              "col": 4
+            },
+            {
+              "row": 1,
+              "col": 5
+            }
+          ]
+        },
+        "score": 237,
+        "total_lines": 1,
+        "level": 1,
+        "gravity_interval_ms": 500,
+        "next_piece": "T",
+        "hold_piece": "S",
+        "can_hold": true
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/api/games/researcher-fixture/tick",
+      "request": null,
+      "status": 200,
+      "response": {
+        "id": "researcher-fixture",
+        "status": "playing",
+        "board": [
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        ],
+        "active_piece": {
+          "shape": "J",
+          "origin": {
+            "row": 0,
+            "col": 3
+          },
+          "cells": [
+            {
+              "row": 0,
+              "col": 3
+            },
+            {
+              "row": 1,
+              "col": 3
+            },
+            {
+              "row": 1,
+              "col": 4
+            },
+            {
+              "row": 1,
+              "col": 5
+            }
+          ]
+        },
+        "score": 437,
+        "total_lines": 2,
+        "level": 1,
+        "gravity_interval_ms": 500,
+        "next_piece": "T",
+        "hold_piece": "S",
+        "can_hold": true
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/api/games/researcher-fixture/tick",
+      "request": null,
+      "status": 200,
+      "response": {
+        "id": "researcher-fixture",
+        "status": "playing",
+        "board": [
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            4,
+            4,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            4,
+            4,
+            0,
+            0,
+            0,
+            0
+          ]
+        ],
+        "active_piece": {
+          "shape": "J",
+          "origin": {
+            "row": 0,
+            "col": 3
+          },
+          "cells": [
+            {
+              "row": 0,
+              "col": 3
+            },
+            {
+              "row": 1,
+              "col": 3
+            },
+            {
+              "row": 1,
+              "col": 4
+            },
+            {
+              "row": 1,
+              "col": 5
+            }
+          ]
+        },
+        "score": 637,
+        "total_lines": 3,
+        "level": 1,
+        "gravity_interval_ms": 500,
+        "next_piece": "T",
+        "hold_piece": "S",
+        "can_hold": true
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/api/games/researcher-fixture/tick",
+      "request": null,
+      "status": 200,
+      "response": {
+        "id": "researcher-fixture",
+        "status": "playing",
+        "board": [
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            4,
+            4,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            4,
+            4,
+            0,
+            0,
+            0,
+            0
+          ]
+        ],
+        "active_piece": {
+          "shape": "J",
+          "origin": {
+            "row": 0,
+            "col": 3
+          },
+          "cells": [
+            {
+              "row": 0,
+              "col": 3
+            },
+            {
+              "row": 1,
+              "col": 3
+            },
+            {
+              "row": 1,
+              "col": 4
+            },
+            {
+              "row": 1,
+              "col": 5
+            }
+          ]
+        },
+        "score": 937,
+        "total_lines": 4,
+        "level": 1,
+        "gravity_interval_ms": 500,
+        "next_piece": "T",
+        "hold_piece": "S",
+        "can_hold": true
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/api/games/researcher-fixture/tick",
+      "request": null,
+      "status": 200,
+      "response": {
+        "id": "researcher-fixture",
+        "status": "playing",
+        "board": [
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            4,
+            4,
+            0,
+            0,
+            0,
+            0
+          ]
+        ],
+        "active_piece": {
+          "shape": "J",
+          "origin": {
+            "row": 0,
+            "col": 3
+          },
+          "cells": [
+            {
+              "row": 0,
+              "col": 3
+            },
+            {
+              "row": 1,
+              "col": 3
+            },
+            {
+              "row": 1,
+              "col": 4
+            },
+            {
+              "row": 1,
+              "col": 5
+            }
+          ]
+        },
+        "score": 237,
+        "total_lines": 10,
+        "level": 2,
+        "gravity_interval_ms": 450,
+        "next_piece": "T",
+        "hold_piece": "S",
+        "can_hold": true
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/api/games/researcher-fixture/tick",
+      "request": null,
+      "status": 200,
+      "response": {
+        "id": "researcher-fixture",
+        "status": "playing",
+        "board": [
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        ],
+        "active_piece": {
+          "shape": "J",
+          "origin": {
+            "row": 0,
+            "col": 3
+          },
+          "cells": [
+            {
+              "row": 0,
+              "col": 3
+            },
+            {
+              "row": 1,
+              "col": 3
+            },
+            {
+              "row": 1,
+              "col": 4
+            },
+            {
+              "row": 1,
+              "col": 5
+            }
+          ]
+        },
+        "score": 437,
+        "total_lines": 11,
+        "level": 2,
+        "gravity_interval_ms": 450,
+        "next_piece": "T",
+        "hold_piece": "S",
+        "can_hold": true
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/api/games/researcher-fixture/tick",
+      "request": null,
+      "status": 200,
+      "response": {
+        "id": "researcher-fixture",
+        "status": "playing",
+        "board": [
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            4,
+            4,
+            0,
+            0,
+            0,
+            0
+          ]
+        ],
+        "active_piece": {
+          "shape": "J",
+          "origin": {
+            "row": 0,
+            "col": 3
+          },
+          "cells": [
+            {
+              "row": 0,
+              "col": 3
+            },
+            {
+              "row": 1,
+              "col": 3
+            },
+            {
+              "row": 1,
+              "col": 4
+            },
+            {
+              "row": 1,
+              "col": 5
+            }
+          ]
+        },
+        "score": 937,
+        "total_lines": 80,
+        "level": 9,
+        "gravity_interval_ms": 100,
+        "next_piece": "T",
+        "hold_piece": "S",
+        "can_hold": true
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/api/games/researcher-fixture/tick",
+      "request": null,
+      "status": 200,
+      "response": {
+        "id": "researcher-fixture",
+        "status": "playing",
+        "board": [
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            4,
+            4,
+            0,
+            0,
+            0,
+            0
+          ]
+        ],
+        "active_piece": {
+          "shape": "J",
+          "origin": {
+            "row": 0,
+            "col": 3
+          },
+          "cells": [
+            {
+              "row": 0,
+              "col": 3
+            },
+            {
+              "row": 1,
+              "col": 3
+            },
+            {
+              "row": 1,
+              "col": 4
+            },
+            {
+              "row": 1,
+              "col": 5
+            }
+          ]
+        },
+        "score": 2137,
+        "total_lines": 200,
+        "level": 21,
+        "gravity_interval_ms": 100,
+        "next_piece": "T",
+        "hold_piece": "S",
+        "can_hold": true
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/api/games/researcher-fixture/hold",
+      "request": null,
+      "status": 200,
+      "response": {
+        "id": "researcher-fixture",
+        "status": "playing",
+        "board": [
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        ],
+        "active_piece": {
+          "shape": "J",
+          "origin": {
+            "row": 0,
+            "col": 3
+          },
+          "cells": [
+            {
+              "row": 0,
+              "col": 3
+            },
+            {
+              "row": 1,
+              "col": 3
+            },
+            {
+              "row": 1,
+              "col": 4
+            },
+            {
+              "row": 1,
+              "col": 5
+            }
+          ]
+        },
+        "score": 777,
+        "total_lines": 23,
+        "level": 3,
+        "gravity_interval_ms": 400,
+        "next_piece": "S",
+        "hold_piece": "O",
+        "can_hold": false
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/api/games/researcher-fixture/hold",
+      "request": null,
+      "status": 200,
+      "response": {
+        "id": "researcher-fixture",
+        "status": "playing",
+        "board": [
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        ],
+        "active_piece": {
+          "shape": "J",
+          "origin": {
+            "row": 0,
+            "col": 3
+          },
+          "cells": [
+            {
+              "row": 0,
+              "col": 3
+            },
+            {
+              "row": 1,
+              "col": 3
+            },
+            {
+              "row": 1,
+              "col": 4
+            },
+            {
+              "row": 1,
+              "col": 5
+            }
+          ]
+        },
+        "score": 777,
+        "total_lines": 23,
+        "level": 3,
+        "gravity_interval_ms": 400,
+        "next_piece": "S",
+        "hold_piece": "O",
+        "can_hold": false
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/api/games/researcher-fixture/hold",
+      "request": null,
+      "status": 200,
+      "response": {
+        "id": "researcher-fixture",
+        "status": "playing",
+        "board": [
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        ],
+        "active_piece": {
+          "shape": "J",
+          "origin": {
+            "row": 0,
+            "col": 3
+          },
+          "cells": [
+            {
+              "row": 0,
+              "col": 3
+            },
+            {
+              "row": 1,
+              "col": 3
+            },
+            {
+              "row": 1,
+              "col": 4
+            },
+            {
+              "row": 1,
+              "col": 5
+            }
+          ]
+        },
+        "score": 777,
+        "total_lines": 23,
+        "level": 3,
+        "gravity_interval_ms": 400,
+        "next_piece": "T",
+        "hold_piece": "O",
+        "can_hold": false
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/api/games/researcher-fixture/hold",
+      "request": null,
+      "status": 200,
+      "response": {
+        "id": "researcher-fixture",
+        "status": "playing",
+        "board": [
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        ],
+        "active_piece": {
+          "shape": "J",
+          "origin": {
+            "row": 0,
+            "col": 3
+          },
+          "cells": [
+            {
+              "row": 0,
+              "col": 3
+            },
+            {
+              "row": 1,
+              "col": 3
+            },
+            {
+              "row": 1,
+              "col": 4
+            },
+            {
+              "row": 1,
+              "col": 5
+            }
+          ]
+        },
+        "score": 777,
+        "total_lines": 23,
+        "level": 3,
+        "gravity_interval_ms": 400,
+        "next_piece": "T",
+        "hold_piece": "O",
+        "can_hold": false
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/api/games/researcher-fixture/hold",
+      "request": null,
+      "status": 200,
+      "response": {
+        "id": "researcher-fixture",
+        "status": "game_over",
+        "board": [
+          [
+            0,
+            0,
+            0,
+            7,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        ],
+        "active_piece": null,
+        "score": 777,
+        "total_lines": 23,
+        "level": 3,
+        "gravity_interval_ms": 400,
+        "next_piece": "S",
+        "hold_piece": "O",
+        "can_hold": false
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/api/games/researcher-fixture/hold",
+      "request": null,
+      "status": 200,
+      "response": {
+        "id": "researcher-fixture",
+        "status": "game_over",
+        "board": [
+          [
+            0,
+            0,
+            0,
+            7,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        ],
+        "active_piece": null,
+        "score": 777,
+        "total_lines": 23,
+        "level": 3,
+        "gravity_interval_ms": 400,
+        "next_piece": "T",
+        "hold_piece": "O",
+        "can_hold": false
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/api/games/researcher-fixture/tick",
+      "request": null,
+      "status": 200,
+      "response": {
+        "id": "researcher-fixture",
+        "status": "game_over",
+        "board": [
+          [
+            0,
+            0,
+            0,
+            7,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            4,
+            4,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            4,
+            4,
+            0,
+            0,
+            0,
+            0
+          ]
+        ],
+        "active_piece": null,
+        "score": 777,
+        "total_lines": 23,
+        "level": 3,
+        "gravity_interval_ms": 400,
+        "next_piece": "T",
+        "hold_piece": "L",
+        "can_hold": true
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/api/games/researcher-fixture/tick",
+      "request": null,
+      "status": 200,
+      "response": {
+        "id": "researcher-fixture",
+        "status": "game_over",
+        "board": [
+          [
+            0,
+            0,
+            0,
+            7,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            4,
+            4,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            4,
+            4,
+            0,
+            0,
+            0,
+            0
+          ]
+        ],
+        "active_piece": null,
+        "score": 777,
+        "total_lines": 23,
+        "level": 3,
+        "gravity_interval_ms": 400,
+        "next_piece": "T",
+        "hold_piece": "L",
+        "can_hold": true
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/api/games/researcher-fixture/hold",
+      "request": null,
+      "status": 200,
+      "response": {
+        "id": "researcher-fixture",
+        "status": "game_over",
+        "board": [
+          [
+            0,
+            0,
+            0,
+            7,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            4,
+            4,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            4,
+            4,
+            0,
+            0,
+            0,
+            0
+          ]
+        ],
+        "active_piece": null,
+        "score": 777,
+        "total_lines": 23,
+        "level": 3,
+        "gravity_interval_ms": 400,
+        "next_piece": "T",
+        "hold_piece": "L",
+        "can_hold": true
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/api/games/researcher-fixture/move",
+      "request": {
+        "direction": "left"
+      },
+      "status": 200,
+      "response": {
+        "id": "researcher-fixture",
+        "status": "game_over",
+        "board": [
+          [
+            0,
+            0,
+            0,
+            7,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            4,
+            4,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            4,
+            4,
+            0,
+            0,
+            0,
+            0
+          ]
+        ],
+        "active_piece": null,
+        "score": 777,
+        "total_lines": 23,
+        "level": 3,
+        "gravity_interval_ms": 400,
+        "next_piece": "T",
+        "hold_piece": "L",
+        "can_hold": true
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/api/games/researcher-fixture/move",
+      "request": {
+        "direction": "right"
+      },
+      "status": 200,
+      "response": {
+        "id": "researcher-fixture",
+        "status": "game_over",
+        "board": [
+          [
+            0,
+            0,
+            0,
+            7,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            4,
+            4,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            4,
+            4,
+            0,
+            0,
+            0,
+            0
+          ]
+        ],
+        "active_piece": null,
+        "score": 777,
+        "total_lines": 23,
+        "level": 3,
+        "gravity_interval_ms": 400,
+        "next_piece": "T",
+        "hold_piece": "L",
+        "can_hold": true
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/api/games/researcher-fixture/move",
+      "request": {
+        "direction": "down"
+      },
+      "status": 200,
+      "response": {
+        "id": "researcher-fixture",
+        "status": "game_over",
+        "board": [
+          [
+            0,
+            0,
+            0,
+            7,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            4,
+            4,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            4,
+            4,
+            0,
+            0,
+            0,
+            0
+          ]
+        ],
+        "active_piece": null,
+        "score": 777,
+        "total_lines": 23,
+        "level": 3,
+        "gravity_interval_ms": 400,
+        "next_piece": "T",
+        "hold_piece": "L",
+        "can_hold": true
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/api/games/researcher-fixture",
+      "request": null,
+      "status": 200,
+      "response": {
+        "id": "researcher-fixture",
+        "status": "game_over",
+        "board": [
+          [
+            0,
+            0,
+            0,
+            7,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            4,
+            4,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            4,
+            4,
+            0,
+            0,
+            0,
+            0
+          ]
+        ],
+        "active_piece": null,
+        "score": 777,
+        "total_lines": 23,
+        "level": 3,
+        "gravity_interval_ms": 400,
+        "next_piece": "T",
+        "hold_piece": "L",
+        "can_hold": true
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/api/games/researcher-fixture/move",
+      "request": {
+        "direction": "rotate"
+      },
+      "status": 422,
+      "response": {
+        "detail": [
+          {
+            "type": "literal_error",
+            "loc": [
+              "body",
+              "direction"
+            ],
+            "msg": "Input should be 'left', 'right' or 'down'",
+            "input": "rotate",
+            "ctx": {
+              "expected": "'left', 'right' or 'down'"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/api/games/researcher-fixture/move",
+      "request": {},
+      "status": 422,
+      "response": {
+        "detail": [
+          {
+            "type": "missing",
+            "loc": [
+              "body",
+              "direction"
+            ],
+            "msg": "Field required",
+            "input": {}
+          }
+        ]
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/api/games/missing-researcher-id",
+      "request": null,
+      "status": 404,
+      "response": {
+        "detail": "Game session not found"
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/api/games/missing-researcher-id/tick",
+      "request": null,
+      "status": 404,
+      "response": {
+        "detail": "Game session not found"
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/api/games/missing-researcher-id/hold",
+      "request": null,
+      "status": 404,
+      "response": {
+        "detail": "Game session not found"
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/api/games/missing-researcher-id/move",
+      "request": {
+        "direction": "left"
+      },
+      "status": 404,
+      "response": {
+        "detail": "Game session not found"
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/api/games",
+      "request": null,
+      "status": 201,
+      "response": {
+        "id": "c6a89a6b-74f9-49bd-a31b-2f61315c92df",
+        "status": "playing",
+        "board": [
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        ],
+        "active_piece": {
+          "shape": "S",
+          "origin": {
+            "row": 0,
+            "col": 3
+          },
+          "cells": [
+            {
+              "row": 0,
+              "col": 4
+            },
+            {
+              "row": 0,
+              "col": 5
+            },
+            {
+              "row": 1,
+              "col": 3
+            },
+            {
+              "row": 1,
+              "col": 4
+            }
+          ]
+        },
+        "score": 0,
+        "total_lines": 0,
+        "level": 1,
+        "gravity_interval_ms": 500,
+        "next_piece": "Z",
+        "hold_piece": null,
+        "can_hold": true
+      }
+    }
+  ],
+  "source_hashes_before": [
+    {
+      "path": "backend/app/core/domain.py",
+      "sha256": "87B455BF6401318BDC608BB1C8796DCA54163966B3615735262C4D81FA2E7C1B"
+    },
+    {
+      "path": "backend/app/main.py",
+      "sha256": "60CCD8D7D5065DDA60FA87C708C1AFE3BC39EA3DE656DDB5ACCE4F1F690AA0F6"
+    },
+    {
+      "path": "frontend/src/App.test.tsx",
+      "sha256": "20764992347DD52F26C05DB94B46A5C12A4F0F625245198800622CB820FA1088"
+    },
+    {
+      "path": "frontend/src/App.tsx",
+      "sha256": "E230ED66442EF393A2EC90D27175F870535EA769DC251D9649F5EA32F395B51C"
+    },
+    {
+      "path": "frontend/src/main.tsx",
+      "sha256": "368998600187697635215CE09D6AFC9A4AF03A9F22D09F1A070DF35E4FEE7F2A"
+    },
+    {
+      "path": "frontend/src/styles.css",
+      "sha256": "5E79E608408CCB5B4395A7B2A9BECD4C54F035A407202F1749635383B446BB9C"
+    }
+  ],
+  "source_hashes_after": [
+    {
+      "path": "backend/app/core/domain.py",
+      "sha256": "87B455BF6401318BDC608BB1C8796DCA54163966B3615735262C4D81FA2E7C1B"
+    },
+    {
+      "path": "backend/app/main.py",
+      "sha256": "60CCD8D7D5065DDA60FA87C708C1AFE3BC39EA3DE656DDB5ACCE4F1F690AA0F6"
+    },
+    {
+      "path": "frontend/src/App.test.tsx",
+      "sha256": "20764992347DD52F26C05DB94B46A5C12A4F0F625245198800622CB820FA1088"
+    },
+    {
+      "path": "frontend/src/App.tsx",
+      "sha256": "E230ED66442EF393A2EC90D27175F870535EA769DC251D9649F5EA32F395B51C"
+    },
+    {
+      "path": "frontend/src/main.tsx",
+      "sha256": "368998600187697635215CE09D6AFC9A4AF03A9F22D09F1A070DF35E4FEE7F2A"
+    },
+    {
+      "path": "frontend/src/styles.css",
+      "sha256": "5E79E608408CCB5B4395A7B2A9BECD4C54F035A407202F1749635383B446BB9C"
+    }
+  ],
+  "source_unchanged": true,
+  "checker_sha256": "AB802EDA417986A38854E80697BA548D95FA4EADEFD2D1CA6A153CE1B102F2C5",
+  "limitation": "Independent native TestClient/domain fixtures; not live browser or whole shared acceptance catalog. N3/N4 isolated precompleted rows are not ordinary-play reachability evidence."
+}

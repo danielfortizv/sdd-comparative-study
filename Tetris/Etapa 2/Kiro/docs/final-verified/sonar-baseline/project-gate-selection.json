@@ -1,0 +1,6 @@
+{
+  "qualityGate": {
+    "name": "Tetris Stage 2 Kiro Controlled",
+    "default": false
+  }
+}

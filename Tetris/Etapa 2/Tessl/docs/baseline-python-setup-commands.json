@@ -1,0 +1,94 @@
+[
+  {
+    "argv": [
+      "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 1\\Tessl\\backend\\.venv\\Scripts\\python.exe",
+      "-B",
+      "-c",
+      "import importlib.metadata,json,platform,sys; print(json.dumps({'python':platform.python_version(),'executable':sys.executable,'packages':sorted([{'name':d.metadata['Name'],'version':d.version} for d in importlib.metadata.distributions()],key=lambda x:x['name'].lower())}))"
+    ],
+    "cwd": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\Tessl\\backend",
+    "started_at_utc": "2026-10-21T14:31:31.862452+00:00",
+    "ended_at_utc": "2026-10-21T14:31:32.093651+00:00",
+    "duration_seconds": 0.234,
+    "exit_code": 0,
+    "log_path": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\Tessl\\docs\\baseline-original-python-inventory.json"
+  },
+  {
+    "argv": [
+      "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 1\\_toolchain\\venv\\Scripts\\python.exe",
+      "-B",
+      "-m",
+      "venv",
+      "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\Tessl\\backend\\.venv"
+    ],
+    "cwd": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\Tessl\\backend",
+    "started_at_utc": "2026-10-21T14:31:32.094650+00:00",
+    "ended_at_utc": "2026-10-21T14:31:39.334066+00:00",
+    "duration_seconds": 7.235,
+    "exit_code": 0,
+    "log_path": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\Tessl\\docs\\baseline-python-venv-create.log"
+  },
+  {
+    "argv": [
+      "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\Tessl\\backend\\.venv\\Scripts\\python.exe",
+      "-B",
+      "-m",
+      "pip",
+      "install",
+      "--requirement",
+      "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\Tessl\\docs\\baseline-original-python-pins.txt"
+    ],
+    "cwd": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\Tessl\\backend",
+    "started_at_utc": "2026-10-21T14:31:39.335067+00:00",
+    "ended_at_utc": "2026-10-21T14:32:32.595870+00:00",
+    "duration_seconds": 53.265,
+    "exit_code": 0,
+    "log_path": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\Tessl\\docs\\baseline-python-install.log"
+  },
+  {
+    "argv": [
+      "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\Tessl\\backend\\.venv\\Scripts\\python.exe",
+      "-B",
+      "-c",
+      "import importlib.metadata,json,platform,sys; print(json.dumps({'python':platform.python_version(),'executable':sys.executable,'packages':sorted([{'name':d.metadata['Name'],'version':d.version} for d in importlib.metadata.distributions()],key=lambda x:x['name'].lower())}))"
+    ],
+    "cwd": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\Tessl\\backend",
+    "started_at_utc": "2026-10-21T14:32:32.595870+00:00",
+    "ended_at_utc": "2026-10-21T14:32:33.085890+00:00",
+    "duration_seconds": 0.485,
+    "exit_code": 0,
+    "log_path": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\Tessl\\docs\\baseline-current-python-inventory.json"
+  },
+  {
+    "argv": [
+      "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 1\\Tessl\\backend\\.venv\\Scripts\\python.exe",
+      "-B",
+      "-c",
+      "import importlib.metadata,json,platform,sys; print(json.dumps({'python':platform.python_version(),'executable':sys.executable,'packages':sorted([{'name':d.metadata['Name'],'version':d.version} for d in importlib.metadata.distributions()],key=lambda x:x['name'].lower())}))"
+    ],
+    "cwd": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\Tessl\\backend",
+    "started_at_utc": "2026-10-21T14:32:33.086893+00:00",
+    "ended_at_utc": "2026-10-21T14:32:33.307890+00:00",
+    "duration_seconds": 0.219,
+    "exit_code": 0,
+    "log_path": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\Tessl\\docs\\baseline-original-python-inventory-after.json"
+  },
+  {
+    "argv": [
+      "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\Tessl\\backend\\.venv\\Scripts\\python.exe",
+      "-B",
+      "-m",
+      "pytest",
+      "-q",
+      "--cov=app",
+      "--cov-report=term-missing",
+      "--cov-report=xml:D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\Tessl\\docs\\baseline-coverage.xml"
+    ],
+    "cwd": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\Tessl\\backend",
+    "started_at_utc": "2026-10-21T14:32:33.320894+00:00",
+    "ended_at_utc": "2026-10-21T14:32:35.982845+00:00",
+    "duration_seconds": 2.672,
+    "exit_code": 0,
+    "log_path": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\Tessl\\docs\\baseline-backend-coverage.log"
+  }
+]

@@ -1,0 +1,158 @@
+{
+  "session_id": "6c3d4681-5396-49a3-ac61-ce1d72c2ee61",
+  "response": "",
+  "stats": {
+    "models": {
+      "gemini-3.5-flash": {
+        "api": {
+          "totalRequests": 22,
+          "totalErrors": 3,
+          "totalLatencyMs": 165771,
+          "errorsByType": {
+            "Error": 2,
+            "ApiError": 1
+          }
+        },
+        "tokens": {
+          "input": 395736,
+          "prompt": 859933,
+          "candidates": 3850,
+          "total": 870553,
+          "cached": 464197,
+          "thoughts": 6770,
+          "tool": 0
+        },
+        "roles": {
+          "main": {
+            "totalRequests": 22,
+            "totalErrors": 3,
+            "totalLatencyMs": 165771,
+            "tokens": {
+              "input": 395736,
+              "prompt": 859933,
+              "candidates": 3850,
+              "total": 870553,
+              "cached": 464197,
+              "thoughts": 6770,
+              "tool": 0
+            }
+          }
+        }
+      }
+    },
+    "tools": {
+      "totalCalls": 22,
+      "totalSuccess": 21,
+      "totalFail": 1,
+      "totalDurationMs": 7718,
+      "totalDecisions": {
+        "accept": 21,
+        "reject": 0,
+        "modify": 0,
+        "auto_accept": 0
+      },
+      "byName": {
+        "update_topic": {
+          "count": 1,
+          "success": 1,
+          "fail": 0,
+          "durationMs": 5,
+          "decisions": {
+            "accept": 1,
+            "reject": 0,
+            "modify": 0,
+            "auto_accept": 0
+          }
+        },
+        "glob": {
+          "count": 4,
+          "success": 4,
+          "fail": 0,
+          "durationMs": 740,
+          "decisions": {
+            "accept": 4,
+            "reject": 0,
+            "modify": 0,
+            "auto_accept": 0
+          }
+        },
+        "read_file": {
+          "count": 3,
+          "success": 2,
+          "fail": 1,
+          "durationMs": 15,
+          "decisions": {
+            "accept": 2,
+            "reject": 0,
+            "modify": 0,
+            "auto_accept": 0
+          }
+        },
+        "run_shell_command": {
+          "count": 7,
+          "success": 7,
+          "fail": 0,
+          "durationMs": 6783,
+          "decisions": {
+            "accept": 7,
+            "reject": 0,
+            "modify": 0,
+            "auto_accept": 0
+          }
+        },
+        "list_directory": {
+          "count": 2,
+          "success": 2,
+          "fail": 0,
+          "durationMs": 40,
+          "decisions": {
+            "accept": 2,
+            "reject": 0,
+            "modify": 0,
+            "auto_accept": 0
+          }
+        },
+        "grep_search": {
+          "count": 1,
+          "success": 1,
+          "fail": 0,
+          "durationMs": 97,
+          "decisions": {
+            "accept": 1,
+            "reject": 0,
+            "modify": 0,
+            "auto_accept": 0
+          }
+        },
+        "write_file": {
+          "count": 3,
+          "success": 3,
+          "fail": 0,
+          "durationMs": 27,
+          "decisions": {
+            "accept": 3,
+            "reject": 0,
+            "modify": 0,
+            "auto_accept": 0
+          }
+        },
+        "replace": {
+          "count": 1,
+          "success": 1,
+          "fail": 0,
+          "durationMs": 11,
+          "decisions": {
+            "accept": 1,
+            "reject": 0,
+            "modify": 0,
+            "auto_accept": 0
+          }
+        }
+      }
+    },
+    "files": {
+      "totalLinesAdded": 116,
+      "totalLinesRemoved": 197
+    }
+  }
+}

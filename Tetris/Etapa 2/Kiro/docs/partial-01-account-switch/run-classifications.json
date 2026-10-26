@@ -1,0 +1,12 @@
+{
+  "01-specify": {
+    "category": "initial_specification",
+    "reason": "Initial Kiro native specification attempt manually interrupted by root after user reported wrong account and requested account switch; no application/test changes or completed specification claimed.",
+    "work_completion_status": "interrupted_for_account_switch",
+    "interruption_reason": "user_requested_account_switch",
+    "process_closed": true,
+    "native_specification_completion": "not completed; no new native files on disk at researcher checkpoint",
+    "qa_intent_id": null,
+    "retry_of": null
+  }
+}

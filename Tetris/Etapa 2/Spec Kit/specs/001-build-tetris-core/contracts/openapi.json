@@ -1,0 +1,231 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Tetris Core API",
+    "description": "Stateless REST API for managing stage-1 single-player Tetris core games in-memory",
+    "version": "1.0.0"
+  },
+  "paths": {
+    "/api/games": {
+      "post": {
+        "summary": "Create a new game session",
+        "description": "Initializes a 10x20 empty board and spawns a random standard tetromino at the top-center.",
+        "responses": {
+          "21": {
+            "description": "Game session successfully created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GameSession"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/games/{id}": {
+      "get": {
+        "summary": "Retrieve game session state",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "description": "The unique game session identifier"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful retrieval of game session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GameSession"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Game session not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/games/{id}/tick": {
+      "post": {
+        "summary": "Advance game by one gravity tick",
+        "description": "Forces the active piece down. Locks the piece and clears completed lines if a collision occurs on descent.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfully advanced gravity tick",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GameSession"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Game session not found"
+          }
+        }
+      }
+    },
+    "/api/games/{id}/move": {
+      "post": {
+        "summary": "Execute manual piece movement",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/MoveRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Movement executed or rejected",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GameSession"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Game session not found"
+          },
+          "422": {
+            "description": "Validation error"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Tetromino": {
+        "type": "object",
+        "required": ["type", "cells", "origin"],
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": ["I", "O", "T", "S", "Z", "J", "L"]
+          },
+          "cells": {
+            "type": "array",
+            "items": {
+              "type": "array",
+              "minItems": 2,
+              "maxItems": 2,
+              "items": {
+                "type": "integer"
+              }
+            },
+            "description": "List of 4 coordinates: [[row, col], ...]"
+          },
+          "origin": {
+            "type": "array",
+            "minItems": 2,
+            "maxItems": 2,
+            "items": {
+              "type": "integer"
+            },
+            "description": "Pivot/anchor point: [row, col]"
+          }
+        }
+      },
+      "GameSession": {
+        "type": "object",
+        "required": ["id", "board", "status"],
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "board": {
+            "type": "array",
+            "items": {
+              "type": "array",
+              "items": {
+                "type": "integer"
+              }
+            },
+            "description": "2D 20x10 array mapping board cells (0 = empty, 1-7 = filled block color codes)"
+          },
+          "activePiece": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Tetromino"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "status": {
+            "type": "string",
+            "enum": ["playing", "game_over"]
+          }
+        }
+      },
+      "MoveRequest": {
+        "type": "object",
+        "required": ["direction"],
+        "properties": {
+          "direction": {
+            "type": "string",
+            "enum": ["left", "right", "down"]
+          }
+        }
+      },
+      "HTTPError": {
+        "type": "object",
+        "required": ["detail"],
+        "properties": {
+          "detail": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}

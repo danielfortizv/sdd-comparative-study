@@ -1,0 +1,6 @@
+# Development/testing-only dependencies for Stage 2 coverage.
+# Runtime pins stay in requirements.txt and are included here unchanged.
+-r requirements.txt
+
+# Coverage plugin compatible with pytest==8.3.4.
+pytest-cov==6.0.0

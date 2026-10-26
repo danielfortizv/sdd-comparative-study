@@ -1,0 +1,2 @@
+Captura 6. Interfaz real: game over por gravedad normal y modal de reinicio. Archivo: Spec
+Kit/docs/screenshots/app-final-game-over.jpg.

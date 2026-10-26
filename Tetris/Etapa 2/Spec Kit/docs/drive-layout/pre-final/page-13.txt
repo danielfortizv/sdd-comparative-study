@@ -1,0 +1,37 @@
+igualdad estricta de entrega entre todas las ejecuciones. Los transcritos disponibles se
+archivaron con hash. Spec Kit cuenta ahora con auditoría de entrada efectiva completa
+antes de generar la aplicación.
+SPEC KIT — CIERRE DE GENERACIÓN 08 Y
+CORRECCIÓN QA EN CURSO
+08-implement cerró el 20 oct 2026 a las 07:55:29, hora Bogotá, con código de salida 0 y
+2.885,870 s instrumentados. La entrada efectiva conserva los cinco párrafos de la semilla
+(18.315 caracteres crudos; 18.089 normalizados). Las estadísticas originales acreditan 202
+intentos API, 54 errores y 148 éxitos: 194 intentos/54 errores/140 éxitos del modelo principal
+y ocho llamadas auxiliares exitosas del detector de bucles. Los JSONL conservan por
+separado 140 respuestas principales únicas. Tokens de la sesión: 16.752.166 de entrada,
+incluidos 12.893.781 cacheados, 36.959 de salida candidata y 41.527 de pensamiento. Se
+preservó la generación en Spec Kit/docs/generation-08/ con manifiesto; la comprobación
+independiente está en 08-metric-verification.json.
+Acumulado cerrado hasta 08: ocho intentos de invocación, siete que alcanzaron el modelo;
+331 intentos API conocidos, 76 errores y 255 éxitos; 270 respuestas principales registradas
+como métrica separada. Tokens observados: 20.927.688 entrada, 15.774.034 cacheados
+incluidos, 77.002 salida candidata y 94.130 pensamiento. Duración conocida: 4.721,376 s,
+incluidos los 0,084 s del fallo local 06; 01/03 siguen con duración y totales API
+desconocidos. Estos valores excluyen 09 en curso y el trabajo externo de verificación.
+La respuesta final de 08 declara todas las tareas completas, 33 pruebas backend y ocho
+frontend aprobadas, build exitoso, LCOV y 96 % de cobertura frontend. Son autoinformes de
+la herramienta pendientes de confirmación independiente. Las respuestas SonarQube
+congeladas al cierre verifican gate ERROR, cobertura global 57,1 % y cobertura nueva 44,9
+% frente al umbral sin cambios de 80 %; reportan 0 bugs, 0 vulnerabilidades, 0 hotspots, un
+code smell y duplicación 0,0 %. El log acredita importación XML del backend y no acredita
+la importación LCOV ni el 96 % frontend declarado. La calificación del hallazgo CSS como
+falso positivo tampoco está verificada. Fuentes: generation-08/sonar-summary.json,
+sonar-quality-gate.json y sonar-scan.log.
+09-qa-correction comenzó a las 07:57:53, hora Bogotá, como primera corrección explícita
+posterior a la implementación y continúa abierta. La instrucción exige revisar primero specs
+y tareas nativas antes de ajustar código o pruebas mediante Gemini. Incluye pruebas sobre
+reglas reales de producción, conteo determinista de la cola, inmutabilidad y reinicio
+completo, aislamiento de respuestas y serialización, temporizador, previews y controles,
+dependencias, LCOV y verificación del mismo quality gate. La aceptación externa
+compartida, comprobaciones de navegador y cierre de calidad siguen pendientes; los
+tokens y tiempo de 09 se incorporarán cuando cierre.

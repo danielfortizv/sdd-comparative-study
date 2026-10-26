@@ -1,0 +1,171 @@
+{
+  "session_id": "5054c29b-b976-4142-aa54-0b2ad9afaae8",
+  "response": "### Quality Closure Verification & Handoff Summary\n\nAll six remaining Sonar Quality Gate issues for the Stage 2 Brownfield experiment have been resolved, and the project is now in a fully compliant, verified state.\n\n#### 1. Applied Corrections & Quality Fixes\n* **Python Cognitive Complexity (`S3776`):**\n  * Extracted the downward piece-locking, line-clearing, scoring, progression-calculation, and spawning logic from `move_piece` in `backend/app/core/domain.py` into a clean private helper function `_lock_and_spawn_piece`. This reduced nested conditional branches, successfully dropping the cognitive complexity of `move_piece` below the maximum limit of 15. All seven authoritative fields' persistence, RNG draw counts, and canonical rules are preserved.\n* **TypeScript Read-only Props (`S6759`):**\n  * Declared the `MiniGrid` component's `props` parameter in `frontend/src/App.tsx` as `readonly` to enforce immutability and resolve the warning.\n* **TypeScript Nested Template Literals (`S4624`):**\n  * Extracted the nested template literal logic inside `MiniGrid`'s className loop into a simple local string variable `cellClass`, maintaining the exact same functional colors/shape rendering.\n* **TypeScript Optional Chaining Expressions (`S6582`):**\n  * Converted logical OR and nullish checks on `currentGame` and `g` into clean optional chaining expressions (`currentGame?.status`, `g?.status`, and `currentGame?.active_piece`) across lines 104, 114, and 325 in `frontend/src/App.tsx`.\n* **TypeScript Unused Declarations (`TS6133`):**\n  * Removed unused import `vi` in `frontend/src/main.test.tsx` and prefixed unused mock parameter with `_url` in `frontend/src/App.test.tsx` to enable successful production builds with strict compiler flags.\n\n---\n\n#### 2. Documentation Updates\n* **Stage 2 Specification:** Documented all six resolved issues under the `Spec Change Log` in `_bmad-output/stage2/implementation-artifacts/spec-stage-2-tetris-study.md`.\n* **Memlogs updated:** Added the corresponding decision entries to the bottom of:\n  * `_bmad-output/stage2/planning-artifacts/architecture/stage2-option-a/.memlog.md`\n  * `_bmad-output/stage2/planning-artifacts/prds/prd-stage2-option-a/.memlog.md`\n* **Sprint Status updated:** Set the status of all 4 Epics and 12 Stories to `done` in `_bmad-output/stage2/implementation-artifacts/sprint-status.yaml` to match the actual fully-verified status.\n\n---\n\n#### 3. Targeted Verification Outputs\nThe raw logs and test results have been securely archived under `docs/build-07/` as requested:\n* **Backend Pytest unit suite (`backend/.venv/Scripts/python.exe -m pytest` from `backend`):**\n  * **Result:** `18 passed, 1 warning in 1.13s` (Saved: `docs/build-07/backend-test-results.txt`)\n* **Frontend TypeScript Build (`npm run build` inside `frontend`):**\n  * **Result:** `tsc && vite build` compiled and built cleanly in `8.71s` with **zero warnings/errors**.\n* **Frontend Vitest unit/coverage suite (`npx vitest run --coverage` from `frontend`):**\n  * **Result:** `14 passed (14 tests) in 13.04s`. Statement Coverage: **89.71%**, Function Coverage: **100%**, Line Coverage: **95.54%**. (Saved: `docs/build-07/frontend-test-results.txt`)\n* **Acceptance Test Harness (Unmodified configuration from toolroot):**\n  * **Result:** `11 passed (11 tests) in 2.64s`. (Saved: `docs/build-07/acceptance-test-results.txt`)\n* **Frontend/Backend Security Audits:**\n  * `npm audit` returned **0 vulnerabilities**. (Saved: `docs/build-07/npm-audit-results.txt`)\n  * `pip-audit` in virtualenv returned **No known vulnerabilities found**. (Saved: `docs/build-07/pip-audit-results.txt`)\n\n---\n\n#### 4. SonarQube Quality Gate Status\n* **Submission status:** Completed with **exit code: 0**.\n* **Compute Engine Status:** **SUCCESS**\n* **Verification analysis status:** **Gate: OK**\n  * **New Coverage:** **85.7%** (Threshold: `>= 80%`)\n  * **New Duplicated Lines Density:** **2.48%** (Threshold: `<= 3.0%`)\n  * **New Violations:** **0** (Threshold: `<= 0`)\n* **Analysis ID:** `d649734f-977e-4006-84a9-e77d9be70da7`\n* **Historical/Inherited Findings:** 12 legacy code smells and 1 legacy vulnerability remain as baseline controls, keeping `new_gate` exactly at `0` violations.",
+  "stats": {
+    "models": {
+      "gemini-3.5-flash": {
+        "api": {
+          "totalRequests": 74,
+          "totalErrors": 9,
+          "totalLatencyMs": 303590,
+          "errorsByType": {
+            "ApiError": 9
+          }
+        },
+        "tokens": {
+          "input": 975320,
+          "prompt": 4315349,
+          "candidates": 11012,
+          "total": 4343503,
+          "cached": 3340029,
+          "thoughts": 17142,
+          "tool": 0
+        },
+        "roles": {
+          "main": {
+            "totalRequests": 71,
+            "totalErrors": 9,
+            "totalLatencyMs": 290974,
+            "tokens": {
+              "input": 937233,
+              "prompt": 4277262,
+              "candidates": 10708,
+              "total": 4304292,
+              "cached": 3340029,
+              "thoughts": 16322,
+              "tool": 0
+            }
+          },
+          "utility_loop_detector": {
+            "totalRequests": 3,
+            "totalErrors": 0,
+            "totalLatencyMs": 12616,
+            "tokens": {
+              "input": 38087,
+              "prompt": 38087,
+              "candidates": 304,
+              "total": 39211,
+              "cached": 0,
+              "thoughts": 820,
+              "tool": 0
+            }
+          }
+        }
+      }
+    },
+    "tools": {
+      "totalCalls": 65,
+      "totalSuccess": 65,
+      "totalFail": 0,
+      "totalDurationMs": 110012,
+      "totalDecisions": {
+        "accept": 65,
+        "reject": 0,
+        "modify": 0,
+        "auto_accept": 0
+      },
+      "byName": {
+        "update_topic": {
+          "count": 3,
+          "success": 3,
+          "fail": 0,
+          "durationMs": 9,
+          "decisions": {
+            "accept": 3,
+            "reject": 0,
+            "modify": 0,
+            "auto_accept": 0
+          }
+        },
+        "glob": {
+          "count": 7,
+          "success": 7,
+          "fail": 0,
+          "durationMs": 1330,
+          "decisions": {
+            "accept": 7,
+            "reject": 0,
+            "modify": 0,
+            "auto_accept": 0
+          }
+        },
+        "read_file": {
+          "count": 20,
+          "success": 20,
+          "fail": 0,
+          "durationMs": 152,
+          "decisions": {
+            "accept": 20,
+            "reject": 0,
+            "modify": 0,
+            "auto_accept": 0
+          }
+        },
+        "grep_search": {
+          "count": 3,
+          "success": 3,
+          "fail": 0,
+          "durationMs": 410,
+          "decisions": {
+            "accept": 3,
+            "reject": 0,
+            "modify": 0,
+            "auto_accept": 0
+          }
+        },
+        "run_shell_command": {
+          "count": 13,
+          "success": 13,
+          "fail": 0,
+          "durationMs": 107587,
+          "decisions": {
+            "accept": 13,
+            "reject": 0,
+            "modify": 0,
+            "auto_accept": 0
+          }
+        },
+        "replace": {
+          "count": 12,
+          "success": 12,
+          "fail": 0,
+          "durationMs": 432,
+          "decisions": {
+            "accept": 12,
+            "reject": 0,
+            "modify": 0,
+            "auto_accept": 0
+          }
+        },
+        "list_directory": {
+          "count": 2,
+          "success": 2,
+          "fail": 0,
+          "durationMs": 13,
+          "decisions": {
+            "accept": 2,
+            "reject": 0,
+            "modify": 0,
+            "auto_accept": 0
+          }
+        },
+        "write_file": {
+          "count": 5,
+          "success": 5,
+          "fail": 0,
+          "durationMs": 79,
+          "decisions": {
+            "accept": 5,
+            "reject": 0,
+            "modify": 0,
+            "auto_accept": 0
+          }
+        }
+      }
+    },
+    "files": {
+      "totalLinesAdded": 141,
+      "totalLinesRemoved": 69
+    }
+  }
+}

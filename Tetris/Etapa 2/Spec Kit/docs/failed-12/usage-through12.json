@@ -1,0 +1,24 @@
+{
+  "scope": "closed invocations01\u201312 only, derived from verified per-run evidence;13+excluded",
+  "invocation_attempts": 12,
+  "model_invocations": 11,
+  "known_duration_seconds": 10579.434,
+  "observed_tokens": {
+    "input_tokens": 39781864,
+    "cached_tokens": 30598848,
+    "output_tokens": 153244,
+    "thought_tokens": 193354
+  },
+  "known_api_totals": {
+    "api_requests": 540,
+    "api_errors": 115,
+    "api_successful_requests": 425
+  },
+  "recorded_response_count": 463,
+  "unknown_api_labels": [
+    "01-specify",
+    "03-contract-clarification",
+    "11-qa-timer-ownership",
+    "12-qa-timer-retry"
+  ]
+}

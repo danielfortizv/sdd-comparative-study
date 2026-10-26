@@ -1,0 +1,58 @@
+{
+  "researcher_created": true,
+  "generated_at_utc": "2026-10-26T02:40:09.586662+00:00",
+  "verification": {
+    "verified_at_utc": "2026-10-26T02:21:04.5525603Z",
+    "project_key": "tetris-stage2-bmad",
+    "report_task_sha256": "CD488624A6ED1EEF7C48BDA40ADF699FBAF188076F578053F120A5D5DB9C22A7",
+    "ce_task_id": "a91582e0-c940-40dd-8aeb-0808926e6c40",
+    "ce_status": "SUCCESS",
+    "analysis_id": "d649734f-977e-4006-84a9-e77d9be70da7",
+    "submitted_at": "2026-10-25T21:20:59-05:00",
+    "executed_at": "2026-10-25T21:21:02-05:00",
+    "gate_status": "OK",
+    "gate_conditions": [
+      {
+        "status": "OK",
+        "metricKey": "new_coverage",
+        "comparator": "LT",
+        "errorThreshold": "80",
+        "actualValue": "85.7"
+      },
+      {
+        "status": "OK",
+        "metricKey": "new_duplicated_lines_density",
+        "comparator": "GT",
+        "errorThreshold": "3",
+        "actualValue": "2.47855"
+      },
+      {
+        "status": "OK",
+        "metricKey": "new_violations",
+        "comparator": "GT",
+        "errorThreshold": "0",
+        "actualValue": "0"
+      }
+    ],
+    "coverage_inputs": [
+      {
+        "path": "docs/coverage.xml",
+        "exists": true,
+        "sha256": "78CCE1BE5D3F18B488DB4938B4A80BD21AE921C00A74A741E7CD41D103DB8691",
+        "last_write_time_utc": "2026-10-26T02:03:22.2367793Z"
+      },
+      {
+        "path": "frontend/coverage/lcov.info",
+        "exists": true,
+        "sha256": "D41F75E6A1F7148EF623F509A5BB07C0814DA0DE1088F2577F6AB5D202ACD3EE",
+        "last_write_time_utc": "2026-10-26T02:18:55.0816494Z"
+      }
+    ]
+  },
+  "source_hashes": {
+    "sonar-verification.json": "C36867FD67FC9DD75C9263A5F546C9AFAEDF822827C9AC3FBED4D9E275C531F7",
+    "sonar-exact-quality-gate.json": "428B1EC3EBD17B12F1030E8079C7657F8F6B59EE0F5BDDCE36755A1EF1D1112D",
+    "sonar-metrics.json": "33C8D199C93900206261EDBBC69BEF6E465238FF0063DA5A93A30EB05FAD91C2",
+    "scan-command.json": "6F8075904E87A3757E9BA21529CB19BC8524808D7938E46247676C425A9E6D6B"
+  }
+}

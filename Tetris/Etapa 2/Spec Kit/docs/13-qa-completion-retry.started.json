@@ -1,0 +1,8 @@
+{
+  "label": "13-qa-completion-retry",
+  "workflow": "clarify",
+  "started": "2026-10-21T00:16:20.7750370-05:00",
+  "prompt_sha256": "9B63AA309C8FA64DA74100C7936FFFE7C8DC77EB4C7FE6316BBF6EF121850DC8",
+  "seed_sha256": "63919779DD4104076FBABCB130CE296A160FA840E0B4755A2AA5D90757ADA8EF",
+  "submission_method": "direct clarification prompt"
+}

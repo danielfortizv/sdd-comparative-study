@@ -1,0 +1,20 @@
+{
+  "researcher_created": true,
+  "label": "frontend-04-escaping-sandbox",
+  "cwd": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\Bmad Method",
+  "command": [
+    "C:/Program Files/nodejs/node.exe",
+    "frontend/node_modules/vitest/vitest.mjs",
+    "run",
+    "--config",
+    "docs/acceptance/vitest.external.config.mjs",
+    "--reporter=json",
+    "--outputFile=docs/acceptance/frontend-04-actual.json"
+  ],
+  "started_at_utc": "2026-10-26T01:45:33.957634+00:00",
+  "ended_at_utc": "2026-10-26T01:45:37.264173+00:00",
+  "duration_seconds": 3.306372,
+  "exit_code": 1,
+  "log_path": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\Bmad Method\\docs\\validation\\frontend-04-escaping-sandbox.log",
+  "log_sha256": "F56177D2FCA983D71530947EABC6696BBA6B76D42FCE3890578F3ADBC9A80F04"
+}

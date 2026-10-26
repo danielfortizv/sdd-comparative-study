@@ -1,0 +1,24 @@
+Tetris — Etapa 2 | Registro
+experimental
+Alcance: opción A (puntaje escalonado, aceleración progresiva, Hold y vista previa) aplicada
+a las cinco herramientas. Este documento se actualiza por turnos. La primera ejecución
+corresponde a OpenSpec.
+Fuentes de diseño
+Matriz de etapas:
+https://docs.google.com/document/d/1Fi7XAKY2Cd379spmq7ggxgoE0rEjKx6pq66hTdLj-6c
+Informe LaTeX: https://www.overleaf.com/project/6a99e23073b642f16984b2ff
+Semilla común y protocolo: Caso 2-Tetris/Etapa 2/shared/seed.md y protocol.md.
+Registro OpenSpec
+Estado: OpenSpec en implementación local; planificación validada y pruebas finales
+pendientes.
+Versión esperada OpenSpec: 1.13.2. Gemini CLI: 0.60.0. Modelo solicitado: gemini-3.5-flash
+por Vertex AI. El modelo efectivo, tokens y tiempos se registrarán a partir de la salida
+original.
+Campos de medición
+Prompts y correcciones; tiempo por invocación; tokens de entrada, cacheados y salida;
+archivos/líneas/caracteres de especificación y código antes/después; resultados de
+aceptación, pruebas y cobertura; SonarQube y hallazgos; capturas con vínculo a la
+evidencia original.
+Evidencias y capturas
+Pendientes de la ejecución real. Cada captura se incorporará junto con la fuente de datos
+que representa.

@@ -1,0 +1,8 @@
+{
+  "label": "11-qa-timer-ownership",
+  "workflow": "clarify",
+  "started": "2026-10-20T20:26:21.3174095-05:00",
+  "prompt_sha256": "CA85B477148E16EF9674152629B2D7CB6605D34E0547DEF5A22601F6FADACEEB",
+  "seed_sha256": "63919779DD4104076FBABCB130CE296A160FA840E0B4755A2AA5D90757ADA8EF",
+  "submission_method": "direct clarification prompt"
+}

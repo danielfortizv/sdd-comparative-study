@@ -1,0 +1,214 @@
+{
+  ".kiro/specs/tetris-stage1-option-a/design.md": {
+    "sha256": "73E875D7EA930C39B275BECB7BE49AB153BB06536E886EEFA43E796D72F349DB",
+    "bytes": 8055
+  },
+  ".kiro/specs/tetris-stage1-option-a/requirements.md": {
+    "sha256": "61E6234BDBC9CC1D7450827B9DAACCAC6C0A2B01C5060AED564E87A18F2A7C7D",
+    "bytes": 16856
+  },
+  ".kiro/specs/tetris-stage1-option-a/tasks.md": {
+    "sha256": "26B03785E5B4A3C3EE71F8694EC669A03B1E4274083A6A275A98A3FF90E7A037",
+    "bytes": 3915
+  },
+  ".kiro/specs/tetris-stage2-option-a/design.md": {
+    "sha256": "A4B0A2D83E07A2FE6535CF143A978D698AFA09C2E90914DD795C307026522939",
+    "bytes": 31432
+  },
+  ".kiro/specs/tetris-stage2-option-a/requirements.md": {
+    "sha256": "01B7125E1253F5279031B327483A873DA3291A89E0B56C514AF3B2F00BF187A3",
+    "bytes": 42746
+  },
+  ".kiro/specs/tetris-stage2-option-a/tasks.md": {
+    "sha256": "5B6E480C4950D134ECB547F94D12DF7065D8A9157F6E6C0438E4470EAC53342D",
+    "bytes": 18641
+  },
+  "README.md": {
+    "sha256": "C9F291B179A50C314A4C129C7F1303D3857EB584D2DC27DCA729980C19C03C52",
+    "bytes": 2286
+  },
+  "backend/README.md": {
+    "sha256": "C898C8E17DCE5A97B49628B2CBA0783E69B7B58BC2815513A895B047B1778A2D",
+    "bytes": 4243
+  },
+  "backend/app/__init__.py": {
+    "sha256": "E6D9CA44CA98FBA4E73DA6EF22243087B713902D8F51C11228DE31E1B97D5D8F",
+    "bytes": 57
+  },
+  "backend/app/api/__init__.py": {
+    "sha256": "4531E4A5551A74ECF743FBEFB487472CBAF7E9A33265E4F16E8AAA275BC6D8D9",
+    "bytes": 53
+  },
+  "backend/app/api/games.py": {
+    "sha256": "C878E7B8E466D4CD0FBB3CCD8CC44FE22A4677B92A0CE6F01DB9A002D2A3172B",
+    "bytes": 1857
+  },
+  "backend/app/api/schemas.py": {
+    "sha256": "3B914837955442A5EFBB91573646468FB52C88FD0B74059EA90D8FD8BF4CC931",
+    "bytes": 2035
+  },
+  "backend/app/domain/__init__.py": {
+    "sha256": "FA4290DBFB9CA1C266DB445F5C4B3164FD7DD9D2F523324677FD95B7372A8FDE",
+    "bytes": 41
+  },
+  "backend/app/domain/models.py": {
+    "sha256": "8B2726824BA7215ADC8459330300353EFBC77D460859AEBE7023C54C7F7F12D5",
+    "bytes": 2527
+  },
+  "backend/app/main.py": {
+    "sha256": "378F36A14AC61CFC7D93D08C47C8A54317C4B79FCA0392A87F9135ADD1B75875",
+    "bytes": 811
+  },
+  "backend/app/rules/__init__.py": {
+    "sha256": "387543C055C2012B7110606F70C426036B5BA9F266F55AA5B8F14CCED1756333",
+    "bytes": 49
+  },
+  "backend/app/rules/engine.py": {
+    "sha256": "13389F92D65AE0516494BD82BFA36B5EABDF5AAC5891E53DCAC2506DCFCD3181",
+    "bytes": 7676
+  },
+  "backend/app/rules/pieces.py": {
+    "sha256": "D034B5B88374FC0C0FA2883F9C9C2E96BD1ACFA51072314114B2312E229C7D48",
+    "bytes": 1583
+  },
+  "backend/app/rules/scoring.py": {
+    "sha256": "4B4C16E6A8C30FBF55A72EF3DB3DD3A6647653A31568FD19F1B0F13214556671",
+    "bytes": 1318
+  },
+  "backend/app/store.py": {
+    "sha256": "99807535D9907A6E89B1375E7D274C1D1EB0E7207859CB34D3D0A5A09AAB21BF",
+    "bytes": 838
+  },
+  "backend/pytest.ini": {
+    "sha256": "4551307F5B1A58ADB7EC215D513089BA670B1737B81ADA5A5863AFE796D67343",
+    "bytes": 52
+  },
+  "backend/requirements-dev.txt": {
+    "sha256": "3BEC9BB89F8D7195F39CC883A1DC1CEB0E00219163FDB6C1879848E5A5B8B382",
+    "bytes": 224
+  },
+  "backend/requirements.txt": {
+    "sha256": "5AD4496E40CDFE46AEAF03CD2596243FE5ECF0C8B9B2B6BD6FD19B704187C183",
+    "bytes": 78
+  },
+  "backend/tests/__init__.py": {
+    "sha256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855",
+    "bytes": 0
+  },
+  "backend/tests/test_api.py": {
+    "sha256": "3CDDD775E747F428575C33E894C4A328E9BDC12409A76AB85857D6AB440EAC61",
+    "bytes": 3598
+  },
+  "backend/tests/test_rules.py": {
+    "sha256": "3DC7B6921EAD493CCBCA1022B11054C84A1D097B8248364D19118868DA586451",
+    "bytes": 8709
+  },
+  "backend/tests/test_scoring.py": {
+    "sha256": "77C81775E28D3FB669057B083585EFE4D23E7FB97FADF0CE7DB2D8F71AD4C4F7",
+    "bytes": 1954
+  },
+  "backend/tests/test_stage2_api.py": {
+    "sha256": "45D9C2C007D82CB7D7CC9CDC07E1AE1DDBD70734705208527ED6C94206CEC1C6",
+    "bytes": 6756
+  },
+  "backend/tests/test_stage2_engine.py": {
+    "sha256": "6B3CAE174C9209E0F3B49688C23673C11E271687DCB61BAFC6F1085F442627A1",
+    "bytes": 8897
+  },
+  "frontend/README.md": {
+    "sha256": "B35D2C6AE49CB080417AE7652A9084CD9D19ACB2661F9440CD0B0AA8B8C6E4EC",
+    "bytes": 4530
+  },
+  "frontend/index.html": {
+    "sha256": "2AC002A8742AAC4EDC0099F7B9C47F02D66B529F8B7DDA6D81C4821AF4EEE6CA",
+    "bytes": 304
+  },
+  "frontend/package-lock.json": {
+    "sha256": "07DD4F84324433057F86AB49C4FE3242A528950B4BD81E66028F7F74C61D5534",
+    "bytes": 95703
+  },
+  "frontend/package.json": {
+    "sha256": "D20B4F3B97F2AAEFA0DC414F83B8A3B165C4295814B28B7B021E61DB8FC95315",
+    "bytes": 797
+  },
+  "frontend/src/App.test.tsx": {
+    "sha256": "09F31BCC7CE77584B17CC90A9BF5C4BDCE839A7F876FAB4E57DB614628AF64F4",
+    "bytes": 7339
+  },
+  "frontend/src/App.tsx": {
+    "sha256": "92A9035E68D7215F100C25D71A25FC526A149A73EF1F5525E8A510F2E459B212",
+    "bytes": 4011
+  },
+  "frontend/src/Board.test.tsx": {
+    "sha256": "B11B37AB7647FA3DEB76C3A043ACBDC56083C68281468A825867B886202488CD",
+    "bytes": 1198
+  },
+  "frontend/src/Board.tsx": {
+    "sha256": "EEE153923E1AEF8A63FF53C1F8B7A43E78DF9E60219EC68491579E881592EABC",
+    "bytes": 1827
+  },
+  "frontend/src/Preview.test.tsx": {
+    "sha256": "6C4AE30F5F37E59A2090C4EE858CFD7BBF3BAE56F75723F45D2A304352BC9F4D",
+    "bytes": 828
+  },
+  "frontend/src/Preview.tsx": {
+    "sha256": "BC0C3572B529F1DE3B871583A69BFF6944453FC7ABC5156E9474091358087717",
+    "bytes": 2198
+  },
+  "frontend/src/api.test.ts": {
+    "sha256": "0D0276FB7305BB86D3F8BF4ABB3DA45AED5776CA428B07C326EFB1C539BF105C",
+    "bytes": 2271
+  },
+  "frontend/src/api.ts": {
+    "sha256": "4321FAF77B834628E68BD07A7FE471B811B278E005FD0208367BE6966DBA533D",
+    "bytes": 1654
+  },
+  "frontend/src/main.test.tsx": {
+    "sha256": "813E770E13D6AD27CEAE613CF2311548A3AD21F97FC2500085A101B9695F446E",
+    "bytes": 2186
+  },
+  "frontend/src/main.tsx": {
+    "sha256": "EE7B63D2A6F58647FAC79B1FC870F5895284DBF14B1B375AEE6C4BC79FF2A2CE",
+    "bytes": 257
+  },
+  "frontend/src/test-setup.ts": {
+    "sha256": "003CACCEE18406F1F1ABF367AC1CB3A83F2725343ACA904A546C9A5CE1CFA307",
+    "bytes": 266
+  },
+  "frontend/src/types.ts": {
+    "sha256": "FEA00566EBB80AFAF198C1E60A13EEBEA2C87BE99BF3A1642CCC2AA834E8D34B",
+    "bytes": 834
+  },
+  "frontend/src/useGame.queued-timers.test.tsx": {
+    "sha256": "1653ED34CA436188CFD6B5BBF97CDA9D8D5F5DACF83A7E3A02F7172EE62A1D14",
+    "bytes": 7631
+  },
+  "frontend/src/useGame.races.test.tsx": {
+    "sha256": "5ADBF2903C15B5A64791854516153F2C44BE9D31189A4850BB6FD2732CC70D1C",
+    "bytes": 14570
+  },
+  "frontend/src/useGame.test.tsx": {
+    "sha256": "083D969D2B1B75C6151BC8EF9CBA734DBFA533C70081FBD53DA5317566947847",
+    "bytes": 11106
+  },
+  "frontend/src/useGame.ts": {
+    "sha256": "00CBD9F74E9B4F89106A00DC46366AC8BACB94B88D753A560E3D16A8BF232003",
+    "bytes": 11076
+  },
+  "frontend/src/vite-env.d.ts": {
+    "sha256": "6600001F6B9E18657B3314FDCF2FAD48D4F74BFAFB27FC464BB57CE670CB8EC8",
+    "bytes": 159
+  },
+  "frontend/tsconfig.json": {
+    "sha256": "5E8768B9014E2DE818C88AA8770A59EEC4CBC3B2276AF28A840F67641DBFB388",
+    "bytes": 656
+  },
+  "frontend/tsconfig.node.json": {
+    "sha256": "BB9FD8592A9E364641441219F10D84DAAE9BA2CA5CC85DB798EFAD6913BB8257",
+    "bytes": 233
+  },
+  "frontend/vite.config.ts": {
+    "sha256": "AB868902629CB16629568BB96B9AC058E2C3701E541BFCCE89799672DB39FB13",
+    "bytes": 1174
+  }
+}

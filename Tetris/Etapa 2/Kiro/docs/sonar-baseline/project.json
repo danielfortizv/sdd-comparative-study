@@ -1,0 +1,12 @@
+{
+  "component": {
+    "key": "tetris-stage2-kiro",
+    "name": "Tetris Stage 2 Kiro",
+    "qualifier": "TRK",
+    "tags": [],
+    "visibility": "public",
+    "needIssueSync": false,
+    "isAiCodeFixEnabled": false
+  },
+  "ancestors": []
+}

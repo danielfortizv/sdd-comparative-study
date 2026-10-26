@@ -1,0 +1,58 @@
+{
+  "researcher_created": true,
+  "generated_at_utc": "2026-10-26T02:44:34.783330+00:00",
+  "verification": {
+    "verified_at_utc": "2026-10-26T02:42:21.8903793Z",
+    "project_key": "tetris-stage2-bmad",
+    "report_task_sha256": "88484C423DDB86299FDDEA9D0F6BFD5661AE58868AA43FFF8D2D9E2BFD270A71",
+    "ce_task_id": "8db7be6c-2891-4e55-99e7-1c0c03b97ea6",
+    "ce_status": "SUCCESS",
+    "analysis_id": "0b7d51b5-586c-4af2-8c0f-221a07a197d3",
+    "submitted_at": "2026-10-25T21:42:18-05:00",
+    "executed_at": "2026-10-25T21:42:21-05:00",
+    "gate_status": "OK",
+    "gate_conditions": [
+      {
+        "status": "OK",
+        "metricKey": "new_coverage",
+        "comparator": "LT",
+        "errorThreshold": "80",
+        "actualValue": "85.8"
+      },
+      {
+        "status": "OK",
+        "metricKey": "new_duplicated_lines_density",
+        "comparator": "GT",
+        "errorThreshold": "3",
+        "actualValue": "2.47855"
+      },
+      {
+        "status": "OK",
+        "metricKey": "new_violations",
+        "comparator": "GT",
+        "errorThreshold": "0",
+        "actualValue": "0"
+      }
+    ],
+    "coverage_inputs": [
+      {
+        "path": "docs/coverage.xml",
+        "exists": true,
+        "sha256": "084F6EFF444D78D70815B65E51CEBB97CF5451734538978DE7E85BDC0DFAD254",
+        "last_write_time_utc": "2026-10-26T02:24:33.2218401Z"
+      },
+      {
+        "path": "frontend/coverage/lcov.info",
+        "exists": true,
+        "sha256": "6BFB689B0BEA7CDAC970F15DB83669A2DA71996641145F7DCE995812DF4A0ACA",
+        "last_write_time_utc": "2026-10-26T02:25:37.4343183Z"
+      }
+    ]
+  },
+  "source_hashes": {
+    "sonar-verification.json": "F04E8DCF164700231C5BB2FB2E6EDA3827CE1B317B55F3F1A2F4470317D484BF",
+    "sonar-exact-quality-gate.json": "34F44DDED84D0EBA226DF0006C2AE8E5494D12665BA143E396AE0FF349088374",
+    "sonar-metrics.json": "9CE072DE69EAE713114C3F4BE828B59CE39C80CA63CC854F8036C482F02AD9C5",
+    "scan-command.json": "6B4714CF641732523E12F0048855A741DC4B14F9810E576CCE6E6604B4932EE9"
+  }
+}

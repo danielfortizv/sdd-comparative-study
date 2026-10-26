@@ -1,0 +1,107 @@
+{
+  "session_id": "1027c0f3-09e6-4c5b-8126-dae5270c46b2",
+  "response": "",
+  "stats": {
+    "models": {
+      "gemini-3.5-flash": {
+        "api": {
+          "totalRequests": 10,
+          "totalErrors": 0,
+          "totalLatencyMs": 45317,
+          "errorsByType": {}
+        },
+        "tokens": {
+          "input": 197630,
+          "prompt": 1273520,
+          "candidates": 2723,
+          "total": 1282524,
+          "cached": 1075890,
+          "thoughts": 6281,
+          "tool": 0
+        },
+        "roles": {
+          "main": {
+            "totalRequests": 10,
+            "totalErrors": 0,
+            "totalLatencyMs": 45317,
+            "tokens": {
+              "input": 197630,
+              "prompt": 1273520,
+              "candidates": 2723,
+              "total": 1282524,
+              "cached": 1075890,
+              "thoughts": 6281,
+              "tool": 0
+            }
+          }
+        }
+      }
+    },
+    "tools": {
+      "totalCalls": 12,
+      "totalSuccess": 12,
+      "totalFail": 0,
+      "totalDurationMs": 696,
+      "totalDecisions": {
+        "accept": 12,
+        "reject": 0,
+        "modify": 0,
+        "auto_accept": 0
+      },
+      "byName": {
+        "activate_skill": {
+          "count": 1,
+          "success": 1,
+          "fail": 0,
+          "durationMs": 7,
+          "decisions": {
+            "accept": 1,
+            "reject": 0,
+            "modify": 0,
+            "auto_accept": 0
+          }
+        },
+        "grep_search": {
+          "count": 3,
+          "success": 3,
+          "fail": 0,
+          "durationMs": 586,
+          "decisions": {
+            "accept": 3,
+            "reject": 0,
+            "modify": 0,
+            "auto_accept": 0
+          }
+        },
+        "read_file": {
+          "count": 7,
+          "success": 7,
+          "fail": 0,
+          "durationMs": 84,
+          "decisions": {
+            "accept": 7,
+            "reject": 0,
+            "modify": 0,
+            "auto_accept": 0
+          }
+        },
+        "write_file": {
+          "count": 1,
+          "success": 1,
+          "fail": 0,
+          "durationMs": 19,
+          "decisions": {
+            "accept": 1,
+            "reject": 0,
+            "modify": 0,
+            "auto_accept": 0
+          }
+        }
+      }
+    },
+    "files": {
+      "totalLinesAdded": 136,
+      "totalLinesRemoved": 121
+    }
+  }
+}

@@ -1,0 +1,1024 @@
+{
+  "audited_at_utc": "2026-10-21T05:39:48.683167+00:00",
+  "scope": "closed experiment invocations 01\u201317 only; pending invocations excluded: (none recorded)",
+  "count_definition": "A blocking clarification question is emitted main-model natural-language text requesting missing user/researcher input before proceeding. Count requests, not question-mark characters. Self-directed progress statements, completion summaries and workflow-next-step instructions are not clarification questions.",
+  "exclusions": [
+    "thoughts/reasoning fields and thought signatures",
+    "function calls/arguments and function/tool responses",
+    "quoted or code-formatted specification/task questions and placeholders",
+    "native template questions in user input",
+    "utility-model internal loop checks",
+    "researcher-origin instructions/prompts"
+  ],
+  "deduplication": "main textual messages deduplicated by session ID and response ID across original/archive snapshots; completed CLI response is matched to existing text, never counted a second time",
+  "closed_runs_observed_blocking_question_count": 0,
+  "reviewed_unique_natural_language_messages": 21,
+  "coverage_limited_run_labels": [
+    "01-specify",
+    "03-contract-clarification",
+    "11-qa-timer-ownership",
+    "12-qa-timer-retry",
+    "13-qa-completion-retry",
+    "15-qa-frontend-completion"
+  ],
+  "limitation": "Zero observed questions follows manual review of retained emitted text, not headless mode. Interrupted 01/03, failed 11/12 and empty 13/15 emitted no retained natural-language main text; unrecorded output or eventual questions in an unfinished conversation cannot be ruled out. Pending invocations: none recorded. This is an observed count for closed retained intervals, not proof of an absolute absence of unrecorded questions.",
+  "pending_run_labels": [],
+  "excluded_question_mark_evidence": [
+    {
+      "label": "07-tasks-native-expanded",
+      "session_id": "cf453998-9126-4003-a157-f60f0914f4dd",
+      "response_id": "ae71f8ca-c078-430d-934c-1d4d0dacf803",
+      "timestamp": "2026-10-20T12:06:37.273Z",
+      "snippet": "- [ ] [TaskID] [P?] [Story?] Description with file path",
+      "reason": "quoted task-format syntax, not an actual question to the user"
+    },
+    {
+      "label": "17-qa-sonar-style",
+      "session_id": "5261cb20-f8f5-406e-ab4e-69c6e85031b9",
+      "response_id": "f1c3cf97-bd00-4945-b5a6-b43fb8bf454d",
+      "timestamp": "2026-10-21T05:37:55.801Z",
+      "snippet": "activeToken?.gen and pendingTickTokenRef.current?.gen",
+      "reason": "quoted optional-chain code syntax, not an actual question to the user"
+    }
+  ],
+  "external_researcher_clarification_summary": {
+    "standalone_closed_prompt_attempts": 10,
+    "workflow_appended_clarification_attempts": 4,
+    "intended_attempts_total": 14,
+    "complete_delivery_verified_attempts": 12,
+    "truncated_before_delivery_attempts": 1,
+    "pre_model_launcher_failure_attempts": 1,
+    "scope": "counts one clarification-bearing external attempt per invocation, even if the native template repeats its args. These are researcher instructions, not tool-requested questions or necessarily postimplementation corrections.",
+    "pending_prompt_attempt_labels": []
+  },
+  "runs": [
+    {
+      "label": "01-specify",
+      "started": "2026-10-20T06:16:29.1907244-05:00",
+      "ended": "2026-10-20T06:23:41.6405508-05:00",
+      "session_ids": [
+        "213a8e58-9711-4585-8aef-440a5700d60e"
+      ],
+      "retained_transcript_paths": [
+        "gemini-home/.gemini/tmp/spec-kit/chats/session-2026-10-20T11-16-213a8e58.jsonl",
+        "transcripts-archive/session-2026-10-20T11-16-213a8e58.A57ABF6AAA99DD68.jsonl"
+      ],
+      "natural_language_message_count": 0,
+      "tool_requested_blocking_questions_observed": 0,
+      "coverage": "retained main transcript interval; interrupted without final response, so no claim about unrecorded output",
+      "cli_final_response_matches": [],
+      "message_evidence": []
+    },
+    {
+      "label": "02-specify-retry",
+      "started": "2026-10-20T06:24:38.7683176-05:00",
+      "ended": "2026-10-20T06:29:52.8548217-05:00",
+      "session_ids": [
+        "96f502f6-681b-4f27-b1a6-6638c9c32c3d"
+      ],
+      "retained_transcript_paths": [
+        "gemini-home/.gemini/tmp/spec-kit/chats/session-2026-10-20T11-24-96f502f6.jsonl",
+        "transcripts-archive/session-2026-10-20T11-24-96f502f6.8B770F6F1AEA2AAB.jsonl"
+      ],
+      "natural_language_message_count": 1,
+      "tool_requested_blocking_questions_observed": 0,
+      "coverage": "retained main transcript interval and matching completed CLI final response",
+      "cli_final_response_matches": [
+        "0510a5d9-9756-4233-aec7-155cc5667659"
+      ],
+      "message_evidence": [
+        {
+          "response_id": "0510a5d9-9756-4233-aec7-155cc5667659",
+          "session_id": "96f502f6-681b-4f27-b1a6-6638c9c32c3d",
+          "timestamp": "2026-10-20T11:29:52.778Z",
+          "transcript_copies": [
+            "gemini-home/.gemini/tmp/spec-kit/chats/session-2026-10-20T11-24-96f502f6.jsonl",
+            "transcripts-archive/session-2026-10-20T11-24-96f502f6.8B770F6F1AEA2AAB.jsonl"
+          ],
+          "decoded_text_utf8_sha256": "D00B58093374D9B671927BB9FE5BCB771BA4ED0F99D71786834CAAEC21E63ED9",
+          "characters": 2199,
+          "snippet": "## Feature Specification Created & Validated\n\nWe have successfully researched, drafted, and validated the brownfield specification for extending the **Stage 1 Option A Tetris** implementation to **Stage 2 Option A**.\n\n### Directory & File Locations\n* **Feature",
+          "adjudication": "completion report and workflow handoff; no request for user clarification",
+          "blocking_question_count": 0
+        }
+      ]
+    },
+    {
+      "label": "03-contract-clarification",
+      "started": "2026-10-20T06:31:05.5286530-05:00",
+      "ended": "2026-10-20T06:38:01.9564228-05:00",
+      "session_ids": [
+        "12a3f237-0e16-4ff0-af81-a27cd34444c7"
+      ],
+      "retained_transcript_paths": [
+        "gemini-home/.gemini/tmp/spec-kit/chats/session-2026-10-20T11-31-12a3f237.jsonl",
+        "transcripts-archive/session-2026-10-20T11-31-12a3f237.7BAF3DF5C2ADE6E4.jsonl"
+      ],
+      "natural_language_message_count": 0,
+      "tool_requested_blocking_questions_observed": 0,
+      "coverage": "retained main transcript interval; interrupted without final response, so no claim about unrecorded output",
+      "cli_final_response_matches": [],
+      "message_evidence": []
+    },
+    {
+      "label": "04-plan",
+      "started": "2026-10-20T06:38:17.4841361-05:00",
+      "ended": "2026-10-20T06:49:28.7575019-05:00",
+      "session_ids": [
+        "261670ce-7c76-40eb-90ef-cdd79252dfcc"
+      ],
+      "retained_transcript_paths": [
+        "gemini-home/.gemini/tmp/spec-kit/chats/session-2026-10-20T11-38-261670ce.jsonl",
+        "transcripts-archive/session-2026-10-20T11-38-261670ce.28275FCDC84E6205.jsonl"
+      ],
+      "natural_language_message_count": 3,
+      "tool_requested_blocking_questions_observed": 0,
+      "coverage": "retained main transcript interval and matching completed CLI final response",
+      "cli_final_response_matches": [
+        "c28cb12f-8dd4-43b5-a4b6-7ecd912ff248"
+      ],
+      "message_evidence": [
+        {
+          "response_id": "5c1b0ebc-9f2f-44c5-984e-c6ec62b4b007",
+          "session_id": "261670ce-7c76-40eb-90ef-cdd79252dfcc",
+          "timestamp": "2026-10-20T11:39:06.339Z",
+          "transcript_copies": [
+            "gemini-home/.gemini/tmp/spec-kit/chats/session-2026-10-20T11-38-261670ce.jsonl",
+            "transcripts-archive/session-2026-10-20T11-38-261670ce.28275FCDC84E6205.jsonl"
+          ],
+          "decoded_text_utf8_sha256": "30A88FDFEC5B6A196DF6A03B037E451E53F6D867DCC9B18DEE89219558B9A56E",
+          "characters": 245,
+          "snippet": "I will execute the setup-plan.ps1 script using PowerShell. This script initializes the implementation plan and workspace folder for our feature (specs/002-extend-tetris-stage2), copying templates and returning configuration paths in JSON format.",
+          "adjudication": "progress statement about setup-plan script",
+          "blocking_question_count": 0
+        },
+        {
+          "response_id": "747b4461-89e8-4d4c-8612-7502bbbc4960",
+          "session_id": "261670ce-7c76-40eb-90ef-cdd79252dfcc",
+          "timestamp": "2026-10-20T11:39:35.580Z",
+          "transcript_copies": [
+            "gemini-home/.gemini/tmp/spec-kit/chats/session-2026-10-20T11-38-261670ce.jsonl",
+            "transcripts-archive/session-2026-10-20T11-38-261670ce.28275FCDC84E6205.jsonl"
+          ],
+          "decoded_text_utf8_sha256": "D4693EE33A68745C10A1B782109BD08569390C764B292360CD885E5E76E79761",
+          "characters": 114,
+          "snippet": "I will check the installed Python version to specify it accurately in the implementation plan's technical context.",
+          "adjudication": "progress statement about Python version read",
+          "blocking_question_count": 0
+        },
+        {
+          "response_id": "c28cb12f-8dd4-43b5-a4b6-7ecd912ff248",
+          "session_id": "261670ce-7c76-40eb-90ef-cdd79252dfcc",
+          "timestamp": "2026-10-20T11:49:28.671Z",
+          "transcript_copies": [
+            "gemini-home/.gemini/tmp/spec-kit/chats/session-2026-10-20T11-38-261670ce.jsonl",
+            "transcripts-archive/session-2026-10-20T11-38-261670ce.28275FCDC84E6205.jsonl"
+          ],
+          "decoded_text_utf8_sha256": "E032963167835F60F60E49E26CFFD5998C98CA773F8B4055BD62C0D0E694069C",
+          "characters": 1159,
+          "snippet": "## Stage 2 Tetris Specification Completed\n\n- **Branch**: `002-extend-tetris-stage2`\n- **Implementation Plan Path**: `specs/002-extend-tetris-stage2/plan.md`\n\n### Generated & Completed Artifacts:\n1. **Implementation Plan** (`plan.md`): Extended with Stage 2 tec",
+          "adjudication": "planning completion report",
+          "blocking_question_count": 0
+        }
+      ]
+    },
+    {
+      "label": "05-tasks",
+      "started": "2026-10-20T06:50:29.0810464-05:00",
+      "ended": "2026-10-20T06:55:33.7517127-05:00",
+      "session_ids": [
+        "57ca997e-3d9c-4d28-8189-f9eb9a9f34e8"
+      ],
+      "retained_transcript_paths": [
+        "gemini-home/.gemini/tmp/spec-kit/chats/session-2026-10-20T11-50-57ca997e.jsonl",
+        "transcripts-archive/session-2026-10-20T11-50-57ca997e.F41D2926EE110728.jsonl"
+      ],
+      "natural_language_message_count": 3,
+      "tool_requested_blocking_questions_observed": 0,
+      "coverage": "retained main transcript interval and matching completed CLI final response",
+      "cli_final_response_matches": [
+        "9d88ad81-73ae-4d66-822d-d12ad1f898cd"
+      ],
+      "message_evidence": [
+        {
+          "response_id": "1254eec3-7acc-41ad-a49d-5974f4a2911d",
+          "session_id": "57ca997e-3d9c-4d28-8189-f9eb9a9f34e8",
+          "timestamp": "2026-10-20T11:52:11.220Z",
+          "transcript_copies": [
+            "gemini-home/.gemini/tmp/spec-kit/chats/session-2026-10-20T11-50-57ca997e.jsonl",
+            "transcripts-archive/session-2026-10-20T11-50-57ca997e.F41D2926EE110728.jsonl"
+          ],
+          "decoded_text_utf8_sha256": "5E334DF097F5756392602D35CB9E975ECBB780F0AB3828BAD0405D72067FF53E",
+          "characters": 222,
+          "snippet": "I will now run the `setup-tasks.ps1` PowerShell script with the `-Json` flag. This script initializes the environment for task generation, providing critical path directories, template content, and available documentation.",
+          "adjudication": "progress statement about setup-tasks script",
+          "blocking_question_count": 0
+        },
+        {
+          "response_id": "f907d707-a98a-4962-b4ca-269f7bc31f69",
+          "session_id": "57ca997e-3d9c-4d28-8189-f9eb9a9f34e8",
+          "timestamp": "2026-10-20T11:54:28.411Z",
+          "transcript_copies": [
+            "gemini-home/.gemini/tmp/spec-kit/chats/session-2026-10-20T11-50-57ca997e.jsonl",
+            "transcripts-archive/session-2026-10-20T11-50-57ca997e.F41D2926EE110728.jsonl"
+          ],
+          "decoded_text_utf8_sha256": "48C4B3D359A6F1732C1E6C1887ED55C11FED43EB24A7CE51F171FC3B1531873F",
+          "characters": 237,
+          "snippet": "I will now generate the `tasks.md` file at `specs/002-extend-tetris-stage2/tasks.md` using the exact layout from the template, with every task formatted precisely according to the required checklist format and including exact file paths.",
+          "adjudication": "progress statement about writing tasks",
+          "blocking_question_count": 0
+        },
+        {
+          "response_id": "9d88ad81-73ae-4d66-822d-d12ad1f898cd",
+          "session_id": "57ca997e-3d9c-4d28-8189-f9eb9a9f34e8",
+          "timestamp": "2026-10-20T11:55:33.676Z",
+          "transcript_copies": [
+            "gemini-home/.gemini/tmp/spec-kit/chats/session-2026-10-20T11-50-57ca997e.jsonl",
+            "transcripts-archive/session-2026-10-20T11-50-57ca997e.F41D2926EE110728.jsonl"
+          ],
+          "decoded_text_utf8_sha256": "7CAB5169AA689783BB2A40A1E17BB1A1D8967ACA54265E1328A59386CC44FFC3",
+          "characters": 3166,
+          "snippet": "The Stage 2 Tetris implementation and regression task list has been successfully generated at **`specs/002-extend-tetris-stage2/tasks.md`**.\n\n### Summary of Generated Task List\n\n- **Total Task Count**: 26 tasks (`T001` - `T026`)\n- **Task Count per Phase / User",
+          "adjudication": "task-generation completion report",
+          "blocking_question_count": 0
+        }
+      ]
+    },
+    {
+      "label": "06-tasks-full-arguments",
+      "started": "2026-10-20T06:56:54.3854077-05:00",
+      "ended": "2026-10-20T06:56:54.4695657-05:00",
+      "session_ids": [],
+      "retained_transcript_paths": [],
+      "natural_language_message_count": 0,
+      "tool_requested_blocking_questions_observed": 0,
+      "coverage": "no model startup; zero follows launcher failure evidence",
+      "cli_final_response_matches": [],
+      "message_evidence": []
+    },
+    {
+      "label": "07-tasks-native-expanded",
+      "started": "2026-10-20T06:57:31.9906020-05:00",
+      "ended": "2026-10-20T07:06:37.3812634-05:00",
+      "session_ids": [
+        "cf453998-9126-4003-a157-f60f0914f4dd"
+      ],
+      "retained_transcript_paths": [
+        "gemini-home/.gemini/tmp/spec-kit/chats/session-2026-10-20T11-57-cf453998.jsonl",
+        "transcripts-archive/session-2026-10-20T11-57-cf453998.A0E9068FD9DD20F4.jsonl"
+      ],
+      "natural_language_message_count": 5,
+      "tool_requested_blocking_questions_observed": 0,
+      "coverage": "retained main transcript interval and matching completed CLI final response",
+      "cli_final_response_matches": [
+        "ae71f8ca-c078-430d-934c-1d4d0dacf803"
+      ],
+      "message_evidence": [
+        {
+          "response_id": "608b8deb-3801-4ee5-bba0-657942caf8f0",
+          "session_id": "cf453998-9126-4003-a157-f60f0914f4dd",
+          "timestamp": "2026-10-20T11:58:26.819Z",
+          "transcript_copies": [
+            "gemini-home/.gemini/tmp/spec-kit/chats/session-2026-10-20T11-57-cf453998.jsonl",
+            "transcripts-archive/session-2026-10-20T11-57-cf453998.A0E9068FD9DD20F4.jsonl"
+          ],
+          "decoded_text_utf8_sha256": "D2536FFD2A7D5F31763C00E1A3E0569D18076C6F499D91052843B0020167CAD2",
+          "characters": 185,
+          "snippet": "I will run the project's native setup-tasks script with the `-Json` flag. This script locates the feature folder and provides paths and templates to properly generate the Stage 2 tasks.",
+          "adjudication": "progress statement about native task setup",
+          "blocking_question_count": 0
+        },
+        {
+          "response_id": "7ee7b6c0-1379-4465-ada3-893811c885ff",
+          "session_id": "cf453998-9126-4003-a157-f60f0914f4dd",
+          "timestamp": "2026-10-20T11:59:07.101Z",
+          "transcript_copies": [
+            "gemini-home/.gemini/tmp/spec-kit/chats/session-2026-10-20T11-57-cf453998.jsonl",
+            "transcripts-archive/session-2026-10-20T11-57-cf453998.A0E9068FD9DD20F4.jsonl"
+          ],
+          "decoded_text_utf8_sha256": "0DB36818EA342D36414908AEEBBE8D247096D0F521E5476EC2E3CD19C51B5166",
+          "characters": 235,
+          "snippet": "I will run a PowerShell command to view the first 20 lines of the ignored `docs/sonar-baseline/sonar-issues.json` file. This allows us to inspect the SonarQube baseline issues so that we can accurately represent them in the tasks list.",
+          "adjudication": "progress statement about reading baseline issues",
+          "blocking_question_count": 0
+        },
+        {
+          "response_id": "99e26f4d-5dc4-4252-b06c-a6476aabbbcb",
+          "session_id": "cf453998-9126-4003-a157-f60f0914f4dd",
+          "timestamp": "2026-10-20T11:59:10.335Z",
+          "transcript_copies": [
+            "gemini-home/.gemini/tmp/spec-kit/chats/session-2026-10-20T11-57-cf453998.jsonl",
+            "transcripts-archive/session-2026-10-20T11-57-cf453998.A0E9068FD9DD20F4.jsonl"
+          ],
+          "decoded_text_utf8_sha256": "3D88CC4CE85C5C61D598878C41D4B6F96E586B374712CE6D143C4677BF969452",
+          "characters": 191,
+          "snippet": "I will run a PowerShell command to view the remaining lines of the `docs/sonar-baseline/sonar-issues.json` file to list all baseline SonarQube quality and code smell issues we must remediate.",
+          "adjudication": "progress statement about reading remaining issues",
+          "blocking_question_count": 0
+        },
+        {
+          "response_id": "7e6ebfbc-df6d-49df-8323-82d5956f870b",
+          "session_id": "cf453998-9126-4003-a157-f60f0914f4dd",
+          "timestamp": "2026-10-20T11:59:21.426Z",
+          "transcript_copies": [
+            "gemini-home/.gemini/tmp/spec-kit/chats/session-2026-10-20T11-57-cf453998.jsonl",
+            "transcripts-archive/session-2026-10-20T11-57-cf453998.A0E9068FD9DD20F4.jsonl"
+          ],
+          "decoded_text_utf8_sha256": "F2A715994133F06FD78933F2C590CF26380C9FDC4A40BB751EED39A6ABE059BB",
+          "characters": 147,
+          "snippet": "I will run a PowerShell command to skipping the first 170 lines of the `docs/sonar-baseline/sonar-issues.json` file to list the rest of the issues.",
+          "adjudication": "progress statement about reading remaining issues",
+          "blocking_question_count": 0
+        },
+        {
+          "response_id": "ae71f8ca-c078-430d-934c-1d4d0dacf803",
+          "session_id": "cf453998-9126-4003-a157-f60f0914f4dd",
+          "timestamp": "2026-10-20T12:06:37.273Z",
+          "transcript_copies": [
+            "gemini-home/.gemini/tmp/spec-kit/chats/session-2026-10-20T11-57-cf453998.jsonl",
+            "transcripts-archive/session-2026-10-20T11-57-cf453998.A0E9068FD9DD20F4.jsonl"
+          ],
+          "decoded_text_utf8_sha256": "A261E2F163F1161FAEA623EA3E245F3967A89DE484B8E3244B57EAD6509535FC",
+          "characters": 4565,
+          "snippet": "## Specification Revision and Task Generation Completed\n\nAll Stage 2 specification files under `specs/002-extend-tetris-stage2/` have been successfully revised, corrected, and synchronized with the authoritative Stage 2 rules and SonarQube quality baselines. N",
+          "adjudication": "completion report; question marks occur only in quoted task-format placeholders",
+          "blocking_question_count": 0
+        }
+      ]
+    },
+    {
+      "label": "08-implement",
+      "started": "2026-10-20T07:07:23.2772934-05:00",
+      "ended": "2026-10-20T07:55:29.1477903-05:00",
+      "session_ids": [
+        "c8b0393f-008f-46cb-9fc0-fe7d4e186ded"
+      ],
+      "retained_transcript_paths": [
+        "gemini-home/.gemini/tmp/spec-kit/chats/session-2026-10-20T12-07-c8b0393f.jsonl",
+        "transcripts-archive/session-2026-10-20T12-07-c8b0393f.8F356DEC5678770D.jsonl",
+        "transcripts-archive/session-2026-10-20T12-07-c8b0393f.EE6475772BA480AA.jsonl"
+      ],
+      "natural_language_message_count": 1,
+      "tool_requested_blocking_questions_observed": 0,
+      "coverage": "retained main transcript interval and matching completed CLI final response",
+      "cli_final_response_matches": [
+        "8e6c1797-4a72-4765-8316-c5c0d8ee5154"
+      ],
+      "message_evidence": [
+        {
+          "response_id": "8e6c1797-4a72-4765-8316-c5c0d8ee5154",
+          "session_id": "c8b0393f-008f-46cb-9fc0-fe7d4e186ded",
+          "timestamp": "2026-10-20T12:55:28.942Z",
+          "transcript_copies": [
+            "gemini-home/.gemini/tmp/spec-kit/chats/session-2026-10-20T12-07-c8b0393f.jsonl",
+            "transcripts-archive/session-2026-10-20T12-07-c8b0393f.8F356DEC5678770D.jsonl"
+          ],
+          "decoded_text_utf8_sha256": "75A69ED26E60CA458BFFB3755A4809077B2BC8317D120331A1B7DBF84330E8C8",
+          "characters": 4571,
+          "snippet": "I have successfully implemented every Stage 2 task in `specs/002-extend-tetris-stage2/tasks.md` and verified them against your specifications.\n\n### Summary of Completed Work\n\n1. **Foundational Schema Setup** (Phase 2):\n   - Added strict validation models on th",
+          "adjudication": "implementation completion self-report; no request for user clarification",
+          "blocking_question_count": 0
+        }
+      ]
+    },
+    {
+      "label": "09-qa-correction",
+      "started": "2026-10-20T07:57:53.4764379-05:00",
+      "ended": "2026-10-20T08:55:23.6575215-05:00",
+      "exit_code": 0,
+      "session_ids": [
+        "a7dd4aec-b811-4b1a-ac9b-bccdb3524db5"
+      ],
+      "retained_transcript_paths": [
+        "gemini-home/.gemini/tmp/spec-kit/chats/session-2026-10-20T12-57-a7dd4aec.jsonl",
+        "transcripts-archive/session-2026-10-20T12-57-a7dd4aec.2983E822E131E77A.jsonl"
+      ],
+      "natural_language_message_count": 1,
+      "tool_requested_blocking_questions_observed": 0,
+      "coverage": "retained main transcript interval and matching completed CLI final response",
+      "cli_final_response_matches": [
+        "8798f3e8-3050-48f7-9af2-dcbef2fe3f5d"
+      ],
+      "message_evidence": [
+        {
+          "response_id": "8798f3e8-3050-48f7-9af2-dcbef2fe3f5d",
+          "session_id": "a7dd4aec-b811-4b1a-ac9b-bccdb3524db5",
+          "timestamp": "2026-10-20T13:55:23.477Z",
+          "transcript_copies": [
+            "gemini-home/.gemini/tmp/spec-kit/chats/session-2026-10-20T12-57-a7dd4aec.jsonl",
+            "transcripts-archive/session-2026-10-20T12-57-a7dd4aec.2983E822E131E77A.jsonl"
+          ],
+          "decoded_text_utf8_sha256": "3BF1FB87BC74CBA86E1CB366E7EDC073EEACB14EEB8C89C8F15217352F3ACE7F",
+          "characters": 5943,
+          "snippet": "I have successfully completed **Post-Generation QA Iteration 1** for the Tetris Stage 2 implementation, with complete local verification, zero dependency security vulnerabilities, and a clean **100% OK Quality Gate** with **0 open issues** on SonarQube!\n\nHere ",
+          "adjudication": "QA iteration 1 completion self-report; no request for user clarification; its completeness/robustness claims are not endorsed by this question audit",
+          "blocking_question_count": 0
+        }
+      ]
+    },
+    {
+      "label": "10-qa-race-correction",
+      "started": "2026-10-20T20:17:28.7238915-05:00",
+      "ended": "2026-10-20T20:25:03.7793270-05:00",
+      "exit_code": 0,
+      "session_ids": [
+        "b87f6c6f-1e05-453e-ab00-60f3e2021ca4"
+      ],
+      "retained_transcript_paths": [
+        "gemini-home/.gemini/tmp/spec-kit/chats/session-2026-10-21T01-17-b87f6c6f.jsonl",
+        "transcripts-archive/session-2026-10-21T01-17-b87f6c6f.F9A98E407DE6E91B.jsonl"
+      ],
+      "natural_language_message_count": 1,
+      "tool_requested_blocking_questions_observed": 0,
+      "coverage": "retained main transcript interval and matching completed CLI final response",
+      "cli_final_response_matches": [
+        "7a9968cb-331f-445a-9cf9-0d428da6dcd5"
+      ],
+      "message_evidence": [
+        {
+          "response_id": "7a9968cb-331f-445a-9cf9-0d428da6dcd5",
+          "session_id": "b87f6c6f-1e05-453e-ab00-60f3e2021ca4",
+          "timestamp": "2026-10-21T01:25:03.709Z",
+          "transcript_copies": [
+            "gemini-home/.gemini/tmp/spec-kit/chats/session-2026-10-21T01-17-b87f6c6f.jsonl",
+            "transcripts-archive/session-2026-10-21T01-17-b87f6c6f.F9A98E407DE6E91B.jsonl"
+          ],
+          "decoded_text_utf8_sha256": "242E2C8B00689B9722D22994EF0F2535DCF21756A52DA9F9FD1A06D4D1F1F5B9",
+          "characters": 3555,
+          "snippet": "I have successfully completed the post-generation QA iteration 2 for Spec Kit Stage 2. All target corrections, spec updates, code modifications, testing scenarios, and SonarQube quality gate expectations have been fully implemented and verified.\n\n### Summary o",
+          "adjudication": "QA iteration 2 completion self-report; no request for user clarification; final functional verification remains a separate measure",
+          "blocking_question_count": 0
+        }
+      ]
+    },
+    {
+      "label": "11-qa-timer-ownership",
+      "started": "2026-10-20T20:26:21.3174095-05:00",
+      "ended": "2026-10-20T20:33:40.6355366-05:00",
+      "exit_code": 429,
+      "session_ids": [
+        "2a105d94-35b3-4a27-a13a-a412e1e35425"
+      ],
+      "retained_transcript_paths": [
+        "transcripts-archive/session-2026-10-21T01-26-2a105d94.2630BFA512AE737A.jsonl",
+        "transcripts-archive/session-2026-10-21T01-26-2a105d94.E4F56F4B18E28572.jsonl",
+        "transcripts-archive/session-2026-10-21T01-26-2a105d94.FFB6834455EE27A5.jsonl"
+      ],
+      "natural_language_message_count": 0,
+      "tool_requested_blocking_questions_observed": 0,
+      "coverage": "retained main transcript interval; terminal failure (exit 429) without final response, so no claim about unrecorded output or eventual questions",
+      "cli_final_response_matches": [],
+      "message_evidence": []
+    },
+    {
+      "label": "12-qa-timer-retry",
+      "started": "2026-10-20T20:35:28.0045886-05:00",
+      "ended": "2026-10-20T21:00:41.5090227-05:00",
+      "exit_code": 1,
+      "session_ids": [
+        "2a105d94-35b3-4a27-a13a-a412e1e35425"
+      ],
+      "retained_transcript_paths": [
+        "transcripts-archive/session-2026-10-21T01-26-2a105d94.2630BFA512AE737A.jsonl",
+        "transcripts-archive/session-2026-10-21T01-26-2a105d94.FFB6834455EE27A5.jsonl"
+      ],
+      "natural_language_message_count": 0,
+      "tool_requested_blocking_questions_observed": 0,
+      "coverage": "retained main transcript interval; terminal failure (exit 1) without final response, so no claim about unrecorded output or eventual questions",
+      "cli_final_response_matches": [],
+      "message_evidence": []
+    },
+    {
+      "label": "13-qa-completion-retry",
+      "started": "2026-10-21T00:16:20.7750370-05:00",
+      "ended": "2026-10-21T00:16:37.4135277-05:00",
+      "exit_code": 0,
+      "session_ids": [
+        "2a105d94-35b3-4a27-a13a-a412e1e35425"
+      ],
+      "retained_transcript_paths": [
+        "transcripts-archive/session-2026-10-21T01-26-2a105d94.FFB6834455EE27A5.jsonl"
+      ],
+      "natural_language_message_count": 0,
+      "tool_requested_blocking_questions_observed": 0,
+      "coverage": "retained main transcript interval; completed CLI response empty, with no emitted main natural-language text; action evidence is separate and process success does not prove completed QA",
+      "cli_final_response_matches": [],
+      "message_evidence": []
+    },
+    {
+      "label": "14-qa-completion-fresh",
+      "started": "2026-10-21T00:18:10.7132280-05:00",
+      "ended": "2026-10-21T00:21:15.6082784-05:00",
+      "exit_code": 0,
+      "session_ids": [
+        "e74a3afa-2ec3-4b9d-8c61-bba16a0f6d83"
+      ],
+      "retained_transcript_paths": [
+        "transcripts-archive/session-2026-10-21T05-18-e74a3afa.2395B9F6B41A967F.jsonl",
+        "transcripts-archive/session-2026-10-21T05-18-e74a3afa.A54BA766419FBA04.jsonl",
+        "transcripts-archive/session-2026-10-21T05-18-e74a3afa.C9F4D810888536C6.jsonl"
+      ],
+      "natural_language_message_count": 1,
+      "tool_requested_blocking_questions_observed": 0,
+      "coverage": "retained main transcript interval and matching completed CLI final response",
+      "cli_final_response_matches": [
+        "e9829b62-6aa9-49a4-bca1-e7bdc989375d"
+      ],
+      "message_evidence": [
+        {
+          "response_id": "e9829b62-6aa9-49a4-bca1-e7bdc989375d",
+          "session_id": "e74a3afa-2ec3-4b9d-8c61-bba16a0f6d83",
+          "timestamp": "2026-10-21T05:21:15.470Z",
+          "transcript_copies": [
+            "transcripts-archive/session-2026-10-21T05-18-e74a3afa.2395B9F6B41A967F.jsonl",
+            "transcripts-archive/session-2026-10-21T05-18-e74a3afa.A54BA766419FBA04.jsonl"
+          ],
+          "decoded_text_utf8_sha256": "FD7C417D92C9B28FE01EC60FD7A0DB97E1BB991B524EDE273B089BB71A9BEBFA",
+          "characters": 580,
+          "snippet": "I have updated the `backend/tests/unit/test_qa_iteration1.py` file to replace individual field assertions in the GET snapshots verification with a full comparison of the entire HTTP JSON response against the Pydantic model's serialized snapshot (using `model_d",
+          "adjudication": "partial backend-GET correction report and next-step workflow handoff; no request for missing user information; remaining frontend QA is explicitly unfinished",
+          "blocking_question_count": 0
+        }
+      ]
+    },
+    {
+      "label": "15-qa-frontend-completion",
+      "started": "2026-10-21T00:21:49.3237426-05:00",
+      "ended": "2026-10-21T00:22:45.6383753-05:00",
+      "exit_code": 0,
+      "session_ids": [
+        "e74a3afa-2ec3-4b9d-8c61-bba16a0f6d83"
+      ],
+      "retained_transcript_paths": [
+        "transcripts-archive/session-2026-10-21T05-18-e74a3afa.A54BA766419FBA04.jsonl"
+      ],
+      "natural_language_message_count": 0,
+      "tool_requested_blocking_questions_observed": 0,
+      "coverage": "retained main transcript interval; completed CLI response empty, with no emitted main natural-language text; action evidence is separate and process success does not prove completed QA",
+      "cli_final_response_matches": [],
+      "message_evidence": []
+    },
+    {
+      "label": "16-qa-final-regressions",
+      "started": "2026-10-21T00:23:20.7672460-05:00",
+      "ended": "2026-10-21T00:29:36.0926977-05:00",
+      "exit_code": 0,
+      "session_ids": [
+        "1d440379-6217-4f31-84a7-bd4db0834066"
+      ],
+      "retained_transcript_paths": [
+        "gemini-home/.gemini/tmp/spec-kit/chats/session-2026-10-21T05-23-1d440379.jsonl",
+        "transcripts-archive/session-2026-10-21T05-23-1d440379.89A8829653DED16C.jsonl",
+        "transcripts-archive/session-2026-10-21T05-23-1d440379.F27C66EEF3D07978.jsonl"
+      ],
+      "natural_language_message_count": 1,
+      "tool_requested_blocking_questions_observed": 0,
+      "coverage": "retained main transcript interval and matching completed CLI final response",
+      "cli_final_response_matches": [
+        "848ba96a-f4b1-4dc2-9fb5-761dd18e7531"
+      ],
+      "message_evidence": [
+        {
+          "response_id": "848ba96a-f4b1-4dc2-9fb5-761dd18e7531",
+          "session_id": "1d440379-6217-4f31-84a7-bd4db0834066",
+          "timestamp": "2026-10-21T05:29:36.000Z",
+          "transcript_copies": [
+            "gemini-home/.gemini/tmp/spec-kit/chats/session-2026-10-21T05-23-1d440379.jsonl",
+            "transcripts-archive/session-2026-10-21T05-23-1d440379.F27C66EEF3D07978.jsonl"
+          ],
+          "decoded_text_utf8_sha256": "1034A77A35474B09C82D7A7F54283C6A1207BEB78AC2DC0AEADD4C3E6A4D5CCB",
+          "characters": 2088,
+          "snippet": "I have successfully implemented all of the requested QA3 test enhancements across the backend and frontend test suites inside the Stage 2 directory.\n\n### Summary of Changes\n\n* **A. Deep Snapshot Immutability (`backend/tests/unit/test_qa_iteration1.py`):**\n  * ",
+          "adjudication": "QA-3 completion/test-pass self-report; no request for missing user information; independent verification is separate from the tool's claims",
+          "blocking_question_count": 0
+        }
+      ]
+    },
+    {
+      "label": "17-qa-sonar-style",
+      "started": "2026-10-21T00:32:41.9361548-05:00",
+      "ended": "2026-10-21T00:37:55.9223958-05:00",
+      "exit_code": 0,
+      "session_ids": [
+        "5261cb20-f8f5-406e-ab4e-69c6e85031b9"
+      ],
+      "retained_transcript_paths": [
+        "gemini-home/.gemini/tmp/spec-kit/chats/session-2026-10-21T05-32-5261cb20.jsonl",
+        "transcripts-archive/session-2026-10-21T05-32-5261cb20.19C90FEFDD218EB6.jsonl"
+      ],
+      "natural_language_message_count": 4,
+      "tool_requested_blocking_questions_observed": 0,
+      "coverage": "retained main transcript interval and matching completed CLI final response",
+      "cli_final_response_matches": [
+        "f1c3cf97-bd00-4945-b5a6-b43fb8bf454d"
+      ],
+      "message_evidence": [
+        {
+          "response_id": "15bc8b4e-bd56-4386-90b6-a3bb3e1ed56c",
+          "session_id": "5261cb20-f8f5-406e-ab4e-69c6e85031b9",
+          "timestamp": "2026-10-21T05:36:43.409Z",
+          "transcript_copies": [
+            "gemini-home/.gemini/tmp/spec-kit/chats/session-2026-10-21T05-32-5261cb20.jsonl",
+            "transcripts-archive/session-2026-10-21T05-32-5261cb20.19C90FEFDD218EB6.jsonl"
+          ],
+          "decoded_text_utf8_sha256": "22CDF7DD5833AB88D53914EEC2E1089FEA9D8827E834A97A2661B858AE5578DE",
+          "characters": 212,
+          "snippet": "IK will now run the frontend test suite using `vitest run` to verify that our changes to the test assertions in `frontend/tests/useGame.test.ts` pass successfully. This command does not modify any codebase files.",
+          "adjudication": "progress statement about running frontend tests; no request for clarification",
+          "blocking_question_count": 0
+        },
+        {
+          "response_id": "ce238da2-5968-48d4-a8c5-b51d1ad10160",
+          "session_id": "5261cb20-f8f5-406e-ab4e-69c6e85031b9",
+          "timestamp": "2026-10-21T05:36:59.658Z",
+          "transcript_copies": [
+            "gemini-home/.gemini/tmp/spec-kit/chats/session-2026-10-21T05-32-5261cb20.jsonl",
+            "transcripts-archive/session-2026-10-21T05-32-5261cb20.19C90FEFDD218EB6.jsonl"
+          ],
+          "decoded_text_utf8_sha256": "C192328C3C8078C7D8ED5CFC31408CF125FA9F1BD2E67F4F5BF6D07B30D90DC8",
+          "characters": 300,
+          "snippet": "I will now compile and build the production-ready frontend bundle using `npm run build`. This runs TypeScript compilation (`tsc`) and the Vite bundler to ensure the entire frontend compiles cleanly and is free of type or bundling issues. This is a validation c",
+          "adjudication": "progress statement about production build; no request for clarification",
+          "blocking_question_count": 0
+        },
+        {
+          "response_id": "103e69ea-4f3e-4273-aa52-7a0dd82a325f",
+          "session_id": "5261cb20-f8f5-406e-ab4e-69c6e85031b9",
+          "timestamp": "2026-10-21T05:37:18.989Z",
+          "transcript_copies": [
+            "gemini-home/.gemini/tmp/spec-kit/chats/session-2026-10-21T05-32-5261cb20.jsonl",
+            "transcripts-archive/session-2026-10-21T05-32-5261cb20.19C90FEFDD218EB6.jsonl"
+          ],
+          "decoded_text_utf8_sha256": "1C8BC5AA28B3EFB8A26C4E48973CAAAF6746829318D85C18060864402A3EC6E0",
+          "characters": 319,
+          "snippet": "I will now execute the comprehensive test script `./run_tests.ps1` using PowerShell to run both the backend (`pytest`) and frontend (`vitest`) test suites, verifying that the entire project is completely green and unaffected by the remediation. This is a read-",
+          "adjudication": "progress statement about comprehensive test script; no request for clarification",
+          "blocking_question_count": 0
+        },
+        {
+          "response_id": "f1c3cf97-bd00-4945-b5a6-b43fb8bf454d",
+          "session_id": "5261cb20-f8f5-406e-ab4e-69c6e85031b9",
+          "timestamp": "2026-10-21T05:37:55.801Z",
+          "transcript_copies": [
+            "gemini-home/.gemini/tmp/spec-kit/chats/session-2026-10-21T05-32-5261cb20.jsonl",
+            "transcripts-archive/session-2026-10-21T05-32-5261cb20.19C90FEFDD218EB6.jsonl"
+          ],
+          "decoded_text_utf8_sha256": "D1999B2949FCBFCC247A6D001306E7A5DDBE252B7A41B826A9C0565C2F4A3E7F",
+          "characters": 1030,
+          "snippet": "I have completed the local Stage 2 Sonar quality remediation (QA4):\n\n1. **Native Quality Items**: Added a new Post-Generation QA Iteration 4 section to `specs/002-extend-tetris-stage2/spec.md` and added tasks `T058` and `T059` to `specs/002-extend-tetris-stage",
+          "adjudication": "QA-4 completion/test-pass self-report; question marks occur only in quoted optional-chain code, not requests for user input",
+          "blocking_question_count": 0
+        }
+      ]
+    }
+  ],
+  "external_researcher_clarifications": [
+    {
+      "label": "03-contract-clarification",
+      "kind": "standalone researcher clarification prompt",
+      "intended_input_path": "03-contract-clarification.prompt.txt",
+      "clarification_utf8_sha256": "A53B9D506E52260324BF3DBCAE8AEDF157A512CAAE2307364FE057B409186CB9",
+      "snippet": "Clarify and revise ONLY the native Stage 2 specification and requirements checklist in specs/002-extend-tetris-stage2 before planning. The frozen seed is authoritative. Every game-state response must use the exact new JSON keys score, total_lines, level, gravity_interval_ms, next_piece, hold_piece, ",
+      "effective_first_input_session_id": "12a3f237-0e16-4ff0-af81-a27cd34444c7",
+      "effective_first_input_timestamp": "2026-10-20T11:31:07.390Z",
+      "complete_clarification_in_effective_first_input": true,
+      "delivery_status": "verified in retained first input",
+      "reply_to_observed_blocking_tool_question": false
+    },
+    {
+      "label": "05-tasks",
+      "kind": "researcher clarification appended to a native workflow attempt",
+      "intended_input_path": "05-tasks.prompt.txt",
+      "clarification_utf8_sha256": "AB3C8854F4DAE132EE46DAF88EC0E68CE87107C15925D881197B5BDA2172214D",
+      "snippet": "Before writing tasks, revise native artifacts to remove the newly invented less-than-5-ms performance target in plan.md; the seed sets functional gravity intervals, not request latency limits. Fix data-model.md diagram names nextPiece/holdPiece to next_piece/hold_piece and the I-piece example origin",
+      "effective_first_input_session_id": "57ca997e-3d9c-4d28-8189-f9eb9a9f34e8",
+      "effective_first_input_timestamp": "2026-10-20T11:50:31.453Z",
+      "complete_clarification_in_effective_first_input": false,
+      "delivery_status": "absent from retained first input; launcher truncation documented",
+      "reply_to_observed_blocking_tool_question": false
+    },
+    {
+      "label": "06-tasks-full-arguments",
+      "kind": "researcher clarification appended to a native workflow attempt",
+      "intended_input_path": "06-tasks-full-arguments.request.txt",
+      "clarification_utf8_sha256": "188301A2B1EE11ABF5DC6A7BA17B12C41C6DCD5B62BDB7E605877F36532FF838",
+      "snippet": "This retry preserves the entire multiline input that the headless slash parser previously truncated. First revise native artifacts: remove the invented less-than-5-ms performance target from plan.md; correct nextPiece/holdPiece in the data-model diagram to next_piece/hold_piece and correct the I-pie",
+      "effective_first_input_session_id": null,
+      "effective_first_input_timestamp": null,
+      "complete_clarification_in_effective_first_input": false,
+      "delivery_status": "model did not start",
+      "reply_to_observed_blocking_tool_question": false
+    },
+    {
+      "label": "07-tasks-native-expanded",
+      "kind": "researcher clarification appended to a native workflow attempt",
+      "intended_input_path": "07-tasks-native-expanded.request.txt",
+      "clarification_utf8_sha256": "188301A2B1EE11ABF5DC6A7BA17B12C41C6DCD5B62BDB7E605877F36532FF838",
+      "snippet": "This retry preserves the entire multiline input that the headless slash parser previously truncated. First revise native artifacts: remove the invented less-than-5-ms performance target from plan.md; correct nextPiece/holdPiece in the data-model diagram to next_piece/hold_piece and correct the I-pie",
+      "effective_first_input_session_id": "cf453998-9126-4003-a157-f60f0914f4dd",
+      "effective_first_input_timestamp": "2026-10-20T11:57:33.830Z",
+      "complete_clarification_in_effective_first_input": true,
+      "delivery_status": "verified in retained first input",
+      "reply_to_observed_blocking_tool_question": false
+    },
+    {
+      "label": "08-implement",
+      "kind": "researcher clarification appended to a native workflow attempt",
+      "intended_input_path": "08-implement.request.txt",
+      "clarification_utf8_sha256": "9FC9C8014AE701E108E4247DBDF7BAC18CE72D7612BE28A31DC0D96A10208FC6",
+      "snippet": "Execute all revised tasks sequentially in this session without delegating to other agents. The user already authorized the complete local implementation. Before code changes, add the quality verification criteria from the revised tasks to a clearly labeled section of the native Stage 2 specification",
+      "effective_first_input_session_id": "c8b0393f-008f-46cb-9fc0-fe7d4e186ded",
+      "effective_first_input_timestamp": "2026-10-20T12:07:25.107Z",
+      "complete_clarification_in_effective_first_input": true,
+      "delivery_status": "verified in retained first input",
+      "reply_to_observed_blocking_tool_question": false
+    },
+    {
+      "label": "09-qa-correction",
+      "kind": "standalone researcher postimplementation correction prompt",
+      "intended_input_path": "09-qa-correction.prompt.txt",
+      "clarification_utf8_sha256": "83DE1D4CD91EDF4FD4B076F710CA33D3C915D24E6EDFCDC86C4E6DC9BC0B0052",
+      "clarification_hash_scope": "normalized LF researcher prompt prefix preceding the extracted frozen seed block, trimmed at end",
+      "snippet": "Continue this tool's native Spec Kit Stage 2 implementation with post-generation QA iteration 1. The user has authorized complete local implementation and correction. Work sequentially in this session without delegation. Use English. Preserve the frozen seed and this tool's own Stage 1 compatib",
+      "effective_first_input_session_id": "a7dd4aec-b811-4b1a-ac9b-bccdb3524db5",
+      "effective_first_input_timestamp": "2026-10-20T12:57:55.361Z",
+      "effective_first_input_transcript_copies": [
+        "gemini-home/.gemini/tmp/spec-kit/chats/session-2026-10-20T12-57-a7dd4aec.jsonl",
+        "transcripts-archive/session-2026-10-20T12-57-a7dd4aec.2983E822E131E77A.jsonl"
+      ],
+      "complete_clarification_in_effective_first_input": true,
+      "delivery_status": "verified in retained first input",
+      "reply_to_observed_blocking_tool_question": false,
+      "effective_submitted_prompt_session_id": "a7dd4aec-b811-4b1a-ac9b-bccdb3524db5",
+      "effective_submitted_prompt_timestamp": "2026-10-20T12:57:55.361Z",
+      "effective_submitted_prompt_transcript_copies": [
+        "gemini-home/.gemini/tmp/spec-kit/chats/session-2026-10-20T12-57-a7dd4aec.jsonl",
+        "transcripts-archive/session-2026-10-20T12-57-a7dd4aec.2983E822E131E77A.jsonl"
+      ],
+      "complete_clarification_in_effective_submission": true
+    },
+    {
+      "label": "10-qa-race-correction",
+      "kind": "standalone researcher postimplementation correction prompt",
+      "intended_input_path": "10-qa-race-correction.prompt.txt",
+      "clarification_utf8_sha256": "2B2153C534D4F2477EAE6AF475BE3EAF4F94B1F40E257CBC90E7E433CF27524C",
+      "clarification_hash_scope": "normalized LF researcher prompt prefix preceding the extracted frozen seed block, trimmed at end",
+      "snippet": "Continue Spec Kit Stage 2 with post-generation QA iteration 2. The user authorizes complete local implementation/correction. Use English and the unchanged common seed. Work sequentially without delegation. Do not edit Stage 1 or the shared toolchain. Do not use Git branches, commits, pushes or ",
+      "effective_first_input_session_id": "b87f6c6f-1e05-453e-ab00-60f3e2021ca4",
+      "effective_first_input_timestamp": "2026-10-21T01:17:35.194Z",
+      "effective_first_input_transcript_copies": [
+        "gemini-home/.gemini/tmp/spec-kit/chats/session-2026-10-21T01-17-b87f6c6f.jsonl",
+        "transcripts-archive/session-2026-10-21T01-17-b87f6c6f.F9A98E407DE6E91B.jsonl"
+      ],
+      "complete_clarification_in_effective_first_input": true,
+      "delivery_status": "verified in retained first input",
+      "reply_to_observed_blocking_tool_question": false,
+      "effective_submitted_prompt_session_id": "b87f6c6f-1e05-453e-ab00-60f3e2021ca4",
+      "effective_submitted_prompt_timestamp": "2026-10-21T01:17:35.194Z",
+      "effective_submitted_prompt_transcript_copies": [
+        "gemini-home/.gemini/tmp/spec-kit/chats/session-2026-10-21T01-17-b87f6c6f.jsonl",
+        "transcripts-archive/session-2026-10-21T01-17-b87f6c6f.F9A98E407DE6E91B.jsonl"
+      ],
+      "complete_clarification_in_effective_submission": true
+    },
+    {
+      "label": "11-qa-timer-ownership",
+      "kind": "standalone researcher postimplementation correction prompt",
+      "intended_input_path": "11-qa-timer-ownership.prompt.txt",
+      "clarification_utf8_sha256": "73BC4BAEBA8265219C9038904794DEA368CA9862CB8436B4CCDC5369185A1411",
+      "clarification_hash_scope": "normalized LF researcher prompt prefix preceding the extracted frozen seed block, trimmed at end",
+      "snippet": "Continue the authorized local Spec Kit Stage 2 work with QA iteration 3. Use English and the unchanged common seed. No delegation, Git operations, repository upload, or Stage 1/shared-toolchain edits. This is one targeted production correction plus completing the already-required evidence. Rech",
+      "effective_first_input_session_id": "2a105d94-35b3-4a27-a13a-a412e1e35425",
+      "effective_first_input_timestamp": "2026-10-21T01:26:25.079Z",
+      "effective_first_input_transcript_copies": [
+        "transcripts-archive/session-2026-10-21T01-26-2a105d94.2630BFA512AE737A.jsonl",
+        "transcripts-archive/session-2026-10-21T01-26-2a105d94.E4F56F4B18E28572.jsonl",
+        "transcripts-archive/session-2026-10-21T01-26-2a105d94.FFB6834455EE27A5.jsonl"
+      ],
+      "complete_clarification_in_effective_first_input": true,
+      "delivery_status": "verified in retained first input",
+      "reply_to_observed_blocking_tool_question": false,
+      "effective_submitted_prompt_session_id": "2a105d94-35b3-4a27-a13a-a412e1e35425",
+      "effective_submitted_prompt_timestamp": "2026-10-21T01:26:25.079Z",
+      "effective_submitted_prompt_transcript_copies": [
+        "transcripts-archive/session-2026-10-21T01-26-2a105d94.2630BFA512AE737A.jsonl",
+        "transcripts-archive/session-2026-10-21T01-26-2a105d94.E4F56F4B18E28572.jsonl",
+        "transcripts-archive/session-2026-10-21T01-26-2a105d94.FFB6834455EE27A5.jsonl"
+      ],
+      "complete_clarification_in_effective_submission": true
+    },
+    {
+      "label": "12-qa-timer-retry",
+      "kind": "standalone researcher postimplementation correction prompt",
+      "intended_input_path": "12-qa-timer-retry.prompt.txt",
+      "clarification_utf8_sha256": "3354B1336861A440CE72E55539804201D1CE2BF3D6E7927C3A98FFE88EA17CF8",
+      "clarification_hash_scope": "normalized LF researcher prompt prefix preceding the extracted frozen seed block, trimmed at end",
+      "snippet": "Resume QA iteration 3 after the preceding Vertex AI 429 resource-exhausted termination. The native spec/tasks were written; the requested application/test corrections have not been applied. Continue the pending corrections below without repeating baseline exploration. The researcher owns existi",
+      "effective_first_input_session_id": "2a105d94-35b3-4a27-a13a-a412e1e35425",
+      "effective_first_input_timestamp": "2026-10-21T01:35:31.496Z",
+      "effective_first_input_transcript_copies": [
+        "transcripts-archive/session-2026-10-21T01-26-2a105d94.2630BFA512AE737A.jsonl",
+        "transcripts-archive/session-2026-10-21T01-26-2a105d94.FFB6834455EE27A5.jsonl"
+      ],
+      "complete_clarification_in_effective_first_input": true,
+      "delivery_status": "verified in retained first input",
+      "reply_to_observed_blocking_tool_question": false,
+      "effective_submitted_prompt_session_id": "2a105d94-35b3-4a27-a13a-a412e1e35425",
+      "effective_submitted_prompt_timestamp": "2026-10-21T01:35:31.496Z",
+      "effective_submitted_prompt_transcript_copies": [
+        "transcripts-archive/session-2026-10-21T01-26-2a105d94.2630BFA512AE737A.jsonl",
+        "transcripts-archive/session-2026-10-21T01-26-2a105d94.FFB6834455EE27A5.jsonl"
+      ],
+      "complete_clarification_in_effective_submission": true
+    },
+    {
+      "label": "13-qa-completion-retry",
+      "kind": "standalone researcher postimplementation correction prompt",
+      "intended_input_path": "13-qa-completion-retry.prompt.txt",
+      "clarification_utf8_sha256": "38C88C2F6B0BD6F8EC1F0B4C5FD0D5CFEF177578203724938BCF7AB5E4A73E54",
+      "clarification_hash_scope": "normalized LF researcher prompt prefix preceding the extracted frozen seed block, trimmed at end",
+      "snippet": "Resume QA iteration 3 after attempt 12 terminated with a network fetch failure. This is a retry of the same QA intent, not a new feature. Native spec/tasks and generation-owned tick correction were already saved; read current files and preserve them. Finish the original QA3 checklist below. Som",
+      "effective_first_input_session_id": "2a105d94-35b3-4a27-a13a-a412e1e35425",
+      "effective_first_input_timestamp": "2026-10-21T05:16:26.917Z",
+      "effective_first_input_transcript_copies": [
+        "transcripts-archive/session-2026-10-21T01-26-2a105d94.FFB6834455EE27A5.jsonl"
+      ],
+      "complete_clarification_in_effective_first_input": false,
+      "delivery_status": "verified in retained matching submitted-prompt input; earlier synthetic/replayed user-like context is excluded",
+      "reply_to_observed_blocking_tool_question": false,
+      "effective_submitted_prompt_session_id": "2a105d94-35b3-4a27-a13a-a412e1e35425",
+      "effective_submitted_prompt_timestamp": "2026-10-21T05:16:26.981Z",
+      "effective_submitted_prompt_transcript_copies": [
+        "transcripts-archive/session-2026-10-21T01-26-2a105d94.FFB6834455EE27A5.jsonl"
+      ],
+      "complete_clarification_in_effective_submission": true
+    },
+    {
+      "label": "14-qa-completion-fresh",
+      "kind": "standalone researcher postimplementation correction prompt",
+      "intended_input_path": "14-qa-completion-fresh.prompt.txt",
+      "clarification_utf8_sha256": "63CCAD8B165C69124315F42D04AC84D85F355BA9C8F187D6F34A3672ED9DEC81",
+      "clarification_hash_scope": "normalized LF researcher prompt prefix preceding the extracted frozen seed block, trimmed at end",
+      "snippet": "Complete the authorized local Tetris Stage2 Spec Kit QA3 work from existing files. You must actually edit and validate the remaining tests; an empty response/topic update is not completion. This is a fresh CLI session retry after 11 resource exhaustion,12 network failure,and13 empty successful ",
+      "effective_first_input_session_id": "e74a3afa-2ec3-4b9d-8c61-bba16a0f6d83",
+      "effective_first_input_timestamp": "2026-10-21T05:18:15.413Z",
+      "effective_first_input_transcript_copies": [
+        "transcripts-archive/session-2026-10-21T05-18-e74a3afa.2395B9F6B41A967F.jsonl",
+        "transcripts-archive/session-2026-10-21T05-18-e74a3afa.A54BA766419FBA04.jsonl",
+        "transcripts-archive/session-2026-10-21T05-18-e74a3afa.C9F4D810888536C6.jsonl"
+      ],
+      "complete_clarification_in_effective_first_input": true,
+      "delivery_status": "verified in retained first input",
+      "reply_to_observed_blocking_tool_question": false,
+      "effective_submitted_prompt_session_id": "e74a3afa-2ec3-4b9d-8c61-bba16a0f6d83",
+      "effective_submitted_prompt_timestamp": "2026-10-21T05:18:15.413Z",
+      "effective_submitted_prompt_transcript_copies": [
+        "transcripts-archive/session-2026-10-21T05-18-e74a3afa.2395B9F6B41A967F.jsonl",
+        "transcripts-archive/session-2026-10-21T05-18-e74a3afa.A54BA766419FBA04.jsonl",
+        "transcripts-archive/session-2026-10-21T05-18-e74a3afa.C9F4D810888536C6.jsonl"
+      ],
+      "complete_clarification_in_effective_submission": true
+    },
+    {
+      "label": "15-qa-frontend-completion",
+      "kind": "standalone researcher postimplementation correction prompt",
+      "intended_input_path": "15-qa-frontend-completion.prompt.txt",
+      "clarification_utf8_sha256": "E070CB9F70B5953C54F184165442E670D21003E168877E3EB076A493E04D33A4",
+      "clarification_hash_scope": "normalized LF researcher prompt prefix preceding the extracted frozen seed block, trimmed at end",
+      "snippet": "Continue and FINISH the remaining QA3 implementation now. The preceding response stopped after editing the backend GET snapshot and announcing a frontend next step. That partial result is not completion. Do all remaining test edits and run the tests in this invocation; do not stop with a plan o",
+      "effective_first_input_session_id": "e74a3afa-2ec3-4b9d-8c61-bba16a0f6d83",
+      "effective_first_input_timestamp": "2026-10-21T05:21:54.124Z",
+      "effective_first_input_transcript_copies": [
+        "transcripts-archive/session-2026-10-21T05-18-e74a3afa.A54BA766419FBA04.jsonl"
+      ],
+      "complete_clarification_in_effective_first_input": true,
+      "delivery_status": "verified in retained first input",
+      "reply_to_observed_blocking_tool_question": false,
+      "effective_submitted_prompt_session_id": "e74a3afa-2ec3-4b9d-8c61-bba16a0f6d83",
+      "effective_submitted_prompt_timestamp": "2026-10-21T05:21:54.124Z",
+      "effective_submitted_prompt_transcript_copies": [
+        "transcripts-archive/session-2026-10-21T05-18-e74a3afa.A54BA766419FBA04.jsonl"
+      ],
+      "complete_clarification_in_effective_submission": true
+    },
+    {
+      "label": "16-qa-final-regressions",
+      "kind": "standalone researcher postimplementation correction prompt",
+      "intended_input_path": "16-qa-final-regressions.prompt.txt",
+      "clarification_utf8_sha256": "968AFAB32A2C061FF18243F5F2BB8718A18168EB0FB31A31A3D8303212E4C250",
+      "clarification_hash_scope": "normalized LF researcher prompt prefix preceding the extracted frozen seed block, trimmed at end",
+      "snippet": "Implement only these final QA3 test changes now, in existing native Spec Kit feature specs/002-extend-tetris-stage2. The requirements are already in spec.md/tasks.md; read current files first and preserve meaningful existing tests. This continuation is the same QA3 intent. Do not stop at a plan",
+      "effective_first_input_session_id": "1d440379-6217-4f31-84a7-bd4db0834066",
+      "effective_first_input_timestamp": "2026-10-21T05:23:23.732Z",
+      "effective_first_input_transcript_copies": [
+        "gemini-home/.gemini/tmp/spec-kit/chats/session-2026-10-21T05-23-1d440379.jsonl",
+        "transcripts-archive/session-2026-10-21T05-23-1d440379.89A8829653DED16C.jsonl",
+        "transcripts-archive/session-2026-10-21T05-23-1d440379.F27C66EEF3D07978.jsonl"
+      ],
+      "complete_clarification_in_effective_first_input": true,
+      "delivery_status": "verified in retained first input",
+      "reply_to_observed_blocking_tool_question": false,
+      "effective_submitted_prompt_session_id": "1d440379-6217-4f31-84a7-bd4db0834066",
+      "effective_submitted_prompt_timestamp": "2026-10-21T05:23:23.732Z",
+      "effective_submitted_prompt_transcript_copies": [
+        "gemini-home/.gemini/tmp/spec-kit/chats/session-2026-10-21T05-23-1d440379.jsonl",
+        "transcripts-archive/session-2026-10-21T05-23-1d440379.89A8829653DED16C.jsonl",
+        "transcripts-archive/session-2026-10-21T05-23-1d440379.F27C66EEF3D07978.jsonl"
+      ],
+      "complete_clarification_in_effective_submission": true
+    },
+    {
+      "label": "17-qa-sonar-style",
+      "kind": "standalone researcher postimplementation correction prompt",
+      "intended_input_path": "17-qa-sonar-style.prompt.txt",
+      "clarification_utf8_sha256": "CF6986B209F478EAA715BED63421F9D857943DF4A176234DC34CC35E02E55388",
+      "clarification_hash_scope": "normalized LF researcher prompt prefix preceding the extracted frozen seed block, trimmed at end",
+      "snippet": "Complete the final local Spec Kit Stage2 quality remediation (QA4). Native functional QA3 and independent35backend/38frontend tests, build and audit passed. The exact new Sonar analysis has gate ERROR only from five MINOR code smells; preserve that failure evidence. No functional redesign.\nFIRS",
+      "effective_first_input_session_id": "5261cb20-f8f5-406e-ab4e-69c6e85031b9",
+      "effective_first_input_timestamp": "2026-10-21T05:32:45.500Z",
+      "effective_first_input_transcript_copies": [
+        "gemini-home/.gemini/tmp/spec-kit/chats/session-2026-10-21T05-32-5261cb20.jsonl",
+        "transcripts-archive/session-2026-10-21T05-32-5261cb20.19C90FEFDD218EB6.jsonl"
+      ],
+      "complete_clarification_in_effective_first_input": true,
+      "delivery_status": "verified in retained first input",
+      "reply_to_observed_blocking_tool_question": false,
+      "effective_submitted_prompt_session_id": "5261cb20-f8f5-406e-ab4e-69c6e85031b9",
+      "effective_submitted_prompt_timestamp": "2026-10-21T05:32:45.500Z",
+      "effective_submitted_prompt_transcript_copies": [
+        "gemini-home/.gemini/tmp/spec-kit/chats/session-2026-10-21T05-32-5261cb20.jsonl",
+        "transcripts-archive/session-2026-10-21T05-32-5261cb20.19C90FEFDD218EB6.jsonl"
+      ],
+      "complete_clarification_in_effective_submission": true
+    }
+  ],
+  "interactive_question_tool_crosscheck": {
+    "observed_tool_names": [
+      "glob",
+      "google_web_search",
+      "grep_search",
+      "list_background_processes",
+      "list_directory",
+      "read_background_output",
+      "read_file",
+      "replace",
+      "run_shell_command",
+      "update_topic",
+      "write_file"
+    ],
+    "known_interactive_question_tool_names_observed": [],
+    "scope": "crosscheck of actual emitted function-call names in closed main transcript intervals; not a count of template/tool-documentation mentions"
+  },
+  "closed_run_labels": [
+    "01-specify",
+    "02-specify-retry",
+    "03-contract-clarification",
+    "04-plan",
+    "05-tasks",
+    "06-tasks-full-arguments",
+    "07-tasks-native-expanded",
+    "08-implement",
+    "09-qa-correction",
+    "10-qa-race-correction",
+    "11-qa-timer-ownership",
+    "12-qa-timer-retry",
+    "13-qa-completion-retry",
+    "14-qa-completion-fresh",
+    "15-qa-frontend-completion",
+    "16-qa-final-regressions",
+    "17-qa-sonar-style"
+  ],
+  "preserved_through08_audit": {
+    "path": "question-audit-through08/question-audit.json",
+    "sha256": "10EDDA9E2588EEF45601771F9622F7E9B32CCBB661688B4CADA5F8C98C1335AD",
+    "original_run_rows_preserved": true
+  },
+  "interval_scope": "Each closed start/end interval is applied before counting, including resumed sessions. Responses appended after an attempt closed are excluded from that attempt even if stored in the same session file. Original/archive copies are deduplicated by session/response identity.",
+  "excluded_non_model_notices": [
+    {
+      "label": "12-qa-timer-retry",
+      "session_id": "2a105d94-35b3-4a27-a13a-a412e1e35425",
+      "response_id": "e944b77f-b851-4a58-ac47-fc7cb72f9bd5",
+      "timestamp": "2026-10-21T01:37:50.839Z",
+      "transcript_copies": [
+        "transcripts-archive/session-2026-10-21T01-26-2a105d94.2630BFA512AE737A.jsonl",
+        "transcripts-archive/session-2026-10-21T01-26-2a105d94.FFB6834455EE27A5.jsonl"
+      ],
+      "snippet": "[The previous response was interrupted before it completed.]",
+      "decoded_text_utf8_sha256": "A1FF6ADEABCBA4ABB8C9C2FECCF6C35076B3EB44375CC722BA5D873A26430641",
+      "reason": "synthetic CLI interruption notice with no model or tokens; excluded from emitted main-model text and blocking-question counts"
+    },
+    {
+      "label": "13-qa-completion-retry",
+      "session_id": "2a105d94-35b3-4a27-a13a-a412e1e35425",
+      "response_id": "bd4c4586-86af-4a15-be26-65c3ac6f5d44",
+      "timestamp": "2026-10-21T05:16:26.941Z",
+      "transcript_copies": [
+        "transcripts-archive/session-2026-10-21T01-26-2a105d94.FFB6834455EE27A5.jsonl"
+      ],
+      "snippet": "[The previous response was interrupted before it completed.]",
+      "decoded_text_utf8_sha256": "A1FF6ADEABCBA4ABB8C9C2FECCF6C35076B3EB44375CC722BA5D873A26430641",
+      "reason": "synthetic CLI interruption notice with no model or tokens; excluded from emitted main-model text and blocking-question counts"
+    }
+  ]
+}

@@ -1,0 +1,322 @@
+{
+  "researcher_created": true,
+  "finalized_at_utc": "2026-10-26T02:44:34.601233+00:00",
+  "tool": "BMAD Stage2 optionA",
+  "passed": true,
+  "source_binding": {
+    "backend/app/core/domain.py": true,
+    "backend/app/main.py": true,
+    "backend/app/tests/test_api.py": true,
+    "backend/app/tests/test_domain.py": true,
+    "frontend/src/App.test.tsx": true,
+    "frontend/src/App.tsx": true,
+    "frontend/src/main.test.tsx": true,
+    "frontend/src/main.tsx": true,
+    "frontend/src/styles.css": true
+  },
+  "coverage_binding": {
+    "backend": true,
+    "frontend": true
+  },
+  "analysis_id": "0b7d51b5-586c-4af2-8c0f-221a07a197d3",
+  "gate": {
+    "status": "OK",
+    "conditions": [
+      {
+        "status": "OK",
+        "metricKey": "new_coverage",
+        "comparator": "LT",
+        "errorThreshold": "80",
+        "actualValue": "85.8"
+      },
+      {
+        "status": "OK",
+        "metricKey": "new_duplicated_lines_density",
+        "comparator": "GT",
+        "errorThreshold": "3",
+        "actualValue": "2.47855"
+      },
+      {
+        "status": "OK",
+        "metricKey": "new_violations",
+        "comparator": "GT",
+        "errorThreshold": "0",
+        "actualValue": "0"
+      }
+    ],
+    "ignoredConditions": false,
+    "period": {
+      "mode": "PREVIOUS_VERSION",
+      "date": "2026-10-25T20:02:20-05:00",
+      "parameter": "1.0"
+    },
+    "caycStatus": "non-compliant"
+  },
+  "sonar_global": {
+    "project": "tetris-stage2-bmad",
+    "gate": "OK",
+    "coverage": "89.6",
+    "complexity": "148",
+    "reliability_rating": "1.0",
+    "code_smells": "12",
+    "duplicated_lines_density": "2.8",
+    "security_rating": "3.0",
+    "security_hotspots": "0",
+    "sqale_index": "81",
+    "sqale_rating": "1.0",
+    "bugs": "0",
+    "cognitive_complexity": "157",
+    "ncloc": "1039",
+    "vulnerabilities": "1",
+    "lines": "1222"
+  },
+  "backend_suite": {
+    "tests": 18,
+    "failures": 0,
+    "errors": 0,
+    "warning_note": "One recorded Starlette TestClient/httpx deprecation warning; tests passed."
+  },
+  "backend_coverage": {
+    "production_only": true,
+    "files": [
+      "main.py",
+      "core/domain.py"
+    ],
+    "covered": 166,
+    "valid": 179,
+    "percent": 92.74,
+    "canonical_sonar_percent": 92.74
+  },
+  "frontend_native": {
+    "tests": 14,
+    "passed": 14,
+    "statements_percent": 89.71,
+    "branches_percent": 77.53,
+    "functions_percent": 100.0,
+    "lines_percent": 95.54,
+    "scope": "Measured v8 summary in frontend-native-final.log; LCOV includes main.tsx. Not equivalent to Sonar combined line/condition coverage."
+  },
+  "frontend_external": {
+    "tests": 11,
+    "passed": 11
+  },
+  "domain_external": {
+    "tests": 24,
+    "passed": 24
+  },
+  "original_regression": {
+    "tests": 13,
+    "assertions": 52,
+    "preserved": true
+  },
+  "audits": {
+    "npm_vulnerabilities": 0,
+    "python_vulnerability_entries": 0,
+    "python_packages_audited": 50,
+    "python_skipped": [],
+    "scope": "Actual target venv incl instrumentation, and locked fullfrontend dependency tree."
+  },
+  "catalog": {
+    "ordinary_passed": 18,
+    "ordinary_total": 18,
+    "isolated_passed": 2,
+    "isolated_total": 2,
+    "cases": [
+      {
+        "id": "S2-01",
+        "status": "pass",
+        "scope": "ordinary behavior or quality/contract gate",
+        "evidence": "API initialization"
+      },
+      {
+        "id": "S2-02",
+        "status": "pass",
+        "scope": "ordinary behavior or quality/contract gate",
+        "evidence": "API repeated reads"
+      },
+      {
+        "id": "S2-03",
+        "status": "pass",
+        "scope": "ordinary behavior or quality/contract gate",
+        "evidence": "API/domain lock zero"
+      },
+      {
+        "id": "S2-04",
+        "status": "pass",
+        "scope": "ordinary behavior or quality/contract gate",
+        "evidence": "domain clear1"
+      },
+      {
+        "id": "S2-05",
+        "status": "pass",
+        "scope": "ordinary behavior or quality/contract gate",
+        "evidence": "domain clear2"
+      },
+      {
+        "id": "S2-06",
+        "status": "pass",
+        "scope": "isolated domain fixture",
+        "evidence": "isolated canonical O above precompleted3rows"
+      },
+      {
+        "id": "S2-07",
+        "status": "pass",
+        "scope": "isolated domain fixture",
+        "evidence": "isolated canonical O above precompleted4rows"
+      },
+      {
+        "id": "S2-08",
+        "status": "pass",
+        "scope": "ordinary behavior or quality/contract gate",
+        "evidence": "domain threshold9to10/11 + browserthreshold"
+      },
+      {
+        "id": "S2-09",
+        "status": "pass",
+        "scope": "ordinary behavior or quality/contract gate",
+        "evidence": "domain highlevel floor"
+      },
+      {
+        "id": "S2-10",
+        "status": "pass",
+        "scope": "ordinary behavior or quality/contract gate",
+        "evidence": "API/domain firstHold + browserC"
+      },
+      {
+        "id": "S2-11",
+        "status": "pass",
+        "scope": "ordinary behavior or quality/contract gate",
+        "evidence": "API/domain Holdrejection"
+      },
+      {
+        "id": "S2-12",
+        "status": "pass",
+        "scope": "ordinary behavior or quality/contract gate",
+        "evidence": "API/domain holdafterlock/occupiedswap"
+      },
+      {
+        "id": "S2-13",
+        "status": "pass",
+        "scope": "ordinary behavior or quality/contract gate",
+        "evidence": "domain empty/occupiedHold obstruction"
+      },
+      {
+        "id": "S2-14",
+        "status": "pass",
+        "scope": "ordinary behavior or quality/contract gate",
+        "evidence": "domain + browserterminal actions"
+      },
+      {
+        "id": "S2-15",
+        "status": "pass",
+        "scope": "ordinary behavior or quality/contract gate",
+        "evidence": "API + browserrestart"
+      },
+      {
+        "id": "S2-16",
+        "status": "pass",
+        "scope": "ordinary behavior or quality/contract gate",
+        "evidence": "common contract9controls + nativeAPItests"
+      },
+      {
+        "id": "S2-17",
+        "status": "pass",
+        "scope": "ordinary behavior or quality/contract gate",
+        "evidence": "externalfrontend11 + actualbrowserHoldbutton/C/HUD"
+      },
+      {
+        "id": "S2-18",
+        "status": "pass",
+        "scope": "ordinary behavior or quality/contract gate",
+        "evidence": "externalfrontendFIFO/450ms/staleownership + browserlevel"
+      },
+      {
+        "id": "S2-19",
+        "status": "pass",
+        "scope": "ordinary behavior or quality/contract gate",
+        "evidence": "13originaltests52assertions + all18execution + browser200cells/leftDOM"
+      },
+      {
+        "id": "S2-20",
+        "status": "pass",
+        "scope": "ordinary behavior or quality/contract gate",
+        "evidence": "clean npmci + productionbuild"
+      }
+    ]
+  },
+  "commands": {
+    "backend-final-resolved": {
+      "exit_code": 0,
+      "duration_seconds": 3.914722,
+      "log_sha256": "C07A174D5696D719ADCB8D042788F914FAFB39CB813E7BA9CD74EAD9EB87F63D"
+    },
+    "domain-final": {
+      "exit_code": 0,
+      "duration_seconds": 1.812854,
+      "log_sha256": "84E0E1772D6F35575FB645E75EFD8CC19612304640004F025512B9CBC9F6C28B"
+    },
+    "npm-ci-final": {
+      "exit_code": 0,
+      "duration_seconds": 18.283004,
+      "log_sha256": "2D116177B6D1B7322F0FA0DA0041633EDE5074AACC9DC41E3215E039BC62EFFD"
+    },
+    "frontend-build-final": {
+      "exit_code": 0,
+      "duration_seconds": 10.736905,
+      "log_sha256": "628EE714A2DBEE7128FAC7763F44C37CC39A154CBD82CB6D7777C3F4D410339E"
+    },
+    "frontend-native-final": {
+      "exit_code": 0,
+      "duration_seconds": 5.564056,
+      "log_sha256": "D0FE0737F3ADEAE14EEF02B39E262698FED27FA5D1339C8589EA858FBA50BFB5"
+    },
+    "frontend-external-final": {
+      "exit_code": 0,
+      "duration_seconds": 3.098996,
+      "log_sha256": "11BFC8B6F5235A0D93B27EF1B52E91485BCB5BF0AC38D29778E3653E8B46E45D"
+    },
+    "pip-audit-final-retained": {
+      "exit_code": 0,
+      "duration_seconds": 8.819278,
+      "log_sha256": "4E4757FF226A44B5C448B1C4624619419C22D5272463DC19510B4754871A72F9"
+    },
+    "npm-audit-final": {
+      "exit_code": 0,
+      "duration_seconds": 1.666359,
+      "log_sha256": "9E7E1ECB123F036D764EBC4F0923E20F3B9357D77A0EAF2723A89936240C253C"
+    },
+    "api-common-final": {
+      "exit_code": 0,
+      "duration_seconds": 0.55983,
+      "log_sha256": "5372F5A82B6D5C8EAC6D25501D61D75A4897906D3DE3D3E9A6011BCBB5B4B72E"
+    },
+    "contract-common-final": {
+      "exit_code": 0,
+      "duration_seconds": 0.457652,
+      "log_sha256": "53609080B31B70D0419249BEE11B85E72D7EBF5E85613A8EA801CD6D08D6DDB0"
+    }
+  },
+  "metrics_file_sha256": "37108FA7DD5F85E140F84493CD62C22219986F96F763BE78F1F81B730C9E5B95",
+  "limitations": [
+    "Sequential native reviews were performed in same session; not independent reviewers.",
+    "04,05,06 reached80turnlimit; JSONLtokens are observed retained usage, API totals for those runs are unavailable. Known API sums exclude them. Codex orchestrator/account usage not measured or queried.",
+    "Model-written docs/build-07/*results.txt are transcriptions, not raw subprocess captures. RawCLItranscripts and independent docs/validation/*.log+metadata are authoritative.",
+    "Sprint YAML marks4optionalretrospectives done but no corresponding retrospective artifacts were verified; do not count them executed. last_updated remains an earlier authored timestamp, not completion timing.",
+    "Original13ASTassertions are preserved, while fixture setup was adapted for queuedpiece semantics. New isolated3/4rowfixtures use canonicalO, not ordinaryplay.",
+    "Early API-based left observation became inconclusive after activepiece changed; preserved failed observation and verified actual horizontal shift via uninterrupted DOM-backed browser observation instead.",
+    "Native main.test asserts root existence only; realbootstrap separately verified in browser. Coverage percentage is not proof of assertion quality or scalability.",
+    "12legacySonarsmells and1legacyrandom.choice finding remain visible; newviolations0. No exclusions/gate weakening/falsepositive resolution.",
+    "Quota task/script and Codexheartbeat remain disabled; noquotaqueries or poweractions.",
+    "Native07Sonar initially consumed pre-extraction backendXML177statements. Researcher preserved that analysis, rebound freshly executed179statement coverage and repeated scan/CE/gate; finalanalysis above supersedes d649734f. No application source changes or extra model calls.",
+    "One Python audit JSON filename collided with recorder metadata; audit rerun with separate pip-audit-report.json retained0vulnerabilities/50packages. Relative executable127 retry and earlier sandbox errors are infrastructure, not application failures."
+  ],
+  "coverage_rebind": {
+    "at_utc": "2026-10-26T02:41:38.3943163Z",
+    "reason": "Native07backendXMLretainedpre-extraction177statements; freshindependentXMLhas179. Bind measuredcurrentcoverage to unchangedcandidate; no app/spec edits.",
+    "preserved_archive": "Caso 2-Tetris\\Etapa 2\\Bmad Method\\docs\\sonar-attempts\\before-researcher-coverage-rebind-20261026T024138Z",
+    "fresh_backend_log": "validation/backend-final-resolved.log",
+    "fresh_frontend_log": "validation/frontend-native-final.log",
+    "prior_analysis": "d649734f-977e-4006-84a9-e77d9be70da7",
+    "researcher_created": true
+  }
+}

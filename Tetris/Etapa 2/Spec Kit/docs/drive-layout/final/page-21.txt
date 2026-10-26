@@ -1,0 +1,35 @@
+Tiempo, API y respuestas registradas
+Sesión Segundos API Errores Éxitos JSONL
+intentos
+01-specify N/D N/D N/D N/D 14
+02-specify-retry 314,087 23 2 21 21
+03-contract-clarification N/D N/D N/D N/D 11
+04-plan 671,273 52 4 48 46
+05-tasks 304,671 13 2 11 11
+06-tasks-full-arguments 0,084 0 0 0 0
+07-tasks-native-expande 545,391 41 14 27 27
+d
+08-implement 2.885,870 202 54 148 140
+09-qa-correction 3.450,181 149 39 110 100
+10-qa-race-correction 455,055 60 0 60 58
+11-qa-timer-ownership 439,318 N/D N/D N/D 14
+12-qa-timer-retry 1.513,504 N/D N/D N/D 21
+13-qa-completion-retry 16,638 2 0 2 2
+14-qa-completion-fresh 184,895 20 0 20 20
+15-qa-frontend-completio 56,315 2 0 2 2
+n
+16-qa-final-regressions 375,325 40 3 37 36
+17-qa-sonar-style 313,986 41 3 38 37
+N/D conserva información desconocida. API = intentos incluidos errores; JSONL =
+respuestas únicas registradas, acotadas por intervalo y deduplicadas. Estas medidas no se
+suman.
+Sesión Modelo auxiliar Roles declarados API
+intentos/errore
+s/éxitos
+04-plan gemini-3-flash-preview utility_loop_detector 2/0/2
+08-implement gemini-3-flash-preview utility_loop_detector 8/0/8
+09-qa-correction gemini-3-flash-preview utility_loop_detector; 10/0/10
+utility_tool
+10-qa-race-correction gemini-3-flash-preview utility_loop_detector 2/0/2
+16-qa-final-regression gemini-3-flash-preview utility_loop_detector 1/0/1
+s

@@ -1,0 +1,227 @@
+
+## User Input
+
+```text
+Implement every Stage 2 task in specs/002-extend-tetris-stage2/tasks.md using the validated Spec Kit artifacts and the unchanged common seed below. Complete both backend and frontend, run tests and build, and check tasks only after verifying them. Do not create a Git branch, commit, push, or upload. The user has already authorized full local implementation.
+
+Extend the existing Stage 1, option A browser-based Tetris implementation to Stage 2, option A as a brownfield change. Preserve its 10-by-20 board, seven unrotated tetrominoes, left/right/soft-drop controls, collision, locking, line clearing, game over, restart, Python FastAPI backend, React/TypeScript frontend, and in-memory authoritative backend state. Start from this tool's own Stage 1 source and specifications. Create or update this tool's native specification artifacts before changing application code. Use English for all tool interactions, specifications, application text, code comments, and tests. Work only inside this tool's Stage 2 directory.
+
+Add a score, cumulative cleared-line count, level, progressive gravity, one-piece Hold, and one-piece next preview. A new game starts with score 0, lines 0, level 1, and a 500 ms gravity interval. For a lock that clears 1, 2, 3, or 4 rows simultaneously, award respectively 100, 300, 500, or 800 points multiplied by the level immediately before that lock. A lock clearing no rows awards zero. After scoring, add the cleared rows to the cumulative line count and set level to 1 + floor(total_lines / 10). Set gravity_interval_ms to max(100, 500 - 50 * (level - 1)). Soft drop grants no additional points. These numeric rules are study controls, not a request to introduce rotation. The four-line rule may be validated as an isolated domain rule because a four-row clear may not be reachable during ordinary play without rotation.
+
+The backend owns a queued next piece. Every game state response exposes score, total_lines, level, gravity_interval_ms, next_piece, hold_piece (nullable), and can_hold, in addition to the existing board, active piece, status, and ID. Peeking at state never consumes or changes the queued piece. Normal spawning and the first Hold consume the previewed piece and generate exactly one new preview. Swapping with an occupied Hold slot does not consume the preview. A held piece re-enters at the normal spawn origin in its initial orientation, and an obstructed spawn ends the game. Hold can be used once per active piece and becomes available again only after that piece locks. Rejected Holds, movement after game over, and repeated state reads do not mutate game state. Restart resets all Stage 2 counters and Hold state while producing a new active and next piece.
+
+Keep POST /api/games, GET /api/games/{id}, POST /api/games/{id}/tick, and POST /api/games/{id}/move compatible; add POST /api/games/{id}/hold returning the same state shape. The frontend renders score, lines, level, Hold, and next preview from backend state; provides a Hold button and C key; and schedules gravity from gravity_interval_ms while playing. Prevent overlapping requests or stale responses from reversing visible game state. Existing controls and behavior must remain usable.
+
+Do not add rotation, wall kicks, T-Spins, ghost piece, time attack, achievements, persistence, database, authentication, multiplayer, or high-score storage in this stage. Express the new behavior as atomic, testable requirements and explicit acceptance scenarios in the native specs. Implement through the tool's normal spec-driven workflow, with runnable backend tests and a reproducible frontend build. If a defect is found after implementation, first revise the native specification and then regenerate or adjust code through the tool; do not directly patch generated application code. State exact run and test commands, and record any material ambiguity in English.
+
+Recorded workflow clarification: Execute all revised tasks sequentially in this session without delegating to other agents. The user already authorized the complete local implementation. Before code changes, add the quality verification criteria from the revised tasks to a clearly labeled section of the native Stage 2 specification; do not change gameplay scope. Preserve existing Stage 1 assertions while extending fixtures and tests. Use stable board coordinate IDs for React keys, never cell values that change. Keep all Stage 1 directories and the shared Stage 1 toolchain immutable: use its Python only to run existing tests, and create a Stage 2 local .venv if backend installations or dependency upgrades are necessary. Frontend installations stay in this Stage 2 frontend directory. For Python tests the existing interpreter is ../../Etapa 1/_toolchain/venv/Scripts/python.exe from this root. Backend coverage may be copied to docs/coverage.xml for the researcher scanner; frontend must emit coverage/lcov.info and text-summary. Scan with ../shared/scan-spec-kit.ps1 and fetch with ../shared/fetch-sonar-spec-kit.ps1; do not print credential contents. Preserve initial and intermediate scan outputs in separate docs subdirectories before replacing them. Keep tests meaningful and never remove checks, suppress rules, exclude application files, or alter the Sonar quality gate to obtain a pass. Revise native specs before correcting any discovered implementation defects. Verify C/c and Hold disabled state, request serialization and restart epochs with controlled tests, run non-watch tests and a production build, and report only checks actually executed. Do not commit, branch, push, or upload to a repository. Complete implementation rather than stopping after a partial story.
+```
+
+You **MUST** consider the user input before proceeding (if not empty).
+
+## Pre-Execution Checks
+
+**Check for extension hooks (before implementation)**:
+- Check if `.specify/extensions.yml` exists in the project root.
+- If it exists, read it and look for entries under the `hooks.before_implement` key
+- If the YAML cannot be parsed or is invalid, do not skip silently: tell the user that `.specify/extensions.yml` could not be read (include the parser error) and that no hooks were checked, including any mandatory (`optional: false`) hooks registered there, then continue normally
+- Filter out hooks where `enabled` is explicitly `false`. Treat hooks without an `enabled` field as enabled by default.
+- For each remaining hook, do **not** attempt to interpret or evaluate hook `condition` expressions:
+  - If the hook has no `condition` field, or it is null/empty, treat the hook as executable
+  - If the hook defines a non-empty `condition`, skip the hook and leave condition evaluation to the HookExecutor implementation
+- For each executable hook, output the following based on its `optional` flag:
+  - **Optional hook** (`optional: true`):
+    ```
+    ## Extension Hooks
+
+    **Optional Pre-Hook**: {extension}
+    Command: `/{command}`
+    Description: {description}
+
+    Prompt: {prompt}
+    To execute: `/{command}`
+    ```
+  - **Mandatory hook** (`optional: false`):
+    ```
+    ## Extension Hooks
+
+    **Automatic Pre-Hook**: {extension}
+    Executing: `/{command}`
+    EXECUTE_COMMAND: {command}
+
+    Wait for the result of the hook command before proceeding to the Outline.
+    ```
+    After emitting the block above you MUST actually invoke the hook and wait for it to finish before continuing. Run it the same way you would run the command yourself in this agent/session (the invocation may differ from the literal `{command}` id shown above, e.g. a skills-mode agent runs it as `/skill:speckit-...` or `$speckit-...`). Emitting the block alone does not run the hook.
+- If no hooks are registered or `.specify/extensions.yml` does not exist, skip silently
+
+## Outline
+
+1. Run `.specify/scripts/powershell/check-prerequisites.ps1 -Json -RequireTasks -IncludeTasks` from repo root and parse FEATURE_DIR and AVAILABLE_DOCS list. All paths must be absolute. For single quotes in args like "I'm Groot", use escape syntax: e.g 'I'\''m Groot' (or double-quote if possible: "I'm Groot").
+
+2. **Check checklists status** (if FEATURE_DIR/checklists/ exists):
+   - Treat checklist markers as a read-only gate: scan checkbox state, report status, and ask before proceeding when needed; do NOT modify checklist files or markers
+   - `checklists/requirements.md` is the built-in spec-quality checklist maintained by `/speckit.specify` and `/speckit.clarify`; custom checklists generated by `/speckit.checklist` are reviewer-owned requirements-quality review artifacts
+   - For custom checklists, `[x]` means the reviewer determined the requirements-quality criterion is satisfied; it does NOT mean implementation work is complete
+   - Scan all checklist files in the checklists/ directory
+   - For each checklist, count:
+     - Total items: All lines matching `- [ ]` or `- [X]` or `- [x]`
+     - Checked items: Lines matching `- [X]` or `- [x]`
+     - Unchecked items: Lines matching `- [ ]`
+   - Create a status table:
+
+     ```text
+     | Checklist | Total | Checked | Unchecked | Status |
+     |-----------|-------|---------|-----------|--------|
+     | ux.md     | 12    | 12      | 0         | ✓ PASS |
+     | test.md   | 8     | 5       | 3         | ✗ FAIL |
+     | security.md | 6   | 6       | 0         | ✓ PASS |
+     ```
+
+   - Calculate overall status:
+     - **PASS**: All checklists have 0 unchecked items
+     - **FAIL**: One or more checklists have unchecked items
+
+   - **If any checklist has unchecked items**:
+     - Display the table with unchecked item counts
+     - **STOP** and ask: "Some checklists have unchecked items. Do you want to proceed with implementation anyway? (yes/no)"
+     - Wait for user response before continuing
+     - If user says "no" or "wait" or "stop", halt execution
+     - If user says "yes" or "proceed" or "continue", proceed to step 3
+
+   - **If all checklists are checked**:
+     - Display the table showing all checklists passed
+     - Automatically proceed to step 3
+
+3. Load and analyze the implementation context:
+   - **REQUIRED**: Read tasks.md for the complete task list and execution plan
+   - **REQUIRED**: Read plan.md for tech stack, architecture, and file structure
+   - **IF EXISTS**: Read data-model.md for entities and relationships
+   - **IF EXISTS**: Read contracts/ for API specifications and test requirements
+   - **IF EXISTS**: Read research.md for technical decisions and constraints
+   - **IF EXISTS**: Read .specify/memory/constitution.md for governance constraints
+   - **IF EXISTS**: Read quickstart.md for integration scenarios
+
+4. **Project Setup Verification**:
+   - **REQUIRED**: Create/verify ignore files based on actual project setup:
+
+   **Detection & Creation Logic**:
+   - Check if the following command succeeds to determine if the repository is a git repo (create/verify .gitignore if so):
+
+     ```sh
+     git rev-parse --git-dir 2>/dev/null
+     ```
+
+   - Check if Dockerfile* exists or Docker in plan.md → create/verify .dockerignore
+   - Check if .eslintrc* exists → create/verify .eslintignore
+   - Check if eslint.config.* exists → ensure the config's `ignores` entries cover required patterns
+   - Check if .prettierrc* exists → create/verify .prettierignore
+   - Check if .npmrc or package.json exists → create/verify .npmignore (if publishing)
+   - Check if terraform files (*.tf) exist → create/verify .terraformignore
+   - Check if .helmignore needed (helm charts present) → create/verify .helmignore
+
+   **If ignore file already exists**: Verify it contains essential patterns, append missing critical patterns only
+   **If ignore file missing**: Create with full pattern set for detected technology
+
+   **Common Patterns by Technology** (from plan.md tech stack):
+   - **Node.js/JavaScript/TypeScript**: `node_modules/`, `dist/`, `build/`, `*.log`, `.env*`
+   - **Python**: `__pycache__/`, `*.pyc`, `.venv/`, `venv/`, `dist/`, `*.egg-info/`
+   - **Java**: `target/`, `*.class`, `*.jar`, `.gradle/`, `build/`
+   - **C#/.NET**: `bin/`, `obj/`, `*.user`, `*.suo`, `packages/`
+   - **Go**: `*.exe`, `*.test`, `vendor/`, `*.out`
+   - **Ruby**: `.bundle/`, `log/`, `tmp/`, `*.gem`, `vendor/bundle/`
+   - **PHP**: `vendor/`, `*.log`, `*.cache`, `*.env`
+   - **Rust**: `target/`, `debug/`, `release/`, `*.rs.bk`, `*.rlib`, `*.prof*`, `.idea/`, `*.log`, `.env*`
+   - **Kotlin**: `build/`, `out/`, `.gradle/`, `.idea/`, `*.class`, `*.jar`, `*.iml`, `*.log`, `.env*`
+   - **C++**: `build/`, `bin/`, `obj/`, `out/`, `*.o`, `*.so`, `*.a`, `*.exe`, `*.dll`, `.idea/`, `*.log`, `.env*`
+   - **C**: `build/`, `bin/`, `obj/`, `out/`, `*.o`, `*.a`, `*.so`, `*.exe`, `*.dll`, `autom4te.cache/`, `config.status`, `config.log`, `.idea/`, `*.log`, `.env*`
+   - **Swift**: `.build/`, `DerivedData/`, `*.swiftpm/`, `Packages/`
+   - **R**: `.Rproj.user/`, `.Rhistory`, `.RData`, `.Ruserdata`, `*.Rproj`, `packrat/`, `renv/`
+   - **Universal**: `.DS_Store`, `Thumbs.db`, `*.tmp`, `*.swp`, `.vscode/`, `.idea/`
+
+   **Tool-Specific Patterns**:
+   - **Docker**: `node_modules/`, `.git/`, `Dockerfile*`, `.dockerignore`, `*.log*`, `.env*`, `coverage/`
+   - **ESLint**: `node_modules/`, `dist/`, `build/`, `coverage/`, `*.min.js`
+   - **Prettier**: `node_modules/`, `dist/`, `build/`, `coverage/`, `package-lock.json`, `yarn.lock`, `pnpm-lock.yaml`
+   - **Terraform**: `.terraform/`, `*.tfstate*`, `*.tfvars`, `.terraform.lock.hcl`
+   - **Kubernetes/k8s**: `*.secret.yaml`, `secrets/`, `.kube/`, `kubeconfig*`, `*.key`, `*.crt`
+
+5. Parse tasks.md structure and extract:
+   - **Task phases**: Setup, Tests, Core, Integration, Polish
+   - **Task dependencies**: Sequential vs parallel execution rules
+   - **Task details**: ID, description, file paths, parallel markers [P]
+   - **Execution flow**: Order and dependency requirements
+
+6. Execute implementation following the task plan:
+   - **Phase-by-phase execution**: Complete each phase before moving to the next
+   - **Respect dependencies**: Run sequential tasks in order, parallel tasks [P] can run together
+   - **Follow TDD approach**: Execute test tasks before their corresponding implementation tasks
+   - **File-based coordination**: Tasks affecting the same files must run sequentially
+   - **Validation checkpoints**: Verify each phase completion before proceeding
+
+7. Implementation execution rules:
+   - **Setup first**: Initialize project structure, dependencies, configuration
+   - **Tests before code**: If you need to write tests for contracts, entities, and integration scenarios
+   - **Core development**: Implement models, services, CLI commands, endpoints
+   - **Integration work**: Database connections, middleware, logging, external services
+   - **Polish and validation**: Unit tests, performance optimization, documentation
+
+8. Progress tracking and error handling:
+   - Report progress after each completed task
+   - Halt execution if any non-parallel task fails
+   - For parallel tasks [P], continue with successful tasks, report failed ones
+   - Provide clear error messages with context for debugging
+   - Suggest next steps if implementation cannot proceed
+   - **IMPORTANT** For completed tasks, make sure to mark the task off as [X] in the tasks file.
+
+9. Completion validation:
+   - Verify all required tasks are completed
+   - Check that implemented features match the original specification
+   - Validate that tests pass and coverage meets requirements
+   - Confirm the implementation follows the technical plan
+
+Note: This command assumes a complete task breakdown exists in tasks.md. If tasks are incomplete or missing, suggest running `/speckit.tasks` first to regenerate the task list.
+
+## Mandatory Post-Execution Hooks
+
+**You MUST complete this section before reporting completion to the user.**
+
+Check if `.specify/extensions.yml` exists in the project root.
+- If it does not exist, or no hooks are registered under `hooks.after_implement`, skip to the Completion Report.
+- If it exists, read it and look for entries under the `hooks.after_implement` key.
+- If the YAML cannot be parsed or is invalid, do not skip silently: tell the user that `.specify/extensions.yml` could not be read (include the parser error) and that no hooks were checked, including any mandatory (`optional: false`) hooks registered there, then continue to the Completion Report.
+- Filter out hooks where `enabled` is explicitly `false`. Treat hooks without an `enabled` field as enabled by default.
+- For each remaining hook, do **not** attempt to interpret or evaluate hook `condition` expressions:
+  - If the hook has no `condition` field, or it is null/empty, treat the hook as executable
+  - If the hook defines a non-empty `condition`, skip the hook and leave condition evaluation to the HookExecutor implementation
+- For each executable hook, output the following based on its `optional` flag:
+  - **Mandatory hook** (`optional: false`) — **You MUST emit `EXECUTE_COMMAND:` for each mandatory hook**:
+    ```
+    ## Extension Hooks
+
+    **Automatic Hook**: {extension}
+    Executing: `/{command}`
+    EXECUTE_COMMAND: {command}
+    ```
+    After emitting the block above you MUST actually invoke the hook and wait for it to finish before continuing. Run it the same way you would run the command yourself in this agent/session (the invocation may differ from the literal `{command}` id shown above, e.g. a skills-mode agent runs it as `/skill:speckit-...` or `$speckit-...`). Emitting the block alone does not run the hook.
+  - **Optional hook** (`optional: true`):
+    ```
+    ## Extension Hooks
+
+    **Optional Hook**: {extension}
+    Command: `/{command}`
+    Description: {description}
+
+    Prompt: {prompt}
+    To execute: `/{command}`
+    ```
+
+## Completion Report
+
+Report final status with summary of completed work.
+
+## Done When
+
+- [ ] All tasks in tasks.md completed and marked `[X]`
+- [ ] Implementation validated against specification, plan, and test coverage
+- [ ] Extension hooks dispatched or skipped according to the rules in Mandatory Post-Execution Hooks above
+- [ ] Completion reported to user with summary of completed work

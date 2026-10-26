@@ -1,0 +1,72 @@
+{
+  "researcher_created": true,
+  "runs": {
+    "02-specify-correction": {
+      "run_metadata_sha256": "BF0564D5CD620BF6428E0637213B27DF054A74DB916A715406A02EF23CC5377C",
+      "candidate_signature_sha256": "4F53CDA18C2BAA0C0354BB5F9A3ECBE5ED12AB4D8E11BA873C2F11161202B945",
+      "reviewed_at_utc": "2026-10-25T20:23:38.845965+00:00",
+      "reviewer": "researcher",
+      "coverage_note": "Read all retained natural text and matched final CLI output. 03 contains one natural summary; 02 has no retained main-model natural text and terminal BILLING_DISABLED. Zero means no blocking question observed in retained interval, not proof about unrecorded output. Thoughts and tool-only responses excluded.",
+      "messages": {}
+    },
+    "03-specify-last-mile": {
+      "run_metadata_sha256": "5154F2015F0F90185707533980C94B27B00A10A30398B903767AABD3DDA5971A",
+      "candidate_signature_sha256": "855776BC7EE595A3ABF785AE25918EC2299DDDDBC26F8AE373E2F83608F02FFE",
+      "reviewed_at_utc": "2026-10-25T20:23:38.845965+00:00",
+      "reviewer": "researcher",
+      "coverage_note": "Read all retained natural text and matched final CLI output. 03 contains one natural summary; 02 has no retained main-model natural text and terminal BILLING_DISABLED. Zero means no blocking question observed in retained interval, not proof about unrecorded output. Thoughts and tool-only responses excluded.",
+      "messages": {
+        "8d3ae00a-0747-4979-b516-7220ce273a6e/e4e13ac6-42f6-4ae5-b135-c12cd6a5773e": {
+          "selected_text_sha256": "2D1051000B9E2F52ACA8B478AAB4E60875CBFA36D564EEBDDF5B3003A54BE027",
+          "blocking_question_count": 0,
+          "classification": "emitted_main_text",
+          "reason": "Complete 4440-character emitted final revision summary read; it reports changes and has no request for missing user input. Its implementation/integration claims are evaluated separately."
+        }
+      }
+    },
+    "04-specify-final-review": {
+      "run_metadata_sha256": "E1F7528CD63B63D23888170864330E2C57710B3D24AD3FCE14CA521EB4F5FD2E",
+      "candidate_signature_sha256": "ED1B53379EAC42FA1B5ADD3C5D8DB792768C1C8BC2319B4BA411BF7CD4562B69",
+      "reviewed_at_utc": "2026-10-25T20:30:33.880251+00:00",
+      "reviewer": "researcher",
+      "coverage_note": "Complete 3859-character final review summary read. One retained natural message matches native final CLI response; eight main responses include tool-only records. No blocking input requested. Thoughts/tools excluded.",
+      "messages": {
+        "902d861e-85c2-4fcd-a11b-0e758c3d97e4/83f2896c-9fad-4f84-bad2-0f7f01315d21": {
+          "selected_text_sha256": "EB47C6A8BC7268BD54131374AD5E84F66841B78B7BA8A99316C7819128205B0B",
+          "blocking_question_count": 0,
+          "classification": "emitted_main_text",
+          "reason": "Completion summary explains six specification corrections and requests no missing user information. Correctness checked independently via spec diff."
+        }
+      }
+    }
+  },
+  "prompts": {
+    "02-specify-correction": {
+      "prompt_sha256": "5D72D6C29E6D31B93F641D145BFD2780EB4F49BA466FAFAC1E92461E23DEF444",
+      "kind": "preimplementation specification review correction",
+      "clarification_bearing": true,
+      "corrective_intent": true,
+      "reply_to_model_blocking_question": false,
+      "reviewed_at_utc": "2026-10-25T20:23:38.845965+00:00",
+      "reason": "Researcher-origin review, complete common seed retained. No model clarification prompted this request; no application had been implemented."
+    },
+    "03-specify-last-mile": {
+      "prompt_sha256": "25F44E4EE314333CF948DF305A32CF6566E2567F112A60222AC9BDDA8AC15412",
+      "kind": "retry of preimplementation specification review after authorized cloud transition",
+      "clarification_bearing": true,
+      "corrective_intent": true,
+      "reply_to_model_blocking_question": false,
+      "reviewed_at_utc": "2026-10-25T20:23:38.845965+00:00",
+      "reason": "Researcher-origin review, complete common seed retained. No model clarification prompted this request; no application had been implemented."
+    },
+    "04-specify-final-review": {
+      "prompt_sha256": "157F026258A3FB9F8F0F3C33C3E10C983B2561E0EFBFD2FD2974F0389E720BD4",
+      "kind": "focused preimplementation specification correction",
+      "clarification_bearing": true,
+      "corrective_intent": true,
+      "reply_to_model_blocking_question": false,
+      "reviewed_at_utc": "2026-10-25T20:30:33.880251+00:00",
+      "reason": "Researcher found remaining contradictions before any application implementation, not a response to a model question or postimplementation QA."
+    }
+  }
+}

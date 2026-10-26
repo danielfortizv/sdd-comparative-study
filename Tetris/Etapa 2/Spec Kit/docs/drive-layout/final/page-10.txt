@@ -1,0 +1,41 @@
+SPEC KIT — PLAN Y SONARQUBE DE LÍNEA
+BASE
+04-plan completó los seis artefactos de planificación en 671,273 s. Sus estadísticas incluyen
+50 intentos API a gemini-3.5-flash y dos intentos API automáticos del detector de bucles a
+gemini-3-flash-preview. El total de la sesión suma 1.659.066 tokens de entrada, 1.321.138
+cacheados incluidos y 14.548 de salida. La presencia del modelo auxiliar se registra
+explícitamente; no se atribuye todo al modelo solicitado. El código y las specs nativas de
+Etapa 1 seguían sin diferencias al finalizar.
+05-tasks incorpora la corrección de un objetivo <5 ms introducido en el plan y solicita tareas
+de regresión, cobertura XML/LCOV, auditoría de dependencias, build y SonarQube. La
+semilla permanece idéntica.
+Antes de implementar se ejecutaron de nuevo las 18 pruebas originales del backend con
+cobertura: 18 aprobadas, dos advertencias y 91 % de cobertura de aplicación. SonarQube
+26.9.0 se inició en el contenedor local existente y analizó el proyecto exclusivo
+tetris-stage2-speckit. Línea base: gate OK, 0 bugs, 2 vulnerabilidades reportadas, 7 code
+smells, 0 hotspots, duplicación 0,0 %, complejidad 110, complejidad cognitiva 78, ncloc 748,
+deuda 35 min y cobertura global 62,0 %. La cobertura global no es equivalente al 91 % del
+backend: aún no existe cobertura frontend en la línea base. El gate inicial no demuestra
+cumplimiento de cobertura sobre código nuevo porque todavía no hay período comparable.
+Las dos alertas python:S2245 corresponden al uso de random.choice para piezas del juego;
+se conserva el mensaje y contexto sin asumir una explotación. Las observaciones restantes
+son documentación 404, optional chaining, claves de React y contraste CSS. Se guardaron
+todas las respuestas y el log en Spec Kit/docs/sonar-baseline/. Se revisarán mediante la
+herramienta y sus specs antes de atribuir calidad final.
+SPEC KIT — AUDITORÍA DE ARGUMENTOS
+EFECTIVOS
+La revisión del JSONL de 05-tasks mostró que la combinación de comando headless y
+lanzador .cmd conservó solo la primera línea del argumento; no llegaron la aclaración
+añadida ni los párrafos siguientes de la semilla en el mensaje inicial. Los archivos de prompt
+guardados describen la intención de envío y deben contrastarse con la entrada efectiva, no
+tomarse como prueba suficiente. La transcripción de 02-specify-retry sí demuestra una
+lectura posterior completa de docs/seed-submitted.txt mediante Get-Content (20 oct 2026,
+11:25:15 UTC), por lo que la especificación tuvo acceso al contenido congelado. La
+aclaración 03 recibió su texto inicial de corrección; no se afirma que su mensaje inicial
+incluyera toda la semilla.
+Se creó un helper de investigación que carga el TOML original instalado de Spec Kit y
+sustituye exactamente sus espacios {{args}} con el bloque completo.
+06-tasks-full-arguments falló localmente antes de iniciar Gemini por el límite de longitud de
+cmd.exe: 0,084 s y cero solicitudes al modelo, acreditado por el error del lanzador y
+ausencia de sesión. 07-tasks-native-expanded usa la misma versión 0.60.0 directamente
+mediante Node y conserva las instrucciones nativas. Su primera entrada JSONL contiene la

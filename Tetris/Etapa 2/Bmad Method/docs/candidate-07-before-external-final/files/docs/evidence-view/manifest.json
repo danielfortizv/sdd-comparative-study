@@ -1,0 +1,11 @@
+{
+  "researcher_created": true,
+  "generated_at_utc": "2026-10-26T01:31:20.098010+00:00",
+  "metrics_sha256": "B4BE5F2E46415BFC49DF93577EF1D14B0EFF406327CEFDF82B5F070288C55048",
+  "runs": [
+    "01-prd.run.json",
+    "02-design-stories.run.json",
+    "03-planning-completion.run.json"
+  ],
+  "purpose": "Derived measured evidence, not native CLI or Sonar UI"
+}

@@ -1,0 +1,8 @@
+{
+  "researcher_created": true,
+  "measured_at_utc": "2026-10-21T19:51:29.147428+00:00",
+  "scope": "Kiro native assistant operationType=Say only; Reasoning, quoted tool results, requirements questions and automatic tool-approval prompts excluded from actual question counts. Candidate regex is only a review aid; no inferred zero from headless mode. Counts require manual message-ID adjudication.",
+  "review_contract": "question-review.json maps message IDs to {is_blocking_clarification: true|false, reason: evidence-based note}; review all Say messages, not candidates only",
+  "runs": [],
+  "pending_labels": []
+}

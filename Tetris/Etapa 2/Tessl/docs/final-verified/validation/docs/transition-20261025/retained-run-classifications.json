@@ -1,0 +1,16 @@
+{
+  "01-specify": {
+    "category": "initial_specification",
+    "reason": "Gemini-authored Stage 2 atomic requirements and checklist using Tessl MCP/plugin context; not a native Tessl generator. No app/test edits authorized in this phase.",
+    "qa_intent_id": null,
+    "retry_of": null,
+    "resumed": false
+  },
+  "02-specify-correction": {
+    "category": "preimplementation_spec_revision",
+    "reason": "Preimplementation review correction failed with observed Vertex PERMISSION_DENIED/BILLING_DISABLED; no postimplementation QA and no completed usage counters.",
+    "qa_intent_id": null,
+    "retry_of": null,
+    "resumed": false
+  }
+}

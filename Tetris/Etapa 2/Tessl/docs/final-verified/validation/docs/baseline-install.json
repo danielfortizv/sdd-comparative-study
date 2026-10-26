@@ -1,0 +1,6 @@
+{
+  "command": "npm ci",
+  "ended_at_utc": "2026-10-21T14:29:02.7438810Z",
+  "exit_code": 0,
+  "log": "baseline-npm-ci.log"
+}

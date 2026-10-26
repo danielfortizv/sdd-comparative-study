@@ -1,0 +1,9 @@
+{
+  "researcher_created": true,
+  "updated_at_utc": "2026-10-23T14:45:49.709807-05:00",
+  "label": "07-queued-timer-qa",
+  "status": "independent_local_verification_closed_browser_catalog_pending",
+  "scope": "No app/test/spec edits; independent checks do not establish browser/catalog acceptance",
+  "snapshot": "qa-07",
+  "report": "researcher-verification/final-07/verification-summary.json"
+}

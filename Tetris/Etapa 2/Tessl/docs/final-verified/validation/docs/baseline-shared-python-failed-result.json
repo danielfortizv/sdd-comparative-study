@@ -1,0 +1,5 @@
+{
+  "command": "pytest -q --cov=app --cov-report=term-missing --cov-report=xml:../docs/baseline-coverage.xml",
+  "exit_code": 2,
+  "measured_at_utc": "2026-10-21T14:29:05.1633976Z"
+}

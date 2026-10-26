@@ -1,0 +1,33 @@
+
+> tetris-frontend@1.0.0 test
+> vitest run --coverage
+
+
+ RUN  v4.1.12 D:/KEVIN/UNIVERSIDAD/Trabajos/Proyecto/Caso 2-Tetris/Etapa 2/Tessl/frontend
+      Coverage enabled with v8
+
+
+ Test Files  3 passed (3)
+      Tests  15 passed (15)
+   Start at  16:18:04
+   Duration  1.56s (transform 165ms, setup 0ms, import 654ms, tests 420ms, environment 1.88s)
+
+ % Coverage report from v8
+------------------|---------|----------|---------|---------|--------------------
+File              | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s  
+------------------|---------|----------|---------|---------|--------------------
+All files         |   80.76 |    68.84 |   96.66 |    86.5 |                    
+ src              |   79.53 |    65.51 |      96 |   85.52 |                    
+  App.tsx         |   77.18 |    62.26 |      95 |   83.84 | ...238-243,252,328 
+  main.tsx        |       0 |      100 |     100 |       0 | 6                  
+ src/components   |     100 |    86.36 |     100 |     100 |                    
+  GameStatus.tsx  |     100 |    66.66 |     100 |     100 | 52-56              
+  TetrisBoard.tsx |     100 |    93.75 |     100 |     100 | 19                 
+------------------|---------|----------|---------|---------|--------------------
+
+=============================== Coverage summary ===============================
+Statements   : 80.76% ( 147/182 )
+Branches     : 68.84% ( 95/138 )
+Functions    : 96.66% ( 29/30 )
+Lines        : 86.5% ( 141/163 )
+================================================================================

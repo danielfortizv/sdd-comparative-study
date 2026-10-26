@@ -1,0 +1,16 @@
+{
+  "workflow": "clarify",
+  "label": "08-complete-frontend",
+  "prompt_sha256": "F0BA3DEA980FFC06A597FE809D82392FE81F8B9CF3430EFC18494E83047B864F",
+  "seed_sha256": "63919779DD4104076FBABCB130CE296A160FA840E0B4755A2AA5D90757ADA8EF",
+  "requested_model": "gemini-3.5-flash",
+  "cli_version": "0.60.0",
+  "openspec_version": "1.13.2",
+  "project": "project-e6384dd1-d4d3-4a03-948",
+  "started": "2026-10-19T22:16:12.3785353-05:00",
+  "ended": "2026-10-19T22:16:25.2464900-05:00",
+  "duration_seconds": 12.868,
+  "exit_code": 0,
+  "stdout": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\OpenSpec\\docs\\08-complete-frontend.stdout.json",
+  "stderr": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\OpenSpec\\docs\\08-complete-frontend.stderr.txt"
+}

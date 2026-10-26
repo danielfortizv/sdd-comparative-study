@@ -1,0 +1,6 @@
+projectKey=tetris-stage2-bmad
+serverUrl=http://127.0.0.1:9000
+serverVersion=26.9.0.129388
+dashboardUrl=http://127.0.0.1:9000/dashboard?id=tetris-stage2-bmad
+ceTaskId=3d361ff0-8ec2-4051-a21c-7b7d8488cf01
+ceTaskUrl=http://127.0.0.1:9000/api/ce/task?id=3d361ff0-8ec2-4051-a21c-7b7d8488cf01

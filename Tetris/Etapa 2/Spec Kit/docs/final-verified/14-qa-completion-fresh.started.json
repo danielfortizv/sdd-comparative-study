@@ -1,0 +1,8 @@
+{
+  "label": "14-qa-completion-fresh",
+  "workflow": "clarify",
+  "started": "2026-10-21T00:18:10.7132280-05:00",
+  "prompt_sha256": "2AD16704B8C8322D07ECBE1B368D40E610346FAE9C5EE937A910BC90C96EE13C",
+  "seed_sha256": "63919779DD4104076FBABCB130CE296A160FA840E0B4755A2AA5D90757ADA8EF",
+  "submission_method": "direct clarification prompt"
+}

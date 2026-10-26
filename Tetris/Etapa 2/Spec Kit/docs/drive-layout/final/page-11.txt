@@ -1,0 +1,39 @@
+semilla completa y la aclaración de calidad; ya se observan las correcciones en los
+artefactos. Este cambio de método de envío, el intento fallido y la auditoría se conservan
+como incidencia experimental. Evidencia: Spec Kit/docs/input-audit.json, *.request.txt,
+*.prompt.txt, *.run.json y transcritos originales; shared/expand-spec-kit-command.py.
+SPEC KIT — TAREAS REVISADAS E INICIO DE
+IMPLEMENTACIÓN
+07-tasks-native-expanded terminó normalmente en 545,391 s y dejó 32 tareas (T001–T032),
+correcciones del plan/modelo/ejemplo y seis criterios nativos de calidad. Estadísticas: 41
+intentos API, 14 errores y 27 éxitos registrados por el CLI dentro de esa sesión, 1.065.684
+tokens de entrada (505.891 cacheados incluidos) y 8.216 de salida. La auditoría verifica los
+cinco párrafos completos de la semilla en la primera entrada efectiva de esta sesión. El
+recolector confirmó cero diferencias de código y cero diferencias en las specs copiadas de
+Etapa 1 al cerrar planificación.
+08-implement comenzó el 20 oct 2026 a las 07:07:23, hora Bogotá. Se usa la plantilla nativa
+instalada de implementación, los argumentos completos y la misma semilla. La entrada
+efectiva incluye las reglas de puntaje, exclusiones, tareas y preservación del entorno Etapa
+1. El runner ahora guarda *.started.json antes de lanzar Gemini. La fase sigue abierta; no se
+reportan como terminadas tareas por el solo hecho de figurar en la lista.
+Entorno medido: Node v25.6.1, npm 11.9.0, Python compartido 3.12.14, Gemini CLI 0.60.0,
+Spec Kit 1.0.12, SonarQube 26.9.0.129388. Fuente: Spec Kit/docs/environment.json.
+Cualquier instalación adicional de Python se solicita en un .venv local de Etapa 2; la
+toolchain compartida de Etapa 1 debe preservarse.
+El comando interactivo de Gemini para consultar tokens y caché es /stats, confirmado en la
+documentación incluida con la versión fijada (bundle/docs/cli/token-caching.md). Para
+automatización se conserva --output-format json, cuyo campo stats contiene tokens y
+latencias, más los transcritos originales. No se abrió una sesión vacía de /stats para
+atribuirla a una ejecución anterior. Acumulado cerrado hasta 07: siete intentos de invocación
+registrados, seis que alcanzaron el modelo, 1.835,506 s instrumentados, 4.175.522 tokens
+de entrada, 2.880.253 cacheados incluidos y 40.043 de salida; 129 intentos API conocidos,
+22 errores y 107 éxitos en sesiones completas; por separado, 130 respuestas principales
+registradas en JSONL (el agregado previo de 154 queda retirado); excluye 08 en curso y las
+duraciones desconocidas de 01/03. Los errores, caché y modelos auxiliares se conservan
+en las salidas originales.
+SPEC KIT — CORRECCIÓN DE DEFINICIONES
+Y REVISIÓN INDEPENDIENTE
+La auditoría corrigió una definición del acumulado hasta 07: el valor previo de 154 mezclaba
+intentos de API de sesiones completas con respuestas JSONL de sesiones interrumpidas.
+No debe tratarse como un conteo homogéneo de solicitudes. Las cifras comparables son
+129 intentos de API conocidos, 22 errores y 107 solicitudes exitosas en sesiones completas;

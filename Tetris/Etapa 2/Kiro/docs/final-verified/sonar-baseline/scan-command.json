@@ -1,0 +1,15 @@
+{
+  "researcher_created": true,
+  "started": "2026-10-21T14:51:26.8006373-05:00",
+  "ended": "2026-10-21T14:51:56.7342655-05:00",
+  "exit_code": 0,
+  "project": "tetris-stage2-kiro",
+  "project_version": "1.0",
+  "baseline": true,
+  "coverage_xml": "docs/baseline-coverage.xml",
+  "frontend_lcov_present": false,
+  "baseline_frontend_coverage_limitation": "No inherited frontend test framework/LCOV; global Sonar coverage includes uninstrumented frontend lines.",
+  "test_classification": "backend/tests/** and frontend/src/**/*.test.{ts,tsx}",
+  "source_excludes": "Only frontend/src/**/*.test.{ts,tsx}, classified as tests; no production issue/coverage exclusions",
+  "coverage_sha256": "6CA65606225388FAF34122EA4D317B90371066FB073C497F434D22B09F231332"
+}

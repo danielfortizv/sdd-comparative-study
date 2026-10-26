@@ -1,0 +1,18 @@
+{
+  "started_at_utc": "2026-10-21T05:47:56.393489+00:00",
+  "ended_at_utc": "2026-10-21T05:47:56.680537+00:00",
+  "command": [
+    "Etapa 1/_toolchain/venv/Scripts/python.exe",
+    "Etapa 2/shared/build-spec-kit-report.py",
+    "--check"
+  ],
+  "working_directory_base": "case_root",
+  "exit_code": 0,
+  "stdout": {
+    "status": "ready",
+    "final_report_written": false
+  },
+  "stderr": "",
+  "final_report_sha256": "08F239C32D56A5EEAF856E44EF8361C90F9862BD47E897EBBE7828573B7F19B0",
+  "scope": "Researcher evidence readiness only; no app tests/scanners/servers/Drive operations were run by this snapshot step."
+}

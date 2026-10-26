@@ -1,0 +1,211 @@
+{
+  "measured_at_utc": "2026-10-25T20:30:33.786806+00:00",
+  "seed_sha256": "63919779DD4104076FBABCB130CE296A160FA840E0B4755A2AA5D90757ADA8EF",
+  "seed_sha256_scope": "original bytes of the complete common seed Markdown file",
+  "seed_block_utf8_sha256": "60D6728689CD5CDAD7B1A386F95DAD4E34850EB5DE0AAB92E837D630DFD2B55A",
+  "seed_block_characters": 3516,
+  "seed_block_scope": "extracted quoted common seed block, trimmed, with LF line endings, encoded as UTF-8 without BOM",
+  "effective_input_hash_scope": "decoded JSONL user text before newline normalization; effective_first_input_sha256/characters are aliases of raw fields. Multiple text parts, when present, are joined with LF.",
+  "normalization": "CRLF replaced with LF only; normalized hash/character fields are separate from raw decoded text",
+  "transcript_scope": "original gemini-home and transcripts-archive fallback; user-message identities and complete seed-read identities deduplicated across snapshots",
+  "snapshot_scope": "runs contains closed intervals only; pending_runs separately verifies active input delivery and never supplies usage totals",
+  "unclosed_invocation_labels": [],
+  "note": "Checks the first effective user text, not all later context. Complete seed tool reads require an exact normalized seed substring in a string output from the same session within that run interval. Missing records or absent first-message seed do not prove the seed was never available through other context.",
+  "runs": [
+    {
+      "run_closed": true,
+      "input_interval_scope": "closed run interval",
+      "observed_interval_end_at_utc": null,
+      "label": "01-specify",
+      "submission_method": "complete multiline plain prompt via direct Node entrypoint",
+      "model_started": null,
+      "transcript": "transcripts-archive/session-2026-10-21T14-30-08c8cdbc.1551B643CCB0E7D0.jsonl",
+      "transcript_copies": [
+        "transcripts-archive/session-2026-10-21T14-30-08c8cdbc.1551B643CCB0E7D0.jsonl",
+        "transcripts-archive/session-2026-10-21T14-30-08c8cdbc.542FFFA6EC1DF888.jsonl"
+      ],
+      "session_id": "08c8cdbc-c131-4ede-9b86-b365f410cbd7",
+      "effective_first_input_timestamp": "2026-10-21T14:30:38.224Z",
+      "effective_first_input_sha256": "BFF90383515B217A2FAB69C2732D48B6CFF185EDFDE9D5C108236B3B8103AF00",
+      "effective_first_input_characters": 6506,
+      "effective_first_input_raw_utf8_sha256": "BFF90383515B217A2FAB69C2732D48B6CFF185EDFDE9D5C108236B3B8103AF00",
+      "effective_first_input_raw_characters": 6506,
+      "effective_first_input_normalized_utf8_sha256": "BFF90383515B217A2FAB69C2732D48B6CFF185EDFDE9D5C108236B3B8103AF00",
+      "effective_first_input_normalized_characters": 6506,
+      "complete_seed_present": true,
+      "seed_paragraphs_present": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "complete_seed_tool_reads": [],
+      "intended_submission_prompt": "01-specify.prompt.txt",
+      "effective_submission_matches": [
+        {
+          "message_id": "93edc08c-559e-4e5f-8fc9-33c2c017c7e3",
+          "timestamp": "2026-10-21T14:30:38.224Z",
+          "session_id": "08c8cdbc-c131-4ede-9b86-b365f410cbd7",
+          "transcript_copies": [
+            "transcripts-archive/session-2026-10-21T14-30-08c8cdbc.1551B643CCB0E7D0.jsonl",
+            "transcripts-archive/session-2026-10-21T14-30-08c8cdbc.542FFFA6EC1DF888.jsonl"
+          ],
+          "raw_utf8_sha256": "BFF90383515B217A2FAB69C2732D48B6CFF185EDFDE9D5C108236B3B8103AF00",
+          "raw_characters": 6506,
+          "normalized_utf8_sha256": "BFF90383515B217A2FAB69C2732D48B6CFF185EDFDE9D5C108236B3B8103AF00",
+          "normalized_characters": 6506,
+          "complete_seed_present": true
+        }
+      ],
+      "complete_seed_in_effective_submission": true,
+      "submission_match_scope": "Exact normalized intended prompt is contained in an actual user-message record within the invocation interval. Separate from the first user-like record, which may be synthetic CLI context or replayed history during resume. Does not infer omitted records."
+    },
+    {
+      "run_closed": true,
+      "input_interval_scope": "closed run interval",
+      "observed_interval_end_at_utc": null,
+      "label": "02-specify-correction",
+      "submission_method": "complete multiline plain prompt via direct Node entrypoint",
+      "model_started": null,
+      "transcript": "transcripts-archive/session-2026-10-21T14-30-08c8cdbc.1551B643CCB0E7D0.jsonl",
+      "transcript_copies": [
+        "transcripts-archive/session-2026-10-21T14-30-08c8cdbc.1551B643CCB0E7D0.jsonl"
+      ],
+      "session_id": "08c8cdbc-c131-4ede-9b86-b365f410cbd7",
+      "effective_first_input_timestamp": "2026-10-21T19:40:26.541Z",
+      "effective_first_input_sha256": "5D72D6C29E6D31B93F641D145BFD2780EB4F49BA466FAFAC1E92461E23DEF444",
+      "effective_first_input_characters": 8933,
+      "effective_first_input_raw_utf8_sha256": "5D72D6C29E6D31B93F641D145BFD2780EB4F49BA466FAFAC1E92461E23DEF444",
+      "effective_first_input_raw_characters": 8933,
+      "effective_first_input_normalized_utf8_sha256": "5D72D6C29E6D31B93F641D145BFD2780EB4F49BA466FAFAC1E92461E23DEF444",
+      "effective_first_input_normalized_characters": 8933,
+      "complete_seed_present": true,
+      "seed_paragraphs_present": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "complete_seed_tool_reads": [],
+      "intended_submission_prompt": "02-specify-correction.prompt.txt",
+      "effective_submission_matches": [
+        {
+          "message_id": "eb75f415-a591-44c4-b682-a2ea50938ba6",
+          "timestamp": "2026-10-21T19:40:26.541Z",
+          "session_id": "08c8cdbc-c131-4ede-9b86-b365f410cbd7",
+          "transcript_copies": [
+            "transcripts-archive/session-2026-10-21T14-30-08c8cdbc.1551B643CCB0E7D0.jsonl"
+          ],
+          "raw_utf8_sha256": "5D72D6C29E6D31B93F641D145BFD2780EB4F49BA466FAFAC1E92461E23DEF444",
+          "raw_characters": 8933,
+          "normalized_utf8_sha256": "5D72D6C29E6D31B93F641D145BFD2780EB4F49BA466FAFAC1E92461E23DEF444",
+          "normalized_characters": 8933,
+          "complete_seed_present": true
+        }
+      ],
+      "complete_seed_in_effective_submission": true,
+      "submission_match_scope": "Exact normalized intended prompt is contained in an actual user-message record within the invocation interval. Separate from the first user-like record, which may be synthetic CLI context or replayed history during resume. Does not infer omitted records."
+    },
+    {
+      "run_closed": true,
+      "input_interval_scope": "closed run interval",
+      "observed_interval_end_at_utc": null,
+      "label": "03-specify-last-mile",
+      "submission_method": "complete multiline plain prompt via direct Node entrypoint",
+      "model_started": null,
+      "transcript": "gemini-home/.gemini/tmp/tessl/chats/session-2026-10-25T20-15-8d3ae00a.jsonl",
+      "transcript_copies": [
+        "gemini-home/.gemini/tmp/tessl/chats/session-2026-10-25T20-15-8d3ae00a.jsonl",
+        "transcripts-archive/session-2026-10-25T20-15-8d3ae00a.96100F9AF4E955D9.jsonl"
+      ],
+      "session_id": "8d3ae00a-0747-4979-b516-7220ce273a6e",
+      "effective_first_input_timestamp": "2026-10-25T20:15:00.451Z",
+      "effective_first_input_sha256": "25F44E4EE314333CF948DF305A32CF6566E2567F112A60222AC9BDDA8AC15412",
+      "effective_first_input_characters": 9339,
+      "effective_first_input_raw_utf8_sha256": "25F44E4EE314333CF948DF305A32CF6566E2567F112A60222AC9BDDA8AC15412",
+      "effective_first_input_raw_characters": 9339,
+      "effective_first_input_normalized_utf8_sha256": "25F44E4EE314333CF948DF305A32CF6566E2567F112A60222AC9BDDA8AC15412",
+      "effective_first_input_normalized_characters": 9339,
+      "complete_seed_present": true,
+      "seed_paragraphs_present": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "complete_seed_tool_reads": [],
+      "intended_submission_prompt": "03-specify-last-mile.prompt.txt",
+      "effective_submission_matches": [
+        {
+          "message_id": "734a4588-cc0c-4e3c-a0a4-ef7592096381",
+          "timestamp": "2026-10-25T20:15:00.451Z",
+          "session_id": "8d3ae00a-0747-4979-b516-7220ce273a6e",
+          "transcript_copies": [
+            "gemini-home/.gemini/tmp/tessl/chats/session-2026-10-25T20-15-8d3ae00a.jsonl",
+            "transcripts-archive/session-2026-10-25T20-15-8d3ae00a.96100F9AF4E955D9.jsonl"
+          ],
+          "raw_utf8_sha256": "25F44E4EE314333CF948DF305A32CF6566E2567F112A60222AC9BDDA8AC15412",
+          "raw_characters": 9339,
+          "normalized_utf8_sha256": "25F44E4EE314333CF948DF305A32CF6566E2567F112A60222AC9BDDA8AC15412",
+          "normalized_characters": 9339,
+          "complete_seed_present": true
+        }
+      ],
+      "complete_seed_in_effective_submission": true,
+      "submission_match_scope": "Exact normalized intended prompt is contained in an actual user-message record within the invocation interval. Separate from the first user-like record, which may be synthetic CLI context or replayed history during resume. Does not infer omitted records."
+    },
+    {
+      "run_closed": true,
+      "input_interval_scope": "closed run interval",
+      "observed_interval_end_at_utc": null,
+      "label": "04-specify-final-review",
+      "submission_method": "complete multiline plain prompt via direct Node entrypoint",
+      "model_started": null,
+      "transcript": "gemini-home/.gemini/tmp/tessl/chats/session-2026-10-25T20-23-902d861e.jsonl",
+      "transcript_copies": [
+        "gemini-home/.gemini/tmp/tessl/chats/session-2026-10-25T20-23-902d861e.jsonl",
+        "transcripts-archive/session-2026-10-25T20-23-902d861e.60B06ED6E8C1441A.jsonl"
+      ],
+      "session_id": "902d861e-85c2-4fcd-a11b-0e758c3d97e4",
+      "effective_first_input_timestamp": "2026-10-25T20:23:56.674Z",
+      "effective_first_input_sha256": "157F026258A3FB9F8F0F3C33C3E10C983B2561E0EFBFD2FD2974F0389E720BD4",
+      "effective_first_input_characters": 9228,
+      "effective_first_input_raw_utf8_sha256": "157F026258A3FB9F8F0F3C33C3E10C983B2561E0EFBFD2FD2974F0389E720BD4",
+      "effective_first_input_raw_characters": 9228,
+      "effective_first_input_normalized_utf8_sha256": "157F026258A3FB9F8F0F3C33C3E10C983B2561E0EFBFD2FD2974F0389E720BD4",
+      "effective_first_input_normalized_characters": 9228,
+      "complete_seed_present": true,
+      "seed_paragraphs_present": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "complete_seed_tool_reads": [],
+      "intended_submission_prompt": "04-specify-final-review.prompt.txt",
+      "effective_submission_matches": [
+        {
+          "message_id": "9c22e2b4-9c73-49a4-9dde-7c84e6e36797",
+          "timestamp": "2026-10-25T20:23:56.674Z",
+          "session_id": "902d861e-85c2-4fcd-a11b-0e758c3d97e4",
+          "transcript_copies": [
+            "gemini-home/.gemini/tmp/tessl/chats/session-2026-10-25T20-23-902d861e.jsonl",
+            "transcripts-archive/session-2026-10-25T20-23-902d861e.60B06ED6E8C1441A.jsonl"
+          ],
+          "raw_utf8_sha256": "157F026258A3FB9F8F0F3C33C3E10C983B2561E0EFBFD2FD2974F0389E720BD4",
+          "raw_characters": 9228,
+          "normalized_utf8_sha256": "157F026258A3FB9F8F0F3C33C3E10C983B2561E0EFBFD2FD2974F0389E720BD4",
+          "normalized_characters": 9228,
+          "complete_seed_present": true
+        }
+      ],
+      "complete_seed_in_effective_submission": true,
+      "submission_match_scope": "Exact normalized intended prompt is contained in an actual user-message record within the invocation interval. Separate from the first user-like record, which may be synthetic CLI context or replayed history during resume. Does not infer omitted records."
+    }
+  ],
+  "pending_runs": []
+}

@@ -1,0 +1,197 @@
+{
+  "researcher_created": true,
+  "measured_at_utc": "2026-10-22T01:21:12.557068+00:00",
+  "seed_file_sha256": "63919779DD4104076FBABCB130CE296A160FA840E0B4755A2AA5D90757ADA8EF",
+  "seed_block_utf8_sha256": "60D6728689CD5CDAD7B1A386F95DAD4E34850EB5DE0AAB92E837D630DFD2B55A",
+  "seed_block_characters": 3516,
+  "seed_block_scope": "quoted common seed, quote prefixes removed, trimmed, LF, UTF-8 without BOM; file hash covers original complete Markdown bytes",
+  "normalization": "Raw hashes/lengths preserve decoded native content; normalized fields replace CRLF with LF only; intended comparison trims outer whitespace",
+  "scope": "Native Kiro messages.jsonl user payloads by session/message ID/timestamp within launcher interval; original/archive duplicates cannot inflate counts; intended prompt alone is not received-input evidence; ACP output does not echo user input",
+  "runs": [
+    {
+      "label": "01-specify",
+      "run_closed": true,
+      "session_ids": [
+        "sess_bfb2da1c-8ba1-4be0-a8c5-bdbf919798f5"
+      ],
+      "intended_prompt_file": "01-specify.prompt.txt",
+      "intended_prompt_file_bytes_sha256": "13ECF3745FCEBDA4C986D17DF2A9A6C31727935F7D736A1D4E395CA22F12581A",
+      "intended_prompt": {
+        "raw_utf8_sha256": "13ECF3745FCEBDA4C986D17DF2A9A6C31727935F7D736A1D4E395CA22F12581A",
+        "raw_characters": 9777,
+        "normalized_utf8_sha256": "F64F0298C83E4E7D0271CD672371E4E36AB3BCC2D03913E72B66FC99EC40E516",
+        "normalized_characters": 9744
+      },
+      "intended_seed_present": true,
+      "effective_user_messages": [
+        {
+          "session_id": "sess_bfb2da1c-8ba1-4be0-a8c5-bdbf919798f5",
+          "message_id": "e2a3278e-ae5c-4aa0-be6e-de2889a61538",
+          "timestamp": "2026-10-21T19:58:52.032Z",
+          "raw_utf8_sha256": "F64F0298C83E4E7D0271CD672371E4E36AB3BCC2D03913E72B66FC99EC40E516",
+          "raw_characters": 9744,
+          "normalized_utf8_sha256": "F64F0298C83E4E7D0271CD672371E4E36AB3BCC2D03913E72B66FC99EC40E516",
+          "normalized_characters": 9744,
+          "complete_seed_present": true,
+          "seed_paragraphs_present": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "matches_intended_normalized": true,
+          "transcript_copies": [
+            "C:\\Users\\Kevin Alvarez\\.kiro\\sessions\\85ecaae174dd71e7\\sess_bfb2da1c-8ba1-4be0-a8c5-bdbf919798f5\\messages.jsonl",
+            "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\Kiro\\docs\\transcripts-archive\\sess_bfb2da1c-8ba1-4be0-a8c5-bdbf919798f5.native_messages.80C1DF6B6D27E5D0.jsonl"
+          ],
+          "conflict": false
+        }
+      ],
+      "complete_seed_in_effective_submission": true,
+      "delivery_status": "verified full seed in received intended user message",
+      "invalid_native_lines": {},
+      "scope": "closed invocation interval",
+      "complete_seed_tool_reads": []
+    },
+    {
+      "label": "02-specify-student",
+      "run_closed": true,
+      "session_ids": [
+        "sess_3a260d90-994e-415d-8540-078b3a99418a"
+      ],
+      "intended_prompt_file": "02-specify-student.prompt.txt",
+      "intended_prompt_file_bytes_sha256": "13ECF3745FCEBDA4C986D17DF2A9A6C31727935F7D736A1D4E395CA22F12581A",
+      "intended_prompt": {
+        "raw_utf8_sha256": "13ECF3745FCEBDA4C986D17DF2A9A6C31727935F7D736A1D4E395CA22F12581A",
+        "raw_characters": 9777,
+        "normalized_utf8_sha256": "F64F0298C83E4E7D0271CD672371E4E36AB3BCC2D03913E72B66FC99EC40E516",
+        "normalized_characters": 9744
+      },
+      "intended_seed_present": true,
+      "effective_user_messages": [
+        {
+          "session_id": "sess_3a260d90-994e-415d-8540-078b3a99418a",
+          "message_id": "694c98a3-8764-445a-bd0d-b9855974d9ca",
+          "timestamp": "2026-10-21T20:11:12.680Z",
+          "raw_utf8_sha256": "F64F0298C83E4E7D0271CD672371E4E36AB3BCC2D03913E72B66FC99EC40E516",
+          "raw_characters": 9744,
+          "normalized_utf8_sha256": "F64F0298C83E4E7D0271CD672371E4E36AB3BCC2D03913E72B66FC99EC40E516",
+          "normalized_characters": 9744,
+          "complete_seed_present": true,
+          "seed_paragraphs_present": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "matches_intended_normalized": true,
+          "transcript_copies": [
+            "C:\\Users\\Kevin Alvarez\\.kiro\\sessions\\85ecaae174dd71e7\\sess_3a260d90-994e-415d-8540-078b3a99418a\\messages.jsonl",
+            "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\Kiro\\docs\\transcripts-archive\\sess_3a260d90-994e-415d-8540-078b3a99418a.native_messages.C0062469328D8C22.jsonl"
+          ],
+          "conflict": false
+        }
+      ],
+      "complete_seed_in_effective_submission": true,
+      "delivery_status": "verified full seed in received intended user message",
+      "invalid_native_lines": {},
+      "scope": "closed invocation interval",
+      "complete_seed_tool_reads": []
+    },
+    {
+      "label": "03-native-spec-review",
+      "run_closed": true,
+      "session_ids": [
+        "sess_c67111cb-4835-46ee-8279-41e31a08e1cf"
+      ],
+      "intended_prompt_file": "03-native-spec-review.prompt.txt",
+      "intended_prompt_file_bytes_sha256": "96A568EC8B9C320888862569964732DC5D11A83563C824D4FEFDAFAD8588BFF0",
+      "intended_prompt": {
+        "raw_utf8_sha256": "96A568EC8B9C320888862569964732DC5D11A83563C824D4FEFDAFAD8588BFF0",
+        "raw_characters": 7580,
+        "normalized_utf8_sha256": "74F85B982B237237CC51D5592371E79D460AF6B0832C270AEF1F8D8650000F31",
+        "normalized_characters": 7555
+      },
+      "intended_seed_present": true,
+      "effective_user_messages": [
+        {
+          "session_id": "sess_c67111cb-4835-46ee-8279-41e31a08e1cf",
+          "message_id": "c97bdf38-1115-4f12-baeb-78a6641d11e3",
+          "timestamp": "2026-10-21T20:20:04.537Z",
+          "raw_utf8_sha256": "74F85B982B237237CC51D5592371E79D460AF6B0832C270AEF1F8D8650000F31",
+          "raw_characters": 7555,
+          "normalized_utf8_sha256": "74F85B982B237237CC51D5592371E79D460AF6B0832C270AEF1F8D8650000F31",
+          "normalized_characters": 7555,
+          "complete_seed_present": true,
+          "seed_paragraphs_present": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "matches_intended_normalized": true,
+          "transcript_copies": [
+            "C:\\Users\\Kevin Alvarez\\.kiro\\sessions\\85ecaae174dd71e7\\sess_c67111cb-4835-46ee-8279-41e31a08e1cf\\messages.jsonl",
+            "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\Kiro\\docs\\transcripts-archive\\sess_c67111cb-4835-46ee-8279-41e31a08e1cf.native_messages.BE78021C081E6D8E.jsonl"
+          ],
+          "conflict": false
+        }
+      ],
+      "complete_seed_in_effective_submission": true,
+      "delivery_status": "verified full seed in received intended user message",
+      "invalid_native_lines": {},
+      "scope": "closed invocation interval",
+      "complete_seed_tool_reads": []
+    },
+    {
+      "label": "04-implement",
+      "run_closed": true,
+      "session_ids": [
+        "sess_808d62db-8b67-4fd7-a9a0-4d840eb62ae7"
+      ],
+      "intended_prompt_file": "04-implement.prompt.txt",
+      "intended_prompt_file_bytes_sha256": "609BA08859D580A5D76AB198E51279DEABC1553375A5D1E344FC255A9817E5C6",
+      "intended_prompt": {
+        "raw_utf8_sha256": "609BA08859D580A5D76AB198E51279DEABC1553375A5D1E344FC255A9817E5C6",
+        "raw_characters": 8129,
+        "normalized_utf8_sha256": "78A061545DFAD056FF3884A62739E6142597A45AB98F05BD2695E1B118286BCB",
+        "normalized_characters": 8104
+      },
+      "intended_seed_present": true,
+      "effective_user_messages": [
+        {
+          "session_id": "sess_808d62db-8b67-4fd7-a9a0-4d840eb62ae7",
+          "message_id": "53d62a6c-6def-4614-8371-69de7d8d55ff",
+          "timestamp": "2026-10-22T00:51:12.517Z",
+          "raw_utf8_sha256": "78A061545DFAD056FF3884A62739E6142597A45AB98F05BD2695E1B118286BCB",
+          "raw_characters": 8104,
+          "normalized_utf8_sha256": "78A061545DFAD056FF3884A62739E6142597A45AB98F05BD2695E1B118286BCB",
+          "normalized_characters": 8104,
+          "complete_seed_present": true,
+          "seed_paragraphs_present": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "matches_intended_normalized": true,
+          "transcript_copies": [
+            "C:\\Users\\Kevin Alvarez\\.kiro\\sessions\\85ecaae174dd71e7\\sess_808d62db-8b67-4fd7-a9a0-4d840eb62ae7\\messages.jsonl",
+            "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\Kiro\\docs\\transcripts-archive\\sess_808d62db-8b67-4fd7-a9a0-4d840eb62ae7.native_messages.19A84E1E3F1ED9BE.jsonl"
+          ],
+          "conflict": false
+        }
+      ],
+      "complete_seed_in_effective_submission": true,
+      "delivery_status": "verified full seed in received intended user message",
+      "invalid_native_lines": {},
+      "scope": "closed invocation interval",
+      "complete_seed_tool_reads": []
+    }
+  ],
+  "pending_runs": []
+}

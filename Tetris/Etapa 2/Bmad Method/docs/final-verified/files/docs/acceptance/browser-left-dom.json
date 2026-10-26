@@ -1,0 +1,42 @@
+{
+  "researcher_created": true,
+  "at_utc": "2026-10-26T02:34:02.773Z",
+  "before": [
+    [
+      0,
+      4
+    ],
+    [
+      0,
+      5
+    ],
+    [
+      1,
+      4
+    ],
+    [
+      1,
+      5
+    ]
+  ],
+  "after": [
+    [
+      0,
+      3
+    ],
+    [
+      0,
+      4
+    ],
+    [
+      1,
+      3
+    ],
+    [
+      1,
+      4
+    ]
+  ],
+  "passed": true,
+  "scope": "actual key press and rendered board cells read in one uninterrupted browser call; no hidden state"
+}

@@ -1,0 +1,22 @@
+{
+  "researcher_created": true,
+  "label": "backend-final",
+  "cwd": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\Bmad Method\\backend",
+  "command": [
+    ".venv/Scripts/python.exe",
+    "-m",
+    "pytest",
+    "app/tests",
+    "--cov=app",
+    "--cov-config=.coveragerc",
+    "--cov-report=xml:../docs/validation/backend-final.xml",
+    "--junitxml=../docs/validation/backend-final.junit.xml",
+    "-q"
+  ],
+  "started_at_utc": "2026-10-26T02:23:13.986291+00:00",
+  "ended_at_utc": "2026-10-26T02:23:14.011357+00:00",
+  "duration_seconds": 0.025349,
+  "exit_code": 127,
+  "log_path": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\Bmad Method\\docs\\validation\\backend-final.log",
+  "log_sha256": "E27561D85966553045F9CCF2C572BF151EE4109782932F9C5EA60356211FA957"
+}

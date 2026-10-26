@@ -1,0 +1,2 @@
+Captura 7. Vista derivada de métricas por invocación y tamaños de artefactos; no es una captura de consola.
+Archivo: Spec Kit/docs/screenshots/metrics-panel.jpg. Fuentes: metrics.json.

@@ -1,0 +1,499 @@
+{
+  "audited_at_utc": "2026-10-25T20:30:33.996881+00:00",
+  "status": "Closed retained intervals manually audited.",
+  "tool": "Tessl Stage 2",
+  "count_definition": "A blocking clarification question is emitted main-model natural-language text requesting missing user/researcher input before proceeding. Count requests, not punctuation; quoted/template-only questions are excluded by manual adjudication.",
+  "closed_run_labels": [
+    "01-specify",
+    "02-specify-correction",
+    "03-specify-last-mile",
+    "04-specify-final-review"
+  ],
+  "pending_run_labels": [],
+  "manual_review_required_closed_labels": [],
+  "closed_runs_observed_blocking_question_count": 0,
+  "all_started_runs_observed_blocking_question_count": 0,
+  "reviewed_unique_natural_language_messages": 3,
+  "runs": [
+    {
+      "label": "01-specify",
+      "state": "closed",
+      "started": "2026-10-21T09:30:32.7733099-05:00",
+      "ended": "2026-10-21T09:37:12.1758072-05:00",
+      "observed_until": null,
+      "exit_code": 0,
+      "metadata_path": "01-specify.run.json",
+      "metadata_sha256": "427B7205B22BB778ED21B86E7E106EE5CFB41850BE8CD815AF5C9BAC9593638C",
+      "main_model": "gemini-3.5-flash",
+      "review_status": "manually_reviewed_retained_interval",
+      "candidate_signature_sha256": "3126FC1B9FE30C993816F842DC453F893620A58068EA5085255273B237ABE4E4",
+      "natural_language_message_count": 1,
+      "tool_requested_blocking_questions_observed": 0,
+      "candidate_messages": [
+        {
+          "candidate_id": "08c8cdbc-c131-4ede-9b86-b365f410cbd7/15d2c984-3c44-4d65-87a3-bd63ad5a2ef1",
+          "session_id": "08c8cdbc-c131-4ede-9b86-b365f410cbd7",
+          "response_id": "15d2c984-3c44-4d65-87a3-bd63ad5a2ef1",
+          "timestamp": "2026-10-21T14:37:12.117Z",
+          "models_observed": [
+            "gemini-3.5-flash"
+          ],
+          "attribution": "main_model",
+          "text": "I have completed the research, design, and specification phase for **Stage 2, Option A**, strictly adhering to the legacy codebase structures, seed guidelines, and project-specific conventions. No application code, test files, dependencies, or inherited Stage 1 specifications have been modified in this phase.\n\n### 1. Concrete Files Finalized on Disk\n* **`specs/stage2/requirements.md`**: Contains 30 atomic, testable requirements (`Req-S2-1` to `Req-S2-30`) covering state schema expansions, piece spawning lifecycles, first and swap hold mechanisms, progressive scoring/levels, terminal game-over rules, and advanced frontend dynamic timer rescheduling, coalescing, and request-generation controls. It also maps 10 comprehensive Stage 2 Acceptance Criteria (`AC-S2-1` to `AC-S2-10`).\n* **`specs/stage2/session_notes.md`**: Contains a detailed traceable implementation checklist, material ambiguity resolutions, and evidence of Tessl MCP live status.\n\n---\n\n### 2. Live Tessl MCP Integration Evidence\nAs required, authentic status from our Tessl tools was successfully captured and logged under `specs/stage2/session_notes.md`:\n* **`mcp_tessl_status`**: Succeeded locally, showing `manifest.summary.inSync: 2` with plugins `maria/fastapi` and `softaworks/agent-toolkit` (containing `react-dev`) fully in-sync.\n* **`mcp_tessl_skills_available`**: Rejected due to missing authentication in our headless/CI environment, confirming live, active connectivity with the Tessl MCP registry.\n\n---\n\n### 3. Material Ambiguities and System Design Resolutions\n* **Three- and Four-Row Scoring:** Unrotated canonical shapes have a maximum height of 2 rows, making 3/4-row line clears mathematically impossible in normal UI gameplay.\n  * *Resolution:* Unit testing of 3-row and 4-row scoring multipliers ($500 \\times L$ and $800 \\times L$) is validated strictly via explicitly labeled isolated-domain unit test fixtures in `backend/tests/test_game.py` using custom board states. No UI gameplay claims or rotation mechanisms are introduced.\n* **Row-Zero Locking vs. Preview Draw:**\n  * *Resolution:* If a piece locks at row 0 (immediate game over), no normal spawn is attempted. The previewed `next_piece` is preserved exactly as is, without being consumed or advanced. For obstructed spawns at rows > 0, `next_piece` is consumed and a new preview drawn before transitioning to `\"game_over\"`.\n* **Hold Rejection Compatibility:**\n  * *Resolution:* Rejected hold operations (e.g., calling hold when `can_hold` is false or game is over) return HTTP 200 with the completely unmodified game state.\n* **Frontend State Integrity & Dynamic Gravity Timer:**\n  * *Resolution:* The frontend tracks `generationId` sequences on every request, discarding out-of-order/stale responses. It detects changes to `gravity_interval_ms` and dynamically cancels the old timer to schedule a new one with the updated interval. It also coalesces automatic ticks with user-triggered movements/holds.\n\nThe specifications are ready on disk. I am prepared to proceed with the implementation once you issue a directive!",
+          "snippet": "I have completed the research, design, and specification phase for **Stage 2, Option A**, strictly adhering to the legacy codebase structures, seed guidelines, and project-specific conventions. No application code, test files, dependencies, or inherited Stage 1 specifications have been modified in this phase.\n\n### 1. Concrete Files Finalized on Disk\n* **`specs/stage2/requirements.md`**: Contains 30 atomic, testable requirements (`Req-S2-1` to `Req-S2-30`) covering state schema expansions, piece ",
+          "decoded_text_utf8_sha256": "92B373765739C5521AA375B021AC24CBF5D9B2989172F4CD4EAD0501C739B35A",
+          "characters": 3072,
+          "text_variants": [
+            {
+              "text": "I have completed the research, design, and specification phase for **Stage 2, Option A**, strictly adhering to the legacy codebase structures, seed guidelines, and project-specific conventions. No application code, test files, dependencies, or inherited Stage 1 specifications have been modified in this phase.\n\n### 1. Concrete Files Finalized on Disk\n* **`specs/stage2/requirements.md`**: Contains 30 atomic, testable requirements (`Req-S2-1` to `Req-S2-30`) covering state schema expansions, piece spawning lifecycles, first and swap hold mechanisms, progressive scoring/levels, terminal game-over rules, and advanced frontend dynamic timer rescheduling, coalescing, and request-generation controls. It also maps 10 comprehensive Stage 2 Acceptance Criteria (`AC-S2-1` to `AC-S2-10`).\n* **`specs/stage2/session_notes.md`**: Contains a detailed traceable implementation checklist, material ambiguity resolutions, and evidence of Tessl MCP live status.\n\n---\n\n### 2. Live Tessl MCP Integration Evidence\nAs required, authentic status from our Tessl tools was successfully captured and logged under `specs/stage2/session_notes.md`:\n* **`mcp_tessl_status`**: Succeeded locally, showing `manifest.summary.inSync: 2` with plugins `maria/fastapi` and `softaworks/agent-toolkit` (containing `react-dev`) fully in-sync.\n* **`mcp_tessl_skills_available`**: Rejected due to missing authentication in our headless/CI environment, confirming live, active connectivity with the Tessl MCP registry.\n\n---\n\n### 3. Material Ambiguities and System Design Resolutions\n* **Three- and Four-Row Scoring:** Unrotated canonical shapes have a maximum height of 2 rows, making 3/4-row line clears mathematically impossible in normal UI gameplay.\n  * *Resolution:* Unit testing of 3-row and 4-row scoring multipliers ($500 \\times L$ and $800 \\times L$) is validated strictly via explicitly labeled isolated-domain unit test fixtures in `backend/tests/test_game.py` using custom board states. No UI gameplay claims or rotation mechanisms are introduced.\n* **Row-Zero Locking vs. Preview Draw:**\n  * *Resolution:* If a piece locks at row 0 (immediate game over), no normal spawn is attempted. The previewed `next_piece` is preserved exactly as is, without being consumed or advanced. For obstructed spawns at rows > 0, `next_piece` is consumed and a new preview drawn before transitioning to `\"game_over\"`.\n* **Hold Rejection Compatibility:**\n  * *Resolution:* Rejected hold operations (e.g., calling hold when `can_hold` is false or game is over) return HTTP 200 with the completely unmodified game state.\n* **Frontend State Integrity & Dynamic Gravity Timer:**\n  * *Resolution:* The frontend tracks `generationId` sequences on every request, discarding out-of-order/stale responses. It detects changes to `gravity_interval_ms` and dynamically cancels the old timer to schedule a new one with the updated interval. It also coalesces automatic ticks with user-triggered movements/holds.\n\nThe specifications are ready on disk. I am prepared to proceed with the implementation once you issue a directive!",
+              "decoded_text_utf8_sha256": "92B373765739C5521AA375B021AC24CBF5D9B2989172F4CD4EAD0501C739B35A",
+              "characters": 3072,
+              "models": [
+                "gemini-3.5-flash"
+              ],
+              "timestamps": [
+                "2026-10-21T14:37:12.117Z"
+              ],
+              "tokens_present": true,
+              "locations": [
+                {
+                  "path": "transcripts-archive/session-2026-10-21T14-30-08c8cdbc.1551B643CCB0E7D0.jsonl",
+                  "line": 85,
+                  "container": "event"
+                },
+                {
+                  "path": "transcripts-archive/session-2026-10-21T14-30-08c8cdbc.1551B643CCB0E7D0.jsonl",
+                  "line": 88,
+                  "container": "embedded_messages"
+                },
+                {
+                  "path": "transcripts-archive/session-2026-10-21T14-30-08c8cdbc.1551B643CCB0E7D0.jsonl",
+                  "line": 91,
+                  "container": "embedded_messages"
+                },
+                {
+                  "path": "transcripts-archive/session-2026-10-21T14-30-08c8cdbc.542FFFA6EC1DF888.jsonl",
+                  "line": 85,
+                  "container": "event"
+                }
+              ]
+            }
+          ],
+          "variant_conflict": false,
+          "transcript_copies": [
+            "transcripts-archive/session-2026-10-21T14-30-08c8cdbc.1551B643CCB0E7D0.jsonl",
+            "transcripts-archive/session-2026-10-21T14-30-08c8cdbc.542FFFA6EC1DF888.jsonl"
+          ],
+          "manual_adjudication": {
+            "selected_text_sha256": "92B373765739C5521AA375B021AC24CBF5D9B2989172F4CD4EAD0501C739B35A",
+            "blocking_question_count": 0,
+            "classification": "emitted_main_text",
+            "reason": "Specification completion/design-resolution self-report followed by a workflow handoff to the later implementation phase; no request for missing user information. The closing readiness statement is not a blocking clarification question. Claims about files, tests, integration/authentication or mathematical reachability are not endorsed or independently verified by this text audit."
+          }
+        }
+      ],
+      "excluded_candidates": [],
+      "cli_final_response": {
+        "path": "01-specify.stdout.json",
+        "state": "matched retained candidate; not counted twice",
+        "matches": [
+          "08c8cdbc-c131-4ede-9b86-b365f410cbd7/15d2c984-3c44-4d65-87a3-bd63ad5a2ef1"
+        ],
+        "sha256": "F747B4C5F02D5EAE0297BDFAF9DB01F49AE5F69DDEDF036FDC04D256E6E13037",
+        "bytes": 6077
+      },
+      "recorded_main_response_count": 17,
+      "observed_tool_names": [
+        "glob",
+        "mcp_tessl_skills_available",
+        "mcp_tessl_status",
+        "read_file",
+        "update_topic",
+        "write_file"
+      ],
+      "interactive_question_tool_names_observed": [],
+      "manual_interval_review": {
+        "run_metadata_sha256": "427B7205B22BB778ED21B86E7E106EE5CFB41850BE8CD815AF5C9BAC9593638C",
+        "candidate_signature_sha256": "3126FC1B9FE30C993816F842DC453F893620A58068EA5085255273B237ABE4E4",
+        "reviewed_at_utc": "2026-10-21T14:39:57Z",
+        "reviewer": "researcher",
+        "coverage_note": "Read the complete 3,072-character emitted main text. One unique natural-language report is retained in identical original/archive copies and exactly matches completed CLI response. Seventeen main response IDs include tool-only/empty-text events, which are not natural-language messages. This is observed retained coverage, not a guarantee about unrecorded output.",
+        "messages": {
+          "08c8cdbc-c131-4ede-9b86-b365f410cbd7/15d2c984-3c44-4d65-87a3-bd63ad5a2ef1": {
+            "selected_text_sha256": "92B373765739C5521AA375B021AC24CBF5D9B2989172F4CD4EAD0501C739B35A",
+            "blocking_question_count": 0,
+            "classification": "emitted_main_text",
+            "reason": "Specification completion/design-resolution self-report followed by a workflow handoff to the later implementation phase; no request for missing user information. The closing readiness statement is not a blocking clarification question. Claims about files, tests, integration/authentication or mathematical reachability are not endorsed or independently verified by this text audit."
+          }
+        }
+      },
+      "coverage": "retained timestamp-bounded text only; original/archive copies deduplicated by session/response identity before counting. Failed, empty, unrecorded or active output does not prove an absolute absence of questions."
+    },
+    {
+      "label": "02-specify-correction",
+      "state": "closed",
+      "started": "2026-10-21T14:40:22.0403312-05:00",
+      "ended": "2026-10-21T14:40:27.8533324-05:00",
+      "observed_until": null,
+      "exit_code": 403,
+      "metadata_path": "02-specify-correction.run.json",
+      "metadata_sha256": "BF0564D5CD620BF6428E0637213B27DF054A74DB916A715406A02EF23CC5377C",
+      "main_model": "gemini-3.5-flash",
+      "review_status": "manually_reviewed_retained_interval",
+      "candidate_signature_sha256": "4F53CDA18C2BAA0C0354BB5F9A3ECBE5ED12AB4D8E11BA873C2F11161202B945",
+      "natural_language_message_count": 0,
+      "tool_requested_blocking_questions_observed": 0,
+      "candidate_messages": [],
+      "excluded_candidates": [],
+      "cli_final_response": {
+        "path": "02-specify-correction.stdout.json",
+        "state": "absent or empty stdout; coverage limited",
+        "matches": []
+      },
+      "recorded_main_response_count": 0,
+      "observed_tool_names": [],
+      "interactive_question_tool_names_observed": [],
+      "manual_interval_review": {
+        "run_metadata_sha256": "BF0564D5CD620BF6428E0637213B27DF054A74DB916A715406A02EF23CC5377C",
+        "candidate_signature_sha256": "4F53CDA18C2BAA0C0354BB5F9A3ECBE5ED12AB4D8E11BA873C2F11161202B945",
+        "reviewed_at_utc": "2026-10-25T20:23:38.845965+00:00",
+        "reviewer": "researcher",
+        "coverage_note": "Read all retained natural text and matched final CLI output. 03 contains one natural summary; 02 has no retained main-model natural text and terminal BILLING_DISABLED. Zero means no blocking question observed in retained interval, not proof about unrecorded output. Thoughts and tool-only responses excluded.",
+        "messages": {}
+      },
+      "coverage": "retained timestamp-bounded text only; original/archive copies deduplicated by session/response identity before counting. Failed, empty, unrecorded or active output does not prove an absolute absence of questions."
+    },
+    {
+      "label": "03-specify-last-mile",
+      "state": "closed",
+      "started": "2026-10-25T15:14:56.8724337-05:00",
+      "ended": "2026-10-25T15:16:47.4184575-05:00",
+      "observed_until": null,
+      "exit_code": 0,
+      "metadata_path": "03-specify-last-mile.run.json",
+      "metadata_sha256": "5154F2015F0F90185707533980C94B27B00A10A30398B903767AABD3DDA5971A",
+      "main_model": "gemini-3.5-flash",
+      "review_status": "manually_reviewed_retained_interval",
+      "candidate_signature_sha256": "855776BC7EE595A3ABF785AE25918EC2299DDDDBC26F8AE373E2F83608F02FFE",
+      "natural_language_message_count": 1,
+      "tool_requested_blocking_questions_observed": 0,
+      "candidate_messages": [
+        {
+          "candidate_id": "8d3ae00a-0747-4979-b516-7220ce273a6e/e4e13ac6-42f6-4ae5-b135-c12cd6a5773e",
+          "session_id": "8d3ae00a-0747-4979-b516-7220ce273a6e",
+          "response_id": "e4e13ac6-42f6-4ae5-b135-c12cd6a5773e",
+          "timestamp": "2026-10-25T20:16:47.331Z",
+          "models_observed": [
+            "gemini-3.5-flash"
+          ],
+          "attribution": "main_model",
+          "text": "I have successfully and thoroughly revised **only** the two Stage 2 specification files on disk:\n1. `specs/stage2/requirements.md` (Atomic requirements and acceptance criteria)\n2. `specs/stage2/session_notes.md` (Design decisions, local rule reads, and traceable checklists)\n\nNo application source files, test files, or dependency configurations were created or modified during this invocation.\n\n### Summary of Exact Corrections in the Revised Specifications\n\n1. **Lifecycle Generation & Mutating Request FIFO Queueing:**\n   - Specified a client-side monotonic `generationId` incremented on each game creation/restart.\n   - Mandated a serialized FIFO request queue where no mutating request is dispatched until the preceding one's network transit and JSON parsing both complete.\n   - Enforced double-verification of active `generationId` ownership (both post-fetch and post-parse) across all success, catch, and `finally` paths. Out-of-generation responses are discarded, ensuring stale requests do not clear newer guards or reschedule timers. Old queued requests cannot block or execute against a new game ID, making Hold and controls immediately usable in the new game lifecycle even if an old hold fetch is pending.\n\n2. **Automatic Ticks & Dynamic Rescheduling:**\n   - Restricted gravity ticks to at most one owned queued/in-flight tick per generation.\n   - Outlined automatic tick coalescing (deferring automatic gravity ticks if a manual mutation is in-flight or queued) and slow-response burst prevention by always scheduling gravity timers from the moment of authoritative completion.\n   - Mandated exact cancellation of pending `setTimeout` handles on manual movement, restart, gravity interval changes, game over, and component unmount.\n   - Designed for React StrictMode setup/cleanup, ensuring that old listeners are cleaned up and input handlers are cleanly reinstalled upon restart without permanently disabling controls.\n\n3. **Explicit Frontend Verification Suite:**\n   - Specified robust frontend test scenarios in `TetrisBoard.test.tsx` using simulated delays and timer controls to verify:\n     - *Delayed Fetch Resolution* and *Delayed JSON Parsing* across restarts.\n     - *Old-Generation Queue Isolation* and *Stale Finally/Error Completion*.\n     - *Pending Hold vs. Usable Hold* during rapid restarts.\n     - *FIFO Manual Mutation Dispatching* and *Coalesced Automatic Ticks*.\n     - *Exact Timeout Cancellation* on manual inputs and level/gravity interval updates.\n     - *StrictMode Mount-Unmount-Remount Lifecycle* integrity.\n\n4. **Explicit Seed UI Requirements:**\n   - Defined layout HUDs for Score, Lines, Level, and Gravity (interval in ms).\n   - Specified Next Piece Preview (compact sub-board) and Hold Panel (showing `hold_piece` and availability status).\n   - Specified an interactive Hold button (with a `disabled` state when `can_hold` is false or the game is over), alongside its mouse click and `C`/`c` keyboard routes, keeping compatibility with all Stage 1 routes and terminal logic.\n\n5. **Scoring, Level/Gravity, and Isolated-Domain Unit Tests:**\n   - Specified that 3 and 4 row clears are evaluated strictly through explicitly labeled isolated backend unit tests (`backend/tests/test_scoring.py`) since canonical unrotated tetrominoes cannot clear 3 or 4 lines.\n   - Confirmed that shapes remain unrotated and canonical.\n   - Mandated verifying the pre-lock level at threshold-crossings (e.g., scoring at 9 lines pre-lock, updating level to 2 post-lock) and testing the 100 ms progressive gravity floor.\n\n6. **Compliance and Verification Artifacts:**\n   - Defined backend coverage XML path at `docs/coverage.xml` and frontend-src LCOV path at `frontend/coverage/lcov.info`.\n   - Outlined full production TypeScript build (`npm run build` with zero errors) and dependency audits.\n   - Enforced Pydantic response models (`response_model=GameResponse`) on all endpoints to comply with the `maria/fastapi` `pii-sanitisation` rule.\n   - Enforced strict Sonar Quality Gate compliance (New Coverage >= 80%, New Duplication <= 3%, zero violations) and designated exact compatible npm package remediation steps to patch the 7 baseline vulnerabilities.\n\n7. **Frozen Common Seed Continuity:**\n   - Retained the frozen study seed and deterministic verification setup (random seed `20260929` or explicit piece sequence lists), with no rotation, hard drops, wall kicks, combos, persistence, or multiplayer features.",
+          "snippet": "I have successfully and thoroughly revised **only** the two Stage 2 specification files on disk:\n1. `specs/stage2/requirements.md` (Atomic requirements and acceptance criteria)\n2. `specs/stage2/session_notes.md` (Design decisions, local rule reads, and traceable checklists)\n\nNo application source files, test files, or dependency configurations were created or modified during this invocation.\n\n### Summary of Exact Corrections in the Revised Specifications\n\n1. **Lifecycle Generation & Mutating Req",
+          "decoded_text_utf8_sha256": "2D1051000B9E2F52ACA8B478AAB4E60875CBFA36D564EEBDDF5B3003A54BE027",
+          "characters": 4440,
+          "text_variants": [
+            {
+              "text": "I have successfully and thoroughly revised **only** the two Stage 2 specification files on disk:\n1. `specs/stage2/requirements.md` (Atomic requirements and acceptance criteria)\n2. `specs/stage2/session_notes.md` (Design decisions, local rule reads, and traceable checklists)\n\nNo application source files, test files, or dependency configurations were created or modified during this invocation.\n\n### Summary of Exact Corrections in the Revised Specifications\n\n1. **Lifecycle Generation & Mutating Request FIFO Queueing:**\n   - Specified a client-side monotonic `generationId` incremented on each game creation/restart.\n   - Mandated a serialized FIFO request queue where no mutating request is dispatched until the preceding one's network transit and JSON parsing both complete.\n   - Enforced double-verification of active `generationId` ownership (both post-fetch and post-parse) across all success, catch, and `finally` paths. Out-of-generation responses are discarded, ensuring stale requests do not clear newer guards or reschedule timers. Old queued requests cannot block or execute against a new game ID, making Hold and controls immediately usable in the new game lifecycle even if an old hold fetch is pending.\n\n2. **Automatic Ticks & Dynamic Rescheduling:**\n   - Restricted gravity ticks to at most one owned queued/in-flight tick per generation.\n   - Outlined automatic tick coalescing (deferring automatic gravity ticks if a manual mutation is in-flight or queued) and slow-response burst prevention by always scheduling gravity timers from the moment of authoritative completion.\n   - Mandated exact cancellation of pending `setTimeout` handles on manual movement, restart, gravity interval changes, game over, and component unmount.\n   - Designed for React StrictMode setup/cleanup, ensuring that old listeners are cleaned up and input handlers are cleanly reinstalled upon restart without permanently disabling controls.\n\n3. **Explicit Frontend Verification Suite:**\n   - Specified robust frontend test scenarios in `TetrisBoard.test.tsx` using simulated delays and timer controls to verify:\n     - *Delayed Fetch Resolution* and *Delayed JSON Parsing* across restarts.\n     - *Old-Generation Queue Isolation* and *Stale Finally/Error Completion*.\n     - *Pending Hold vs. Usable Hold* during rapid restarts.\n     - *FIFO Manual Mutation Dispatching* and *Coalesced Automatic Ticks*.\n     - *Exact Timeout Cancellation* on manual inputs and level/gravity interval updates.\n     - *StrictMode Mount-Unmount-Remount Lifecycle* integrity.\n\n4. **Explicit Seed UI Requirements:**\n   - Defined layout HUDs for Score, Lines, Level, and Gravity (interval in ms).\n   - Specified Next Piece Preview (compact sub-board) and Hold Panel (showing `hold_piece` and availability status).\n   - Specified an interactive Hold button (with a `disabled` state when `can_hold` is false or the game is over), alongside its mouse click and `C`/`c` keyboard routes, keeping compatibility with all Stage 1 routes and terminal logic.\n\n5. **Scoring, Level/Gravity, and Isolated-Domain Unit Tests:**\n   - Specified that 3 and 4 row clears are evaluated strictly through explicitly labeled isolated backend unit tests (`backend/tests/test_scoring.py`) since canonical unrotated tetrominoes cannot clear 3 or 4 lines.\n   - Confirmed that shapes remain unrotated and canonical.\n   - Mandated verifying the pre-lock level at threshold-crossings (e.g., scoring at 9 lines pre-lock, updating level to 2 post-lock) and testing the 100 ms progressive gravity floor.\n\n6. **Compliance and Verification Artifacts:**\n   - Defined backend coverage XML path at `docs/coverage.xml` and frontend-src LCOV path at `frontend/coverage/lcov.info`.\n   - Outlined full production TypeScript build (`npm run build` with zero errors) and dependency audits.\n   - Enforced Pydantic response models (`response_model=GameResponse`) on all endpoints to comply with the `maria/fastapi` `pii-sanitisation` rule.\n   - Enforced strict Sonar Quality Gate compliance (New Coverage >= 80%, New Duplication <= 3%, zero violations) and designated exact compatible npm package remediation steps to patch the 7 baseline vulnerabilities.\n\n7. **Frozen Common Seed Continuity:**\n   - Retained the frozen study seed and deterministic verification setup (random seed `20260929` or explicit piece sequence lists), with no rotation, hard drops, wall kicks, combos, persistence, or multiplayer features.",
+              "decoded_text_utf8_sha256": "2D1051000B9E2F52ACA8B478AAB4E60875CBFA36D564EEBDDF5B3003A54BE027",
+              "characters": 4440,
+              "models": [
+                "gemini-3.5-flash"
+              ],
+              "timestamps": [
+                "2026-10-25T20:16:47.331Z"
+              ],
+              "tokens_present": true,
+              "locations": [
+                {
+                  "path": "gemini-home/.gemini/tmp/tessl/chats/session-2026-10-25T20-15-8d3ae00a.jsonl",
+                  "line": 65,
+                  "container": "event"
+                },
+                {
+                  "path": "transcripts-archive/session-2026-10-25T20-15-8d3ae00a.96100F9AF4E955D9.jsonl",
+                  "line": 65,
+                  "container": "event"
+                }
+              ]
+            }
+          ],
+          "variant_conflict": false,
+          "transcript_copies": [
+            "gemini-home/.gemini/tmp/tessl/chats/session-2026-10-25T20-15-8d3ae00a.jsonl",
+            "transcripts-archive/session-2026-10-25T20-15-8d3ae00a.96100F9AF4E955D9.jsonl"
+          ],
+          "manual_adjudication": {
+            "selected_text_sha256": "2D1051000B9E2F52ACA8B478AAB4E60875CBFA36D564EEBDDF5B3003A54BE027",
+            "blocking_question_count": 0,
+            "classification": "emitted_main_text",
+            "reason": "Complete 4440-character emitted final revision summary read; it reports changes and has no request for missing user input. Its implementation/integration claims are evaluated separately."
+          }
+        }
+      ],
+      "excluded_candidates": [],
+      "cli_final_response": {
+        "path": "03-specify-last-mile.stdout.json",
+        "state": "matched retained candidate; not counted twice",
+        "matches": [
+          "8d3ae00a-0747-4979-b516-7220ce273a6e/e4e13ac6-42f6-4ae5-b135-c12cd6a5773e"
+        ],
+        "sha256": "0A1C4A5E05CA844B6B7DE0428B8978409F32ADECF9684CC841FCF8A6D3B55805",
+        "bytes": 7136
+      },
+      "recorded_main_response_count": 13,
+      "observed_tool_names": [
+        "glob",
+        "mcp_tessl_status",
+        "read_file",
+        "update_topic",
+        "write_file"
+      ],
+      "interactive_question_tool_names_observed": [],
+      "manual_interval_review": {
+        "run_metadata_sha256": "5154F2015F0F90185707533980C94B27B00A10A30398B903767AABD3DDA5971A",
+        "candidate_signature_sha256": "855776BC7EE595A3ABF785AE25918EC2299DDDDBC26F8AE373E2F83608F02FFE",
+        "reviewed_at_utc": "2026-10-25T20:23:38.845965+00:00",
+        "reviewer": "researcher",
+        "coverage_note": "Read all retained natural text and matched final CLI output. 03 contains one natural summary; 02 has no retained main-model natural text and terminal BILLING_DISABLED. Zero means no blocking question observed in retained interval, not proof about unrecorded output. Thoughts and tool-only responses excluded.",
+        "messages": {
+          "8d3ae00a-0747-4979-b516-7220ce273a6e/e4e13ac6-42f6-4ae5-b135-c12cd6a5773e": {
+            "selected_text_sha256": "2D1051000B9E2F52ACA8B478AAB4E60875CBFA36D564EEBDDF5B3003A54BE027",
+            "blocking_question_count": 0,
+            "classification": "emitted_main_text",
+            "reason": "Complete 4440-character emitted final revision summary read; it reports changes and has no request for missing user input. Its implementation/integration claims are evaluated separately."
+          }
+        }
+      },
+      "coverage": "retained timestamp-bounded text only; original/archive copies deduplicated by session/response identity before counting. Failed, empty, unrecorded or active output does not prove an absolute absence of questions."
+    },
+    {
+      "label": "04-specify-final-review",
+      "state": "closed",
+      "started": "2026-10-25T15:23:53.8495111-05:00",
+      "ended": "2026-10-25T15:27:00.9353557-05:00",
+      "observed_until": null,
+      "exit_code": 0,
+      "metadata_path": "04-specify-final-review.run.json",
+      "metadata_sha256": "E1F7528CD63B63D23888170864330E2C57710B3D24AD3FCE14CA521EB4F5FD2E",
+      "main_model": "gemini-3.5-flash",
+      "review_status": "manually_reviewed_retained_interval",
+      "candidate_signature_sha256": "ED1B53379EAC42FA1B5ADD3C5D8DB792768C1C8BC2319B4BA411BF7CD4562B69",
+      "natural_language_message_count": 1,
+      "tool_requested_blocking_questions_observed": 0,
+      "candidate_messages": [
+        {
+          "candidate_id": "902d861e-85c2-4fcd-a11b-0e758c3d97e4/83f2896c-9fad-4f84-bad2-0f7f01315d21",
+          "session_id": "902d861e-85c2-4fcd-a11b-0e758c3d97e4",
+          "response_id": "83f2896c-9fad-4f84-bad2-0f7f01315d21",
+          "timestamp": "2026-10-25T20:27:00.885Z",
+          "models_observed": [
+            "gemini-3.5-flash"
+          ],
+          "attribution": "main_model",
+          "text": "I have successfully completed the pre-implementation review and revised the two Stage 2 specification files. No application, test, dependency, or inherited Stage 1 files were modified. \n\nHere is a summary of the concrete revisions applied:\n\n### 1. Isolated-Domain Scoring Fixtures (`Req-S2-23`, `AC-S2-3`, Checklist)\n* **Removed** all references to rotating an I-piece, creating vertical or custom tetrominoes, fabricating active cells, or mutating `SHAPES` (even in test code).\n* **Specified** that 3-row and 4-row clears must be verified using programmatically pre-filled, completed rows (which are mathematically scoring-domain fixtures, unreachable in standard play).\n* **Mandated** placing a canonical, unrotated `O` block at a legal resting origin above these completed rows, locking it through the standard tick/lock/clear/scoring path to verify levels, multipliers (500x and 800x pre-lock level), and relative cells.\n\n### 2. Restart Preemption & FIFO Queueing (`Req-S2-26`, `Req-S2-27`, Ambiguity 1)\n* **Clarified** that FIFO serialization only applies to game-bound mutations (`tick`, `move`, `hold`) within a single lifecycle generation.\n* **Defined** that game creation or restarts create a new generation immediately and issue their create request (`POST /api/games`) independently without waiting on old queued/in-flight operations.\n* **Enforced** that no game-bound request may dispatch before the new game's ID is ready, that successive creation responses are generation-owned after transit and parsing, and that unmounting or restarts invalidate the active generation.\n\n### 3. Multi-Queue Timer Safety (`Req-S2-31`, `Req-S2-32`, `Req-S2-33`, Ambiguity 2)\n* **Made timer ownership safe** across two or more queued manual mutations. If mutation `A` completes while mutation `B` is already queued, `A` must not leave an active timeout that fires during or after `B`.\n* **Configured** the engine to schedule gravity ticks only when the mutation queue is idle, and to immediately cancel any exact scheduled handle on queued manual dispatches.\n* **Specified** that the gravity interval waits a full duration from the last authoritative completion, with at most one owned queued automatic tick.\n* **Added three explicit tests** to verify interval changes, game-over transitions, and protection against stale or failed completions.\n\n### 4. Explicit Pydantic Route Decorators (`Req-S2-2`, `AC-S2-1`, Checklist)\n* **Aligned** with the `maria/fastapi` rules by enforcing an explicit Pydantic `response_model` on ALL backend routes (including any existing welcome route), preserving payload and status.\n* **Removed** the unnecessary mandatory renaming of `GameStateModel` to `GameResponse` to maintain import and HTTP payload compatibility.\n\n### 5. Reproducible Commands & Directories (`Run and Test Commands`, Ambiguity 5)\n* **Corrected** the backend coverage command to compile the XML directly to the root `docs/` folder when run from `backend/` (`pytest --cov=app --cov-report=xml:../docs/coverage.xml tests/`).\n* **Detailed** the frontend Vitest command (`npx vitest run --coverage`) running from the `frontend/` directory with a compatible provider, ensuring that the production coverage includes every production module (including `main.tsx`) at `frontend/coverage/lcov.info`.\n* **Ensured** all checklist/configuration items are represented as pending (`[ ]`).\n\n### 6. Accurate Integration Provenance (Section 1 of Session Notes)\n* **Corrected** records to state that invocation 03 called `mcp_tessl_status` once and read local plugin files.\n* **Clarified** that the CLI remains unauthenticated, that the earlier authentication failure belongs to an older invocation, and that separate services (like Google Cloud SDK login) are not Tessl authentication.\n* **Omitted** any device flow, authentication, or ephemeral codes to protect system security.",
+          "snippet": "I have successfully completed the pre-implementation review and revised the two Stage 2 specification files. No application, test, dependency, or inherited Stage 1 files were modified. \n\nHere is a summary of the concrete revisions applied:\n\n### 1. Isolated-Domain Scoring Fixtures (`Req-S2-23`, `AC-S2-3`, Checklist)\n* **Removed** all references to rotating an I-piece, creating vertical or custom tetrominoes, fabricating active cells, or mutating `SHAPES` (even in test code).\n* **Specified** that ",
+          "decoded_text_utf8_sha256": "EB47C6A8BC7268BD54131374AD5E84F66841B78B7BA8A99316C7819128205B0B",
+          "characters": 3859,
+          "text_variants": [
+            {
+              "text": "I have successfully completed the pre-implementation review and revised the two Stage 2 specification files. No application, test, dependency, or inherited Stage 1 files were modified. \n\nHere is a summary of the concrete revisions applied:\n\n### 1. Isolated-Domain Scoring Fixtures (`Req-S2-23`, `AC-S2-3`, Checklist)\n* **Removed** all references to rotating an I-piece, creating vertical or custom tetrominoes, fabricating active cells, or mutating `SHAPES` (even in test code).\n* **Specified** that 3-row and 4-row clears must be verified using programmatically pre-filled, completed rows (which are mathematically scoring-domain fixtures, unreachable in standard play).\n* **Mandated** placing a canonical, unrotated `O` block at a legal resting origin above these completed rows, locking it through the standard tick/lock/clear/scoring path to verify levels, multipliers (500x and 800x pre-lock level), and relative cells.\n\n### 2. Restart Preemption & FIFO Queueing (`Req-S2-26`, `Req-S2-27`, Ambiguity 1)\n* **Clarified** that FIFO serialization only applies to game-bound mutations (`tick`, `move`, `hold`) within a single lifecycle generation.\n* **Defined** that game creation or restarts create a new generation immediately and issue their create request (`POST /api/games`) independently without waiting on old queued/in-flight operations.\n* **Enforced** that no game-bound request may dispatch before the new game's ID is ready, that successive creation responses are generation-owned after transit and parsing, and that unmounting or restarts invalidate the active generation.\n\n### 3. Multi-Queue Timer Safety (`Req-S2-31`, `Req-S2-32`, `Req-S2-33`, Ambiguity 2)\n* **Made timer ownership safe** across two or more queued manual mutations. If mutation `A` completes while mutation `B` is already queued, `A` must not leave an active timeout that fires during or after `B`.\n* **Configured** the engine to schedule gravity ticks only when the mutation queue is idle, and to immediately cancel any exact scheduled handle on queued manual dispatches.\n* **Specified** that the gravity interval waits a full duration from the last authoritative completion, with at most one owned queued automatic tick.\n* **Added three explicit tests** to verify interval changes, game-over transitions, and protection against stale or failed completions.\n\n### 4. Explicit Pydantic Route Decorators (`Req-S2-2`, `AC-S2-1`, Checklist)\n* **Aligned** with the `maria/fastapi` rules by enforcing an explicit Pydantic `response_model` on ALL backend routes (including any existing welcome route), preserving payload and status.\n* **Removed** the unnecessary mandatory renaming of `GameStateModel` to `GameResponse` to maintain import and HTTP payload compatibility.\n\n### 5. Reproducible Commands & Directories (`Run and Test Commands`, Ambiguity 5)\n* **Corrected** the backend coverage command to compile the XML directly to the root `docs/` folder when run from `backend/` (`pytest --cov=app --cov-report=xml:../docs/coverage.xml tests/`).\n* **Detailed** the frontend Vitest command (`npx vitest run --coverage`) running from the `frontend/` directory with a compatible provider, ensuring that the production coverage includes every production module (including `main.tsx`) at `frontend/coverage/lcov.info`.\n* **Ensured** all checklist/configuration items are represented as pending (`[ ]`).\n\n### 6. Accurate Integration Provenance (Section 1 of Session Notes)\n* **Corrected** records to state that invocation 03 called `mcp_tessl_status` once and read local plugin files.\n* **Clarified** that the CLI remains unauthenticated, that the earlier authentication failure belongs to an older invocation, and that separate services (like Google Cloud SDK login) are not Tessl authentication.\n* **Omitted** any device flow, authentication, or ephemeral codes to protect system security.",
+              "decoded_text_utf8_sha256": "EB47C6A8BC7268BD54131374AD5E84F66841B78B7BA8A99316C7819128205B0B",
+              "characters": 3859,
+              "models": [
+                "gemini-3.5-flash"
+              ],
+              "timestamps": [
+                "2026-10-25T20:27:00.885Z"
+              ],
+              "tokens_present": true,
+              "locations": [
+                {
+                  "path": "gemini-home/.gemini/tmp/tessl/chats/session-2026-10-25T20-23-902d861e.jsonl",
+                  "line": 40,
+                  "container": "event"
+                },
+                {
+                  "path": "transcripts-archive/session-2026-10-25T20-23-902d861e.60B06ED6E8C1441A.jsonl",
+                  "line": 40,
+                  "container": "event"
+                }
+              ]
+            }
+          ],
+          "variant_conflict": false,
+          "transcript_copies": [
+            "gemini-home/.gemini/tmp/tessl/chats/session-2026-10-25T20-23-902d861e.jsonl",
+            "transcripts-archive/session-2026-10-25T20-23-902d861e.60B06ED6E8C1441A.jsonl"
+          ],
+          "manual_adjudication": {
+            "selected_text_sha256": "EB47C6A8BC7268BD54131374AD5E84F66841B78B7BA8A99316C7819128205B0B",
+            "blocking_question_count": 0,
+            "classification": "emitted_main_text",
+            "reason": "Completion summary explains six specification corrections and requests no missing user information. Correctness checked independently via spec diff."
+          }
+        }
+      ],
+      "excluded_candidates": [],
+      "cli_final_response": {
+        "path": "04-specify-final-review.stdout.json",
+        "state": "matched retained candidate; not counted twice",
+        "matches": [
+          "902d861e-85c2-4fcd-a11b-0e758c3d97e4/83f2896c-9fad-4f84-bad2-0f7f01315d21"
+        ],
+        "sha256": "61C70E9058CC85B43D59F7574FF71CB0314DCEBF9D72C6E5133B89A496DF1C5C",
+        "bytes": 5997
+      },
+      "recorded_main_response_count": 8,
+      "observed_tool_names": [
+        "read_file",
+        "update_topic",
+        "write_file"
+      ],
+      "interactive_question_tool_names_observed": [],
+      "manual_interval_review": {
+        "run_metadata_sha256": "E1F7528CD63B63D23888170864330E2C57710B3D24AD3FCE14CA521EB4F5FD2E",
+        "candidate_signature_sha256": "ED1B53379EAC42FA1B5ADD3C5D8DB792768C1C8BC2319B4BA411BF7CD4562B69",
+        "reviewed_at_utc": "2026-10-25T20:30:33.880251+00:00",
+        "reviewer": "researcher",
+        "coverage_note": "Complete 3859-character final review summary read. One retained natural message matches native final CLI response; eight main responses include tool-only records. No blocking input requested. Thoughts/tools excluded.",
+        "messages": {
+          "902d861e-85c2-4fcd-a11b-0e758c3d97e4/83f2896c-9fad-4f84-bad2-0f7f01315d21": {
+            "selected_text_sha256": "EB47C6A8BC7268BD54131374AD5E84F66841B78B7BA8A99316C7819128205B0B",
+            "blocking_question_count": 0,
+            "classification": "emitted_main_text",
+            "reason": "Completion summary explains six specification corrections and requests no missing user information. Correctness checked independently via spec diff."
+          }
+        }
+      },
+      "coverage": "retained timestamp-bounded text only; original/archive copies deduplicated by session/response identity before counting. Failed, empty, unrecorded or active output does not prove an absolute absence of questions."
+    }
+  ],
+  "source_files": [
+    {
+      "path": "gemini-home/.gemini/tmp/tessl/chats/session-2026-10-25T20-15-8d3ae00a.jsonl",
+      "bytes_read": 366617,
+      "sha256": "96100F9AF4E955D9AE711C91F187029E2D672B779DC148E9411F6197C7F5CB8E",
+      "snapshot_scope": "bytes observed by this audit; an active source may append later"
+    },
+    {
+      "path": "gemini-home/.gemini/tmp/tessl/chats/session-2026-10-25T20-23-902d861e.jsonl",
+      "bytes_read": 402143,
+      "sha256": "60B06ED6E8C1441A0212E35BF3ED21B67DA92BC5235CF5EA9D23E3430487E2B8",
+      "snapshot_scope": "bytes observed by this audit; an active source may append later"
+    },
+    {
+      "path": "transcripts-archive/session-2026-10-21T14-30-08c8cdbc.1551B643CCB0E7D0.jsonl",
+      "bytes_read": 1149297,
+      "sha256": "1551B643CCB0E7D03E49E62D0F19B1A8E7B8AF67C7E2566D892FD3EA86CAF668",
+      "snapshot_scope": "bytes observed by this audit; an active source may append later"
+    },
+    {
+      "path": "transcripts-archive/session-2026-10-21T14-30-08c8cdbc.542FFFA6EC1DF888.jsonl",
+      "bytes_read": 288412,
+      "sha256": "542FFFA6EC1DF888989975ABF2C307CD4B28F8D2E89DEAE8916745D8BD55E869",
+      "snapshot_scope": "bytes observed by this audit; an active source may append later"
+    },
+    {
+      "path": "transcripts-archive/session-2026-10-21T19-40-08c8cdbc.4B3DE60A9BC5A60E.jsonl",
+      "bytes_read": 11357,
+      "sha256": "4B3DE60A9BC5A60E8D66C50ABA244F05E066BC6B184C771D2B778278BDD12222",
+      "snapshot_scope": "bytes observed by this audit; an active source may append later"
+    },
+    {
+      "path": "transcripts-archive/session-2026-10-25T20-15-8d3ae00a.96100F9AF4E955D9.jsonl",
+      "bytes_read": 366617,
+      "sha256": "96100F9AF4E955D9AE711C91F187029E2D672B779DC148E9411F6197C7F5CB8E",
+      "snapshot_scope": "bytes observed by this audit; an active source may append later"
+    },
+    {
+      "path": "transcripts-archive/session-2026-10-25T20-23-902d861e.60B06ED6E8C1441A.jsonl",
+      "bytes_read": 402143,
+      "sha256": "60B06ED6E8C1441A0212E35BF3ED21B67DA92BC5235CF5EA9D23E3430487E2B8",
+      "snapshot_scope": "bytes observed by this audit; an active source may append later"
+    }
+  ],
+  "source_read_warnings": [],
+  "unassigned_text_requires_review": [],
+  "interval_definition": "Timezone-qualified start/end nanoseconds are applied before deduplication, including resumed history appended to an older session. Active intervals end at this audit's observation timestamp. Timestamped embedded/replayed messages retain their original timestamp.",
+  "deduplication": "session ID plus response ID; every text variant and source-copy location retained. Longer prefix-complete text is displayed, conflicting variants require an explicit reviewed selected hash. Matching completed CLI response is never counted again.",
+  "exclusions": [
+    "thoughts/reasoning/signatures",
+    "function/tool calls, arguments and results",
+    "user/native-template text",
+    "exact unlabeled/no-token synthetic CLI notices",
+    "explicitly labeled auxiliary-model text"
+  ],
+  "external_researcher_prompts": [
+    {
+      "label": "01-specify",
+      "run_state": "closed",
+      "phase_metadata": "specify",
+      "intended_input_path": "01-specify.prompt.txt",
+      "classification_status": "manually reviewed intended prompt",
+      "kind": "initial specification request with recorded workflow clarification",
+      "clarification_bearing": true,
+      "corrective_intent": false,
+      "reply_to_model_blocking_question": false,
+      "delivery_scope": "intended prompt only; no claim of complete effective delivery, no inference from phase name; separate input audit is authoritative",
+      "intended_prompt_sha256": "BFF90383515B217A2FAB69C2732D48B6CFF185EDFDE9D5C108236B3B8103AF00",
+      "prompt_sha256": "BFF90383515B217A2FAB69C2732D48B6CFF185EDFDE9D5C108236B3B8103AF00",
+      "reviewed_at_utc": "2026-10-21T14:36:16Z",
+      "reason": "Initial specification-only request includes a researcher-origin workflow clarification of inherited contract, terminal draws, domain fixtures and deterministic acceptance. It is not a later fix or a reply to an emitted model question."
+    },
+    {
+      "label": "02-specify-correction",
+      "run_state": "closed",
+      "phase_metadata": "clarify",
+      "intended_input_path": "02-specify-correction.prompt.txt",
+      "classification_status": "manually reviewed intended prompt",
+      "kind": "preimplementation specification review correction",
+      "clarification_bearing": true,
+      "corrective_intent": true,
+      "reply_to_model_blocking_question": false,
+      "delivery_scope": "intended prompt only; no claim of complete effective delivery, no inference from phase name; separate input audit is authoritative",
+      "intended_prompt_sha256": "5D72D6C29E6D31B93F641D145BFD2780EB4F49BA466FAFAC1E92461E23DEF444",
+      "prompt_sha256": "5D72D6C29E6D31B93F641D145BFD2780EB4F49BA466FAFAC1E92461E23DEF444",
+      "reviewed_at_utc": "2026-10-25T20:23:38.845965+00:00",
+      "reason": "Researcher-origin review, complete common seed retained. No model clarification prompted this request; no application had been implemented."
+    },
+    {
+      "label": "03-specify-last-mile",
+      "run_state": "closed",
+      "phase_metadata": "clarify",
+      "intended_input_path": "03-specify-last-mile.prompt.txt",
+      "classification_status": "manually reviewed intended prompt",
+      "kind": "retry of preimplementation specification review after authorized cloud transition",
+      "clarification_bearing": true,
+      "corrective_intent": true,
+      "reply_to_model_blocking_question": false,
+      "delivery_scope": "intended prompt only; no claim of complete effective delivery, no inference from phase name; separate input audit is authoritative",
+      "intended_prompt_sha256": "25F44E4EE314333CF948DF305A32CF6566E2567F112A60222AC9BDDA8AC15412",
+      "prompt_sha256": "25F44E4EE314333CF948DF305A32CF6566E2567F112A60222AC9BDDA8AC15412",
+      "reviewed_at_utc": "2026-10-25T20:23:38.845965+00:00",
+      "reason": "Researcher-origin review, complete common seed retained. No model clarification prompted this request; no application had been implemented."
+    },
+    {
+      "label": "04-specify-final-review",
+      "run_state": "closed",
+      "phase_metadata": "clarify",
+      "intended_input_path": "04-specify-final-review.prompt.txt",
+      "classification_status": "manually reviewed intended prompt",
+      "kind": "focused preimplementation specification correction",
+      "clarification_bearing": true,
+      "corrective_intent": true,
+      "reply_to_model_blocking_question": false,
+      "delivery_scope": "intended prompt only; no claim of complete effective delivery, no inference from phase name; separate input audit is authoritative",
+      "intended_prompt_sha256": "157F026258A3FB9F8F0F3C33C3E10C983B2561E0EFBFD2FD2974F0389E720BD4",
+      "prompt_sha256": "157F026258A3FB9F8F0F3C33C3E10C983B2561E0EFBFD2FD2974F0389E720BD4",
+      "reviewed_at_utc": "2026-10-25T20:30:33.880251+00:00",
+      "reason": "Researcher found remaining contradictions before any application implementation, not a response to a model question or postimplementation QA."
+    }
+  ],
+  "external_researcher_prompt_summary": {
+    "scope": "one intended prompt per recorded invocation; manually reviewed classification only, not input-delivery proof or count of QA intents",
+    "closed_manually_classified_clarification_bearing_attempts": 4,
+    "pending_manually_classified_clarification_bearing_attempts": 0,
+    "unclassified_labels": []
+  },
+  "limitation": "Unknown/unreviewed counts remain null. Active sessions are pending, even when no natural-language text has yet been retained. A zero observed count requires a hash-bound manual review of a closed retained interval and cannot establish that no unrecorded question exists. This audit does not assess implementation correctness or input delivery."
+}

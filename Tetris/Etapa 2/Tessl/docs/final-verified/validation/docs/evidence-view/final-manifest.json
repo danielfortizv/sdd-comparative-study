@@ -1,0 +1,30 @@
+{
+  "researcher_created": true,
+  "created_at_utc": "2026-10-25T21:44:14.975701+00:00",
+  "sources": [
+    {
+      "path": "final-acceptance.json",
+      "sha256": "90ECEB29E1D87B288C579A7A6C8B929DF1E9DC0A9CC3DFFA5AAB0257AFF2754F"
+    },
+    {
+      "path": "metrics.json",
+      "sha256": "0029A9622F47E90516A32F33012C119565C13A461A48C3E0267F00F54957E370"
+    },
+    {
+      "path": "question-audit.json",
+      "sha256": "8B7B0E60DF23EFFE96A820BC1DAD3E0120D4C20DBB312569DF29655C4B69B9F2"
+    },
+    {
+      "path": "input-audit.json",
+      "sha256": "195943283986D8041B736C38426832F3C1331BC18FCB94895CE80595BF0E0F8B"
+    },
+    {
+      "path": "sonar-verification.json",
+      "sha256": "D70AD4B0FCEA6D49375838CA30AD4066EE955C5F99023A5985B3691A406379E0"
+    },
+    {
+      "path": "acceptance/08-independent-final-retry/report.json",
+      "sha256": "40508B22D88EE83630CD3EF3C8511EEC2A1463FE7DF20191CA022451F327C61C"
+    }
+  ]
+}

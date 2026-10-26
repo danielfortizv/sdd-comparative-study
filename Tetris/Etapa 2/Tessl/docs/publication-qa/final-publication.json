@@ -1,0 +1,73 @@
+{
+  "researcher_created": true,
+  "document_id": "1JRZvjK8-fdFitwbiKLe2NhOsk1FZNCa_TclgnFwdjao",
+  "document_url": "https://docs.google.com/document/d/1JRZvjK8-fdFitwbiKLe2NhOsk1FZNCa_TclgnFwdjao",
+  "revision_id": "AHj4eMSQky2E2uLs4MlUCcvoYQXNvMAOiZqMn3Qwk3TM7o5p2EAZrp06ogZYfvHBfUpODFTYZaJktWJRPA-zT_twUKARfwRFtVoal96juQ",
+  "native_tables": 23,
+  "inline_images": 28,
+  "new_final_table_cells_verified": 183,
+  "inserted_images": [
+    {
+      "i": 7,
+      "name": "final-terminal-restart.jpg",
+      "object_id": "kix.uwku3i3pcy6h",
+      "revision": "AHj4eMQ3H-c8sL9h8No_6-fZHV4IIt4Un79sqk2zTFykn8K5s1-9P73lmm12hDin5HkTCcL_ZyOBbTBI4UYE4jTYyxcRPiBXADh3R1lbyQ"
+    },
+    {
+      "i": 6,
+      "name": "final-gameover-fixture.jpg",
+      "object_id": "kix.cp7yrsrbt6lv",
+      "revision": "AHj4eMRx0PX0zJ3AYczPDsqn7Yp7_OTJZjIsAxfdChwib3q4Lm3xwzwPf6oWDTlG7QeCXRx0M3ZrtiIim0mS--jQfr62y29Timr7iLFW1Q"
+    },
+    {
+      "i": 5,
+      "name": "final-threshold-fixture.jpg",
+      "object_id": "kix.lg0zdifyf6is",
+      "revision": "AHj4eMQGruM58friuYElVj1RfOC9roDbwTadOkIfHfCl-dBpiNdXho9lK6hdrNRbKMks1enscNJD7KFtsPjbotjqqdKA3Fcrk8A6eYC3SQ"
+    },
+    {
+      "i": 4,
+      "name": "final-hud-button.jpg",
+      "object_id": "kix.mbljt3d6is2o",
+      "revision": "AHj4eMSzdhg_6OU1CpqcDu4Mys2npr2HQxcrQk4ZDk_wdRYtG3XGZdE6E-1oQdK0ZeTZ5rejjMyX_KvfmpKlMnPxqcDPPTYsc_SdnCPvUA"
+    },
+    {
+      "i": 3,
+      "name": "final-hold-key.jpg",
+      "object_id": "kix.hrsdhi15b1ep",
+      "revision": "AHj4eMTO_7S47W43AQf_QieJ0IuoIogEQ16inVGnsJaDOvxvP1gbUb0M6MTCJvpKfGpIv8zZOzjRPp7EZeSQwF8RJ8r78gHX2ApHgekfzA"
+    },
+    {
+      "i": 2,
+      "name": "final-application-overview.jpg",
+      "object_id": "kix.3cvk6ljk5b3y",
+      "revision": "AHj4eMTxWDm-OgNgWLDTjoSmtWabt0azcuHAcEJiPrYLWhmUJEkgFxPGfNq1ZST3iTSODU2FS1LkWDteqeMF-tWppeWs220F-XXfEZFvTw"
+    },
+    {
+      "i": 1,
+      "name": "final-usage-researcher-view.jpg",
+      "object_id": "kix.ow0zd5murup1",
+      "revision": "AHj4eMQ3TaimGwDmRUrewuZQUzhkz-SH6qUDmSsIC3Uj_er6N0BAeTzKd1Cud7CuUgWaKG0zS9eZZWgMJXyZGdt2QsJBLGfucJ-0O2EPYA"
+    },
+    {
+      "i": 0,
+      "name": "final-quality-researcher-view.jpg",
+      "object_id": "kix.6n5hvn42qshf",
+      "revision": "AHj4eMSQky2E2uLs4MlUCcvoYQXNvMAOiZqMn3Qwk3TM7o5p2EAZrp06ogZYfvHBfUpODFTYZaJktWJRPA-zT_twUKARfwRFtVoal96juQ"
+    }
+  ],
+  "pdf": "publication-qa/final-document.pdf",
+  "pdf_pages": 67,
+  "rendered_reviewed_pages": [
+    60,
+    61,
+    62,
+    63,
+    64,
+    65,
+    66,
+    67
+  ],
+  "visual_qa": "All final section pages reviewed; no clipped text, cropped figures or overlapping elements. Long native tables continue across pages; all183cells readback verified.",
+  "final_source": "final-acceptance.json"
+}

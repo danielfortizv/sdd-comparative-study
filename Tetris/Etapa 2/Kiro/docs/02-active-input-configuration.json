@@ -1,0 +1,79 @@
+{
+  "researcher_created": true,
+  "observed_at_utc": "2026-10-21T20:12:24.789462+00:00",
+  "run_closed": false,
+  "scope": "active input and configuration observation only; no usage/duration closure claim",
+  "label": "02-specify-student",
+  "runtime": {
+    "path": "C:\\Users\\Kevin Alvarez\\AppData\\Local\\Kiro-Cli\\kiro-cli.exe",
+    "sha256": "BC711541FC139D5E5FC8E07FC8FA13E9239ED039862F4A9D55C0E344BAC7C3F8",
+    "version": "kiro-cli-chat 2.33.0"
+  },
+  "session_ids": [
+    "sess_3a260d90-994e-415d-8540-078b3a99418a"
+  ],
+  "complete_seed_in_effective_submission": true,
+  "effective_user_messages": [
+    {
+      "session_id": "sess_3a260d90-994e-415d-8540-078b3a99418a",
+      "message_id": "694c98a3-8764-445a-bd0d-b9855974d9ca",
+      "timestamp": "2026-10-21T20:11:12.680Z",
+      "raw_utf8_sha256": "F64F0298C83E4E7D0271CD672371E4E36AB3BCC2D03913E72B66FC99EC40E516",
+      "raw_characters": 9744,
+      "normalized_utf8_sha256": "F64F0298C83E4E7D0271CD672371E4E36AB3BCC2D03913E72B66FC99EC40E516",
+      "normalized_characters": 9744,
+      "complete_seed_present": true,
+      "seed_paragraphs_present": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "matches_intended_normalized": true,
+      "transcript_copies": [
+        "C:\\Users\\Kevin Alvarez\\.kiro\\sessions\\85ecaae174dd71e7\\sess_3a260d90-994e-415d-8540-078b3a99418a\\messages.jsonl"
+      ],
+      "conflict": false
+    }
+  ],
+  "observed_mode_selection_values": [
+    "vibe"
+  ],
+  "observed_model_selection_values": [
+    "auto"
+  ],
+  "native_assistant_agent_modes": [
+    "vibe"
+  ],
+  "session_configuration": [
+    {
+      "session_id": "sess_3a260d90-994e-415d-8540-078b3a99418a",
+      "model_id": "auto",
+      "agent_mode": "vibe",
+      "created_at": "2026-10-21T20:11:12.502Z",
+      "scope": "session configuration, not proof of backend resolved model or auxiliary role attribution"
+    }
+  ],
+  "acp_configuration_observations": [
+    {
+      "stream_event_index_1based": 3,
+      "session_id": "sess_3a260d90-994e-415d-8540-078b3a99418a",
+      "selected_values": {
+        "mode": "vibe",
+        "model": "auto",
+        "autopilot": "on"
+      }
+    },
+    {
+      "stream_event_index_1based": 6,
+      "session_id": "sess_3a260d90-994e-415d-8540-078b3a99418a",
+      "selected_values": {
+        "mode": "vibe",
+        "model": "auto",
+        "autopilot": "on"
+      }
+    }
+  ],
+  "unrecognized_acp_update_types": []
+}

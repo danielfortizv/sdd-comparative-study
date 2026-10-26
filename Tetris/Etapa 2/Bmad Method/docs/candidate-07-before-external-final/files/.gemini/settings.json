@@ -1,0 +1,40 @@
+{
+  "general": {
+    "plan": {
+      "modelRouting": false
+    }
+  },
+  "context": {
+    "fileFiltering": {
+      "respectGitIgnore": true,
+      "respectGeminiIgnore": true
+    }
+  },
+  "modelConfigs": {
+    "customAliases": {
+      "loop-detection": {
+        "modelConfig": {
+          "model": "gemini-3.5-flash"
+        }
+      },
+      "loop-detection-double-check": {
+        "modelConfig": {
+          "model": "gemini-3.5-flash"
+        }
+      },
+      "llm-edit-fixer": {
+        "modelConfig": {
+          "model": "gemini-3.5-flash"
+        }
+      },
+      "next-speaker-checker": {
+        "modelConfig": {
+          "model": "gemini-3.5-flash"
+        }
+      }
+    }
+  },
+  "model": {
+    "maxSessionTurns": 80
+  }
+}

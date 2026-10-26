@@ -1,0 +1,18 @@
+﻿{
+    "project":  "tetris-stage2-bmad",
+    "gate":  "OK",
+    "coverage":  "63.2",
+    "complexity":  "83",
+    "reliability_rating":  "1.0",
+    "code_smells":  "13",
+    "duplicated_lines_density":  "0.0",
+    "security_rating":  "3.0",
+    "security_hotspots":  "0",
+    "sqale_index":  "84",
+    "sqale_rating":  "1.0",
+    "bugs":  "0",
+    "cognitive_complexity":  "97",
+    "ncloc":  "669",
+    "vulnerabilities":  "1",
+    "lines":  "789"
+}

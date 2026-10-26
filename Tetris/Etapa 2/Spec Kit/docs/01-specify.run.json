@@ -1,0 +1,17 @@
+{
+  "workflow": "specify",
+  "label": "01-specify",
+  "prompt_sha256": "B37C6026EE4D7B0A414EB4A0374EB9C8C5AF63896A90F718448801C99AF376AC",
+  "seed_sha256": "63919779DD4104076FBABCB130CE296A160FA840E0B4755A2AA5D90757ADA8EF",
+  "requested_model": "gemini-3.5-flash",
+  "cli_version": "0.60.0",
+  "spec_kit_version": "1.0.12",
+  "started": "2026-10-20T06:16:29.1907244-05:00",
+  "ended": "2026-10-20T06:23:41.6405508-05:00",
+  "duration_seconds": null,
+  "duration_source": "not instrumented because the empty-argument invocation was interrupted",
+  "exit_code": "interrupted",
+  "reason": "native command received empty args because seed began on a new line",
+  "stdout": "Caso 2-Tetris\\Etapa 2\\Spec Kit\\docs\\01-specify.stdout.json",
+  "stderr": "Caso 2-Tetris\\Etapa 2\\Spec Kit\\docs\\01-specify.stderr.txt"
+}

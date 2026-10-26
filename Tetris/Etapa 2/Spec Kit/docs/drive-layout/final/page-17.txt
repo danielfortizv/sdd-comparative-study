@@ -1,0 +1,10 @@
+límites explícitos para sesiones interrumpidas, fallidas o vacías. Excluye pensamientos,
+herramientas, plantillas y avisos sintéticos del CLI; las aclaraciones del investigador se
+cuentan aparte.
+16-qa-final-regressions continúa QA-3 en sesión nueva. Siguen pendientes las
+comprobaciones completas de cola antigua/nueva, inmovilidad de GET,
+temporizadores/StrictMode y trabajo encolado tras finalizar la partida. La aceptación
+funcional y la verificación final permanecen abiertas. Las mediciones Sonar OK de 09/10
+son históricas: se repetirán pruebas, cobertura XML/LCOV, build, auditoría de dependencias
+y análisis exacto de Sonar sobre el código terminado. Este apartado es un avance; no cierra
+la herramienta ni sustituye las veinte evidencias de aceptación, el corpus ni el informe final.

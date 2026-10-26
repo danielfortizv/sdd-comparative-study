@@ -1,0 +1,771 @@
+{
+  "measured_at_utc": "2026-10-20T12:42:42.234321+00:00",
+  "source_scope": "backend and frontend text files with extensions .py, .ts, .tsx, .js, .jsx, .css, .html; tests included; dependencies, builds, generated coverage, lockfiles, docs, and cache excluded",
+  "spec_scope": "native markdown artifacts under the Stage 1 and Stage 2 OpenSpec change directories; canonical and archived copies excluded to avoid double counting",
+  "text_counting_rules": "UTF-8 text with BOM removed and universal newlines normalized to LF; physical lines use splitlines; deltas compare logical lines and ignore newline-only/BOM-only changes",
+  "source_baseline": {
+    "files": 13,
+    "lines": 1366,
+    "nonblank_lines": 1172,
+    "characters": 39957,
+    "lines_per_file": 105.08,
+    "per_file": {
+      "backend/engine.py": {
+        "lines": 183,
+        "nonblank_lines": 158,
+        "characters": 6583
+      },
+      "backend/main.py": {
+        "lines": 51,
+        "nonblank_lines": 41,
+        "characters": 1758
+      },
+      "backend/models.py": {
+        "lines": 16,
+        "nonblank_lines": 13,
+        "characters": 734
+      },
+      "backend/test_engine.py": {
+        "lines": 269,
+        "nonblank_lines": 212,
+        "characters": 10671
+      },
+      "frontend/index.html": {
+        "lines": 13,
+        "nonblank_lines": 13,
+        "characters": 360
+      },
+      "frontend/src/App.css": {
+        "lines": 423,
+        "nonblank_lines": 370,
+        "characters": 8951
+      },
+      "frontend/src/App.tsx": {
+        "lines": 168,
+        "nonblank_lines": 149,
+        "characters": 4980
+      },
+      "frontend/src/api.ts": {
+        "lines": 48,
+        "nonblank_lines": 42,
+        "characters": 1428
+      },
+      "frontend/src/components/GameOverModal.tsx": {
+        "lines": 20,
+        "nonblank_lines": 18,
+        "characters": 595
+      },
+      "frontend/src/components/GridBoard.tsx": {
+        "lines": 47,
+        "nonblank_lines": 41,
+        "characters": 1337
+      },
+      "frontend/src/index.css": {
+        "lines": 111,
+        "nonblank_lines": 100,
+        "characters": 2169
+      },
+      "frontend/src/main.tsx": {
+        "lines": 10,
+        "nonblank_lines": 9,
+        "characters": 230
+      },
+      "frontend/vite.config.ts": {
+        "lines": 7,
+        "nonblank_lines": 6,
+        "characters": 161
+      }
+    }
+  },
+  "source_final": {
+    "files": 15,
+    "lines": 2238,
+    "nonblank_lines": 1940,
+    "characters": 69725,
+    "lines_per_file": 149.2,
+    "per_file": {
+      "backend/engine.py": {
+        "lines": 278,
+        "nonblank_lines": 235,
+        "characters": 9958
+      },
+      "backend/main.py": {
+        "lines": 88,
+        "nonblank_lines": 73,
+        "characters": 3067
+      },
+      "backend/models.py": {
+        "lines": 23,
+        "nonblank_lines": 20,
+        "characters": 1305
+      },
+      "backend/test_engine.py": {
+        "lines": 490,
+        "nonblank_lines": 400,
+        "characters": 19881
+      },
+      "frontend/index.html": {
+        "lines": 13,
+        "nonblank_lines": 13,
+        "characters": 360
+      },
+      "frontend/src/App.css": {
+        "lines": 582,
+        "nonblank_lines": 509,
+        "characters": 11959
+      },
+      "frontend/src/App.test.tsx": {
+        "lines": 97,
+        "nonblank_lines": 86,
+        "characters": 3924
+      },
+      "frontend/src/App.tsx": {
+        "lines": 223,
+        "nonblank_lines": 199,
+        "characters": 7154
+      },
+      "frontend/src/api.test.ts": {
+        "lines": 33,
+        "nonblank_lines": 30,
+        "characters": 1558
+      },
+      "frontend/src/api.ts": {
+        "lines": 64,
+        "nonblank_lines": 57,
+        "characters": 1874
+      },
+      "frontend/src/components/GameOverModal.tsx": {
+        "lines": 20,
+        "nonblank_lines": 18,
+        "characters": 605
+      },
+      "frontend/src/components/GridBoard.tsx": {
+        "lines": 190,
+        "nonblank_lines": 176,
+        "characters": 5294
+      },
+      "frontend/src/index.css": {
+        "lines": 111,
+        "nonblank_lines": 100,
+        "characters": 2169
+      },
+      "frontend/src/main.tsx": {
+        "lines": 10,
+        "nonblank_lines": 9,
+        "characters": 230
+      },
+      "frontend/vite.config.ts": {
+        "lines": 16,
+        "nonblank_lines": 15,
+        "characters": 387
+      }
+    }
+  },
+  "source_change": {
+    "changed_files": [
+      "backend/engine.py",
+      "backend/main.py",
+      "backend/models.py",
+      "backend/test_engine.py",
+      "frontend/src/App.css",
+      "frontend/src/App.test.tsx",
+      "frontend/src/App.tsx",
+      "frontend/src/api.test.ts",
+      "frontend/src/api.ts",
+      "frontend/src/components/GameOverModal.tsx",
+      "frontend/src/components/GridBoard.tsx",
+      "frontend/vite.config.ts"
+    ],
+    "changed_file_count": 12,
+    "added_lines": 916,
+    "removed_lines": 44
+  },
+  "spec_stage1": {
+    "files": 4,
+    "lines": 442,
+    "nonblank_lines": 350,
+    "characters": 23969,
+    "lines_per_file": 110.5,
+    "per_file": {
+      "openspec/changes/tetris-stage1-option-a/design.md": {
+        "lines": 31,
+        "nonblank_lines": 23,
+        "characters": 2217
+      },
+      "openspec/changes/tetris-stage1-option-a/proposal.md": {
+        "lines": 35,
+        "nonblank_lines": 29,
+        "characters": 2947
+      },
+      "openspec/changes/tetris-stage1-option-a/specs/tetris-core/spec.md": {
+        "lines": 341,
+        "nonblank_lines": 268,
+        "characters": 16141
+      },
+      "openspec/changes/tetris-stage1-option-a/tasks.md": {
+        "lines": 35,
+        "nonblank_lines": 30,
+        "characters": 2664
+      }
+    }
+  },
+  "spec_stage2": {
+    "files": 4,
+    "lines": 262,
+    "nonblank_lines": 192,
+    "characters": 20582,
+    "lines_per_file": 65.5,
+    "per_file": {
+      "openspec/changes/tetris-stage2-option-a/design.md": {
+        "lines": 55,
+        "nonblank_lines": 41,
+        "characters": 5267
+      },
+      "openspec/changes/tetris-stage2-option-a/proposal.md": {
+        "lines": 31,
+        "nonblank_lines": 20,
+        "characters": 2217
+      },
+      "openspec/changes/tetris-stage2-option-a/specs/tetris-core/spec.md": {
+        "lines": 136,
+        "nonblank_lines": 103,
+        "characters": 8507
+      },
+      "openspec/changes/tetris-stage2-option-a/tasks.md": {
+        "lines": 40,
+        "nonblank_lines": 28,
+        "characters": 4591
+      }
+    }
+  },
+  "stage2_requirement_statements": 15,
+  "runs": [
+    {
+      "workflow": "propose",
+      "label": "01-propose",
+      "prompt_sha256": "D4D50494A211B7B42A86F96C07DEC72E8493EFA78E3E7E35668D083FE4380155",
+      "seed_sha256": "63919779DD4104076FBABCB130CE296A160FA840E0B4755A2AA5D90757ADA8EF",
+      "requested_model": "gemini-3.5-flash",
+      "cli_version": "0.60.0",
+      "openspec_version": "1.13.2",
+      "started": "2026-10-19T20:04:05.126Z",
+      "ended": null,
+      "duration_seconds": null,
+      "exit_code": "interrupted after sandbox network stall",
+      "stdout": "Caso 2-Tetris\\Etapa 2\\OpenSpec\\docs\\01-propose.stdout.json",
+      "stderr": "Caso 2-Tetris\\Etapa 2\\OpenSpec\\docs\\01-propose.stderr.txt",
+      "transcript": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\OpenSpec\\docs\\gemini-home\\.gemini\\tmp\\openspec\\chats\\session-2026-10-19T20-04-98aaa870.jsonl",
+      "tokens": {
+        "source": "unavailable",
+        "models": [],
+        "input_tokens": null,
+        "cached_tokens": null,
+        "output_tokens": null,
+        "thought_tokens": null,
+        "model_started_observed": null,
+        "api_requests": null,
+        "api_errors": null,
+        "api_successful_requests": null,
+        "api_scope": "unknown: response records and historical response captures cannot establish total API attempts/errors",
+        "recorded_response_count": null,
+        "recorded_response_models": [],
+        "transcript_paths": [],
+        "historically_documented_response_count": null,
+        "documented_response_count": null,
+        "documented_response_origin": "unavailable",
+        "response_scope": "recorded or historically documented token-bearing responses; excludes failed API attempts and may omit auxiliary models; retained and historical counts are not added twice for one run"
+      }
+    },
+    {
+      "workflow": "propose",
+      "label": "02-propose-retry",
+      "prompt_sha256": "D4D50494A211B7B42A86F96C07DEC72E8493EFA78E3E7E35668D083FE4380155",
+      "seed_sha256": "63919779DD4104076FBABCB130CE296A160FA840E0B4755A2AA5D90757ADA8EF",
+      "requested_model": "gemini-3.5-flash",
+      "cli_version": "0.60.0",
+      "openspec_version": "1.13.2",
+      "project": "project-e6384dd1-d4d3-4a03-948",
+      "started": "2026-10-19T15:06:37.9985690-05:00",
+      "ended": "2026-10-19T15:17:00.4345383-05:00",
+      "duration_seconds": 622.436,
+      "exit_code": 0,
+      "stdout": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\OpenSpec\\docs\\02-propose-retry.stdout.json",
+      "stderr": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\OpenSpec\\docs\\02-propose-retry.stderr.txt",
+      "tokens": {
+        "source": "previously captured Gemini CLI JSONL response records, deduplicated by response ID and bounded by run timestamps",
+        "models": [
+          "gemini-3.5-flash"
+        ],
+        "input_tokens": 1586942,
+        "cached_tokens": 1262951,
+        "output_tokens": 15910,
+        "thought_tokens": 28623,
+        "model_started_observed": true,
+        "historical_evidence_path": "docs/token-audit.json",
+        "api_requests": null,
+        "api_errors": null,
+        "api_successful_requests": null,
+        "api_scope": "unknown: response records and historical response captures cannot establish total API attempts/errors",
+        "recorded_response_count": null,
+        "recorded_response_models": [],
+        "transcript_paths": [],
+        "historically_documented_response_count": 66,
+        "documented_response_count": 66,
+        "documented_response_origin": "historical JSONL-derived capture in docs/token-audit.json; original response records no longer retained",
+        "response_scope": "recorded or historically documented token-bearing responses; excludes failed API attempts and may omit auxiliary models; retained and historical counts are not added twice for one run"
+      }
+    },
+    {
+      "workflow": "clarify",
+      "label": "03-materialize-proposal",
+      "prompt_sha256": "F1393C257DBF91EB658E98468B15256E56011ECAAA5B6BBB5C16C65EE2E53A73",
+      "seed_sha256": "63919779DD4104076FBABCB130CE296A160FA840E0B4755A2AA5D90757ADA8EF",
+      "requested_model": "gemini-3.5-flash",
+      "cli_version": "0.60.0",
+      "openspec_version": "1.13.2",
+      "project": "project-e6384dd1-d4d3-4a03-948",
+      "started": "2026-10-19T15:18:37.2127344-05:00",
+      "ended": "2026-10-19T15:20:54.5712499-05:00",
+      "duration_seconds": 137.359,
+      "exit_code": 0,
+      "stdout": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\OpenSpec\\docs\\03-materialize-proposal.stdout.json",
+      "stderr": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\OpenSpec\\docs\\03-materialize-proposal.stderr.txt",
+      "tokens": {
+        "source": "Gemini CLI JSON stats",
+        "models": [
+          "gemini-3.5-flash"
+        ],
+        "input_tokens": 2141393,
+        "cached_tokens": 1591392,
+        "output_tokens": 6694,
+        "thought_tokens": 7116,
+        "api_requests": 23,
+        "api_errors": 0,
+        "api_successful_requests": 23,
+        "api_by_model": {
+          "gemini-3.5-flash": {
+            "api_requests": 23,
+            "api_errors": 0,
+            "api_successful_requests": 23,
+            "roles": [
+              "main"
+            ]
+          }
+        },
+        "api_scope": "all models/roles in completed CLI JSON stats; attempts include API errors",
+        "model_started_observed": true,
+        "recorded_response_count": null,
+        "recorded_response_models": [],
+        "transcript_paths": [],
+        "historically_documented_response_count": null,
+        "documented_response_count": null,
+        "documented_response_origin": "unavailable",
+        "response_scope": "recorded or historically documented token-bearing responses; excludes failed API attempts and may omit auxiliary models; retained and historical counts are not added twice for one run"
+      }
+    },
+    {
+      "workflow": "clarify",
+      "label": "04-correct-plan",
+      "prompt_sha256": "C489E001FCE60A72154969E84CA5382D7EB2A8E460C0E0823B8EDAC75547C468",
+      "seed_sha256": "63919779DD4104076FBABCB130CE296A160FA840E0B4755A2AA5D90757ADA8EF",
+      "requested_model": "gemini-3.5-flash",
+      "cli_version": "0.60.0",
+      "openspec_version": "1.13.2",
+      "project": "project-e6384dd1-d4d3-4a03-948",
+      "started": "2026-10-19T15:21:12.8104739-05:00",
+      "ended": "2026-10-19T15:22:01.7127273-05:00",
+      "duration_seconds": 48.902,
+      "exit_code": 0,
+      "stdout": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\OpenSpec\\docs\\04-correct-plan.stdout.json",
+      "stderr": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\OpenSpec\\docs\\04-correct-plan.stderr.txt",
+      "tokens": {
+        "source": "Gemini CLI JSON stats",
+        "models": [
+          "gemini-3.5-flash"
+        ],
+        "input_tokens": 1273520,
+        "cached_tokens": 1075890,
+        "output_tokens": 2723,
+        "thought_tokens": 6281,
+        "api_requests": 10,
+        "api_errors": 0,
+        "api_successful_requests": 10,
+        "api_by_model": {
+          "gemini-3.5-flash": {
+            "api_requests": 10,
+            "api_errors": 0,
+            "api_successful_requests": 10,
+            "roles": [
+              "main"
+            ]
+          }
+        },
+        "api_scope": "all models/roles in completed CLI JSON stats; attempts include API errors",
+        "model_started_observed": true,
+        "recorded_response_count": null,
+        "recorded_response_models": [],
+        "transcript_paths": [],
+        "historically_documented_response_count": null,
+        "documented_response_count": null,
+        "documented_response_origin": "unavailable",
+        "response_scope": "recorded or historically documented token-bearing responses; excludes failed API attempts and may omit auxiliary models; retained and historical counts are not added twice for one run"
+      }
+    },
+    {
+      "workflow": "apply",
+      "label": "05-apply",
+      "prompt_sha256": "2ECEF5853D1DDB925EA081E33B8A0CBB6131E79371E9D5F1103B1EDBD12E0761",
+      "seed_sha256": "63919779DD4104076FBABCB130CE296A160FA840E0B4755A2AA5D90757ADA8EF",
+      "requested_model": "gemini-3.5-flash",
+      "cli_version": "0.60.0",
+      "openspec_version": "1.13.2",
+      "started": "2026-10-19T15:22:31.8212819-05:00",
+      "ended": "2026-10-19T15:29:55.9390658-05:00",
+      "duration_seconds": 444.118,
+      "exit_code": "interrupted after model stall, no source changes",
+      "stdout": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\OpenSpec\\docs\\05-apply.stdout.json",
+      "stderr": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\OpenSpec\\docs\\05-apply.stderr.txt",
+      "tokens": {
+        "source": "difference of exact cumulative JSONL snapshots after 04 and 05, before Gemini CLI chat cleanup",
+        "models": [
+          "gemini-3.5-flash"
+        ],
+        "input_tokens": 2623509,
+        "cached_tokens": 2252478,
+        "output_tokens": 4391,
+        "thought_tokens": null,
+        "model_started_observed": true,
+        "historical_evidence_path": "docs/token-audit.json",
+        "api_requests": null,
+        "api_errors": null,
+        "api_successful_requests": null,
+        "api_scope": "unknown: response records and historical response captures cannot establish total API attempts/errors",
+        "recorded_response_count": null,
+        "recorded_response_models": [],
+        "transcript_paths": [],
+        "historically_documented_response_count": 24,
+        "documented_response_count": 24,
+        "documented_response_origin": "historical JSONL-derived capture in docs/token-audit.json; original response records no longer retained",
+        "response_scope": "recorded or historically documented token-bearing responses; excludes failed API attempts and may omit auxiliary models; retained and historical counts are not added twice for one run"
+      }
+    },
+    {
+      "workflow": "apply",
+      "label": "06-apply-fresh",
+      "prompt_sha256": "1667BB217AD29BF8E2AE017886EEA5C8ABBD53761DBD96294E5F7A4551E9AF83",
+      "seed_sha256": "63919779DD4104076FBABCB130CE296A160FA840E0B4755A2AA5D90757ADA8EF",
+      "requested_model": "gemini-3.5-flash",
+      "cli_version": "0.60.0",
+      "openspec_version": "1.13.2",
+      "project": "project-e6384dd1-d4d3-4a03-948",
+      "started": "2026-10-19T15:30:09.5149674-05:00",
+      "ended": "2026-10-19T15:43:11.9719672-05:00",
+      "duration_seconds": 782.457,
+      "exit_code": 0,
+      "stdout": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\OpenSpec\\docs\\06-apply-fresh.stdout.json",
+      "stderr": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\OpenSpec\\docs\\06-apply-fresh.stderr.txt",
+      "tokens": {
+        "source": "Gemini CLI JSONL response records, deduplicated by response id and bounded by run timestamps",
+        "models": [
+          "gemini-3.5-flash"
+        ],
+        "input_tokens": 2011596,
+        "cached_tokens": 1407507,
+        "output_tokens": 56094,
+        "thought_tokens": 83511,
+        "model_started_observed": true,
+        "api_requests": null,
+        "api_errors": null,
+        "api_successful_requests": null,
+        "api_scope": "unknown: response records and historical response captures cannot establish total API attempts/errors",
+        "recorded_response_count": 66,
+        "recorded_response_models": [
+          "gemini-3.5-flash"
+        ],
+        "transcript_paths": [
+          "gemini-home/.gemini/tmp/openspec/chats/8f9e2283-cd98-4976-a8e6-e510aaae668d/3cff11cf-be0c-457a-be1f-6b47015adba5.jsonl",
+          "gemini-home/.gemini/tmp/openspec/chats/8f9e2283-cd98-4976-a8e6-e510aaae668d/8d3c4cd7-8597-426f-8033-b680a09b5ba4.jsonl",
+          "gemini-home/.gemini/tmp/openspec/chats/8f9e2283-cd98-4976-a8e6-e510aaae668d/e3c09c02-5b97-474d-8506-fe962578c489.jsonl",
+          "gemini-home/.gemini/tmp/openspec/chats/session-2026-10-19T20-30-8f9e2283.jsonl",
+          "transcripts-archive/session-2026-10-19T20-30-8f9e2283.23FEDB51EEDF580C.jsonl"
+        ],
+        "historically_documented_response_count": null,
+        "documented_response_count": 66,
+        "documented_response_origin": "retained JSONL records, deduplicated by response ID and run interval",
+        "response_scope": "recorded or historically documented token-bearing responses; excludes failed API attempts and may omit auxiliary models; retained and historical counts are not added twice for one run"
+      }
+    },
+    {
+      "workflow": "clarify",
+      "label": "07-direct-apply",
+      "prompt_sha256": "2B29D8AFEA2121EF8E1A2798DD8681235C2D96A0D6C34F2E2401532693BB946C",
+      "seed_sha256": "63919779DD4104076FBABCB130CE296A160FA840E0B4755A2AA5D90757ADA8EF",
+      "requested_model": "gemini-3.5-flash",
+      "cli_version": "0.60.0",
+      "openspec_version": "1.13.2",
+      "project": "project-e6384dd1-d4d3-4a03-948",
+      "started": "2026-10-19T22:12:51.2540043-05:00",
+      "ended": "2026-10-19T22:15:39.1915671-05:00",
+      "duration_seconds": 167.938,
+      "exit_code": 0,
+      "stdout": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\OpenSpec\\docs\\07-direct-apply.stdout.json",
+      "stderr": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\OpenSpec\\docs\\07-direct-apply.stderr.txt",
+      "tokens": {
+        "source": "Gemini CLI JSON stats",
+        "models": [
+          "gemini-3.5-flash"
+        ],
+        "input_tokens": 382138,
+        "cached_tokens": 197261,
+        "output_tokens": 6667,
+        "thought_tokens": 12209,
+        "api_requests": 14,
+        "api_errors": 0,
+        "api_successful_requests": 14,
+        "api_by_model": {
+          "gemini-3.5-flash": {
+            "api_requests": 14,
+            "api_errors": 0,
+            "api_successful_requests": 14,
+            "roles": [
+              "main"
+            ]
+          }
+        },
+        "api_scope": "all models/roles in completed CLI JSON stats; attempts include API errors",
+        "model_started_observed": true,
+        "recorded_response_count": null,
+        "recorded_response_models": [],
+        "transcript_paths": [],
+        "historically_documented_response_count": null,
+        "documented_response_count": null,
+        "documented_response_origin": "unavailable",
+        "response_scope": "recorded or historically documented token-bearing responses; excludes failed API attempts and may omit auxiliary models; retained and historical counts are not added twice for one run"
+      }
+    },
+    {
+      "workflow": "clarify",
+      "label": "08-complete-frontend",
+      "prompt_sha256": "F0BA3DEA980FFC06A597FE809D82392FE81F8B9CF3430EFC18494E83047B864F",
+      "seed_sha256": "63919779DD4104076FBABCB130CE296A160FA840E0B4755A2AA5D90757ADA8EF",
+      "requested_model": "gemini-3.5-flash",
+      "cli_version": "0.60.0",
+      "openspec_version": "1.13.2",
+      "project": "project-e6384dd1-d4d3-4a03-948",
+      "started": "2026-10-19T22:16:12.3785353-05:00",
+      "ended": "2026-10-19T22:16:25.2464900-05:00",
+      "duration_seconds": 12.868,
+      "exit_code": 0,
+      "stdout": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\OpenSpec\\docs\\08-complete-frontend.stdout.json",
+      "stderr": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\OpenSpec\\docs\\08-complete-frontend.stderr.txt",
+      "tokens": {
+        "source": "Gemini CLI JSON stats",
+        "models": [
+          "gemini-3.5-flash"
+        ],
+        "input_tokens": 127382,
+        "cached_tokens": 8020,
+        "output_tokens": 134,
+        "thought_tokens": 275,
+        "api_requests": 2,
+        "api_errors": 0,
+        "api_successful_requests": 2,
+        "api_by_model": {
+          "gemini-3.5-flash": {
+            "api_requests": 2,
+            "api_errors": 0,
+            "api_successful_requests": 2,
+            "roles": [
+              "main"
+            ]
+          }
+        },
+        "api_scope": "all models/roles in completed CLI JSON stats; attempts include API errors",
+        "model_started_observed": true,
+        "recorded_response_count": null,
+        "recorded_response_models": [],
+        "transcript_paths": [],
+        "historically_documented_response_count": null,
+        "documented_response_count": null,
+        "documented_response_origin": "unavailable",
+        "response_scope": "recorded or historically documented token-bearing responses; excludes failed API attempts and may omit auxiliary models; retained and historical counts are not added twice for one run"
+      }
+    },
+    {
+      "workflow": "clarify",
+      "label": "09-frontend-fresh",
+      "prompt_sha256": "6DCA2E1EA0A98B8D4D15B876E322FC49ACC7304C22FD19142FF75478F44E1E48",
+      "seed_sha256": "63919779DD4104076FBABCB130CE296A160FA840E0B4755A2AA5D90757ADA8EF",
+      "requested_model": "gemini-3.5-flash",
+      "cli_version": "0.60.0",
+      "openspec_version": "1.13.2",
+      "project": "project-e6384dd1-d4d3-4a03-948",
+      "started": "2026-10-19T22:16:58.0936468-05:00",
+      "ended": "2026-10-19T22:20:55.1201011-05:00",
+      "duration_seconds": 237.026,
+      "exit_code": 0,
+      "stdout": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\OpenSpec\\docs\\09-frontend-fresh.stdout.json",
+      "stderr": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\OpenSpec\\docs\\09-frontend-fresh.stderr.txt",
+      "tokens": {
+        "source": "Gemini CLI JSON stats",
+        "models": [
+          "gemini-3.5-flash"
+        ],
+        "input_tokens": 541005,
+        "cached_tokens": 253683,
+        "output_tokens": 8066,
+        "thought_tokens": 15663,
+        "api_requests": 18,
+        "api_errors": 0,
+        "api_successful_requests": 18,
+        "api_by_model": {
+          "gemini-3.5-flash": {
+            "api_requests": 18,
+            "api_errors": 0,
+            "api_successful_requests": 18,
+            "roles": [
+              "main"
+            ]
+          }
+        },
+        "api_scope": "all models/roles in completed CLI JSON stats; attempts include API errors",
+        "model_started_observed": true,
+        "recorded_response_count": 18,
+        "recorded_response_models": [
+          "gemini-3.5-flash"
+        ],
+        "transcript_paths": [
+          "gemini-home/.gemini/tmp/openspec/chats/session-2026-10-20T03-16-0d149375.jsonl",
+          "transcripts-archive/session-2026-10-20T03-16-0d149375.3CDAD01008A74226.jsonl"
+        ],
+        "historically_documented_response_count": null,
+        "documented_response_count": 18,
+        "documented_response_origin": "retained JSONL records, deduplicated by response ID and run interval",
+        "response_scope": "recorded or historically documented token-bearing responses; excludes failed API attempts and may omit auxiliary models; retained and historical counts are not added twice for one run"
+      }
+    },
+    {
+      "workflow": "clarify",
+      "label": "10-sonar-remediation",
+      "prompt_sha256": "4A04EC07522D4753BC303AB90C4653209058FB23DED9DA751BF85973E994BD41",
+      "seed_sha256": "63919779DD4104076FBABCB130CE296A160FA840E0B4755A2AA5D90757ADA8EF",
+      "requested_model": "gemini-3.5-flash",
+      "cli_version": "0.60.0",
+      "openspec_version": "1.13.2",
+      "project": "project-e6384dd1-d4d3-4a03-948",
+      "started": "2026-10-19T22:24:11.8631663-05:00",
+      "ended": "2026-10-19T22:31:01.2931243-05:00",
+      "duration_seconds": 409.43,
+      "exit_code": 0,
+      "stdout": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\OpenSpec\\docs\\10-sonar-remediation.stdout.json",
+      "stderr": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\OpenSpec\\docs\\10-sonar-remediation.stderr.txt",
+      "tokens": {
+        "source": "Gemini CLI JSON stats",
+        "models": [
+          "gemini-3-flash-preview",
+          "gemini-3.5-flash"
+        ],
+        "input_tokens": 2994533,
+        "cached_tokens": 2495552,
+        "output_tokens": 8443,
+        "thought_tokens": 19194,
+        "api_requests": 60,
+        "api_errors": 3,
+        "api_successful_requests": 57,
+        "api_by_model": {
+          "gemini-3.5-flash": {
+            "api_requests": 58,
+            "api_errors": 3,
+            "api_successful_requests": 55,
+            "roles": [
+              "main"
+            ]
+          },
+          "gemini-3-flash-preview": {
+            "api_requests": 2,
+            "api_errors": 0,
+            "api_successful_requests": 2,
+            "roles": [
+              "utility_loop_detector"
+            ]
+          }
+        },
+        "api_scope": "all models/roles in completed CLI JSON stats; attempts include API errors",
+        "model_started_observed": true,
+        "recorded_response_count": 55,
+        "recorded_response_models": [
+          "gemini-3.5-flash"
+        ],
+        "transcript_paths": [
+          "gemini-home/.gemini/tmp/openspec/chats/session-2026-10-20T03-24-cd6592da.jsonl",
+          "transcripts-archive/session-2026-10-20T03-24-cd6592da.135B8BA04DB4B0FE.jsonl"
+        ],
+        "historically_documented_response_count": null,
+        "documented_response_count": 55,
+        "documented_response_origin": "retained JSONL records, deduplicated by response ID and run interval",
+        "response_scope": "recorded or historically documented token-bearing responses; excludes failed API attempts and may omit auxiliary models; retained and historical counts are not added twice for one run"
+      }
+    }
+  ],
+  "invocation_attempts": 10,
+  "model_invocations": 9,
+  "runs_with_unknown_model_start": [
+    "01-propose"
+  ],
+  "prompt_count": 10,
+  "prompt_count_note": "backward-compatible alias of invocation_attempts, not an assertion that every attempt reached a model",
+  "known_duration_seconds": 2862.534,
+  "total_duration_seconds": 2862.534,
+  "duration_scope": "sum of known instrumented invocation durations; unknown durations and external verification work excluded",
+  "runs_with_unknown_duration": [
+    "01-propose"
+  ],
+  "observed_tokens": {
+    "input_tokens": 13682018,
+    "cached_tokens": 10544734,
+    "output_tokens": 109122,
+    "thought_tokens": 172872
+  },
+  "token_scope": "partial observed totals: completed CLI JSON statistics include all reported models/roles; retained JSONL and historical captures include only observed responses. Input includes cached tokens; candidate output and thought tokens are separate. Unknown values are not imputed.",
+  "runs_with_unknown_token_fields": {
+    "input_tokens": [
+      "01-propose"
+    ],
+    "cached_tokens": [
+      "01-propose"
+    ],
+    "output_tokens": [
+      "01-propose"
+    ],
+    "thought_tokens": [
+      "01-propose",
+      "05-apply"
+    ]
+  },
+  "known_api_totals": {
+    "api_requests": 127,
+    "api_errors": 3,
+    "api_successful_requests": 124
+  },
+  "api_totals_scope": "partial: completed CLI API statistics only; excludes runs with unknown API attempts/errors; historical JSONL response counts are never treated as API attempts",
+  "runs_without_api_stats": [
+    "01-propose",
+    "02-propose-retry",
+    "05-apply",
+    "06-apply-fresh"
+  ],
+  "recorded_response_count": 139,
+  "historically_documented_response_count": 90,
+  "documented_response_count": 229,
+  "documented_response_scope": "partial: retained JSONL response IDs plus historical JSONL-derived captures from token-audit.json for runs with no retained records; does not include failed API attempts or unrecorded auxiliary responses",
+  "runs_without_documented_response_stats": [
+    "01-propose",
+    "03-materialize-proposal",
+    "04-correct-plan",
+    "07-direct-apply",
+    "08-complete-frontend"
+  ],
+  "runs_without_token_stats": [
+    "01-propose"
+  ]
+}

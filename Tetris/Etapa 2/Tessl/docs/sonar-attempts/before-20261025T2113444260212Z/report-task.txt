@@ -1,0 +1,6 @@
+projectKey=tetris-stage2-tessl
+serverUrl=http://127.0.0.1:9000
+serverVersion=26.9.0.129388
+dashboardUrl=http://127.0.0.1:9000/dashboard?id=tetris-stage2-tessl
+ceTaskId=ad5358ac-75af-4418-8213-060c675d2a4b
+ceTaskUrl=http://127.0.0.1:9000/api/ce/task?id=ad5358ac-75af-4418-8213-060c675d2a4b

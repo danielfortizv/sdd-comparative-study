@@ -1,0 +1,22 @@
+{
+  "researcher_created": true,
+  "measured_at_utc": "2026-10-21T19:47:02.656260+00:00",
+  "exit_code": 0,
+  "command": {
+    "argv": [
+      "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\Kiro\\backend\\.venv\\Scripts\\python.exe",
+      "-B",
+      "-m",
+      "pytest",
+      "-q"
+    ],
+    "cwd": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\Kiro\\backend",
+    "started_at_utc": "2026-10-21T19:47:01.324645+00:00",
+    "ended_at_utc": "2026-10-21T19:47:02.655261+00:00",
+    "duration_seconds": 1.344,
+    "exit_code": 0,
+    "log_path": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\Kiro\\docs\\baseline-backend-tests.log"
+  },
+  "coverage_xml_available": false,
+  "coverage_note": "No coverage package in the exact original venv; none installed for baseline"
+}

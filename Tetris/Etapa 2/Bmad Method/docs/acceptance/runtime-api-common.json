@@ -1,0 +1,11 @@
+{
+  "researcher_created": true,
+  "started_at_utc": "2026-10-26T02:26:56.746468+00:00",
+  "scenario": "ordinary",
+  "port": 8022,
+  "rng_seed": 20260929,
+  "fixture_only_first_create": false,
+  "generated_source_modified": false,
+  "runtime_sha256": "66F9880905E66D08F2D3037247146B58DA56E8E8A899E1E8B1B7CC25EA5CEBFC",
+  "fixture_note": "threshold: canonical O at18,4, single row gap,900score/9lines then actual lock crosses10; gameover: canonical O bottomlock, Jnextspawnblocked at0,3. Further creates use unchanged originalcreate."
+}

@@ -1,0 +1,119 @@
+{
+  "session_id": "e74a3afa-2ec3-4b9d-8c61-bba16a0f6d83",
+  "response": "I have updated the `backend/tests/unit/test_qa_iteration1.py` file to replace individual field assertions in the GET snapshots verification with a full comparison of the entire HTTP JSON response against the Pydantic model's serialized snapshot (using `model_dump(mode='json', by_alias=True)`). This ensures the board and active piece are included over repeated GET operations.\n\n**Next Step**: We will now edit `frontend/tests/useGame.test.ts` to implement the generation-owned tick coalescing tests, the combined old-queue proof, and corrected unmount/StrictMode test assertions.",
+  "stats": {
+    "models": {
+      "gemini-3.5-flash": {
+        "api": {
+          "totalRequests": 20,
+          "totalErrors": 0,
+          "totalLatencyMs": 147865,
+          "errorsByType": {}
+        },
+        "tokens": {
+          "input": 297959,
+          "prompt": 720193,
+          "candidates": 1936,
+          "total": 737935,
+          "cached": 422234,
+          "thoughts": 15806,
+          "tool": 0
+        },
+        "roles": {
+          "main": {
+            "totalRequests": 20,
+            "totalErrors": 0,
+            "totalLatencyMs": 147865,
+            "tokens": {
+              "input": 297959,
+              "prompt": 720193,
+              "candidates": 1936,
+              "total": 737935,
+              "cached": 422234,
+              "thoughts": 15806,
+              "tool": 0
+            }
+          }
+        }
+      }
+    },
+    "tools": {
+      "totalCalls": 19,
+      "totalSuccess": 19,
+      "totalFail": 0,
+      "totalDurationMs": 31937,
+      "totalDecisions": {
+        "accept": 19,
+        "reject": 0,
+        "modify": 0,
+        "auto_accept": 0
+      },
+      "byName": {
+        "update_topic": {
+          "count": 1,
+          "success": 1,
+          "fail": 0,
+          "durationMs": 6,
+          "decisions": {
+            "accept": 1,
+            "reject": 0,
+            "modify": 0,
+            "auto_accept": 0
+          }
+        },
+        "run_shell_command": {
+          "count": 4,
+          "success": 4,
+          "fail": 0,
+          "durationMs": 31167,
+          "decisions": {
+            "accept": 4,
+            "reject": 0,
+            "modify": 0,
+            "auto_accept": 0
+          }
+        },
+        "grep_search": {
+          "count": 4,
+          "success": 4,
+          "fail": 0,
+          "durationMs": 680,
+          "decisions": {
+            "accept": 4,
+            "reject": 0,
+            "modify": 0,
+            "auto_accept": 0
+          }
+        },
+        "read_file": {
+          "count": 9,
+          "success": 9,
+          "fail": 0,
+          "durationMs": 60,
+          "decisions": {
+            "accept": 9,
+            "reject": 0,
+            "modify": 0,
+            "auto_accept": 0
+          }
+        },
+        "replace": {
+          "count": 1,
+          "success": 1,
+          "fail": 0,
+          "durationMs": 24,
+          "decisions": {
+            "accept": 1,
+            "reject": 0,
+            "modify": 0,
+            "auto_accept": 0
+          }
+        }
+      }
+    },
+    "files": {
+      "totalLinesAdded": 5,
+      "totalLinesRemoved": 17
+    }
+  }
+}

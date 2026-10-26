@@ -1,0 +1,247 @@
+{
+  "measured_at_utc": "2026-10-21T01:25:57.929968+00:00",
+  "seed_sha256": "63919779DD4104076FBABCB130CE296A160FA840E0B4755A2AA5D90757ADA8EF",
+  "seed_sha256_scope": "original bytes of the complete common seed Markdown file",
+  "seed_block_utf8_sha256": "60D6728689CD5CDAD7B1A386F95DAD4E34850EB5DE0AAB92E837D630DFD2B55A",
+  "seed_block_characters": 3516,
+  "seed_block_scope": "extracted quoted common seed block, trimmed, with LF line endings, encoded as UTF-8 without BOM",
+  "effective_input_hash_scope": "decoded JSONL user text before newline normalization; effective_first_input_sha256/characters are aliases of raw fields. Multiple text parts, when present, are joined with LF.",
+  "normalization": "CRLF replaced with LF only; normalized hash/character fields are separate from raw decoded text",
+  "transcript_scope": "original gemini-home and transcripts-archive fallback; user-message identities and complete seed-read identities deduplicated across snapshots",
+  "snapshot_scope": "closed *.run.json intervals only; active/unclosed invocations excluded",
+  "unclosed_invocation_labels": [],
+  "note": "Checks the first effective user text, not all later context. Complete seed tool reads require an exact normalized seed substring in a string output from the same session within that run interval. Missing records or absent first-message seed do not prove the seed was never available through other context.",
+  "runs": [
+    {
+      "label": "01-specify",
+      "submission_method": "headless slash parser",
+      "model_started": null,
+      "transcript": "gemini-home/.gemini/tmp/spec-kit/chats/session-2026-10-20T11-16-213a8e58.jsonl",
+      "transcript_copies": [
+        "gemini-home/.gemini/tmp/spec-kit/chats/session-2026-10-20T11-16-213a8e58.jsonl",
+        "transcripts-archive/session-2026-10-20T11-16-213a8e58.A57ABF6AAA99DD68.jsonl"
+      ],
+      "session_id": "213a8e58-9711-4585-8aef-440a5700d60e",
+      "effective_first_input_timestamp": "2026-10-20T11:16:33.954Z",
+      "effective_first_input_sha256": "E94D7257D261829770883FFEA46F2BF403F8BC23040E1D5887B454CA6FBDB92A",
+      "effective_first_input_characters": 17971,
+      "effective_first_input_raw_utf8_sha256": "E94D7257D261829770883FFEA46F2BF403F8BC23040E1D5887B454CA6FBDB92A",
+      "effective_first_input_raw_characters": 17971,
+      "effective_first_input_normalized_utf8_sha256": "E94D7257D261829770883FFEA46F2BF403F8BC23040E1D5887B454CA6FBDB92A",
+      "effective_first_input_normalized_characters": 17971,
+      "complete_seed_present": false,
+      "seed_paragraphs_present": [],
+      "complete_seed_tool_reads": []
+    },
+    {
+      "label": "02-specify-retry",
+      "submission_method": "headless slash parser",
+      "model_started": null,
+      "transcript": "gemini-home/.gemini/tmp/spec-kit/chats/session-2026-10-20T11-24-96f502f6.jsonl",
+      "transcript_copies": [
+        "gemini-home/.gemini/tmp/spec-kit/chats/session-2026-10-20T11-24-96f502f6.jsonl",
+        "transcripts-archive/session-2026-10-20T11-24-96f502f6.8B770F6F1AEA2AAB.jsonl"
+      ],
+      "session_id": "96f502f6-681b-4f27-b1a6-6638c9c32c3d",
+      "effective_first_input_timestamp": "2026-10-20T11:24:41.220Z",
+      "effective_first_input_sha256": "8A6CFFDC45CEC1B47E05D3BBA12154A875687E95498BA6AE921E92758AD37408",
+      "effective_first_input_characters": 19289,
+      "effective_first_input_raw_utf8_sha256": "8A6CFFDC45CEC1B47E05D3BBA12154A875687E95498BA6AE921E92758AD37408",
+      "effective_first_input_raw_characters": 19289,
+      "effective_first_input_normalized_utf8_sha256": "8A6CFFDC45CEC1B47E05D3BBA12154A875687E95498BA6AE921E92758AD37408",
+      "effective_first_input_normalized_characters": 19289,
+      "complete_seed_present": false,
+      "seed_paragraphs_present": [
+        1
+      ],
+      "complete_seed_tool_reads": [
+        {
+          "timestamp": "2026-10-20T11:25:15.634Z",
+          "tool": "run_shell_command",
+          "transcript_copies": [
+            "gemini-home/.gemini/tmp/spec-kit/chats/session-2026-10-20T11-24-96f502f6.jsonl",
+            "transcripts-archive/session-2026-10-20T11-24-96f502f6.8B770F6F1AEA2AAB.jsonl"
+          ]
+        }
+      ]
+    },
+    {
+      "label": "03-contract-clarification",
+      "submission_method": "direct clarification",
+      "model_started": null,
+      "transcript": "gemini-home/.gemini/tmp/spec-kit/chats/session-2026-10-20T11-31-12a3f237.jsonl",
+      "transcript_copies": [
+        "gemini-home/.gemini/tmp/spec-kit/chats/session-2026-10-20T11-31-12a3f237.jsonl",
+        "transcripts-archive/session-2026-10-20T11-31-12a3f237.7BAF3DF5C2ADE6E4.jsonl"
+      ],
+      "session_id": "12a3f237-0e16-4ff0-af81-a27cd34444c7",
+      "effective_first_input_timestamp": "2026-10-20T11:31:07.390Z",
+      "effective_first_input_sha256": "A53B9D506E52260324BF3DBCAE8AEDF157A512CAAE2307364FE057B409186CB9",
+      "effective_first_input_characters": 1155,
+      "effective_first_input_raw_utf8_sha256": "A53B9D506E52260324BF3DBCAE8AEDF157A512CAAE2307364FE057B409186CB9",
+      "effective_first_input_raw_characters": 1155,
+      "effective_first_input_normalized_utf8_sha256": "A53B9D506E52260324BF3DBCAE8AEDF157A512CAAE2307364FE057B409186CB9",
+      "effective_first_input_normalized_characters": 1155,
+      "complete_seed_present": false,
+      "seed_paragraphs_present": [],
+      "complete_seed_tool_reads": []
+    },
+    {
+      "label": "04-plan",
+      "submission_method": "headless slash parser",
+      "model_started": null,
+      "transcript": "gemini-home/.gemini/tmp/spec-kit/chats/session-2026-10-20T11-38-261670ce.jsonl",
+      "transcript_copies": [
+        "gemini-home/.gemini/tmp/spec-kit/chats/session-2026-10-20T11-38-261670ce.jsonl",
+        "transcripts-archive/session-2026-10-20T11-38-261670ce.28275FCDC84E6205.jsonl"
+      ],
+      "session_id": "261670ce-7c76-40eb-90ef-cdd79252dfcc",
+      "effective_first_input_timestamp": "2026-10-20T11:38:19.857Z",
+      "effective_first_input_sha256": "17CEA737A43B69960035D280F43B4147127306875232B249FF7E8D18ACB952D2",
+      "effective_first_input_characters": 7850,
+      "effective_first_input_raw_utf8_sha256": "17CEA737A43B69960035D280F43B4147127306875232B249FF7E8D18ACB952D2",
+      "effective_first_input_raw_characters": 7850,
+      "effective_first_input_normalized_utf8_sha256": "17CEA737A43B69960035D280F43B4147127306875232B249FF7E8D18ACB952D2",
+      "effective_first_input_normalized_characters": 7850,
+      "complete_seed_present": false,
+      "seed_paragraphs_present": [],
+      "complete_seed_tool_reads": []
+    },
+    {
+      "label": "05-tasks",
+      "submission_method": "headless slash parser",
+      "model_started": null,
+      "transcript": "gemini-home/.gemini/tmp/spec-kit/chats/session-2026-10-20T11-50-57ca997e.jsonl",
+      "transcript_copies": [
+        "gemini-home/.gemini/tmp/spec-kit/chats/session-2026-10-20T11-50-57ca997e.jsonl",
+        "transcripts-archive/session-2026-10-20T11-50-57ca997e.F41D2926EE110728.jsonl"
+      ],
+      "session_id": "57ca997e-3d9c-4d28-8189-f9eb9a9f34e8",
+      "effective_first_input_timestamp": "2026-10-20T11:50:31.453Z",
+      "effective_first_input_sha256": "410CC2EFA6D28549F9FEB9F0A29CCE5DE12E2747B63BB011A2092104178DECB5",
+      "effective_first_input_characters": 11502,
+      "effective_first_input_raw_utf8_sha256": "410CC2EFA6D28549F9FEB9F0A29CCE5DE12E2747B63BB011A2092104178DECB5",
+      "effective_first_input_raw_characters": 11502,
+      "effective_first_input_normalized_utf8_sha256": "410CC2EFA6D28549F9FEB9F0A29CCE5DE12E2747B63BB011A2092104178DECB5",
+      "effective_first_input_normalized_characters": 11502,
+      "complete_seed_present": false,
+      "seed_paragraphs_present": [],
+      "complete_seed_tool_reads": []
+    },
+    {
+      "label": "06-tasks-full-arguments",
+      "submission_method": "installed native TOML prompt expanded with complete multiline arguments",
+      "model_started": false,
+      "effective_first_input": "no transcript input observed"
+    },
+    {
+      "label": "07-tasks-native-expanded",
+      "submission_method": "installed native TOML prompt expanded with complete multiline arguments",
+      "model_started": null,
+      "transcript": "gemini-home/.gemini/tmp/spec-kit/chats/session-2026-10-20T11-57-cf453998.jsonl",
+      "transcript_copies": [
+        "gemini-home/.gemini/tmp/spec-kit/chats/session-2026-10-20T11-57-cf453998.jsonl",
+        "transcripts-archive/session-2026-10-20T11-57-cf453998.A0E9068FD9DD20F4.jsonl"
+      ],
+      "session_id": "cf453998-9126-4003-a157-f60f0914f4dd",
+      "effective_first_input_timestamp": "2026-10-20T11:57:33.830Z",
+      "effective_first_input_sha256": "36E8A2989EA345A62881A85E9286B36B61B74B86CF980CD6AC85CA2EB8A330A7",
+      "effective_first_input_characters": 21527,
+      "effective_first_input_raw_utf8_sha256": "36E8A2989EA345A62881A85E9286B36B61B74B86CF980CD6AC85CA2EB8A330A7",
+      "effective_first_input_raw_characters": 21527,
+      "effective_first_input_normalized_utf8_sha256": "5A80064FF810E3465F5B9741BDF71DF6DC60D525AB279C54337A33ACC8DB3009",
+      "effective_first_input_normalized_characters": 21300,
+      "complete_seed_present": true,
+      "seed_paragraphs_present": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "complete_seed_tool_reads": []
+    },
+    {
+      "label": "08-implement",
+      "submission_method": "installed native TOML prompt expanded with complete multiline arguments",
+      "model_started": null,
+      "transcript": "gemini-home/.gemini/tmp/spec-kit/chats/session-2026-10-20T12-07-c8b0393f.jsonl",
+      "transcript_copies": [
+        "gemini-home/.gemini/tmp/spec-kit/chats/session-2026-10-20T12-07-c8b0393f.jsonl",
+        "transcripts-archive/session-2026-10-20T12-07-c8b0393f.8F356DEC5678770D.jsonl",
+        "transcripts-archive/session-2026-10-20T12-07-c8b0393f.EE6475772BA480AA.jsonl"
+      ],
+      "session_id": "c8b0393f-008f-46cb-9fc0-fe7d4e186ded",
+      "effective_first_input_timestamp": "2026-10-20T12:07:25.107Z",
+      "effective_first_input_sha256": "8E655B1C8DAECCE3D3C34D750FDE4ACCDEA51D1244AAE9C29889A469A1D6EF4A",
+      "effective_first_input_characters": 18315,
+      "effective_first_input_raw_utf8_sha256": "8E655B1C8DAECCE3D3C34D750FDE4ACCDEA51D1244AAE9C29889A469A1D6EF4A",
+      "effective_first_input_raw_characters": 18315,
+      "effective_first_input_normalized_utf8_sha256": "5C10BF253C66571CD50BBB94F172AD909A345DE025B9B5FE488BB430B246590A",
+      "effective_first_input_normalized_characters": 18089,
+      "complete_seed_present": true,
+      "seed_paragraphs_present": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "complete_seed_tool_reads": []
+    },
+    {
+      "label": "09-qa-correction",
+      "submission_method": "direct clarification prompt",
+      "model_started": null,
+      "transcript": "gemini-home/.gemini/tmp/spec-kit/chats/session-2026-10-20T12-57-a7dd4aec.jsonl",
+      "transcript_copies": [
+        "gemini-home/.gemini/tmp/spec-kit/chats/session-2026-10-20T12-57-a7dd4aec.jsonl",
+        "transcripts-archive/session-2026-10-20T12-57-a7dd4aec.2983E822E131E77A.jsonl"
+      ],
+      "session_id": "a7dd4aec-b811-4b1a-ac9b-bccdb3524db5",
+      "effective_first_input_timestamp": "2026-10-20T12:57:55.361Z",
+      "effective_first_input_sha256": "A117285F859388798B6C0E8B53A5CD5B05FE421B6D501F3D13BEEAA262DDB932",
+      "effective_first_input_characters": 9385,
+      "effective_first_input_raw_utf8_sha256": "A117285F859388798B6C0E8B53A5CD5B05FE421B6D501F3D13BEEAA262DDB932",
+      "effective_first_input_raw_characters": 9385,
+      "effective_first_input_normalized_utf8_sha256": "A117285F859388798B6C0E8B53A5CD5B05FE421B6D501F3D13BEEAA262DDB932",
+      "effective_first_input_normalized_characters": 9385,
+      "complete_seed_present": true,
+      "seed_paragraphs_present": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "complete_seed_tool_reads": []
+    },
+    {
+      "label": "10-qa-race-correction",
+      "submission_method": "direct clarification prompt",
+      "model_started": null,
+      "transcript": "gemini-home/.gemini/tmp/spec-kit/chats/session-2026-10-21T01-17-b87f6c6f.jsonl",
+      "transcript_copies": [
+        "gemini-home/.gemini/tmp/spec-kit/chats/session-2026-10-21T01-17-b87f6c6f.jsonl",
+        "transcripts-archive/session-2026-10-21T01-17-b87f6c6f.F9A98E407DE6E91B.jsonl"
+      ],
+      "session_id": "b87f6c6f-1e05-453e-ab00-60f3e2021ca4",
+      "effective_first_input_timestamp": "2026-10-21T01:17:35.194Z",
+      "effective_first_input_sha256": "212CD05E86F2C4532D5DEDA5E1C3F12177D7240BDA4B13F86A3FE6752EE681B0",
+      "effective_first_input_characters": 10270,
+      "effective_first_input_raw_utf8_sha256": "212CD05E86F2C4532D5DEDA5E1C3F12177D7240BDA4B13F86A3FE6752EE681B0",
+      "effective_first_input_raw_characters": 10270,
+      "effective_first_input_normalized_utf8_sha256": "212CD05E86F2C4532D5DEDA5E1C3F12177D7240BDA4B13F86A3FE6752EE681B0",
+      "effective_first_input_normalized_characters": 10270,
+      "complete_seed_present": true,
+      "seed_paragraphs_present": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "complete_seed_tool_reads": []
+    }
+  ]
+}

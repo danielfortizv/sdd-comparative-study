@@ -1,0 +1,18 @@
+{
+  "project": "tetris-stage2-openspec",
+  "gate": "OK",
+  "coverage": "90.3",
+  "complexity": "138",
+  "reliability_rating": "1.0",
+  "code_smells": "0",
+  "duplicated_lines_density": "0.0",
+  "security_rating": "1.0",
+  "security_hotspots": "0",
+  "sqale_index": "0",
+  "sqale_rating": "1.0",
+  "bugs": "0",
+  "cognitive_complexity": "111",
+  "ncloc": "1327",
+  "vulnerabilities": "0",
+  "lines": "1599"
+}

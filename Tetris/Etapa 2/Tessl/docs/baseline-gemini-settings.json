@@ -1,0 +1,23 @@
+{
+  "general": {
+    "plan": {
+      "modelRouting": false
+    }
+  },
+  "context": {
+    "fileFiltering": {
+      "respectGitIgnore": true,
+      "respectGeminiIgnore": true
+    }
+  },
+  "mcpServers": {
+    "tessl": {
+      "type": "stdio",
+      "command": "tessl",
+      "args": [
+        "mcp",
+        "start"
+      ]
+    }
+  }
+}

@@ -1,0 +1,450 @@
+{
+  "audited_at_utc": "2026-10-20T13:14:46.814846+00:00",
+  "scope": "closed experiment invocations 01\u201308 only; 09 is pending and excluded",
+  "count_definition": "A blocking clarification question is emitted main-model natural-language text requesting missing user/researcher input before proceeding. Count requests, not question-mark characters. Self-directed progress statements, completion summaries and workflow-next-step instructions are not clarification questions.",
+  "exclusions": [
+    "thoughts/reasoning fields and thought signatures",
+    "function calls/arguments and function/tool responses",
+    "quoted or code-formatted specification/task questions and placeholders",
+    "native template questions in user input",
+    "utility-model internal loop checks",
+    "researcher-origin instructions/prompts"
+  ],
+  "deduplication": "main textual messages deduplicated by session ID and response ID across original/archive snapshots; completed CLI response is matched to existing text, never counted a second time",
+  "closed_runs_observed_blocking_question_count": 0,
+  "reviewed_unique_natural_language_messages": 13,
+  "coverage_limited_run_labels": [
+    "01-specify",
+    "03-contract-clarification"
+  ],
+  "limitation": "Zero observed questions is supported by manual review of retained emitted text, not inferred from headless mode. Interrupted01/03 emitted no retained natural-language text; unrecorded output or unfinished conversations cannot be ruled out.09 and the final whole-experiment count remain pending.",
+  "pending_run_labels": [
+    "09-qa-correction"
+  ],
+  "excluded_question_mark_evidence": [
+    {
+      "label": "07-tasks-native-expanded",
+      "session_id": "cf453998-9126-4003-a157-f60f0914f4dd",
+      "response_id": "ae71f8ca-c078-430d-934c-1d4d0dacf803",
+      "timestamp": "2026-10-20T12:06:37.273Z",
+      "snippet": "- [ ] [TaskID] [P?] [Story?] Description with file path",
+      "reason": "quoted task-format syntax, not an actual question to the user"
+    }
+  ],
+  "external_researcher_clarification_summary": {
+    "standalone_closed_prompt_attempts": 1,
+    "workflow_appended_clarification_attempts": 4,
+    "intended_attempts_total": 5,
+    "complete_delivery_verified_attempts": 3,
+    "truncated_before_delivery_attempts": 1,
+    "pre_model_launcher_failure_attempts": 1,
+    "scope": "counts one clarification-bearing external attempt per invocation, even if the native template repeats its args. These are researcher instructions, not tool-requested questions or necessarily postimplementation corrections."
+  },
+  "runs": [
+    {
+      "label": "01-specify",
+      "started": "2026-10-20T06:16:29.1907244-05:00",
+      "ended": "2026-10-20T06:23:41.6405508-05:00",
+      "session_ids": [
+        "213a8e58-9711-4585-8aef-440a5700d60e"
+      ],
+      "retained_transcript_paths": [
+        "gemini-home/.gemini/tmp/spec-kit/chats/session-2026-10-20T11-16-213a8e58.jsonl",
+        "transcripts-archive/session-2026-10-20T11-16-213a8e58.A57ABF6AAA99DD68.jsonl"
+      ],
+      "natural_language_message_count": 0,
+      "tool_requested_blocking_questions_observed": 0,
+      "coverage": "retained main transcript interval; interrupted without final response, so no claim about unrecorded output",
+      "cli_final_response_matches": [],
+      "message_evidence": []
+    },
+    {
+      "label": "02-specify-retry",
+      "started": "2026-10-20T06:24:38.7683176-05:00",
+      "ended": "2026-10-20T06:29:52.8548217-05:00",
+      "session_ids": [
+        "96f502f6-681b-4f27-b1a6-6638c9c32c3d"
+      ],
+      "retained_transcript_paths": [
+        "gemini-home/.gemini/tmp/spec-kit/chats/session-2026-10-20T11-24-96f502f6.jsonl",
+        "transcripts-archive/session-2026-10-20T11-24-96f502f6.8B770F6F1AEA2AAB.jsonl"
+      ],
+      "natural_language_message_count": 1,
+      "tool_requested_blocking_questions_observed": 0,
+      "coverage": "retained main transcript interval and matching completed CLI final response",
+      "cli_final_response_matches": [
+        "0510a5d9-9756-4233-aec7-155cc5667659"
+      ],
+      "message_evidence": [
+        {
+          "response_id": "0510a5d9-9756-4233-aec7-155cc5667659",
+          "session_id": "96f502f6-681b-4f27-b1a6-6638c9c32c3d",
+          "timestamp": "2026-10-20T11:29:52.778Z",
+          "transcript_copies": [
+            "gemini-home/.gemini/tmp/spec-kit/chats/session-2026-10-20T11-24-96f502f6.jsonl",
+            "transcripts-archive/session-2026-10-20T11-24-96f502f6.8B770F6F1AEA2AAB.jsonl"
+          ],
+          "decoded_text_utf8_sha256": "D00B58093374D9B671927BB9FE5BCB771BA4ED0F99D71786834CAAEC21E63ED9",
+          "characters": 2199,
+          "snippet": "## Feature Specification Created & Validated\n\nWe have successfully researched, drafted, and validated the brownfield specification for extending the **Stage 1 Option A Tetris** implementation to **Stage 2 Option A**.\n\n### Directory & File Locations\n* **Feature",
+          "adjudication": "completion report and workflow handoff; no request for user clarification",
+          "blocking_question_count": 0
+        }
+      ]
+    },
+    {
+      "label": "03-contract-clarification",
+      "started": "2026-10-20T06:31:05.5286530-05:00",
+      "ended": "2026-10-20T06:38:01.9564228-05:00",
+      "session_ids": [
+        "12a3f237-0e16-4ff0-af81-a27cd34444c7"
+      ],
+      "retained_transcript_paths": [
+        "gemini-home/.gemini/tmp/spec-kit/chats/session-2026-10-20T11-31-12a3f237.jsonl",
+        "transcripts-archive/session-2026-10-20T11-31-12a3f237.7BAF3DF5C2ADE6E4.jsonl"
+      ],
+      "natural_language_message_count": 0,
+      "tool_requested_blocking_questions_observed": 0,
+      "coverage": "retained main transcript interval; interrupted without final response, so no claim about unrecorded output",
+      "cli_final_response_matches": [],
+      "message_evidence": []
+    },
+    {
+      "label": "04-plan",
+      "started": "2026-10-20T06:38:17.4841361-05:00",
+      "ended": "2026-10-20T06:49:28.7575019-05:00",
+      "session_ids": [
+        "261670ce-7c76-40eb-90ef-cdd79252dfcc"
+      ],
+      "retained_transcript_paths": [
+        "gemini-home/.gemini/tmp/spec-kit/chats/session-2026-10-20T11-38-261670ce.jsonl",
+        "transcripts-archive/session-2026-10-20T11-38-261670ce.28275FCDC84E6205.jsonl"
+      ],
+      "natural_language_message_count": 3,
+      "tool_requested_blocking_questions_observed": 0,
+      "coverage": "retained main transcript interval and matching completed CLI final response",
+      "cli_final_response_matches": [
+        "c28cb12f-8dd4-43b5-a4b6-7ecd912ff248"
+      ],
+      "message_evidence": [
+        {
+          "response_id": "5c1b0ebc-9f2f-44c5-984e-c6ec62b4b007",
+          "session_id": "261670ce-7c76-40eb-90ef-cdd79252dfcc",
+          "timestamp": "2026-10-20T11:39:06.339Z",
+          "transcript_copies": [
+            "gemini-home/.gemini/tmp/spec-kit/chats/session-2026-10-20T11-38-261670ce.jsonl",
+            "transcripts-archive/session-2026-10-20T11-38-261670ce.28275FCDC84E6205.jsonl"
+          ],
+          "decoded_text_utf8_sha256": "30A88FDFEC5B6A196DF6A03B037E451E53F6D867DCC9B18DEE89219558B9A56E",
+          "characters": 245,
+          "snippet": "I will execute the setup-plan.ps1 script using PowerShell. This script initializes the implementation plan and workspace folder for our feature (specs/002-extend-tetris-stage2), copying templates and returning configuration paths in JSON format.",
+          "adjudication": "progress statement about setup-plan script",
+          "blocking_question_count": 0
+        },
+        {
+          "response_id": "747b4461-89e8-4d4c-8612-7502bbbc4960",
+          "session_id": "261670ce-7c76-40eb-90ef-cdd79252dfcc",
+          "timestamp": "2026-10-20T11:39:35.580Z",
+          "transcript_copies": [
+            "gemini-home/.gemini/tmp/spec-kit/chats/session-2026-10-20T11-38-261670ce.jsonl",
+            "transcripts-archive/session-2026-10-20T11-38-261670ce.28275FCDC84E6205.jsonl"
+          ],
+          "decoded_text_utf8_sha256": "D4693EE33A68745C10A1B782109BD08569390C764B292360CD885E5E76E79761",
+          "characters": 114,
+          "snippet": "I will check the installed Python version to specify it accurately in the implementation plan's technical context.",
+          "adjudication": "progress statement about Python version read",
+          "blocking_question_count": 0
+        },
+        {
+          "response_id": "c28cb12f-8dd4-43b5-a4b6-7ecd912ff248",
+          "session_id": "261670ce-7c76-40eb-90ef-cdd79252dfcc",
+          "timestamp": "2026-10-20T11:49:28.671Z",
+          "transcript_copies": [
+            "gemini-home/.gemini/tmp/spec-kit/chats/session-2026-10-20T11-38-261670ce.jsonl",
+            "transcripts-archive/session-2026-10-20T11-38-261670ce.28275FCDC84E6205.jsonl"
+          ],
+          "decoded_text_utf8_sha256": "E032963167835F60F60E49E26CFFD5998C98CA773F8B4055BD62C0D0E694069C",
+          "characters": 1159,
+          "snippet": "## Stage 2 Tetris Specification Completed\n\n- **Branch**: `002-extend-tetris-stage2`\n- **Implementation Plan Path**: `specs/002-extend-tetris-stage2/plan.md`\n\n### Generated & Completed Artifacts:\n1. **Implementation Plan** (`plan.md`): Extended with Stage 2 tec",
+          "adjudication": "planning completion report",
+          "blocking_question_count": 0
+        }
+      ]
+    },
+    {
+      "label": "05-tasks",
+      "started": "2026-10-20T06:50:29.0810464-05:00",
+      "ended": "2026-10-20T06:55:33.7517127-05:00",
+      "session_ids": [
+        "57ca997e-3d9c-4d28-8189-f9eb9a9f34e8"
+      ],
+      "retained_transcript_paths": [
+        "gemini-home/.gemini/tmp/spec-kit/chats/session-2026-10-20T11-50-57ca997e.jsonl",
+        "transcripts-archive/session-2026-10-20T11-50-57ca997e.F41D2926EE110728.jsonl"
+      ],
+      "natural_language_message_count": 3,
+      "tool_requested_blocking_questions_observed": 0,
+      "coverage": "retained main transcript interval and matching completed CLI final response",
+      "cli_final_response_matches": [
+        "9d88ad81-73ae-4d66-822d-d12ad1f898cd"
+      ],
+      "message_evidence": [
+        {
+          "response_id": "1254eec3-7acc-41ad-a49d-5974f4a2911d",
+          "session_id": "57ca997e-3d9c-4d28-8189-f9eb9a9f34e8",
+          "timestamp": "2026-10-20T11:52:11.220Z",
+          "transcript_copies": [
+            "gemini-home/.gemini/tmp/spec-kit/chats/session-2026-10-20T11-50-57ca997e.jsonl",
+            "transcripts-archive/session-2026-10-20T11-50-57ca997e.F41D2926EE110728.jsonl"
+          ],
+          "decoded_text_utf8_sha256": "5E334DF097F5756392602D35CB9E975ECBB780F0AB3828BAD0405D72067FF53E",
+          "characters": 222,
+          "snippet": "I will now run the `setup-tasks.ps1` PowerShell script with the `-Json` flag. This script initializes the environment for task generation, providing critical path directories, template content, and available documentation.",
+          "adjudication": "progress statement about setup-tasks script",
+          "blocking_question_count": 0
+        },
+        {
+          "response_id": "f907d707-a98a-4962-b4ca-269f7bc31f69",
+          "session_id": "57ca997e-3d9c-4d28-8189-f9eb9a9f34e8",
+          "timestamp": "2026-10-20T11:54:28.411Z",
+          "transcript_copies": [
+            "gemini-home/.gemini/tmp/spec-kit/chats/session-2026-10-20T11-50-57ca997e.jsonl",
+            "transcripts-archive/session-2026-10-20T11-50-57ca997e.F41D2926EE110728.jsonl"
+          ],
+          "decoded_text_utf8_sha256": "48C4B3D359A6F1732C1E6C1887ED55C11FED43EB24A7CE51F171FC3B1531873F",
+          "characters": 237,
+          "snippet": "I will now generate the `tasks.md` file at `specs/002-extend-tetris-stage2/tasks.md` using the exact layout from the template, with every task formatted precisely according to the required checklist format and including exact file paths.",
+          "adjudication": "progress statement about writing tasks",
+          "blocking_question_count": 0
+        },
+        {
+          "response_id": "9d88ad81-73ae-4d66-822d-d12ad1f898cd",
+          "session_id": "57ca997e-3d9c-4d28-8189-f9eb9a9f34e8",
+          "timestamp": "2026-10-20T11:55:33.676Z",
+          "transcript_copies": [
+            "gemini-home/.gemini/tmp/spec-kit/chats/session-2026-10-20T11-50-57ca997e.jsonl",
+            "transcripts-archive/session-2026-10-20T11-50-57ca997e.F41D2926EE110728.jsonl"
+          ],
+          "decoded_text_utf8_sha256": "7CAB5169AA689783BB2A40A1E17BB1A1D8967ACA54265E1328A59386CC44FFC3",
+          "characters": 3166,
+          "snippet": "The Stage 2 Tetris implementation and regression task list has been successfully generated at **`specs/002-extend-tetris-stage2/tasks.md`**.\n\n### Summary of Generated Task List\n\n- **Total Task Count**: 26 tasks (`T001` - `T026`)\n- **Task Count per Phase / User",
+          "adjudication": "task-generation completion report",
+          "blocking_question_count": 0
+        }
+      ]
+    },
+    {
+      "label": "06-tasks-full-arguments",
+      "started": "2026-10-20T06:56:54.3854077-05:00",
+      "ended": "2026-10-20T06:56:54.4695657-05:00",
+      "session_ids": [],
+      "retained_transcript_paths": [],
+      "natural_language_message_count": 0,
+      "tool_requested_blocking_questions_observed": 0,
+      "coverage": "no model startup; zero follows launcher failure evidence",
+      "cli_final_response_matches": [],
+      "message_evidence": []
+    },
+    {
+      "label": "07-tasks-native-expanded",
+      "started": "2026-10-20T06:57:31.9906020-05:00",
+      "ended": "2026-10-20T07:06:37.3812634-05:00",
+      "session_ids": [
+        "cf453998-9126-4003-a157-f60f0914f4dd"
+      ],
+      "retained_transcript_paths": [
+        "gemini-home/.gemini/tmp/spec-kit/chats/session-2026-10-20T11-57-cf453998.jsonl",
+        "transcripts-archive/session-2026-10-20T11-57-cf453998.A0E9068FD9DD20F4.jsonl"
+      ],
+      "natural_language_message_count": 5,
+      "tool_requested_blocking_questions_observed": 0,
+      "coverage": "retained main transcript interval and matching completed CLI final response",
+      "cli_final_response_matches": [
+        "ae71f8ca-c078-430d-934c-1d4d0dacf803"
+      ],
+      "message_evidence": [
+        {
+          "response_id": "608b8deb-3801-4ee5-bba0-657942caf8f0",
+          "session_id": "cf453998-9126-4003-a157-f60f0914f4dd",
+          "timestamp": "2026-10-20T11:58:26.819Z",
+          "transcript_copies": [
+            "gemini-home/.gemini/tmp/spec-kit/chats/session-2026-10-20T11-57-cf453998.jsonl",
+            "transcripts-archive/session-2026-10-20T11-57-cf453998.A0E9068FD9DD20F4.jsonl"
+          ],
+          "decoded_text_utf8_sha256": "D2536FFD2A7D5F31763C00E1A3E0569D18076C6F499D91052843B0020167CAD2",
+          "characters": 185,
+          "snippet": "I will run the project's native setup-tasks script with the `-Json` flag. This script locates the feature folder and provides paths and templates to properly generate the Stage 2 tasks.",
+          "adjudication": "progress statement about native task setup",
+          "blocking_question_count": 0
+        },
+        {
+          "response_id": "7ee7b6c0-1379-4465-ada3-893811c885ff",
+          "session_id": "cf453998-9126-4003-a157-f60f0914f4dd",
+          "timestamp": "2026-10-20T11:59:07.101Z",
+          "transcript_copies": [
+            "gemini-home/.gemini/tmp/spec-kit/chats/session-2026-10-20T11-57-cf453998.jsonl",
+            "transcripts-archive/session-2026-10-20T11-57-cf453998.A0E9068FD9DD20F4.jsonl"
+          ],
+          "decoded_text_utf8_sha256": "0DB36818EA342D36414908AEEBBE8D247096D0F521E5476EC2E3CD19C51B5166",
+          "characters": 235,
+          "snippet": "I will run a PowerShell command to view the first 20 lines of the ignored `docs/sonar-baseline/sonar-issues.json` file. This allows us to inspect the SonarQube baseline issues so that we can accurately represent them in the tasks list.",
+          "adjudication": "progress statement about reading baseline issues",
+          "blocking_question_count": 0
+        },
+        {
+          "response_id": "99e26f4d-5dc4-4252-b06c-a6476aabbbcb",
+          "session_id": "cf453998-9126-4003-a157-f60f0914f4dd",
+          "timestamp": "2026-10-20T11:59:10.335Z",
+          "transcript_copies": [
+            "gemini-home/.gemini/tmp/spec-kit/chats/session-2026-10-20T11-57-cf453998.jsonl",
+            "transcripts-archive/session-2026-10-20T11-57-cf453998.A0E9068FD9DD20F4.jsonl"
+          ],
+          "decoded_text_utf8_sha256": "3D88CC4CE85C5C61D598878C41D4B6F96E586B374712CE6D143C4677BF969452",
+          "characters": 191,
+          "snippet": "I will run a PowerShell command to view the remaining lines of the `docs/sonar-baseline/sonar-issues.json` file to list all baseline SonarQube quality and code smell issues we must remediate.",
+          "adjudication": "progress statement about reading remaining issues",
+          "blocking_question_count": 0
+        },
+        {
+          "response_id": "7e6ebfbc-df6d-49df-8323-82d5956f870b",
+          "session_id": "cf453998-9126-4003-a157-f60f0914f4dd",
+          "timestamp": "2026-10-20T11:59:21.426Z",
+          "transcript_copies": [
+            "gemini-home/.gemini/tmp/spec-kit/chats/session-2026-10-20T11-57-cf453998.jsonl",
+            "transcripts-archive/session-2026-10-20T11-57-cf453998.A0E9068FD9DD20F4.jsonl"
+          ],
+          "decoded_text_utf8_sha256": "F2A715994133F06FD78933F2C590CF26380C9FDC4A40BB751EED39A6ABE059BB",
+          "characters": 147,
+          "snippet": "I will run a PowerShell command to skipping the first 170 lines of the `docs/sonar-baseline/sonar-issues.json` file to list the rest of the issues.",
+          "adjudication": "progress statement about reading remaining issues",
+          "blocking_question_count": 0
+        },
+        {
+          "response_id": "ae71f8ca-c078-430d-934c-1d4d0dacf803",
+          "session_id": "cf453998-9126-4003-a157-f60f0914f4dd",
+          "timestamp": "2026-10-20T12:06:37.273Z",
+          "transcript_copies": [
+            "gemini-home/.gemini/tmp/spec-kit/chats/session-2026-10-20T11-57-cf453998.jsonl",
+            "transcripts-archive/session-2026-10-20T11-57-cf453998.A0E9068FD9DD20F4.jsonl"
+          ],
+          "decoded_text_utf8_sha256": "A261E2F163F1161FAEA623EA3E245F3967A89DE484B8E3244B57EAD6509535FC",
+          "characters": 4565,
+          "snippet": "## Specification Revision and Task Generation Completed\n\nAll Stage 2 specification files under `specs/002-extend-tetris-stage2/` have been successfully revised, corrected, and synchronized with the authoritative Stage 2 rules and SonarQube quality baselines. N",
+          "adjudication": "completion report; question marks occur only in quoted task-format placeholders",
+          "blocking_question_count": 0
+        }
+      ]
+    },
+    {
+      "label": "08-implement",
+      "started": "2026-10-20T07:07:23.2772934-05:00",
+      "ended": "2026-10-20T07:55:29.1477903-05:00",
+      "session_ids": [
+        "c8b0393f-008f-46cb-9fc0-fe7d4e186ded"
+      ],
+      "retained_transcript_paths": [
+        "gemini-home/.gemini/tmp/spec-kit/chats/session-2026-10-20T12-07-c8b0393f.jsonl",
+        "transcripts-archive/session-2026-10-20T12-07-c8b0393f.8F356DEC5678770D.jsonl",
+        "transcripts-archive/session-2026-10-20T12-07-c8b0393f.EE6475772BA480AA.jsonl"
+      ],
+      "natural_language_message_count": 1,
+      "tool_requested_blocking_questions_observed": 0,
+      "coverage": "retained main transcript interval and matching completed CLI final response",
+      "cli_final_response_matches": [
+        "8e6c1797-4a72-4765-8316-c5c0d8ee5154"
+      ],
+      "message_evidence": [
+        {
+          "response_id": "8e6c1797-4a72-4765-8316-c5c0d8ee5154",
+          "session_id": "c8b0393f-008f-46cb-9fc0-fe7d4e186ded",
+          "timestamp": "2026-10-20T12:55:28.942Z",
+          "transcript_copies": [
+            "gemini-home/.gemini/tmp/spec-kit/chats/session-2026-10-20T12-07-c8b0393f.jsonl",
+            "transcripts-archive/session-2026-10-20T12-07-c8b0393f.8F356DEC5678770D.jsonl"
+          ],
+          "decoded_text_utf8_sha256": "75A69ED26E60CA458BFFB3755A4809077B2BC8317D120331A1B7DBF84330E8C8",
+          "characters": 4571,
+          "snippet": "I have successfully implemented every Stage 2 task in `specs/002-extend-tetris-stage2/tasks.md` and verified them against your specifications.\n\n### Summary of Completed Work\n\n1. **Foundational Schema Setup** (Phase 2):\n   - Added strict validation models on th",
+          "adjudication": "implementation completion self-report; no request for user clarification",
+          "blocking_question_count": 0
+        }
+      ]
+    }
+  ],
+  "external_researcher_clarifications": [
+    {
+      "label": "03-contract-clarification",
+      "kind": "standalone researcher clarification prompt",
+      "intended_input_path": "03-contract-clarification.prompt.txt",
+      "clarification_utf8_sha256": "A53B9D506E52260324BF3DBCAE8AEDF157A512CAAE2307364FE057B409186CB9",
+      "snippet": "Clarify and revise ONLY the native Stage 2 specification and requirements checklist in specs/002-extend-tetris-stage2 before planning. The frozen seed is authoritative. Every game-state response must use the exact new JSON keys score, total_lines, level, gravity_interval_ms, next_piece, hold_piece, ",
+      "effective_first_input_session_id": "12a3f237-0e16-4ff0-af81-a27cd34444c7",
+      "effective_first_input_timestamp": "2026-10-20T11:31:07.390Z",
+      "complete_clarification_in_effective_first_input": true,
+      "delivery_status": "verified in retained first input",
+      "reply_to_observed_blocking_tool_question": false
+    },
+    {
+      "label": "05-tasks",
+      "kind": "researcher clarification appended to a native workflow attempt",
+      "intended_input_path": "05-tasks.prompt.txt",
+      "clarification_utf8_sha256": "AB3C8854F4DAE132EE46DAF88EC0E68CE87107C15925D881197B5BDA2172214D",
+      "snippet": "Before writing tasks, revise native artifacts to remove the newly invented less-than-5-ms performance target in plan.md; the seed sets functional gravity intervals, not request latency limits. Fix data-model.md diagram names nextPiece/holdPiece to next_piece/hold_piece and the I-piece example origin",
+      "effective_first_input_session_id": "57ca997e-3d9c-4d28-8189-f9eb9a9f34e8",
+      "effective_first_input_timestamp": "2026-10-20T11:50:31.453Z",
+      "complete_clarification_in_effective_first_input": false,
+      "delivery_status": "absent from retained first input; launcher truncation documented",
+      "reply_to_observed_blocking_tool_question": false
+    },
+    {
+      "label": "06-tasks-full-arguments",
+      "kind": "researcher clarification appended to a native workflow attempt",
+      "intended_input_path": "06-tasks-full-arguments.request.txt",
+      "clarification_utf8_sha256": "188301A2B1EE11ABF5DC6A7BA17B12C41C6DCD5B62BDB7E605877F36532FF838",
+      "snippet": "This retry preserves the entire multiline input that the headless slash parser previously truncated. First revise native artifacts: remove the invented less-than-5-ms performance target from plan.md; correct nextPiece/holdPiece in the data-model diagram to next_piece/hold_piece and correct the I-pie",
+      "effective_first_input_session_id": null,
+      "effective_first_input_timestamp": null,
+      "complete_clarification_in_effective_first_input": false,
+      "delivery_status": "model did not start",
+      "reply_to_observed_blocking_tool_question": false
+    },
+    {
+      "label": "07-tasks-native-expanded",
+      "kind": "researcher clarification appended to a native workflow attempt",
+      "intended_input_path": "07-tasks-native-expanded.request.txt",
+      "clarification_utf8_sha256": "188301A2B1EE11ABF5DC6A7BA17B12C41C6DCD5B62BDB7E605877F36532FF838",
+      "snippet": "This retry preserves the entire multiline input that the headless slash parser previously truncated. First revise native artifacts: remove the invented less-than-5-ms performance target from plan.md; correct nextPiece/holdPiece in the data-model diagram to next_piece/hold_piece and correct the I-pie",
+      "effective_first_input_session_id": "cf453998-9126-4003-a157-f60f0914f4dd",
+      "effective_first_input_timestamp": "2026-10-20T11:57:33.830Z",
+      "complete_clarification_in_effective_first_input": true,
+      "delivery_status": "verified in retained first input",
+      "reply_to_observed_blocking_tool_question": false
+    },
+    {
+      "label": "08-implement",
+      "kind": "researcher clarification appended to a native workflow attempt",
+      "intended_input_path": "08-implement.request.txt",
+      "clarification_utf8_sha256": "9FC9C8014AE701E108E4247DBDF7BAC18CE72D7612BE28A31DC0D96A10208FC6",
+      "snippet": "Execute all revised tasks sequentially in this session without delegating to other agents. The user already authorized the complete local implementation. Before code changes, add the quality verification criteria from the revised tasks to a clearly labeled section of the native Stage 2 specification",
+      "effective_first_input_session_id": "c8b0393f-008f-46cb-9fc0-fe7d4e186ded",
+      "effective_first_input_timestamp": "2026-10-20T12:07:25.107Z",
+      "complete_clarification_in_effective_first_input": true,
+      "delivery_status": "verified in retained first input",
+      "reply_to_observed_blocking_tool_question": false
+    }
+  ],
+  "interactive_question_tool_crosscheck": {
+    "observed_tool_names": [
+      "glob",
+      "grep_search",
+      "list_directory",
+      "read_file",
+      "replace",
+      "run_shell_command",
+      "update_topic",
+      "write_file"
+    ],
+    "known_interactive_question_tool_names_observed": [],
+    "scope": "crosscheck of actual emitted function-call names in closed main transcript intervals; not a count of template/tool-documentation mentions"
+  }
+}

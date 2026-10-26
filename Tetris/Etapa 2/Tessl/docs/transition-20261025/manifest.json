@@ -1,0 +1,95 @@
+{
+  "researcher_created": true,
+  "created_at_utc": "2026-10-25T16:20:41.970965+00:00",
+  "status": "prepared_and_published_awaiting_OAuth_approval",
+  "model_invocations_on_new_project": 0,
+  "files": [
+    {
+      "path": "transition-20261025/baseline-drive-publication.json",
+      "bytes": 1506,
+      "sha256": "5798CFA3EB6A5F377D34271957E57316A764CB08C0C4BFA897B66FF00D48889D"
+    },
+    {
+      "path": "transition-20261025/baseline-reverification.json",
+      "bytes": 8552,
+      "sha256": "3FB335081F106535725F4D99BA4A453B0D152DE9D6740D53CB70E4322D1AB954"
+    },
+    {
+      "path": "transition-20261025/drive-publication.json",
+      "bytes": 492,
+      "sha256": "7569D9A72D666CAD6FA89A1E432D07DD0B6D1C3BF6E144DE84E28451659AF0DD"
+    },
+    {
+      "path": "transition-20261025/project-change.json",
+      "bytes": 2734,
+      "sha256": "8B2048C99C0295691CF28722BD7C275908C166F583A75EBAEBE158B84A510ED1"
+    },
+    {
+      "path": "transition-20261025/publication-qa/page-54.png",
+      "bytes": 293090,
+      "sha256": "49A8B86E45E619AB2C587991898407625FD456659BDE28D2C72BEA93AF19A510"
+    },
+    {
+      "path": "transition-20261025/publication-qa/page-55.png",
+      "bytes": 173996,
+      "sha256": "2D1212D11C0E68B8656694550CFAB7046953CA144BE6383EB37098395851FB74"
+    },
+    {
+      "path": "transition-20261025/publication-qa/resume-document.pdf",
+      "bytes": 2471673,
+      "sha256": "68A43F1A8E14AA708816B63380DEA9321D1507DBBD076FB54204F4F20CAEC396"
+    },
+    {
+      "path": "transition-20261025/quota-normal-verification.json",
+      "bytes": 246,
+      "sha256": "70B5C0F748B774A4A87E32A626AC96D0A371D4846CD54C137DDDB3BF093EB761"
+    },
+    {
+      "path": "transition-20261025/retained-input-audit.json",
+      "bytes": 4174,
+      "sha256": "618A510B112487F80AA2B05EE5B41A0F88B74545C5115ED42F67591A99D6CB0E"
+    },
+    {
+      "path": "transition-20261025/retained-metrics.json",
+      "bytes": 56156,
+      "sha256": "816244225FC8595EADBE3F519D49C66C2BF903561F01CEA66F7F3CFF57A5C031"
+    },
+    {
+      "path": "transition-20261025/retained-question-audit.json",
+      "bytes": 16462,
+      "sha256": "4CA7E0FA7DE41D26EBE38AF12F5ED737A16CBB3D5634CBC3035DDAF12E7E4AA4"
+    },
+    {
+      "path": "transition-20261025/retained-run-classifications.json",
+      "bytes": 662,
+      "sha256": "E845CFA7E6423ADFA46EF2CCF00878D4FF421F7419F26EBD0C2AF291934EF304"
+    },
+    {
+      "path": "transition-20261025/run-tessl-before-project-change.ps1",
+      "bytes": 7069,
+      "sha256": "38D9886899D140113076F8EF624FDC209EB17B415C231CF32B451CABE71F6F8D"
+    },
+    {
+      "path": "screenshots/resume-baseline-researcher-view-20261025.jpg",
+      "bytes": 91998,
+      "sha256": "629528033D2CA01C6857352838117CA2F5037C2101875FD02C24A3F50F288181"
+    },
+    {
+      "path": "evidence-view/resume-baseline.html",
+      "bytes": 2908,
+      "sha256": "C58F52822FD800D8A33BB9CF867240F2CF388A952E9DF3CA742FA1D2E89BC31A"
+    },
+    {
+      "path": "evidence-view/resume-baseline-manifest.json",
+      "bytes": 910,
+      "sha256": "48DE08E8472A8A1A1C27051B442C87F342746B1F2EC5344479F4806BF5821965"
+    },
+    {
+      "path": "sonar-baseline/baseline-verification.json",
+      "bytes": 1525,
+      "sha256": "15D8A05B9F82EC7279B36D30DEA149DE24004EFAD3760A64E01E47E480407A25"
+    }
+  ],
+  "credentials_excluded": true,
+  "original_source_snapshot": "before-last-mile-20261025/manifest.json"
+}

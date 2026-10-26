@@ -1,0 +1,1 @@
+Command: pytest --cov=app --cov-report=xml:../docs/coverage.xml\nTimestamp: 2026-10-25 16:27:10\nDuration: 1.46s\nExit Code: 0\nOutput Summary: 23 passed, 1 warning. Generated fresh backend XML coverage report in docs/coverage.xml.

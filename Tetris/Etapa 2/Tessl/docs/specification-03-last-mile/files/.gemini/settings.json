@@ -1,0 +1,27 @@
+{
+  "general": {
+    "plan": {
+      "modelRouting": false
+    }
+  },
+  "context": {
+    "fileFiltering": {
+      "respectGitIgnore": true,
+      "respectGeminiIgnore": true
+    }
+  },
+  "mcpServers": {
+    "tessl": {
+      "type": "stdio",
+      "command": "C:\\Users\\Kevin Alvarez\\AppData\\Local\\tessl\\versions\\tessl-0.112.0-win32-x64.exe",
+      "args": [
+        "mcp",
+        "start"
+      ],
+      "env": {
+        "TESSL_AUTO_UPDATE_INTERVAL_MINUTES": "0",
+        "TESSL_DISABLE_UPDATE": "1"
+      }
+    }
+  }
+}

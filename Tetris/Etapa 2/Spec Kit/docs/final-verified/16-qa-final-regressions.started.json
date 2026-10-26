@@ -1,0 +1,8 @@
+{
+  "label": "16-qa-final-regressions",
+  "workflow": "clarify",
+  "started": "2026-10-21T00:23:20.7672460-05:00",
+  "prompt_sha256": "46BEDA71EEAA95620B270BEFB7C47E450001201590833736FD51D4DFE4B815BB",
+  "seed_sha256": "63919779DD4104076FBABCB130CE296A160FA840E0B4755A2AA5D90757ADA8EF",
+  "submission_method": "direct clarification prompt"
+}

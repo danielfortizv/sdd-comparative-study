@@ -1,0 +1,207 @@
+{
+  "version": "1.2",
+  "researcher_created": true,
+  "measured_at_utc": "2026-10-25T21:31:48.050940+00:00",
+  "checker_sha256": "BE6E4EA362726AEC990D0D5D456BF5E15D5071BBAD1436F6FE9C1E77B6A83F3E",
+  "parent_version": "1.1",
+  "parent_version_sha256": "8A45D6B0E8EFA52F12605C262664409E51759EF0CCCF12B88D12A3B7FC7ADC4E",
+  "base_url": "http://127.0.0.1:8000",
+  "expected_create_http_status": 200,
+  "observed_create_http_statuses": [
+    200,
+    200
+  ],
+  "http_status_normalization": false,
+  "scope": "Same seven gameplay records covering eight catalog IDs as v1.1; not the full twenty-case acceptance catalog",
+  "http_observations": [
+    {
+      "method": "POST",
+      "path": "/api/games",
+      "actual_http_status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/games/2e6bf22e-b23d-49eb-99ac-4bf371f4b32f",
+      "actual_http_status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/games/2e6bf22e-b23d-49eb-99ac-4bf371f4b32f",
+      "actual_http_status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/api/games/2e6bf22e-b23d-49eb-99ac-4bf371f4b32f/hold",
+      "actual_http_status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/api/games/2e6bf22e-b23d-49eb-99ac-4bf371f4b32f/hold",
+      "actual_http_status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/games/2e6bf22e-b23d-49eb-99ac-4bf371f4b32f",
+      "actual_http_status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/api/games/2e6bf22e-b23d-49eb-99ac-4bf371f4b32f/tick",
+      "actual_http_status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/api/games/2e6bf22e-b23d-49eb-99ac-4bf371f4b32f/tick",
+      "actual_http_status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/api/games/2e6bf22e-b23d-49eb-99ac-4bf371f4b32f/tick",
+      "actual_http_status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/api/games/2e6bf22e-b23d-49eb-99ac-4bf371f4b32f/tick",
+      "actual_http_status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/api/games/2e6bf22e-b23d-49eb-99ac-4bf371f4b32f/tick",
+      "actual_http_status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/api/games/2e6bf22e-b23d-49eb-99ac-4bf371f4b32f/tick",
+      "actual_http_status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/api/games/2e6bf22e-b23d-49eb-99ac-4bf371f4b32f/tick",
+      "actual_http_status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/api/games/2e6bf22e-b23d-49eb-99ac-4bf371f4b32f/tick",
+      "actual_http_status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/api/games/2e6bf22e-b23d-49eb-99ac-4bf371f4b32f/tick",
+      "actual_http_status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/api/games/2e6bf22e-b23d-49eb-99ac-4bf371f4b32f/tick",
+      "actual_http_status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/api/games/2e6bf22e-b23d-49eb-99ac-4bf371f4b32f/tick",
+      "actual_http_status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/api/games/2e6bf22e-b23d-49eb-99ac-4bf371f4b32f/tick",
+      "actual_http_status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/api/games/2e6bf22e-b23d-49eb-99ac-4bf371f4b32f/tick",
+      "actual_http_status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/api/games/2e6bf22e-b23d-49eb-99ac-4bf371f4b32f/tick",
+      "actual_http_status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/api/games/2e6bf22e-b23d-49eb-99ac-4bf371f4b32f/tick",
+      "actual_http_status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/api/games/2e6bf22e-b23d-49eb-99ac-4bf371f4b32f/tick",
+      "actual_http_status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/api/games/2e6bf22e-b23d-49eb-99ac-4bf371f4b32f/tick",
+      "actual_http_status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/api/games/2e6bf22e-b23d-49eb-99ac-4bf371f4b32f/tick",
+      "actual_http_status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/api/games/2e6bf22e-b23d-49eb-99ac-4bf371f4b32f/tick",
+      "actual_http_status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/api/games/2e6bf22e-b23d-49eb-99ac-4bf371f4b32f/hold",
+      "actual_http_status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/api/games",
+      "actual_http_status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/games/not-a-real-session",
+      "actual_http_status": 404
+    },
+    {
+      "method": "POST",
+      "path": "/api/games/not-a-real-session/hold",
+      "actual_http_status": 404
+    }
+  ],
+  "cases": [
+    {
+      "id": "S2-01",
+      "status": "pass",
+      "detail": "new game fields, board and tetromino types valid",
+      "duration_ms": 46.52
+    },
+    {
+      "id": "S2-02",
+      "status": "pass",
+      "detail": "two reads preserved full state",
+      "duration_ms": 30.68
+    },
+    {
+      "id": "S2-10",
+      "status": "pass",
+      "detail": "first hold consumed preview and entered cooldown",
+      "duration_ms": 1.82
+    },
+    {
+      "id": "S2-11",
+      "status": "pass",
+      "detail": "second hold rejected with HTTP 200; state preserved",
+      "duration_ms": 2.74
+    },
+    {
+      "id": "S2-03/S2-12",
+      "status": "pass",
+      "detail": "lock reset hold; swap preserved preview, score and line count",
+      "duration_ms": 52.04
+    },
+    {
+      "id": "S2-15",
+      "status": "pass",
+      "detail": "restart restored all Stage 2 defaults",
+      "duration_ms": 1.38
+    },
+    {
+      "id": "S2-16",
+      "status": "pass",
+      "detail": "missing game GET and hold return 404",
+      "duration_ms": 3.28
+    }
+  ]
+}

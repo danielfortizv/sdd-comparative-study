@@ -1,0 +1,12 @@
+Corpus y límites del estudio
+El corpus final incluye sólo Markdown nativo de la feature, tanto por archivo como unificado,
+con manifiesto y hashes en bertopic-corpus/final/. Excluye JSON/OpenAPI, documentación
+del investigador, transcritos, templates y código de aplicación. No se ha ajustado un modelo
+BERTopic ni se atribuyen temas, embeddings o puntajes a esta preparación.
+Corpus: ocho archivos Markdown; 89,446 caracteres en unified.md. SHA-256 UTF-8/LF:
+9FECBDB40308BC9306A708FF8C44E26F63BD8CC979F4388F3875E50B4DCD04FB.
+Generaciones 08 y 16 permanecen como snapshots separados.
+No se estima tiempo humano, costo global, escalabilidad ni actividad oculta. Los transcritos
+interrumpidos, el uso auxiliar y las diferencias de conservación entre herramientas
+permanecen documentados. Una afirmación futura sobre otro código requiere repetir las
+comprobaciones que cambien de alcance.

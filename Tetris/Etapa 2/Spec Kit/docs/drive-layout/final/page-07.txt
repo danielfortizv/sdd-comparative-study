@@ -1,0 +1,2 @@
+Captura 2. Panel de métricas de sesiones y artefactos, generado localmente desde los
+registros originales. Archivo: OpenSpec/docs/screenshots/metrics-panel.png.

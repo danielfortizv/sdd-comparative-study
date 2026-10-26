@@ -1,0 +1,17 @@
+{
+  "workflow": "clarify",
+  "submission_method": "direct clarification prompt",
+  "launcher": "node direct to pinned Gemini CLI entrypoint, avoiding cmd.exe length limit",
+  "label": "10-qa-race-correction",
+  "prompt_sha256": "212CD05E86F2C4532D5DEDA5E1C3F12177D7240BDA4B13F86A3FE6752EE681B0",
+  "seed_sha256": "63919779DD4104076FBABCB130CE296A160FA840E0B4755A2AA5D90757ADA8EF",
+  "requested_model": "gemini-3.5-flash",
+  "cli_version": "0.60.0",
+  "spec_kit_version": "1.0.12",
+  "started": "2026-10-20T20:17:28.7238915-05:00",
+  "ended": "2026-10-20T20:25:03.7793270-05:00",
+  "duration_seconds": 455.055,
+  "exit_code": 0,
+  "stdout": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\Spec Kit\\docs\\10-qa-race-correction.stdout.json",
+  "stderr": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\Spec Kit\\docs\\10-qa-race-correction.stderr.txt"
+}

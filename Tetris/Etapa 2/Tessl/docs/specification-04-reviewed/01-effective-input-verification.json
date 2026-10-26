@@ -1,0 +1,28 @@
+{
+  "researcher_created": true,
+  "verified_at_utc": "2026-10-21T14:35:35.301185+00:00",
+  "label": "01-specify",
+  "invocation_status_at_verification": "active; input delivery only, no usage closure claim",
+  "session_id": "08c8cdbc-c131-4ede-9b86-b365f410cbd7",
+  "timestamp": "2026-10-21T14:30:38.224Z",
+  "transcript_copies": [
+    "gemini-home/.gemini/tmp/tessl/chats/session-2026-10-21T14-30-08c8cdbc.jsonl"
+  ],
+  "raw_utf8_sha256": "BFF90383515B217A2FAB69C2732D48B6CFF185EDFDE9D5C108236B3B8103AF00",
+  "raw_characters": 6506,
+  "normalized_utf8_sha256": "BFF90383515B217A2FAB69C2732D48B6CFF185EDFDE9D5C108236B3B8103AF00",
+  "normalized_characters": 6506,
+  "intended_prompt_sha256": "BFF90383515B217A2FAB69C2732D48B6CFF185EDFDE9D5C108236B3B8103AF00",
+  "exact_normalized_prompt_match": true,
+  "complete_seed_present": true,
+  "seed_paragraphs_present": [
+    1,
+    2,
+    3,
+    4,
+    5
+  ],
+  "seed_file_sha256": "63919779DD4104076FBABCB130CE296A160FA840E0B4755A2AA5D90757ADA8EF",
+  "seed_block_utf8_sha256": "60D6728689CD5CDAD7B1A386F95DAD4E34850EB5DE0AAB92E837D630DFD2B55A",
+  "scope": "First retained effective user text in Tessl01 interval. Framework code reused for measurement only; no other tool app/spec content is read or supplied to Gemini."
+}

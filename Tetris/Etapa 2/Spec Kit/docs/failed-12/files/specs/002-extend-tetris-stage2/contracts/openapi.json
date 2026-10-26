@@ -1,0 +1,376 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Tetris Core Stage 2 API",
+    "description": "Stateless in-memory REST API for single-player Tetris extended with scoring, leveling, next-piece preview, and a piece hold mechanic.",
+    "version": "1.0.0"
+  },
+  "paths": {
+    "/api/games": {
+      "post": {
+        "summary": "Create a new game session",
+        "description": "Initializes a 10x20 empty board, resets scores, sets gravity speed to 500ms, and spawns the first random active piece and queues the next piece.",
+        "responses": {
+          "201": {
+            "description": "Game session successfully created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GameSession"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/games/{id}": {
+      "get": {
+        "summary": "Retrieve game session state",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "The unique game session identifier"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful retrieval of game session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GameSession"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Game session not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/games/{id}/tick": {
+      "post": {
+        "summary": "Execute a gravity tick",
+        "description": "Advances the active piece downward by 1 row. If contact with bottom or block occurs, locks the piece, checks line clearing, updates score/lines/level, and spawns the next piece from the queue.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "The unique game session identifier"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Game session updated successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GameSession"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Game session not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/games/{id}/move": {
+      "post": {
+        "summary": "Command manual movement",
+        "description": "Shifts the active piece 'left', 'right', or 'down' (soft drop). Downward manual moves do not lock blocks or trigger scoring.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "The unique game session identifier"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/MoveRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Game session updated successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GameSession"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Game session not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/games/{id}/hold": {
+      "post": {
+        "summary": "Hold/Swap the active piece",
+        "description": "Saves the active piece to the Hold slot and retrieves/spawns the held piece, or spawns the next piece from the queue. Only allowed once per spawned piece.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "The unique game session identifier"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Game session updated successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GameSession"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Game session not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPError"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Tetromino": {
+        "type": "object",
+        "required": ["type", "cells", "origin"],
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": ["I", "O", "T", "S", "Z", "J", "L"],
+            "description": "One-letter tetromino identifier"
+          },
+          "cells": {
+            "type": "array",
+            "items": {
+              "type": "array",
+              "items": {
+                "type": "integer"
+              },
+              "minItems": 2,
+              "maxItems": 2
+            },
+            "description": "4-cell array of [row, col] coordinates"
+          },
+          "origin": {
+            "type": "array",
+            "items": {
+              "type": "integer"
+            },
+            "minItems": 2,
+            "maxItems": 2,
+            "description": "Rotation anchor [row, col] coordinate"
+          }
+        }
+      },
+      "GameSession": {
+        "type": "object",
+        "required": [
+          "id",
+          "board",
+          "status",
+          "score",
+          "total_lines",
+          "level",
+          "gravity_interval_ms",
+          "next_piece",
+          "can_hold"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Unique UUID representing the session"
+          },
+          "board": {
+            "type": "array",
+            "items": {
+              "type": "array",
+              "items": {
+                "type": "integer"
+              }
+            },
+            "description": "20x10 matrix representing the grid state (0=empty, 1-7=colors)"
+          },
+          "activePiece": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Tetromino"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "status": {
+            "type": "string",
+            "enum": ["playing", "game_over"],
+            "description": "Game progression status"
+          },
+          "score": {
+            "type": "integer",
+            "minimum": 0,
+            "description": "Cumulative points earned in session"
+          },
+          "total_lines": {
+            "type": "integer",
+            "minimum": 0,
+            "description": "Number of horizontal lines cleared"
+          },
+          "level": {
+            "type": "integer",
+            "minimum": 1,
+            "description": "Current difficulty level"
+          },
+          "gravity_interval_ms": {
+            "type": "integer",
+            "minimum": 100,
+            "maximum": 500,
+            "description": "Interval speed for gravity ticks (milliseconds)"
+          },
+          "next_piece": {
+            "type": "string",
+            "enum": ["I", "O", "T", "S", "Z", "J", "L"],
+            "description": "Next piece type queued to spawn"
+          },
+          "hold_piece": {
+            "type": "string",
+            "enum": ["I", "O", "T", "S", "Z", "J", "L"],
+            "nullable": true,
+            "description": "Currently held piece type, or null if empty"
+          },
+          "can_hold": {
+            "type": "boolean",
+            "description": "Whether player is allowed to perform a Hold swap action"
+          }
+        }
+      },
+      "MoveRequest": {
+        "type": "object",
+        "required": ["direction"],
+        "properties": {
+          "direction": {
+            "type": "string",
+            "enum": ["left", "right", "down"],
+            "description": "Direction of horizontal move or soft drop"
+          }
+        }
+      },
+      "HTTPError": {
+        "type": "object",
+        "required": ["detail"],
+        "properties": {
+          "detail": {
+            "type": "string"
+          }
+        }
+      },
+      "ValidationError": {
+        "type": "object",
+        "required": ["loc", "msg", "type"],
+        "properties": {
+          "loc": {
+            "type": "array",
+            "items": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "integer"
+                }
+              ]
+            }
+          },
+          "msg": {
+            "type": "string"
+          },
+          "type": {
+            "type": "string"
+          }
+        }
+      },
+      "HTTPValidationError": {
+        "type": "object",
+        "properties": {
+          "detail": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ValidationError"
+            }
+          }
+        }
+      }
+    }
+  }
+}

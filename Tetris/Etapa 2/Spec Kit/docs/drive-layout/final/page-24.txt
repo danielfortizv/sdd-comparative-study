@@ -1,0 +1,25 @@
+Tamaño, densidad y cambios de artefactos
+Se cuentan líneas físicas y caracteres Unicode tras quitar BOM y normalizar a LF. Densidad
+= líneas/archivo. Fuente incluye pruebas y configuración textual; Sonar analiza producción
+con un alcance diferente. Los deltas netos de caracteres reflejan tamaño de estado, no
+volumen acumulado de edición.
+Alcance Archivo Líneas Caracteres Líneas/archivo
+s
+Código Etapa 1 27 1.412 41.297 52,30
+Código final Etapa 2 29 3.972 122.186 136,97
+Specs Etapa 1 9 1.233 62.395 137,00
+Specs nativas Etapa 2 9 1.713 99.987 190,33
+Comparación Archivos + / − líneas Neto líneas Neto caracteres
+Código vs Etapa 1 16 2.643/83 2.560 80.889
+Specs Etapa 2 vs carpeta 9 1.713/0 1.713 99.987
+vacía
+Specs heredadas copiadas 0 0/0 0 0
+Código QA vs generación 9 1.975/159 1.816 58.197
+08
+Specs QA vs generación 2 223/0 223 20.410
+08
+La generación 08 congelada conserva el autoinforme inicial y su Sonar ERROR (57,1 %
+global; 44,9 % nuevo); sus declaraciones de LCOV y 96 % frontend no sustituyen los
+resultados independientes. Las correcciones posteriores y sus verificaciones se presentan
+con su propio estado. Las fuentes/especificaciones originales de Etapa 1 y su copia nativa
+se preservan.

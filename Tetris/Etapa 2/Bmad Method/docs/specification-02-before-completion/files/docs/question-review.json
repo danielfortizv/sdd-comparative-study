@@ -1,0 +1,64 @@
+{
+  "researcher_created": true,
+  "runs": {
+    "01-prd": {
+      "run_metadata_sha256": "103DCBD7E21F9C380F44C4558C9B310422899733E7FE492E0A46FC0C5EA08CE7",
+      "candidate_signature_sha256": "58548748DE9A1AE1857A8664917C34661365165BDD236D54CF7D837BC84872DC",
+      "reviewed_at_utc": "2026-10-26T01:17:55.618130+00:00",
+      "reviewer": "researcher",
+      "coverage_note": "Five complete main natural messages manually read, including final JSON status.0blockingrequests observed. No claim about unrecorded text. Artifact OpenQuestions answered inside docs are not emitted blocking questions. Technical quality claims adjudicated separately.",
+      "messages": {
+        "1f5c20cb-9a43-4b66-aa33-ebdd8bd9bfde/697c77e2-8b38-4ca5-9520-8e1580c5d4f0": {
+          "selected_text_sha256": "CFF8026F3A0C51EC1B34301871E73B249D6C82411AF90AD67C72E918343B97DB",
+          "blocking_question_count": 0,
+          "classification": "emitted_main_text",
+          "reason": "Full emitted progress/final text read; no request for missing user input."
+        },
+        "1f5c20cb-9a43-4b66-aa33-ebdd8bd9bfde/8d03a0ac-e61d-42a1-9119-a7cecdb9bc99": {
+          "selected_text_sha256": "4468ED570DB09B23948EFE7DDD652FE7496999381F351558A5948E0191D529C3",
+          "blocking_question_count": 0,
+          "classification": "emitted_main_text",
+          "reason": "Full emitted progress/final text read; no request for missing user input."
+        },
+        "1f5c20cb-9a43-4b66-aa33-ebdd8bd9bfde/1caf5bfa-0cd6-43f6-86b0-633c0aafe0d9": {
+          "selected_text_sha256": "D8198B7EC7751AD3CF01013EEBA03AA61EF17F53DD4AD2785906EB291AED19EC",
+          "blocking_question_count": 0,
+          "classification": "emitted_main_text",
+          "reason": "Full emitted progress/final text read; no request for missing user input."
+        },
+        "1f5c20cb-9a43-4b66-aa33-ebdd8bd9bfde/3e882ad0-0e57-4d84-b94a-a53d92b7b17f": {
+          "selected_text_sha256": "4919C336D9674D2315CAF1669394E1A60F69384ACF68A737E9D5F5AA8385F2EE",
+          "blocking_question_count": 0,
+          "classification": "emitted_main_text",
+          "reason": "Full emitted progress/final text read; no request for missing user input."
+        },
+        "1f5c20cb-9a43-4b66-aa33-ebdd8bd9bfde/d0ba9afe-b55e-4c2d-9de1-8e36e8886a8e": {
+          "selected_text_sha256": "9A8E860547BA8925E84EC6BD47DFA0B9952DAF2C9729F53D1CFC33939A4707F1",
+          "blocking_question_count": 0,
+          "classification": "emitted_main_text",
+          "reason": "Full emitted progress/final text read; no request for missing user input."
+        }
+      }
+    }
+  },
+  "prompts": {
+    "01-prd": {
+      "prompt_sha256": "548F15A5EAD08BF648D2F8FD1C203806D8F5D66CEC050C8EC6EBBF635682FEB2",
+      "kind": "initialnativePRDcreationwithcompatibilityclarifications",
+      "clarification_bearing": true,
+      "corrective_intent": false,
+      "reply_to_model_blocking_question": false,
+      "reviewed_at_utc": "2026-10-26T01:17:55.618130+00:00",
+      "reason": "Researcher-authored before implementation; fullseed retained, not response to a modelquestion."
+    },
+    "02-design-stories": {
+      "prompt_sha256": "08BA37A1E0739DCFDBEF66EA23D64323F507E44572F4C153F963DC19AAD73B59",
+      "kind": "preimplementationnativePRDrepairandarchitecture/stories",
+      "clarification_bearing": true,
+      "corrective_intent": true,
+      "reply_to_model_blocking_question": false,
+      "reviewed_at_utc": "2026-10-26T01:17:55.618130+00:00",
+      "reason": "Researcher-authored before implementation; fullseed retained, not response to a modelquestion."
+    }
+  }
+}

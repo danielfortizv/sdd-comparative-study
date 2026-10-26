@@ -1,0 +1,24 @@
+{
+  "researcher_created": true,
+  "created_at_utc": "2026-10-25T16:15:41.362898+00:00",
+  "view": "resume-baseline.html",
+  "sources": [
+    {
+      "path": "metrics.json",
+      "sha256": "816244225FC8595EADBE3F519D49C66C2BF903561F01CEA66F7F3CFF57A5C031"
+    },
+    {
+      "path": "sonar-baseline/baseline-verification.json",
+      "sha256": "15D8A05B9F82EC7279B36D30DEA149DE24004EFAD3760A64E01E47E480407A25"
+    },
+    {
+      "path": "transition-20261025/project-change.json",
+      "sha256": "8B2048C99C0295691CF28722BD7C275908C166F583A75EBAEBE158B84A510ED1"
+    },
+    {
+      "path": "transition-20261025/baseline-reverification.json",
+      "sha256": "3FB335081F106535725F4D99BA4A453B0D152DE9D6740D53CB70E4322D1AB954"
+    }
+  ],
+  "note": "Derived researcher view, not native Sonar/CLI UI. Baseline only, implementation not started. Historical metrics and unknowns retained."
+}

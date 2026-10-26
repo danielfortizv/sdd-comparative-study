@@ -1,0 +1,90 @@
+{
+  "started": "2026-10-25T21:10:41.5071331-05:00",
+  "ended": "2026-10-25T21:11:13.4087020-05:00",
+  "exit_code": 0,
+  "project": "tetris-stage2-bmad",
+  "baseline": false,
+  "coverage_xml": "docs/coverage.xml",
+  "frontend_lcov_present": true,
+  "test_classification": "backend/app/tests/** and frontend/src/**/*.test.{ts,tsx}",
+  "source_excludes": "frontend/src/**/*.test.{ts,tsx}",
+  "coverage_sha256": "78CCE1BE5D3F18B488DB4938B4A80BD21AE921C00A74A741E7CD41D103DB8691",
+  "frontend_lcov_sha256": "10A95E98E244F91AAC07658FBD60889A86DB197D2BF3770138CA26A28E87897D",
+  "source_unchanged_during_scan": true,
+  "source_hashes_before": [
+    {
+      "path": "backend/app/core/domain.py",
+      "sha256": "87B455BF6401318BDC608BB1C8796DCA54163966B3615735262C4D81FA2E7C1B"
+    },
+    {
+      "path": "backend/app/main.py",
+      "sha256": "60CCD8D7D5065DDA60FA87C708C1AFE3BC39EA3DE656DDB5ACCE4F1F690AA0F6"
+    },
+    {
+      "path": "backend/app/tests/test_api.py",
+      "sha256": "02907B8D8F19B878B4A91BBD3942F49B4E4E5E2CE9010192E227902393BBEFAB"
+    },
+    {
+      "path": "backend/app/tests/test_domain.py",
+      "sha256": "EAE98252577DFD4BF07ED007361612C2A7EE680C2FA17473A191E7C1B07CA334"
+    },
+    {
+      "path": "frontend/src/App.test.tsx",
+      "sha256": "B499366D7FE34F011C8B81FB3E87FB1165A8C00750D66617C1CBCB8282DE5420"
+    },
+    {
+      "path": "frontend/src/App.tsx",
+      "sha256": "3016CD505BB19ED38E5EC65EDE0F72DA65AFC3AB72357E93B99415FB8459A387"
+    },
+    {
+      "path": "frontend/src/main.test.tsx",
+      "sha256": "D195DFBE558FF428524FA1145EC212B03933D784CC76F77D7D83BFD11BDB96DF"
+    },
+    {
+      "path": "frontend/src/main.tsx",
+      "sha256": "368998600187697635215CE09D6AFC9A4AF03A9F22D09F1A070DF35E4FEE7F2A"
+    },
+    {
+      "path": "frontend/src/styles.css",
+      "sha256": "5E79E608408CCB5B4395A7B2A9BECD4C54F035A407202F1749635383B446BB9C"
+    }
+  ],
+  "source_hashes_after": [
+    {
+      "path": "backend/app/core/domain.py",
+      "sha256": "87B455BF6401318BDC608BB1C8796DCA54163966B3615735262C4D81FA2E7C1B"
+    },
+    {
+      "path": "backend/app/main.py",
+      "sha256": "60CCD8D7D5065DDA60FA87C708C1AFE3BC39EA3DE656DDB5ACCE4F1F690AA0F6"
+    },
+    {
+      "path": "backend/app/tests/test_api.py",
+      "sha256": "02907B8D8F19B878B4A91BBD3942F49B4E4E5E2CE9010192E227902393BBEFAB"
+    },
+    {
+      "path": "backend/app/tests/test_domain.py",
+      "sha256": "EAE98252577DFD4BF07ED007361612C2A7EE680C2FA17473A191E7C1B07CA334"
+    },
+    {
+      "path": "frontend/src/App.test.tsx",
+      "sha256": "B499366D7FE34F011C8B81FB3E87FB1165A8C00750D66617C1CBCB8282DE5420"
+    },
+    {
+      "path": "frontend/src/App.tsx",
+      "sha256": "3016CD505BB19ED38E5EC65EDE0F72DA65AFC3AB72357E93B99415FB8459A387"
+    },
+    {
+      "path": "frontend/src/main.test.tsx",
+      "sha256": "D195DFBE558FF428524FA1145EC212B03933D784CC76F77D7D83BFD11BDB96DF"
+    },
+    {
+      "path": "frontend/src/main.tsx",
+      "sha256": "368998600187697635215CE09D6AFC9A4AF03A9F22D09F1A070DF35E4FEE7F2A"
+    },
+    {
+      "path": "frontend/src/styles.css",
+      "sha256": "5E79E608408CCB5B4395A7B2A9BECD4C54F035A407202F1749635383B446BB9C"
+    }
+  ]
+}

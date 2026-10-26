@@ -1,0 +1,192 @@
+[
+  {
+    "name": "python-version",
+    "role": "environment",
+    "argv": [
+      "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\Kiro\\backend\\.venv\\Scripts\\python.exe",
+      "--version"
+    ],
+    "cwd": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\Kiro\\backend",
+    "started_at_utc": "2026-10-23T19:45:37.674143+00:00",
+    "stdout": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\Kiro\\docs\\researcher-verification\\final-07\\python-version.stdout.txt",
+    "stderr": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\Kiro\\docs\\researcher-verification\\final-07\\python-version.stderr.txt",
+    "shell": false,
+    "coverage_file_env": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\Kiro\\docs\\researcher-verification\\final-07\\.coverage",
+    "exit_code": 0,
+    "ended_at_utc": "2026-10-23T19:45:37.696724+00:00",
+    "duration_seconds": 0.023,
+    "stdout_sha256": "125A353BA9CD603E069D1E1A5EE22E961BAC9B7C82E4116F2D42C00EF82C7A58",
+    "stderr_sha256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"
+  },
+  {
+    "name": "python-packages",
+    "role": "environment",
+    "argv": [
+      "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\Kiro\\backend\\.venv\\Scripts\\python.exe",
+      "-c",
+      "import importlib.metadata as m,json,sys; print(json.dumps({'python':sys.version,'packages':{n:m.version(n) for n in ('pytest','pytest-cov','coverage','fastapi','httpx')}}))"
+    ],
+    "cwd": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\Kiro\\backend",
+    "started_at_utc": "2026-10-23T19:45:37.704724+00:00",
+    "stdout": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\Kiro\\docs\\researcher-verification\\final-07\\python-packages.stdout.txt",
+    "stderr": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\Kiro\\docs\\researcher-verification\\final-07\\python-packages.stderr.txt",
+    "shell": false,
+    "coverage_file_env": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\Kiro\\docs\\researcher-verification\\final-07\\.coverage",
+    "exit_code": 0,
+    "ended_at_utc": "2026-10-23T19:45:37.969640+00:00",
+    "duration_seconds": 0.265,
+    "stdout_sha256": "AE75D0DC43E483490DEDE9C8ADDEE6EB80B02C2C3F11A8100D147326D0F51847",
+    "stderr_sha256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"
+  },
+  {
+    "name": "node-version",
+    "role": "environment",
+    "argv": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "--version"
+    ],
+    "cwd": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\Kiro\\frontend",
+    "started_at_utc": "2026-10-23T19:45:37.977641+00:00",
+    "stdout": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\Kiro\\docs\\researcher-verification\\final-07\\node-version.stdout.txt",
+    "stderr": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\Kiro\\docs\\researcher-verification\\final-07\\node-version.stderr.txt",
+    "shell": false,
+    "coverage_file_env": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\Kiro\\docs\\researcher-verification\\final-07\\.coverage",
+    "exit_code": 0,
+    "ended_at_utc": "2026-10-23T19:45:38.000640+00:00",
+    "duration_seconds": 0.022,
+    "stdout_sha256": "28BB5FFDDEF234AAA4F85453D617A477EA1710D0CD5E88C0968BD8CF591713BE",
+    "stderr_sha256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"
+  },
+  {
+    "name": "npm-version",
+    "role": "environment",
+    "argv": [
+      "C:\\Program Files\\nodejs\\npm.cmd",
+      "--version"
+    ],
+    "cwd": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\Kiro\\frontend",
+    "started_at_utc": "2026-10-23T19:45:38.007640+00:00",
+    "stdout": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\Kiro\\docs\\researcher-verification\\final-07\\npm-version.stdout.txt",
+    "stderr": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\Kiro\\docs\\researcher-verification\\final-07\\npm-version.stderr.txt",
+    "shell": false,
+    "coverage_file_env": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\Kiro\\docs\\researcher-verification\\final-07\\.coverage",
+    "exit_code": 0,
+    "ended_at_utc": "2026-10-23T19:45:38.326024+00:00",
+    "duration_seconds": 0.318,
+    "stdout_sha256": "D9F29F5AAB43C8C1A8D6ACC856E258B89735F541AA5E1F07B39A62F28BFA8D06",
+    "stderr_sha256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"
+  },
+  {
+    "name": "backend-tests",
+    "role": "verification",
+    "argv": [
+      "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\Kiro\\backend\\.venv\\Scripts\\python.exe",
+      "-m",
+      "pytest",
+      "tests",
+      "-q",
+      "--cov=app",
+      "--cov-report=term-missing",
+      "--cov-report=xml:D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\Kiro\\docs\\researcher-verification\\final-07\\backend-coverage.xml"
+    ],
+    "cwd": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\Kiro\\backend",
+    "started_at_utc": "2026-10-23T19:45:38.334024+00:00",
+    "stdout": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\Kiro\\docs\\researcher-verification\\final-07\\backend-tests.stdout.txt",
+    "stderr": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\Kiro\\docs\\researcher-verification\\final-07\\backend-tests.stderr.txt",
+    "shell": false,
+    "coverage_file_env": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\Kiro\\docs\\researcher-verification\\final-07\\.coverage",
+    "exit_code": 0,
+    "ended_at_utc": "2026-10-23T19:45:40.422186+00:00",
+    "duration_seconds": 2.088,
+    "stdout_sha256": "81A892A086E131043A1CA8EAB767AF61A988AA2C4BC3FBC2EB4570A0CF816107",
+    "stderr_sha256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"
+  },
+  {
+    "name": "frontend-tests",
+    "role": "verification",
+    "argv": [
+      "C:\\Program Files\\nodejs\\npm.cmd",
+      "test",
+      "--",
+      "--coverage",
+      "--coverage.reportsDirectory=D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\Kiro\\docs\\researcher-verification\\final-07\\frontend-coverage",
+      "--coverage.reporter=text",
+      "--coverage.reporter=lcov",
+      "--coverage.reporter=json-summary",
+      "--reporter=json",
+      "--outputFile=D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\Kiro\\docs\\researcher-verification\\final-07\\frontend-test-results.json"
+    ],
+    "cwd": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\Kiro\\frontend",
+    "started_at_utc": "2026-10-23T19:45:40.433763+00:00",
+    "stdout": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\Kiro\\docs\\researcher-verification\\final-07\\frontend-tests.stdout.txt",
+    "stderr": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\Kiro\\docs\\researcher-verification\\final-07\\frontend-tests.stderr.txt",
+    "shell": false,
+    "coverage_file_env": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\Kiro\\docs\\researcher-verification\\final-07\\.coverage",
+    "exit_code": 0,
+    "ended_at_utc": "2026-10-23T19:45:44.406537+00:00",
+    "duration_seconds": 3.972,
+    "stdout_sha256": "F8DDD8020D8200580CD092B85EA50CD5F70103A42B88014E06F91D813126477F",
+    "stderr_sha256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"
+  },
+  {
+    "name": "frontend-build",
+    "role": "verification",
+    "argv": [
+      "C:\\Program Files\\nodejs\\npm.cmd",
+      "run",
+      "build"
+    ],
+    "cwd": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\Kiro\\frontend",
+    "started_at_utc": "2026-10-23T19:45:44.416050+00:00",
+    "stdout": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\Kiro\\docs\\researcher-verification\\final-07\\frontend-build.stdout.txt",
+    "stderr": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\Kiro\\docs\\researcher-verification\\final-07\\frontend-build.stderr.txt",
+    "shell": false,
+    "coverage_file_env": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\Kiro\\docs\\researcher-verification\\final-07\\.coverage",
+    "exit_code": 0,
+    "ended_at_utc": "2026-10-23T19:45:45.834468+00:00",
+    "duration_seconds": 1.418,
+    "stdout_sha256": "CF23F95C582F6AEF033D0AA82EFF6A1AAC0A3CA9E247AFE92582570F3B57B607",
+    "stderr_sha256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"
+  },
+  {
+    "name": "npm-audit-all",
+    "role": "verification",
+    "argv": [
+      "C:\\Program Files\\nodejs\\npm.cmd",
+      "audit",
+      "--json"
+    ],
+    "cwd": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\Kiro\\frontend",
+    "started_at_utc": "2026-10-23T19:45:45.842975+00:00",
+    "stdout": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\Kiro\\docs\\researcher-verification\\final-07\\npm-audit-all.stdout.txt",
+    "stderr": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\Kiro\\docs\\researcher-verification\\final-07\\npm-audit-all.stderr.txt",
+    "shell": false,
+    "coverage_file_env": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\Kiro\\docs\\researcher-verification\\final-07\\.coverage",
+    "exit_code": 0,
+    "ended_at_utc": "2026-10-23T19:45:47.043530+00:00",
+    "duration_seconds": 1.201,
+    "stdout_sha256": "0A3ABD65A2B8BD67511E6DEFEAFA884CF054644F686FF50F6F33B73D840FA973",
+    "stderr_sha256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"
+  },
+  {
+    "name": "npm-audit-production",
+    "role": "verification",
+    "argv": [
+      "C:\\Program Files\\nodejs\\npm.cmd",
+      "audit",
+      "--json",
+      "--omit=dev"
+    ],
+    "cwd": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\Kiro\\frontend",
+    "started_at_utc": "2026-10-23T19:45:47.052040+00:00",
+    "stdout": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\Kiro\\docs\\researcher-verification\\final-07\\npm-audit-production.stdout.txt",
+    "stderr": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\Kiro\\docs\\researcher-verification\\final-07\\npm-audit-production.stderr.txt",
+    "shell": false,
+    "coverage_file_env": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\Kiro\\docs\\researcher-verification\\final-07\\.coverage",
+    "exit_code": 0,
+    "ended_at_utc": "2026-10-23T19:45:48.192160+00:00",
+    "duration_seconds": 1.14,
+    "stdout_sha256": "0A3ABD65A2B8BD67511E6DEFEAFA884CF054644F686FF50F6F33B73D840FA973",
+    "stderr_sha256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"
+  }
+]

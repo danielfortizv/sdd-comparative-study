@@ -1,0 +1,8 @@
+﻿{
+    "project":  {
+                    "key":  "tetris-stage2-bmad",
+                    "name":  "Tetris Stage 2 BMAD",
+                    "qualifier":  "TRK",
+                    "visibility":  "public"
+                }
+}

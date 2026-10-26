@@ -1,0 +1,208 @@
+{
+  "status": "pass",
+  "scope": "20 catalog IDs with mixed external API, generated production/domain tests, UI tests and browser observations; not 20 manual gameplay scenarios",
+  "rows": [
+    {
+      "id": "S2-01",
+      "status": "pass",
+      "mechanism": "external_api_and_production_unit",
+      "evidence": [
+        "acceptance-api.json",
+        "backend/tests/unit/test_qa_iteration1.py::test_qa04_restart_dirty_cleanup",
+        "backend-coverage.log"
+      ]
+    },
+    {
+      "id": "S2-02",
+      "status": "pass",
+      "mechanism": "external_api_full_response_equality_and_route_draw_spy",
+      "evidence": [
+        "acceptance-api.json",
+        "backend/tests/unit/test_qa_iteration1.py",
+        "backend-coverage.log"
+      ]
+    },
+    {
+      "id": "S2-03",
+      "status": "pass",
+      "mechanism": "external_api_and_real_tick_domain",
+      "evidence": [
+        "acceptance-api.json",
+        "backend/tests/unit/test_game_engine_us1.py::test_scoring_rules_production",
+        "backend/tests/unit/test_qa_iteration1.py::test_qa02_random_draw_counts",
+        "backend-coverage.log"
+      ]
+    },
+    {
+      "id": "S2-04",
+      "status": "pass",
+      "mechanism": "controlled_reachable_horizontal_I_real_tick",
+      "evidence": [
+        "backend/tests/unit/test_game_engine_us1.py::test_scoring_rules_production",
+        "backend/tests/integration/test_api_us2.py::test_api_line_clear_integration",
+        "backend-coverage.log"
+      ]
+    },
+    {
+      "id": "S2-05",
+      "status": "pass",
+      "mechanism": "controlled_reachable_O_piece_real_tick",
+      "evidence": [
+        "backend/tests/unit/test_game_engine_us1.py::test_scoring_rules_production",
+        "backend-coverage.log"
+      ]
+    },
+    {
+      "id": "S2-06",
+      "status": "pass",
+      "mechanism": "isolated_domain_mocked_three_row_result_real_production_scoring",
+      "isolated_domain": true,
+      "evidence": [
+        "backend/tests/unit/test_game_engine_us1.py::test_scoring_rules_production",
+        "acceptance-review-notes.md",
+        "backend-coverage.log"
+      ]
+    },
+    {
+      "id": "S2-07",
+      "status": "pass",
+      "mechanism": "isolated_domain_mocked_four_row_result_real_production_scoring",
+      "isolated_domain": true,
+      "evidence": [
+        "backend/tests/unit/test_game_engine_us1.py::test_scoring_rules_production",
+        "acceptance-review-notes.md",
+        "backend-coverage.log"
+      ]
+    },
+    {
+      "id": "S2-08",
+      "status": "pass",
+      "mechanism": "controlled_reachable_9_to_10_and_9_to_11_real_tick",
+      "evidence": [
+        "backend/tests/unit/test_game_engine_us1.py::test_level_transitions_and_gravity_floor_production",
+        "backend-coverage.log"
+      ]
+    },
+    {
+      "id": "S2-09",
+      "status": "pass",
+      "mechanism": "controlled_production_level_9_and_10_floor",
+      "evidence": [
+        "backend/tests/unit/test_game_engine_us1.py::test_level_transitions_and_gravity_floor_production",
+        "backend-coverage.log"
+      ]
+    },
+    {
+      "id": "S2-10",
+      "status": "pass",
+      "mechanism": "external_api_and_exact_random_draw_spy",
+      "evidence": [
+        "acceptance-api.json",
+        "backend/tests/unit/test_qa_iteration1.py::test_qa02_random_draw_counts",
+        "backend-coverage.log"
+      ]
+    },
+    {
+      "id": "S2-11",
+      "status": "pass",
+      "mechanism": "external_api_full_equality_and_production_snapshot",
+      "evidence": [
+        "acceptance-api.json",
+        "backend/tests/unit/test_qa_iteration1.py::test_qa03_immutable_deep_state_snapshots",
+        "backend-coverage.log"
+      ]
+    },
+    {
+      "id": "S2-12",
+      "status": "pass",
+      "mechanism": "external_api_lock_swap_and_exact_draw_spy",
+      "evidence": [
+        "acceptance-api.json",
+        "backend/tests/unit/test_qa_iteration1.py::test_qa02_random_draw_counts",
+        "backend-coverage.log"
+      ]
+    },
+    {
+      "id": "S2-13",
+      "status": "pass",
+      "mechanism": "controlled_blocked_Hold_spawn_production_domain",
+      "evidence": [
+        "backend/tests/unit/test_game_engine_us2.py::test_hold_obstructed_spawn",
+        "backend-coverage.log"
+      ]
+    },
+    {
+      "id": "S2-14",
+      "status": "pass",
+      "mechanism": "production_full_state_snapshots_all_move_tick_Hold_actions",
+      "evidence": [
+        "backend/tests/unit/test_qa_iteration1.py::test_qa03_immutable_deep_state_snapshots",
+        "backend/tests/unit/test_qa_iteration1.py::test_qa02_random_draw_counts",
+        "backend-coverage.log"
+      ]
+    },
+    {
+      "id": "S2-15",
+      "status": "pass",
+      "mechanism": "external_api_and_fully_dirty_domain_restart",
+      "evidence": [
+        "acceptance-api.json",
+        "backend/tests/unit/test_qa_iteration1.py::test_qa04_restart_dirty_cleanup",
+        "backend-coverage.log"
+      ]
+    },
+    {
+      "id": "S2-16",
+      "status": "pass",
+      "mechanism": "external_HTTP_contract_all_five_success_routes_and_four_missing_ID_routes",
+      "evidence": [
+        "acceptance-api.json",
+        "acceptance-contract.json",
+        "acceptance-provenance.json"
+      ]
+    },
+    {
+      "id": "S2-17",
+      "status": "pass",
+      "mechanism": "generated_rendered_geometry_controls_and_actual_browser",
+      "evidence": [
+        "frontend/tests/App.test.tsx",
+        "frontend/tests/useGame.test.ts",
+        "frontend-test-coverage.log",
+        "browser-evidence.json"
+      ]
+    },
+    {
+      "id": "S2-18",
+      "status": "pass",
+      "mechanism": "deferred_fetch_body_and_owned_timer_fake_clock_plus_actual_browser",
+      "evidence": [
+        "frontend/tests/useGame.test.ts",
+        "frontend-test-coverage.log",
+        "browser-evidence.json",
+        "qa16-final-review.md"
+      ]
+    },
+    {
+      "id": "S2-19",
+      "status": "pass",
+      "mechanism": "inherited_backend_assertion_preservation_executed_regression_and_actual_browser_controls",
+      "evidence": [
+        "qa09-final-review.md",
+        "backend-coverage.log",
+        "frontend-test-coverage.log",
+        "browser-evidence.json"
+      ]
+    },
+    {
+      "id": "S2-20",
+      "status": "pass",
+      "mechanism": "independent_production_TypeScript_build_recorded_dependencies",
+      "evidence": [
+        "frontend-build.log",
+        "verification-commands.json",
+        "frontend/package-lock.json"
+      ]
+    }
+  ]
+}

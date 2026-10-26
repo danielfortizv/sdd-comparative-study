@@ -1,0 +1,101 @@
+{
+  "version": "1.2",
+  "researcher_created": true,
+  "catalog_id": "S2-16",
+  "base_url": "http://127.0.0.1:8000",
+  "measured_at_utc": "2026-10-23T19:54:14.656680+00:00",
+  "checker_sha256": "BA214642559DAA49B6D556A7D19C84FB87F53B3D5C7725B606ADEE38BB080E29",
+  "imported_api_checker_version": "1.2",
+  "imported_api_checker_sha256": "BE6E4EA362726AEC990D0D5D456BF5E15D5071BBAD1436F6FE9C1E77B6A83F3E",
+  "parent_version": "1.1",
+  "parent_version_sha256": "2FE03D4AE2970790CA64ACA70E978EB5D4C011E759B102337CB5AE654B837935",
+  "instrumentation_change": "Normal finally writes report before interpreter shutdown; same nine controls.",
+  "expected_create_http_status": 200,
+  "observed_create_http_status": 200,
+  "http_status_normalization": false,
+  "status": "pass",
+  "scope": "Supplemental endpoint/status/full-key checks; not extra catalog IDs.",
+  "controls": [
+    {
+      "method": "POST",
+      "route": "/api/games",
+      "requested_path": "/api/games",
+      "expected_http_status": 200,
+      "actual_http_status": 200,
+      "status": "pass",
+      "http_status": 200
+    },
+    {
+      "method": "GET",
+      "route": "/api/games/{id}",
+      "requested_path": "/api/games/c7618de7d4a74c68b9ce1a14b10e5f02",
+      "expected_http_status": 200,
+      "actual_http_status": 200,
+      "status": "pass",
+      "http_status": 200
+    },
+    {
+      "method": "POST",
+      "route": "/api/games/{id}/move",
+      "requested_path": "/api/games/c7618de7d4a74c68b9ce1a14b10e5f02/move",
+      "expected_http_status": 200,
+      "actual_http_status": 200,
+      "status": "pass",
+      "http_status": 200
+    },
+    {
+      "method": "POST",
+      "route": "/api/games/{id}/tick",
+      "requested_path": "/api/games/c7618de7d4a74c68b9ce1a14b10e5f02/tick",
+      "expected_http_status": 200,
+      "actual_http_status": 200,
+      "status": "pass",
+      "http_status": 200
+    },
+    {
+      "method": "POST",
+      "route": "/api/games/{id}/hold",
+      "requested_path": "/api/games/c7618de7d4a74c68b9ce1a14b10e5f02/hold",
+      "expected_http_status": 200,
+      "actual_http_status": 200,
+      "status": "pass",
+      "http_status": 200
+    },
+    {
+      "method": "GET",
+      "route": "/api/games/{missing-id}",
+      "requested_path": "/api/games/research-nonexistent-stage2-id",
+      "expected_http_status": 404,
+      "actual_http_status": 404,
+      "status": "pass",
+      "http_status": 404
+    },
+    {
+      "method": "POST",
+      "route": "/api/games/{missing-id}/move",
+      "requested_path": "/api/games/research-nonexistent-stage2-id/move",
+      "expected_http_status": 404,
+      "actual_http_status": 404,
+      "status": "pass",
+      "http_status": 404
+    },
+    {
+      "method": "POST",
+      "route": "/api/games/{missing-id}/tick",
+      "requested_path": "/api/games/research-nonexistent-stage2-id/tick",
+      "expected_http_status": 404,
+      "actual_http_status": 404,
+      "status": "pass",
+      "http_status": 404
+    },
+    {
+      "method": "POST",
+      "route": "/api/games/{missing-id}/hold",
+      "requested_path": "/api/games/research-nonexistent-stage2-id/hold",
+      "expected_http_status": 404,
+      "actual_http_status": 404,
+      "status": "pass",
+      "http_status": 404
+    }
+  ]
+}

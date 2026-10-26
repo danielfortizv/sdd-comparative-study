@@ -1,0 +1,12 @@
+{
+  "researcher_created": true,
+  "measured_at_utc": "2026-10-21T19:51:29.171542+00:00",
+  "seed_file_sha256": "63919779DD4104076FBABCB130CE296A160FA840E0B4755A2AA5D90757ADA8EF",
+  "seed_block_utf8_sha256": "60D6728689CD5CDAD7B1A386F95DAD4E34850EB5DE0AAB92E837D630DFD2B55A",
+  "seed_block_characters": 3516,
+  "seed_block_scope": "quoted common seed, quote prefixes removed, trimmed, LF, UTF-8 without BOM; file hash covers original complete Markdown bytes",
+  "normalization": "Raw hashes/lengths preserve decoded native content; normalized fields replace CRLF with LF only; intended comparison trims outer whitespace",
+  "scope": "Native Kiro messages.jsonl user payloads by session+message ID within launcher interval; original/archive duplicates cannot inflate counts; intended prompt alone is not received-input evidence; ACP output does not echo user input",
+  "runs": [],
+  "pending_runs": []
+}

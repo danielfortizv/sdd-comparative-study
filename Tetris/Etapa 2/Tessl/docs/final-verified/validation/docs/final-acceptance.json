@@ -1,0 +1,417 @@
+{
+  "researcher_created": true,
+  "finalized_at_utc": "2026-10-25T21:42:39.114496+00:00",
+  "status": "accepted_with_declared_limits",
+  "candidate": "08-qa02",
+  "independent_repeat": "acceptance/08-independent-final-retry/report.json",
+  "catalog": [
+    {
+      "id": "S2-01",
+      "status": "pass",
+      "isolated_completed_row_fixture": false,
+      "evidence": [
+        {
+          "path": "acceptance/08-independent-final-retry/domain.json",
+          "record": "initial state and exact two canonical draws"
+        },
+        {
+          "path": "acceptance/08-live-api/api.json",
+          "record": "S2-01"
+        }
+      ]
+    },
+    {
+      "id": "S2-02",
+      "status": "pass",
+      "isolated_completed_row_fixture": false,
+      "evidence": [
+        {
+          "path": "acceptance/08-independent-final-retry/domain.json",
+          "record": "complete read-state and preview immutability"
+        },
+        {
+          "path": "acceptance/08-live-api/api.json",
+          "record": "S2-02"
+        }
+      ]
+    },
+    {
+      "id": "S2-03",
+      "status": "pass",
+      "isolated_completed_row_fixture": false,
+      "evidence": [
+        {
+          "path": "acceptance/08-independent-final-retry/domain.json",
+          "record": "zero-row lock, preview and Hold reset"
+        },
+        {
+          "path": "acceptance/08-live-api/api.json",
+          "record": "S2-03/S2-12"
+        }
+      ]
+    },
+    {
+      "id": "S2-04",
+      "status": "pass",
+      "isolated_completed_row_fixture": false,
+      "evidence": [
+        {
+          "path": "acceptance/08-independent-final-retry/domain.json",
+          "record": "one-row scoring production path"
+        }
+      ]
+    },
+    {
+      "id": "S2-05",
+      "status": "pass",
+      "isolated_completed_row_fixture": false,
+      "evidence": [
+        {
+          "path": "acceptance/08-independent-final-retry/domain.json",
+          "record": "two-row scoring production path"
+        }
+      ]
+    },
+    {
+      "id": "S2-06",
+      "status": "pass",
+      "isolated_completed_row_fixture": true,
+      "evidence": [
+        {
+          "path": "acceptance/08-independent-final-retry/domain.json",
+          "record": "three-row isolated scoring rule"
+        }
+      ]
+    },
+    {
+      "id": "S2-07",
+      "status": "pass",
+      "isolated_completed_row_fixture": true,
+      "evidence": [
+        {
+          "path": "acceptance/08-independent-final-retry/domain.json",
+          "record": "four-row isolated scoring rule"
+        }
+      ]
+    },
+    {
+      "id": "S2-08",
+      "status": "pass",
+      "isolated_completed_row_fixture": false,
+      "evidence": [
+        {
+          "path": "acceptance/08-independent-final-retry/domain.json",
+          "record": "threshold nine to ten uses old level"
+        },
+        {
+          "path": "acceptance/08-independent-final-retry/domain.json",
+          "record": "threshold nine to eleven uses old level"
+        }
+      ]
+    },
+    {
+      "id": "S2-09",
+      "status": "pass",
+      "isolated_completed_row_fixture": false,
+      "evidence": [
+        {
+          "path": "acceptance/08-independent-final-retry/domain.json",
+          "record": "gravity floor at high level"
+        }
+      ]
+    },
+    {
+      "id": "S2-10",
+      "status": "pass",
+      "isolated_completed_row_fixture": false,
+      "evidence": [
+        {
+          "path": "acceptance/08-independent-final-retry/domain.json",
+          "record": "first Hold plus repeated rejection"
+        },
+        {
+          "path": "acceptance/08-live-api/api.json",
+          "record": "S2-10"
+        }
+      ]
+    },
+    {
+      "id": "S2-11",
+      "status": "pass",
+      "isolated_completed_row_fixture": false,
+      "evidence": [
+        {
+          "path": "acceptance/08-independent-final-retry/domain.json",
+          "record": "first Hold plus repeated rejection"
+        },
+        {
+          "path": "acceptance/08-live-api/api.json",
+          "record": "S2-11"
+        }
+      ]
+    },
+    {
+      "id": "S2-12",
+      "status": "pass",
+      "isolated_completed_row_fixture": false,
+      "evidence": [
+        {
+          "path": "acceptance/08-independent-final-retry/domain.json",
+          "record": "Hold unlock and occupied swap without a draw"
+        },
+        {
+          "path": "acceptance/08-live-api/api.json",
+          "record": "S2-03/S2-12"
+        }
+      ]
+    },
+    {
+      "id": "S2-13",
+      "status": "pass",
+      "isolated_completed_row_fixture": false,
+      "evidence": [
+        {
+          "path": "acceptance/08-independent-final-retry/domain.json",
+          "record": "blocked occupied Hold spawn"
+        },
+        {
+          "path": "acceptance/08-independent-final-retry/domain.json",
+          "record": "blocked empty Hold spawn consumes one preview"
+        }
+      ]
+    },
+    {
+      "id": "S2-14",
+      "status": "pass",
+      "isolated_completed_row_fixture": false,
+      "evidence": [
+        {
+          "path": "acceptance/08-independent-final-retry/domain.json",
+          "record": "row-zero terminal preview and all game-over mutations"
+        },
+        {
+          "path": "acceptance/08-independent-final-retry/domain.json",
+          "record": "blocked normal spawn consumes preview exactly once"
+        }
+      ]
+    },
+    {
+      "id": "S2-15",
+      "status": "pass",
+      "isolated_completed_row_fixture": false,
+      "evidence": [
+        {
+          "path": "acceptance/08-independent-final-retry/domain.json",
+          "record": "restart from completely dirty terminal state"
+        },
+        {
+          "path": "acceptance/08-live-api/api.json",
+          "record": "S2-15"
+        }
+      ]
+    },
+    {
+      "id": "S2-16",
+      "status": "pass",
+      "isolated_completed_row_fixture": false,
+      "evidence": [
+        {
+          "path": "acceptance/08-live-api/api.json",
+          "record": "S2-16"
+        },
+        {
+          "path": "acceptance/08-live-contract/contract.json",
+          "controls": 9
+        }
+      ]
+    },
+    {
+      "id": "S2-17",
+      "status": "pass",
+      "isolated_completed_row_fixture": false,
+      "evidence": [
+        {
+          "path": "acceptance/browser-hold-key.ax.txt"
+        },
+        {
+          "path": "acceptance/browser-hold-button.ax.txt"
+        },
+        {
+          "path": "screenshots/final-hold-key.jpg"
+        },
+        {
+          "path": "screenshots/final-hud-button.jpg"
+        }
+      ]
+    },
+    {
+      "id": "S2-18",
+      "status": "pass",
+      "isolated_completed_row_fixture": false,
+      "evidence": [
+        {
+          "path": "acceptance/08-independent-final-retry/races-vitest.json",
+          "tests": 6
+        },
+        {
+          "path": "acceptance/08-independent-final-retry/falsey-vitest.json",
+          "tests": 1
+        },
+        {
+          "path": "screenshots/final-threshold-fixture.jpg"
+        }
+      ]
+    },
+    {
+      "id": "S2-19",
+      "status": "pass",
+      "isolated_completed_row_fixture": false,
+      "evidence": [
+        {
+          "path": "acceptance/08-independent-final-retry/domain.json",
+          "record": "row-zero terminal preview and all game-over mutations"
+        },
+        {
+          "path": "acceptance/08-independent-final-retry/backend.stdout.log",
+          "original_backend_tests": 9
+        },
+        {
+          "path": "acceptance/08-independent-final-retry/frontend-vitest.json",
+          "original_frontend_tests": 2
+        }
+      ]
+    },
+    {
+      "id": "S2-20",
+      "status": "pass",
+      "isolated_completed_row_fixture": false,
+      "evidence": [
+        {
+          "path": "acceptance/08-independent-final-retry/build.stdout.log"
+        }
+      ]
+    }
+  ],
+  "catalog_passed": 20,
+  "catalog_total": 20,
+  "ordinary_or_user_facing_catalog_cases": 18,
+  "isolated_completed_row_cases": [
+    "S2-06",
+    "S2-07"
+  ],
+  "native_tests": {
+    "backend": 23,
+    "frontend": 17,
+    "original_backend_tests_preserved": 9,
+    "original_frontend_tests_preserved": 2
+  },
+  "external_controls": {
+    "domain": 17,
+    "live_api_records": 7,
+    "live_api_catalog_ids": 8,
+    "supplemental_contract_controls": 9,
+    "races_original": 6,
+    "falsey_extra": 1
+  },
+  "sonar": {
+    "analysis_id": "15649d89-fd29-4e66-a610-0f15d72066a3",
+    "ce_task_id": "ecf9b14f-d623-4b8e-919e-30ba3c445260",
+    "gate_status": "OK",
+    "conditions": [
+      {
+        "status": "OK",
+        "metricKey": "new_coverage",
+        "comparator": "LT",
+        "errorThreshold": "80",
+        "actualValue": "82.7"
+      },
+      {
+        "status": "OK",
+        "metricKey": "new_duplicated_lines_density",
+        "comparator": "GT",
+        "errorThreshold": "3",
+        "actualValue": "0.0"
+      },
+      {
+        "status": "OK",
+        "metricKey": "new_violations",
+        "comparator": "GT",
+        "errorThreshold": "0",
+        "actualValue": "0"
+      }
+    ],
+    "overall_metrics": {
+      "project": "tetris-stage2-tessl",
+      "gate": "OK",
+      "coverage": "86.9",
+      "complexity": "148",
+      "reliability_rating": "1.0",
+      "code_smells": "9",
+      "duplicated_lines_density": "0.0",
+      "security_rating": "3.0",
+      "security_hotspots": "0",
+      "sqale_index": "46",
+      "sqale_rating": "1.0",
+      "bugs": "0",
+      "cognitive_complexity": "120",
+      "ncloc": "1125",
+      "vulnerabilities": "1",
+      "lines": "1398"
+    }
+  },
+  "source_and_coverage_current": true,
+  "pieces_unchanged": true,
+  "prompt_seed_sha256": "63919779DD4104076FBABCB130CE296A160FA840E0B4755A2AA5D90757ADA8EF",
+  "all_effective_inputs_contain_seed": true,
+  "browser_evidence": [
+    {
+      "path": "acceptance/browser-hold-key.ax.txt",
+      "sha256": "007E10CED0A48EA04EBBB2982BD31612DB010B175E94DBB441B714869181CB3F"
+    },
+    {
+      "path": "acceptance/browser-hold-button.ax.txt",
+      "sha256": "72511912200BD6FE026822A5068DDB451798900297482822756CE5A747B45CF2"
+    },
+    {
+      "path": "acceptance/browser-restart.ax.txt",
+      "sha256": "967F3263F91CBC05BECD522FA4AE1B183DDF9D978C48B7383F729535B31E7F0D"
+    },
+    {
+      "path": "acceptance/browser-threshold.ax.txt",
+      "sha256": "ABEED89B46D72F8361342F38C4AAED9DA9A1BBFC3B2FD74AE4BD300B14E99648"
+    },
+    {
+      "path": "acceptance/browser-gameover.ax.txt",
+      "sha256": "148D1E00C1615A2ABD49C299EE98BDB0A36BBE125749FE64C96C091EC67B31CF"
+    },
+    {
+      "path": "acceptance/browser-terminal-actions.ax.txt",
+      "sha256": "148D1E00C1615A2ABD49C299EE98BDB0A36BBE125749FE64C96C091EC67B31CF"
+    },
+    {
+      "path": "acceptance/browser-gameover-restart.ax.txt",
+      "sha256": "3985B43C3546C830765CD29DA94C128A698949EA53528A954F9B3890DF62D315"
+    }
+  ],
+  "limits": [
+    "Production pieces.py keeps inherited unseeded random.choice; common seed means identical prompt. Researcher fixtures use20260929/explicit canonical sequences.",
+    "Tessl remote skill search unauthenticated; actual pinned local MCP/plugin workflow retained, no invented native generator.",
+    "Historical CLI auxiliary loop detector used gemini-3-flash-preview in05/07; main model3.5Flash; aliases corrected in08. Past calls not erased.",
+    "02token/APIcounters unavailable after BILLING_DISABLED; known totals are not a complete billing total.",
+    "Internal05/07fixes without prior spec revision are recorded workflow deviations; initial spec-before-code order alone is not blanket compliance.",
+    "Four qa02-command.txt summaries contain model-authored timing metadata; not used as authoritative measurements.",
+    "Native session_notes retains an old present-tense ERROR paragraph despite completed checkboxes; final exact-task JSON is authoritative. Document quality is not declared perfect.",
+    "Sonar retains inherited S2245 game PRNG vulnerability and9smells; newviolations0 does not mean zero total findings.",
+    "No Sonar scalability score or BERTopic model score is invented; corpus is prepared for later analysis.",
+    "Inherited browser tab title and welcome message still mentionStage1; visible application HUD identifiesStage2. Cosmetic legacy labels are retained."
+  ],
+  "artifacts": {
+    "metrics.json": "0029A9622F47E90516A32F33012C119565C13A461A48C3E0267F00F54957E370",
+    "input-audit.json": "195943283986D8041B736C38426832F3C1331BC18FCB94895CE80595BF0E0F8B",
+    "question-audit.json": "8B7B0E60DF23EFFE96A820BC1DAD3E0120D4C20DBB312569DF29655C4B69B9F2",
+    "scan-command.json": "0077694AECC7C054B7ED38FBA66895847D087A9E6341D2193E8CB56359398A60",
+    "sonar-verification.json": "D70AD4B0FCEA6D49375838CA30AD4066EE955C5F99023A5985B3691A406379E0",
+    "sonar-summary.json": "2AC77F5404757245680A761AA8A38700E6DDD4847D27D2A3CBC6B8795ABFEAE7",
+    "acceptance/08-independent-final-retry/report.json": "40508B22D88EE83630CD3EF3C8511EEC2A1463FE7DF20191CA022451F327C61C"
+  }
+}

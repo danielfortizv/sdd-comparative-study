@@ -1,0 +1,232 @@
+{
+  "researcher_created": true,
+  "scope": "Independent repeat; browser acceptance and final exact-task Sonar still separate",
+  "label": "08-independent-final-retry",
+  "started_at_utc": "2026-10-25T21:32:15.835387+00:00",
+  "ended_at_utc": "2026-10-25T21:32:42.477319+00:00",
+  "all_commands_pass": true,
+  "source_hashes_before": {
+    "backend/app/controllers/games.py": "4C81CD4C610C8E94A909D567AEC4CEBD7521CF82124313F8A97B65B5F2C2D610",
+    "backend/app/core/config.py": "0EDCC679E16FF9D13B206B87A6C92CBC0CCCB75412D0D7F2AFFDD2D87DAFCBE7",
+    "backend/app/domain/pieces.py": "E57C05C961EFED813DFA1CA565166C50F8B62D9FB3A9FC37121FECC470EA6D0E",
+    "backend/app/domain/rules.py": "051BFB186456B2AE1BD4A22F1000ECD59B7D4B7A9FB579F2B2840002C55D1C7E",
+    "backend/app/main.py": "409385F215D1345313DCF71CD5CFB60B7EBC02DBEF817D8FD2E3611E91A4E88D",
+    "backend/app/models/game.py": "32F1568652762DEB8616D1E954CDFAB8007CB5DA138848F2B40F6F1D5ACFE0A8",
+    "backend/tests/test_game.py": "EE683A8C67076B8FFC4174B3A4F974370E064F955CC18CAA952A4DE27393A4A3",
+    "backend/tests/test_scoring.py": "F72BA9E77F942B2D7649064FE3173D51CA82EAF8F5BCA1741E37AB9F9003A990",
+    "frontend/src/api.test.ts": "23F86A116934AF25A80205E82D57BAECBA3B64FF0ECFF46CC415AE6DD36A616F",
+    "frontend/src/api.ts": "42C0E2A2391E5BFDA7672A591EDD9439A1E26486B03BC8CAF76A06D91447C1C7",
+    "frontend/src/App.test.tsx": "98968AF8AB4C1E027A907A8FCEF2D88C06BE8E0F16C8B51554C6F2F0DBEFF3D7",
+    "frontend/src/App.tsx": "2E19DFD935FC535449A0CF6557F2A44F8E6476434C95DCCBE7B78778C142783D",
+    "frontend/src/components/GameStatus.tsx": "FE6EC1F398F240A25DE44BFDAC75037C6F9BF3A377A48E09F3455EBE35098636",
+    "frontend/src/components/TetrisBoard.test.tsx": "D32ADF7B7BB7F2787C69797610D15CF3F346474D6C34538F57E43A774806FAF9",
+    "frontend/src/components/TetrisBoard.tsx": "1DDCE2645A3D6A55635AAD4906E45BB65ADC5FDAE0AF3C2DE4E5324AA6E0F845",
+    "frontend/src/index.css": "78477E8A3C137209A3D705EF2E181438B3E75ED1E7978EA4BA4DCCCC05FBE6CB",
+    "frontend/src/main.tsx": "04BC6C664005D207F6C9A42CAC1A11810F6257A77604ECC9A2DFA1F0A68959BA",
+    "frontend/src/types.ts": "57906B9BAA7390073B674D4A7DF7851CF716DF7F8C7ACFE4CC5DBF15899571EC",
+    "frontend/package.json": "7D07185C28E8387001B6FB97909889607E06D43BCFD0DE60FF8EFA0784E64FBC",
+    "frontend/package-lock.json": "40DCA0CD843F89959D89D921590DA90FC2E27583838B247D0BD7A47AE76E2486",
+    "frontend/vite.config.ts": "EB109F8ACD8926882B52BD9C4A24F0C73C2C1581D14DDFDC108D6590CD0CF210",
+    "backend/pyproject.toml": "6BD6C219916FE366AE78368A6D88E663B2326B197808E6E43C2D063B0990E212",
+    ".gemini/settings.json": "D80C29B55D40DDFCE308D38168B8DBE7D76722FD22301E18BE67048CF8462B47"
+  },
+  "source_hashes_after": {
+    "backend/app/controllers/games.py": "4C81CD4C610C8E94A909D567AEC4CEBD7521CF82124313F8A97B65B5F2C2D610",
+    "backend/app/core/config.py": "0EDCC679E16FF9D13B206B87A6C92CBC0CCCB75412D0D7F2AFFDD2D87DAFCBE7",
+    "backend/app/domain/pieces.py": "E57C05C961EFED813DFA1CA565166C50F8B62D9FB3A9FC37121FECC470EA6D0E",
+    "backend/app/domain/rules.py": "051BFB186456B2AE1BD4A22F1000ECD59B7D4B7A9FB579F2B2840002C55D1C7E",
+    "backend/app/main.py": "409385F215D1345313DCF71CD5CFB60B7EBC02DBEF817D8FD2E3611E91A4E88D",
+    "backend/app/models/game.py": "32F1568652762DEB8616D1E954CDFAB8007CB5DA138848F2B40F6F1D5ACFE0A8",
+    "backend/tests/test_game.py": "EE683A8C67076B8FFC4174B3A4F974370E064F955CC18CAA952A4DE27393A4A3",
+    "backend/tests/test_scoring.py": "F72BA9E77F942B2D7649064FE3173D51CA82EAF8F5BCA1741E37AB9F9003A990",
+    "frontend/src/api.test.ts": "23F86A116934AF25A80205E82D57BAECBA3B64FF0ECFF46CC415AE6DD36A616F",
+    "frontend/src/api.ts": "42C0E2A2391E5BFDA7672A591EDD9439A1E26486B03BC8CAF76A06D91447C1C7",
+    "frontend/src/App.test.tsx": "98968AF8AB4C1E027A907A8FCEF2D88C06BE8E0F16C8B51554C6F2F0DBEFF3D7",
+    "frontend/src/App.tsx": "2E19DFD935FC535449A0CF6557F2A44F8E6476434C95DCCBE7B78778C142783D",
+    "frontend/src/components/GameStatus.tsx": "FE6EC1F398F240A25DE44BFDAC75037C6F9BF3A377A48E09F3455EBE35098636",
+    "frontend/src/components/TetrisBoard.test.tsx": "D32ADF7B7BB7F2787C69797610D15CF3F346474D6C34538F57E43A774806FAF9",
+    "frontend/src/components/TetrisBoard.tsx": "1DDCE2645A3D6A55635AAD4906E45BB65ADC5FDAE0AF3C2DE4E5324AA6E0F845",
+    "frontend/src/index.css": "78477E8A3C137209A3D705EF2E181438B3E75ED1E7978EA4BA4DCCCC05FBE6CB",
+    "frontend/src/main.tsx": "04BC6C664005D207F6C9A42CAC1A11810F6257A77604ECC9A2DFA1F0A68959BA",
+    "frontend/src/types.ts": "57906B9BAA7390073B674D4A7DF7851CF716DF7F8C7ACFE4CC5DBF15899571EC",
+    "frontend/package.json": "7D07185C28E8387001B6FB97909889607E06D43BCFD0DE60FF8EFA0784E64FBC",
+    "frontend/package-lock.json": "40DCA0CD843F89959D89D921590DA90FC2E27583838B247D0BD7A47AE76E2486",
+    "frontend/vite.config.ts": "EB109F8ACD8926882B52BD9C4A24F0C73C2C1581D14DDFDC108D6590CD0CF210",
+    "backend/pyproject.toml": "6BD6C219916FE366AE78368A6D88E663B2326B197808E6E43C2D063B0990E212",
+    ".gemini/settings.json": "D80C29B55D40DDFCE308D38168B8DBE7D76722FD22301E18BE67048CF8462B47"
+  },
+  "changed_source_paths": [],
+  "source_unchanged": true,
+  "coverage": {
+    "backend": {
+      "lines_valid": "210",
+      "lines_covered": "198",
+      "line_rate": "0.9429",
+      "sha256": "BC1DD4B2214C5CD66C083C929B06644BEE3E37A9BC0822877C0A9FC04CB2A0D4",
+      "mtime_utc": "2026-10-25T21:32:29.005269+00:00"
+    },
+    "frontend": {
+      "source_files": [
+        "src\\App.tsx",
+        "src\\api.ts",
+        "src\\main.tsx",
+        "src\\components\\GameStatus.tsx",
+        "src\\components\\TetrisBoard.tsx"
+      ],
+      "main_tsx_included": true,
+      "sha256": "9D838DFD8E0B8584ACC2D3A22653DA72E714B2CC6B758E717AA9135BAD58BAC4",
+      "mtime_utc": "2026-10-25T21:32:31.776210+00:00"
+    }
+  },
+  "checks": [
+    {
+      "label": "npm-ci",
+      "argv": [
+        "C:\\Program Files\\nodejs\\node.exe",
+        "C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js",
+        "ci",
+        "--no-fund",
+        "--no-audit"
+      ],
+      "cwd": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\Tessl\\frontend",
+      "started_at_utc": "2026-10-25T21:32:15.835387+00:00",
+      "ended_at_utc": "2026-10-25T21:32:26.793452+00:00",
+      "duration_seconds": 10.953,
+      "exit_code": 0,
+      "error": null
+    },
+    {
+      "label": "backend",
+      "argv": [
+        "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\Tessl\\backend\\.venv\\Scripts\\python.exe",
+        "-m",
+        "pytest",
+        "--cov=app",
+        "--cov-report=xml:../docs/coverage.xml",
+        "tests/"
+      ],
+      "cwd": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\Tessl\\backend",
+      "started_at_utc": "2026-10-25T21:32:26.793452+00:00",
+      "ended_at_utc": "2026-10-25T21:32:29.094975+00:00",
+      "duration_seconds": 2.312,
+      "exit_code": 0,
+      "error": null
+    },
+    {
+      "label": "frontend",
+      "argv": [
+        "C:\\Program Files\\nodejs\\node.exe",
+        "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\Tessl\\frontend\\node_modules\\vitest\\vitest.mjs",
+        "run",
+        "--coverage",
+        "--reporter=default",
+        "--reporter=json",
+        "--outputFile=D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\Tessl\\docs\\acceptance\\08-independent-final-retry\\frontend-vitest.json"
+      ],
+      "cwd": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\Tessl\\frontend",
+      "started_at_utc": "2026-10-25T21:32:29.094975+00:00",
+      "ended_at_utc": "2026-10-25T21:32:31.796721+00:00",
+      "duration_seconds": 2.704,
+      "exit_code": 0,
+      "error": null
+    },
+    {
+      "label": "build",
+      "argv": [
+        "C:\\Program Files\\nodejs\\node.exe",
+        "C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js",
+        "run",
+        "build"
+      ],
+      "cwd": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\Tessl\\frontend",
+      "started_at_utc": "2026-10-25T21:32:31.796721+00:00",
+      "ended_at_utc": "2026-10-25T21:32:34.312737+00:00",
+      "duration_seconds": 2.515,
+      "exit_code": 0,
+      "error": null
+    },
+    {
+      "label": "audit-all",
+      "argv": [
+        "C:\\Program Files\\nodejs\\node.exe",
+        "C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js",
+        "audit",
+        "--json"
+      ],
+      "cwd": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\Tessl\\frontend",
+      "started_at_utc": "2026-10-25T21:32:34.313737+00:00",
+      "ended_at_utc": "2026-10-25T21:32:36.115402+00:00",
+      "duration_seconds": 1.797,
+      "exit_code": 0,
+      "error": null
+    },
+    {
+      "label": "audit-production",
+      "argv": [
+        "C:\\Program Files\\nodejs\\node.exe",
+        "C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js",
+        "audit",
+        "--omit=dev",
+        "--json"
+      ],
+      "cwd": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\Tessl\\frontend",
+      "started_at_utc": "2026-10-25T21:32:36.116402+00:00",
+      "ended_at_utc": "2026-10-25T21:32:37.344478+00:00",
+      "duration_seconds": 1.234,
+      "exit_code": 0,
+      "error": null
+    },
+    {
+      "label": "domain",
+      "argv": [
+        "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\Tessl\\backend\\.venv\\Scripts\\python.exe",
+        "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\shared\\acceptance\\check_domain_tessl.py",
+        "--output",
+        "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\Tessl\\docs\\acceptance\\08-independent-final-retry\\domain.json"
+      ],
+      "cwd": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\Tessl",
+      "started_at_utc": "2026-10-25T21:32:37.344478+00:00",
+      "ended_at_utc": "2026-10-25T21:32:38.491869+00:00",
+      "duration_seconds": 1.141,
+      "exit_code": 0,
+      "error": null
+    },
+    {
+      "label": "races",
+      "argv": [
+        "C:\\Program Files\\nodejs\\node.exe",
+        "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\Tessl\\frontend\\node_modules\\vitest\\vitest.mjs",
+        "run",
+        "--config",
+        "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\Tessl\\docs\\acceptance\\vitest.external.config.mjs",
+        "--reporter=json",
+        "--outputFile=D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\Tessl\\docs\\acceptance\\08-independent-final-retry\\races-vitest.json"
+      ],
+      "cwd": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\Tessl",
+      "started_at_utc": "2026-10-25T21:32:38.492870+00:00",
+      "ended_at_utc": "2026-10-25T21:32:40.527424+00:00",
+      "duration_seconds": 2.031,
+      "exit_code": 0,
+      "error": null
+    },
+    {
+      "label": "falsey",
+      "argv": [
+        "C:\\Program Files\\nodejs\\node.exe",
+        "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\Tessl\\frontend\\node_modules\\vitest\\vitest.mjs",
+        "run",
+        "--config",
+        "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\Tessl\\docs\\acceptance\\vitest.falsey.config.mjs",
+        "--reporter=json",
+        "--outputFile=D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\Tessl\\docs\\acceptance\\08-independent-final-retry\\falsey-vitest.json"
+      ],
+      "cwd": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\Tessl",
+      "started_at_utc": "2026-10-25T21:32:40.528424+00:00",
+      "ended_at_utc": "2026-10-25T21:32:42.463311+00:00",
+      "duration_seconds": 1.938,
+      "exit_code": 0,
+      "error": null
+    }
+  ],
+  "runner_sha256": "3812D1723F12D1D20F47AFBBAEC41C9AD1C92D228C4BA59CE851F8A04A318B24"
+}

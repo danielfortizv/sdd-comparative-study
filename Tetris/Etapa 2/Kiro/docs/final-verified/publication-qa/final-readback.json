@@ -1,0 +1,2771 @@
+{
+  "researcher_created": true,
+  "revision": "AHj4eMR-7KZtKUiP6VJbJ6k_KNOXkRMuKL5WL421RvPdwADrxUAFBpkCYkIKql5pepso3a-Oyi50Bf6CJYvBBTmDwg5gBng-fVluaROPHw",
+  "paragraphs": [
+    {
+      "text": "Kiro — cierre verificado de la etapa 2, opción A (23 octubre 2026)",
+      "startIndex": 73136,
+      "endIndex": 73202,
+      "tabId": "t.0",
+      "namedStyleType": "HEADING_2",
+      "isListItem": false
+    },
+    {
+      "text": "Cierre técnico verificado el 23 de octubre de 2026, hora de Bogotá. La publicación en Drive y su revisión visual se registran por separado.",
+      "startIndex": 73204,
+      "endIndex": 73343,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": false
+    },
+    {
+      "text": "Resultado",
+      "startIndex": 73345,
+      "endIndex": 73354,
+      "tabId": "t.0",
+      "namedStyleType": "HEADING_3",
+      "isListItem": false
+    },
+    {
+      "text": "- 120 pruebas backend y 49 frontend aprobadas en una repetición independiente. Build de producción aprobado.",
+      "startIndex": 73356,
+      "endIndex": 73464,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": false
+    },
+    {
+      "text": "- Cero hallazgos npm, tanto en el árbol completo como en producción.",
+      "startIndex": 73465,
+      "endIndex": 73533,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": false
+    },
+    {
+      "text": "- Cinco controles externos de concurrencia aprobados, 15 registros de dominio, siete registros HTTP y nueve controles suplementarios de contrato.",
+      "startIndex": 73534,
+      "endIndex": 73679,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": false
+    },
+    {
+      "text": "- 20/20 criterios del catálogo verificados, mediante los mecanismos declarados abajo. No es una tasa de aceptación exclusivamente en navegador.",
+      "startIndex": 73680,
+      "endIndex": 73823,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": false
+    },
+    {
+      "text": "- Entrega íntegra de la semilla común acreditada en 7/7 entradas. Se conserva la semilla del juego 20260929, las formas canónicas y el generador de bolsa de siete piezas.",
+      "startIndex": 73824,
+      "endIndex": 73994,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": false
+    },
+    {
+      "text": "Pruebas y cobertura",
+      "startIndex": 73996,
+      "endIndex": 74015,
+      "tabId": "t.0",
+      "namedStyleType": "HEADING_3",
+      "isListItem": false
+    },
+    {
+      "text": "Medición",
+      "startIndex": 74021,
+      "endIndex": 74029,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": false
+    },
+    {
+      "text": "Resultado",
+      "startIndex": 74031,
+      "endIndex": 74040,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": false
+    },
+    {
+      "text": "Backend",
+      "startIndex": 74043,
+      "endIndex": 74050,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": false
+    },
+    {
+      "text": "245/247 líneas: 99,19 %",
+      "startIndex": 74052,
+      "endIndex": 74075,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": false
+    },
+    {
+      "text": "Frontend: sentencias",
+      "startIndex": 74078,
+      "endIndex": 74098,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": false
+    },
+    {
+      "text": "163/184: 88,58 %",
+      "startIndex": 74100,
+      "endIndex": 74116,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": false
+    },
+    {
+      "text": "Frontend: ramas",
+      "startIndex": 74119,
+      "endIndex": 74134,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": false
+    },
+    {
+      "text": "76/98: 77,55 %",
+      "startIndex": 74136,
+      "endIndex": 74150,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": false
+    },
+    {
+      "text": "Frontend: funciones",
+      "startIndex": 74153,
+      "endIndex": 74172,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": false
+    },
+    {
+      "text": "38/41: 92,68 %",
+      "startIndex": 74174,
+      "endIndex": 74188,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": false
+    },
+    {
+      "text": "Frontend: líneas",
+      "startIndex": 74191,
+      "endIndex": 74207,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": false
+    },
+    {
+      "text": "154/163: 94,47 %",
+      "startIndex": 74209,
+      "endIndex": 74225,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": false
+    },
+    {
+      "text": "El LCOV incluye los siete módulos de producción, incluido main.tsx. La cobertura de ramas del backend no se instrumentó: los contadores 0/0 no se presentan como 0 % ni como 100 %. Las versiones 3 y 4 de Vitest usan denominadores diferentes; sus porcentajes no se comparan como si fueran idénticos.",
+      "startIndex": 74229,
+      "endIndex": 74526,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": false
+    },
+    {
+      "text": "SonarQube",
+      "startIndex": 74528,
+      "endIndex": 74537,
+      "tabId": "t.0",
+      "namedStyleType": "HEADING_3",
+      "isListItem": false
+    },
+    {
+      "text": "- Proyecto tetris-stage2-kiro, versión 2.0; baseline 1.0. CE 19506ab6-d54d-41c6-ab8c-0702cb42ac9b: SUCCESS.",
+      "startIndex": 74539,
+      "endIndex": 74646,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": false
+    },
+    {
+      "text": "- Análisis c9e3f4c9-35e0-4434-8dfd-3723413c0588: gate OK.",
+      "startIndex": 74647,
+      "endIndex": 74704,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": false
+    },
+    {
+      "text": "- Cobertura nueva 88,7 %, duplicación nueva 0 %, cero violaciones nuevas.",
+      "startIndex": 74705,
+      "endIndex": 74778,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": false
+    },
+    {
+      "text": "- Cobertura global 93,2 %; cero bugs, vulnerabilidades y hotspots; siete smells heredados activos.",
+      "startIndex": 74779,
+      "endIndex": 74877,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": false
+    },
+    {
+      "text": "- Deuda: 23 minutos. Complejidad: 153; cognitiva: 114. ncloc: 784; líneas Sonar: 1292; calificaciones A.",
+      "startIndex": 74878,
+      "endIndex": 74982,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": false
+    },
+    {
+      "text": "Se comprobaron los hashes de XML y LCOV usados por el análisis. El gate es el gate independiente del estudio; no se sustituye por otra configuración ni se ocultan los hallazgos heredados. No se infiere una puntuación de escalabilidad sin pruebas de carga.",
+      "startIndex": 74984,
+      "endIndex": 75239,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": false
+    },
+    {
+      "text": "Invocaciones, tiempo y créditos",
+      "startIndex": 75241,
+      "endIndex": 75272,
+      "tabId": "t.0",
+      "namedStyleType": "HEADING_3",
+      "isListItem": false
+    },
+    {
+      "text": "ID",
+      "startIndex": 75278,
+      "endIndex": 75280,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": false
+    },
+    {
+      "text": "Propósito",
+      "startIndex": 75282,
+      "endIndex": 75291,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": false
+    },
+    {
+      "text": "CLI (s)",
+      "startIndex": 75293,
+      "endIndex": 75300,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": false
+    },
+    {
+      "text": "Agente (s)",
+      "startIndex": 75302,
+      "endIndex": 75312,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": false
+    },
+    {
+      "text": "Créditos Kiro",
+      "startIndex": 75314,
+      "endIndex": 75327,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": false
+    },
+    {
+      "text": "Aclaraciones bloqueantes",
+      "startIndex": 75329,
+      "endIndex": 75353,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": false
+    },
+    {
+      "text": "01",
+      "startIndex": 75356,
+      "endIndex": 75358,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": false
+    },
+    {
+      "text": "Especificación interrumpida: cuenta incorrecta",
+      "startIndex": 75360,
+      "endIndex": 75406,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": false
+    },
+    {
+      "text": "140,931",
+      "startIndex": 75408,
+      "endIndex": 75415,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": false
+    },
+    {
+      "text": "ND",
+      "startIndex": 75417,
+      "endIndex": 75419,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": false
+    },
+    {
+      "text": "ND",
+      "startIndex": 75421,
+      "endIndex": 75423,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": false
+    },
+    {
+      "text": "0",
+      "startIndex": 75425,
+      "endIndex": 75426,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": false
+    },
+    {
+      "text": "02",
+      "startIndex": 75429,
+      "endIndex": 75431,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": false
+    },
+    {
+      "text": "Especificación: Vibe observado",
+      "startIndex": 75433,
+      "endIndex": 75463,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": false
+    },
+    {
+      "text": "331,014",
+      "startIndex": 75465,
+      "endIndex": 75472,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": false
+    },
+    {
+      "text": "326,445",
+      "startIndex": 75474,
+      "endIndex": 75481,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": false
+    },
+    {
+      "text": "5,897180",
+      "startIndex": 75483,
+      "endIndex": 75491,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": false
+    },
+    {
+      "text": "0",
+      "startIndex": 75493,
+      "endIndex": 75494,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": false
+    },
+    {
+      "text": "03",
+      "startIndex": 75497,
+      "endIndex": 75499,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": false
+    },
+    {
+      "text": "Revisión nativa Spec",
+      "startIndex": 75501,
+      "endIndex": 75521,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": false
+    },
+    {
+      "text": "395,730",
+      "startIndex": 75523,
+      "endIndex": 75530,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": false
+    },
+    {
+      "text": "393,627",
+      "startIndex": 75532,
+      "endIndex": 75539,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": false
+    },
+    {
+      "text": "8,026105",
+      "startIndex": 75541,
+      "endIndex": 75549,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": false
+    },
+    {
+      "text": "0",
+      "startIndex": 75551,
+      "endIndex": 75552,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": false
+    },
+    {
+      "text": "04",
+      "startIndex": 75555,
+      "endIndex": 75557,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": false
+    },
+    {
+      "text": "Implementación inicial",
+      "startIndex": 75559,
+      "endIndex": 75581,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": false
+    },
+    {
+      "text": "1.796,250",
+      "startIndex": 75583,
+      "endIndex": 75592,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": false
+    },
+    {
+      "text": "1.792,693",
+      "startIndex": 75594,
+      "endIndex": 75603,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": false
+    },
+    {
+      "text": "49,458271",
+      "startIndex": 75605,
+      "endIndex": 75614,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": false
+    },
+    {
+      "text": "0",
+      "startIndex": 75616,
+      "endIndex": 75617,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": false
+    },
+    {
+      "text": "05",
+      "startIndex": 75620,
+      "endIndex": 75622,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": false
+    },
+    {
+      "text": "QA 1 interrumpida",
+      "startIndex": 75624,
+      "endIndex": 75641,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": false
+    },
+    {
+      "text": "ND",
+      "startIndex": 75643,
+      "endIndex": 75645,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": false
+    },
+    {
+      "text": "ND",
+      "startIndex": 75647,
+      "endIndex": 75649,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": false
+    },
+    {
+      "text": "ND",
+      "startIndex": 75651,
+      "endIndex": 75653,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": false
+    },
+    {
+      "text": "1",
+      "startIndex": 75655,
+      "endIndex": 75656,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": false
+    },
+    {
+      "text": "06",
+      "startIndex": 75659,
+      "endIndex": 75661,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": false
+    },
+    {
+      "text": "Reintento QA 1",
+      "startIndex": 75663,
+      "endIndex": 75677,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": false
+    },
+    {
+      "text": "888,976",
+      "startIndex": 75679,
+      "endIndex": 75686,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": false
+    },
+    {
+      "text": "884,667",
+      "startIndex": 75688,
+      "endIndex": 75695,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": false
+    },
+    {
+      "text": "18,924292",
+      "startIndex": 75697,
+      "endIndex": 75706,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": false
+    },
+    {
+      "text": "0",
+      "startIndex": 75708,
+      "endIndex": 75709,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": false
+    },
+    {
+      "text": "07",
+      "startIndex": 75712,
+      "endIndex": 75714,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": false
+    },
+    {
+      "text": "QA 2: temporizadores en cola",
+      "startIndex": 75716,
+      "endIndex": 75744,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": false
+    },
+    {
+      "text": "604,254",
+      "startIndex": 75746,
+      "endIndex": 75753,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": false
+    },
+    {
+      "text": "600,075",
+      "startIndex": 75755,
+      "endIndex": 75762,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": false
+    },
+    {
+      "text": "19,063515",
+      "startIndex": 75764,
+      "endIndex": 75773,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": false
+    },
+    {
+      "text": "0",
+      "startIndex": 75775,
+      "endIndex": 75776,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": false
+    },
+    {
+      "text": "Créditos conocidos: 101,369363. Los créditos finales de 01 y 05 permanecen desconocidos.",
+      "startIndex": 75780,
+      "endIndex": 75868,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": false
+    },
+    {
+      "text": "Tiempo CLI conocido: 4.157,155 s; falta la duración de 05. Tiempo de agente conocido: 3.997,507 s; faltan 01 y 05. Son sumas de intervalos acreditados, no la duración total del proyecto.",
+      "startIndex": 75869,
+      "endIndex": 76055,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": false
+    },
+    {
+      "text": "Tokens de entrada, caché, salida y razonamiento: ND. Intentos, errores y éxitos API: ND. Los requestIds se conservan como identificadores y no se convierten en contadores API. La ocupación del contexto tampoco se suma como consumo de tokens.",
+      "startIndex": 76057,
+      "endIndex": 76298,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": false
+    },
+    {
+      "text": "La pregunta de 05 fue una confirmación del alcance del workflow. Se eligió la opción ofrecida de completar todo mediante la autorización existente; no hubo una nueva respuesta humana. En 02 se conserva además una referencia de confirmación no bloqueante. Todos los mensajes naturales Say de los siete intervalos fueron revisados; Reasoning queda fuera del recuento.",
+      "startIndex": 76300,
+      "endIndex": 76665,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": false
+    },
+    {
+      "text": "Tres intentos externos de corrección, para dos intenciones distintas. Los dos ciclos Sonar conocidos dentro de 04 se informan aparte; no se presentan como el total de todas las correcciones internas.",
+      "startIndex": 76667,
+      "endIndex": 76866,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": false
+    },
+    {
+      "text": "Artefactos y deltas",
+      "startIndex": 76868,
+      "endIndex": 76887,
+      "tabId": "t.0",
+      "namedStyleType": "HEADING_3",
+      "isListItem": false
+    },
+    {
+      "text": "Alcance",
+      "startIndex": 76893,
+      "endIndex": 76900,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": false
+    },
+    {
+      "text": "Archivos",
+      "startIndex": 76902,
+      "endIndex": 76910,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": false
+    },
+    {
+      "text": "Líneas",
+      "startIndex": 76912,
+      "endIndex": 76918,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": false
+    },
+    {
+      "text": "Caracteres Unicode/LF",
+      "startIndex": 76920,
+      "endIndex": 76941,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": false
+    },
+    {
+      "text": "Fuente propia de etapa 1",
+      "startIndex": 76944,
+      "endIndex": 76968,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": false
+    },
+    {
+      "text": "23",
+      "startIndex": 76970,
+      "endIndex": 76972,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": false
+    },
+    {
+      "text": "1207",
+      "startIndex": 76974,
+      "endIndex": 76978,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": false
+    },
+    {
+      "text": "33641",
+      "startIndex": 76980,
+      "endIndex": 76985,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": false
+    },
+    {
+      "text": "Fuente de etapa 2, con tests/config",
+      "startIndex": 76988,
+      "endIndex": 77023,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": false
+    },
+    {
+      "text": "37",
+      "startIndex": 77025,
+      "endIndex": 77027,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": false
+    },
+    {
+      "text": "3691",
+      "startIndex": 77029,
+      "endIndex": 77033,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": false
+    },
+    {
+      "text": "119547",
+      "startIndex": 77035,
+      "endIndex": 77041,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": false
+    },
+    {
+      "text": "Specs nativas heredadas",
+      "startIndex": 77044,
+      "endIndex": 77067,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": false
+    },
+    {
+      "text": "3",
+      "startIndex": 77069,
+      "endIndex": 77070,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": false
+    },
+    {
+      "text": "608",
+      "startIndex": 77072,
+      "endIndex": 77075,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": false
+    },
+    {
+      "text": "28780",
+      "startIndex": 77077,
+      "endIndex": 77082,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": false
+    },
+    {
+      "text": "Feature nativo de etapa 2",
+      "startIndex": 77085,
+      "endIndex": 77110,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": false
+    },
+    {
+      "text": "3",
+      "startIndex": 77112,
+      "endIndex": 77113,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": false
+    },
+    {
+      "text": "886",
+      "startIndex": 77115,
+      "endIndex": 77118,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": false
+    },
+    {
+      "text": "92802",
+      "startIndex": 77120,
+      "endIndex": 77125,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": false
+    },
+    {
+      "text": "Densidad: 99,76 líneas por archivo fuente, y 295,33 por artefacto nativo del feature. Delta fuente: +2552 / −68 líneas; neto +2484 líneas y +85906 caracteres. El delta compara estados retenidos; no reconstruye el volumen acumulado de edición.",
+      "startIndex": 77129,
+      "endIndex": 77371,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": false
+    },
+    {
+      "text": "Los manifiestos y la configuración se cuentan aparte y no se suman dos veces a la fuente. Se excluyen dependencias, builds, cachés, documentación del investigador y Git. Los SHA-256 se calculan sobre los bytes originales; los recuentos de texto normalizan LF y eliminan BOM.",
+      "startIndex": 77373,
+      "endIndex": 77647,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": false
+    },
+    {
+      "text": "El corpus previsto para BERTopic contiene únicamente los tres Markdown nativos del feature de etapa 2. No se ha entrenado un modelo de temas ni se atribuyen temas o embeddings no calculados.",
+      "startIndex": 77649,
+      "endIndex": 77839,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": false
+    },
+    {
+      "text": "Catálogo común de aceptación",
+      "startIndex": 77841,
+      "endIndex": 77869,
+      "tabId": "t.0",
+      "namedStyleType": "HEADING_3",
+      "isListItem": false
+    },
+    {
+      "text": "ID",
+      "startIndex": 77875,
+      "endIndex": 77877,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": false
+    },
+    {
+      "text": "Criterio",
+      "startIndex": 77879,
+      "endIndex": 77887,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": false
+    },
+    {
+      "text": "Resultado y mecanismo",
+      "startIndex": 77889,
+      "endIndex": 77910,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": false
+    },
+    {
+      "text": "S2-01",
+      "startIndex": 77913,
+      "endIndex": 77918,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": false
+    },
+    {
+      "text": "Nuevo juego",
+      "startIndex": 77920,
+      "endIndex": 77931,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": false
+    },
+    {
+      "text": "PASS — HTTP real o engine/serializer real con estado controlado; referencias exactas en el JSON del catálogo.",
+      "startIndex": 77933,
+      "endIndex": 78042,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": false
+    },
+    {
+      "text": "S2-02",
+      "startIndex": 78045,
+      "endIndex": 78050,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": false
+    },
+    {
+      "text": "Lectura sin mutación",
+      "startIndex": 78052,
+      "endIndex": 78072,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": false
+    },
+    {
+      "text": "PASS — HTTP real o engine/serializer real con estado controlado; referencias exactas en el JSON del catálogo.",
+      "startIndex": 78074,
+      "endIndex": 78183,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": false
+    },
+    {
+      "text": "S2-03",
+      "startIndex": 78186,
+      "endIndex": 78191,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": false
+    },
+    {
+      "text": "Bloqueo sin limpiar filas",
+      "startIndex": 78193,
+      "endIndex": 78218,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": false
+    },
+    {
+      "text": "PASS — HTTP real o engine/serializer real con estado controlado; referencias exactas en el JSON del catálogo.",
+      "startIndex": 78220,
+      "endIndex": 78329,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": false
+    },
+    {
+      "text": "S2-04",
+      "startIndex": 78332,
+      "endIndex": 78337,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": false
+    },
+    {
+      "text": "Una fila",
+      "startIndex": 78339,
+      "endIndex": 78347,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": false
+    },
+    {
+      "text": "PASS — HTTP real o engine/serializer real con estado controlado; referencias exactas en el JSON del catálogo.",
+      "startIndex": 78349,
+      "endIndex": 78458,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": false
+    },
+    {
+      "text": "S2-05",
+      "startIndex": 78461,
+      "endIndex": 78466,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": false
+    },
+    {
+      "text": "Dos filas",
+      "startIndex": 78468,
+      "endIndex": 78477,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": false
+    },
+    {
+      "text": "PASS — HTTP real o engine/serializer real con estado controlado; referencias exactas en el JSON del catálogo.",
+      "startIndex": 78479,
+      "endIndex": 78588,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": false
+    },
+    {
+      "text": "S2-06",
+      "startIndex": 78591,
+      "endIndex": 78596,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": false
+    },
+    {
+      "text": "Tres filas",
+      "startIndex": 78598,
+      "endIndex": 78608,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": false
+    },
+    {
+      "text": "PASS — fixture aislado de dominio; no se afirma alcanzabilidad en juego sin rotación.",
+      "startIndex": 78610,
+      "endIndex": 78695,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": false
+    },
+    {
+      "text": "S2-07",
+      "startIndex": 78698,
+      "endIndex": 78703,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": false
+    },
+    {
+      "text": "Regla de cuatro filas",
+      "startIndex": 78705,
+      "endIndex": 78726,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": false
+    },
+    {
+      "text": "PASS — fixture aislado de dominio; no se afirma alcanzabilidad en juego sin rotación.",
+      "startIndex": 78728,
+      "endIndex": 78813,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": false
+    },
+    {
+      "text": "S2-08",
+      "startIndex": 78816,
+      "endIndex": 78821,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": false
+    },
+    {
+      "text": "Cruce de 9 a 10 líneas",
+      "startIndex": 78823,
+      "endIndex": 78845,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": false
+    },
+    {
+      "text": "PASS — HTTP real o engine/serializer real con estado controlado; referencias exactas en el JSON del catálogo.",
+      "startIndex": 78847,
+      "endIndex": 78956,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": false
+    },
+    {
+      "text": "S2-09",
+      "startIndex": 78959,
+      "endIndex": 78964,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": false
+    },
+    {
+      "text": "Suelo de gravedad: 100 ms",
+      "startIndex": 78966,
+      "endIndex": 78991,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": false
+    },
+    {
+      "text": "PASS — HTTP real o engine/serializer real con estado controlado; referencias exactas en el JSON del catálogo.",
+      "startIndex": 78993,
+      "endIndex": 79102,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": false
+    },
+    {
+      "text": "S2-10",
+      "startIndex": 79105,
+      "endIndex": 79110,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": false
+    },
+    {
+      "text": "Primer Hold",
+      "startIndex": 79112,
+      "endIndex": 79123,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": false
+    },
+    {
+      "text": "PASS — HTTP real o engine/serializer real con estado controlado; referencias exactas en el JSON del catálogo.",
+      "startIndex": 79125,
+      "endIndex": 79234,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": false
+    },
+    {
+      "text": "S2-11",
+      "startIndex": 79237,
+      "endIndex": 79242,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": false
+    },
+    {
+      "text": "Segundo Hold rechazado",
+      "startIndex": 79244,
+      "endIndex": 79266,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": false
+    },
+    {
+      "text": "PASS — HTTP real o engine/serializer real con estado controlado; referencias exactas en el JSON del catálogo.",
+      "startIndex": 79268,
+      "endIndex": 79377,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": false
+    },
+    {
+      "text": "S2-12",
+      "startIndex": 79380,
+      "endIndex": 79385,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": false
+    },
+    {
+      "text": "Hold tras bloquear",
+      "startIndex": 79387,
+      "endIndex": 79405,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": false
+    },
+    {
+      "text": "PASS — HTTP real o engine/serializer real con estado controlado; referencias exactas en el JSON del catálogo.",
+      "startIndex": 79407,
+      "endIndex": 79516,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": false
+    },
+    {
+      "text": "S2-13",
+      "startIndex": 79519,
+      "endIndex": 79524,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": false
+    },
+    {
+      "text": "Spawn reservado bloqueado",
+      "startIndex": 79526,
+      "endIndex": 79551,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": false
+    },
+    {
+      "text": "PASS — HTTP real o engine/serializer real con estado controlado; referencias exactas en el JSON del catálogo.",
+      "startIndex": 79553,
+      "endIndex": 79662,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": false
+    },
+    {
+      "text": "S2-14",
+      "startIndex": 79665,
+      "endIndex": 79670,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": false
+    },
+    {
+      "text": "Acciones tras Game Over",
+      "startIndex": 79672,
+      "endIndex": 79695,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": false
+    },
+    {
+      "text": "PASS — HTTP real o engine/serializer real con estado controlado; referencias exactas en el JSON del catálogo.",
+      "startIndex": 79697,
+      "endIndex": 79806,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": false
+    },
+    {
+      "text": "S2-15",
+      "startIndex": 79809,
+      "endIndex": 79814,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": false
+    },
+    {
+      "text": "Reinicio",
+      "startIndex": 79816,
+      "endIndex": 79824,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": false
+    },
+    {
+      "text": "PASS — HTTP real o engine/serializer real con estado controlado; referencias exactas en el JSON del catálogo.",
+      "startIndex": 79826,
+      "endIndex": 79935,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": false
+    },
+    {
+      "text": "S2-16",
+      "startIndex": 79938,
+      "endIndex": 79943,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": false
+    },
+    {
+      "text": "Contrato HTTP",
+      "startIndex": 79945,
+      "endIndex": 79958,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": false
+    },
+    {
+      "text": "PASS — HTTP real o engine/serializer real con estado controlado; referencias exactas en el JSON del catálogo.",
+      "startIndex": 79960,
+      "endIndex": 80069,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": false
+    },
+    {
+      "text": "S2-17",
+      "startIndex": 80072,
+      "endIndex": 80077,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": false
+    },
+    {
+      "text": "HUD, tecla C y botón Hold",
+      "startIndex": 80079,
+      "endIndex": 80104,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": false
+    },
+    {
+      "text": "PASS — navegador real, capturas y observaciones de HUD/controles.",
+      "startIndex": 80106,
+      "endIndex": 80171,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": false
+    },
+    {
+      "text": "S2-18",
+      "startIndex": 80174,
+      "endIndex": 80179,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": false
+    },
+    {
+      "text": "Gravedad y concurrencia",
+      "startIndex": 80181,
+      "endIndex": 80204,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": false
+    },
+    {
+      "text": "PASS — tests nativos y cinco controles externos con transporte diferido y temporizadores; captura/traza del cruce real.",
+      "startIndex": 80206,
+      "endIndex": 80325,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": false
+    },
+    {
+      "text": "S2-19",
+      "startIndex": 80328,
+      "endIndex": 80333,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": false
+    },
+    {
+      "text": "Regresión de etapa 1",
+      "startIndex": 80335,
+      "endIndex": 80355,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": false
+    },
+    {
+      "text": "PASS de comportamientos de regresión — 38 pruebas originales pasan; una igualdad de esquema cerrado incompatible se conserva como fallo esperado.",
+      "startIndex": 80357,
+      "endIndex": 80502,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": false
+    },
+    {
+      "text": "S2-20",
+      "startIndex": 80505,
+      "endIndex": 80510,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": false
+    },
+    {
+      "text": "Build de producción",
+      "startIndex": 80512,
+      "endIndex": 80531,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": false
+    },
+    {
+      "text": "PASS — build independiente y versiones registradas.",
+      "startIndex": 80533,
+      "endIndex": 80584,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": false
+    },
+    {
+      "text": "La limpieza de tres/cuatro filas se verifica por fórmula en fixtures de dominio con filas prefijadas completas y una pieza canónica. Estos casos se separan de la aceptación de gameplay normal. No se publica una tasa exclusivamente visual a partir de este catálogo mixto.",
+      "startIndex": 80588,
+      "endIndex": 80858,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": false
+    },
+    {
+      "text": "Límites y desviaciones registradas",
+      "startIndex": 80860,
+      "endIndex": 80894,
+      "tabId": "t.0",
+      "namedStyleType": "HEADING_3",
+      "isListItem": false
+    },
+    {
+      "text": "- 01 se interrumpió por cambio de cuenta. 02 emitió Vibe pese al flag Spec. Desde 03 se acredita Spec/Auto por ACP antes de cada prompt. Auto no revela el modelo de backend resuelto ni consumo por rol auxiliar.",
+      "startIndex": 80896,
+      "endIndex": 81106,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": false
+    },
+    {
+      "text": "- 05 no conserva cierre nativo: final, duración y exit son desconocidos. El límite superior de observación sirve para auditar el tramo retenido; el tiempo fuera de línea no se atribuye al agente ni a facturación.",
+      "startIndex": 81107,
+      "endIndex": 81319,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": false
+    },
+    {
+      "text": "- Las 39 pruebas Stage1 originales, sin editar, dan 38 PASS y un FAIL de igualdad cerrada de cuatro claves. La etapa 2 exige siete claves nuevas. La copia de etapa 2 amplió esa expectativa tras revisar sus specs; no se afirma que las 39 originales pasen sin cambios.",
+      "startIndex": 81320,
+      "endIndex": 81586,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": false
+    },
+    {
+      "text": "- En 04 se corrigieron findings estilísticos sin revisión previa de specs, según su registro. Esa parte no acredita el procedimiento spec-first. En 07 sí se revisaron los tres artefactos antes del código.",
+      "startIndex": 81587,
+      "endIndex": 81791,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": false
+    },
+    {
+      "text": "- Se conservan los fallos de concurrencia anteriores, los dos análisis Sonar fallidos, las auditorías vulnerables, los errores de preparación/sandbox y los resultados corregidos.",
+      "startIndex": 81792,
+      "endIndex": 81970,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": false
+    },
+    {
+      "text": "- CLI 01: 2.25.0; desde 02: 2.33.0. Vite se actualizó de 5.4.11 a 8.3.5; Vitest/coverage-v8 4.1.12 y plugin-react 6.1.2. React 18.3.1, TypeScript 5.6.3 y Python 3.10.11 se conservan. Las versiones, fechas y el modelo opaco limitan comparaciones causales entre herramientas.",
+      "startIndex": 81971,
+      "endIndex": 82244,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": false
+    },
+    {
+      "text": "- El trabajo del investigador/Codex —helpers, revisión, verificación, navegador y documentos— está fuera de los créditos y tiempos de generación Kiro.",
+      "startIndex": 82245,
+      "endIndex": 82395,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": false
+    },
+    {
+      "text": "Control de energía y estado del proyecto",
+      "startIndex": 82397,
+      "endIndex": 82437,
+      "tabId": "t.0",
+      "namedStyleType": "HEADING_3",
+      "isListItem": false
+    },
+    {
+      "text": "Por la nueva instrucción del 23 de octubre se reactivó la tarea Windows existente, con repetición horaria. La ejecución normal verificada terminó con código 0 y decisión continuar. Solo una cuota Codex válida agotada habilita la suspensión normal; los datos desconocidos no equivalen a cero y no se usan restablecimientos. El historial de cancelación se conserva en shared/quota-monitor/.",
+      "startIndex": 82439,
+      "endIndex": 82827,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": false
+    },
+    {
+      "text": "El código permanece local, sin commits ni subidas al repositorio. Tessl y BMAD siguen pausados hasta nuevas credenciales/autorización.",
+      "startIndex": 82829,
+      "endIndex": 82963,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": false
+    },
+    {
+      "text": "Referencias locales",
+      "startIndex": 82965,
+      "endIndex": 82984,
+      "tabId": "t.0",
+      "namedStyleType": "HEADING_3",
+      "isListItem": false
+    },
+    {
+      "text": "- metrics.json, input-audit.json, question-audit.json y RESEARCH_LOG.md.",
+      "startIndex": 82986,
+      "endIndex": 83058,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": false
+    },
+    {
+      "text": "- researcher-verification/final-07/verification-summary.json.",
+      "startIndex": 83059,
+      "endIndex": 83120,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": false
+    },
+    {
+      "text": "- acceptance/final/catalog.json, informes HTTP/dominio/browser y controles de concurrencia.",
+      "startIndex": 83121,
+      "endIndex": 83212,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": false
+    },
+    {
+      "text": "- sonar-verification.json, stage2-frontend-result-07.json, capturas y transcripts identificados por hash.",
+      "startIndex": 83213,
+      "endIndex": 83318,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": false
+    },
+    {
+      "text": "- La publicación en Drive y el snapshot final se registran después de verificar la maquetación del documento.",
+      "startIndex": 83319,
+      "endIndex": 83428,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": false
+    },
+    {
+      "text": "Capturas finales y procedencia",
+      "startIndex": 83430,
+      "endIndex": 83460,
+      "tabId": "t.0",
+      "namedStyleType": "HEADING_3",
+      "isListItem": false
+    },
+    {
+      "text": "Figura K-F1. Navegador real; fixture controlado del motor para el umbral de nivel: puntuación 100, líneas 10, nivel 2. No representa una partida aleatoria sin preparar.",
+      "startIndex": 83461,
+      "endIndex": 83629,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": false
+    },
+    {
+      "text": "Figura K-F2. Navegador real inmediatamente después de C: Hold J, siguiente I y botón Hold deshabilitado. Reinicio previo a 0/0/1.",
+      "startIndex": 83633,
+      "endIndex": 83762,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": false
+    },
+    {
+      "text": "Figura K-F3. Game Over obtenido con eventos reales de teclado; controles de mutación deshabilitados.",
+      "startIndex": 83766,
+      "endIndex": 83866,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": false
+    },
+    {
+      "text": "Figura K-F4. Vista derivada del investigador a partir de informes con hash: pruebas, auditoría, cobertura y gate. No es una captura de la interfaz nativa de SonarQube.",
+      "startIndex": 83870,
+      "endIndex": 84037,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": false
+    },
+    {
+      "text": "Figura K-F5. Vista derivada del investigador a partir de los registros nativos de consumo. Los intervalos desconocidos y los tokens no expuestos se conservan como ND.",
+      "startIndex": 84041,
+      "endIndex": 84207,
+      "tabId": "t.0",
+      "namedStyleType": "NORMAL_TEXT",
+      "isListItem": false
+    }
+  ],
+  "tables": [
+    {
+      "tableNumber": 13,
+      "startIndex": 74018,
+      "endIndex": 74227,
+      "rowCount": 6,
+      "columnCount": 2,
+      "tabId": "t.0",
+      "cells": [
+        {
+          "rowNumber": 1,
+          "columnNumber": 1,
+          "text": "Medición",
+          "startIndex": 74021,
+          "endIndex": 74029,
+          "tabId": "t.0"
+        },
+        {
+          "rowNumber": 1,
+          "columnNumber": 2,
+          "text": "Resultado",
+          "startIndex": 74031,
+          "endIndex": 74040,
+          "tabId": "t.0"
+        },
+        {
+          "rowNumber": 2,
+          "columnNumber": 1,
+          "text": "Backend",
+          "startIndex": 74043,
+          "endIndex": 74050,
+          "tabId": "t.0"
+        },
+        {
+          "rowNumber": 2,
+          "columnNumber": 2,
+          "text": "245/247 líneas: 99,19 %",
+          "startIndex": 74052,
+          "endIndex": 74075,
+          "tabId": "t.0"
+        },
+        {
+          "rowNumber": 3,
+          "columnNumber": 1,
+          "text": "Frontend: sentencias",
+          "startIndex": 74078,
+          "endIndex": 74098,
+          "tabId": "t.0"
+        },
+        {
+          "rowNumber": 3,
+          "columnNumber": 2,
+          "text": "163/184: 88,58 %",
+          "startIndex": 74100,
+          "endIndex": 74116,
+          "tabId": "t.0"
+        },
+        {
+          "rowNumber": 4,
+          "columnNumber": 1,
+          "text": "Frontend: ramas",
+          "startIndex": 74119,
+          "endIndex": 74134,
+          "tabId": "t.0"
+        },
+        {
+          "rowNumber": 4,
+          "columnNumber": 2,
+          "text": "76/98: 77,55 %",
+          "startIndex": 74136,
+          "endIndex": 74150,
+          "tabId": "t.0"
+        },
+        {
+          "rowNumber": 5,
+          "columnNumber": 1,
+          "text": "Frontend: funciones",
+          "startIndex": 74153,
+          "endIndex": 74172,
+          "tabId": "t.0"
+        },
+        {
+          "rowNumber": 5,
+          "columnNumber": 2,
+          "text": "38/41: 92,68 %",
+          "startIndex": 74174,
+          "endIndex": 74188,
+          "tabId": "t.0"
+        },
+        {
+          "rowNumber": 6,
+          "columnNumber": 1,
+          "text": "Frontend: líneas",
+          "startIndex": 74191,
+          "endIndex": 74207,
+          "tabId": "t.0"
+        },
+        {
+          "rowNumber": 6,
+          "columnNumber": 2,
+          "text": "154/163: 94,47 %",
+          "startIndex": 74209,
+          "endIndex": 74225,
+          "tabId": "t.0"
+        }
+      ]
+    },
+    {
+      "tableNumber": 14,
+      "startIndex": 75275,
+      "endIndex": 75778,
+      "rowCount": 8,
+      "columnCount": 6,
+      "tabId": "t.0",
+      "cells": [
+        {
+          "rowNumber": 1,
+          "columnNumber": 1,
+          "text": "ID",
+          "startIndex": 75278,
+          "endIndex": 75280,
+          "tabId": "t.0"
+        },
+        {
+          "rowNumber": 1,
+          "columnNumber": 2,
+          "text": "Propósito",
+          "startIndex": 75282,
+          "endIndex": 75291,
+          "tabId": "t.0"
+        },
+        {
+          "rowNumber": 1,
+          "columnNumber": 3,
+          "text": "CLI (s)",
+          "startIndex": 75293,
+          "endIndex": 75300,
+          "tabId": "t.0"
+        },
+        {
+          "rowNumber": 1,
+          "columnNumber": 4,
+          "text": "Agente (s)",
+          "startIndex": 75302,
+          "endIndex": 75312,
+          "tabId": "t.0"
+        },
+        {
+          "rowNumber": 1,
+          "columnNumber": 5,
+          "text": "Créditos Kiro",
+          "startIndex": 75314,
+          "endIndex": 75327,
+          "tabId": "t.0"
+        },
+        {
+          "rowNumber": 1,
+          "columnNumber": 6,
+          "text": "Aclaraciones bloqueantes",
+          "startIndex": 75329,
+          "endIndex": 75353,
+          "tabId": "t.0"
+        },
+        {
+          "rowNumber": 2,
+          "columnNumber": 1,
+          "text": "01",
+          "startIndex": 75356,
+          "endIndex": 75358,
+          "tabId": "t.0"
+        },
+        {
+          "rowNumber": 2,
+          "columnNumber": 2,
+          "text": "Especificación interrumpida: cuenta incorrecta",
+          "startIndex": 75360,
+          "endIndex": 75406,
+          "tabId": "t.0"
+        },
+        {
+          "rowNumber": 2,
+          "columnNumber": 3,
+          "text": "140,931",
+          "startIndex": 75408,
+          "endIndex": 75415,
+          "tabId": "t.0"
+        },
+        {
+          "rowNumber": 2,
+          "columnNumber": 4,
+          "text": "ND",
+          "startIndex": 75417,
+          "endIndex": 75419,
+          "tabId": "t.0"
+        },
+        {
+          "rowNumber": 2,
+          "columnNumber": 5,
+          "text": "ND",
+          "startIndex": 75421,
+          "endIndex": 75423,
+          "tabId": "t.0"
+        },
+        {
+          "rowNumber": 2,
+          "columnNumber": 6,
+          "text": "0",
+          "startIndex": 75425,
+          "endIndex": 75426,
+          "tabId": "t.0"
+        },
+        {
+          "rowNumber": 3,
+          "columnNumber": 1,
+          "text": "02",
+          "startIndex": 75429,
+          "endIndex": 75431,
+          "tabId": "t.0"
+        },
+        {
+          "rowNumber": 3,
+          "columnNumber": 2,
+          "text": "Especificación: Vibe observado",
+          "startIndex": 75433,
+          "endIndex": 75463,
+          "tabId": "t.0"
+        },
+        {
+          "rowNumber": 3,
+          "columnNumber": 3,
+          "text": "331,014",
+          "startIndex": 75465,
+          "endIndex": 75472,
+          "tabId": "t.0"
+        },
+        {
+          "rowNumber": 3,
+          "columnNumber": 4,
+          "text": "326,445",
+          "startIndex": 75474,
+          "endIndex": 75481,
+          "tabId": "t.0"
+        },
+        {
+          "rowNumber": 3,
+          "columnNumber": 5,
+          "text": "5,897180",
+          "startIndex": 75483,
+          "endIndex": 75491,
+          "tabId": "t.0"
+        },
+        {
+          "rowNumber": 3,
+          "columnNumber": 6,
+          "text": "0",
+          "startIndex": 75493,
+          "endIndex": 75494,
+          "tabId": "t.0"
+        },
+        {
+          "rowNumber": 4,
+          "columnNumber": 1,
+          "text": "03",
+          "startIndex": 75497,
+          "endIndex": 75499,
+          "tabId": "t.0"
+        },
+        {
+          "rowNumber": 4,
+          "columnNumber": 2,
+          "text": "Revisión nativa Spec",
+          "startIndex": 75501,
+          "endIndex": 75521,
+          "tabId": "t.0"
+        },
+        {
+          "rowNumber": 4,
+          "columnNumber": 3,
+          "text": "395,730",
+          "startIndex": 75523,
+          "endIndex": 75530,
+          "tabId": "t.0"
+        },
+        {
+          "rowNumber": 4,
+          "columnNumber": 4,
+          "text": "393,627",
+          "startIndex": 75532,
+          "endIndex": 75539,
+          "tabId": "t.0"
+        },
+        {
+          "rowNumber": 4,
+          "columnNumber": 5,
+          "text": "8,026105",
+          "startIndex": 75541,
+          "endIndex": 75549,
+          "tabId": "t.0"
+        },
+        {
+          "rowNumber": 4,
+          "columnNumber": 6,
+          "text": "0",
+          "startIndex": 75551,
+          "endIndex": 75552,
+          "tabId": "t.0"
+        },
+        {
+          "rowNumber": 5,
+          "columnNumber": 1,
+          "text": "04",
+          "startIndex": 75555,
+          "endIndex": 75557,
+          "tabId": "t.0"
+        },
+        {
+          "rowNumber": 5,
+          "columnNumber": 2,
+          "text": "Implementación inicial",
+          "startIndex": 75559,
+          "endIndex": 75581,
+          "tabId": "t.0"
+        },
+        {
+          "rowNumber": 5,
+          "columnNumber": 3,
+          "text": "1.796,250",
+          "startIndex": 75583,
+          "endIndex": 75592,
+          "tabId": "t.0"
+        },
+        {
+          "rowNumber": 5,
+          "columnNumber": 4,
+          "text": "1.792,693",
+          "startIndex": 75594,
+          "endIndex": 75603,
+          "tabId": "t.0"
+        },
+        {
+          "rowNumber": 5,
+          "columnNumber": 5,
+          "text": "49,458271",
+          "startIndex": 75605,
+          "endIndex": 75614,
+          "tabId": "t.0"
+        },
+        {
+          "rowNumber": 5,
+          "columnNumber": 6,
+          "text": "0",
+          "startIndex": 75616,
+          "endIndex": 75617,
+          "tabId": "t.0"
+        },
+        {
+          "rowNumber": 6,
+          "columnNumber": 1,
+          "text": "05",
+          "startIndex": 75620,
+          "endIndex": 75622,
+          "tabId": "t.0"
+        },
+        {
+          "rowNumber": 6,
+          "columnNumber": 2,
+          "text": "QA 1 interrumpida",
+          "startIndex": 75624,
+          "endIndex": 75641,
+          "tabId": "t.0"
+        },
+        {
+          "rowNumber": 6,
+          "columnNumber": 3,
+          "text": "ND",
+          "startIndex": 75643,
+          "endIndex": 75645,
+          "tabId": "t.0"
+        },
+        {
+          "rowNumber": 6,
+          "columnNumber": 4,
+          "text": "ND",
+          "startIndex": 75647,
+          "endIndex": 75649,
+          "tabId": "t.0"
+        },
+        {
+          "rowNumber": 6,
+          "columnNumber": 5,
+          "text": "ND",
+          "startIndex": 75651,
+          "endIndex": 75653,
+          "tabId": "t.0"
+        },
+        {
+          "rowNumber": 6,
+          "columnNumber": 6,
+          "text": "1",
+          "startIndex": 75655,
+          "endIndex": 75656,
+          "tabId": "t.0"
+        },
+        {
+          "rowNumber": 7,
+          "columnNumber": 1,
+          "text": "06",
+          "startIndex": 75659,
+          "endIndex": 75661,
+          "tabId": "t.0"
+        },
+        {
+          "rowNumber": 7,
+          "columnNumber": 2,
+          "text": "Reintento QA 1",
+          "startIndex": 75663,
+          "endIndex": 75677,
+          "tabId": "t.0"
+        },
+        {
+          "rowNumber": 7,
+          "columnNumber": 3,
+          "text": "888,976",
+          "startIndex": 75679,
+          "endIndex": 75686,
+          "tabId": "t.0"
+        },
+        {
+          "rowNumber": 7,
+          "columnNumber": 4,
+          "text": "884,667",
+          "startIndex": 75688,
+          "endIndex": 75695,
+          "tabId": "t.0"
+        },
+        {
+          "rowNumber": 7,
+          "columnNumber": 5,
+          "text": "18,924292",
+          "startIndex": 75697,
+          "endIndex": 75706,
+          "tabId": "t.0"
+        },
+        {
+          "rowNumber": 7,
+          "columnNumber": 6,
+          "text": "0",
+          "startIndex": 75708,
+          "endIndex": 75709,
+          "tabId": "t.0"
+        },
+        {
+          "rowNumber": 8,
+          "columnNumber": 1,
+          "text": "07",
+          "startIndex": 75712,
+          "endIndex": 75714,
+          "tabId": "t.0"
+        },
+        {
+          "rowNumber": 8,
+          "columnNumber": 2,
+          "text": "QA 2: temporizadores en cola",
+          "startIndex": 75716,
+          "endIndex": 75744,
+          "tabId": "t.0"
+        },
+        {
+          "rowNumber": 8,
+          "columnNumber": 3,
+          "text": "604,254",
+          "startIndex": 75746,
+          "endIndex": 75753,
+          "tabId": "t.0"
+        },
+        {
+          "rowNumber": 8,
+          "columnNumber": 4,
+          "text": "600,075",
+          "startIndex": 75755,
+          "endIndex": 75762,
+          "tabId": "t.0"
+        },
+        {
+          "rowNumber": 8,
+          "columnNumber": 5,
+          "text": "19,063515",
+          "startIndex": 75764,
+          "endIndex": 75773,
+          "tabId": "t.0"
+        },
+        {
+          "rowNumber": 8,
+          "columnNumber": 6,
+          "text": "0",
+          "startIndex": 75775,
+          "endIndex": 75776,
+          "tabId": "t.0"
+        }
+      ]
+    },
+    {
+      "tableNumber": 15,
+      "startIndex": 76890,
+      "endIndex": 77127,
+      "rowCount": 5,
+      "columnCount": 4,
+      "tabId": "t.0",
+      "cells": [
+        {
+          "rowNumber": 1,
+          "columnNumber": 1,
+          "text": "Alcance",
+          "startIndex": 76893,
+          "endIndex": 76900,
+          "tabId": "t.0"
+        },
+        {
+          "rowNumber": 1,
+          "columnNumber": 2,
+          "text": "Archivos",
+          "startIndex": 76902,
+          "endIndex": 76910,
+          "tabId": "t.0"
+        },
+        {
+          "rowNumber": 1,
+          "columnNumber": 3,
+          "text": "Líneas",
+          "startIndex": 76912,
+          "endIndex": 76918,
+          "tabId": "t.0"
+        },
+        {
+          "rowNumber": 1,
+          "columnNumber": 4,
+          "text": "Caracteres Unicode/LF",
+          "startIndex": 76920,
+          "endIndex": 76941,
+          "tabId": "t.0"
+        },
+        {
+          "rowNumber": 2,
+          "columnNumber": 1,
+          "text": "Fuente propia de etapa 1",
+          "startIndex": 76944,
+          "endIndex": 76968,
+          "tabId": "t.0"
+        },
+        {
+          "rowNumber": 2,
+          "columnNumber": 2,
+          "text": "23",
+          "startIndex": 76970,
+          "endIndex": 76972,
+          "tabId": "t.0"
+        },
+        {
+          "rowNumber": 2,
+          "columnNumber": 3,
+          "text": "1207",
+          "startIndex": 76974,
+          "endIndex": 76978,
+          "tabId": "t.0"
+        },
+        {
+          "rowNumber": 2,
+          "columnNumber": 4,
+          "text": "33641",
+          "startIndex": 76980,
+          "endIndex": 76985,
+          "tabId": "t.0"
+        },
+        {
+          "rowNumber": 3,
+          "columnNumber": 1,
+          "text": "Fuente de etapa 2, con tests/config",
+          "startIndex": 76988,
+          "endIndex": 77023,
+          "tabId": "t.0"
+        },
+        {
+          "rowNumber": 3,
+          "columnNumber": 2,
+          "text": "37",
+          "startIndex": 77025,
+          "endIndex": 77027,
+          "tabId": "t.0"
+        },
+        {
+          "rowNumber": 3,
+          "columnNumber": 3,
+          "text": "3691",
+          "startIndex": 77029,
+          "endIndex": 77033,
+          "tabId": "t.0"
+        },
+        {
+          "rowNumber": 3,
+          "columnNumber": 4,
+          "text": "119547",
+          "startIndex": 77035,
+          "endIndex": 77041,
+          "tabId": "t.0"
+        },
+        {
+          "rowNumber": 4,
+          "columnNumber": 1,
+          "text": "Specs nativas heredadas",
+          "startIndex": 77044,
+          "endIndex": 77067,
+          "tabId": "t.0"
+        },
+        {
+          "rowNumber": 4,
+          "columnNumber": 2,
+          "text": "3",
+          "startIndex": 77069,
+          "endIndex": 77070,
+          "tabId": "t.0"
+        },
+        {
+          "rowNumber": 4,
+          "columnNumber": 3,
+          "text": "608",
+          "startIndex": 77072,
+          "endIndex": 77075,
+          "tabId": "t.0"
+        },
+        {
+          "rowNumber": 4,
+          "columnNumber": 4,
+          "text": "28780",
+          "startIndex": 77077,
+          "endIndex": 77082,
+          "tabId": "t.0"
+        },
+        {
+          "rowNumber": 5,
+          "columnNumber": 1,
+          "text": "Feature nativo de etapa 2",
+          "startIndex": 77085,
+          "endIndex": 77110,
+          "tabId": "t.0"
+        },
+        {
+          "rowNumber": 5,
+          "columnNumber": 2,
+          "text": "3",
+          "startIndex": 77112,
+          "endIndex": 77113,
+          "tabId": "t.0"
+        },
+        {
+          "rowNumber": 5,
+          "columnNumber": 3,
+          "text": "886",
+          "startIndex": 77115,
+          "endIndex": 77118,
+          "tabId": "t.0"
+        },
+        {
+          "rowNumber": 5,
+          "columnNumber": 4,
+          "text": "92802",
+          "startIndex": 77120,
+          "endIndex": 77125,
+          "tabId": "t.0"
+        }
+      ]
+    },
+    {
+      "tableNumber": 16,
+      "startIndex": 77872,
+      "endIndex": 80586,
+      "rowCount": 21,
+      "columnCount": 3,
+      "tabId": "t.0",
+      "cells": [
+        {
+          "rowNumber": 1,
+          "columnNumber": 1,
+          "text": "ID",
+          "startIndex": 77875,
+          "endIndex": 77877,
+          "tabId": "t.0"
+        },
+        {
+          "rowNumber": 1,
+          "columnNumber": 2,
+          "text": "Criterio",
+          "startIndex": 77879,
+          "endIndex": 77887,
+          "tabId": "t.0"
+        },
+        {
+          "rowNumber": 1,
+          "columnNumber": 3,
+          "text": "Resultado y mecanismo",
+          "startIndex": 77889,
+          "endIndex": 77910,
+          "tabId": "t.0"
+        },
+        {
+          "rowNumber": 2,
+          "columnNumber": 1,
+          "text": "S2-01",
+          "startIndex": 77913,
+          "endIndex": 77918,
+          "tabId": "t.0"
+        },
+        {
+          "rowNumber": 2,
+          "columnNumber": 2,
+          "text": "Nuevo juego",
+          "startIndex": 77920,
+          "endIndex": 77931,
+          "tabId": "t.0"
+        },
+        {
+          "rowNumber": 2,
+          "columnNumber": 3,
+          "text": "PASS — HTTP real o engine/serializer real con estado controlado; referencias exactas en el JSON del catálogo.",
+          "startIndex": 77933,
+          "endIndex": 78042,
+          "tabId": "t.0"
+        },
+        {
+          "rowNumber": 3,
+          "columnNumber": 1,
+          "text": "S2-02",
+          "startIndex": 78045,
+          "endIndex": 78050,
+          "tabId": "t.0"
+        },
+        {
+          "rowNumber": 3,
+          "columnNumber": 2,
+          "text": "Lectura sin mutación",
+          "startIndex": 78052,
+          "endIndex": 78072,
+          "tabId": "t.0"
+        },
+        {
+          "rowNumber": 3,
+          "columnNumber": 3,
+          "text": "PASS — HTTP real o engine/serializer real con estado controlado; referencias exactas en el JSON del catálogo.",
+          "startIndex": 78074,
+          "endIndex": 78183,
+          "tabId": "t.0"
+        },
+        {
+          "rowNumber": 4,
+          "columnNumber": 1,
+          "text": "S2-03",
+          "startIndex": 78186,
+          "endIndex": 78191,
+          "tabId": "t.0"
+        },
+        {
+          "rowNumber": 4,
+          "columnNumber": 2,
+          "text": "Bloqueo sin limpiar filas",
+          "startIndex": 78193,
+          "endIndex": 78218,
+          "tabId": "t.0"
+        },
+        {
+          "rowNumber": 4,
+          "columnNumber": 3,
+          "text": "PASS — HTTP real o engine/serializer real con estado controlado; referencias exactas en el JSON del catálogo.",
+          "startIndex": 78220,
+          "endIndex": 78329,
+          "tabId": "t.0"
+        },
+        {
+          "rowNumber": 5,
+          "columnNumber": 1,
+          "text": "S2-04",
+          "startIndex": 78332,
+          "endIndex": 78337,
+          "tabId": "t.0"
+        },
+        {
+          "rowNumber": 5,
+          "columnNumber": 2,
+          "text": "Una fila",
+          "startIndex": 78339,
+          "endIndex": 78347,
+          "tabId": "t.0"
+        },
+        {
+          "rowNumber": 5,
+          "columnNumber": 3,
+          "text": "PASS — HTTP real o engine/serializer real con estado controlado; referencias exactas en el JSON del catálogo.",
+          "startIndex": 78349,
+          "endIndex": 78458,
+          "tabId": "t.0"
+        },
+        {
+          "rowNumber": 6,
+          "columnNumber": 1,
+          "text": "S2-05",
+          "startIndex": 78461,
+          "endIndex": 78466,
+          "tabId": "t.0"
+        },
+        {
+          "rowNumber": 6,
+          "columnNumber": 2,
+          "text": "Dos filas",
+          "startIndex": 78468,
+          "endIndex": 78477,
+          "tabId": "t.0"
+        },
+        {
+          "rowNumber": 6,
+          "columnNumber": 3,
+          "text": "PASS — HTTP real o engine/serializer real con estado controlado; referencias exactas en el JSON del catálogo.",
+          "startIndex": 78479,
+          "endIndex": 78588,
+          "tabId": "t.0"
+        },
+        {
+          "rowNumber": 7,
+          "columnNumber": 1,
+          "text": "S2-06",
+          "startIndex": 78591,
+          "endIndex": 78596,
+          "tabId": "t.0"
+        },
+        {
+          "rowNumber": 7,
+          "columnNumber": 2,
+          "text": "Tres filas",
+          "startIndex": 78598,
+          "endIndex": 78608,
+          "tabId": "t.0"
+        },
+        {
+          "rowNumber": 7,
+          "columnNumber": 3,
+          "text": "PASS — fixture aislado de dominio; no se afirma alcanzabilidad en juego sin rotación.",
+          "startIndex": 78610,
+          "endIndex": 78695,
+          "tabId": "t.0"
+        },
+        {
+          "rowNumber": 8,
+          "columnNumber": 1,
+          "text": "S2-07",
+          "startIndex": 78698,
+          "endIndex": 78703,
+          "tabId": "t.0"
+        },
+        {
+          "rowNumber": 8,
+          "columnNumber": 2,
+          "text": "Regla de cuatro filas",
+          "startIndex": 78705,
+          "endIndex": 78726,
+          "tabId": "t.0"
+        },
+        {
+          "rowNumber": 8,
+          "columnNumber": 3,
+          "text": "PASS — fixture aislado de dominio; no se afirma alcanzabilidad en juego sin rotación.",
+          "startIndex": 78728,
+          "endIndex": 78813,
+          "tabId": "t.0"
+        },
+        {
+          "rowNumber": 9,
+          "columnNumber": 1,
+          "text": "S2-08",
+          "startIndex": 78816,
+          "endIndex": 78821,
+          "tabId": "t.0"
+        },
+        {
+          "rowNumber": 9,
+          "columnNumber": 2,
+          "text": "Cruce de 9 a 10 líneas",
+          "startIndex": 78823,
+          "endIndex": 78845,
+          "tabId": "t.0"
+        },
+        {
+          "rowNumber": 9,
+          "columnNumber": 3,
+          "text": "PASS — HTTP real o engine/serializer real con estado controlado; referencias exactas en el JSON del catálogo.",
+          "startIndex": 78847,
+          "endIndex": 78956,
+          "tabId": "t.0"
+        },
+        {
+          "rowNumber": 10,
+          "columnNumber": 1,
+          "text": "S2-09",
+          "startIndex": 78959,
+          "endIndex": 78964,
+          "tabId": "t.0"
+        },
+        {
+          "rowNumber": 10,
+          "columnNumber": 2,
+          "text": "Suelo de gravedad: 100 ms",
+          "startIndex": 78966,
+          "endIndex": 78991,
+          "tabId": "t.0"
+        },
+        {
+          "rowNumber": 10,
+          "columnNumber": 3,
+          "text": "PASS — HTTP real o engine/serializer real con estado controlado; referencias exactas en el JSON del catálogo.",
+          "startIndex": 78993,
+          "endIndex": 79102,
+          "tabId": "t.0"
+        },
+        {
+          "rowNumber": 11,
+          "columnNumber": 1,
+          "text": "S2-10",
+          "startIndex": 79105,
+          "endIndex": 79110,
+          "tabId": "t.0"
+        },
+        {
+          "rowNumber": 11,
+          "columnNumber": 2,
+          "text": "Primer Hold",
+          "startIndex": 79112,
+          "endIndex": 79123,
+          "tabId": "t.0"
+        },
+        {
+          "rowNumber": 11,
+          "columnNumber": 3,
+          "text": "PASS — HTTP real o engine/serializer real con estado controlado; referencias exactas en el JSON del catálogo.",
+          "startIndex": 79125,
+          "endIndex": 79234,
+          "tabId": "t.0"
+        },
+        {
+          "rowNumber": 12,
+          "columnNumber": 1,
+          "text": "S2-11",
+          "startIndex": 79237,
+          "endIndex": 79242,
+          "tabId": "t.0"
+        },
+        {
+          "rowNumber": 12,
+          "columnNumber": 2,
+          "text": "Segundo Hold rechazado",
+          "startIndex": 79244,
+          "endIndex": 79266,
+          "tabId": "t.0"
+        },
+        {
+          "rowNumber": 12,
+          "columnNumber": 3,
+          "text": "PASS — HTTP real o engine/serializer real con estado controlado; referencias exactas en el JSON del catálogo.",
+          "startIndex": 79268,
+          "endIndex": 79377,
+          "tabId": "t.0"
+        },
+        {
+          "rowNumber": 13,
+          "columnNumber": 1,
+          "text": "S2-12",
+          "startIndex": 79380,
+          "endIndex": 79385,
+          "tabId": "t.0"
+        },
+        {
+          "rowNumber": 13,
+          "columnNumber": 2,
+          "text": "Hold tras bloquear",
+          "startIndex": 79387,
+          "endIndex": 79405,
+          "tabId": "t.0"
+        },
+        {
+          "rowNumber": 13,
+          "columnNumber": 3,
+          "text": "PASS — HTTP real o engine/serializer real con estado controlado; referencias exactas en el JSON del catálogo.",
+          "startIndex": 79407,
+          "endIndex": 79516,
+          "tabId": "t.0"
+        },
+        {
+          "rowNumber": 14,
+          "columnNumber": 1,
+          "text": "S2-13",
+          "startIndex": 79519,
+          "endIndex": 79524,
+          "tabId": "t.0"
+        },
+        {
+          "rowNumber": 14,
+          "columnNumber": 2,
+          "text": "Spawn reservado bloqueado",
+          "startIndex": 79526,
+          "endIndex": 79551,
+          "tabId": "t.0"
+        },
+        {
+          "rowNumber": 14,
+          "columnNumber": 3,
+          "text": "PASS — HTTP real o engine/serializer real con estado controlado; referencias exactas en el JSON del catálogo.",
+          "startIndex": 79553,
+          "endIndex": 79662,
+          "tabId": "t.0"
+        },
+        {
+          "rowNumber": 15,
+          "columnNumber": 1,
+          "text": "S2-14",
+          "startIndex": 79665,
+          "endIndex": 79670,
+          "tabId": "t.0"
+        },
+        {
+          "rowNumber": 15,
+          "columnNumber": 2,
+          "text": "Acciones tras Game Over",
+          "startIndex": 79672,
+          "endIndex": 79695,
+          "tabId": "t.0"
+        },
+        {
+          "rowNumber": 15,
+          "columnNumber": 3,
+          "text": "PASS — HTTP real o engine/serializer real con estado controlado; referencias exactas en el JSON del catálogo.",
+          "startIndex": 79697,
+          "endIndex": 79806,
+          "tabId": "t.0"
+        },
+        {
+          "rowNumber": 16,
+          "columnNumber": 1,
+          "text": "S2-15",
+          "startIndex": 79809,
+          "endIndex": 79814,
+          "tabId": "t.0"
+        },
+        {
+          "rowNumber": 16,
+          "columnNumber": 2,
+          "text": "Reinicio",
+          "startIndex": 79816,
+          "endIndex": 79824,
+          "tabId": "t.0"
+        },
+        {
+          "rowNumber": 16,
+          "columnNumber": 3,
+          "text": "PASS — HTTP real o engine/serializer real con estado controlado; referencias exactas en el JSON del catálogo.",
+          "startIndex": 79826,
+          "endIndex": 79935,
+          "tabId": "t.0"
+        },
+        {
+          "rowNumber": 17,
+          "columnNumber": 1,
+          "text": "S2-16",
+          "startIndex": 79938,
+          "endIndex": 79943,
+          "tabId": "t.0"
+        },
+        {
+          "rowNumber": 17,
+          "columnNumber": 2,
+          "text": "Contrato HTTP",
+          "startIndex": 79945,
+          "endIndex": 79958,
+          "tabId": "t.0"
+        },
+        {
+          "rowNumber": 17,
+          "columnNumber": 3,
+          "text": "PASS — HTTP real o engine/serializer real con estado controlado; referencias exactas en el JSON del catálogo.",
+          "startIndex": 79960,
+          "endIndex": 80069,
+          "tabId": "t.0"
+        },
+        {
+          "rowNumber": 18,
+          "columnNumber": 1,
+          "text": "S2-17",
+          "startIndex": 80072,
+          "endIndex": 80077,
+          "tabId": "t.0"
+        },
+        {
+          "rowNumber": 18,
+          "columnNumber": 2,
+          "text": "HUD, tecla C y botón Hold",
+          "startIndex": 80079,
+          "endIndex": 80104,
+          "tabId": "t.0"
+        },
+        {
+          "rowNumber": 18,
+          "columnNumber": 3,
+          "text": "PASS — navegador real, capturas y observaciones de HUD/controles.",
+          "startIndex": 80106,
+          "endIndex": 80171,
+          "tabId": "t.0"
+        },
+        {
+          "rowNumber": 19,
+          "columnNumber": 1,
+          "text": "S2-18",
+          "startIndex": 80174,
+          "endIndex": 80179,
+          "tabId": "t.0"
+        },
+        {
+          "rowNumber": 19,
+          "columnNumber": 2,
+          "text": "Gravedad y concurrencia",
+          "startIndex": 80181,
+          "endIndex": 80204,
+          "tabId": "t.0"
+        },
+        {
+          "rowNumber": 19,
+          "columnNumber": 3,
+          "text": "PASS — tests nativos y cinco controles externos con transporte diferido y temporizadores; captura/traza del cruce real.",
+          "startIndex": 80206,
+          "endIndex": 80325,
+          "tabId": "t.0"
+        },
+        {
+          "rowNumber": 20,
+          "columnNumber": 1,
+          "text": "S2-19",
+          "startIndex": 80328,
+          "endIndex": 80333,
+          "tabId": "t.0"
+        },
+        {
+          "rowNumber": 20,
+          "columnNumber": 2,
+          "text": "Regresión de etapa 1",
+          "startIndex": 80335,
+          "endIndex": 80355,
+          "tabId": "t.0"
+        },
+        {
+          "rowNumber": 20,
+          "columnNumber": 3,
+          "text": "PASS de comportamientos de regresión — 38 pruebas originales pasan; una igualdad de esquema cerrado incompatible se conserva como fallo esperado.",
+          "startIndex": 80357,
+          "endIndex": 80502,
+          "tabId": "t.0"
+        },
+        {
+          "rowNumber": 21,
+          "columnNumber": 1,
+          "text": "S2-20",
+          "startIndex": 80505,
+          "endIndex": 80510,
+          "tabId": "t.0"
+        },
+        {
+          "rowNumber": 21,
+          "columnNumber": 2,
+          "text": "Build de producción",
+          "startIndex": 80512,
+          "endIndex": 80531,
+          "tabId": "t.0"
+        },
+        {
+          "rowNumber": 21,
+          "columnNumber": 3,
+          "text": "PASS — build independiente y versiones registradas.",
+          "startIndex": 80533,
+          "endIndex": 80584,
+          "tabId": "t.0"
+        }
+      ]
+    }
+  ],
+  "image_ids": [
+    "kix.2bkx1petieb3",
+    "kix.3z5qxqukz53k",
+    "kix.6tv22nsocwm1",
+    "kix.8xnb5t1ztmey",
+    "kix.cphone2992lx",
+    "kix.eqokf2imtycz",
+    "kix.k53loj7wia0n",
+    "kix.kqe8r5asfw27",
+    "kix.kv0t12s6lc3n",
+    "kix.kxq5h8wfvlb9",
+    "kix.lgniuteqyxpo",
+    "kix.pur5fdrbttgp",
+    "kix.r01n4vgqlb3",
+    "kix.uqeqxvh5yt4a",
+    "kix.vnhp62g3piu0",
+    "kix.wsekpvv7faqc",
+    "kix.x0ii0x2sb2l4"
+  ]
+}

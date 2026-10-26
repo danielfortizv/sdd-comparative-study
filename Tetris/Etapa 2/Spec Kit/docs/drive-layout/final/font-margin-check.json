@@ -1,0 +1,237 @@
+{
+  "pdf_sha256": "6B821EFEA26E45628B6DF43A405CE5C7B2CCC1EB71F1E0721323EB6766F119DC",
+  "pages": 38,
+  "rendered_visually_reviewed_pages": [
+    7,
+    8,
+    16,
+    17,
+    18,
+    19,
+    20,
+    21,
+    22,
+    23,
+    24,
+    25,
+    26,
+    27,
+    28,
+    29,
+    30,
+    31,
+    32,
+    33,
+    34,
+    35,
+    36,
+    37,
+    38
+  ],
+  "image_count": 10,
+  "table_fragment_count": 14,
+  "native_table_font_sizes_pt": [
+    11.0
+  ],
+  "horizontal_text_margin_overflow_count": 0,
+  "image_margin_overflow_count": 0,
+  "image_page_overflow_count": 0,
+  "table_fragments": [
+    {
+      "page": 19,
+      "table_fragment": 1,
+      "bbox": [
+        72.25000000874999,
+        119.65298505812504,
+        519.62500875,
+        468.49962700000003
+      ],
+      "font_sizes_character_counts": {
+        "11.0": 588
+      },
+      "minimum_font_pt": 11.0
+    },
+    {
+      "page": 20,
+      "table_fragment": 1,
+      "bbox": [
+        72.25000000874999,
+        119.65298505812504,
+        519.62500875,
+        468.49962700000003
+      ],
+      "font_sizes_character_counts": {
+        "11.0": 510
+      },
+      "minimum_font_pt": 11.0
+    },
+    {
+      "page": 21,
+      "table_fragment": 1,
+      "bbox": [
+        72.25000000874999,
+        119.67391531892858,
+        519.62500875,
+        506.498645
+      ],
+      "font_sizes_character_counts": {
+        "11.0": 600
+      },
+      "minimum_font_pt": 11.0
+    },
+    {
+      "page": 21,
+      "table_fragment": 2,
+      "bbox": [
+        72.25000000874999,
+        598.3498535159999,
+        519.62500875,
+        765.499275
+      ],
+      "font_sizes_character_counts": {
+        "11.0": 395
+      },
+      "minimum_font_pt": 11.0
+    },
+    {
+      "page": 22,
+      "table_fragment": 1,
+      "bbox": [
+        72.3000000105,
+        72.50000001750004,
+        519.950007,
+        91.5
+      ],
+      "font_sizes_character_counts": {
+        "11.0": 65
+      },
+      "minimum_font_pt": 11.0
+    },
+    {
+      "page": 22,
+      "table_fragment": 2,
+      "bbox": [
+        72.3000000105,
+        329.7908190635,
+        519.950007,
+        517.5009725
+      ],
+      "font_sizes_character_counts": {
+        "11.0": 250
+      },
+      "minimum_font_pt": 11.0
+    },
+    {
+      "page": 22,
+      "table_fragment": 3,
+      "bbox": [
+        72.3000000105,
+        598.181101016,
+        519.950007,
+        707.4992614999999
+      ],
+      "font_sizes_character_counts": {
+        "11.0": 110
+      },
+      "minimum_font_pt": 11.0
+    },
+    {
+      "page": 24,
+      "table_fragment": 1,
+      "bbox": [
+        72.25000000874999,
+        183.82374894125005,
+        519.62500875,
+        293.49913975000004
+      ],
+      "font_sizes_character_counts": {
+        "11.0": 177
+      },
+      "minimum_font_pt": 11.0
+    },
+    {
+      "page": 24,
+      "table_fragment": 2,
+      "bbox": [
+        72.25000000874999,
+        335.3957316075,
+        519.62500875,
+        489.4993925
+      ],
+      "font_sizes_character_counts": {
+        "11.0": 238
+      },
+      "minimum_font_pt": 11.0
+    },
+    {
+      "page": 25,
+      "table_fragment": 1,
+      "bbox": [
+        72.25000000874999,
+        154.722625733125,
+        519.62500875,
+        277.49987799999997
+      ],
+      "font_sizes_character_counts": {
+        "11.0": 322
+      },
+      "minimum_font_pt": 11.0
+    },
+    {
+      "page": 25,
+      "table_fragment": 2,
+      "bbox": [
+        72.25000000874999,
+        482.41559933524996,
+        519.62500875,
+        753.4998725
+      ],
+      "font_sizes_character_counts": {
+        "11.0": 304
+      },
+      "minimum_font_pt": 11.0
+    },
+    {
+      "page": 26,
+      "table_fragment": 1,
+      "bbox": [
+        72.5000000175,
+        72.50000001750004,
+        519.5000175,
+        110.499999
+      ],
+      "font_sizes_character_counts": {
+        "11.0": 49
+      },
+      "minimum_font_pt": 11.0
+    },
+    {
+      "page": 28,
+      "table_fragment": 1,
+      "bbox": [
+        72.25000000874999,
+        119.6622314465,
+        519.62500875,
+        383.4986675
+      ],
+      "font_sizes_character_counts": {
+        "11.0": 558
+      },
+      "minimum_font_pt": 11.0
+    },
+    {
+      "page": 29,
+      "table_fragment": 1,
+      "bbox": [
+        72.25000000874999,
+        119.6622314465,
+        519.62500875,
+        446.4986675
+      ],
+      "font_sizes_character_counts": {
+        "11.0": 708
+      },
+      "minimum_font_pt": 11.0
+    }
+  ]
+}

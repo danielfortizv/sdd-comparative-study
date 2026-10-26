@@ -1,0 +1,79 @@
+{
+  "seed_sha256": "63919779DD4104076FBABCB130CE296A160FA840E0B4755A2AA5D90757ADA8EF",
+  "note": "Checks the first effective user message, not later context obtained by file reads. Later file access is retained in original transcripts.",
+  "runs": [
+    {
+      "label": "01-propose",
+      "effective_first_input": "no recorded run interval"
+    },
+    {
+      "label": "02-propose-retry",
+      "submission_method": "headless slash parser",
+      "model_started": null,
+      "effective_first_input": "no transcript input observed"
+    },
+    {
+      "label": "03-materialize-proposal",
+      "submission_method": "direct clarification",
+      "model_started": null,
+      "effective_first_input": "no transcript input observed"
+    },
+    {
+      "label": "04-correct-plan",
+      "submission_method": "direct clarification",
+      "model_started": null,
+      "effective_first_input": "no transcript input observed"
+    },
+    {
+      "label": "05-apply",
+      "submission_method": "headless slash parser",
+      "model_started": null,
+      "effective_first_input": "no transcript input observed"
+    },
+    {
+      "label": "06-apply-fresh",
+      "submission_method": "headless slash parser",
+      "model_started": null,
+      "transcript": "gemini-home\\.gemini\\tmp\\openspec\\chats\\session-2026-10-19T20-30-8f9e2283.jsonl",
+      "effective_first_input_sha256": "E70ABFCD639DCE3877350FC33B35DA0D3D15AE39B34F9573178F9136EC24BF4F",
+      "effective_first_input_characters": 10344,
+      "complete_seed_present": false,
+      "seed_paragraphs_present": [],
+      "complete_seed_tool_reads": []
+    },
+    {
+      "label": "07-direct-apply",
+      "submission_method": "direct clarification",
+      "model_started": null,
+      "effective_first_input": "no transcript input observed"
+    },
+    {
+      "label": "08-complete-frontend",
+      "submission_method": "direct clarification",
+      "model_started": null,
+      "effective_first_input": "no transcript input observed"
+    },
+    {
+      "label": "09-frontend-fresh",
+      "submission_method": "direct clarification",
+      "model_started": null,
+      "transcript": "gemini-home\\.gemini\\tmp\\openspec\\chats\\session-2026-10-20T03-16-0d149375.jsonl",
+      "effective_first_input_sha256": "0298AF779AB8ACB9A056B9072265967EF458BA51152639AFBD1C176D7364BF27",
+      "effective_first_input_characters": 782,
+      "complete_seed_present": false,
+      "seed_paragraphs_present": [],
+      "complete_seed_tool_reads": []
+    },
+    {
+      "label": "10-sonar-remediation",
+      "submission_method": "direct clarification",
+      "model_started": null,
+      "transcript": "gemini-home\\.gemini\\tmp\\openspec\\chats\\session-2026-10-20T03-24-cd6592da.jsonl",
+      "effective_first_input_sha256": "B3598189B25AF24316E479A8814825799E9E5031C9405A24550B82C5A4EEB1A7",
+      "effective_first_input_characters": 827,
+      "complete_seed_present": false,
+      "seed_paragraphs_present": [],
+      "complete_seed_tool_reads": []
+    }
+  ]
+}

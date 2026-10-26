@@ -1,0 +1,37 @@
+{
+  "researcher_created": true,
+  "verified_at_utc": "2026-10-25T16:20:37.450Z",
+  "document_url": "https://docs.google.com/document/d/1JRZvjK8-fdFitwbiKLe2NhOsk1FZNCa_TclgnFwdjao",
+  "revision": "AHj4eMTQ0dMs-AFRjzr_sHVJ3_yCO2OlzIGfVY2vCAIcBMIXBpTqhOh-TgnR1lXJS55rdNtLh-tfIgyg-6QV1M-4QM4zQb4n8Sx5E_SGyw",
+  "new_image_object_id": "kix.lmm0474n4ux8",
+  "total_inline_images_verified": 18,
+  "new_paragraphs_verified": 6,
+  "pdf": {
+    "path": "publication-qa/resume-document.pdf",
+    "pages": 55,
+    "rendered_review_pages": [
+      54,
+      55
+    ],
+    "layout_verified": true
+  },
+  "capture": {
+    "path": "../screenshots/resume-baseline-researcher-view-20261025.jpg",
+    "type": "Actual browser screenshot of clearly labelled researcher-derived view, not native Sonar or CLI UI",
+    "pixels": [
+      1280,
+      720
+    ]
+  },
+  "next_required_action": "Explicit user OAuth scope approval; no new-project generation started",
+  "baseline_sonar": {
+    "task": "6d7b7337-a783-49ed-912a-89302d344136",
+    "analysis": "3480bd39-8d0a-4490-94c1-be6164d420b9",
+    "final_acceptance": false
+  },
+  "instrumentation_incidents": [
+    "Scanner argument split before analysis; failed logs retained, grouping corrected.",
+    "Local evidence HTTP server in default sandbox unreachable; owned server restarted with authorized execution.",
+    "Failed browser error-page tab could not be rebound because it was a data URL; successful HTTP view opened in a fresh tab. No security setting changed."
+  ]
+}

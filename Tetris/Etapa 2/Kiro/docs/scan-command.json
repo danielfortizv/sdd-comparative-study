@@ -1,0 +1,15 @@
+{
+  "researcher_created": true,
+  "started": "2026-10-23T14:43:50.0421586-05:00",
+  "ended": "2026-10-23T14:44:19.4303681-05:00",
+  "exit_code": 0,
+  "project": "tetris-stage2-kiro",
+  "project_version": "2.0",
+  "baseline": false,
+  "coverage_xml": "docs/coverage.xml",
+  "frontend_lcov_present": true,
+  "baseline_frontend_coverage_limitation": null,
+  "test_classification": "backend/tests/** and frontend/src/**/*.test.{ts,tsx}",
+  "source_excludes": "Only frontend/src/**/*.test.{ts,tsx}, classified as tests; no production issue/coverage exclusions",
+  "coverage_sha256": "7E4ECA49C95F9FBEEC0581A302756CB752770B9E434809EF371F0561311969B2"
+}

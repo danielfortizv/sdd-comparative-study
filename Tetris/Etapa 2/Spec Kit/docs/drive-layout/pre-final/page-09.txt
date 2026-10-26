@@ -1,0 +1,36 @@
+baseline-frontend-build.log y baseline-npm-audit.json. /speckit.specify está en ejecución;
+todavía no se atribuye implementación nueva a Spec Kit.
+Incidencia Spec Kit 01-specify: el comando slash recibió argumentos vacíos al colocarse la
+semilla en una línea separada. Se interrumpió sin crear la feature ni cambiar código; el
+tiempo completo no quedó instrumentado, pero el prompt y el transcrito JSONL se
+conservaron para recuperar los tokens observables. Se inició 02-specify-retry con la semilla
+idéntica en la misma línea del comando, formato comprobado en Etapa 1. Esta incidencia
+se contará como intento adicional y no se ocultará del costo experimental.
+SPEC KIT — ESPECIFICACIÓN Y ACLARACIÓN
+DEL CONTRATO
+02-specify-retry completó la feature nativa specs/002-extend-tetris-stage2; este es el
+nombre efectivo elegido por Spec Kit, en lugar del nombre previsto en la nota inicial.
+Duración instrumentada: 314,087 s; 23 intentos API conocidos (2 errores, 21 éxitos),
+553.753 tokens de entrada (417.153 cacheados incluidos) y 5.986 tokens de salida. La
+especificación contiene 29 requisitos FR y una lista de calidad. Antes de planificar, la
+revisión detectó claves nuevas camelCase y límites de latencia ajenos a la semilla.
+03-contract-clarification corrigió spec.md y checklists/requirements.md mediante Gemini
+CLI: los campos nuevos son score, total_lines, level, gravity_interval_ms, next_piece,
+hold_piece y can_hold; activePiece conserva el contrato heredado de Etapa 1. next_piece y
+hold_piece usan un tipo de pieza de una letra, con hold_piece nullable. Se retiraron los
+límites numéricos de latencia inventados y se mantuvieron las reglas de puntaje/Hold de la
+semilla. No se editaron manualmente código de aplicación ni especificaciones nativas de
+Etapa 1.
+La sesión 03 dejó los cambios en disco y quedó sin respuesta final; se interrumpió de forma
+controlada. Su duración se conserva como no disponible en run.json, junto con las horas
+observadas y la causa. Los tokens se recuperan del JSONL deduplicado por ID de
+respuesta; no se sustituyen por estimaciones. Acumulado observado hasta 03: 3 intentos de
+invocación; 23 intentos API conocidos en 02 (2 errores, 21 éxitos), con totales API
+desconocidos de 01/03; por separado, 46 respuestas principales registradas en 01/02/03;
+1.157.165 tokens de entrada, 897.745 cacheados incluidos y 12.405 de salida. El tiempo
+instrumentado acumulado de 314,087 s solo corresponde a la sesión completada 02;
+excluye 01, 03 y verificación externa.
+El recolector confirmó otra vez 0 archivos de código cambiados y 0 archivos nativos de
+Etapa 1 alterados. 04-plan se ejecuta a continuación sobre esta especificación revisada.
+Fuentes: Spec Kit/docs/metrics.json, 01-specify.run.json, 02-specify-retry.run.json,
+03-contract-clarification.run.json, prompts y transcritos JSONL originales.

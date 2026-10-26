@@ -1,0 +1,1340 @@
+{
+  "researcher_created": true,
+  "created_at_utc": "2026-10-26T00:57:21.171748+00:00",
+  "source": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 1\\Bmad Method",
+  "destination": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\Bmad Method",
+  "files": [
+    {
+      "path": "backend/app/core/domain.py",
+      "bytes": 6499,
+      "sha256": "C84F101000AA9C9A28BC70BE57366801D7680C0CB9D03B1C5879D121970A7974"
+    },
+    {
+      "path": "backend/app/main.py",
+      "bytes": 2401,
+      "sha256": "4030830EC6EC12A855ED7ED4EA1DE7E91CE4CB6E3B0B20874E94DFCB434E8CA4"
+    },
+    {
+      "path": "backend/app/tests/test_api.py",
+      "bytes": 1961,
+      "sha256": "396A93AEC5A2F2EF1B271C7979CCA1D5010F07821BD09D23409994406B62DE56"
+    },
+    {
+      "path": "backend/app/tests/test_domain.py",
+      "bytes": 6366,
+      "sha256": "D5EB5447FC97761ACA1C621F7B5A447605C3834783C86C91862C3C0B6F5E7DCF"
+    },
+    {
+      "path": "backend/requirements.txt",
+      "bytes": 82,
+      "sha256": "41A3B9119C6583F0BF14BBAE2336215D71CBED5EF17589DE41917463C0B945A6"
+    },
+    {
+      "path": "frontend/index.html",
+      "bytes": 522,
+      "sha256": "4949B51725F9B0F1B4496D9E57842B63E616FB20C8C02FEA566278CBAD859D6E"
+    },
+    {
+      "path": "frontend/package-lock.json",
+      "bytes": 60387,
+      "sha256": "A9CA57FDB93CE335E0EA777FC3DD3148AA17E7306EAE473F42E02C4D74763A73"
+    },
+    {
+      "path": "frontend/package.json",
+      "bytes": 468,
+      "sha256": "ABB44AA8CE610BD67ECF72FFD2D9D9324D054B63CD439A63E727A263045A22C9"
+    },
+    {
+      "path": "frontend/src/App.tsx",
+      "bytes": 8337,
+      "sha256": "CF23E19872647FE757605CDA88DA003AD984343A36A848894B80EE7C4C437147"
+    },
+    {
+      "path": "frontend/src/main.tsx",
+      "bytes": 247,
+      "sha256": "368998600187697635215CE09D6AFC9A4AF03A9F22D09F1A070DF35E4FEE7F2A"
+    },
+    {
+      "path": "frontend/src/styles.css",
+      "bytes": 5786,
+      "sha256": "D379FCEEB87EA0114EA4CD3F1794150CE55229818FC24D4D903ED6ADB5A79673"
+    },
+    {
+      "path": "frontend/tsconfig.json",
+      "bytes": 575,
+      "sha256": "37203E8F5DDEAEA21D8755A6F4A0065466B2C74E526927E287E6E4421E9160E5"
+    },
+    {
+      "path": "frontend/vite.config.ts",
+      "bytes": 251,
+      "sha256": "9C4BB8A44251CCB5F069DB76E792655AFCF90D92C42F1626328C5E81F110B454"
+    },
+    {
+      "path": "_bmad/_config/bmad-help.csv",
+      "bytes": 7329,
+      "sha256": "FC9C206D394E72D18A051B0DE6EB18E2F1B3ABAE8F585927496CBF8F7A8AC365"
+    },
+    {
+      "path": "_bmad/_config/files-manifest.csv",
+      "bytes": 33525,
+      "sha256": "EC9225FD9C13A12A80B7AD8258E20B5A7028AA82C1BE4CEFDB6070E1C9A51633"
+    },
+    {
+      "path": "_bmad/_config/manifest.yaml",
+      "bytes": 517,
+      "sha256": "F1CBB24B7E611A8E6D35E26BB3A1EDCB2DC21C6112F0C27FB1A0EF17701574C1"
+    },
+    {
+      "path": "_bmad/_config/skill-manifest.csv",
+      "bytes": 9658,
+      "sha256": "6D414DCDA3FBFC4C8716AB309DBFA5493C0CE0FEE8566CC822918E5C874A2544"
+    },
+    {
+      "path": "_bmad/bmm/config.yaml",
+      "bytes": 516,
+      "sha256": "E1EF0A068DAB977E26D313BCAAABFE26B0C2DE01A81D8BE1AB622D7F3418245C"
+    },
+    {
+      "path": "_bmad/bmm/module-help.csv",
+      "bytes": 4893,
+      "sha256": "C3C1033C8FFFEF924BB71342E22A0A2A8243911A0B856E2AA7804D8BB49FEB5A"
+    },
+    {
+      "path": "_bmad/bmm/v6-shims/README.md",
+      "bytes": 1769,
+      "sha256": "5495469425B50BCA1CD74899C6EBFE840F137CF2A68D008BC993AA2574BD9972"
+    },
+    {
+      "path": "_bmad/config.toml",
+      "bytes": 3146,
+      "sha256": "EFDF70495DBA307310C401E6954D7FC681EBBBD933BD2D1105788B77D93E69F7"
+    },
+    {
+      "path": "_bmad/config.user.toml",
+      "bytes": 975,
+      "sha256": "E40FAE877EC8D1547CCDAB18530F02D45590584177B3ACDAF70BD76D95DA77C8"
+    },
+    {
+      "path": "_bmad/core/config.yaml",
+      "bytes": 266,
+      "sha256": "F3B41E1D4E4B514B44B20ADFD1EC29C3F5A366877CD4EC17E0DC6508C0378466"
+    },
+    {
+      "path": "_bmad/core/module-help.csv",
+      "bytes": 2562,
+      "sha256": "38846D71F87159345D6A6256A170C142FB3F53D9CF9C258C9EE6F26BD88A86C7"
+    },
+    {
+      "path": "_bmad/core/v6-shims/README.md",
+      "bytes": 1507,
+      "sha256": "017900BB03BAEDDC0262041A6AA85BCE744E8C45991DCDE32EF042F9BC2A32B2"
+    },
+    {
+      "path": "_bmad/custom/.gitignore",
+      "bytes": 12,
+      "sha256": "973B03A33F142C22CF9B65BE285BEBADD85790B6B55BE04637D2F8C716F58FAB"
+    },
+    {
+      "path": "_bmad/custom/config.toml",
+      "bytes": 348,
+      "sha256": "D00D0BB7E0E03A7E32A9C7C935F2509E17107BB9949162450E408ADEF01878DF"
+    },
+    {
+      "path": "_bmad/custom/config.user.toml",
+      "bytes": 162,
+      "sha256": "92AF88B1942DDFD6E9954F2591E160618BB3E74CA55C292B35AB4C411F79F0E0"
+    },
+    {
+      "path": "_bmad/scripts/config_utils.py",
+      "bytes": 4197,
+      "sha256": "48AFE2BC18A29201E343CCE3703BE1E70DF9C83EE74EEB68E57EF8EF42E8C651"
+    },
+    {
+      "path": "_bmad/scripts/memlog.py",
+      "bytes": 9187,
+      "sha256": "3B00F82CA33DC4227F715123B939514EE35C4F9C71150C894C3D8185DF1B48DF"
+    },
+    {
+      "path": "_bmad/scripts/render_skill.py",
+      "bytes": 15534,
+      "sha256": "8496D0D8B449D64C21B42A9AAB3B13FC8A813A430C0695FFD84AD75BB1DA7942"
+    },
+    {
+      "path": "_bmad/scripts/resolve_config.py",
+      "bytes": 2182,
+      "sha256": "70D7577396ED40AB9462AB75DCE51F852BC2E094B2D1A054214F1B30C8789768"
+    },
+    {
+      "path": "_bmad/scripts/resolve_customization.py",
+      "bytes": 5230,
+      "sha256": "C95AAB9F2DC500D6AB7DB77D6A7860028701CE414E03690613A282CC3659D284"
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/spec-stage-1-tetris-study.md",
+      "bytes": 4924,
+      "sha256": "C41A5CE4B570BDA6BA429B33DB8F3CF23EDF6CD4BDE786322C15B70C0B0C5505"
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/sprint-status.yaml",
+      "bytes": 1365,
+      "sha256": "E21CECF92050DBB2EC940C09514FD0BED15B829A1E3817F24D08A8404F7E183C"
+    },
+    {
+      "path": "_bmad-output/planning-artifacts/architecture/architecture-Bmad Method Full-2026-10-05/.memlog.md",
+      "bytes": 1127,
+      "sha256": "2BDB60B84309C9550EC456455FBDC8C40993A9273903C457B4CFA0C88DDDA3E8"
+    },
+    {
+      "path": "_bmad-output/planning-artifacts/architecture/architecture-Bmad Method Full-2026-10-05/ARCHITECTURE-SPINE.md",
+      "bytes": 5893,
+      "sha256": "0D283278ADB789D31893284BFFA4FD27CDD2941B6FB83519FC4E3479F9A8F536"
+    },
+    {
+      "path": "_bmad-output/planning-artifacts/briefs/brief-Bmad Method Full-2026-10-05/.memlog.md",
+      "bytes": 1513,
+      "sha256": "207C29B51B54F4BF9DF616517A7486602EDE4E6B3E343818BE6E4E622040B5E9"
+    },
+    {
+      "path": "_bmad-output/planning-artifacts/briefs/brief-Bmad Method Full-2026-10-05/brief.md",
+      "bytes": 14682,
+      "sha256": "1C35428347DECF5348152395017C73E4A5CA13A4CAA1712AFCC4CAEA4A25C74A"
+    },
+    {
+      "path": "_bmad-output/planning-artifacts/epics.md",
+      "bytes": 16970,
+      "sha256": "A318F13802C2838987B1737877A68890B46DDCEE8CBF0E9B58DDCF36B08A67C4"
+    },
+    {
+      "path": "_bmad-output/planning-artifacts/prds/prd-Bmad Method Full-2026-10-05/addendum.md",
+      "bytes": 2016,
+      "sha256": "D5120A5B520F253D11114FD3B0EDB1D03F0AD595DD130A355640E840940B6B1D"
+    },
+    {
+      "path": "_bmad-output/planning-artifacts/prds/prd-Bmad Method Full-2026-10-05/prd.md",
+      "bytes": 24078,
+      "sha256": "26FF81EF408BE83A5ECAF36842BEA138B60CC22321F25C0599337466C1209240"
+    },
+    {
+      "path": ".agents/skills/bmad-advanced-elicitation/assets/methods.csv",
+      "bytes": 14854,
+      "sha256": "D110FF5F076FB9421552B83692FDE2C2D367734049169C7A55F7267A3DC7EF89"
+    },
+    {
+      "path": ".agents/skills/bmad-advanced-elicitation/customize.toml",
+      "bytes": 2640,
+      "sha256": "735A276EDD51786CCFD2C3417D9A2B9DEE4244A6102698981B3888F68D979ED9"
+    },
+    {
+      "path": ".agents/skills/bmad-advanced-elicitation/scripts/pick_methods.py",
+      "bytes": 9961,
+      "sha256": "60020EC4767894EA3D8707C4B61E78B679D434315BE1DD29154BF64D88126FFF"
+    },
+    {
+      "path": ".agents/skills/bmad-advanced-elicitation/scripts/tests/test_pick_methods.py",
+      "bytes": 8059,
+      "sha256": "610099D8494529F9203D7262567810B500552BCEF006B3B6388D58DA3DA71978"
+    },
+    {
+      "path": ".agents/skills/bmad-advanced-elicitation/SKILL.md",
+      "bytes": 5222,
+      "sha256": "D38CB53F1C7C77F13664C340026A1A4932AE1CA5A24471EEBAEB172B88C7942F"
+    },
+    {
+      "path": ".agents/skills/bmad-agent-analyst/customize.toml",
+      "bytes": 4465,
+      "sha256": "D6E2C5C660E8900866298961266A0B1C189C8643F2C1C9DA602101E9F98D3388"
+    },
+    {
+      "path": ".agents/skills/bmad-agent-analyst/SKILL.md",
+      "bytes": 4579,
+      "sha256": "8B7C9D72968614A846CA3607E4B9EB4B124D36EB6DAC86150E35EEB4BCD7D913"
+    },
+    {
+      "path": ".agents/skills/bmad-agent-architect/customize.toml",
+      "bytes": 2745,
+      "sha256": "BD0EBB48FAEAB1E6F709D0291A13D33003484A597ED2B9C90F221B2345513B06"
+    },
+    {
+      "path": ".agents/skills/bmad-agent-architect/SKILL.md",
+      "bytes": 4527,
+      "sha256": "DCEDD59CEA2AA2D9DAC0EFDA0D62824F624DBD80164280306EF830FCC7822F16"
+    },
+    {
+      "path": ".agents/skills/bmad-agent-dev/customize.toml",
+      "bytes": 3331,
+      "sha256": "AB52D8840427E10D5956B592C34E63EDC77EBDAFD7B54CE60DA11CF67ED72CED"
+    },
+    {
+      "path": ".agents/skills/bmad-agent-dev/SKILL.md",
+      "bytes": 4589,
+      "sha256": "0BC44690F0DC7FDEAABD763EFD3EAD4B2E8BB8B3A8D5437140605A544B39BB1F"
+    },
+    {
+      "path": ".agents/skills/bmad-agent-pm/customize.toml",
+      "bytes": 3062,
+      "sha256": "4613C72CFE3BC3143BD50C5732BCE464C21C7266FE7DD930BC659C54E7315B39"
+    },
+    {
+      "path": ".agents/skills/bmad-agent-pm/SKILL.md",
+      "bytes": 4525,
+      "sha256": "E38FE9AA923F3E4C885AAD87D32D34AFA6F1A5952FF9697A656F85378F9E9A04"
+    },
+    {
+      "path": ".agents/skills/bmad-agent-ux-designer/customize.toml",
+      "bytes": 2488,
+      "sha256": "4ACD1D9CDBF4A4328C389229EA9E9F2885D0692F8E10E3D9456DA45844337C2C"
+    },
+    {
+      "path": ".agents/skills/bmad-agent-ux-designer/SKILL.md",
+      "bytes": 4546,
+      "sha256": "8FB7EE707FE0E9795608E54AB5BF93AF46183134FB2F38D5B964B8A98FA85C1E"
+    },
+    {
+      "path": ".agents/skills/bmad-architecture/assets/spine-template.md",
+      "bytes": 4357,
+      "sha256": "EF4FF795624EB5439FAE54A06EDB389FEB5A0CF79CB01AE007AF51109335D198"
+    },
+    {
+      "path": ".agents/skills/bmad-architecture/customize.toml",
+      "bytes": 6335,
+      "sha256": "E9C5F75BD6605199F3908D6A1F013D6B42FB12B6F35C9A5E13A44F7F872B7B79"
+    },
+    {
+      "path": ".agents/skills/bmad-architecture/references/headless.md",
+      "bytes": 2660,
+      "sha256": "4DB2708F335C94CB024B5EBA022B1E3D88B1EC61C94C4716626D9B89684F5833"
+    },
+    {
+      "path": ".agents/skills/bmad-architecture/references/reviewer-gate.md",
+      "bytes": 3245,
+      "sha256": "D32E32A3C1D59B5612B947004F3F6FEF1117A13CE9F1FFA428D616E0B5D4DB69"
+    },
+    {
+      "path": ".agents/skills/bmad-architecture/scripts/lint_spine.py",
+      "bytes": 10472,
+      "sha256": "040E0F1C13D31E6A21C518DF943D1D7DE7B75D8D98A07603B0983F3F3FB500DB"
+    },
+    {
+      "path": ".agents/skills/bmad-architecture/scripts/tests/test_lint_spine.py",
+      "bytes": 9932,
+      "sha256": "E86BB9A62C5CCA74DDC89C843386F2B992610FCC1792D40E03BC9CD445B77681"
+    },
+    {
+      "path": ".agents/skills/bmad-architecture/SKILL.md",
+      "bytes": 14104,
+      "sha256": "4A256AFA9C725E0BF5B55961D21774F1EB00011DBE31509E280A955BDB1A5C09"
+    },
+    {
+      "path": ".agents/skills/bmad-brainstorming/assets/brain-icons.json",
+      "bytes": 41231,
+      "sha256": "A101C56E89F1D0F9E4131DFDFC19E10C746E3A61C3F92537D04A6F4897B7D331"
+    },
+    {
+      "path": ".agents/skills/bmad-brainstorming/assets/brain-methods.csv",
+      "bytes": 19519,
+      "sha256": "FFF112EABCA1A9CB8B190F8314BC47678BECC5782A2372E11C83DAA0E33B6DFD"
+    },
+    {
+      "path": ".agents/skills/bmad-brainstorming/assets/brain-selector.html",
+      "bytes": 244638,
+      "sha256": "C110919A3366BD96061F050F98503E3586185E3D1DF5FF8B62A5A046C571A436"
+    },
+    {
+      "path": ".agents/skills/bmad-brainstorming/customize.toml",
+      "bytes": 4389,
+      "sha256": "313C3B348473CD40BA02CEAE4B299C617300AF78DEBB2F5585C8D3941CC2D8D3"
+    },
+    {
+      "path": ".agents/skills/bmad-brainstorming/references/converge.md",
+      "bytes": 2961,
+      "sha256": "1528C32DDC64F8061FEC663306F7208D2FD4D4A90E660552B8138BDA7E452DC0"
+    },
+    {
+      "path": ".agents/skills/bmad-brainstorming/references/finalize.md",
+      "bytes": 4898,
+      "sha256": "B6074E7FB4D86FFCF899ABC50B9049B4A1F6FE550917F4BE7A1C7A888477E07E"
+    },
+    {
+      "path": ".agents/skills/bmad-brainstorming/references/headless.md",
+      "bytes": 4989,
+      "sha256": "B8EA5951199CFF7E4813E06AEF35683CA0658230FA015E358CACC466B1138A42"
+    },
+    {
+      "path": ".agents/skills/bmad-brainstorming/references/in-chat-techniques.md",
+      "bytes": 2200,
+      "sha256": "18239464E3E4F00EA9063D015D26D6B0A696B72E7E3C5BE92352DA6DB9A3F244"
+    },
+    {
+      "path": ".agents/skills/bmad-brainstorming/references/mode-autonomous.md",
+      "bytes": 1895,
+      "sha256": "D815D2C7F0F8CC0CDFA7C619EAF61F59FD78142F13C69365EDA257DA38B97BDF"
+    },
+    {
+      "path": ".agents/skills/bmad-brainstorming/references/mode-facilitator.md",
+      "bytes": 970,
+      "sha256": "1B908498D285D190859AED00C3BA5B399D7F6AA8E94D54E95456D15CD6FE6073"
+    },
+    {
+      "path": ".agents/skills/bmad-brainstorming/references/mode-partner.md",
+      "bytes": 1606,
+      "sha256": "CAA0ED378C116DEF4DE382F4E5A95173C6AE6CC5464F1792E7D8196360F79C8A"
+    },
+    {
+      "path": ".agents/skills/bmad-brainstorming/references/resume.md",
+      "bytes": 737,
+      "sha256": "0F79535D72EEFE6C55BD5AE47FE4753DE8D27235CF129F10B2C596A124C26526"
+    },
+    {
+      "path": ".agents/skills/bmad-brainstorming/scripts/brain.py",
+      "bytes": 38735,
+      "sha256": "F81B28FE590F607B95C7218A7CDD6FB6EB91D3A76B9671ACF54BCAF36FD4E6CA"
+    },
+    {
+      "path": ".agents/skills/bmad-brainstorming/scripts/tests/test_brain.py",
+      "bytes": 11345,
+      "sha256": "B219DA8E5E3CCD4EBAE95FB02BC5683D6B62593D71DB75A712ADC7A1B9017BC3"
+    },
+    {
+      "path": ".agents/skills/bmad-brainstorming/SKILL.md",
+      "bytes": 9765,
+      "sha256": "2657A2088329651FD06F030E61997FC9F21986588D65CE96F14043AF14D8534E"
+    },
+    {
+      "path": ".agents/skills/bmad-build/compile-epic-context.md",
+      "bytes": 2918,
+      "sha256": "6793B15AE85766CEE529E6B349E45F2C6EC9E3212019611C29E8C77B4DC4B924"
+    },
+    {
+      "path": ".agents/skills/bmad-build/customize.toml",
+      "bytes": 6713,
+      "sha256": "0EE9B033A40640420D1DC3411DE7428146D00BF8C1409C9A9CFE6C1743CD53B9"
+    },
+    {
+      "path": ".agents/skills/bmad-build/references/claims-check.md",
+      "bytes": 1430,
+      "sha256": "50EA17CB89A78EF815286DDE2DABFD09F1DC9841D07A10857F88B39AB7B9BD2A"
+    },
+    {
+      "path": ".agents/skills/bmad-build/references/deletion-check.md",
+      "bytes": 1009,
+      "sha256": "0F1F124E4E957147E89164A272B10BEDC694AD0D9AD2618C8610AC74EE9CB0DA"
+    },
+    {
+      "path": ".agents/skills/bmad-build/review-prompts/edge-case-hunter.md",
+      "bytes": 8361,
+      "sha256": "8FC046AF1CBF4ECC928207CEC75E29C3C260ADB86CC7DA77537ADE3B3A3B9448"
+    },
+    {
+      "path": ".agents/skills/bmad-build/review-prompts/verification-gap.md",
+      "bytes": 9821,
+      "sha256": "45AB0B8C4C56C5C055C97A293A8591A67E256D0B1A2058CE1F093CD866BE8D03"
+    },
+    {
+      "path": ".agents/skills/bmad-build/SKILL.md",
+      "bytes": 1084,
+      "sha256": "1CDF5406965BA24236D2375739D839699EB56B619834490539D1BD3D5111F890"
+    },
+    {
+      "path": ".agents/skills/bmad-build/spec-template.md",
+      "bytes": 4753,
+      "sha256": "E217325964857EBD90A9508BF171EDDC2C4AD1B0B9B32A119775AC5C015695FD"
+    },
+    {
+      "path": ".agents/skills/bmad-build/step-01-clarify-and-route.md",
+      "bytes": 11045,
+      "sha256": "1E8095B08E9E9C57D9B24678B524E07D0B6BBB5AF72BA213622F12A1C7D909CC"
+    },
+    {
+      "path": ".agents/skills/bmad-build/step-02-plan.md",
+      "bytes": 6274,
+      "sha256": "5C999430F818F58FC5E4F64309A1B0F81358CE0DDCFBD3F44B25D56279EF25D8"
+    },
+    {
+      "path": ".agents/skills/bmad-build/step-03-implement.md",
+      "bytes": 4015,
+      "sha256": "15FD02D2F655D4102C515134ED6AA40CD055BD9D811E49D529512F8F36D09B03"
+    },
+    {
+      "path": ".agents/skills/bmad-build/step-04-review.md",
+      "bytes": 10927,
+      "sha256": "F6B3F3FA5D3AF0B324DB2EFEE9351D4C348BDC0DFA4DAD6C058EB4FD37921333"
+    },
+    {
+      "path": ".agents/skills/bmad-build/step-05-present.md",
+      "bytes": 1338,
+      "sha256": "551E0847E2EBB64575180A5DACCA5786B9B9D7825DCD986E1B3B58442EAF713A"
+    },
+    {
+      "path": ".agents/skills/bmad-build/step-oneshot.md",
+      "bytes": 6170,
+      "sha256": "241FA52E227C048A5D8E4428BEF0F153267475F697640899DEB218B58EBFD378"
+    },
+    {
+      "path": ".agents/skills/bmad-build/sync-sprint-status.md",
+      "bytes": 411,
+      "sha256": "7FF44D21F5D813F4993780271EEC8DF2FCE1373F525FF80E595B7C10618C4C36"
+    },
+    {
+      "path": ".agents/skills/bmad-build/workflow.md",
+      "bytes": 3945,
+      "sha256": "481FF00EF349A9C7845FECA02BBFD5722B1E318CCABAC858355DA6C90C2D8A39"
+    },
+    {
+      "path": ".agents/skills/bmad-build-auto/compile-epic-context.md",
+      "bytes": 2992,
+      "sha256": "64D13B41974CFA0DFC1DE64B6FBD8365E9B99F91C7C98F0EE1A9FBD018F324CA"
+    },
+    {
+      "path": ".agents/skills/bmad-build-auto/customize.toml",
+      "bytes": 5250,
+      "sha256": "31417A8239F213C00621BB9016C3099631AE7EF03731CE5BE209A5668A5730EE"
+    },
+    {
+      "path": ".agents/skills/bmad-build-auto/references/claims-check.md",
+      "bytes": 1430,
+      "sha256": "50EA17CB89A78EF815286DDE2DABFD09F1DC9841D07A10857F88B39AB7B9BD2A"
+    },
+    {
+      "path": ".agents/skills/bmad-build-auto/references/deletion-check.md",
+      "bytes": 1009,
+      "sha256": "0F1F124E4E957147E89164A272B10BEDC694AD0D9AD2618C8610AC74EE9CB0DA"
+    },
+    {
+      "path": ".agents/skills/bmad-build-auto/review-prompts/edge-case-hunter.md",
+      "bytes": 8361,
+      "sha256": "8FC046AF1CBF4ECC928207CEC75E29C3C260ADB86CC7DA77537ADE3B3A3B9448"
+    },
+    {
+      "path": ".agents/skills/bmad-build-auto/review-prompts/verification-gap.md",
+      "bytes": 9821,
+      "sha256": "45AB0B8C4C56C5C055C97A293A8591A67E256D0B1A2058CE1F093CD866BE8D03"
+    },
+    {
+      "path": ".agents/skills/bmad-build-auto/SKILL.md",
+      "bytes": 696,
+      "sha256": "EA798A5F7DF3B11EB73555A54FC0516C70D8F98739BD7857D968297B26F6EF94"
+    },
+    {
+      "path": ".agents/skills/bmad-build-auto/spec-template.md",
+      "bytes": 4033,
+      "sha256": "59A046DF2773EC05AF0688823D17238BFDE2BB54C0C3B3EFF6ACEC4856F1EB7A"
+    },
+    {
+      "path": ".agents/skills/bmad-build-auto/step-01-clarify-and-route.md",
+      "bytes": 10653,
+      "sha256": "50674ECEF3B4B7A26B993685C9A79CCD87B00B2255D51B6B9C13ED32AA6D1FFA"
+    },
+    {
+      "path": ".agents/skills/bmad-build-auto/step-02-plan.md",
+      "bytes": 3342,
+      "sha256": "A08E303C10F88DBFCE88C55044757EC5059AFE338793EB414E1DDB0B7C324625"
+    },
+    {
+      "path": ".agents/skills/bmad-build-auto/step-03-implement.md",
+      "bytes": 3801,
+      "sha256": "0DC9C9634ECA148BAAEC03E7D154840A14101F92492B7AB469625BF13B4E2AB5"
+    },
+    {
+      "path": ".agents/skills/bmad-build-auto/step-04-review.md",
+      "bytes": 14719,
+      "sha256": "C5530C50C89F197720275B83466B382F896FA27A0BBA30D4B75C6AF162148CDF"
+    },
+    {
+      "path": ".agents/skills/bmad-build-auto/workflow.md",
+      "bytes": 5708,
+      "sha256": "611F429206029A903EC9433CCDFD9B186FBAFC6DC95DA0A21FBCDF5965AD25EA"
+    },
+    {
+      "path": ".agents/skills/bmad-code-review/customize.toml",
+      "bytes": 5219,
+      "sha256": "282D9483CCB74ACAB1EFB965CE10EBD6206A61DA94DA245A705A6358DBF0DC2E"
+    },
+    {
+      "path": ".agents/skills/bmad-code-review/references/claims-check.md",
+      "bytes": 1362,
+      "sha256": "7BE5D35DD90A1950ADDC2062ACDF8669026B239117EFE1E398DA1E8161CFA6F9"
+    },
+    {
+      "path": ".agents/skills/bmad-code-review/references/deletion-check.md",
+      "bytes": 1009,
+      "sha256": "0F1F124E4E957147E89164A272B10BEDC694AD0D9AD2618C8610AC74EE9CB0DA"
+    },
+    {
+      "path": ".agents/skills/bmad-code-review/review-prompts/edge-case-hunter.md",
+      "bytes": 8434,
+      "sha256": "5F4572D57340B4C0D155F33454D644A44AF101CD7FD02A01591BE68A4EBB8B7F"
+    },
+    {
+      "path": ".agents/skills/bmad-code-review/review-prompts/verification-gap.md",
+      "bytes": 9751,
+      "sha256": "06F6184D7D94C808970D0146CDC4585DFD66B94A7B7AB2988277FB6FC4208508"
+    },
+    {
+      "path": ".agents/skills/bmad-code-review/SKILL.md",
+      "bytes": 4078,
+      "sha256": "C6AAD905FB70B76F88DB76550F0DE3B9170EA99099C0B592C6C3609BF3C05218"
+    },
+    {
+      "path": ".agents/skills/bmad-code-review/steps/step-01-gather-context.md",
+      "bytes": 8195,
+      "sha256": "51941FD52406CF075AC9172CDCBEEBEFE85DF91EA818AD8EC723724DE67A1831"
+    },
+    {
+      "path": ".agents/skills/bmad-code-review/steps/step-02-review.md",
+      "bytes": 2939,
+      "sha256": "F2B8E654CF595746656D9861C4AC722F65B02939C53900F4F6D8B24988B2155A"
+    },
+    {
+      "path": ".agents/skills/bmad-code-review/steps/step-03-triage.md",
+      "bytes": 5438,
+      "sha256": "337AC3AD2CD8CABB34F4E47C8778CFD703F919753573DD9D708B7218FD5DE684"
+    },
+    {
+      "path": ".agents/skills/bmad-code-review/steps/step-04-present.md",
+      "bytes": 6654,
+      "sha256": "A9619F7DF9B9112C0E42EE71A362F73DFA38EF6DFF7B403975DBD6D2480A8D9F"
+    },
+    {
+      "path": ".agents/skills/bmad-correct-course/checklist.md",
+      "bytes": 11634,
+      "sha256": "3E082B95DEF90CCB876E3101CE0BBAF797A0F03A9471E1347361897F27977327"
+    },
+    {
+      "path": ".agents/skills/bmad-correct-course/customize.toml",
+      "bytes": 1592,
+      "sha256": "9990C3D4A1AA90A207F7E3380A7A48A5C9C005702194F63C6A959A4B1A18586F"
+    },
+    {
+      "path": ".agents/skills/bmad-correct-course/SKILL.md",
+      "bytes": 14142,
+      "sha256": "D04921FC889C501CA3D6CB8ABD087DCD0884FB4B21B4D386B896A058526C4CBF"
+    },
+    {
+      "path": ".agents/skills/bmad-create-epics-and-stories/customize.toml",
+      "bytes": 1617,
+      "sha256": "E7633A4E6E33161C7CB13034E5132D9D29F8A7031E75765D16A60724F2089557"
+    },
+    {
+      "path": ".agents/skills/bmad-create-epics-and-stories/SKILL.md",
+      "bytes": 5116,
+      "sha256": "DF61E2DF22E0645F44A60C15320F2B93FBABF4A62FBB4A2EAC399B7E7A081127"
+    },
+    {
+      "path": ".agents/skills/bmad-create-epics-and-stories/steps/step-01-validate-prerequisites.md",
+      "bytes": 10960,
+      "sha256": "7181608C1EE4E55C084C6627D68FC55A8A0B6917E489F8AC77531A0530428A30"
+    },
+    {
+      "path": ".agents/skills/bmad-create-epics-and-stories/steps/step-02-design-epics.md",
+      "bytes": 8809,
+      "sha256": "7C66987808C1F84E853FE54B7AFF26D209196D450B5644704110F124A15179BC"
+    },
+    {
+      "path": ".agents/skills/bmad-create-epics-and-stories/steps/step-03-create-stories.md",
+      "bytes": 8351,
+      "sha256": "C5B787A82E4E49ED9CD9C028321EE1689F32B8CD69D89EEA609B37CD3D481AFC"
+    },
+    {
+      "path": ".agents/skills/bmad-create-epics-and-stories/steps/step-04-final-validation.md",
+      "bytes": 5354,
+      "sha256": "0440EE43EADB39780F0647C27B2E8AF5C153E68C9A33350DC9203BF81F388513"
+    },
+    {
+      "path": ".agents/skills/bmad-create-epics-and-stories/templates/epics-template.md",
+      "bytes": 1105,
+      "sha256": "A804F740155156D89661FA04E7A4264A8F712C4DC227C44FD8AE804A9B0F6B72"
+    },
+    {
+      "path": ".agents/skills/bmad-customize/scripts/list_customizable_skills.py",
+      "bytes": 8061,
+      "sha256": "8787F542930B927789E7FDF12BC5A67FF08E19865903A5AD05FF2CC8FC426B66"
+    },
+    {
+      "path": ".agents/skills/bmad-customize/scripts/tests/test_list_customizable_skills.py",
+      "bytes": 9244,
+      "sha256": "24C3D384B3B5D490B7335C17866BFE0425AF253CE669C32382FA88FEB705934D"
+    },
+    {
+      "path": ".agents/skills/bmad-customize/SKILL.md",
+      "bytes": 6730,
+      "sha256": "EF42FFE69D1758EE12F22D6C143262926F715DD13FECB874C8A5971916D41598"
+    },
+    {
+      "path": ".agents/skills/bmad-deep-recon/assets/research.template.md",
+      "bytes": 460,
+      "sha256": "87D7CFA85FA5036B5A309B7BFB88F7934F50BB81F3CFF02D2B49B4C7345CFC38"
+    },
+    {
+      "path": ".agents/skills/bmad-deep-recon/customize.toml",
+      "bytes": 9503,
+      "sha256": "24D1383066034FD4FCF282279AAF0D29D21910FD1247DFE3DBAD74A70E78814D"
+    },
+    {
+      "path": ".agents/skills/bmad-deep-recon/references/draft.md",
+      "bytes": 1909,
+      "sha256": "AC19B33A00CA529C3281DF6076F87A833A3B11FC30915CA2C6E7590F7986B90E"
+    },
+    {
+      "path": ".agents/skills/bmad-deep-recon/references/finalize.md",
+      "bytes": 1797,
+      "sha256": "D2BA4BEE615DFBCA6E7725179FB5EBD856DD34A54BA3F306E25255DFD7B1D126"
+    },
+    {
+      "path": ".agents/skills/bmad-deep-recon/references/html-briefing.md",
+      "bytes": 2434,
+      "sha256": "CD3A88C1A5505FA7F1B715AFC3ADB34F3D64ADE66F4C6B49A59F7E8CFCBE38D4"
+    },
+    {
+      "path": ".agents/skills/bmad-deep-recon/references/lifecycle.md",
+      "bytes": 1137,
+      "sha256": "2315FD9CB9223504639616B861AD593BFECB53D605EFBD598AE2CF94FB6C4CDF"
+    },
+    {
+      "path": ".agents/skills/bmad-deep-recon/references/process.md",
+      "bytes": 1955,
+      "sha256": "9017D04774807A29103EA97331E555E2793F90098AF65752B72F3EE09DF85906"
+    },
+    {
+      "path": ".agents/skills/bmad-deep-recon/references/run.md",
+      "bytes": 9459,
+      "sha256": "8E259DC88820AC989C79620AF5C37E24F00DF21AC4AF308CE3563C0E66C9406C"
+    },
+    {
+      "path": ".agents/skills/bmad-deep-recon/references/selection.md",
+      "bytes": 2341,
+      "sha256": "2B488C08F9550AFE7FDA32C2DC5D4591927AFD7B9AD507FCCE0AE8593C4B9D31"
+    },
+    {
+      "path": ".agents/skills/bmad-deep-recon/references/synthesis.md",
+      "bytes": 2788,
+      "sha256": "4D9EF1247AB45241F919010E94C99699ABC0A6E18B5BD68FA93AE54AFE59D172"
+    },
+    {
+      "path": ".agents/skills/bmad-deep-recon/references/verification.md",
+      "bytes": 4222,
+      "sha256": "0393DED4828FEC69A4819D7236827910D641D09C3B61144C0211A9A78776FDD2"
+    },
+    {
+      "path": ".agents/skills/bmad-deep-recon/scripts/recon_kit.py",
+      "bytes": 12417,
+      "sha256": "8CB5187B5114B779532907383A013D40FDEA1022BB9BED9A23BD8D0FDFA79E8C"
+    },
+    {
+      "path": ".agents/skills/bmad-deep-recon/scripts/tests/test_recon_kit.py",
+      "bytes": 4913,
+      "sha256": "1B4DDF482DD2D11A214EE2F821C35D7A8C41905B5D8D9CC69A293304BB8A1665"
+    },
+    {
+      "path": ".agents/skills/bmad-deep-recon/SKILL.md",
+      "bytes": 9298,
+      "sha256": "E6DE27D7C037E2951C5684D976186F6772CC724279AF4B3CAC05E21C42156DB5"
+    },
+    {
+      "path": ".agents/skills/bmad-deep-recon/types/academic-lit.md",
+      "bytes": 1544,
+      "sha256": "514B0B7B1184CB95363DEDEB0C2298A9BF5C430C74146FE2114F31780FADB325"
+    },
+    {
+      "path": ".agents/skills/bmad-deep-recon/types/competitive.md",
+      "bytes": 1512,
+      "sha256": "39B53DF87D295FDC4388719FCDF31AD2221E64AFC136E669207F46D2727A3AEC"
+    },
+    {
+      "path": ".agents/skills/bmad-deep-recon/types/domain.md",
+      "bytes": 1712,
+      "sha256": "3A34B2E62C3589F8C8D01158357EE9FBA32648C9FDFE70035BB3CA971862896B"
+    },
+    {
+      "path": ".agents/skills/bmad-deep-recon/types/market.md",
+      "bytes": 1337,
+      "sha256": "81AC04499DA441857672E29FCD7169436A7E239E67194288AC0D526EC514CB5E"
+    },
+    {
+      "path": ".agents/skills/bmad-deep-recon/types/technical.md",
+      "bytes": 1654,
+      "sha256": "55F71428C70547B89D67EF0C6CDAD59CAEB0EE21082CD1230C05618BA8D04707"
+    },
+    {
+      "path": ".agents/skills/bmad-deep-recon/types/user-voice.md",
+      "bytes": 1758,
+      "sha256": "1831CE46E53E8C68244D28E336C5EF9E53E64F21A00B74A817B9B2924C1E8E72"
+    },
+    {
+      "path": ".agents/skills/bmad-forge-idea/customize.toml",
+      "bytes": 1822,
+      "sha256": "839F57B89C8B04038FA795525F55799EE5C23431B17D429FE668880E78399EF2"
+    },
+    {
+      "path": ".agents/skills/bmad-forge-idea/scripts/resolve_personas.py",
+      "bytes": 10176,
+      "sha256": "9273C71595D6317E0A1035B1A632A47A8943379797D0A4DB0D2842E5787C31CC"
+    },
+    {
+      "path": ".agents/skills/bmad-forge-idea/scripts/tests/test_resolve_personas.py",
+      "bytes": 7191,
+      "sha256": "F8D040801D53E48C1AEC147D1E28C5B279E459F49EA1FD1673DBD7E340022A99"
+    },
+    {
+      "path": ".agents/skills/bmad-forge-idea/SKILL.md",
+      "bytes": 10491,
+      "sha256": "E44D0008DB0C0B30F3FA533E987EFE66B2C852530B70FED03F0D4D9CBABE2B4B"
+    },
+    {
+      "path": ".agents/skills/bmad-help/SKILL.md",
+      "bytes": 4975,
+      "sha256": "72573FBBD205CAB6119015B7A20951055C7F1F583162674EBED7A68368DC889C"
+    },
+    {
+      "path": ".agents/skills/bmad-party-mode/customize.toml",
+      "bytes": 12505,
+      "sha256": "332ACA1A85A681FF38A78850DEB552E954D6A7D0B32F8D22CAF9B2B2324B4E24"
+    },
+    {
+      "path": ".agents/skills/bmad-party-mode/references/create-party.md",
+      "bytes": 9037,
+      "sha256": "FB516CF4E66B2C94519B9BB80CF7BD966FEE285549C773B402400BFF664A2AAB"
+    },
+    {
+      "path": ".agents/skills/bmad-party-mode/references/mode-agent-team.md",
+      "bytes": 2052,
+      "sha256": "DEF759A17F4BB45463B68FB74C2B828B0A4241720B2B6CC1C9C611A1016AE9D7"
+    },
+    {
+      "path": ".agents/skills/bmad-party-mode/references/mode-auto.md",
+      "bytes": 1095,
+      "sha256": "A37FD24F76DFCDE385890D5C5947BB6F40CA44BEA86C805D267B6AE3AAB39F70"
+    },
+    {
+      "path": ".agents/skills/bmad-party-mode/references/mode-subagent.md",
+      "bytes": 4191,
+      "sha256": "86161B24A0B13B8F9CB9309042E4249D8CAEFFF8CC33728B084CD2EC22F9D2E1"
+    },
+    {
+      "path": ".agents/skills/bmad-party-mode/references/party-memory.md",
+      "bytes": 3903,
+      "sha256": "800B4B4B920BB881A7B32AAABCA8559A98273799B2476D83A23E290E301FB315"
+    },
+    {
+      "path": ".agents/skills/bmad-party-mode/scripts/resolve_party.py",
+      "bytes": 11076,
+      "sha256": "349D911A194D844E6D885BA8AFD9296D7DBA6DC87B4071534B31DA17AE8AB796"
+    },
+    {
+      "path": ".agents/skills/bmad-party-mode/scripts/tests/test_resolve_party.py",
+      "bytes": 7537,
+      "sha256": "9CC25D2BFF884F08517ABFBEBB7054D43804DC48E650C5C5F7C0618CE231413F"
+    },
+    {
+      "path": ".agents/skills/bmad-party-mode/SKILL.md",
+      "bytes": 9628,
+      "sha256": "7BF82A11627595762244C969CDCC836869C935C5AA99A7C5EC5657581C1F4DD0"
+    },
+    {
+      "path": ".agents/skills/bmad-prd/assets/headless-schemas.md",
+      "bytes": 2038,
+      "sha256": "8D3621333A72400512BD62511BC4C73FC745711505E1F852C697FF8C5FA2DE93"
+    },
+    {
+      "path": ".agents/skills/bmad-prd/assets/prd-template.md",
+      "bytes": 10030,
+      "sha256": "B6FE8FC1390B8E46961D5EB5E6F2FE6C65DCA2F30623D492677672E02868F7AB"
+    },
+    {
+      "path": ".agents/skills/bmad-prd/assets/prd-validation-checklist.md",
+      "bytes": 7432,
+      "sha256": "41D9F09064772A92EC908D970618E47BA63DC86B5C5A1A21D5A2C676D3BA8E3F"
+    },
+    {
+      "path": ".agents/skills/bmad-prd/assets/validation-report-template.html",
+      "bytes": 10893,
+      "sha256": "A80BECDD8205D2D7C18738855830B096172A496B96B5CA8A0820EC55C9BB8BF9"
+    },
+    {
+      "path": ".agents/skills/bmad-prd/customize.toml",
+      "bytes": 8193,
+      "sha256": "D23707FE7FF5F5060A05B5B8BDA3F170B9B1D9BE61E409E9F7AE91F83572DB6A"
+    },
+    {
+      "path": ".agents/skills/bmad-prd/references/headless.md",
+      "bytes": 3314,
+      "sha256": "4DAD58EBEE63933A53179016513FF94D143CE9F68E226489D390E2C36BF1D848"
+    },
+    {
+      "path": ".agents/skills/bmad-prd/references/validate.md",
+      "bytes": 5630,
+      "sha256": "19B2FA66D58CB4FEF3D920CD09C81F8ADD4EE44DD4191BEC87EABA84C2093338"
+    },
+    {
+      "path": ".agents/skills/bmad-prd/SKILL.md",
+      "bytes": 14113,
+      "sha256": "1E0436D7863406E9F4ED6D1B9D97D2C3304DBCDF8DC4C5B1E76B560D0663BBB9"
+    },
+    {
+      "path": ".agents/skills/bmad-prfaq/agents/artifact-analyzer.md",
+      "bytes": 2646,
+      "sha256": "7BDC44830F8D593346EC0EE15E36E1E431432FCC6C38B70BB861999315C9CFA4"
+    },
+    {
+      "path": ".agents/skills/bmad-prfaq/agents/web-researcher.md",
+      "bytes": 1756,
+      "sha256": "6E9127BB9BD3E4B15C701E4CED9EEF328769262CD34EADC221BEBE954C1F3AEF"
+    },
+    {
+      "path": ".agents/skills/bmad-prfaq/assets/prfaq-template.md",
+      "bytes": 1434,
+      "sha256": "B27E6964F0437AB4E78C8C0FFBE5052C28E3B3EF2FC811726CBB394D5A5C7559"
+    },
+    {
+      "path": ".agents/skills/bmad-prfaq/bmad-manifest.json",
+      "bytes": 464,
+      "sha256": "B67B016CD68535A97BD9164C237FBFE19A5B26BC1A3F0AFE203FECFA40AAB6FF"
+    },
+    {
+      "path": ".agents/skills/bmad-prfaq/customize.toml",
+      "bytes": 1570,
+      "sha256": "B764B9EA360734D681115B958D0CCD478F1B56CE0045ECD6F71311EF005D8980"
+    },
+    {
+      "path": ".agents/skills/bmad-prfaq/references/customer-faq.md",
+      "bytes": 3697,
+      "sha256": "96F8565197649C58908A1D61B6CD805FD01F57DA7945BA889C18D087AD597AEB"
+    },
+    {
+      "path": ".agents/skills/bmad-prfaq/references/internal-faq.md",
+      "bytes": 3928,
+      "sha256": "26EB83F844CDA1ED8EFB50F4703D61713ADA8A64BD27EB387F759F858B5748DE"
+    },
+    {
+      "path": ".agents/skills/bmad-prfaq/references/press-release.md",
+      "bytes": 4308,
+      "sha256": "C406ADB0E2D2CC326CBC45D0174F89D014523448AD82BC272293999D22AEC596"
+    },
+    {
+      "path": ".agents/skills/bmad-prfaq/references/verdict.md",
+      "bytes": 4523,
+      "sha256": "C962CE2C97E824CB53DAE70C898153FFAC3EA56B56565012CA2B96BB21C9618C"
+    },
+    {
+      "path": ".agents/skills/bmad-prfaq/SKILL.md",
+      "bytes": 10955,
+      "sha256": "5C699E0F9EB5B40D29403C87077A820A5A36D91BD730F88998DAF21C48B77891"
+    },
+    {
+      "path": ".agents/skills/bmad-product-brief/assets/brief-template.md",
+      "bytes": 1606,
+      "sha256": "BB28EDF75D023067551C8D417B19B8803324E7ACFB2AD0C80F882E9134F4C1F1"
+    },
+    {
+      "path": ".agents/skills/bmad-product-brief/customize.toml",
+      "bytes": 5513,
+      "sha256": "BEF95B0AB71793D214EC59ED7397A25F7253E63FAD5D60570248614DB6186905"
+    },
+    {
+      "path": ".agents/skills/bmad-product-brief/SKILL.md",
+      "bytes": 11654,
+      "sha256": "AB64CAB428CD5014DCADE28DF615AC75AC10CC501EAB0410567F1F9A3DD15E1A"
+    },
+    {
+      "path": ".agents/skills/bmad-project-context/customize.toml",
+      "bytes": 967,
+      "sha256": "9BF8A3AA919832CD8932853DA550FCAEBD06A9E13C0CDE453F4379D8327F9C0F"
+    },
+    {
+      "path": ".agents/skills/bmad-project-context/references/best-practices.md",
+      "bytes": 9379,
+      "sha256": "850C45D2E1DE44B1CD8E3B06B8175DF53AAC8983326D73351EAB547BFACC532B"
+    },
+    {
+      "path": ".agents/skills/bmad-project-context/references/template.md",
+      "bytes": 2664,
+      "sha256": "5E2BC291E734A481FD2925877ADFBE82B03313F300BAF67DFDB6FA22A1181601"
+    },
+    {
+      "path": ".agents/skills/bmad-project-context/SKILL.md",
+      "bytes": 13027,
+      "sha256": "50B0EE0F4905273DD7F8A57A4E79B2FF47EABB074B6F4BCE8242B950B37DFB63"
+    },
+    {
+      "path": ".agents/skills/bmad-qa-generate-e2e-tests/checklist.md",
+      "bytes": 891,
+      "sha256": "B58F810AEB1040C2F6758C88AA133AFCE72F8CC178D3D97FF0FBAA3D943057DC"
+    },
+    {
+      "path": ".agents/skills/bmad-qa-generate-e2e-tests/customize.toml",
+      "bytes": 1591,
+      "sha256": "4FBBD9D96E5AF24AE012D33E59582B88867E8203DCD5A29F0D46B42EF6D747B8"
+    },
+    {
+      "path": ".agents/skills/bmad-qa-generate-e2e-tests/SKILL.md",
+      "bytes": 5721,
+      "sha256": "23E70E3C69EF91D73A61109FBC2ABE41241756ED61AC28B5E6DA7DCFD5B52EB5"
+    },
+    {
+      "path": ".agents/skills/bmad-retrospective/customize.toml",
+      "bytes": 1579,
+      "sha256": "33CE7DA5BAD6DFE1791218D8D607B749F9B58586B232DF7EA0D3263EC50EC466"
+    },
+    {
+      "path": ".agents/skills/bmad-retrospective/references/acceptance-verdict.md",
+      "bytes": 5575,
+      "sha256": "09A65007C39AF83E01E039331C252E6E670B134CD5E2A4B5E05AC9D9FB7E37F1"
+    },
+    {
+      "path": ".agents/skills/bmad-retrospective/references/aggregate-views.md",
+      "bytes": 4333,
+      "sha256": "5B278AFCE4A53692D8715B4AF178E4233DA0876921DC3154B5763D056CB5FF0B"
+    },
+    {
+      "path": ".agents/skills/bmad-retrospective/references/evidence-gathering.md",
+      "bytes": 5071,
+      "sha256": "575BACE78D7C03C48D86A209DD664F7DD22295A222B75E6D6298894CB7B7CE00"
+    },
+    {
+      "path": ".agents/skills/bmad-retrospective/references/retro-document.md",
+      "bytes": 10215,
+      "sha256": "DE8164664CD2BE7F73B8BA5552E9E0F58816D2A7C4BE8EFC7715461846BB7001"
+    },
+    {
+      "path": ".agents/skills/bmad-retrospective/references/team-discussion.md",
+      "bytes": 2327,
+      "sha256": "A9C504C436038C7E47D08322413AA3C213D2859B36AE30E873CB8C60FD9E008E"
+    },
+    {
+      "path": ".agents/skills/bmad-retrospective/scripts/git_evidence.py",
+      "bytes": 11355,
+      "sha256": "6E08688D2943217B61E784C7DF3508AA1502D7CECF53EA7CD530944C431C91B6"
+    },
+    {
+      "path": ".agents/skills/bmad-retrospective/scripts/sprint_status.py",
+      "bytes": 29799,
+      "sha256": "A697EECD53CD9177657AEE4CFDB2EAB06D7D81F3E855B096CFE0482A74C50EBE"
+    },
+    {
+      "path": ".agents/skills/bmad-retrospective/scripts/tests/fixtures/sprint-status-template.yaml",
+      "bytes": 2397,
+      "sha256": "64B1A937E1FE03B8B8D158E3B1CAEB89E7D51692A56C16038E2AF091DECC553A"
+    },
+    {
+      "path": ".agents/skills/bmad-retrospective/scripts/tests/test_git_evidence.py",
+      "bytes": 28857,
+      "sha256": "0ABFC8FAD338830FC2DB656D3CCC500631B0EA7A2AB87D853C13A6BBD46FF13C"
+    },
+    {
+      "path": ".agents/skills/bmad-retrospective/scripts/tests/test_sprint_status.py",
+      "bytes": 59477,
+      "sha256": "23DA16CCA54904A256FCF88FD8F912C3F6091EA343768C241BBD2AEEBBCA2AF3"
+    },
+    {
+      "path": ".agents/skills/bmad-retrospective/SKILL.md",
+      "bytes": 13554,
+      "sha256": "DC43CE39DA086330FD645CF2AE560D5BE941761A6F35478E3E9278C7B721A08F"
+    },
+    {
+      "path": ".agents/skills/bmad-review/customize.toml",
+      "bytes": 5860,
+      "sha256": "005DDE84F09C0B1AB0EF0EE87F1ED1985922C893089CC3595157611FB83B3EBD"
+    },
+    {
+      "path": ".agents/skills/bmad-review/references/editorial-common.md",
+      "bytes": 5811,
+      "sha256": "F0CDC72EA345B2C5DC3001477B3DFCC909CA11B78F7DB8865B6763D18FFC66C8"
+    },
+    {
+      "path": ".agents/skills/bmad-review/references/lens-adversarial.md",
+      "bytes": 779,
+      "sha256": "7C5CE97AB2F3ECB96CEB6AA76417F68C1B7DF535EDD3CC51666D8E1216E6E557"
+    },
+    {
+      "path": ".agents/skills/bmad-review/references/lens-edge-case-hunter.md",
+      "bytes": 5857,
+      "sha256": "5F0C4778D7B393D11156AF8C1BD9BF88AAFEB9D50FFF5F460CA67DF50D927E7D"
+    },
+    {
+      "path": ".agents/skills/bmad-review/references/lens-prose.md",
+      "bytes": 1354,
+      "sha256": "4CBCB1EAEA8567D272F5DB7C6CDFD74ED5A8AAE6831053CB2F01CBFC2CB98B98"
+    },
+    {
+      "path": ".agents/skills/bmad-review/references/lens-structure.md",
+      "bytes": 1582,
+      "sha256": "98C08221F517133E57EF6325013935360C3365EBD7DCB8411B2050D7DF507EE3"
+    },
+    {
+      "path": ".agents/skills/bmad-review/references/lens-verification-gap.md",
+      "bytes": 9518,
+      "sha256": "E7123D81171EEEEE1B3782D13D94C2988969FE357DD71949131A5EB97803E2C6"
+    },
+    {
+      "path": ".agents/skills/bmad-review/references/structure-models.md",
+      "bytes": 1972,
+      "sha256": "F84F85070E1AF75F2482757ABA9D37D69D805A20826D185527E598F2BA6B9292"
+    },
+    {
+      "path": ".agents/skills/bmad-review/scripts/tests/test_word_metrics.py",
+      "bytes": 1556,
+      "sha256": "3B5A285D3C9F611B3CDA8C9C1D52D6B214C1F72E6E64A94EA5B0E220DB5A8765"
+    },
+    {
+      "path": ".agents/skills/bmad-review/scripts/word_metrics.py",
+      "bytes": 3441,
+      "sha256": "FB45007A7F3CFC18D13EE8BD4787FACDAAE297570193BC769456297DD33DA78B"
+    },
+    {
+      "path": ".agents/skills/bmad-review/SKILL.md",
+      "bytes": 9425,
+      "sha256": "C571DD7D3AA75F3B40749CF9DB352C5E76244DE22139CFB13C26629D28BE1FA7"
+    },
+    {
+      "path": ".agents/skills/bmad-spec/assets/headless-schemas.md",
+      "bytes": 1187,
+      "sha256": "83AFB3614716DB2347D83586A67B9C524492DD50DB5282436CCB35C99FB5F08A"
+    },
+    {
+      "path": ".agents/skills/bmad-spec/assets/spec-template.md",
+      "bytes": 2361,
+      "sha256": "4B3A032C045FDD0903933446FC07F93E879997F28A0294ED4344DA71192B20EE"
+    },
+    {
+      "path": ".agents/skills/bmad-spec/assets/stories-schema.md",
+      "bytes": 3489,
+      "sha256": "4F8137C00E2710288354A4466D1CFB90704F4B2A04BD3B63924218FD589CC6A9"
+    },
+    {
+      "path": ".agents/skills/bmad-spec/customize.toml",
+      "bytes": 2277,
+      "sha256": "D0F1F926BED79D514F8FDBC458A1883167FB64663BF2464C40E3C50DC2DCDBEA"
+    },
+    {
+      "path": ".agents/skills/bmad-spec/SKILL.md",
+      "bytes": 17314,
+      "sha256": "46A2C3D5541D63AF1520FAC6B7ABFFF161A94B52FED51DF6454115E3DA5639C7"
+    },
+    {
+      "path": ".agents/skills/bmad-sprint-planning/customize.toml",
+      "bytes": 1558,
+      "sha256": "54C7F6A8AF77FF7EA6C9DBB00B515023999E011AABC802B7B328E82F505B0299"
+    },
+    {
+      "path": ".agents/skills/bmad-sprint-planning/references/fix-sprint-status.md",
+      "bytes": 2747,
+      "sha256": "0406C31B70DA33E2A354D9785F43D8F9918F4B923D0AAC2EBD1E3707EBAD5806"
+    },
+    {
+      "path": ".agents/skills/bmad-sprint-planning/references/generate-tracking.md",
+      "bytes": 2636,
+      "sha256": "4DBF7ACA26D0E6E893F288FC5E6158DBBCD65F77BBAF95E941CA705ABCEB1741"
+    },
+    {
+      "path": ".agents/skills/bmad-sprint-planning/references/readiness-gate.md",
+      "bytes": 1821,
+      "sha256": "7D58EA61FAFE3C1D8218203ABC7512E322CA384C78D9E71829DF55DFABE1245B"
+    },
+    {
+      "path": ".agents/skills/bmad-sprint-planning/references/status-view.md",
+      "bytes": 1674,
+      "sha256": "C3547E221EBF6E55C874E2ADA3E8C18198835213C76F0BB2E0E64150AAC355AB"
+    },
+    {
+      "path": ".agents/skills/bmad-sprint-planning/references/validate.md",
+      "bytes": 592,
+      "sha256": "AC680FA0A0F945A9BC0FC89CA709B2A8E6BC3B2617CD0D3D730378C4B5EDD86D"
+    },
+    {
+      "path": ".agents/skills/bmad-sprint-planning/scripts/sprint_plan.py",
+      "bytes": 28454,
+      "sha256": "4C30F62C261599FC1DA3FD319EA6CE5092AA0332221CEDEE1763A1040627E6BC"
+    },
+    {
+      "path": ".agents/skills/bmad-sprint-planning/scripts/tests/test_sprint_plan.py",
+      "bytes": 21953,
+      "sha256": "F1C3B640E156946B0A234E233807B2A3983CB0D3F2D13DBB9830FBE0C67E5238"
+    },
+    {
+      "path": ".agents/skills/bmad-sprint-planning/SKILL.md",
+      "bytes": 5334,
+      "sha256": "DAD69F365F08E4043F07C1B10C1D387AEDF544696BE9F5EE06BE885EB2263F07"
+    },
+    {
+      "path": ".agents/skills/bmad-sprint-planning/sprint-status-template.yaml",
+      "bytes": 2397,
+      "sha256": "64B1A937E1FE03B8B8D158E3B1CAEB89E7D51692A56C16038E2AF091DECC553A"
+    },
+    {
+      "path": ".agents/skills/bmad-ux/assets/color-themes.md",
+      "bytes": 1084,
+      "sha256": "CCB6E4EF47A196476CF9392D788938AD3CA8D07B9CE095B7C092DCB4E06735F0"
+    },
+    {
+      "path": ".agents/skills/bmad-ux/assets/design-directions.md",
+      "bytes": 1056,
+      "sha256": "EAB73B948DA76A27ABC908E1E7D6B124E8FF0362E6DD1990F7E60B9541CBCB98"
+    },
+    {
+      "path": ".agents/skills/bmad-ux/assets/design-example-editorial.md",
+      "bytes": 7363,
+      "sha256": "A659166845B1A4ED3F9AEF942C5935537A97382B10303684FBB78ED86265870E"
+    },
+    {
+      "path": ".agents/skills/bmad-ux/assets/design-example-mobile.md",
+      "bytes": 4957,
+      "sha256": "A93FB9F114F2E83AF0C961C0D7909B3859FC80BCD713715517CD639A53A0372A"
+    },
+    {
+      "path": ".agents/skills/bmad-ux/assets/design-example-shadcn.md",
+      "bytes": 6376,
+      "sha256": "25E0DFB2BB21483973A8F0A6ED650288B3DC2AE5ED02AA0F091BB9B6B0B39FC0"
+    },
+    {
+      "path": ".agents/skills/bmad-ux/assets/excalidraw-wireframe.md",
+      "bytes": 1901,
+      "sha256": "660BBCDEBFF50CD044A3752EDA43F3CB303ACA4B0F521B55A270DA93B89DDB18"
+    },
+    {
+      "path": ".agents/skills/bmad-ux/assets/experience-example-mobile.md",
+      "bytes": 5123,
+      "sha256": "F8CD54C92193CD8C34A472DF9C212AC7330976F6A115B729721DCB60034DC4F0"
+    },
+    {
+      "path": ".agents/skills/bmad-ux/assets/experience-example-shadcn.md",
+      "bytes": 9279,
+      "sha256": "D6CA16E87B768E8B41F352C02EE08AF21D7CDAC04CA21E6AE1556864B4D27590"
+    },
+    {
+      "path": ".agents/skills/bmad-ux/assets/headless-schemas.md",
+      "bytes": 2615,
+      "sha256": "E3A773DDE85286F1A6F6DD8B26FC17E09CCEA96F6257DFE7FB436353CD79242D"
+    },
+    {
+      "path": ".agents/skills/bmad-ux/assets/key-screens.md",
+      "bytes": 2186,
+      "sha256": "FF1C5060673DD595EDD61E76806BAE876264EC6895C2EAADF8A6190785BF5F7B"
+    },
+    {
+      "path": ".agents/skills/bmad-ux/assets/validation-report-template.html",
+      "bytes": 10945,
+      "sha256": "8656945636FABE96624F8EF8FCE931B073B5AECBE42D490584C1D5C7F31E1353"
+    },
+    {
+      "path": ".agents/skills/bmad-ux/customize.toml",
+      "bytes": 4558,
+      "sha256": "E85144ED214DC1E002EE7FC6589A0A7EF352C5F79AB4CB37A4E05EE8E245549C"
+    },
+    {
+      "path": ".agents/skills/bmad-ux/references/creative-tools.md",
+      "bytes": 1895,
+      "sha256": "E281292D7C0FDECDBB67CA9B7D95D4BED803626BA5EDFD8DCC99146FCAA118E6"
+    },
+    {
+      "path": ".agents/skills/bmad-ux/references/design-md-spec.md",
+      "bytes": 3298,
+      "sha256": "D04D5F663607ABA3F3181E818AE33856E6CAF5E560DCB16FA64ED80B7CF3D590"
+    },
+    {
+      "path": ".agents/skills/bmad-ux/references/headless.md",
+      "bytes": 2310,
+      "sha256": "8DA7E23D269B1644F45B5104A243A6A27FD8D075AEBB95D9B7752F0D143F0F5D"
+    },
+    {
+      "path": ".agents/skills/bmad-ux/references/validate.md",
+      "bytes": 6779,
+      "sha256": "7C2189D9AC1585D9408B6ED0346BA564869E7DB89DBA8F81044DB3431CFCEE65"
+    },
+    {
+      "path": ".agents/skills/bmad-ux/SKILL.md",
+      "bytes": 10806,
+      "sha256": "9BBDF3C884D5CCAAAFC1BF740CE412B0C220239880625C49E8856CFACEE01FFE"
+    },
+    {
+      "path": ".agents/skills/bmad-walkthrough/customize.toml",
+      "bytes": 1561,
+      "sha256": "2A4B14C5B25729A2D8FA9D9762AB3F12AC9429CFC6BD31FD80A81D86EED98630"
+    },
+    {
+      "path": ".agents/skills/bmad-walkthrough/generate-trail.md",
+      "bytes": 1992,
+      "sha256": "4A5936D86FBE5A85285B4535097B1E2EDDA8849DA35586F4B588A982D7224459"
+    },
+    {
+      "path": ".agents/skills/bmad-walkthrough/SKILL.md",
+      "bytes": 3177,
+      "sha256": "19AEB0A2451AAE83A2A8FE3A314E383332C4E2108D6CEDFA38F79E7B9B9EF80E"
+    },
+    {
+      "path": ".agents/skills/bmad-walkthrough/step-01-orientation.md",
+      "bytes": 5004,
+      "sha256": "D9E3B949C36D49A025F3535773AF2B51888FE4CE616B6D6D69683A122716B1D2"
+    },
+    {
+      "path": ".agents/skills/bmad-walkthrough/step-02-walkthrough.md",
+      "bytes": 4172,
+      "sha256": "66CF893F8F968EE81034E9CCD8C20415692C3A8C23A9A143C2245FE6C800ACDC"
+    },
+    {
+      "path": ".agents/skills/bmad-walkthrough/step-03-detail-pass.md",
+      "bytes": 4990,
+      "sha256": "D48163B9F305F15AF57729A8443142E47BEB6C3E977554AFE12B39EE49CB9FC0"
+    },
+    {
+      "path": ".agents/skills/bmad-walkthrough/step-04-testing.md",
+      "bytes": 2698,
+      "sha256": "28A56E868968EA2D18ADD0DF8C4BCCCED0F94B698E218DF3D45DDAC072CE369C"
+    },
+    {
+      "path": ".agents/skills/bmad-walkthrough/step-05-wrapup.md",
+      "bytes": 1554,
+      "sha256": "5BFE0F9240AE073F1B5C843D172C11E76CBE6067E8DF414EA6A338C81F113F5D"
+    },
+    {
+      "path": ".gemini/settings.json",
+      "bytes": 186,
+      "sha256": "F516F0CB689354C3055DFE9DEFDB3AAF9F204186CD4228E44E678DA56A28364F"
+    },
+    {
+      "path": ".geminiignore",
+      "bytes": 167,
+      "sha256": "416904D121FCDE26654EE10B57262AD155EB6F5509CCDC2382B1624A26920F0D"
+    }
+  ],
+  "skipped": [
+    {
+      "path": "backend/.coverage",
+      "reason": "dependency/build/cache/evidence/secret/generated-render exclusion"
+    },
+    {
+      "path": "backend/.pytest_cache",
+      "reason": "dependency/build/cache/evidence/secret/generated-render exclusion"
+    },
+    {
+      "path": "backend/.venv",
+      "reason": "dependency/build/cache/evidence/secret/generated-render exclusion"
+    },
+    {
+      "path": "backend/app/__pycache__",
+      "reason": "dependency/build/cache/evidence/secret/generated-render exclusion"
+    },
+    {
+      "path": "backend/app/core/__pycache__",
+      "reason": "dependency/build/cache/evidence/secret/generated-render exclusion"
+    },
+    {
+      "path": "backend/app/tests/__pycache__",
+      "reason": "dependency/build/cache/evidence/secret/generated-render exclusion"
+    },
+    {
+      "path": "frontend/dist",
+      "reason": "dependency/build/cache/evidence/secret/generated-render exclusion"
+    },
+    {
+      "path": "frontend/node_modules",
+      "reason": "dependency/build/cache/evidence/secret/generated-render exclusion"
+    },
+    {
+      "path": "_bmad/render",
+      "reason": "dependency/build/cache/evidence/secret/generated-render exclusion"
+    },
+    {
+      "path": "_bmad/scripts/__pycache__",
+      "reason": "dependency/build/cache/evidence/secret/generated-render exclusion"
+    }
+  ]
+}

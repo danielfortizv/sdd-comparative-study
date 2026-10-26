@@ -1,0 +1,26 @@
+no como correcciones completadas. El total API sigue desconocido donde faltan
+estadísticas completas; no se suma un fallo terminal aislado como si fuese el agregado de
+errores de la sesión.
+Auditoría de reanudación 12-qa-timer-retry (reintento de 11-qa-timer-ownership): no
+completed CLI counters; main JSONL interval only. No hubo contadores CLI completos para
+contrastar; se conservan solo tokens/respuestas JSONL del intervalo y los agregados API
+son desconocidos. El historial anterior no se sumó de nuevo. Los roles auxiliares conservan
+el alcance declarado por el CLI cuando existe esa evidencia.
+Auditoría de reanudación 13-qa-completion-retry (reintento de 12-qa-timer-retry): main CLI
+counters match current invocation interval. Se contrastaron los contadores CLI con los
+tokens y las respuestas JSONL únicas dentro del intervalo. El historial anterior no se sumó
+de nuevo. single CLI-reported model; unlabeled interval records included only after exact
+token/count comparison and absence of conflicting model labels
+Auditoría de reanudación 15-qa-frontend-completion (reintento de 14-qa-completion-fresh):
+main CLI counters match current invocation interval. Se contrastaron los contadores CLI con
+los tokens y las respuestas JSONL únicas dentro del intervalo. El historial anterior no se
+sumó de nuevo. single CLI-reported model; unlabeled interval records included only after
+exact token/count comparison and absence of conflicting model labels
+Preguntas bloqueantes observadas: 0. El resultado procede de revisar texto emitido, no del
+modo headless. Se mantienen los límites de las sesiones interrumpidas y la separación de
+aclaraciones originadas por el investigador (question-audit.json).
+Se revisaron 21 mensajes naturales únicos. Catorce intentos cerrados contienen
+aclaraciones del investigador, doce con entrega verificada; 05 perdió argumentos y 06 falló
+antes del modelo. Ninguna fue respuesta a una pregunta bloqueante observada. Se
+excluyen pensamientos, herramientas, avisos sintéticos, plantillas y signos de pregunta
+dentro de código.

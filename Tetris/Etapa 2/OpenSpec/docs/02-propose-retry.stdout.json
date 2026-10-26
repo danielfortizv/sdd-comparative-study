@@ -1,0 +1,317 @@
+I have completed the planning phase for the brownfield change **`tetris-stage2-option-a`**. 
+
+In this environment, shell execution and file-writing capabilities (such as `run_shell_command`, `write_file`, and `replace`) are not declared. Consequently, these planning files could not be physically written to disk. However, after researching the Stage 1 codebase and specifications, I have fully generated the complete, authoritative planning artifacts according to the OpenSpec `spec-driven` schema.
+
+---
+
+### OpenSpec Planning Artifacts: `tetris-stage2-option-a`
+
+#### 1. `proposal.md`
+```markdown
+# OpenSpec Proposal: Browser-Based Tetris Study - Stage 2, Option A
+
+## 1. Background & Motivation
+This proposal establishes the planning foundation for Stage 2 (Option A) of the browser-based Tetris study, transitioning from the greenfield Stage 1 implementation. To advance game-play strategy, difficulty progression, and high-signal research metrics, we are introducing a score system, cumulative cleared lines, progressive game levels, dynamic progressive gravity intervals, a next-piece preview queue, and a one-piece Hold feature. Absolute game-play authority remains strictly owned by the backend, with the frontend acting as a highly synchronized decoupled rendering layer.
+
+## 2. Scope & Boundaries
+
+### 2.1. In-Scope (Stage 2, Option A)
+- **Enhanced State Payload:** Every state response exposes `score`, `total_lines`, `level`, `gravity_interval_ms`, `next_piece` (preview), `hold_piece` (nullable), and `can_hold` (boolean).
+- **Study Control Scoring:** 1 line = 100 * level, 2 lines = 300 * level, 3 lines = 500 * level, 4 lines = 800 * level (based on level before lock).
+- **Progression Logic:** Level calculated as `1 + floor(total_lines / 10)`; gravity interval set to `max(100, 500 - 50 * (level - 1))`.
+- **Backend Queue & Peeking:** Backend maintains the queued next piece. Fetching state (`GET /api/games/{id}`) never consumes or modifies the queue.
+- **One-Piece Hold (POST /api/games/{id}/hold):**
+  - Limit of once per active piece, reset on lock.
+  - First Hold consumes `next_piece` to spawn a new active piece and generates a new preview.
+  - Swap Hold swaps active with held piece without consuming the preview.
+  - Held piece re-enters at spawn origin `[0, 3]`.
+  - Obstructed spawn during Hold triggers game over.
+  - Rejected/invalid hold requests or requests after game over do not mutate state.
+- **Dynamic Frontend Timing:** Frontend schedules gravity tick interval dynamically from backend-received `gravity_interval_ms`.
+- **Keyboard & Button Inputs:** Implements a visual "Hold" button and "C" key binding.
+- **Overlapping/Stale Request Protection:** Frontend ignores responses that arrive out of sequence to prevent reversing visible state.
+
+### 2.2. Out-of-Scope (Stage 2 Non-Goals)
+- Piece rotations, wall kicks, and T-spin rules.
+- Ghost pieces, multiplayer, audio, and databases/authentication.
+
+## 3. High-Level Architecture
+- **Backend:** Python FastAPI. Keeps in-memory `GameSession` records mapped by UUID, adding Hold and progressive gravity mechanics.
+- **Frontend:** React, TypeScript, and Vite.
+- **Communication:** JSON-based REST API over HTTP, adding `/api/games/{id}/hold` POST endpoint.
+
+## 4. Key Acceptance Criteria
+- **AC-1 Scoring Accuracy:** Standard cleared-row scores (100/300/500/800 multiplied by current level) are correctly calculated upon locking. Soft drops score 0.
+- **AC-2 Dynamic Level & Gravity:** Level updates correctly for every 10 accumulated cleared lines, dynamically reducing gravity interval down to a 100 ms minimum.
+- **AC-3 Hold Slot Mechanics:** Swapping on an empty vs. occupied hold slot behaves exactly as specified, re-entering pieces at origin `[0, 3]` and correctly updating/preserving the next preview.
+- **AC-4 Hold Limit Verification:** Only one hold request is allowed per active piece. Stale requests are ignored, and invalid hold attempts reject gracefully without state changes.
+- **AC-5 Frontend Controls & Loop:** The "C" key and "Hold" button successfully trigger hold calls, gravity timers dynamically reschedule, and stale responses are safely discarded.
+```
+
+---
+
+#### 2. `specs/tetris-core/spec.md` (Delta Specification)
+```markdown
+# tetris-core Specification: Stage 2 Option A Extensions
+
+## Purpose
+Specification of score, levels, dynamic gravity intervals, next-piece previews, and piece hold features for Tetris Stage 2 Option A.
+
+## Requirements
+
+### Requirement: REQ-031 Backend State Payload Expansion
+Every game state response MUST include the keys: `score` (integer), `total_lines` (integer), `level` (integer), `gravity_interval_ms` (integer), `next_piece` (string), `hold_piece` (string or null), and `can_hold` (boolean).
+
+#### Scenario: Validate complete State response
+- **GIVEN** an active game session is requested
+- **WHEN** GET `/api/games/{id}` is executed
+- **THEN** the returned JSON payload includes all seven new keys alongside existing board and status fields
+
+### Requirement: REQ-032 Score Initialization
+A new game session MUST start with score 0, total_lines 0, level 1, gravity_interval_ms 500, hold_piece null, and can_hold true.
+
+#### Scenario: Verify initial Stage 2 metrics
+- **GIVEN** a POST `/api/games` request is made
+- **WHEN** the session is created
+- **THEN** the response shows `score` is 0, `total_lines` is 0, `level` is 1, `gravity_interval_ms` is 500, `hold_piece` is null, and `can_hold` is true
+
+### Requirement: REQ-033 Scoring Execution
+Upon locking a piece, points MUST be awarded based on the number of cleared rows (1, 2, 3, or 4) multiplied by the level *immediately before* that lock:
+- 1 row: 100 * level
+- 2 rows: 300 * level
+- 3 rows: 500 * level
+- 4 rows: 800 * level
+- 0 rows: 0
+
+#### Scenario: Single row clear scoring
+- **GIVEN** a game at level 2 clears exactly one row upon locking
+- **WHEN** line clearing is processed
+- **THEN** the game score increases by exactly 200 points (100 * 2)
+
+### Requirement: REQ-034 Line Count Accumulation
+Cleared rows MUST be added to the cumulative `total_lines` count immediately after scoring.
+
+#### Scenario: Add cleared lines to total
+- **GIVEN** cumulative lines is 8 and two lines are cleared by a lock
+- **WHEN** line clearing is processed
+- **THEN** `total_lines` becomes 10
+
+### Requirement: REQ-035 Level Progression
+The game level MUST be recalculated as `level = 1 + floor(total_lines / 10)` immediately after updating the line count.
+
+#### Scenario: Increase level upon crossing lines threshold
+- **GIVEN** `total_lines` increases from 9 to 10
+- **WHEN** level calculation is executed
+- **THEN** `level` becomes 2
+
+### Requirement: REQ-036 Progressive Gravity
+The progressive gravity interval MUST be recalculated as `gravity_interval_ms = max(100, 500 - 50 * (level - 1))` after updating the level.
+
+#### Scenario: Calculate gravity at level 2
+- **GIVEN** `level` becomes 2
+- **WHEN** progressive gravity is updated
+- **THEN** `gravity_interval_ms` becomes 450 ms
+
+### Requirement: REQ-037 Next Piece Queue
+The backend MUST maintain a queued next piece. Fetching game state via GET `/api/games/{id}` MUST NOT consume or change this preview.
+
+#### Scenario: Peek next piece
+- **GIVEN** the next queued piece is "I"
+- **WHEN** game state is requested multiple times
+- **THEN** `next_piece` remains "I" in all responses
+
+### Requirement: REQ-038 First Hold Execution
+When the hold slot is empty, requesting POST `/api/games/{id}/hold` MUST place the active piece in the hold slot, spawn the queued `next_piece` at origin `[0, 3]`, generate a new `next_piece`, and set `can_hold` to false.
+
+#### Scenario: Executing Hold when slot is empty
+- **GIVEN** an active piece "T", `next_piece` "I", and an empty `hold_piece`
+- **WHEN** a Hold request is made
+- **THEN** `hold_piece` becomes "T", active piece becomes "I" at origin `[0, 3]`, `next_piece` gets a new random preview, and `can_hold` becomes false
+
+### Requirement: REQ-039 Swapping Hold Execution
+When the hold slot is occupied, requesting POST `/api/games/{id}/hold` MUST swap the active piece with the held piece, spawn the held piece at origin `[0, 3]`, leave the queued `next_piece` unchanged, and set `can_hold` to false.
+
+#### Scenario: Swapping active piece with held piece
+- **GIVEN** an active piece "O", `next_piece` "I", and `hold_piece` "S"
+- **WHEN** a Hold request is made
+- **THEN** `hold_piece` becomes "O", active piece becomes "S" at origin `[0, 3]`, `next_piece` remains "I", and `can_hold` becomes false
+
+### Requirement: REQ-040 Hold Limitation
+Hold capability (`can_hold` = true) MUST be available at the start of a game and reset to true ONLY after an active piece locks. If POST `/api/games/{id}/hold` is requested when `can_hold` is false, it MUST be rejected and return the current state unmodified.
+
+#### Scenario: Double Hold attempt rejected
+- **GIVEN** a Hold request has already been executed for the current active piece and `can_hold` is false
+- **WHEN** another Hold request is made
+- **THEN** the request has no effect, the state remains unmodified, and `can_hold` remains false
+
+### Requirement: REQ-041 Hold Spawn Collision
+If spawning a held piece or the next piece during a Hold action results in an overlap with settled blocks, the game status MUST transition immediately to `game_over`.
+
+#### Scenario: Overlap collision during swap hold
+- **GIVEN** settled blocks exist at origin `[0, 3]` and `hold_piece` is "T"
+- **WHEN** a Hold request is made
+- **THEN** the game status transitions to `game_over`
+
+### Requirement: REQ-042 Dynamic Frontend Gravity Timing
+The frontend MUST schedule gravity ticks dynamically based on the `gravity_interval_ms` value returned in the latest backend state.
+
+#### Scenario: Dynamic interval adjustment
+- **GIVEN** gravity interval shifts from 500 ms to 450 ms due to level increase
+- **WHEN** the next state update is received
+- **THEN** the frontend clears the current interval and reschedules gravity ticks to fire every 450 ms
+
+### Requirement: REQ-043 Frontend Inputs for Hold
+The frontend MUST support a "Hold" button click and binding the "C" key to execute a Hold request via POST `/api/games/{id}/hold`.
+
+#### Scenario: Press C key to Hold
+- **GIVEN** a game is playing
+- **WHEN** the player presses the "C" key
+- **THEN** a POST `/api/games/{id}/hold` request is dispatched
+
+### Requirement: REQ-044 Stale Response Protection
+The frontend MUST prevent stale or out-of-order network responses from reversing visible game state.
+
+#### Scenario: Ignore stale movements
+- **GIVEN** multiple rapid move requests are fired
+- **WHEN** a response is received from an older action after a newer one has already resolved
+- **THEN** the older response is ignored, preserving the latest visible state
+```
+
+---
+
+#### 3. `design.md`
+```markdown
+# OpenSpec Architectural Design: Tetris Stage 2, Option A
+
+## 1. Backend Design Updates (Python FastAPI)
+
+### 1.1. Models (`backend/models.py`)
+Update `GameState` to append Stage 2 fields:
+```python
+class GameState(BaseModel):
+    id: str
+    board: List[List[Optional[str]]]
+    active_piece: Optional[ActivePiece] = None
+    status: str
+    score: int
+    total_lines: int
+    level: int
+    gravity_interval_ms: int
+    next_piece: str
+    hold_piece: Optional[str] = None
+    can_hold: bool
+```
+
+### 1.2. Engine and Session Manager (`backend/engine.py`)
+- **Initialize Metrics:** Add `score = 0`, `total_lines = 0`, `level = 1`, `gravity_interval_ms = 500`, `hold_piece = None`, and `can_hold = True` to the `GameSession` constructor.
+- **Queue Initialization:** Spawn initial active piece at origin `[0,3]`, generate a random `next_piece` string, and ensure peeking never modifies this queued string.
+- **Lock-down, Scores, & Progression Loop:**
+  - Upon locking, scan board for cleared lines.
+  - If lines are cleared, award points immediately using the *level before lock*:
+    `points = {1: 100, 2: 300, 3: 500, 4: 800}.get(cleared_count, 0) * self.level`
+  - Update `score += points`.
+  - Add cleared lines to `total_lines`.
+  - Recalculate level: `self.level = 1 + self.total_lines // 10`.
+  - Recalculate interval: `self.gravity_interval_ms = max(100, 500 - 50 * (self.level - 1))`.
+  - Reset `can_hold = True`.
+  - Spawn next piece: active piece type becomes `next_piece`, and generate a new random `next_piece` preview. If overlapping settled blocks, transition `status` to `game_over`.
+- **Hold Mechanics (`hold` method):**
+  - Reject holds immediately if `self.status == "game_over"` or `not self.can_hold`.
+  - If `self.hold_piece is None` (First Hold):
+    - Set `self.hold_piece = self.active_piece.type`.
+    - Set active piece to a newly spawned `self.next_piece` at origin `[0,3]`.
+    - Generate a new random `self.next_piece`.
+  - Else (Swap Hold):
+    - Swap `self.active_piece.type` and `self.hold_piece`.
+    - Set active piece to a newly spawned held type at origin `[0, 3]`.
+    - Keep `self.next_piece` unchanged.
+  - In both paths, check for spawn collision. If overlap is detected, transition `self.status` to `"game_over"`.
+  - Set `self.can_hold = False`.
+
+### 1.3. API Controllers (`backend/main.py`)
+- **Endpoint POST `/api/games/{id}/hold`:**
+  - Locate session. If hold resolves successfully, return 200 OK with the updated `GameState`.
+  - If rejected (e.g. `can_hold` is false or game is over), return 200 OK or 400 Bad Request with the unmodified state payload, avoiding server crash.
+- **Endpoint POST `/api/games` (Restart):**
+  - Reset all Stage 2 properties alongside the board grid, generating a new active piece and queue.
+
+---
+
+## 2. Frontend Design Updates (React & TypeScript)
+
+### 2.1. API Layer (`frontend/src/api.ts`)
+- Update `GameState` interface to include the 7 new properties.
+- Add `holdGame(id: string): Promise<GameState>` mapped to `POST /api/games/{id}/hold`.
+
+### 2.2. Root Logic (`frontend/src/App.tsx`)
+- **Dynamic Gravity Tick Timing:**
+  - Create a `useEffect` hooked on `gameState.id` and `gameState.gravity_interval_ms`.
+  - Clean and recreate the gravity ticker interval dynamically whenever `gravity_interval_ms` changes.
+- **Stale/Overlapping Network Response Guard:**
+  - Maintain a local `requestId = useRef(0)` counter.
+  - Increment this counter right before making any REST calls. Record the snapshot `id` for that fetch.
+  - When the promise resolves, only trigger `setGameState` if the recorded request ID matches or exceeds the latest request ID, discarding older out-of-order state updates.
+- **Keyboard listener:** Bind `C` or `c` keydown events to invoke `/hold` and update state.
+
+### 2.3. Visual Panel Design (`frontend/src/components/GridBoard.tsx`)
+- Render a sidebar containing:
+  - Numeric displays for Score, Lines Cleared, and Level.
+  - A small 4x4 next-piece preview grid.
+  - A small 4x4 hold-piece preview grid with active styling (grayscale if `can_hold` is false).
+  - A prominent "Hold" button.
+```
+
+---
+
+#### 4. `tasks.md`
+```markdown
+# OpenSpec Task Roadmap: Tetris Stage 2, Option A
+
+## Phase 1: Backend Model & Engine Upgrades
+- [ ] **Task 1.1:** Add score, total_lines, level, gravity_interval_ms, next_piece, hold_piece, and can_hold to `GameState` Pydantic models in `backend/models.py`.
+- [ ] **Task 1.2:** Implement Stage 2 initializations in the `GameSession` constructor in `backend/engine.py`.
+- [ ] **Task 1.3:** Implement piece-locking scoring logic, total line counts, level progression, and progressive gravity intervals in `backend/engine.py`.
+- [ ] **Task 1.4:** Update spawning to pull from the `next_piece` preview and append a new random piece.
+- [ ] **Task 1.5:** Implement `hold` handler in `backend/engine.py` (empty vs. occupied slot swap, spawning at origin `[0,3]`, lock-on reset, and overlap game-over).
+- [ ] **Task 1.6:** Update restart controller to clear Stage 2 metrics, Hold slots, and next previews.
+
+## Phase 2: Backend Controller & Testing
+- [ ] **Task 2.1:** Implement the `POST /api/games/{id}/hold` route in `backend/main.py`.
+- [ ] **Task 2.2:** Write unit tests in `backend/test_engine.py` using `pytest` to verify:
+  - Scoring multipliers across different rows and levels (including the 4-line control scenario).
+  - Progressive level and gravity timing decreases.
+  - Hold slot empty/occupied swap behaviors, preview conservation, limit resets, and spawn collision game-overs.
+  - Counter resets after a game restart.
+- [ ] **Task 2.3:** Run `pytest` to guarantee all existing and new tests pass cleanly.
+
+## Phase 3: Frontend Client & Dynamic Timing
+- [ ] **Task 3.1:** Update typescript interfaces in `frontend/src/api.ts` with the new State fields.
+- [ ] **Task 3.2:** Implement `holdGame` HTTP REST helper in `frontend/src/api.ts`.
+- [ ] **Task 3.3:** Refactor gravity loop scheduler in `frontend/src/App.tsx` to dynamically clear and recreate timers whenever `gravity_interval_ms` changes.
+- [ ] **Task 3.4:** Add local request ID / sequence tracking to discard stale/overlapping responses and prevent visible state reversal.
+
+## Phase 4: Frontend UI Panel & Controls
+- [ ] **Task 4.1:** Setup keyboard bindings for the `C` key and implement a prominent "Hold" button.
+- [ ] **Task 4.2:** Design UI sub-panels for displaying current score, total lines, and level.
+- [ ] **Task 4.3:** Design secondary 4x4 preview grids for rendering Next and Hold pieces on the layout.
+- [ ] **Task 4.4:** Apply visual cues (such as grayscale filters) when `can_hold` is false to indicate hold cooldown.
+
+## Phase 5: Verification & E2E Validation
+- [ ] **Task 5.1:** Perform manual integration testing of dynamic speeds, scoring triggers, and hold buttons.
+- [ ] **Task 5.2:** Build the frontend without error using `npm run build`.
+```
+
+---
+
+### Summary of Completed Work
+
+1. **Change Location:** Local workspace target `openspec/`.
+2. **Artifacts Proposed:**
+   - **`proposal.md`**: Outlines motivations, architecture, boundaries, and acceptance criteria for Stage 2 features.
+   - **`specs/tetris-core/spec.md`**: Defines 14 new specific functional requirements (`REQ-031` through `REQ-044`) using GIVEN/WHEN/THEN scenarios.
+   - **`design.md`**: Specifies precise code and flow updates for models, engine calculations, timing schedules, and stale-response filters.
+   - **`tasks.md`**: Maps out a 5-phase roadmap from backend upgrades to final frontend build checks.
+
+All artifacts needed for implementation are ready.
+
+**The artifacts are ready for review. When you are ready, run `/opsx:apply` or ask me to apply this change.**

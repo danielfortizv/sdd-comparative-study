@@ -1,0 +1,58 @@
+{
+  "01-specify": {
+    "category": "initial_specification",
+    "reason": "Gemini-authored Stage 2 atomic requirements and checklist using Tessl MCP/plugin context; not a native Tessl generator. No app/test edits authorized in this phase.",
+    "qa_intent_id": null,
+    "retry_of": null,
+    "resumed": false
+  },
+  "02-specify-correction": {
+    "category": "preimplementation_spec_revision",
+    "reason": "Preimplementation review correction failed with observed Vertex PERMISSION_DENIED/BILLING_DISABLED; no postimplementation QA and no completed usage counters.",
+    "qa_intent_id": null,
+    "retry_of": null,
+    "resumed": false
+  },
+  "03-specify-last-mile": {
+    "category": "preimplementation_spec_revision",
+    "reason": "Retry of the existing specification review objective after authorized Google account/project transition; no application/test/dependency edits in this phase.",
+    "qa_intent_id": null,
+    "retry_of": "02-specify-correction",
+    "resumed": false
+  },
+  "04-specify-final-review": {
+    "category": "preimplementation_spec_revision",
+    "reason": "Focused repair of concrete remaining contradictions in 03 specs: canonical domain fixtures, restart preemption, queued timer ownership, response-model naming and integration provenance. Application remains unchanged.",
+    "qa_intent_id": null,
+    "retry_of": null,
+    "resumed": false
+  },
+  "05-implement": {
+    "category": "initial_implementation",
+    "reason": "First application implementation after reviewed native specs; one remaining coordinate-example clarification must be written to native specs before any code edit. Includes native tests, compatible dependency remediation and actual Sonar verification.",
+    "qa_intent_id": null,
+    "retry_of": null,
+    "resumed": false
+  },
+  "06-qa01": {
+    "category": "postimplementation_qa_correction",
+    "reason": "Independent external StrictMode controls/reused lifecycle failures (4/6 pass), plus actual Sonar gate ERROR7newviolations. Must revise native specs first, preserve failing05 evidence and existing successful checks.",
+    "qa_intent_id": "Q01",
+    "retry_of": null,
+    "resumed": false
+  },
+  "07-qa01-retry": {
+    "category": "postimplementation_qa_correction",
+    "reason": "Resume sameQ01 after06 revisedspecs only and ended without finalresponse following recordedtransient/429 errors; no completed appfix.",
+    "qa_intent_id": "Q01",
+    "retry_of": "06-qa01",
+    "resumed": false
+  },
+  "08-qa02": {
+    "category": "postimplementation_qa_correction",
+    "reason": "Independent closed07 repeat passes install/tests/build/audits/domain/original6races; new separate falsey obsolete-create rejection reveals newerrorpanel mutation. Also fix incorrectly shaped native CLI model aliases.",
+    "qa_intent_id": "Q02",
+    "retry_of": null,
+    "resumed": false
+  }
+}

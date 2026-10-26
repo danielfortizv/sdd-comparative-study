@@ -1,0 +1,7 @@
+{
+  "researcher_created": true,
+  "updated_at_utc": "2026-10-23T19:14:57.364670+00:00",
+  "status": "interrupted_transport_absent_at_recovery",
+  "label": "05-qa",
+  "next_step": "Fresh immutable06 retry of the same external QA intent; preserve full seed and native spec-first revision"
+}

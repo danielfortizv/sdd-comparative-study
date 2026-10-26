@@ -1,0 +1,16 @@
+{
+  "workflow": "propose",
+  "label": "02-propose-retry",
+  "prompt_sha256": "D4D50494A211B7B42A86F96C07DEC72E8493EFA78E3E7E35668D083FE4380155",
+  "seed_sha256": "63919779DD4104076FBABCB130CE296A160FA840E0B4755A2AA5D90757ADA8EF",
+  "requested_model": "gemini-3.5-flash",
+  "cli_version": "0.60.0",
+  "openspec_version": "1.13.2",
+  "project": "project-e6384dd1-d4d3-4a03-948",
+  "started": "2026-10-19T15:06:37.9985690-05:00",
+  "ended": "2026-10-19T15:17:00.4345383-05:00",
+  "duration_seconds": 622.436,
+  "exit_code": 0,
+  "stdout": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\OpenSpec\\docs\\02-propose-retry.stdout.json",
+  "stderr": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\OpenSpec\\docs\\02-propose-retry.stderr.txt"
+}

@@ -1,0 +1,13 @@
+{
+  "researcher_created": true,
+  "purpose": "Retain invalid evidence/reporting attempt; not an application failure or acceptance pass",
+  "observed_at_utc": "2026-10-22T01:11:34Z",
+  "command": "python ../shared/acceptance/check_contract_v1_1.py --base-url http://127.0.0.1:8000 --created-status 200 --output docs/acceptance-contract-04-provisional.json",
+  "process_exit_code": 0,
+  "report_produced": false,
+  "stderr_observed": "Exception ignored in atexit callback: write_report. NameError: name '__file__' is not defined at checker_sha256 calculation.",
+  "classification": "researcher instrumentation failure; exit0 alone does not establish successful evidence generation",
+  "remediation": "New immutable checker check_contract_v1_2.py writes the same nine controls during normal finally execution. Older checkers remain unchanged.",
+  "replacement": "acceptance-contract-04-provisional-v1_2.json",
+  "replacement_result": "pass, nine supplemental S2-16 controls; not nine additional catalog IDs"
+}

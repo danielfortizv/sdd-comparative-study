@@ -1,0 +1,12 @@
+﻿{
+    "started":  "2026-10-25T16:16:56.9624107-05:00",
+    "ended":  "2026-10-25T16:17:15.4943574-05:00",
+    "exit_code":  0,
+    "project":  "tetris-stage2-tessl",
+    "baseline":  false,
+    "coverage_xml":  "docs/coverage.xml",
+    "frontend_lcov_present":  true,
+    "test_classification":  "backend/tests/** and frontend/src/**/*.test.{ts,tsx}",
+    "source_excludes":  "frontend/src/**/*.test.{ts,tsx}",
+    "coverage_sha256":  "9D67BB2FB6D10367DAB71F1E1C14572D3384DAB55FF4B28CB65B9ABE61940841"
+}

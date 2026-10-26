@@ -1,0 +1,524 @@
+{
+  "created_at_utc": "2026-10-25T21:44:14.975701+00:00",
+  "source_baseline": {
+    "files": 19,
+    "lines": 1299,
+    "characters": 37962,
+    "lines_per_file": 68.37
+  },
+  "source_current": {
+    "files": 22,
+    "lines": 2829,
+    "characters": 86150,
+    "lines_per_file": 128.59
+  },
+  "spec_inherited": {
+    "files": 2,
+    "lines": 136,
+    "characters": 10093,
+    "lines_per_file": 68.0
+  },
+  "spec_stage2": {
+    "files": 2,
+    "lines": 343,
+    "characters": 35281,
+    "lines_per_file": 171.5
+  },
+  "source_change": {
+    "changed_files": [
+      "backend/app/controllers/games.py",
+      "backend/app/domain/rules.py",
+      "backend/app/main.py",
+      "backend/app/models/game.py",
+      "backend/tests/test_scoring.py",
+      "frontend/src/App.test.tsx",
+      "frontend/src/App.tsx",
+      "frontend/src/api.test.ts",
+      "frontend/src/api.ts",
+      "frontend/src/components/GameStatus.tsx",
+      "frontend/src/components/TetrisBoard.test.tsx",
+      "frontend/src/index.css",
+      "frontend/src/types.ts",
+      "frontend/vite.config.ts"
+    ],
+    "changed_file_count": 14,
+    "added_lines": 1609,
+    "removed_lines": 79,
+    "net_lines": 1530,
+    "before_characters": 37962,
+    "after_characters": 86150,
+    "net_characters": 48188,
+    "character_delta_definition": "net change in total decoded Unicode text length, after BOM removal and LF normalization; not cumulative edit volume or an added/removed-character operation count"
+  },
+  "qa_change": {
+    "snapshot": "implementation-05-initial",
+    "source": {
+      "changed_files": [
+        "backend/app/controllers/games.py",
+        "backend/app/models/game.py",
+        "frontend/src/App.test.tsx",
+        "frontend/src/App.tsx",
+        "frontend/src/index.css"
+      ],
+      "changed_file_count": 5,
+      "added_lines": 404,
+      "removed_lines": 77,
+      "net_lines": 327,
+      "before_characters": 76406,
+      "after_characters": 86150,
+      "net_characters": 9744,
+      "character_delta_definition": "net change in total decoded Unicode text length, after BOM removal and LF normalization; not cumulative edit volume or an added/removed-character operation count"
+    },
+    "spec_stage2": {
+      "changed_files": [
+        "specs/stage2/requirements.md",
+        "specs/stage2/session_notes.md"
+      ],
+      "changed_file_count": 2,
+      "added_lines": 116,
+      "removed_lines": 157,
+      "net_lines": -41,
+      "before_characters": 40254,
+      "after_characters": 35281,
+      "net_characters": -4973,
+      "character_delta_definition": "net change in total decoded Unicode text length, after BOM removal and LF normalization; not cumulative edit volume or an added/removed-character operation count"
+    },
+    "scope": "current state vs explicitly configured own initial implementation snapshot; includes open changes when present, not cumulative edit volume"
+  },
+  "usage": {
+    "input_tokens": 39704775,
+    "cached_tokens": 32103483,
+    "output_tokens": 120725,
+    "thought_tokens": 149603
+  },
+  "duration_seconds": 3642.237,
+  "api": {
+    "api_requests": 400,
+    "api_errors": 53,
+    "api_successful_requests": 347
+  },
+  "runs": [
+    {
+      "label": "01-specify",
+      "duration_seconds": 399.402,
+      "models": [
+        {
+          "model": "gemini-3.5-flash",
+          "tokens": {
+            "input": 164332,
+            "prompt": 574303,
+            "candidates": 8458,
+            "total": 595151,
+            "cached": 409971,
+            "thoughts": 12390,
+            "tool": 0
+          },
+          "api": {
+            "totalRequests": 19,
+            "totalErrors": 2,
+            "totalLatencyMs": 380506,
+            "errorsByType": {
+              "Error": 2
+            }
+          },
+          "roles": [
+            "main"
+          ]
+        }
+      ],
+      "unknown_usage": false
+    },
+    {
+      "label": "02-specify-correction",
+      "duration_seconds": 5.813,
+      "models": [],
+      "unknown_usage": true
+    },
+    {
+      "label": "03-specify-last-mile",
+      "duration_seconds": 110.546,
+      "models": [
+        {
+          "model": "gemini-3.5-flash",
+          "tokens": {
+            "input": 180756,
+            "prompt": 445013,
+            "candidates": 10336,
+            "total": 463822,
+            "cached": 264257,
+            "thoughts": 8473,
+            "tool": 0
+          },
+          "api": {
+            "totalRequests": 13,
+            "totalErrors": 0,
+            "totalLatencyMs": 95342,
+            "errorsByType": {}
+          },
+          "roles": [
+            "main"
+          ]
+        }
+      ],
+      "unknown_usage": false
+    },
+    {
+      "label": "04-specify-final-review",
+      "duration_seconds": 187.086,
+      "models": [
+        {
+          "model": "gemini-3.5-flash",
+          "tokens": {
+            "input": 176526,
+            "prompt": 319343,
+            "candidates": 11582,
+            "total": 345517,
+            "cached": 142817,
+            "thoughts": 14592,
+            "tool": 0
+          },
+          "api": {
+            "totalRequests": 8,
+            "totalErrors": 0,
+            "totalLatencyMs": 184093,
+            "errorsByType": {}
+          },
+          "roles": [
+            "main"
+          ]
+        }
+      ],
+      "unknown_usage": false
+    },
+    {
+      "label": "05-implement",
+      "duration_seconds": 1607.145,
+      "models": [
+        {
+          "model": "gemini-3.5-flash",
+          "tokens": {
+            "input": 3091416,
+            "prompt": 16875276,
+            "candidates": 56379,
+            "total": 16987614,
+            "cached": 13783860,
+            "thoughts": 55959,
+            "tool": 0
+          },
+          "api": {
+            "totalRequests": 163,
+            "totalErrors": 39,
+            "totalLatencyMs": 914662,
+            "errorsByType": {
+              "ApiError": 38,
+              "Error": 1
+            }
+          },
+          "roles": [
+            "main"
+          ]
+        },
+        {
+          "model": "gemini-3-flash-preview",
+          "tokens": {
+            "input": 86416,
+            "prompt": 86416,
+            "candidates": 803,
+            "total": 90156,
+            "cached": 0,
+            "thoughts": 2937,
+            "tool": 0
+          },
+          "api": {
+            "totalRequests": 7,
+            "totalErrors": 0,
+            "totalLatencyMs": 28461,
+            "errorsByType": {}
+          },
+          "roles": [
+            "utility_loop_detector"
+          ]
+        }
+      ],
+      "unknown_usage": false
+    },
+    {
+      "label": "06-qa01",
+      "duration_seconds": 193.479,
+      "models": [
+        {
+          "model": "gemini-3.5-flash",
+          "tokens": {
+            "input": 395736,
+            "prompt": 859933,
+            "candidates": 3850,
+            "total": 870553,
+            "cached": 464197,
+            "thoughts": 6770,
+            "tool": 0
+          },
+          "api": {
+            "totalRequests": 22,
+            "totalErrors": 3,
+            "totalLatencyMs": 165771,
+            "errorsByType": {
+              "Error": 2,
+              "ApiError": 1
+            }
+          },
+          "roles": [
+            "main"
+          ]
+        }
+      ],
+      "unknown_usage": false
+    },
+    {
+      "label": "07-qa01-retry",
+      "duration_seconds": 615.06,
+      "models": [
+        {
+          "model": "gemini-3.5-flash",
+          "tokens": {
+            "input": 1235343,
+            "prompt": 8665140,
+            "candidates": 14262,
+            "total": 8707939,
+            "cached": 7429797,
+            "thoughts": 28537,
+            "tool": 0
+          },
+          "api": {
+            "totalRequests": 92,
+            "totalErrors": 3,
+            "totalLatencyMs": 406741,
+            "errorsByType": {
+              "ApiError": 2,
+              "Error": 1
+            }
+          },
+          "roles": [
+            "main"
+          ]
+        },
+        {
+          "model": "gemini-3-flash-preview",
+          "tokens": {
+            "input": 47696,
+            "prompt": 47696,
+            "candidates": 507,
+            "total": 49750,
+            "cached": 0,
+            "thoughts": 1547,
+            "tool": 0
+          },
+          "api": {
+            "totalRequests": 4,
+            "totalErrors": 0,
+            "totalLatencyMs": 16418,
+            "errorsByType": {}
+          },
+          "roles": [
+            "utility_loop_detector"
+          ]
+        }
+      ],
+      "unknown_usage": false
+    },
+    {
+      "label": "08-qa02",
+      "duration_seconds": 523.706,
+      "models": [
+        {
+          "model": "gemini-3.5-flash",
+          "tokens": {
+            "input": 2223071,
+            "prompt": 11831655,
+            "candidates": 14548,
+            "total": 11864601,
+            "cached": 9608584,
+            "thoughts": 18398,
+            "tool": 0
+          },
+          "api": {
+            "totalRequests": 72,
+            "totalErrors": 6,
+            "totalLatencyMs": 354829,
+            "errorsByType": {
+              "ApiError": 6
+            }
+          },
+          "roles": [
+            "main"
+          ]
+        }
+      ],
+      "unknown_usage": false
+    }
+  ],
+  "qa_attempts": 3,
+  "qa_intents": 2,
+  "recorded_main_response_count": 336,
+  "observed_blocking_questions": 0,
+  "reviewed_main_natural_messages": 132,
+  "effective_seed_count": 8,
+  "sonar": {
+    "analysis_id": "15649d89-fd29-4e66-a610-0f15d72066a3",
+    "ce_task_id": "ecf9b14f-d623-4b8e-919e-30ba3c445260",
+    "gate_status": "OK",
+    "conditions": [
+      {
+        "status": "OK",
+        "metricKey": "new_coverage",
+        "comparator": "LT",
+        "errorThreshold": "80",
+        "actualValue": "82.7"
+      },
+      {
+        "status": "OK",
+        "metricKey": "new_duplicated_lines_density",
+        "comparator": "GT",
+        "errorThreshold": "3",
+        "actualValue": "0.0"
+      },
+      {
+        "status": "OK",
+        "metricKey": "new_violations",
+        "comparator": "GT",
+        "errorThreshold": "0",
+        "actualValue": "0"
+      }
+    ],
+    "overall_metrics": {
+      "project": "tetris-stage2-tessl",
+      "gate": "OK",
+      "coverage": "86.9",
+      "complexity": "148",
+      "reliability_rating": "1.0",
+      "code_smells": "9",
+      "duplicated_lines_density": "0.0",
+      "security_rating": "3.0",
+      "security_hotspots": "0",
+      "sqale_index": "46",
+      "sqale_rating": "1.0",
+      "bugs": "0",
+      "cognitive_complexity": "120",
+      "ncloc": "1125",
+      "vulnerabilities": "1",
+      "lines": "1398"
+    }
+  },
+  "test_counts": {
+    "backend": 23,
+    "frontend": 17,
+    "original_backend_tests_preserved": 9,
+    "original_frontend_tests_preserved": 2
+  },
+  "external_controls": {
+    "domain": 17,
+    "live_api_records": 7,
+    "live_api_catalog_ids": 8,
+    "supplemental_contract_controls": 9,
+    "races_original": 6,
+    "falsey_extra": 1
+  },
+  "coverage": {
+    "backend": {
+      "lines_valid": "210",
+      "lines_covered": "198",
+      "line_rate": "0.9429",
+      "sha256": "BC1DD4B2214C5CD66C083C929B06644BEE3E37A9BC0822877C0A9FC04CB2A0D4",
+      "mtime_utc": "2026-10-25T21:32:29.005269+00:00"
+    },
+    "frontend": {
+      "source_files": [
+        "src\\App.tsx",
+        "src\\api.ts",
+        "src\\main.tsx",
+        "src\\components\\GameStatus.tsx",
+        "src\\components\\TetrisBoard.tsx"
+      ],
+      "main_tsx_included": true,
+      "sha256": "9D838DFD8E0B8584ACC2D3A22653DA72E714B2CC6B758E717AA9135BAD58BAC4",
+      "mtime_utc": "2026-10-25T21:32:31.776210+00:00"
+    }
+  },
+  "independent_checks": [
+    {
+      "label": "npm-ci",
+      "duration_seconds": 10.953,
+      "exit_code": 0
+    },
+    {
+      "label": "backend",
+      "duration_seconds": 2.312,
+      "exit_code": 0
+    },
+    {
+      "label": "frontend",
+      "duration_seconds": 2.704,
+      "exit_code": 0
+    },
+    {
+      "label": "build",
+      "duration_seconds": 2.515,
+      "exit_code": 0
+    },
+    {
+      "label": "audit-all",
+      "duration_seconds": 1.797,
+      "exit_code": 0
+    },
+    {
+      "label": "audit-production",
+      "duration_seconds": 1.234,
+      "exit_code": 0
+    },
+    {
+      "label": "domain",
+      "duration_seconds": 1.141,
+      "exit_code": 0
+    },
+    {
+      "label": "races",
+      "duration_seconds": 2.031,
+      "exit_code": 0
+    },
+    {
+      "label": "falsey",
+      "duration_seconds": 1.938,
+      "exit_code": 0
+    }
+  ],
+  "corpus_final": {
+    "label": "final",
+    "prepared_at_utc": "2026-10-25T21:41:14.695812+00:00",
+    "status": "source snapshot after closed invocations; final acceptance must be verified separately",
+    "source_root": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\Tessl",
+    "scope": "Tessl specs/stage2/*.md recursively only; copied Stage 1 specs, JSON, researcher docs, transcripts, plugin context and application excluded",
+    "normalization": "UTF-8 without BOM; LF; complete files sorted by path and joined by two LF; no inserted labels, translation, chunking or topic modelling",
+    "analysis_status": "corpus preparation only; no BERTopic model or comparison score",
+    "files": [
+      {
+        "source": "specs/stage2/requirements.md",
+        "corpus_path": "by-file/specs/stage2/requirements.md",
+        "source_byte_sha256": "1F70F8B87B14F673AAB78FDCDB7215E29CE47E1782703CB5ACF17CF4812444C6",
+        "normalized_utf8_sha256": "8CF8758CC3BE330141E34D4C26C93D810A36B9E29110FC5527E17CAD0A152CA6",
+        "lines": 232,
+        "characters": 25808
+      },
+      {
+        "source": "specs/stage2/session_notes.md",
+        "corpus_path": "by-file/specs/stage2/session_notes.md",
+        "source_byte_sha256": "DCC4F9BA7B987A3D450F27D37DD36740C89257764DD54CD16F5DE88AF21E5B5D",
+        "normalized_utf8_sha256": "9C1F60C037BBF8FF0C26648901B6E9E58325E92A74134C4B782B54F082568098",
+        "lines": 111,
+        "characters": 9473
+      }
+    ],
+    "markdown_file_count": 2,
+    "unified_characters": 35283,
+    "unified_utf8_sha256": "CE7C497E57AE99879C2A5143E351763E02952694F388F94944605DB81A33101A"
+  },
+  "normal_app_url": "http://127.0.0.1:3000/"
+}

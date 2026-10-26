@@ -1,0 +1,72 @@
+{
+  "observed_at_utc": "2026-10-26T01:14:28.629580+00:00",
+  "raw_audit_sha256": "9D4C8D2B60EB136F8F0A5124583B76F8CD54146E2A650A767FF59F3EC4E63F3E",
+  "events": [
+    {
+      "timestamp": "2026-10-26T01:04:25.986Z",
+      "name": "run_shell_command",
+      "command": "uv run pytest backend/",
+      "cwd": null,
+      "status": "success",
+      "raw_result_reference": "run_shell_command__call_206101"
+    },
+    {
+      "timestamp": "2026-10-26T01:04:30.324Z",
+      "name": "run_shell_command",
+      "command": "uv run pytest",
+      "cwd": "backend",
+      "status": "success",
+      "raw_result_reference": "run_shell_command__call_609049"
+    },
+    {
+      "timestamp": "2026-10-26T01:04:35.885Z",
+      "name": "run_shell_command",
+      "command": "$env:PYTHONPATH=\".\"; uv run pytest",
+      "cwd": "backend",
+      "status": "success",
+      "raw_result_reference": "run_shell_command__call_132424"
+    },
+    {
+      "timestamp": "2026-10-26T01:05:52.487Z",
+      "name": "write_file",
+      "path": "_bmad-output\\stage2\\planning-artifacts\\prds\\prd-stage2-option-a\\prd.md",
+      "category": "native_spec_edit",
+      "status": "success"
+    },
+    {
+      "timestamp": "2026-10-26T01:06:00.990Z",
+      "name": "write_file",
+      "path": "_bmad-output\\stage2\\planning-artifacts\\prds\\prd-stage2-option-a\\addendum.md",
+      "category": "native_spec_edit",
+      "status": "success"
+    },
+    {
+      "timestamp": "2026-10-26T01:06:10.380Z",
+      "name": "write_file",
+      "path": "_bmad-output\\stage2\\planning-artifacts\\prds\\prd-stage2-option-a\\review-rubric.md",
+      "category": "native_spec_edit",
+      "status": "success"
+    },
+    {
+      "timestamp": "2026-10-26T01:06:18.646Z",
+      "name": "replace",
+      "path": "_bmad-output\\stage2\\planning-artifacts\\prds\\prd-stage2-option-a\\prd.md",
+      "category": "native_spec_edit",
+      "status": "success"
+    },
+    {
+      "timestamp": "2026-10-26T01:13:34.239Z",
+      "name": "write_file",
+      "path": "_bmad-output/stage2/planning-artifacts/prds/prd-stage2-option-a/prd.md",
+      "category": "native_spec_edit",
+      "status": "success"
+    },
+    {
+      "timestamp": "2026-10-26T01:13:46.562Z",
+      "name": "write_file",
+      "path": "_bmad-output/stage2/planning-artifacts/prds/prd-stage2-option-a/addendum.md",
+      "category": "native_spec_edit",
+      "status": "success"
+    }
+  ]
+}

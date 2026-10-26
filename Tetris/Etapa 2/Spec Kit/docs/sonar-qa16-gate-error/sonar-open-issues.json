@@ -1,0 +1,278 @@
+{
+  "total": 5,
+  "p": 1,
+  "ps": 500,
+  "paging": {
+    "pageIndex": 1,
+    "pageSize": 500,
+    "total": 5
+  },
+  "effortTotal": 13,
+  "issues": [
+    {
+      "key": "17ae2993-fc7f-4d20-a2f6-efa2444f054f",
+      "rule": "typescript:S6582",
+      "severity": "MINOR",
+      "component": "tetris-stage2-speckit:frontend/src/hooks/useGame.ts",
+      "project": "tetris-stage2-speckit",
+      "line": 230,
+      "hash": "91c65943b5b0a28c12bd56cee2abfb36",
+      "textRange": {
+        "startLine": 230,
+        "endLine": 230,
+        "startOffset": 10,
+        "endOffset": 56
+      },
+      "flows": [],
+      "status": "OPEN",
+      "message": "Prefer using an optional chain expression instead, as it's more concise and easier to read.",
+      "effort": "5min",
+      "debt": "5min",
+      "author": "",
+      "tags": [
+        "editable-source",
+        "type-dependent",
+        "es2020"
+      ],
+      "creationDate": "2026-10-21T00:31:10-05:00",
+      "updateDate": "2026-10-21T00:31:10-05:00",
+      "type": "CODE_SMELL",
+      "scope": "MAIN",
+      "quickFixAvailable": true,
+      "messageFormattings": [],
+      "codeVariants": [],
+      "cleanCodeAttribute": "CLEAR",
+      "cleanCodeAttributeCategory": "INTENTIONAL",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "LOW"
+        }
+      ],
+      "issueStatus": "OPEN",
+      "prioritizedRule": false,
+      "fromSonarQubeUpdate": false,
+      "internalTags": [],
+      "linkedTicketStatus": "NOT_LINKED"
+    },
+    {
+      "key": "d3f2d3c8-7c01-4f89-84d9-dfe08030a824",
+      "rule": "typescript:S6582",
+      "severity": "MINOR",
+      "component": "tetris-stage2-speckit:frontend/src/hooks/useGame.ts",
+      "project": "tetris-stage2-speckit",
+      "line": 239,
+      "hash": "12cd6f51c6b65d3e76b3e6d38bda8f77",
+      "textRange": {
+        "startLine": 239,
+        "endLine": 240,
+        "startOffset": 10,
+        "endOffset": 57
+      },
+      "flows": [],
+      "status": "OPEN",
+      "message": "Prefer using an optional chain expression instead, as it's more concise and easier to read.",
+      "effort": "5min",
+      "debt": "5min",
+      "author": "",
+      "tags": [
+        "editable-source",
+        "type-dependent",
+        "es2020"
+      ],
+      "creationDate": "2026-10-21T00:31:10-05:00",
+      "updateDate": "2026-10-21T00:31:10-05:00",
+      "type": "CODE_SMELL",
+      "scope": "MAIN",
+      "quickFixAvailable": true,
+      "messageFormattings": [],
+      "codeVariants": [],
+      "cleanCodeAttribute": "CLEAR",
+      "cleanCodeAttributeCategory": "INTENTIONAL",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "LOW"
+        }
+      ],
+      "issueStatus": "OPEN",
+      "prioritizedRule": false,
+      "fromSonarQubeUpdate": false,
+      "internalTags": [],
+      "linkedTicketStatus": "NOT_LINKED"
+    },
+    {
+      "key": "6a6cd6c5-744f-4825-b55f-13344ea8bd24",
+      "rule": "typescript:S5906",
+      "severity": "MINOR",
+      "component": "tetris-stage2-speckit:frontend/tests/useGame.test.ts",
+      "project": "tetris-stage2-speckit",
+      "line": 1247,
+      "hash": "9aaa0198f0e163840783e65e6e351caa",
+      "textRange": {
+        "startLine": 1247,
+        "endLine": 1247,
+        "startOffset": 4,
+        "endOffset": 36
+      },
+      "flows": [],
+      "status": "OPEN",
+      "message": "Prefer \"expect(mutationUrls).toHaveLength(1)\" over this generic assertion for better reporting; it works on any object with a numeric length property.",
+      "effort": "1min",
+      "debt": "1min",
+      "author": "",
+      "tags": [
+        "chai",
+        "tests",
+        "playwright",
+        "vitest",
+        "jest",
+        "cypress"
+      ],
+      "creationDate": "2026-10-21T00:31:10-05:00",
+      "updateDate": "2026-10-21T00:31:10-05:00",
+      "type": "CODE_SMELL",
+      "scope": "TEST",
+      "quickFixAvailable": true,
+      "messageFormattings": [],
+      "codeVariants": [],
+      "cleanCodeAttribute": "CLEAR",
+      "cleanCodeAttributeCategory": "INTENTIONAL",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "LOW"
+        }
+      ],
+      "issueStatus": "OPEN",
+      "prioritizedRule": false,
+      "fromSonarQubeUpdate": false,
+      "internalTags": [],
+      "linkedTicketStatus": "NOT_LINKED"
+    },
+    {
+      "key": "381c79d3-5616-4f17-b1f2-298799295b40",
+      "rule": "typescript:S5906",
+      "severity": "MINOR",
+      "component": "tetris-stage2-speckit:frontend/tests/useGame.test.ts",
+      "project": "tetris-stage2-speckit",
+      "line": 1260,
+      "hash": "9aaa0198f0e163840783e65e6e351caa",
+      "textRange": {
+        "startLine": 1260,
+        "endLine": 1260,
+        "startOffset": 4,
+        "endOffset": 36
+      },
+      "flows": [],
+      "status": "OPEN",
+      "message": "Prefer \"expect(mutationUrls).toHaveLength(1)\" over this generic assertion for better reporting; it works on any object with a numeric length property.",
+      "effort": "1min",
+      "debt": "1min",
+      "author": "",
+      "tags": [
+        "chai",
+        "tests",
+        "playwright",
+        "vitest",
+        "jest",
+        "cypress"
+      ],
+      "creationDate": "2026-10-21T00:31:10-05:00",
+      "updateDate": "2026-10-21T00:31:10-05:00",
+      "type": "CODE_SMELL",
+      "scope": "TEST",
+      "quickFixAvailable": true,
+      "messageFormattings": [],
+      "codeVariants": [],
+      "cleanCodeAttribute": "CLEAR",
+      "cleanCodeAttributeCategory": "INTENTIONAL",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "LOW"
+        }
+      ],
+      "issueStatus": "OPEN",
+      "prioritizedRule": false,
+      "fromSonarQubeUpdate": false,
+      "internalTags": [],
+      "linkedTicketStatus": "NOT_LINKED"
+    },
+    {
+      "key": "e8c21929-39bf-45a2-94a4-1d73ff7270ce",
+      "rule": "typescript:S5906",
+      "severity": "MINOR",
+      "component": "tetris-stage2-speckit:frontend/tests/useGame.test.ts",
+      "project": "tetris-stage2-speckit",
+      "line": 1279,
+      "hash": "9aaa0198f0e163840783e65e6e351caa",
+      "textRange": {
+        "startLine": 1279,
+        "endLine": 1279,
+        "startOffset": 4,
+        "endOffset": 36
+      },
+      "flows": [],
+      "status": "OPEN",
+      "message": "Prefer \"expect(mutationUrls).toHaveLength(1)\" over this generic assertion for better reporting; it works on any object with a numeric length property.",
+      "effort": "1min",
+      "debt": "1min",
+      "author": "",
+      "tags": [
+        "chai",
+        "tests",
+        "playwright",
+        "vitest",
+        "jest",
+        "cypress"
+      ],
+      "creationDate": "2026-10-21T00:31:10-05:00",
+      "updateDate": "2026-10-21T00:31:10-05:00",
+      "type": "CODE_SMELL",
+      "scope": "TEST",
+      "quickFixAvailable": true,
+      "messageFormattings": [],
+      "codeVariants": [],
+      "cleanCodeAttribute": "CLEAR",
+      "cleanCodeAttributeCategory": "INTENTIONAL",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "LOW"
+        }
+      ],
+      "issueStatus": "OPEN",
+      "prioritizedRule": false,
+      "fromSonarQubeUpdate": false,
+      "internalTags": [],
+      "linkedTicketStatus": "NOT_LINKED"
+    }
+  ],
+  "components": [
+    {
+      "key": "tetris-stage2-speckit",
+      "enabled": true,
+      "qualifier": "TRK",
+      "name": "Tetris Stage 2 Spec Kit",
+      "longName": "Tetris Stage 2 Spec Kit"
+    },
+    {
+      "key": "tetris-stage2-speckit:frontend/tests/useGame.test.ts",
+      "enabled": true,
+      "qualifier": "UTS",
+      "name": "useGame.test.ts",
+      "longName": "frontend/tests/useGame.test.ts",
+      "path": "frontend/tests/useGame.test.ts"
+    },
+    {
+      "key": "tetris-stage2-speckit:frontend/src/hooks/useGame.ts",
+      "enabled": true,
+      "qualifier": "FIL",
+      "name": "useGame.ts",
+      "longName": "frontend/src/hooks/useGame.ts",
+      "path": "frontend/src/hooks/useGame.ts"
+    }
+  ],
+  "facets": []
+}

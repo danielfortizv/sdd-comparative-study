@@ -1,0 +1,68 @@
+{
+  "page_count": 17,
+  "caption_and_image_pages": [
+    {
+      "page": 4,
+      "captions": [
+        "Captura 1"
+      ],
+      "images": [
+        {
+          "x0": 73.5,
+          "x1": 503.25,
+          "top": 117.13867000000005,
+          "bottom": 415.63867,
+          "width": 429.75,
+          "height": 298.49999999999994,
+          "srcsize": [
+            1440,
+            1000
+          ]
+        }
+      ],
+      "text": "Captura 1. Interfaz Tetris de Etapa 2, navegador local, resoluci\u00f3n 1440 \u00d7 1000. Muestra\ntablero, puntaje, nivel, l\u00edneas, Hold, vista previa y controles. Archivo original:\nOpenSpec/docs/screenshots/tetris-stage2-ui.png.\nCIERRE VERIFICADO \u2014 OPENSPEC / TETRIS\nETAPA 2 (19 oct 2026, hora Bogot\u00e1)\nEsta secci\u00f3n reemplaza los subtotales y estados \u00aben curso\u00bb anteriores. Solo OpenSpec\nest\u00e1 ejecutado en Etapa 2; las otras cuatro herramientas siguen pendientes. No se hizo\ncommit ni push.\nProtocolo y procedencia. Semilla maestra congelada en Etapa 2/shared/seed.md, SHA-256\n63919779DD4104076FBABCB130CE296A160FA840E0B4755A2AA5D90757ADA8EF.\nGemini CLI 0.60.0, Gemini 3.5 Flash (Vertex) y OpenSpec 1.13.2. La semilla literal aparece\nen las invocaciones iniciales/nuevas 01, 02 y 06\u201310; 03\u201305 fueron aclaraciones de contexto\nsin volver a copiarla. Se conservaron los diez prompts, metadatos de ejecuci\u00f3n, salidas y\nerrores en OpenSpec/docs/. El intento 01 no tiene estad\u00edsticas de tokens ni duraci\u00f3n final\nfiable; no se le asignaron valores estimados. Los tokens cacheados son un subconjunto de\nlos tokens de entrada."
+    },
+    {
+      "page": 7,
+      "captions": [
+        "Captura 2"
+      ],
+      "images": [
+        {
+          "x0": 73.5,
+          "x1": 521.25,
+          "top": 102.59276999999997,
+          "bottom": 466.34277,
+          "width": 447.75,
+          "height": 363.75,
+          "srcsize": [
+            1600,
+            1300
+          ]
+        }
+      ],
+      "text": "Captura 2. Panel de m\u00e9tricas de sesiones y artefactos, generado localmente desde los\nregistros originales. Archivo: OpenSpec/docs/screenshots/metrics-panel.png."
+    },
+    {
+      "page": 8,
+      "captions": [
+        "Captura 3"
+      ],
+      "images": [
+        {
+          "x0": 73.5,
+          "x1": 521.25,
+          "top": 117.13915999999995,
+          "bottom": 522.88916,
+          "width": 447.75,
+          "height": 405.75,
+          "srcsize": [
+            1600,
+            1450
+          ]
+        }
+      ],
+      "text": "Captura 3. Panel comparativo reproducible de SonarQube y pruebas, generado desde\nJSON de la API local y logs. No es una captura de la interfaz web de SonarQube. Archivo:\nOpenSpec/docs/screenshots/sonar-panel-final.png.\nSPEC KIT \u2014 INICIO DE ETAPA 2 (20 oct 2026,\nhora Bogot\u00e1)\nSe cre\u00f3 Caso 2-Tetris/Etapa 2/Spec Kit como copia de trabajo de la Etapa 1 de esta misma\nherramienta. La medici\u00f3n inicial confirm\u00f3 0 archivos de c\u00f3digo cambiados y 0 artefactos\nnativos de Etapa 1 cambiados. La nueva feature se crear\u00e1 aparte en\nspecs/002-tetris-stage2-option-a. Se usa la misma semilla maestra SHA-256\n63919779DD4104076FBABCB130CE296A160FA840E0B4755A2AA5D90757ADA8EF y\nGemini CLI 0.60.0 con Gemini 3.5 Flash. Los prompts, transcritos, tiempos y tokens\nquedar\u00e1n bajo Spec Kit/docs/.\nL\u00ednea base verificada antes de implementar: 18 pruebas backend aprobadas (2\nadvertencias de dependencias), 5 pruebas frontend aprobadas y build de producci\u00f3n\naprobado. npm audit del lockfile original reporta 5 vulnerabilidades de dependencias (1"
+    }
+  ]
+}

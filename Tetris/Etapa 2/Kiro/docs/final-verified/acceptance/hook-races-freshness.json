@@ -1,0 +1,19 @@
+{
+  "researcher_created": true,
+  "started_at_utc": "2026-10-23T19:46:27.045271+00:00",
+  "ended_at_utc": "2026-10-23T19:46:28.553947+00:00",
+  "duration_seconds": 1.509,
+  "harness_process_exit": 0,
+  "error": null,
+  "native_result_fresh": true,
+  "wrapper_result_fresh": true,
+  "three_tests_executed": true,
+  "sources_and_lcov_stable": true,
+  "tests": {
+    "numTotalTests": 3,
+    "numPassedTests": 3,
+    "numFailedTests": 0
+  },
+  "status": "pass",
+  "scope": "Three external real-hook concurrency controls for S2-18; not the full catalog. Stale/absent reports never pass."
+}

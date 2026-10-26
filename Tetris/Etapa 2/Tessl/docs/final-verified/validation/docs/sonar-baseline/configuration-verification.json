@@ -1,0 +1,35 @@
+{
+  "researcher_created": true,
+  "configured_at_utc": "2026-10-25T16:10:28.1787306Z",
+  "project_key": "tetris-stage2-tessl",
+  "gate_name": "Tetris Stage 2 Tessl Controlled",
+  "conditions": [
+    {
+      "id": "d3faa640-901d-46c6-84e5-c0235f056ccd",
+      "metric": "new_duplicated_lines_density",
+      "op": "GT",
+      "error": "3",
+      "isCaycCondition": true
+    },
+    {
+      "id": "3a6be4a2-cc01-4358-99a4-6e9550613341",
+      "metric": "new_violations",
+      "op": "GT",
+      "error": "0",
+      "isCaycCondition": true
+    },
+    {
+      "id": "1426c689-b7b8-4625-82cb-95b9ac39b8bf",
+      "metric": "new_coverage",
+      "op": "LT",
+      "error": "80",
+      "isCaycCondition": true
+    }
+  ],
+  "new_code_type": "PREVIOUS_VERSION",
+  "baseline_project_version": "1.0",
+  "final_project_version": "2.0",
+  "built_in_gate_unchanged": true,
+  "baseline_frontend_lcov_available": false,
+  "warning": "The first baseline analysis can have no evaluated new-code conditions. Baseline gate status is not final Stage 2 acceptance."
+}

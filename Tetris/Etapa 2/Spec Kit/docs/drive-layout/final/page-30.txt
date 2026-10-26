@@ -1,0 +1,10 @@
+E13: acceptance-provenance.json
+E14: frontend/tests/App.test.tsx
+E15: frontend/tests/useGame.test.ts
+E16: frontend-test-coverage.log
+E17: browser-evidence.json
+E18: qa16-final-review.md
+E19: qa09-final-review.md
+E20: frontend-build.log
+E21: verification-commands.json
+E22: frontend/package-lock.json

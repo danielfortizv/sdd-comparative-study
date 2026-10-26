@@ -1,0 +1,10 @@
+{
+  "researcher_created": true,
+  "classification": "Researcher fixture preparation failure; not application test failure",
+  "observed_on_local_date": "2026-10-23",
+  "initial_error": "ActivePiece.__init__ missing cells; no fixture output was produced",
+  "dependent_error": "Runner could not find queue-timer-fixtures.json; zero application tests executed",
+  "second_preparation_error": "KeyError1: researcher initially confused integer API board encoding with internal PieceType-or-None board. Corrected fixture to internal I strings/None before serialization. Zero application tests executed by this preparation failure.",
+  "remediation": "Supply the canonical four absolute O cells, matching the original immutable SHAPES entry at origin18,3. No application/test/spec file changed.",
+  "usage_scope": "Researcher preparation only, excluded from Kiro invocation consumption"
+}

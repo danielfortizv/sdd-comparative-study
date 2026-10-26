@@ -1,0 +1,869 @@
+{
+  "pdf": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\Spec Kit\\docs\\drive-layout\\final\\drive-final.pdf",
+  "sha256": "6B821EFEA26E45628B6DF43A405CE5C7B2CCC1EB71F1E0721323EB6766F119DC",
+  "bytes": 1682578,
+  "pages": 38,
+  "rendered_pages": [
+    7,
+    8,
+    16,
+    17,
+    18,
+    19,
+    20,
+    21,
+    22,
+    23,
+    24,
+    25,
+    26,
+    27,
+    28,
+    29,
+    30,
+    31,
+    32,
+    33,
+    34,
+    35,
+    36,
+    37,
+    38
+  ],
+  "dpi": 144,
+  "inventory": [
+    {
+      "page": 1,
+      "width": 596,
+      "height": 842,
+      "text_start": "Tetris — Etapa 2 | Registro\nexperimental\nAlcance: opción A (puntaje escalonado, aceleración progresiva, Hold y vista previa) aplicada\na las cinco herramientas. Este documento se actualiza por turnos. La primera ejecución\ncorresponde a OpenS",
+      "images": [],
+      "table_boxes": [],
+      "font_sizes_character_counts": {
+        "11.0": 983,
+        "20.0": 66,
+        "26.0": 34
+      },
+      "horizontal_text_margin_overflow_count": 0,
+      "overflow_examples": [],
+      "image_margin_overflow": [],
+      "image_page_overflow": []
+    },
+    {
+      "page": 2,
+      "width": 596,
+      "height": 842,
+      "text_start": "OpenSpec — línea base verificada\nCopia de Etapa 1 en Caso 2-Tetris/Etapa 2/OpenSpec. Manifiesto SHA-256:\nOpenSpec/docs/baseline-manifest.json. Especificación base archivada mediante OpenSpec\n1.13.2: 30 requisitos añadidos al catálogo princi",
+      "images": [],
+      "table_boxes": [],
+      "font_sizes_character_counts": {
+        "11.0": 2362,
+        "16.0": 124
+      },
+      "horizontal_text_margin_overflow_count": 0,
+      "overflow_examples": [],
+      "image_margin_overflow": [],
+      "image_page_overflow": []
+    },
+    {
+      "page": 3,
+      "width": 596,
+      "height": 842,
+      "text_start": "(0 errores, 33 éxitos) en 03/04 y, por separado, 66 respuestas históricamente documentadas\nde 02, cuyo total API es desconocido. Los tokens cacheados son parte de entrada y no se\nsuman de nuevo al total. 01-propose queda excluido por falta ",
+      "images": [],
+      "table_boxes": [],
+      "font_sizes_character_counts": {
+        "11.0": 2268,
+        "16.0": 111
+      },
+      "horizontal_text_margin_overflow_count": 0,
+      "overflow_examples": [],
+      "image_margin_overflow": [],
+      "image_page_overflow": []
+    },
+    {
+      "page": 4,
+      "width": 596,
+      "height": 842,
+      "text_start": "Captura 1. Interfaz Tetris de Etapa 2, navegador local, resolución 1440 × 1000. Muestra\ntablero, puntaje, nivel, líneas, Hold, vista previa y controles. Archivo original:\nOpenSpec/docs/screenshots/tetris-stage2-ui.png.\nCIERRE VERIFICADO — O",
+      "images": [
+        {
+          "x0": 73.5,
+          "x1": 503.25,
+          "top": 117.13867000000005,
+          "bottom": 415.63867,
+          "width": 429.75,
+          "height": 298.49999999999994,
+          "srcsize": [
+            1440,
+            1000
+          ],
+          "name": "X11"
+        }
+      ],
+      "table_boxes": [],
+      "font_sizes_character_counts": {
+        "11.0": 895,
+        "20.0": 60
+      },
+      "horizontal_text_margin_overflow_count": 0,
+      "overflow_examples": [],
+      "image_margin_overflow": [],
+      "image_page_overflow": []
+    },
+    {
+      "page": 5,
+      "width": 596,
+      "height": 842,
+      "text_start": "Tokens y tiempo por invocación (segundos | entrada | caché |\nsalida | intentos API o respuestas documentadas, según la\netiqueta):\n01-propose: no medido | no disponible | no disponible | no disponible | no disponible;\ninterrupción de red.\n02",
+      "images": [],
+      "table_boxes": [],
+      "font_sizes_character_counts": {
+        "11.0": 2706,
+        "16.0": 109
+      },
+      "horizontal_text_margin_overflow_count": 0,
+      "overflow_examples": [],
+      "image_margin_overflow": [],
+      "image_page_overflow": []
+    },
+    {
+      "page": 6,
+      "width": 596,
+      "height": 842,
+      "text_start": "23 → 0; vulnerabilidades 5 → 0; bugs 0 → 0; duplicación 0 % → 0 %; complejidad 141 →\n138; ncloc 1.290 → 1.327. Quality gate final OK: cobertura de código nuevo 83,0 % (mínimo\n80 %), duplicación nueva 0,0 % y observaciones nuevas 0. El gate ",
+      "images": [],
+      "table_boxes": [],
+      "font_sizes_character_counts": {
+        "11.0": 1650
+      },
+      "horizontal_text_margin_overflow_count": 0,
+      "overflow_examples": [],
+      "image_margin_overflow": [],
+      "image_page_overflow": []
+    },
+    {
+      "page": 7,
+      "width": 596,
+      "height": 842,
+      "text_start": "Captura 2. Panel de métricas de sesiones y artefactos, generado localmente desde los\nregistros originales. Archivo: OpenSpec/docs/screenshots/metrics-panel.png.",
+      "images": [
+        {
+          "x0": 73.5,
+          "x1": 521.25,
+          "top": 102.59276999999997,
+          "bottom": 466.34277,
+          "width": 447.75,
+          "height": 363.75,
+          "srcsize": [
+            1600,
+            1300
+          ],
+          "name": "X19"
+        }
+      ],
+      "table_boxes": [],
+      "font_sizes_character_counts": {
+        "11.0": 144
+      },
+      "horizontal_text_margin_overflow_count": 0,
+      "overflow_examples": [],
+      "image_margin_overflow": [],
+      "image_page_overflow": []
+    },
+    {
+      "page": 8,
+      "width": 596,
+      "height": 842,
+      "text_start": "Captura 3. Panel comparativo reproducible de SonarQube y pruebas, generado desde\nJSON de la API local y logs. No es una captura de la interfaz web de SonarQube. Archivo:\nOpenSpec/docs/screenshots/sonar-panel-final.png.\nSPEC KIT — INICIO DE ",
+      "images": [
+        {
+          "x0": 73.5,
+          "x1": 521.25,
+          "top": 117.13915999999995,
+          "bottom": 522.88916,
+          "width": 447.75,
+          "height": 405.75,
+          "srcsize": [
+            1600,
+            1450
+          ],
+          "name": "X22"
+        }
+      ],
+      "table_boxes": [],
+      "font_sizes_character_counts": {
+        "11.0": 830,
+        "20.0": 44
+      },
+      "horizontal_text_margin_overflow_count": 0,
+      "overflow_examples": [],
+      "image_margin_overflow": [],
+      "image_page_overflow": []
+    },
+    {
+      "page": 9,
+      "width": 596,
+      "height": 842,
+      "text_start": "moderada, 2 altas, 2 críticas); se conserva el JSON original como referencia. Evidencia:\nSpec Kit/docs/baseline-backend-tests.log, baseline-frontend-tests.log,\nbaseline-frontend-build.log y baseline-npm-audit.json. /speckit.specify está en ",
+      "images": [],
+      "table_boxes": [],
+      "font_sizes_character_counts": {
+        "11.0": 2534,
+        "20.0": 44
+      },
+      "horizontal_text_margin_overflow_count": 0,
+      "overflow_examples": [],
+      "image_margin_overflow": [],
+      "image_page_overflow": []
+    },
+    {
+      "page": 10,
+      "width": 596,
+      "height": 842,
+      "text_start": "SPEC KIT — PLAN Y SONARQUBE DE LÍNEA\nBASE\n04-plan completó los seis artefactos de planificación en 671,273 s. Sus estadísticas incluyen\n50 intentos API a gemini-3.5-flash y dos intentos API automáticos del detector de bucles a\ngemini-3-flas",
+      "images": [],
+      "table_boxes": [],
+      "font_sizes_character_counts": {
+        "11.0": 2596,
+        "20.0": 71
+      },
+      "horizontal_text_margin_overflow_count": 0,
+      "overflow_examples": [],
+      "image_margin_overflow": [],
+      "image_page_overflow": []
+    },
+    {
+      "page": 11,
+      "width": 596,
+      "height": 842,
+      "text_start": "semilla completa y la aclaración de calidad; ya se observan las correcciones en los\nartefactos. Este cambio de método de envío, el intento fallido y la auditoría se conservan\ncomo incidencia experimental. Evidencia: Spec Kit/docs/input-audi",
+      "images": [],
+      "table_boxes": [],
+      "font_sizes_character_counts": {
+        "11.0": 2517,
+        "20.0": 100
+      },
+      "horizontal_text_margin_overflow_count": 0,
+      "overflow_examples": [],
+      "image_margin_overflow": [],
+      "image_page_overflow": []
+    },
+    {
+      "page": 12,
+      "width": 596,
+      "height": 842,
+      "text_start": "aparte, los JSONL conservan 130 respuestas únicas del modelo principal, incluidas 25 de\nlas sesiones interrumpidas 01/03. Las dos respuestas auxiliares del detector de bucles\nestán en stats JSON, no en el JSONL principal. No se suman esas c",
+      "images": [],
+      "table_boxes": [],
+      "font_sizes_character_counts": {
+        "11.0": 2975,
+        "20.0": 25
+      },
+      "horizontal_text_margin_overflow_count": 0,
+      "overflow_examples": [],
+      "image_margin_overflow": [],
+      "image_page_overflow": []
+    },
+    {
+      "page": 13,
+      "width": 596,
+      "height": 842,
+      "text_start": "igualdad estricta de entrega entre todas las ejecuciones. Los transcritos disponibles se\narchivaron con hash. Spec Kit cuenta ahora con auditoría de entrada efectiva completa\nantes de generar la aplicación.\nSPEC KIT — CIERRE DE GENERACIÓN 0",
+      "images": [],
+      "table_boxes": [],
+      "font_sizes_character_counts": {
+        "11.0": 2487,
+        "20.0": 48
+      },
+      "horizontal_text_margin_overflow_count": 0,
+      "overflow_examples": [],
+      "image_margin_overflow": [],
+      "image_page_overflow": []
+    },
+    {
+      "page": 14,
+      "width": 596,
+      "height": 842,
+      "text_start": "SPEC KIT — CIERRE DE CORRECCIÓN 09:\nSONAR OK Y ACEPTACIÓN FUNCIONAL\nPENDIENTE\n09-qa-correction cerró el 20 oct 2026 a las 08:55:23, hora Bogotá, con código 0 y 3.450,181\ns instrumentados. La verificación aritmética de la salida original acr",
+      "images": [],
+      "table_boxes": [],
+      "font_sizes_character_counts": {
+        "11.0": 2914,
+        "20.0": 65
+      },
+      "horizontal_text_margin_overflow_count": 0,
+      "overflow_examples": [],
+      "image_margin_overflow": [],
+      "image_page_overflow": []
+    },
+    {
+      "page": 15,
+      "width": 596,
+      "height": 842,
+      "text_start": "SPEC KIT — CIERRE DE CORRECCIÓN 10 Y\nAJUSTE DE TEMPORIZADOR 11 EN CURSO\n10-qa-race-correction cerró el 20 oct 2026 a las 20:25:03, hora Bogotá, con código 0 y\n455,055 s instrumentados. La salida original acredita 60 intentos API, cero error",
+      "images": [],
+      "table_boxes": [],
+      "font_sizes_character_counts": {
+        "11.0": 2423,
+        "20.0": 58
+      },
+      "horizontal_text_margin_overflow_count": 0,
+      "overflow_examples": [],
+      "image_margin_overflow": [],
+      "image_page_overflow": []
+    },
+    {
+      "page": 16,
+      "width": 596,
+      "height": 842,
+      "text_start": "SPEC KIT — FALLOS 11/12 Y AVANCE PARCIAL\n13–15; VERIFICACIÓN PENDIENTE\n11-qa-timer-ownership cerró el 20 oct a las 20:33:40, hora Bogotá, tras 439,318 s, con\nsalida 429 RESOURCE_EXHAUSTED. Guardó cambios nativos de spec/tareas, sin\ncambios ",
+      "images": [],
+      "table_boxes": [],
+      "font_sizes_character_counts": {
+        "11.0": 2941,
+        "18.0": 60
+      },
+      "horizontal_text_margin_overflow_count": 0,
+      "overflow_examples": [],
+      "image_margin_overflow": [],
+      "image_page_overflow": []
+    },
+    {
+      "page": 17,
+      "width": 596,
+      "height": 842,
+      "text_start": "límites explícitos para sesiones interrumpidas, fallidas o vacías. Excluye pensamientos,\nherramientas, plantillas y avisos sintéticos del CLI; las aclaraciones del investigador se\ncuentan aparte.\n16-qa-final-regressions continúa QA-3 en ses",
+      "images": [],
+      "table_boxes": [],
+      "font_sizes_character_counts": {
+        "11.0": 688
+      },
+      "horizontal_text_margin_overflow_count": 0,
+      "overflow_examples": [],
+      "image_margin_overflow": [],
+      "image_page_overflow": []
+    },
+    {
+      "page": 18,
+      "width": 596,
+      "height": 842,
+      "text_start": "CIERRE VERIFICADO — SPEC KIT / TETRIS ETAPA 2\n(21 oct 2026, hora Bogotá)\nEstado: implementación local y verificaciones finales completas para la evidencia descrita.\nNo se hizo commit ni push. Este informe distingue la salida de la herramien",
+      "images": [],
+      "table_boxes": [],
+      "font_sizes_character_counts": {
+        "11.0": 1476,
+        "16.0": 51,
+        "18.0": 59
+      },
+      "horizontal_text_margin_overflow_count": 0,
+      "overflow_examples": [],
+      "image_margin_overflow": [],
+      "image_page_overflow": []
+    },
+    {
+      "page": 19,
+      "width": 596,
+      "height": 842,
+      "text_start": "Tokens por invocación: entrada y caché\nSesión Entrada Caché incluida\n01-specify 372.306 328.077\n02-specify-retry 553.753 417.153\n03-contract-clarification 231.106 152.515\n04-plan 1.659.066 1.321.138\n05-tasks 293.607 155.479\n06-tasks-full-ar",
+      "images": [],
+      "table_boxes": [
+        [
+          72.25000000874999,
+          119.65298505812504,
+          519.62500875,
+          468.49962700000003
+        ]
+      ],
+      "font_sizes_character_counts": {
+        "11.0": 588,
+        "16.0": 33
+      },
+      "horizontal_text_margin_overflow_count": 0,
+      "overflow_examples": [],
+      "image_margin_overflow": [],
+      "image_page_overflow": []
+    },
+    {
+      "page": 20,
+      "width": 596,
+      "height": 842,
+      "text_start": "Tokens por invocación: candidata y pensamiento\nSesión Salida candidata Pensamiento\n01-specify 572 3.622\n02-specify-retry 5.986 8.755\n03-contract-clarification 5.847 18.651\n04-plan 14.548 8.060\n05-tasks 4.874 6.352\n06-tasks-full-arguments 0 ",
+      "images": [],
+      "table_boxes": [
+        [
+          72.25000000874999,
+          119.65298505812504,
+          519.62500875,
+          468.49962700000003
+        ]
+      ],
+      "font_sizes_character_counts": {
+        "11.0": 915,
+        "16.0": 41
+      },
+      "horizontal_text_margin_overflow_count": 0,
+      "overflow_examples": [],
+      "image_margin_overflow": [],
+      "image_page_overflow": []
+    },
+    {
+      "page": 21,
+      "width": 596,
+      "height": 842,
+      "text_start": "Tiempo, API y respuestas registradas\nSesión Segundos API Errores Éxitos JSONL\nintentos\n01-specify N/D N/D N/D N/D 14\n02-specify-retry 314,087 23 2 21 21\n03-contract-clarification N/D N/D N/D N/D 11\n04-plan 671,273 52 4 48 46\n05-tasks 304,67",
+      "images": [],
+      "table_boxes": [
+        [
+          72.25000000874999,
+          119.67391531892858,
+          519.62500875,
+          506.498645
+        ],
+        [
+          72.25000000874999,
+          598.3498535159999,
+          519.62500875,
+          765.499275
+        ]
+      ],
+      "font_sizes_character_counts": {
+        "11.0": 1148,
+        "16.0": 32
+      },
+      "horizontal_text_margin_overflow_count": 0,
+      "overflow_examples": [],
+      "image_margin_overflow": [],
+      "image_page_overflow": []
+    },
+    {
+      "page": 22,
+      "width": 596,
+      "height": 842,
+      "text_start": "17-qa-sonar-style gemini-3-flash-preview utility_loop_detector 1/0/1\nAcumulado observado: 17 intentos de invocación; 16 con modelo acreditado. Duración\nconocida 11.526,593 s; sesiones con duración desconocida: 01-specify;\n03-contract-clarif",
+      "images": [],
+      "table_boxes": [
+        [
+          72.3000000105,
+          72.50000001750004,
+          519.950007,
+          91.5
+        ],
+        [
+          72.3000000105,
+          329.7908190635,
+          519.950007,
+          517.5009725
+        ],
+        [
+          72.3000000105,
+          598.181101016,
+          519.950007,
+          707.4992614999999
+        ]
+      ],
+      "font_sizes_character_counts": {
+        "11.0": 1310,
+        "16.0": 55
+      },
+      "horizontal_text_margin_overflow_count": 0,
+      "overflow_examples": [],
+      "image_margin_overflow": [],
+      "image_page_overflow": []
+    },
+    {
+      "page": 23,
+      "width": 596,
+      "height": 842,
+      "text_start": "no como correcciones completadas. El total API sigue desconocido donde faltan\nestadísticas completas; no se suma un fallo terminal aislado como si fuese el agregado de\nerrores de la sesión.\nAuditoría de reanudación 12-qa-timer-retry (reinte",
+      "images": [],
+      "table_boxes": [],
+      "font_sizes_character_counts": {
+        "11.0": 1781
+      },
+      "horizontal_text_margin_overflow_count": 0,
+      "overflow_examples": [],
+      "image_margin_overflow": [],
+      "image_page_overflow": []
+    },
+    {
+      "page": 24,
+      "width": 596,
+      "height": 842,
+      "text_start": "Tamaño, densidad y cambios de artefactos\nSe cuentan líneas físicas y caracteres Unicode tras quitar BOM y normalizar a LF. Densidad\n= líneas/archivo. Fuente incluye pruebas y configuración textual; Sonar analiza producción\ncon un alcance di",
+      "images": [],
+      "table_boxes": [
+        [
+          72.25000000874999,
+          183.82374894125005,
+          519.62500875,
+          293.49913975000004
+        ],
+        [
+          72.25000000874999,
+          335.3957316075,
+          519.62500875,
+          489.4993925
+        ]
+      ],
+      "font_sizes_character_counts": {
+        "11.0": 977,
+        "16.0": 35
+      },
+      "horizontal_text_margin_overflow_count": 0,
+      "overflow_examples": [],
+      "image_margin_overflow": [],
+      "image_page_overflow": []
+    },
+    {
+      "page": 25,
+      "width": 596,
+      "height": 842,
+      "text_start": "Ejecución independiente y calidad\nUna llamada exitosa al wrapper no acredita una prueba aprobada: los resultados siguientes\nse apoyan en salidas originales y exit code 0, posteriores a los cambios finales.\nComprobación Comando (resumen) Sal",
+      "images": [],
+      "table_boxes": [
+        [
+          72.25000000874999,
+          154.722625733125,
+          519.62500875,
+          277.49987799999997
+        ],
+        [
+          72.25000000874999,
+          482.41559933524996,
+          519.62500875,
+          753.4998725
+        ]
+      ],
+      "font_sizes_character_counts": {
+        "11.0": 1386,
+        "16.0": 30
+      },
+      "horizontal_text_margin_overflow_count": 0,
+      "overflow_examples": [],
+      "image_margin_overflow": [],
+      "image_page_overflow": []
+    },
+    {
+      "page": 26,
+      "width": 596,
+      "height": 842,
+      "text_start": "Rating fiabilidad 1.0 1.0 1.0\nRating seguridad 3.0 1.0 1.0\nCobertura nueva final: 86.6 %. El OK de línea base carecía de un período nuevo\ncomparable y no se interpreta como aceptación final. Los ratings nativos de Sonar se\nmuestran en su es",
+      "images": [],
+      "table_boxes": [
+        [
+          72.5000000175,
+          72.50000001750004,
+          519.5000175,
+          110.499999
+        ]
+      ],
+      "font_sizes_character_counts": {
+        "11.0": 394
+      },
+      "horizontal_text_margin_overflow_count": 0,
+      "overflow_examples": [],
+      "image_margin_overflow": [],
+      "image_page_overflow": []
+    },
+    {
+      "page": 27,
+      "width": 596,
+      "height": 842,
+      "text_start": "Aceptación: veinte escenarios y mecanismos\nEl checker común devuelve siete registros aprobados que cubren ocho IDs distintos; el\ncontrol suplementario S2-16 añade nueve comprobaciones HTTP sin añadir IDs al catálogo.\nLa siguiente matriz reg",
+      "images": [],
+      "table_boxes": [],
+      "font_sizes_character_counts": {
+        "11.0": 408,
+        "16.0": 38
+      },
+      "horizontal_text_margin_overflow_count": 0,
+      "overflow_examples": [],
+      "image_margin_overflow": [],
+      "image_page_overflow": []
+    },
+    {
+      "page": 28,
+      "width": 596,
+      "height": 842,
+      "text_start": "Aceptación S2-01 a S2-10\nID Estad Mecanismo Fuentes\no\nS2-01 OK external api and production unit E1, E2, E3\nS2-02 OK external api full response equality and route E1, E4, E3\ndraw spy\nS2-03 OK external api and real tick domain E1, E5, E6, E3\n",
+      "images": [],
+      "table_boxes": [
+        [
+          72.25000000874999,
+          119.6622314465,
+          519.62500875,
+          383.4986675
+        ]
+      ],
+      "font_sizes_character_counts": {
+        "11.0": 558,
+        "16.0": 21
+      },
+      "horizontal_text_margin_overflow_count": 0,
+      "overflow_examples": [],
+      "image_margin_overflow": [],
+      "image_page_overflow": []
+    },
+    {
+      "page": 29,
+      "width": 596,
+      "height": 842,
+      "text_start": "Aceptación S2-11 a S2-20\nID Estad Mecanismo Fuentes\no\nS2-11 OK external api full equality and production E1, E10, E3\nsnapshot\nS2-12 OK external api lock swap and exact draw spy E1, E6, E3\nS2-13 OK controlled blocked Hold spawn production E1",
+      "images": [],
+      "table_boxes": [
+        [
+          72.25000000874999,
+          119.6622314465,
+          519.62500875,
+          446.4986675
+        ]
+      ],
+      "font_sizes_character_counts": {
+        "11.0": 1482,
+        "16.0": 21
+      },
+      "horizontal_text_margin_overflow_count": 0,
+      "overflow_examples": [],
+      "image_margin_overflow": [],
+      "image_page_overflow": []
+    },
+    {
+      "page": 30,
+      "width": 596,
+      "height": 842,
+      "text_start": "E13: acceptance-provenance.json\nE14: frontend/tests/App.test.tsx\nE15: frontend/tests/useGame.test.ts\nE16: frontend-test-coverage.log\nE17: browser-evidence.json\nE18: qa16-final-review.md\nE19: qa09-final-review.md\nE20: frontend-build.log\nE21:",
+      "images": [],
+      "table_boxes": [],
+      "font_sizes_character_counts": {
+        "11.0": 280
+      },
+      "horizontal_text_margin_overflow_count": 0,
+      "overflow_examples": [],
+      "image_margin_overflow": [],
+      "image_page_overflow": []
+    },
+    {
+      "page": 31,
+      "width": 596,
+      "height": 842,
+      "text_start": "Capturas y evidencia reproducible\nTres capturas corresponden a la app local real después de QA-4; cuatro paneles son vistas\nderivadas de JSON/logs. Las tablas nativas anteriores conservan cifras legibles; los paneles\npermiten ampliar la evi",
+      "images": [
+        {
+          "x0": 73.5,
+          "x1": 521.25,
+          "top": 194.64453000000003,
+          "bottom": 546.39453,
+          "width": 447.75,
+          "height": 351.75,
+          "srcsize": [
+            1280,
+            1004
+          ],
+          "name": "X72"
+        }
+      ],
+      "table_boxes": [],
+      "font_sizes_character_counts": {
+        "9.0": 114,
+        "11.0": 255,
+        "16.0": 30
+      },
+      "horizontal_text_margin_overflow_count": 0,
+      "overflow_examples": [],
+      "image_margin_overflow": [],
+      "image_page_overflow": []
+    },
+    {
+      "page": 32,
+      "width": 596,
+      "height": 842,
+      "text_start": "Captura 5. Interfaz real: Hold ocupado y control deshabilitado antes del siguiente lock. Archivo: Spec\nKit/docs/screenshots/app-final-hold.jpg.",
+      "images": [
+        {
+          "x0": 73.5,
+          "x1": 521.25,
+          "top": 103.30468999999994,
+          "bottom": 464.05469,
+          "width": 447.75,
+          "height": 360.75000000000006,
+          "srcsize": [
+            1280,
+            1031
+          ],
+          "name": "X75"
+        }
+      ],
+      "table_boxes": [],
+      "font_sizes_character_counts": {
+        "9.0": 128
+      },
+      "horizontal_text_margin_overflow_count": 0,
+      "overflow_examples": [],
+      "image_margin_overflow": [],
+      "image_page_overflow": []
+    },
+    {
+      "page": 33,
+      "width": 596,
+      "height": 842,
+      "text_start": "Captura 6. Interfaz real: game over por gravedad normal y modal de reinicio. Archivo: Spec\nKit/docs/screenshots/app-final-game-over.jpg.",
+      "images": [
+        {
+          "x0": 73.5,
+          "x1": 521.25,
+          "top": 103.30468999999994,
+          "bottom": 455.05469,
+          "width": 447.75,
+          "height": 351.75000000000006,
+          "srcsize": [
+            1280,
+            1004
+          ],
+          "name": "X78"
+        }
+      ],
+      "table_boxes": [],
+      "font_sizes_character_counts": {
+        "9.0": 121
+      },
+      "horizontal_text_margin_overflow_count": 0,
+      "overflow_examples": [],
+      "image_margin_overflow": [],
+      "image_page_overflow": []
+    },
+    {
+      "page": 34,
+      "width": 596,
+      "height": 842,
+      "text_start": "Captura 7. Vista derivada de métricas por invocación y tamaños de artefactos; no es una captura de consola.\nArchivo: Spec Kit/docs/screenshots/metrics-panel.jpg. Fuentes: metrics.json.",
+      "images": [
+        {
+          "x0": 73.5,
+          "x1": 496.5,
+          "top": 103.30469000000005,
+          "bottom": 663.55469,
+          "width": 423.0,
+          "height": 560.25,
+          "srcsize": [
+            1265,
+            1676
+          ],
+          "name": "X81"
+        }
+      ],
+      "table_boxes": [],
+      "font_sizes_character_counts": {
+        "9.0": 162
+      },
+      "horizontal_text_margin_overflow_count": 0,
+      "overflow_examples": [],
+      "image_margin_overflow": [],
+      "image_page_overflow": []
+    },
+    {
+      "page": 35,
+      "width": 596,
+      "height": 842,
+      "text_start": "Captura 8. Vista derivada de intentos API, errores, éxitos y respuestas JSONL, con denominadores separados.\nArchivo: Spec Kit/docs/screenshots/requests-panel.jpg. Fuentes: metrics.json.",
+      "images": [
+        {
+          "x0": 73.5,
+          "x1": 521.2500299999999,
+          "top": 103.30469000000005,
+          "bottom": 553.30469,
+          "width": 447.7500299999999,
+          "height": 450.0,
+          "srcsize": [
+            1265,
+            1271
+          ],
+          "name": "X84"
+        }
+      ],
+      "table_boxes": [],
+      "font_sizes_character_counts": {
+        "9.0": 166
+      },
+      "horizontal_text_margin_overflow_count": 0,
+      "overflow_examples": [],
+      "image_margin_overflow": [],
+      "image_page_overflow": []
+    },
+    {
+      "page": 36,
+      "width": 596,
+      "height": 842,
+      "text_start": "Captura 9. Vista derivada de la API autenticada de SonarQube y registros de pruebas; no es la interfaz web de\nSonarQube. Archivo: Spec Kit/docs/screenshots/sonar-panel.jpg. Fuentes: sonar-summary.json;\nsonar-exact-quality-gate.json; sonar-v",
+      "images": [
+        {
+          "x0": 73.5,
+          "x1": 520.5000299999999,
+          "top": 115.20312999999999,
+          "bottom": 675.45313,
+          "width": 447.0000299999999,
+          "height": 560.25,
+          "srcsize": [
+            1265,
+            1585
+          ],
+          "name": "X87"
+        }
+      ],
+      "table_boxes": [],
+      "font_sizes_character_counts": {
+        "9.0": 278
+      },
+      "horizontal_text_margin_overflow_count": 0,
+      "overflow_examples": [],
+      "image_margin_overflow": [],
+      "image_page_overflow": []
+    },
+    {
+      "page": 37,
+      "width": 596,
+      "height": 842,
+      "text_start": "Captura 10. Visor derivado de los registros originales de pruebas, compilación y auditoría; no es una consola\nnativa. Archivo: Spec Kit/docs/screenshots/tests-panel.jpg. Fuentes: verification-commands.json;\nbackend-coverage.log; frontend-te",
+      "images": [
+        {
+          "x0": 73.5,
+          "x1": 404.99997,
+          "top": 115.20312999999999,
+          "bottom": 675.45313,
+          "width": 331.49997,
+          "height": 560.25,
+          "srcsize": [
+            1212,
+            2048
+          ],
+          "name": "X90"
+        }
+      ],
+      "table_boxes": [],
+      "font_sizes_character_counts": {
+        "9.0": 266
+      },
+      "horizontal_text_margin_overflow_count": 0,
+      "overflow_examples": [],
+      "image_margin_overflow": [],
+      "image_page_overflow": []
+    },
+    {
+      "page": 38,
+      "width": 596,
+      "height": 842,
+      "text_start": "Corpus y límites del estudio\nEl corpus final incluye sólo Markdown nativo de la feature, tanto por archivo como unificado,\ncon manifiesto y hashes en bertopic-corpus/final/. Excluye JSON/OpenAPI, documentación\ndel investigador, transcritos,",
+      "images": [],
+      "table_boxes": [],
+      "font_sizes_character_counts": {
+        "11.0": 749,
+        "16.0": 24
+      },
+      "horizontal_text_margin_overflow_count": 0,
+      "overflow_examples": [],
+      "image_margin_overflow": [],
+      "image_page_overflow": []
+    }
+  ],
+  "note": "Geometry inventory supplements visual PNG review; these flags are not automatic acceptance results."
+}

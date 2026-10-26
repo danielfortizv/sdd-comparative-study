@@ -1,0 +1,11 @@
+{
+  "researcher_created": true,
+  "measured_at_utc": "2026-10-21T19:53:07.572113+00:00",
+  "cli_version_observed": "kiro-cli-chat 2.25.0",
+  "executable": "C:\\Users\\Kevin Alvarez\\AppData\\Local\\Kiro-Cli\\kiro-cli.exe",
+  "executable_sha256": "DB1AED88D4E286208C9504994E534FE0FA6E85592F4811198CD8DF7192AFA661",
+  "cli_help_observed": "chat --v3 --mode spec --no-interactive --trust-all-tools --output-format stream-json INPUT; stream-json emits ACP events as JSON Lines",
+  "read_only_probe_caveat": "chat --v3 --list-sessions --format json unexpectedly initiated auto-login in sandbox; researcher cancelled own process with Ctrl+C; no model request or auth completion observed; do not reuse authenticated list probe",
+  "schema_evidence": "own retained Stage1 ACP stdout plus matching native messages/session metadata",
+  "model_attribution": "historical session modelId auto, assistant agentMode vibe despite requested --mode spec; actual resolved backend model unknown"
+}

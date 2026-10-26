@@ -1,0 +1,6 @@
+{
+  "qualityGate": {
+    "name": "Tetris Stage 2 Tessl Controlled",
+    "default": false
+  }
+}

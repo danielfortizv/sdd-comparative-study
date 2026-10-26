@@ -1,0 +1,15 @@
+{
+  "stage": "stage2-backend",
+  "commands": [
+    { "cmd": "pip install -r requirements-dev.txt", "cwd": "backend", "exit": 0, "log": "docs/stage2-backend-coverage-install.log" },
+    { "cmd": "pytest --cov=app --cov-report=xml:../docs/coverage.xml --cov-report=term-missing", "cwd": "backend", "exit": 0, "log": "docs/stage2-backend-coverage.log" }
+  ],
+  "tests_passed": 118,
+  "tests_failed": 0,
+  "legacy_regression_functions": 39,
+  "new_test_functions": 79,
+  "coverage_total_percent": 99,
+  "coverage_xml": "docs/coverage.xml",
+  "runtime_pins_changed": false,
+  "dev_dependency_added": "pytest-cov==6.0.0 (backend/requirements-dev.txt)"
+}

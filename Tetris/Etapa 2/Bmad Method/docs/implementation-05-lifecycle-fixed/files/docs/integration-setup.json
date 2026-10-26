@@ -1,0 +1,25 @@
+{
+  "researcher_created": true,
+  "reason": "Separate Stage2 native output from immutable inherited specs, pin main/utility model selection; no app/test/feature edits.",
+  "bmad_version": "6.12.0",
+  "cli_version": "0.60.0",
+  "project": "project-d419b4aa-7c3b-4fde-932",
+  "new_native_scope": "_bmad-output/stage2",
+  "changes": [
+    {
+      "path": "_bmad/bmm/config.yaml",
+      "before_sha256": "E1EF0A068DAB977E26D313BCAAABFE26B0C2DE01A81D8BE1AB622D7F3418245C",
+      "after_sha256": "3A55FC97371CC63566DDB79A270616708A2F118CCB127E623100AC4B9965A14D"
+    },
+    {
+      "path": "_bmad/core/config.yaml",
+      "before_sha256": "F3B41E1D4E4B514B44B20ADFD1EC29C3F5A366877CD4EC17E0DC6508C0378466",
+      "after_sha256": "F8AE5820CF1688E07C9C7B862F102D795A50D676A3EB25B920BF5ACB08CA9140"
+    },
+    {
+      "path": ".gemini/settings.json",
+      "before_sha256": "F516F0CB689354C3055DFE9DEFDB3AAF9F204186CD4228E44E678DA56A28364F",
+      "after_sha256": "7825D6D6F5F323F4F1AE8B3412FA797D3C0E6A079C8A667CD6B44899E2A36A10"
+    }
+  ]
+}

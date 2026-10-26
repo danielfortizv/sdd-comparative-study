@@ -1,0 +1,44 @@
+SPEC KIT — FALLOS 11/12 Y AVANCE PARCIAL
+13–15; VERIFICACIÓN PENDIENTE
+11-qa-timer-ownership cerró el 20 oct a las 20:33:40, hora Bogotá, tras 439,318 s, con
+salida 429 RESOURCE_EXHAUSTED. Guardó cambios nativos de spec/tareas, sin
+cambios de aplicación/pruebas. No hubo estadísticas CLI completas: el intervalo JSONL
+acredita 14 respuestas y 607.848 tokens de entrada, incluidos 257.143 cacheados, 2.297
+candidatos y 16.381 de pensamiento. Los totales de intentos/errores/éxitos API son
+desconocidos; un 429 terminal observado no equivale al agregado de errores. Evidencia:
+failed-11/.
+12-qa-timer-retry reanudó la misma intención QA-3 y cerró el 20 oct a las 21:00:41 con
+salida 1 por fetch failed, tras 1.513,504 s. Su stdout quedó vacío; el objeto de error está en
+stderr. El intervalo propio conserva 21 respuestas únicas: 1.830.444 entrada, 1.091.029
+cacheados incluidos, 10.707 candidatos y 14.468 pensamientos. Los totales API siguen
+desconocidos. La deduplicación por ID y los límites temporales excluyen las 14 respuestas
+anteriores de 11. Se preservó failed-12/; usage-through12.json separa el acumulado estricto
+de ese cierre y snapshot-provenance.json acredita el estado fuente conservado.
+13-qa-completion-retry terminó el 21 oct a las 00:16:37 con salida 0 en 16,638 s, respuesta
+vacía y solo una acción update_topic: no completó trabajo de aplicación. Su CLI registra 2
+intentos API, 0 errores y 2 éxitos; 225.989 entrada, 104.499 cacheados, 144 candidatos y
+630 pensamientos. Estos contadores coinciden exactamente con dos registros JSONL
+únicos del intervalo. Un registro vacío omite el modelo; su atribución al único modelo
+declarado por el CLI se conserva explícita. El contexto sintético y la repetición del prompt
+anterior preceden al mensaje 13 real; ese mensaje posterior sí contiene el prompt y la
+semilla completos, antes de la primera respuesta con tokens.
+14-qa-completion-fresh usó una sesión nueva y cerró con salida 0 en 184,895 s. Corrigió la
+comparación GET completa del backend, incluido activePiece, y su respuesta dejó las
+pruebas frontend como siguiente paso. Registra 20 intentos API/0 errores/20 éxitos y 20
+respuestas: 720.193 entrada, 422.234 cacheados, 1.936 candidatos y 15.806
+pensamientos. 15-qa-frontend-completion reanudó 14 y cerró con salida 0 en 56,315 s, con
+respuesta vacía y cambios parciales de pruebas frontend; registra 2 intentos API/0 errores/2
+éxitos, 2 respuestas, 160.759 entrada, 0 cacheados, 1.808 candidatos y 7.575
+pensamientos. Sus contadores también coinciden con el intervalo propio, sin duplicar
+historial.
+Acumulado cerrado hasta 15:15 intentos de invocación, 14 con modelo acreditado; 564
+intentos API conocidos, 115 errores y 449 éxitos. Hay 487 respuestas registradas por
+separado. Tokens observados: 40.888.805 entrada, 31.125.581 cacheados incluidos,
+157.132 salida candidata y 217.365 pensamiento. Duración conocida: 10.837,282 s; 01/03
+siguen con duración desconocida y 01/03/11/12 con totales API desconocidos. Se excluyen
+16 en curso y el trabajo externo de coordinación, revisión, verificaciones y Drive. Fuentes:
+metrics.json y 12/13/14/15-metric-verification.json.
+Los intentos externos 09–16 suman ocho iniciados y siete cerrados, pero corresponden a
+tres intenciones QA distintas: 11–16 continúan QA-3. Cinco cierres tuvieron salida 0 y dos
+fallaron; el éxito del proceso no acredita una corrección completa. La auditoría de texto
+cerrado 01–15 conserva 16 mensajes naturales y 0 preguntas bloqueantes observadas, con

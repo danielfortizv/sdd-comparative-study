@@ -1,0 +1,60 @@
+{
+  "verified_at_utc": "2026-10-21T05:25:43.294987+00:00",
+  "label": "13-qa-completion-retry",
+  "run_interval": {
+    "started": "2026-10-21T00:16:20.7750370-05:00",
+    "ended": "2026-10-21T00:16:37.4135277-05:00",
+    "duration_seconds": 16.638,
+    "exit_code": 0
+  },
+  "deduplicated_response_count": 2,
+  "response_ids": [
+    "1c4827e7-345a-418d-927a-c0be46cb9dc9",
+    "9a2587ed-dcb9-4585-9203-12939b9b6922"
+  ],
+  "jsonl_token_sums": {
+    "input": 225989,
+    "cached": 104499,
+    "output": 144,
+    "thoughts": 630
+  },
+  "matches_collector": true,
+  "prior_interval_response_id_overlap": [],
+  "api_totals": {
+    "api_requests": 2,
+    "api_errors": 0,
+    "api_successful_requests": 2
+  },
+  "resumed_scope_verification": {
+    "status": "main CLI counters match current invocation interval",
+    "retry_of": "12-qa-timer-retry",
+    "main_model": "gemini-3.5-flash",
+    "main_recorded_responses": 2,
+    "jsonl_records_missing_model": 1,
+    "model_attribution": "single CLI-reported model; unlabeled interval records included only after exact token/count comparison and absence of conflicting model labels",
+    "main_cli_successful_requests": 2,
+    "token_comparisons": {
+      "input_tokens": {
+        "cli": 225989,
+        "run_interval_jsonl": 225989
+      },
+      "cached_tokens": {
+        "cli": 104499,
+        "run_interval_jsonl": 104499
+      },
+      "output_tokens": {
+        "cli": 144,
+        "run_interval_jsonl": 144
+      },
+      "thought_tokens": {
+        "cli": 630,
+        "run_interval_jsonl": 630
+      }
+    },
+    "definition": "Response IDs are deduplicated across resumed original/archive files and bounded by this run's start/end; prior-attempt responses are excluded. Only matching main counters permit adding completed CLI process totals. Auxiliary roles remain CLI-reported rather than independently present in main JSONL."
+  },
+  "transcript_paths": [
+    "transcripts-archive/session-2026-10-21T01-26-2a105d94.FFB6834455EE27A5.jsonl"
+  ],
+  "scope": "Independent raw-JSONL parsing, deduplicated by response ID and bounded by each closed invocation; no previous resumed history counted twice. Cached is included in input. Missing model labels remain raw evidence; single-model CLI attribution is explicit."
+}

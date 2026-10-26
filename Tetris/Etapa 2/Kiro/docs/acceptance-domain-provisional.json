@@ -1,0 +1,251 @@
+{
+  "researcher_created": true,
+  "profile": "Kiro own engine API",
+  "checker_version": "1.0",
+  "measured_at_utc": "2026-10-22T00:58:35.113253+00:00",
+  "status": "pass",
+  "records": [
+    {
+      "id": "S2-03",
+      "description": "Lock clearing 0 rows at initial level",
+      "fixture_mechanism": "canonical_piece_controlled_board",
+      "status": "pass",
+      "details": {
+        "rows": 0,
+        "pre_lines": 0,
+        "pre_level": 1,
+        "score": 0,
+        "total_lines": 0,
+        "level": 1,
+        "gravity_ms": 500,
+        "next_draw_count": 1
+      }
+    },
+    {
+      "id": "S2-03",
+      "description": "Pre-lock multiplier for 0 rows at level3",
+      "fixture_mechanism": "canonical_piece_controlled_board",
+      "status": "pass",
+      "details": {
+        "rows": 0,
+        "pre_lines": 20,
+        "pre_level": 3,
+        "score": 0,
+        "total_lines": 20,
+        "level": 3,
+        "gravity_ms": 400,
+        "next_draw_count": 1
+      }
+    },
+    {
+      "id": "S2-04",
+      "description": "Lock clearing 1 rows at initial level",
+      "fixture_mechanism": "canonical_piece_controlled_board",
+      "status": "pass",
+      "details": {
+        "rows": 1,
+        "pre_lines": 0,
+        "pre_level": 1,
+        "score": 100,
+        "total_lines": 1,
+        "level": 1,
+        "gravity_ms": 500,
+        "next_draw_count": 1
+      }
+    },
+    {
+      "id": "S2-04",
+      "description": "Pre-lock multiplier for 1 rows at level3",
+      "fixture_mechanism": "canonical_piece_controlled_board",
+      "status": "pass",
+      "details": {
+        "rows": 1,
+        "pre_lines": 20,
+        "pre_level": 3,
+        "score": 300,
+        "total_lines": 21,
+        "level": 3,
+        "gravity_ms": 400,
+        "next_draw_count": 1
+      }
+    },
+    {
+      "id": "S2-05",
+      "description": "Lock clearing 2 rows at initial level",
+      "fixture_mechanism": "canonical_piece_controlled_board",
+      "status": "pass",
+      "details": {
+        "rows": 2,
+        "pre_lines": 0,
+        "pre_level": 1,
+        "score": 300,
+        "total_lines": 2,
+        "level": 1,
+        "gravity_ms": 500,
+        "next_draw_count": 1
+      }
+    },
+    {
+      "id": "S2-05",
+      "description": "Pre-lock multiplier for 2 rows at level3",
+      "fixture_mechanism": "canonical_piece_controlled_board",
+      "status": "pass",
+      "details": {
+        "rows": 2,
+        "pre_lines": 20,
+        "pre_level": 3,
+        "score": 900,
+        "total_lines": 22,
+        "level": 3,
+        "gravity_ms": 400,
+        "next_draw_count": 1
+      }
+    },
+    {
+      "id": "S2-06",
+      "description": "Lock clearing 3 rows at initial level",
+      "fixture_mechanism": "isolated_domain_prefilled_complete_rows",
+      "status": "pass",
+      "details": {
+        "rows": 3,
+        "pre_lines": 0,
+        "pre_level": 1,
+        "score": 500,
+        "total_lines": 3,
+        "level": 1,
+        "gravity_ms": 500,
+        "next_draw_count": 1
+      }
+    },
+    {
+      "id": "S2-06",
+      "description": "Pre-lock multiplier for 3 rows at level3",
+      "fixture_mechanism": "isolated_domain_prefilled_complete_rows",
+      "status": "pass",
+      "details": {
+        "rows": 3,
+        "pre_lines": 20,
+        "pre_level": 3,
+        "score": 1500,
+        "total_lines": 23,
+        "level": 3,
+        "gravity_ms": 400,
+        "next_draw_count": 1
+      }
+    },
+    {
+      "id": "S2-07",
+      "description": "Lock clearing 4 rows at initial level",
+      "fixture_mechanism": "isolated_domain_prefilled_complete_rows",
+      "status": "pass",
+      "details": {
+        "rows": 4,
+        "pre_lines": 0,
+        "pre_level": 1,
+        "score": 800,
+        "total_lines": 4,
+        "level": 1,
+        "gravity_ms": 500,
+        "next_draw_count": 1
+      }
+    },
+    {
+      "id": "S2-07",
+      "description": "Pre-lock multiplier for 4 rows at level3",
+      "fixture_mechanism": "isolated_domain_prefilled_complete_rows",
+      "status": "pass",
+      "details": {
+        "rows": 4,
+        "pre_lines": 20,
+        "pre_level": 3,
+        "score": 2400,
+        "total_lines": 24,
+        "level": 3,
+        "gravity_ms": 400,
+        "next_draw_count": 1
+      }
+    },
+    {
+      "id": "S2-08",
+      "description": "Nine to ten lines scores with level1 then level2/450ms",
+      "fixture_mechanism": "canonical_piece_controlled_board",
+      "status": "pass",
+      "details": {
+        "rows": 1,
+        "pre_lines": 9,
+        "pre_level": 1,
+        "score": 100,
+        "total_lines": 10,
+        "level": 2,
+        "gravity_ms": 450,
+        "next_draw_count": 1
+      }
+    },
+    {
+      "id": "S2-09",
+      "description": "Gravity floor above level9",
+      "fixture_mechanism": "canonical_piece_controlled_board",
+      "status": "pass",
+      "details": {
+        "rows": 1,
+        "pre_lines": 120,
+        "pre_level": 13,
+        "score": 1300,
+        "total_lines": 121,
+        "level": 13,
+        "gravity_ms": 100,
+        "next_draw_count": 1
+      }
+    },
+    {
+      "id": "S2-10/11/12",
+      "description": "First/rejected Hold and occupied swap after actual lock",
+      "fixture_mechanism": "canonical_piece_controlled_board",
+      "status": "pass",
+      "details": {
+        "first_hold_draws": 1,
+        "rejected_hold_mutations": 0,
+        "occupied_swap_draws": 0,
+        "hold_reset_after_lock": true
+      }
+    },
+    {
+      "id": "S2-13/14",
+      "description": "Blocked held-piece spawn and immutable terminal actions",
+      "fixture_mechanism": "controlled_spawn_obstruction",
+      "status": "pass",
+      "details": {
+        "status": "game_over",
+        "active": null,
+        "preview_unchanged": true,
+        "game_over_actions_unchanged": true
+      }
+    },
+    {
+      "id": "S2-19",
+      "description": "Soft drop retains locking/clearing with no additional points",
+      "fixture_mechanism": "canonical_piece_controlled_board",
+      "status": "pass",
+      "details": {
+        "nonlocking_drop_points": 0,
+        "locking_one_line_award": 100
+      }
+    }
+  ],
+  "source_sha256": {
+    "backend/app/__init__.py": "E6D9CA44CA98FBA4E73DA6EF22243087B713902D8F51C11228DE31E1B97D5D8F",
+    "backend/app/api/__init__.py": "4531E4A5551A74ECF743FBEFB487472CBAF7E9A33265E4F16E8AAA275BC6D8D9",
+    "backend/app/api/games.py": "278049A2B01E1A80E8EEE46F959CE9F416511CF9A1C4DD01A8ACC4E56045CE85",
+    "backend/app/api/schemas.py": "1E764D0562031E48B22E9BC1E1E5EED4B39279F175B321E6DB96E580200B3983",
+    "backend/app/domain/__init__.py": "FA4290DBFB9CA1C266DB445F5C4B3164FD7DD9D2F523324677FD95B7372A8FDE",
+    "backend/app/domain/models.py": "8B2726824BA7215ADC8459330300353EFBC77D460859AEBE7023C54C7F7F12D5",
+    "backend/app/main.py": "378F36A14AC61CFC7D93D08C47C8A54317C4B79FCA0392A87F9135ADD1B75875",
+    "backend/app/rules/__init__.py": "387543C055C2012B7110606F70C426036B5BA9F266F55AA5B8F14CCED1756333",
+    "backend/app/rules/engine.py": "13389F92D65AE0516494BD82BFA36B5EABDF5AAC5891E53DCAC2506DCFCD3181",
+    "backend/app/rules/pieces.py": "D034B5B88374FC0C0FA2883F9C9C2E96BD1ACFA51072314114B2312E229C7D48",
+    "backend/app/rules/scoring.py": "4B4C16E6A8C30FBF55A72EF3DB3DD3A6647653A31568FD19F1B0F13214556671",
+    "backend/app/store.py": "99807535D9907A6E89B1375E7D274C1D1EB0E7207859CB34D3D0A5A09AAB21BF"
+  },
+  "checker_sha256": "C46FB474C3874479F229C1A366A4A78E786058245B5C763AADA8C128329AE49F",
+  "scope": "Independent domain evidence. Not HTTP/UI evidence, not 20 acceptance cases passed. Three/four rows explicitly isolated and unreachable in ordinary play."
+}

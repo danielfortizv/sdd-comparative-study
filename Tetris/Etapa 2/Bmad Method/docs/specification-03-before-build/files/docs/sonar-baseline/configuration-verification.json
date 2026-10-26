@@ -1,0 +1,35 @@
+﻿{
+    "researcher_created":  true,
+    "configured_at_utc":  "2026-10-26T01:02:16.0754983Z",
+    "project_key":  "tetris-stage2-bmad",
+    "gate_name":  "Tetris Stage 2 BMAD Controlled",
+    "conditions":  [
+                       {
+                           "id":  "19b3f7fc-5034-47c0-ba22-eb3ed4df5b2f",
+                           "metric":  "new_duplicated_lines_density",
+                           "op":  "GT",
+                           "error":  "3",
+                           "isCaycCondition":  true
+                       },
+                       {
+                           "id":  "6ecda445-b91f-4b93-81f8-e0bd4986b0f3",
+                           "metric":  "new_violations",
+                           "op":  "GT",
+                           "error":  "0",
+                           "isCaycCondition":  true
+                       },
+                       {
+                           "id":  "0edb83b4-1fe0-445d-a199-97399bdf5b07",
+                           "metric":  "new_coverage",
+                           "op":  "LT",
+                           "error":  "80",
+                           "isCaycCondition":  true
+                       }
+                   ],
+    "new_code_type":  "PREVIOUS_VERSION",
+    "baseline_project_version":  "1.0",
+    "final_project_version":  "2.0",
+    "built_in_gate_unchanged":  true,
+    "baseline_frontend_lcov_available":  false,
+    "warning":  "The first baseline analysis can have no evaluated new-code conditions. Baseline gate status is not final Stage 2 acceptance."
+}

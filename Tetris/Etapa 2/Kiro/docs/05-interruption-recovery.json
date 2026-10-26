@@ -1,0 +1,11 @@
+{
+  "researcher_created": true,
+  "observed_at_utc": "2026-10-23T19:14:57.364670+00:00",
+  "native_process_confirmed_absent": true,
+  "ended": null,
+  "duration_seconds": null,
+  "exit_code": null,
+  "source_changed_since04": [],
+  "source_file_count_current": 34,
+  "note": "Feature specs may contain partial native05 revisions; source comparison does not include those Markdown files. Original05 prompt/streams are preserved."
+}

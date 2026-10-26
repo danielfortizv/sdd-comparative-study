@@ -1,0 +1,28 @@
+{
+  "researcher_created": true,
+  "label": "domain-final",
+  "cwd": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\Bmad Method",
+  "command": [
+    "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\Bmad Method\\backend\\.venv\\Scripts\\python.exe",
+    "../shared/acceptance/check_domain_bmad.py",
+    "--root",
+    ".",
+    "--output",
+    "docs/acceptance/domain-final.json"
+  ],
+  "requested_command": [
+    "backend/.venv/Scripts/python.exe",
+    "../shared/acceptance/check_domain_bmad.py",
+    "--root",
+    ".",
+    "--output",
+    "docs/acceptance/domain-final.json"
+  ],
+  "recorder_sha256": "78AA53001F647A5CC67C892E8C2FC5D9CDBA83B23723FC31AB01D63153D589AA",
+  "started_at_utc": "2026-10-26T02:24:29.870170+00:00",
+  "ended_at_utc": "2026-10-26T02:24:31.683497+00:00",
+  "duration_seconds": 1.812854,
+  "exit_code": 0,
+  "log_path": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\Bmad Method\\docs\\validation\\domain-final.log",
+  "log_sha256": "84E0E1772D6F35575FB645E75EFD8CC19612304640004F025512B9CBC9F6C28B"
+}

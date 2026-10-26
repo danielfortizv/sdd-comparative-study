@@ -1,0 +1,10 @@
+{
+  "researcher_created": true,
+  "at_utc": "2026-10-26T01:02:15.239043+00:00",
+  "maxSessionTurns": 80,
+  "reason": "User requested care with BMAD consumption. Per-invocation turn safety bound, full unchanged common seed/native required phases retained. No hard monetary/token budget inferred. Incomplete runs are not completion.",
+  "settings_before_sha256": "7825D6D6F5F323F4F1AE8B3412FA797D3C0E6A079C8A667CD6B44899E2A36A10",
+  "settings_after_sha256": "9BE5A904BC52008678A8B57C100DD81A7B75AE02FE402D3786EC98A4B2C11A15",
+  "native_parallel_delegation": false,
+  "review_mode": "documented sequential/headless fallback; no unrelated market research"
+}

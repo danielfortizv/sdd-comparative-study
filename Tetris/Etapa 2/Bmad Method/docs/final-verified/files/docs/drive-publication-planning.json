@@ -1,0 +1,176 @@
+{
+  "bmadDocBaselineAppend": {
+    "at": 111725,
+    "tx": "\nBMAD — Inicio de etapa 2, opción A (25 de octubre de 2026)\nSe creó Caso 2-Tetris/Etapa 2/Bmad Method desde su propia etapa 1: 258 archivos copiados con manifiesto SHA-256. Fuente inicial: 9 archivos, 1.036 líneas, 31.549 caracteres, densidad 115,11 líneas/archivo. Especificaciones nativas heredadas: 6 Markdown principales, 1.120 líneas, 68.220 caracteres, densidad 186,67. Se excluyen dependencias, caches, builds, credenciales y renders de workflows anteriores. Los documentos heredados se preservan; la nueva salida nativa va en _bmad-output/stage2.\nControles: BMAD 6.12.0 y Gemini CLI 0.60.0; modelo solicitado gemini-3.5-flash; proyecto project-d419b4aa-7c3b-4fde-932 y perfil ADC aislado ya autorizado. La semilla común sigue intacta: SHA-256 63919779DD4104076FBABCB130CE296A160FA840E0B4755A2AA5D90757ADA8EF. Se configuraron aliases auxiliares con el mismo modelo antes de la primera ejecución; el modelo realmente reportado se comprobará en los registros.\nControl de consumo solicitado por el usuario: límite operativo de 80 turnos por invocación, fases nativas con entradas acotadas, headless/fast path y revisión secuencial documentada, sin delegación ni investigación de mercado ajena al alcance. Es un control adicional registrado para BMAD; no altera la semilla ni permite omitir pasos nativos obligatorios. No se infiere un presupuesto monetario o de tokens. Un corte o una salida 0 del CLI no equivale a implementación completa. Cualquier continuación o corrección tendrá su propio prompt, duración, salida y consumo.\nLínea base ejecutada: 13 pruebas backend aprobadas, build frontend aprobado y npm ci reproducible. No existe suite frontend heredada: no se registra un resultado inventado. Auditoría npm inicial: 2 vulnerabilidades (1 moderada, 1 alta). El entorno reproduce Python 3.12.14 y las 21 versiones instaladas propias de BMAD; cobertura 7.16.2 y pytest-cov 7.1.0 se agregaron solo como instrumentación del investigador. El resumen bruto pytest-cov incluye tests: 265/267 statements, 99 %; producción por separado: 122/124 statements, 98,39 %. No se presenta el 99 % como cobertura exclusiva de producción.\nSonar exclusivo tetris-stage2-bmad: baseline 1.0, análisis a2404c04-7fc8-450b-b2ee-1c5e25a895ab, CE SUCCESS. Cobertura global 63,2 %, bugs 0, duplicación 0 %, vulnerabilidades 1, smells 13, hotspots 0, deuda 84 min, complejidad 83 y cognitiva 97; ratings A/C/A (fiabilidad/seguridad/mantenibilidad). Gate inicial OK con cero condiciones de código nuevo evaluadas: no es aceptación de etapa 2. El gate final conserva umbrales de cobertura nueva ≥80 %, duplicación nueva ≤3 % e incidencias nuevas 0, versión final 2.0 contra 1.0; no se modificó Sonar way.\nCalibración propia: creación HTTP 201, tablero de enteros 0..7, active_piece.shape y coordenadas {row,col}; O aparece en (0,4). El verificador HTTP común se adaptará de forma versionada en la instrumentación, preservando la respuesta cruda. No se obliga a BMAD a adoptar la representación de otra herramienta. El generador heredado usa random.choice; los fixtures usarán 20260929 o secuencias explícitas sin alterar las formas canónicas.\n01-prd comenzó a las 20:02:50 de Bogotá. Activa bmad-prd nativo en modo headless para crear el PRD de la ampliación; todavía no se autorizan cambios de código en esta fase. Sus tokens, tiempos de cierre y preguntas están pendientes; no se contabiliza como sesión finalizada. Se conservarán también los fallos y desviaciones. No se han realizado commits ni push.\n",
+    "result": {
+      "content": [
+        {
+          "type": "text",
+          "text": "Action completed."
+        }
+      ],
+      "structuredContent": {
+        "documentId": "1JRZvjK8-fdFitwbiKLe2NhOsk1FZNCa_TclgnFwdjao",
+        "revisionId": "AHj4eMSw68deoHXOi1eXUz9yJ9g8V_TggZwV3VGbLWzmUyljmDNypBsM9B5n-2jtu9baF3koLHNxpBS3Kb0y-rOns5NllF0DlpLH6Pfxeg",
+        "replies": [
+          {},
+          {},
+          {},
+          {},
+          {}
+        ],
+        "writeControl": {
+          "requiredRevisionId": "AHj4eMSw68deoHXOi1eXUz9yJ9g8V_TggZwV3VGbLWzmUyljmDNypBsM9B5n-2jtu9baF3koLHNxpBS3Kb0y-rOns5NllF0DlpLH6Pfxeg",
+          "targetRevisionId": null
+        },
+        "document_url": "https://docs.google.com/document/d/1JRZvjK8-fdFitwbiKLe2NhOsk1FZNCa_TclgnFwdjao"
+      },
+      "isError": false
+    }
+  },
+  "bmadDocCancellationAppend": {
+    "at": 115212,
+    "tx": "\nCambio de instrucción durante BMAD: monitor de cuota desactivado\nEl usuario pidió desactivar tanto la tarea como el script de validación. Se dejó Codex-Quota-Hourly-Suspend-Kevin en Disabled, se detuvo su ejecución si estaba activa y se fijó disabled=true en el guard persistente. El wrapper PowerShell y la entrada Node, también con --dry-run, omiten consultas de cuota y suspensión. La automatización equivalente de Codex ya estaba PAUSED y sigue pausada. No se realizó ninguna acción de energía. Este cambio revoca la indicación anterior de suspensión, no la continuación de BMAD. Se conserva un registro de cancelación con fecha/hora en shared/quota-monitor/.\n",
+    "result": {
+      "content": [
+        {
+          "type": "text",
+          "text": "Action completed."
+        }
+      ],
+      "structuredContent": {
+        "documentId": "1JRZvjK8-fdFitwbiKLe2NhOsk1FZNCa_TclgnFwdjao",
+        "revisionId": "AHj4eMTb3A4mVBW9mtw749DCzl1Ddvw8_ovEClqTnFIgYHSvb7dHzp11b5QsIjLcHq8oD26QnL95JiJ5v5ImFLcmH1jW4w5MFLykAtWg1w",
+        "replies": [
+          {},
+          {}
+        ],
+        "writeControl": {
+          "requiredRevisionId": "AHj4eMTb3A4mVBW9mtw749DCzl1Ddvw8_ovEClqTnFIgYHSvb7dHzp11b5QsIjLcHq8oD26QnL95JiJ5v5ImFLcmH1jW4w5MFLykAtWg1w",
+          "targetRevisionId": null
+        },
+        "document_url": "https://docs.google.com/document/d/1JRZvjK8-fdFitwbiKLe2NhOsk1FZNCa_TclgnFwdjao"
+      },
+      "isError": false
+    }
+  },
+  "bmadDocPlanningAppend": {
+    "at": "2026-10-26T01:28:30.592Z",
+    "tx": "\nBMAD: cierre de planificación 01–02 y continuación 03\n01-prd: cerrada, 235,503 s, salida 0; 34 solicitudes API, 0 errores, 34 éxitos. Tokens reportados: entrada 1.557.313 (incluye caché 1.304.035), salida candidata 9.758 y razonamiento 11.370. PRD y addendum congelados antes de revisión externa: 2 documentos principales, 304 líneas y 20.879 caracteres; densidad 152 líneas/documento. Rúbrica y memlog se contabilizan aparte. Cinco mensajes naturales completos revisados; cero preguntas bloqueantes observadas en ese intervalo retenido.\n02-design-stories: cerrada, 423,880 s, salida 0, pero respuesta final vacía y un error 429. Se clasifica como planificación incompleta: guardó PRD corregido, arquitectura y epics; no acredita implementación ni aceptación. 60 solicitudes, 1 error, 59 éxitos. Tokens: entrada 3.808.691 (caché 2.971.386), salida 20.830 y razonamiento 25.045. La ausencia de respuesta final no permite concluir éxito por el código de salida ni atribuir el error a cuota agotada.\nAcumulado de sesiones cerradas 01–02: 659,383 s de CLI; 94 solicitudes, 1 error y 93 éxitos; entrada 5.366.004, de la cual 4.275.421 corresponde a caché; salida 30.588 y razonamiento 36.415. La caché es un subconjunto de la entrada y no se suma dos veces. Modelo principal y auxiliares observados: gemini-3.5-flash. Estos totales excluyen la sesión 03 mientras esté activa y no representan todo el tiempo de intervención del investigador.\n03-planning-completion comenzó a las 20:23:19 de Bogotá: continúa únicamente la validación nativa de arquitectura, revisiones secuenciales y planificación del sprint de etapa 2. Las correcciones previas al código preservan el spawn O en (0,4), el contrato propio HTTP 201/shape/coordenadas objeto y las 13 pruebas heredadas; precisan Hold, cola FIFO, reinicio que reemplaza la cola y conservación de metadatos. Las revisiones secuenciales bajo una sola sesión se documentan como limitación y no se presentan como revisión independiente. No se ha cambiado código de aplicación. El monitor y la suspensión automática permanecen desactivados por instrucción del usuario.\n",
+    "result": {
+      "content": [
+        {
+          "type": "text",
+          "text": "Action completed."
+        }
+      ],
+      "structuredContent": {
+        "documentId": "1JRZvjK8-fdFitwbiKLe2NhOsk1FZNCa_TclgnFwdjao",
+        "revisionId": "AHj4eMTgCNmLm5z-YPrlsLsCGEcl4nmUo59nSdDO42v-iymoZ2HS7UVNS4GlI1edB41KKcadnjxQnhXRDTWFTo_JqikgRtrFHXby8Ep2Ag",
+        "replies": [
+          {},
+          {},
+          {},
+          {},
+          {}
+        ],
+        "writeControl": {
+          "requiredRevisionId": "AHj4eMTgCNmLm5z-YPrlsLsCGEcl4nmUo59nSdDO42v-iymoZ2HS7UVNS4GlI1edB41KKcadnjxQnhXRDTWFTo_JqikgRtrFHXby8Ep2Ag",
+          "targetRevisionId": null
+        },
+        "document_url": "https://docs.google.com/document/d/1JRZvjK8-fdFitwbiKLe2NhOsk1FZNCa_TclgnFwdjao"
+      },
+      "isError": false
+    }
+  },
+  "bmadDocPlanning03": {
+    "at": "2026-10-26T01:34:29.121Z",
+    "idx": 117982,
+    "tx": "\nBMAD: planificación 03 cerrada y evidencia de consumo\n03-planning-completion cerró a las 20:30:16 de Bogotá: 417,211 s, salida 0; 74 solicitudes API, 3 errores y 71 éxitos. Entrada 5.259.143 (caché incluida 4.587.288), salida 15.433 y razonamiento 18.262. Modelo observado principal y auxiliares: gemini-3.5-flash. Se guardaron spine, rúbrica, revisión adversarial y de dependencias, sprint y contexto de build: cuatro epics, doce historias, tres listas para desarrollo y nueve en backlog. Sus veredictos favorables son revisiones secuenciales de la misma sesión, no evaluaciones independientes.\nAcumulado cerrado 01–03: 1.076,594 s de CLI; 168 solicitudes, 4 errores y 164 éxitos; entrada 10.625.147, caché 8.862.709, salida 46.021 y razonamiento 54.677. Cero preguntas bloqueantes observadas tras revisión manual de los intervalos retenidos; no prueba ausencia de mensajes no registrados. La sesión 04 de implementación queda fuera de estos totales mientras esté activa.\nControl previo a implementación: la versión realmente instalada en la línea base es TypeScript 5.9.3/Vite 5.4.21, distinta de los límites inferiores citados inicialmente en el spine. Los tiempos 21:00/21:05 escritos por el modelo en el sprint eran marcadores futuros; no se utilizan como medición. Se solicitó corregir estos datos mediante el flujo nativo antes del código. Instantánea specification-03-before-build: 349 archivos con manifiesto de hashes. Las nueve fuentes de aplicación siguen idénticas a la línea base al congelar el checkpoint.\nCaptura 1. Vista del investigador derivada de los JSON de uso, no interfaz nativa de Gemini/Sonar. Fuente: docs/evidence-view/manifest.json y sesiones cerradas 01–03. Conserva el monitor cancelado y excluye implementación activa.\n\n",
+    "result": {
+      "content": [
+        {
+          "type": "text",
+          "text": "Action completed."
+        }
+      ],
+      "structuredContent": {
+        "documentId": "1JRZvjK8-fdFitwbiKLe2NhOsk1FZNCa_TclgnFwdjao",
+        "revisionId": "AHj4eMTJLwtMOmN2XatHkcKi2-W9R_-dvGaZrQTelkn3vSB7UKudJAnDMZgi3P58BVeX2HwshIicrvYVqijQApq-K0KjXk132Wf9BnHElA",
+        "replies": [
+          {},
+          {},
+          {},
+          {},
+          {}
+        ],
+        "writeControl": {
+          "requiredRevisionId": "AHj4eMTJLwtMOmN2XatHkcKi2-W9R_-dvGaZrQTelkn3vSB7UKudJAnDMZgi3P58BVeX2HwshIicrvYVqijQApq-K0KjXk132Wf9BnHElA",
+          "targetRevisionId": null
+        },
+        "document_url": "https://docs.google.com/document/d/1JRZvjK8-fdFitwbiKLe2NhOsk1FZNCa_TclgnFwdjao"
+      },
+      "isError": false
+    }
+  },
+  "bmadDocPlanningImage": {
+    "at": "2026-10-26T01:34:33.790Z",
+    "path": "D:/KEVIN/UNIVERSIDAD/Trabajos/Proyecto/Caso 2-Tetris/Etapa 2/Bmad Method/docs/screenshots/01-planning-consumption.jpg",
+    "result": {
+      "content": [
+        {
+          "type": "text",
+          "text": "Action completed."
+        }
+      ],
+      "structuredContent": {
+        "documentId": "1JRZvjK8-fdFitwbiKLe2NhOsk1FZNCa_TclgnFwdjao",
+        "revisionId": "AHj4eMQRTf8ZTAy3596cnvikc_ymKm8509RLMJ4xSAKfnanFH-b0LwpOZS68a6Jmf8iex2bOEdjMbr9FQHf3yQH_hJ9STAcsGvMD1l38-Q",
+        "replies": [
+          {
+            "insertInlineImage": {
+              "objectId": "kix.fryyqk3lzprn"
+            }
+          }
+        ],
+        "writeControl": {
+          "requiredRevisionId": "AHj4eMQRTf8ZTAy3596cnvikc_ymKm8509RLMJ4xSAKfnanFH-b0LwpOZS68a6Jmf8iex2bOEdjMbr9FQHf3yQH_hJ9STAcsGvMD1l38-Q",
+          "targetRevisionId": null
+        },
+        "document_url": "https://docs.google.com/document/d/1JRZvjK8-fdFitwbiKLe2NhOsk1FZNCa_TclgnFwdjao"
+      },
+      "isError": false
+    }
+  },
+  "bmadDocQA01": {
+    "at": "2026-10-26T01:50:40.153Z",
+    "idx": 119736,
+    "tx": "\nBMAD: candidato 04 parcial y corrección externa QA-01\n04-implementation cerró tras 624,327 s con salida 53: alcanzó el límite de 80 turnos y no completó la verificación. Se congeló implementation-04-initial-partial antes de la validación externa. Los contadores recuperados del transcript son entrada 6.585.008, caché 5.217.489, salida 21.681 y razonamiento 28.882; el resumen final de estadísticas API no estuvo disponible. No se inventan solicitudes ni errores de esta sesión. Acumulado conocido 01–04: 1.700,921 s, entrada 17.210.155, caché 14.080.198, salida 67.702 y razonamiento 83.559. Las 168 solicitudes/4 errores previamente conocidos corresponden únicamente a 01–03, no al total de cuatro sesiones.\nValidación externa del candidato 04: dominio/API nativo 24/24 aprobados; frontend 5/11 aprobados y 6 fallos del mismo defecto. Reiniciar con Hold antiguo pendiente y usar Hold nuevo funciona inicialmente, pero cuando termina el callback viejo decrementa el contador compartido de la sesión nueva. Al finalizar la nueva petición queda un contador negativo y la gravedad no se reanuda. Se reprodujo tanto en fetch como en JSON, con respuesta válida y con rechazos null/undefined. Es una incidencia, no seis causas distintas. Los reportes crudos conservan cada caso por separado.\nAuditoría de regresión: se conservan los 13 nombres de prueba originales y sus 52 aserciones AST, sin retirarlas ni debilitarlas; esto no sustituye su ejecución. Algunos fixtures heredados son artificiales; un nuevo test de RNG también utilizó una pieza de una celda y se solicitó reemplazar solo el fixture nuevo por un tetrominó canónico.\n05-correction continúa el mismo trabajo nativo y corresponde al único intento externo BMAD-QA-01. Primero debe revisar especificación/AC y memlog, después corregir código y completar instalación limpia sin --legacy-peer-deps, cobertura, auditorías y Sonar final. Las pruebas y configuraciones externas del investigador no pueden ser modificadas por el generador. Se conservan por separado dos incidencias de instrumentación previas a la ejecución real: alias JSX ausente y EPERM del sandbox; no se atribuyen a la aplicación. El TestClient bloqueado dentro del sandbox se detuvo y se repitió con éxito en el entorno local autorizado.\n",
+    "result": {
+      "content": [
+        {
+          "type": "text",
+          "text": "Action completed."
+        }
+      ],
+      "structuredContent": {
+        "documentId": "1JRZvjK8-fdFitwbiKLe2NhOsk1FZNCa_TclgnFwdjao",
+        "revisionId": "AHj4eMRyjH-t6P2D2560SOBegzE_S4VXuMFYM0o4gXD3plW3XXcHTtCyj49wD5GJuIXP5m4z1E2XYg7xLwh3gBLrz7SVjuu8mbKN5GjvrA",
+        "replies": [
+          {},
+          {},
+          {},
+          {},
+          {}
+        ],
+        "writeControl": {
+          "requiredRevisionId": "AHj4eMRyjH-t6P2D2560SOBegzE_S4VXuMFYM0o4gXD3plW3XXcHTtCyj49wD5GJuIXP5m4z1E2XYg7xLwh3gBLrz7SVjuu8mbKN5GjvrA",
+          "targetRevisionId": null
+        },
+        "document_url": "https://docs.google.com/document/d/1JRZvjK8-fdFitwbiKLe2NhOsk1FZNCa_TclgnFwdjao"
+      },
+      "isError": false
+    }
+  }
+}
+

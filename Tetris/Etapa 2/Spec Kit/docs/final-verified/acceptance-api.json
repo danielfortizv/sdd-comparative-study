@@ -1,0 +1,47 @@
+{
+  "base_url": "http://127.0.0.1:8000",
+  "cases": [
+    {
+      "id": "S2-01",
+      "status": "pass",
+      "detail": "new game fields, board and tetromino types valid",
+      "duration_ms": 154.43
+    },
+    {
+      "id": "S2-02",
+      "status": "pass",
+      "detail": "two reads preserved full state",
+      "duration_ms": 8.37
+    },
+    {
+      "id": "S2-10",
+      "status": "pass",
+      "detail": "first hold consumed preview and entered cooldown",
+      "duration_ms": 2.84
+    },
+    {
+      "id": "S2-11",
+      "status": "pass",
+      "detail": "second hold rejected with HTTP 200; state preserved",
+      "duration_ms": 5.36
+    },
+    {
+      "id": "S2-03/S2-12",
+      "status": "pass",
+      "detail": "lock reset hold; swap preserved preview, score and line count",
+      "duration_ms": 131.1
+    },
+    {
+      "id": "S2-15",
+      "status": "pass",
+      "detail": "restart restored all Stage 2 defaults",
+      "duration_ms": 3.57
+    },
+    {
+      "id": "S2-16",
+      "status": "pass",
+      "detail": "missing game GET and hold return 404",
+      "duration_ms": 5.93
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+
+> tetris-stage1-option-a-frontend@0.1.0 test
+> vitest run --coverage --coverage.reportsDirectory=D:\KEVIN\UNIVERSIDAD\Trabajos\Proyecto\Caso 2-Tetris\Etapa 2\Kiro\docs\researcher-verification\final-07\frontend-coverage --coverage.reporter=text --coverage.reporter=lcov --coverage.reporter=json-summary --reporter=json --outputFile=D:\KEVIN\UNIVERSIDAD\Trabajos\Proyecto\Caso 2-Tetris\Etapa 2\Kiro\docs\researcher-verification\final-07\frontend-test-results.json
+
+JSON report written to D:/KEVIN/UNIVERSIDAD/Trabajos/Proyecto/Caso 2-Tetris/Etapa 2/Kiro/docs/researcher-verification/final-07/frontend-test-results.json
+ % Coverage report from v8
+-------------|---------|----------|---------|---------|-------------------------
+File         | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s       
+-------------|---------|----------|---------|---------|-------------------------
+All files    |   88.58 |    77.55 |   92.68 |   94.47 |                         
+ App.tsx     |   96.29 |    91.66 |   88.88 |   96.15 | 119                     
+ Board.tsx   |     100 |       80 |     100 |     100 | 44-70                   
+ Preview.tsx |     100 |       90 |     100 |     100 | 45                      
+ useGame.ts  |   82.45 |       66 |   88.23 |   91.66 | ...,111-112,127-129,148 
+-------------|---------|----------|---------|---------|-------------------------
+
+=============================== Coverage summary ===============================
+Statements   : 88.58% ( 163/184 )
+Branches     : 77.55% ( 76/98 )
+Functions    : 92.68% ( 38/41 )
+Lines        : 94.47% ( 154/163 )
+================================================================================

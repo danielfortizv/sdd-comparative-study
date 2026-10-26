@@ -1,0 +1,16 @@
+{
+  "workflow": "clarify",
+  "label": "03-materialize-proposal",
+  "prompt_sha256": "F1393C257DBF91EB658E98468B15256E56011ECAAA5B6BBB5C16C65EE2E53A73",
+  "seed_sha256": "63919779DD4104076FBABCB130CE296A160FA840E0B4755A2AA5D90757ADA8EF",
+  "requested_model": "gemini-3.5-flash",
+  "cli_version": "0.60.0",
+  "openspec_version": "1.13.2",
+  "project": "project-e6384dd1-d4d3-4a03-948",
+  "started": "2026-10-19T15:18:37.2127344-05:00",
+  "ended": "2026-10-19T15:20:54.5712499-05:00",
+  "duration_seconds": 137.359,
+  "exit_code": 0,
+  "stdout": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\OpenSpec\\docs\\03-materialize-proposal.stdout.json",
+  "stderr": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\OpenSpec\\docs\\03-materialize-proposal.stderr.txt"
+}

@@ -1,0 +1,15 @@
+Name                     Stmts   Miss  Cover   Missing
+------------------------------------------------------
+app\__init__.py              0      0   100%
+app\api\__init__.py          0      0   100%
+app\api\games.py            29      0   100%
+app\api\schemas.py          22      0   100%
+app\domain\__init__.py       0      0   100%
+app\domain\models.py        27      0   100%
+app\main.py                 10      1    90%   34
+app\rules\__init__.py        0      0   100%
+app\rules\engine.py         70      1    99%   120
+app\rules\pieces.py         16      0   100%
+app\store.py                16      0   100%
+------------------------------------------------------
+TOTAL                      190      2    99%

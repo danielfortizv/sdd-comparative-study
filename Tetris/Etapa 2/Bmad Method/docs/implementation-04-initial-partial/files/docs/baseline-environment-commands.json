@@ -1,0 +1,153 @@
+[
+  {
+    "label": "baseline-original-environment",
+    "argv": [
+      "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 1\\Bmad Method\\backend\\.venv\\Scripts\\python.exe",
+      "-B",
+      "-c",
+      "import json,platform,importlib.metadata;print(json.dumps({'python':platform.python_version(),'packages':sorted([{'name':d.metadata['Name'],'version':d.version} for d in importlib.metadata.distributions()],key=lambda x:x['name'].lower())}))"
+    ],
+    "cwd": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\Bmad Method",
+    "started_at_utc": "2026-10-26T00:59:15.521358+00:00",
+    "ended_at_utc": "2026-10-26T00:59:15.691997+00:00",
+    "duration_seconds": 0.172,
+    "exit_code": 0
+  },
+  {
+    "label": "baseline-venv-create",
+    "argv": [
+      "C:\\Users\\Kevin Alvarez\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+      "-m",
+      "venv",
+      "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\Bmad Method\\backend\\.venv"
+    ],
+    "cwd": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\Bmad Method",
+    "started_at_utc": "2026-10-26T00:59:15.692997+00:00",
+    "ended_at_utc": "2026-10-26T00:59:22.479086+00:00",
+    "duration_seconds": 6.781,
+    "exit_code": 0
+  },
+  {
+    "label": "baseline-package-install",
+    "argv": [
+      "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\Bmad Method\\backend\\.venv\\Scripts\\python.exe",
+      "-m",
+      "pip",
+      "install",
+      "-r",
+      "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\Bmad Method\\docs\\baseline-original-python-pins.txt"
+    ],
+    "cwd": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\Bmad Method",
+    "started_at_utc": "2026-10-26T00:59:22.480085+00:00",
+    "ended_at_utc": "2026-10-26T00:59:49.070954+00:00",
+    "duration_seconds": 26.594,
+    "exit_code": 0
+  },
+  {
+    "label": "baseline-replicated-environment",
+    "argv": [
+      "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\Bmad Method\\backend\\.venv\\Scripts\\python.exe",
+      "-B",
+      "-c",
+      "import json,platform,importlib.metadata;print(json.dumps({'python':platform.python_version(),'packages':sorted([{'name':d.metadata['Name'],'version':d.version} for d in importlib.metadata.distributions()],key=lambda x:x['name'].lower())}))"
+    ],
+    "cwd": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\Bmad Method",
+    "started_at_utc": "2026-10-26T00:59:49.071954+00:00",
+    "ended_at_utc": "2026-10-26T00:59:49.339355+00:00",
+    "duration_seconds": 0.266,
+    "exit_code": 0
+  },
+  {
+    "label": "baseline-coverage-tool-versions",
+    "argv": [
+      "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 1\\_toolchain\\venv\\Scripts\\python.exe",
+      "-B",
+      "-c",
+      "import importlib.metadata,json;print(json.dumps({x:importlib.metadata.version(x) for x in ['coverage','pytest-cov']}))"
+    ],
+    "cwd": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\Bmad Method",
+    "started_at_utc": "2026-10-26T00:59:49.339355+00:00",
+    "ended_at_utc": "2026-10-26T00:59:49.552215+00:00",
+    "duration_seconds": 0.219,
+    "exit_code": 0
+  },
+  {
+    "label": "baseline-coverage-install",
+    "argv": [
+      "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\Bmad Method\\backend\\.venv\\Scripts\\python.exe",
+      "-m",
+      "pip",
+      "install",
+      "--no-deps",
+      "coverage==7.16.2",
+      "pytest-cov==7.1.0"
+    ],
+    "cwd": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\Bmad Method",
+    "started_at_utc": "2026-10-26T00:59:49.552215+00:00",
+    "ended_at_utc": "2026-10-26T00:59:54.623471+00:00",
+    "duration_seconds": 5.078,
+    "exit_code": 0
+  },
+  {
+    "label": "baseline-backend",
+    "argv": [
+      "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\Bmad Method\\backend\\.venv\\Scripts\\python.exe",
+      "-B",
+      "-m",
+      "pytest",
+      "app/tests",
+      "-q",
+      "--cov=app",
+      "--cov-report=term-missing",
+      "--cov-report=xml:D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\Bmad Method\\docs\\baseline-coverage.xml"
+    ],
+    "cwd": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\Bmad Method\\backend",
+    "started_at_utc": "2026-10-26T00:59:54.624471+00:00",
+    "ended_at_utc": "2026-10-26T00:59:56.740867+00:00",
+    "duration_seconds": 2.109,
+    "exit_code": 0
+  },
+  {
+    "label": "baseline-npm-ci",
+    "argv": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js",
+      "ci",
+      "--no-fund",
+      "--no-audit"
+    ],
+    "cwd": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\Bmad Method\\frontend",
+    "started_at_utc": "2026-10-26T00:59:56.741868+00:00",
+    "ended_at_utc": "2026-10-26T01:00:02.149094+00:00",
+    "duration_seconds": 5.406,
+    "exit_code": 0
+  },
+  {
+    "label": "baseline-frontend-build",
+    "argv": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js",
+      "run",
+      "build"
+    ],
+    "cwd": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\Bmad Method\\frontend",
+    "started_at_utc": "2026-10-26T01:00:02.150094+00:00",
+    "ended_at_utc": "2026-10-26T01:00:08.873556+00:00",
+    "duration_seconds": 6.735,
+    "exit_code": 0
+  },
+  {
+    "label": "baseline-npm-audit",
+    "argv": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js",
+      "audit",
+      "--json"
+    ],
+    "cwd": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\Bmad Method\\frontend",
+    "started_at_utc": "2026-10-26T01:00:08.873556+00:00",
+    "ended_at_utc": "2026-10-26T01:00:10.033133+00:00",
+    "duration_seconds": 1.156,
+    "exit_code": 1
+  }
+]

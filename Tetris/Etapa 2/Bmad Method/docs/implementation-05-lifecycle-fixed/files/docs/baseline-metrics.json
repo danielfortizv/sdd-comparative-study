@@ -1,0 +1,112 @@
+{
+  "source": {
+    "files": 9,
+    "lines": 1036,
+    "nonblank_lines": 903,
+    "characters": 31549,
+    "lines_per_file": 115.11,
+    "per_file": {
+      "backend/app/core/domain.py": {
+        "lines": 165,
+        "nonblank_lines": 142,
+        "characters": 6334,
+        "sha256": "C84F101000AA9C9A28BC70BE57366801D7680C0CB9D03B1C5879D121970A7974"
+      },
+      "backend/app/main.py": {
+        "lines": 75,
+        "nonblank_lines": 64,
+        "characters": 2326,
+        "sha256": "4030830EC6EC12A855ED7ED4EA1DE7E91CE4CB6E3B0B20874E94DFCB434E8CA4"
+      },
+      "backend/app/tests/test_api.py": {
+        "lines": 62,
+        "nonblank_lines": 50,
+        "characters": 1961,
+        "sha256": "396A93AEC5A2F2EF1B271C7979CCA1D5010F07821BD09D23409994406B62DE56"
+      },
+      "backend/app/tests/test_domain.py": {
+        "lines": 164,
+        "nonblank_lines": 137,
+        "characters": 6366,
+        "sha256": "D5EB5447FC97761ACA1C621F7B5A447605C3834783C86C91862C3C0B6F5E7DCF"
+      },
+      "frontend/index.html": {
+        "lines": 13,
+        "nonblank_lines": 13,
+        "characters": 504,
+        "sha256": "4949B51725F9B0F1B4496D9E57842B63E616FB20C8C02FEA566278CBAD859D6E"
+      },
+      "frontend/src/App.tsx": {
+        "lines": 251,
+        "nonblank_lines": 228,
+        "characters": 8080,
+        "sha256": "CF23E19872647FE757605CDA88DA003AD984343A36A848894B80EE7C4C437147"
+      },
+      "frontend/src/main.tsx": {
+        "lines": 10,
+        "nonblank_lines": 9,
+        "characters": 237,
+        "sha256": "368998600187697635215CE09D6AFC9A4AF03A9F22D09F1A070DF35E4FEE7F2A"
+      },
+      "frontend/src/styles.css": {
+        "lines": 283,
+        "nonblank_lines": 248,
+        "characters": 5503,
+        "sha256": "D379FCEEB87EA0114EA4CD3F1794150CE55229818FC24D4D903ED6ADB5A79673"
+      },
+      "frontend/vite.config.ts": {
+        "lines": 13,
+        "nonblank_lines": 12,
+        "characters": 238,
+        "sha256": "9C4BB8A44251CCB5F069DB76E792655AFCF90D92C42F1626328C5E81F110B454"
+      }
+    }
+  },
+  "specification": {
+    "files": 6,
+    "lines": 1120,
+    "nonblank_lines": 878,
+    "characters": 68220,
+    "lines_per_file": 186.67,
+    "per_file": {
+      "_bmad-output/implementation-artifacts/spec-stage-1-tetris-study.md": {
+        "lines": 82,
+        "nonblank_lines": 61,
+        "characters": 4924,
+        "sha256": "C41A5CE4B570BDA6BA429B33DB8F3CF23EDF6CD4BDE786322C15B70C0B0C5505"
+      },
+      "_bmad-output/planning-artifacts/architecture/architecture-Bmad Method Full-2026-10-05/ARCHITECTURE-SPINE.md": {
+        "lines": 126,
+        "nonblank_lines": 96,
+        "characters": 5753,
+        "sha256": "0D283278ADB789D31893284BFFA4FD27CDD2941B6FB83519FC4E3479F9A8F536"
+      },
+      "_bmad-output/planning-artifacts/briefs/brief-Bmad Method Full-2026-10-05/brief.md": {
+        "lines": 181,
+        "nonblank_lines": 149,
+        "characters": 14501,
+        "sha256": "1C35428347DECF5348152395017C73E4A5CA13A4CAA1712AFCC4CAEA4A25C74A"
+      },
+      "_bmad-output/planning-artifacts/epics.md": {
+        "lines": 351,
+        "nonblank_lines": 256,
+        "characters": 16970,
+        "sha256": "A318F13802C2838987B1737877A68890B46DDCEE8CBF0E9B58DDCF36B08A67C4"
+      },
+      "_bmad-output/planning-artifacts/prds/prd-Bmad Method Full-2026-10-05/addendum.md": {
+        "lines": 32,
+        "nonblank_lines": 27,
+        "characters": 2016,
+        "sha256": "D5120A5B520F253D11114FD3B0EDB1D03F0AD595DD130A355640E840940B6B1D"
+      },
+      "_bmad-output/planning-artifacts/prds/prd-Bmad Method Full-2026-10-05/prd.md": {
+        "lines": 348,
+        "nonblank_lines": 289,
+        "characters": 24056,
+        "sha256": "26FF81EF408BE83A5ECAF36842BEA138B60CC22321F25C0599337466C1209240"
+      }
+    }
+  },
+  "spec_scope": "All six inherited principal Markdown artifacts; dot memlogs and sprintYAML tracked separately; no generated Stage2 spec yet.",
+  "source_scope": "Own backend/frontend source, tests and source-like configuration; no dependency/build/cache/evidence."
+}

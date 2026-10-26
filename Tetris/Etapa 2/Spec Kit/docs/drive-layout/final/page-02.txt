@@ -1,0 +1,40 @@
+OpenSpec — línea base verificada
+Copia de Etapa 1 en Caso 2-Tetris/Etapa 2/OpenSpec. Manifiesto SHA-256:
+OpenSpec/docs/baseline-manifest.json. Especificación base archivada mediante OpenSpec
+1.13.2: 30 requisitos añadidos al catálogo principal; validación nativa 1/1 correcta.
+Semilla común v1.0 SHA-256:
+63919779DD4104076FBABCB130CE296A160FA840E0B4755A2AA5D90757ADA8EF.
+Backend inicial: 13 pruebas aprobadas, 1 advertencia, 0,46 s. Evidencia:
+OpenSpec/docs/baseline-test.log.
+Frontend inicial: compilación de producción aprobada. Evidencia:
+OpenSpec/docs/baseline-frontend-build.log.
+Incidencias de infraestructura: TestClient se bloqueó bajo aislamiento y pasó al ejecutarse
+fuera de él; npm offline no encontró Vite en caché y se copiaron las dependencias locales
+de Etapa 1. Primer intento aislado de Gemini sin respuesta, conservado en 01-propose.*;
+reintento con acceso a Vertex completado.
+OpenSpec — planificación y trazabilidad
+La primera propuesta de Gemini (02-propose-retry) produjo texto pero no archivos; esta
+invocación se conserva como intento fallido de materialización. La aclaración
+03-materialize-proposal creó proposal.md, delta spec, design.md y tasks.md en
+openspec/changes/tetris-stage2-option-a; OpenSpec validó el cambio 1/1. La aclaración
+04-correct-plan corrigió los casos de colisión y el comportamiento de Hold durante
+game_over. Se corrigió además una línea de tasks.md para citar la flujo real de reinicio
+mediante POST /api/games. La invocación 05-apply está implementando el cambio. Ningún
+cambio se ha subido al repositorio.
+Evidencia local: OpenSpec/docs/02-propose-retry.*, 03-materialize-proposal.*,
+04-correct-plan.*, openspec/changes/tetris-stage2-option-a/. Los tokens, tiempos y tamaños
+se consolidarán desde las salidas originales y los transcritos JSONL, sin estimaciones.
+Métricas preliminares de sesiones OpenSpec (antes de
+finalizar apply)
+01-propose: intento aislado interrumpido; tokens no disponibles y duración final no medible.
+02-propose-retry: 622,436 s; 1.586.942 tokens de entrada, 1.262.951 cacheados
+(subconjunto de entrada), 15.910 de salida, 66 respuestas documentadas históricamente,
+no intentos API. Fuente: captura previa de registros JSONL de Gemini CLI deduplicados por
+ID y acotados por hora; evidencia conservada en token-audit.json.
+03-materialize-proposal: 137,359 s; 2.141.393 entrada, 1.591.392 cacheados, 6.694 salida,
+23 intentos API conocidos (0 errores, 23 éxitos). Fuente: campo stats de Gemini CLI en
+JSON.
+04-correct-plan: 48,902 s; 1.273.520 entrada, 1.075.890 cacheados, 2.723 salida, 10
+intentos API conocidos (0 errores, 10 éxitos). Fuente: campo stats de Gemini CLI en JSON.
+Subtotal observado: 5.001.855 entrada, 3.930.233 cacheados, 25.327 salida; el agregado
+previo de 99 solicitudes se retira. En estas tres invocaciones hay 33 intentos API conocidos

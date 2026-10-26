@@ -1,0 +1,26 @@
+{
+  "researcher_created": true,
+  "measured_at_utc": "2026-10-21T19:53:07.572113+00:00",
+  "source": "retained Kiro Stage1 original ACP/native records; no model invocation",
+  "observed_cli_wall_seconds": 546.238,
+  "native_credit_unit": "credit",
+  "observed_credits": 8.92421986699834,
+  "observed_agent_elapsed_seconds": 540.609,
+  "elapsed_unit_validation": "elapsedTime540609 /1000 equals native turn_start12:56:45.565 to turn_end13:05:46.174 (540.609s)",
+  "recorded_request_id_count": 35,
+  "api_attempts_errors_successes": null,
+  "billed_token_counters": null,
+  "assistant_say_records": 26,
+  "assistant_reasoning_records": 35,
+  "native_interval_records": 372,
+  "acp_event_count": 903,
+  "checks": {
+    "credit_summary_parsed": true,
+    "native_interval_parsed": true,
+    "unknowns_preserved": true,
+    "original_archive_prefix_dedup": true,
+    "repeated_stream_chunks_preserved": true
+  },
+  "validation_environment_note": "First scratch-copy check failed due sandbox Temp-directory permissions; repeated in verified workspace scratch path; no model or app command ran.",
+  "limitation": "historical parser validation does not establish future Kiro model responses or Stage2 acceptance"
+}

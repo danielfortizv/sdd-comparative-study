@@ -1,0 +1,162 @@
+﻿{
+    "started":  "2026-10-25T16:33:13.8579514-05:00",
+    "ended":  "2026-10-25T16:33:34.1649942-05:00",
+    "exit_code":  0,
+    "project":  "tetris-stage2-tessl",
+    "baseline":  false,
+    "coverage_xml":  "docs/coverage.xml",
+    "frontend_lcov_present":  true,
+    "test_classification":  "backend/tests/** and frontend/src/**/*.test.{ts,tsx}",
+    "source_excludes":  "frontend/src/**/*.test.{ts,tsx}",
+    "coverage_sha256":  "BC1DD4B2214C5CD66C083C929B06644BEE3E37A9BC0822877C0A9FC04CB2A0D4",
+    "frontend_lcov_sha256":  "9D838DFD8E0B8584ACC2D3A22653DA72E714B2CC6B758E717AA9135BAD58BAC4",
+    "source_unchanged_during_scan":  true,
+    "source_hashes_before":  [
+                                 {
+                                     "path":  "backend/app/controllers/games.py",
+                                     "sha256":  "4C81CD4C610C8E94A909D567AEC4CEBD7521CF82124313F8A97B65B5F2C2D610"
+                                 },
+                                 {
+                                     "path":  "backend/app/core/config.py",
+                                     "sha256":  "0EDCC679E16FF9D13B206B87A6C92CBC0CCCB75412D0D7F2AFFDD2D87DAFCBE7"
+                                 },
+                                 {
+                                     "path":  "backend/app/domain/pieces.py",
+                                     "sha256":  "E57C05C961EFED813DFA1CA565166C50F8B62D9FB3A9FC37121FECC470EA6D0E"
+                                 },
+                                 {
+                                     "path":  "backend/app/domain/rules.py",
+                                     "sha256":  "051BFB186456B2AE1BD4A22F1000ECD59B7D4B7A9FB579F2B2840002C55D1C7E"
+                                 },
+                                 {
+                                     "path":  "backend/app/main.py",
+                                     "sha256":  "409385F215D1345313DCF71CD5CFB60B7EBC02DBEF817D8FD2E3611E91A4E88D"
+                                 },
+                                 {
+                                     "path":  "backend/app/models/game.py",
+                                     "sha256":  "32F1568652762DEB8616D1E954CDFAB8007CB5DA138848F2B40F6F1D5ACFE0A8"
+                                 },
+                                 {
+                                     "path":  "backend/tests/test_game.py",
+                                     "sha256":  "EE683A8C67076B8FFC4174B3A4F974370E064F955CC18CAA952A4DE27393A4A3"
+                                 },
+                                 {
+                                     "path":  "backend/tests/test_scoring.py",
+                                     "sha256":  "F72BA9E77F942B2D7649064FE3173D51CA82EAF8F5BCA1741E37AB9F9003A990"
+                                 },
+                                 {
+                                     "path":  "frontend/src/api.test.ts",
+                                     "sha256":  "23F86A116934AF25A80205E82D57BAECBA3B64FF0ECFF46CC415AE6DD36A616F"
+                                 },
+                                 {
+                                     "path":  "frontend/src/api.ts",
+                                     "sha256":  "42C0E2A2391E5BFDA7672A591EDD9439A1E26486B03BC8CAF76A06D91447C1C7"
+                                 },
+                                 {
+                                     "path":  "frontend/src/App.test.tsx",
+                                     "sha256":  "98968AF8AB4C1E027A907A8FCEF2D88C06BE8E0F16C8B51554C6F2F0DBEFF3D7"
+                                 },
+                                 {
+                                     "path":  "frontend/src/App.tsx",
+                                     "sha256":  "2E19DFD935FC535449A0CF6557F2A44F8E6476434C95DCCBE7B78778C142783D"
+                                 },
+                                 {
+                                     "path":  "frontend/src/components/GameStatus.tsx",
+                                     "sha256":  "FE6EC1F398F240A25DE44BFDAC75037C6F9BF3A377A48E09F3455EBE35098636"
+                                 },
+                                 {
+                                     "path":  "frontend/src/components/TetrisBoard.test.tsx",
+                                     "sha256":  "D32ADF7B7BB7F2787C69797610D15CF3F346474D6C34538F57E43A774806FAF9"
+                                 },
+                                 {
+                                     "path":  "frontend/src/components/TetrisBoard.tsx",
+                                     "sha256":  "1DDCE2645A3D6A55635AAD4906E45BB65ADC5FDAE0AF3C2DE4E5324AA6E0F845"
+                                 },
+                                 {
+                                     "path":  "frontend/src/index.css",
+                                     "sha256":  "78477E8A3C137209A3D705EF2E181438B3E75ED1E7978EA4BA4DCCCC05FBE6CB"
+                                 },
+                                 {
+                                     "path":  "frontend/src/main.tsx",
+                                     "sha256":  "04BC6C664005D207F6C9A42CAC1A11810F6257A77604ECC9A2DFA1F0A68959BA"
+                                 },
+                                 {
+                                     "path":  "frontend/src/types.ts",
+                                     "sha256":  "57906B9BAA7390073B674D4A7DF7851CF716DF7F8C7ACFE4CC5DBF15899571EC"
+                                 }
+                             ],
+    "source_hashes_after":  [
+                                {
+                                    "path":  "backend/app/controllers/games.py",
+                                    "sha256":  "4C81CD4C610C8E94A909D567AEC4CEBD7521CF82124313F8A97B65B5F2C2D610"
+                                },
+                                {
+                                    "path":  "backend/app/core/config.py",
+                                    "sha256":  "0EDCC679E16FF9D13B206B87A6C92CBC0CCCB75412D0D7F2AFFDD2D87DAFCBE7"
+                                },
+                                {
+                                    "path":  "backend/app/domain/pieces.py",
+                                    "sha256":  "E57C05C961EFED813DFA1CA565166C50F8B62D9FB3A9FC37121FECC470EA6D0E"
+                                },
+                                {
+                                    "path":  "backend/app/domain/rules.py",
+                                    "sha256":  "051BFB186456B2AE1BD4A22F1000ECD59B7D4B7A9FB579F2B2840002C55D1C7E"
+                                },
+                                {
+                                    "path":  "backend/app/main.py",
+                                    "sha256":  "409385F215D1345313DCF71CD5CFB60B7EBC02DBEF817D8FD2E3611E91A4E88D"
+                                },
+                                {
+                                    "path":  "backend/app/models/game.py",
+                                    "sha256":  "32F1568652762DEB8616D1E954CDFAB8007CB5DA138848F2B40F6F1D5ACFE0A8"
+                                },
+                                {
+                                    "path":  "backend/tests/test_game.py",
+                                    "sha256":  "EE683A8C67076B8FFC4174B3A4F974370E064F955CC18CAA952A4DE27393A4A3"
+                                },
+                                {
+                                    "path":  "backend/tests/test_scoring.py",
+                                    "sha256":  "F72BA9E77F942B2D7649064FE3173D51CA82EAF8F5BCA1741E37AB9F9003A990"
+                                },
+                                {
+                                    "path":  "frontend/src/api.test.ts",
+                                    "sha256":  "23F86A116934AF25A80205E82D57BAECBA3B64FF0ECFF46CC415AE6DD36A616F"
+                                },
+                                {
+                                    "path":  "frontend/src/api.ts",
+                                    "sha256":  "42C0E2A2391E5BFDA7672A591EDD9439A1E26486B03BC8CAF76A06D91447C1C7"
+                                },
+                                {
+                                    "path":  "frontend/src/App.test.tsx",
+                                    "sha256":  "98968AF8AB4C1E027A907A8FCEF2D88C06BE8E0F16C8B51554C6F2F0DBEFF3D7"
+                                },
+                                {
+                                    "path":  "frontend/src/App.tsx",
+                                    "sha256":  "2E19DFD935FC535449A0CF6557F2A44F8E6476434C95DCCBE7B78778C142783D"
+                                },
+                                {
+                                    "path":  "frontend/src/components/GameStatus.tsx",
+                                    "sha256":  "FE6EC1F398F240A25DE44BFDAC75037C6F9BF3A377A48E09F3455EBE35098636"
+                                },
+                                {
+                                    "path":  "frontend/src/components/TetrisBoard.test.tsx",
+                                    "sha256":  "D32ADF7B7BB7F2787C69797610D15CF3F346474D6C34538F57E43A774806FAF9"
+                                },
+                                {
+                                    "path":  "frontend/src/components/TetrisBoard.tsx",
+                                    "sha256":  "1DDCE2645A3D6A55635AAD4906E45BB65ADC5FDAE0AF3C2DE4E5324AA6E0F845"
+                                },
+                                {
+                                    "path":  "frontend/src/index.css",
+                                    "sha256":  "78477E8A3C137209A3D705EF2E181438B3E75ED1E7978EA4BA4DCCCC05FBE6CB"
+                                },
+                                {
+                                    "path":  "frontend/src/main.tsx",
+                                    "sha256":  "04BC6C664005D207F6C9A42CAC1A11810F6257A77604ECC9A2DFA1F0A68959BA"
+                                },
+                                {
+                                    "path":  "frontend/src/types.ts",
+                                    "sha256":  "57906B9BAA7390073B674D4A7DF7851CF716DF7F8C7ACFE4CC5DBF15899571EC"
+                                }
+                            ]
+}

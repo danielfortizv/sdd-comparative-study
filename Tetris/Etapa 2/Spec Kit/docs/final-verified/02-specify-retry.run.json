@@ -1,0 +1,15 @@
+{
+  "workflow": "specify",
+  "label": "02-specify-retry",
+  "prompt_sha256": "5F79B82470A2C143D83254F938838F23BA50E3F980E9D77512F79BE2B7E52882",
+  "seed_sha256": "63919779DD4104076FBABCB130CE296A160FA840E0B4755A2AA5D90757ADA8EF",
+  "requested_model": "gemini-3.5-flash",
+  "cli_version": "0.60.0",
+  "spec_kit_version": "1.0.12",
+  "started": "2026-10-20T06:24:38.7683176-05:00",
+  "ended": "2026-10-20T06:29:52.8548217-05:00",
+  "duration_seconds": 314.087,
+  "exit_code": 0,
+  "stdout": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\Spec Kit\\docs\\02-specify-retry.stdout.json",
+  "stderr": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\Spec Kit\\docs\\02-specify-retry.stderr.txt"
+}

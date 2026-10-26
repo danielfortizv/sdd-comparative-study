@@ -1,0 +1,12 @@
+{
+  "recorded_at": "2026-10-20T07:11:56.0945851-05:00",
+  "timezone": "America/Bogota",
+  "node": "v25.6.1",
+  "npm": "11.9.0",
+  "shared_python": "Python 3.12.14",
+  "gemini_cli": "0.60.0",
+  "spec_kit": "1.0.12",
+  "requested_model": "gemini-3.5-flash",
+  "sonarqube": "26.9.0.129388",
+  "seed_sha256": "63919779DD4104076FBABCB130CE296A160FA840E0B4755A2AA5D90757ADA8EF"
+}

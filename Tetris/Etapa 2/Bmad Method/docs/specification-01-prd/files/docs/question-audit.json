@@ -1,0 +1,377 @@
+{
+  "audited_at_utc": "2026-10-26T01:10:16.502859+00:00",
+  "status": "Manual adjudication required before closed-run question totals can be established.",
+  "tool": "BMAD Stage 2",
+  "count_definition": "A blocking clarification question is emitted main-model natural-language text requesting missing user/researcher input before proceeding. Count requests, not punctuation; quoted/template-only questions are excluded by manual adjudication.",
+  "closed_run_labels": [
+    "01-prd"
+  ],
+  "pending_run_labels": [],
+  "manual_review_required_closed_labels": [
+    "01-prd"
+  ],
+  "closed_runs_observed_blocking_question_count": null,
+  "all_started_runs_observed_blocking_question_count": null,
+  "reviewed_unique_natural_language_messages": null,
+  "runs": [
+    {
+      "label": "01-prd",
+      "state": "closed",
+      "started": "2026-10-25T20:02:50.5601359-05:00",
+      "ended": "2026-10-25T20:06:46.0630934-05:00",
+      "observed_until": null,
+      "exit_code": 0,
+      "metadata_path": "01-prd.run.json",
+      "metadata_sha256": "103DCBD7E21F9C380F44C4558C9B310422899733E7FE492E0A46FC0C5EA08CE7",
+      "main_model": "gemini-3.5-flash",
+      "review_status": "manual_review_required",
+      "candidate_signature_sha256": "58548748DE9A1AE1857A8664917C34661365165BDD236D54CF7D837BC84872DC",
+      "natural_language_message_count": null,
+      "tool_requested_blocking_questions_observed": null,
+      "candidate_messages": [
+        {
+          "candidate_id": "1f5c20cb-9a43-4b66-aa33-ebdd8bd9bfde/697c77e2-8b38-4ca5-9520-8e1580c5d4f0",
+          "session_id": "1f5c20cb-9a43-4b66-aa33-ebdd8bd9bfde",
+          "response_id": "697c77e2-8b38-4ca5-9520-8e1580c5d4f0",
+          "timestamp": "2026-10-26T01:04:45.849Z",
+          "models_observed": [
+            "gemini-3.5-flash"
+          ],
+          "attribution": "main_model",
+          "text": "I will now initialize the native append-only memory log (`.memlog.md`) within the Stage 2 document workspace (`_bmad-output/stage2/planning-artifacts/prds/prd-stage2-option-a`). This file serves as the chronological audit trail for all design decisions, scope assumptions, and headless overrides during the PRD generation phase. This command will create a new directory and the base `.memlog.md` file if they do not yet exist.",
+          "snippet": "I will now initialize the native append-only memory log (`.memlog.md`) within the Stage 2 document workspace (`_bmad-output/stage2/planning-artifacts/prds/prd-stage2-option-a`). This file serves as the chronological audit trail for all design decisions, scope assumptions, and headless overrides during the PRD generation phase. This command will create a new directory and the base `.memlog.md` file if they do not yet exist.",
+          "decoded_text_utf8_sha256": "CFF8026F3A0C51EC1B34301871E73B249D6C82411AF90AD67C72E918343B97DB",
+          "characters": 426,
+          "text_variants": [
+            {
+              "text": "I will now initialize the native append-only memory log (`.memlog.md`) within the Stage 2 document workspace (`_bmad-output/stage2/planning-artifacts/prds/prd-stage2-option-a`). This file serves as the chronological audit trail for all design decisions, scope assumptions, and headless overrides during the PRD generation phase. This command will create a new directory and the base `.memlog.md` file if they do not yet exist.",
+              "decoded_text_utf8_sha256": "CFF8026F3A0C51EC1B34301871E73B249D6C82411AF90AD67C72E918343B97DB",
+              "characters": 426,
+              "models": [
+                "gemini-3.5-flash"
+              ],
+              "timestamps": [
+                "2026-10-26T01:04:45.849Z"
+              ],
+              "tokens_present": true,
+              "locations": [
+                {
+                  "path": "gemini-home/.gemini/tmp/bmad-method/chats/session-2026-10-26T01-02-1f5c20cb.jsonl",
+                  "line": 115,
+                  "container": "event"
+                },
+                {
+                  "path": "gemini-home/.gemini/tmp/bmad-method/chats/session-2026-10-26T01-02-1f5c20cb.jsonl",
+                  "line": 117,
+                  "container": "event"
+                },
+                {
+                  "path": "transcripts-archive/session-2026-10-26T01-02-1f5c20cb.5416AE4B0DBC80A4.jsonl",
+                  "line": 115,
+                  "container": "event"
+                },
+                {
+                  "path": "transcripts-archive/session-2026-10-26T01-02-1f5c20cb.5416AE4B0DBC80A4.jsonl",
+                  "line": 117,
+                  "container": "event"
+                }
+              ]
+            }
+          ],
+          "variant_conflict": false,
+          "transcript_copies": [
+            "gemini-home/.gemini/tmp/bmad-method/chats/session-2026-10-26T01-02-1f5c20cb.jsonl",
+            "transcripts-archive/session-2026-10-26T01-02-1f5c20cb.5416AE4B0DBC80A4.jsonl"
+          ],
+          "manual_adjudication": null
+        },
+        {
+          "candidate_id": "1f5c20cb-9a43-4b66-aa33-ebdd8bd9bfde/8d03a0ac-e61d-42a1-9119-a7cecdb9bc99",
+          "session_id": "1f5c20cb-9a43-4b66-aa33-ebdd8bd9bfde",
+          "response_id": "8d03a0ac-e61d-42a1-9119-a7cecdb9bc99",
+          "timestamp": "2026-10-26T01:04:56.423Z",
+          "models_observed": [
+            "gemini-3.5-flash"
+          ],
+          "attribution": "main_model",
+          "text": "I will now append three entries to the newly initialized `.memlog.md` file in the workspace. These entries record:\n1. **Headless Override**: Enabling the fast-path cost-control override and utilizing local sequential validation to minimize token and turn usage.\n2. **Foundational Assumptions**: The compatibility invariants discovered from analyzing the code, including the 20x10 board structure, the standard spawn coordinate system (specifically preserving the 'O' shape's coordinate origin at `(0,4)`), and ensuring the 13 existing unit tests continue to pass.\n3. **Key Design Decisions**: Defining the Stage 2 scope details including score counters, line-cleared totals, level-based gravity down to a 100ms floor, and the Hold/Next piece capabilities.\n\nRunning these updates sequentially in a single command chain prevents file-write collisions and reduces API turn overhead.",
+          "snippet": "I will now append three entries to the newly initialized `.memlog.md` file in the workspace. These entries record:\n1. **Headless Override**: Enabling the fast-path cost-control override and utilizing local sequential validation to minimize token and turn usage.\n2. **Foundational Assumptions**: The compatibility invariants discovered from analyzing the code, including the 20x10 board structure, the standard spawn coordinate system (specifically preserving the 'O' shape's coordinate origin at `(0,",
+          "decoded_text_utf8_sha256": "4468ED570DB09B23948EFE7DDD652FE7496999381F351558A5948E0191D529C3",
+          "characters": 879,
+          "text_variants": [
+            {
+              "text": "I will now append three entries to the newly initialized `.memlog.md` file in the workspace. These entries record:\n1. **Headless Override**: Enabling the fast-path cost-control override and utilizing local sequential validation to minimize token and turn usage.\n2. **Foundational Assumptions**: The compatibility invariants discovered from analyzing the code, including the 20x10 board structure, the standard spawn coordinate system (specifically preserving the 'O' shape's coordinate origin at `(0,4)`), and ensuring the 13 existing unit tests continue to pass.\n3. **Key Design Decisions**: Defining the Stage 2 scope details including score counters, line-cleared totals, level-based gravity down to a 100ms floor, and the Hold/Next piece capabilities.\n\nRunning these updates sequentially in a single command chain prevents file-write collisions and reduces API turn overhead.",
+              "decoded_text_utf8_sha256": "4468ED570DB09B23948EFE7DDD652FE7496999381F351558A5948E0191D529C3",
+              "characters": 879,
+              "models": [
+                "gemini-3.5-flash"
+              ],
+              "timestamps": [
+                "2026-10-26T01:04:56.423Z"
+              ],
+              "tokens_present": true,
+              "locations": [
+                {
+                  "path": "gemini-home/.gemini/tmp/bmad-method/chats/session-2026-10-26T01-02-1f5c20cb.jsonl",
+                  "line": 120,
+                  "container": "event"
+                },
+                {
+                  "path": "gemini-home/.gemini/tmp/bmad-method/chats/session-2026-10-26T01-02-1f5c20cb.jsonl",
+                  "line": 122,
+                  "container": "event"
+                },
+                {
+                  "path": "transcripts-archive/session-2026-10-26T01-02-1f5c20cb.5416AE4B0DBC80A4.jsonl",
+                  "line": 120,
+                  "container": "event"
+                },
+                {
+                  "path": "transcripts-archive/session-2026-10-26T01-02-1f5c20cb.5416AE4B0DBC80A4.jsonl",
+                  "line": 122,
+                  "container": "event"
+                }
+              ]
+            }
+          ],
+          "variant_conflict": false,
+          "transcript_copies": [
+            "gemini-home/.gemini/tmp/bmad-method/chats/session-2026-10-26T01-02-1f5c20cb.jsonl",
+            "transcripts-archive/session-2026-10-26T01-02-1f5c20cb.5416AE4B0DBC80A4.jsonl"
+          ],
+          "manual_adjudication": null
+        },
+        {
+          "candidate_id": "1f5c20cb-9a43-4b66-aa33-ebdd8bd9bfde/1caf5bfa-0cd6-43f6-86b0-633c0aafe0d9",
+          "session_id": "1f5c20cb-9a43-4b66-aa33-ebdd8bd9bfde",
+          "response_id": "1caf5bfa-0cd6-43f6-86b0-633c0aafe0d9",
+          "timestamp": "2026-10-26T01:06:18.646Z",
+          "models_observed": [
+            "gemini-3.5-flash"
+          ],
+          "attribution": "main_model",
+          "text": "I will now surgically update the frontmatter status of the newly created PRD to `final` and set the update timestamp, signaling that the requirements are finalized, validated, and ready for downstream workflows.",
+          "snippet": "I will now surgically update the frontmatter status of the newly created PRD to `final` and set the update timestamp, signaling that the requirements are finalized, validated, and ready for downstream workflows.",
+          "decoded_text_utf8_sha256": "D8198B7EC7751AD3CF01013EEBA03AA61EF17F53DD4AD2785906EB291AED19EC",
+          "characters": 211,
+          "text_variants": [
+            {
+              "text": "I will now surgically update the frontmatter status of the newly created PRD to `final` and set the update timestamp, signaling that the requirements are finalized, validated, and ready for downstream workflows.",
+              "decoded_text_utf8_sha256": "D8198B7EC7751AD3CF01013EEBA03AA61EF17F53DD4AD2785906EB291AED19EC",
+              "characters": 211,
+              "models": [
+                "gemini-3.5-flash"
+              ],
+              "timestamps": [
+                "2026-10-26T01:06:18.646Z"
+              ],
+              "tokens_present": true,
+              "locations": [
+                {
+                  "path": "gemini-home/.gemini/tmp/bmad-method/chats/session-2026-10-26T01-02-1f5c20cb.jsonl",
+                  "line": 150,
+                  "container": "event"
+                },
+                {
+                  "path": "gemini-home/.gemini/tmp/bmad-method/chats/session-2026-10-26T01-02-1f5c20cb.jsonl",
+                  "line": 152,
+                  "container": "event"
+                },
+                {
+                  "path": "transcripts-archive/session-2026-10-26T01-02-1f5c20cb.5416AE4B0DBC80A4.jsonl",
+                  "line": 150,
+                  "container": "event"
+                },
+                {
+                  "path": "transcripts-archive/session-2026-10-26T01-02-1f5c20cb.5416AE4B0DBC80A4.jsonl",
+                  "line": 152,
+                  "container": "event"
+                }
+              ]
+            }
+          ],
+          "variant_conflict": false,
+          "transcript_copies": [
+            "gemini-home/.gemini/tmp/bmad-method/chats/session-2026-10-26T01-02-1f5c20cb.jsonl",
+            "transcripts-archive/session-2026-10-26T01-02-1f5c20cb.5416AE4B0DBC80A4.jsonl"
+          ],
+          "manual_adjudication": null
+        },
+        {
+          "candidate_id": "1f5c20cb-9a43-4b66-aa33-ebdd8bd9bfde/3e882ad0-0e57-4d84-b94a-a53d92b7b17f",
+          "session_id": "1f5c20cb-9a43-4b66-aa33-ebdd8bd9bfde",
+          "response_id": "3e882ad0-0e57-4d84-b94a-a53d92b7b17f",
+          "timestamp": "2026-10-26T01:06:33.906Z",
+          "models_observed": [
+            "gemini-3.5-flash"
+          ],
+          "attribution": "main_model",
+          "text": "I will now append the final event to the `.memlog.md` file in our Stage 2 doc workspace, indicating that the PRD has been successfully generated, locally validated, and finalized under our headless fast-path cost-control run.",
+          "snippet": "I will now append the final event to the `.memlog.md` file in our Stage 2 doc workspace, indicating that the PRD has been successfully generated, locally validated, and finalized under our headless fast-path cost-control run.",
+          "decoded_text_utf8_sha256": "4919C336D9674D2315CAF1669394E1A60F69384ACF68A737E9D5F5AA8385F2EE",
+          "characters": 225,
+          "text_variants": [
+            {
+              "text": "I will now append the final event to the `.memlog.md` file in our Stage 2 doc workspace, indicating that the PRD has been successfully generated, locally validated, and finalized under our headless fast-path cost-control run.",
+              "decoded_text_utf8_sha256": "4919C336D9674D2315CAF1669394E1A60F69384ACF68A737E9D5F5AA8385F2EE",
+              "characters": 225,
+              "models": [
+                "gemini-3.5-flash"
+              ],
+              "timestamps": [
+                "2026-10-26T01:06:33.906Z"
+              ],
+              "tokens_present": true,
+              "locations": [
+                {
+                  "path": "gemini-home/.gemini/tmp/bmad-method/chats/session-2026-10-26T01-02-1f5c20cb.jsonl",
+                  "line": 155,
+                  "container": "event"
+                },
+                {
+                  "path": "gemini-home/.gemini/tmp/bmad-method/chats/session-2026-10-26T01-02-1f5c20cb.jsonl",
+                  "line": 157,
+                  "container": "event"
+                },
+                {
+                  "path": "transcripts-archive/session-2026-10-26T01-02-1f5c20cb.5416AE4B0DBC80A4.jsonl",
+                  "line": 155,
+                  "container": "event"
+                },
+                {
+                  "path": "transcripts-archive/session-2026-10-26T01-02-1f5c20cb.5416AE4B0DBC80A4.jsonl",
+                  "line": 157,
+                  "container": "event"
+                }
+              ]
+            }
+          ],
+          "variant_conflict": false,
+          "transcript_copies": [
+            "gemini-home/.gemini/tmp/bmad-method/chats/session-2026-10-26T01-02-1f5c20cb.jsonl",
+            "transcripts-archive/session-2026-10-26T01-02-1f5c20cb.5416AE4B0DBC80A4.jsonl"
+          ],
+          "manual_adjudication": null
+        },
+        {
+          "candidate_id": "1f5c20cb-9a43-4b66-aa33-ebdd8bd9bfde/d0ba9afe-b55e-4c2d-9de1-8e36e8886a8e",
+          "session_id": "1f5c20cb-9a43-4b66-aa33-ebdd8bd9bfde",
+          "response_id": "d0ba9afe-b55e-4c2d-9de1-8e36e8886a8e",
+          "timestamp": "2026-10-26T01:06:45.992Z",
+          "models_observed": [
+            "gemini-3.5-flash"
+          ],
+          "attribution": "main_model",
+          "text": "The Stage 2 Product Requirements Document (PRD) has been successfully created, structured, and validated locally against the Bmad Quality Rubric under Headless Fast-Path mode.\n\n### Created Artifacts in Doc Workspace:\n1. **Product Requirements Document (PRD):** `_bmad-output/stage2/planning-artifacts/prds/prd-stage2-option-a/prd.md`\n2. **PRD Addendum (Technical Contracts & Test Strategy):** `_bmad-output/stage2/planning-artifacts/prds/prd-stage2-option-a/addendum.md`\n3. **Validation Quality Review Report:** `_bmad-output/stage2/planning-artifacts/prds/prd-stage2-option-a/review-rubric.md`\n4. **Append-Only Memory Log Audit Trail:** `_bmad-output/stage2/planning-artifacts/prds/prd-stage2-option-a/.memlog.md`\n\n***\n\n```json\n{\n  \"status\": \"complete\",\n  \"intent\": \"create\",\n  \"prd\": \"_bmad-output/stage2/planning-artifacts/prds/prd-stage2-option-a/prd.md\",\n  \"addendum\": \"_bmad-output/stage2/planning-artifacts/prds/prd-stage2-option-a/addendum.md\",\n  \"memlog\": \"_bmad-output/stage2/planning-artifacts/prds/prd-stage2-option-a/.memlog.md\",\n  \"open_questions\": [],\n  \"assumptions\": [\n    \"Compatibility facts validated from code: POST game creation is 201, board is 20x10 integer matrix 0..7, spawn origins (0,4) for O must be preserved, and the 13 original regression tests must remain passing.\",\n    \"Spawning a piece (either normal or hold) centers it using the same shape templates and coordinate origins as Stage 1.\",\n    \"The Level calculation and gravity speedups are calculated on-the-fly inside the line clear locking logic before returning the final state.\"\n  ]\n}\n```",
+          "snippet": "The Stage 2 Product Requirements Document (PRD) has been successfully created, structured, and validated locally against the Bmad Quality Rubric under Headless Fast-Path mode.\n\n### Created Artifacts in Doc Workspace:\n1. **Product Requirements Document (PRD):** `_bmad-output/stage2/planning-artifacts/prds/prd-stage2-option-a/prd.md`\n2. **PRD Addendum (Technical Contracts & Test Strategy):** `_bmad-output/stage2/planning-artifacts/prds/prd-stage2-option-a/addendum.md`\n3. **Validation Quality Revie",
+          "decoded_text_utf8_sha256": "9A8E860547BA8925E84EC6BD47DFA0B9952DAF2C9729F53D1CFC33939A4707F1",
+          "characters": 1579,
+          "text_variants": [
+            {
+              "text": "The Stage 2 Product Requirements Document (PRD) has been successfully created, structured, and validated locally against the Bmad Quality Rubric under Headless Fast-Path mode.\n\n### Created Artifacts in Doc Workspace:\n1. **Product Requirements Document (PRD):** `_bmad-output/stage2/planning-artifacts/prds/prd-stage2-option-a/prd.md`\n2. **PRD Addendum (Technical Contracts & Test Strategy):** `_bmad-output/stage2/planning-artifacts/prds/prd-stage2-option-a/addendum.md`\n3. **Validation Quality Review Report:** `_bmad-output/stage2/planning-artifacts/prds/prd-stage2-option-a/review-rubric.md`\n4. **Append-Only Memory Log Audit Trail:** `_bmad-output/stage2/planning-artifacts/prds/prd-stage2-option-a/.memlog.md`\n\n***\n\n```json\n{\n  \"status\": \"complete\",\n  \"intent\": \"create\",\n  \"prd\": \"_bmad-output/stage2/planning-artifacts/prds/prd-stage2-option-a/prd.md\",\n  \"addendum\": \"_bmad-output/stage2/planning-artifacts/prds/prd-stage2-option-a/addendum.md\",\n  \"memlog\": \"_bmad-output/stage2/planning-artifacts/prds/prd-stage2-option-a/.memlog.md\",\n  \"open_questions\": [],\n  \"assumptions\": [\n    \"Compatibility facts validated from code: POST game creation is 201, board is 20x10 integer matrix 0..7, spawn origins (0,4) for O must be preserved, and the 13 original regression tests must remain passing.\",\n    \"Spawning a piece (either normal or hold) centers it using the same shape templates and coordinate origins as Stage 1.\",\n    \"The Level calculation and gravity speedups are calculated on-the-fly inside the line clear locking logic before returning the final state.\"\n  ]\n}\n```",
+              "decoded_text_utf8_sha256": "9A8E860547BA8925E84EC6BD47DFA0B9952DAF2C9729F53D1CFC33939A4707F1",
+              "characters": 1579,
+              "models": [
+                "gemini-3.5-flash"
+              ],
+              "timestamps": [
+                "2026-10-26T01:06:45.992Z"
+              ],
+              "tokens_present": true,
+              "locations": [
+                {
+                  "path": "gemini-home/.gemini/tmp/bmad-method/chats/session-2026-10-26T01-02-1f5c20cb.jsonl",
+                  "line": 165,
+                  "container": "event"
+                },
+                {
+                  "path": "transcripts-archive/session-2026-10-26T01-02-1f5c20cb.5416AE4B0DBC80A4.jsonl",
+                  "line": 165,
+                  "container": "event"
+                }
+              ]
+            }
+          ],
+          "variant_conflict": false,
+          "transcript_copies": [
+            "gemini-home/.gemini/tmp/bmad-method/chats/session-2026-10-26T01-02-1f5c20cb.jsonl",
+            "transcripts-archive/session-2026-10-26T01-02-1f5c20cb.5416AE4B0DBC80A4.jsonl"
+          ],
+          "manual_adjudication": null
+        }
+      ],
+      "excluded_candidates": [],
+      "cli_final_response": {
+        "path": "01-prd.stdout.json",
+        "state": "matched retained candidate; not counted twice",
+        "matches": [
+          "1f5c20cb-9a43-4b66-aa33-ebdd8bd9bfde/d0ba9afe-b55e-4c2d-9de1-8e36e8886a8e"
+        ],
+        "sha256": "3B1A8B47225287DFE8B7449D5E142DAECDA7ED38E1819330656FEBF578127117",
+        "bytes": 5232
+      },
+      "recorded_main_response_count": 33,
+      "observed_tool_names": [
+        "activate_skill",
+        "glob",
+        "read_file",
+        "replace",
+        "run_shell_command",
+        "update_topic",
+        "write_file"
+      ],
+      "interactive_question_tool_names_observed": [],
+      "manual_interval_review": null,
+      "coverage": "retained timestamp-bounded text only; original/archive copies deduplicated by session/response identity before counting. Failed, empty, unrecorded or active output does not prove an absolute absence of questions."
+    }
+  ],
+  "source_files": [
+    {
+      "path": "gemini-home/.gemini/tmp/bmad-method/chats/session-2026-10-26T01-02-1f5c20cb.jsonl",
+      "bytes_read": 577083,
+      "sha256": "5416AE4B0DBC80A404D7CD93723FA24E9B458AE3667B28DCA3B7E686FEA26B38",
+      "snapshot_scope": "bytes observed by this audit; an active source may append later"
+    },
+    {
+      "path": "transcripts-archive/session-2026-10-26T01-02-1f5c20cb.5416AE4B0DBC80A4.jsonl",
+      "bytes_read": 577083,
+      "sha256": "5416AE4B0DBC80A404D7CD93723FA24E9B458AE3667B28DCA3B7E686FEA26B38",
+      "snapshot_scope": "bytes observed by this audit; an active source may append later"
+    }
+  ],
+  "source_read_warnings": [],
+  "unassigned_text_requires_review": [],
+  "interval_definition": "Timezone-qualified start/end nanoseconds are applied before deduplication, including resumed history appended to an older session. Active intervals end at this audit's observation timestamp. Timestamped embedded/replayed messages retain their original timestamp.",
+  "deduplication": "session ID plus response ID; every text variant and source-copy location retained. Longer prefix-complete text is displayed, conflicting variants require an explicit reviewed selected hash. Matching completed CLI response is never counted again.",
+  "exclusions": [
+    "thoughts/reasoning/signatures",
+    "function/tool calls, arguments and results",
+    "user/native-template text",
+    "exact unlabeled/no-token synthetic CLI notices",
+    "explicitly labeled auxiliary-model text"
+  ],
+  "external_researcher_prompts": [
+    {
+      "label": "01-prd",
+      "run_state": "closed",
+      "phase_metadata": null,
+      "intended_input_path": "01-prd.prompt.txt",
+      "classification_status": "unreviewed",
+      "kind": null,
+      "clarification_bearing": null,
+      "corrective_intent": null,
+      "reply_to_model_blocking_question": null,
+      "delivery_scope": "intended prompt only; no claim of complete effective delivery, no inference from phase name; separate input audit is authoritative",
+      "intended_prompt_sha256": "548F15A5EAD08BF648D2F8FD1C203806D8F5D66CEC050C8EC6EBBF635682FEB2"
+    }
+  ],
+  "external_researcher_prompt_summary": {
+    "scope": "one intended prompt per recorded invocation; manually reviewed classification only, not input-delivery proof or count of QA intents",
+    "closed_manually_classified_clarification_bearing_attempts": 0,
+    "pending_manually_classified_clarification_bearing_attempts": 0,
+    "unclassified_labels": [
+      "01-prd"
+    ]
+  },
+  "limitation": "Unknown/unreviewed counts remain null. Active sessions are pending, even when no natural-language text has yet been retained. A zero observed count requires a hash-bound manual review of a closed retained interval and cannot establish that no unrecorded question exists. This audit does not assess implementation correctness or input delivery."
+}

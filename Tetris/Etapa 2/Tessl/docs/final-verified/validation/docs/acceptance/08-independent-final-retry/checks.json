@@ -1,0 +1,150 @@
+[
+  {
+    "label": "npm-ci",
+    "argv": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js",
+      "ci",
+      "--no-fund",
+      "--no-audit"
+    ],
+    "cwd": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\Tessl\\frontend",
+    "started_at_utc": "2026-10-25T21:32:15.835387+00:00",
+    "ended_at_utc": "2026-10-25T21:32:26.793452+00:00",
+    "duration_seconds": 10.953,
+    "exit_code": 0,
+    "error": null
+  },
+  {
+    "label": "backend",
+    "argv": [
+      "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\Tessl\\backend\\.venv\\Scripts\\python.exe",
+      "-m",
+      "pytest",
+      "--cov=app",
+      "--cov-report=xml:../docs/coverage.xml",
+      "tests/"
+    ],
+    "cwd": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\Tessl\\backend",
+    "started_at_utc": "2026-10-25T21:32:26.793452+00:00",
+    "ended_at_utc": "2026-10-25T21:32:29.094975+00:00",
+    "duration_seconds": 2.312,
+    "exit_code": 0,
+    "error": null
+  },
+  {
+    "label": "frontend",
+    "argv": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\Tessl\\frontend\\node_modules\\vitest\\vitest.mjs",
+      "run",
+      "--coverage",
+      "--reporter=default",
+      "--reporter=json",
+      "--outputFile=D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\Tessl\\docs\\acceptance\\08-independent-final-retry\\frontend-vitest.json"
+    ],
+    "cwd": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\Tessl\\frontend",
+    "started_at_utc": "2026-10-25T21:32:29.094975+00:00",
+    "ended_at_utc": "2026-10-25T21:32:31.796721+00:00",
+    "duration_seconds": 2.704,
+    "exit_code": 0,
+    "error": null
+  },
+  {
+    "label": "build",
+    "argv": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js",
+      "run",
+      "build"
+    ],
+    "cwd": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\Tessl\\frontend",
+    "started_at_utc": "2026-10-25T21:32:31.796721+00:00",
+    "ended_at_utc": "2026-10-25T21:32:34.312737+00:00",
+    "duration_seconds": 2.515,
+    "exit_code": 0,
+    "error": null
+  },
+  {
+    "label": "audit-all",
+    "argv": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js",
+      "audit",
+      "--json"
+    ],
+    "cwd": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\Tessl\\frontend",
+    "started_at_utc": "2026-10-25T21:32:34.313737+00:00",
+    "ended_at_utc": "2026-10-25T21:32:36.115402+00:00",
+    "duration_seconds": 1.797,
+    "exit_code": 0,
+    "error": null
+  },
+  {
+    "label": "audit-production",
+    "argv": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js",
+      "audit",
+      "--omit=dev",
+      "--json"
+    ],
+    "cwd": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\Tessl\\frontend",
+    "started_at_utc": "2026-10-25T21:32:36.116402+00:00",
+    "ended_at_utc": "2026-10-25T21:32:37.344478+00:00",
+    "duration_seconds": 1.234,
+    "exit_code": 0,
+    "error": null
+  },
+  {
+    "label": "domain",
+    "argv": [
+      "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\Tessl\\backend\\.venv\\Scripts\\python.exe",
+      "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\shared\\acceptance\\check_domain_tessl.py",
+      "--output",
+      "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\Tessl\\docs\\acceptance\\08-independent-final-retry\\domain.json"
+    ],
+    "cwd": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\Tessl",
+    "started_at_utc": "2026-10-25T21:32:37.344478+00:00",
+    "ended_at_utc": "2026-10-25T21:32:38.491869+00:00",
+    "duration_seconds": 1.141,
+    "exit_code": 0,
+    "error": null
+  },
+  {
+    "label": "races",
+    "argv": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\Tessl\\frontend\\node_modules\\vitest\\vitest.mjs",
+      "run",
+      "--config",
+      "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\Tessl\\docs\\acceptance\\vitest.external.config.mjs",
+      "--reporter=json",
+      "--outputFile=D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\Tessl\\docs\\acceptance\\08-independent-final-retry\\races-vitest.json"
+    ],
+    "cwd": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\Tessl",
+    "started_at_utc": "2026-10-25T21:32:38.492870+00:00",
+    "ended_at_utc": "2026-10-25T21:32:40.527424+00:00",
+    "duration_seconds": 2.031,
+    "exit_code": 0,
+    "error": null
+  },
+  {
+    "label": "falsey",
+    "argv": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\Tessl\\frontend\\node_modules\\vitest\\vitest.mjs",
+      "run",
+      "--config",
+      "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\Tessl\\docs\\acceptance\\vitest.falsey.config.mjs",
+      "--reporter=json",
+      "--outputFile=D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\Tessl\\docs\\acceptance\\08-independent-final-retry\\falsey-vitest.json"
+    ],
+    "cwd": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\Tessl",
+    "started_at_utc": "2026-10-25T21:32:40.528424+00:00",
+    "ended_at_utc": "2026-10-25T21:32:42.463311+00:00",
+    "duration_seconds": 1.938,
+    "exit_code": 0,
+    "error": null
+  }
+]

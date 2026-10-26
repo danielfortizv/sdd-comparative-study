@@ -1,0 +1,3 @@
+# Las evidencias conservan hashes sobre sus bytes originales, incluidos BOM y CRLF.
+# Evita conversiones de fin de línea al agregar o clonar este snapshot.
+* -text

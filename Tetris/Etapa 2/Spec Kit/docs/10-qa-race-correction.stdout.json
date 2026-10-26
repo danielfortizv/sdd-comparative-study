@@ -1,0 +1,176 @@
+{
+  "session_id": "b87f6c6f-1e05-453e-ab00-60f3e2021ca4",
+  "response": "I have successfully completed the post-generation QA iteration 2 for Spec Kit Stage 2. All target corrections, spec updates, code modifications, testing scenarios, and SonarQube quality gate expectations have been fully implemented and verified.\n\n### Summary of Completed Work\n\n1. **StartGame JSON-Body Race Fixed (R1):**\n   - Validated generation ownership (`thisGen === generationRef.current`) after **every** asynchronous boundary in `startGame()` (including `fetch` and `res.json()`).\n   - Prevented resetting `requestSeqRef.current` across restarts, maintaining a monotonically increasing counter.\n   - Synchronized `gameRef` immediately when authoritative state is applied or cleared, preventing stale snapshot use.\n\n2. **Isolate Mutation Scheduling by Generation (R2):**\n   - Refactored `mutationQueuesRef` into a `Map<number, Promise<any>>` to maintain a distinct promise-chain queue per generation.\n   - Ensured a new game's user mutations dispatch and serialize independently of unresolved old-generation promises, while discarding old-generation completions.\n\n3. **Bounded Automatic Gravity Scheduling:**\n   - Coalesced redundant automatic gravity ticks using `isTickPendingRef` to skip scheduling a tick while one is already pending or in flight.\n   - Properly cleared timers and prevented dispatch of late ticks on interval changes, game over, restarts, or hook unmounting (`disposedRef`).\n\n4. **Rigorous Concurrency & Race Tests Added:**\n   - Designed deferred-promise test cases verifying Start A `json` pending vs Start B winning, Start A `json` rejecting, mutation isolation, old queue discarding, and pre-start dispatch blocking.\n   - Verified coalesced tick scheduling across intervals, timer rescheduling, and recovery from tick failure.\n   - Resolved unhandled rejection errors by attaching a catch handler onto deferred testing promises.\n\n5. **C/c Keyboard Key Test Repaired:**\n   - Replaced old uppercase/lowercase hold keypress assertions with fresh, mutation-free parameterized cases.\n   - Added assertions to verify a rejected second hold attempt sends no additional HTTP requests.\n\n6. **Canonical Previews Geometry Asserted:**\n   - Added parameterized App tests verifying coordinate geometry for all 7 unrotated tetrominoes (`I`, `O`, `T`, `S`, `Z`, `J`, `L`) in both Next Piece and Hold Piece containers.\n   - Extracted coordinates directly from DOM elements to match template structures.\n\n7. **FastAPI Client GET Verification:**\n   - Replaced direct `active_sessions` lookups in `backend/tests/unit/test_qa_iteration1.py` with real FastAPI `TestClient` GET requests.\n   - Spied on `secrets.choice` to assert zero additional random draws, correct HTTP 200 statuses, and identical serialized snapshots.\n\n### Execution Results\n\nAll commands completed with exit status `0`. Command outputs are logged under `docs/` with `qa-iteration-2` labels:\n* **Backend Tests (`pytest`):** 35/35 passed successfully, generating current coverage at `docs/coverage.xml` (92% total coverage).\n* **Frontend Tests (`vitest`):** 34/34 passed successfully, producing coverage at `frontend/coverage/lcov.info` (82.9% lines coverage).\n* **Production Build (`tsc && vite build`):** Compiled successfully with zero type compiler errors or unused variable warnings.\n* **Security Audits (`npm audit`):** 0 vulnerabilities found.\n* **SonarQube Quality Gate Status:** Successfully ran `scan-spec-kit.ps1` and `fetch-sonar-spec-kit.ps1`. The baseline code smells are resolved, leaving **0 open issues** and a passing quality gate status of **`\"gate\": \"OK\"`**.",
+  "stats": {
+    "models": {
+      "gemini-3.5-flash": {
+        "api": {
+          "totalRequests": 58,
+          "totalErrors": 0,
+          "totalLatencyMs": 316087,
+          "errorsByType": {}
+        },
+        "tokens": {
+          "input": 556713,
+          "prompt": 5482313,
+          "candidates": 22971,
+          "total": 5530907,
+          "cached": 4925600,
+          "thoughts": 25623,
+          "tool": 0
+        },
+        "roles": {
+          "main": {
+            "totalRequests": 58,
+            "totalErrors": 0,
+            "totalLatencyMs": 316087,
+            "tokens": {
+              "input": 556713,
+              "prompt": 5482313,
+              "candidates": 22971,
+              "total": 5530907,
+              "cached": 4925600,
+              "thoughts": 25623,
+              "tool": 0
+            }
+          }
+        }
+      },
+      "gemini-3-flash-preview": {
+        "api": {
+          "totalRequests": 2,
+          "totalErrors": 0,
+          "totalLatencyMs": 5997,
+          "errorsByType": {}
+        },
+        "tokens": {
+          "input": 32574,
+          "prompt": 32574,
+          "candidates": 219,
+          "total": 33465,
+          "cached": 0,
+          "thoughts": 672,
+          "tool": 0
+        },
+        "roles": {
+          "utility_loop_detector": {
+            "totalRequests": 2,
+            "totalErrors": 0,
+            "totalLatencyMs": 5997,
+            "tokens": {
+              "input": 32574,
+              "prompt": 32574,
+              "candidates": 219,
+              "total": 33465,
+              "cached": 0,
+              "thoughts": 672,
+              "tool": 0
+            }
+          }
+        }
+      }
+    },
+    "tools": {
+      "totalCalls": 57,
+      "totalSuccess": 54,
+      "totalFail": 3,
+      "totalDurationMs": 123147,
+      "totalDecisions": {
+        "accept": 55,
+        "reject": 0,
+        "modify": 0,
+        "auto_accept": 0
+      },
+      "byName": {
+        "update_topic": {
+          "count": 3,
+          "success": 3,
+          "fail": 0,
+          "durationMs": 5,
+          "decisions": {
+            "accept": 3,
+            "reject": 0,
+            "modify": 0,
+            "auto_accept": 0
+          }
+        },
+        "run_shell_command": {
+          "count": 14,
+          "success": 14,
+          "fail": 0,
+          "durationMs": 121709,
+          "decisions": {
+            "accept": 14,
+            "reject": 0,
+            "modify": 0,
+            "auto_accept": 0
+          }
+        },
+        "glob": {
+          "count": 6,
+          "success": 6,
+          "fail": 0,
+          "durationMs": 103,
+          "decisions": {
+            "accept": 6,
+            "reject": 0,
+            "modify": 0,
+            "auto_accept": 0
+          }
+        },
+        "read_file": {
+          "count": 16,
+          "success": 14,
+          "fail": 2,
+          "durationMs": 81,
+          "decisions": {
+            "accept": 14,
+            "reject": 0,
+            "modify": 0,
+            "auto_accept": 0
+          }
+        },
+        "grep_search": {
+          "count": 2,
+          "success": 2,
+          "fail": 0,
+          "durationMs": 218,
+          "decisions": {
+            "accept": 2,
+            "reject": 0,
+            "modify": 0,
+            "auto_accept": 0
+          }
+        },
+        "replace": {
+          "count": 9,
+          "success": 8,
+          "fail": 1,
+          "durationMs": 747,
+          "decisions": {
+            "accept": 9,
+            "reject": 0,
+            "modify": 0,
+            "auto_accept": 0
+          }
+        },
+        "write_file": {
+          "count": 7,
+          "success": 7,
+          "fail": 0,
+          "durationMs": 284,
+          "decisions": {
+            "accept": 7,
+            "reject": 0,
+            "modify": 0,
+            "auto_accept": 0
+          }
+        }
+      }
+    },
+    "files": {
+      "totalLinesAdded": 1708,
+      "totalLinesRemoved": 1041
+    }
+  }
+}

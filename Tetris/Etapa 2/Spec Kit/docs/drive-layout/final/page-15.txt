@@ -1,0 +1,38 @@
+SPEC KIT — CIERRE DE CORRECCIÓN 10 Y
+AJUSTE DE TEMPORIZADOR 11 EN CURSO
+10-qa-race-correction cerró el 20 oct 2026 a las 20:25:03, hora Bogotá, con código 0 y
+455,055 s instrumentados. La salida original acredita 60 intentos API, cero errores y 60
+éxitos: 58 del modelo principal y dos auxiliares del detector de bucles. Hay 58 respuestas
+principales registradas, contadas aparte. Uso de la sesión: 5.514.887 tokens de entrada,
+incluidos 4.925.600 cacheados, 23.190 de salida candidata y 26.295 de pensamiento. Se
+preservaron generation-10/, qa10-closure/ y 10-metric-verification.json.
+Acumulado cerrado hasta 10: diez intentos de invocación, nueve con modelo acreditado;
+540 intentos API conocidos, 115 errores y 425 éxitos; 428 respuestas principales. Tokens
+observados: 37.343.572 entrada, 29.250.676 cacheados incluidos, 140.240 salida candidata
+y 162.505 pensamiento. Duración conocida: 8.626,612 s, con 01/03 desconocidas. Se
+excluyen los tokens/tiempo de 11 mientras esté abierta y el trabajo externo de
+coordinación/verificación.
+La instantánea Sonar de 10 muestra gate OK, cobertura global 82,6 %, cobertura nueva
+84,3 % contra el umbral de 80 %, cero bugs/vulnerabilidades/hotspots/code smells,
+duplicación 0,0 %, complejidad 190 y complejidad cognitiva 142. Gemini registra 35 pruebas
+backend y 34 frontend aprobadas, build/audit aprobados y 82,9 % de líneas frontend. Se
+conservan como registros de la herramienta para esta iteración; las ejecuciones
+independientes anteriores de 09 no acreditan automáticamente el frontend/pruebas que
+cambiaron después.
+La revisión posterior encuentra corregidos en fuente los problemas originales R1/R2, pero
+persiste la propiedad incorrecta del indicador global de tick: al terminar un tick antiguo A, su
+finally puede liberar el indicador de un tick pendiente del juego B y admitir trabajo adicional.
+Algunas pruebas no demuestran que el fetch/JSON de A haya entrado al await antes del
+reinicio; la igualdad completa de GET omite activePiece y faltan límites exactos de
+temporizador y aserciones reales de StrictMode. 11-qa-timer-ownership comenzó a las
+20:26:21 como tercera corrección externa, exigiendo primero specs/tareas y después
+cambios mediante Gemini. Se preservan las pruebas de siete geometrías y C/c ya
+añadidas. La aceptación funcional, la verificación final y el corpus/informe final siguen
+pendientes.
+El checker suplementario compartido shared/acceptance/check_contract.py añade nueve
+controles HTTP de rutas/estados/claves para S2-16, con salida en acceptance-contract.json
+y hashes en acceptance-provenance.json. Son nueve controles para un ID existente y no
+agregan escenarios al catálogo de veinte. El checker común principal permanece en v1.1
+con siete registros que cubren ocho IDs. Las ejecuciones y capturas finales deberán
+corresponder al código terminado; un gate OK no sustituye esos mecanismos de
+aceptación.

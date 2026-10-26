@@ -1,0 +1,35 @@
+{
+  "researcher_created": true,
+  "measured_at_utc": "2026-10-21T14:38:52.490665+00:00",
+  "files": {
+    "check_api.py": {
+      "sha256": "8A45D6B0E8EFA52F12605C262664409E51759EF0CCCF12B88D12A3B7FC7ADC4E",
+      "syntax_valid": true
+    },
+    "check_contract.py": {
+      "sha256": "D56C6289EC858B160A467676B44DCEDE45DC4D852D439F9213D63EC109FB45A4",
+      "syntax_valid": true
+    },
+    "check_api_v1_2.py": {
+      "sha256": "BE6E4EA362726AEC990D0D5D456BF5E15D5071BBAD1436F6FE9C1E77B6A83F3E",
+      "syntax_valid": true
+    },
+    "check_contract_v1_1.py": {
+      "sha256": "2FE03D4AE2970790CA64ACA70E978EB5D4C011E759B102337CB5AE654B837935",
+      "syntax_valid": true
+    }
+  },
+  "legacy_checker_hashes_unchanged": true,
+  "new_api_version": "1.2",
+  "new_contract_version": "1.1",
+  "created_status_default": 201,
+  "tessl_created_status_expected": 200,
+  "http_status_normalization": false,
+  "verification": [
+    "both new scripts --help exit0",
+    "all four scripts parsed with ast.parse",
+    "both original SHA256 values unchanged"
+  ],
+  "executed_against_stage2_implementation": false,
+  "stage2_acceptance_result": "not_run"
+}

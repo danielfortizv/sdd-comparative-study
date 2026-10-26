@@ -1,0 +1,41 @@
+{
+  "researcher_created": true,
+  "checked_at_utc": "2026-10-26T06:25:45.923Z",
+  "document_id": "1JRZvjK8-fdFitwbiKLe2NhOsk1FZNCa_TclgnFwdjao",
+  "revision": "AHj4eMS7swY0uELI_sCEKaIKtrvbazWIrkYEWJsG37THs8Ns_P2pw1TOkMkRb1fffOfRoHoVpRwSQzVQb3A3G6XnuIp1qjIEXgTW0BD-_Q",
+  "table_count": 27,
+  "inline_image_count": 37,
+  "total_pdf_pages": 79,
+  "new_bmad_screenshots": 9,
+  "visually_reviewed_pdf_pages": [
+    72,
+    73,
+    74,
+    75,
+    78
+  ],
+  "layout_repair": "Page breaks keep source table and Sonar section together; no clipped text or images observed.",
+  "layout_result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "Action completed."
+      }
+    ],
+    "structuredContent": {
+      "documentId": "1JRZvjK8-fdFitwbiKLe2NhOsk1FZNCa_TclgnFwdjao",
+      "revisionId": "AHj4eMS7swY0uELI_sCEKaIKtrvbazWIrkYEWJsG37THs8Ns_P2pw1TOkMkRb1fffOfRoHoVpRwSQzVQb3A3G6XnuIp1qjIEXgTW0BD-_Q",
+      "replies": [
+        {},
+        {}
+      ],
+      "writeControl": {
+        "requiredRevisionId": "AHj4eMS7swY0uELI_sCEKaIKtrvbazWIrkYEWJsG37THs8Ns_P2pw1TOkMkRb1fffOfRoHoVpRwSQzVQb3A3G6XnuIp1qjIEXgTW0BD-_Q",
+        "targetRevisionId": null
+      },
+      "document_url": "https://docs.google.com/document/d/1JRZvjK8-fdFitwbiKLe2NhOsk1FZNCa_TclgnFwdjao"
+    },
+    "isError": false
+  }
+}
+

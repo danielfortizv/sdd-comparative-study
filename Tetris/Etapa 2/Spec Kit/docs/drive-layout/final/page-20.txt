@@ -1,0 +1,25 @@
+Tokens por invocación: candidata y pensamiento
+Sesión Salida candidata Pensamiento
+01-specify 572 3.622
+02-specify-retry 5.986 8.755
+03-contract-clarification 5.847 18.651
+04-plan 14.548 8.060
+05-tasks 4.874 6.352
+06-tasks-full-arguments 0 0
+07-tasks-native-expanded 8.216 7.163
+08-implement 36.959 41.527
+09-qa-correction 40.048 42.080
+10-qa-race-correction 23.190 26.295
+11-qa-timer-ownership 2.297 16.381
+12-qa-timer-retry 10.707 14.468
+13-qa-completion-retry 144 630
+14-qa-completion-fresh 1.936 15.806
+15-qa-frontend-completion 1.808 7.575
+16-qa-final-regressions 6.505 15.859
+17-qa-sonar-style 4.735 8.890
+En 13, el primer registro user es contexto sintético/repetición del CLI y no contiene la
+semilla. El prompt real íntegro, con hash idéntico al previsto, se registró después y antes de
+la primera respuesta con tokens. Solo hubo update_topic y 0/0 líneas: no produjo trabajo de
+aplicación. La desviación del primer registro queda preservada; no se relaja el requisito de
+semilla completa para las correcciones que producen código. Evidencia:
+13-input-replay-verification.json.

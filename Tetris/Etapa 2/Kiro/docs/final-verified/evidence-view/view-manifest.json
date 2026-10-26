@@ -1,0 +1,145 @@
+{
+  "researcher_created": true,
+  "generated_at_utc": "2026-10-21T20:14:06.986803+00:00",
+  "kind": "derived_static_researcher_evidence_view",
+  "native_ui_screenshot": false,
+  "original_renderer_path": "shared/render-evidence.py",
+  "original_renderer_sha256_unchanged": "3EE4574EE4A90F2B0E83ABBD0C58B11058E1B34D479126CA23D4F1DB71843DA0",
+  "renderer_sha256": "A207C45F9A58EFF4E52541289500B438593493C519194646A7DEF6777F810D24",
+  "sources": [
+    {
+      "path": "docs/sonar-baseline/sonar-summary.json",
+      "purpose": "Raw local Sonar API baseline measures",
+      "bytes": 525,
+      "sha256": "41855B8DB47D791B2BFD48D4B14D3B13746AC7EDBE099CB2419666881B02976E"
+    },
+    {
+      "path": "docs/sonar-baseline/sonar-verification.json",
+      "purpose": "Exact submitted CE task and analysis ID",
+      "bytes": 981,
+      "sha256": "F879D628F2616246B22282542E646B89CD8069077FD3D8121937B4FDE275B135"
+    },
+    {
+      "path": "docs/sonar-baseline/scan-command.json",
+      "purpose": "Scanner exit, version, XML hash and LCOV absence",
+      "bytes": 773,
+      "sha256": "AB4D1F1537688F6A997573B74858D84D913FC3F7F9A4F6EC644712B29B143E00"
+    },
+    {
+      "path": "docs/sonar-baseline/quality-gate-configuration.json",
+      "purpose": "Dedicated gate configured thresholds",
+      "bytes": 1017,
+      "sha256": "A581054804B6B919CEF72CD97A2B6D5AB0FD150D74E9FEEA74492D0D50CB8E51"
+    },
+    {
+      "path": "docs/sonar-baseline/configuration-verification.json",
+      "purpose": "New-code period and unchanged built-in gate",
+      "bytes": 1078,
+      "sha256": "7A8C565BD00A456C73125C5F050E79AE698CA6892576940662F52370B57317E4"
+    },
+    {
+      "path": "docs/sonar-baseline/sonar-exact-task.json",
+      "purpose": "Raw exact compute-engine status",
+      "bytes": 1071,
+      "sha256": "143654C8AF7242897CDF2E85D748929CCDC7A028C41C94250F9319B7A22261E5"
+    },
+    {
+      "path": "docs/sonar-baseline/sonar-exact-quality-gate.json",
+      "purpose": "Raw evaluated gate conditions for exact analysis",
+      "bytes": 145,
+      "sha256": "C4260ACC9474C173349BD3A9A05A51C99F984A7BB2870CE2A478E7F843707B04"
+    },
+    {
+      "path": "docs/baseline-frontend-result.json",
+      "purpose": "Frontend build exit, unavailable tests/LCOV",
+      "bytes": 381,
+      "sha256": "25EC04BE17358AD0C46B41EA46C94734709E30076880525693CD52C37F6B6772"
+    },
+    {
+      "path": "docs/baseline-npm-audit.json",
+      "purpose": "Original-lock npm vulnerability counts",
+      "bytes": 11591,
+      "sha256": "0D270DAFEB07AE6A6DB92CE67BF3584779BCE034E64CF85CF7F64F0E3AABD94D"
+    },
+    {
+      "path": "docs/baseline-coverage-instrumentation.json",
+      "purpose": "Original 23 packages plus separately authorized coverage",
+      "bytes": 13118,
+      "sha256": "310823E659472A4CE7FA97CF3163CECEB98CAB8FE84854B63424668014E9F7D7"
+    },
+    {
+      "path": "docs/baseline-coverage.xml",
+      "purpose": "Fresh backend coverage line counters",
+      "bytes": 9644,
+      "sha256": "6CA65606225388FAF34122EA4D317B90371066FB073C497F434D22B09F231332"
+    },
+    {
+      "path": "docs/baseline-backend-coverage-tests.log",
+      "purpose": "Instrumented backend pytest result",
+      "bytes": 660,
+      "sha256": "C346887E86CE76C0F84EF5BC555AAD70C11A29083350DB95F63B8877EACE257A"
+    },
+    {
+      "path": "docs/baseline-frontend-build.log",
+      "purpose": "Fresh TypeScript/Vite production build",
+      "bytes": 346,
+      "sha256": "A70EA4640EEA09EC6C0915C0F7FE39C4736C433F6C7A47540FF46A936B1A88E6"
+    },
+    {
+      "path": "docs/baseline-coverage-commands.json",
+      "purpose": "Exact researcher instrumentation argv, times and exits",
+      "bytes": 4260,
+      "sha256": "4C8579CA378603A4FD2A04D7858F1777536B53196CFD0D0C673F817C02AA0819"
+    },
+    {
+      "path": "docs/baseline-environment-commands.json",
+      "purpose": "Exact baseline environment/test/build/audit commands",
+      "bytes": 6108,
+      "sha256": "6C8957603E4B8F11EF027E125C5D2F8885277E231F0FCC4DBBEBE03E6A045D4A"
+    },
+    {
+      "path": "docs/baseline-copy-manifest.json",
+      "purpose": "Unchanged own Stage 1 copy hashes",
+      "bytes": 7726,
+      "sha256": "1E536AF075438807D58BA88F840436E4ECDE77D71C8ABAF0480CF665412390EB"
+    },
+    {
+      "path": "docs/sonar-baseline/baseline-closure-verification.json",
+      "purpose": "Post-scan copied/original hash checks and raw warnings",
+      "bytes": 5607,
+      "sha256": "C22073A98484C3DEFE2F10F10478EEE384F15C16B8914E0331518D2332536E9E"
+    },
+    {
+      "path": "docs/sonar-baseline/report-task.txt",
+      "purpose": "Exact baseline scanner submission",
+      "bytes": 287,
+      "sha256": "6BE4F4FB7FE2E3C8567D9D499312D752EF67CF9C3CD4643F28EAF3B2998AF11E"
+    },
+    {
+      "path": "docs/metrics.json",
+      "purpose": "Canonical current Kiro experiment metrics snapshot",
+      "bytes": 33671,
+      "sha256": "2DFA25BB12AE9CB6A5420DC2587A000832002A81BD90A18E7AD2FE0F33EB294A"
+    }
+  ],
+  "panels": [
+    {
+      "path": "baseline-provenance.html",
+      "sha256": "F8A708DA4550070906C77F685E43CEBC8F21CAAE65CB148BDB515A267BB44114"
+    },
+    {
+      "path": "baseline.html",
+      "sha256": "59F94E2866334CCF3F820FA6163F0FE827CF02054071481722CBB746CA8F2162"
+    },
+    {
+      "path": "metrics.html",
+      "sha256": "F43A2BE4318BAEC6D9E90006E6CDDC35D7B881E7FEB5AC351FEEDC964EC46C30"
+    },
+    {
+      "path": "source-hashes.html",
+      "sha256": "C39453D8D6AEFA75F56CF720210EE18327E15BDF9DD33D30FC40DF072D394284"
+    }
+  ],
+  "privacy_scope": "No credentials/auth stores/raw model transcripts copied; source names and SHA256 metadata only",
+  "baseline_is_stage2_acceptance": false
+}

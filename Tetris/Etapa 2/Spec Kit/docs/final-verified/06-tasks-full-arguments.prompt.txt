@@ -1,0 +1,228 @@
+
+## User Input
+
+```text
+Use specs/002-extend-tetris-stage2 and the unchanged common seed below. Write testable implementation and regression tasks, including Hold, preview, scoring, dynamic timer, race protection, tests, build and quality verification. Do not edit application code yet, create a Git branch, commit, push, or upload.
+
+Extend the existing Stage 1, option A browser-based Tetris implementation to Stage 2, option A as a brownfield change. Preserve its 10-by-20 board, seven unrotated tetrominoes, left/right/soft-drop controls, collision, locking, line clearing, game over, restart, Python FastAPI backend, React/TypeScript frontend, and in-memory authoritative backend state. Start from this tool's own Stage 1 source and specifications. Create or update this tool's native specification artifacts before changing application code. Use English for all tool interactions, specifications, application text, code comments, and tests. Work only inside this tool's Stage 2 directory.
+
+Add a score, cumulative cleared-line count, level, progressive gravity, one-piece Hold, and one-piece next preview. A new game starts with score 0, lines 0, level 1, and a 500 ms gravity interval. For a lock that clears 1, 2, 3, or 4 rows simultaneously, award respectively 100, 300, 500, or 800 points multiplied by the level immediately before that lock. A lock clearing no rows awards zero. After scoring, add the cleared rows to the cumulative line count and set level to 1 + floor(total_lines / 10). Set gravity_interval_ms to max(100, 500 - 50 * (level - 1)). Soft drop grants no additional points. These numeric rules are study controls, not a request to introduce rotation. The four-line rule may be validated as an isolated domain rule because a four-row clear may not be reachable during ordinary play without rotation.
+
+The backend owns a queued next piece. Every game state response exposes score, total_lines, level, gravity_interval_ms, next_piece, hold_piece (nullable), and can_hold, in addition to the existing board, active piece, status, and ID. Peeking at state never consumes or changes the queued piece. Normal spawning and the first Hold consume the previewed piece and generate exactly one new preview. Swapping with an occupied Hold slot does not consume the preview. A held piece re-enters at the normal spawn origin in its initial orientation, and an obstructed spawn ends the game. Hold can be used once per active piece and becomes available again only after that piece locks. Rejected Holds, movement after game over, and repeated state reads do not mutate game state. Restart resets all Stage 2 counters and Hold state while producing a new active and next piece.
+
+Keep POST /api/games, GET /api/games/{id}, POST /api/games/{id}/tick, and POST /api/games/{id}/move compatible; add POST /api/games/{id}/hold returning the same state shape. The frontend renders score, lines, level, Hold, and next preview from backend state; provides a Hold button and C key; and schedules gravity from gravity_interval_ms while playing. Prevent overlapping requests or stale responses from reversing visible game state. Existing controls and behavior must remain usable.
+
+Do not add rotation, wall kicks, T-Spins, ghost piece, time attack, achievements, persistence, database, authentication, multiplayer, or high-score storage in this stage. Express the new behavior as atomic, testable requirements and explicit acceptance scenarios in the native specs. Implement through the tool's normal spec-driven workflow, with runnable backend tests and a reproducible frontend build. If a defect is found after implementation, first revise the native specification and then regenerate or adjust code through the tool; do not directly patch generated application code. State exact run and test commands, and record any material ambiguity in English.
+
+Recorded workflow clarification: This retry preserves the entire multiline input that the headless slash parser previously truncated. First revise native artifacts: remove the invented less-than-5-ms performance target from plan.md; correct nextPiece/holdPiece in the data-model diagram to next_piece/hold_piece and correct the I-piece origin example in spec.md to legacy [0,4]. Then revise tasks.md to explicitly cover all seed rules, including isolated 1/2/3/4-row scoring, pre-lock level boundary, gravity floor, queue generation counts, immutable GET/rejected Hold/game-over actions, obstructed Hold spawn, restart, Hold button disabled when unavailable, C/c, timer rescheduling, serialized requests and stale responses across restart. Add executable tasks for backend coverage XML, frontend LCOV, dependency audit remediation, production build, and SonarQube verification/remediation. Baseline issues are in docs/sonar-baseline/sonar-issues.json; require documented 404 responses, stable React keys, optional chaining, readable contrast, and a suitable random generator without suppressions. Inspect and update the native quality requirements before any future code fixes. Do not change application source in this phase. Work sequentially without delegation, Git changes, commits, pushes, or uploads. Report actual artifact changes, never claim omitted tasks were completed.
+```
+
+You **MUST** consider the user input before proceeding (if not empty).
+
+## Pre-Execution Checks
+
+**Check for extension hooks (before tasks generation)**:
+- Check if `.specify/extensions.yml` exists in the project root.
+- If it exists, read it and look for entries under the `hooks.before_tasks` key
+- If the YAML cannot be parsed or is invalid, do not skip silently: tell the user that `.specify/extensions.yml` could not be read (include the parser error) and that no hooks were checked, including any mandatory (`optional: false`) hooks registered there, then continue normally
+- Filter out hooks where `enabled` is explicitly `false`. Treat hooks without an `enabled` field as enabled by default.
+- For each remaining hook, do **not** attempt to interpret or evaluate hook `condition` expressions:
+  - If the hook has no `condition` field, or it is null/empty, treat the hook as executable
+  - If the hook defines a non-empty `condition`, skip the hook and leave condition evaluation to the HookExecutor implementation
+- For each executable hook, output the following based on its `optional` flag:
+  - **Optional hook** (`optional: true`):
+    ```
+    ## Extension Hooks
+
+    **Optional Pre-Hook**: {extension}
+    Command: `/{command}`
+    Description: {description}
+
+    Prompt: {prompt}
+    To execute: `/{command}`
+    ```
+  - **Mandatory hook** (`optional: false`):
+    ```
+    ## Extension Hooks
+
+    **Automatic Pre-Hook**: {extension}
+    Executing: `/{command}`
+    EXECUTE_COMMAND: {command}
+
+    Wait for the result of the hook command before proceeding to the Outline.
+    ```
+    After emitting the block above you MUST actually invoke the hook and wait for it to finish before continuing. Run it the same way you would run the command yourself in this agent/session (the invocation may differ from the literal `{command}` id shown above, e.g. a skills-mode agent runs it as `/skill:speckit-...` or `$speckit-...`). Emitting the block alone does not run the hook.
+- If no hooks are registered or `.specify/extensions.yml` does not exist, skip silently
+
+## Outline
+
+1. **Setup**: Run `.specify/scripts/powershell/setup-tasks.ps1 -Json` from repo root and parse FEATURE_DIR, TASKS_TEMPLATE_CONTENT, TASKS_TEMPLATE, and AVAILABLE_DOCS list. `FEATURE_DIR` and `TASKS_TEMPLATE` must be absolute paths when provided. `AVAILABLE_DOCS` is a list of document names/relative paths available under `FEATURE_DIR` (for example `research.md` or `contracts/`). For single quotes in args like "I'm Groot", use escape syntax: e.g 'I'\''m Groot' (or double-quote if possible: "I'm Groot").
+
+2. **Load design documents**: Read from FEATURE_DIR:
+   - **Required**: plan.md (tech stack, libraries, structure), spec.md (user stories with priorities)
+   - **Optional**: data-model.md (entities), contracts/ (interface contracts), research.md (decisions), quickstart.md (test scenarios)
+   - **IF EXISTS**: Load `.specify/memory/constitution.md` for project principles and governance constraints
+   - Note: Not all projects have all documents. Generate tasks based on what's available.
+
+3. **Execute task generation workflow**:
+   - Load plan.md and extract tech stack, libraries, project structure
+   - Load spec.md and extract user stories with their priorities (P1, P2, P3, etc.)
+   - If data-model.md exists: Extract entities and map to user stories
+   - If contracts/ exists: Map interface contracts to user stories
+   - If research.md exists: Extract decisions for setup tasks
+   - Generate tasks organized by user story (see Task Generation Rules below)
+   - Generate dependency graph showing user story completion order
+   - Create parallel execution examples per user story
+   - Validate task completeness (each user story has all needed tasks, independently testable)
+
+4. **Generate tasks.md**: Use TASKS_TEMPLATE_CONTENT (from the JSON output above) as the structure. For compatibility with older setup scripts that omit TASKS_TEMPLATE_CONTENT, read TASKS_TEMPLATE instead. Fill with:
+   - Correct feature name from plan.md
+   - Phase 1: Setup tasks (project initialization)
+   - Phase 2: Foundational tasks (blocking prerequisites for all user stories)
+   - Phase 3+: One phase per user story (in priority order from spec.md)
+   - Each phase includes: story goal, independent test criteria, tests (if requested), implementation tasks
+   - Final Phase: Polish & cross-cutting concerns
+   - All tasks must follow the strict checklist format (see Task Generation Rules below)
+   - Clear file paths for each task
+   - Dependencies section showing story completion order
+   - Parallel execution examples per story
+   - Implementation strategy section (MVP first, incremental delivery)
+
+## Mandatory Post-Execution Hooks
+
+**You MUST complete this section before reporting completion to the user.**
+
+Check if `.specify/extensions.yml` exists in the project root.
+- If it does not exist, or no hooks are registered under `hooks.after_tasks`, skip to the Completion Report.
+- If it exists, read it and look for entries under the `hooks.after_tasks` key.
+- If the YAML cannot be parsed or is invalid, do not skip silently: tell the user that `.specify/extensions.yml` could not be read (include the parser error) and that no hooks were checked, including any mandatory (`optional: false`) hooks registered there, then continue to the Completion Report.
+- Filter out hooks where `enabled` is explicitly `false`. Treat hooks without an `enabled` field as enabled by default.
+- For each remaining hook, do **not** attempt to interpret or evaluate hook `condition` expressions:
+  - If the hook has no `condition` field, or it is null/empty, treat the hook as executable
+  - If the hook defines a non-empty `condition`, skip the hook and leave condition evaluation to the HookExecutor implementation
+- For each executable hook, output the following based on its `optional` flag:
+  - **Mandatory hook** (`optional: false`) — **You MUST emit `EXECUTE_COMMAND:` for each mandatory hook**:
+    ```
+    ## Extension Hooks
+
+    **Automatic Hook**: {extension}
+    Executing: `/{command}`
+    EXECUTE_COMMAND: {command}
+    ```
+    After emitting the block above you MUST actually invoke the hook and wait for it to finish before continuing. Run it the same way you would run the command yourself in this agent/session (the invocation may differ from the literal `{command}` id shown above, e.g. a skills-mode agent runs it as `/skill:speckit-...` or `$speckit-...`). Emitting the block alone does not run the hook.
+  - **Optional hook** (`optional: true`):
+    ```
+    ## Extension Hooks
+
+    **Optional Hook**: {extension}
+    Command: `/{command}`
+    Description: {description}
+
+    Prompt: {prompt}
+    To execute: `/{command}`
+    ```
+
+## Completion Report
+
+Output path to generated tasks.md and summary:
+- Total task count
+- Task count per user story
+- Parallel opportunities identified
+- Independent test criteria for each story
+- Suggested MVP scope (typically just User Story 1)
+- Format validation: Confirm ALL tasks follow the checklist format (checkbox, ID, labels, file paths)
+
+Context for task generation: Use specs/002-extend-tetris-stage2 and the unchanged common seed below. Write testable implementation and regression tasks, including Hold, preview, scoring, dynamic timer, race protection, tests, build and quality verification. Do not edit application code yet, create a Git branch, commit, push, or upload.
+
+Extend the existing Stage 1, option A browser-based Tetris implementation to Stage 2, option A as a brownfield change. Preserve its 10-by-20 board, seven unrotated tetrominoes, left/right/soft-drop controls, collision, locking, line clearing, game over, restart, Python FastAPI backend, React/TypeScript frontend, and in-memory authoritative backend state. Start from this tool's own Stage 1 source and specifications. Create or update this tool's native specification artifacts before changing application code. Use English for all tool interactions, specifications, application text, code comments, and tests. Work only inside this tool's Stage 2 directory.
+
+Add a score, cumulative cleared-line count, level, progressive gravity, one-piece Hold, and one-piece next preview. A new game starts with score 0, lines 0, level 1, and a 500 ms gravity interval. For a lock that clears 1, 2, 3, or 4 rows simultaneously, award respectively 100, 300, 500, or 800 points multiplied by the level immediately before that lock. A lock clearing no rows awards zero. After scoring, add the cleared rows to the cumulative line count and set level to 1 + floor(total_lines / 10). Set gravity_interval_ms to max(100, 500 - 50 * (level - 1)). Soft drop grants no additional points. These numeric rules are study controls, not a request to introduce rotation. The four-line rule may be validated as an isolated domain rule because a four-row clear may not be reachable during ordinary play without rotation.
+
+The backend owns a queued next piece. Every game state response exposes score, total_lines, level, gravity_interval_ms, next_piece, hold_piece (nullable), and can_hold, in addition to the existing board, active piece, status, and ID. Peeking at state never consumes or changes the queued piece. Normal spawning and the first Hold consume the previewed piece and generate exactly one new preview. Swapping with an occupied Hold slot does not consume the preview. A held piece re-enters at the normal spawn origin in its initial orientation, and an obstructed spawn ends the game. Hold can be used once per active piece and becomes available again only after that piece locks. Rejected Holds, movement after game over, and repeated state reads do not mutate game state. Restart resets all Stage 2 counters and Hold state while producing a new active and next piece.
+
+Keep POST /api/games, GET /api/games/{id}, POST /api/games/{id}/tick, and POST /api/games/{id}/move compatible; add POST /api/games/{id}/hold returning the same state shape. The frontend renders score, lines, level, Hold, and next preview from backend state; provides a Hold button and C key; and schedules gravity from gravity_interval_ms while playing. Prevent overlapping requests or stale responses from reversing visible game state. Existing controls and behavior must remain usable.
+
+Do not add rotation, wall kicks, T-Spins, ghost piece, time attack, achievements, persistence, database, authentication, multiplayer, or high-score storage in this stage. Express the new behavior as atomic, testable requirements and explicit acceptance scenarios in the native specs. Implement through the tool's normal spec-driven workflow, with runnable backend tests and a reproducible frontend build. If a defect is found after implementation, first revise the native specification and then regenerate or adjust code through the tool; do not directly patch generated application code. State exact run and test commands, and record any material ambiguity in English.
+
+Recorded workflow clarification: This retry preserves the entire multiline input that the headless slash parser previously truncated. First revise native artifacts: remove the invented less-than-5-ms performance target from plan.md; correct nextPiece/holdPiece in the data-model diagram to next_piece/hold_piece and correct the I-piece origin example in spec.md to legacy [0,4]. Then revise tasks.md to explicitly cover all seed rules, including isolated 1/2/3/4-row scoring, pre-lock level boundary, gravity floor, queue generation counts, immutable GET/rejected Hold/game-over actions, obstructed Hold spawn, restart, Hold button disabled when unavailable, C/c, timer rescheduling, serialized requests and stale responses across restart. Add executable tasks for backend coverage XML, frontend LCOV, dependency audit remediation, production build, and SonarQube verification/remediation. Baseline issues are in docs/sonar-baseline/sonar-issues.json; require documented 404 responses, stable React keys, optional chaining, readable contrast, and a suitable random generator without suppressions. Inspect and update the native quality requirements before any future code fixes. Do not change application source in this phase. Work sequentially without delegation, Git changes, commits, pushes, or uploads. Report actual artifact changes, never claim omitted tasks were completed.
+
+The tasks.md should be immediately executable - each task must be specific enough that an LLM can complete it without additional context.
+
+## Task Generation Rules
+
+**CRITICAL**: Tasks MUST be organized by user story to enable independent implementation and testing.
+
+**Tests are OPTIONAL**: Only generate test tasks if explicitly requested in the feature specification or if user requests TDD approach.
+
+### Checklist Format (REQUIRED)
+
+Every task MUST strictly follow this format:
+
+```text
+- [ ] [TaskID] [P?] [Story?] Description with file path
+```
+
+**Format Components**:
+
+1. **Checkbox**: ALWAYS start with `- [ ]` (markdown checkbox)
+2. **Task ID**: Sequential number (T001, T002, T003...) in execution order
+3. **[P] marker**: Include ONLY if task is parallelizable (different files, no dependencies on incomplete tasks)
+4. **[Story] label**: REQUIRED for user story phase tasks only
+   - Format: [US1], [US2], [US3], etc. (maps to user stories from spec.md)
+   - Setup phase: NO story label
+   - Foundational phase: NO story label
+   - User Story phases: MUST have story label
+   - Polish phase: NO story label
+5. **Description**: Clear action with exact file path
+
+**Examples**:
+
+- ✅ CORRECT: `- [ ] T001 Create project structure per implementation plan`
+- ✅ CORRECT: `- [ ] T005 [P] Implement authentication middleware in src/middleware/auth.py`
+- ✅ CORRECT: `- [ ] T012 [P] [US1] Create User model in src/models/user.py`
+- ✅ CORRECT: `- [ ] T014 [US1] Implement UserService in src/services/user_service.py`
+- ❌ WRONG: `- [ ] Create User model` (missing ID and Story label)
+- ❌ WRONG: `T001 [US1] Create model` (missing checkbox)
+- ❌ WRONG: `- [ ] [US1] Create User model` (missing Task ID)
+- ❌ WRONG: `- [ ] T001 [US1] Create model` (missing file path)
+
+### Task Organization
+
+1. **From User Stories (spec.md)** - PRIMARY ORGANIZATION:
+   - Each user story (P1, P2, P3...) gets its own phase
+   - Map all related components to their story:
+     - Models needed for that story
+     - Services needed for that story
+     - Interfaces/UI needed for that story
+     - If tests requested: Tests specific to that story
+   - Mark story dependencies (most stories should be independent)
+
+2. **From Contracts**:
+   - Map each interface contract → to the user story it serves
+   - If tests requested: Each interface contract → contract test task [P] before implementation in that story's phase
+
+3. **From Data Model**:
+   - Map each entity to the user story(ies) that need it
+   - If entity serves multiple stories: Put in earliest story or Setup phase
+   - Relationships → service layer tasks in appropriate story phase
+   - For each field with constraints in data-model.md (max length, nullable/required, enum values, validation rules), quote the constraint verbatim in the task description so it is not left to implementation-time discretion
+
+4. **From Setup/Infrastructure**:
+   - Shared infrastructure → Setup phase (Phase 1)
+   - Foundational/blocking tasks → Foundational phase (Phase 2)
+   - Story-specific setup → within that story's phase
+
+### Phase Structure
+
+- **Phase 1**: Setup (project initialization)
+- **Phase 2**: Foundational (blocking prerequisites - MUST complete before user stories)
+- **Phase 3+**: User Stories in priority order (P1, P2, P3...)
+  - Within each story: Tests (if requested) → Models → Services → Endpoints → Integration
+  - Each phase should be a complete, independently testable increment
+- **Final Phase**: Polish & Cross-Cutting Concerns
+
+## Done When
+
+- [ ] tasks.md generated with all phases, task IDs, and file paths
+- [ ] Extension hooks dispatched or skipped according to the rules in Mandatory Post-Execution Hooks above
+- [ ] Completion reported to user with task count, story breakdown, and MVP scope

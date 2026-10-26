@@ -1,0 +1,822 @@
+{
+  "researcher_created": true,
+  "runs": {
+    "02-specify-correction": {
+      "run_metadata_sha256": "BF0564D5CD620BF6428E0637213B27DF054A74DB916A715406A02EF23CC5377C",
+      "candidate_signature_sha256": "4F53CDA18C2BAA0C0354BB5F9A3ECBE5ED12AB4D8E11BA873C2F11161202B945",
+      "reviewed_at_utc": "2026-10-25T20:23:38.845965+00:00",
+      "reviewer": "researcher",
+      "coverage_note": "Read all retained natural text and matched final CLI output. 03 contains one natural summary; 02 has no retained main-model natural text and terminal BILLING_DISABLED. Zero means no blocking question observed in retained interval, not proof about unrecorded output. Thoughts and tool-only responses excluded.",
+      "messages": {}
+    },
+    "03-specify-last-mile": {
+      "run_metadata_sha256": "5154F2015F0F90185707533980C94B27B00A10A30398B903767AABD3DDA5971A",
+      "candidate_signature_sha256": "855776BC7EE595A3ABF785AE25918EC2299DDDDBC26F8AE373E2F83608F02FFE",
+      "reviewed_at_utc": "2026-10-25T20:23:38.845965+00:00",
+      "reviewer": "researcher",
+      "coverage_note": "Read all retained natural text and matched final CLI output. 03 contains one natural summary; 02 has no retained main-model natural text and terminal BILLING_DISABLED. Zero means no blocking question observed in retained interval, not proof about unrecorded output. Thoughts and tool-only responses excluded.",
+      "messages": {
+        "8d3ae00a-0747-4979-b516-7220ce273a6e/e4e13ac6-42f6-4ae5-b135-c12cd6a5773e": {
+          "selected_text_sha256": "2D1051000B9E2F52ACA8B478AAB4E60875CBFA36D564EEBDDF5B3003A54BE027",
+          "blocking_question_count": 0,
+          "classification": "emitted_main_text",
+          "reason": "Complete 4440-character emitted final revision summary read; it reports changes and has no request for missing user input. Its implementation/integration claims are evaluated separately."
+        }
+      }
+    },
+    "04-specify-final-review": {
+      "run_metadata_sha256": "E1F7528CD63B63D23888170864330E2C57710B3D24AD3FCE14CA521EB4F5FD2E",
+      "candidate_signature_sha256": "ED1B53379EAC42FA1B5ADD3C5D8DB792768C1C8BC2319B4BA411BF7CD4562B69",
+      "reviewed_at_utc": "2026-10-25T20:30:33.880251+00:00",
+      "reviewer": "researcher",
+      "coverage_note": "Complete 3859-character final review summary read. One retained natural message matches native final CLI response; eight main responses include tool-only records. No blocking input requested. Thoughts/tools excluded.",
+      "messages": {
+        "902d861e-85c2-4fcd-a11b-0e758c3d97e4/83f2896c-9fad-4f84-bad2-0f7f01315d21": {
+          "selected_text_sha256": "EB47C6A8BC7268BD54131374AD5E84F66841B78B7BA8A99316C7819128205B0B",
+          "blocking_question_count": 0,
+          "classification": "emitted_main_text",
+          "reason": "Completion summary explains six specification corrections and requests no missing user information. Correctness checked independently via spec diff."
+        }
+      }
+    },
+    "05-implement": {
+      "run_metadata_sha256": "C5EC556140AEC62C07A33B0CA360A33AC1E917267A3D58E80A1962B00AD99C5D",
+      "candidate_signature_sha256": "9C111A645FD89940395D59B8E36F9A485A11315BC50BB8C947CB4825FE78D059",
+      "reviewed_at_utc": "2026-10-25T21:06:21.859596+00:00",
+      "reviewer": "researcher",
+      "coverage_note": "All112 retained text candidates reviewed in full across batches.58 attributed main natural messages;54 unlabeled exact-hash replays excluded.0 blocking requests observed in retained interval; not proof about unrecorded text. No thoughts/tools counted. Main final technical success claims contradicted by external QA and gate evidence.",
+      "messages": {
+        "0f56fce6-8e37-4c9f-8cf8-2deaff72f11c/d77c797a-bffa-4ea9-86d5-9ebf488113bd": {
+          "selected_text_sha256": "4D768F459BC47527CA4EC7EFA67E43AC79BD726D54153ED56B74C6453BCE7A0D",
+          "blocking_question_count": 0,
+          "classification": "emitted_main_text",
+          "reason": "Complete retained text manually read: progress/completion statements, no missing-user-input request. Implementation claims checked separately."
+        },
+        "0f56fce6-8e37-4c9f-8cf8-2deaff72f11c/0ae8694b-97ad-4535-b14e-77495f1df1e2": {
+          "selected_text_sha256": "4D768F459BC47527CA4EC7EFA67E43AC79BD726D54153ED56B74C6453BCE7A0D",
+          "blocking_question_count": 0,
+          "classification": "not_main_model_text",
+          "reason": "Unlabeled no-model replay has identical text hash to an identified main-model message; reviewed full text, excluded duplicate replay from emitted natural message count."
+        },
+        "0f56fce6-8e37-4c9f-8cf8-2deaff72f11c/0d1b090f-8b6f-4e8a-93f6-1ba9e07c2b7f": {
+          "selected_text_sha256": "71BB147CE3E56D6E908733A2800C1789D37246E7AF8035E7AFBFC621BA1FB654",
+          "blocking_question_count": 0,
+          "classification": "emitted_main_text",
+          "reason": "Complete retained text manually read: progress/completion statements, no missing-user-input request. Implementation claims checked separately."
+        },
+        "0f56fce6-8e37-4c9f-8cf8-2deaff72f11c/3a8e3bfd-2340-47ce-b042-35270c36fbe4": {
+          "selected_text_sha256": "A839FF4BA444DB36CE61C2563311A119C1223AF0CF3C01FA9F5047C0AEDBFB06",
+          "blocking_question_count": 0,
+          "classification": "emitted_main_text",
+          "reason": "Complete retained text manually read: progress/completion statements, no missing-user-input request. Implementation claims checked separately."
+        },
+        "0f56fce6-8e37-4c9f-8cf8-2deaff72f11c/9a3e46ad-597c-49dd-a083-af3aef294078": {
+          "selected_text_sha256": "16F821DC5D96074AC002A652BA4E42F32982AD717CCC3A2745DA781EF98B0B23",
+          "blocking_question_count": 0,
+          "classification": "emitted_main_text",
+          "reason": "Complete retained text manually read: progress/completion statements, no missing-user-input request. Implementation claims checked separately."
+        },
+        "0f56fce6-8e37-4c9f-8cf8-2deaff72f11c/4f755848-b141-4906-984b-ecafd6e4510e": {
+          "selected_text_sha256": "4D5F283E7FA19445D5DE83BDFCBBBBAA0F18D95A31DCA93A35DDDBA4484F9E73",
+          "blocking_question_count": 0,
+          "classification": "emitted_main_text",
+          "reason": "Complete retained text manually read: progress/completion statements, no missing-user-input request. Implementation claims checked separately."
+        },
+        "0f56fce6-8e37-4c9f-8cf8-2deaff72f11c/88cddcb7-efbc-4bc3-9193-6415bf3a45fb": {
+          "selected_text_sha256": "183C240926BBD3A5F3735B2FA18B972BC8AB442399ED84A55E4198DD6D3C333C",
+          "blocking_question_count": 0,
+          "classification": "emitted_main_text",
+          "reason": "Complete retained text manually read: progress/completion statements, no missing-user-input request. Implementation claims checked separately."
+        },
+        "0f56fce6-8e37-4c9f-8cf8-2deaff72f11c/b5c1f70d-de8a-45e6-9a74-03838c80b7dc": {
+          "selected_text_sha256": "ADF5913866B47F43A8A4C83899B460A11FFF75F706A5E55642E8E1F741046436",
+          "blocking_question_count": 0,
+          "classification": "emitted_main_text",
+          "reason": "Complete retained text manually read: progress/completion statements, no missing-user-input request. Implementation claims checked separately."
+        },
+        "0f56fce6-8e37-4c9f-8cf8-2deaff72f11c/e2f51025-f4bd-45c2-9c4b-8c876ff75472": {
+          "selected_text_sha256": "EF716359E7D1FBEE307F05BB1D11EE8FDAB101207038F3D39C574F25DDCE1EC2",
+          "blocking_question_count": 0,
+          "classification": "emitted_main_text",
+          "reason": "Complete retained text manually read: progress/completion statements, no missing-user-input request. Implementation claims checked separately."
+        },
+        "0f56fce6-8e37-4c9f-8cf8-2deaff72f11c/80e96e24-141b-45d1-be0c-efcf66982b79": {
+          "selected_text_sha256": "A150104787ADE8FF80A23662278AFFAC559114D99C16E563F4429E45A2BD8756",
+          "blocking_question_count": 0,
+          "classification": "emitted_main_text",
+          "reason": "Complete retained text manually read: progress/completion statements, no missing-user-input request. Implementation claims checked separately."
+        },
+        "0f56fce6-8e37-4c9f-8cf8-2deaff72f11c/1388769b-f134-4178-b612-3fe58f363c2c": {
+          "selected_text_sha256": "5CE6823AB5D9DCC1F186AEA67836AE1F66EBA9096B46334A80BB58A02D04C4EC",
+          "blocking_question_count": 0,
+          "classification": "emitted_main_text",
+          "reason": "Complete retained text manually read: progress/completion statements, no missing-user-input request. Implementation claims checked separately."
+        },
+        "0f56fce6-8e37-4c9f-8cf8-2deaff72f11c/153e6465-6d32-40aa-8f94-c842f543aad9": {
+          "selected_text_sha256": "7118F737EC313CAB078AC626C7FD5EA6AE7BA5A374637AF363D13D9C19FFEB1A",
+          "blocking_question_count": 0,
+          "classification": "emitted_main_text",
+          "reason": "Complete retained text manually read: progress/completion statements, no missing-user-input request. Implementation claims checked separately."
+        },
+        "0f56fce6-8e37-4c9f-8cf8-2deaff72f11c/4bd54d3b-7bf4-4a07-875b-b3cdbe612a6f": {
+          "selected_text_sha256": "4F2AEF9D742237C0BB728425DAEC3D6450B291BC2F19656310B56CEDA8C113E4",
+          "blocking_question_count": 0,
+          "classification": "emitted_main_text",
+          "reason": "Complete retained text manually read: progress/completion statements, no missing-user-input request. Implementation claims checked separately."
+        },
+        "0f56fce6-8e37-4c9f-8cf8-2deaff72f11c/d93cc1e3-a853-4e4a-9687-aea5a43c8d6d": {
+          "selected_text_sha256": "1C4EB15076689E062D99D7D48010420AA6101381BD53856465FAB92BFBDD2C0B",
+          "blocking_question_count": 0,
+          "classification": "emitted_main_text",
+          "reason": "Complete retained text manually read: progress/completion statements, no missing-user-input request. Implementation claims checked separately."
+        },
+        "0f56fce6-8e37-4c9f-8cf8-2deaff72f11c/7dcc2da7-30dd-44ad-be84-37b4ebbb7ea9": {
+          "selected_text_sha256": "5C811393962405142732E749C2D19E2DFACD5D930792A4E1DE15D63F29378AB7",
+          "blocking_question_count": 0,
+          "classification": "emitted_main_text",
+          "reason": "Complete retained text manually read: progress/completion statements, no missing-user-input request. Implementation claims checked separately."
+        },
+        "0f56fce6-8e37-4c9f-8cf8-2deaff72f11c/d8028bb5-f62a-4b8f-838d-492c4abf20ab": {
+          "selected_text_sha256": "ED8F25BD094035AE6E7125CD7B91D27B205D4A85315AF811BBF55342A23D8E5D",
+          "blocking_question_count": 0,
+          "classification": "emitted_main_text",
+          "reason": "Complete retained text manually read: progress/completion statements, no missing-user-input request. Implementation claims checked separately."
+        },
+        "0f56fce6-8e37-4c9f-8cf8-2deaff72f11c/d5daa232-6263-45f1-8ca7-fcc105cbec9c": {
+          "selected_text_sha256": "8781EACA719B7558096954B07E0000C251887CE116D56DF82ABCCC64327D548C",
+          "blocking_question_count": 0,
+          "classification": "emitted_main_text",
+          "reason": "Complete retained text manually read: progress/completion statements, no missing-user-input request. Implementation claims checked separately."
+        },
+        "0f56fce6-8e37-4c9f-8cf8-2deaff72f11c/9ee7e62c-7705-4c8e-8251-ba30de635ab7": {
+          "selected_text_sha256": "9BA5079D4C027B228DC0E57371F5F47C3FC072C489A481A9D85E666251E2EFC7",
+          "blocking_question_count": 0,
+          "classification": "emitted_main_text",
+          "reason": "Complete retained text manually read: progress/completion statements, no missing-user-input request. Implementation claims checked separately."
+        },
+        "0f56fce6-8e37-4c9f-8cf8-2deaff72f11c/f1e4a58d-f1b2-4269-bab5-f405d1b78e95": {
+          "selected_text_sha256": "83A44D19590AAB099A90A21E571EF4038B63A7BCEE134965D40DBB90280C17BC",
+          "blocking_question_count": 0,
+          "classification": "emitted_main_text",
+          "reason": "Complete retained text manually read: progress/completion statements, no missing-user-input request. Implementation claims checked separately."
+        },
+        "0f56fce6-8e37-4c9f-8cf8-2deaff72f11c/49279f3d-e57b-4b33-9075-b0709dbd8490": {
+          "selected_text_sha256": "D1177230D6C95D04B80711A9F5252D39C5D34940EDDF73E4CB53FEDE2341CAF8",
+          "blocking_question_count": 0,
+          "classification": "emitted_main_text",
+          "reason": "Complete retained text manually read: progress/completion statements, no missing-user-input request. Implementation claims checked separately."
+        },
+        "0f56fce6-8e37-4c9f-8cf8-2deaff72f11c/e16ce47e-d41b-4158-bfbe-a2f461e02c0f": {
+          "selected_text_sha256": "3167B2C6AF47F7E317EF5AD948530E82E99633C6EF7FC965FA5E9043EE93C92A",
+          "blocking_question_count": 0,
+          "classification": "emitted_main_text",
+          "reason": "Complete retained text manually read: progress/completion statements, no missing-user-input request. Implementation claims checked separately."
+        },
+        "0f56fce6-8e37-4c9f-8cf8-2deaff72f11c/5d2aac82-2b22-4dc4-aa3e-78d3a312382e": {
+          "selected_text_sha256": "7512BBA861EF9E355AF594D7458579BDE90B772EBB2D031DB09D7B5F4B054CA8",
+          "blocking_question_count": 0,
+          "classification": "emitted_main_text",
+          "reason": "Complete retained text manually read: progress/completion statements, no missing-user-input request. Implementation claims checked separately."
+        },
+        "0f56fce6-8e37-4c9f-8cf8-2deaff72f11c/82754d4d-38ae-418b-9f0a-6f3cf937b795": {
+          "selected_text_sha256": "23BAFC902A29430B121170C6BA740BBB8FE3F9661139F0F7AF070DA73CF60F5B",
+          "blocking_question_count": 0,
+          "classification": "emitted_main_text",
+          "reason": "Complete retained text manually read: progress/completion statements, no missing-user-input request. Implementation claims checked separately."
+        },
+        "0f56fce6-8e37-4c9f-8cf8-2deaff72f11c/e5576cd6-e201-4628-9bc4-e053d3c769ec": {
+          "selected_text_sha256": "C1D77F9396293F1268638144289032A5A89C64AD6694DB0D079724DC8692F84D",
+          "blocking_question_count": 0,
+          "classification": "emitted_main_text",
+          "reason": "Complete retained text manually read: progress/completion statements, no missing-user-input request. Implementation claims checked separately."
+        },
+        "0f56fce6-8e37-4c9f-8cf8-2deaff72f11c/ca872cc9-d7ef-4aea-8d57-afb0cbd61562": {
+          "selected_text_sha256": "9287A1D2F3DC77601C1ACC2860B8603487B2F4D22EB3A8AD99594E4FB73BDE27",
+          "blocking_question_count": 0,
+          "classification": "emitted_main_text",
+          "reason": "Complete retained text manually read: progress/completion statements, no missing-user-input request. Implementation claims checked separately."
+        },
+        "0f56fce6-8e37-4c9f-8cf8-2deaff72f11c/58588d23-2eff-4b46-9cde-65701a8e6f47": {
+          "selected_text_sha256": "28CCBE94A6E3738E4CD367CCDDDCBBC4D3359E88885255AD0E92433FADCC7FC6",
+          "blocking_question_count": 0,
+          "classification": "emitted_main_text",
+          "reason": "Complete retained text manually read: progress/completion statements, no missing-user-input request. Implementation claims checked separately."
+        },
+        "0f56fce6-8e37-4c9f-8cf8-2deaff72f11c/189f3deb-e8da-444c-9c3c-c97ac0ec5b8c": {
+          "selected_text_sha256": "398C0C5FCCDB979D8A0F14D77294E5E45565DA5610D29F3C047B17375490FB5A",
+          "blocking_question_count": 0,
+          "classification": "emitted_main_text",
+          "reason": "Complete retained text manually read: progress/completion statements, no missing-user-input request. Implementation claims checked separately."
+        },
+        "0f56fce6-8e37-4c9f-8cf8-2deaff72f11c/a6fbcc3d-ce9b-4b3d-af89-0d81429f13ae": {
+          "selected_text_sha256": "786F4921A67234172F6321FFAE3AA7AA73BDA6662564021F135084C9170EEBBA",
+          "blocking_question_count": 0,
+          "classification": "emitted_main_text",
+          "reason": "Complete retained text manually read: progress/completion statements, no missing-user-input request. Implementation claims checked separately."
+        },
+        "0f56fce6-8e37-4c9f-8cf8-2deaff72f11c/d18177f9-2701-461e-a0cb-8882c5500ac8": {
+          "selected_text_sha256": "2A31E1C233934B8EC9B5F7CA21748D4085C8AF8286E71AC2657738C8C7C2640A",
+          "blocking_question_count": 0,
+          "classification": "emitted_main_text",
+          "reason": "Complete retained text manually read: progress/completion statements, no missing-user-input request. Implementation claims checked separately."
+        },
+        "0f56fce6-8e37-4c9f-8cf8-2deaff72f11c/eebe913e-6757-4a2c-a34d-653e9ab3fa0a": {
+          "selected_text_sha256": "853A62C703107F0A1E5CBD1663756D4E82A539D02E07304895296C355DEE84D6",
+          "blocking_question_count": 0,
+          "classification": "emitted_main_text",
+          "reason": "Complete retained text manually read: progress/completion statements, no missing-user-input request. Implementation claims checked separately."
+        },
+        "0f56fce6-8e37-4c9f-8cf8-2deaff72f11c/cd547c7a-af6d-4895-9860-e82d92827cad": {
+          "selected_text_sha256": "C84C692E4B9BA8B76536E05DF6C8676F392A638EF07C6A520330A6672F2EA308",
+          "blocking_question_count": 0,
+          "classification": "emitted_main_text",
+          "reason": "Complete retained text manually read: progress/completion statements, no missing-user-input request. Implementation claims checked separately."
+        },
+        "0f56fce6-8e37-4c9f-8cf8-2deaff72f11c/6898420f-d01e-4bc8-b52d-02c3035143a1": {
+          "selected_text_sha256": "DAF666FED771996DB0D8BB71E239448AEEFBB292C8214B1C3234D9DEAB3AB934",
+          "blocking_question_count": 0,
+          "classification": "emitted_main_text",
+          "reason": "Complete retained text manually read: progress/completion statements, no missing-user-input request. Implementation claims checked separately."
+        },
+        "0f56fce6-8e37-4c9f-8cf8-2deaff72f11c/d1dc4b0e-e850-4675-9236-dd92825789ef": {
+          "selected_text_sha256": "1985F9275362FFB9BCC69D67BEF1EA86C4122390F82728736528145814A2724A",
+          "blocking_question_count": 0,
+          "classification": "emitted_main_text",
+          "reason": "Complete retained text manually read: progress/completion statements, no missing-user-input request. Implementation claims checked separately."
+        },
+        "0f56fce6-8e37-4c9f-8cf8-2deaff72f11c/412b028b-21af-4fa4-8eb1-00b3970cde97": {
+          "selected_text_sha256": "23649F94AE2AC5844F8C3090431EB2D6D7981764C92F7AFE4A42623C1FDA6BF9",
+          "blocking_question_count": 0,
+          "classification": "emitted_main_text",
+          "reason": "Complete retained text manually read: progress/completion statements, no missing-user-input request. Implementation claims checked separately."
+        },
+        "0f56fce6-8e37-4c9f-8cf8-2deaff72f11c/dcedd8b6-24da-4db0-a739-a0675c022f15": {
+          "selected_text_sha256": "A9D53DD575A1D295D95936E81937B319E077403DBB7955BB1251DB2F434AB1C0",
+          "blocking_question_count": 0,
+          "classification": "emitted_main_text",
+          "reason": "Complete retained text manually read: progress/completion statements, no missing-user-input request. Implementation claims checked separately."
+        },
+        "0f56fce6-8e37-4c9f-8cf8-2deaff72f11c/b45808a4-6f91-4fb3-86e8-be97693f4ad7": {
+          "selected_text_sha256": "BA78E1D7118FED97229366A852F070908DA5BC0B6E5A89FBAA682C5BB62322FF",
+          "blocking_question_count": 0,
+          "classification": "emitted_main_text",
+          "reason": "Complete retained text manually read: progress/completion statements, no missing-user-input request. Implementation claims checked separately."
+        },
+        "0f56fce6-8e37-4c9f-8cf8-2deaff72f11c/ca9c7db2-aad6-4743-9d3e-a9eeafdbd6cf": {
+          "selected_text_sha256": "0312E2F91EC1B3F6494B309782C3059907AEFBFCC74EA1CE0FCFB7FE89CC55AF",
+          "blocking_question_count": 0,
+          "classification": "emitted_main_text",
+          "reason": "Complete retained text manually read: progress/completion statements, no missing-user-input request. Implementation claims checked separately."
+        },
+        "0f56fce6-8e37-4c9f-8cf8-2deaff72f11c/657316fd-689f-48b6-a565-e3c5a93f555b": {
+          "selected_text_sha256": "CB1E7724F55FC2AC7B19F4511A8A301A78CE19AB02C73B299555027C8C4AE993",
+          "blocking_question_count": 0,
+          "classification": "emitted_main_text",
+          "reason": "Complete retained text manually read: progress/completion statements, no missing-user-input request. Implementation claims checked separately."
+        },
+        "0f56fce6-8e37-4c9f-8cf8-2deaff72f11c/a5d69526-4086-460f-bb9a-47ae1541b045": {
+          "selected_text_sha256": "6843076E33BE376144AFCECCE2FC82C3451985BEF719A154F4C391D769EE213E",
+          "blocking_question_count": 0,
+          "classification": "emitted_main_text",
+          "reason": "Complete retained text manually read: progress/completion statements, no missing-user-input request. Implementation claims checked separately."
+        },
+        "0f56fce6-8e37-4c9f-8cf8-2deaff72f11c/1604089a-07b1-4757-8e10-0d5871005995": {
+          "selected_text_sha256": "501EBB8D47DC48A32AFF1FDDEB5E6BC14031B7322BFA788A291BD067E4920238",
+          "blocking_question_count": 0,
+          "classification": "emitted_main_text",
+          "reason": "Complete retained text manually read: progress/completion statements, no missing-user-input request. Implementation claims checked separately."
+        },
+        "0f56fce6-8e37-4c9f-8cf8-2deaff72f11c/c39ec58f-aeb2-44a4-8003-7b1e1356c541": {
+          "selected_text_sha256": "19BE0477CF54B16342AA4034D03D33F3DDB17250966ABC245AD80C6BD8BF32D0",
+          "blocking_question_count": 0,
+          "classification": "emitted_main_text",
+          "reason": "Complete retained text manually read: progress/completion statements, no missing-user-input request. Implementation claims checked separately."
+        },
+        "0f56fce6-8e37-4c9f-8cf8-2deaff72f11c/e252ad8f-428d-47f2-9569-31d659325ca3": {
+          "selected_text_sha256": "59D54BDD7E0B45CCCA7E96A386DAF52454311435B81F08493BEEEDF55E525E8E",
+          "blocking_question_count": 0,
+          "classification": "emitted_main_text",
+          "reason": "Complete retained text manually read: progress/completion statements, no missing-user-input request. Implementation claims checked separately."
+        },
+        "0f56fce6-8e37-4c9f-8cf8-2deaff72f11c/68f187c3-d9b4-4164-89ca-7b04e28d54a2": {
+          "selected_text_sha256": "47E21194458C6B0BEFEB7D838C4CEC347AB3160D4BF38E92C5430EBA438C7344",
+          "blocking_question_count": 0,
+          "classification": "emitted_main_text",
+          "reason": "Complete retained text manually read: progress/completion statements, no missing-user-input request. Implementation claims checked separately."
+        },
+        "0f56fce6-8e37-4c9f-8cf8-2deaff72f11c/b050acf6-f416-4ab7-b366-053c9deec472": {
+          "selected_text_sha256": "0BA177B2F171C27FB64598525F858D68A195303D68B2DE67F72813C0FFAB3D46",
+          "blocking_question_count": 0,
+          "classification": "emitted_main_text",
+          "reason": "Complete retained text manually read: progress/completion statements, no missing-user-input request. Implementation claims checked separately."
+        },
+        "0f56fce6-8e37-4c9f-8cf8-2deaff72f11c/5f662202-2701-4fa1-bb08-421254331ddc": {
+          "selected_text_sha256": "0CAA6F9277547632CFB6A31117D231C9C1218F926534684F5F2F2622D8224BEF",
+          "blocking_question_count": 0,
+          "classification": "emitted_main_text",
+          "reason": "Complete retained text manually read: progress/completion statements, no missing-user-input request. Implementation claims checked separately."
+        },
+        "0f56fce6-8e37-4c9f-8cf8-2deaff72f11c/8acb0c18-a39b-4ef1-8c8d-7124677579ad": {
+          "selected_text_sha256": "5F83AB304790393565376967094D13ECA3BE0A0DD5BC66CCA157446675FCA431",
+          "blocking_question_count": 0,
+          "classification": "emitted_main_text",
+          "reason": "Complete retained text manually read: progress/completion statements, no missing-user-input request. Implementation claims checked separately."
+        },
+        "0f56fce6-8e37-4c9f-8cf8-2deaff72f11c/c01d963f-9ac6-4ff3-b8a2-328fbda39708": {
+          "selected_text_sha256": "38B5593A63EEA2D7EFE96AD55C05E6578A7C2645DE09961FAB7EFA1658E5BB89",
+          "blocking_question_count": 0,
+          "classification": "emitted_main_text",
+          "reason": "Complete retained text manually read: progress/completion statements, no missing-user-input request. Implementation claims checked separately."
+        },
+        "0f56fce6-8e37-4c9f-8cf8-2deaff72f11c/04afe960-5998-44f9-ba25-037ac95059a7": {
+          "selected_text_sha256": "039DE771F165336C2E94981524BB76B7EB2F37E1BDBB17883F68E2FCF8B84620",
+          "blocking_question_count": 0,
+          "classification": "emitted_main_text",
+          "reason": "Complete retained text manually read: progress/completion statements, no missing-user-input request. Implementation claims checked separately."
+        },
+        "0f56fce6-8e37-4c9f-8cf8-2deaff72f11c/201d67f0-bbd2-4e38-902e-938e5d85bc22": {
+          "selected_text_sha256": "AE3DE6F18AE4F46CFD8AA8CC2A297C8D869181F869648D4F1454EF53FC765089",
+          "blocking_question_count": 0,
+          "classification": "emitted_main_text",
+          "reason": "Complete retained text manually read: progress/completion statements, no missing-user-input request. Implementation claims checked separately."
+        },
+        "0f56fce6-8e37-4c9f-8cf8-2deaff72f11c/0a7ac1be-da0a-41d3-9c3f-e41eb369bcf2": {
+          "selected_text_sha256": "BE1CD4AF02B9A12FEA5FB4D7F24509859BAEBE5599AB526F79DF1FC52E72C55B",
+          "blocking_question_count": 0,
+          "classification": "emitted_main_text",
+          "reason": "Complete retained text manually read: progress/completion statements, no missing-user-input request. Implementation claims checked separately."
+        },
+        "0f56fce6-8e37-4c9f-8cf8-2deaff72f11c/5d4b7f6f-fda4-4f29-b0bc-572662e7b290": {
+          "selected_text_sha256": "48DAD712DA6618F356531AEDCC2CFD085867DBB09455E84F0D326FD6AAA5A4B4",
+          "blocking_question_count": 0,
+          "classification": "emitted_main_text",
+          "reason": "Complete retained text manually read: progress/completion statements, no missing-user-input request. Implementation claims checked separately."
+        },
+        "0f56fce6-8e37-4c9f-8cf8-2deaff72f11c/764d34de-9334-4541-88c9-5b1609a06d28": {
+          "selected_text_sha256": "C818A07B8A1A46581E81DC6FB4ED9CD601192B27973998F51C1AD44E4E8BF447",
+          "blocking_question_count": 0,
+          "classification": "emitted_main_text",
+          "reason": "Complete retained text manually read: progress/completion statements, no missing-user-input request. Implementation claims checked separately."
+        },
+        "0f56fce6-8e37-4c9f-8cf8-2deaff72f11c/1e16ef50-6bbb-444d-88ef-378b3cc8d255": {
+          "selected_text_sha256": "D8F655A704A86A20ADF8BE5C63A07CCD0CCBDB7A536F736ED9FDF8CB966B7EBD",
+          "blocking_question_count": 0,
+          "classification": "emitted_main_text",
+          "reason": "Complete retained text manually read: progress/completion statements, no missing-user-input request. Implementation claims checked separately."
+        },
+        "0f56fce6-8e37-4c9f-8cf8-2deaff72f11c/a8f8a5d6-c17b-4ead-9455-1f4aad1248f9": {
+          "selected_text_sha256": "FE541CB4C37338C24701D8B4AECEA89DDC564662D16AD2FD583E5E461E978BE7",
+          "blocking_question_count": 0,
+          "classification": "emitted_main_text",
+          "reason": "Complete retained text manually read: progress/completion statements, no missing-user-input request. Implementation claims checked separately."
+        },
+        "0f56fce6-8e37-4c9f-8cf8-2deaff72f11c/07b24600-3fd4-4ed4-a7aa-290180824f33": {
+          "selected_text_sha256": "4D768F459BC47527CA4EC7EFA67E43AC79BD726D54153ED56B74C6453BCE7A0D",
+          "blocking_question_count": 0,
+          "classification": "not_main_model_text",
+          "reason": "Unlabeled no-model replay has identical text hash to an identified main-model message; reviewed full text, excluded duplicate replay from emitted natural message count."
+        },
+        "0f56fce6-8e37-4c9f-8cf8-2deaff72f11c/0dc8ca28-d525-48f8-87de-5f808b3c99d9": {
+          "selected_text_sha256": "A839FF4BA444DB36CE61C2563311A119C1223AF0CF3C01FA9F5047C0AEDBFB06",
+          "blocking_question_count": 0,
+          "classification": "not_main_model_text",
+          "reason": "Unlabeled no-model replay has identical text hash to an identified main-model message; reviewed full text, excluded duplicate replay from emitted natural message count."
+        },
+        "0f56fce6-8e37-4c9f-8cf8-2deaff72f11c/1e249e15-d015-4442-a4f3-8d0845340ccc": {
+          "selected_text_sha256": "71BB147CE3E56D6E908733A2800C1789D37246E7AF8035E7AFBFC621BA1FB654",
+          "blocking_question_count": 0,
+          "classification": "not_main_model_text",
+          "reason": "Unlabeled no-model replay has identical text hash to an identified main-model message; reviewed full text, excluded duplicate replay from emitted natural message count."
+        },
+        "0f56fce6-8e37-4c9f-8cf8-2deaff72f11c/218905c6-11bf-426c-80b5-510e6ddf5f30": {
+          "selected_text_sha256": "16F821DC5D96074AC002A652BA4E42F32982AD717CCC3A2745DA781EF98B0B23",
+          "blocking_question_count": 0,
+          "classification": "not_main_model_text",
+          "reason": "Unlabeled no-model replay has identical text hash to an identified main-model message; reviewed full text, excluded duplicate replay from emitted natural message count."
+        },
+        "0f56fce6-8e37-4c9f-8cf8-2deaff72f11c/1adc2654-0abc-4ded-aa22-48c7b48f93b5": {
+          "selected_text_sha256": "4D5F283E7FA19445D5DE83BDFCBBBBAA0F18D95A31DCA93A35DDDBA4484F9E73",
+          "blocking_question_count": 0,
+          "classification": "not_main_model_text",
+          "reason": "Unlabeled no-model replay has identical text hash to an identified main-model message; reviewed full text, excluded duplicate replay from emitted natural message count."
+        },
+        "0f56fce6-8e37-4c9f-8cf8-2deaff72f11c/56de56ea-7901-4e0a-af2b-c8adc7f542c3": {
+          "selected_text_sha256": "183C240926BBD3A5F3735B2FA18B972BC8AB442399ED84A55E4198DD6D3C333C",
+          "blocking_question_count": 0,
+          "classification": "not_main_model_text",
+          "reason": "Unlabeled no-model replay has identical text hash to an identified main-model message; reviewed full text, excluded duplicate replay from emitted natural message count."
+        },
+        "0f56fce6-8e37-4c9f-8cf8-2deaff72f11c/d09db356-2381-4e21-9640-439c468b7575": {
+          "selected_text_sha256": "ADF5913866B47F43A8A4C83899B460A11FFF75F706A5E55642E8E1F741046436",
+          "blocking_question_count": 0,
+          "classification": "not_main_model_text",
+          "reason": "Unlabeled no-model replay has identical text hash to an identified main-model message; reviewed full text, excluded duplicate replay from emitted natural message count."
+        },
+        "0f56fce6-8e37-4c9f-8cf8-2deaff72f11c/af25f6c6-2eb9-49d3-801b-9ff013b44fb2": {
+          "selected_text_sha256": "EF716359E7D1FBEE307F05BB1D11EE8FDAB101207038F3D39C574F25DDCE1EC2",
+          "blocking_question_count": 0,
+          "classification": "not_main_model_text",
+          "reason": "Unlabeled no-model replay has identical text hash to an identified main-model message; reviewed full text, excluded duplicate replay from emitted natural message count."
+        },
+        "0f56fce6-8e37-4c9f-8cf8-2deaff72f11c/d3db647d-2f63-465d-9eca-b60697d03fc8": {
+          "selected_text_sha256": "A150104787ADE8FF80A23662278AFFAC559114D99C16E563F4429E45A2BD8756",
+          "blocking_question_count": 0,
+          "classification": "not_main_model_text",
+          "reason": "Unlabeled no-model replay has identical text hash to an identified main-model message; reviewed full text, excluded duplicate replay from emitted natural message count."
+        },
+        "0f56fce6-8e37-4c9f-8cf8-2deaff72f11c/9d696294-f367-4483-9737-b18287cef638": {
+          "selected_text_sha256": "5CE6823AB5D9DCC1F186AEA67836AE1F66EBA9096B46334A80BB58A02D04C4EC",
+          "blocking_question_count": 0,
+          "classification": "not_main_model_text",
+          "reason": "Unlabeled no-model replay has identical text hash to an identified main-model message; reviewed full text, excluded duplicate replay from emitted natural message count."
+        },
+        "0f56fce6-8e37-4c9f-8cf8-2deaff72f11c/f7a35302-8af7-4f54-a072-4629521420e0": {
+          "selected_text_sha256": "7118F737EC313CAB078AC626C7FD5EA6AE7BA5A374637AF363D13D9C19FFEB1A",
+          "blocking_question_count": 0,
+          "classification": "not_main_model_text",
+          "reason": "Unlabeled no-model replay has identical text hash to an identified main-model message; reviewed full text, excluded duplicate replay from emitted natural message count."
+        },
+        "0f56fce6-8e37-4c9f-8cf8-2deaff72f11c/461ce319-57d5-4f22-9cbc-3d5dd7d59d6e": {
+          "selected_text_sha256": "4F2AEF9D742237C0BB728425DAEC3D6450B291BC2F19656310B56CEDA8C113E4",
+          "blocking_question_count": 0,
+          "classification": "not_main_model_text",
+          "reason": "Unlabeled no-model replay has identical text hash to an identified main-model message; reviewed full text, excluded duplicate replay from emitted natural message count."
+        },
+        "0f56fce6-8e37-4c9f-8cf8-2deaff72f11c/8899668a-4337-4375-a9e8-16385dbcd3fa": {
+          "selected_text_sha256": "1C4EB15076689E062D99D7D48010420AA6101381BD53856465FAB92BFBDD2C0B",
+          "blocking_question_count": 0,
+          "classification": "not_main_model_text",
+          "reason": "Unlabeled no-model replay has identical text hash to an identified main-model message; reviewed full text, excluded duplicate replay from emitted natural message count."
+        },
+        "0f56fce6-8e37-4c9f-8cf8-2deaff72f11c/9c8dc974-7ca7-46fc-a8c7-0d437d9916a8": {
+          "selected_text_sha256": "5C811393962405142732E749C2D19E2DFACD5D930792A4E1DE15D63F29378AB7",
+          "blocking_question_count": 0,
+          "classification": "not_main_model_text",
+          "reason": "Unlabeled no-model replay has identical text hash to an identified main-model message; reviewed full text, excluded duplicate replay from emitted natural message count."
+        },
+        "0f56fce6-8e37-4c9f-8cf8-2deaff72f11c/9e014642-9043-41e7-ad80-4b7070131944": {
+          "selected_text_sha256": "ED8F25BD094035AE6E7125CD7B91D27B205D4A85315AF811BBF55342A23D8E5D",
+          "blocking_question_count": 0,
+          "classification": "not_main_model_text",
+          "reason": "Unlabeled no-model replay has identical text hash to an identified main-model message; reviewed full text, excluded duplicate replay from emitted natural message count."
+        },
+        "0f56fce6-8e37-4c9f-8cf8-2deaff72f11c/35eef83c-4c10-4381-999b-737aa255e997": {
+          "selected_text_sha256": "8781EACA719B7558096954B07E0000C251887CE116D56DF82ABCCC64327D548C",
+          "blocking_question_count": 0,
+          "classification": "not_main_model_text",
+          "reason": "Unlabeled no-model replay has identical text hash to an identified main-model message; reviewed full text, excluded duplicate replay from emitted natural message count."
+        },
+        "0f56fce6-8e37-4c9f-8cf8-2deaff72f11c/bc984a1e-fc77-4bd3-bf8b-9993aa700194": {
+          "selected_text_sha256": "9BA5079D4C027B228DC0E57371F5F47C3FC072C489A481A9D85E666251E2EFC7",
+          "blocking_question_count": 0,
+          "classification": "not_main_model_text",
+          "reason": "Unlabeled no-model replay has identical text hash to an identified main-model message; reviewed full text, excluded duplicate replay from emitted natural message count."
+        },
+        "0f56fce6-8e37-4c9f-8cf8-2deaff72f11c/825a02ac-fd48-4cde-9c07-43ba9fa550d8": {
+          "selected_text_sha256": "83A44D19590AAB099A90A21E571EF4038B63A7BCEE134965D40DBB90280C17BC",
+          "blocking_question_count": 0,
+          "classification": "not_main_model_text",
+          "reason": "Unlabeled no-model replay has identical text hash to an identified main-model message; reviewed full text, excluded duplicate replay from emitted natural message count."
+        },
+        "0f56fce6-8e37-4c9f-8cf8-2deaff72f11c/c75ba4a4-534a-42bb-b69e-93e89bd6bc63": {
+          "selected_text_sha256": "D1177230D6C95D04B80711A9F5252D39C5D34940EDDF73E4CB53FEDE2341CAF8",
+          "blocking_question_count": 0,
+          "classification": "not_main_model_text",
+          "reason": "Unlabeled no-model replay has identical text hash to an identified main-model message; reviewed full text, excluded duplicate replay from emitted natural message count."
+        },
+        "0f56fce6-8e37-4c9f-8cf8-2deaff72f11c/76a8bf66-d303-462c-a429-0a67958963e2": {
+          "selected_text_sha256": "3167B2C6AF47F7E317EF5AD948530E82E99633C6EF7FC965FA5E9043EE93C92A",
+          "blocking_question_count": 0,
+          "classification": "not_main_model_text",
+          "reason": "Unlabeled no-model replay has identical text hash to an identified main-model message; reviewed full text, excluded duplicate replay from emitted natural message count."
+        },
+        "0f56fce6-8e37-4c9f-8cf8-2deaff72f11c/8f04cc44-cd0a-44af-9c22-995814647e6f": {
+          "selected_text_sha256": "23BAFC902A29430B121170C6BA740BBB8FE3F9661139F0F7AF070DA73CF60F5B",
+          "blocking_question_count": 0,
+          "classification": "not_main_model_text",
+          "reason": "Unlabeled no-model replay has identical text hash to an identified main-model message; reviewed full text, excluded duplicate replay from emitted natural message count."
+        },
+        "0f56fce6-8e37-4c9f-8cf8-2deaff72f11c/9c080e8e-844e-4677-ae2e-f855c144faf7": {
+          "selected_text_sha256": "7512BBA861EF9E355AF594D7458579BDE90B772EBB2D031DB09D7B5F4B054CA8",
+          "blocking_question_count": 0,
+          "classification": "not_main_model_text",
+          "reason": "Unlabeled no-model replay has identical text hash to an identified main-model message; reviewed full text, excluded duplicate replay from emitted natural message count."
+        },
+        "0f56fce6-8e37-4c9f-8cf8-2deaff72f11c/654d4886-9771-4c31-a523-413594acc1b9": {
+          "selected_text_sha256": "C1D77F9396293F1268638144289032A5A89C64AD6694DB0D079724DC8692F84D",
+          "blocking_question_count": 0,
+          "classification": "not_main_model_text",
+          "reason": "Unlabeled no-model replay has identical text hash to an identified main-model message; reviewed full text, excluded duplicate replay from emitted natural message count."
+        },
+        "0f56fce6-8e37-4c9f-8cf8-2deaff72f11c/86c79f4c-eee1-49f7-a785-be2eaa1d3500": {
+          "selected_text_sha256": "9287A1D2F3DC77601C1ACC2860B8603487B2F4D22EB3A8AD99594E4FB73BDE27",
+          "blocking_question_count": 0,
+          "classification": "not_main_model_text",
+          "reason": "Unlabeled no-model replay has identical text hash to an identified main-model message; reviewed full text, excluded duplicate replay from emitted natural message count."
+        },
+        "0f56fce6-8e37-4c9f-8cf8-2deaff72f11c/9f23ba9c-220f-44ff-b630-b1067ff700c3": {
+          "selected_text_sha256": "28CCBE94A6E3738E4CD367CCDDDCBBC4D3359E88885255AD0E92433FADCC7FC6",
+          "blocking_question_count": 0,
+          "classification": "not_main_model_text",
+          "reason": "Unlabeled no-model replay has identical text hash to an identified main-model message; reviewed full text, excluded duplicate replay from emitted natural message count."
+        },
+        "0f56fce6-8e37-4c9f-8cf8-2deaff72f11c/d75c1b62-1156-42e8-863d-a9bef13d895a": {
+          "selected_text_sha256": "398C0C5FCCDB979D8A0F14D77294E5E45565DA5610D29F3C047B17375490FB5A",
+          "blocking_question_count": 0,
+          "classification": "not_main_model_text",
+          "reason": "Unlabeled no-model replay has identical text hash to an identified main-model message; reviewed full text, excluded duplicate replay from emitted natural message count."
+        },
+        "0f56fce6-8e37-4c9f-8cf8-2deaff72f11c/97efa8fc-e615-404d-8834-9ce8c4442702": {
+          "selected_text_sha256": "786F4921A67234172F6321FFAE3AA7AA73BDA6662564021F135084C9170EEBBA",
+          "blocking_question_count": 0,
+          "classification": "not_main_model_text",
+          "reason": "Unlabeled no-model replay has identical text hash to an identified main-model message; reviewed full text, excluded duplicate replay from emitted natural message count."
+        },
+        "0f56fce6-8e37-4c9f-8cf8-2deaff72f11c/b1b11a1e-24a9-4ef7-aad9-7f91cf1b3ad1": {
+          "selected_text_sha256": "2A31E1C233934B8EC9B5F7CA21748D4085C8AF8286E71AC2657738C8C7C2640A",
+          "blocking_question_count": 0,
+          "classification": "not_main_model_text",
+          "reason": "Unlabeled no-model replay has identical text hash to an identified main-model message; reviewed full text, excluded duplicate replay from emitted natural message count."
+        },
+        "0f56fce6-8e37-4c9f-8cf8-2deaff72f11c/e58a7221-100c-4d03-8dad-ac683660ac1f": {
+          "selected_text_sha256": "853A62C703107F0A1E5CBD1663756D4E82A539D02E07304895296C355DEE84D6",
+          "blocking_question_count": 0,
+          "classification": "not_main_model_text",
+          "reason": "Unlabeled no-model replay has identical text hash to an identified main-model message; reviewed full text, excluded duplicate replay from emitted natural message count."
+        },
+        "0f56fce6-8e37-4c9f-8cf8-2deaff72f11c/bcf2b198-5645-4060-afca-187c7e38c125": {
+          "selected_text_sha256": "C84C692E4B9BA8B76536E05DF6C8676F392A638EF07C6A520330A6672F2EA308",
+          "blocking_question_count": 0,
+          "classification": "not_main_model_text",
+          "reason": "Unlabeled no-model replay has identical text hash to an identified main-model message; reviewed full text, excluded duplicate replay from emitted natural message count."
+        },
+        "0f56fce6-8e37-4c9f-8cf8-2deaff72f11c/2e3a6c2b-693b-4b46-a96f-11ec52fc0402": {
+          "selected_text_sha256": "DAF666FED771996DB0D8BB71E239448AEEFBB292C8214B1C3234D9DEAB3AB934",
+          "blocking_question_count": 0,
+          "classification": "not_main_model_text",
+          "reason": "Unlabeled no-model replay has identical text hash to an identified main-model message; reviewed full text, excluded duplicate replay from emitted natural message count."
+        },
+        "0f56fce6-8e37-4c9f-8cf8-2deaff72f11c/dbd0c319-fee8-4d3e-98ad-d293192a9298": {
+          "selected_text_sha256": "1985F9275362FFB9BCC69D67BEF1EA86C4122390F82728736528145814A2724A",
+          "blocking_question_count": 0,
+          "classification": "not_main_model_text",
+          "reason": "Unlabeled no-model replay has identical text hash to an identified main-model message; reviewed full text, excluded duplicate replay from emitted natural message count."
+        },
+        "0f56fce6-8e37-4c9f-8cf8-2deaff72f11c/af65266b-5b22-475b-8a1d-3110b8e66f83": {
+          "selected_text_sha256": "23649F94AE2AC5844F8C3090431EB2D6D7981764C92F7AFE4A42623C1FDA6BF9",
+          "blocking_question_count": 0,
+          "classification": "not_main_model_text",
+          "reason": "Unlabeled no-model replay has identical text hash to an identified main-model message; reviewed full text, excluded duplicate replay from emitted natural message count."
+        },
+        "0f56fce6-8e37-4c9f-8cf8-2deaff72f11c/c4484aa6-a939-4353-b636-c71ee5531280": {
+          "selected_text_sha256": "A9D53DD575A1D295D95936E81937B319E077403DBB7955BB1251DB2F434AB1C0",
+          "blocking_question_count": 0,
+          "classification": "not_main_model_text",
+          "reason": "Unlabeled no-model replay has identical text hash to an identified main-model message; reviewed full text, excluded duplicate replay from emitted natural message count."
+        },
+        "0f56fce6-8e37-4c9f-8cf8-2deaff72f11c/ad4e85b7-b3d1-422c-9c8e-80af5f89b38a": {
+          "selected_text_sha256": "BA78E1D7118FED97229366A852F070908DA5BC0B6E5A89FBAA682C5BB62322FF",
+          "blocking_question_count": 0,
+          "classification": "not_main_model_text",
+          "reason": "Unlabeled no-model replay has identical text hash to an identified main-model message; reviewed full text, excluded duplicate replay from emitted natural message count."
+        },
+        "0f56fce6-8e37-4c9f-8cf8-2deaff72f11c/f452242f-0305-4597-9c17-6fb43d84d38f": {
+          "selected_text_sha256": "0312E2F91EC1B3F6494B309782C3059907AEFBFCC74EA1CE0FCFB7FE89CC55AF",
+          "blocking_question_count": 0,
+          "classification": "not_main_model_text",
+          "reason": "Unlabeled no-model replay has identical text hash to an identified main-model message; reviewed full text, excluded duplicate replay from emitted natural message count."
+        },
+        "0f56fce6-8e37-4c9f-8cf8-2deaff72f11c/9991fa4e-24de-49c9-b62e-37bc1c1403bf": {
+          "selected_text_sha256": "CB1E7724F55FC2AC7B19F4511A8A301A78CE19AB02C73B299555027C8C4AE993",
+          "blocking_question_count": 0,
+          "classification": "not_main_model_text",
+          "reason": "Unlabeled no-model replay has identical text hash to an identified main-model message; reviewed full text, excluded duplicate replay from emitted natural message count."
+        },
+        "0f56fce6-8e37-4c9f-8cf8-2deaff72f11c/33aeb352-baae-45be-8c46-d43184d5bfba": {
+          "selected_text_sha256": "6843076E33BE376144AFCECCE2FC82C3451985BEF719A154F4C391D769EE213E",
+          "blocking_question_count": 0,
+          "classification": "not_main_model_text",
+          "reason": "Unlabeled no-model replay has identical text hash to an identified main-model message; reviewed full text, excluded duplicate replay from emitted natural message count."
+        },
+        "0f56fce6-8e37-4c9f-8cf8-2deaff72f11c/ac75469d-7f5a-4aec-98b7-ed4b4e2b8e3b": {
+          "selected_text_sha256": "501EBB8D47DC48A32AFF1FDDEB5E6BC14031B7322BFA788A291BD067E4920238",
+          "blocking_question_count": 0,
+          "classification": "not_main_model_text",
+          "reason": "Unlabeled no-model replay has identical text hash to an identified main-model message; reviewed full text, excluded duplicate replay from emitted natural message count."
+        },
+        "0f56fce6-8e37-4c9f-8cf8-2deaff72f11c/81823c08-680e-4189-87d1-ad33216bf5b7": {
+          "selected_text_sha256": "19BE0477CF54B16342AA4034D03D33F3DDB17250966ABC245AD80C6BD8BF32D0",
+          "blocking_question_count": 0,
+          "classification": "not_main_model_text",
+          "reason": "Unlabeled no-model replay has identical text hash to an identified main-model message; reviewed full text, excluded duplicate replay from emitted natural message count."
+        },
+        "0f56fce6-8e37-4c9f-8cf8-2deaff72f11c/6573fadd-4994-416d-851a-e3aff3edb735": {
+          "selected_text_sha256": "59D54BDD7E0B45CCCA7E96A386DAF52454311435B81F08493BEEEDF55E525E8E",
+          "blocking_question_count": 0,
+          "classification": "not_main_model_text",
+          "reason": "Unlabeled no-model replay has identical text hash to an identified main-model message; reviewed full text, excluded duplicate replay from emitted natural message count."
+        },
+        "0f56fce6-8e37-4c9f-8cf8-2deaff72f11c/59fd5e5e-6f65-41f9-bed2-56f35259bcf5": {
+          "selected_text_sha256": "47E21194458C6B0BEFEB7D838C4CEC347AB3160D4BF38E92C5430EBA438C7344",
+          "blocking_question_count": 0,
+          "classification": "not_main_model_text",
+          "reason": "Unlabeled no-model replay has identical text hash to an identified main-model message; reviewed full text, excluded duplicate replay from emitted natural message count."
+        },
+        "0f56fce6-8e37-4c9f-8cf8-2deaff72f11c/a41a4d2b-b55f-4562-8f5e-f0b75f4af75b": {
+          "selected_text_sha256": "0BA177B2F171C27FB64598525F858D68A195303D68B2DE67F72813C0FFAB3D46",
+          "blocking_question_count": 0,
+          "classification": "not_main_model_text",
+          "reason": "Unlabeled no-model replay has identical text hash to an identified main-model message; reviewed full text, excluded duplicate replay from emitted natural message count."
+        },
+        "0f56fce6-8e37-4c9f-8cf8-2deaff72f11c/6c69b01d-0028-4b5e-aa43-61effdaf406b": {
+          "selected_text_sha256": "0CAA6F9277547632CFB6A31117D231C9C1218F926534684F5F2F2622D8224BEF",
+          "blocking_question_count": 0,
+          "classification": "not_main_model_text",
+          "reason": "Unlabeled no-model replay has identical text hash to an identified main-model message; reviewed full text, excluded duplicate replay from emitted natural message count."
+        },
+        "0f56fce6-8e37-4c9f-8cf8-2deaff72f11c/1480bb47-0a76-42fe-8f75-9b9f072d9cfd": {
+          "selected_text_sha256": "5F83AB304790393565376967094D13ECA3BE0A0DD5BC66CCA157446675FCA431",
+          "blocking_question_count": 0,
+          "classification": "not_main_model_text",
+          "reason": "Unlabeled no-model replay has identical text hash to an identified main-model message; reviewed full text, excluded duplicate replay from emitted natural message count."
+        },
+        "0f56fce6-8e37-4c9f-8cf8-2deaff72f11c/84907028-58ed-423d-af18-24bd16bf6939": {
+          "selected_text_sha256": "38B5593A63EEA2D7EFE96AD55C05E6578A7C2645DE09961FAB7EFA1658E5BB89",
+          "blocking_question_count": 0,
+          "classification": "not_main_model_text",
+          "reason": "Unlabeled no-model replay has identical text hash to an identified main-model message; reviewed full text, excluded duplicate replay from emitted natural message count."
+        },
+        "0f56fce6-8e37-4c9f-8cf8-2deaff72f11c/f5645641-3b20-4e68-8ef0-123df11e1caa": {
+          "selected_text_sha256": "039DE771F165336C2E94981524BB76B7EB2F37E1BDBB17883F68E2FCF8B84620",
+          "blocking_question_count": 0,
+          "classification": "not_main_model_text",
+          "reason": "Unlabeled no-model replay has identical text hash to an identified main-model message; reviewed full text, excluded duplicate replay from emitted natural message count."
+        },
+        "0f56fce6-8e37-4c9f-8cf8-2deaff72f11c/d8565db0-3d6f-49f3-a0d4-3355bd928b73": {
+          "selected_text_sha256": "AE3DE6F18AE4F46CFD8AA8CC2A297C8D869181F869648D4F1454EF53FC765089",
+          "blocking_question_count": 0,
+          "classification": "not_main_model_text",
+          "reason": "Unlabeled no-model replay has identical text hash to an identified main-model message; reviewed full text, excluded duplicate replay from emitted natural message count."
+        },
+        "0f56fce6-8e37-4c9f-8cf8-2deaff72f11c/730a18fd-f418-48eb-b3a6-492aade0e6ad": {
+          "selected_text_sha256": "BE1CD4AF02B9A12FEA5FB4D7F24509859BAEBE5599AB526F79DF1FC52E72C55B",
+          "blocking_question_count": 0,
+          "classification": "not_main_model_text",
+          "reason": "Unlabeled no-model replay has identical text hash to an identified main-model message; reviewed full text, excluded duplicate replay from emitted natural message count."
+        },
+        "0f56fce6-8e37-4c9f-8cf8-2deaff72f11c/92ef7546-0d74-4f88-a4c9-5ef19ea5a98c": {
+          "selected_text_sha256": "48DAD712DA6618F356531AEDCC2CFD085867DBB09455E84F0D326FD6AAA5A4B4",
+          "blocking_question_count": 0,
+          "classification": "not_main_model_text",
+          "reason": "Unlabeled no-model replay has identical text hash to an identified main-model message; reviewed full text, excluded duplicate replay from emitted natural message count."
+        },
+        "0f56fce6-8e37-4c9f-8cf8-2deaff72f11c/b83bc9d7-8b63-4b4e-ab24-bac144280e2c": {
+          "selected_text_sha256": "C818A07B8A1A46581E81DC6FB4ED9CD601192B27973998F51C1AD44E4E8BF447",
+          "blocking_question_count": 0,
+          "classification": "not_main_model_text",
+          "reason": "Unlabeled no-model replay has identical text hash to an identified main-model message; reviewed full text, excluded duplicate replay from emitted natural message count."
+        },
+        "0f56fce6-8e37-4c9f-8cf8-2deaff72f11c/8847db1f-bb32-4ce0-b0e8-b85a985f4b5c": {
+          "selected_text_sha256": "D8F655A704A86A20ADF8BE5C63A07CCD0CCBDB7A536F736ED9FDF8CB966B7EBD",
+          "blocking_question_count": 0,
+          "classification": "not_main_model_text",
+          "reason": "Unlabeled no-model replay has identical text hash to an identified main-model message; reviewed full text, excluded duplicate replay from emitted natural message count."
+        },
+        "0f56fce6-8e37-4c9f-8cf8-2deaff72f11c/2d4c1dce-8e89-4385-a7e4-e60b75f1a000": {
+          "selected_text_sha256": "FE541CB4C37338C24701D8B4AECEA89DDC564662D16AD2FD583E5E461E978BE7",
+          "blocking_question_count": 0,
+          "classification": "not_main_model_text",
+          "reason": "Unlabeled no-model replay has identical text hash to an identified main-model message; reviewed full text, excluded duplicate replay from emitted natural message count."
+        },
+        "0f56fce6-8e37-4c9f-8cf8-2deaff72f11c/1fd3525b-1b16-45e0-827f-c9c9e9f32c6a": {
+          "selected_text_sha256": "69DDD4AA68A83F0F7836781048601E863E4131EDCF27992C0A392C104B7B9057",
+          "blocking_question_count": 0,
+          "classification": "emitted_main_text",
+          "reason": "Complete retained text manually read: progress/completion statements, no missing-user-input request. Implementation claims checked separately."
+        },
+        "0f56fce6-8e37-4c9f-8cf8-2deaff72f11c/704aa165-ab5f-4907-be34-931330fdfc39": {
+          "selected_text_sha256": "318FE3D932CCF3FB31D3D285F7B643191081E4E066EE1A9DDA4EEF411820E853",
+          "blocking_question_count": 0,
+          "classification": "emitted_main_text",
+          "reason": "Complete retained text manually read: progress/completion statements, no missing-user-input request. Implementation claims checked separately."
+        },
+        "0f56fce6-8e37-4c9f-8cf8-2deaff72f11c/2fa749a0-a698-4f2c-a552-bb9cea7eb807": {
+          "selected_text_sha256": "8F6418F8C23BBE2A81E91E1C32FA3610513C2E23EE7915A7F1F36CF16F669FF1",
+          "blocking_question_count": 0,
+          "classification": "emitted_main_text",
+          "reason": "Complete retained text manually read: progress/completion statements, no missing-user-input request. Implementation claims checked separately."
+        },
+        "0f56fce6-8e37-4c9f-8cf8-2deaff72f11c/c9570836-18d3-4e0b-9f8d-f0b5ddbf8afc": {
+          "selected_text_sha256": "74D70519C743030F21D6E67D156A13D91EFE0739F9C9676D6E1CB917E1640710",
+          "blocking_question_count": 0,
+          "classification": "emitted_main_text",
+          "reason": "Complete retained text manually read: progress/completion statements, no missing-user-input request. Implementation claims checked separately."
+        },
+        "0f56fce6-8e37-4c9f-8cf8-2deaff72f11c/02d5c8c2-2061-4278-a5da-0a2d77d1377a": {
+          "selected_text_sha256": "F571098A7C704B92EE69BF9848A2B71B1D1C43CE2BBEF64EA09F605D6179C3CF",
+          "blocking_question_count": 0,
+          "classification": "emitted_main_text",
+          "reason": "Complete retained text manually read: progress/completion statements, no missing-user-input request. Implementation claims checked separately."
+        }
+      }
+    },
+    "06-qa01": {
+      "run_metadata_sha256": "301EBEE8EB94EBF12081C4152883FAB4E24038CA7396E5BD3D2D455D06AA3835",
+      "candidate_signature_sha256": "8ECAE54A53FF342EAF60257FA97DB29A32620CFE9637C62C1BA9CEA66F03F18D",
+      "reviewed_at_utc": "2026-10-25T21:15:33.641825+00:00",
+      "reviewer": "researcher",
+      "coverage_note": "Seven retained main natural progress statements manually read. No final response. Zero blocking questions observed; transient429/fetch failure retained, no inference about absent records.",
+      "messages": {
+        "6c3d4681-5396-49a3-ac61-ce1d72c2ee61/4a44ce8a-3c7a-4e68-8050-f77bfcb921e8": {
+          "selected_text_sha256": "EFB1AAD44DA787A502E698B0443679C24779104FDAEA746BDC60E05AD941871B",
+          "blocking_question_count": 0,
+          "classification": "emitted_main_text",
+          "reason": "Progress statement announces local Sonar evidence parsing/helper operation, no missing user input request; full text reviewed."
+        },
+        "6c3d4681-5396-49a3-ac61-ce1d72c2ee61/5d0f6370-4c15-48a1-a487-d82d5cdab8f3": {
+          "selected_text_sha256": "FF20042E032061D1AD5829F1A5EDD0096B5B3631A8FD5B4D7C1252916C67CF78",
+          "blocking_question_count": 0,
+          "classification": "emitted_main_text",
+          "reason": "Progress statement announces local Sonar evidence parsing/helper operation, no missing user input request; full text reviewed."
+        },
+        "6c3d4681-5396-49a3-ac61-ce1d72c2ee61/68cab8ed-6b33-428b-81cd-1886bff3aac8": {
+          "selected_text_sha256": "4A000797AD4149B29F4D484947653226D9AEB5335871BC3FEE2B1060AB83EB9D",
+          "blocking_question_count": 0,
+          "classification": "emitted_main_text",
+          "reason": "Progress statement announces local Sonar evidence parsing/helper operation, no missing user input request; full text reviewed."
+        },
+        "6c3d4681-5396-49a3-ac61-ce1d72c2ee61/e1a598e5-4380-447c-a8f5-ec25e7fdd5cf": {
+          "selected_text_sha256": "11FDE39988C6F30E69A22E94C8E60546A7400E8CEFD3A192615E5CADB300C01E",
+          "blocking_question_count": 0,
+          "classification": "emitted_main_text",
+          "reason": "Progress statement announces local Sonar evidence parsing/helper operation, no missing user input request; full text reviewed."
+        },
+        "6c3d4681-5396-49a3-ac61-ce1d72c2ee61/5ab4268c-6994-4770-8089-bac3d74b7d38": {
+          "selected_text_sha256": "349B45AE9CAE9628EA4F481C9D5019277A523497587D0CDDF850FA5B7789F2BC",
+          "blocking_question_count": 0,
+          "classification": "emitted_main_text",
+          "reason": "Progress statement announces local Sonar evidence parsing/helper operation, no missing user input request; full text reviewed."
+        },
+        "6c3d4681-5396-49a3-ac61-ce1d72c2ee61/0327540a-0158-4c37-b10d-81e6c419a057": {
+          "selected_text_sha256": "5897FF8CB3489F6A843FFA23D642E4BBE7F12AF5190EA8EAC358CDD346392353",
+          "blocking_question_count": 0,
+          "classification": "emitted_main_text",
+          "reason": "Progress statement announces local Sonar evidence parsing/helper operation, no missing user input request; full text reviewed."
+        },
+        "6c3d4681-5396-49a3-ac61-ce1d72c2ee61/90762812-6348-4ef5-a5b3-651790573f3a": {
+          "selected_text_sha256": "DE2219D9189ADC5BA35AB5CE15CD286297078818426C32DE55BE7463E755AC87",
+          "blocking_question_count": 0,
+          "classification": "emitted_main_text",
+          "reason": "Progress statement announces local Sonar evidence parsing/helper operation, no missing user input request; full text reviewed."
+        }
+      }
+    }
+  },
+  "prompts": {
+    "02-specify-correction": {
+      "prompt_sha256": "5D72D6C29E6D31B93F641D145BFD2780EB4F49BA466FAFAC1E92461E23DEF444",
+      "kind": "preimplementation specification review correction",
+      "clarification_bearing": true,
+      "corrective_intent": true,
+      "reply_to_model_blocking_question": false,
+      "reviewed_at_utc": "2026-10-25T20:23:38.845965+00:00",
+      "reason": "Researcher-origin review, complete common seed retained. No model clarification prompted this request; no application had been implemented."
+    },
+    "03-specify-last-mile": {
+      "prompt_sha256": "25F44E4EE314333CF948DF305A32CF6566E2567F112A60222AC9BDDA8AC15412",
+      "kind": "retry of preimplementation specification review after authorized cloud transition",
+      "clarification_bearing": true,
+      "corrective_intent": true,
+      "reply_to_model_blocking_question": false,
+      "reviewed_at_utc": "2026-10-25T20:23:38.845965+00:00",
+      "reason": "Researcher-origin review, complete common seed retained. No model clarification prompted this request; no application had been implemented."
+    },
+    "04-specify-final-review": {
+      "prompt_sha256": "157F026258A3FB9F8F0F3C33C3E10C983B2561E0EFBFD2FD2974F0389E720BD4",
+      "kind": "focused preimplementation specification correction",
+      "clarification_bearing": true,
+      "corrective_intent": true,
+      "reply_to_model_blocking_question": false,
+      "reviewed_at_utc": "2026-10-25T20:30:33.880251+00:00",
+      "reason": "Researcher found remaining contradictions before any application implementation, not a response to a model question or postimplementation QA."
+    },
+    "05-implement": {
+      "prompt_sha256": "F9612FAE43CDF26A61F3BCCF01409ED6EA2EC0FBA7B52F2D78EA692898E0DC87",
+      "kind": "initial implementation with pre-code coordinate clarification",
+      "clarification_bearing": true,
+      "corrective_intent": false,
+      "reply_to_model_blocking_question": false,
+      "reviewed_at_utc": "2026-10-25T21:06:21.859596+00:00",
+      "reason": "Researcher-authored concrete workflow instructions with unchanged full seed; no model question prompted this input."
+    },
+    "06-qa01": {
+      "prompt_sha256": "D5736C0131DBCE4FBCE1C597583466190EEF2B9A35EB83D7A34842C79EECB735",
+      "kind": "postimplementation QA intent Q01 from external StrictMode and Sonar findings",
+      "clarification_bearing": true,
+      "corrective_intent": true,
+      "reply_to_model_blocking_question": false,
+      "reviewed_at_utc": "2026-10-25T21:06:21.859596+00:00",
+      "reason": "Researcher-authored concrete workflow instructions with unchanged full seed; no model question prompted this input."
+    }
+  }
+}

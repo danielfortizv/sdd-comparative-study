@@ -1,0 +1,2 @@
+Captura 8. Vista derivada de intentos API, errores, éxitos y respuestas JSONL, con denominadores separados.
+Archivo: Spec Kit/docs/screenshots/requests-panel.jpg. Fuentes: metrics.json.

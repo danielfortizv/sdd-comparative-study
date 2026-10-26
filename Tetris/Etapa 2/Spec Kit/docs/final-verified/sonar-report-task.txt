@@ -1,0 +1,6 @@
+projectKey=tetris-stage2-speckit
+serverUrl=http://127.0.0.1:9000
+serverVersion=26.9.0.129388
+dashboardUrl=http://127.0.0.1:9000/dashboard?id=tetris-stage2-speckit
+ceTaskId=c3a9e639-7e05-4398-b9fd-3004cfdabb9f
+ceTaskUrl=http://127.0.0.1:9000/api/ce/task?id=c3a9e639-7e05-4398-b9fd-3004cfdabb9f

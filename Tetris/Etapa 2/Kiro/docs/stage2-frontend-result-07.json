@@ -1,0 +1,43 @@
+{
+  "stage": "stage2-frontend",
+  "iteration": "07-queued-timer-qa",
+  "supersedes": "stage2-frontend-result.json (04 figures: 38 tests, 89.75% stmts, 7 full-tree vulns), preserved verbatim at docs/stage2-frontend-result-04-snapshot.json",
+  "scope_note": "Fresh source and fresh coverage for the R4/R5 queued-manual gravity-timeout correction (Requirements 16.25-16.31, 18.17). Figures below were produced by the commands in this file against the corrected frontend; they are NOT mixed with the historical 04 summary.",
+  "environment": {
+    "node": "see docs/kiro-runtime-pin.json / local toolchain",
+    "vite": "8.3.5",
+    "vitest": "4.1.12",
+    "coverage_provider": "@vitest/coverage-v8 4.1.12",
+    "react": "18.3.1",
+    "react_dom": "18.3.1",
+    "typescript": "5.6.3"
+  },
+  "commands": [
+    { "cmd": "npm run build", "desc": "tsc && vite build", "cwd": "frontend", "exit": 0, "result": "18 modules transformed; dist/assets/index-*.js emitted" },
+    { "cmd": "npm run test -- --coverage", "desc": "vitest run --coverage", "cwd": "frontend", "exit": 0, "lcov": "frontend/coverage/lcov.info" },
+    { "cmd": "npx vitest run --config ../docs/acceptance/vitest.queued-timers.config.mjs", "desc": "researcher external reproduction (invoke-only, unchanged)", "cwd": "frontend", "exit": 0, "result": "2 passed (previously 2 failed on uncorrected hook)" },
+    { "cmd": "npm audit --json", "desc": "full-tree audit", "cwd": "frontend", "exit": 0, "output": "docs/stage2-npm-audit-07.json" },
+    { "cmd": "npm audit --omit=dev --json", "desc": "production audit", "cwd": "frontend", "exit": 0, "output": "docs/stage2-npm-audit-production-07.json" }
+  ],
+  "tests_passed": 49,
+  "tests_failed": 0,
+  "test_delta_from_04": "47 -> 49: added two R4/R5 native production-path tests in src/useGame.queued-timers.test.tsx; no existing frontend test instance or assertion was removed or weakened",
+  "coverage_summary": {
+    "statements_percent": 88.58,
+    "statements": "163/184",
+    "branches_percent": 77.55,
+    "branches": "76/98",
+    "functions_percent": 92.68,
+    "functions": "38/41",
+    "lines_percent": 94.47,
+    "lines": "154/163"
+  },
+  "coverage_lcov": "frontend/coverage/lcov.info",
+  "lcov_production_modules": ["src/App.tsx", "src/Board.tsx", "src/Preview.tsx", "src/api.ts", "src/main.tsx", "src/types.ts", "src/useGame.ts"],
+  "lcov_includes_main_tsx": true,
+  "coverage_production_exclusions": "none (only src/**/*.test.ts(x), src/test-setup.ts, src/vite-env.d.ts excluded as non-production glue, per Req 18.14)",
+  "full_tree_vulnerabilities": { "info": 0, "low": 0, "moderate": 0, "high": 0, "critical": 0, "total": 0 },
+  "production_runtime_vulnerabilities": 0,
+  "audit_notes": "Both full-tree and production audits report 0 vulnerabilities. The toolchain was already upgraded to Vite 8.3.5 / Vitest 4.1.12 (authorized compatible security remediation, Req 18.7-18.9); React 18 and TypeScript 5.6.3 are preserved. No advisory was suppressed and no package was excluded from audit scope.",
+  "researcher_artifacts": "docs/acceptance/* and docs/acceptance/queued-timer-runs/* were read/invoked only and left unchanged; the failing pre-fix run 20261023T193206664724Z is preserved."
+}
