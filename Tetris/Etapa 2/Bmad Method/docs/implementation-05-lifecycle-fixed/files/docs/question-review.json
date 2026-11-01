@@ -1,0 +1,411 @@
+{
+  "researcher_created": true,
+  "runs": {
+    "01-prd": {
+      "run_metadata_sha256": "103DCBD7E21F9C380F44C4558C9B310422899733E7FE492E0A46FC0C5EA08CE7",
+      "candidate_signature_sha256": "58548748DE9A1AE1857A8664917C34661365165BDD236D54CF7D837BC84872DC",
+      "reviewed_at_utc": "2026-10-25T20:17:55.61813-05:00",
+      "reviewer": "researcher",
+      "coverage_note": "Five complete main natural messages manually read, including final JSON status.0blockingrequests observed. No claim about unrecorded text. Artifact OpenQuestions answered inside docs are not emitted blocking questions. Technical quality claims adjudicated separately.",
+      "messages": {
+        "1f5c20cb-9a43-4b66-aa33-ebdd8bd9bfde/697c77e2-8b38-4ca5-9520-8e1580c5d4f0": {
+          "selected_text_sha256": "CFF8026F3A0C51EC1B34301871E73B249D6C82411AF90AD67C72E918343B97DB",
+          "blocking_question_count": 0,
+          "classification": "emitted_main_text",
+          "reason": "Full emitted progress/final text read; no request for missing user input."
+        },
+        "1f5c20cb-9a43-4b66-aa33-ebdd8bd9bfde/8d03a0ac-e61d-42a1-9119-a7cecdb9bc99": {
+          "selected_text_sha256": "4468ED570DB09B23948EFE7DDD652FE7496999381F351558A5948E0191D529C3",
+          "blocking_question_count": 0,
+          "classification": "emitted_main_text",
+          "reason": "Full emitted progress/final text read; no request for missing user input."
+        },
+        "1f5c20cb-9a43-4b66-aa33-ebdd8bd9bfde/1caf5bfa-0cd6-43f6-86b0-633c0aafe0d9": {
+          "selected_text_sha256": "D8198B7EC7751AD3CF01013EEBA03AA61EF17F53DD4AD2785906EB291AED19EC",
+          "blocking_question_count": 0,
+          "classification": "emitted_main_text",
+          "reason": "Full emitted progress/final text read; no request for missing user input."
+        },
+        "1f5c20cb-9a43-4b66-aa33-ebdd8bd9bfde/3e882ad0-0e57-4d84-b94a-a53d92b7b17f": {
+          "selected_text_sha256": "4919C336D9674D2315CAF1669394E1A60F69384ACF68A737E9D5F5AA8385F2EE",
+          "blocking_question_count": 0,
+          "classification": "emitted_main_text",
+          "reason": "Full emitted progress/final text read; no request for missing user input."
+        },
+        "1f5c20cb-9a43-4b66-aa33-ebdd8bd9bfde/d0ba9afe-b55e-4c2d-9de1-8e36e8886a8e": {
+          "selected_text_sha256": "9A8E860547BA8925E84EC6BD47DFA0B9952DAF2C9729F53D1CFC33939A4707F1",
+          "blocking_question_count": 0,
+          "classification": "emitted_main_text",
+          "reason": "Full emitted progress/final text read; no request for missing user input."
+        }
+      }
+    },
+    "02-design-stories": {
+      "reviewed_at_utc": "2026-10-26T01:29:03.496402Z",
+      "coverage_note": "Retained closed interval inspected:56 recorded main responses,0 retained natural-text candidates and empty final response.0 observed blocking questions in retained text only; incomplete429 session and absence of unrecorded text remain limitations.",
+      "run_metadata_sha256": "E1C6F6CBC130580671D5BB8BE02AF2E50DA758DF1B4D04500D47CBE1E1ACF954",
+      "reviewer": "researcher",
+      "messages": {},
+      "candidate_signature_sha256": "4F53CDA18C2BAA0C0354BB5F9A3ECBE5ED12AB4D8E11BA873C2F11161202B945"
+    },
+    "03-planning-completion": {
+      "messages": {
+        "da1d4cd8-166c-4fff-80ea-d1f7125265eb/3fcaf79f-fda1-4235-b98e-d34f9c30856b": {
+          "blocking_question_count": 0,
+          "classification": "emitted_main_text",
+          "reason": "Full emitted command explanation/final status read; no request for missing user input. Technical claims reviewed separately.",
+          "selected_text_sha256": "256F9A0D30C741415BDEBE0A7A0E850D475C7886845AD11054AC66D5F01932DC"
+        },
+        "da1d4cd8-166c-4fff-80ea-d1f7125265eb/a3e3628a-2cda-401b-94ab-32b4577adb35": {
+          "blocking_question_count": 0,
+          "classification": "emitted_main_text",
+          "reason": "Full emitted command explanation/final status read; no request for missing user input. Technical claims reviewed separately.",
+          "selected_text_sha256": "86619C45C1C4E6EAEC22118BAD787CD09051CB035CC2C16183B1B07E46E5C93F"
+        },
+        "da1d4cd8-166c-4fff-80ea-d1f7125265eb/65495e58-5820-46e8-b8c4-93bd1ed27540": {
+          "blocking_question_count": 0,
+          "classification": "emitted_main_text",
+          "reason": "Full emitted command explanation/final status read; no request for missing user input. Technical claims reviewed separately.",
+          "selected_text_sha256": "DFF825C853F115DB429269900CA73D8D71002CBFAC9810AB7E1536C600D17BE9"
+        },
+        "da1d4cd8-166c-4fff-80ea-d1f7125265eb/e2cb75de-f8f5-4a9f-9524-a92f50a4379a": {
+          "blocking_question_count": 0,
+          "classification": "emitted_main_text",
+          "reason": "Full emitted command explanation/final status read; no request for missing user input. Technical claims reviewed separately.",
+          "selected_text_sha256": "A9238EB0B2AD62E145FD19564387717C4B525BCEB39D0524D2EB806335DE5669"
+        },
+        "da1d4cd8-166c-4fff-80ea-d1f7125265eb/8c1f4e84-b9f1-4757-87a9-a3028f78e7f1": {
+          "blocking_question_count": 0,
+          "classification": "emitted_main_text",
+          "reason": "Full emitted command explanation/final status read; no request for missing user input. Technical claims reviewed separately.",
+          "selected_text_sha256": "A652FAD9E6D64DFC120051A4868F8E04077D4BA5F6F1600DDF84D564A4931B07"
+        },
+        "da1d4cd8-166c-4fff-80ea-d1f7125265eb/f0588ba7-0ef0-4054-9ec4-e8c095edf7af": {
+          "blocking_question_count": 0,
+          "classification": "emitted_main_text",
+          "reason": "Full emitted command explanation/final status read; no request for missing user input. Technical claims reviewed separately.",
+          "selected_text_sha256": "A652FAD9E6D64DFC120051A4868F8E04077D4BA5F6F1600DDF84D564A4931B07"
+        },
+        "da1d4cd8-166c-4fff-80ea-d1f7125265eb/86a373e4-f4ce-4687-b79f-de8dd5f6f232": {
+          "blocking_question_count": 0,
+          "classification": "emitted_main_text",
+          "reason": "Full emitted command explanation/final status read; no request for missing user input. Technical claims reviewed separately.",
+          "selected_text_sha256": "DE05EC6E25D4CE1291696B078538B86C6800DF88231037AA08CA865C493BAD30"
+        },
+        "da1d4cd8-166c-4fff-80ea-d1f7125265eb/3a439550-d387-4e5b-af58-16088822d655": {
+          "blocking_question_count": 0,
+          "classification": "emitted_main_text",
+          "reason": "Full emitted command explanation/final status read; no request for missing user input. Technical claims reviewed separately.",
+          "selected_text_sha256": "6EB64DBFEF8D035F34180E2A30E0FB04299C6F87DDD4D106A9B723A4D3D6AFFA"
+        }
+      },
+      "candidate_signature_sha256": "9A3E48345C99CE003B3202B1CB8F54AFBE061D21EFB7A06B9A97D51ECB116AF0",
+      "reviewer": "researcher",
+      "coverage_note": "All8retained main natural messages read completely, including final response,0blockingrequests. Identical explanations with distinct responseIDs retained, not silently deduplicated. Claimed perfect planning verdict is self-report; lockfile/time errors separately corrected before code.",
+      "reviewed_at_utc": "2026-10-26T01:33:57.9883616Z",
+      "run_metadata_sha256": "A747CF0D7508EE23AD9BF62B2CFC3C5413009739B0BFFFEEBCAED837B7393AEF"
+    },
+    "04-implementation": {
+      "messages": {
+        "69ecf117-93c7-4d51-949f-6d76c3c17348/96fa123b-2688-496f-ac67-c69ae2a14f95": {
+          "blocking_question_count": 0,
+          "selected_text_sha256": "FBD1D9C9253A7CF7FBF346855FFA54A64ACB3EDA3024E2D3F39651FE97706391",
+          "reason": "Full retained emitted command explanation read, no missing user input requested; technical claims are not adopted as results.",
+          "classification": "emitted_main_text"
+        },
+        "69ecf117-93c7-4d51-949f-6d76c3c17348/0a143972-2668-445f-b81e-84b612e10e15": {
+          "blocking_question_count": 0,
+          "selected_text_sha256": "FD254097BFB06460128C95FCA198E77A9A45E0A7357BF4A136B6C64F5D886514",
+          "reason": "Full retained emitted command explanation read, no missing user input requested; technical claims are not adopted as results.",
+          "classification": "emitted_main_text"
+        },
+        "69ecf117-93c7-4d51-949f-6d76c3c17348/cccdf2a6-31a1-4ed4-9a0f-609e7acf3e58": {
+          "blocking_question_count": 0,
+          "selected_text_sha256": "A05AD96C2D87EDC381642E0D5EF0CE4F41032171675F42D58480B88CFFF97759",
+          "reason": "Full retained emitted command explanation read, no missing user input requested; technical claims are not adopted as results.",
+          "classification": "emitted_main_text"
+        },
+        "69ecf117-93c7-4d51-949f-6d76c3c17348/17e79243-50e6-4339-8b9f-735ed5d5c87b": {
+          "blocking_question_count": 0,
+          "selected_text_sha256": "934F7B8CC7946DD5F327EE0BC14280930F290A67A1871B772A42FC4DD2D3BBF5",
+          "reason": "Full retained emitted command explanation read, no missing user input requested; technical claims are not adopted as results.",
+          "classification": "emitted_main_text"
+        },
+        "69ecf117-93c7-4d51-949f-6d76c3c17348/972cb337-d741-46e5-8a7e-9816b7ee0424": {
+          "blocking_question_count": 0,
+          "selected_text_sha256": "50EE4B83758D23C6F804370AA1899217CCC3569554D4847B8A24772121C11142",
+          "reason": "Full retained emitted command explanation read, no missing user input requested; technical claims are not adopted as results.",
+          "classification": "emitted_main_text"
+        },
+        "69ecf117-93c7-4d51-949f-6d76c3c17348/a5aa9889-04cc-4ef4-bcb5-664503728c37": {
+          "blocking_question_count": 0,
+          "selected_text_sha256": "7B055476DE9F7F8EB35C6664187D06980E58C0DFEA3137AAF964B88A54CDEAB7",
+          "reason": "Full retained emitted command explanation read, no missing user input requested; technical claims are not adopted as results.",
+          "classification": "emitted_main_text"
+        },
+        "69ecf117-93c7-4d51-949f-6d76c3c17348/2fa6a61e-dcae-4060-977a-e684f0f0aa29": {
+          "blocking_question_count": 0,
+          "selected_text_sha256": "AF14A1B6EF0B8993B6D31C074C63FEB68113ECA18AE5E1CA51CAEE96589FEE12",
+          "reason": "Full retained emitted command explanation read, no missing user input requested; technical claims are not adopted as results.",
+          "classification": "emitted_main_text"
+        },
+        "69ecf117-93c7-4d51-949f-6d76c3c17348/5e33ff5a-0cdd-4173-94ac-25252c81dc36": {
+          "blocking_question_count": 0,
+          "selected_text_sha256": "F91342D1FB31BA59AE25CD0A2E1BBDE440053479FCDBD0D06C7B335E5E5BDD48",
+          "reason": "Full retained emitted command explanation read, no missing user input requested; technical claims are not adopted as results.",
+          "classification": "emitted_main_text"
+        },
+        "69ecf117-93c7-4d51-949f-6d76c3c17348/74224905-c04e-4dd0-beec-27f9fc998337": {
+          "blocking_question_count": 0,
+          "selected_text_sha256": "AB97333D959C842C217C4519AA67567EC4B55A7F2A57EB7994E800BDFB6BEC55",
+          "reason": "Full retained emitted command explanation read, no missing user input requested; technical claims are not adopted as results.",
+          "classification": "emitted_main_text"
+        },
+        "69ecf117-93c7-4d51-949f-6d76c3c17348/1452b7ab-4e18-432f-b8d2-4d5b367ef8e3": {
+          "blocking_question_count": 0,
+          "selected_text_sha256": "0174C50B479AC53A7A6EDD247789EEA49CE9B71630553DAF244375F21FF26778",
+          "reason": "Full retained emitted command explanation read, no missing user input requested; technical claims are not adopted as results.",
+          "classification": "emitted_main_text"
+        },
+        "69ecf117-93c7-4d51-949f-6d76c3c17348/de6253bc-cc06-48bc-938d-1f11d2ea4c27": {
+          "blocking_question_count": 0,
+          "selected_text_sha256": "2F493B903C84BB02F31D124B76211750EA48AEBD9E79EDCE757E619DC53C059E",
+          "reason": "Full retained emitted command explanation read, no missing user input requested; technical claims are not adopted as results.",
+          "classification": "emitted_main_text"
+        },
+        "69ecf117-93c7-4d51-949f-6d76c3c17348/28450e9c-ac1c-488f-a0d8-a56bee2c8a17": {
+          "blocking_question_count": 0,
+          "selected_text_sha256": "8DF365B9CACB7E5E5BEDCF21881CC5D0D73E961F65DA4B13E24C2A0154864569",
+          "reason": "Full retained emitted command explanation read, no missing user input requested; technical claims are not adopted as results.",
+          "classification": "emitted_main_text"
+        },
+        "69ecf117-93c7-4d51-949f-6d76c3c17348/89a10bf0-2890-4d3d-8ac3-062f3688ceae": {
+          "blocking_question_count": 0,
+          "selected_text_sha256": "E5859CE37C0AC71A19ABF9F64032712999FF28D654200E26C1198C9F2296FDC5",
+          "reason": "Full retained emitted command explanation read, no missing user input requested; technical claims are not adopted as results.",
+          "classification": "emitted_main_text"
+        },
+        "69ecf117-93c7-4d51-949f-6d76c3c17348/723ba008-4cee-47ae-a6f6-e09d5eb5d07f": {
+          "blocking_question_count": 0,
+          "selected_text_sha256": "9042DDBE00DA1C3D0CC6F005C0A740EAB05AE24D1F81110A05B2C906F3D7C34F",
+          "reason": "Full retained emitted command explanation read, no missing user input requested; technical claims are not adopted as results.",
+          "classification": "emitted_main_text"
+        },
+        "69ecf117-93c7-4d51-949f-6d76c3c17348/8a17999d-83ca-4a82-9d67-9a2587cbb738": {
+          "blocking_question_count": 0,
+          "selected_text_sha256": "73B1922CFBB973FDDBCE25A8B310E7A6A69E7F43AB51CD4D3C539877C2F11E13",
+          "reason": "Full retained emitted command explanation read, no missing user input requested; technical claims are not adopted as results.",
+          "classification": "emitted_main_text"
+        },
+        "69ecf117-93c7-4d51-949f-6d76c3c17348/e2b1a199-3275-423c-b665-1e6ac4470c02": {
+          "blocking_question_count": 0,
+          "selected_text_sha256": "509A806F25274827C5592258E4292E761E578FD69C9F1985CBD14473FCC059EC",
+          "reason": "Full retained emitted command explanation read, no missing user input requested; technical claims are not adopted as results.",
+          "classification": "emitted_main_text"
+        },
+        "69ecf117-93c7-4d51-949f-6d76c3c17348/3132320b-bdbf-49bc-a3ab-73bdc179de72": {
+          "blocking_question_count": 0,
+          "selected_text_sha256": "8499B4AD605A386088994E850B4C96F54B37889F3E02BCB7346169A349D471FA",
+          "reason": "Full retained emitted command explanation read, no missing user input requested; technical claims are not adopted as results.",
+          "classification": "emitted_main_text"
+        },
+        "69ecf117-93c7-4d51-949f-6d76c3c17348/6a8cb711-b32b-44bb-8664-9701cd272ee9": {
+          "blocking_question_count": 0,
+          "selected_text_sha256": "06E34FE4F0FF75AD59871E9A087AF101A376EFF6A53C7F5224A214D97728C204",
+          "reason": "Full retained emitted command explanation read, no missing user input requested; technical claims are not adopted as results.",
+          "classification": "emitted_main_text"
+        },
+        "69ecf117-93c7-4d51-949f-6d76c3c17348/d3164183-a6ef-4110-aba4-4fec8fd54be6": {
+          "blocking_question_count": 0,
+          "selected_text_sha256": "CCE5F2FA0150493DE05B8B64936F9BC87F2F455B6BEBD09278DA4143D0B2058B",
+          "reason": "Full retained emitted command explanation read, no missing user input requested; technical claims are not adopted as results.",
+          "classification": "emitted_main_text"
+        },
+        "69ecf117-93c7-4d51-949f-6d76c3c17348/164ae124-19bd-449c-b1a7-738e549531d4": {
+          "blocking_question_count": 0,
+          "selected_text_sha256": "1CC1FAC3332EEBE32B8163E8B9988037DDB2AE105FB1AC9315F1BC2BA1340C34",
+          "reason": "Full retained emitted command explanation read, no missing user input requested; technical claims are not adopted as results.",
+          "classification": "emitted_main_text"
+        },
+        "69ecf117-93c7-4d51-949f-6d76c3c17348/f78ca487-c516-465a-9888-9ea5493dca48": {
+          "blocking_question_count": 0,
+          "selected_text_sha256": "D82747E498E105915A8A355C4128621C4AA07E6397BB573D522673C09765FA6B",
+          "reason": "Full retained emitted command explanation read, no missing user input requested; technical claims are not adopted as results.",
+          "classification": "emitted_main_text"
+        },
+        "69ecf117-93c7-4d51-949f-6d76c3c17348/62971cdf-dc60-47e8-bc21-b0164951ee64": {
+          "blocking_question_count": 0,
+          "selected_text_sha256": "4B0616C851AE4AC68B1D15F89412C935E536D10BB990AFE7DB3245F877A6F2DC",
+          "reason": "Full retained emitted command explanation read, no missing user input requested; technical claims are not adopted as results.",
+          "classification": "emitted_main_text"
+        },
+        "69ecf117-93c7-4d51-949f-6d76c3c17348/2247b56b-c811-405e-9476-1c1c3d14915f": {
+          "blocking_question_count": 0,
+          "selected_text_sha256": "9CC115FEA1847777D6058E3D0172DD1B17EB50D5AD427CA376567CA294522239",
+          "reason": "Full retained emitted command explanation read, no missing user input requested; technical claims are not adopted as results.",
+          "classification": "emitted_main_text"
+        },
+        "69ecf117-93c7-4d51-949f-6d76c3c17348/ded4efdb-ee11-4ea9-8f13-3f6b25519b05": {
+          "blocking_question_count": 0,
+          "selected_text_sha256": "7B2A17DBE76F005AE83722E59E2D467A67E4C32379F7BDCA37EB00E254D2E86C",
+          "reason": "Full retained emitted command explanation read, no missing user input requested; technical claims are not adopted as results.",
+          "classification": "emitted_main_text"
+        },
+        "69ecf117-93c7-4d51-949f-6d76c3c17348/b571fd03-a5e8-4420-8a65-ee29586a6309": {
+          "blocking_question_count": 0,
+          "selected_text_sha256": "33B03D0D584560E852B8A649AD0AFDF025CF5128F71A6EBFDDE5EA3FA74F3162",
+          "reason": "Full retained emitted command explanation read, no missing user input requested; technical claims are not adopted as results.",
+          "classification": "emitted_main_text"
+        },
+        "69ecf117-93c7-4d51-949f-6d76c3c17348/286eab58-1faa-4c84-8197-ffaff7287b46": {
+          "blocking_question_count": 0,
+          "selected_text_sha256": "867276C3F8BE52043633A4FFE67A36C25AAC412FDC3C0683859051B777A2008D",
+          "reason": "Full retained emitted command explanation read, no missing user input requested; technical claims are not adopted as results.",
+          "classification": "emitted_main_text"
+        },
+        "69ecf117-93c7-4d51-949f-6d76c3c17348/16070ed3-6006-4b25-aa20-d9cdc1032171": {
+          "blocking_question_count": 0,
+          "selected_text_sha256": "B26EB672B35274EF1B8ACB574238DF7DA3FF50357ED56ED2AB77EC7725308F10",
+          "reason": "Full retained emitted command explanation read, no missing user input requested; technical claims are not adopted as results.",
+          "classification": "emitted_main_text"
+        },
+        "69ecf117-93c7-4d51-949f-6d76c3c17348/6adce9c8-9959-44ac-b144-1a20337482b5": {
+          "blocking_question_count": 0,
+          "selected_text_sha256": "498D1AEF64EF7DE34721FA287575AE676BFB32489BCAB9943E3DF33095359A6F",
+          "reason": "Full retained emitted command explanation read, no missing user input requested; technical claims are not adopted as results.",
+          "classification": "emitted_main_text"
+        },
+        "69ecf117-93c7-4d51-949f-6d76c3c17348/624d09de-9f19-464e-af88-a128397a8450": {
+          "blocking_question_count": 0,
+          "selected_text_sha256": "A5ADDF16B4575032EED894F006BCA72715887276C790A9D9B3BADC0E4734B23A",
+          "reason": "Full retained emitted command explanation read, no missing user input requested; technical claims are not adopted as results.",
+          "classification": "emitted_main_text"
+        },
+        "69ecf117-93c7-4d51-949f-6d76c3c17348/fb701770-3c23-45b7-b025-79182b9a143c": {
+          "blocking_question_count": 0,
+          "selected_text_sha256": "00A1EC4001DA32F935BA97C4F397BF1971FF2BD6E06B90810B309ED62CCB4C6C",
+          "reason": "Full retained emitted command explanation read, no missing user input requested; technical claims are not adopted as results.",
+          "classification": "emitted_main_text"
+        },
+        "69ecf117-93c7-4d51-949f-6d76c3c17348/ccd0fdf7-48d3-43be-bc7a-5eb92291f46f": {
+          "blocking_question_count": 0,
+          "selected_text_sha256": "68D28F807B67727E0DBE40AF1D2DD50D50886B5DF4D1FEDFB5B9DC0EC7F6A6FE",
+          "reason": "Full retained emitted command explanation read, no missing user input requested; technical claims are not adopted as results.",
+          "classification": "emitted_main_text"
+        },
+        "69ecf117-93c7-4d51-949f-6d76c3c17348/ed171875-11b7-44ce-9ff8-1e06716e5986": {
+          "blocking_question_count": 0,
+          "selected_text_sha256": "B4326E9B8CE92554EA48DB06C4E6D377DB317548ED2C81402DEE0D8F15D77A0C",
+          "reason": "Full retained emitted command explanation read, no missing user input requested; technical claims are not adopted as results.",
+          "classification": "emitted_main_text"
+        },
+        "69ecf117-93c7-4d51-949f-6d76c3c17348/297773e1-8ada-4ea6-a4b7-67b0932034b0": {
+          "blocking_question_count": 0,
+          "selected_text_sha256": "D08510FDE1353C4CDB924FD7F82564C95F12D012EEB86C966173C8313A53035D",
+          "reason": "Full retained emitted command explanation read, no missing user input requested; technical claims are not adopted as results.",
+          "classification": "emitted_main_text"
+        },
+        "69ecf117-93c7-4d51-949f-6d76c3c17348/336aae4e-c50f-4226-8469-7d90f1e266f0": {
+          "blocking_question_count": 0,
+          "selected_text_sha256": "F48B486AAD8EC78A8DBF1DF26D9001B2E3555FB54312970ED308A74A1E61C7D8",
+          "reason": "Full retained emitted command explanation read, no missing user input requested; technical claims are not adopted as results.",
+          "classification": "emitted_main_text"
+        },
+        "69ecf117-93c7-4d51-949f-6d76c3c17348/de72506e-c6fd-4cfa-9059-9ba99d95a902": {
+          "blocking_question_count": 0,
+          "selected_text_sha256": "526A3EAA3013C148660B0B41CC9F6F1EDF79248FBFEA0C13FEDE3B3F1B75EE74",
+          "reason": "Full retained emitted command explanation read, no missing user input requested; technical claims are not adopted as results.",
+          "classification": "emitted_main_text"
+        },
+        "69ecf117-93c7-4d51-949f-6d76c3c17348/37b4d0c7-b7b3-44b9-b08a-7698bd2ce89b": {
+          "blocking_question_count": 0,
+          "selected_text_sha256": "2546C25E4AA7BCC81BA1E3681C73A2B3586B49829E2B52BEE4DD400FD22706A1",
+          "reason": "Full retained emitted command explanation read, no missing user input requested; technical claims are not adopted as results.",
+          "classification": "emitted_main_text"
+        },
+        "69ecf117-93c7-4d51-949f-6d76c3c17348/30b0366b-f0a9-4d2c-a3cb-8945df1f2847": {
+          "blocking_question_count": 0,
+          "selected_text_sha256": "6246D4F3966CEFFA8F366E56C330BBBCFC88976FD125924178DDFE13DFD1FA3A",
+          "reason": "Full retained emitted command explanation read, no missing user input requested; technical claims are not adopted as results.",
+          "classification": "emitted_main_text"
+        },
+        "69ecf117-93c7-4d51-949f-6d76c3c17348/27cf361a-10a2-4f74-9530-c6e8c8fc733a": {
+          "blocking_question_count": 0,
+          "selected_text_sha256": "E6859A9804E294587B7DDAC788E3D103A3E29DA0872A7D718900A01B72F720DF",
+          "reason": "Full retained emitted command explanation read, no missing user input requested; technical claims are not adopted as results.",
+          "classification": "emitted_main_text"
+        },
+        "69ecf117-93c7-4d51-949f-6d76c3c17348/e92bc113-6692-4e63-8abd-5c6e026391a3": {
+          "blocking_question_count": 0,
+          "selected_text_sha256": "9E237D71AB3DDE99941540FCFE3D2FFBA18CDD92D0EF33AEC642346499740D46",
+          "reason": "Full retained emitted command explanation read, no missing user input requested; technical claims are not adopted as results.",
+          "classification": "emitted_main_text"
+        },
+        "69ecf117-93c7-4d51-949f-6d76c3c17348/98019674-668c-49ed-b4a5-e943bfdbde72": {
+          "blocking_question_count": 0,
+          "selected_text_sha256": "44D5C5B90A49F5520FBC7E5578D2587776517801D316942BB1735E6B62203BC3",
+          "reason": "Full retained emitted command explanation read, no missing user input requested; technical claims are not adopted as results.",
+          "classification": "emitted_main_text"
+        },
+        "69ecf117-93c7-4d51-949f-6d76c3c17348/4d67ece2-3b79-41c3-a4ec-1ce7f8ac913c": {
+          "blocking_question_count": 0,
+          "selected_text_sha256": "25815AC1E304ECE8B8019B08D2DFD0BC923C24BFC6FD407B4FACEE856A212392",
+          "reason": "Full retained emitted command explanation read, no missing user input requested; technical claims are not adopted as results.",
+          "classification": "emitted_main_text"
+        }
+      },
+      "coverage_note": "All41retained natural main messages read completely.0observed blocking questions; final response absent due80turnlimit, retained text only.",
+      "reviewed_at_utc": "2026-10-26T01:48:16.0358275Z",
+      "run_metadata_sha256": "88B6B1D7860443CC9759BAF8E80D8490A445E69A787EED8E374300363F5890AC",
+      "reviewer": "researcher",
+      "candidate_signature_sha256": "A3A01381F06161943932F1D12C1212BEE7DC5BAB31DCCCB933A34C87C61835A4"
+    }
+  },
+  "prompts": {
+    "01-prd": {
+      "prompt_sha256": "548F15A5EAD08BF648D2F8FD1C203806D8F5D66CEC050C8EC6EBBF635682FEB2",
+      "kind": "initialnativePRDcreationwithcompatibilityclarifications",
+      "clarification_bearing": true,
+      "corrective_intent": false,
+      "reply_to_model_blocking_question": false,
+      "reviewed_at_utc": "2026-10-25T20:17:55.61813-05:00",
+      "reason": "Researcher-authored before implementation; fullseed retained, not response to a modelquestion."
+    },
+    "02-design-stories": {
+      "prompt_sha256": "08BA37A1E0739DCFDBEF66EA23D64323F507E44572F4C153F963DC19AAD73B59",
+      "kind": "preimplementationnativePRDrepairandarchitecture/stories",
+      "clarification_bearing": true,
+      "corrective_intent": true,
+      "reply_to_model_blocking_question": false,
+      "reviewed_at_utc": "2026-10-25T20:17:55.61813-05:00",
+      "reason": "Researcher-authored before implementation; fullseed retained, not response to a modelquestion."
+    },
+    "03-planning-completion": {
+      "reviewed_at_utc": "2026-10-26T01:29:03.5274432Z",
+      "prompt_sha256": "0083A8C02D0AA0940BC4AC5518CAFCD69A089616361AAE6DD4D6D97B47453755",
+      "clarification_bearing": true,
+      "corrective_intent": true,
+      "kind": "preimplementation_planning_continuation",
+      "reason": "Native planning completion after429 plus architecture ambiguities, before implementation, not postimplementationQA.",
+      "reply_to_model_blocking_question": false
+    },
+    "04-implementation": {
+      "reviewed_at_utc": "2026-10-26T01:48:16.0563494Z",
+      "corrective_intent": true,
+      "clarification_bearing": true,
+      "reply_to_model_blocking_question": false,
+      "prompt_sha256": "8548832C14144B0D0904966702787FB73984F02E47DC3DCCDD29DA19ECB5B0C9",
+      "kind": "initial_native_build",
+      "reason": "Researcher-origin instructions, not an answer to a model blocking question; external QA only05."
+    },
+    "05-correction": {
+      "reviewed_at_utc": "2026-10-26T01:48:16.0580144Z",
+      "corrective_intent": true,
+      "clarification_bearing": true,
+      "reply_to_model_blocking_question": false,
+      "prompt_sha256": "46E3368CF67C278AA1A964F311D7D7C1C47C1993AD09040BECFB820F38C6E9FF",
+      "kind": "external_QA_BMAD-QA-01",
+      "reason": "Researcher-origin instructions, not an answer to a model blocking question; external QA only05."
+    }
+  }
+}

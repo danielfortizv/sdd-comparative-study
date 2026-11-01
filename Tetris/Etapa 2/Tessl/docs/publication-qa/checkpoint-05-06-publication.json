@@ -1,0 +1,44 @@
+{
+  "researcher_created": true,
+  "document_id": "1JRZvjK8-fdFitwbiKLe2NhOsk1FZNCa_TclgnFwdjao",
+  "revision_after_images": "AHj4eMS9Ogi02uQngUMCqsvqUQF9AffhiqP8nUe3SD4q9RF_X7kwCAO17RL9SVtBwF5CgUeWjhVDCZKG29ZVUsYWmWuCwbPEbjGiPifRFw",
+  "table_count_readback": 19,
+  "image_count_readback": 20,
+  "added_images": [
+    {
+      "path": "screenshots/checkpoint-05-06-usage.jpg",
+      "object_id": "kix.dsxt84z11mef",
+      "pixels": [
+        1280,
+        720
+      ],
+      "points": [
+        448,
+        252
+      ]
+    },
+    {
+      "path": "screenshots/checkpoint-05-06-quality.jpg",
+      "object_id": "kix.171e00w94asf",
+      "pixels": [
+        1265,
+        712
+      ],
+      "points": [
+        448,
+        252.1557
+      ]
+    }
+  ],
+  "derived_view_notice": "Researcher-derived views of retained JSON, not native Sonar or CLI UI.",
+  "pdf": "publication-qa/checkpoint-05-06.pdf",
+  "pdf_pages": 59,
+  "rendered_reviewed_pages": [
+    56,
+    57,
+    58,
+    59
+  ],
+  "visual_review": "No clipping or overlap. Header Pensamiento wrapped; corrected same448pt table column allocation after this PDF. Re-export for final QA.",
+  "scope": "Closed05/06 metrics and first external acceptance failures;07pending, no final acceptance claim."
+}

@@ -12,7 +12,7 @@ Repository for an undergraduate thesis at Universidad de los Andes comparing fiv
 
 This repository is the reproducible evidence base for the study. It will preserve the requirements, prompts, native tool artifacts, generated code, tests, execution records, observations, and other evidence needed to compare the approaches under equivalent conditions.
 
-The repository now includes the completed Tetris Stage 1, option A snapshot under [`Tetris/Etapa 1`](Tetris/Etapa%201/). It contains separate OpenSpec, GitHub Spec Kit, Tessl, BMad Method, and Kiro implementations, their native specifications, tests, and recorded SonarQube evidence. Other cases and later stages remain in progress.
+The Tetris case is organized under [`Tetris/`](Tetris/README.md), with separate [`Etapa 1`](Tetris/Etapa%201/README.md) and [`Etapa 2`](Tetris/Etapa%202/README.md) directories. Each stage contains independent OpenSpec, GitHub Spec Kit, Tessl, BMad Method, and Kiro implementations, native specifications, tests, measured metrics, and SonarQube evidence. The Stage 2 report includes an advisor script, the Tetris thesis extract, charts, screenshots, and records for 49 invocation attempts. Other cases retain their own case directories.
 
 ## Scenarios
 
@@ -27,7 +27,7 @@ The final cases are pending approval. The placeholders in [`cases/`](cases/) mus
 | --- | --- |
 | [`docs/`](docs/) | Methodology, criteria, reproducibility guidance, and experiment metadata template. |
 | [`cases/`](cases/) | Approved or pending greenfield and brownfield case definitions. |
-| [`openspec/`](openspec/), [`speckit/`](speckit/), [`tessl/`](tessl/), [`bmad/`](bmad/), [`kiro/`](kiro/) | Native artifacts produced by each approach, organized by scenario. |
+| [`Tetris/`](Tetris/README.md) | Tetris case, organized by stage and then by the five tools, with shared protocol and reports. |
 | [`prompts/`](prompts/) | Exact prompts and prompt-use records. |
 | [`evidence/`](evidence/) | Screenshots, logs, and metrics captured during execution. |
 | [`results/`](results/) | Evidence-based observations and comparison templates. |
@@ -38,6 +38,6 @@ Each experiment should be repeatable from the same functional requirements, acce
 
 ## Status
 
-**Work in progress.** Tetris Stage 1 has an initial verified snapshot. Its measurements, assumptions, gaps, and supporting evidence are documented in [`Tetris/Etapa 1/PROGRESS.md`](Tetris/Etapa%201/PROGRESS.md) and the case report. Other cases, later stages, and any cross-case conclusions are not yet finalized.
+**Work in progress.** Tetris has verified Stage 1 and Stage 2 snapshots. Stage 1 provenance remains in [`Tetris/Etapa 1/PROGRESS.md`](Tetris/Etapa%201/PROGRESS.md); Stage 2 results, limitations, and the publication scope are documented in [`Tetris/Etapa 2/README.md`](Tetris/Etapa%202/README.md). Final cross-case conclusions are not yet established.
 
 > **Important:** Do not treat empty templates or pending placeholders as experimental evidence. Add evidence only after an experiment has actually been executed.

@@ -1,0 +1,25 @@
+{
+  "queue": [],
+  "current": {
+    "id": "7a60dc83-cf88-4500-b027-38cfbf636bba",
+    "type": "REPORT",
+    "componentId": "bd9688a4-0724-4b31-8dac-ccae3b4aad8c",
+    "componentKey": "tetris-stage2-speckit",
+    "componentName": "Tetris Stage 2 Spec Kit",
+    "componentQualifier": "TRK",
+    "analysisId": "5191b31a-3466-4902-bf86-df1d561e4cb4",
+    "status": "SUCCESS",
+    "submittedAt": "2026-10-20T20:24:32-05:00",
+    "submitterLogin": "admin",
+    "startedAt": "2026-10-20T20:24:33-05:00",
+    "executedAt": "2026-10-20T20:24:34-05:00",
+    "executionTimeMs": 1230,
+    "hasScannerContext": true,
+    "warningCount": 2,
+    "warnings": [
+      "SCM provider autodetection failed. Please use \"sonar.scm.provider\" to define SCM of your project, or disable the SCM Sensor in the project settings.",
+      "Your code is analyzed as compatible with all Python 3 versions by default. You can get a more precise analysis by setting the Python version or version range in your configuration via the parameter \"sonar.python.version\""
+    ],
+    "infoMessages": []
+  }
+}

@@ -1,0 +1,44 @@
+Pytest Command: pytest backend/tests --cov=backend/app --cov-report=xml:docs/coverage.xml --cov-report=term-missing
+Exit Status: 0
+
+============================= test session starts =============================
+platform win32 -- Python 3.12.14, pytest-9.1.1, pluggy-1.6.0
+rootdir: D:\KEVIN\UNIVERSIDAD\Trabajos\Proyecto\Caso 2-Tetris\Etapa 2\Spec Kit
+plugins: anyio-4.15.1, cov-7.1.0
+collected 35 items
+
+backend\tests\integration\test_api_us1.py .......                        [ 20%]
+backend\tests\integration\test_api_us2.py ....                           [ 31%]
+backend\tests\integration\test_api_us3.py ..                             [ 37%]
+backend\tests\unit\test_game_engine_us1.py ..........                    [ 65%]
+backend\tests\unit\test_game_engine_us2.py .......                       [ 85%]
+backend\tests\unit\test_game_engine_us3.py ..                            [ 91%]
+backend\tests\unit\test_qa_iteration1.py ...                             [100%]
+
+============================== warnings summary ===============================
+..\..\Etapa 1\_toolchain\venv\Lib\site-packages\fastapi\testclient.py:1
+  D:\KEVIN\UNIVERSIDAD\Trabajos\Proyecto\Caso 2-Tetris\Etapa 1\_toolchain\venv\Lib\site-packages\fastapi\testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.
+    from starlette.testclient import TestClient as TestClient  # noqa
+
+backend\app\models\schemas.py:39
+  D:\KEVIN\UNIVERSIDAD\Trabajos\Proyecto\Caso 2-Tetris\Etapa 2\Spec Kit\backend\app\models\schemas.py:39: PydanticDeprecatedSince20: Support for class-based `config` is deprecated, use ConfigDict instead. Deprecated in Pydantic V2.0 to be removed in V3.0. See Pydantic V2 Migration Guide at https://errors.pydantic.dev/2.13/migration/
+    class GameSessionSchema(BaseModel):
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=============================== tests coverage ================================
+______________ coverage: platform win32, python 3.12.14-final-0 _______________
+
+Name                                  Stmts   Miss  Cover   Missing
+-------------------------------------------------------------------
+backend\app\__init__.py                   0      0   100%
+backend\app\api\__init__.py               0      0   100%
+backend\app\api\endpoints.py             27      2    93%   26, 32
+backend\app\main.py                      11      1    91%   52
+backend\app\models\__init__.py            0      0   100%
+backend\app\models\schemas.py            85     12    86%   13, 20, 23, 26, 33, 36, 59, 62, 65, 72, 79, 86
+backend\app\services\__init__.py          0      0   100%
+backend\app\services\game_engine.py     113      4    96%   65, 80, 111, 182
+-------------------------------------------------------------------
+TOTAL                                   236     19    92%
+Coverage XML written to file docs/coverage.xml
+======================= 35 passed, 2 warnings in 1.57s ========================

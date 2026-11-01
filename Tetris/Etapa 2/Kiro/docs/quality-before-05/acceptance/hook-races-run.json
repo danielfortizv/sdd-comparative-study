@@ -1,0 +1,52 @@
+{
+  "researcher_created": true,
+  "purpose": "External acceptance reproduction, not generated application tests",
+  "started_at_utc": "2026-10-22T01:23:06.892320+00:00",
+  "ended_at_utc": "2026-10-22T01:26:31.628163+00:00",
+  "duration_seconds": 204.157,
+  "argv": [
+    "node",
+    "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\Kiro\\frontend\\node_modules\\vitest\\vitest.mjs",
+    "run",
+    "--config",
+    "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\Kiro\\docs\\acceptance\\vitest.external.config.mjs",
+    "--reporter=json",
+    "--outputFile=D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\Kiro\\docs\\acceptance\\hook-races-vitest.json"
+  ],
+  "cwd": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\Kiro",
+  "exit_code": 1,
+  "coverage_enabled": false,
+  "hashes_before": {
+    "frontend/src/useGame.ts": "67F340FC713072C81F3A744292D708FA3C290F01EE489D6E3D22EF774184269B",
+    "frontend/src/api.ts": "4321FAF77B834628E68BD07A7FE471B811B278E005FD0208367BE6966DBA533D",
+    "frontend/src/App.tsx": "92A9035E68D7215F100C25D71A25FC526A149A73EF1F5525E8A510F2E459B212",
+    "docs/acceptance/hook-races.external.test.ts": "7C7FB4B7A557BB5D0321855C9786954F9B1AEDC3A20B79E0FE6847E43518B09D",
+    "docs/acceptance/vitest.external.config.mjs": "5A3203B1FF53943CBE7A404E1AA329FBBA22CA3D8E0B9BFB89AF519A66D3C754",
+    "frontend/coverage/lcov.info": "39E5EF66CDBAA64F226A4D48D54A4509ACEA368913EAB1DE10ADF984DA651C4F"
+  },
+  "hashes_after": {
+    "frontend/src/useGame.ts": "67F340FC713072C81F3A744292D708FA3C290F01EE489D6E3D22EF774184269B",
+    "frontend/src/api.ts": "4321FAF77B834628E68BD07A7FE471B811B278E005FD0208367BE6966DBA533D",
+    "frontend/src/App.tsx": "92A9035E68D7215F100C25D71A25FC526A149A73EF1F5525E8A510F2E459B212",
+    "docs/acceptance/hook-races.external.test.ts": "7C7FB4B7A557BB5D0321855C9786954F9B1AEDC3A20B79E0FE6847E43518B09D",
+    "docs/acceptance/vitest.external.config.mjs": "5A3203B1FF53943CBE7A404E1AA329FBBA22CA3D8E0B9BFB89AF519A66D3C754",
+    "frontend/coverage/lcov.info": "39E5EF66CDBAA64F226A4D48D54A4509ACEA368913EAB1DE10ADF984DA651C4F"
+  },
+  "source_hashes_unchanged": true,
+  "lcov_hash_unchanged": true,
+  "versions": {
+    "vitest": "3.2.7",
+    "@testing-library/react": "16.1.0"
+  },
+  "tests": {
+    "total": 3,
+    "passed": 0,
+    "failed": 3
+  },
+  "findings_provisional_while_generation_active": true,
+  "source_change_policy": "If source hashes differ, evidence is not attributed to one stable candidate; rerun after the active generation closes",
+  "notes": [
+    "Initial discovery-only attempt produced zero tests; retained in attempt01-no-tests-discovered.json. Config root was corrected only within docs/acceptance.",
+    "All final runs disable coverage and use the installed frontend Vitest; no application tests/config or source are patched."
+  ]
+}

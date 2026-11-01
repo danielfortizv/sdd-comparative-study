@@ -1,0 +1,1120 @@
+{
+  "researcher_created": true,
+  "tool": "Tessl",
+  "measured_at_utc": "2026-10-21T14:38:35.050166+00:00",
+  "feature_directory": "specs/stage2",
+  "source_scope": "backend/frontend .py/.ts/.tsx/.js/.jsx/.css/.html including tests and source-like config; dependencies/builds/coverage/caches/docs excluded",
+  "source_attribution_scope": "own inherited Tessl Stage 1 plus Gemini-generated app/test changes; researcher helpers/evidence excluded; text counts alone do not prove authorship",
+  "spec_scope": "original Tessl specs/requirements.md and specs/session_notes.md separately from new specs/stage2 Markdown/JSON; no other tool feature content",
+  "text_counting_rules": "UTF-8 BOM removal and LF normalization; physical lines use splitlines; original byte hashes retained; line deltas compare logical lines; net characters are state-size differences, not cumulative edit volume",
+  "density_definition": "physical lines / files, rounded to two decimals; not a quality or scalability score",
+  "snapshot_scope": "only closed *.run.json intervals contribute usage/time/attempt totals; open metadata separate; source/spec counts reflect collection time",
+  "unclosed_invocation_labels": [],
+  "open_invocation_metadata": [],
+  "source_baseline": {
+    "files": 19,
+    "lines": 1299,
+    "nonblank_lines": 1110,
+    "characters": 37962,
+    "lines_per_file": 68.37,
+    "per_file": {
+      "backend/app/controllers/games.py": {
+        "lines": 70,
+        "nonblank_lines": 57,
+        "characters": 2186,
+        "sha256": "E66DD5A94799546EB4EB9A29B64F1741B5420D5682638C4236191EE564B57528",
+        "modified_at_utc": "2026-09-29T12:54:06.448071+00:00"
+      },
+      "backend/app/core/config.py": {
+        "lines": 7,
+        "nonblank_lines": 5,
+        "characters": 173,
+        "sha256": "0EDCC679E16FF9D13B206B87A6C92CBC0CCCB75412D0D7F2AFFDD2D87DAFCBE7",
+        "modified_at_utc": "2026-09-29T12:52:58.443821+00:00"
+      },
+      "backend/app/domain/pieces.py": {
+        "lines": 19,
+        "nonblank_lines": 16,
+        "characters": 652,
+        "sha256": "E57C05C961EFED813DFA1CA565166C50F8B62D9FB3A9FC37121FECC470EA6D0E",
+        "modified_at_utc": "2026-09-29T12:53:23.550979+00:00"
+      },
+      "backend/app/domain/rules.py": {
+        "lines": 103,
+        "nonblank_lines": 84,
+        "characters": 4107,
+        "sha256": "B34A3EEBF32946630C8588A1CF7579A6185CAEC297AE7CA021B28A438362EEB5",
+        "modified_at_utc": "2026-09-29T12:53:59.225354+00:00"
+      },
+      "backend/app/main.py": {
+        "lines": 30,
+        "nonblank_lines": 24,
+        "characters": 640,
+        "sha256": "D5D2B7CFF78C1FB186C3E17B8E6A43F044B95CA051DB52B98EFD59364EE3CB73",
+        "modified_at_utc": "2026-09-29T12:54:15.474981+00:00"
+      },
+      "backend/app/models/game.py": {
+        "lines": 16,
+        "nonblank_lines": 13,
+        "characters": 520,
+        "sha256": "AA4EECB66FDF2A837F28D9D900471613CA9122C41A5D2DB9ED371E5FB51D609D",
+        "modified_at_utc": "2026-09-29T12:53:02.025096+00:00"
+      },
+      "backend/tests/test_game.py": {
+        "lines": 245,
+        "nonblank_lines": 207,
+        "characters": 10178,
+        "sha256": "EE683A8C67076B8FFC4174B3A4F974370E064F955CC18CAA952A4DE27393A4A3",
+        "modified_at_utc": "2026-09-29T13:23:15.320065+00:00"
+      },
+      "frontend/index.html": {
+        "lines": 12,
+        "nonblank_lines": 12,
+        "characters": 318,
+        "sha256": "BA65391726B23EA4914755E81DFAD88CD6E0825E7FA3BF39FAFC314600393E9E",
+        "modified_at_utc": "2026-09-29T18:25:10.577021+00:00"
+      },
+      "frontend/src/App.tsx": {
+        "lines": 139,
+        "nonblank_lines": 119,
+        "characters": 4242,
+        "sha256": "0D018C987B3C98F4E5A10903FFE145DE0B7E8CD5870328A9DC6108EF4755BC05",
+        "modified_at_utc": "2026-09-29T18:34:44.065415+00:00"
+      },
+      "frontend/src/api.ts": {
+        "lines": 51,
+        "nonblank_lines": 46,
+        "characters": 1358,
+        "sha256": "8549B363E487A861CA64B03376D6361A092E29034D92FBFCC55FFE3153391AD5",
+        "modified_at_utc": "2026-09-29T18:25:16.605816+00:00"
+      },
+      "frontend/src/components/GameStatus.tsx": {
+        "lines": 64,
+        "nonblank_lines": 55,
+        "characters": 1900,
+        "sha256": "12B8EF0E0275B4BD162BBC2471054DB3A82F8878C7AB5D4500C026B41917AE5D",
+        "modified_at_utc": "2026-09-29T18:37:13.028777+00:00"
+      },
+      "frontend/src/components/TetrisBoard.test.tsx": {
+        "lines": 41,
+        "nonblank_lines": 35,
+        "characters": 1527,
+        "sha256": "A0C8C47C9A23B24CCB4C0C6B07F1E080215E4B2E25862C00CD743A8E1EE121EF",
+        "modified_at_utc": "2026-09-29T18:29:00.816118+00:00"
+      },
+      "frontend/src/components/TetrisBoard.tsx": {
+        "lines": 44,
+        "nonblank_lines": 39,
+        "characters": 1389,
+        "sha256": "1DDCE2645A3D6A55635AAD4906E45BB65ADC5FDAE0AF3C2DE4E5324AA6E0F845",
+        "modified_at_utc": "2026-09-29T18:28:19.464206+00:00"
+      },
+      "frontend/src/index.css": {
+        "lines": 388,
+        "nonblank_lines": 334,
+        "characters": 7150,
+        "sha256": "B3FB2D598EB659561FEB22EF312259355C1944B58B892413E94734DA3E4883B6",
+        "modified_at_utc": "2026-09-29T18:27:16.343357+00:00"
+      },
+      "frontend/src/main.tsx": {
+        "lines": 10,
+        "nonblank_lines": 9,
+        "characters": 236,
+        "sha256": "04BC6C664005D207F6C9A42CAC1A11810F6257A77604ECC9A2DFA1F0A68959BA",
+        "modified_at_utc": "2026-09-29T18:27:21.715893+00:00"
+      },
+      "frontend/src/types.ts": {
+        "lines": 16,
+        "nonblank_lines": 13,
+        "characters": 457,
+        "sha256": "CC470DD66AFC9B7416106D7CF12A9EB97602264C96C81965B556262F596A2862",
+        "modified_at_utc": "2026-09-29T18:25:13.610341+00:00"
+      },
+      "frontend/vite.config.d.ts": {
+        "lines": 2,
+        "nonblank_lines": 2,
+        "characters": 76,
+        "sha256": "4B96DD19FD2949D28CE80E913412B0026DC421E5BF6C31D87C7B5EB11B5753B4",
+        "modified_at_utc": "2026-09-29T18:28:07.637334+00:00"
+      },
+      "frontend/vite.config.js": {
+        "lines": 15,
+        "nonblank_lines": 15,
+        "characters": 354,
+        "sha256": "74A1617BBA280B1E9325610B607E5882ECA0C9F9379B3D8036D1300952105651",
+        "modified_at_utc": "2026-09-29T18:28:07.618506+00:00"
+      },
+      "frontend/vite.config.ts": {
+        "lines": 27,
+        "nonblank_lines": 25,
+        "characters": 499,
+        "sha256": "FCD91673C825B2E6D146CF01EF5E625C8258D5B3756BECF591E5E0F46022077A",
+        "modified_at_utc": "2026-09-29T18:29:44.496541+00:00"
+      }
+    }
+  },
+  "source_current": {
+    "files": 19,
+    "lines": 1299,
+    "nonblank_lines": 1110,
+    "characters": 37962,
+    "lines_per_file": 68.37,
+    "per_file": {
+      "backend/app/controllers/games.py": {
+        "lines": 70,
+        "nonblank_lines": 57,
+        "characters": 2186,
+        "sha256": "E66DD5A94799546EB4EB9A29B64F1741B5420D5682638C4236191EE564B57528",
+        "modified_at_utc": "2026-09-29T12:54:06.448071+00:00"
+      },
+      "backend/app/core/config.py": {
+        "lines": 7,
+        "nonblank_lines": 5,
+        "characters": 173,
+        "sha256": "0EDCC679E16FF9D13B206B87A6C92CBC0CCCB75412D0D7F2AFFDD2D87DAFCBE7",
+        "modified_at_utc": "2026-09-29T12:52:58.443821+00:00"
+      },
+      "backend/app/domain/pieces.py": {
+        "lines": 19,
+        "nonblank_lines": 16,
+        "characters": 652,
+        "sha256": "E57C05C961EFED813DFA1CA565166C50F8B62D9FB3A9FC37121FECC470EA6D0E",
+        "modified_at_utc": "2026-09-29T12:53:23.550979+00:00"
+      },
+      "backend/app/domain/rules.py": {
+        "lines": 103,
+        "nonblank_lines": 84,
+        "characters": 4107,
+        "sha256": "B34A3EEBF32946630C8588A1CF7579A6185CAEC297AE7CA021B28A438362EEB5",
+        "modified_at_utc": "2026-09-29T12:53:59.225354+00:00"
+      },
+      "backend/app/main.py": {
+        "lines": 30,
+        "nonblank_lines": 24,
+        "characters": 640,
+        "sha256": "D5D2B7CFF78C1FB186C3E17B8E6A43F044B95CA051DB52B98EFD59364EE3CB73",
+        "modified_at_utc": "2026-09-29T12:54:15.474981+00:00"
+      },
+      "backend/app/models/game.py": {
+        "lines": 16,
+        "nonblank_lines": 13,
+        "characters": 520,
+        "sha256": "AA4EECB66FDF2A837F28D9D900471613CA9122C41A5D2DB9ED371E5FB51D609D",
+        "modified_at_utc": "2026-09-29T12:53:02.025096+00:00"
+      },
+      "backend/tests/test_game.py": {
+        "lines": 245,
+        "nonblank_lines": 207,
+        "characters": 10178,
+        "sha256": "EE683A8C67076B8FFC4174B3A4F974370E064F955CC18CAA952A4DE27393A4A3",
+        "modified_at_utc": "2026-09-29T13:23:15.320065+00:00"
+      },
+      "frontend/index.html": {
+        "lines": 12,
+        "nonblank_lines": 12,
+        "characters": 318,
+        "sha256": "BA65391726B23EA4914755E81DFAD88CD6E0825E7FA3BF39FAFC314600393E9E",
+        "modified_at_utc": "2026-09-29T18:25:10.577021+00:00"
+      },
+      "frontend/src/App.tsx": {
+        "lines": 139,
+        "nonblank_lines": 119,
+        "characters": 4242,
+        "sha256": "0D018C987B3C98F4E5A10903FFE145DE0B7E8CD5870328A9DC6108EF4755BC05",
+        "modified_at_utc": "2026-09-29T18:34:44.065415+00:00"
+      },
+      "frontend/src/api.ts": {
+        "lines": 51,
+        "nonblank_lines": 46,
+        "characters": 1358,
+        "sha256": "8549B363E487A861CA64B03376D6361A092E29034D92FBFCC55FFE3153391AD5",
+        "modified_at_utc": "2026-09-29T18:25:16.605816+00:00"
+      },
+      "frontend/src/components/GameStatus.tsx": {
+        "lines": 64,
+        "nonblank_lines": 55,
+        "characters": 1900,
+        "sha256": "12B8EF0E0275B4BD162BBC2471054DB3A82F8878C7AB5D4500C026B41917AE5D",
+        "modified_at_utc": "2026-09-29T18:37:13.028777+00:00"
+      },
+      "frontend/src/components/TetrisBoard.test.tsx": {
+        "lines": 41,
+        "nonblank_lines": 35,
+        "characters": 1527,
+        "sha256": "A0C8C47C9A23B24CCB4C0C6B07F1E080215E4B2E25862C00CD743A8E1EE121EF",
+        "modified_at_utc": "2026-09-29T18:29:00.816118+00:00"
+      },
+      "frontend/src/components/TetrisBoard.tsx": {
+        "lines": 44,
+        "nonblank_lines": 39,
+        "characters": 1389,
+        "sha256": "1DDCE2645A3D6A55635AAD4906E45BB65ADC5FDAE0AF3C2DE4E5324AA6E0F845",
+        "modified_at_utc": "2026-09-29T18:28:19.464206+00:00"
+      },
+      "frontend/src/index.css": {
+        "lines": 388,
+        "nonblank_lines": 334,
+        "characters": 7150,
+        "sha256": "B3FB2D598EB659561FEB22EF312259355C1944B58B892413E94734DA3E4883B6",
+        "modified_at_utc": "2026-09-29T18:27:16.343357+00:00"
+      },
+      "frontend/src/main.tsx": {
+        "lines": 10,
+        "nonblank_lines": 9,
+        "characters": 236,
+        "sha256": "04BC6C664005D207F6C9A42CAC1A11810F6257A77604ECC9A2DFA1F0A68959BA",
+        "modified_at_utc": "2026-09-29T18:27:21.715893+00:00"
+      },
+      "frontend/src/types.ts": {
+        "lines": 16,
+        "nonblank_lines": 13,
+        "characters": 457,
+        "sha256": "CC470DD66AFC9B7416106D7CF12A9EB97602264C96C81965B556262F596A2862",
+        "modified_at_utc": "2026-09-29T18:25:13.610341+00:00"
+      },
+      "frontend/vite.config.d.ts": {
+        "lines": 2,
+        "nonblank_lines": 2,
+        "characters": 76,
+        "sha256": "4B96DD19FD2949D28CE80E913412B0026DC421E5BF6C31D87C7B5EB11B5753B4",
+        "modified_at_utc": "2026-09-29T18:28:07.637334+00:00"
+      },
+      "frontend/vite.config.js": {
+        "lines": 15,
+        "nonblank_lines": 15,
+        "characters": 354,
+        "sha256": "74A1617BBA280B1E9325610B607E5882ECA0C9F9379B3D8036D1300952105651",
+        "modified_at_utc": "2026-09-29T18:28:07.618506+00:00"
+      },
+      "frontend/vite.config.ts": {
+        "lines": 27,
+        "nonblank_lines": 25,
+        "characters": 499,
+        "sha256": "FCD91673C825B2E6D146CF01EF5E625C8258D5B3756BECF591E5E0F46022077A",
+        "modified_at_utc": "2026-09-29T18:29:44.496541+00:00"
+      }
+    }
+  },
+  "source_change": {
+    "changed_files": [],
+    "changed_file_count": 0,
+    "added_lines": 0,
+    "removed_lines": 0,
+    "net_lines": 0,
+    "before_characters": 37962,
+    "after_characters": 37962,
+    "net_characters": 0,
+    "character_delta_definition": "net change in total decoded Unicode text length, after BOM removal and LF normalization; not cumulative edit volume or an added/removed-character operation count"
+  },
+  "spec_stage1": {
+    "files": 2,
+    "lines": 136,
+    "nonblank_lines": 111,
+    "characters": 10093,
+    "lines_per_file": 68.0,
+    "per_file": {
+      "specs/requirements.md": {
+        "lines": 115,
+        "nonblank_lines": 96,
+        "characters": 8778,
+        "sha256": "089245525ADD64E41B43498D3BA241B388DDA573AE1E92FD916F7E18ED4BB27D",
+        "modified_at_utc": "2026-09-29T18:31:20.927826+00:00"
+      },
+      "specs/session_notes.md": {
+        "lines": 21,
+        "nonblank_lines": 15,
+        "characters": 1315,
+        "sha256": "7202548B9023A5EA3BEB27F2C87E41B4B4AC8670F5A6340D7FABD27707B96DA1",
+        "modified_at_utc": "2026-09-29T12:48:28.665425+00:00"
+      }
+    }
+  },
+  "spec_stage1_copy": {
+    "files": 2,
+    "lines": 136,
+    "nonblank_lines": 111,
+    "characters": 10093,
+    "lines_per_file": 68.0,
+    "per_file": {
+      "specs/requirements.md": {
+        "lines": 115,
+        "nonblank_lines": 96,
+        "characters": 8778,
+        "sha256": "089245525ADD64E41B43498D3BA241B388DDA573AE1E92FD916F7E18ED4BB27D",
+        "modified_at_utc": "2026-09-29T18:31:20.927826+00:00"
+      },
+      "specs/session_notes.md": {
+        "lines": 21,
+        "nonblank_lines": 15,
+        "characters": 1315,
+        "sha256": "7202548B9023A5EA3BEB27F2C87E41B4B4AC8670F5A6340D7FABD27707B96DA1",
+        "modified_at_utc": "2026-09-29T12:48:28.665425+00:00"
+      }
+    }
+  },
+  "spec_stage1_copy_change": {
+    "changed_files": [],
+    "changed_file_count": 0,
+    "added_lines": 0,
+    "removed_lines": 0,
+    "net_lines": 0,
+    "before_characters": 10093,
+    "after_characters": 10093,
+    "net_characters": 0,
+    "character_delta_definition": "net change in total decoded Unicode text length, after BOM removal and LF normalization; not cumulative edit volume or an added/removed-character operation count"
+  },
+  "spec_stage2": {
+    "files": 2,
+    "lines": 273,
+    "nonblank_lines": 238,
+    "characters": 24213,
+    "lines_per_file": 136.5,
+    "per_file": {
+      "specs/stage2/requirements.md": {
+        "lines": 131,
+        "nonblank_lines": 114,
+        "characters": 13412,
+        "sha256": "523CE86BB25BCC1B5B9885E2CAC9F290A81B6741056007D4D8A37C1F01BC795B",
+        "modified_at_utc": "2026-10-21T14:36:39.084924+00:00"
+      },
+      "specs/stage2/session_notes.md": {
+        "lines": 142,
+        "nonblank_lines": 124,
+        "characters": 10801,
+        "sha256": "520CFC145CC43F015A3BFF0EE0EA025DA680201E0B9F07D45377371BAF314553",
+        "modified_at_utc": "2026-10-21T14:37:01.385964+00:00"
+      }
+    }
+  },
+  "spec_stage2_change_from_empty": {
+    "changed_files": [
+      "specs/stage2/requirements.md",
+      "specs/stage2/session_notes.md"
+    ],
+    "changed_file_count": 2,
+    "added_lines": 273,
+    "removed_lines": 0,
+    "net_lines": 273,
+    "before_characters": 0,
+    "after_characters": 24213,
+    "net_characters": 24213,
+    "character_delta_definition": "net change in total decoded Unicode text length, after BOM removal and LF normalization; not cumulative edit volume or an added/removed-character operation count"
+  },
+  "stage2_spec_delta_scope": "new specs/stage2 measured against empty directory; original inherited native docs measured separately",
+  "dependency_manifests_baseline": {
+    "files": 3,
+    "lines": 4293,
+    "nonblank_lines": 4290,
+    "characters": 141380,
+    "lines_per_file": 1431.0,
+    "per_file": {
+      "backend/pyproject.toml": {
+        "lines": 21,
+        "nonblank_lines": 18,
+        "characters": 539,
+        "sha256": "6BD6C219916FE366AE78368A6D88E663B2326B197808E6E43C2D063B0990E212",
+        "modified_at_utc": "2026-09-29T12:49:57.125539+00:00"
+      },
+      "frontend/package-lock.json": {
+        "lines": 4245,
+        "nonblank_lines": 4245,
+        "characters": 140230,
+        "sha256": "65A7C6CA9F367F5ADFEF2B175E404A05E5236249659609899CB65C285976799E",
+        "modified_at_utc": "2026-09-29T18:27:49.454318+00:00"
+      },
+      "frontend/package.json": {
+        "lines": 27,
+        "nonblank_lines": 27,
+        "characters": 611,
+        "sha256": "6E42009E2CD7C2EEDEA3F44AF04152B63497D2589B80D6747DCE38F4B796BFA0",
+        "modified_at_utc": "2026-09-29T13:29:35.899918+00:00"
+      }
+    }
+  },
+  "dependency_manifests_current": {
+    "files": 3,
+    "lines": 4293,
+    "nonblank_lines": 4290,
+    "characters": 141380,
+    "lines_per_file": 1431.0,
+    "per_file": {
+      "backend/pyproject.toml": {
+        "lines": 21,
+        "nonblank_lines": 18,
+        "characters": 539,
+        "sha256": "6BD6C219916FE366AE78368A6D88E663B2326B197808E6E43C2D063B0990E212",
+        "modified_at_utc": "2026-09-29T12:49:57.125539+00:00"
+      },
+      "frontend/package-lock.json": {
+        "lines": 4245,
+        "nonblank_lines": 4245,
+        "characters": 140230,
+        "sha256": "65A7C6CA9F367F5ADFEF2B175E404A05E5236249659609899CB65C285976799E",
+        "modified_at_utc": "2026-09-29T18:27:49.454318+00:00"
+      },
+      "frontend/package.json": {
+        "lines": 27,
+        "nonblank_lines": 27,
+        "characters": 611,
+        "sha256": "6E42009E2CD7C2EEDEA3F44AF04152B63497D2589B80D6747DCE38F4B796BFA0",
+        "modified_at_utc": "2026-09-29T13:29:35.899918+00:00"
+      }
+    }
+  },
+  "dependency_manifests_change": {
+    "changed_files": [],
+    "changed_file_count": 0,
+    "added_lines": 0,
+    "removed_lines": 0,
+    "net_lines": 0,
+    "before_characters": 141380,
+    "after_characters": 141380,
+    "net_characters": 0,
+    "character_delta_definition": "net change in total decoded Unicode text length, after BOM removal and LF normalization; not cumulative edit volume or an added/removed-character operation count"
+  },
+  "integration_manifests_current": {
+    "files": 3,
+    "lines": 55,
+    "nonblank_lines": 52,
+    "characters": 1272,
+    "lines_per_file": 18.33,
+    "per_file": {
+      ".gemini/settings.json": {
+        "lines": 27,
+        "nonblank_lines": 27,
+        "characters": 526,
+        "sha256": "C314141D48532810AC591362034DD85F604F4A582AFF21C7ECC90CC4B24E3118",
+        "modified_at_utc": "2026-10-21T14:23:31.065522+00:00"
+      },
+      ".tessl/RULES.md": {
+        "lines": 7,
+        "nonblank_lines": 4,
+        "characters": 330,
+        "sha256": "F680175CE897F5B64334E7CE7297A8C8AB18C6CA035548756FC948AEF9B1B042",
+        "modified_at_utc": "2026-10-21T14:30:38.791715+00:00"
+      },
+      "tessl.json": {
+        "lines": 21,
+        "nonblank_lines": 21,
+        "characters": 416,
+        "sha256": "613A1803FC53937121D8B0AA497FC9B9DD420C5293A59835824E27477148CEB0",
+        "modified_at_utc": "2026-09-29T12:25:20.111444+00:00"
+      }
+    }
+  },
+  "baseline_integrity": {
+    "reference": "baseline-metrics.json",
+    "original_stage1_hash_mismatches": [],
+    "original_stage1_unchanged": true
+  },
+  "stage2_requirement_ids": [
+    "S2-1",
+    "S2-10",
+    "S2-11",
+    "S2-12",
+    "S2-13",
+    "S2-14",
+    "S2-15",
+    "S2-16",
+    "S2-17",
+    "S2-18",
+    "S2-19",
+    "S2-2",
+    "S2-20",
+    "S2-21",
+    "S2-22",
+    "S2-23",
+    "S2-24",
+    "S2-25",
+    "S2-26",
+    "S2-27",
+    "S2-28",
+    "S2-29",
+    "S2-3",
+    "S2-30",
+    "S2-4",
+    "S2-5",
+    "S2-6",
+    "S2-7",
+    "S2-8",
+    "S2-9"
+  ],
+  "stage2_identifier_scope": "unique identifier-pattern candidates in Stage 2 requirements.md; not independently adjudicated atomic-requirement or acceptance counts",
+  "runs": [
+    {
+      "label": "01-specify",
+      "phase": "specify",
+      "workflow": "Gemini CLI with Tessl MCP and vendored plugin context",
+      "submission_method": "complete multiline plain prompt via direct Node entrypoint",
+      "started": "2026-10-21T09:30:32.7733099-05:00",
+      "prompt_sha256": "BFF90383515B217A2FAB69C2732D48B6CFF185EDFDE9D5C108236B3B8103AF00",
+      "seed_sha256": "63919779DD4104076FBABCB130CE296A160FA840E0B4755A2AA5D90757ADA8EF",
+      "requested_model": "gemini-3.5-flash",
+      "gemini_cli_version": "0.60.0",
+      "tessl_runtime": {
+        "researcher_created": true,
+        "measured_at_utc": "2026-10-21T09:23:31.812001-05:00",
+        "runtime_version": "0.112.0",
+        "runtime_path": "C:\\Users\\Kevin Alvarez\\AppData\\Local\\tessl\\versions\\tessl-0.112.0-win32-x64.exe",
+        "runtime_sha256": "FD96BD5F832F4832DED7F238B74AA705C2404ACA4B488BE3B282472F26911AFA",
+        "runtime_bytes": 137188864,
+        "npm_bootstrap_version": "0.108.0",
+        "auto_update_environment": {
+          "TESSL_AUTO_UPDATE_INTERVAL_MINUTES": "0",
+          "TESSL_DISABLE_UPDATE": "1"
+        },
+        "disable_evidence": {
+          "method": "Read-only embedded JavaScript inspection of the exact SHA-pinned executable",
+          "auto_update_predicate_byte_offset": 101023344,
+          "predicate_excerpt": "function $R6(w,A=0,$=!1){if($)return!1;if(A<=0)return!1;",
+          "scheduler_excerpt": "if(G>0&&Q!==f)",
+          "version_status_excerpt": "B=f>0&&!q",
+          "interpretation": "Interval zero disables automatic binary replacement, rather than checking on every invocation. TESSL_DISABLE_UPDATE=1 additionally disables update actions. This does not assert that telemetry or latest-version lookup is disabled."
+        },
+        "rationale": "Direct versioned executable matches the final installed Stage 1 Tessl runtime; NPM bootstrap version is recorded separately and is not executed."
+      },
+      "resume_requested": false,
+      "ended": "2026-10-21T09:37:12.1758072-05:00",
+      "duration_seconds": 399.402,
+      "exit_code": 0,
+      "stdout": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\Tessl\\docs\\01-specify.stdout.json",
+      "stderr": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\Tessl\\docs\\01-specify.stderr.txt",
+      "classification": {
+        "category": "initial_specification",
+        "reason": "Gemini-authored Stage 2 atomic requirements and checklist using Tessl MCP/plugin context; not a native Tessl generator. No app/test edits authorized in this phase.",
+        "external_postimplementation_correction": false,
+        "qa_intent_id": null,
+        "retry_of": null,
+        "process_outcome": "closed_exit_zero",
+        "outcome_definition": "closed means the invocation ended, including failure/interruption; exit-zero means process success only, not independently verified correction/acceptance success"
+      },
+      "terminal_failure_observation": null,
+      "cli_tool_actions": {
+        "source": "completed CLI stats.tools",
+        "total_calls": 24,
+        "successful_calls": 23,
+        "failed_calls": 1,
+        "by_tool": {
+          "update_topic": {
+            "count": 2,
+            "success": 2,
+            "fail": 0
+          },
+          "read_file": {
+            "count": 17,
+            "success": 17,
+            "fail": 0
+          },
+          "mcp_tessl_status": {
+            "count": 1,
+            "success": 1,
+            "fail": 0
+          },
+          "mcp_tessl_skills_available": {
+            "count": 1,
+            "success": 0,
+            "fail": 1
+          },
+          "glob": {
+            "count": 1,
+            "success": 1,
+            "fail": 0
+          },
+          "write_file": {
+            "count": 2,
+            "success": 2,
+            "fail": 0
+          }
+        },
+        "scope": "tool execution statistics inside one external invocation; includes reads and other actions, not just code changes or Sonar scans; never counted as additional external correction prompts. A successful tool wrapper does not establish a shell command/test pass; inspect raw exit codes and logs."
+      },
+      "integration_observations": {
+        "coverage": "actual recorded call IDs inside the closed run interval, deduplicated across original/archive snapshots",
+        "total_deduplicated_calls": 24,
+        "observed_tool_names": [
+          "glob",
+          "mcp_tessl_skills_available",
+          "mcp_tessl_status",
+          "read_file",
+          "update_topic",
+          "write_file"
+        ],
+        "tessl_named_call_count": 2,
+        "vendored_context_read_count": 1,
+        "calls": [
+          {
+            "name": "update_topic",
+            "call_id": "update_topic__call_4080678",
+            "response_id": "7e7133f1-d06f-4151-abe0-7246199c52f6",
+            "timestamp": "2026-10-21T14:30:46.730Z",
+            "wrapper_status": "success",
+            "result_recorded": true,
+            "result_json_utf8_sha256": "5B900BDAA44440EC0DF6C2DF17239C507DF1D04C075BA0E1CC69F81DA1A4BF64",
+            "tessl_named_call": false,
+            "vendored_context_read": false,
+            "transcript_copies": [
+              "gemini-home/.gemini/tmp/tessl/chats/session-2026-10-21T14-30-08c8cdbc.jsonl",
+              "transcripts-archive/session-2026-10-21T14-30-08c8cdbc.542FFFA6EC1DF888.jsonl"
+            ]
+          },
+          {
+            "name": "read_file",
+            "call_id": "read_file__call_4121757",
+            "response_id": "f2417697-1f0a-4762-8307-a64c70de0709",
+            "timestamp": "2026-10-21T14:30:49.990Z",
+            "wrapper_status": "success",
+            "result_recorded": true,
+            "result_json_utf8_sha256": "A147FB2CBFA5E43FFDB10407F6BCFB51A87310AEFEEA9CB4566F0C30BFCC51E0",
+            "tessl_named_call": false,
+            "vendored_context_read": false,
+            "transcript_copies": [
+              "gemini-home/.gemini/tmp/tessl/chats/session-2026-10-21T14-30-08c8cdbc.jsonl",
+              "transcripts-archive/session-2026-10-21T14-30-08c8cdbc.542FFFA6EC1DF888.jsonl"
+            ]
+          },
+          {
+            "name": "read_file",
+            "call_id": "read_file__call_4121766",
+            "response_id": "f2417697-1f0a-4762-8307-a64c70de0709",
+            "timestamp": "2026-10-21T14:30:49.990Z",
+            "wrapper_status": "success",
+            "result_recorded": true,
+            "result_json_utf8_sha256": "59CD6D3072478FF92A8E3F7ED53389C1811CC4F837D07B80FA49A298BCA20CEA",
+            "tessl_named_call": false,
+            "vendored_context_read": true,
+            "transcript_copies": [
+              "gemini-home/.gemini/tmp/tessl/chats/session-2026-10-21T14-30-08c8cdbc.jsonl",
+              "transcripts-archive/session-2026-10-21T14-30-08c8cdbc.542FFFA6EC1DF888.jsonl"
+            ]
+          },
+          {
+            "name": "read_file",
+            "call_id": "read_file__call_4121769",
+            "response_id": "f2417697-1f0a-4762-8307-a64c70de0709",
+            "timestamp": "2026-10-21T14:30:49.990Z",
+            "wrapper_status": "success",
+            "result_recorded": true,
+            "result_json_utf8_sha256": "C00AB028BD637FBDF15887559BD46A94AC299AEA2778563509AAD119D73414F1",
+            "tessl_named_call": false,
+            "vendored_context_read": false,
+            "transcript_copies": [
+              "gemini-home/.gemini/tmp/tessl/chats/session-2026-10-21T14-30-08c8cdbc.jsonl",
+              "transcripts-archive/session-2026-10-21T14-30-08c8cdbc.542FFFA6EC1DF888.jsonl"
+            ]
+          },
+          {
+            "name": "mcp_tessl_status",
+            "call_id": "mcp_tessl_status__call_1538294",
+            "response_id": "e68554b2-7b5c-467d-a7e9-89e23bbc5d12",
+            "timestamp": "2026-10-21T14:30:52.796Z",
+            "wrapper_status": "success",
+            "result_recorded": true,
+            "result_json_utf8_sha256": "1E3DE6281488EAF7ECCF50BC3F859A0E6B997B9A3CE79FF31BCAF5137ABC57AB",
+            "tessl_named_call": true,
+            "vendored_context_read": false,
+            "transcript_copies": [
+              "gemini-home/.gemini/tmp/tessl/chats/session-2026-10-21T14-30-08c8cdbc.jsonl",
+              "transcripts-archive/session-2026-10-21T14-30-08c8cdbc.542FFFA6EC1DF888.jsonl"
+            ]
+          },
+          {
+            "name": "mcp_tessl_skills_available",
+            "call_id": "mcp_tessl_skills_available__call_1538297",
+            "response_id": "e68554b2-7b5c-467d-a7e9-89e23bbc5d12",
+            "timestamp": "2026-10-21T14:30:52.796Z",
+            "wrapper_status": "error",
+            "result_recorded": true,
+            "result_json_utf8_sha256": "794D41EE235614EA620C27AE264884D6535B8D4A0F766F78652FABF41E5F9738",
+            "tessl_named_call": true,
+            "vendored_context_read": false,
+            "transcript_copies": [
+              "gemini-home/.gemini/tmp/tessl/chats/session-2026-10-21T14-30-08c8cdbc.jsonl",
+              "transcripts-archive/session-2026-10-21T14-30-08c8cdbc.542FFFA6EC1DF888.jsonl"
+            ]
+          },
+          {
+            "name": "read_file",
+            "call_id": "read_file__call_10641289",
+            "response_id": "9a85311b-19cb-4739-aefd-4c5b5ce7b5a4",
+            "timestamp": "2026-10-21T14:30:56.788Z",
+            "wrapper_status": "success",
+            "result_recorded": true,
+            "result_json_utf8_sha256": "1B73959C4FA9930F2CF71490A90A9591C6AEC2B8C7BA657D4C5DD21A6CADF64A",
+            "tessl_named_call": false,
+            "vendored_context_read": false,
+            "transcript_copies": [
+              "gemini-home/.gemini/tmp/tessl/chats/session-2026-10-21T14-30-08c8cdbc.jsonl",
+              "transcripts-archive/session-2026-10-21T14-30-08c8cdbc.542FFFA6EC1DF888.jsonl"
+            ]
+          },
+          {
+            "name": "read_file",
+            "call_id": "read_file__call_10641292",
+            "response_id": "9a85311b-19cb-4739-aefd-4c5b5ce7b5a4",
+            "timestamp": "2026-10-21T14:30:56.788Z",
+            "wrapper_status": "success",
+            "result_recorded": true,
+            "result_json_utf8_sha256": "628134FAFA725FE562056BF10614D185C1B9F8A7D01B6928A9285B33AB0C6E46",
+            "tessl_named_call": false,
+            "vendored_context_read": false,
+            "transcript_copies": [
+              "gemini-home/.gemini/tmp/tessl/chats/session-2026-10-21T14-30-08c8cdbc.jsonl",
+              "transcripts-archive/session-2026-10-21T14-30-08c8cdbc.542FFFA6EC1DF888.jsonl"
+            ]
+          },
+          {
+            "name": "read_file",
+            "call_id": "read_file__call_3754049",
+            "response_id": "f13be245-8991-4e51-84ca-b3e2a3a18be4",
+            "timestamp": "2026-10-21T14:31:04.652Z",
+            "wrapper_status": "success",
+            "result_recorded": true,
+            "result_json_utf8_sha256": "C06BBEAFA75E68D695F28A9E4C9B2643A0920137400FD1E4B3DCB05721F4060E",
+            "tessl_named_call": false,
+            "vendored_context_read": false,
+            "transcript_copies": [
+              "gemini-home/.gemini/tmp/tessl/chats/session-2026-10-21T14-30-08c8cdbc.jsonl",
+              "transcripts-archive/session-2026-10-21T14-30-08c8cdbc.542FFFA6EC1DF888.jsonl"
+            ]
+          },
+          {
+            "name": "read_file",
+            "call_id": "read_file__call_3754052",
+            "response_id": "f13be245-8991-4e51-84ca-b3e2a3a18be4",
+            "timestamp": "2026-10-21T14:31:04.652Z",
+            "wrapper_status": "success",
+            "result_recorded": true,
+            "result_json_utf8_sha256": "190D4C74012A359ED2E090BF2CF09C54A2E821DBF090F02319BBAF34D3DB03C6",
+            "tessl_named_call": false,
+            "vendored_context_read": false,
+            "transcript_copies": [
+              "gemini-home/.gemini/tmp/tessl/chats/session-2026-10-21T14-30-08c8cdbc.jsonl",
+              "transcripts-archive/session-2026-10-21T14-30-08c8cdbc.542FFFA6EC1DF888.jsonl"
+            ]
+          },
+          {
+            "name": "read_file",
+            "call_id": "read_file__call_3754055",
+            "response_id": "f13be245-8991-4e51-84ca-b3e2a3a18be4",
+            "timestamp": "2026-10-21T14:31:04.652Z",
+            "wrapper_status": "success",
+            "result_recorded": true,
+            "result_json_utf8_sha256": "29A0E48D2B012DF217863DF037AD01CDAAC3A84407F60721E6F1C64C36C284FA",
+            "tessl_named_call": false,
+            "vendored_context_read": false,
+            "transcript_copies": [
+              "gemini-home/.gemini/tmp/tessl/chats/session-2026-10-21T14-30-08c8cdbc.jsonl",
+              "transcripts-archive/session-2026-10-21T14-30-08c8cdbc.542FFFA6EC1DF888.jsonl"
+            ]
+          },
+          {
+            "name": "read_file",
+            "call_id": "read_file__call_257608",
+            "response_id": "966be962-511d-4326-b0f0-8bb2c11964b1",
+            "timestamp": "2026-10-21T14:31:08.600Z",
+            "wrapper_status": "success",
+            "result_recorded": true,
+            "result_json_utf8_sha256": "AC7A931D2A1C937DE817BD43390995176B31484129A5911C0B0C24DF79BF8AC6",
+            "tessl_named_call": false,
+            "vendored_context_read": false,
+            "transcript_copies": [
+              "gemini-home/.gemini/tmp/tessl/chats/session-2026-10-21T14-30-08c8cdbc.jsonl",
+              "transcripts-archive/session-2026-10-21T14-30-08c8cdbc.542FFFA6EC1DF888.jsonl"
+            ]
+          },
+          {
+            "name": "read_file",
+            "call_id": "read_file__call_257614",
+            "response_id": "966be962-511d-4326-b0f0-8bb2c11964b1",
+            "timestamp": "2026-10-21T14:31:08.600Z",
+            "wrapper_status": "success",
+            "result_recorded": true,
+            "result_json_utf8_sha256": "D1B8611A118755CD836D2BAFB28FA434734F15EE1095A458A5DFBB6116337E7D",
+            "tessl_named_call": false,
+            "vendored_context_read": false,
+            "transcript_copies": [
+              "gemini-home/.gemini/tmp/tessl/chats/session-2026-10-21T14-30-08c8cdbc.jsonl",
+              "transcripts-archive/session-2026-10-21T14-30-08c8cdbc.542FFFA6EC1DF888.jsonl"
+            ]
+          },
+          {
+            "name": "read_file",
+            "call_id": "read_file__call_4493687",
+            "response_id": "ec681a32-80b5-45ed-9918-4605586afb58",
+            "timestamp": "2026-10-21T14:31:11.156Z",
+            "wrapper_status": "success",
+            "result_recorded": true,
+            "result_json_utf8_sha256": "B6E24491696AC2677FF34C291A03335E2483CE36FB0F32358ADD44C2057DA564",
+            "tessl_named_call": false,
+            "vendored_context_read": false,
+            "transcript_copies": [
+              "gemini-home/.gemini/tmp/tessl/chats/session-2026-10-21T14-30-08c8cdbc.jsonl",
+              "transcripts-archive/session-2026-10-21T14-30-08c8cdbc.542FFFA6EC1DF888.jsonl"
+            ]
+          },
+          {
+            "name": "read_file",
+            "call_id": "read_file__call_9001300",
+            "response_id": "7fa378f2-322f-4e30-878e-1df8a8275a8c",
+            "timestamp": "2026-10-21T14:31:27.973Z",
+            "wrapper_status": "success",
+            "result_recorded": true,
+            "result_json_utf8_sha256": "569B918E14CE12398E0BDA6C522270163603A1CA8EDB6C732C28E06FEB1B72C9",
+            "tessl_named_call": false,
+            "vendored_context_read": false,
+            "transcript_copies": [
+              "gemini-home/.gemini/tmp/tessl/chats/session-2026-10-21T14-30-08c8cdbc.jsonl",
+              "transcripts-archive/session-2026-10-21T14-30-08c8cdbc.542FFFA6EC1DF888.jsonl"
+            ]
+          },
+          {
+            "name": "read_file",
+            "call_id": "read_file__call_3286041",
+            "response_id": "d645f5d3-3f4f-4a3f-ac49-35965490dd99",
+            "timestamp": "2026-10-21T14:31:46.533Z",
+            "wrapper_status": "success",
+            "result_recorded": true,
+            "result_json_utf8_sha256": "366272D2F5373294A7C59671CE1995AB43547F08CCBD4B91EB569D8A1EF0B795",
+            "tessl_named_call": false,
+            "vendored_context_read": false,
+            "transcript_copies": [
+              "gemini-home/.gemini/tmp/tessl/chats/session-2026-10-21T14-30-08c8cdbc.jsonl",
+              "transcripts-archive/session-2026-10-21T14-30-08c8cdbc.542FFFA6EC1DF888.jsonl"
+            ]
+          },
+          {
+            "name": "read_file",
+            "call_id": "read_file__call_219922",
+            "response_id": "151a4e6b-9183-439c-9793-ebe50daf18bf",
+            "timestamp": "2026-10-21T14:32:05.096Z",
+            "wrapper_status": "success",
+            "result_recorded": true,
+            "result_json_utf8_sha256": "2925E837137B300FB0D62416C7FE626C4826FBE48BB6FDCCD877F7448F68D595",
+            "tessl_named_call": false,
+            "vendored_context_read": false,
+            "transcript_copies": [
+              "gemini-home/.gemini/tmp/tessl/chats/session-2026-10-21T14-30-08c8cdbc.jsonl",
+              "transcripts-archive/session-2026-10-21T14-30-08c8cdbc.542FFFA6EC1DF888.jsonl"
+            ]
+          },
+          {
+            "name": "read_file",
+            "call_id": "read_file__call_1542831",
+            "response_id": "0aabdddf-f281-4324-93e2-8f75e4149c96",
+            "timestamp": "2026-10-21T14:32:44.118Z",
+            "wrapper_status": "success",
+            "result_recorded": true,
+            "result_json_utf8_sha256": "CA74AF4727F1E2C1947293FE10CA263006C5ADDF8BCA4129DF114F7E0227684D",
+            "tessl_named_call": false,
+            "vendored_context_read": false,
+            "transcript_copies": [
+              "gemini-home/.gemini/tmp/tessl/chats/session-2026-10-21T14-30-08c8cdbc.jsonl",
+              "transcripts-archive/session-2026-10-21T14-30-08c8cdbc.542FFFA6EC1DF888.jsonl"
+            ]
+          },
+          {
+            "name": "read_file",
+            "call_id": "read_file__call_1542834",
+            "response_id": "0aabdddf-f281-4324-93e2-8f75e4149c96",
+            "timestamp": "2026-10-21T14:32:44.118Z",
+            "wrapper_status": "success",
+            "result_recorded": true,
+            "result_json_utf8_sha256": "8A3B55FF203551FF65D567726193F9331905325878EED26FA56F586BF0CA69F3",
+            "tessl_named_call": false,
+            "vendored_context_read": false,
+            "transcript_copies": [
+              "gemini-home/.gemini/tmp/tessl/chats/session-2026-10-21T14-30-08c8cdbc.jsonl",
+              "transcripts-archive/session-2026-10-21T14-30-08c8cdbc.542FFFA6EC1DF888.jsonl"
+            ]
+          },
+          {
+            "name": "read_file",
+            "call_id": "read_file__call_8193416",
+            "response_id": "38694df8-c50a-42d6-8349-cacb8f807583",
+            "timestamp": "2026-10-21T14:33:00.625Z",
+            "wrapper_status": "success",
+            "result_recorded": true,
+            "result_json_utf8_sha256": "0B93B3E57BCF3E1E1BB17341994A188ED2343E8674098F1D50D58EBD9EC9A18F",
+            "tessl_named_call": false,
+            "vendored_context_read": false,
+            "transcript_copies": [
+              "gemini-home/.gemini/tmp/tessl/chats/session-2026-10-21T14-30-08c8cdbc.jsonl",
+              "transcripts-archive/session-2026-10-21T14-30-08c8cdbc.542FFFA6EC1DF888.jsonl"
+            ]
+          },
+          {
+            "name": "glob",
+            "call_id": "glob__call_182320",
+            "response_id": "1b769679-4bd6-43c9-820a-b7b4b8bdebfd",
+            "timestamp": "2026-10-21T14:35:52.816Z",
+            "wrapper_status": "success",
+            "result_recorded": true,
+            "result_json_utf8_sha256": "68115C618C844CBF74740A11399BD07BD9D7701045324FE28AE5C119842A7F72",
+            "tessl_named_call": false,
+            "vendored_context_read": false,
+            "transcript_copies": [
+              "gemini-home/.gemini/tmp/tessl/chats/session-2026-10-21T14-30-08c8cdbc.jsonl",
+              "transcripts-archive/session-2026-10-21T14-30-08c8cdbc.542FFFA6EC1DF888.jsonl"
+            ]
+          },
+          {
+            "name": "write_file",
+            "call_id": "write_file__call_10348074",
+            "response_id": "d91ae02a-505f-4904-b011-7f9743f74050",
+            "timestamp": "2026-10-21T14:36:39.091Z",
+            "wrapper_status": "success",
+            "result_recorded": true,
+            "result_json_utf8_sha256": "549B36581960DA56C2FAA71A74915BC0EED077BC78FBC292F2F9003D53732C55",
+            "tessl_named_call": false,
+            "vendored_context_read": false,
+            "transcript_copies": [
+              "gemini-home/.gemini/tmp/tessl/chats/session-2026-10-21T14-30-08c8cdbc.jsonl",
+              "transcripts-archive/session-2026-10-21T14-30-08c8cdbc.542FFFA6EC1DF888.jsonl"
+            ]
+          },
+          {
+            "name": "write_file",
+            "call_id": "write_file__call_1240166",
+            "response_id": "9d391272-93b3-4400-8d47-fb627e465f37",
+            "timestamp": "2026-10-21T14:37:01.390Z",
+            "wrapper_status": "success",
+            "result_recorded": true,
+            "result_json_utf8_sha256": "74D9814AEEFCE9659DC9CCF02DFF587E86CCE631CE07FB477848190E1EE5FCD2",
+            "tessl_named_call": false,
+            "vendored_context_read": false,
+            "transcript_copies": [
+              "gemini-home/.gemini/tmp/tessl/chats/session-2026-10-21T14-30-08c8cdbc.jsonl",
+              "transcripts-archive/session-2026-10-21T14-30-08c8cdbc.542FFFA6EC1DF888.jsonl"
+            ]
+          },
+          {
+            "name": "update_topic",
+            "call_id": "update_topic__call_1266931",
+            "response_id": "ed7713a5-2775-4726-8e32-c87977c6566d",
+            "timestamp": "2026-10-21T14:37:05.967Z",
+            "wrapper_status": "success",
+            "result_recorded": true,
+            "result_json_utf8_sha256": "6DD6F590607D1F66EF27F277871802C9FDFE922FFE3EE7FFD32536F7498711A0",
+            "tessl_named_call": false,
+            "vendored_context_read": false,
+            "transcript_copies": [
+              "gemini-home/.gemini/tmp/tessl/chats/session-2026-10-21T14-30-08c8cdbc.jsonl",
+              "transcripts-archive/session-2026-10-21T14-30-08c8cdbc.542FFFA6EC1DF888.jsonl"
+            ]
+          }
+        ],
+        "limitation": "A call name or successful wrapper alone does not prove plugin activation, wrapped command success or useful returned context. Raw retained outputs are authoritative; unavailable/unrecorded calls are not inferred failures."
+      },
+      "tokens": {
+        "source": "Gemini CLI JSON stats",
+        "models": [
+          "gemini-3.5-flash"
+        ],
+        "input_tokens": 574303,
+        "cached_tokens": 409971,
+        "output_tokens": 8458,
+        "thought_tokens": 12390,
+        "api_requests": 19,
+        "api_errors": 2,
+        "api_successful_requests": 17,
+        "api_by_model": {
+          "gemini-3.5-flash": {
+            "api_requests": 19,
+            "api_errors": 2,
+            "api_successful_requests": 17,
+            "roles": [
+              "main"
+            ]
+          }
+        },
+        "api_scope": "all models and roles present in completed CLI statistics; requests include failed attempts",
+        "model_started_observed": true,
+        "resumed_scope_verification": null,
+        "recorded_response_count": 17,
+        "recorded_response_models": [
+          "gemini-3.5-flash"
+        ],
+        "transcript_paths": [
+          "gemini-home/.gemini/tmp/tessl/chats/session-2026-10-21T14-30-08c8cdbc.jsonl",
+          "transcripts-archive/session-2026-10-21T14-30-08c8cdbc.542FFFA6EC1DF888.jsonl"
+        ],
+        "transcript_coverage": "observed token-bearing JSONL responses deduplicated by response ID; does not count failed API attempts or unrecorded auxiliary calls"
+      }
+    }
+  ],
+  "invocation_attempts": 1,
+  "model_invocations": 1,
+  "closed_process_outcomes": {
+    "closed_exit_zero": 1,
+    "closed_failed_or_interrupted": 0,
+    "closed_outcome_unknown": 0
+  },
+  "runs_with_unknown_model_start": [],
+  "correction_counts": {
+    "classification_version": "researcher-reviewed v2; external attempts, distinct QA intents, retries and process outcomes are separate",
+    "by_category": {
+      "initial_specification": {
+        "closed_attempts": 1,
+        "closed_exit_zero_attempts": 1,
+        "closed_failed_or_interrupted_attempts": 0,
+        "closed_outcome_unknown_attempts": 0,
+        "open_attempts": 0,
+        "model_observed_closed_prompts": 1,
+        "labels": [
+          "01-specify"
+        ]
+      }
+    },
+    "postimplementation_external_correction_prompts_started": 0,
+    "postimplementation_external_correction_prompts_closed": 0,
+    "postimplementation_external_correction_prompts_open": 0,
+    "postimplementation_external_correction_prompts_exit_zero": 0,
+    "postimplementation_external_correction_prompts_failed_or_interrupted": 0,
+    "distinct_qa_intents_started": 0,
+    "qa_intents": {},
+    "postimplementation_external_correction_labels": [],
+    "unclassified_labels": [],
+    "scope": "External correction attempts are separate from initial implementation, preimplementation spec clarification, launcher retries, and automated within-session edits/scans. A retry can share one QA intent. Closed includes failed attempts; exit-zero does not establish functional acceptance. Started counts include open metadata. Unknown future labels remain unclassified until reviewed."
+  },
+  "known_duration_seconds": 399.402,
+  "known_model_invocation_duration_seconds": 399.402,
+  "total_duration_seconds": 399.402,
+  "prompt_count": 1,
+  "prompt_count_note": "compatibility alias for closed launcher attempts, including proven pre-model failures; not actual model prompts",
+  "duration_scope": "known instrumented CLI invocation duration, including failed attempts; unknown durations and all external researcher work excluded",
+  "runs_with_unknown_duration": [],
+  "observed_tokens": {
+    "input_tokens": 574303,
+    "cached_tokens": 409971,
+    "output_tokens": 8458,
+    "thought_tokens": 12390
+  },
+  "runs_with_unknown_token_fields": {
+    "input_tokens": [],
+    "cached_tokens": [],
+    "output_tokens": [],
+    "thought_tokens": []
+  },
+  "token_scope": "completed CLI stats include all reported model/roles; JSONL fallback only observed responses. Input means prompt including cache; candidates/thoughts separate; unknowns not imputed",
+  "usage_provenance_limit": "Gemini CLI experiment including reported auxiliary roles only; excludes Codex/researcher orchestration, reviews, helper authoring, setup, Drive/UI and independent verification. Not total project tokens/cost",
+  "known_api_totals": {
+    "api_requests": 19,
+    "api_errors": 2,
+    "api_successful_requests": 17
+  },
+  "api_totals_scope": "known completed CLI counters and proven pre-model zeroes; unknown intervals excluded",
+  "runs_without_api_stats": [],
+  "observed_terminal_api_failures": [],
+  "recorded_response_count": 17,
+  "recorded_response_scope": "token-bearing JSONL response IDs deduplicated across originals/archives and bounded by each run interval; distinct from API attempts and may omit auxiliary responses",
+  "runs_without_recorded_response_stats": [],
+  "runs_without_token_stats": [],
+  "researcher_setup_incident_files": [
+    "baseline-shared-python-failed-result.json",
+    "baseline-shared-python-failed-coverage.log",
+    "baseline-python-setup-commands.json"
+  ],
+  "researcher_setup_scope": "environment setup/replication and its failures are not Gemini model invocation attempts or token usage",
+  "integration_scope": "actual Tessl MCP/plugin context workflow; no native Tessl spec/build generator command is claimed",
+  "corpus_snapshots": []
+}

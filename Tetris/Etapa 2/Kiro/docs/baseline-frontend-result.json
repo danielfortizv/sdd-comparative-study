@@ -1,0 +1,12 @@
+{
+  "researcher_created": true,
+  "measured_at_utc": "2026-10-21T19:47:15.035817+00:00",
+  "tests": {
+    "status": "unavailable",
+    "reason": "Original Kiro frontend has no test script or frontend test framework; no script/framework added for baseline",
+    "executed": false
+  },
+  "build_exit_code": 0,
+  "audit_exit_code": 1,
+  "frontend_lcov_available": false
+}

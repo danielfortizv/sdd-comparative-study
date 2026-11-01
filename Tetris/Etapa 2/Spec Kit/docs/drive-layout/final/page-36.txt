@@ -1,0 +1,3 @@
+Captura 9. Vista derivada de la API autenticada de SonarQube y registros de pruebas; no es la interfaz web de
+SonarQube. Archivo: Spec Kit/docs/screenshots/sonar-panel.jpg. Fuentes: sonar-summary.json;
+sonar-exact-quality-gate.json; sonar-verification.json; backend-coverage.log; frontend-test-coverage.log.

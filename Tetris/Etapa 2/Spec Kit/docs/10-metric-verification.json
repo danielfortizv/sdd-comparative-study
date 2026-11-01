@@ -1,0 +1,40 @@
+{
+  "verified_at_utc": "2026-10-21T01:28:28.761152+00:00",
+  "scope": "CLI statistics and frozen generation10 Sonar snapshot readback; no app tests executed by this audit; iteration11 excluded",
+  "session10": {
+    "duration_seconds": 455.055,
+    "input_tokens": 5514887,
+    "cached_tokens": 4925600,
+    "output_tokens": 23190,
+    "thought_tokens": 26295,
+    "api_requests": 60,
+    "api_errors": 0,
+    "api_successful_requests": 60,
+    "main_responses": 58,
+    "utility_successful_calls": 2
+  },
+  "closed_through10": {
+    "known_api_totals": {
+      "api_requests": 540,
+      "api_errors": 115,
+      "api_successful_requests": 425
+    },
+    "observed_tokens": {
+      "input_tokens": 37343572,
+      "cached_tokens": 29250676,
+      "output_tokens": 140240,
+      "thought_tokens": 162505
+    },
+    "recorded_main_responses": 428,
+    "known_duration_seconds": 8626.612
+  },
+  "sonar": {
+    "gate": "OK",
+    "coverage": 82.6,
+    "new_coverage": 84.3,
+    "complexity": 190,
+    "cognitive_complexity": 142,
+    "code_smells": 0
+  },
+  "status": "arithmetic passed; functional acceptance remains open"
+}

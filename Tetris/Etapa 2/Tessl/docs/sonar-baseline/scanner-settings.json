@@ -1,0 +1,10 @@
+{
+  "settings": [
+    {
+      "key": "sonar.qualitygate.ignoreSmallChanges",
+      "value": "true",
+      "inherited": true
+    }
+  ],
+  "setSecuredSettings": []
+}

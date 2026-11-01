@@ -1,0 +1,37 @@
+{
+  "scope": "Fuentes realmente descargadas de Overleaf tras recompilar y corregir el nombre",
+  "pdf_pages": 153,
+  "stage2_pdf_first_page": 111,
+  "stage2_pdf_last_page": 135,
+  "name_verified": true,
+  "modified_existing_files": [
+    "main.tex",
+    "comparativa_practica.tex"
+  ],
+  "new_section_matches_local": true,
+  "csv_matches_local": true,
+  "assets": {
+    "tetris-etapa2-assets/tetris-etapa2-metricas.csv": "a09bd4b57d2a09e66355079d77b496347b435616c6b0bc8330f65f0b3a3f0050",
+    "tetris-etapa2-assets/tiempos.pdf": "13f68d124465d17f5d33ffcd3b6eea14e37dbeb2877df5111fd068f4bd790e60",
+    "tetris-etapa2-assets/tessl-ui.jpg": "7054be4ff1a2ea3117c5095530501669710570249e3795b1036dee9bbfdd865b",
+    "tetris-etapa2-assets/tessl-terminal.jpg": "149c2559340b0b80675a814450bd6768de6ea869554835c0f3e8092e31ed1902",
+    "tetris-etapa2-assets/tessl-sonar.jpg": "2f428237d060e94c6f222773e43c7b4f882a88d8813603ebcd5ce184399b9bc2",
+    "tetris-etapa2-assets/tessl-hud.jpg": "f8daf2c2286d745e67610a938cd9f320753e039cd5bd1540c0cad9aa10581afa",
+    "tetris-etapa2-assets/speckit-ui.jpg": "acf8a1513d52d8d9ca8fa4e7d57cd2e77fc4efd64085eb45ce35e86f850c1760",
+    "tetris-etapa2-assets/speckit-sonar.jpg": "ce838617de9378d46e075b7d5e5f868ff532b6ef768d3cfbef1ffab6f007b451",
+    "tetris-etapa2-assets/openspec-ui.png": "a6b332d3b3246152199591455e2a1113210c6f9787abde8a5e5aca0354f1f5f2",
+    "tetris-etapa2-assets/openspec-sonar.png": "350549e41671164e31d00a05ed9a6e397deafc40aefb2cfbb41ef03b81f98f99",
+    "tetris-etapa2-assets/mantenibilidad.pdf": "6105221681210e58a98b35840a308de81e2577e648b45867e6bb5831e85bc83a",
+    "tetris-etapa2-assets/kiro-ui.jpg": "e413cf05c0f61a765f0daea77d9a32dcd2b4bb6538999ce6fab38d6b28aa4126",
+    "tetris-etapa2-assets/kiro-sonar.jpg": "f2d76a1d46e190460802936e57cd963390b81ddc59ab22e8107a4f9c37737771",
+    "tetris-etapa2-assets/consumo.pdf": "7c75980277738acfa43f8db0fc843f95b7693e16313677d6dca49bede7633abe",
+    "tetris-etapa2-assets/cobertura.pdf": "0fc2b9117fcdc1a6fab33f9d15d73f063f816203a345fb47402e8f03d0122683",
+    "tetris-etapa2-assets/bmad-uso.jpg": "e4f45aa8d478377b4272de8e08f689dc32bd573b073ad97d4707d9f5d69cdac6",
+    "tetris-etapa2-assets/bmad-ui.jpg": "e126a14f40a56bf148a18714d49db26e4ae143fae202fd1591152c87575f2061",
+    "tetris-etapa2-assets/bmad-sonar.jpg": "233a944df7922581310ad5469bf02d7e31a416289dc2af842bb34a003a5cf752",
+    "tetris-etapa2-assets/bmad-level.jpg": "f81a9705272cc6674ccbcf4569087ba47ad5ceaf6a5c29990ed4b0f9a5df657f",
+    "tetris-etapa2-assets/artefactos.pdf": "25b6ff271f7e6c23d25610abee1c7021fa8de2ae0ccd7b16ed57159645e5a12a"
+  },
+  "new_section_sha256": "b4ad35f4d6472ba8f2ffb974ca03134432ac3dd8147d4ed76ea17a3e2e6661db",
+  "pdf_sha256": "045d529ac69d637cfc013ca8a8ef5e2ec136ee0d7e77f8186302a7e4d3988aaa"
+}

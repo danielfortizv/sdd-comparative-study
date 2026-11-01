@@ -1,0 +1,7 @@
+Capturas y evidencia reproducible
+Tres capturas corresponden a la app local real después de QA-4; cuatro paneles son vistas
+derivadas de JSON/logs. Las tablas nativas anteriores conservan cifras legibles; los paneles
+permiten ampliar la evidencia. Ningún panel derivado se presenta como consola o interfaz
+web original de SonarQube.
+Captura 4. Interfaz real: inicio, HUD, tablero, preview y Hold vacío. Archivo: Spec
+Kit/docs/screenshots/app-final-initial.jpg.

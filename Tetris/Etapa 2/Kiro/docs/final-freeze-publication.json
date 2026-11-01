@@ -1,0 +1,12 @@
+{
+  "researcher_created": true,
+  "verified_at_utc": "2026-10-23T20:22:54.092222+00:00",
+  "status": "frozen_and_hash_verified",
+  "snapshot": "final-verified",
+  "manifest_sha256": "C5CAE70413957A9C891863CE24840BA2865DDCA595987B42BDD3E609FBF6A5A8",
+  "verified_files": 610,
+  "failed_files": [],
+  "unclosed_invocations": [],
+  "publication_revision": "AHj4eMR-7KZtKUiP6VJbJ6k_KNOXkRMuKL5WL421RvPdwADrxUAFBpkCYkIKql5pepso3a-Oyi50Bf6CJYvBBTmDwg5gBng-fVluaROPHw",
+  "note": "This completion record lives outside the frozen snapshot to avoid a circular manifest. No commits or pushes were performed."
+}

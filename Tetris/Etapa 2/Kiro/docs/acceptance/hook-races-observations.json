@@ -1,0 +1,64 @@
+{
+  "researcher_created": true,
+  "coverage_enabled": false,
+  "observations": [
+    {
+      "label": "R1 after B creation then delayed A Hold body",
+      "visible_id": "B",
+      "visible_row": 0,
+      "requests": [
+        {
+          "path": "/api/games",
+          "json_called": true,
+          "body_resolved": true
+        },
+        {
+          "path": "/api/games",
+          "json_called": true,
+          "body_resolved": true
+        }
+      ]
+    },
+    {
+      "label": "R2 tick response row2 then delayed manual body row1",
+      "visible_id": "A",
+      "visible_row": 1,
+      "requests": [
+        {
+          "path": "/api/games",
+          "json_called": true,
+          "body_resolved": true
+        },
+        {
+          "path": "/api/games/A/move",
+          "json_called": true,
+          "body_resolved": true
+        }
+      ]
+    },
+    {
+      "label": "R3 manual complete, one more interval, first tick body still pending",
+      "visible_id": "A",
+      "visible_row": 0,
+      "requests": [
+        {
+          "path": "/api/games",
+          "json_called": true,
+          "body_resolved": true
+        },
+        {
+          "path": "/api/games/A/move",
+          "json_called": true,
+          "body_resolved": true
+        },
+        {
+          "path": "/api/games/A/tick",
+          "json_called": false,
+          "body_resolved": false
+        }
+      ],
+      "tick_count_before": 0,
+      "unresolved_tick_count": 1
+    }
+  ]
+}

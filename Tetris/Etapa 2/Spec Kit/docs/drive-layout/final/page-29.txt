@@ -1,0 +1,36 @@
+Aceptación S2-11 a S2-20
+ID Estad Mecanismo Fuentes
+o
+S2-11 OK external api full equality and production E1, E10, E3
+snapshot
+S2-12 OK external api lock swap and exact draw spy E1, E6, E3
+S2-13 OK controlled blocked Hold spawn production E11, E3
+domain
+S2-14 OK production full state snapshots all move tick Hold E10, E6, E3
+actions
+S2-15 OK external api and fully dirty domain restart E1, E2, E3
+S2-16 OK external HTTP contract all five success routes E1, E12, E13
+and four missing ID routes
+S2-17 OK generated rendered geometry controls and E14, E15, E16, E17
+actual browser
+S2-18 OK deferred fetch body and owned timer fake clock E15, E16, E17, E18
+plus actual browser
+S2-19 OK inherited backend assertion preservation E19, E3, E16, E17
+executed regression and actual browser controls
+S2-20 OK independent production TypeScript build E20, E21, E22
+recorded dependencies
+Alias de evidencia (rutas relativas a Spec Kit o Spec Kit/docs, según el archivo):
+E1: acceptance-api.json
+E2: backend/tests/unit/test_qa_iteration1.py::test_qa04_restart_dirty_cleanup
+E3: backend-coverage.log
+E4: backend/tests/unit/test_qa_iteration1.py
+E5: backend/tests/unit/test_game_engine_us1.py::test_scoring_rules_production
+E6: backend/tests/unit/test_qa_iteration1.py::test_qa02_random_draw_counts
+E7: backend/tests/integration/test_api_us2.py::test_api_line_clear_integration
+E8: acceptance-review-notes.md
+E9:
+backend/tests/unit/test_game_engine_us1.py::test_level_transitions_and_gravity_floor_prod
+uction
+E10: backend/tests/unit/test_qa_iteration1.py::test_qa03_immutable_deep_state_snapshots
+E11: backend/tests/unit/test_game_engine_us2.py::test_hold_obstructed_spawn
+E12: acceptance-contract.json

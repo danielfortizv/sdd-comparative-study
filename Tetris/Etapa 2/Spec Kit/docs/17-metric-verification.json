@@ -1,0 +1,136 @@
+{
+  "verified_at_utc": "2026-10-21T05:40:28.941040+00:00",
+  "label": "17-qa-sonar-style",
+  "exit_code": 0,
+  "duration_seconds": 313.986,
+  "cli_stats_by_model": {
+    "gemini-3.5-flash": {
+      "api": {
+        "totalRequests": 40,
+        "totalErrors": 3,
+        "totalLatencyMs": 259844,
+        "errorsByType": {
+          "ApiError": 2,
+          "Error": 1
+        }
+      },
+      "tokens": {
+        "input": 398105,
+        "prompt": 1514797,
+        "candidates": 4621,
+        "total": 1527767,
+        "cached": 1116692,
+        "thoughts": 8349,
+        "tool": 0
+      },
+      "roles": {
+        "main": {
+          "totalRequests": 40,
+          "totalErrors": 3,
+          "totalLatencyMs": 259844,
+          "tokens": {
+            "input": 398105,
+            "prompt": 1514797,
+            "candidates": 4621,
+            "total": 1527767,
+            "cached": 1116692,
+            "thoughts": 8349,
+            "tool": 0
+          }
+        }
+      }
+    },
+    "gemini-3-flash-preview": {
+      "api": {
+        "totalRequests": 1,
+        "totalErrors": 0,
+        "totalLatencyMs": 4152,
+        "errorsByType": {}
+      },
+      "tokens": {
+        "input": 25650,
+        "prompt": 25650,
+        "candidates": 114,
+        "total": 26305,
+        "cached": 0,
+        "thoughts": 541,
+        "tool": 0
+      },
+      "roles": {
+        "utility_loop_detector": {
+          "totalRequests": 1,
+          "totalErrors": 0,
+          "totalLatencyMs": 4152,
+          "tokens": {
+            "input": 25650,
+            "prompt": 25650,
+            "candidates": 114,
+            "total": 26305,
+            "cached": 0,
+            "thoughts": 541,
+            "tool": 0
+          }
+        }
+      }
+    }
+  },
+  "known_api_totals": {
+    "attempts": 41,
+    "errors": 3,
+    "successes": 38
+  },
+  "main_jsonl_response_count": 37,
+  "main_jsonl_token_sums": {
+    "input": 1514797,
+    "cached": 1116692,
+    "output": 4621,
+    "thoughts": 8349
+  },
+  "main_jsonl_matches_cli": true,
+  "response_ids": [
+    "103e69ea-4f3e-4273-aa52-7a0dd82a325f",
+    "15bc8b4e-bd56-4386-90b6-a3bb3e1ed56c",
+    "16b0d35e-20e0-456f-aaf3-b10a13ef89f1",
+    "2c73120e-94a0-46aa-af95-fea04d9dc0f0",
+    "36dc5818-ea42-4962-847f-511ba80a06a5",
+    "48e43e69-3a92-4b66-8c6c-c5f966769ccb",
+    "4addd741-c2b6-4229-80d9-2c5cf9e5a35f",
+    "4e0d08b5-cb03-4f76-ab6c-97342fd4bdcd",
+    "50942f7b-608c-47a3-8548-5a350eb9e2b6",
+    "52b6cf3f-dc1e-4d11-bb6a-ae96288e66ab",
+    "59ff8fd1-e313-4140-8231-91db3cc01643",
+    "5e5088cd-581d-4a82-a901-7ae732005f0b",
+    "636bcebf-e068-461b-88e8-b2043ff8905d",
+    "69069886-d01e-4fc3-8d6b-e4e668eae7f7",
+    "6e849a8c-776c-46e4-9598-51ebe8a7ec14",
+    "7224ebad-429b-40e9-98e9-82713bf9a632",
+    "7484cf29-82d2-46bb-b060-b763e52543e1",
+    "815de6cb-e379-4df6-bd89-cc3b2473bbd2",
+    "866bd2c3-84c7-4262-8d07-e054302e8556",
+    "a1b7a236-3819-4135-ae30-b77970ac022f",
+    "a3818d5f-a697-495b-b302-77dad25800b8",
+    "a4d7a7fd-2f0a-41f4-9810-54e249477ae6",
+    "a9f0421e-be91-461f-9bd4-a880b8098516",
+    "bf09bc29-d53c-4e79-88c5-c20999cbf2f6",
+    "bf6e7348-4b86-45b3-9de5-473be5aa606b",
+    "ce238da2-5968-48d4-a8c5-b51d1ad10160",
+    "d42f0184-60e9-43c3-bc61-7a03b76d8b1b",
+    "d55bb2c1-756f-47a1-ac2c-827ee22b99c0",
+    "d7527422-e4b1-45fa-b515-1be25040050c",
+    "dc0b9a86-cf22-4c51-b726-805011e0041c",
+    "e2123a9c-87a1-451b-8732-f2e6c5adf03d",
+    "e8f66c91-a188-45c5-8e04-b594941effb5",
+    "eaeb2993-d116-4925-aba2-5842a33d34b1",
+    "f1c3cf97-bd00-4945-b5a6-b43fb8bf454d",
+    "f23da573-1bfc-4e29-8726-144a36e0cb82",
+    "f840e2c4-2a27-45f9-a9d0-7a1468f5193a",
+    "fb216618-b9e6-4945-97f6-91e5a38320f0"
+  ],
+  "auxiliary_scope": "One successful utility_loop_detector call is included in completed CLI model statistics and absent from main JSONL. The two count categories are not added.",
+  "api_errors_scope": "Completed main API statistics report two ApiError and one Error; auxiliary statistics report zero. Process exit0 is distinct from API attempt errors. No HTTP status is inferred from error type alone.",
+  "source_sha256": {
+    "17-qa-sonar-style.run.json": "1A6AB347A2F598C72DFB37BA0070E6AC853F2ADBC61CC563CCCE16D255082237",
+    "17-qa-sonar-style.stdout.json": "060531041168EECE123DDB5AF129A0C82BFF6E7A557563940A46AE6FB3E6B6E1",
+    "17-qa-sonar-style.stderr.txt": "1EA8D3459572F95C331D5F5CFCA99055E6DEA57B688C9F7B5EA8090EF93E170A"
+  }
+}

@@ -1,0 +1,7 @@
+Rating fiabilidad 1.0 1.0 1.0
+Rating seguridad 3.0 1.0 1.0
+Cobertura nueva final: 86.6 %. El OK de línea base carecía de un período nuevo
+comparable y no se interpreta como aceptación final. Los ratings nativos de Sonar se
+muestran en su escala numérica (1 equivale a A). La cobertura global no equivale a la
+cobertura aislada backend/frontend. Sonar no mide escalabilidad; no se calcula una
+puntuación de escalabilidad ni se infiere rendimiento sin una carga ejecutada.

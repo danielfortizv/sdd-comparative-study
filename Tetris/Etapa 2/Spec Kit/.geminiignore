@@ -1,0 +1,11 @@
+# Exclude evaluation notes and generated dependencies from Gemini context.
+/docs/
+**/docs/
+.env
+**/.env
+node_modules/
+**/node_modules/
+build/
+**/build/
+dist/
+**/dist/

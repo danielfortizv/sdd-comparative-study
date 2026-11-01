@@ -1,0 +1,25 @@
+23 → 0; vulnerabilidades 5 → 0; bugs 0 → 0; duplicación 0 % → 0 %; complejidad 141 →
+138; ncloc 1.290 → 1.327. Quality gate final OK: cobertura de código nuevo 83,0 % (mínimo
+80 %), duplicación nueva 0,0 % y observaciones nuevas 0. El gate inicial también decía OK
+porque todavía no había período comparable de código nuevo. El escaneo intermedio
+ERROR (42,4 % de cobertura nueva y dos olores) quedó preservado en
+OpenSpec/docs/sonar-after-first-fix/. Fuentes: sonar-initial/*.json, sonar-summary.json,
+sonar-quality-gate.json, sonar-scan.log, backend-coverage.log, frontend-test-coverage.log,
+frontend-build.log, frontend-lint.log, frontend-npm-audit.json y acceptance-api.json.
+Aceptación. Los 20 escenarios S2-01…S2-20 están mapeados a evidencia en
+OpenSpec/docs/acceptance-matrix.md. Ocho IDs reciben evidencia de los siete controles
+externos de API; las reglas de puntaje, cruce de nivel, límite de gravedad, colisión y
+regresiones tienen pruebas de dominio; el temporizador, el descarte de respuestas antiguas
+y controles de Hold tienen pruebas de React y observación del navegador. El control de
+cuatro filas S2-07 se valida como regla aislada porque la Etapa 2 no tiene rotación. El build
+valida S2-20. No se presentan los 20 como veinte pruebas negras de API.
+Transparencia de QA. Tras la remediación 10 de Gemini, el investigador reemplazó dos
+literales repetidos en backend/main.py para cerrar las observaciones S1192 restantes y
+añadió pruebas controladas/configuración de cobertura. Este ajuste manual de código NO
+cumplió estrictamente la regla del documento maestro de efectuar todo cambio mediante
+aclaración a la herramienta. Se registra como intervención separada; el código final y el
+Sonar final son resultados con QA y no se atribuyen íntegramente a OpenSpec/Gemini. La
+secuencia y la desviación están documentadas en OpenSpec/docs/RESEARCH_LOG.md.
+No se infiere escalabilidad a partir de SonarQube.
+Captura 2. Panel de métricas de sesiones y artefactos, generado localmente desde los
+registros originales. Archivo: OpenSpec/docs/screenshots/metrics-panel.png.

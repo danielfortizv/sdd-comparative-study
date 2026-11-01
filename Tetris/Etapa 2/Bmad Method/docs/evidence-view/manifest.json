@@ -1,0 +1,15 @@
+{
+  "researcher_created": true,
+  "generated_at_utc": "2026-10-26T02:47:30.778722+00:00",
+  "metrics_sha256": "37108FA7DD5F85E140F84493CD62C22219986F96F763BE78F1F81B730C9E5B95",
+  "runs": [
+    "01-prd.run.json",
+    "02-design-stories.run.json",
+    "03-planning-completion.run.json",
+    "04-implementation.run.json",
+    "05-correction.run.json",
+    "06-quality-completion.run.json",
+    "07-six-sonar-findings.run.json"
+  ],
+  "purpose": "Derived measured evidence, not native CLI or Sonar UI"
+}

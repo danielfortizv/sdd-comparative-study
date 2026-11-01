@@ -1,0 +1,51 @@
+{
+  "researcher_created": true,
+  "verified_at_utc": "2026-10-23T19:44:23.9337847Z",
+  "project_key": "tetris-stage2-kiro",
+  "baseline": false,
+  "report_task_sha256": "2644A1C0EB8299193E11C5BC78F0CE8E5A01DAC66811DC168CC3A9B4CFCABD65",
+  "ce_task_id": "19506ab6-d54d-41c6-ab8c-0702cb42ac9b",
+  "ce_status": "SUCCESS",
+  "analysis_id": "c9e3f4c9-35e0-4434-8dfd-3723413c0588",
+  "submitted_at": "2026-10-23T14:44:18-05:00",
+  "executed_at": "2026-10-23T14:44:23-05:00",
+  "gate_status": "OK",
+  "gate_conditions": [
+    {
+      "status": "OK",
+      "metricKey": "new_coverage",
+      "comparator": "LT",
+      "errorThreshold": "80",
+      "actualValue": "88.7"
+    },
+    {
+      "status": "OK",
+      "metricKey": "new_duplicated_lines_density",
+      "comparator": "GT",
+      "errorThreshold": "3",
+      "actualValue": "0.0"
+    },
+    {
+      "status": "OK",
+      "metricKey": "new_violations",
+      "comparator": "GT",
+      "errorThreshold": "0",
+      "actualValue": "0"
+    }
+  ],
+  "baseline_is_final_stage2_acceptance": false,
+  "coverage_inputs": [
+    {
+      "path": "docs/coverage.xml",
+      "exists": true,
+      "sha256": "7E4ECA49C95F9FBEEC0581A302756CB752770B9E434809EF371F0561311969B2",
+      "last_write_time_utc": "2026-10-23T19:42:46.6134643Z"
+    },
+    {
+      "path": "frontend/coverage/lcov.info",
+      "exists": true,
+      "sha256": "8C61BDCB79E56554CBC436E7334C3B3F2AF73FEBF33CB05B08659D44B235754C",
+      "last_write_time_utc": "2026-10-23T19:42:23.2086357Z"
+    }
+  ]
+}

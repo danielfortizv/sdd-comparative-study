@@ -1,0 +1,193 @@
+{
+  "researcher_created": true,
+  "measured_at_utc": "2026-10-21T19:45:37.042688+00:00",
+  "source": {
+    "files": 23,
+    "lines": 1207,
+    "nonblank_lines": 913,
+    "characters": 33641,
+    "lines_per_file": 52.48,
+    "per_file": {
+      "backend/app/__init__.py": {
+        "lines": 1,
+        "nonblank_lines": 1,
+        "characters": 57,
+        "sha256": "E6D9CA44CA98FBA4E73DA6EF22243087B713902D8F51C11228DE31E1B97D5D8F"
+      },
+      "backend/app/api/__init__.py": {
+        "lines": 1,
+        "nonblank_lines": 1,
+        "characters": 53,
+        "sha256": "4531E4A5551A74ECF743FBEFB487472CBAF7E9A33265E4F16E8AAA275BC6D8D9"
+      },
+      "backend/app/api/games.py": {
+        "lines": 58,
+        "nonblank_lines": 38,
+        "characters": 1625,
+        "sha256": "E552376140AAFB67A62E37EF66251FC9939284C0A713EBAA4174F43829358C50"
+      },
+      "backend/app/api/schemas.py": {
+        "lines": 64,
+        "nonblank_lines": 45,
+        "characters": 1506,
+        "sha256": "D6F5EB2C9685E2B72347361EA59FDEB16A439D721C5088A16DCFD301B705F453"
+      },
+      "backend/app/domain/__init__.py": {
+        "lines": 1,
+        "nonblank_lines": 1,
+        "characters": 41,
+        "sha256": "FA4290DBFB9CA1C266DB445F5C4B3164FD7DD9D2F523324677FD95B7372A8FDE"
+      },
+      "backend/app/domain/models.py": {
+        "lines": 61,
+        "nonblank_lines": 44,
+        "characters": 1688,
+        "sha256": "4FDB9925B0F08157364E97EE893B41391A021981B9181007224A8D8793C5EB4B"
+      },
+      "backend/app/main.py": {
+        "lines": 34,
+        "nonblank_lines": 24,
+        "characters": 810,
+        "sha256": "72D146C1330457889185164A7921F1C20D19683EEA4405DFC649813A233476F1"
+      },
+      "backend/app/rules/__init__.py": {
+        "lines": 1,
+        "nonblank_lines": 1,
+        "characters": 49,
+        "sha256": "387543C055C2012B7110606F70C426036B5BA9F266F55AA5B8F14CCED1756333"
+      },
+      "backend/app/rules/engine.py": {
+        "lines": 159,
+        "nonblank_lines": 114,
+        "characters": 4347,
+        "sha256": "A8AFB5598F437AACE13C52C54052CE1BC9F7D2EBBDDC00FEF79B08D7DF3191E6"
+      },
+      "backend/app/rules/pieces.py": {
+        "lines": 51,
+        "nonblank_lines": 37,
+        "characters": 1583,
+        "sha256": "D034B5B88374FC0C0FA2883F9C9C2E96BD1ACFA51072314114B2312E229C7D48"
+      },
+      "backend/app/store.py": {
+        "lines": 38,
+        "nonblank_lines": 23,
+        "characters": 838,
+        "sha256": "99807535D9907A6E89B1375E7D274C1D1EB0E7207859CB34D3D0A5A09AAB21BF"
+      },
+      "backend/tests/__init__.py": {
+        "lines": 0,
+        "nonblank_lines": 0,
+        "characters": 0,
+        "sha256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"
+      },
+      "backend/tests/test_api.py": {
+        "lines": 100,
+        "nonblank_lines": 70,
+        "characters": 3102,
+        "sha256": "C3BF981F0F1F2277ABC83F94ABFD2BBFA10BF97492C55B5B8F6A5BF7B307860D"
+      },
+      "backend/tests/test_rules.py": {
+        "lines": 286,
+        "nonblank_lines": 210,
+        "characters": 8709,
+        "sha256": "3DC7B6921EAD493CCBCA1022B11054C84A1D097B8248364D19118868DA586451"
+      },
+      "frontend/index.html": {
+        "lines": 12,
+        "nonblank_lines": 12,
+        "characters": 303,
+        "sha256": "2975D7EDAA83F110B023DE9F7CCA8E1F72877739B39902E940D0B22EFAB86033"
+      },
+      "frontend/src/api.ts": {
+        "lines": 46,
+        "nonblank_lines": 39,
+        "characters": 1427,
+        "sha256": "86BA72BF1C5665878771B5D9B16DC140BC129B873380AFB3523B99ECE9CB6EA3"
+      },
+      "frontend/src/App.tsx": {
+        "lines": 92,
+        "nonblank_lines": 81,
+        "characters": 2472,
+        "sha256": "5752E1EE90B34E04BDC9C5F67322F41E6C1A42D5E5508F298353BCEF29C636D2"
+      },
+      "frontend/src/Board.tsx": {
+        "lines": 78,
+        "nonblank_lines": 70,
+        "characters": 1827,
+        "sha256": "EEE153923E1AEF8A63FF53C1F8B7A43E78DF9E60219EC68491579E881592EABC"
+      },
+      "frontend/src/main.tsx": {
+        "lines": 12,
+        "nonblank_lines": 9,
+        "characters": 257,
+        "sha256": "EE7B63D2A6F58647FAC79B1FC870F5895284DBF14B1B375AEE6C4BC79FF2A2CE"
+      },
+      "frontend/src/types.ts": {
+        "lines": 23,
+        "nonblank_lines": 18,
+        "characters": 639,
+        "sha256": "888F47CB0FCC61C6B9756F4A92D77541E85C55B450B6BCC529A0F4B96590768B"
+      },
+      "frontend/src/useGame.ts": {
+        "lines": 70,
+        "nonblank_lines": 59,
+        "characters": 1919,
+        "sha256": "47E8AC28FFB25CFEC53FB2F1ABC855E4FD37616F69D8E0E1EDE1B2579C3E417C"
+      },
+      "frontend/src/vite-env.d.ts": {
+        "lines": 9,
+        "nonblank_lines": 7,
+        "characters": 159,
+        "sha256": "6600001F6B9E18657B3314FDCF2FAD48D4F74BFAFB27FC464BB57CE670CB8EC8"
+      },
+      "frontend/vite.config.ts": {
+        "lines": 10,
+        "nonblank_lines": 9,
+        "characters": 230,
+        "sha256": "C53F382D6512434C5BD560297D35BA716A2B704554AE7DD3AA5F00687694B63B"
+      }
+    }
+  },
+  "specification": {
+    "files": 3,
+    "lines": 608,
+    "nonblank_lines": 388,
+    "characters": 28780,
+    "lines_per_file": 202.67,
+    "per_file": {
+      ".kiro/specs/tetris-stage1-option-a/design.md": {
+        "lines": 154,
+        "nonblank_lines": 108,
+        "characters": 8009,
+        "sha256": "73E875D7EA930C39B275BECB7BE49AB153BB06536E886EEFA43E796D72F349DB"
+      },
+      ".kiro/specs/tetris-stage1-option-a/requirements.md": {
+        "lines": 361,
+        "nonblank_lines": 209,
+        "characters": 16856,
+        "sha256": "61E6234BDBC9CC1D7450827B9DAACCAC6C0A2B01C5060AED564E87A18F2A7C7D"
+      },
+      ".kiro/specs/tetris-stage1-option-a/tasks.md": {
+        "lines": 93,
+        "nonblank_lines": 71,
+        "characters": 3915,
+        "sha256": "26B03785E5B4A3C3EE71F8694EC669A03B1E4274083A6A275A98A3FF90E7A037"
+      }
+    }
+  },
+  "source_scope": "UTF-8 BOM removed / universal-newline-normalized text for all .py/.ts/.tsx/.js/.jsx/.css/.html under backend/frontend, including tests/configuration. Dependencies/builds/caches/evidence excluded.",
+  "dependency_manifests": [
+    {
+      "path": "backend/requirements.txt",
+      "sha256": "5AD4496E40CDFE46AEAF03CD2596243FE5ECF0C8B9B2B6BD6FD19B704187C183"
+    },
+    {
+      "path": "frontend/package-lock.json",
+      "sha256": "865984C6199FB8C57B0ABB7B3CEDFD850BFBE537AF7F0BAB102DF4EAA98CB84A"
+    },
+    {
+      "path": "frontend/package.json",
+      "sha256": "9784382ED02897CB0ABFF930838B90AECCE9C7A3852F13263D96A905B697A547"
+    }
+  ]
+}

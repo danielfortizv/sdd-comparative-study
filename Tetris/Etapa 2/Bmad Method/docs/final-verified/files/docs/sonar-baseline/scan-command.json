@@ -1,0 +1,74 @@
+﻿{
+    "started":  "2026-10-25T20:02:16.3802051-05:00",
+    "ended":  "2026-10-25T20:02:39.7262257-05:00",
+    "exit_code":  0,
+    "project":  "tetris-stage2-bmad",
+    "baseline":  true,
+    "coverage_xml":  "docs/baseline-coverage.xml",
+    "frontend_lcov_present":  false,
+    "test_classification":  "backend/app/tests/** and frontend/src/**/*.test.{ts,tsx}",
+    "source_excludes":  "frontend/src/**/*.test.{ts,tsx}",
+    "coverage_sha256":  "15CECD6F3A30E852F294BCF124DE39DA519E9AEFC46CB3B8670841108732AC85",
+    "frontend_lcov_sha256":  null,
+    "source_unchanged_during_scan":  true,
+    "source_hashes_before":  [
+                                 {
+                                     "path":  "backend/app/core/domain.py",
+                                     "sha256":  "C84F101000AA9C9A28BC70BE57366801D7680C0CB9D03B1C5879D121970A7974"
+                                 },
+                                 {
+                                     "path":  "backend/app/main.py",
+                                     "sha256":  "4030830EC6EC12A855ED7ED4EA1DE7E91CE4CB6E3B0B20874E94DFCB434E8CA4"
+                                 },
+                                 {
+                                     "path":  "backend/app/tests/test_api.py",
+                                     "sha256":  "396A93AEC5A2F2EF1B271C7979CCA1D5010F07821BD09D23409994406B62DE56"
+                                 },
+                                 {
+                                     "path":  "backend/app/tests/test_domain.py",
+                                     "sha256":  "D5EB5447FC97761ACA1C621F7B5A447605C3834783C86C91862C3C0B6F5E7DCF"
+                                 },
+                                 {
+                                     "path":  "frontend/src/App.tsx",
+                                     "sha256":  "CF23E19872647FE757605CDA88DA003AD984343A36A848894B80EE7C4C437147"
+                                 },
+                                 {
+                                     "path":  "frontend/src/main.tsx",
+                                     "sha256":  "368998600187697635215CE09D6AFC9A4AF03A9F22D09F1A070DF35E4FEE7F2A"
+                                 },
+                                 {
+                                     "path":  "frontend/src/styles.css",
+                                     "sha256":  "D379FCEEB87EA0114EA4CD3F1794150CE55229818FC24D4D903ED6ADB5A79673"
+                                 }
+                             ],
+    "source_hashes_after":  [
+                                {
+                                    "path":  "backend/app/core/domain.py",
+                                    "sha256":  "C84F101000AA9C9A28BC70BE57366801D7680C0CB9D03B1C5879D121970A7974"
+                                },
+                                {
+                                    "path":  "backend/app/main.py",
+                                    "sha256":  "4030830EC6EC12A855ED7ED4EA1DE7E91CE4CB6E3B0B20874E94DFCB434E8CA4"
+                                },
+                                {
+                                    "path":  "backend/app/tests/test_api.py",
+                                    "sha256":  "396A93AEC5A2F2EF1B271C7979CCA1D5010F07821BD09D23409994406B62DE56"
+                                },
+                                {
+                                    "path":  "backend/app/tests/test_domain.py",
+                                    "sha256":  "D5EB5447FC97761ACA1C621F7B5A447605C3834783C86C91862C3C0B6F5E7DCF"
+                                },
+                                {
+                                    "path":  "frontend/src/App.tsx",
+                                    "sha256":  "CF23E19872647FE757605CDA88DA003AD984343A36A848894B80EE7C4C437147"
+                                },
+                                {
+                                    "path":  "frontend/src/main.tsx",
+                                    "sha256":  "368998600187697635215CE09D6AFC9A4AF03A9F22D09F1A070DF35E4FEE7F2A"
+                                },
+                                {
+                                    "path":  "frontend/src/styles.css",
+                                    "sha256":  "D379FCEEB87EA0114EA4CD3F1794150CE55229818FC24D4D903ED6ADB5A79673"
+                                }
+                            ]
+}

@@ -1,0 +1,2 @@
+Captura 5. Interfaz real: Hold ocupado y control deshabilitado antes del siguiente lock. Archivo: Spec
+Kit/docs/screenshots/app-final-hold.jpg.

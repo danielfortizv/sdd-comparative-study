@@ -1,0 +1,62 @@
+{
+  "researcher_created": true,
+  "started_at_utc": "2026-10-22T01:17:51.796031+00:00",
+  "ended_at_utc": "2026-10-22T01:18:00.075970+00:00",
+  "duration_seconds": 8.281,
+  "argv": [
+    "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\Kiro\\backend\\.venv\\Scripts\\python.exe",
+    "-B",
+    "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\shared\\check-kiro-original-regressions.py",
+    "--child"
+  ],
+  "cwd": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\Kiro\\backend",
+  "exit_code": 1,
+  "environment_controls": {
+    "PYTHONDONTWRITEBYTECODE": "1",
+    "PYTEST_DISABLE_PLUGIN_AUTOLOAD": "1",
+    "PYTHONPATH": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\Kiro\\backend"
+  },
+  "original_test_hashes_before": {
+    "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 1\\Kiro\\backend\\tests\\__init__.py": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855",
+    "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 1\\Kiro\\backend\\tests\\test_api.py": "C3BF981F0F1F2277ABC83F94ABFD2BBFA10BF97492C55B5B8F6A5BF7B307860D",
+    "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 1\\Kiro\\backend\\tests\\test_rules.py": "3DC7B6921EAD493CCBCA1022B11054C84A1D097B8248364D19118868DA586451"
+  },
+  "original_test_hashes_after": {
+    "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 1\\Kiro\\backend\\tests\\__init__.py": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855",
+    "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 1\\Kiro\\backend\\tests\\test_api.py": "C3BF981F0F1F2277ABC83F94ABFD2BBFA10BF97492C55B5B8F6A5BF7B307860D",
+    "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 1\\Kiro\\backend\\tests\\test_rules.py": "3DC7B6921EAD493CCBCA1022B11054C84A1D097B8248364D19118868DA586451"
+  },
+  "original_tests_unchanged": true,
+  "stage2_app_hashes_before": {
+    "backend\\app\\__init__.py": "E6D9CA44CA98FBA4E73DA6EF22243087B713902D8F51C11228DE31E1B97D5D8F",
+    "backend\\app\\api\\__init__.py": "4531E4A5551A74ECF743FBEFB487472CBAF7E9A33265E4F16E8AAA275BC6D8D9",
+    "backend\\app\\api\\games.py": "C878E7B8E466D4CD0FBB3CCD8CC44FE22A4677B92A0CE6F01DB9A002D2A3172B",
+    "backend\\app\\api\\schemas.py": "3B914837955442A5EFBB91573646468FB52C88FD0B74059EA90D8FD8BF4CC931",
+    "backend\\app\\domain\\__init__.py": "FA4290DBFB9CA1C266DB445F5C4B3164FD7DD9D2F523324677FD95B7372A8FDE",
+    "backend\\app\\domain\\models.py": "8B2726824BA7215ADC8459330300353EFBC77D460859AEBE7023C54C7F7F12D5",
+    "backend\\app\\main.py": "378F36A14AC61CFC7D93D08C47C8A54317C4B79FCA0392A87F9135ADD1B75875",
+    "backend\\app\\rules\\__init__.py": "387543C055C2012B7110606F70C426036B5BA9F266F55AA5B8F14CCED1756333",
+    "backend\\app\\rules\\engine.py": "13389F92D65AE0516494BD82BFA36B5EABDF5AAC5891E53DCAC2506DCFCD3181",
+    "backend\\app\\rules\\pieces.py": "D034B5B88374FC0C0FA2883F9C9C2E96BD1ACFA51072314114B2312E229C7D48",
+    "backend\\app\\rules\\scoring.py": "4B4C16E6A8C30FBF55A72EF3DB3DD3A6647653A31568FD19F1B0F13214556671",
+    "backend\\app\\store.py": "99807535D9907A6E89B1375E7D274C1D1EB0E7207859CB34D3D0A5A09AAB21BF"
+  },
+  "stage2_app_hashes_after": {
+    "backend\\app\\__init__.py": "E6D9CA44CA98FBA4E73DA6EF22243087B713902D8F51C11228DE31E1B97D5D8F",
+    "backend\\app\\api\\__init__.py": "4531E4A5551A74ECF743FBEFB487472CBAF7E9A33265E4F16E8AAA275BC6D8D9",
+    "backend\\app\\api\\games.py": "C878E7B8E466D4CD0FBB3CCD8CC44FE22A4677B92A0CE6F01DB9A002D2A3172B",
+    "backend\\app\\api\\schemas.py": "3B914837955442A5EFBB91573646468FB52C88FD0B74059EA90D8FD8BF4CC931",
+    "backend\\app\\domain\\__init__.py": "FA4290DBFB9CA1C266DB445F5C4B3164FD7DD9D2F523324677FD95B7372A8FDE",
+    "backend\\app\\domain\\models.py": "8B2726824BA7215ADC8459330300353EFBC77D460859AEBE7023C54C7F7F12D5",
+    "backend\\app\\main.py": "378F36A14AC61CFC7D93D08C47C8A54317C4B79FCA0392A87F9135ADD1B75875",
+    "backend\\app\\rules\\__init__.py": "387543C055C2012B7110606F70C426036B5BA9F266F55AA5B8F14CCED1756333",
+    "backend\\app\\rules\\engine.py": "13389F92D65AE0516494BD82BFA36B5EABDF5AAC5891E53DCAC2506DCFCD3181",
+    "backend\\app\\rules\\pieces.py": "D034B5B88374FC0C0FA2883F9C9C2E96BD1ACFA51072314114B2312E229C7D48",
+    "backend\\app\\rules\\scoring.py": "4B4C16E6A8C30FBF55A72EF3DB3DD3A6647653A31568FD19F1B0F13214556671",
+    "backend\\app\\store.py": "99807535D9907A6E89B1375E7D274C1D1EB0E7207859CB34D3D0A5A09AAB21BF"
+  },
+  "candidate_source_stable_during_check": true,
+  "provisional_while_generation_active": true,
+  "scope": "Untouched Stage1 test expectations executed against explicitly imported Stage2 application; external researcher regression evidence",
+  "cache_policy": "Python -B and PYTHONDONTWRITEBYTECODE; pytest -p no:cacheprovider; plugin autoload disabled; no coverage report modified"
+}

@@ -1,0 +1,511 @@
+{
+  "researcher_created": true,
+  "pytest_argv": [
+    "-q",
+    "--import-mode=importlib",
+    "-p",
+    "no:cacheprovider",
+    "-o",
+    "addopts=",
+    "-c",
+    "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\Kiro\\backend\\pytest.ini",
+    "--rootdir=D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\Kiro\\backend",
+    "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 1\\Kiro\\backend\\tests\\test_api.py",
+    "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 1\\Kiro\\backend\\tests\\test_rules.py"
+  ],
+  "pytest_exit_code": 1,
+  "actual_app_main_file": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\Kiro\\backend\\app\\main.py",
+  "actual_loaded_app_modules": {
+    "app": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\Kiro\\backend\\app\\__init__.py",
+    "app.api": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\Kiro\\backend\\app\\api\\__init__.py",
+    "app.domain": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\Kiro\\backend\\app\\domain\\__init__.py",
+    "app.domain.models": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\Kiro\\backend\\app\\domain\\models.py",
+    "app.rules": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\Kiro\\backend\\app\\rules\\__init__.py",
+    "app.rules.pieces": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\Kiro\\backend\\app\\rules\\pieces.py",
+    "app.rules.scoring": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\Kiro\\backend\\app\\rules\\scoring.py",
+    "app.rules.engine": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\Kiro\\backend\\app\\rules\\engine.py",
+    "app.store": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\Kiro\\backend\\app\\store.py",
+    "app.api.schemas": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\Kiro\\backend\\app\\api\\schemas.py",
+    "app.api.games": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\Kiro\\backend\\app\\api\\games.py",
+    "app.main": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\Kiro\\backend\\app\\main.py"
+  },
+  "all_loaded_app_modules_from_stage2": true,
+  "python_pycache_prefix": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\Kiro\\docs\\acceptance\\original-stage1\\unused-pycache-prefix",
+  "python_dont_write_bytecode": true,
+  "all_collected_tests_from_original_source": true,
+  "collected_test_count": 39,
+  "collection": [
+    {
+      "nodeid": "::test_create_game_returns_playing_state",
+      "test_file": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 1\\Kiro\\backend\\tests\\test_api.py",
+      "test_module_file": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 1\\Kiro\\backend\\tests\\test_api.py",
+      "test_function_code_filename": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 1\\Kiro\\backend\\tests\\test_api.py"
+    },
+    {
+      "nodeid": "::test_created_board_is_20_by_10",
+      "test_file": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 1\\Kiro\\backend\\tests\\test_api.py",
+      "test_module_file": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 1\\Kiro\\backend\\tests\\test_api.py",
+      "test_function_code_filename": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 1\\Kiro\\backend\\tests\\test_api.py"
+    },
+    {
+      "nodeid": "::test_read_game",
+      "test_file": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 1\\Kiro\\backend\\tests\\test_api.py",
+      "test_module_file": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 1\\Kiro\\backend\\tests\\test_api.py",
+      "test_function_code_filename": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 1\\Kiro\\backend\\tests\\test_api.py"
+    },
+    {
+      "nodeid": "::test_read_unknown_game_404",
+      "test_file": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 1\\Kiro\\backend\\tests\\test_api.py",
+      "test_module_file": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 1\\Kiro\\backend\\tests\\test_api.py",
+      "test_function_code_filename": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 1\\Kiro\\backend\\tests\\test_api.py"
+    },
+    {
+      "nodeid": "::test_tick_advances_state",
+      "test_file": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 1\\Kiro\\backend\\tests\\test_api.py",
+      "test_module_file": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 1\\Kiro\\backend\\tests\\test_api.py",
+      "test_function_code_filename": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 1\\Kiro\\backend\\tests\\test_api.py"
+    },
+    {
+      "nodeid": "::test_move_left_endpoint",
+      "test_file": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 1\\Kiro\\backend\\tests\\test_api.py",
+      "test_module_file": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 1\\Kiro\\backend\\tests\\test_api.py",
+      "test_function_code_filename": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 1\\Kiro\\backend\\tests\\test_api.py"
+    },
+    {
+      "nodeid": "::test_move_invalid_direction_422",
+      "test_file": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 1\\Kiro\\backend\\tests\\test_api.py",
+      "test_module_file": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 1\\Kiro\\backend\\tests\\test_api.py",
+      "test_function_code_filename": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 1\\Kiro\\backend\\tests\\test_api.py"
+    },
+    {
+      "nodeid": "::test_move_missing_direction_422",
+      "test_file": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 1\\Kiro\\backend\\tests\\test_api.py",
+      "test_module_file": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 1\\Kiro\\backend\\tests\\test_api.py",
+      "test_function_code_filename": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 1\\Kiro\\backend\\tests\\test_api.py"
+    },
+    {
+      "nodeid": "::test_move_unknown_game_404",
+      "test_file": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 1\\Kiro\\backend\\tests\\test_api.py",
+      "test_module_file": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 1\\Kiro\\backend\\tests\\test_api.py",
+      "test_function_code_filename": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 1\\Kiro\\backend\\tests\\test_api.py"
+    },
+    {
+      "nodeid": "::test_tick_unknown_game_404",
+      "test_file": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 1\\Kiro\\backend\\tests\\test_api.py",
+      "test_module_file": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 1\\Kiro\\backend\\tests\\test_api.py",
+      "test_function_code_filename": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 1\\Kiro\\backend\\tests\\test_api.py"
+    },
+    {
+      "nodeid": "::test_state_payload_shape",
+      "test_file": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 1\\Kiro\\backend\\tests\\test_api.py",
+      "test_module_file": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 1\\Kiro\\backend\\tests\\test_api.py",
+      "test_function_code_filename": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 1\\Kiro\\backend\\tests\\test_api.py"
+    },
+    {
+      "nodeid": "::test_restart_creates_fresh_game",
+      "test_file": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 1\\Kiro\\backend\\tests\\test_api.py",
+      "test_module_file": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 1\\Kiro\\backend\\tests\\test_api.py",
+      "test_function_code_filename": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 1\\Kiro\\backend\\tests\\test_api.py"
+    },
+    {
+      "nodeid": "::test_board_has_20_rows",
+      "test_file": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 1\\Kiro\\backend\\tests\\test_rules.py",
+      "test_module_file": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 1\\Kiro\\backend\\tests\\test_rules.py",
+      "test_function_code_filename": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 1\\Kiro\\backend\\tests\\test_rules.py"
+    },
+    {
+      "nodeid": "::test_board_rows_have_10_columns",
+      "test_file": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 1\\Kiro\\backend\\tests\\test_rules.py",
+      "test_module_file": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 1\\Kiro\\backend\\tests\\test_rules.py",
+      "test_function_code_filename": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 1\\Kiro\\backend\\tests\\test_rules.py"
+    },
+    {
+      "nodeid": "::test_board_starts_empty",
+      "test_file": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 1\\Kiro\\backend\\tests\\test_rules.py",
+      "test_module_file": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 1\\Kiro\\backend\\tests\\test_rules.py",
+      "test_function_code_filename": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 1\\Kiro\\backend\\tests\\test_rules.py"
+    },
+    {
+      "nodeid": "::test_spawn_origin_at_top_row",
+      "test_file": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 1\\Kiro\\backend\\tests\\test_rules.py",
+      "test_module_file": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 1\\Kiro\\backend\\tests\\test_rules.py",
+      "test_function_code_filename": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 1\\Kiro\\backend\\tests\\test_rules.py"
+    },
+    {
+      "nodeid": "::test_spawn_origin_column_is_center",
+      "test_file": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 1\\Kiro\\backend\\tests\\test_rules.py",
+      "test_module_file": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 1\\Kiro\\backend\\tests\\test_rules.py",
+      "test_function_code_filename": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 1\\Kiro\\backend\\tests\\test_rules.py"
+    },
+    {
+      "nodeid": "::test_spawn_cells_within_bounds",
+      "test_file": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 1\\Kiro\\backend\\tests\\test_rules.py",
+      "test_module_file": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 1\\Kiro\\backend\\tests\\test_rules.py",
+      "test_function_code_filename": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 1\\Kiro\\backend\\tests\\test_rules.py"
+    },
+    {
+      "nodeid": "::test_spawned_type_is_standard",
+      "test_file": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 1\\Kiro\\backend\\tests\\test_rules.py",
+      "test_module_file": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 1\\Kiro\\backend\\tests\\test_rules.py",
+      "test_function_code_filename": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 1\\Kiro\\backend\\tests\\test_rules.py"
+    },
+    {
+      "nodeid": "::test_bag_covers_all_seven_types",
+      "test_file": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 1\\Kiro\\backend\\tests\\test_rules.py",
+      "test_module_file": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 1\\Kiro\\backend\\tests\\test_rules.py",
+      "test_function_code_filename": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 1\\Kiro\\backend\\tests\\test_rules.py"
+    },
+    {
+      "nodeid": "::test_same_seed_produces_same_sequence",
+      "test_file": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 1\\Kiro\\backend\\tests\\test_rules.py",
+      "test_module_file": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 1\\Kiro\\backend\\tests\\test_rules.py",
+      "test_function_code_filename": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 1\\Kiro\\backend\\tests\\test_rules.py"
+    },
+    {
+      "nodeid": "::test_move_left_decreases_column",
+      "test_file": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 1\\Kiro\\backend\\tests\\test_rules.py",
+      "test_module_file": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 1\\Kiro\\backend\\tests\\test_rules.py",
+      "test_function_code_filename": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 1\\Kiro\\backend\\tests\\test_rules.py"
+    },
+    {
+      "nodeid": "::test_move_right_increases_column",
+      "test_file": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 1\\Kiro\\backend\\tests\\test_rules.py",
+      "test_module_file": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 1\\Kiro\\backend\\tests\\test_rules.py",
+      "test_function_code_filename": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 1\\Kiro\\backend\\tests\\test_rules.py"
+    },
+    {
+      "nodeid": "::test_left_wall_blocks_move",
+      "test_file": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 1\\Kiro\\backend\\tests\\test_rules.py",
+      "test_module_file": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 1\\Kiro\\backend\\tests\\test_rules.py",
+      "test_function_code_filename": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 1\\Kiro\\backend\\tests\\test_rules.py"
+    },
+    {
+      "nodeid": "::test_right_wall_blocks_move",
+      "test_file": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 1\\Kiro\\backend\\tests\\test_rules.py",
+      "test_module_file": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 1\\Kiro\\backend\\tests\\test_rules.py",
+      "test_function_code_filename": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 1\\Kiro\\backend\\tests\\test_rules.py"
+    },
+    {
+      "nodeid": "::test_stack_blocks_horizontal_move",
+      "test_file": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 1\\Kiro\\backend\\tests\\test_rules.py",
+      "test_module_file": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 1\\Kiro\\backend\\tests\\test_rules.py",
+      "test_function_code_filename": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 1\\Kiro\\backend\\tests\\test_rules.py"
+    },
+    {
+      "nodeid": "::test_tick_moves_piece_down",
+      "test_file": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 1\\Kiro\\backend\\tests\\test_rules.py",
+      "test_module_file": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 1\\Kiro\\backend\\tests\\test_rules.py",
+      "test_function_code_filename": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 1\\Kiro\\backend\\tests\\test_rules.py"
+    },
+    {
+      "nodeid": "::test_bottom_row_blocks_downward_and_locks",
+      "test_file": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 1\\Kiro\\backend\\tests\\test_rules.py",
+      "test_module_file": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 1\\Kiro\\backend\\tests\\test_rules.py",
+      "test_function_code_filename": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 1\\Kiro\\backend\\tests\\test_rules.py"
+    },
+    {
+      "nodeid": "::test_stack_below_causes_lock",
+      "test_file": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 1\\Kiro\\backend\\tests\\test_rules.py",
+      "test_module_file": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 1\\Kiro\\backend\\tests\\test_rules.py",
+      "test_function_code_filename": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 1\\Kiro\\backend\\tests\\test_rules.py"
+    },
+    {
+      "nodeid": "::test_soft_drop_moves_down",
+      "test_file": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 1\\Kiro\\backend\\tests\\test_rules.py",
+      "test_module_file": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 1\\Kiro\\backend\\tests\\test_rules.py",
+      "test_function_code_filename": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 1\\Kiro\\backend\\tests\\test_rules.py"
+    },
+    {
+      "nodeid": "::test_soft_drop_locks_when_blocked",
+      "test_file": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 1\\Kiro\\backend\\tests\\test_rules.py",
+      "test_module_file": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 1\\Kiro\\backend\\tests\\test_rules.py",
+      "test_function_code_filename": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 1\\Kiro\\backend\\tests\\test_rules.py"
+    },
+    {
+      "nodeid": "::test_lock_writes_all_cells",
+      "test_file": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 1\\Kiro\\backend\\tests\\test_rules.py",
+      "test_module_file": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 1\\Kiro\\backend\\tests\\test_rules.py",
+      "test_function_code_filename": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 1\\Kiro\\backend\\tests\\test_rules.py"
+    },
+    {
+      "nodeid": "::test_single_line_clear",
+      "test_file": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 1\\Kiro\\backend\\tests\\test_rules.py",
+      "test_module_file": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 1\\Kiro\\backend\\tests\\test_rules.py",
+      "test_function_code_filename": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 1\\Kiro\\backend\\tests\\test_rules.py"
+    },
+    {
+      "nodeid": "::test_multiple_line_clear",
+      "test_file": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 1\\Kiro\\backend\\tests\\test_rules.py",
+      "test_module_file": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 1\\Kiro\\backend\\tests\\test_rules.py",
+      "test_function_code_filename": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 1\\Kiro\\backend\\tests\\test_rules.py"
+    },
+    {
+      "nodeid": "::test_no_clear_preserves_rows",
+      "test_file": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 1\\Kiro\\backend\\tests\\test_rules.py",
+      "test_module_file": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 1\\Kiro\\backend\\tests\\test_rules.py",
+      "test_function_code_filename": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 1\\Kiro\\backend\\tests\\test_rules.py"
+    },
+    {
+      "nodeid": "::test_clear_preserves_relative_order",
+      "test_file": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 1\\Kiro\\backend\\tests\\test_rules.py",
+      "test_module_file": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 1\\Kiro\\backend\\tests\\test_rules.py",
+      "test_function_code_filename": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 1\\Kiro\\backend\\tests\\test_rules.py"
+    },
+    {
+      "nodeid": "::test_game_over_on_spawn_collision",
+      "test_file": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 1\\Kiro\\backend\\tests\\test_rules.py",
+      "test_module_file": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 1\\Kiro\\backend\\tests\\test_rules.py",
+      "test_function_code_filename": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 1\\Kiro\\backend\\tests\\test_rules.py"
+    },
+    {
+      "nodeid": "::test_no_gameplay_after_game_over",
+      "test_file": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 1\\Kiro\\backend\\tests\\test_rules.py",
+      "test_module_file": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 1\\Kiro\\backend\\tests\\test_rules.py",
+      "test_function_code_filename": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 1\\Kiro\\backend\\tests\\test_rules.py"
+    },
+    {
+      "nodeid": "::test_new_game_sequence_deterministic",
+      "test_file": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 1\\Kiro\\backend\\tests\\test_rules.py",
+      "test_module_file": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 1\\Kiro\\backend\\tests\\test_rules.py",
+      "test_function_code_filename": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 1\\Kiro\\backend\\tests\\test_rules.py"
+    }
+  ],
+  "results": [
+    {
+      "nodeid": "::test_create_game_returns_playing_state",
+      "phase": "call",
+      "outcome": "passed",
+      "failure": null
+    },
+    {
+      "nodeid": "::test_created_board_is_20_by_10",
+      "phase": "call",
+      "outcome": "passed",
+      "failure": null
+    },
+    {
+      "nodeid": "::test_read_game",
+      "phase": "call",
+      "outcome": "passed",
+      "failure": null
+    },
+    {
+      "nodeid": "::test_read_unknown_game_404",
+      "phase": "call",
+      "outcome": "passed",
+      "failure": null
+    },
+    {
+      "nodeid": "::test_tick_advances_state",
+      "phase": "call",
+      "outcome": "passed",
+      "failure": null
+    },
+    {
+      "nodeid": "::test_move_left_endpoint",
+      "phase": "call",
+      "outcome": "passed",
+      "failure": null
+    },
+    {
+      "nodeid": "::test_move_invalid_direction_422",
+      "phase": "call",
+      "outcome": "passed",
+      "failure": null
+    },
+    {
+      "nodeid": "::test_move_missing_direction_422",
+      "phase": "call",
+      "outcome": "passed",
+      "failure": null
+    },
+    {
+      "nodeid": "::test_move_unknown_game_404",
+      "phase": "call",
+      "outcome": "passed",
+      "failure": null
+    },
+    {
+      "nodeid": "::test_tick_unknown_game_404",
+      "phase": "call",
+      "outcome": "passed",
+      "failure": null
+    },
+    {
+      "nodeid": "::test_state_payload_shape",
+      "phase": "call",
+      "outcome": "failed",
+      "failure": "def test_state_payload_shape():\n        data = client.post(\"/api/games\").json()\n>       assert set(data.keys()) == {\"id\", \"status\", \"board\", \"active_piece\"}\nE       AssertionError: assert {'active_piec...e', 'id', ...} == {'active_piec...id', 'status'}\nE         \nE         Extra items in the left set:\nE         'score'\nE         'total_lines'\nE         'hold_piece'\nE         'level'\nE         'can_hold'...\nE         \nE         ...Full output truncated (3 lines hidden), use '-vv' to show\n\n..\\..\\..\\Etapa 1\\Kiro\\backend\\tests\\test_api.py:86: AssertionError"
+    },
+    {
+      "nodeid": "::test_restart_creates_fresh_game",
+      "phase": "call",
+      "outcome": "passed",
+      "failure": null
+    },
+    {
+      "nodeid": "::test_board_has_20_rows",
+      "phase": "call",
+      "outcome": "passed",
+      "failure": null
+    },
+    {
+      "nodeid": "::test_board_rows_have_10_columns",
+      "phase": "call",
+      "outcome": "passed",
+      "failure": null
+    },
+    {
+      "nodeid": "::test_board_starts_empty",
+      "phase": "call",
+      "outcome": "passed",
+      "failure": null
+    },
+    {
+      "nodeid": "::test_spawn_origin_at_top_row",
+      "phase": "call",
+      "outcome": "passed",
+      "failure": null
+    },
+    {
+      "nodeid": "::test_spawn_origin_column_is_center",
+      "phase": "call",
+      "outcome": "passed",
+      "failure": null
+    },
+    {
+      "nodeid": "::test_spawn_cells_within_bounds",
+      "phase": "call",
+      "outcome": "passed",
+      "failure": null
+    },
+    {
+      "nodeid": "::test_spawned_type_is_standard",
+      "phase": "call",
+      "outcome": "passed",
+      "failure": null
+    },
+    {
+      "nodeid": "::test_bag_covers_all_seven_types",
+      "phase": "call",
+      "outcome": "passed",
+      "failure": null
+    },
+    {
+      "nodeid": "::test_same_seed_produces_same_sequence",
+      "phase": "call",
+      "outcome": "passed",
+      "failure": null
+    },
+    {
+      "nodeid": "::test_move_left_decreases_column",
+      "phase": "call",
+      "outcome": "passed",
+      "failure": null
+    },
+    {
+      "nodeid": "::test_move_right_increases_column",
+      "phase": "call",
+      "outcome": "passed",
+      "failure": null
+    },
+    {
+      "nodeid": "::test_left_wall_blocks_move",
+      "phase": "call",
+      "outcome": "passed",
+      "failure": null
+    },
+    {
+      "nodeid": "::test_right_wall_blocks_move",
+      "phase": "call",
+      "outcome": "passed",
+      "failure": null
+    },
+    {
+      "nodeid": "::test_stack_blocks_horizontal_move",
+      "phase": "call",
+      "outcome": "passed",
+      "failure": null
+    },
+    {
+      "nodeid": "::test_tick_moves_piece_down",
+      "phase": "call",
+      "outcome": "passed",
+      "failure": null
+    },
+    {
+      "nodeid": "::test_bottom_row_blocks_downward_and_locks",
+      "phase": "call",
+      "outcome": "passed",
+      "failure": null
+    },
+    {
+      "nodeid": "::test_stack_below_causes_lock",
+      "phase": "call",
+      "outcome": "passed",
+      "failure": null
+    },
+    {
+      "nodeid": "::test_soft_drop_moves_down",
+      "phase": "call",
+      "outcome": "passed",
+      "failure": null
+    },
+    {
+      "nodeid": "::test_soft_drop_locks_when_blocked",
+      "phase": "call",
+      "outcome": "passed",
+      "failure": null
+    },
+    {
+      "nodeid": "::test_lock_writes_all_cells",
+      "phase": "call",
+      "outcome": "passed",
+      "failure": null
+    },
+    {
+      "nodeid": "::test_single_line_clear",
+      "phase": "call",
+      "outcome": "passed",
+      "failure": null
+    },
+    {
+      "nodeid": "::test_multiple_line_clear",
+      "phase": "call",
+      "outcome": "passed",
+      "failure": null
+    },
+    {
+      "nodeid": "::test_no_clear_preserves_rows",
+      "phase": "call",
+      "outcome": "passed",
+      "failure": null
+    },
+    {
+      "nodeid": "::test_clear_preserves_relative_order",
+      "phase": "call",
+      "outcome": "passed",
+      "failure": null
+    },
+    {
+      "nodeid": "::test_game_over_on_spawn_collision",
+      "phase": "call",
+      "outcome": "passed",
+      "failure": null
+    },
+    {
+      "nodeid": "::test_no_gameplay_after_game_over",
+      "phase": "call",
+      "outcome": "passed",
+      "failure": null
+    },
+    {
+      "nodeid": "::test_new_game_sequence_deterministic",
+      "phase": "call",
+      "outcome": "passed",
+      "failure": null
+    }
+  ],
+  "passed": 38,
+  "failed": 1
+}

@@ -1,0 +1,13 @@
+
+> tetris-stage1-option-a-frontend@0.1.0 build
+> tsc && vite build
+
+vite v8.3.5 building client environment for production...
+transforming...
+✓ 18 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                  0.32 kB │ gzip:  0.23 kB
+dist/assets/index-Bl9xsY27.js  147.48 kB │ gzip: 48.16 kB
+
+✓ built in 81ms

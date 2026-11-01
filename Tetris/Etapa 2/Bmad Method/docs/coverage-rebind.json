@@ -1,0 +1,9 @@
+{
+  "at_utc": "2026-10-26T02:41:38.3943163Z",
+  "reason": "Native07backendXMLretainedpre-extraction177statements; freshindependentXMLhas179. Bind measuredcurrentcoverage to unchangedcandidate; no app/spec edits.",
+  "preserved_archive": "Caso 2-Tetris\\Etapa 2\\Bmad Method\\docs\\sonar-attempts\\before-researcher-coverage-rebind-20261026T024138Z",
+  "fresh_backend_log": "validation/backend-final-resolved.log",
+  "fresh_frontend_log": "validation/frontend-native-final.log",
+  "prior_analysis": "d649734f-977e-4006-84a9-e77d9be70da7",
+  "researcher_created": true
+}

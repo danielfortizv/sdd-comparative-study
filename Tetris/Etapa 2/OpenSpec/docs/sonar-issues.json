@@ -1,0 +1,1582 @@
+{
+  "total": 30,
+  "p": 1,
+  "ps": 500,
+  "paging": {
+    "pageIndex": 1,
+    "pageSize": 500,
+    "total": 30
+  },
+  "effortTotal": 190,
+  "issues": [
+    {
+      "key": "90c717a0-c86a-4dd4-bbaf-9beb5ad32c2d",
+      "rule": "python:S1192",
+      "severity": "CRITICAL",
+      "component": "tetris-stage2-openspec:backend/main.py",
+      "project": "tetris-stage2-openspec",
+      "hash": "54da7f484f01fdb1e1d6e4347a4188d3",
+      "textRange": {
+        "startLine": 26,
+        "endLine": 26,
+        "startOffset": 20,
+        "endOffset": 38
+      },
+      "flows": [
+        {
+          "locations": [
+            {
+              "component": "tetris-stage2-openspec:backend/main.py",
+              "textRange": {
+                "startLine": 33,
+                "endLine": 33,
+                "startOffset": 20,
+                "endOffset": 38
+              },
+              "msg": "Duplication",
+              "msgFormattings": []
+            }
+          ]
+        },
+        {
+          "locations": [
+            {
+              "component": "tetris-stage2-openspec:backend/main.py",
+              "textRange": {
+                "startLine": 37,
+                "endLine": 37,
+                "startOffset": 20,
+                "endOffset": 38
+              },
+              "msg": "Duplication",
+              "msgFormattings": []
+            }
+          ]
+        }
+      ],
+      "resolution": "FIXED",
+      "status": "CLOSED",
+      "message": "Define a constant instead of duplicating this literal \"application/json\" 3 times.",
+      "effort": "6min",
+      "debt": "6min",
+      "author": "",
+      "tags": [
+        "design"
+      ],
+      "creationDate": "2026-10-19T22:32:07-05:00",
+      "updateDate": "2026-10-19T22:39:26-05:00",
+      "closeDate": "2026-10-19T22:39:26-05:00",
+      "type": "CODE_SMELL",
+      "scope": "MAIN",
+      "quickFixAvailable": false,
+      "messageFormattings": [],
+      "codeVariants": [],
+      "cleanCodeAttribute": "DISTINCT",
+      "cleanCodeAttributeCategory": "ADAPTABLE",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "HIGH"
+        }
+      ],
+      "issueStatus": "FIXED",
+      "prioritizedRule": false,
+      "fromSonarQubeUpdate": false,
+      "internalTags": [],
+      "linkedTicketStatus": "NOT_LINKED"
+    },
+    {
+      "key": "c3e126bb-6254-4996-b187-0e413da41a01",
+      "rule": "python:S1192",
+      "severity": "CRITICAL",
+      "component": "tetris-stage2-openspec:backend/main.py",
+      "project": "tetris-stage2-openspec",
+      "hash": "116e214a35d091597302e43bfcbee1c1",
+      "textRange": {
+        "startLine": 20,
+        "endLine": 20,
+        "startOffset": 25,
+        "endOffset": 49
+      },
+      "flows": [
+        {
+          "locations": [
+            {
+              "component": "tetris-stage2-openspec:backend/main.py",
+              "textRange": {
+                "startLine": 25,
+                "endLine": 25,
+                "startOffset": 23,
+                "endOffset": 47
+              },
+              "msg": "Duplication",
+              "msgFormattings": []
+            }
+          ]
+        },
+        {
+          "locations": [
+            {
+              "component": "tetris-stage2-openspec:backend/main.py",
+              "textRange": {
+                "startLine": 32,
+                "endLine": 32,
+                "startOffset": 23,
+                "endOffset": 47
+              },
+              "msg": "Duplication",
+              "msgFormattings": []
+            }
+          ]
+        }
+      ],
+      "resolution": "FIXED",
+      "status": "CLOSED",
+      "message": "Define a constant instead of duplicating this literal \"Game session not found\" 3 times.",
+      "effort": "6min",
+      "debt": "6min",
+      "author": "",
+      "tags": [
+        "design"
+      ],
+      "creationDate": "2026-10-19T22:32:07-05:00",
+      "updateDate": "2026-10-19T22:39:26-05:00",
+      "closeDate": "2026-10-19T22:39:26-05:00",
+      "type": "CODE_SMELL",
+      "scope": "MAIN",
+      "quickFixAvailable": false,
+      "messageFormattings": [],
+      "codeVariants": [],
+      "cleanCodeAttribute": "DISTINCT",
+      "cleanCodeAttributeCategory": "ADAPTABLE",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "HIGH"
+        }
+      ],
+      "issueStatus": "FIXED",
+      "prioritizedRule": false,
+      "fromSonarQubeUpdate": false,
+      "internalTags": [],
+      "linkedTicketStatus": "NOT_LINKED"
+    },
+    {
+      "key": "28343d86-5e1f-49d0-8204-3d03f50fe05f",
+      "rule": "python:S2245",
+      "severity": "MAJOR",
+      "component": "tetris-stage2-openspec:backend/engine.py",
+      "project": "tetris-stage2-openspec",
+      "hash": "18750e1f1bf1d5967ad225769cbef77a",
+      "textRange": {
+        "startLine": 211,
+        "endLine": 211,
+        "startOffset": 30,
+        "endOffset": 69
+      },
+      "flows": [],
+      "resolution": "FIXED",
+      "status": "CLOSED",
+      "message": "Make sure that using this pseudorandom number generator is safe here.",
+      "effort": "10min",
+      "debt": "10min",
+      "author": "",
+      "tags": [
+        "cwe",
+        "former-hotspot"
+      ],
+      "creationDate": "2026-10-19T22:21:33-05:00",
+      "updateDate": "2026-10-19T22:32:07-05:00",
+      "closeDate": "2026-10-19T22:32:07-05:00",
+      "type": "VULNERABILITY",
+      "scope": "MAIN",
+      "quickFixAvailable": false,
+      "messageFormattings": [],
+      "codeVariants": [],
+      "cleanCodeAttribute": "TRUSTWORTHY",
+      "cleanCodeAttributeCategory": "RESPONSIBLE",
+      "impacts": [
+        {
+          "softwareQuality": "SECURITY",
+          "severity": "MEDIUM"
+        }
+      ],
+      "issueStatus": "FIXED",
+      "prioritizedRule": false,
+      "fromSonarQubeUpdate": false,
+      "internalTags": [],
+      "linkedTicketStatus": "NOT_LINKED"
+    },
+    {
+      "key": "404eeca7-5df2-43db-84cb-82558d2733f7",
+      "rule": "python:S2245",
+      "severity": "MAJOR",
+      "component": "tetris-stage2-openspec:backend/engine.py",
+      "project": "tetris-stage2-openspec",
+      "hash": "18750e1f1bf1d5967ad225769cbef77a",
+      "textRange": {
+        "startLine": 124,
+        "endLine": 124,
+        "startOffset": 26,
+        "endOffset": 65
+      },
+      "flows": [],
+      "resolution": "FIXED",
+      "status": "CLOSED",
+      "message": "Make sure that using this pseudorandom number generator is safe here.",
+      "effort": "10min",
+      "debt": "10min",
+      "author": "",
+      "tags": [
+        "cwe",
+        "former-hotspot"
+      ],
+      "creationDate": "2026-10-19T22:21:33-05:00",
+      "updateDate": "2026-10-19T22:32:07-05:00",
+      "closeDate": "2026-10-19T22:32:07-05:00",
+      "type": "VULNERABILITY",
+      "scope": "MAIN",
+      "quickFixAvailable": false,
+      "messageFormattings": [],
+      "codeVariants": [],
+      "cleanCodeAttribute": "TRUSTWORTHY",
+      "cleanCodeAttributeCategory": "RESPONSIBLE",
+      "impacts": [
+        {
+          "softwareQuality": "SECURITY",
+          "severity": "MEDIUM"
+        }
+      ],
+      "issueStatus": "FIXED",
+      "prioritizedRule": false,
+      "fromSonarQubeUpdate": false,
+      "internalTags": [],
+      "linkedTicketStatus": "NOT_LINKED"
+    },
+    {
+      "key": "44ecd74a-6841-42e2-ae18-d66080ebc7b6",
+      "rule": "python:S2245",
+      "severity": "MAJOR",
+      "component": "tetris-stage2-openspec:backend/engine.py",
+      "project": "tetris-stage2-openspec",
+      "hash": "2eb8bc179c567bdc98f2e7844c2723ab",
+      "textRange": {
+        "startLine": 28,
+        "endLine": 28,
+        "startOffset": 41,
+        "endOffset": 80
+      },
+      "flows": [],
+      "resolution": "FIXED",
+      "status": "CLOSED",
+      "message": "Make sure that using this pseudorandom number generator is safe here.",
+      "effort": "10min",
+      "debt": "10min",
+      "author": "",
+      "tags": [
+        "cwe",
+        "former-hotspot"
+      ],
+      "creationDate": "2026-10-19T22:21:33-05:00",
+      "updateDate": "2026-10-19T22:32:07-05:00",
+      "closeDate": "2026-10-19T22:32:07-05:00",
+      "type": "VULNERABILITY",
+      "scope": "MAIN",
+      "quickFixAvailable": false,
+      "messageFormattings": [],
+      "codeVariants": [],
+      "cleanCodeAttribute": "TRUSTWORTHY",
+      "cleanCodeAttributeCategory": "RESPONSIBLE",
+      "impacts": [
+        {
+          "softwareQuality": "SECURITY",
+          "severity": "MEDIUM"
+        }
+      ],
+      "issueStatus": "FIXED",
+      "prioritizedRule": false,
+      "fromSonarQubeUpdate": false,
+      "internalTags": [],
+      "linkedTicketStatus": "NOT_LINKED"
+    },
+    {
+      "key": "59cb4798-b3ac-4f6d-83e1-f6bcb73a667d",
+      "rule": "python:S2245",
+      "severity": "MAJOR",
+      "component": "tetris-stage2-openspec:backend/engine.py",
+      "project": "tetris-stage2-openspec",
+      "hash": "18750e1f1bf1d5967ad225769cbef77a",
+      "textRange": {
+        "startLine": 242,
+        "endLine": 242,
+        "startOffset": 26,
+        "endOffset": 65
+      },
+      "flows": [],
+      "resolution": "FIXED",
+      "status": "CLOSED",
+      "message": "Make sure that using this pseudorandom number generator is safe here.",
+      "effort": "10min",
+      "debt": "10min",
+      "author": "",
+      "tags": [
+        "cwe",
+        "former-hotspot"
+      ],
+      "creationDate": "2026-10-19T22:21:33-05:00",
+      "updateDate": "2026-10-19T22:32:07-05:00",
+      "closeDate": "2026-10-19T22:32:07-05:00",
+      "type": "VULNERABILITY",
+      "scope": "MAIN",
+      "quickFixAvailable": false,
+      "messageFormattings": [],
+      "codeVariants": [],
+      "cleanCodeAttribute": "TRUSTWORTHY",
+      "cleanCodeAttributeCategory": "RESPONSIBLE",
+      "impacts": [
+        {
+          "softwareQuality": "SECURITY",
+          "severity": "MEDIUM"
+        }
+      ],
+      "issueStatus": "FIXED",
+      "prioritizedRule": false,
+      "fromSonarQubeUpdate": false,
+      "internalTags": [],
+      "linkedTicketStatus": "NOT_LINKED"
+    },
+    {
+      "key": "c496dcd9-0b88-4774-af41-ffe8b7bb1bb3",
+      "rule": "python:S2245",
+      "severity": "MAJOR",
+      "component": "tetris-stage2-openspec:backend/engine.py",
+      "project": "tetris-stage2-openspec",
+      "hash": "18750e1f1bf1d5967ad225769cbef77a",
+      "textRange": {
+        "startLine": 114,
+        "endLine": 114,
+        "startOffset": 26,
+        "endOffset": 65
+      },
+      "flows": [],
+      "resolution": "FIXED",
+      "status": "CLOSED",
+      "message": "Make sure that using this pseudorandom number generator is safe here.",
+      "effort": "10min",
+      "debt": "10min",
+      "author": "",
+      "tags": [
+        "cwe",
+        "former-hotspot"
+      ],
+      "creationDate": "2026-10-19T22:21:33-05:00",
+      "updateDate": "2026-10-19T22:32:07-05:00",
+      "closeDate": "2026-10-19T22:32:07-05:00",
+      "type": "VULNERABILITY",
+      "scope": "MAIN",
+      "quickFixAvailable": false,
+      "messageFormattings": [],
+      "codeVariants": [],
+      "cleanCodeAttribute": "TRUSTWORTHY",
+      "cleanCodeAttributeCategory": "RESPONSIBLE",
+      "impacts": [
+        {
+          "softwareQuality": "SECURITY",
+          "severity": "MEDIUM"
+        }
+      ],
+      "issueStatus": "FIXED",
+      "prioritizedRule": false,
+      "fromSonarQubeUpdate": false,
+      "internalTags": [],
+      "linkedTicketStatus": "NOT_LINKED"
+    },
+    {
+      "key": "3e63a566-e620-4ce2-b3ea-76cb2a061703",
+      "rule": "python:S8415",
+      "severity": "MAJOR",
+      "component": "tetris-stage2-openspec:backend/main.py",
+      "project": "tetris-stage2-openspec",
+      "hash": "59dc3eff6c2f7f90c277d7da1e4515ea",
+      "textRange": {
+        "startLine": 61,
+        "endLine": 61,
+        "startOffset": 14,
+        "endOffset": 27
+      },
+      "flows": [],
+      "resolution": "FIXED",
+      "status": "CLOSED",
+      "message": "Document this HTTPException with status code 400 in the \"responses\" parameter.",
+      "effort": "5min",
+      "debt": "5min",
+      "author": "",
+      "tags": [
+        "fastapi",
+        "openapi",
+        "documentation"
+      ],
+      "creationDate": "2026-10-19T22:21:33-05:00",
+      "updateDate": "2026-10-19T22:32:07-05:00",
+      "closeDate": "2026-10-19T22:32:07-05:00",
+      "type": "CODE_SMELL",
+      "scope": "MAIN",
+      "quickFixAvailable": false,
+      "messageFormattings": [],
+      "codeVariants": [],
+      "cleanCodeAttribute": "COMPLETE",
+      "cleanCodeAttributeCategory": "INTENTIONAL",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "HIGH"
+        }
+      ],
+      "issueStatus": "FIXED",
+      "prioritizedRule": false,
+      "fromSonarQubeUpdate": false,
+      "internalTags": [],
+      "linkedTicketStatus": "NOT_LINKED"
+    },
+    {
+      "key": "5e4815d6-0860-487e-ae59-9c4b80053f8b",
+      "rule": "python:S1192",
+      "severity": "CRITICAL",
+      "component": "tetris-stage2-openspec:backend/main.py",
+      "project": "tetris-stage2-openspec",
+      "hash": "af5468cb264a9574bec4d0bc6e68373e",
+      "textRange": {
+        "startLine": 28,
+        "endLine": 28,
+        "startOffset": 52,
+        "endOffset": 76
+      },
+      "flows": [
+        {
+          "locations": [
+            {
+              "component": "tetris-stage2-openspec:backend/main.py",
+              "textRange": {
+                "startLine": 35,
+                "endLine": 35,
+                "startOffset": 52,
+                "endOffset": 76
+              },
+              "msg": "Duplication",
+              "msgFormattings": []
+            }
+          ]
+        },
+        {
+          "locations": [
+            {
+              "component": "tetris-stage2-openspec:backend/main.py",
+              "textRange": {
+                "startLine": 48,
+                "endLine": 48,
+                "startOffset": 52,
+                "endOffset": 76
+              },
+              "msg": "Duplication",
+              "msgFormattings": []
+            }
+          ]
+        },
+        {
+          "locations": [
+            {
+              "component": "tetris-stage2-openspec:backend/main.py",
+              "textRange": {
+                "startLine": 57,
+                "endLine": 57,
+                "startOffset": 52,
+                "endOffset": 76
+              },
+              "msg": "Duplication",
+              "msgFormattings": []
+            }
+          ]
+        }
+      ],
+      "resolution": "FIXED",
+      "status": "CLOSED",
+      "message": "Define a constant instead of duplicating this literal \"Game session not found\" 4 times.",
+      "effort": "8min",
+      "debt": "8min",
+      "author": "",
+      "tags": [
+        "design"
+      ],
+      "creationDate": "2026-10-19T22:21:33-05:00",
+      "updateDate": "2026-10-19T22:32:07-05:00",
+      "closeDate": "2026-10-19T22:32:07-05:00",
+      "type": "CODE_SMELL",
+      "scope": "MAIN",
+      "quickFixAvailable": false,
+      "messageFormattings": [],
+      "codeVariants": [],
+      "cleanCodeAttribute": "DISTINCT",
+      "cleanCodeAttributeCategory": "ADAPTABLE",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "HIGH"
+        }
+      ],
+      "issueStatus": "FIXED",
+      "prioritizedRule": false,
+      "fromSonarQubeUpdate": false,
+      "internalTags": [],
+      "linkedTicketStatus": "NOT_LINKED"
+    },
+    {
+      "key": "74a6ccaa-85a4-4f8b-b9f2-cc7c61f698b1",
+      "rule": "python:S8415",
+      "severity": "MAJOR",
+      "component": "tetris-stage2-openspec:backend/main.py",
+      "project": "tetris-stage2-openspec",
+      "hash": "af5468cb264a9574bec4d0bc6e68373e",
+      "textRange": {
+        "startLine": 35,
+        "endLine": 35,
+        "startOffset": 14,
+        "endOffset": 27
+      },
+      "flows": [],
+      "resolution": "FIXED",
+      "status": "CLOSED",
+      "message": "Document this HTTPException with status code 404 in the \"responses\" parameter.",
+      "effort": "5min",
+      "debt": "5min",
+      "author": "",
+      "tags": [
+        "fastapi",
+        "openapi",
+        "documentation"
+      ],
+      "creationDate": "2026-10-19T22:21:33-05:00",
+      "updateDate": "2026-10-19T22:32:07-05:00",
+      "closeDate": "2026-10-19T22:32:07-05:00",
+      "type": "CODE_SMELL",
+      "scope": "MAIN",
+      "quickFixAvailable": false,
+      "messageFormattings": [],
+      "codeVariants": [],
+      "cleanCodeAttribute": "COMPLETE",
+      "cleanCodeAttributeCategory": "INTENTIONAL",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "HIGH"
+        }
+      ],
+      "issueStatus": "FIXED",
+      "prioritizedRule": false,
+      "fromSonarQubeUpdate": false,
+      "internalTags": [],
+      "linkedTicketStatus": "NOT_LINKED"
+    },
+    {
+      "key": "ac12b7ca-2eef-4f6d-ae53-6639fef32fdd",
+      "rule": "python:S8415",
+      "severity": "MAJOR",
+      "component": "tetris-stage2-openspec:backend/main.py",
+      "project": "tetris-stage2-openspec",
+      "hash": "af5468cb264a9574bec4d0bc6e68373e",
+      "textRange": {
+        "startLine": 48,
+        "endLine": 48,
+        "startOffset": 14,
+        "endOffset": 27
+      },
+      "flows": [],
+      "resolution": "FIXED",
+      "status": "CLOSED",
+      "message": "Document this HTTPException with status code 404 in the \"responses\" parameter.",
+      "effort": "5min",
+      "debt": "5min",
+      "author": "",
+      "tags": [
+        "fastapi",
+        "openapi",
+        "documentation"
+      ],
+      "creationDate": "2026-10-19T22:21:33-05:00",
+      "updateDate": "2026-10-19T22:32:07-05:00",
+      "closeDate": "2026-10-19T22:32:07-05:00",
+      "type": "CODE_SMELL",
+      "scope": "MAIN",
+      "quickFixAvailable": false,
+      "messageFormattings": [],
+      "codeVariants": [],
+      "cleanCodeAttribute": "COMPLETE",
+      "cleanCodeAttributeCategory": "INTENTIONAL",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "HIGH"
+        }
+      ],
+      "issueStatus": "FIXED",
+      "prioritizedRule": false,
+      "fromSonarQubeUpdate": false,
+      "internalTags": [],
+      "linkedTicketStatus": "NOT_LINKED"
+    },
+    {
+      "key": "b9e44b6e-28a9-4db7-a7eb-e35473bbe696",
+      "rule": "python:S8415",
+      "severity": "MAJOR",
+      "component": "tetris-stage2-openspec:backend/main.py",
+      "project": "tetris-stage2-openspec",
+      "hash": "176dc757faa9c5f4059c808f004c4073",
+      "textRange": {
+        "startLine": 39,
+        "endLine": 39,
+        "startOffset": 14,
+        "endOffset": 27
+      },
+      "flows": [],
+      "resolution": "FIXED",
+      "status": "CLOSED",
+      "message": "Document this HTTPException with status code 400 in the \"responses\" parameter.",
+      "effort": "5min",
+      "debt": "5min",
+      "author": "",
+      "tags": [
+        "fastapi",
+        "openapi",
+        "documentation"
+      ],
+      "creationDate": "2026-10-19T22:21:33-05:00",
+      "updateDate": "2026-10-19T22:32:07-05:00",
+      "closeDate": "2026-10-19T22:32:07-05:00",
+      "type": "CODE_SMELL",
+      "scope": "MAIN",
+      "quickFixAvailable": false,
+      "messageFormattings": [],
+      "codeVariants": [],
+      "cleanCodeAttribute": "COMPLETE",
+      "cleanCodeAttributeCategory": "INTENTIONAL",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "HIGH"
+        }
+      ],
+      "issueStatus": "FIXED",
+      "prioritizedRule": false,
+      "fromSonarQubeUpdate": false,
+      "internalTags": [],
+      "linkedTicketStatus": "NOT_LINKED"
+    },
+    {
+      "key": "c3ae3d3f-fcd7-41a4-a353-fa6b24cb36ba",
+      "rule": "python:S8415",
+      "severity": "MAJOR",
+      "component": "tetris-stage2-openspec:backend/main.py",
+      "project": "tetris-stage2-openspec",
+      "hash": "af5468cb264a9574bec4d0bc6e68373e",
+      "textRange": {
+        "startLine": 28,
+        "endLine": 28,
+        "startOffset": 14,
+        "endOffset": 27
+      },
+      "flows": [],
+      "resolution": "FIXED",
+      "status": "CLOSED",
+      "message": "Document this HTTPException with status code 404 in the \"responses\" parameter.",
+      "effort": "5min",
+      "debt": "5min",
+      "author": "",
+      "tags": [
+        "fastapi",
+        "openapi",
+        "documentation"
+      ],
+      "creationDate": "2026-10-19T22:21:33-05:00",
+      "updateDate": "2026-10-19T22:32:07-05:00",
+      "closeDate": "2026-10-19T22:32:07-05:00",
+      "type": "CODE_SMELL",
+      "scope": "MAIN",
+      "quickFixAvailable": false,
+      "messageFormattings": [],
+      "codeVariants": [],
+      "cleanCodeAttribute": "COMPLETE",
+      "cleanCodeAttributeCategory": "INTENTIONAL",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "HIGH"
+        }
+      ],
+      "issueStatus": "FIXED",
+      "prioritizedRule": false,
+      "fromSonarQubeUpdate": false,
+      "internalTags": [],
+      "linkedTicketStatus": "NOT_LINKED"
+    },
+    {
+      "key": "e84e88cb-0f32-4fc3-bc6a-668100aca086",
+      "rule": "python:S8415",
+      "severity": "MAJOR",
+      "component": "tetris-stage2-openspec:backend/main.py",
+      "project": "tetris-stage2-openspec",
+      "hash": "af5468cb264a9574bec4d0bc6e68373e",
+      "textRange": {
+        "startLine": 57,
+        "endLine": 57,
+        "startOffset": 14,
+        "endOffset": 27
+      },
+      "flows": [],
+      "resolution": "FIXED",
+      "status": "CLOSED",
+      "message": "Document this HTTPException with status code 404 in the \"responses\" parameter.",
+      "effort": "5min",
+      "debt": "5min",
+      "author": "",
+      "tags": [
+        "fastapi",
+        "openapi",
+        "documentation"
+      ],
+      "creationDate": "2026-10-19T22:21:33-05:00",
+      "updateDate": "2026-10-19T22:32:07-05:00",
+      "closeDate": "2026-10-19T22:32:07-05:00",
+      "type": "CODE_SMELL",
+      "scope": "MAIN",
+      "quickFixAvailable": false,
+      "messageFormattings": [],
+      "codeVariants": [],
+      "cleanCodeAttribute": "COMPLETE",
+      "cleanCodeAttributeCategory": "INTENTIONAL",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "HIGH"
+        }
+      ],
+      "issueStatus": "FIXED",
+      "prioritizedRule": false,
+      "fromSonarQubeUpdate": false,
+      "internalTags": [],
+      "linkedTicketStatus": "NOT_LINKED"
+    },
+    {
+      "key": "143d5128-ead3-4f2c-9092-b82019250725",
+      "rule": "css:S7924",
+      "severity": "MAJOR",
+      "component": "tetris-stage2-openspec:frontend/src/App.css",
+      "project": "tetris-stage2-openspec",
+      "hash": "d723723b6507625ba16917345c172f7d",
+      "textRange": {
+        "startLine": 214,
+        "endLine": 214,
+        "startOffset": 2,
+        "endOffset": 17
+      },
+      "flows": [],
+      "resolution": "FIXED",
+      "status": "CLOSED",
+      "message": "Text does not meet the minimal contrast requirement with its background.",
+      "effort": "5min",
+      "debt": "5min",
+      "author": "",
+      "tags": [
+        "css",
+        "accessibility",
+        "wcag",
+        "contrast"
+      ],
+      "creationDate": "2026-10-19T22:21:33-05:00",
+      "updateDate": "2026-10-19T22:32:07-05:00",
+      "closeDate": "2026-10-19T22:32:07-05:00",
+      "type": "CODE_SMELL",
+      "scope": "MAIN",
+      "quickFixAvailable": false,
+      "messageFormattings": [],
+      "codeVariants": [],
+      "cleanCodeAttribute": "CONVENTIONAL",
+      "cleanCodeAttributeCategory": "CONSISTENT",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "MEDIUM"
+        }
+      ],
+      "issueStatus": "FIXED",
+      "prioritizedRule": false,
+      "fromSonarQubeUpdate": false,
+      "internalTags": [],
+      "linkedTicketStatus": "NOT_LINKED"
+    },
+    {
+      "key": "5c1f7510-fa75-47c2-b05b-8ff184e5802a",
+      "rule": "typescript:S6582",
+      "severity": "MINOR",
+      "component": "tetris-stage2-openspec:frontend/src/App.tsx",
+      "project": "tetris-stage2-openspec",
+      "hash": "5e3e21cfc07483939864b53ac2f5c9a2",
+      "textRange": {
+        "startLine": 86,
+        "endLine": 86,
+        "startOffset": 8,
+        "endOffset": 48
+      },
+      "flows": [],
+      "resolution": "FIXED",
+      "status": "CLOSED",
+      "message": "Prefer using an optional chain expression instead, as it's more concise and easier to read.",
+      "effort": "5min",
+      "debt": "5min",
+      "author": "",
+      "tags": [
+        "editable-source",
+        "type-dependent",
+        "es2020"
+      ],
+      "creationDate": "2026-10-19T22:21:33-05:00",
+      "updateDate": "2026-10-19T22:32:07-05:00",
+      "closeDate": "2026-10-19T22:32:07-05:00",
+      "type": "CODE_SMELL",
+      "scope": "MAIN",
+      "quickFixAvailable": true,
+      "messageFormattings": [],
+      "codeVariants": [],
+      "cleanCodeAttribute": "CLEAR",
+      "cleanCodeAttributeCategory": "INTENTIONAL",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "LOW"
+        }
+      ],
+      "issueStatus": "FIXED",
+      "prioritizedRule": false,
+      "fromSonarQubeUpdate": false,
+      "internalTags": [],
+      "linkedTicketStatus": "NOT_LINKED"
+    },
+    {
+      "key": "a1e7c69f-775a-4f14-86b5-b45810c501ae",
+      "rule": "typescript:S6582",
+      "severity": "MINOR",
+      "component": "tetris-stage2-openspec:frontend/src/App.tsx",
+      "project": "tetris-stage2-openspec",
+      "hash": "5a3c36921437cafcd433ae4c393610f7",
+      "textRange": {
+        "startLine": 101,
+        "endLine": 101,
+        "startOffset": 10,
+        "endOffset": 50
+      },
+      "flows": [],
+      "resolution": "FIXED",
+      "status": "CLOSED",
+      "message": "Prefer using an optional chain expression instead, as it's more concise and easier to read.",
+      "effort": "5min",
+      "debt": "5min",
+      "author": "",
+      "tags": [
+        "editable-source",
+        "type-dependent",
+        "es2020"
+      ],
+      "creationDate": "2026-10-19T22:21:33-05:00",
+      "updateDate": "2026-10-19T22:32:07-05:00",
+      "closeDate": "2026-10-19T22:32:07-05:00",
+      "type": "CODE_SMELL",
+      "scope": "MAIN",
+      "quickFixAvailable": true,
+      "messageFormattings": [],
+      "codeVariants": [],
+      "cleanCodeAttribute": "CLEAR",
+      "cleanCodeAttributeCategory": "INTENTIONAL",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "LOW"
+        }
+      ],
+      "issueStatus": "FIXED",
+      "prioritizedRule": false,
+      "fromSonarQubeUpdate": false,
+      "internalTags": [],
+      "linkedTicketStatus": "NOT_LINKED"
+    },
+    {
+      "key": "a9a61ff9-b97c-458b-aaef-f3f51e1f795f",
+      "rule": "typescript:S6582",
+      "severity": "MINOR",
+      "component": "tetris-stage2-openspec:frontend/src/App.tsx",
+      "project": "tetris-stage2-openspec",
+      "hash": "19055dedf04a134b5934b4ed7d22e702",
+      "textRange": {
+        "startLine": 69,
+        "endLine": 69,
+        "startOffset": 10,
+        "endOffset": 49
+      },
+      "flows": [],
+      "resolution": "FIXED",
+      "status": "CLOSED",
+      "message": "Prefer using an optional chain expression instead, as it's more concise and easier to read.",
+      "effort": "5min",
+      "debt": "5min",
+      "author": "",
+      "tags": [
+        "editable-source",
+        "type-dependent",
+        "es2020"
+      ],
+      "creationDate": "2026-10-19T22:21:33-05:00",
+      "updateDate": "2026-10-19T22:32:07-05:00",
+      "closeDate": "2026-10-19T22:32:07-05:00",
+      "type": "CODE_SMELL",
+      "scope": "MAIN",
+      "quickFixAvailable": true,
+      "messageFormattings": [],
+      "codeVariants": [],
+      "cleanCodeAttribute": "CLEAR",
+      "cleanCodeAttributeCategory": "INTENTIONAL",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "LOW"
+        }
+      ],
+      "issueStatus": "FIXED",
+      "prioritizedRule": false,
+      "fromSonarQubeUpdate": false,
+      "internalTags": [],
+      "linkedTicketStatus": "NOT_LINKED"
+    },
+    {
+      "key": "bdfb2740-a850-4920-a6bd-97cd78459c6a",
+      "rule": "typescript:S6582",
+      "severity": "MINOR",
+      "component": "tetris-stage2-openspec:frontend/src/App.tsx",
+      "project": "tetris-stage2-openspec",
+      "hash": "bcd99a7a7bed1e755dc2c92ca298d630",
+      "textRange": {
+        "startLine": 65,
+        "endLine": 65,
+        "startOffset": 8,
+        "endOffset": 52
+      },
+      "flows": [],
+      "resolution": "FIXED",
+      "status": "CLOSED",
+      "message": "Prefer using an optional chain expression instead, as it's more concise and easier to read.",
+      "effort": "5min",
+      "debt": "5min",
+      "author": "",
+      "tags": [
+        "editable-source",
+        "type-dependent",
+        "es2020"
+      ],
+      "creationDate": "2026-10-19T22:21:33-05:00",
+      "updateDate": "2026-10-19T22:32:07-05:00",
+      "closeDate": "2026-10-19T22:32:07-05:00",
+      "type": "CODE_SMELL",
+      "scope": "MAIN",
+      "quickFixAvailable": true,
+      "messageFormattings": [],
+      "codeVariants": [],
+      "cleanCodeAttribute": "CLEAR",
+      "cleanCodeAttributeCategory": "INTENTIONAL",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "LOW"
+        }
+      ],
+      "issueStatus": "FIXED",
+      "prioritizedRule": false,
+      "fromSonarQubeUpdate": false,
+      "internalTags": [],
+      "linkedTicketStatus": "NOT_LINKED"
+    },
+    {
+      "key": "e370f03a-1345-4af3-a0b1-6ed2b7de6e4c",
+      "rule": "typescript:S6759",
+      "severity": "MINOR",
+      "component": "tetris-stage2-openspec:frontend/src/components/GameOverModal.tsx",
+      "project": "tetris-stage2-openspec",
+      "hash": "6318a0184bcaad2744d69832acedcca1",
+      "textRange": {
+        "startLine": 6,
+        "endLine": 6,
+        "startOffset": 38,
+        "endOffset": 77
+      },
+      "flows": [],
+      "resolution": "FIXED",
+      "status": "CLOSED",
+      "message": "Mark the props of the component as read-only.",
+      "effort": "5min",
+      "debt": "5min",
+      "author": "",
+      "tags": [
+        "type-dependent",
+        "react"
+      ],
+      "creationDate": "2026-10-19T22:21:33-05:00",
+      "updateDate": "2026-10-19T22:32:07-05:00",
+      "closeDate": "2026-10-19T22:32:07-05:00",
+      "type": "CODE_SMELL",
+      "scope": "MAIN",
+      "quickFixAvailable": true,
+      "messageFormattings": [],
+      "codeVariants": [],
+      "cleanCodeAttribute": "CONVENTIONAL",
+      "cleanCodeAttributeCategory": "CONSISTENT",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "LOW"
+        }
+      ],
+      "issueStatus": "FIXED",
+      "prioritizedRule": false,
+      "fromSonarQubeUpdate": false,
+      "internalTags": [],
+      "linkedTicketStatus": "NOT_LINKED"
+    },
+    {
+      "key": "0299f0aa-5dbe-44eb-b34c-71c4ca36f5ed",
+      "rule": "typescript:S7723",
+      "severity": "MINOR",
+      "component": "tetris-stage2-openspec:frontend/src/components/GridBoard.tsx",
+      "project": "tetris-stage2-openspec",
+      "hash": "35be3d6d926a4345266a477beb45e60d",
+      "textRange": {
+        "startLine": 80,
+        "endLine": 80,
+        "startOffset": 13,
+        "endOffset": 22
+      },
+      "flows": [],
+      "resolution": "FIXED",
+      "status": "CLOSED",
+      "message": "Use `new Array()` instead of `Array()`.",
+      "effort": "5min",
+      "debt": "5min",
+      "author": "",
+      "tags": [
+        "convention"
+      ],
+      "creationDate": "2026-10-19T22:21:33-05:00",
+      "updateDate": "2026-10-19T22:32:07-05:00",
+      "closeDate": "2026-10-19T22:32:07-05:00",
+      "type": "CODE_SMELL",
+      "scope": "MAIN",
+      "quickFixAvailable": true,
+      "messageFormattings": [],
+      "codeVariants": [],
+      "cleanCodeAttribute": "CONVENTIONAL",
+      "cleanCodeAttributeCategory": "CONSISTENT",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "LOW"
+        },
+        {
+          "softwareQuality": "RELIABILITY",
+          "severity": "LOW"
+        }
+      ],
+      "issueStatus": "FIXED",
+      "prioritizedRule": false,
+      "fromSonarQubeUpdate": false,
+      "internalTags": [],
+      "linkedTicketStatus": "NOT_LINKED"
+    },
+    {
+      "key": "196dabca-e290-40a6-809c-d15b9a000682",
+      "rule": "typescript:S6479",
+      "severity": "MAJOR",
+      "component": "tetris-stage2-openspec:frontend/src/components/GridBoard.tsx",
+      "project": "tetris-stage2-openspec",
+      "hash": "c8a19c91c1086ccae3ccbfb106965e02",
+      "textRange": {
+        "startLine": 66,
+        "endLine": 66,
+        "startOffset": 19,
+        "endOffset": 23
+      },
+      "flows": [],
+      "resolution": "FIXED",
+      "status": "CLOSED",
+      "message": "Do not use Array index in keys",
+      "effort": "5min",
+      "debt": "5min",
+      "author": "",
+      "tags": [
+        "performance",
+        "react",
+        "jsx"
+      ],
+      "creationDate": "2026-10-19T22:21:33-05:00",
+      "updateDate": "2026-10-19T22:32:07-05:00",
+      "closeDate": "2026-10-19T22:32:07-05:00",
+      "type": "CODE_SMELL",
+      "scope": "MAIN",
+      "quickFixAvailable": false,
+      "messageFormattings": [],
+      "codeVariants": [],
+      "cleanCodeAttribute": "LOGICAL",
+      "cleanCodeAttributeCategory": "INTENTIONAL",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "MEDIUM"
+        }
+      ],
+      "issueStatus": "FIXED",
+      "prioritizedRule": false,
+      "fromSonarQubeUpdate": false,
+      "internalTags": [],
+      "linkedTicketStatus": "NOT_LINKED"
+    },
+    {
+      "key": "67e32624-5447-49aa-908b-28d0320736d8",
+      "rule": "typescript:S6479",
+      "severity": "MAJOR",
+      "component": "tetris-stage2-openspec:frontend/src/components/GridBoard.tsx",
+      "project": "tetris-stage2-openspec",
+      "hash": "80fa4e5bc211122708d9059713c9e562",
+      "textRange": {
+        "startLine": 148,
+        "endLine": 148,
+        "startOffset": 23,
+        "endOffset": 29
+      },
+      "flows": [],
+      "resolution": "FIXED",
+      "status": "CLOSED",
+      "message": "Do not use Array index in keys",
+      "effort": "5min",
+      "debt": "5min",
+      "author": "",
+      "tags": [
+        "performance",
+        "react",
+        "jsx"
+      ],
+      "creationDate": "2026-10-19T22:21:33-05:00",
+      "updateDate": "2026-10-19T22:32:07-05:00",
+      "closeDate": "2026-10-19T22:32:07-05:00",
+      "type": "CODE_SMELL",
+      "scope": "MAIN",
+      "quickFixAvailable": false,
+      "messageFormattings": [],
+      "codeVariants": [],
+      "cleanCodeAttribute": "LOGICAL",
+      "cleanCodeAttributeCategory": "INTENTIONAL",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "MEDIUM"
+        }
+      ],
+      "issueStatus": "FIXED",
+      "prioritizedRule": false,
+      "fromSonarQubeUpdate": false,
+      "internalTags": [],
+      "linkedTicketStatus": "NOT_LINKED"
+    },
+    {
+      "key": "b7a25089-7d72-44d8-a2f6-fe5dd5260f2b",
+      "rule": "typescript:S4624",
+      "severity": "MAJOR",
+      "component": "tetris-stage2-openspec:frontend/src/components/GridBoard.tsx",
+      "project": "tetris-stage2-openspec",
+      "hash": "3a10b1d046c83697ae7dd8fe48ec2a8b",
+      "textRange": {
+        "startLine": 149,
+        "endLine": 149,
+        "startOffset": 49,
+        "endOffset": 63
+      },
+      "flows": [],
+      "resolution": "FIXED",
+      "status": "CLOSED",
+      "message": "Refactor this code to not use nested template literals.",
+      "effort": "10min",
+      "debt": "10min",
+      "author": "",
+      "tags": [
+        "es2015",
+        "brain-overload",
+        "editable-source",
+        "confusing"
+      ],
+      "creationDate": "2026-10-19T22:21:33-05:00",
+      "updateDate": "2026-10-19T22:32:07-05:00",
+      "closeDate": "2026-10-19T22:32:07-05:00",
+      "type": "CODE_SMELL",
+      "scope": "MAIN",
+      "quickFixAvailable": false,
+      "messageFormattings": [],
+      "codeVariants": [],
+      "cleanCodeAttribute": "CLEAR",
+      "cleanCodeAttributeCategory": "INTENTIONAL",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "MEDIUM"
+        }
+      ],
+      "issueStatus": "FIXED",
+      "prioritizedRule": false,
+      "fromSonarQubeUpdate": false,
+      "internalTags": [],
+      "linkedTicketStatus": "NOT_LINKED"
+    },
+    {
+      "key": "c5cb7ea8-7ef5-4ac6-ac38-b7d6d3c8ef84",
+      "rule": "typescript:S4624",
+      "severity": "MAJOR",
+      "component": "tetris-stage2-openspec:frontend/src/components/GridBoard.tsx",
+      "project": "tetris-stage2-openspec",
+      "hash": "ce488dfd6d795c355b465787585049e1",
+      "textRange": {
+        "startLine": 67,
+        "endLine": 67,
+        "startOffset": 48,
+        "endOffset": 63
+      },
+      "flows": [],
+      "resolution": "FIXED",
+      "status": "CLOSED",
+      "message": "Refactor this code to not use nested template literals.",
+      "effort": "10min",
+      "debt": "10min",
+      "author": "",
+      "tags": [
+        "es2015",
+        "brain-overload",
+        "editable-source",
+        "confusing"
+      ],
+      "creationDate": "2026-10-19T22:21:33-05:00",
+      "updateDate": "2026-10-19T22:32:07-05:00",
+      "closeDate": "2026-10-19T22:32:07-05:00",
+      "type": "CODE_SMELL",
+      "scope": "MAIN",
+      "quickFixAvailable": false,
+      "messageFormattings": [],
+      "codeVariants": [],
+      "cleanCodeAttribute": "CLEAR",
+      "cleanCodeAttributeCategory": "INTENTIONAL",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "MEDIUM"
+        }
+      ],
+      "issueStatus": "FIXED",
+      "prioritizedRule": false,
+      "fromSonarQubeUpdate": false,
+      "internalTags": [],
+      "linkedTicketStatus": "NOT_LINKED"
+    },
+    {
+      "key": "c6c5ef78-af39-4500-869f-bd5c03065579",
+      "rule": "typescript:S6759",
+      "severity": "MINOR",
+      "component": "tetris-stage2-openspec:frontend/src/components/GridBoard.tsx",
+      "project": "tetris-stage2-openspec",
+      "hash": "43e21d7e3bb322cd4d13c5d230adc3d0",
+      "textRange": {
+        "startLine": 46,
+        "endLine": 46,
+        "startOffset": 22,
+        "endOffset": 97
+      },
+      "flows": [],
+      "resolution": "FIXED",
+      "status": "CLOSED",
+      "message": "Mark the props of the component as read-only.",
+      "effort": "5min",
+      "debt": "5min",
+      "author": "",
+      "tags": [
+        "type-dependent",
+        "react"
+      ],
+      "creationDate": "2026-10-19T22:21:33-05:00",
+      "updateDate": "2026-10-19T22:32:07-05:00",
+      "closeDate": "2026-10-19T22:32:07-05:00",
+      "type": "CODE_SMELL",
+      "scope": "MAIN",
+      "quickFixAvailable": true,
+      "messageFormattings": [],
+      "codeVariants": [],
+      "cleanCodeAttribute": "CONVENTIONAL",
+      "cleanCodeAttributeCategory": "CONSISTENT",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "LOW"
+        }
+      ],
+      "issueStatus": "FIXED",
+      "prioritizedRule": false,
+      "fromSonarQubeUpdate": false,
+      "internalTags": [],
+      "linkedTicketStatus": "NOT_LINKED"
+    },
+    {
+      "key": "cef239b3-6dea-4453-94b4-97c389868f7d",
+      "rule": "typescript:S6479",
+      "severity": "MAJOR",
+      "component": "tetris-stage2-openspec:frontend/src/components/GridBoard.tsx",
+      "project": "tetris-stage2-openspec",
+      "hash": "ac091317c8b5bb24df1c7b7fd5ab16b9",
+      "textRange": {
+        "startLine": 145,
+        "endLine": 145,
+        "startOffset": 22,
+        "endOffset": 28
+      },
+      "flows": [],
+      "resolution": "FIXED",
+      "status": "CLOSED",
+      "message": "Do not use Array index in keys",
+      "effort": "5min",
+      "debt": "5min",
+      "author": "",
+      "tags": [
+        "performance",
+        "react",
+        "jsx"
+      ],
+      "creationDate": "2026-10-19T22:21:33-05:00",
+      "updateDate": "2026-10-19T22:32:07-05:00",
+      "closeDate": "2026-10-19T22:32:07-05:00",
+      "type": "CODE_SMELL",
+      "scope": "MAIN",
+      "quickFixAvailable": false,
+      "messageFormattings": [],
+      "codeVariants": [],
+      "cleanCodeAttribute": "LOGICAL",
+      "cleanCodeAttributeCategory": "INTENTIONAL",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "MEDIUM"
+        }
+      ],
+      "issueStatus": "FIXED",
+      "prioritizedRule": false,
+      "fromSonarQubeUpdate": false,
+      "internalTags": [],
+      "linkedTicketStatus": "NOT_LINKED"
+    },
+    {
+      "key": "dbba7eea-5c84-42bc-9971-e8bee1604f03",
+      "rule": "typescript:S6479",
+      "severity": "MAJOR",
+      "component": "tetris-stage2-openspec:frontend/src/components/GridBoard.tsx",
+      "project": "tetris-stage2-openspec",
+      "hash": "668fbe7996b9719e2ab2fadd22647413",
+      "textRange": {
+        "startLine": 63,
+        "endLine": 63,
+        "startOffset": 18,
+        "endOffset": 22
+      },
+      "flows": [],
+      "resolution": "FIXED",
+      "status": "CLOSED",
+      "message": "Do not use Array index in keys",
+      "effort": "5min",
+      "debt": "5min",
+      "author": "",
+      "tags": [
+        "performance",
+        "react",
+        "jsx"
+      ],
+      "creationDate": "2026-10-19T22:21:33-05:00",
+      "updateDate": "2026-10-19T22:32:07-05:00",
+      "closeDate": "2026-10-19T22:32:07-05:00",
+      "type": "CODE_SMELL",
+      "scope": "MAIN",
+      "quickFixAvailable": false,
+      "messageFormattings": [],
+      "codeVariants": [],
+      "cleanCodeAttribute": "LOGICAL",
+      "cleanCodeAttributeCategory": "INTENTIONAL",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "MEDIUM"
+        }
+      ],
+      "issueStatus": "FIXED",
+      "prioritizedRule": false,
+      "fromSonarQubeUpdate": false,
+      "internalTags": [],
+      "linkedTicketStatus": "NOT_LINKED"
+    },
+    {
+      "key": "dd5b0d89-3ec3-47f5-bb41-83b8b0f32893",
+      "rule": "typescript:S7723",
+      "severity": "MINOR",
+      "component": "tetris-stage2-openspec:frontend/src/components/GridBoard.tsx",
+      "project": "tetris-stage2-openspec",
+      "hash": "35be3d6d926a4345266a477beb45e60d",
+      "textRange": {
+        "startLine": 80,
+        "endLine": 80,
+        "startOffset": 44,
+        "endOffset": 53
+      },
+      "flows": [],
+      "resolution": "FIXED",
+      "status": "CLOSED",
+      "message": "Use `new Array()` instead of `Array()`.",
+      "effort": "5min",
+      "debt": "5min",
+      "author": "",
+      "tags": [
+        "convention"
+      ],
+      "creationDate": "2026-10-19T22:21:33-05:00",
+      "updateDate": "2026-10-19T22:32:07-05:00",
+      "closeDate": "2026-10-19T22:32:07-05:00",
+      "type": "CODE_SMELL",
+      "scope": "MAIN",
+      "quickFixAvailable": true,
+      "messageFormattings": [],
+      "codeVariants": [],
+      "cleanCodeAttribute": "CONVENTIONAL",
+      "cleanCodeAttributeCategory": "CONSISTENT",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "LOW"
+        },
+        {
+          "softwareQuality": "RELIABILITY",
+          "severity": "LOW"
+        }
+      ],
+      "issueStatus": "FIXED",
+      "prioritizedRule": false,
+      "fromSonarQubeUpdate": false,
+      "internalTags": [],
+      "linkedTicketStatus": "NOT_LINKED"
+    },
+    {
+      "key": "e7186f60-5d92-42df-a066-b1cea2035e8a",
+      "rule": "typescript:S6759",
+      "severity": "MINOR",
+      "component": "tetris-stage2-openspec:frontend/src/components/GridBoard.tsx",
+      "project": "tetris-stage2-openspec",
+      "hash": "61c4b9ea7109616f9527503ec2685450",
+      "textRange": {
+        "startLine": 76,
+        "endLine": 76,
+        "startOffset": 34,
+        "endOffset": 63
+      },
+      "flows": [],
+      "resolution": "FIXED",
+      "status": "CLOSED",
+      "message": "Mark the props of the component as read-only.",
+      "effort": "5min",
+      "debt": "5min",
+      "author": "",
+      "tags": [
+        "type-dependent",
+        "react"
+      ],
+      "creationDate": "2026-10-19T22:21:33-05:00",
+      "updateDate": "2026-10-19T22:32:07-05:00",
+      "closeDate": "2026-10-19T22:32:07-05:00",
+      "type": "CODE_SMELL",
+      "scope": "MAIN",
+      "quickFixAvailable": true,
+      "messageFormattings": [],
+      "codeVariants": [],
+      "cleanCodeAttribute": "CONVENTIONAL",
+      "cleanCodeAttributeCategory": "CONSISTENT",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "LOW"
+        }
+      ],
+      "issueStatus": "FIXED",
+      "prioritizedRule": false,
+      "fromSonarQubeUpdate": false,
+      "internalTags": [],
+      "linkedTicketStatus": "NOT_LINKED"
+    }
+  ],
+  "components": [
+    {
+      "key": "tetris-stage2-openspec",
+      "enabled": true,
+      "qualifier": "TRK",
+      "name": "Tetris Stage 2 OpenSpec",
+      "longName": "Tetris Stage 2 OpenSpec"
+    },
+    {
+      "key": "tetris-stage2-openspec:frontend/src/components/GameOverModal.tsx",
+      "enabled": true,
+      "qualifier": "FIL",
+      "name": "GameOverModal.tsx",
+      "longName": "frontend/src/components/GameOverModal.tsx",
+      "path": "frontend/src/components/GameOverModal.tsx"
+    },
+    {
+      "key": "tetris-stage2-openspec:frontend/src/App.tsx",
+      "enabled": true,
+      "qualifier": "FIL",
+      "name": "App.tsx",
+      "longName": "frontend/src/App.tsx",
+      "path": "frontend/src/App.tsx"
+    },
+    {
+      "key": "tetris-stage2-openspec:backend/main.py",
+      "enabled": true,
+      "qualifier": "FIL",
+      "name": "main.py",
+      "longName": "backend/main.py",
+      "path": "backend/main.py"
+    },
+    {
+      "key": "tetris-stage2-openspec:backend/engine.py",
+      "enabled": true,
+      "qualifier": "FIL",
+      "name": "engine.py",
+      "longName": "backend/engine.py",
+      "path": "backend/engine.py"
+    },
+    {
+      "key": "tetris-stage2-openspec:frontend/src/App.css",
+      "enabled": true,
+      "qualifier": "FIL",
+      "name": "App.css",
+      "longName": "frontend/src/App.css",
+      "path": "frontend/src/App.css"
+    },
+    {
+      "key": "tetris-stage2-openspec:frontend/src/components/GridBoard.tsx",
+      "enabled": true,
+      "qualifier": "FIL",
+      "name": "GridBoard.tsx",
+      "longName": "frontend/src/components/GridBoard.tsx",
+      "path": "frontend/src/components/GridBoard.tsx"
+    }
+  ],
+  "facets": []
+}

@@ -1,0 +1,44 @@
+Tokens y tiempo por invocación (segundos | entrada | caché |
+salida | intentos API o respuestas documentadas, según la
+etiqueta):
+01-propose: no medido | no disponible | no disponible | no disponible | no disponible;
+interrupción de red.
+02-propose-retry: 622,436 | 1.586.942 | 1.262.951 | 15.910 | 66 respuestas históricamente
+documentadas; API desconocida; propuesta textual sin archivos.
+03-materialize-proposal: 137,359 | 2.141.393 | 1.591.392 | 6.694 | 23 intentos API (0 errores,
+23 éxitos); respuestas registradas no disponibles; artefactos nativos.
+04-correct-plan: 48,902 | 1.273.520 | 1.075.890 | 2.723 | 10 intentos API (0 errores, 10
+éxitos); respuestas registradas no disponibles; corrección del plan.
+05-apply: 444,118 | 2.623.509 | 2.252.478 | 4.391 | 24 respuestas históricamente
+documentadas; API desconocida; interrumpido sin código.
+06-apply-fresh: 782,457 | 2.011.596 | 1.407.507 | 56.094 | 66 respuestas retenidas; API
+desconocida; Plan Mode sin escrituras.
+07-direct-apply: 167,938 | 382.138 | 197.261 | 6.667 | 14 intentos API (0 errores, 14 éxitos);
+respuestas registradas no disponibles; backend.
+08-complete-frontend: 12,868 | 127.382 | 8.020 | 134 | 2 intentos API (0 errores, 2 éxitos);
+respuestas registradas no disponibles; respuesta vacía.
+09-frontend-fresh: 237,026 | 541.005 | 253.683 | 8.066 | 18 intentos API (0 errores, 18
+éxitos) y 18 respuestas retenidas; frontend.
+10-sonar-remediation: 409,430 | 2.994.533 | 2.495.552 | 8.443 | 60 intentos API (3 errores,
+57 éxitos) y 55 respuestas principales retenidas; remediación principal.
+TOTAL OBSERVADO: 10 prompts, nueve con tokens disponibles, 2.862,534 s
+instrumentados, 13.682.018 tokens de entrada, 10.544.734 cacheados dentro de esa
+entrada, 109.122 de salida; el antiguo agregado de 283 solicitudes se retira como total
+comparable. Hay 127 intentos API conocidos, 3 errores y 124 éxitos con cobertura parcial
+(03/04/07/08/09/10); el total API de 01/02/05/06 es desconocido. Por separado, hay 229
+respuestas documentadas: 139 retenidas y 90 históricas. El tiempo instrumentado excluye
+la duración desconocida de 01 y el trabajo externo de pruebas/QA. Fuentes:
+OpenSpec/docs/metrics.json, token-audit.json, *.run.json y *.stdout.json.
+Artefactos medidos. Código base: 13 archivos, 1.366 líneas, 39.957 caracteres (105,08
+líneas/archivo). Código final con pruebas de QA: 15 archivos, 2.238 líneas, 69.725
+caracteres (149,20 líneas/archivo); 12 archivos cambiados o nuevos, 916 líneas añadidas y
+44 eliminadas. Specs nativos Etapa 1: 4 archivos, 442 líneas, 23.969 caracteres (110,50
+líneas/archivo). Specs nativos Etapa 2: 4 archivos, 262 líneas, 20.582 caracteres (65,50
+líneas/archivo), 14 requisitos nuevos y uno modificado. El conteo excluye dependencias,
+build, cobertura generada y docs, pero incluye pruebas; el ncloc de Sonar usa otra
+definición.
+Calidad y pruebas. OpenSpec validate --strict: válido. Backend: 20 pruebas aprobadas, una
+advertencia de deprecación de Starlette TestClient, cobertura de aplicación 94 %. Frontend:
+5 pruebas aprobadas, cobertura de líneas 92,96 %, build de producción y lint aprobados.
+API externa: 7/7 controles aprobados. npm audit final: cero vulnerabilidades en
+dependencias. SonarQube inicial → final: cobertura global 61,8 % → 90,3 %; code smells

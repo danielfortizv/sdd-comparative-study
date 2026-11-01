@@ -1,0 +1,60 @@
+[
+  {
+    "name": "backend-tests-and-coverage",
+    "executable": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 1\\_toolchain\\venv\\Scripts\\python.exe",
+    "arguments": [
+      "-m",
+      "pytest",
+      "-q",
+      "--cov=app",
+      "--cov-report=term-missing",
+      "--cov-report=xml:D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\Spec Kit\\docs\\coverage.xml"
+    ],
+    "directory": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\Spec Kit\\backend",
+    "started_at_utc": "2026-10-21T05:38:17.8246545Z",
+    "ended_at_utc": "2026-10-21T05:38:21.9490681Z",
+    "exit_code": 0,
+    "log": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\Spec Kit\\docs\\backend-coverage.log"
+  },
+  {
+    "name": "frontend-tests-and-coverage",
+    "executable": "C:\\Program Files\\nodejs\\npm.cmd",
+    "arguments": [
+      "run",
+      "test",
+      "--",
+      "--coverage"
+    ],
+    "directory": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\Spec Kit\\frontend",
+    "started_at_utc": "2026-10-21T05:38:21.9865577Z",
+    "ended_at_utc": "2026-10-21T05:38:26.9712162Z",
+    "exit_code": 0,
+    "log": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\Spec Kit\\docs\\frontend-test-coverage.log"
+  },
+  {
+    "name": "frontend-production-build",
+    "executable": "C:\\Program Files\\nodejs\\npm.cmd",
+    "arguments": [
+      "run",
+      "build"
+    ],
+    "directory": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\Spec Kit\\frontend",
+    "started_at_utc": "2026-10-21T05:38:26.9746835Z",
+    "ended_at_utc": "2026-10-21T05:38:30.4796827Z",
+    "exit_code": 0,
+    "log": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\Spec Kit\\docs\\frontend-build.log"
+  },
+  {
+    "name": "frontend-dependency-audit",
+    "executable": "C:\\Program Files\\nodejs\\npm.cmd",
+    "arguments": [
+      "audit",
+      "--json"
+    ],
+    "directory": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\Spec Kit\\frontend",
+    "started_at_utc": "2026-10-21T05:38:30.4839873Z",
+    "ended_at_utc": "2026-10-21T05:38:32.6634561Z",
+    "exit_code": 0,
+    "log": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\Spec Kit\\docs\\npm-audit.json"
+  }
+]

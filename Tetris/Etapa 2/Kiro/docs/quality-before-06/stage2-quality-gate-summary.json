@@ -1,0 +1,42 @@
+{
+  "stage": "stage2-kiro",
+  "quality_gate": {
+    "status": "OK",
+    "attempts": [
+      { "attempt": 1, "new_violations": 6, "status": "ERROR", "evidence": "docs/sonar-attempt-1-fail/" },
+      { "attempt": 2, "new_violations": 2, "status": "ERROR", "evidence": "docs/sonar-attempt-2-fail/" },
+      { "attempt": 3, "new_violations": 0, "status": "OK", "evidence": "docs/sonar-attempt-3-pass/" }
+    ],
+    "final_conditions": {
+      "new_coverage": { "actual": "91.8", "threshold": ">=80", "status": "OK" },
+      "new_duplicated_lines_density": { "actual": "0.0", "threshold": "<=3", "status": "OK" },
+      "new_violations": { "actual": "0", "threshold": "=0", "status": "OK" }
+    },
+    "project": "tetris-stage2-kiro",
+    "project_version": "2.0",
+    "server": "http://127.0.0.1:9000"
+  },
+  "project_totals": {
+    "bugs": 0,
+    "vulnerabilities": 0,
+    "security_hotspots": 0,
+    "code_smells": 7,
+    "coverage_percent_overall": 91.7,
+    "duplicated_lines_density": 0.0,
+    "ncloc": 772
+  },
+  "remaining_open_findings_all_baseline_non_new": [
+    { "rule": "python:S8415", "severity": "MAJOR", "location": "backend/app/api/games.py:23", "scope": "legacy Stage 1 route (document 404 in responses)" },
+    { "rule": "python:S8409", "severity": "MINOR", "location": "backend/app/api/games.py:27", "scope": "legacy Stage 1 create route (redundant response_model)" },
+    { "rule": "python:S8409", "severity": "MINOR", "location": "backend/app/api/games.py:35", "scope": "legacy Stage 1 read route" },
+    { "rule": "python:S8409", "severity": "MINOR", "location": "backend/app/api/games.py:43", "scope": "legacy Stage 1 tick route" },
+    { "rule": "python:S8409", "severity": "MINOR", "location": "backend/app/api/games.py:52", "scope": "legacy Stage 1 move route" },
+    { "rule": "python:S9073", "severity": "MAJOR", "location": "backend/tests/test_api.py:26", "scope": "legacy regression test; only the top-level key-set equality was widened for Req 6.1" },
+    { "rule": "typescript:S6759", "severity": "MINOR", "location": "frontend/src/Board.tsx:36", "scope": "legacy Stage 1 component, unmodified in Stage 2" }
+  ],
+  "remaining_findings_note": "All 7 remaining open findings are outside the new-code period (baseline Stage 1 code or the single legacy test line that Requirement 6.1 forced to widen). None are new violations, none were suppressed, no thresholds were weakened, and no production files were excluded from coverage. The six new-code violations from the first scan were fixed in production/test code (not suppressed): schema optional defaults, redundant response_model on the new hold route, parameterized scoring tests, unified assertion order, optional chaining in App.tsx, and read-only Preview props.",
+  "new_coverage_includes_all_production_src": true,
+  "no_threshold_weakening": true,
+  "no_finding_suppression": true,
+  "no_legacy_regression_assertion_weakened": "Only the single top-level key-set equality in test_state_payload_shape was widened, as required by Requirement 6.1; all behavioral assertions are intact."
+}

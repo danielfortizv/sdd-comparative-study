@@ -1,0 +1,160 @@
+INFO: Starting the analysis...
+INFO: Starting SonarScanner Engine...
+INFO: Java 21.0.11 Eclipse Adoptium (64-bit)
+INFO: Load global settings
+INFO: Load global settings (done) | time=125ms
+INFO: Server id: 147B411E-AaDs0FqMYsoySKrT1xhM
+INFO: Loading required plugins
+INFO: Load plugins index
+INFO: Load plugins index (done) | time=32ms
+INFO: Load/download plugins
+INFO: Load/download plugins (done) | time=65ms
+INFO: Process project properties
+INFO: Process project properties (done) | time=13ms
+INFO: Project key: tetris-stage2-kiro
+INFO: Base dir: D:\KEVIN\UNIVERSIDAD\Trabajos\Proyecto\Caso 2-Tetris\Etapa 2\Kiro
+INFO: Working dir: D:\KEVIN\UNIVERSIDAD\Trabajos\Proyecto\Caso 2-Tetris\Etapa 2\Kiro\.sonar
+INFO: Load project settings for component key: 'tetris-stage2-kiro'
+INFO: Load project settings for component key: 'tetris-stage2-kiro' (done) | time=37ms
+INFO: Load quality profiles
+INFO: Load quality profiles (done) | time=244ms
+WARNING: SCM provider autodetection failed. Please use "sonar.scm.provider" to define SCM of your project, or disable the SCM Sensor in the project settings.
+INFO: Load active rules
+INFO: Load active rules (done) | time=559ms
+INFO: Load analysis cache
+INFO: Load analysis cache | time=33ms
+INFO: Preprocessing files...
+INFO: 2 languages detected in 47 preprocessed files (done) | time=119ms
+INFO: 17 files ignored because of inclusion/exclusion patterns
+INFO: Loading plugins for detected languages
+INFO: Load/download plugins
+INFO: Load/download plugins (done) | time=27ms
+INFO: Load project repositories
+INFO: Load project repositories (done) | time=167ms
+INFO: Indexing files...
+INFO: Project configuration:
+INFO:   Excluded sources: frontend/src/**/*.test.ts, frontend/src/**/*.test.tsx, backend/tests/**, frontend/src/**/*.test.ts, frontend/src/**/*.test.tsx
+INFO:   Included tests: backend/tests/**, frontend/src/**/*.test.ts, frontend/src/**/*.test.tsx
+INFO: 46 files indexed (done) | time=20ms
+INFO: Quality profile for py: Sonar way
+INFO: Quality profile for ts: Sonar way
+INFO: ------------- Run sensors on module Tetris Stage 2 Kiro
+INFO: Load metrics repository
+INFO: Load metrics repository (done) | time=38ms
+INFO: Sensor IaC YAML File Type Classification Sensor [iac]
+INFO: Sensor IaC YAML File Type Classification Sensor [iac] (done) | time=5ms
+INFO: Sensor IaC hadolint report Sensor [iac]
+INFO: Sensor IaC hadolint report Sensor [iac] (done) | time=1ms
+INFO: Sensor Java Config Sensor [iac]
+INFO: There are no files to be analyzed for the Java language
+INFO: Sensor Java Config Sensor [iac] (done) | time=0ms
+INFO: Sensor IaC Docker Sensor [iac]
+INFO: There are no files to be analyzed for the Docker language
+INFO: Sensor IaC Docker Sensor [iac] (done) | time=3ms
+INFO: Sensor Python Sensor [python]
+WARNING: Your code is analyzed as compatible with all Python 3 versions by default. You can get a more precise analysis by setting the Python version or version range in your configuration via the parameter "sonar.python.version"
+INFO: Starting global symbols computation
+INFO: 18 source files to be analyzed
+INFO: 18/18 source files have been analyzed
+INFO: Finished step global symbols computation in 580ms
+INFO: Starting rules execution
+INFO: 18 source files to be analyzed
+INFO: 18/18 source files have been analyzed
+INFO: Finished step rules execution in 1446ms
+INFO: The Python analyzer was able to leverage cached data from previous analyses for 0 out of 18 files. These files were not parsed.
+INFO: Sensor Python Sensor [python] (done) | time=3050ms
+INFO: Sensor Cobertura Sensor for Python coverage [python]
+INFO: Python test coverage
+INFO: Parsing report 'D:\KEVIN\UNIVERSIDAD\Trabajos\Proyecto\Caso 2-Tetris\Etapa 2\Kiro\docs\coverage.xml'
+INFO: Sensor Cobertura Sensor for Python coverage [python] (done) | time=448ms
+INFO: Sensor PythonXUnitSensor [python]
+INFO: Sensor PythonXUnitSensor [python] (done) | time=252ms
+INFO: Sensor Python Dependency Sensor [python]
+INFO: Sensor Python Dependency Sensor [python] (done) | time=13ms
+INFO: Sensor JavaScript/TypeScript Coverage [javascript]
+INFO: Analysing [D:\KEVIN\UNIVERSIDAD\Trabajos\Proyecto\Caso 2-Tetris\Etapa 2\Kiro\frontend\coverage\lcov.info]
+INFO: Sensor JavaScript/TypeScript Coverage [javascript] (done) | time=26ms
+INFO: Sensor TextAndSecretsSensor [text]
+INFO: Available processors: 16
+INFO: Using 16 threads for analysis.
+INFO: Start fetching files for the text and secrets analysis
+INFO: Using Git CLI to retrieve dirty files
+WARNING: Retrieving only language associated files, make sure to run the analysis inside a git repository to make use of inclusions specified via "sonar.text.inclusions"
+INFO: Starting the text and secrets analysis
+INFO: 34 source files to be analyzed for the text and secrets analysis
+INFO: 34/34 source files have been analyzed for the text and secrets analysis
+INFO: Sensor TextAndSecretsSensor [text] (done) | time=701ms
+INFO: ------------- Run sensors on project
+INFO: Sensor JavaScript/TypeScript/CSS analysis [javascript]
+INFO: Detected os: Windows 11 arch: amd64 alpine: false. Platform: WIN_X64
+INFO: Deploy location D:\KEVIN\UNIVERSIDAD\Trabajos\Proyecto\Caso 2-Tetris\Etapa 2\Kiro\.sonar-user-home\js\node-runtime, tagetRuntime: D:\KEVIN\UNIVERSIDAD\Trabajos\Proyecto\Caso 2-Tetris\Etapa 2\Kiro\.sonar-user-home\js\node-runtime\node.exe,  version: D:\KEVIN\UNIVERSIDAD\Trabajos\Proyecto\Caso 2-Tetris\Etapa 2\Kiro\.sonar-user-home\js\node-runtime\version.txt
+INFO: Using embedded Node.js runtime.
+INFO: Using Node.js executable: 'D:\KEVIN\UNIVERSIDAD\Trabajos\Proyecto\Caso 2-Tetris\Etapa 2\Kiro\.sonar-user-home\js\node-runtime\node.exe'.
+INFO: Memory configuration: OS (24501 MB), Node.js (4288 MB).
+INFO: gRPC analyze-project server listening on 127.0.0.1:54639
+INFO: Plugin version: [13.8.0.44569]
+INFO: Found 8 tsconfig.json file(s): [D:/KEVIN/UNIVERSIDAD/Trabajos/Proyecto/Caso 2-Tetris/Etapa 2/Kiro/docs/implementation-04/files/frontend/tsconfig.json, D:/KEVIN/UNIVERSIDAD/Trabajos/Proyecto/Caso 2-Tetris/Etapa 2/Kiro/docs/instrumentation-initial/files/frontend/tsconfig.json, D:/KEVIN/UNIVERSIDAD/Trabajos/Proyecto/Caso 2-Tetris/Etapa 2/Kiro/docs/interrupted-05-recovered/files/frontend/tsconfig.json, D:/KEVIN/UNIVERSIDAD/Trabajos/Proyecto/Caso 2-Tetris/Etapa 2/Kiro/docs/partial-01-account-switch/files/frontend/tsconfig.json, D:/KEVIN/UNIVERSIDAD/Trabajos/Proyecto/Caso 2-Tetris/Etapa 2/Kiro/docs/qa-06/files/frontend/tsconfig.json, D:/KEVIN/UNIVERSIDAD/Trabajos/Proyecto/Caso 2-Tetris/Etapa 2/Kiro/docs/specification-02/files/frontend/tsconfig.json, D:/KEVIN/UNIVERSIDAD/Trabajos/Proyecto/Caso 2-Tetris/Etapa 2/Kiro/docs/specification-03-native/files/frontend/tsconfig.json, D:/KEVIN/UNIVERSIDAD/Trabajos/Proyecto/Caso 2-Tetris/Etapa 2/Kiro/frontend/tsconfig.json]
+INFO: 16 source files to be analyzed
+INFO: Creating TypeScript(6.0.3) program with configuration file D:/KEVIN/UNIVERSIDAD/Trabajos/Proyecto/Caso 2-Tetris/Etapa 2/Kiro/docs/implementation-04/files/frontend/tsconfig.json [lib: lib.es2020.d.ts, lib.dom.d.ts, lib.dom.iterable.d.ts]
+INFO: Discovered referenced tsconfig: D:/KEVIN/UNIVERSIDAD/Trabajos/Proyecto/Caso 2-Tetris/Etapa 2/Kiro/docs/implementation-04/files/frontend/tsconfig.node.json
+INFO: No files to analyze from tsconfig D:/KEVIN/UNIVERSIDAD/Trabajos/Proyecto/Caso 2-Tetris/Etapa 2/Kiro/docs/implementation-04/files/frontend/tsconfig.json
+INFO: Creating TypeScript(6.0.3) program with configuration file D:/KEVIN/UNIVERSIDAD/Trabajos/Proyecto/Caso 2-Tetris/Etapa 2/Kiro/docs/instrumentation-initial/files/frontend/tsconfig.json [lib: lib.es2020.d.ts, lib.dom.d.ts, lib.dom.iterable.d.ts]
+INFO: Discovered referenced tsconfig: D:/KEVIN/UNIVERSIDAD/Trabajos/Proyecto/Caso 2-Tetris/Etapa 2/Kiro/docs/instrumentation-initial/files/frontend/tsconfig.node.json
+INFO: No files to analyze from tsconfig D:/KEVIN/UNIVERSIDAD/Trabajos/Proyecto/Caso 2-Tetris/Etapa 2/Kiro/docs/instrumentation-initial/files/frontend/tsconfig.json
+INFO: Creating TypeScript(6.0.3) program with configuration file D:/KEVIN/UNIVERSIDAD/Trabajos/Proyecto/Caso 2-Tetris/Etapa 2/Kiro/docs/interrupted-05-recovered/files/frontend/tsconfig.json [lib: lib.es2020.d.ts, lib.dom.d.ts, lib.dom.iterable.d.ts]
+INFO: Discovered referenced tsconfig: D:/KEVIN/UNIVERSIDAD/Trabajos/Proyecto/Caso 2-Tetris/Etapa 2/Kiro/docs/interrupted-05-recovered/files/frontend/tsconfig.node.json
+INFO: No files to analyze from tsconfig D:/KEVIN/UNIVERSIDAD/Trabajos/Proyecto/Caso 2-Tetris/Etapa 2/Kiro/docs/interrupted-05-recovered/files/frontend/tsconfig.json
+INFO: Creating TypeScript(6.0.3) program with configuration file D:/KEVIN/UNIVERSIDAD/Trabajos/Proyecto/Caso 2-Tetris/Etapa 2/Kiro/docs/partial-01-account-switch/files/frontend/tsconfig.json [lib: lib.es2020.d.ts, lib.dom.d.ts, lib.dom.iterable.d.ts]
+INFO: Discovered referenced tsconfig: D:/KEVIN/UNIVERSIDAD/Trabajos/Proyecto/Caso 2-Tetris/Etapa 2/Kiro/docs/partial-01-account-switch/files/frontend/tsconfig.node.json
+INFO: No files to analyze from tsconfig D:/KEVIN/UNIVERSIDAD/Trabajos/Proyecto/Caso 2-Tetris/Etapa 2/Kiro/docs/partial-01-account-switch/files/frontend/tsconfig.json
+INFO: Creating TypeScript(6.0.3) program with configuration file D:/KEVIN/UNIVERSIDAD/Trabajos/Proyecto/Caso 2-Tetris/Etapa 2/Kiro/docs/qa-06/files/frontend/tsconfig.json [lib: lib.es2020.d.ts, lib.dom.d.ts, lib.dom.iterable.d.ts]
+INFO: Discovered referenced tsconfig: D:/KEVIN/UNIVERSIDAD/Trabajos/Proyecto/Caso 2-Tetris/Etapa 2/Kiro/docs/qa-06/files/frontend/tsconfig.node.json
+INFO: No files to analyze from tsconfig D:/KEVIN/UNIVERSIDAD/Trabajos/Proyecto/Caso 2-Tetris/Etapa 2/Kiro/docs/qa-06/files/frontend/tsconfig.json
+INFO: Creating TypeScript(6.0.3) program with configuration file D:/KEVIN/UNIVERSIDAD/Trabajos/Proyecto/Caso 2-Tetris/Etapa 2/Kiro/docs/specification-02/files/frontend/tsconfig.json [lib: lib.es2020.d.ts, lib.dom.d.ts, lib.dom.iterable.d.ts]
+INFO: Discovered referenced tsconfig: D:/KEVIN/UNIVERSIDAD/Trabajos/Proyecto/Caso 2-Tetris/Etapa 2/Kiro/docs/specification-02/files/frontend/tsconfig.node.json
+INFO: No files to analyze from tsconfig D:/KEVIN/UNIVERSIDAD/Trabajos/Proyecto/Caso 2-Tetris/Etapa 2/Kiro/docs/specification-02/files/frontend/tsconfig.json
+INFO: Creating TypeScript(6.0.3) program with configuration file D:/KEVIN/UNIVERSIDAD/Trabajos/Proyecto/Caso 2-Tetris/Etapa 2/Kiro/docs/specification-03-native/files/frontend/tsconfig.json [lib: lib.es2020.d.ts, lib.dom.d.ts, lib.dom.iterable.d.ts]
+INFO: Discovered referenced tsconfig: D:/KEVIN/UNIVERSIDAD/Trabajos/Proyecto/Caso 2-Tetris/Etapa 2/Kiro/docs/specification-03-native/files/frontend/tsconfig.node.json
+INFO: No files to analyze from tsconfig D:/KEVIN/UNIVERSIDAD/Trabajos/Proyecto/Caso 2-Tetris/Etapa 2/Kiro/docs/specification-03-native/files/frontend/tsconfig.json
+INFO: Creating TypeScript(6.0.3) program with configuration file D:/KEVIN/UNIVERSIDAD/Trabajos/Proyecto/Caso 2-Tetris/Etapa 2/Kiro/frontend/tsconfig.json [lib: lib.es2020.d.ts, lib.dom.d.ts, lib.dom.iterable.d.ts]
+INFO: Discovered referenced tsconfig: D:/KEVIN/UNIVERSIDAD/Trabajos/Proyecto/Caso 2-Tetris/Etapa 2/Kiro/frontend/tsconfig.node.json
+INFO: Analyzing 7 file(s) from tsconfig D:/KEVIN/UNIVERSIDAD/Trabajos/Proyecto/Caso 2-Tetris/Etapa 2/Kiro/frontend/tsconfig.json (67 total files in program)
+INFO: Creating TypeScript(6.0.3) program with configuration file D:/KEVIN/UNIVERSIDAD/Trabajos/Proyecto/Caso 2-Tetris/Etapa 2/Kiro/docs/implementation-04/files/frontend/tsconfig.node.json [lib: lib.esnext.d.ts, lib.dom.d.ts]
+INFO: No files to analyze from tsconfig D:/KEVIN/UNIVERSIDAD/Trabajos/Proyecto/Caso 2-Tetris/Etapa 2/Kiro/docs/implementation-04/files/frontend/tsconfig.node.json
+INFO: Creating TypeScript(6.0.3) program with configuration file D:/KEVIN/UNIVERSIDAD/Trabajos/Proyecto/Caso 2-Tetris/Etapa 2/Kiro/docs/instrumentation-initial/files/frontend/tsconfig.node.json [lib: lib.esnext.d.ts, lib.dom.d.ts]
+INFO: No files to analyze from tsconfig D:/KEVIN/UNIVERSIDAD/Trabajos/Proyecto/Caso 2-Tetris/Etapa 2/Kiro/docs/instrumentation-initial/files/frontend/tsconfig.node.json
+INFO: Creating TypeScript(6.0.3) program with configuration file D:/KEVIN/UNIVERSIDAD/Trabajos/Proyecto/Caso 2-Tetris/Etapa 2/Kiro/docs/interrupted-05-recovered/files/frontend/tsconfig.node.json [lib: lib.esnext.d.ts, lib.dom.d.ts]
+INFO: No files to analyze from tsconfig D:/KEVIN/UNIVERSIDAD/Trabajos/Proyecto/Caso 2-Tetris/Etapa 2/Kiro/docs/interrupted-05-recovered/files/frontend/tsconfig.node.json
+INFO: Creating TypeScript(6.0.3) program with configuration file D:/KEVIN/UNIVERSIDAD/Trabajos/Proyecto/Caso 2-Tetris/Etapa 2/Kiro/docs/partial-01-account-switch/files/frontend/tsconfig.node.json [lib: lib.esnext.d.ts, lib.dom.d.ts]
+INFO: No files to analyze from tsconfig D:/KEVIN/UNIVERSIDAD/Trabajos/Proyecto/Caso 2-Tetris/Etapa 2/Kiro/docs/partial-01-account-switch/files/frontend/tsconfig.node.json
+INFO: Creating TypeScript(6.0.3) program with configuration file D:/KEVIN/UNIVERSIDAD/Trabajos/Proyecto/Caso 2-Tetris/Etapa 2/Kiro/docs/qa-06/files/frontend/tsconfig.node.json [lib: lib.esnext.d.ts, lib.dom.d.ts]
+INFO: No files to analyze from tsconfig D:/KEVIN/UNIVERSIDAD/Trabajos/Proyecto/Caso 2-Tetris/Etapa 2/Kiro/docs/qa-06/files/frontend/tsconfig.node.json
+INFO: Creating TypeScript(6.0.3) program with configuration file D:/KEVIN/UNIVERSIDAD/Trabajos/Proyecto/Caso 2-Tetris/Etapa 2/Kiro/docs/specification-02/files/frontend/tsconfig.node.json [lib: lib.esnext.d.ts, lib.dom.d.ts]
+INFO: No files to analyze from tsconfig D:/KEVIN/UNIVERSIDAD/Trabajos/Proyecto/Caso 2-Tetris/Etapa 2/Kiro/docs/specification-02/files/frontend/tsconfig.node.json
+INFO: Creating TypeScript(6.0.3) program with configuration file D:/KEVIN/UNIVERSIDAD/Trabajos/Proyecto/Caso 2-Tetris/Etapa 2/Kiro/docs/specification-03-native/files/frontend/tsconfig.node.json [lib: lib.esnext.d.ts, lib.dom.d.ts]
+INFO: No files to analyze from tsconfig D:/KEVIN/UNIVERSIDAD/Trabajos/Proyecto/Caso 2-Tetris/Etapa 2/Kiro/docs/specification-03-native/files/frontend/tsconfig.node.json
+INFO: Creating TypeScript(6.0.3) program with configuration file D:/KEVIN/UNIVERSIDAD/Trabajos/Proyecto/Caso 2-Tetris/Etapa 2/Kiro/frontend/tsconfig.node.json [lib: lib.esnext.d.ts, lib.dom.d.ts]
+INFO: No files to analyze from tsconfig D:/KEVIN/UNIVERSIDAD/Trabajos/Proyecto/Caso 2-Tetris/Etapa 2/Kiro/frontend/tsconfig.node.json
+INFO: Analyzing 9 file(s) using merged compiler options [lib: lib.esnext.d.ts, lib.dom.d.ts]
+INFO: 16/16 source files have been analyzed
+INFO: Hit the cache for 0 out of 16
+INFO: Miss the cache for 16 out of 16: ANALYSIS_MODE_INELIGIBLE [16/16]
+INFO: Sensor JavaScript/TypeScript/CSS analysis [javascript] (done) | time=13359ms
+INFO: Sensor IaC Project Sensor [iac]
+INFO: Sensor IaC Project Sensor [iac] (done) | time=0ms
+INFO: Sensor Zero Coverage Sensor
+INFO: Sensor Zero Coverage Sensor (done) | time=1ms
+INFO: ------------- Gather SCA dependencies on project
+INFO: Dependency analysis skipped
+INFO: SCM Publisher No SCM system was detected. You can use the 'sonar.scm.provider' property to explicitly specify it.
+INFO: CPD Executor 6 files had no CPD blocks
+INFO: CPD Executor Calculating CPD for 14 files
+INFO: CPD Executor CPD calculation finished (done) | time=10ms
+INFO: Analysis report generated in 127ms, dir size=562.7 kB
+INFO: Analysis report compressed in 948ms, zip size=183.6 kB
+INFO: Analysis report uploaded in 72ms
+INFO: ANALYSIS SUCCESSFUL, you can find the results at: http://127.0.0.1:9000/dashboard?id=tetris-stage2-kiro
+INFO: Note that you will be able to access the updated dashboard once the server has processed the submitted analysis report
+INFO: More about the report processing at http://127.0.0.1:9000/api/ce/task?id=19506ab6-d54d-41c6-ab8c-0702cb42ac9b
+INFO: Analysis total time: 22.760 s
+INFO: SonarScanner Engine completed successfully

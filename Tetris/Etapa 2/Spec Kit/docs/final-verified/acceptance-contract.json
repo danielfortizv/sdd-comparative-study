@@ -1,0 +1,64 @@
+{
+  "version": "1.0",
+  "catalog_id": "S2-16",
+  "base_url": "http://127.0.0.1:8000",
+  "measured_at_utc": "2026-10-21T05:23:58.027324+00:00",
+  "status": "pass",
+  "scope": "supplemental endpoint/status/full-key checks; not extra catalog IDs",
+  "controls": [
+    {
+      "method": "POST",
+      "route": "/api/games",
+      "http_status": 201,
+      "status": "pass"
+    },
+    {
+      "method": "GET",
+      "route": "/api/games/{id}",
+      "http_status": 200,
+      "status": "pass"
+    },
+    {
+      "method": "POST",
+      "route": "/api/games/{id}/move",
+      "http_status": 200,
+      "status": "pass"
+    },
+    {
+      "method": "POST",
+      "route": "/api/games/{id}/tick",
+      "http_status": 200,
+      "status": "pass"
+    },
+    {
+      "method": "POST",
+      "route": "/api/games/{id}/hold",
+      "http_status": 200,
+      "status": "pass"
+    },
+    {
+      "method": "GET",
+      "route": "/api/games/{missing-id}",
+      "http_status": 404,
+      "status": "pass"
+    },
+    {
+      "method": "POST",
+      "route": "/api/games/{missing-id}/move",
+      "http_status": 404,
+      "status": "pass"
+    },
+    {
+      "method": "POST",
+      "route": "/api/games/{missing-id}/tick",
+      "http_status": 404,
+      "status": "pass"
+    },
+    {
+      "method": "POST",
+      "route": "/api/games/{missing-id}/hold",
+      "http_status": 404,
+      "status": "pass"
+    }
+  ]
+}

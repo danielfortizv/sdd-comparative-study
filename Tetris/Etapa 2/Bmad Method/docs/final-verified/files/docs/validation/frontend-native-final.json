@@ -1,0 +1,32 @@
+{
+  "researcher_created": true,
+  "label": "frontend-native-final",
+  "cwd": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\Bmad Method\\frontend",
+  "command": [
+    "C:/Program Files/nodejs/node.exe",
+    "D:/KEVIN/UNIVERSIDAD/Trabajos/Proyecto/Caso 2-Tetris/Etapa 2/Bmad Method/frontend/node_modules/vitest/vitest.mjs",
+    "run",
+    "--coverage",
+    "--coverage.reportsDirectory=../docs/validation/frontend-coverage",
+    "--reporter=default",
+    "--reporter=json",
+    "--outputFile=../docs/validation/frontend-final.json"
+  ],
+  "requested_command": [
+    "C:/Program Files/nodejs/node.exe",
+    "D:/KEVIN/UNIVERSIDAD/Trabajos/Proyecto/Caso 2-Tetris/Etapa 2/Bmad Method/frontend/node_modules/vitest/vitest.mjs",
+    "run",
+    "--coverage",
+    "--coverage.reportsDirectory=../docs/validation/frontend-coverage",
+    "--reporter=default",
+    "--reporter=json",
+    "--outputFile=../docs/validation/frontend-final.json"
+  ],
+  "recorder_sha256": "78AA53001F647A5CC67C892E8C2FC5D9CDBA83B23723FC31AB01D63153D589AA",
+  "started_at_utc": "2026-10-26T02:25:31.959317+00:00",
+  "ended_at_utc": "2026-10-26T02:25:37.523466+00:00",
+  "duration_seconds": 5.564056,
+  "exit_code": 0,
+  "log_path": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\Bmad Method\\docs\\validation\\frontend-native-final.log",
+  "log_sha256": "D0FE0737F3ADEAE14EEF02B39E262698FED27FA5D1339C8589EA858FBA50BFB5"
+}

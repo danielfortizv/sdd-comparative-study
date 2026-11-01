@@ -1,0 +1,21 @@
+{
+  "name": "tetris-stage1-option-a",
+  "mode": "vendored",
+  "dependencies": {
+    "maria/fastapi": {
+      "version": "0.1.0"
+    },
+    "softaworks/agent-toolkit": {
+      "version": "3027f20f3181758385a1bb8c022d4041dfb4de84",
+      "source": "https://github.com/softaworks/agent-toolkit",
+      "include": {
+        "skills": [
+          "react-dev"
+        ]
+      }
+    }
+  },
+  "agents": [
+    "gemini"
+  ]
+}

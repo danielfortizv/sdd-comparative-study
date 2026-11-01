@@ -1,0 +1,155 @@
+{
+  "session_id": "3e973ace-7e86-4fdc-933f-dbbb695ebb0f",
+  "response": "# Stage 2 Q01-Retry: Quality Assurance & Remediation Complete\n\nWe have successfully resolved the React StrictMode concurrency issues, fixed all concrete SonarQube findings, added robust verification tests, and achieved an official **OK** Quality Gate status with exactly **0 new violations**.\n\n---\n\n### 1. Key Engineering Remediations\n\n*   **StrictMode Concurrency Fixed (App.tsx):**\n    *   Replaced the legacy `generationIdRef.current = -1` on unmount with a strictly monotonic increment: `generationIdRef.current += 1`.\n    *   This eliminates the `<=` 0 queue rejection bug, prevents any stale in-flight fetches from unmounted lifecycles from overwriting subsequent active runs, and retains standard StrictMode wrappers in `main.tsx`.\n*   **Sonar Violations Remediated (0 New Violations):**\n    *   **`typescript:S2486` / `typescript:S3735`:** Cleaned up catch blocks in `startNewGame` and `queueMutation` to make them non-empty without using forbidden `console.error` or the `void` operator.\n    *   **`typescript:S4624`:** Eliminated nested template literals on line 257 by using clean string concatenation.\n    *   **`typescript:S3776` / `typescript:S4323`:** Extracted complex fetch-and-parse logic from `queueMutation` into isolated helpers (`dispatchMutationRequest` and `executeMutationAndParse`), reducing cognitive complexity from 19 to below 10, and added `ActionType` and `MoveDirection` type aliases.\n    *   **`typescript:S8980`:** Removed redundant async `act()` wrappers around standard synchronous click triggers in `App.test.tsx`.\n    *   **`css:S7924`:** Improved disabled hold button color contrast by changing it to high-contrast `#8f9cae` in `index.css`.\n    *   **`python:S8415`:** Added explicit `responses={404: ...}` definitions to all 4 games endpoints in `games.py`.\n    *   **`python:S1192`:** Extracted the `\"Game session not found\"` duplicate literal to a module-level constant.\n    *   **`python:S8396`:** Assigned an explicit default value (`= None`) to the `active_piece` optional field in `game.py`.\n\n---\n\n### 2. Empirical Verification & Gate Status\n\n*   **Frontend Unit Tests (15/15 Passed):**\n    *   Added **two brand-new unit tests** in `App.test.tsx` verifying StrictMode safety:\n        1. *`StrictMode initial second creation supports Hold and keyboard input`*\n        2. *`StrictMode cleanup safety: resolving oldest initial creation cannot overwrite state after restart or remount`*\n    *   All 15 Vitest tests pass cleanly. Captured coverage log is stored under `docs/qa01-retry-frontend-tests.log`.\n*   **External Concurrency Acceptance Harness (6/6 Passed):**\n    *   Ran `vitest.external.config.mjs`. All 6/6 highly concurrent scenarios pass, writing findings to `07-qa01-races-vitest.json`.\n*   **Backend Tests (23/23 Passed):**\n    *   All backend tests passed cleanly with coverage written to `docs/coverage.xml`. Captured logs are saved under `docs/qa01-retry-backend-tests.log`.\n*   **Dependency Audits & Build (Passed):**\n    *   Both full and production-only (`--omit=dev`) npm audits found **0 vulnerabilities**. Production build compiled flawlessly.\n*   **SonarQube Verification (Passed):**\n    *   Ran a fresh Sonar scan and fetch. The official quality metrics now show:\n        *   **`Quality Gate`**: **`OK`**\n        *   **`New Coverage`**: **`80.6%`** (Gate threshold: >=80%)\n        *   **`New Duplication`**: **`0.0%`** (Gate threshold: <=3%)\n        *   **`New Violations`**: **`0`** (Gate threshold: 0)",
+  "stats": {
+    "models": {
+      "gemini-3.5-flash": {
+        "api": {
+          "totalRequests": 92,
+          "totalErrors": 3,
+          "totalLatencyMs": 406741,
+          "errorsByType": {
+            "ApiError": 2,
+            "Error": 1
+          }
+        },
+        "tokens": {
+          "input": 1235343,
+          "prompt": 8665140,
+          "candidates": 14262,
+          "total": 8707939,
+          "cached": 7429797,
+          "thoughts": 28537,
+          "tool": 0
+        },
+        "roles": {
+          "main": {
+            "totalRequests": 92,
+            "totalErrors": 3,
+            "totalLatencyMs": 406741,
+            "tokens": {
+              "input": 1235343,
+              "prompt": 8665140,
+              "candidates": 14262,
+              "total": 8707939,
+              "cached": 7429797,
+              "thoughts": 28537,
+              "tool": 0
+            }
+          }
+        }
+      },
+      "gemini-3-flash-preview": {
+        "api": {
+          "totalRequests": 4,
+          "totalErrors": 0,
+          "totalLatencyMs": 16418,
+          "errorsByType": {}
+        },
+        "tokens": {
+          "input": 47696,
+          "prompt": 47696,
+          "candidates": 507,
+          "total": 49750,
+          "cached": 0,
+          "thoughts": 1547,
+          "tool": 0
+        },
+        "roles": {
+          "utility_loop_detector": {
+            "totalRequests": 4,
+            "totalErrors": 0,
+            "totalLatencyMs": 16418,
+            "tokens": {
+              "input": 47696,
+              "prompt": 47696,
+              "candidates": 507,
+              "total": 49750,
+              "cached": 0,
+              "thoughts": 1547,
+              "tool": 0
+            }
+          }
+        }
+      }
+    },
+    "tools": {
+      "totalCalls": 92,
+      "totalSuccess": 92,
+      "totalFail": 0,
+      "totalDurationMs": 174935,
+      "totalDecisions": {
+        "accept": 92,
+        "reject": 0,
+        "modify": 0,
+        "auto_accept": 0
+      },
+      "byName": {
+        "update_topic": {
+          "count": 3,
+          "success": 3,
+          "fail": 0,
+          "durationMs": 6,
+          "decisions": {
+            "accept": 3,
+            "reject": 0,
+            "modify": 0,
+            "auto_accept": 0
+          }
+        },
+        "read_file": {
+          "count": 27,
+          "success": 27,
+          "fail": 0,
+          "durationMs": 101,
+          "decisions": {
+            "accept": 27,
+            "reject": 0,
+            "modify": 0,
+            "auto_accept": 0
+          }
+        },
+        "replace": {
+          "count": 22,
+          "success": 22,
+          "fail": 0,
+          "durationMs": 448,
+          "decisions": {
+            "accept": 22,
+            "reject": 0,
+            "modify": 0,
+            "auto_accept": 0
+          }
+        },
+        "run_shell_command": {
+          "count": 36,
+          "success": 36,
+          "fail": 0,
+          "durationMs": 155600,
+          "decisions": {
+            "accept": 36,
+            "reject": 0,
+            "modify": 0,
+            "auto_accept": 0
+          }
+        },
+        "grep_search": {
+          "count": 4,
+          "success": 4,
+          "fail": 0,
+          "durationMs": 18780,
+          "decisions": {
+            "accept": 4,
+            "reject": 0,
+            "modify": 0,
+            "auto_accept": 0
+          }
+        }
+      }
+    },
+    "files": {
+      "totalLinesAdded": 243,
+      "totalLinesRemoved": 105
+    }
+  }
+}

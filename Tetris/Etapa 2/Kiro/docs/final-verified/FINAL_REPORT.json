@@ -1,0 +1,180 @@
+{
+  "researcher_created": true,
+  "verified_at_utc": "2026-10-23T15:02:24.816029-05:00",
+  "status": "implementation_and20_catalog_verified",
+  "tool": "Kiro",
+  "stage": 2,
+  "option": "A",
+  "catalog": "acceptance/final/catalog.json",
+  "catalog_passed": 20,
+  "native_generated_tests": {
+    "backend_instances": 120,
+    "frontend_instances": 49
+  },
+  "independent_concurrency_tests": {
+    "original_races_passed": 3,
+    "queued_timers_passed": 2
+  },
+  "domain_records_passed": 15,
+  "API_records_passed": 7,
+  "contract_controls_passed": 9,
+  "backend_coverage": {
+    "status": "parsed",
+    "path": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\Kiro\\docs\\researcher-verification\\final-07\\backend-coverage.xml",
+    "line_rate": 0.9919,
+    "lines_covered": 245,
+    "lines_valid": 247,
+    "branch_rate": 0.0,
+    "branches_covered": 0,
+    "branches_valid": 0,
+    "sources": [
+      "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\Kiro\\backend\\app"
+    ],
+    "scope": "pytest-cov --cov=app; branch counters are interpreted only as emitted, not proof branch instrumentation enabled"
+  },
+  "frontend_coverage": {
+    "lines": {
+      "total": 163,
+      "covered": 154,
+      "skipped": 0,
+      "pct": 94.47
+    },
+    "statements": {
+      "total": 184,
+      "covered": 163,
+      "skipped": 0,
+      "pct": 88.58
+    },
+    "functions": {
+      "total": 41,
+      "covered": 38,
+      "skipped": 0,
+      "pct": 92.68
+    },
+    "branches": {
+      "total": 98,
+      "covered": 76,
+      "skipped": 0,
+      "pct": 77.55
+    },
+    "branchesTrue": {
+      "total": 0,
+      "covered": 0,
+      "skipped": 0,
+      "pct": "Unknown"
+    }
+  },
+  "sonar": {
+    "researcher_created": true,
+    "fetched_at_utc": "2026-10-23T19:44:33.2428883Z",
+    "project": "tetris-stage2-kiro",
+    "baseline": false,
+    "gate": "OK",
+    "coverage": "93.2",
+    "complexity": "153",
+    "reliability_rating": "1.0",
+    "code_smells": "7",
+    "duplicated_lines_density": "0.0",
+    "security_rating": "1.0",
+    "security_hotspots": "0",
+    "sqale_index": "23",
+    "sqale_rating": "1.0",
+    "bugs": "0",
+    "cognitive_complexity": "114",
+    "ncloc": "784",
+    "vulnerabilities": "0",
+    "lines": "1292"
+  },
+  "exact_quality": {
+    "researcher_created": true,
+    "verified_at_utc": "2026-10-23T19:44:23.9337847Z",
+    "project_key": "tetris-stage2-kiro",
+    "baseline": false,
+    "report_task_sha256": "2644A1C0EB8299193E11C5BC78F0CE8E5A01DAC66811DC168CC3A9B4CFCABD65",
+    "ce_task_id": "19506ab6-d54d-41c6-ab8c-0702cb42ac9b",
+    "ce_status": "SUCCESS",
+    "analysis_id": "c9e3f4c9-35e0-4434-8dfd-3723413c0588",
+    "submitted_at": "2026-10-23T14:44:18-05:00",
+    "executed_at": "2026-10-23T14:44:23-05:00",
+    "gate_status": "OK",
+    "gate_conditions": [
+      {
+        "status": "OK",
+        "metricKey": "new_coverage",
+        "comparator": "LT",
+        "errorThreshold": "80",
+        "actualValue": "88.7"
+      },
+      {
+        "status": "OK",
+        "metricKey": "new_duplicated_lines_density",
+        "comparator": "GT",
+        "errorThreshold": "3",
+        "actualValue": "0.0"
+      },
+      {
+        "status": "OK",
+        "metricKey": "new_violations",
+        "comparator": "GT",
+        "errorThreshold": "0",
+        "actualValue": "0"
+      }
+    ],
+    "baseline_is_final_stage2_acceptance": false,
+    "coverage_inputs": [
+      {
+        "path": "docs/coverage.xml",
+        "exists": true,
+        "sha256": "7E4ECA49C95F9FBEEC0581A302756CB752770B9E434809EF371F0561311969B2",
+        "last_write_time_utc": "2026-10-23T19:42:46.6134643Z"
+      },
+      {
+        "path": "frontend/coverage/lcov.info",
+        "exists": true,
+        "sha256": "8C61BDCB79E56554CBC436E7334C3B3F2AF73FEBF33CB05B08659D44B235754C",
+        "last_write_time_utc": "2026-10-23T19:42:23.2086357Z"
+      }
+    ]
+  },
+  "native_metrics_path": "metrics.json",
+  "native_metrics_sha256": "0C4F83CB61A1E6B6EEFC529FE507FCC0A28ADBBC9FF0B57024392754FB7D4FE6",
+  "known_credits": 101.36936265058041,
+  "unknown_credit_labels": [
+    "01-specify",
+    "05-qa"
+  ],
+  "known_CLI_seconds": 4157.155,
+  "unknown_CLI_labels": [
+    "05-qa"
+  ],
+  "known_agent_seconds": 3997.5069999999996,
+  "tokens": "not exposed; unknown, not zero",
+  "API_attempts_errors_successes": "not exposed; requestIds are identifiers only",
+  "source": {
+    "files": 37,
+    "lines": 3691,
+    "nonblank_lines": 3022,
+    "characters": 119547,
+    "lines_per_file": 99.76
+  },
+  "native_feature_specs": {
+    "files": 3,
+    "lines": 886,
+    "nonblank_lines": 675,
+    "characters": 92802,
+    "lines_per_file": 295.33
+  },
+  "external_QA_attempts": 3,
+  "distinct_external_QA_intents": 2,
+  "publication_document": "https://docs.google.com/document/d/1JRZvjK8-fdFitwbiKLe2NhOsk1FZNCa_TclgnFwdjao",
+  "limitations": [
+    "Two interrupted-run credit totals remain unknown; account deltas are not substituted.",
+    "Resolved backend model/auxiliary per-role usage are unknown under Auto. CLI01 used2.25;02 onward2.33.",
+    "Original legacy closed-schema test fails as required new fields extend it;38 functional tests pass unchanged.",
+    "Sonar0new violations coexists with7inherited smells; no scalability/load score inferred.",
+    "Sonar93.2%, frontend94.47%lines/88.58%statements and backend245/247 use different denominators.",
+    "Researcher/Codex helpers, verification, browser work and documentation are excluded from Kiro credits/time."
+  ],
+  "no_repository_uploads_or_commits": true,
+  "publication_tracking_path": "drive-final-publication.json"
+}

@@ -1,0 +1,323 @@
+{
+  "researcher_created": true,
+  "created_at_utc": "2026-10-21T14:23:31.812001+00:00",
+  "source_root": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 1\\Tessl",
+  "destination_root": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\Tessl",
+  "files": [
+    {
+      "path": "backend/app/controllers/games.py",
+      "bytes": 2256,
+      "sha256": "E66DD5A94799546EB4EB9A29B64F1741B5420D5682638C4236191EE564B57528"
+    },
+    {
+      "path": "backend/app/core/config.py",
+      "bytes": 180,
+      "sha256": "0EDCC679E16FF9D13B206B87A6C92CBC0CCCB75412D0D7F2AFFDD2D87DAFCBE7"
+    },
+    {
+      "path": "backend/app/domain/pieces.py",
+      "bytes": 671,
+      "sha256": "E57C05C961EFED813DFA1CA565166C50F8B62D9FB3A9FC37121FECC470EA6D0E"
+    },
+    {
+      "path": "backend/app/domain/rules.py",
+      "bytes": 4210,
+      "sha256": "B34A3EEBF32946630C8588A1CF7579A6185CAEC297AE7CA021B28A438362EEB5"
+    },
+    {
+      "path": "backend/app/main.py",
+      "bytes": 670,
+      "sha256": "D5D2B7CFF78C1FB186C3E17B8E6A43F044B95CA051DB52B98EFD59364EE3CB73"
+    },
+    {
+      "path": "backend/app/models/game.py",
+      "bytes": 536,
+      "sha256": "AA4EECB66FDF2A837F28D9D900471613CA9122C41A5D2DB9ED371E5FB51D609D"
+    },
+    {
+      "path": "backend/pyproject.toml",
+      "bytes": 560,
+      "sha256": "6BD6C219916FE366AE78368A6D88E663B2326B197808E6E43C2D063B0990E212"
+    },
+    {
+      "path": "backend/tests/test_game.py",
+      "bytes": 10423,
+      "sha256": "EE683A8C67076B8FFC4174B3A4F974370E064F955CC18CAA952A4DE27393A4A3"
+    },
+    {
+      "path": "frontend/index.html",
+      "bytes": 330,
+      "sha256": "BA65391726B23EA4914755E81DFAD88CD6E0825E7FA3BF39FAFC314600393E9E"
+    },
+    {
+      "path": "frontend/package-lock.json",
+      "bytes": 144475,
+      "sha256": "65A7C6CA9F367F5ADFEF2B175E404A05E5236249659609899CB65C285976799E"
+    },
+    {
+      "path": "frontend/package.json",
+      "bytes": 638,
+      "sha256": "6E42009E2CD7C2EEDEA3F44AF04152B63497D2589B80D6747DCE38F4B796BFA0"
+    },
+    {
+      "path": "frontend/src/api.ts",
+      "bytes": 1409,
+      "sha256": "8549B363E487A861CA64B03376D6361A092E29034D92FBFCC55FFE3153391AD5"
+    },
+    {
+      "path": "frontend/src/App.tsx",
+      "bytes": 4383,
+      "sha256": "0D018C987B3C98F4E5A10903FFE145DE0B7E8CD5870328A9DC6108EF4755BC05"
+    },
+    {
+      "path": "frontend/src/components/GameStatus.tsx",
+      "bytes": 1970,
+      "sha256": "12B8EF0E0275B4BD162BBC2471054DB3A82F8878C7AB5D4500C026B41917AE5D"
+    },
+    {
+      "path": "frontend/src/components/TetrisBoard.test.tsx",
+      "bytes": 1568,
+      "sha256": "A0C8C47C9A23B24CCB4C0C6B07F1E080215E4B2E25862C00CD743A8E1EE121EF"
+    },
+    {
+      "path": "frontend/src/components/TetrisBoard.tsx",
+      "bytes": 1433,
+      "sha256": "1DDCE2645A3D6A55635AAD4906E45BB65ADC5FDAE0AF3C2DE4E5324AA6E0F845"
+    },
+    {
+      "path": "frontend/src/index.css",
+      "bytes": 7538,
+      "sha256": "B3FB2D598EB659561FEB22EF312259355C1944B58B892413E94734DA3E4883B6"
+    },
+    {
+      "path": "frontend/src/main.tsx",
+      "bytes": 246,
+      "sha256": "04BC6C664005D207F6C9A42CAC1A11810F6257A77604ECC9A2DFA1F0A68959BA"
+    },
+    {
+      "path": "frontend/src/types.ts",
+      "bytes": 473,
+      "sha256": "CC470DD66AFC9B7416106D7CF12A9EB97602264C96C81965B556262F596A2862"
+    },
+    {
+      "path": "frontend/tsconfig.app.json",
+      "bytes": 736,
+      "sha256": "7B2EF2B7D200798A36368C0D0066FA11E90A7CEE0A00916003933AFE4A030A42"
+    },
+    {
+      "path": "frontend/tsconfig.json",
+      "bytes": 126,
+      "sha256": "AD28D132EE48D6E23917CF5827CACE785D0FC01A44CA68B0DDA51CC8C3FD3F52"
+    },
+    {
+      "path": "frontend/tsconfig.node.json",
+      "bytes": 629,
+      "sha256": "746794F9E00A64807D8C08C90E3CB31DCF8E5B5CC70B606ADEE6B5A58C8D6318"
+    },
+    {
+      "path": "frontend/vite.config.d.ts",
+      "bytes": 76,
+      "sha256": "4B96DD19FD2949D28CE80E913412B0026DC421E5BF6C31D87C7B5EB11B5753B4"
+    },
+    {
+      "path": "frontend/vite.config.js",
+      "bytes": 354,
+      "sha256": "74A1617BBA280B1E9325610B607E5882ECA0C9F9379B3D8036D1300952105651"
+    },
+    {
+      "path": "frontend/vite.config.ts",
+      "bytes": 526,
+      "sha256": "FCD91673C825B2E6D146CF01EF5E625C8258D5B3756BECF591E5E0F46022077A"
+    },
+    {
+      "path": "specs/requirements.md",
+      "bytes": 8893,
+      "sha256": "089245525ADD64E41B43498D3BA241B388DDA573AE1E92FD916F7E18ED4BB27D"
+    },
+    {
+      "path": "specs/session_notes.md",
+      "bytes": 1336,
+      "sha256": "7202548B9023A5EA3BEB27F2C87E41B4B4AC8670F5A6340D7FABD27707B96DA1"
+    },
+    {
+      "path": ".tessl/plugins/maria/fastapi/rules/pii-sanitisation.md",
+      "bytes": 1330,
+      "sha256": "A487E76DBCB31095998BE1833115CCBBB69A442E7972AE32A139F42A6C370DA3"
+    },
+    {
+      "path": ".tessl/plugins/maria/fastapi/skills/run-check-server/SKILL.md",
+      "bytes": 1562,
+      "sha256": "EC7ED3A305E364111AD2DBF7380E4114B3F8D95CB3400D01B74A61A2DF44F4B0"
+    },
+    {
+      "path": ".tessl/plugins/maria/fastapi/skills/scaffold-project/SKILL.md",
+      "bytes": 2313,
+      "sha256": "EB022A920C7558A7A3C96B0E5CB1311A56FDAE01105A193D5F66CD6500C75F13"
+    },
+    {
+      "path": ".tessl/plugins/maria/fastapi/tessl-package.json",
+      "bytes": 52,
+      "sha256": "0FA9761DDDB89BE81328571C909DB339E89F98BB2ABA1411EDCCC78388DEF33D"
+    },
+    {
+      "path": ".tessl/plugins/maria/fastapi/tile.json",
+      "bytes": 519,
+      "sha256": "05FFA60298C25F23363C220B20FA218ACE4F2C3421AC97E882425B5EB83E6570"
+    },
+    {
+      "path": ".tessl/plugins/softaworks/agent-toolkit/README.md",
+      "bytes": 9947,
+      "sha256": "2E184B529BFC27F2A342E05D9DE077E46B8508FBDFF308C6F32F4B2FB4C1FAE6"
+    },
+    {
+      "path": ".tessl/plugins/softaworks/agent-toolkit/skills/react-dev/examples/generic-components.md",
+      "bytes": 13481,
+      "sha256": "E275C774196062AE4747AB0B2B1562E493213798F497006293D6E3AAE0AF6BFF"
+    },
+    {
+      "path": ".tessl/plugins/softaworks/agent-toolkit/skills/react-dev/examples/server-components.md",
+      "bytes": 13806,
+      "sha256": "7BA5E280117F89BA59D9B93A029C0EF6F859F80A12C48461E834D5586389EDEF"
+    },
+    {
+      "path": ".tessl/plugins/softaworks/agent-toolkit/skills/react-dev/references/event-handlers.md",
+      "bytes": 14949,
+      "sha256": "999EDCE86E4693528ABC98DE479731F082FABE72360D1C0D049CCBAB73DCEF25"
+    },
+    {
+      "path": ".tessl/plugins/softaworks/agent-toolkit/skills/react-dev/references/hooks.md",
+      "bytes": 11433,
+      "sha256": "6AC7B7F8592DE9C1D1D37FBE92C2A46C2681668C6A21C9D4124FBF40EB555E1E"
+    },
+    {
+      "path": ".tessl/plugins/softaworks/agent-toolkit/skills/react-dev/references/react-19-patterns.md",
+      "bytes": 14716,
+      "sha256": "E1078690BDAA1C49E013FCACEF5FF79DD33F0F4BADE1FD8699B60424EC8CE80F"
+    },
+    {
+      "path": ".tessl/plugins/softaworks/agent-toolkit/skills/react-dev/references/react-router.md",
+      "bytes": 21076,
+      "sha256": "FE3C1D7F3973E4A3DA9BA0BF2135E5A5E8BFBCC948086E34A43A0749B1912AF7"
+    },
+    {
+      "path": ".tessl/plugins/softaworks/agent-toolkit/skills/react-dev/references/tanstack-router.md",
+      "bytes": 12840,
+      "sha256": "2F79FEB391187DAB93685A3399D5FD660427A2A800BE79EF0CE43462C1A51C71"
+    },
+    {
+      "path": ".tessl/plugins/softaworks/agent-toolkit/skills/react-dev/SKILL.md",
+      "bytes": 10679,
+      "sha256": "6906012FE308A0ED1976761D7D80C9604EB0F0273CCDCFCBE66096D91D00F52E"
+    },
+    {
+      "path": ".tessl/plugins/softaworks/agent-toolkit/tessl-package.json",
+      "bytes": 98,
+      "sha256": "3715894BAD4F32BBAC8B098E1AED09892FB4736C4787792D9CE0C13505841A03"
+    },
+    {
+      "path": ".tessl/plugins/softaworks/agent-toolkit/tile.json",
+      "bytes": 1402,
+      "sha256": "FC64856B65C80F41778F65AA6EBD84E76C75066810D23F46E953B306E1FE8EE3"
+    },
+    {
+      "path": ".tessl/RULES.md",
+      "bytes": 332,
+      "sha256": "F680175CE897F5B64334E7CE7297A8C8AB18C6CA035548756FC948AEF9B1B042"
+    },
+    {
+      "path": ".gemini/settings.json",
+      "bytes": 334,
+      "sha256": "92B59997E4D3582FD634DFEBEC6CD77875B203138CF59F23BD54366556E90662"
+    },
+    {
+      "path": "AGENTS.md",
+      "bytes": 100,
+      "sha256": "49C4EB0943423EACB23348F847A9F1A96B0ECA55934018C4F9EAD7908760D701"
+    },
+    {
+      "path": "tessl.json",
+      "bytes": 416,
+      "sha256": "613A1803FC53937121D8B0AA497FC9B9DD420C5293A59835824E27477148CEB0"
+    },
+    {
+      "path": ".geminiignore",
+      "bytes": 167,
+      "sha256": "416904D121FCDE26654EE10B57262AD155EB6F5509CCDC2382B1624A26920F0D"
+    }
+  ],
+  "skipped": [
+    {
+      "path": "backend/.coverage",
+      "reason": "dependency, build, cache, evidence or credential exclusion"
+    },
+    {
+      "path": "backend/.pytest_cache",
+      "reason": "dependency, build, cache, evidence or credential exclusion"
+    },
+    {
+      "path": "backend/.venv",
+      "reason": "dependency, build, cache, evidence or credential exclusion"
+    },
+    {
+      "path": "backend/app/__pycache__",
+      "reason": "dependency, build, cache, evidence or credential exclusion"
+    },
+    {
+      "path": "backend/app/controllers/__pycache__",
+      "reason": "dependency, build, cache, evidence or credential exclusion"
+    },
+    {
+      "path": "backend/app/core/__pycache__",
+      "reason": "dependency, build, cache, evidence or credential exclusion"
+    },
+    {
+      "path": "backend/app/domain/__pycache__",
+      "reason": "dependency, build, cache, evidence or credential exclusion"
+    },
+    {
+      "path": "backend/app/models/__pycache__",
+      "reason": "dependency, build, cache, evidence or credential exclusion"
+    },
+    {
+      "path": "backend/tests/__pycache__",
+      "reason": "dependency, build, cache, evidence or credential exclusion"
+    },
+    {
+      "path": "frontend/dist",
+      "reason": "dependency, build, cache, evidence or credential exclusion"
+    },
+    {
+      "path": "frontend/node_modules",
+      "reason": "dependency, build, cache, evidence or credential exclusion"
+    },
+    {
+      "path": ".tessl/plugins/maria/fastapi/docs",
+      "reason": "dependency, build, cache, evidence or credential exclusion"
+    }
+  ],
+  "original_stage1_junctions_not_copied": true,
+  "new_stage2_junctions": [
+    {
+      "path": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\Tessl\\.agents\\skills\\tessl__react-dev",
+      "target": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\Tessl\\.tessl\\plugins\\softaworks\\agent-toolkit\\skills\\react-dev",
+      "verified_resolved_target": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\Tessl\\.tessl\\plugins\\softaworks\\agent-toolkit\\skills\\react-dev"
+    },
+    {
+      "path": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\Tessl\\.agents\\skills\\tessl__run-check-server",
+      "target": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\Tessl\\.tessl\\plugins\\maria\\fastapi\\skills\\run-check-server",
+      "verified_resolved_target": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\Tessl\\.tessl\\plugins\\maria\\fastapi\\skills\\run-check-server"
+    },
+    {
+      "path": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\Tessl\\.agents\\skills\\tessl__scaffold-project",
+      "target": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\Tessl\\.tessl\\plugins\\maria\\fastapi\\skills\\scaffold-project",
+      "verified_resolved_target": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\Tessl\\.tessl\\plugins\\maria\\fastapi\\skills\\scaffold-project"
+    }
+  ],
+  "integration_adjustments": [
+    {
+      "path": ".gemini/settings.json",
+      "description": "Pin existing Tessl MCP executable and disable automatic updates; original bytes saved in baseline-gemini-settings.json",
+      "current_sha256": "C314141D48532810AC591362034DD85F604F4A582AFF21C7ECC90CC4B24E3118"
+    }
+  ]
+}

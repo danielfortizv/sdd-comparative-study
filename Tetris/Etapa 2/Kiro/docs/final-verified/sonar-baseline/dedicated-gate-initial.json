@@ -1,0 +1,49 @@
+{
+  "name": "Tetris Stage 2 Kiro Controlled",
+  "conditions": [
+    {
+      "id": "72d7cd63-5982-468f-9e15-0d6a59cb17b7",
+      "metric": "new_violations",
+      "op": "GT",
+      "error": "0",
+      "isCaycCondition": true
+    },
+    {
+      "id": "42b5f207-53c3-4e99-9d42-27c00a59c94f",
+      "metric": "new_coverage",
+      "op": "LT",
+      "error": "80",
+      "isCaycCondition": true
+    },
+    {
+      "id": "e7b72af6-177b-4a29-9987-e63da7396017",
+      "metric": "new_duplicated_lines_density",
+      "op": "GT",
+      "error": "3",
+      "isCaycCondition": true
+    },
+    {
+      "id": "0e870aae-8aae-4023-8ae3-335d525cf11f",
+      "metric": "new_security_hotspots_reviewed",
+      "op": "LT",
+      "error": "100",
+      "isCaycCondition": true
+    }
+  ],
+  "isBuiltIn": false,
+  "actions": {
+    "rename": true,
+    "setAsDefault": true,
+    "copy": true,
+    "associateProjects": true,
+    "delete": true,
+    "manageConditions": true,
+    "delegate": true,
+    "manageAiCodeAssurance": false
+  },
+  "caycStatus": "compliant",
+  "isDefault": false,
+  "hasStandardConditions": false,
+  "hasMQRConditions": false,
+  "isAiCodeSupported": false
+}

@@ -1,0 +1,15 @@
+Captura 3. Panel comparativo reproducible de SonarQube y pruebas, generado desde
+JSON de la API local y logs. No es una captura de la interfaz web de SonarQube. Archivo:
+OpenSpec/docs/screenshots/sonar-panel-final.png.
+SPEC KIT — INICIO DE ETAPA 2 (20 oct 2026,
+hora Bogotá)
+Se creó Caso 2-Tetris/Etapa 2/Spec Kit como copia de trabajo de la Etapa 1 de esta misma
+herramienta. La medición inicial confirmó 0 archivos de código cambiados y 0 artefactos
+nativos de Etapa 1 cambiados. La nueva feature se creará aparte en
+specs/002-tetris-stage2-option-a. Se usa la misma semilla maestra SHA-256
+63919779DD4104076FBABCB130CE296A160FA840E0B4755A2AA5D90757ADA8EF y
+Gemini CLI 0.60.0 con Gemini 3.5 Flash. Los prompts, transcritos, tiempos y tokens
+quedarán bajo Spec Kit/docs/.
+Línea base verificada antes de implementar: 18 pruebas backend aprobadas (2
+advertencias de dependencias), 5 pruebas frontend aprobadas y build de producción
+aprobado. npm audit del lockfile original reporta 5 vulnerabilidades de dependencias (1

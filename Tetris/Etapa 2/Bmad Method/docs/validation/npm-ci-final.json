@@ -1,0 +1,16 @@
+{
+  "researcher_created": true,
+  "label": "npm-ci-final",
+  "cwd": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\Bmad Method\\frontend",
+  "command": [
+    "C:/Program Files/nodejs/node.exe",
+    "C:/Program Files/nodejs/node_modules/npm/bin/npm-cli.js",
+    "ci"
+  ],
+  "started_at_utc": "2026-10-26T02:23:16.039686+00:00",
+  "ended_at_utc": "2026-10-26T02:23:34.323169+00:00",
+  "duration_seconds": 18.283004,
+  "exit_code": 0,
+  "log_path": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\Bmad Method\\docs\\validation\\npm-ci-final.log",
+  "log_sha256": "2D116177B6D1B7322F0FA0DA0041633EDE5074AACC9DC41E3215E039BC62EFFD"
+}

@@ -1,0 +1,42 @@
+{
+  "researcher_created": true,
+  "scope": "Two external real-hook/manual-queue timer controls, not additional catalog IDs",
+  "started_at_utc": "2026-10-23T19:32:06.665724+00:00",
+  "ended_at_utc": "2026-10-23T19:32:08.087081+00:00",
+  "duration_seconds": 1.421,
+  "argv": [
+    "node",
+    "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\Kiro\\frontend\\node_modules\\vitest\\vitest.mjs",
+    "run",
+    "--config",
+    "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\Kiro\\docs\\acceptance\\vitest.queued-timers.config.mjs",
+    "--reporter=json",
+    "--outputFile=D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\Kiro\\docs\\acceptance\\queued-timer-runs\\20261023T193206664724Z\\vitest.json"
+  ],
+  "cwd": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\Kiro",
+  "exit_code": 1,
+  "coverage_enabled": false,
+  "native_json_fresh": true,
+  "hashes_before": {
+    "frontend/src/useGame.ts": "B75EA8B864F8890B1531B71367EF9410ED138F6A15E5E75B6523A02903667479",
+    "frontend/src/api.ts": "4321FAF77B834628E68BD07A7FE471B811B278E005FD0208367BE6966DBA533D",
+    "frontend/coverage/lcov.info": "09FAC69C7E094B8C81D39DBBA72D6594F17DDFDD667CDA93CD28B24E90E532B2",
+    "docs/acceptance/queued-timers.external.test.ts": "D2A6D107D4F6722C5AE574125C6AF7BA00528931454BD5C1594F6D9F2B300635",
+    "docs/acceptance/vitest.queued-timers.config.mjs": "6DEAB40379DB8C9FD06E3B79800E7799098FF2AF75F13E3428F038245381CABA",
+    "docs/acceptance/queue-timer-fixtures.json": "AAD9773DAE69762670A8A7BAD8FD782CC8AE7073052676E55BDA3456057C22A7"
+  },
+  "hashes_after": {
+    "frontend/src/useGame.ts": "B75EA8B864F8890B1531B71367EF9410ED138F6A15E5E75B6523A02903667479",
+    "frontend/src/api.ts": "4321FAF77B834628E68BD07A7FE471B811B278E005FD0208367BE6966DBA533D",
+    "frontend/coverage/lcov.info": "09FAC69C7E094B8C81D39DBBA72D6594F17DDFDD667CDA93CD28B24E90E532B2",
+    "docs/acceptance/queued-timers.external.test.ts": "D2A6D107D4F6722C5AE574125C6AF7BA00528931454BD5C1594F6D9F2B300635",
+    "docs/acceptance/vitest.queued-timers.config.mjs": "6DEAB40379DB8C9FD06E3B79800E7799098FF2AF75F13E3428F038245381CABA",
+    "docs/acceptance/queue-timer-fixtures.json": "AAD9773DAE69762670A8A7BAD8FD782CC8AE7073052676E55BDA3456057C22A7"
+  },
+  "inputs_and_lcov_unchanged": true,
+  "tests": {
+    "numTotalTests": 2,
+    "numPassedTests": 0,
+    "numFailedTests": 2
+  }
+}

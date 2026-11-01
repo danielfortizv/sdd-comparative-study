@@ -1,0 +1,3299 @@
+{
+  "researcher_created": true,
+  "measured_at_utc": "2026-10-23T19:32:44.380007+00:00",
+  "tool": "Kiro",
+  "schema": "kiro-acp-native-v1",
+  "status": "current measurement snapshot; not final acceptance",
+  "seed_file_sha256": "63919779DD4104076FBABCB130CE296A160FA840E0B4755A2AA5D90757ADA8EF",
+  "seed_block_utf8_sha256": "60D6728689CD5CDAD7B1A386F95DAD4E34850EB5DE0AAB92E837D630DFD2B55A",
+  "seed_block_characters": 3516,
+  "seed_block_scope": "quoted common seed, quote prefixes removed, trimmed, LF, UTF-8 without BOM; file hash covers original complete Markdown bytes",
+  "text_count_definition": "UTF-8 BOM removed; universal newlines normalize CRLF to LF; characters are decoded Unicode code points, lines use splitlines including blanks; density is total lines/files. SHA256 covers raw file bytes.",
+  "source_scope": "Kiro own backend/frontend source extensions including tests/configuration; dependencies/builds/caches/docs/Git excluded; production-only Sonar metrics have a separate denominator",
+  "source_baseline": {
+    "files": 23,
+    "lines": 1207,
+    "nonblank_lines": 913,
+    "characters": 33641,
+    "lines_per_file": 52.48,
+    "per_file": {
+      "backend/app/__init__.py": {
+        "lines": 1,
+        "nonblank_lines": 1,
+        "characters": 57,
+        "sha256": "E6D9CA44CA98FBA4E73DA6EF22243087B713902D8F51C11228DE31E1B97D5D8F"
+      },
+      "backend/app/api/__init__.py": {
+        "lines": 1,
+        "nonblank_lines": 1,
+        "characters": 53,
+        "sha256": "4531E4A5551A74ECF743FBEFB487472CBAF7E9A33265E4F16E8AAA275BC6D8D9"
+      },
+      "backend/app/api/games.py": {
+        "lines": 58,
+        "nonblank_lines": 38,
+        "characters": 1625,
+        "sha256": "E552376140AAFB67A62E37EF66251FC9939284C0A713EBAA4174F43829358C50"
+      },
+      "backend/app/api/schemas.py": {
+        "lines": 64,
+        "nonblank_lines": 45,
+        "characters": 1506,
+        "sha256": "D6F5EB2C9685E2B72347361EA59FDEB16A439D721C5088A16DCFD301B705F453"
+      },
+      "backend/app/domain/__init__.py": {
+        "lines": 1,
+        "nonblank_lines": 1,
+        "characters": 41,
+        "sha256": "FA4290DBFB9CA1C266DB445F5C4B3164FD7DD9D2F523324677FD95B7372A8FDE"
+      },
+      "backend/app/domain/models.py": {
+        "lines": 61,
+        "nonblank_lines": 44,
+        "characters": 1688,
+        "sha256": "4FDB9925B0F08157364E97EE893B41391A021981B9181007224A8D8793C5EB4B"
+      },
+      "backend/app/main.py": {
+        "lines": 34,
+        "nonblank_lines": 24,
+        "characters": 810,
+        "sha256": "72D146C1330457889185164A7921F1C20D19683EEA4405DFC649813A233476F1"
+      },
+      "backend/app/rules/__init__.py": {
+        "lines": 1,
+        "nonblank_lines": 1,
+        "characters": 49,
+        "sha256": "387543C055C2012B7110606F70C426036B5BA9F266F55AA5B8F14CCED1756333"
+      },
+      "backend/app/rules/engine.py": {
+        "lines": 159,
+        "nonblank_lines": 114,
+        "characters": 4347,
+        "sha256": "A8AFB5598F437AACE13C52C54052CE1BC9F7D2EBBDDC00FEF79B08D7DF3191E6"
+      },
+      "backend/app/rules/pieces.py": {
+        "lines": 51,
+        "nonblank_lines": 37,
+        "characters": 1583,
+        "sha256": "D034B5B88374FC0C0FA2883F9C9C2E96BD1ACFA51072314114B2312E229C7D48"
+      },
+      "backend/app/store.py": {
+        "lines": 38,
+        "nonblank_lines": 23,
+        "characters": 838,
+        "sha256": "99807535D9907A6E89B1375E7D274C1D1EB0E7207859CB34D3D0A5A09AAB21BF"
+      },
+      "backend/tests/__init__.py": {
+        "lines": 0,
+        "nonblank_lines": 0,
+        "characters": 0,
+        "sha256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"
+      },
+      "backend/tests/test_api.py": {
+        "lines": 100,
+        "nonblank_lines": 70,
+        "characters": 3102,
+        "sha256": "C3BF981F0F1F2277ABC83F94ABFD2BBFA10BF97492C55B5B8F6A5BF7B307860D"
+      },
+      "backend/tests/test_rules.py": {
+        "lines": 286,
+        "nonblank_lines": 210,
+        "characters": 8709,
+        "sha256": "3DC7B6921EAD493CCBCA1022B11054C84A1D097B8248364D19118868DA586451"
+      },
+      "frontend/index.html": {
+        "lines": 12,
+        "nonblank_lines": 12,
+        "characters": 303,
+        "sha256": "2975D7EDAA83F110B023DE9F7CCA8E1F72877739B39902E940D0B22EFAB86033"
+      },
+      "frontend/src/App.tsx": {
+        "lines": 92,
+        "nonblank_lines": 81,
+        "characters": 2472,
+        "sha256": "5752E1EE90B34E04BDC9C5F67322F41E6C1A42D5E5508F298353BCEF29C636D2"
+      },
+      "frontend/src/Board.tsx": {
+        "lines": 78,
+        "nonblank_lines": 70,
+        "characters": 1827,
+        "sha256": "EEE153923E1AEF8A63FF53C1F8B7A43E78DF9E60219EC68491579E881592EABC"
+      },
+      "frontend/src/api.ts": {
+        "lines": 46,
+        "nonblank_lines": 39,
+        "characters": 1427,
+        "sha256": "86BA72BF1C5665878771B5D9B16DC140BC129B873380AFB3523B99ECE9CB6EA3"
+      },
+      "frontend/src/main.tsx": {
+        "lines": 12,
+        "nonblank_lines": 9,
+        "characters": 257,
+        "sha256": "EE7B63D2A6F58647FAC79B1FC870F5895284DBF14B1B375AEE6C4BC79FF2A2CE"
+      },
+      "frontend/src/types.ts": {
+        "lines": 23,
+        "nonblank_lines": 18,
+        "characters": 639,
+        "sha256": "888F47CB0FCC61C6B9756F4A92D77541E85C55B450B6BCC529A0F4B96590768B"
+      },
+      "frontend/src/useGame.ts": {
+        "lines": 70,
+        "nonblank_lines": 59,
+        "characters": 1919,
+        "sha256": "47E8AC28FFB25CFEC53FB2F1ABC855E4FD37616F69D8E0E1EDE1B2579C3E417C"
+      },
+      "frontend/src/vite-env.d.ts": {
+        "lines": 9,
+        "nonblank_lines": 7,
+        "characters": 159,
+        "sha256": "6600001F6B9E18657B3314FDCF2FAD48D4F74BFAFB27FC464BB57CE670CB8EC8"
+      },
+      "frontend/vite.config.ts": {
+        "lines": 10,
+        "nonblank_lines": 9,
+        "characters": 230,
+        "sha256": "C53F382D6512434C5BD560297D35BA716A2B704554AE7DD3AA5F00687694B63B"
+      }
+    }
+  },
+  "source_current": {
+    "files": 36,
+    "lines": 3443,
+    "nonblank_lines": 2808,
+    "characters": 111109,
+    "lines_per_file": 95.64,
+    "per_file": {
+      "backend/app/__init__.py": {
+        "lines": 1,
+        "nonblank_lines": 1,
+        "characters": 57,
+        "sha256": "E6D9CA44CA98FBA4E73DA6EF22243087B713902D8F51C11228DE31E1B97D5D8F"
+      },
+      "backend/app/api/__init__.py": {
+        "lines": 1,
+        "nonblank_lines": 1,
+        "characters": 53,
+        "sha256": "4531E4A5551A74ECF743FBEFB487472CBAF7E9A33265E4F16E8AAA275BC6D8D9"
+      },
+      "backend/app/api/games.py": {
+        "lines": 67,
+        "nonblank_lines": 44,
+        "characters": 1856,
+        "sha256": "C878E7B8E466D4CD0FBB3CCD8CC44FE22A4677B92A0CE6F01DB9A002D2A3172B"
+      },
+      "backend/app/api/schemas.py": {
+        "lines": 79,
+        "nonblank_lines": 60,
+        "characters": 1956,
+        "sha256": "3B914837955442A5EFBB91573646468FB52C88FD0B74059EA90D8FD8BF4CC931"
+      },
+      "backend/app/domain/__init__.py": {
+        "lines": 1,
+        "nonblank_lines": 1,
+        "characters": 41,
+        "sha256": "FA4290DBFB9CA1C266DB445F5C4B3164FD7DD9D2F523324677FD95B7372A8FDE"
+      },
+      "backend/app/domain/models.py": {
+        "lines": 78,
+        "nonblank_lines": 61,
+        "characters": 2526,
+        "sha256": "8B2726824BA7215ADC8459330300353EFBC77D460859AEBE7023C54C7F7F12D5"
+      },
+      "backend/app/main.py": {
+        "lines": 34,
+        "nonblank_lines": 24,
+        "characters": 810,
+        "sha256": "378F36A14AC61CFC7D93D08C47C8A54317C4B79FCA0392A87F9135ADD1B75875"
+      },
+      "backend/app/rules/__init__.py": {
+        "lines": 1,
+        "nonblank_lines": 1,
+        "characters": 49,
+        "sha256": "387543C055C2012B7110606F70C426036B5BA9F266F55AA5B8F14CCED1756333"
+      },
+      "backend/app/rules/engine.py": {
+        "lines": 245,
+        "nonblank_lines": 181,
+        "characters": 7675,
+        "sha256": "13389F92D65AE0516494BD82BFA36B5EABDF5AAC5891E53DCAC2506DCFCD3181"
+      },
+      "backend/app/rules/pieces.py": {
+        "lines": 51,
+        "nonblank_lines": 37,
+        "characters": 1583,
+        "sha256": "D034B5B88374FC0C0FA2883F9C9C2E96BD1ACFA51072314114B2312E229C7D48"
+      },
+      "backend/app/rules/scoring.py": {
+        "lines": 38,
+        "nonblank_lines": 24,
+        "characters": 1317,
+        "sha256": "4B4C16E6A8C30FBF55A72EF3DB3DD3A6647653A31568FD19F1B0F13214556671"
+      },
+      "backend/app/store.py": {
+        "lines": 38,
+        "nonblank_lines": 23,
+        "characters": 838,
+        "sha256": "99807535D9907A6E89B1375E7D274C1D1EB0E7207859CB34D3D0A5A09AAB21BF"
+      },
+      "backend/tests/__init__.py": {
+        "lines": 0,
+        "nonblank_lines": 0,
+        "characters": 0,
+        "sha256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"
+      },
+      "backend/tests/test_api.py": {
+        "lines": 116,
+        "nonblank_lines": 86,
+        "characters": 3598,
+        "sha256": "3CDDD775E747F428575C33E894C4A328E9BDC12409A76AB85857D6AB440EAC61"
+      },
+      "backend/tests/test_rules.py": {
+        "lines": 286,
+        "nonblank_lines": 210,
+        "characters": 8709,
+        "sha256": "3DC7B6921EAD493CCBCA1022B11054C84A1D097B8248364D19118868DA586451"
+      },
+      "backend/tests/test_scoring.py": {
+        "lines": 65,
+        "nonblank_lines": 43,
+        "characters": 1953,
+        "sha256": "77C81775E28D3FB669057B083585EFE4D23E7FB97FADF0CE7DB2D8F71AD4C4F7"
+      },
+      "backend/tests/test_stage2_api.py": {
+        "lines": 215,
+        "nonblank_lines": 162,
+        "characters": 6755,
+        "sha256": "45D9C2C007D82CB7D7CC9CDC07E1AE1DDBD70734705208527ED6C94206CEC1C6"
+      },
+      "backend/tests/test_stage2_engine.py": {
+        "lines": 276,
+        "nonblank_lines": 210,
+        "characters": 8896,
+        "sha256": "6B3CAE174C9209E0F3B49688C23673C11E271687DCB61BAFC6F1085F442627A1"
+      },
+      "frontend/index.html": {
+        "lines": 12,
+        "nonblank_lines": 12,
+        "characters": 303,
+        "sha256": "2AC002A8742AAC4EDC0099F7B9C47F02D66B529F8B7DDA6D81C4821AF4EEE6CA"
+      },
+      "frontend/src/App.test.tsx": {
+        "lines": 177,
+        "nonblank_lines": 158,
+        "characters": 7338,
+        "sha256": "09F31BCC7CE77584B17CC90A9BF5C4BDCE839A7F876FAB4E57DB614628AF64F4"
+      },
+      "frontend/src/App.tsx": {
+        "lines": 132,
+        "nonblank_lines": 117,
+        "characters": 4010,
+        "sha256": "92A9035E68D7215F100C25D71A25FC526A149A73EF1F5525E8A510F2E459B212"
+      },
+      "frontend/src/Board.test.tsx": {
+        "lines": 39,
+        "nonblank_lines": 34,
+        "characters": 1197,
+        "sha256": "B11B37AB7647FA3DEB76C3A043ACBDC56083C68281468A825867B886202488CD"
+      },
+      "frontend/src/Board.tsx": {
+        "lines": 78,
+        "nonblank_lines": 70,
+        "characters": 1827,
+        "sha256": "EEE153923E1AEF8A63FF53C1F8B7A43E78DF9E60219EC68491579E881592EABC"
+      },
+      "frontend/src/Preview.test.tsx": {
+        "lines": 28,
+        "nonblank_lines": 24,
+        "characters": 827,
+        "sha256": "6C4AE30F5F37E59A2090C4EE858CFD7BBF3BAE56F75723F45D2A304352BC9F4D"
+      },
+      "frontend/src/Preview.tsx": {
+        "lines": 81,
+        "nonblank_lines": 73,
+        "characters": 2197,
+        "sha256": "BC0C3572B529F1DE3B871583A69BFF6944453FC7ABC5156E9474091358087717"
+      },
+      "frontend/src/api.test.ts": {
+        "lines": 88,
+        "nonblank_lines": 77,
+        "characters": 2270,
+        "sha256": "0D0276FB7305BB86D3F8BF4ABB3DA45AED5776CA428B07C326EFB1C539BF105C"
+      },
+      "frontend/src/api.ts": {
+        "lines": 54,
+        "nonblank_lines": 46,
+        "characters": 1653,
+        "sha256": "4321FAF77B834628E68BD07A7FE471B811B278E005FD0208367BE6966DBA533D"
+      },
+      "frontend/src/main.test.tsx": {
+        "lines": 63,
+        "nonblank_lines": 54,
+        "characters": 2185,
+        "sha256": "813E770E13D6AD27CEAE613CF2311548A3AD21F97FC2500085A101B9695F446E"
+      },
+      "frontend/src/main.tsx": {
+        "lines": 12,
+        "nonblank_lines": 9,
+        "characters": 257,
+        "sha256": "EE7B63D2A6F58647FAC79B1FC870F5895284DBF14B1B375AEE6C4BC79FF2A2CE"
+      },
+      "frontend/src/test-setup.ts": {
+        "lines": 9,
+        "nonblank_lines": 8,
+        "characters": 265,
+        "sha256": "003CACCEE18406F1F1ABF367AC1CB3A83F2725343ACA904A546C9A5CE1CFA307"
+      },
+      "frontend/src/types.ts": {
+        "lines": 31,
+        "nonblank_lines": 26,
+        "characters": 833,
+        "sha256": "FEA00566EBB80AFAF198C1E60A13EEBEA2C87BE99BF3A1642CCC2AA834E8D34B"
+      },
+      "frontend/src/useGame.races.test.tsx": {
+        "lines": 442,
+        "nonblank_lines": 385,
+        "characters": 14569,
+        "sha256": "5ADBF2903C15B5A64791854516153F2C44BE9D31189A4850BB6FD2732CC70D1C"
+      },
+      "frontend/src/useGame.test.tsx": {
+        "lines": 331,
+        "nonblank_lines": 291,
+        "characters": 11105,
+        "sha256": "083D969D2B1B75C6151BC8EF9CBA734DBFA533C70081FBD53DA5317566947847"
+      },
+      "frontend/src/useGame.ts": {
+        "lines": 230,
+        "nonblank_lines": 214,
+        "characters": 10269,
+        "sha256": "B75EA8B864F8890B1531B71367EF9410ED138F6A15E5E75B6523A02903667479"
+      },
+      "frontend/src/vite-env.d.ts": {
+        "lines": 9,
+        "nonblank_lines": 7,
+        "characters": 159,
+        "sha256": "6600001F6B9E18657B3314FDCF2FAD48D4F74BFAFB27FC464BB57CE670CB8EC8"
+      },
+      "frontend/vite.config.ts": {
+        "lines": 35,
+        "nonblank_lines": 34,
+        "characters": 1173,
+        "sha256": "AB868902629CB16629568BB96B9AC058E2C3701E541BFCCE89799672DB39FB13"
+      }
+    }
+  },
+  "source_changes_from_own_stage1": {
+    "changed_files": [
+      "backend/app/api/games.py",
+      "backend/app/api/schemas.py",
+      "backend/app/domain/models.py",
+      "backend/app/main.py",
+      "backend/app/rules/engine.py",
+      "backend/app/rules/scoring.py",
+      "backend/tests/test_api.py",
+      "backend/tests/test_scoring.py",
+      "backend/tests/test_stage2_api.py",
+      "backend/tests/test_stage2_engine.py",
+      "frontend/index.html",
+      "frontend/src/App.test.tsx",
+      "frontend/src/App.tsx",
+      "frontend/src/Board.test.tsx",
+      "frontend/src/Preview.test.tsx",
+      "frontend/src/Preview.tsx",
+      "frontend/src/api.test.ts",
+      "frontend/src/api.ts",
+      "frontend/src/main.test.tsx",
+      "frontend/src/test-setup.ts",
+      "frontend/src/types.ts",
+      "frontend/src/useGame.races.test.tsx",
+      "frontend/src/useGame.test.tsx",
+      "frontend/src/useGame.ts",
+      "frontend/vite.config.ts"
+    ],
+    "changed_file_count": 25,
+    "added_lines": 2304,
+    "removed_lines": 68,
+    "net_lines": 2236,
+    "net_characters": 77468,
+    "definition": "SequenceMatcher noncumulative line diff; characters are net decoded LF-normalized Unicode text size difference, not cumulative editing volume"
+  },
+  "source_categories": {
+    "production": {
+      "files": 20,
+      "lines": 1261,
+      "nonblank_lines": 1021,
+      "characters": 40072,
+      "lines_per_file": 63.05,
+      "per_file": {
+        "backend/app/__init__.py": {
+          "lines": 1,
+          "nonblank_lines": 1,
+          "characters": 57,
+          "sha256": "E6D9CA44CA98FBA4E73DA6EF22243087B713902D8F51C11228DE31E1B97D5D8F"
+        },
+        "backend/app/api/__init__.py": {
+          "lines": 1,
+          "nonblank_lines": 1,
+          "characters": 53,
+          "sha256": "4531E4A5551A74ECF743FBEFB487472CBAF7E9A33265E4F16E8AAA275BC6D8D9"
+        },
+        "backend/app/api/games.py": {
+          "lines": 67,
+          "nonblank_lines": 44,
+          "characters": 1856,
+          "sha256": "C878E7B8E466D4CD0FBB3CCD8CC44FE22A4677B92A0CE6F01DB9A002D2A3172B"
+        },
+        "backend/app/api/schemas.py": {
+          "lines": 79,
+          "nonblank_lines": 60,
+          "characters": 1956,
+          "sha256": "3B914837955442A5EFBB91573646468FB52C88FD0B74059EA90D8FD8BF4CC931"
+        },
+        "backend/app/domain/__init__.py": {
+          "lines": 1,
+          "nonblank_lines": 1,
+          "characters": 41,
+          "sha256": "FA4290DBFB9CA1C266DB445F5C4B3164FD7DD9D2F523324677FD95B7372A8FDE"
+        },
+        "backend/app/domain/models.py": {
+          "lines": 78,
+          "nonblank_lines": 61,
+          "characters": 2526,
+          "sha256": "8B2726824BA7215ADC8459330300353EFBC77D460859AEBE7023C54C7F7F12D5"
+        },
+        "backend/app/main.py": {
+          "lines": 34,
+          "nonblank_lines": 24,
+          "characters": 810,
+          "sha256": "378F36A14AC61CFC7D93D08C47C8A54317C4B79FCA0392A87F9135ADD1B75875"
+        },
+        "backend/app/rules/__init__.py": {
+          "lines": 1,
+          "nonblank_lines": 1,
+          "characters": 49,
+          "sha256": "387543C055C2012B7110606F70C426036B5BA9F266F55AA5B8F14CCED1756333"
+        },
+        "backend/app/rules/engine.py": {
+          "lines": 245,
+          "nonblank_lines": 181,
+          "characters": 7675,
+          "sha256": "13389F92D65AE0516494BD82BFA36B5EABDF5AAC5891E53DCAC2506DCFCD3181"
+        },
+        "backend/app/rules/pieces.py": {
+          "lines": 51,
+          "nonblank_lines": 37,
+          "characters": 1583,
+          "sha256": "D034B5B88374FC0C0FA2883F9C9C2E96BD1ACFA51072314114B2312E229C7D48"
+        },
+        "backend/app/rules/scoring.py": {
+          "lines": 38,
+          "nonblank_lines": 24,
+          "characters": 1317,
+          "sha256": "4B4C16E6A8C30FBF55A72EF3DB3DD3A6647653A31568FD19F1B0F13214556671"
+        },
+        "backend/app/store.py": {
+          "lines": 38,
+          "nonblank_lines": 23,
+          "characters": 838,
+          "sha256": "99807535D9907A6E89B1375E7D274C1D1EB0E7207859CB34D3D0A5A09AAB21BF"
+        },
+        "frontend/src/App.tsx": {
+          "lines": 132,
+          "nonblank_lines": 117,
+          "characters": 4010,
+          "sha256": "92A9035E68D7215F100C25D71A25FC526A149A73EF1F5525E8A510F2E459B212"
+        },
+        "frontend/src/Board.tsx": {
+          "lines": 78,
+          "nonblank_lines": 70,
+          "characters": 1827,
+          "sha256": "EEE153923E1AEF8A63FF53C1F8B7A43E78DF9E60219EC68491579E881592EABC"
+        },
+        "frontend/src/Preview.tsx": {
+          "lines": 81,
+          "nonblank_lines": 73,
+          "characters": 2197,
+          "sha256": "BC0C3572B529F1DE3B871583A69BFF6944453FC7ABC5156E9474091358087717"
+        },
+        "frontend/src/api.ts": {
+          "lines": 54,
+          "nonblank_lines": 46,
+          "characters": 1653,
+          "sha256": "4321FAF77B834628E68BD07A7FE471B811B278E005FD0208367BE6966DBA533D"
+        },
+        "frontend/src/main.tsx": {
+          "lines": 12,
+          "nonblank_lines": 9,
+          "characters": 257,
+          "sha256": "EE7B63D2A6F58647FAC79B1FC870F5895284DBF14B1B375AEE6C4BC79FF2A2CE"
+        },
+        "frontend/src/test-setup.ts": {
+          "lines": 9,
+          "nonblank_lines": 8,
+          "characters": 265,
+          "sha256": "003CACCEE18406F1F1ABF367AC1CB3A83F2725343ACA904A546C9A5CE1CFA307"
+        },
+        "frontend/src/types.ts": {
+          "lines": 31,
+          "nonblank_lines": 26,
+          "characters": 833,
+          "sha256": "FEA00566EBB80AFAF198C1E60A13EEBEA2C87BE99BF3A1642CCC2AA834E8D34B"
+        },
+        "frontend/src/useGame.ts": {
+          "lines": 230,
+          "nonblank_lines": 214,
+          "characters": 10269,
+          "sha256": "B75EA8B864F8890B1531B71367EF9410ED138F6A15E5E75B6523A02903667479"
+        }
+      }
+    },
+    "tests": {
+      "files": 13,
+      "lines": 2126,
+      "nonblank_lines": 1734,
+      "characters": 69402,
+      "lines_per_file": 163.54,
+      "per_file": {
+        "backend/tests/__init__.py": {
+          "lines": 0,
+          "nonblank_lines": 0,
+          "characters": 0,
+          "sha256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"
+        },
+        "backend/tests/test_api.py": {
+          "lines": 116,
+          "nonblank_lines": 86,
+          "characters": 3598,
+          "sha256": "3CDDD775E747F428575C33E894C4A328E9BDC12409A76AB85857D6AB440EAC61"
+        },
+        "backend/tests/test_rules.py": {
+          "lines": 286,
+          "nonblank_lines": 210,
+          "characters": 8709,
+          "sha256": "3DC7B6921EAD493CCBCA1022B11054C84A1D097B8248364D19118868DA586451"
+        },
+        "backend/tests/test_scoring.py": {
+          "lines": 65,
+          "nonblank_lines": 43,
+          "characters": 1953,
+          "sha256": "77C81775E28D3FB669057B083585EFE4D23E7FB97FADF0CE7DB2D8F71AD4C4F7"
+        },
+        "backend/tests/test_stage2_api.py": {
+          "lines": 215,
+          "nonblank_lines": 162,
+          "characters": 6755,
+          "sha256": "45D9C2C007D82CB7D7CC9CDC07E1AE1DDBD70734705208527ED6C94206CEC1C6"
+        },
+        "backend/tests/test_stage2_engine.py": {
+          "lines": 276,
+          "nonblank_lines": 210,
+          "characters": 8896,
+          "sha256": "6B3CAE174C9209E0F3B49688C23673C11E271687DCB61BAFC6F1085F442627A1"
+        },
+        "frontend/src/App.test.tsx": {
+          "lines": 177,
+          "nonblank_lines": 158,
+          "characters": 7338,
+          "sha256": "09F31BCC7CE77584B17CC90A9BF5C4BDCE839A7F876FAB4E57DB614628AF64F4"
+        },
+        "frontend/src/Board.test.tsx": {
+          "lines": 39,
+          "nonblank_lines": 34,
+          "characters": 1197,
+          "sha256": "B11B37AB7647FA3DEB76C3A043ACBDC56083C68281468A825867B886202488CD"
+        },
+        "frontend/src/Preview.test.tsx": {
+          "lines": 28,
+          "nonblank_lines": 24,
+          "characters": 827,
+          "sha256": "6C4AE30F5F37E59A2090C4EE858CFD7BBF3BAE56F75723F45D2A304352BC9F4D"
+        },
+        "frontend/src/api.test.ts": {
+          "lines": 88,
+          "nonblank_lines": 77,
+          "characters": 2270,
+          "sha256": "0D0276FB7305BB86D3F8BF4ABB3DA45AED5776CA428B07C326EFB1C539BF105C"
+        },
+        "frontend/src/main.test.tsx": {
+          "lines": 63,
+          "nonblank_lines": 54,
+          "characters": 2185,
+          "sha256": "813E770E13D6AD27CEAE613CF2311548A3AD21F97FC2500085A101B9695F446E"
+        },
+        "frontend/src/useGame.races.test.tsx": {
+          "lines": 442,
+          "nonblank_lines": 385,
+          "characters": 14569,
+          "sha256": "5ADBF2903C15B5A64791854516153F2C44BE9D31189A4850BB6FD2732CC70D1C"
+        },
+        "frontend/src/useGame.test.tsx": {
+          "lines": 331,
+          "nonblank_lines": 291,
+          "characters": 11105,
+          "sha256": "083D969D2B1B75C6151BC8EF9CBA734DBFA533C70081FBD53DA5317566947847"
+        }
+      }
+    },
+    "configuration_and_support": {
+      "files": 3,
+      "lines": 56,
+      "nonblank_lines": 53,
+      "characters": 1635,
+      "lines_per_file": 18.67,
+      "per_file": {
+        "frontend/index.html": {
+          "lines": 12,
+          "nonblank_lines": 12,
+          "characters": 303,
+          "sha256": "2AC002A8742AAC4EDC0099F7B9C47F02D66B529F8B7DDA6D81C4821AF4EEE6CA"
+        },
+        "frontend/src/vite-env.d.ts": {
+          "lines": 9,
+          "nonblank_lines": 7,
+          "characters": 159,
+          "sha256": "6600001F6B9E18657B3314FDCF2FAD48D4F74BFAFB27FC464BB57CE670CB8EC8"
+        },
+        "frontend/vite.config.ts": {
+          "lines": 35,
+          "nonblank_lines": 34,
+          "characters": 1173,
+          "sha256": "AB868902629CB16629568BB96B9AC058E2C3701E541BFCCE89799672DB39FB13"
+        }
+      }
+    }
+  },
+  "configuration_baseline": {
+    "files": 4,
+    "lines": 45,
+    "nonblank_lines": 44,
+    "characters": 1077,
+    "lines_per_file": 11.25,
+    "per_file": {
+      "backend/pytest.ini": {
+        "lines": 3,
+        "nonblank_lines": 3,
+        "characters": 52,
+        "sha256": "4551307F5B1A58ADB7EC215D513089BA670B1737B81ADA5A5863AFE796D67343"
+      },
+      "frontend/tsconfig.json": {
+        "lines": 21,
+        "nonblank_lines": 21,
+        "characters": 562,
+        "sha256": "E09B1D7398A757EAE35C19EFCD50710803FE8DF7E8D6414D2B6F595166EBF906"
+      },
+      "frontend/tsconfig.node.json": {
+        "lines": 11,
+        "nonblank_lines": 11,
+        "characters": 233,
+        "sha256": "BB9FD8592A9E364641441219F10D84DAAE9BA2CA5CC85DB798EFAD6913BB8257"
+      },
+      "frontend/vite.config.ts": {
+        "lines": 10,
+        "nonblank_lines": 9,
+        "characters": 230,
+        "sha256": "C53F382D6512434C5BD560297D35BA716A2B704554AE7DD3AA5F00687694B63B"
+      }
+    }
+  },
+  "configuration_current": {
+    "files": 4,
+    "lines": 75,
+    "nonblank_lines": 74,
+    "characters": 2113,
+    "lines_per_file": 18.75,
+    "per_file": {
+      "backend/pytest.ini": {
+        "lines": 3,
+        "nonblank_lines": 3,
+        "characters": 52,
+        "sha256": "4551307F5B1A58ADB7EC215D513089BA670B1737B81ADA5A5863AFE796D67343"
+      },
+      "frontend/tsconfig.json": {
+        "lines": 26,
+        "nonblank_lines": 26,
+        "characters": 655,
+        "sha256": "5E8768B9014E2DE818C88AA8770A59EEC4CBC3B2276AF28A840F67641DBFB388"
+      },
+      "frontend/tsconfig.node.json": {
+        "lines": 11,
+        "nonblank_lines": 11,
+        "characters": 233,
+        "sha256": "BB9FD8592A9E364641441219F10D84DAAE9BA2CA5CC85DB798EFAD6913BB8257"
+      },
+      "frontend/vite.config.ts": {
+        "lines": 35,
+        "nonblank_lines": 34,
+        "characters": 1173,
+        "sha256": "AB868902629CB16629568BB96B9AC058E2C3701E541BFCCE89799672DB39FB13"
+      }
+    }
+  },
+  "configuration_changes": {
+    "changed_files": [
+      "frontend/tsconfig.json",
+      "frontend/vite.config.ts"
+    ],
+    "changed_file_count": 2,
+    "added_lines": 31,
+    "removed_lines": 1,
+    "net_lines": 30,
+    "net_characters": 1036,
+    "definition": "SequenceMatcher noncumulative line diff; characters are net decoded LF-normalized Unicode text size difference, not cumulative editing volume"
+  },
+  "configuration_scope": "explicit pytest/coverage/TypeScript/Vite/Vitest/Sonar configuration files; .ts configuration overlaps source_current and is not added to its total",
+  "spec_stage1_baseline": {
+    "files": 3,
+    "lines": 608,
+    "nonblank_lines": 388,
+    "characters": 28780,
+    "lines_per_file": 202.67,
+    "per_file": {
+      ".kiro/specs/tetris-stage1-option-a/design.md": {
+        "lines": 154,
+        "nonblank_lines": 108,
+        "characters": 8009,
+        "sha256": "73E875D7EA930C39B275BECB7BE49AB153BB06536E886EEFA43E796D72F349DB"
+      },
+      ".kiro/specs/tetris-stage1-option-a/requirements.md": {
+        "lines": 361,
+        "nonblank_lines": 209,
+        "characters": 16856,
+        "sha256": "61E6234BDBC9CC1D7450827B9DAACCAC6C0A2B01C5060AED564E87A18F2A7C7D"
+      },
+      ".kiro/specs/tetris-stage1-option-a/tasks.md": {
+        "lines": 93,
+        "nonblank_lines": 71,
+        "characters": 3915,
+        "sha256": "26B03785E5B4A3C3EE71F8694EC669A03B1E4274083A6A275A98A3FF90E7A037"
+      }
+    }
+  },
+  "spec_stage1_copy": {
+    "files": 3,
+    "lines": 608,
+    "nonblank_lines": 388,
+    "characters": 28780,
+    "lines_per_file": 202.67,
+    "per_file": {
+      ".kiro/specs/tetris-stage1-option-a/design.md": {
+        "lines": 154,
+        "nonblank_lines": 108,
+        "characters": 8009,
+        "sha256": "73E875D7EA930C39B275BECB7BE49AB153BB06536E886EEFA43E796D72F349DB"
+      },
+      ".kiro/specs/tetris-stage1-option-a/requirements.md": {
+        "lines": 361,
+        "nonblank_lines": 209,
+        "characters": 16856,
+        "sha256": "61E6234BDBC9CC1D7450827B9DAACCAC6C0A2B01C5060AED564E87A18F2A7C7D"
+      },
+      ".kiro/specs/tetris-stage1-option-a/tasks.md": {
+        "lines": 93,
+        "nonblank_lines": 71,
+        "characters": 3915,
+        "sha256": "26B03785E5B4A3C3EE71F8694EC669A03B1E4274083A6A275A98A3FF90E7A037"
+      }
+    }
+  },
+  "spec_stage1_changes": {
+    "changed_files": [],
+    "changed_file_count": 0,
+    "added_lines": 0,
+    "removed_lines": 0,
+    "net_lines": 0,
+    "net_characters": 0,
+    "definition": "SequenceMatcher noncumulative line diff; characters are net decoded LF-normalized Unicode text size difference, not cumulative editing volume"
+  },
+  "spec_stage2": {
+    "files": 3,
+    "lines": 829,
+    "nonblank_lines": 630,
+    "characters": 76730,
+    "lines_per_file": 276.33,
+    "per_file": {
+      ".kiro/specs/tetris-stage2-option-a/design.md": {
+        "lines": 313,
+        "nonblank_lines": 240,
+        "characters": 26537,
+        "sha256": "735AC6BD18063D4967CA3BD4F972E1A65E73F5D8D4884BF51EA6E80C6DE2F95D"
+      },
+      ".kiro/specs/tetris-stage2-option-a/requirements.md": {
+        "lines": 323,
+        "nonblank_lines": 228,
+        "characters": 36162,
+        "sha256": "E84E5A694C253594F28CB168E01D2C5C2D24237B45CA04E42813AFCC28AF4DA6"
+      },
+      ".kiro/specs/tetris-stage2-option-a/tasks.md": {
+        "lines": 193,
+        "nonblank_lines": 162,
+        "characters": 14031,
+        "sha256": "290D2D01093264C16CEECC273FB4E8E9311FD17C01D10D57D8D0B4D42338F794"
+      }
+    }
+  },
+  "spec_stage2_changes_from_zero": {
+    "changed_files": [
+      ".kiro/specs/tetris-stage2-option-a/design.md",
+      ".kiro/specs/tetris-stage2-option-a/requirements.md",
+      ".kiro/specs/tetris-stage2-option-a/tasks.md"
+    ],
+    "changed_file_count": 3,
+    "added_lines": 829,
+    "removed_lines": 0,
+    "net_lines": 829,
+    "net_characters": 76730,
+    "definition": "SequenceMatcher noncumulative line diff; characters are net decoded LF-normalized Unicode text size difference, not cumulative editing volume"
+  },
+  "spec_scope": "all .md/.json under own .kiro/specs; inherited paths recognized from own Stage1 names, new paths counted separately. Native requirements/design/tasks are the Kiro artifacts; no other tool's specifications are generation inputs.",
+  "dependency_manifests_baseline": {
+    "files": 3,
+    "lines": 1769,
+    "nonblank_lines": 1769,
+    "characters": 58803,
+    "lines_per_file": 589.67,
+    "per_file": {
+      "backend/requirements.txt": {
+        "lines": 5,
+        "nonblank_lines": 5,
+        "characters": 78,
+        "sha256": "5AD4496E40CDFE46AEAF03CD2596243FE5ECF0C8B9B2B6BD6FD19B704187C183"
+      },
+      "frontend/package-lock.json": {
+        "lines": 1742,
+        "nonblank_lines": 1742,
+        "characters": 58261,
+        "sha256": "865984C6199FB8C57B0ABB7B3CEDFD850BFBE537AF7F0BAB102DF4EAA98CB84A"
+      },
+      "frontend/package.json": {
+        "lines": 22,
+        "nonblank_lines": 22,
+        "characters": 464,
+        "sha256": "9784382ED02897CB0ABFF930838B90AECCE9C7A3852F13263D96A905B697A547"
+      }
+    }
+  },
+  "dependency_manifests_current": {
+    "files": 4,
+    "lines": 2758,
+    "nonblank_lines": 2757,
+    "characters": 94054,
+    "lines_per_file": 689.5,
+    "per_file": {
+      "backend/requirements-dev.txt": {
+        "lines": 6,
+        "nonblank_lines": 5,
+        "characters": 223,
+        "sha256": "3BEC9BB89F8D7195F39CC883A1DC1CEB0E00219163FDB6C1879848E5A5B8B382"
+      },
+      "backend/requirements.txt": {
+        "lines": 5,
+        "nonblank_lines": 5,
+        "characters": 78,
+        "sha256": "5AD4496E40CDFE46AEAF03CD2596243FE5ECF0C8B9B2B6BD6FD19B704187C183"
+      },
+      "frontend/package-lock.json": {
+        "lines": 2716,
+        "nonblank_lines": 2716,
+        "characters": 92987,
+        "sha256": "07DD4F84324433057F86AB49C4FE3242A528950B4BD81E66028F7F74C61D5534"
+      },
+      "frontend/package.json": {
+        "lines": 31,
+        "nonblank_lines": 31,
+        "characters": 766,
+        "sha256": "D20B4F3B97F2AAEFA0DC414F83B8A3B165C4295814B28B7B021E61DB8FC95315"
+      }
+    }
+  },
+  "dependency_manifest_changes": {
+    "changed_files": [
+      "backend/requirements-dev.txt",
+      "frontend/package-lock.json",
+      "frontend/package.json"
+    ],
+    "changed_file_count": 3,
+    "added_lines": 2177,
+    "removed_lines": 1188,
+    "net_lines": 989,
+    "net_characters": 35251,
+    "definition": "SequenceMatcher noncumulative line diff; characters are net decoded LF-normalized Unicode text size difference, not cumulative editing volume"
+  },
+  "baseline_manifest_sha256": "1E536AF075438807D58BA88F840436E4ECDE77D71C8ABAF0480CF665412390EB",
+  "invocation_attempts": 6,
+  "prompt_count": 6,
+  "prompt_count_definition": "closed launcher invocations, including failed startup; actual native user messages and observed model startups recorded separately",
+  "model_invocations_observed": 6,
+  "known_launcher_duration_seconds": 3552.901,
+  "total_duration_seconds": 3552.901,
+  "duration_coverage": "sum of known closed invocation wall durations only; not whole project elapsed time or paused/resumed session lifetime",
+  "unknown_duration_labels": [
+    "05-qa"
+  ],
+  "known_credits": 82.30584791359865,
+  "unknown_credit_labels": [
+    "01-specify",
+    "05-qa"
+  ],
+  "credits_coverage": "known invocation-interval native usage summaries; ACP fallback only when no native summary; credits are Kiro-native units, never converted into inferred tokens/money",
+  "known_agent_elapsed_seconds": 3397.432,
+  "unknown_agent_elapsed_labels": [
+    "01-specify",
+    "05-qa"
+  ],
+  "input_tokens": null,
+  "cached_tokens": null,
+  "output_tokens": null,
+  "thought_tokens": null,
+  "token_coverage": "not exposed in the observed Kiro billing schema; no zero assumption and no conversion from credits/context composition",
+  "api_requests": null,
+  "api_errors": null,
+  "api_successful_requests": null,
+  "api_coverage": "not exposed; recorded request IDs are a different observable with unspecified attempt/error semantics",
+  "recorded_request_id_count_known_sum": 228,
+  "recorded_request_id_sum_scope": "sum of known per-invocation distinct request identifiers; not an API attempt total; cross-run repeated IDs require investigation before any unique-session claim",
+  "corrections": {
+    "classification_counts": {
+      "initial_specification": 2,
+      "preimplementation_spec_revision": 1,
+      "initial_implementation": 1,
+      "postimplementation_external_correction": 2
+    },
+    "external_postimplementation_prompt_attempts_closed": 2,
+    "external_postimplementation_distinct_qa_intents": 1,
+    "external_postimplementation_labels": [
+      "05-qa",
+      "06-qa-retry"
+    ],
+    "automated_within_invocation_remediation_count": null,
+    "note": "explicit researcher classification only; tool calls/scans or process exit0 do not prove a completed external correction; internal automated remediation is separate and requires source evidence"
+  },
+  "runtime_versions_by_closed_invocation": [
+    {
+      "label": "01-specify",
+      "runtime": {
+        "path": "C:\\Users\\Kevin Alvarez\\AppData\\Local\\Kiro-Cli\\kiro-cli.exe",
+        "sha256": "DB1AED88D4E286208C9504994E534FE0FA6E85592F4811198CD8DF7192AFA661",
+        "version": "kiro-cli-chat 2.25.0"
+      },
+      "requested_model": "auto",
+      "observed_mode_selection_values": [
+        "vibe"
+      ],
+      "observed_model_selection_values": [
+        "auto"
+      ],
+      "native_assistant_agent_modes": [
+        "vibe"
+      ]
+    },
+    {
+      "label": "02-specify-student",
+      "runtime": {
+        "path": "C:\\Users\\Kevin Alvarez\\AppData\\Local\\Kiro-Cli\\kiro-cli.exe",
+        "sha256": "BC711541FC139D5E5FC8E07FC8FA13E9239ED039862F4A9D55C0E344BAC7C3F8",
+        "version": "kiro-cli-chat 2.33.0"
+      },
+      "requested_model": "auto",
+      "observed_mode_selection_values": [
+        "vibe"
+      ],
+      "observed_model_selection_values": [
+        "auto"
+      ],
+      "native_assistant_agent_modes": [
+        "vibe"
+      ]
+    },
+    {
+      "label": "03-native-spec-review",
+      "runtime": {
+        "path": "C:\\Users\\Kevin Alvarez\\AppData\\Local\\Kiro-Cli\\kiro-cli.exe",
+        "version": "kiro-cli-chat 2.33.0",
+        "sha256": "BC711541FC139D5E5FC8E07FC8FA13E9239ED039862F4A9D55C0E344BAC7C3F8"
+      },
+      "requested_model": "auto",
+      "observed_mode_selection_values": [
+        "spec",
+        "vibe"
+      ],
+      "observed_model_selection_values": [
+        "auto"
+      ],
+      "native_assistant_agent_modes": [
+        "spec"
+      ]
+    },
+    {
+      "label": "04-implement",
+      "runtime": {
+        "path": "C:\\Users\\Kevin Alvarez\\AppData\\Local\\Kiro-Cli\\kiro-cli.exe",
+        "version": "kiro-cli-chat 2.33.0",
+        "sha256": "BC711541FC139D5E5FC8E07FC8FA13E9239ED039862F4A9D55C0E344BAC7C3F8"
+      },
+      "requested_model": "auto",
+      "observed_mode_selection_values": [
+        "spec"
+      ],
+      "observed_model_selection_values": [
+        "auto"
+      ],
+      "native_assistant_agent_modes": [
+        "spec"
+      ]
+    },
+    {
+      "label": "05-qa",
+      "runtime": {
+        "path": "C:\\Users\\Kevin Alvarez\\AppData\\Local\\Kiro-Cli\\kiro-cli.exe",
+        "version": "kiro-cli-chat 2.33.0",
+        "sha256": "BC711541FC139D5E5FC8E07FC8FA13E9239ED039862F4A9D55C0E344BAC7C3F8"
+      },
+      "requested_model": "auto",
+      "observed_mode_selection_values": [
+        "spec",
+        "vibe"
+      ],
+      "observed_model_selection_values": [
+        "auto"
+      ],
+      "native_assistant_agent_modes": [
+        "spec"
+      ]
+    },
+    {
+      "label": "06-qa-retry",
+      "runtime": {
+        "path": "C:\\Users\\Kevin Alvarez\\AppData\\Local\\Kiro-Cli\\kiro-cli.exe",
+        "version": "kiro-cli-chat 2.33.0",
+        "sha256": "BC711541FC139D5E5FC8E07FC8FA13E9239ED039862F4A9D55C0E344BAC7C3F8"
+      },
+      "requested_model": "auto",
+      "observed_mode_selection_values": [
+        "spec",
+        "vibe"
+      ],
+      "observed_model_selection_values": [
+        "auto"
+      ],
+      "native_assistant_agent_modes": [
+        "spec"
+      ]
+    }
+  ],
+  "runtime_scope": "Version/hash belong to the individual launcher record; updates, login/auth/usage probes and researcher setup are excluded from model invocation totals. Runtime changes remain a comparison limitation.",
+  "unclosed_invocation_labels": [],
+  "pending_invocation_records": [],
+  "runs": [
+    {
+      "researcher_created": true,
+      "label": "01-specify",
+      "phase": "specify",
+      "workflow": "Kiro native V3 spec mode",
+      "requested_model": "auto",
+      "runtime": {
+        "path": "C:\\Users\\Kevin Alvarez\\AppData\\Local\\Kiro-Cli\\kiro-cli.exe",
+        "sha256": "DB1AED88D4E286208C9504994E534FE0FA6E85592F4811198CD8DF7192AFA661",
+        "version": "kiro-cli-chat 2.25.0"
+      },
+      "started": "2026-10-21T19:58:47.728069+00:00",
+      "prompt_sha256": "13ECF3745FCEBDA4C986D17DF2A9A6C31727935F7D736A1D4E395CA22F12581A",
+      "seed_sha256": "63919779DD4104076FBABCB130CE296A160FA840E0B4755A2AA5D90757ADA8EF",
+      "seed_block_sha256": "60D6728689CD5CDAD7B1A386F95DAD4E34850EB5DE0AAB92E837D630DFD2B55A",
+      "prompt_characters": 9744,
+      "submission_method": "direct subprocess argument list, complete multiline prompt",
+      "resume_id": null,
+      "stdout": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\Kiro\\docs\\01-specify.stdout.jsonl",
+      "stderr": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\Kiro\\docs\\01-specify.stderr.txt",
+      "owned_process_id": 3188,
+      "ended": "2026-10-21T20:01:08.660147+00:00",
+      "duration_seconds": 140.931,
+      "exit_code": 4294967295,
+      "stdout_sha256": "72855489C6B4E0F27466132A272E6732698C1576F8F0633415B10F8D18BD2970",
+      "stderr_sha256": "B5444FB0C79633FB9EEF2E09381B3185335F2A8DEC850BF85555DE1438FD3D34",
+      "run_closed": true,
+      "metadata_file": "01-specify.run.json",
+      "classification": "initial_specification",
+      "classification_reason": "Initial Kiro native specification attempt manually interrupted by root after user reported wrong account and requested account switch; no application/test changes or completed specification claimed.",
+      "qa_intent_id": null,
+      "retry_of": null,
+      "process_exit_success": false,
+      "work_completion_status": "interrupted_for_account_switch",
+      "session_ids": [
+        "sess_bfb2da1c-8ba1-4be0-a8c5-bdbf919798f5"
+      ],
+      "model_invocation_observed": true,
+      "input_tokens": null,
+      "cached_tokens": null,
+      "output_tokens": null,
+      "thought_tokens": null,
+      "token_status": "not exposed as billed input/cache/output/thought counters in observed Kiro ACP/native schema; context breakdown is not token usage",
+      "api_requests": null,
+      "api_errors": null,
+      "api_successful_requests": null,
+      "api_status": "not exposed; requestIds are retained as identifiers only, not attempted/succeeded/error API counters",
+      "credits": null,
+      "credits_scope": "invocation ACP turn_completion snapshots; unavailable if stream variants conflict",
+      "agent_elapsed_seconds": null,
+      "agent_elapsed_scope": "sum of retained turn elapsedTime milliseconds; distinct from launcher wall duration and entire resumed-session lifetime",
+      "recorded_request_id_count": null,
+      "usage_summaries": [],
+      "native_assistant_say_count": 6,
+      "native_assistant_reasoning_record_count": 36,
+      "recorded_response_count": null,
+      "recorded_response_status": "Kiro Say messages and ACP chunks are not defined as API model responses",
+      "native_user_message_count": 1,
+      "tool_call_count": 36,
+      "tool_result_success_flags": {
+        "True": 35,
+        "False": 1
+      },
+      "tool_success_limitation": "wrapper success does not prove command/test/scanner exit success; inspect raw output",
+      "acp_event_count": 233,
+      "acp_session_update_counts": {
+        "available_commands_update": 2,
+        "config_option_update": 2,
+        "session_info_update": 83,
+        "tool_call_update": 70,
+        "tool_call": 35,
+        "agent_message_chunk": 40
+      },
+      "acp_run_finished": [],
+      "stream_paths": [
+        "01-specify.stdout.jsonl",
+        "transcripts-archive/01-specify.acp_stream.72855489C6B4E0F2.jsonl"
+      ],
+      "stream_selected": "01-specify.stdout.jsonl",
+      "stream_prefix_conflict": false,
+      "invalid_stream_lines": {},
+      "invalid_native_lines": {},
+      "native_record_conflicts": [],
+      "native_interval_record_count": 156,
+      "session_configuration": [
+        {
+          "session_id": "sess_bfb2da1c-8ba1-4be0-a8c5-bdbf919798f5",
+          "model_id": "auto",
+          "agent_mode": "vibe",
+          "created_at": "2026-10-21T19:58:51.813Z",
+          "scope": "session configuration, not proof of backend resolved model or auxiliary role attribution"
+        }
+      ],
+      "auxiliary_role_usage": null,
+      "auxiliary_role_status": "no per-model/per-role usage counters observed; credits may include internal actions without separate attribution",
+      "latest_context_snapshot": {
+        "contextUsage": {
+          "usagePercentage": 5.17519998550415
+        },
+        "breakdown": {
+          "contextFiles": {
+            "tokens": 0,
+            "percent": 0,
+            "items": []
+          },
+          "tools": {
+            "tokens": 5048,
+            "percent": 0.5,
+            "mcp": {
+              "tokens": 0,
+              "percent": 0
+            },
+            "builtin": {
+              "tokens": 5048,
+              "percent": 0.5
+            }
+          },
+          "kiroResponses": {
+            "tokens": 0,
+            "percent": 0
+          },
+          "yourPrompts": {
+            "tokens": 0,
+            "percent": 4.7
+          },
+          "sessionFiles": {
+            "tokens": 0,
+            "percent": 0,
+            "items": []
+          }
+        },
+        "kind": "context_usage",
+        "usagePercentage": 5.17519998550415
+      },
+      "context_snapshot_scope": "last context occupancy/composition snapshot only; never summed as cumulative tokens",
+      "acp_configuration_observations": [
+        {
+          "stream_event_index_1based": 3,
+          "session_id": "sess_bfb2da1c-8ba1-4be0-a8c5-bdbf919798f5",
+          "selected_values": {
+            "mode": "vibe",
+            "model": "auto",
+            "autopilot": "on"
+          }
+        },
+        {
+          "stream_event_index_1based": 6,
+          "session_id": "sess_bfb2da1c-8ba1-4be0-a8c5-bdbf919798f5",
+          "selected_values": {
+            "mode": "vibe",
+            "model": "auto",
+            "autopilot": "on"
+          }
+        }
+      ],
+      "observed_mode_selection_values": [
+        "vibe"
+      ],
+      "observed_model_selection_values": [
+        "auto"
+      ],
+      "native_assistant_agent_modes": [
+        "vibe"
+      ],
+      "configuration_attribution_scope": "Selected/current configuration and emitted native assistant agentMode are separate from requested flags. Auto configuration is observable; resolved backend/auxiliary models are not established.",
+      "native_payload_type_counts": {
+        "user": 1,
+        "turn_start": 1,
+        "tool_call": 36,
+        "tool_result": 36,
+        "assistant": 42,
+        "session_metadata": 36,
+        "pending_interaction": 2,
+        "interaction_resolved": 2
+      },
+      "unrecognized_acp_update_types": []
+    },
+    {
+      "researcher_created": true,
+      "label": "02-specify-student",
+      "phase": "specify",
+      "workflow": "Kiro native V3 spec mode",
+      "requested_model": "auto",
+      "runtime": {
+        "path": "C:\\Users\\Kevin Alvarez\\AppData\\Local\\Kiro-Cli\\kiro-cli.exe",
+        "sha256": "BC711541FC139D5E5FC8E07FC8FA13E9239ED039862F4A9D55C0E344BAC7C3F8",
+        "version": "kiro-cli-chat 2.33.0"
+      },
+      "started": "2026-10-21T20:11:08.531353+00:00",
+      "prompt_sha256": "13ECF3745FCEBDA4C986D17DF2A9A6C31727935F7D736A1D4E395CA22F12581A",
+      "seed_sha256": "63919779DD4104076FBABCB130CE296A160FA840E0B4755A2AA5D90757ADA8EF",
+      "seed_block_sha256": "60D6728689CD5CDAD7B1A386F95DAD4E34850EB5DE0AAB92E837D630DFD2B55A",
+      "prompt_characters": 9744,
+      "submission_method": "direct subprocess argument list, complete multiline prompt",
+      "resume_id": null,
+      "stdout": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\Kiro\\docs\\02-specify-student.stdout.jsonl",
+      "stderr": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\Kiro\\docs\\02-specify-student.stderr.txt",
+      "owned_process_id": 28588,
+      "ended": "2026-10-21T20:16:39.551350+00:00",
+      "duration_seconds": 331.014,
+      "exit_code": 0,
+      "stdout_sha256": "93BAC44DF56F171407144BCCA6A3AD62D35B0278BE255B4FFDFCB2F251E8ACB4",
+      "stderr_sha256": "AB06D42C91739A96A21588E78AFA75AAD18A2D44D8E13ACAED4F408AF5EEB6FA",
+      "run_closed": true,
+      "metadata_file": "02-specify-student.run.json",
+      "classification": "initial_specification",
+      "classification_reason": "Fresh Student-account retry of interrupted initial specification01; three feature Markdown artifacts written, but observed Kiro mode remains vibe rather than Spec despite requested flag. Automated native workflow not proven.",
+      "qa_intent_id": null,
+      "retry_of": "01-specify",
+      "process_exit_success": true,
+      "work_completion_status": "specification_artifacts_written_native_workflow_unverified",
+      "session_ids": [
+        "sess_3a260d90-994e-415d-8540-078b3a99418a"
+      ],
+      "model_invocation_observed": true,
+      "input_tokens": null,
+      "cached_tokens": null,
+      "output_tokens": null,
+      "thought_tokens": null,
+      "token_status": "not exposed as billed input/cache/output/thought counters in observed Kiro ACP/native schema; context breakdown is not token usage",
+      "api_requests": null,
+      "api_errors": null,
+      "api_successful_requests": null,
+      "api_status": "not exposed; requestIds are retained as identifiers only, not attempted/succeeded/error API counters",
+      "credits": 5.897180333001658,
+      "credits_scope": "latest native usage_summary per session/execution within closed launcher interval; native events deduplicated by session/message ID/timestamp",
+      "agent_elapsed_seconds": 326.445,
+      "agent_elapsed_scope": "sum of retained turn elapsedTime milliseconds; distinct from launcher wall duration and entire resumed-session lifetime",
+      "recorded_request_id_count": 18,
+      "usage_summaries": [
+        {
+          "session_id": "sess_3a260d90-994e-415d-8540-078b3a99418a",
+          "message_id": "ec8162df-0a46-4b0e-8321-4a9ae01f848d-usage",
+          "execution_id": "ec8162df-0a46-4b0e-8321-4a9ae01f848d",
+          "timestamp": "2026-10-21T20:16:39.316Z",
+          "status": "success",
+          "prompt_turn_summaries": [
+            {
+              "unit": "credit",
+              "unitPlural": "credits",
+              "usage": 5.897180333001658,
+              "usedTools": [
+                "list_directory",
+                "list_directory",
+                "list_directory",
+                "read_file",
+                "list_directory",
+                "read_file",
+                "read_file",
+                "read_file",
+                "read_file",
+                "read_file",
+                "grep_search",
+                "execute_pwsh",
+                "update_session_information",
+                "fs_write",
+                "fs_write",
+                "fs_write",
+                "list_directory",
+                "execute_pwsh"
+              ]
+            }
+          ],
+          "elapsed_time_ms": 326445,
+          "recorded_request_ids": [
+            "f003a133-0b69-43fb-86be-934e46fbac83",
+            "a5df8938-c751-40b4-b3a1-4f4ce57f36e9",
+            "3504340c-4230-46b6-8cfe-57867302a0d8",
+            "e0f21bb7-1779-42d9-b367-200c3bcdd3d0",
+            "b6cd8e19-a7bd-4131-9ea4-ed1069cc47b4",
+            "4fe86182-ddb0-42bc-a301-1ad3e7b66e3a",
+            "8290a857-4263-409c-94cd-9f699fc7c62d",
+            "b18de9fc-3a41-4051-8282-4108d04f54fb",
+            "68b56ffb-8dea-4266-99ce-46a646d592a9",
+            "0df8a079-1c3c-4ec0-9913-c5689cef32d8",
+            "62f0f45d-8a9d-4ef8-8c69-00073daccd02",
+            "79a529ac-213f-4718-a401-dd51892fd4f6",
+            "b8147a48-4398-432c-bbdf-aeb02483378b",
+            "15f4f169-24bb-4911-947b-7d04f1713990",
+            "80358a3d-4294-4c4e-9f2d-19dffbb6b043",
+            "8216de56-5377-4124-ab78-da57a6ac11b2",
+            "61b54170-c32f-462b-9db9-1715ff1510a9",
+            "349f0450-ddb2-47cf-90bb-27e9f8cce995"
+          ]
+        }
+      ],
+      "native_assistant_say_count": 14,
+      "native_assistant_reasoning_record_count": 18,
+      "recorded_response_count": null,
+      "recorded_response_status": "Kiro Say messages and ACP chunks are not defined as API model responses",
+      "native_user_message_count": 1,
+      "tool_call_count": 42,
+      "tool_result_success_flags": {
+        "True": 42
+      },
+      "tool_success_limitation": "wrapper success does not prove command/test/scanner exit success; inspect raw output",
+      "acp_event_count": 588,
+      "acp_session_update_counts": {
+        "available_commands_update": 2,
+        "config_option_update": 2,
+        "session_info_update": 66,
+        "agent_message_chunk": 390,
+        "tool_call": 41,
+        "tool_call_update": 85
+      },
+      "acp_run_finished": [
+        {
+          "status": "success",
+          "stopReason": "end_turn",
+          "finalTextTruncated": false
+        }
+      ],
+      "stream_paths": [
+        "02-specify-student.stdout.jsonl",
+        "transcripts-archive/02-specify-student.acp_stream.93BAC44DF56F1714.jsonl"
+      ],
+      "stream_selected": "02-specify-student.stdout.jsonl",
+      "stream_prefix_conflict": false,
+      "invalid_stream_lines": {},
+      "invalid_native_lines": {},
+      "native_record_conflicts": [],
+      "native_interval_record_count": 151,
+      "session_configuration": [
+        {
+          "session_id": "sess_3a260d90-994e-415d-8540-078b3a99418a",
+          "model_id": "auto",
+          "agent_mode": "vibe",
+          "created_at": "2026-10-21T20:11:12.502Z",
+          "scope": "session configuration, not proof of backend resolved model or auxiliary role attribution"
+        }
+      ],
+      "auxiliary_role_usage": null,
+      "auxiliary_role_status": "no per-model/per-role usage counters observed; credits may include internal actions without separate attribution",
+      "latest_context_snapshot": {
+        "contextUsage": {
+          "usagePercentage": 10.0083
+        },
+        "breakdown": {
+          "contextFiles": {
+            "tokens": 0,
+            "percent": 0,
+            "items": []
+          },
+          "tools": {
+            "tokens": 6386,
+            "percent": 0.6,
+            "mcp": {
+              "tokens": 0,
+              "percent": 0
+            },
+            "builtin": {
+              "tokens": 6386,
+              "percent": 0.6
+            }
+          },
+          "memory": {
+            "tokens": 0,
+            "percent": 0
+          },
+          "kiroResponses": {
+            "tokens": 0,
+            "percent": 0
+          },
+          "yourPrompts": {
+            "tokens": 0,
+            "percent": 9.4
+          },
+          "sessionFiles": {
+            "tokens": 0,
+            "percent": 0,
+            "items": []
+          }
+        },
+        "kind": "context_usage",
+        "usagePercentage": 10.0083
+      },
+      "context_snapshot_scope": "last context occupancy/composition snapshot only; never summed as cumulative tokens",
+      "acp_configuration_observations": [
+        {
+          "stream_event_index_1based": 3,
+          "session_id": "sess_3a260d90-994e-415d-8540-078b3a99418a",
+          "selected_values": {
+            "mode": "vibe",
+            "model": "auto",
+            "autopilot": "on"
+          }
+        },
+        {
+          "stream_event_index_1based": 6,
+          "session_id": "sess_3a260d90-994e-415d-8540-078b3a99418a",
+          "selected_values": {
+            "mode": "vibe",
+            "model": "auto",
+            "autopilot": "on"
+          }
+        }
+      ],
+      "observed_mode_selection_values": [
+        "vibe"
+      ],
+      "observed_model_selection_values": [
+        "auto"
+      ],
+      "native_assistant_agent_modes": [
+        "vibe"
+      ],
+      "configuration_attribution_scope": "Selected/current configuration and emitted native assistant agentMode are separate from requested flags. Auto configuration is observable; resolved backend/auxiliary models are not established.",
+      "native_payload_type_counts": {
+        "agent_note": 1,
+        "user": 1,
+        "turn_start": 1,
+        "assistant": 32,
+        "tool_call": 42,
+        "tool_result": 42,
+        "session_metadata": 18,
+        "pending_interaction": 5,
+        "interaction_resolved": 5,
+        "usage_summary": 1,
+        "session_event": 1,
+        "turn_end": 1,
+        "session_start": 1
+      },
+      "unrecognized_acp_update_types": []
+    },
+    {
+      "researcher_created": true,
+      "label": "03-native-spec-review",
+      "phase": "spec_revision",
+      "started": "2026-10-21T20:20:02.788416+00:00",
+      "runtime": {
+        "path": "C:\\Users\\Kevin Alvarez\\AppData\\Local\\Kiro-Cli\\kiro-cli.exe",
+        "version": "kiro-cli-chat 2.33.0",
+        "sha256": "BC711541FC139D5E5FC8E07FC8FA13E9239ED039862F4A9D55C0E344BAC7C3F8"
+      },
+      "submission_method": "official ACP stdio; verified advertised spec/auto before optional prompt",
+      "requested_model": "auto",
+      "requested_mode": "spec",
+      "model_prompt_sent": true,
+      "seed_file_sha256": "63919779DD4104076FBABCB130CE296A160FA840E0B4755A2AA5D90757ADA8EF",
+      "seed_block_utf8_sha256": "60D6728689CD5CDAD7B1A386F95DAD4E34850EB5DE0AAB92E837D630DFD2B55A",
+      "seed_block_characters": 3516,
+      "seed_block_scope": "quoted common seed, quote prefixes removed, trimmed, LF, UTF-8 without BOM; file hash covers original complete Markdown bytes",
+      "prompt_characters": 7555,
+      "prompt_sha256": "96A568EC8B9C320888862569964732DC5D11A83563C824D4FEFDAFAD8588BFF0",
+      "resume_id": null,
+      "stdout": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\Kiro\\docs\\03-native-spec-review.stdout.jsonl",
+      "stderr": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\Kiro\\docs\\03-native-spec-review.stderr.txt",
+      "owned_process_id": 26264,
+      "initialize": {
+        "protocolVersion": 1,
+        "agentCapabilities": {
+          "loadSession": true,
+          "promptCapabilities": {
+            "image": true,
+            "embeddedContext": true
+          },
+          "mcpCapabilities": {
+            "http": true,
+            "sse": true
+          },
+          "sessionCapabilities": {
+            "list": {},
+            "close": {},
+            "delete": {},
+            "fork": {
+              "_meta": {
+                "kiro": {
+                  "messageId": true
+                }
+              }
+            }
+          },
+          "_meta": {
+            "kiro": {
+              "checkpoints": true,
+              "sessionList": true,
+              "policyNotifications": true,
+              "extensionMethods": [
+                "_kiro/knowledge",
+                "_kiro/memory/list",
+                "_kiro/memory/get",
+                "_kiro/memory/create",
+                "_kiro/memory/update",
+                "_kiro/memory/delete",
+                "_kiro/codeIntelligence",
+                "_kiro/environment/start_ssh_session",
+                "_kiro/session/context",
+                "_kiro/session/compact",
+                "_kiro/session/export",
+                "_kiro/session/history",
+                "_kiro/config/template",
+                "_kiro/configuration/getState",
+                "_kiro/workflow/new",
+                "_kiro/workflow/invoke",
+                "_kiro/workflow/load",
+                "_kiro/workflow/inspect",
+                "_kiro/workflow/list",
+                "_kiro/workflow/pause",
+                "_kiro/workflow/cancel",
+                "_kiro/workflow/delete",
+                "_kiro/workflow/listRecipes",
+                "_kiro/workflow/listWatchHandlers",
+                "_kiro/workflow/resumeAll",
+                "_kiro/workflow/retry",
+                "_kiro/workflow/update",
+                "_kiro/workflow/resume",
+                "_kiro/sourceProviders/list",
+                "_kiro/sourceProviders/listResources"
+              ],
+              "sessionSources": [
+                "local",
+                "remote"
+              ],
+              "sessionListScopes": [
+                "workspace",
+                "user"
+              ],
+              "executionTargets": [
+                "local",
+                "cloud-sandbox"
+              ],
+              "sourceProviders": true,
+              "replayMarking": true,
+              "modelFallbackReporting": true,
+              "logging": {
+                "logDir": "C:\\Users\\Kevin Alvarez\\.kiro\\logs\\20261021T202003792",
+                "channels": [
+                  {
+                    "name": "kiro",
+                    "filePath": "C:\\Users\\Kevin Alvarez\\.kiro\\logs\\20261021T202003792\\kiro.log"
+                  },
+                  {
+                    "name": "mcp",
+                    "filePath": "C:\\Users\\Kevin Alvarez\\.kiro\\logs\\20261021T202003792\\mcp.log"
+                  },
+                  {
+                    "name": "powers",
+                    "filePath": "C:\\Users\\Kevin Alvarez\\.kiro\\logs\\20261021T202003792\\powers.log"
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "authMethods": [
+          {
+            "id": "aws-builder-id",
+            "name": "AWS Builder ID"
+          },
+          {
+            "id": "aws-iam-identity-center",
+            "name": "AWS IAM Identity Center"
+          }
+        ]
+      },
+      "session_id": "sess_c67111cb-4835-46ee-8279-41e31a08e1cf",
+      "verified_configuration": {
+        "mode": "spec",
+        "model": "auto"
+      },
+      "configuration_verified_before_prompt_at_utc": "2026-10-21T20:20:04.533159+00:00",
+      "prompt_result": {
+        "stopReason": "end_turn"
+      },
+      "rpc_prompt_request_succeeded": true,
+      "generation_stop_reason": "end_turn",
+      "generation_turn_ended": true,
+      "ended": "2026-10-21T20:26:38.518881+00:00",
+      "duration_seconds": 395.73,
+      "exit_code": 0,
+      "transport_exit_code": 0,
+      "inference_scope": "one explicit prompt after verified configuration",
+      "run_closed": true,
+      "metadata_file": "03-native-spec-review.run.json",
+      "classification": "preimplementation_spec_revision",
+      "classification_reason": "External researcher review corrected existing Stage2 requirements/design/tasks before any implementation; actual ACP Spec/Auto verified and native format validators used. Separate from postimplementation correction attempts.",
+      "qa_intent_id": null,
+      "retry_of": null,
+      "process_exit_success": true,
+      "work_completion_status": "spec_revision_turn_ended; implementation acceptance not claimed",
+      "session_ids": [
+        "sess_c67111cb-4835-46ee-8279-41e31a08e1cf"
+      ],
+      "model_invocation_observed": true,
+      "input_tokens": null,
+      "cached_tokens": null,
+      "output_tokens": null,
+      "thought_tokens": null,
+      "token_status": "not exposed as billed input/cache/output/thought counters in observed Kiro ACP/native schema; context breakdown is not token usage",
+      "api_requests": null,
+      "api_errors": null,
+      "api_successful_requests": null,
+      "api_status": "not exposed; requestIds are retained as identifiers only, not attempted/succeeded/error API counters",
+      "credits": 8.02610462437811,
+      "credits_scope": "latest native usage_summary per session/execution within closed launcher interval; native events deduplicated by session/message ID/timestamp",
+      "agent_elapsed_seconds": 393.627,
+      "agent_elapsed_scope": "sum of retained turn elapsedTime milliseconds; distinct from launcher wall duration and entire resumed-session lifetime",
+      "recorded_request_id_count": 23,
+      "usage_summaries": [
+        {
+          "session_id": "sess_c67111cb-4835-46ee-8279-41e31a08e1cf",
+          "message_id": "f3c284e7-c18a-4177-9b14-c54f0eaa3bd3-usage",
+          "execution_id": "f3c284e7-c18a-4177-9b14-c54f0eaa3bd3",
+          "timestamp": "2026-10-21T20:26:38.346Z",
+          "status": "success",
+          "prompt_turn_summaries": [
+            {
+              "unit": "credit",
+              "unitPlural": "credits",
+              "usage": 8.02610462437811,
+              "usedTools": [
+                "list_directory",
+                "read_file",
+                "read_file",
+                "file_search",
+                "read_file",
+                "file_search",
+                "read_file",
+                "execute_pwsh",
+                "validate_spec_format",
+                "execute_pwsh",
+                "validate_spec_format",
+                "execute_pwsh",
+                "validate_spec_format",
+                "execute_pwsh",
+                "validate_spec_format",
+                "execute_pwsh",
+                "validate_spec_format",
+                "read_file",
+                "read_file",
+                "execute_pwsh",
+                "validate_spec_format",
+                "execute_pwsh"
+              ]
+            }
+          ],
+          "elapsed_time_ms": 393627,
+          "recorded_request_ids": [
+            "dca41364-e0c5-40a2-ae01-c876ea3b5859",
+            "22983d39-9091-4c72-a887-3e4455642693",
+            "97f5807e-04ac-4c46-9826-01b09c1bfc9b",
+            "5c6124bc-e912-4cce-a024-8be57507d036",
+            "1aaa4fa5-793e-426a-8413-00e90a46ef7a",
+            "a3b88e4f-268d-490d-b7a6-cbf664326491",
+            "d1ce21a6-73e2-41c4-bc48-f52bcd643bdc",
+            "75691f0b-2b41-4691-875b-8137a08d1ca7",
+            "259686b8-687f-4cac-94e9-526290e6b6dd",
+            "5c10e324-12b2-4d00-abea-8a40c38250e3",
+            "0c1f6791-8eac-4ae9-bff0-c550dbcdcbec",
+            "c0b13991-6504-43e5-bc98-0b729d850881",
+            "4399564b-991e-4ba9-b65d-2c5828d0d794",
+            "4a4a5de8-847e-4b65-bb83-1e55e7bc5361",
+            "70b078c5-d5ee-402c-99c7-7731cb9f6f96",
+            "e5a03756-e01a-48fb-a950-734f1d6cddec",
+            "082c26f9-07dc-4e85-a732-d787303d9d3c",
+            "9906c2bb-3823-4f2d-b519-5359c95d68c7",
+            "6601a9bb-845d-4dad-ad88-9c613b949a28",
+            "955e8fb8-91a6-41ec-a6a4-e225e6746c9c",
+            "91f6732b-b55b-47f1-a7fb-a58bb2c3769d",
+            "5837abc2-4a1f-4595-bf47-f232f1bc49ed",
+            "61ac44b0-9079-43bf-b837-57b780bf9424"
+          ]
+        }
+      ],
+      "native_assistant_say_count": 19,
+      "native_assistant_reasoning_record_count": 23,
+      "recorded_response_count": null,
+      "recorded_response_status": "Kiro Say messages and ACP chunks are not defined as API model responses",
+      "native_user_message_count": 1,
+      "tool_call_count": 28,
+      "tool_result_success_flags": {
+        "True": 28
+      },
+      "tool_success_limitation": "wrapper success does not prove command/test/scanner exit success; inspect raw output",
+      "acp_event_count": 969,
+      "acp_session_update_counts": {
+        "available_commands_update": 3,
+        "config_option_update": 3,
+        "session_info_update": 83,
+        "agent_message_chunk": 799,
+        "tool_call": 22,
+        "tool_call_update": 57
+      },
+      "acp_run_finished": [
+        {
+          "status": "success",
+          "stopReason": "end_turn",
+          "finalTextTruncated": false
+        }
+      ],
+      "stream_paths": [
+        "03-native-spec-review.stdout.jsonl",
+        "transcripts-archive/03-native-spec-review.acp_stream.791C8597AF0B2466.jsonl"
+      ],
+      "stream_selected": "03-native-spec-review.stdout.jsonl",
+      "stream_prefix_conflict": false,
+      "invalid_stream_lines": {},
+      "invalid_native_lines": {},
+      "native_record_conflicts": [],
+      "native_interval_record_count": 142,
+      "session_configuration": [
+        {
+          "session_id": "sess_c67111cb-4835-46ee-8279-41e31a08e1cf",
+          "model_id": "auto",
+          "agent_mode": "spec",
+          "created_at": "2026-10-21T20:20:04.336Z",
+          "scope": "session configuration, not proof of backend resolved model or auxiliary role attribution"
+        }
+      ],
+      "auxiliary_role_usage": null,
+      "auxiliary_role_status": "no per-model/per-role usage counters observed; credits may include internal actions without separate attribution",
+      "latest_context_snapshot": {
+        "contextUsage": {
+          "usagePercentage": 11.122099876403809
+        },
+        "breakdown": {
+          "contextFiles": {
+            "tokens": 0,
+            "percent": 0,
+            "items": []
+          },
+          "tools": {
+            "tokens": 4453,
+            "percent": 0.4,
+            "mcp": {
+              "tokens": 0,
+              "percent": 0
+            },
+            "builtin": {
+              "tokens": 4453,
+              "percent": 0.4
+            }
+          },
+          "memory": {
+            "tokens": 0,
+            "percent": 0
+          },
+          "kiroResponses": {
+            "tokens": 0,
+            "percent": 0
+          },
+          "yourPrompts": {
+            "tokens": 0,
+            "percent": 10.7
+          },
+          "sessionFiles": {
+            "tokens": 0,
+            "percent": 0,
+            "items": []
+          }
+        },
+        "kind": "context_usage",
+        "usagePercentage": 11.122099876403809
+      },
+      "context_snapshot_scope": "last context occupancy/composition snapshot only; never summed as cumulative tokens",
+      "acp_configuration_observations": [
+        {
+          "stream_event_index_1based": 3,
+          "session_id": "sess_c67111cb-4835-46ee-8279-41e31a08e1cf",
+          "selected_values": {
+            "mode": "vibe",
+            "model": "auto",
+            "autopilot": "on"
+          }
+        },
+        {
+          "stream_event_index_1based": 7,
+          "session_id": "sess_c67111cb-4835-46ee-8279-41e31a08e1cf",
+          "selected_values": {
+            "mode": "spec",
+            "model": "auto",
+            "autopilot": "on"
+          }
+        },
+        {
+          "stream_event_index_1based": 8,
+          "session_id": "sess_c67111cb-4835-46ee-8279-41e31a08e1cf",
+          "selected_values": {
+            "mode": "spec",
+            "model": "auto",
+            "autopilot": "on"
+          }
+        }
+      ],
+      "observed_mode_selection_values": [
+        "spec",
+        "vibe"
+      ],
+      "observed_model_selection_values": [
+        "auto"
+      ],
+      "native_assistant_agent_modes": [
+        "spec"
+      ],
+      "configuration_attribution_scope": "Selected/current configuration and emitted native assistant agentMode are separate from requested flags. Auto configuration is observable; resolved backend/auxiliary models are not established.",
+      "native_payload_type_counts": {
+        "agent_note": 1,
+        "user": 1,
+        "turn_start": 1,
+        "assistant": 42,
+        "tool_call": 28,
+        "tool_result": 28,
+        "session_metadata": 23,
+        "pending_interaction": 7,
+        "interaction_resolved": 7,
+        "usage_summary": 1,
+        "session_event": 1,
+        "turn_end": 1,
+        "session_start": 1
+      },
+      "unrecognized_acp_update_types": []
+    },
+    {
+      "researcher_created": true,
+      "label": "04-implement",
+      "phase": "implement",
+      "started": "2026-10-22T00:51:10.002322+00:00",
+      "runtime": {
+        "path": "C:\\Users\\Kevin Alvarez\\AppData\\Local\\Kiro-Cli\\kiro-cli.exe",
+        "version": "kiro-cli-chat 2.33.0",
+        "sha256": "BC711541FC139D5E5FC8E07FC8FA13E9239ED039862F4A9D55C0E344BAC7C3F8"
+      },
+      "submission_method": "official ACP stdio; verified advertised spec/auto before optional prompt",
+      "requested_model": "auto",
+      "requested_mode": "spec",
+      "model_prompt_sent": true,
+      "seed_file_sha256": "63919779DD4104076FBABCB130CE296A160FA840E0B4755A2AA5D90757ADA8EF",
+      "seed_block_utf8_sha256": "60D6728689CD5CDAD7B1A386F95DAD4E34850EB5DE0AAB92E837D630DFD2B55A",
+      "seed_block_characters": 3516,
+      "seed_block_scope": "quoted common seed, quote prefixes removed, trimmed, LF, UTF-8 without BOM; file hash covers original complete Markdown bytes",
+      "prompt_characters": 8104,
+      "prompt_sha256": "609BA08859D580A5D76AB198E51279DEABC1553375A5D1E344FC255A9817E5C6",
+      "resume_id": null,
+      "stdout": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\Kiro\\docs\\04-implement.stdout.jsonl",
+      "stderr": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\Kiro\\docs\\04-implement.stderr.txt",
+      "owned_process_id": 29536,
+      "initialize": {
+        "protocolVersion": 1,
+        "agentCapabilities": {
+          "loadSession": true,
+          "promptCapabilities": {
+            "image": true,
+            "embeddedContext": true
+          },
+          "mcpCapabilities": {
+            "http": true,
+            "sse": true
+          },
+          "sessionCapabilities": {
+            "list": {},
+            "close": {},
+            "delete": {},
+            "fork": {
+              "_meta": {
+                "kiro": {
+                  "messageId": true
+                }
+              }
+            }
+          },
+          "_meta": {
+            "kiro": {
+              "checkpoints": true,
+              "sessionList": true,
+              "policyNotifications": true,
+              "extensionMethods": [
+                "_kiro/knowledge",
+                "_kiro/memory/list",
+                "_kiro/memory/get",
+                "_kiro/memory/create",
+                "_kiro/memory/update",
+                "_kiro/memory/delete",
+                "_kiro/codeIntelligence",
+                "_kiro/environment/start_ssh_session",
+                "_kiro/session/context",
+                "_kiro/session/compact",
+                "_kiro/session/export",
+                "_kiro/session/history",
+                "_kiro/config/template",
+                "_kiro/configuration/getState",
+                "_kiro/workflow/new",
+                "_kiro/workflow/invoke",
+                "_kiro/workflow/load",
+                "_kiro/workflow/inspect",
+                "_kiro/workflow/list",
+                "_kiro/workflow/pause",
+                "_kiro/workflow/cancel",
+                "_kiro/workflow/delete",
+                "_kiro/workflow/listRecipes",
+                "_kiro/workflow/listWatchHandlers",
+                "_kiro/workflow/resumeAll",
+                "_kiro/workflow/retry",
+                "_kiro/workflow/update",
+                "_kiro/workflow/resume",
+                "_kiro/sourceProviders/list",
+                "_kiro/sourceProviders/listResources"
+              ],
+              "sessionSources": [
+                "local",
+                "remote"
+              ],
+              "sessionListScopes": [
+                "workspace",
+                "user"
+              ],
+              "executionTargets": [
+                "local",
+                "cloud-sandbox"
+              ],
+              "sourceProviders": true,
+              "replayMarking": true,
+              "modelFallbackReporting": true,
+              "logging": {
+                "logDir": "C:\\Users\\Kevin Alvarez\\.kiro\\logs\\20261022T005111692",
+                "channels": [
+                  {
+                    "name": "kiro",
+                    "filePath": "C:\\Users\\Kevin Alvarez\\.kiro\\logs\\20261022T005111692\\kiro.log"
+                  },
+                  {
+                    "name": "mcp",
+                    "filePath": "C:\\Users\\Kevin Alvarez\\.kiro\\logs\\20261022T005111692\\mcp.log"
+                  },
+                  {
+                    "name": "powers",
+                    "filePath": "C:\\Users\\Kevin Alvarez\\.kiro\\logs\\20261022T005111692\\powers.log"
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "authMethods": [
+          {
+            "id": "aws-builder-id",
+            "name": "AWS Builder ID"
+          },
+          {
+            "id": "aws-iam-identity-center",
+            "name": "AWS IAM Identity Center"
+          }
+        ]
+      },
+      "session_id": "sess_808d62db-8b67-4fd7-a9a0-4d840eb62ae7",
+      "verified_configuration": {
+        "mode": "spec",
+        "model": "auto"
+      },
+      "configuration_verified_before_prompt_at_utc": "2026-10-22T00:51:12.512505+00:00",
+      "prompt_result": {
+        "stopReason": "end_turn"
+      },
+      "rpc_prompt_request_succeeded": true,
+      "generation_stop_reason": "end_turn",
+      "generation_turn_ended": true,
+      "ended": "2026-10-22T01:21:06.251943+00:00",
+      "duration_seconds": 1796.25,
+      "exit_code": 0,
+      "transport_exit_code": 0,
+      "inference_scope": "one explicit prompt after verified configuration",
+      "run_closed": true,
+      "metadata_file": "04-implement.run.json",
+      "classification": "initial_implementation",
+      "classification_reason": "Actual ACP Spec/Auto implementation after reviewed native03 artifacts. Native Sonar remediation scans are internal iterations, distinct from external QA prompts.",
+      "qa_intent_id": null,
+      "retry_of": null,
+      "process_exit_success": true,
+      "work_completion_status": "candidate only; independent hook races and full-tree audit findings require correction",
+      "session_ids": [
+        "sess_808d62db-8b67-4fd7-a9a0-4d840eb62ae7"
+      ],
+      "model_invocation_observed": true,
+      "input_tokens": null,
+      "cached_tokens": null,
+      "output_tokens": null,
+      "thought_tokens": null,
+      "token_status": "not exposed as billed input/cache/output/thought counters in observed Kiro ACP/native schema; context breakdown is not token usage",
+      "api_requests": null,
+      "api_errors": null,
+      "api_successful_requests": null,
+      "api_status": "not exposed; requestIds are retained as identifiers only, not attempted/succeeded/error API counters",
+      "credits": 49.45827078706466,
+      "credits_scope": "latest native usage_summary per session/execution within closed launcher interval; native events deduplicated by session/message ID/timestamp",
+      "agent_elapsed_seconds": 1792.693,
+      "agent_elapsed_scope": "sum of retained turn elapsedTime milliseconds; distinct from launcher wall duration and entire resumed-session lifetime",
+      "recorded_request_id_count": 130,
+      "usage_summaries": [
+        {
+          "session_id": "sess_808d62db-8b67-4fd7-a9a0-4d840eb62ae7",
+          "message_id": "0822f316-213b-45ec-9373-bae25a592763-usage",
+          "execution_id": "0822f316-213b-45ec-9373-bae25a592763",
+          "timestamp": "2026-10-22T01:21:05.367Z",
+          "status": "success",
+          "prompt_turn_summaries": [
+            {
+              "unit": "credit",
+              "unitPlural": "credits",
+              "usage": 49.45827078706466,
+              "usedTools": [
+                "list_directory",
+                "read_file",
+                "list_directory",
+                "list_directory",
+                "read_file",
+                "read_file",
+                "list_directory",
+                "read_file",
+                "read_file",
+                "read_file",
+                "read_file",
+                "execute_pwsh",
+                "read_file",
+                "execute_pwsh",
+                "execute_pwsh",
+                "execute_pwsh",
+                "execute_pwsh",
+                "execute_pwsh",
+                "execute_pwsh",
+                "read_file",
+                "execute_pwsh",
+                "grep_search",
+                "execute_pwsh",
+                "read_file",
+                "execute_pwsh",
+                "execute_pwsh",
+                "execute_pwsh",
+                "execute_pwsh",
+                "validate_spec_format",
+                "execute_pwsh",
+                "execute_pwsh",
+                "execute_pwsh",
+                "execute_pwsh",
+                "execute_pwsh",
+                "execute_pwsh",
+                "execute_pwsh",
+                "execute_pwsh",
+                "execute_pwsh",
+                "execute_pwsh",
+                "execute_pwsh",
+                "execute_pwsh",
+                "execute_pwsh",
+                "execute_pwsh",
+                "read_file",
+                "read_file",
+                "execute_pwsh",
+                "execute_pwsh",
+                "execute_pwsh",
+                "execute_pwsh",
+                "execute_pwsh",
+                "execute_pwsh",
+                "remote_web_search",
+                "execute_pwsh",
+                "execute_pwsh",
+                "remote_web_search",
+                "execute_pwsh",
+                "execute_pwsh",
+                "execute_pwsh",
+                "execute_pwsh",
+                "execute_pwsh",
+                "execute_pwsh",
+                "execute_pwsh",
+                "execute_pwsh",
+                "execute_pwsh",
+                "execute_pwsh",
+                "execute_pwsh",
+                "execute_pwsh",
+                "execute_pwsh",
+                "execute_pwsh",
+                "execute_pwsh",
+                "execute_pwsh",
+                "execute_pwsh",
+                "execute_pwsh",
+                "read_file",
+                "execute_pwsh",
+                "execute_pwsh",
+                "execute_pwsh",
+                "execute_pwsh",
+                "read_file",
+                "execute_pwsh",
+                "read_file",
+                "execute_pwsh",
+                "read_file",
+                "list_directory",
+                "execute_pwsh",
+                "execute_pwsh",
+                "execute_pwsh",
+                "execute_pwsh",
+                "execute_pwsh",
+                "execute_pwsh",
+                "execute_pwsh",
+                "execute_pwsh",
+                "execute_pwsh",
+                "execute_pwsh",
+                "read_file",
+                "execute_pwsh",
+                "read_file",
+                "execute_pwsh",
+                "read_file",
+                "execute_pwsh",
+                "grep_search",
+                "grep_search",
+                "grep_search",
+                "grep_search",
+                "read_file",
+                "read_file",
+                "grep_search",
+                "execute_pwsh",
+                "execute_pwsh",
+                "execute_pwsh",
+                "execute_pwsh",
+                "execute_pwsh",
+                "execute_pwsh",
+                "execute_pwsh",
+                "read_file",
+                "execute_pwsh",
+                "execute_pwsh",
+                "execute_pwsh",
+                "execute_pwsh",
+                "execute_pwsh",
+                "execute_pwsh",
+                "execute_pwsh",
+                "execute_pwsh",
+                "execute_pwsh",
+                "execute_pwsh",
+                "validate_spec_format",
+                "execute_pwsh",
+                "execute_pwsh",
+                "execute_pwsh",
+                "execute_pwsh",
+                "validate_spec_format",
+                "execute_pwsh"
+              ]
+            }
+          ],
+          "elapsed_time_ms": 1792693,
+          "recorded_request_ids": [
+            "e90463e5-5e11-4d84-a9aa-2f824d14ede2",
+            "57122193-0d3b-4511-9eda-42a7734c99fa",
+            "1789bb13-a312-42d3-a2bc-12fd0420a53f",
+            "80d14633-84cd-42f5-b537-5c378992ae29",
+            "e9158ae3-49c1-42fa-872a-8d753ec626d1",
+            "65864b29-7510-494f-9af2-9cf5b7d4bd88",
+            "8bf2be4d-fdf2-480a-bfc9-88062f193c1f",
+            "60dec9ab-bc64-4d98-8041-69056e312a59",
+            "39dab8f8-b9e5-46d9-b3a1-72dffe4ae7e5",
+            "1d3f8982-cd1f-46e3-9b20-2e71eb406d0e",
+            "e63eeb6f-5318-4715-a5cb-b56cfa8069c0",
+            "5486113a-e0cf-4a57-bf11-d389c0426b0f",
+            "c36efc3b-0ae1-4030-b795-4795f6b383d4",
+            "066d5fa0-09a0-4850-b3ff-c02523ff620d",
+            "2fe8c2ff-b910-4270-be44-4fb68257258b",
+            "c54a7858-47a9-4d8a-9884-9e1e2db0cfbf",
+            "0c5fc2cb-3ec0-4b04-b24d-b8d5154d6f29",
+            "33727564-8e96-417d-a240-508788cf09a3",
+            "9ea201cb-62ae-47a0-ad39-c92c483c1200",
+            "d1284611-babb-4d93-bb16-5ccb0ed9b6dd",
+            "c8ae6247-e21b-4d7f-a6e4-c512d96d34af",
+            "53660c23-4fee-4392-bfe8-11922c307f8b",
+            "6eb04af8-1cb1-425c-93db-8015c0bd2be8",
+            "04b5078d-e867-470c-86a7-d7bf92fbee4c",
+            "7f05293c-c46e-426f-b6e8-62c8948b12e4",
+            "e918f1e6-e990-42ec-ba7e-4c255c1b2ca3",
+            "7594d98e-f084-4313-a992-24860fa157dc",
+            "d5a0a601-0bb9-448f-ba7c-ee00b13052d1",
+            "a286333e-d802-4257-83e1-1e68aff5f3cc",
+            "ff951892-74ea-4713-a330-e56c4547f909",
+            "298ea67a-2767-4a78-b087-57a41e8d9bb4",
+            "708e3985-806b-4993-b1e2-80e51ebb831f",
+            "de62c169-a8ec-43d4-ad1a-85909f4111f5",
+            "e4501ee3-062f-424b-855c-b8d8fd6ea0e6",
+            "429f948c-6c5a-46aa-bca8-8850e5c30149",
+            "ff8c0913-c6b9-42d1-a0e6-d9683f235704",
+            "eedde87f-e127-4029-a35c-7ad1f6024039",
+            "174fc57d-75f9-4f73-afa1-58ca4e6baaf4",
+            "6c6f9536-5f95-451f-8586-282b2c43e5b9",
+            "f42f9290-9a35-4ba1-9013-5ff4a282a9c7",
+            "a59e6372-1055-4976-8ac5-1965c61ed2f0",
+            "1a1f22be-e98b-42b5-bdf1-5df7893923b0",
+            "841a1334-378a-4b11-ab51-33411b2bad05",
+            "d49c559f-3dc2-4189-846e-ab8bc2c24cfa",
+            "7428f51d-7eda-4c9c-929a-979f0b6269a1",
+            "62281c7c-b1c0-4c1b-8182-e68b72a41690",
+            "e2b564c2-9454-467a-8456-42fb75480a0f",
+            "dc989415-3629-4665-98b7-4645a634fcbc",
+            "488a65bf-ea16-47ce-a05b-ea3abd400d94",
+            "3151d60f-b528-4575-999d-b0511b32dfc4",
+            "d70127ae-ff9d-4aee-a86b-067f4b2023fd",
+            "4122c273-ced4-446a-8e5d-1ceae46bc513",
+            "fd607438-3d3c-47d3-ab8e-5eb8cf7d77f9",
+            "128a8d88-f068-4672-8913-1655c6163302",
+            "f8e09268-3034-43a7-aa89-6494c824d327",
+            "7ee5fb38-9f4a-4336-b6f8-71302f6176b4",
+            "1d18368a-f74c-4b05-b06b-244b2d9c9f71",
+            "86812bea-d23f-4b1e-b5fe-840f24c7a295",
+            "a902c3c7-a61b-4b68-a6b7-ec13ef0950fb",
+            "4307ecfc-4280-4f8d-8fe9-4dceaffcd9f7",
+            "8506a766-fcc1-438c-9407-6afa76116d85",
+            "e8fa9a0d-6e33-45f0-9c53-23bbae2e4aa5",
+            "1e7f66b2-b4b5-4ac6-a60d-98954f084ad7",
+            "9375753f-4822-48f9-9c73-90236c666ac6",
+            "f184cb74-da6d-4055-826e-13d2ffee3db5",
+            "468186a2-7f31-4365-af39-c876cbb330b1",
+            "5fb50bae-c50c-4fd4-b589-8a8bdc902c27",
+            "8b455b0e-ce36-4cbb-8437-53bcfcb043f9",
+            "81a0860c-7668-40f0-afe1-a5697a54b2f0",
+            "9305f410-d221-4fb9-93f6-cbbaf56cdf04",
+            "d74ca8a5-2dc0-4a5e-8e07-39f5da9ec621",
+            "5981f5e0-232b-46ab-b6c6-e2d9b2474238",
+            "a8dc5722-a35b-4034-b66e-7f74d70b4814",
+            "41607a33-92ac-42af-9044-d81e8b0c1df8",
+            "f21848b9-798c-495c-82ab-8ef173ccde8b",
+            "05f503e5-303d-4618-b726-f77a9f9b8fc8",
+            "95f2b892-c342-4ff9-bb0c-82adb70b11bd",
+            "93be11e0-81ff-4e94-ad1b-3146f5d2a97d",
+            "26fc9db7-bda2-41d0-bdf0-b906932f4655",
+            "ba89078a-ce89-49f8-a7e9-bf5a68432e33",
+            "323a7099-d70d-499b-a292-b1c87e754c79",
+            "5eb883b0-33d8-44a6-bd4e-0544cf157ee4",
+            "9cad76da-f93b-40f1-bf76-37e97b326f11",
+            "b8631643-7276-42a1-badd-b9b67ca11202",
+            "f273bf07-70bd-4ac8-82c5-df7fd5999515",
+            "601f52ce-cefc-4123-8d9e-564aa4898c26",
+            "c9fe314f-9768-449e-b459-8ead0f1fd57d",
+            "365408e4-fdad-4436-82b4-9b52f069e274",
+            "2516f633-54af-4583-838c-361db43bb57b",
+            "d4d4b518-9a46-4b17-9d0a-19f931212b45",
+            "9f0d0dea-001e-4959-9fdb-d1482c817f91",
+            "d92e0813-4ff4-4fde-8555-8557345a949a",
+            "3e2db667-e0d1-473e-a4bd-1997d1fc4bb1",
+            "5afc2fc9-2361-4011-b969-0c9a49a5259b",
+            "4fb502bf-ea39-4fca-b41c-58dc2503ec32",
+            "e58b6f6e-a155-42cd-ae9d-2803d9556782",
+            "3fb34c87-c449-44b1-bb01-304b48966f92",
+            "89b23163-a423-47da-a885-b60c4944b3b2",
+            "5dd2a3ea-1e54-4536-b31f-8861d5e41173",
+            "893e55c6-4ba0-4f7d-8078-8f59506a5695",
+            "a3e7930f-46e8-4d6a-ae11-c22be04a726f",
+            "9ac8865f-57ee-403e-84a3-4c6dc218304f",
+            "0b24629b-446f-4900-89df-5e6f709d5fce",
+            "3249a357-79bf-4476-bcb5-d1b492151e8c",
+            "115e53e0-da60-4017-a694-58112a8e65df",
+            "f627b759-a992-417f-91ad-c56586799071",
+            "c7782c19-6c0d-4712-a7a1-564ca8db9d74",
+            "c62c749f-ca8d-42da-bf95-e3e2317a0ef3",
+            "347a623a-e707-4d1c-857f-f2df7ca0bb29",
+            "dba9c377-99ec-455b-8bc2-4e0ed872cd46",
+            "5e9a3831-dbe9-43d5-9e49-0dcaddd64681",
+            "497a6c4c-6ee6-4630-839d-7d8ba6b99282",
+            "81f8ea5d-9984-46f9-b5c2-52c2a8610f92",
+            "0270050a-9276-47a1-b697-6fa71d155176",
+            "b054e1ee-e858-401c-9bd8-049573d9c5cd",
+            "2014a653-c6a1-45b6-a697-09c7bd0fc9f4",
+            "a666a56a-b958-46ea-b141-e57d9e3bb0eb",
+            "4acf88c2-0736-4b32-b206-54114747550e",
+            "4f59952a-f854-4b08-8691-d56ff125ecae",
+            "4d8663ec-45fd-4830-a584-cb63df959c5f",
+            "c7cd0c5c-02c1-4073-b9f2-d4f0e5f69be9",
+            "5605cc11-2033-4945-8a6a-f28bd5ba9850",
+            "7813c9ca-c532-4781-8199-78bb77ae3cee",
+            "efd5aa5f-6ec0-44ce-97f2-86f1da584d22",
+            "3877d5db-beec-4541-adcb-9cd2aca292ff",
+            "9c26936d-66a6-43c9-9610-cbf97a4d6934",
+            "4816a23d-6e64-4ce9-80a6-c7f1eb984ee9",
+            "8f47c180-d3e6-4891-ae6c-ca1ffd53a6d3",
+            "d5f7819c-898b-4ded-9e9e-68a21ad203dc",
+            "3e4423a5-bdc7-4fdb-8549-da04d1ffa6b4"
+          ]
+        }
+      ],
+      "native_assistant_say_count": 105,
+      "native_assistant_reasoning_record_count": 130,
+      "recorded_response_count": null,
+      "recorded_response_status": "Kiro Say messages and ACP chunks are not defined as API model responses",
+      "native_user_message_count": 1,
+      "tool_call_count": 158,
+      "tool_result_success_flags": {
+        "True": 151,
+        "False": 7
+      },
+      "tool_success_limitation": "wrapper success does not prove command/test/scanner exit success; inspect raw output",
+      "acp_event_count": 5613,
+      "acp_session_update_counts": {
+        "available_commands_update": 3,
+        "session_info_update": 649,
+        "config_option_update": 3,
+        "agent_message_chunk": 4404,
+        "tool_call": 151,
+        "tool_call_update": 401
+      },
+      "acp_run_finished": [
+        {
+          "status": "success",
+          "stopReason": "end_turn",
+          "finalTextTruncated": false
+        }
+      ],
+      "stream_paths": [
+        "04-implement.stdout.jsonl",
+        "transcripts-archive/04-implement.acp_stream.031BFDC2206C54EE.jsonl"
+      ],
+      "stream_selected": "04-implement.stdout.jsonl",
+      "stream_prefix_conflict": false,
+      "invalid_stream_lines": {},
+      "invalid_native_lines": {},
+      "native_record_conflicts": [],
+      "native_interval_record_count": 878,
+      "session_configuration": [
+        {
+          "session_id": "sess_808d62db-8b67-4fd7-a9a0-4d840eb62ae7",
+          "model_id": "auto",
+          "agent_mode": "spec",
+          "created_at": "2026-10-22T00:51:12.290Z",
+          "scope": "session configuration, not proof of backend resolved model or auxiliary role attribution"
+        }
+      ],
+      "auxiliary_role_usage": null,
+      "auxiliary_role_status": "no per-model/per-role usage counters observed; credits may include internal actions without separate attribution",
+      "latest_context_snapshot": {
+        "contextUsage": {
+          "usagePercentage": 23.861600875854492
+        },
+        "breakdown": {
+          "contextFiles": {
+            "tokens": 0,
+            "percent": 0,
+            "items": []
+          },
+          "tools": {
+            "tokens": 4453,
+            "percent": 0.4,
+            "mcp": {
+              "tokens": 0,
+              "percent": 0
+            },
+            "builtin": {
+              "tokens": 4453,
+              "percent": 0.4
+            }
+          },
+          "memory": {
+            "tokens": 0,
+            "percent": 0
+          },
+          "kiroResponses": {
+            "tokens": 0,
+            "percent": 0
+          },
+          "yourPrompts": {
+            "tokens": 0,
+            "percent": 23.5
+          },
+          "sessionFiles": {
+            "tokens": 0,
+            "percent": 0,
+            "items": []
+          }
+        },
+        "kind": "context_usage",
+        "usagePercentage": 23.861600875854492
+      },
+      "context_snapshot_scope": "last context occupancy/composition snapshot only; never summed as cumulative tokens",
+      "acp_configuration_observations": [
+        {
+          "stream_event_index_1based": 5,
+          "session_id": "sess_808d62db-8b67-4fd7-a9a0-4d840eb62ae7",
+          "selected_values": {
+            "mode": "spec",
+            "model": "auto",
+            "autopilot": "on"
+          }
+        },
+        {
+          "stream_event_index_1based": 7,
+          "session_id": "sess_808d62db-8b67-4fd7-a9a0-4d840eb62ae7",
+          "selected_values": {
+            "mode": "spec",
+            "model": "auto",
+            "autopilot": "on"
+          }
+        },
+        {
+          "stream_event_index_1based": 8,
+          "session_id": "sess_808d62db-8b67-4fd7-a9a0-4d840eb62ae7",
+          "selected_values": {
+            "mode": "spec",
+            "model": "auto",
+            "autopilot": "on"
+          }
+        }
+      ],
+      "observed_mode_selection_values": [
+        "spec"
+      ],
+      "observed_model_selection_values": [
+        "auto"
+      ],
+      "native_assistant_agent_modes": [
+        "spec"
+      ],
+      "configuration_attribution_scope": "Selected/current configuration and emitted native assistant agentMode are separate from requested flags. Auto configuration is observable; resolved backend/auxiliary models are not established.",
+      "native_payload_type_counts": {
+        "agent_note": 1,
+        "user": 1,
+        "turn_start": 1,
+        "assistant": 235,
+        "tool_call": 158,
+        "tool_result": 158,
+        "session_metadata": 130,
+        "pending_interaction": 95,
+        "interaction_resolved": 95,
+        "usage_summary": 1,
+        "session_event": 1,
+        "turn_end": 1,
+        "session_start": 1
+      },
+      "unrecognized_acp_update_types": []
+    },
+    {
+      "researcher_created": true,
+      "label": "05-qa",
+      "phase": "clarify",
+      "started": "2026-10-22T01:26:50.170065+00:00",
+      "runtime": {
+        "path": "C:\\Users\\Kevin Alvarez\\AppData\\Local\\Kiro-Cli\\kiro-cli.exe",
+        "version": "kiro-cli-chat 2.33.0",
+        "sha256": "BC711541FC139D5E5FC8E07FC8FA13E9239ED039862F4A9D55C0E344BAC7C3F8"
+      },
+      "submission_method": "official ACP stdio; verified advertised spec/auto before optional prompt",
+      "requested_model": "auto",
+      "requested_mode": "spec",
+      "model_prompt_sent": true,
+      "seed_file_sha256": "63919779DD4104076FBABCB130CE296A160FA840E0B4755A2AA5D90757ADA8EF",
+      "seed_block_utf8_sha256": "60D6728689CD5CDAD7B1A386F95DAD4E34850EB5DE0AAB92E837D630DFD2B55A",
+      "seed_block_characters": 3516,
+      "seed_block_scope": "quoted common seed, quote prefixes removed, trimmed, LF, UTF-8 without BOM; file hash covers original complete Markdown bytes",
+      "prompt_characters": 9976,
+      "prompt_sha256": "ADFDEA0CB97EF329DFF34AB951E44D82C89BF3E983F9E26E745899155008B941",
+      "resume_id": null,
+      "stdout": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\Kiro\\docs\\05-qa.stdout.jsonl",
+      "stderr": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\Kiro\\docs\\05-qa.stderr.txt",
+      "owned_process_id": 18492,
+      "initialize": {
+        "protocolVersion": 1,
+        "agentCapabilities": {
+          "loadSession": true,
+          "promptCapabilities": {
+            "image": true,
+            "embeddedContext": true
+          },
+          "mcpCapabilities": {
+            "http": true,
+            "sse": true
+          },
+          "sessionCapabilities": {
+            "list": {},
+            "close": {},
+            "delete": {},
+            "fork": {
+              "_meta": {
+                "kiro": {
+                  "messageId": true
+                }
+              }
+            }
+          },
+          "_meta": {
+            "kiro": {
+              "checkpoints": true,
+              "sessionList": true,
+              "policyNotifications": true,
+              "extensionMethods": [
+                "_kiro/knowledge",
+                "_kiro/memory/list",
+                "_kiro/memory/get",
+                "_kiro/memory/create",
+                "_kiro/memory/update",
+                "_kiro/memory/delete",
+                "_kiro/codeIntelligence",
+                "_kiro/environment/start_ssh_session",
+                "_kiro/session/context",
+                "_kiro/session/compact",
+                "_kiro/session/export",
+                "_kiro/session/history",
+                "_kiro/config/template",
+                "_kiro/configuration/getState",
+                "_kiro/workflow/new",
+                "_kiro/workflow/invoke",
+                "_kiro/workflow/load",
+                "_kiro/workflow/inspect",
+                "_kiro/workflow/list",
+                "_kiro/workflow/pause",
+                "_kiro/workflow/cancel",
+                "_kiro/workflow/delete",
+                "_kiro/workflow/listRecipes",
+                "_kiro/workflow/listWatchHandlers",
+                "_kiro/workflow/resumeAll",
+                "_kiro/workflow/retry",
+                "_kiro/workflow/update",
+                "_kiro/workflow/resume",
+                "_kiro/sourceProviders/list",
+                "_kiro/sourceProviders/listResources"
+              ],
+              "sessionSources": [
+                "local",
+                "remote"
+              ],
+              "sessionListScopes": [
+                "workspace",
+                "user"
+              ],
+              "executionTargets": [
+                "local",
+                "cloud-sandbox"
+              ],
+              "sourceProviders": true,
+              "replayMarking": true,
+              "modelFallbackReporting": true,
+              "logging": {
+                "logDir": "C:\\Users\\Kevin Alvarez\\.kiro\\logs\\20261022T012657876",
+                "channels": [
+                  {
+                    "name": "kiro",
+                    "filePath": "C:\\Users\\Kevin Alvarez\\.kiro\\logs\\20261022T012657876\\kiro.log"
+                  },
+                  {
+                    "name": "mcp",
+                    "filePath": "C:\\Users\\Kevin Alvarez\\.kiro\\logs\\20261022T012657876\\mcp.log"
+                  },
+                  {
+                    "name": "powers",
+                    "filePath": "C:\\Users\\Kevin Alvarez\\.kiro\\logs\\20261022T012657876\\powers.log"
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "authMethods": [
+          {
+            "id": "aws-builder-id",
+            "name": "AWS Builder ID"
+          },
+          {
+            "id": "aws-iam-identity-center",
+            "name": "AWS IAM Identity Center"
+          }
+        ]
+      },
+      "session_id": "sess_3bfbb44e-aff5-47a2-bd1b-c00ed7734d0d",
+      "verified_configuration": {
+        "mode": "spec",
+        "model": "auto"
+      },
+      "configuration_verified_before_prompt_at_utc": "2026-10-22T01:27:00.953030+00:00",
+      "researcher_reconstructed_closure": true,
+      "ended": null,
+      "duration_seconds": null,
+      "exit_code": null,
+      "transport_exit_code": null,
+      "observation_end_upper_bound_utc": "2026-10-23T19:14:57.364670+00:00",
+      "actual_process_end_time_utc": null,
+      "closure_status": "interrupted_transport_absent_at_recovery",
+      "closure_evidence": "Researcher inspected Windows process inventory on October23; owned native PID and driver/orchestration commands were absent. No native runFinished or wrapper result remained.",
+      "interruption_cause": "unknown; execution stopped during the gap after last retained activity on October21, no cause inferred",
+      "timing_scope": "Observed absence bounds the retained native interval only. Actual end/duration/exit status are unknown; the off-line gap is not billed or agent elapsed time.",
+      "usage_scope": "Final native usage summary absent unless explicitly found in retained records; account balance delta is not attributed to this run.",
+      "run_closed": true,
+      "metadata_file": "05-qa.run.json",
+      "classification": "postimplementation_external_correction",
+      "classification_reason": "Prepared external QA intent for three independently reproduced hook races, seven full-tree dependency advisories, production bootstrap coverage exclusion and document title; actual invocation is counted only when started/closed evidence exists.",
+      "qa_intent_id": "kiro-stage2-qa-01",
+      "retry_of": null,
+      "process_exit_success": null,
+      "work_completion_status": "interrupted before implementation; actual end/duration/exit and final consumption unknown",
+      "session_ids": [
+        "sess_3bfbb44e-aff5-47a2-bd1b-c00ed7734d0d"
+      ],
+      "model_invocation_observed": true,
+      "input_tokens": null,
+      "cached_tokens": null,
+      "output_tokens": null,
+      "thought_tokens": null,
+      "token_status": "not exposed as billed input/cache/output/thought counters in observed Kiro ACP/native schema; context breakdown is not token usage",
+      "api_requests": null,
+      "api_errors": null,
+      "api_successful_requests": null,
+      "api_status": "not exposed; requestIds are retained as identifiers only, not attempted/succeeded/error API counters",
+      "credits": null,
+      "credits_scope": "invocation ACP turn_completion snapshots; unavailable if stream variants conflict",
+      "agent_elapsed_seconds": null,
+      "agent_elapsed_scope": "sum of retained turn elapsedTime milliseconds; distinct from launcher wall duration and entire resumed-session lifetime",
+      "recorded_request_id_count": null,
+      "usage_summaries": [],
+      "native_assistant_say_count": 8,
+      "native_assistant_reasoning_record_count": 9,
+      "recorded_response_count": null,
+      "recorded_response_status": "Kiro Say messages and ACP chunks are not defined as API model responses",
+      "native_user_message_count": 1,
+      "tool_call_count": 14,
+      "tool_result_success_flags": {
+        "True": 14
+      },
+      "tool_success_limitation": "wrapper success does not prove command/test/scanner exit success; inspect raw output",
+      "acp_event_count": 437,
+      "acp_session_update_counts": {
+        "available_commands_update": 3,
+        "config_option_update": 3,
+        "session_info_update": 48,
+        "agent_message_chunk": 320,
+        "tool_call": 20,
+        "tool_call_update": 42
+      },
+      "acp_run_finished": [],
+      "stream_paths": [
+        "05-qa.stdout.jsonl",
+        "transcripts-archive/05-qa.acp_stream.8549E91237D98061.jsonl"
+      ],
+      "stream_selected": "05-qa.stdout.jsonl",
+      "stream_prefix_conflict": false,
+      "invalid_stream_lines": {},
+      "invalid_native_lines": {},
+      "native_record_conflicts": [],
+      "native_interval_record_count": 72,
+      "session_configuration": [
+        {
+          "session_id": "sess_3bfbb44e-aff5-47a2-bd1b-c00ed7734d0d",
+          "model_id": "auto",
+          "agent_mode": "spec",
+          "created_at": "2026-10-22T01:26:59.239Z",
+          "scope": "session configuration, not proof of backend resolved model or auxiliary role attribution"
+        }
+      ],
+      "auxiliary_role_usage": null,
+      "auxiliary_role_status": "no per-model/per-role usage counters observed; credits may include internal actions without separate attribution",
+      "latest_context_snapshot": {
+        "contextUsage": {
+          "usagePercentage": 9.859199523925781
+        },
+        "breakdown": {
+          "contextFiles": {
+            "tokens": 0,
+            "percent": 0,
+            "items": []
+          },
+          "tools": {
+            "tokens": 4453,
+            "percent": 0.4,
+            "mcp": {
+              "tokens": 0,
+              "percent": 0
+            },
+            "builtin": {
+              "tokens": 4453,
+              "percent": 0.4
+            }
+          },
+          "memory": {
+            "tokens": 0,
+            "percent": 0
+          },
+          "kiroResponses": {
+            "tokens": 0,
+            "percent": 0
+          },
+          "yourPrompts": {
+            "tokens": 0,
+            "percent": 9.5
+          },
+          "sessionFiles": {
+            "tokens": 0,
+            "percent": 0,
+            "items": []
+          }
+        },
+        "kind": "context_usage",
+        "usagePercentage": 9.859199523925781
+      },
+      "context_snapshot_scope": "last context occupancy/composition snapshot only; never summed as cumulative tokens",
+      "acp_configuration_observations": [
+        {
+          "stream_event_index_1based": 3,
+          "session_id": "sess_3bfbb44e-aff5-47a2-bd1b-c00ed7734d0d",
+          "selected_values": {
+            "mode": "vibe",
+            "model": "auto",
+            "autopilot": "on"
+          }
+        },
+        {
+          "stream_event_index_1based": 7,
+          "session_id": "sess_3bfbb44e-aff5-47a2-bd1b-c00ed7734d0d",
+          "selected_values": {
+            "mode": "spec",
+            "model": "auto",
+            "autopilot": "on"
+          }
+        },
+        {
+          "stream_event_index_1based": 8,
+          "session_id": "sess_3bfbb44e-aff5-47a2-bd1b-c00ed7734d0d",
+          "selected_values": {
+            "mode": "spec",
+            "model": "auto",
+            "autopilot": "on"
+          }
+        }
+      ],
+      "observed_mode_selection_values": [
+        "spec",
+        "vibe"
+      ],
+      "observed_model_selection_values": [
+        "auto"
+      ],
+      "native_assistant_agent_modes": [
+        "spec"
+      ],
+      "configuration_attribution_scope": "Selected/current configuration and emitted native assistant agentMode are separate from requested flags. Auto configuration is observable; resolved backend/auxiliary models are not established.",
+      "native_payload_type_counts": {
+        "agent_note": 1,
+        "user": 1,
+        "turn_start": 1,
+        "assistant": 17,
+        "tool_call": 14,
+        "tool_result": 14,
+        "session_metadata": 9,
+        "pending_interaction": 6,
+        "interaction_resolved": 6,
+        "sub_agent_start": 2,
+        "sub_agent_complete": 1
+      },
+      "unrecognized_acp_update_types": []
+    },
+    {
+      "researcher_created": true,
+      "label": "06-qa-retry",
+      "phase": "clarify",
+      "started": "2026-10-23T19:16:04.867355+00:00",
+      "runtime": {
+        "path": "C:\\Users\\Kevin Alvarez\\AppData\\Local\\Kiro-Cli\\kiro-cli.exe",
+        "version": "kiro-cli-chat 2.33.0",
+        "sha256": "BC711541FC139D5E5FC8E07FC8FA13E9239ED039862F4A9D55C0E344BAC7C3F8"
+      },
+      "submission_method": "official ACP stdio; verified advertised spec/auto before optional prompt",
+      "requested_model": "auto",
+      "requested_mode": "spec",
+      "model_prompt_sent": true,
+      "seed_file_sha256": "63919779DD4104076FBABCB130CE296A160FA840E0B4755A2AA5D90757ADA8EF",
+      "seed_block_utf8_sha256": "60D6728689CD5CDAD7B1A386F95DAD4E34850EB5DE0AAB92E837D630DFD2B55A",
+      "seed_block_characters": 3516,
+      "seed_block_scope": "quoted common seed, quote prefixes removed, trimmed, LF, UTF-8 without BOM; file hash covers original complete Markdown bytes",
+      "prompt_characters": 11222,
+      "prompt_sha256": "5AEAE569CB662374135B699977EC538EC4948C823E16F97A094A206E32CC8F2F",
+      "resume_id": null,
+      "stdout": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\Kiro\\docs\\06-qa-retry.stdout.jsonl",
+      "stderr": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\Kiro\\docs\\06-qa-retry.stderr.txt",
+      "owned_process_id": 15752,
+      "initialize": {
+        "protocolVersion": 1,
+        "agentCapabilities": {
+          "loadSession": true,
+          "promptCapabilities": {
+            "image": true,
+            "embeddedContext": true
+          },
+          "mcpCapabilities": {
+            "http": true,
+            "sse": true
+          },
+          "sessionCapabilities": {
+            "list": {},
+            "close": {},
+            "delete": {},
+            "fork": {
+              "_meta": {
+                "kiro": {
+                  "messageId": true
+                }
+              }
+            }
+          },
+          "_meta": {
+            "kiro": {
+              "checkpoints": true,
+              "sessionList": true,
+              "policyNotifications": true,
+              "extensionMethods": [
+                "_kiro/knowledge",
+                "_kiro/memory/list",
+                "_kiro/memory/get",
+                "_kiro/memory/create",
+                "_kiro/memory/update",
+                "_kiro/memory/delete",
+                "_kiro/codeIntelligence",
+                "_kiro/environment/start_ssh_session",
+                "_kiro/session/context",
+                "_kiro/session/compact",
+                "_kiro/session/export",
+                "_kiro/session/history",
+                "_kiro/config/template",
+                "_kiro/configuration/getState",
+                "_kiro/workflow/new",
+                "_kiro/workflow/invoke",
+                "_kiro/workflow/load",
+                "_kiro/workflow/inspect",
+                "_kiro/workflow/list",
+                "_kiro/workflow/pause",
+                "_kiro/workflow/cancel",
+                "_kiro/workflow/delete",
+                "_kiro/workflow/listRecipes",
+                "_kiro/workflow/listWatchHandlers",
+                "_kiro/workflow/resumeAll",
+                "_kiro/workflow/retry",
+                "_kiro/workflow/update",
+                "_kiro/workflow/resume",
+                "_kiro/sourceProviders/list",
+                "_kiro/sourceProviders/listResources"
+              ],
+              "sessionSources": [
+                "local",
+                "remote"
+              ],
+              "sessionListScopes": [
+                "workspace",
+                "user"
+              ],
+              "executionTargets": [
+                "local",
+                "cloud-sandbox"
+              ],
+              "sourceProviders": true,
+              "replayMarking": true,
+              "modelFallbackReporting": true,
+              "logging": {
+                "logDir": "C:\\Users\\Kevin Alvarez\\.kiro\\logs\\20261023T191607923",
+                "channels": [
+                  {
+                    "name": "kiro",
+                    "filePath": "C:\\Users\\Kevin Alvarez\\.kiro\\logs\\20261023T191607923\\kiro.log"
+                  },
+                  {
+                    "name": "mcp",
+                    "filePath": "C:\\Users\\Kevin Alvarez\\.kiro\\logs\\20261023T191607923\\mcp.log"
+                  },
+                  {
+                    "name": "powers",
+                    "filePath": "C:\\Users\\Kevin Alvarez\\.kiro\\logs\\20261023T191607923\\powers.log"
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "authMethods": [
+          {
+            "id": "aws-builder-id",
+            "name": "AWS Builder ID"
+          },
+          {
+            "id": "aws-iam-identity-center",
+            "name": "AWS IAM Identity Center"
+          }
+        ]
+      },
+      "session_id": "sess_285253f9-10ca-44db-a3df-b2418fed1d38",
+      "verified_configuration": {
+        "mode": "spec",
+        "model": "auto"
+      },
+      "configuration_verified_before_prompt_at_utc": "2026-10-23T19:16:08.784782+00:00",
+      "prompt_result": {
+        "stopReason": "end_turn"
+      },
+      "rpc_prompt_request_succeeded": true,
+      "generation_stop_reason": "end_turn",
+      "generation_turn_ended": true,
+      "ended": "2026-10-23T19:30:53.843694+00:00",
+      "duration_seconds": 888.976,
+      "exit_code": 0,
+      "transport_exit_code": 0,
+      "inference_scope": "one explicit prompt after verified configuration",
+      "run_closed": true,
+      "metadata_file": "06-qa-retry.run.json",
+      "classification": "postimplementation_external_correction",
+      "classification_reason": "Fresh retry of interrupted05, same external QA intent and full frozen seed. Complete native specification revision before application/tests/security/coverage fixes.",
+      "qa_intent_id": "kiro-stage2-qa-01",
+      "retry_of": "05-qa",
+      "process_exit_success": true,
+      "work_completion_status": "prepared; no completed acceptance claimed",
+      "session_ids": [
+        "sess_285253f9-10ca-44db-a3df-b2418fed1d38"
+      ],
+      "model_invocation_observed": true,
+      "input_tokens": null,
+      "cached_tokens": null,
+      "output_tokens": null,
+      "thought_tokens": null,
+      "token_status": "not exposed as billed input/cache/output/thought counters in observed Kiro ACP/native schema; context breakdown is not token usage",
+      "api_requests": null,
+      "api_errors": null,
+      "api_successful_requests": null,
+      "api_status": "not exposed; requestIds are retained as identifiers only, not attempted/succeeded/error API counters",
+      "credits": 18.924292169154235,
+      "credits_scope": "latest native usage_summary per session/execution within closed launcher interval; native events deduplicated by session/message ID/timestamp",
+      "agent_elapsed_seconds": 884.667,
+      "agent_elapsed_scope": "sum of retained turn elapsedTime milliseconds; distinct from launcher wall duration and entire resumed-session lifetime",
+      "recorded_request_id_count": 57,
+      "usage_summaries": [
+        {
+          "session_id": "sess_285253f9-10ca-44db-a3df-b2418fed1d38",
+          "message_id": "6f418ae9-9540-4399-b7fc-5f22def6ac16-usage",
+          "execution_id": "6f418ae9-9540-4399-b7fc-5f22def6ac16",
+          "timestamp": "2026-10-23T19:30:53.642Z",
+          "status": "success",
+          "prompt_turn_summaries": [
+            {
+              "unit": "credit",
+              "unitPlural": "credits",
+              "usage": 18.924292169154235,
+              "usedTools": [
+                "list_directory",
+                "read_file",
+                "file_search",
+                "read_file",
+                "validate_spec_format",
+                "list_directory",
+                "list_directory",
+                "read_file",
+                "read_file",
+                "read_file",
+                "read_file",
+                "read_file",
+                "list_directory",
+                "list_directory",
+                "execute_pwsh",
+                "execute_pwsh",
+                "execute_pwsh",
+                "execute_pwsh",
+                "read_file",
+                "execute_pwsh",
+                "execute_pwsh",
+                "execute_pwsh",
+                "execute_pwsh",
+                "execute_pwsh",
+                "read_file",
+                "execute_pwsh",
+                "execute_pwsh",
+                "execute_pwsh",
+                "execute_pwsh",
+                "read_file",
+                "read_file",
+                "read_file",
+                "execute_pwsh",
+                "execute_pwsh",
+                "execute_pwsh",
+                "execute_pwsh",
+                "execute_pwsh",
+                "execute_pwsh",
+                "execute_pwsh",
+                "execute_pwsh",
+                "execute_pwsh",
+                "execute_pwsh",
+                "execute_pwsh",
+                "execute_pwsh",
+                "execute_pwsh",
+                "execute_pwsh",
+                "execute_pwsh",
+                "execute_pwsh",
+                "list_directory",
+                "file_search",
+                "read_file",
+                "read_file",
+                "read_file",
+                "execute_pwsh",
+                "execute_pwsh",
+                "execute_pwsh",
+                "execute_pwsh",
+                "read_file",
+                "execute_pwsh",
+                "execute_pwsh",
+                "execute_pwsh"
+              ]
+            }
+          ],
+          "elapsed_time_ms": 884667,
+          "recorded_request_ids": [
+            "bc68392c-50ed-46ea-8f16-6dfce1806e02",
+            "ea309ee5-7e40-41e2-b123-fd1d5994837e",
+            "4b879d13-4c26-4daa-a8f5-94a3c5c64092",
+            "5f70cd68-51c2-4692-a6b1-535346bf1de0",
+            "af2f1cf1-6dd1-4c94-b792-53335a4700e2",
+            "55aac645-cfc1-4b48-aad1-cd3ef55debbf",
+            "45044a4d-b34a-400c-a6b9-f072b897e7dc",
+            "2f2b15b2-7cf9-4d2e-8206-8f17f4cea162",
+            "f2654736-f32f-4c3e-9f1b-588c870d60aa",
+            "4887c1f9-52bb-444e-b731-df644b5352f0",
+            "832b092d-6bf1-4131-beb6-c7ca5c98fc8c",
+            "fe4f2f96-a2c0-47a2-ac02-19ed140e2350",
+            "bc6f76c7-b890-4527-9b43-8a9a7cae2517",
+            "85445418-61a5-42a3-9299-0ad7da245f09",
+            "94799ac9-8c7a-4443-a787-30c73892884a",
+            "7041d6d3-9d94-4e4d-962c-3beebb07fd49",
+            "79d5a503-2562-4474-8277-df64e85a8371",
+            "48500c93-0f6d-482e-b82c-8e728e0f74e1",
+            "03e3631c-7f76-4784-8dc3-f2936e26a11e",
+            "f4667f39-df05-4878-b3c6-88a060e33d16",
+            "9035e4cd-a492-4b01-a8ca-78824bcaef6b",
+            "767387d0-0aa1-43b2-832f-5103b9a2b238",
+            "0ccad29c-e468-4d5d-86a3-5821001385a0",
+            "4f307659-b2c4-402c-88d6-da4ec8b5181e",
+            "cb7a8ac3-c730-4160-8d2f-f07e2022502e",
+            "a8cdf036-4c58-4477-8c0a-81cbb6bc17ef",
+            "4842376d-1cac-4c80-926c-6ff6a21b453a",
+            "42f38dde-7dd4-46c5-959a-3417266f8149",
+            "a0f36a75-0d7c-4508-be3b-7d3c9d43ea4b",
+            "13bd1550-f60e-4bfe-bd9e-4d34585dce25",
+            "be87c1cf-413d-46a6-9b8b-7652b3c3a807",
+            "005d0b5f-1066-4c0a-a700-82d19c9d05d8",
+            "f69fc0a4-6d42-46bb-8417-e769e2812686",
+            "5c12fc2a-5d47-456d-8531-260f20b834c9",
+            "e0d9e1b1-8d2a-4b41-93ab-279e8dfdf276",
+            "bbbda03d-8fab-4319-b42c-50ccaa1c3837",
+            "dfff34e6-cd27-44a6-8278-04ec6ee2e00c",
+            "6599b36e-6ac4-40b4-a5d5-4c9ad538564a",
+            "e0ad5386-831f-4d88-ae1e-72eee894c5df",
+            "a700c7a0-2772-47d5-8219-8c9c75ce909a",
+            "21c894b5-c1ee-4b01-ad1a-819aa466aab9",
+            "fdc4b45d-d936-4852-ae1b-dc0ff6d497e0",
+            "1e5cf021-c413-4aab-9add-14d62e073d87",
+            "9e675cac-693f-4c6a-a8f3-b64c4daf15d4",
+            "cba3efcf-7fff-44af-a8f8-279cfd45e116",
+            "df3b286e-25c1-47ea-81df-5b45b442f7b8",
+            "115235c0-7bb5-4302-a9f0-a08407c7b7f6",
+            "e81e209e-6a57-4319-a954-0a7164a955fd",
+            "4e427136-9581-4ba5-869f-e99253b45647",
+            "1d218fa9-67c5-4902-8680-553bb9b41ddf",
+            "e87ba772-9b4f-437f-ba00-20ce6354baf1",
+            "fb71c8aa-a2fd-42a3-a400-cbe1da225ba7",
+            "c00bdda6-4f41-48c0-9316-84cede8dd005",
+            "9431dc93-ad29-455f-afd8-0ce5d71663f5",
+            "596a1be7-c8a1-4fee-9dda-8bddb34fb19a",
+            "7c7194ee-134b-4dac-a1a3-7de819a12662",
+            "7e19879a-237b-4fe2-9895-7d4280577228"
+          ]
+        }
+      ],
+      "native_assistant_say_count": 55,
+      "native_assistant_reasoning_record_count": 57,
+      "recorded_response_count": null,
+      "recorded_response_status": "Kiro Say messages and ACP chunks are not defined as API model responses",
+      "native_user_message_count": 1,
+      "tool_call_count": 82,
+      "tool_result_success_flags": {
+        "True": 81,
+        "False": 1
+      },
+      "tool_success_limitation": "wrapper success does not prove command/test/scanner exit success; inspect raw output",
+      "acp_event_count": 3129,
+      "acp_session_update_counts": {
+        "available_commands_update": 3,
+        "config_option_update": 4,
+        "session_info_update": 255,
+        "agent_message_chunk": 2591,
+        "tool_call": 78,
+        "tool_call_update": 196
+      },
+      "acp_run_finished": [
+        {
+          "status": "success",
+          "stopReason": "end_turn",
+          "finalTextTruncated": false
+        }
+      ],
+      "stream_paths": [
+        "06-qa-retry.stdout.jsonl",
+        "transcripts-archive/06-qa-retry.acp_stream.5D5E3C83FDBE5965.jsonl"
+      ],
+      "stream_selected": "06-qa-retry.stdout.jsonl",
+      "stream_prefix_conflict": false,
+      "invalid_stream_lines": {},
+      "invalid_native_lines": {},
+      "native_record_conflicts": [],
+      "native_interval_record_count": 406,
+      "session_configuration": [
+        {
+          "session_id": "sess_285253f9-10ca-44db-a3df-b2418fed1d38",
+          "model_id": "auto",
+          "agent_mode": "spec",
+          "created_at": "2026-10-23T19:16:08.498Z",
+          "scope": "session configuration, not proof of backend resolved model or auxiliary role attribution"
+        }
+      ],
+      "auxiliary_role_usage": null,
+      "auxiliary_role_status": "no per-model/per-role usage counters observed; credits may include internal actions without separate attribution",
+      "latest_context_snapshot": {
+        "contextUsage": {
+          "usagePercentage": 16.7987003326416
+        },
+        "breakdown": {
+          "contextFiles": {
+            "tokens": 0,
+            "percent": 0,
+            "items": []
+          },
+          "tools": {
+            "tokens": 4453,
+            "percent": 0.4,
+            "mcp": {
+              "tokens": 0,
+              "percent": 0
+            },
+            "builtin": {
+              "tokens": 4453,
+              "percent": 0.4
+            }
+          },
+          "memory": {
+            "tokens": 0,
+            "percent": 0
+          },
+          "kiroResponses": {
+            "tokens": 0,
+            "percent": 0
+          },
+          "yourPrompts": {
+            "tokens": 0,
+            "percent": 16.4
+          },
+          "sessionFiles": {
+            "tokens": 0,
+            "percent": 0,
+            "items": []
+          }
+        },
+        "kind": "context_usage",
+        "usagePercentage": 16.7987003326416
+      },
+      "context_snapshot_scope": "last context occupancy/composition snapshot only; never summed as cumulative tokens",
+      "acp_configuration_observations": [
+        {
+          "stream_event_index_1based": 3,
+          "session_id": "sess_285253f9-10ca-44db-a3df-b2418fed1d38",
+          "selected_values": {
+            "mode": "vibe",
+            "model": "auto",
+            "autopilot": "on"
+          }
+        },
+        {
+          "stream_event_index_1based": 7,
+          "session_id": "sess_285253f9-10ca-44db-a3df-b2418fed1d38",
+          "selected_values": {
+            "mode": "spec",
+            "model": "auto",
+            "autopilot": "on"
+          }
+        },
+        {
+          "stream_event_index_1based": 8,
+          "session_id": "sess_285253f9-10ca-44db-a3df-b2418fed1d38",
+          "selected_values": {
+            "mode": "spec",
+            "model": "auto",
+            "autopilot": "on"
+          }
+        },
+        {
+          "stream_event_index_1based": 2581,
+          "session_id": "sess_285253f9-10ca-44db-a3df-b2418fed1d38",
+          "selected_values": {
+            "mode": "spec",
+            "model": "auto",
+            "autopilot": "on"
+          }
+        }
+      ],
+      "observed_mode_selection_values": [
+        "spec",
+        "vibe"
+      ],
+      "observed_model_selection_values": [
+        "auto"
+      ],
+      "native_assistant_agent_modes": [
+        "spec"
+      ],
+      "configuration_attribution_scope": "Selected/current configuration and emitted native assistant agentMode are separate from requested flags. Auto configuration is observable; resolved backend/auxiliary models are not established.",
+      "native_payload_type_counts": {
+        "agent_note": 1,
+        "user": 1,
+        "turn_start": 1,
+        "assistant": 112,
+        "tool_call": 82,
+        "tool_result": 82,
+        "session_metadata": 57,
+        "pending_interaction": 33,
+        "interaction_resolved": 33,
+        "usage_summary": 1,
+        "session_event": 1,
+        "turn_end": 1,
+        "session_start": 1
+      },
+      "unrecognized_acp_update_types": []
+    }
+  ],
+  "provenance_limitations": [
+    "Usage covers Kiro experiment only; researcher/Codex orchestration, helper authoring and review are excluded",
+    "Kiro requested/selected model configuration does not establish resolved backend model or auxiliary model billing",
+    "Tool success flags and runFinished success do not prove raw command exits or acceptance; independent logs/checks are required",
+    "Missing native/ACP data remain unknown; a prelaunch failure is not silently treated as a successful model invocation",
+    "Line/character deltas compare retained states and do not reconstruct cumulative edits"
+  ]
+}

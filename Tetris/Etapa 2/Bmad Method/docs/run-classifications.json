@@ -1,0 +1,37 @@
+{
+  "01-prd": {
+    "category": "initial_specification",
+    "reason": "NativeBMADheadless Stage2PRD from ownStage1; no app/test changes.",
+    "qa_intent_id": null
+  },
+  "02-design-stories": {
+    "category": "preimplementation_spec_revision",
+    "reason": "Correct concrete PRD contradictions and run native architecture/epics/stories before code.",
+    "qa_intent_id": null
+  },
+  "03-planning-completion": {
+    "qa_intent_id": null,
+    "category": "planning_continuation",
+    "reason": "Complete native reviews and sprint after02ended429/no response; no app edits."
+  },
+  "04-implementation": {
+    "qa_intent_id": null,
+    "category": "initial_implementation",
+    "reason": "Nativebuild firstcandidate, capped80turns exit53, incompletequalityverification."
+  },
+  "05-correction": {
+    "qa_intent_id": "BMAD-QA-01",
+    "category": "postimplementation_external_correction",
+    "reason": "BMAD-QA-01 sixconfirmedlifecyclefailures/newnoncanonicalfixture plus incompletequalityclosure after04cap."
+  },
+  "06-quality-completion": {
+    "category": "postimplementation_external_correction",
+    "reason": "Continuation BMAD-QA-01 after05turncap; lifecycleexternal11/11nowpass, originallyrequestedqualityclosure pending.",
+    "qa_intent_id": "BMAD-QA-01"
+  },
+  "07-six-sonar-findings": {
+    "qa_intent_id": "BMAD-QA-01",
+    "category": "postimplementation_external_correction",
+    "reason": "Continuation of existingBMAD-QA-01qualityclosure after06cap, remaining6newSonarfindings fromnativeinternalgate."
+  }
+}

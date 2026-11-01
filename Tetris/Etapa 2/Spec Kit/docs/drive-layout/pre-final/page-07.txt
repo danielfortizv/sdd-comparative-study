@@ -1,0 +1,3 @@
+Captura 3. Panel comparativo reproducible de SonarQube y pruebas, generado desde
+JSON de la API local y logs. No es una captura de la interfaz web de SonarQube. Archivo:
+OpenSpec/docs/screenshots/sonar-panel-final.png.

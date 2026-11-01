@@ -1,0 +1,48 @@
+{
+  "verified_at_utc": "2026-10-21T05:39:09.1461369Z",
+  "project_key": "tetris-stage2-speckit",
+  "report_task_sha256": "C2D9BC4947D73CCC2B03D0AFB279C3832AD5FA57F7B43DC233F2C1F1B85D3B51",
+  "ce_task_id": "c3a9e639-7e05-4398-b9fd-3004cfdabb9f",
+  "ce_status": "SUCCESS",
+  "analysis_id": "acca3bf6-e8bc-4c46-8db4-932b8609326c",
+  "submitted_at": "2026-10-21T00:39:04-05:00",
+  "executed_at": "2026-10-21T00:39:07-05:00",
+  "gate_status": "OK",
+  "gate_conditions": [
+    {
+      "status": "OK",
+      "metricKey": "new_coverage",
+      "comparator": "LT",
+      "errorThreshold": "80",
+      "actualValue": "86.6"
+    },
+    {
+      "status": "OK",
+      "metricKey": "new_duplicated_lines_density",
+      "comparator": "GT",
+      "errorThreshold": "3",
+      "actualValue": "0.0"
+    },
+    {
+      "status": "OK",
+      "metricKey": "new_violations",
+      "comparator": "GT",
+      "errorThreshold": "0",
+      "actualValue": "0"
+    }
+  ],
+  "coverage_inputs": [
+    {
+      "path": "docs/coverage.xml",
+      "exists": true,
+      "sha256": "AC8CCD895224F5D6077F786A2B72D335421EA8961DE5A67BE030A79DD22A3D3E",
+      "last_write_time_utc": "2026-10-21T05:38:21.6358275Z"
+    },
+    {
+      "path": "frontend/coverage/lcov.info",
+      "exists": true,
+      "sha256": "CD28C22D1B8B310D9DBCC7F4ECE8B67A0D2BECC97F2293AC4430E97F116D95AE",
+      "last_write_time_utc": "2026-10-21T05:38:26.9044237Z"
+    }
+  ]
+}

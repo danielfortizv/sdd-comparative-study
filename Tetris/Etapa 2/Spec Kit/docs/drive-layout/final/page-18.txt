@@ -1,0 +1,28 @@
+CIERRE VERIFICADO — SPEC KIT / TETRIS ETAPA 2
+(21 oct 2026, hora Bogotá)
+Estado: implementación local y verificaciones finales completas para la evidencia descrita.
+No se hizo commit ni push. Este informe distingue la salida de la herramienta, las
+correcciones y la verificación independiente.
+Generado en UTC: 2026-10-21T05:42:43.818321+00:00.
+Control y procedencia
+Semilla maestra:
+63919779DD4104076FBABCB130CE296A160FA840E0B4755A2AA5D90757ADA8EF.
+Bloque extraído UTF-8/LF:
+60D6728689CD5CDAD7B1A386F95DAD4E34850EB5DE0AAB92E837D630DFD2B55A. La
+semilla común no cambió. Las incidencias de entrega iniciales y el acceso contextual
+posterior se conservan en input-audit.json; la entrada efectiva de implementación y
+correcciones está verificada.
+Entorno registrado: Spec Kit 1.0.12, Gemini CLI 0.60.0, Node v25.6.1, npm 11.9.0, Python
+3.12.14, SonarQube 26.9.0.129388. Modelo solicitado: gemini-3.5-flash. Los modelos
+auxiliares efectivos aparecen por sesión en la tabla y las estadísticas originales.
+Las métricas de uso abarcan Gemini CLI y sus roles auxiliares. Excluyen
+Codex/orquestación del investigador, agentes de revisión de solo lectura, autoría de helpers,
+trabajo de Drive/UI y verificaciones externas; no son el costo ni los tokens totales del
+proyecto. Las fuentes actuales incluyen código heredado y cambios generados por Gemini.
+Helpers, evidencias y este informe son del investigador. La desviación manual documentada
+en OpenSpec permanece separada en comparaciones.
+Invocaciones, tokens y correcciones
+Entrada significa prompt e incluye la caché; la caché no se suma de nuevo. Salida
+candidata y pensamiento se cuentan por separado. Intentos API, errores y éxitos
+corresponden a estadísticas completas; respuestas JSONL son otra medida y pueden omitir
+roles auxiliares. Los valores desconocidos se conservan.

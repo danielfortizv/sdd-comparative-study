@@ -1,0 +1,24 @@
+{
+  "task": {
+    "id": "19506ab6-d54d-41c6-ab8c-0702cb42ac9b",
+    "type": "REPORT",
+    "componentId": "3cb31d27-ba95-4f35-adc3-b0ec56c203e1",
+    "componentKey": "tetris-stage2-kiro",
+    "componentName": "Tetris Stage 2 Kiro",
+    "componentQualifier": "TRK",
+    "analysisId": "c9e3f4c9-35e0-4434-8dfd-3723413c0588",
+    "status": "SUCCESS",
+    "submittedAt": "2026-10-23T14:44:18-05:00",
+    "submitterLogin": "admin",
+    "startedAt": "2026-10-23T14:44:20-05:00",
+    "executedAt": "2026-10-23T14:44:23-05:00",
+    "executionTimeMs": 3051,
+    "hasScannerContext": true,
+    "warningCount": 2,
+    "warnings": [
+      "SCM provider autodetection failed. Please use \"sonar.scm.provider\" to define SCM of your project, or disable the SCM Sensor in the project settings.",
+      "Your code is analyzed as compatible with all Python 3 versions by default. You can get a more precise analysis by setting the Python version or version range in your configuration via the parameter \"sonar.python.version\""
+    ],
+    "infoMessages": []
+  }
+}

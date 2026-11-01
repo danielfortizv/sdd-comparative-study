@@ -1,0 +1,31 @@
+17-qa-sonar-style gemini-3-flash-preview utility_loop_detector 1/0/1
+Acumulado observado: 17 intentos de invocación; 16 con modelo acreditado. Duración
+conocida 11.526,593 s; sesiones con duración desconocida: 01-specify;
+03-contract-clarification. Entrada 43.989.578, caché incluida 33.416.130, candidata 168.372,
+pensamiento 242.114. API conocida 645/121/524; respuestas JSONL 560. La duración
+excluye trabajo externo y no imputa sesiones interrumpidas.
+Intentos externos de corrección después de implementar: 9 iniciados y 9 cerrados; 7 con
+exit 0 y 2 fallidos/interrumpidos. Representan 4 intenciones QA distintas; un reintento puede
+compartir intención. Cerrar una invocación no acredita una corrección completada, y exit 0
+no sustituye la aceptación independiente. Los reintentos del lanzador y la aclaración previa
+son categorías distintas; las acciones/rescaneos internos no son prompts externos nuevos.
+Categorías de invocación
+Categoría Intentos Con modelo IDs
+Especificación inicial 1 1 01
+Reintento de especificación 1 1 02
+Corrección previa de specs 1 1 03
+Plan nativo 1 1 04
+Tareas nativas 1 1 05
+Reintentos de tareas 2 1 06; 07
+Implementación inicial 1 1 08
+Correcciones externas posteriores 9 9 09; 10; 11; 12; 13; 14;
+15; 16; 17
+Intentos y resultados por intención QA
+Intención Intentos Exit 0 Fallidos/interrumpi
+QA dos
+QA-1 09 09 —
+QA-2 10 10 —
+QA-3 11; 12; 13; 14; 15; 16 13; 14; 15; 16 11; 12
+QA-4 17 17 —
+Fallos terminales observados: 11-qa-timer-ownership: RESOURCE_EXHAUSTED;
+12-qa-timer-retry: network_fetch_failed. Se conservan como incidencias de infraestructura,

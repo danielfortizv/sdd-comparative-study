@@ -1,0 +1,171 @@
+{
+  "session_id": "3b53d6ee-3623-4e35-ad02-ea0a254b7cc7",
+  "response": "",
+  "stats": {
+    "models": {
+      "gemini-3.5-flash": {
+        "api": {
+          "totalRequests": 60,
+          "totalErrors": 1,
+          "totalLatencyMs": 396152,
+          "errorsByType": {
+            "ApiError": 1
+          }
+        },
+        "tokens": {
+          "input": 837305,
+          "prompt": 3808691,
+          "candidates": 20830,
+          "total": 3854566,
+          "cached": 2971386,
+          "thoughts": 25045,
+          "tool": 0
+        },
+        "roles": {
+          "main": {
+            "totalRequests": 58,
+            "totalErrors": 1,
+            "totalLatencyMs": 387716,
+            "tokens": {
+              "input": 815075,
+              "prompt": 3786461,
+              "candidates": 20623,
+              "total": 3831415,
+              "cached": 2971386,
+              "thoughts": 24331,
+              "tool": 0
+            }
+          },
+          "utility_loop_detector": {
+            "totalRequests": 2,
+            "totalErrors": 0,
+            "totalLatencyMs": 8436,
+            "tokens": {
+              "input": 22230,
+              "prompt": 22230,
+              "candidates": 207,
+              "total": 23151,
+              "cached": 0,
+              "thoughts": 714,
+              "tool": 0
+            }
+          }
+        }
+      }
+    },
+    "tools": {
+      "totalCalls": 60,
+      "totalSuccess": 60,
+      "totalFail": 0,
+      "totalDurationMs": 19997,
+      "totalDecisions": {
+        "accept": 60,
+        "reject": 0,
+        "modify": 0,
+        "auto_accept": 0
+      },
+      "byName": {
+        "update_topic": {
+          "count": 2,
+          "success": 2,
+          "fail": 0,
+          "durationMs": 7,
+          "decisions": {
+            "accept": 2,
+            "reject": 0,
+            "modify": 0,
+            "auto_accept": 0
+          }
+        },
+        "glob": {
+          "count": 3,
+          "success": 3,
+          "fail": 0,
+          "durationMs": 25,
+          "decisions": {
+            "accept": 3,
+            "reject": 0,
+            "modify": 0,
+            "auto_accept": 0
+          }
+        },
+        "activate_skill": {
+          "count": 3,
+          "success": 3,
+          "fail": 0,
+          "durationMs": 9,
+          "decisions": {
+            "accept": 3,
+            "reject": 0,
+            "modify": 0,
+            "auto_accept": 0
+          }
+        },
+        "read_file": {
+          "count": 23,
+          "success": 23,
+          "fail": 0,
+          "durationMs": 129,
+          "decisions": {
+            "accept": 23,
+            "reject": 0,
+            "modify": 0,
+            "auto_accept": 0
+          }
+        },
+        "grep_search": {
+          "count": 1,
+          "success": 1,
+          "fail": 0,
+          "durationMs": 115,
+          "decisions": {
+            "accept": 1,
+            "reject": 0,
+            "modify": 0,
+            "auto_accept": 0
+          }
+        },
+        "run_shell_command": {
+          "count": 23,
+          "success": 23,
+          "fail": 0,
+          "durationMs": 19624,
+          "decisions": {
+            "accept": 23,
+            "reject": 0,
+            "modify": 0,
+            "auto_accept": 0
+          }
+        },
+        "write_file": {
+          "count": 4,
+          "success": 4,
+          "fail": 0,
+          "durationMs": 77,
+          "decisions": {
+            "accept": 4,
+            "reject": 0,
+            "modify": 0,
+            "auto_accept": 0
+          }
+        },
+        "replace": {
+          "count": 1,
+          "success": 1,
+          "fail": 0,
+          "durationMs": 11,
+          "decisions": {
+            "accept": 1,
+            "reject": 0,
+            "modify": 0,
+            "auto_accept": 0
+          }
+        }
+      }
+    },
+    "files": {
+      "totalLinesAdded": 764,
+      "totalLinesRemoved": 305
+    }
+  }
+}

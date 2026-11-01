@@ -1,0 +1,42 @@
+﻿{
+    "name":  "Tetris Stage 2 BMAD Controlled",
+    "conditions":  [
+                       {
+                           "id":  "19b3f7fc-5034-47c0-ba22-eb3ed4df5b2f",
+                           "metric":  "new_duplicated_lines_density",
+                           "op":  "GT",
+                           "error":  "3",
+                           "isCaycCondition":  true
+                       },
+                       {
+                           "id":  "6ecda445-b91f-4b93-81f8-e0bd4986b0f3",
+                           "metric":  "new_violations",
+                           "op":  "GT",
+                           "error":  "0",
+                           "isCaycCondition":  true
+                       },
+                       {
+                           "id":  "0edb83b4-1fe0-445d-a199-97399bdf5b07",
+                           "metric":  "new_coverage",
+                           "op":  "LT",
+                           "error":  "80",
+                           "isCaycCondition":  true
+                       }
+                   ],
+    "isBuiltIn":  false,
+    "actions":  {
+                    "rename":  true,
+                    "setAsDefault":  true,
+                    "copy":  true,
+                    "associateProjects":  true,
+                    "delete":  true,
+                    "manageConditions":  true,
+                    "delegate":  true,
+                    "manageAiCodeAssurance":  false
+                },
+    "caycStatus":  "non-compliant",
+    "isDefault":  false,
+    "hasStandardConditions":  false,
+    "hasMQRConditions":  false,
+    "isAiCodeSupported":  false
+}

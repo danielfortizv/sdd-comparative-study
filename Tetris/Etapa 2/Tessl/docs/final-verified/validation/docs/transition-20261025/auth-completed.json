@@ -1,0 +1,17 @@
+{
+  "researcher_created": true,
+  "verified_at_utc": "2026-10-25T20:13:59.5555456Z",
+  "user_explicit_OAuth_scope_approval": true,
+  "login_completed": true,
+  "active_account_matches_user_request": true,
+  "project": "project-d419b4aa-7c3b-4fde-932",
+  "project_name": "SDD Comparison LAST MILE",
+  "lifecycle": "ACTIVE",
+  "vertex_api_enabled": true,
+  "billing_enabled": true,
+  "quota_project_matches": true,
+  "credential_profile": "gcloud-tetris-last-mile outside workspace",
+  "no_credential_values_persisted": true,
+  "requested_model": "gemini-3.5-flash",
+  "model_inference_not_yet_verified": true
+}

@@ -1,0 +1,144 @@
+{
+  "status": "pass",
+  "recorded_at_utc": "2026-10-21T00:36:06.205353-05:00",
+  "url": "http://127.0.0.1:5173/",
+  "method": "Actual CUA browser interaction and read-only rendered DOM inspection; no fetch mocks, hidden React state access or injected game fixtures.",
+  "observations": [
+    {
+      "id": "UI-01",
+      "status": "pass",
+      "detail": "Started a real local game; HUD score=0, lines=0, level=1, gravity=500 ms; Hold EMPTY and enabled. DOM contained exactly 200 board cells, 20 row indices and 10 column indices."
+    },
+    {
+      "id": "UI-02",
+      "status": "pass",
+      "detail": "Clicked Hold (C Key): EMPTY disappeared, a canonical occupied Hold preview appeared, and button became disabled until lock. Screenshot records the occupied slot and disabled button."
+    },
+    {
+      "id": "UI-03",
+      "status": "pass",
+      "detail": "Restarted to a fresh session with EMPTY Hold; pressed lowercase c; Hold became occupied and disabled."
+    },
+    {
+      "id": "UI-04",
+      "status": "pass",
+      "detail": "Restarted independently to EMPTY Hold; pressed shift+c (uppercase C); Hold became occupied and disabled."
+    },
+    {
+      "id": "UI-05",
+      "status": "pass",
+      "detail": "Restarted with O at columns 4/5; Left moved its visible columns to 3/4; Right returned them to 4/5. Gravity continued during observation. Down was accepted during play with zero HUD score; exact soft-drop behavior is additionally covered by generated tests, not inferred from wall-clock row changes."
+    },
+    {
+      "id": "UI-06",
+      "status": "pass",
+      "detail": "Allowed normal gravity to fill the board: GAME_OVER appeared with modal, Hold disabled, Play Again and Restart Game controls. No board or API state was injected."
+    },
+    {
+      "id": "UI-07",
+      "status": "pass",
+      "detail": "Clicked the modal Restart Game: new session ID 9c7b220e..., PLAYING, score/lines=0, level=1, 500 ms, EMPTY Hold and enabled button."
+    },
+    {
+      "id": "UI-08",
+      "status": "pass",
+      "detail": "After QA4 optional-chain production changes were applied through Vite HMR, observed GAME_OVER and captured it again; restarted into ac08740a..., captured initial counters/EMPTY Hold, clicked Hold and captured occupied/disabled Hold. Independently restarted into 8239edd4... and ad027087... to repeat c and C successfully. Earlier QA16 observations and images remain retained separately."
+    }
+  ],
+  "captures": [
+    {
+      "path": "screenshots/app-final-initial.jpg",
+      "caption": "Actual local UI after QA4: initial counters, board, next preview and empty Hold. Gravity continued while capturing.",
+      "kind": "actual_ui"
+    },
+    {
+      "path": "screenshots/app-final-hold.jpg",
+      "caption": "Actual local UI after QA4: occupied Hold, next preview, board and disabled Hold control before the next lock.",
+      "kind": "actual_ui"
+    },
+    {
+      "path": "screenshots/app-final-game-over.jpg",
+      "caption": "Actual local UI after QA4: naturally reached game-over state and restart modal.",
+      "kind": "actual_ui"
+    },
+    {
+      "path": "screenshots/metrics-panel.jpg",
+      "caption": "Vista derivada de métricas por invocación y tamaños de artefactos; no es una captura de consola.",
+      "kind": "derived_panel",
+      "raw_sources": [
+        "metrics.json"
+      ]
+    },
+    {
+      "path": "screenshots/requests-panel.jpg",
+      "caption": "Vista derivada de intentos API, errores, éxitos y respuestas JSONL, con denominadores separados.",
+      "kind": "derived_panel",
+      "raw_sources": [
+        "metrics.json"
+      ]
+    },
+    {
+      "path": "screenshots/sonar-panel.jpg",
+      "caption": "Vista derivada de la API autenticada de SonarQube y registros de pruebas; no es la interfaz web de SonarQube.",
+      "kind": "derived_panel",
+      "raw_sources": [
+        "sonar-summary.json",
+        "sonar-exact-quality-gate.json",
+        "sonar-verification.json",
+        "backend-coverage.log",
+        "frontend-test-coverage.log"
+      ]
+    },
+    {
+      "path": "screenshots/tests-panel.jpg",
+      "caption": "Visor derivado de los registros originales de pruebas, compilación y auditoría; no es una consola nativa.",
+      "kind": "derived_panel",
+      "raw_sources": [
+        "verification-commands.json",
+        "backend-coverage.log",
+        "frontend-test-coverage.log",
+        "frontend-build.log",
+        "npm-audit.json"
+      ]
+    }
+  ],
+  "frontend_source_files": [
+    {
+      "path": "frontend/src/App.tsx",
+      "sha256": "26A5E5ABBD07A8CA47509DA7B6E2FFB145FB98FE73DE36933168607783442981"
+    },
+    {
+      "path": "frontend/src/components/Board.tsx",
+      "sha256": "ED8578754EA29604C8DAB7581CDAD792A1F43BA189B8F3C06570C3AA0DD6F5A8"
+    },
+    {
+      "path": "frontend/src/components/GameControls.tsx",
+      "sha256": "5132F7F7B5D40066D01F9462EEFDF633EEADC6BED5E2E9585C0A4CA8E5B11C4E"
+    },
+    {
+      "path": "frontend/src/components/GameOverModal.tsx",
+      "sha256": "15366AC28B43BB9FD0B88005C43AB59A53171519A3C6B563BEB2F608BF603BEF"
+    },
+    {
+      "path": "frontend/src/hooks/useGame.ts",
+      "sha256": "2CB6367B89C2914E0490A66F19CA288D62479029629A3CD27F838560955C4587"
+    },
+    {
+      "path": "frontend/src/index.css",
+      "sha256": "85C0054DF55FCA4B47A648FC93EF486BC701B640E681A84E603F20233F333D2F"
+    },
+    {
+      "path": "frontend/src/main.tsx",
+      "sha256": "5C8277F7A8B95261A085753122820F0B760AFA07AC8C0414FC294E60C7AFC7DC"
+    },
+    {
+      "path": "frontend/src/types.ts",
+      "sha256": "1605303CE1F849B68BAD5CECE70E5F5FE3360E01B2F0D1DC04C5002EDEC2C2D2"
+    }
+  ],
+  "limitations": [
+    "Manual browser play did not reach level 2 or the 100 ms floor. Exact timer boundaries and asynchronous request ownership require the fake-clock/deferred-request suite.",
+    "Three- and four-row scoring are isolated-domain fixtures, not manually reached browser clears.",
+    "Separate derived quality/usage panels must be labeled as derived views of retained raw outputs, never native Sonar UI or terminal screenshots."
+  ]
+}

@@ -1,0 +1,958 @@
+﻿{
+    "total":  14,
+    "p":  1,
+    "ps":  500,
+    "paging":  {
+                   "pageIndex":  1,
+                   "pageSize":  500,
+                   "total":  14
+               },
+    "effortTotal":  94,
+    "issues":  [
+                   {
+                       "key":  "26331939-365c-4b38-ba83-139a9ba44366",
+                       "rule":  "python:S2245",
+                       "severity":  "MAJOR",
+                       "component":  "tetris-stage2-bmad:backend/app/core/domain.py",
+                       "project":  "tetris-stage2-bmad",
+                       "line":  62,
+                       "hash":  "c9f35d0c0d51e3f5170b2339e204da1f",
+                       "textRange":  {
+                                         "startLine":  62,
+                                         "endLine":  62,
+                                         "startOffset":  11,
+                                         "endOffset":  54
+                                     },
+                       "flows":  [
+
+                                 ],
+                       "status":  "OPEN",
+                       "message":  "Make sure that using this pseudorandom number generator is safe here.",
+                       "effort":  "10min",
+                       "debt":  "10min",
+                       "author":  "",
+                       "tags":  [
+                                    "cwe",
+                                    "former-hotspot"
+                                ],
+                       "creationDate":  "2026-10-26T01:02:20+0000",
+                       "updateDate":  "2026-10-26T01:02:20+0000",
+                       "type":  "VULNERABILITY",
+                       "scope":  "MAIN",
+                       "quickFixAvailable":  false,
+                       "messageFormattings":  [
+
+                                              ],
+                       "codeVariants":  [
+
+                                        ],
+                       "cleanCodeAttribute":  "TRUSTWORTHY",
+                       "cleanCodeAttributeCategory":  "RESPONSIBLE",
+                       "impacts":  [
+                                       {
+                                           "softwareQuality":  "SECURITY",
+                                           "severity":  "MEDIUM"
+                                       }
+                                   ],
+                       "issueStatus":  "OPEN",
+                       "prioritizedRule":  false,
+                       "fromSonarQubeUpdate":  false,
+                       "internalTags":  [
+
+                                        ],
+                       "linkedTicketStatus":  "NOT_LINKED"
+                   },
+                   {
+                       "key":  "3144956e-00ba-4980-99c1-e4232710fd71",
+                       "rule":  "python:S1192",
+                       "severity":  "CRITICAL",
+                       "component":  "tetris-stage2-bmad:backend/app/main.py",
+                       "project":  "tetris-stage2-bmad",
+                       "line":  45,
+                       "hash":  "0a2a4754ff77a8e1198742b7b4db9b91",
+                       "textRange":  {
+                                         "startLine":  45,
+                                         "endLine":  45,
+                                         "startOffset":  19,
+                                         "endOffset":  43
+                                     },
+                       "flows":  [
+                                     {
+                                         "locations":  [
+                                                           {
+                                                               "component":  "tetris-stage2-bmad:backend/app/main.py",
+                                                               "textRange":  {
+                                                                                 "startLine":  55,
+                                                                                 "endLine":  55,
+                                                                                 "startOffset":  19,
+                                                                                 "endOffset":  43
+                                                                             },
+                                                               "msg":  "Duplication",
+                                                               "msgFormattings":  [
+
+                                                                                  ]
+                                                           }
+                                                       ]
+                                     },
+                                     {
+                                         "locations":  [
+                                                           {
+                                                               "component":  "tetris-stage2-bmad:backend/app/main.py",
+                                                               "textRange":  {
+                                                                                 "startLine":  69,
+                                                                                 "endLine":  69,
+                                                                                 "startOffset":  19,
+                                                                                 "endOffset":  43
+                                                                             },
+                                                               "msg":  "Duplication",
+                                                               "msgFormattings":  [
+
+                                                                                  ]
+                                                           }
+                                                       ]
+                                     }
+                                 ],
+                       "status":  "OPEN",
+                       "message":  "Define a constant instead of duplicating this literal \"Game session not found\" 3 times.",
+                       "effort":  "6min",
+                       "debt":  "6min",
+                       "author":  "",
+                       "tags":  [
+                                    "design"
+                                ],
+                       "creationDate":  "2026-10-26T01:02:20+0000",
+                       "updateDate":  "2026-10-26T01:02:20+0000",
+                       "type":  "CODE_SMELL",
+                       "scope":  "MAIN",
+                       "quickFixAvailable":  false,
+                       "messageFormattings":  [
+
+                                              ],
+                       "codeVariants":  [
+
+                                        ],
+                       "cleanCodeAttribute":  "DISTINCT",
+                       "cleanCodeAttributeCategory":  "ADAPTABLE",
+                       "impacts":  [
+                                       {
+                                           "softwareQuality":  "MAINTAINABILITY",
+                                           "severity":  "HIGH"
+                                       }
+                                   ],
+                       "issueStatus":  "OPEN",
+                       "prioritizedRule":  false,
+                       "fromSonarQubeUpdate":  false,
+                       "internalTags":  [
+
+                                        ],
+                       "linkedTicketStatus":  "NOT_LINKED"
+                   },
+                   {
+                       "key":  "2cafd275-9493-4306-be59-cb415568cd08",
+                       "rule":  "typescript:S6754",
+                       "severity":  "MINOR",
+                       "component":  "tetris-stage2-bmad:frontend/src/App.tsx",
+                       "project":  "tetris-stage2-bmad",
+                       "line":  26,
+                       "hash":  "b2204a5ab4c179c5c2a72236aed08556",
+                       "textRange":  {
+                                         "startLine":  26,
+                                         "endLine":  26,
+                                         "startOffset":  8,
+                                         "endOffset":  28
+                                     },
+                       "flows":  [
+
+                                 ],
+                       "status":  "OPEN",
+                       "message":  "useState call is not destructured into value + setter pair",
+                       "effort":  "5min",
+                       "debt":  "5min",
+                       "author":  "",
+                       "tags":  [
+                                    "editable-source",
+                                    "react"
+                                ],
+                       "creationDate":  "2026-10-26T01:02:20+0000",
+                       "updateDate":  "2026-10-26T01:02:20+0000",
+                       "type":  "CODE_SMELL",
+                       "scope":  "MAIN",
+                       "quickFixAvailable":  true,
+                       "messageFormattings":  [
+
+                                              ],
+                       "codeVariants":  [
+
+                                        ],
+                       "cleanCodeAttribute":  "IDENTIFIABLE",
+                       "cleanCodeAttributeCategory":  "CONSISTENT",
+                       "impacts":  [
+                                       {
+                                           "softwareQuality":  "MAINTAINABILITY",
+                                           "severity":  "LOW"
+                                       }
+                                   ],
+                       "issueStatus":  "OPEN",
+                       "prioritizedRule":  false,
+                       "fromSonarQubeUpdate":  false,
+                       "internalTags":  [
+
+                                        ],
+                       "linkedTicketStatus":  "NOT_LINKED"
+                   },
+                   {
+                       "key":  "cf4cc560-5ee0-46e3-9eca-39cc5de0d4cf",
+                       "rule":  "typescript:S6582",
+                       "severity":  "MINOR",
+                       "component":  "tetris-stage2-bmad:frontend/src/App.tsx",
+                       "project":  "tetris-stage2-bmad",
+                       "line":  143,
+                       "hash":  "b6ba541873f93d15033717fec65f8281",
+                       "textRange":  {
+                                         "startLine":  143,
+                                         "endLine":  143,
+                                         "startOffset":  8,
+                                         "endOffset":  35
+                                     },
+                       "flows":  [
+
+                                 ],
+                       "status":  "OPEN",
+                       "message":  "Prefer using an optional chain expression instead, as it\u0027s more concise and easier to read.",
+                       "effort":  "5min",
+                       "debt":  "5min",
+                       "author":  "",
+                       "tags":  [
+                                    "editable-source",
+                                    "type-dependent",
+                                    "es2020"
+                                ],
+                       "creationDate":  "2026-10-26T01:02:20+0000",
+                       "updateDate":  "2026-10-26T01:02:20+0000",
+                       "type":  "CODE_SMELL",
+                       "scope":  "MAIN",
+                       "quickFixAvailable":  true,
+                       "messageFormattings":  [
+
+                                              ],
+                       "codeVariants":  [
+
+                                        ],
+                       "cleanCodeAttribute":  "CLEAR",
+                       "cleanCodeAttributeCategory":  "INTENTIONAL",
+                       "impacts":  [
+                                       {
+                                           "softwareQuality":  "MAINTAINABILITY",
+                                           "severity":  "LOW"
+                                       }
+                                   ],
+                       "issueStatus":  "OPEN",
+                       "prioritizedRule":  false,
+                       "fromSonarQubeUpdate":  false,
+                       "internalTags":  [
+
+                                        ],
+                       "linkedTicketStatus":  "NOT_LINKED"
+                   },
+                   {
+                       "key":  "75b94eb1-442f-4307-8c43-aa56b82c8961",
+                       "rule":  "typescript:S4624",
+                       "severity":  "MAJOR",
+                       "component":  "tetris-stage2-bmad:frontend/src/App.tsx",
+                       "project":  "tetris-stage2-bmad",
+                       "line":  164,
+                       "hash":  "d7c5ccf2aed86f2e438a1c11019d6a4c",
+                       "textRange":  {
+                                         "startLine":  164,
+                                         "endLine":  164,
+                                         "startOffset":  54,
+                                         "endOffset":  77
+                                     },
+                       "flows":  [
+
+                                 ],
+                       "status":  "OPEN",
+                       "message":  "Refactor this code to not use nested template literals.",
+                       "effort":  "10min",
+                       "debt":  "10min",
+                       "author":  "",
+                       "tags":  [
+                                    "es2015",
+                                    "brain-overload",
+                                    "editable-source",
+                                    "confusing"
+                                ],
+                       "creationDate":  "2026-10-26T01:02:20+0000",
+                       "updateDate":  "2026-10-26T01:02:20+0000",
+                       "type":  "CODE_SMELL",
+                       "scope":  "MAIN",
+                       "quickFixAvailable":  false,
+                       "messageFormattings":  [
+
+                                              ],
+                       "codeVariants":  [
+
+                                        ],
+                       "cleanCodeAttribute":  "CLEAR",
+                       "cleanCodeAttributeCategory":  "INTENTIONAL",
+                       "impacts":  [
+                                       {
+                                           "softwareQuality":  "MAINTAINABILITY",
+                                           "severity":  "MEDIUM"
+                                       }
+                                   ],
+                       "issueStatus":  "OPEN",
+                       "prioritizedRule":  false,
+                       "fromSonarQubeUpdate":  false,
+                       "internalTags":  [
+
+                                        ],
+                       "linkedTicketStatus":  "NOT_LINKED"
+                   },
+                   {
+                       "key":  "772c3ffa-235b-4eeb-a3c8-d22df05d91bf",
+                       "rule":  "typescript:S3776",
+                       "severity":  "CRITICAL",
+                       "component":  "tetris-stage2-bmad:frontend/src/App.tsx",
+                       "project":  "tetris-stage2-bmad",
+                       "line":  218,
+                       "hash":  "8aaf685e8c09e85ebbb9d8b4e435ec95",
+                       "textRange":  {
+                                         "startLine":  218,
+                                         "endLine":  218,
+                                         "startOffset":  54,
+                                         "endOffset":  56
+                                     },
+                       "flows":  [
+                                     {
+                                         "locations":  [
+                                                           {
+                                                               "component":  "tetris-stage2-bmad:frontend/src/App.tsx",
+                                                               "textRange":  {
+                                                                                 "startLine":  220,
+                                                                                 "endLine":  220,
+                                                                                 "startOffset":  18,
+                                                                                 "endOffset":  20
+                                                                             },
+                                                               "msg":  "+1",
+                                                               "msgFormattings":  [
+
+                                                                                  ]
+                                                           }
+                                                       ]
+                                     },
+                                     {
+                                         "locations":  [
+                                                           {
+                                                               "component":  "tetris-stage2-bmad:frontend/src/App.tsx",
+                                                               "textRange":  {
+                                                                                 "startLine":  225,
+                                                                                 "endLine":  225,
+                                                                                 "startOffset":  58,
+                                                                                 "endOffset":  59
+                                                                             },
+                                                               "msg":  "+2 (incl. 1 for nesting)",
+                                                               "msgFormattings":  [
+
+                                                                                  ]
+                                                           }
+                                                       ]
+                                     },
+                                     {
+                                         "locations":  [
+                                                           {
+                                                               "component":  "tetris-stage2-bmad:frontend/src/App.tsx",
+                                                               "textRange":  {
+                                                                                 "startLine":  225,
+                                                                                 "endLine":  225,
+                                                                                 "startOffset":  90,
+                                                                                 "endOffset":  91
+                                                                             },
+                                                               "msg":  "+3 (incl. 2 for nesting)",
+                                                               "msgFormattings":  [
+
+                                                                                  ]
+                                                           }
+                                                       ]
+                                     },
+                                     {
+                                         "locations":  [
+                                                           {
+                                                               "component":  "tetris-stage2-bmad:frontend/src/App.tsx",
+                                                               "textRange":  {
+                                                                                 "startLine":  225,
+                                                                                 "endLine":  225,
+                                                                                 "startOffset":  122,
+                                                                                 "endOffset":  123
+                                                                             },
+                                                               "msg":  "+4 (incl. 3 for nesting)",
+                                                               "msgFormattings":  [
+
+                                                                                  ]
+                                                           }
+                                                       ]
+                                     },
+                                     {
+                                         "locations":  [
+                                                           {
+                                                               "component":  "tetris-stage2-bmad:frontend/src/App.tsx",
+                                                               "textRange":  {
+                                                                                 "startLine":  225,
+                                                                                 "endLine":  225,
+                                                                                 "startOffset":  154,
+                                                                                 "endOffset":  155
+                                                                             },
+                                                               "msg":  "+5 (incl. 4 for nesting)",
+                                                               "msgFormattings":  [
+
+                                                                                  ]
+                                                           }
+                                                       ]
+                                     },
+                                     {
+                                         "locations":  [
+                                                           {
+                                                               "component":  "tetris-stage2-bmad:frontend/src/App.tsx",
+                                                               "textRange":  {
+                                                                                 "startLine":  225,
+                                                                                 "endLine":  225,
+                                                                                 "startOffset":  186,
+                                                                                 "endOffset":  187
+                                                                             },
+                                                               "msg":  "+6 (incl. 5 for nesting)",
+                                                               "msgFormattings":  [
+
+                                                                                  ]
+                                                           }
+                                                       ]
+                                     },
+                                     {
+                                         "locations":  [
+                                                           {
+                                                               "component":  "tetris-stage2-bmad:frontend/src/App.tsx",
+                                                               "textRange":  {
+                                                                                 "startLine":  225,
+                                                                                 "endLine":  225,
+                                                                                 "startOffset":  218,
+                                                                                 "endOffset":  219
+                                                                             },
+                                                               "msg":  "+7 (incl. 6 for nesting)",
+                                                               "msgFormattings":  [
+
+                                                                                  ]
+                                                           }
+                                                       ]
+                                     }
+                                 ],
+                       "status":  "OPEN",
+                       "message":  "Refactor this function to reduce its Cognitive Complexity from 28 to the 15 allowed.",
+                       "effort":  "18min",
+                       "debt":  "18min",
+                       "author":  "",
+                       "tags":  [
+                                    "brain-overload",
+                                    "editable-source"
+                                ],
+                       "creationDate":  "2026-10-26T01:02:20+0000",
+                       "updateDate":  "2026-10-26T01:02:20+0000",
+                       "type":  "CODE_SMELL",
+                       "scope":  "MAIN",
+                       "quickFixAvailable":  false,
+                       "messageFormattings":  [
+
+                                              ],
+                       "codeVariants":  [
+
+                                        ],
+                       "cleanCodeAttribute":  "FOCUSED",
+                       "cleanCodeAttributeCategory":  "ADAPTABLE",
+                       "impacts":  [
+                                       {
+                                           "softwareQuality":  "MAINTAINABILITY",
+                                           "severity":  "HIGH"
+                                       }
+                                   ],
+                       "issueStatus":  "OPEN",
+                       "prioritizedRule":  false,
+                       "fromSonarQubeUpdate":  false,
+                       "internalTags":  [
+
+                                        ],
+                       "linkedTicketStatus":  "NOT_LINKED"
+                   },
+                   {
+                       "key":  "11ecc3ab-18ba-4989-8906-cb0b3817539a",
+                       "rule":  "typescript:S3358",
+                       "severity":  "MAJOR",
+                       "component":  "tetris-stage2-bmad:frontend/src/App.tsx",
+                       "project":  "tetris-stage2-bmad",
+                       "line":  225,
+                       "hash":  "28b03afe90da0020e8a0434a6ad9ee2b",
+                       "textRange":  {
+                                         "startLine":  225,
+                                         "endLine":  225,
+                                         "startOffset":  104,
+                                         "endOffset":  241
+                                     },
+                       "flows":  [
+
+                                 ],
+                       "status":  "OPEN",
+                       "message":  "Extract this nested ternary operation into an independent statement.",
+                       "effort":  "5min",
+                       "debt":  "5min",
+                       "author":  "",
+                       "tags":  [
+                                    "editable-source",
+                                    "confusing"
+                                ],
+                       "creationDate":  "2026-10-26T01:02:20+0000",
+                       "updateDate":  "2026-10-26T01:02:20+0000",
+                       "type":  "CODE_SMELL",
+                       "scope":  "MAIN",
+                       "quickFixAvailable":  false,
+                       "messageFormattings":  [
+
+                                              ],
+                       "codeVariants":  [
+
+                                        ],
+                       "cleanCodeAttribute":  "CLEAR",
+                       "cleanCodeAttributeCategory":  "INTENTIONAL",
+                       "impacts":  [
+                                       {
+                                           "softwareQuality":  "MAINTAINABILITY",
+                                           "severity":  "MEDIUM"
+                                       }
+                                   ],
+                       "issueStatus":  "OPEN",
+                       "prioritizedRule":  false,
+                       "fromSonarQubeUpdate":  false,
+                       "internalTags":  [
+
+                                        ],
+                       "linkedTicketStatus":  "NOT_LINKED"
+                   },
+                   {
+                       "key":  "5cbe26e7-b7fb-48ce-982d-6b94f6950f6c",
+                       "rule":  "typescript:S3358",
+                       "severity":  "MAJOR",
+                       "component":  "tetris-stage2-bmad:frontend/src/App.tsx",
+                       "project":  "tetris-stage2-bmad",
+                       "line":  225,
+                       "hash":  "28b03afe90da0020e8a0434a6ad9ee2b",
+                       "textRange":  {
+                                         "startLine":  225,
+                                         "endLine":  225,
+                                         "startOffset":  136,
+                                         "endOffset":  241
+                                     },
+                       "flows":  [
+
+                                 ],
+                       "status":  "OPEN",
+                       "message":  "Extract this nested ternary operation into an independent statement.",
+                       "effort":  "5min",
+                       "debt":  "5min",
+                       "author":  "",
+                       "tags":  [
+                                    "editable-source",
+                                    "confusing"
+                                ],
+                       "creationDate":  "2026-10-26T01:02:20+0000",
+                       "updateDate":  "2026-10-26T01:02:20+0000",
+                       "type":  "CODE_SMELL",
+                       "scope":  "MAIN",
+                       "quickFixAvailable":  false,
+                       "messageFormattings":  [
+
+                                              ],
+                       "codeVariants":  [
+
+                                        ],
+                       "cleanCodeAttribute":  "CLEAR",
+                       "cleanCodeAttributeCategory":  "INTENTIONAL",
+                       "impacts":  [
+                                       {
+                                           "softwareQuality":  "MAINTAINABILITY",
+                                           "severity":  "MEDIUM"
+                                       }
+                                   ],
+                       "issueStatus":  "OPEN",
+                       "prioritizedRule":  false,
+                       "fromSonarQubeUpdate":  false,
+                       "internalTags":  [
+
+                                        ],
+                       "linkedTicketStatus":  "NOT_LINKED"
+                   },
+                   {
+                       "key":  "6c1701eb-baed-446e-8dde-67e704e17047",
+                       "rule":  "typescript:S3358",
+                       "severity":  "MAJOR",
+                       "component":  "tetris-stage2-bmad:frontend/src/App.tsx",
+                       "project":  "tetris-stage2-bmad",
+                       "line":  225,
+                       "hash":  "28b03afe90da0020e8a0434a6ad9ee2b",
+                       "textRange":  {
+                                         "startLine":  225,
+                                         "endLine":  225,
+                                         "startOffset":  72,
+                                         "endOffset":  241
+                                     },
+                       "flows":  [
+
+                                 ],
+                       "status":  "OPEN",
+                       "message":  "Extract this nested ternary operation into an independent statement.",
+                       "effort":  "5min",
+                       "debt":  "5min",
+                       "author":  "",
+                       "tags":  [
+                                    "editable-source",
+                                    "confusing"
+                                ],
+                       "creationDate":  "2026-10-26T01:02:20+0000",
+                       "updateDate":  "2026-10-26T01:02:20+0000",
+                       "type":  "CODE_SMELL",
+                       "scope":  "MAIN",
+                       "quickFixAvailable":  false,
+                       "messageFormattings":  [
+
+                                              ],
+                       "codeVariants":  [
+
+                                        ],
+                       "cleanCodeAttribute":  "CLEAR",
+                       "cleanCodeAttributeCategory":  "INTENTIONAL",
+                       "impacts":  [
+                                       {
+                                           "softwareQuality":  "MAINTAINABILITY",
+                                           "severity":  "MEDIUM"
+                                       }
+                                   ],
+                       "issueStatus":  "OPEN",
+                       "prioritizedRule":  false,
+                       "fromSonarQubeUpdate":  false,
+                       "internalTags":  [
+
+                                        ],
+                       "linkedTicketStatus":  "NOT_LINKED"
+                   },
+                   {
+                       "key":  "7e891337-f90b-48f1-b155-2ee8a0d4d99f",
+                       "rule":  "typescript:S3358",
+                       "severity":  "MAJOR",
+                       "component":  "tetris-stage2-bmad:frontend/src/App.tsx",
+                       "project":  "tetris-stage2-bmad",
+                       "line":  225,
+                       "hash":  "28b03afe90da0020e8a0434a6ad9ee2b",
+                       "textRange":  {
+                                         "startLine":  225,
+                                         "endLine":  225,
+                                         "startOffset":  200,
+                                         "endOffset":  241
+                                     },
+                       "flows":  [
+
+                                 ],
+                       "status":  "OPEN",
+                       "message":  "Extract this nested ternary operation into an independent statement.",
+                       "effort":  "5min",
+                       "debt":  "5min",
+                       "author":  "",
+                       "tags":  [
+                                    "editable-source",
+                                    "confusing"
+                                ],
+                       "creationDate":  "2026-10-26T01:02:20+0000",
+                       "updateDate":  "2026-10-26T01:02:20+0000",
+                       "type":  "CODE_SMELL",
+                       "scope":  "MAIN",
+                       "quickFixAvailable":  false,
+                       "messageFormattings":  [
+
+                                              ],
+                       "codeVariants":  [
+
+                                        ],
+                       "cleanCodeAttribute":  "CLEAR",
+                       "cleanCodeAttributeCategory":  "INTENTIONAL",
+                       "impacts":  [
+                                       {
+                                           "softwareQuality":  "MAINTAINABILITY",
+                                           "severity":  "MEDIUM"
+                                       }
+                                   ],
+                       "issueStatus":  "OPEN",
+                       "prioritizedRule":  false,
+                       "fromSonarQubeUpdate":  false,
+                       "internalTags":  [
+
+                                        ],
+                       "linkedTicketStatus":  "NOT_LINKED"
+                   },
+                   {
+                       "key":  "aceb7bed-35ee-4608-9567-f7a6f3a01285",
+                       "rule":  "typescript:S3358",
+                       "severity":  "MAJOR",
+                       "component":  "tetris-stage2-bmad:frontend/src/App.tsx",
+                       "project":  "tetris-stage2-bmad",
+                       "line":  225,
+                       "hash":  "28b03afe90da0020e8a0434a6ad9ee2b",
+                       "textRange":  {
+                                         "startLine":  225,
+                                         "endLine":  225,
+                                         "startOffset":  168,
+                                         "endOffset":  241
+                                     },
+                       "flows":  [
+
+                                 ],
+                       "status":  "OPEN",
+                       "message":  "Extract this nested ternary operation into an independent statement.",
+                       "effort":  "5min",
+                       "debt":  "5min",
+                       "author":  "",
+                       "tags":  [
+                                    "editable-source",
+                                    "confusing"
+                                ],
+                       "creationDate":  "2026-10-26T01:02:20+0000",
+                       "updateDate":  "2026-10-26T01:02:20+0000",
+                       "type":  "CODE_SMELL",
+                       "scope":  "MAIN",
+                       "quickFixAvailable":  false,
+                       "messageFormattings":  [
+
+                                              ],
+                       "codeVariants":  [
+
+                                        ],
+                       "cleanCodeAttribute":  "CLEAR",
+                       "cleanCodeAttributeCategory":  "INTENTIONAL",
+                       "impacts":  [
+                                       {
+                                           "softwareQuality":  "MAINTAINABILITY",
+                                           "severity":  "MEDIUM"
+                                       }
+                                   ],
+                       "issueStatus":  "OPEN",
+                       "prioritizedRule":  false,
+                       "fromSonarQubeUpdate":  false,
+                       "internalTags":  [
+
+                                        ],
+                       "linkedTicketStatus":  "NOT_LINKED"
+                   },
+                   {
+                       "key":  "36e114e7-a796-4a71-bb90-5e7b8e1eda62",
+                       "rule":  "css:S7924",
+                       "severity":  "MAJOR",
+                       "component":  "tetris-stage2-bmad:frontend/src/styles.css",
+                       "project":  "tetris-stage2-bmad",
+                       "line":  101,
+                       "hash":  "24f86b1dec98dab1281d17561df3b4cb",
+                       "textRange":  {
+                                         "startLine":  101,
+                                         "endLine":  101,
+                                         "startOffset":  2,
+                                         "endOffset":  36
+                                     },
+                       "flows":  [
+
+                                 ],
+                       "status":  "OPEN",
+                       "message":  "Text does not meet the minimal contrast requirement with its background.",
+                       "effort":  "5min",
+                       "debt":  "5min",
+                       "author":  "",
+                       "tags":  [
+                                    "css",
+                                    "accessibility",
+                                    "wcag",
+                                    "contrast"
+                                ],
+                       "creationDate":  "2026-10-26T01:02:20+0000",
+                       "updateDate":  "2026-10-26T01:02:20+0000",
+                       "type":  "CODE_SMELL",
+                       "scope":  "MAIN",
+                       "quickFixAvailable":  false,
+                       "messageFormattings":  [
+
+                                              ],
+                       "codeVariants":  [
+
+                                        ],
+                       "cleanCodeAttribute":  "CONVENTIONAL",
+                       "cleanCodeAttributeCategory":  "CONSISTENT",
+                       "impacts":  [
+                                       {
+                                           "softwareQuality":  "MAINTAINABILITY",
+                                           "severity":  "MEDIUM"
+                                       }
+                                   ],
+                       "issueStatus":  "OPEN",
+                       "prioritizedRule":  false,
+                       "fromSonarQubeUpdate":  false,
+                       "internalTags":  [
+
+                                        ],
+                       "linkedTicketStatus":  "NOT_LINKED"
+                   },
+                   {
+                       "key":  "0f76ff19-4d97-428c-81d8-2a7813f035e2",
+                       "rule":  "css:S7924",
+                       "severity":  "MAJOR",
+                       "component":  "tetris-stage2-bmad:frontend/src/styles.css",
+                       "project":  "tetris-stage2-bmad",
+                       "line":  107,
+                       "hash":  "6b23e42aedf2901696b8ecca57ea1fbe",
+                       "textRange":  {
+                                         "startLine":  107,
+                                         "endLine":  107,
+                                         "startOffset":  2,
+                                         "endOffset":  36
+                                     },
+                       "flows":  [
+
+                                 ],
+                       "status":  "OPEN",
+                       "message":  "Text does not meet the minimal contrast requirement with its background.",
+                       "effort":  "5min",
+                       "debt":  "5min",
+                       "author":  "",
+                       "tags":  [
+                                    "css",
+                                    "accessibility",
+                                    "wcag",
+                                    "contrast"
+                                ],
+                       "creationDate":  "2026-10-26T01:02:20+0000",
+                       "updateDate":  "2026-10-26T01:02:20+0000",
+                       "type":  "CODE_SMELL",
+                       "scope":  "MAIN",
+                       "quickFixAvailable":  false,
+                       "messageFormattings":  [
+
+                                              ],
+                       "codeVariants":  [
+
+                                        ],
+                       "cleanCodeAttribute":  "CONVENTIONAL",
+                       "cleanCodeAttributeCategory":  "CONSISTENT",
+                       "impacts":  [
+                                       {
+                                           "softwareQuality":  "MAINTAINABILITY",
+                                           "severity":  "MEDIUM"
+                                       }
+                                   ],
+                       "issueStatus":  "OPEN",
+                       "prioritizedRule":  false,
+                       "fromSonarQubeUpdate":  false,
+                       "internalTags":  [
+
+                                        ],
+                       "linkedTicketStatus":  "NOT_LINKED"
+                   },
+                   {
+                       "key":  "e08a5ca1-9a86-4742-819a-29495d0dee4a",
+                       "rule":  "css:S7924",
+                       "severity":  "MAJOR",
+                       "component":  "tetris-stage2-bmad:frontend/src/styles.css",
+                       "project":  "tetris-stage2-bmad",
+                       "line":  113,
+                       "hash":  "bc201eeaafb36c8d86dde93f1ebd6e07",
+                       "textRange":  {
+                                         "startLine":  113,
+                                         "endLine":  113,
+                                         "startOffset":  2,
+                                         "endOffset":  40
+                                     },
+                       "flows":  [
+
+                                 ],
+                       "status":  "OPEN",
+                       "message":  "Text does not meet the minimal contrast requirement with its background.",
+                       "effort":  "5min",
+                       "debt":  "5min",
+                       "author":  "",
+                       "tags":  [
+                                    "css",
+                                    "accessibility",
+                                    "wcag",
+                                    "contrast"
+                                ],
+                       "creationDate":  "2026-10-26T01:02:20+0000",
+                       "updateDate":  "2026-10-26T01:02:20+0000",
+                       "type":  "CODE_SMELL",
+                       "scope":  "MAIN",
+                       "quickFixAvailable":  false,
+                       "messageFormattings":  [
+
+                                              ],
+                       "codeVariants":  [
+
+                                        ],
+                       "cleanCodeAttribute":  "CONVENTIONAL",
+                       "cleanCodeAttributeCategory":  "CONSISTENT",
+                       "impacts":  [
+                                       {
+                                           "softwareQuality":  "MAINTAINABILITY",
+                                           "severity":  "MEDIUM"
+                                       }
+                                   ],
+                       "issueStatus":  "OPEN",
+                       "prioritizedRule":  false,
+                       "fromSonarQubeUpdate":  false,
+                       "internalTags":  [
+
+                                        ],
+                       "linkedTicketStatus":  "NOT_LINKED"
+                   }
+               ],
+    "components":  [
+                       {
+                           "key":  "tetris-stage2-bmad:frontend/src/styles.css",
+                           "enabled":  true,
+                           "qualifier":  "FIL",
+                           "name":  "styles.css",
+                           "longName":  "frontend/src/styles.css",
+                           "path":  "frontend/src/styles.css"
+                       },
+                       {
+                           "key":  "tetris-stage2-bmad:frontend/src/App.tsx",
+                           "enabled":  true,
+                           "qualifier":  "FIL",
+                           "name":  "App.tsx",
+                           "longName":  "frontend/src/App.tsx",
+                           "path":  "frontend/src/App.tsx"
+                       },
+                       {
+                           "key":  "tetris-stage2-bmad:backend/app/core/domain.py",
+                           "enabled":  true,
+                           "qualifier":  "FIL",
+                           "name":  "domain.py",
+                           "longName":  "backend/app/core/domain.py",
+                           "path":  "backend/app/core/domain.py"
+                       },
+                       {
+                           "key":  "tetris-stage2-bmad:backend/app/main.py",
+                           "enabled":  true,
+                           "qualifier":  "FIL",
+                           "name":  "main.py",
+                           "longName":  "backend/app/main.py",
+                           "path":  "backend/app/main.py"
+                       },
+                       {
+                           "key":  "tetris-stage2-bmad",
+                           "enabled":  true,
+                           "qualifier":  "TRK",
+                           "name":  "Tetris Stage 2 BMAD",
+                           "longName":  "Tetris Stage 2 BMAD"
+                       }
+                   ],
+    "facets":  [
+
+               ]
+}

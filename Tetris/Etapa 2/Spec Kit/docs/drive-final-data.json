@@ -1,0 +1,1286 @@
+{
+  "document_id": "1JRZvjK8-fdFitwbiKLe2NhOsk1FZNCa_TclgnFwdjao",
+  "blocks": [
+    {
+      "kind": "heading1",
+      "text": "CIERRE VERIFICADO — SPEC KIT / TETRIS ETAPA 2 (21 oct 2026, hora Bogotá)",
+      "page_break": true
+    },
+    {
+      "kind": "body",
+      "text": "Estado: implementación local y verificaciones finales completas para la evidencia descrita. No se hizo commit ni push. Este informe distingue la salida de la herramienta, las correcciones y la verificación independiente."
+    },
+    {
+      "kind": "body",
+      "text": "Generado en UTC: 2026-10-21T05:42:43.818321+00:00."
+    },
+    {
+      "kind": "heading2",
+      "text": "Control y procedencia",
+      "page_break": false
+    },
+    {
+      "kind": "body",
+      "text": "Semilla maestra: 63919779DD4104076FBABCB130CE296A160FA840E0B4755A2AA5D90757ADA8EF. Bloque extraído UTF-8/LF: 60D6728689CD5CDAD7B1A386F95DAD4E34850EB5DE0AAB92E837D630DFD2B55A. La semilla común no cambió. Las incidencias de entrega iniciales y el acceso contextual posterior se conservan en input-audit.json; la entrada efectiva de implementación y correcciones está verificada."
+    },
+    {
+      "kind": "body",
+      "text": "Entorno registrado: Spec Kit 1.0.12, Gemini CLI 0.60.0, Node v25.6.1, npm 11.9.0, Python 3.12.14, SonarQube 26.9.0.129388. Modelo solicitado: gemini-3.5-flash. Los modelos auxiliares efectivos aparecen por sesión en la tabla y las estadísticas originales."
+    },
+    {
+      "kind": "body",
+      "text": "Las métricas de uso abarcan Gemini CLI y sus roles auxiliares. Excluyen Codex/orquestación del investigador, agentes de revisión de solo lectura, autoría de helpers, trabajo de Drive/UI y verificaciones externas; no son el costo ni los tokens totales del proyecto. Las fuentes actuales incluyen código heredado y cambios generados por Gemini. Helpers, evidencias y este informe son del investigador. La desviación manual documentada en OpenSpec permanece separada en comparaciones."
+    },
+    {
+      "kind": "heading2",
+      "text": "Invocaciones, tokens y correcciones",
+      "page_break": false
+    },
+    {
+      "kind": "body",
+      "text": "Entrada significa prompt e incluye la caché; la caché no se suma de nuevo. Salida candidata y pensamiento se cuentan por separado. Intentos API, errores y éxitos corresponden a estadísticas completas; respuestas JSONL son otra medida y pueden omitir roles auxiliares. Los valores desconocidos se conservan."
+    },
+    {
+      "kind": "heading2",
+      "text": "Tokens por invocación: entrada y caché",
+      "page_break": true
+    },
+    {
+      "kind": "table",
+      "id": "t1",
+      "headers": [
+        "Sesión",
+        "Entrada",
+        "Caché incluida"
+      ],
+      "rows": [
+        [
+          "01-specify",
+          "372.306",
+          "328.077"
+        ],
+        [
+          "02-specify-retry",
+          "553.753",
+          "417.153"
+        ],
+        [
+          "03-contract-clarification",
+          "231.106",
+          "152.515"
+        ],
+        [
+          "04-plan",
+          "1.659.066",
+          "1.321.138"
+        ],
+        [
+          "05-tasks",
+          "293.607",
+          "155.479"
+        ],
+        [
+          "06-tasks-full-arguments",
+          "0",
+          "0"
+        ],
+        [
+          "07-tasks-native-expanded",
+          "1.065.684",
+          "505.891"
+        ],
+        [
+          "08-implement",
+          "16.752.166",
+          "12.893.781"
+        ],
+        [
+          "09-qa-correction",
+          "10.900.997",
+          "8.551.042"
+        ],
+        [
+          "10-qa-race-correction",
+          "5.514.887",
+          "4.925.600"
+        ],
+        [
+          "11-qa-timer-ownership",
+          "607.848",
+          "257.143"
+        ],
+        [
+          "12-qa-timer-retry",
+          "1.830.444",
+          "1.091.029"
+        ],
+        [
+          "13-qa-completion-retry",
+          "225.989",
+          "104.499"
+        ],
+        [
+          "14-qa-completion-fresh",
+          "720.193",
+          "422.234"
+        ],
+        [
+          "15-qa-frontend-completion",
+          "160.759",
+          "0"
+        ],
+        [
+          "16-qa-final-regressions",
+          "1.560.326",
+          "1.173.857"
+        ],
+        [
+          "17-qa-sonar-style",
+          "1.540.447",
+          "1.116.692"
+        ]
+      ],
+      "widths": [
+        140,
+        154,
+        154
+      ]
+    },
+    {
+      "kind": "heading2",
+      "text": "Tokens por invocación: candidata y pensamiento",
+      "page_break": true
+    },
+    {
+      "kind": "table",
+      "id": "t2",
+      "headers": [
+        "Sesión",
+        "Salida candidata",
+        "Pensamiento"
+      ],
+      "rows": [
+        [
+          "01-specify",
+          "572",
+          "3.622"
+        ],
+        [
+          "02-specify-retry",
+          "5.986",
+          "8.755"
+        ],
+        [
+          "03-contract-clarification",
+          "5.847",
+          "18.651"
+        ],
+        [
+          "04-plan",
+          "14.548",
+          "8.060"
+        ],
+        [
+          "05-tasks",
+          "4.874",
+          "6.352"
+        ],
+        [
+          "06-tasks-full-arguments",
+          "0",
+          "0"
+        ],
+        [
+          "07-tasks-native-expanded",
+          "8.216",
+          "7.163"
+        ],
+        [
+          "08-implement",
+          "36.959",
+          "41.527"
+        ],
+        [
+          "09-qa-correction",
+          "40.048",
+          "42.080"
+        ],
+        [
+          "10-qa-race-correction",
+          "23.190",
+          "26.295"
+        ],
+        [
+          "11-qa-timer-ownership",
+          "2.297",
+          "16.381"
+        ],
+        [
+          "12-qa-timer-retry",
+          "10.707",
+          "14.468"
+        ],
+        [
+          "13-qa-completion-retry",
+          "144",
+          "630"
+        ],
+        [
+          "14-qa-completion-fresh",
+          "1.936",
+          "15.806"
+        ],
+        [
+          "15-qa-frontend-completion",
+          "1.808",
+          "7.575"
+        ],
+        [
+          "16-qa-final-regressions",
+          "6.505",
+          "15.859"
+        ],
+        [
+          "17-qa-sonar-style",
+          "4.735",
+          "8.890"
+        ]
+      ],
+      "widths": [
+        140,
+        154,
+        154
+      ]
+    },
+    {
+      "kind": "body",
+      "text": "En 13, el primer registro user es contexto sintético/repetición del CLI y no contiene la semilla. El prompt real íntegro, con hash idéntico al previsto, se registró después y antes de la primera respuesta con tokens. Solo hubo update_topic y 0/0 líneas: no produjo trabajo de aplicación. La desviación del primer registro queda preservada; no se relaja el requisito de semilla completa para las correcciones que producen código. Evidencia: 13-input-replay-verification.json."
+    },
+    {
+      "kind": "heading2",
+      "text": "Tiempo, API y respuestas registradas",
+      "page_break": true
+    },
+    {
+      "kind": "table",
+      "id": "t3",
+      "headers": [
+        "Sesión",
+        "Segundos",
+        "API intentos",
+        "Errores",
+        "Éxitos",
+        "JSONL"
+      ],
+      "rows": [
+        [
+          "01-specify",
+          "N/D",
+          "N/D",
+          "N/D",
+          "N/D",
+          "14"
+        ],
+        [
+          "02-specify-retry",
+          "314,087",
+          "23",
+          "2",
+          "21",
+          "21"
+        ],
+        [
+          "03-contract-clarification",
+          "N/D",
+          "N/D",
+          "N/D",
+          "N/D",
+          "11"
+        ],
+        [
+          "04-plan",
+          "671,273",
+          "52",
+          "4",
+          "48",
+          "46"
+        ],
+        [
+          "05-tasks",
+          "304,671",
+          "13",
+          "2",
+          "11",
+          "11"
+        ],
+        [
+          "06-tasks-full-arguments",
+          "0,084",
+          "0",
+          "0",
+          "0",
+          "0"
+        ],
+        [
+          "07-tasks-native-expanded",
+          "545,391",
+          "41",
+          "14",
+          "27",
+          "27"
+        ],
+        [
+          "08-implement",
+          "2.885,870",
+          "202",
+          "54",
+          "148",
+          "140"
+        ],
+        [
+          "09-qa-correction",
+          "3.450,181",
+          "149",
+          "39",
+          "110",
+          "100"
+        ],
+        [
+          "10-qa-race-correction",
+          "455,055",
+          "60",
+          "0",
+          "60",
+          "58"
+        ],
+        [
+          "11-qa-timer-ownership",
+          "439,318",
+          "N/D",
+          "N/D",
+          "N/D",
+          "14"
+        ],
+        [
+          "12-qa-timer-retry",
+          "1.513,504",
+          "N/D",
+          "N/D",
+          "N/D",
+          "21"
+        ],
+        [
+          "13-qa-completion-retry",
+          "16,638",
+          "2",
+          "0",
+          "2",
+          "2"
+        ],
+        [
+          "14-qa-completion-fresh",
+          "184,895",
+          "20",
+          "0",
+          "20",
+          "20"
+        ],
+        [
+          "15-qa-frontend-completion",
+          "56,315",
+          "2",
+          "0",
+          "2",
+          "2"
+        ],
+        [
+          "16-qa-final-regressions",
+          "375,325",
+          "40",
+          "3",
+          "37",
+          "36"
+        ],
+        [
+          "17-qa-sonar-style",
+          "313,986",
+          "41",
+          "3",
+          "38",
+          "37"
+        ]
+      ],
+      "widths": [
+        132,
+        70,
+        65,
+        55,
+        60,
+        66
+      ]
+    },
+    {
+      "kind": "body",
+      "text": "N/D conserva información desconocida. API = intentos incluidos errores; JSONL = respuestas únicas registradas, acotadas por intervalo y deduplicadas. Estas medidas no se suman."
+    },
+    {
+      "kind": "table",
+      "id": "t4",
+      "headers": [
+        "Sesión",
+        "Modelo auxiliar",
+        "Roles declarados",
+        "API intentos/errores/éxitos"
+      ],
+      "rows": [
+        [
+          "04-plan",
+          "gemini-3-flash-preview",
+          "utility_loop_detector",
+          "2/0/2"
+        ],
+        [
+          "08-implement",
+          "gemini-3-flash-preview",
+          "utility_loop_detector",
+          "8/0/8"
+        ],
+        [
+          "09-qa-correction",
+          "gemini-3-flash-preview",
+          "utility_loop_detector; utility_tool",
+          "10/0/10"
+        ],
+        [
+          "10-qa-race-correction",
+          "gemini-3-flash-preview",
+          "utility_loop_detector",
+          "2/0/2"
+        ],
+        [
+          "16-qa-final-regressions",
+          "gemini-3-flash-preview",
+          "utility_loop_detector",
+          "1/0/1"
+        ],
+        [
+          "17-qa-sonar-style",
+          "gemini-3-flash-preview",
+          "utility_loop_detector",
+          "1/0/1"
+        ]
+      ],
+      "widths": [
+        115,
+        120,
+        125,
+        88
+      ]
+    },
+    {
+      "kind": "body",
+      "text": "Acumulado observado: 17 intentos de invocación; 16 con modelo acreditado. Duración conocida 11.526,593 s; sesiones con duración desconocida: 01-specify; 03-contract-clarification. Entrada 43.989.578, caché incluida 33.416.130, candidata 168.372, pensamiento 242.114. API conocida 645/121/524; respuestas JSONL 560. La duración excluye trabajo externo y no imputa sesiones interrumpidas."
+    },
+    {
+      "kind": "body",
+      "text": "Intentos externos de corrección después de implementar: 9 iniciados y 9 cerrados; 7 con exit 0 y 2 fallidos/interrumpidos. Representan 4 intenciones QA distintas; un reintento puede compartir intención. Cerrar una invocación no acredita una corrección completada, y exit 0 no sustituye la aceptación independiente. Los reintentos del lanzador y la aclaración previa son categorías distintas; las acciones/rescaneos internos no son prompts externos nuevos."
+    },
+    {
+      "kind": "heading2",
+      "text": "Categorías de invocación",
+      "page_break": false
+    },
+    {
+      "kind": "table",
+      "id": "t5",
+      "headers": [
+        "Categoría",
+        "Intentos",
+        "Con modelo",
+        "IDs"
+      ],
+      "rows": [
+        [
+          "Especificación inicial",
+          "1",
+          "1",
+          "01"
+        ],
+        [
+          "Reintento de especificación",
+          "1",
+          "1",
+          "02"
+        ],
+        [
+          "Corrección previa de specs",
+          "1",
+          "1",
+          "03"
+        ],
+        [
+          "Plan nativo",
+          "1",
+          "1",
+          "04"
+        ],
+        [
+          "Tareas nativas",
+          "1",
+          "1",
+          "05"
+        ],
+        [
+          "Reintentos de tareas",
+          "2",
+          "1",
+          "06; 07"
+        ],
+        [
+          "Implementación inicial",
+          "1",
+          "1",
+          "08"
+        ],
+        [
+          "Correcciones externas posteriores",
+          "9",
+          "9",
+          "09; 10; 11; 12; 13; 14; 15; 16; 17"
+        ]
+      ],
+      "widths": [
+        182,
+        60,
+        75,
+        131
+      ]
+    },
+    {
+      "kind": "heading2",
+      "text": "Intentos y resultados por intención QA",
+      "page_break": false
+    },
+    {
+      "kind": "table",
+      "id": "t6",
+      "headers": [
+        "Intención QA",
+        "Intentos",
+        "Exit 0",
+        "Fallidos/interrumpidos"
+      ],
+      "rows": [
+        [
+          "QA-1",
+          "09",
+          "09",
+          "—"
+        ],
+        [
+          "QA-2",
+          "10",
+          "10",
+          "—"
+        ],
+        [
+          "QA-3",
+          "11; 12; 13; 14; 15; 16",
+          "13; 14; 15; 16",
+          "11; 12"
+        ],
+        [
+          "QA-4",
+          "17",
+          "17",
+          "—"
+        ]
+      ],
+      "widths": [
+        70,
+        140,
+        130,
+        108
+      ]
+    },
+    {
+      "kind": "body",
+      "text": "Fallos terminales observados: 11-qa-timer-ownership: RESOURCE_EXHAUSTED; 12-qa-timer-retry: network_fetch_failed. Se conservan como incidencias de infraestructura, no como correcciones completadas. El total API sigue desconocido donde faltan estadísticas completas; no se suma un fallo terminal aislado como si fuese el agregado de errores de la sesión."
+    },
+    {
+      "kind": "body",
+      "text": "Auditoría de reanudación 12-qa-timer-retry (reintento de 11-qa-timer-ownership): no completed CLI counters; main JSONL interval only. No hubo contadores CLI completos para contrastar; se conservan solo tokens/respuestas JSONL del intervalo y los agregados API son desconocidos. El historial anterior no se sumó de nuevo. Los roles auxiliares conservan el alcance declarado por el CLI cuando existe esa evidencia."
+    },
+    {
+      "kind": "body",
+      "text": "Auditoría de reanudación 13-qa-completion-retry (reintento de 12-qa-timer-retry): main CLI counters match current invocation interval. Se contrastaron los contadores CLI con los tokens y las respuestas JSONL únicas dentro del intervalo. El historial anterior no se sumó de nuevo. single CLI-reported model; unlabeled interval records included only after exact token/count comparison and absence of conflicting model labels"
+    },
+    {
+      "kind": "body",
+      "text": "Auditoría de reanudación 15-qa-frontend-completion (reintento de 14-qa-completion-fresh): main CLI counters match current invocation interval. Se contrastaron los contadores CLI con los tokens y las respuestas JSONL únicas dentro del intervalo. El historial anterior no se sumó de nuevo. single CLI-reported model; unlabeled interval records included only after exact token/count comparison and absence of conflicting model labels"
+    },
+    {
+      "kind": "body",
+      "text": "Preguntas bloqueantes observadas: 0. El resultado procede de revisar texto emitido, no del modo headless. Se mantienen los límites de las sesiones interrumpidas y la separación de aclaraciones originadas por el investigador (question-audit.json)."
+    },
+    {
+      "kind": "body",
+      "text": "Se revisaron 21 mensajes naturales únicos. Catorce intentos cerrados contienen aclaraciones del investigador, doce con entrega verificada; 05 perdió argumentos y 06 falló antes del modelo. Ninguna fue respuesta a una pregunta bloqueante observada. Se excluyen pensamientos, herramientas, avisos sintéticos, plantillas y signos de pregunta dentro de código."
+    },
+    {
+      "kind": "heading2",
+      "text": "Tamaño, densidad y cambios de artefactos",
+      "page_break": true
+    },
+    {
+      "kind": "body",
+      "text": "Se cuentan líneas físicas y caracteres Unicode tras quitar BOM y normalizar a LF. Densidad = líneas/archivo. Fuente incluye pruebas y configuración textual; Sonar analiza producción con un alcance diferente. Los deltas netos de caracteres reflejan tamaño de estado, no volumen acumulado de edición."
+    },
+    {
+      "kind": "table",
+      "id": "t7",
+      "headers": [
+        "Alcance",
+        "Archivos",
+        "Líneas",
+        "Caracteres",
+        "Líneas/archivo"
+      ],
+      "rows": [
+        [
+          "Código Etapa 1",
+          "27",
+          "1.412",
+          "41.297",
+          "52,30"
+        ],
+        [
+          "Código final Etapa 2",
+          "29",
+          "3.972",
+          "122.186",
+          "136,97"
+        ],
+        [
+          "Specs Etapa 1",
+          "9",
+          "1.233",
+          "62.395",
+          "137,00"
+        ],
+        [
+          "Specs nativas Etapa 2",
+          "9",
+          "1.713",
+          "99.987",
+          "190,33"
+        ]
+      ],
+      "widths": [
+        140,
+        50,
+        70,
+        100,
+        88
+      ]
+    },
+    {
+      "kind": "table",
+      "id": "t8",
+      "headers": [
+        "Comparación",
+        "Archivos",
+        "+ / − líneas",
+        "Neto líneas",
+        "Neto caracteres"
+      ],
+      "rows": [
+        [
+          "Código vs Etapa 1",
+          "16",
+          "2.643/83",
+          "2.560",
+          "80.889"
+        ],
+        [
+          "Specs Etapa 2 vs carpeta vacía",
+          "9",
+          "1.713/0",
+          "1.713",
+          "99.987"
+        ],
+        [
+          "Specs heredadas copiadas",
+          "0",
+          "0/0",
+          "0",
+          "0"
+        ],
+        [
+          "Código QA vs generación 08",
+          "9",
+          "1.975/159",
+          "1.816",
+          "58.197"
+        ],
+        [
+          "Specs QA vs generación 08",
+          "2",
+          "223/0",
+          "223",
+          "20.410"
+        ]
+      ],
+      "widths": [
+        140,
+        55,
+        85,
+        70,
+        98
+      ]
+    },
+    {
+      "kind": "body",
+      "text": "La generación 08 congelada conserva el autoinforme inicial y su Sonar ERROR (57,1 % global; 44,9 % nuevo); sus declaraciones de LCOV y 96 % frontend no sustituyen los resultados independientes. Las correcciones posteriores y sus verificaciones se presentan con su propio estado. Las fuentes/especificaciones originales de Etapa 1 y su copia nativa se preservan."
+    },
+    {
+      "kind": "heading2",
+      "text": "Ejecución independiente y calidad",
+      "page_break": true
+    },
+    {
+      "kind": "body",
+      "text": "Una llamada exitosa al wrapper no acredita una prueba aprobada: los resultados siguientes se apoyan en salidas originales y exit code 0, posteriores a los cambios finales."
+    },
+    {
+      "kind": "table",
+      "id": "t9",
+      "headers": [
+        "Comprobación",
+        "Comando (resumen)",
+        "Salida; estado"
+      ],
+      "rows": [
+        [
+          "backend-tests-and-coverage",
+          "python -m pytest con cobertura XML",
+          "backend-coverage.log; exit 0"
+        ],
+        [
+          "frontend-tests-and-coverage",
+          "npm run test -- --coverage",
+          "frontend-test-coverage.log; exit 0"
+        ],
+        [
+          "frontend-production-build",
+          "npm run build",
+          "frontend-build.log; exit 0"
+        ],
+        [
+          "frontend-dependency-audit",
+          "npm audit --json",
+          "npm-audit.json; exit 0"
+        ]
+      ],
+      "widths": [
+        148,
+        162,
+        138
+      ]
+    },
+    {
+      "kind": "body",
+      "text": "Las rutas, argumentos completos, directorios de ejecución y horas están en verification-commands.json. Los resúmenes de comandos anteriores no sustituyen ese registro original."
+    },
+    {
+      "kind": "body",
+      "text": "Backend: 35 pruebas aprobadas; cobertura de sentencias 92%. Frontend: 38 pruebas aprobadas. Cobertura frontend: Statements 80.26%; Branches 70.25%; Functions 97.14%; Lines 84.07%. npm audit reporta cero vulnerabilidades."
+    },
+    {
+      "kind": "body",
+      "text": "SonarQube: gate OK, análisis acca3bf6-e8bc-4c46-8db4-932b8609326c, tarea c3a9e639-7e05-4398-b9fd-3004cfdabb9f con SUCCESS. Se verifican la última tarea, el gate exacto, los hashes actuales XML/LCOV y las condiciones sin cambios: nueva cobertura ≥80 %, duplicación nueva ≤3 % y cero observaciones nuevas."
+    },
+    {
+      "kind": "table",
+      "id": "t10",
+      "headers": [
+        "Medida Sonar",
+        "Línea base",
+        "Inicial Etapa 2",
+        "Final"
+      ],
+      "rows": [
+        [
+          "Quality gate",
+          "OK",
+          "ERROR",
+          "OK"
+        ],
+        [
+          "Cobertura global (%)",
+          "62.0",
+          "57.4",
+          "83.9"
+        ],
+        [
+          "Cobertura nueva (%)",
+          "N/D",
+          "47,3",
+          "86,6"
+        ],
+        [
+          "Bugs",
+          "0",
+          "0",
+          "0"
+        ],
+        [
+          "Vulnerabilidades",
+          "2",
+          "0",
+          "0"
+        ],
+        [
+          "Hotspots",
+          "0",
+          "0",
+          "0"
+        ],
+        [
+          "Code smells",
+          "7",
+          "7",
+          "0"
+        ],
+        [
+          "Duplicación (%)",
+          "0.0",
+          "0.0",
+          "0.0"
+        ],
+        [
+          "Complejidad",
+          "110",
+          "161",
+          "194"
+        ],
+        [
+          "Complejidad cognitiva",
+          "78",
+          "103",
+          "148"
+        ],
+        [
+          "ncloc",
+          "748",
+          "1013",
+          "1098"
+        ],
+        [
+          "Deuda técnica (min)",
+          "35",
+          "35",
+          "0"
+        ],
+        [
+          "Rating mantenibilidad",
+          "1.0",
+          "1.0",
+          "1.0"
+        ],
+        [
+          "Rating fiabilidad",
+          "1.0",
+          "1.0",
+          "1.0"
+        ],
+        [
+          "Rating seguridad",
+          "3.0",
+          "1.0",
+          "1.0"
+        ]
+      ],
+      "widths": [
+        160,
+        96,
+        96,
+        96
+      ]
+    },
+    {
+      "kind": "body",
+      "text": "Cobertura nueva final: 86.6 %. El OK de línea base carecía de un período nuevo comparable y no se interpreta como aceptación final. Los ratings nativos de Sonar se muestran en su escala numérica (1 equivale a A). La cobertura global no equivale a la cobertura aislada backend/frontend. Sonar no mide escalabilidad; no se calcula una puntuación de escalabilidad ni se infiere rendimiento sin una carga ejecutada."
+    },
+    {
+      "kind": "heading2",
+      "text": "Aceptación: veinte escenarios y mecanismos",
+      "page_break": true
+    },
+    {
+      "kind": "body",
+      "text": "El checker común devuelve siete registros aprobados que cubren ocho IDs distintos; el control suplementario S2-16 añade nueve comprobaciones HTTP sin añadir IDs al catálogo. La siguiente matriz registra evidencia de API, dominio, pruebas de interfaz y navegador por separado. Los fixtures de tres/cuatro filas son dominio aislado; no se presentan como partidas alcanzables ni como pruebas manuales de UI. No se calcula una tasa de gameplay a partir de estos mecanismos combinados."
+    },
+    {
+      "kind": "heading2",
+      "text": "Aceptación S2-01 a S2-10",
+      "page_break": true
+    },
+    {
+      "kind": "table",
+      "id": "t11",
+      "headers": [
+        "ID",
+        "Estado",
+        "Mecanismo",
+        "Fuentes"
+      ],
+      "rows": [
+        [
+          "S2-01",
+          "OK",
+          "external api and production unit",
+          "E1, E2, E3"
+        ],
+        [
+          "S2-02",
+          "OK",
+          "external api full response equality and route draw spy",
+          "E1, E4, E3"
+        ],
+        [
+          "S2-03",
+          "OK",
+          "external api and real tick domain",
+          "E1, E5, E6, E3"
+        ],
+        [
+          "S2-04",
+          "OK",
+          "controlled reachable horizontal I real tick",
+          "E5, E7, E3"
+        ],
+        [
+          "S2-05",
+          "OK",
+          "controlled reachable O piece real tick",
+          "E5, E3"
+        ],
+        [
+          "S2-06",
+          "OK",
+          "isolated domain mocked three row result real production scoring",
+          "E5, E8, E3"
+        ],
+        [
+          "S2-07",
+          "OK",
+          "isolated domain mocked four row result real production scoring",
+          "E5, E8, E3"
+        ],
+        [
+          "S2-08",
+          "OK",
+          "controlled reachable 9 to 10 and 9 to 11 real tick",
+          "E9, E3"
+        ],
+        [
+          "S2-09",
+          "OK",
+          "controlled production level 9 and 10 floor",
+          "E9, E3"
+        ],
+        [
+          "S2-10",
+          "OK",
+          "external api and exact random draw spy",
+          "E1, E6, E3"
+        ]
+      ],
+      "widths": [
+        48,
+        40,
+        245,
+        115
+      ]
+    },
+    {
+      "kind": "heading2",
+      "text": "Aceptación S2-11 a S2-20",
+      "page_break": true
+    },
+    {
+      "kind": "table",
+      "id": "t12",
+      "headers": [
+        "ID",
+        "Estado",
+        "Mecanismo",
+        "Fuentes"
+      ],
+      "rows": [
+        [
+          "S2-11",
+          "OK",
+          "external api full equality and production snapshot",
+          "E1, E10, E3"
+        ],
+        [
+          "S2-12",
+          "OK",
+          "external api lock swap and exact draw spy",
+          "E1, E6, E3"
+        ],
+        [
+          "S2-13",
+          "OK",
+          "controlled blocked Hold spawn production domain",
+          "E11, E3"
+        ],
+        [
+          "S2-14",
+          "OK",
+          "production full state snapshots all move tick Hold actions",
+          "E10, E6, E3"
+        ],
+        [
+          "S2-15",
+          "OK",
+          "external api and fully dirty domain restart",
+          "E1, E2, E3"
+        ],
+        [
+          "S2-16",
+          "OK",
+          "external HTTP contract all five success routes and four missing ID routes",
+          "E1, E12, E13"
+        ],
+        [
+          "S2-17",
+          "OK",
+          "generated rendered geometry controls and actual browser",
+          "E14, E15, E16, E17"
+        ],
+        [
+          "S2-18",
+          "OK",
+          "deferred fetch body and owned timer fake clock plus actual browser",
+          "E15, E16, E17, E18"
+        ],
+        [
+          "S2-19",
+          "OK",
+          "inherited backend assertion preservation executed regression and actual browser controls",
+          "E19, E3, E16, E17"
+        ],
+        [
+          "S2-20",
+          "OK",
+          "independent production TypeScript build recorded dependencies",
+          "E20, E21, E22"
+        ]
+      ],
+      "widths": [
+        48,
+        40,
+        245,
+        115
+      ]
+    },
+    {
+      "kind": "body",
+      "text": "Alias de evidencia (rutas relativas a Spec Kit o Spec Kit/docs, según el archivo):"
+    },
+    {
+      "kind": "body",
+      "text": "E1: acceptance-api.json"
+    },
+    {
+      "kind": "body",
+      "text": "E2: backend/tests/unit/test_qa_iteration1.py::test_qa04_restart_dirty_cleanup"
+    },
+    {
+      "kind": "body",
+      "text": "E3: backend-coverage.log"
+    },
+    {
+      "kind": "body",
+      "text": "E4: backend/tests/unit/test_qa_iteration1.py"
+    },
+    {
+      "kind": "body",
+      "text": "E5: backend/tests/unit/test_game_engine_us1.py::test_scoring_rules_production"
+    },
+    {
+      "kind": "body",
+      "text": "E6: backend/tests/unit/test_qa_iteration1.py::test_qa02_random_draw_counts"
+    },
+    {
+      "kind": "body",
+      "text": "E7: backend/tests/integration/test_api_us2.py::test_api_line_clear_integration"
+    },
+    {
+      "kind": "body",
+      "text": "E8: acceptance-review-notes.md"
+    },
+    {
+      "kind": "body",
+      "text": "E9: backend/tests/unit/test_game_engine_us1.py::test_level_transitions_and_gravity_floor_production"
+    },
+    {
+      "kind": "body",
+      "text": "E10: backend/tests/unit/test_qa_iteration1.py::test_qa03_immutable_deep_state_snapshots"
+    },
+    {
+      "kind": "body",
+      "text": "E11: backend/tests/unit/test_game_engine_us2.py::test_hold_obstructed_spawn"
+    },
+    {
+      "kind": "body",
+      "text": "E12: acceptance-contract.json"
+    },
+    {
+      "kind": "body",
+      "text": "E13: acceptance-provenance.json"
+    },
+    {
+      "kind": "body",
+      "text": "E14: frontend/tests/App.test.tsx"
+    },
+    {
+      "kind": "body",
+      "text": "E15: frontend/tests/useGame.test.ts"
+    },
+    {
+      "kind": "body",
+      "text": "E16: frontend-test-coverage.log"
+    },
+    {
+      "kind": "body",
+      "text": "E17: browser-evidence.json"
+    },
+    {
+      "kind": "body",
+      "text": "E18: qa16-final-review.md"
+    },
+    {
+      "kind": "body",
+      "text": "E19: qa09-final-review.md"
+    },
+    {
+      "kind": "body",
+      "text": "E20: frontend-build.log"
+    },
+    {
+      "kind": "body",
+      "text": "E21: verification-commands.json"
+    },
+    {
+      "kind": "body",
+      "text": "E22: frontend/package-lock.json"
+    },
+    {
+      "kind": "heading2",
+      "text": "Capturas y evidencia reproducible",
+      "page_break": true
+    },
+    {
+      "kind": "body",
+      "text": "Tres capturas corresponden a la app local real después de QA-4; cuatro paneles son vistas derivadas de JSON/logs. Las tablas nativas anteriores conservan cifras legibles; los paneles permiten ampliar la evidencia. Ningún panel derivado se presenta como consola o interfaz web original de SonarQube."
+    },
+    {
+      "kind": "caption",
+      "text": "Captura 4. Interfaz real: inicio, HUD, tablero, preview y Hold vacío. Archivo: Spec Kit/docs/screenshots/app-final-initial.jpg."
+    },
+    {
+      "kind": "image",
+      "id": "capture4",
+      "path": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\Spec Kit\\docs\\screenshots\\app-final-initial.jpg",
+      "width": 448.0,
+      "height": 351.4
+    },
+    {
+      "kind": "caption",
+      "text": "Captura 5. Interfaz real: Hold ocupado y control deshabilitado antes del siguiente lock. Archivo: Spec Kit/docs/screenshots/app-final-hold.jpg."
+    },
+    {
+      "kind": "image",
+      "id": "capture5",
+      "path": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\Spec Kit\\docs\\screenshots\\app-final-hold.jpg",
+      "width": 448.0,
+      "height": 360.85
+    },
+    {
+      "kind": "caption",
+      "text": "Captura 6. Interfaz real: game over por gravedad normal y modal de reinicio. Archivo: Spec Kit/docs/screenshots/app-final-game-over.jpg."
+    },
+    {
+      "kind": "image",
+      "id": "capture6",
+      "path": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\Spec Kit\\docs\\screenshots\\app-final-game-over.jpg",
+      "width": 448.0,
+      "height": 351.4
+    },
+    {
+      "kind": "caption",
+      "text": "Captura 7. Vista derivada de métricas por invocación y tamaños de artefactos; no es una captura de consola. Archivo: Spec Kit/docs/screenshots/metrics-panel.jpg. Fuentes: metrics.json."
+    },
+    {
+      "kind": "image",
+      "id": "capture7",
+      "path": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\Spec Kit\\docs\\screenshots\\metrics-panel.jpg",
+      "width": 422.673,
+      "height": 560.0
+    },
+    {
+      "kind": "caption",
+      "text": "Captura 8. Vista derivada de intentos API, errores, éxitos y respuestas JSONL, con denominadores separados. Archivo: Spec Kit/docs/screenshots/requests-panel.jpg. Fuentes: metrics.json."
+    },
+    {
+      "kind": "image",
+      "id": "capture8",
+      "path": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\Spec Kit\\docs\\screenshots\\requests-panel.jpg",
+      "width": 448.0,
+      "height": 450.125
+    },
+    {
+      "kind": "caption",
+      "text": "Captura 9. Vista derivada de la API autenticada de SonarQube y registros de pruebas; no es la interfaz web de SonarQube. Archivo: Spec Kit/docs/screenshots/sonar-panel.jpg. Fuentes: sonar-summary.json; sonar-exact-quality-gate.json; sonar-verification.json; backend-coverage.log; frontend-test-coverage.log."
+    },
+    {
+      "kind": "image",
+      "id": "capture9",
+      "path": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\Spec Kit\\docs\\screenshots\\sonar-panel.jpg",
+      "width": 446.94,
+      "height": 560.0
+    },
+    {
+      "kind": "caption",
+      "text": "Captura 10. Visor derivado de los registros originales de pruebas, compilación y auditoría; no es una consola nativa. Archivo: Spec Kit/docs/screenshots/tests-panel.jpg. Fuentes: verification-commands.json; backend-coverage.log; frontend-test-coverage.log; frontend-build.log; npm-audit.json."
+    },
+    {
+      "kind": "image",
+      "id": "capture10",
+      "path": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\Spec Kit\\docs\\screenshots\\tests-panel.jpg",
+      "width": 331.493,
+      "height": 560.0
+    },
+    {
+      "kind": "heading2",
+      "text": "Corpus y límites del estudio",
+      "page_break": true
+    },
+    {
+      "kind": "body",
+      "text": "El corpus final incluye sólo Markdown nativo de la feature, tanto por archivo como unificado, con manifiesto y hashes en bertopic-corpus/final/. Excluye JSON/OpenAPI, documentación del investigador, transcritos, templates y código de aplicación. No se ha ajustado un modelo BERTopic ni se atribuyen temas, embeddings o puntajes a esta preparación."
+    },
+    {
+      "kind": "body",
+      "text": "Corpus: ocho archivos Markdown; 89,446 caracteres en unified.md. SHA-256 UTF-8/LF: 9FECBDB40308BC9306A708FF8C44E26F63BD8CC979F4388F3875E50B4DCD04FB. Generaciones 08 y 16 permanecen como snapshots separados."
+    },
+    {
+      "kind": "body",
+      "text": "No se estima tiempo humano, costo global, escalabilidad ni actividad oculta. Los transcritos interrumpidos, el uso auxiliar y las diferencias de conservación entre herramientas permanecen documentados. Una afirmación futura sobre otro código requiere repetir las comprobaciones que cambien de alcance."
+    }
+  ]
+}

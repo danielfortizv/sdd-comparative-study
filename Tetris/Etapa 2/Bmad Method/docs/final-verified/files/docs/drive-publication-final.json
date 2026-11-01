@@ -1,0 +1,696 @@
+{
+  "at": "2026-10-26T06:23:11.544Z",
+  "tables": 27,
+  "images": 37,
+  "readback_revision": "AHj4eMQ_W5oTKghrmHrhegkHdbNEjB1QngUt_aCem_Nfj3hrmUcGC7q02szEHKyM760RMipYNiIYu7eui1XurObpzeNR3Prlwv8xtr8BwQ",
+  "final_append": {
+    "at": "2026-10-26T06:19:19.362Z",
+    "idx": 124762,
+    "tx": "\nBMAD — Cierre verificado de etapa 2, opción A\nLa implementación local quedó validada: 18/18 pruebas backend, 14/14 frontend generadas, 24/24 comprobaciones externas de dominio y 11/11 casos externos de ciclo de vida. La instalación limpia, el build y las auditorías npm/Python pasaron. La regresión conserva los 13 tests originales y sus 52 aserciones. Catálogo común: 18/18 criterios ordinarios y 2/2 reglas aisladas de tres/cuatro filas; estas últimas no se presentan como partidas alcanzables sin rotación.\nBMAD_FINAL_TESTS_TABLE\n\nConsumo final de las siete sesiones\nTiempo CLI acumulado: 3.563,083 s (59 min 23,083 s). Entrada registrada: 33.429.703 tokens, incluidos 27.506.533 de caché; salida candidata 109.283 y razonamiento 156.662. La caché es subconjunto de la entrada. Los datos de 04–06 se recuperaron del transcript tras salida 53; describen uso retenido observado, no una factura completa ni la cuota restante. API conocidas de 01–03 y 07: 242 solicitudes, 13 errores y 229 éxitos; 04–06 siguen no disponibles, nunca cero. API por sesión solicitudes/errores: 01=34/0, 02=60/1, 03=74/3, 07=74/9. Modelo identificado: gemini-3.5-flash, con roles auxiliares cuando el CLI los informa.\nBMAD_FINAL_USAGE_TABLE\nSemilla completa entregada y auditada en 7/7 invocaciones; SHA-256 del archivo común 63919779DD4104076FBABCB130CE296A160FA840E0B4755A2AA5D90757ADA8EF. Preguntas bloqueantes observadas: 0 en los siete intervalos cerrados revisados manualmente. Un único lote de corrección externa, BMAD-QA-01, con tres intentos 05–07; las correcciones de planificación 02–03 y los arreglos internos de Sonar se distinguen. Se conservan los límites de 80 turnos, los 429 y las salidas incompletas.\n\nArtefactos y tamaño medidos\nLas medidas incluyen tests y configuración con apariencia de fuente; excluyen dependencias, builds, cachés y evidencia del investigador. Líneas físicas y caracteres Unicode se normalizan a LF y sin BOM; densidad significa líneas/archivo, no calidad. Los seis Markdown heredados —1.120 líneas y 68.220 caracteres— permanecen intactos. Etapa 2 añade ocho Markdown principales, 977 líneas y 78.537 caracteres, densidad 122,12. Memlogs, revisiones y YAML se cuentan aparte. Se declaran 24 FR nuevos y cuatro epics/doce historias; el número de IDs no demuestra atomicidad ni calidad por sí mismo.\nBMAD_FINAL_SOURCE_TABLE\n\nSonar final con cobertura actualizada\nAnálisis final válido: 0b7d51b5-586c-4af2-8c0f-221a07a197d3, CE 8db7be6c-2891-4e55-99e7-1c0c03b97ea6 SUCCESS. Gate OK con las tres condiciones evaluadas: cobertura nueva 85,8 %, duplicación nueva 2,47855 % e incidencias nuevas 0. Proyecto tetris-stage2-bmad, baseline 1.0 y candidato fijo 2.0. No se modificaron umbrales, exclusiones, perfiles ni Sonar way.\nSe detectó que el análisis aprobado inicialmente por 07 usó XML anterior a extraer la función de bloqueo (177 statements frente a 179 actuales). Se preservó ese análisis d649734f y se repitió Sonar con la cobertura realmente ejecutada por el investigador, sin cambiar fuentes ni hacer más llamadas al modelo. El análisis final anterior lo sustituye; sus hashes de fuentes, XML y LCOV coinciden con el candidato conservado.\nBMAD_FINAL_SONAR_TABLE\nCobertura backend de producción: 166/179 statements, 92,74 %, sin app/tests. Frontend V8: statements 89,71 %, ramas 77,53 %, funciones 100 % y líneas 95,54 %; LCOV incluye main.tsx. Sonar combina líneas/condiciones y tiene un denominador diferente. Auditoría Python real: 50 paquetes, 0 vulnerabilidades y 0 omitidos; npm: 0 vulnerabilidades. El entorno exacto queda en validation/python-freeze-final.txt y package-lock.json. Versiones de aplicación medidas: Python 3.12.14, FastAPI 0.162.0, Pydantic 2.9.2, pytest 9.1.1, React 18.3.1 y Vite 6.4.5.\n\nTrazabilidad y límites del cierre\nFuentes de verdad: docs/final-summary.json, metrics.json, validation/*.log y sus metadatos/hashes, acceptance/*.json, sonar-verification.json, scan-command.json y transcripts-archive/. Los textos build-07/*results.txt escritos por el modelo son transcripciones y no sustituyen estos registros crudos. Las revisiones nativas fueron secuenciales en una misma sesión: no se contabilizan como revisores independientes. El YAML marca cuatro retrospectivas opcionales done sin artefactos verificados; no se cuentan como ejecutadas y su last_updated no se usa como hora de cierre.\nEl test nativo de entrada comprueba la existencia del contenedor; el arranque real se verificó por separado en navegador. Una comparación del movimiento por API llegó después de cambiar la pieza y quedó inconclusa; browser-left-dom.json verificó el desplazamiento dentro de una única observación de celdas renderizadas. Se conservan también los fallos de instrumentación —alias JSX, EPERM, proceso TestClient detenido, ruta ejecutable y colisión del nombre de reporte de auditoría— con sus repeticiones válidas. La auditoría JSON final está separada como pip-audit-report.json.\nLas capturas de nivel y terminal usan fixtures declarados del investigador y la lógica real del backend; no modifican fuentes y solo afectan la primera creación de su proceso. Las siguientes partidas usan la creación original. No se añadió rotación ni regla externa de bloqueo en fila cero. Sonar no se presenta como medida de escalabilidad. La etapa 1 y la semilla permanecen intactas; no se hicieron commits ni push. La tarea Windows está Disabled, la automatización de Codex PAUSED y ambos puntos de entrada del script omiten cuota/suspensión; no se consultó cuota ni se ejecutó acción de energía durante el cierre.\n\n",
+    "result": {
+      "content": [
+        {
+          "type": "text",
+          "text": "Action completed."
+        }
+      ],
+      "structuredContent": {
+        "documentId": "1JRZvjK8-fdFitwbiKLe2NhOsk1FZNCa_TclgnFwdjao",
+        "revisionId": "AHj4eMSjS4kVLDG4d7MXMO9Ma34XEjaobQQwnNNwh9-j94t9aLjMVTsqgUrQHYMOL4vi9E77gJKW6XL_xY-dBl_WiVk8uHvKQChr1BNBqQ",
+        "replies": [
+          {},
+          {},
+          {},
+          {},
+          {},
+          {},
+          {},
+          {},
+          {},
+          {},
+          {},
+          {},
+          {}
+        ],
+        "writeControl": {
+          "requiredRevisionId": "AHj4eMSjS4kVLDG4d7MXMO9Ma34XEjaobQQwnNNwh9-j94t9aLjMVTsqgUrQHYMOL4vi9E77gJKW6XL_xY-dBl_WiVk8uHvKQChr1BNBqQ",
+          "targetRevisionId": null
+        },
+        "document_url": "https://docs.google.com/document/d/1JRZvjK8-fdFitwbiKLe2NhOsk1FZNCa_TclgnFwdjao"
+      },
+      "isError": false
+    }
+  },
+  "table_fill": {
+    "content": [
+      {
+        "type": "text",
+        "text": "Action completed."
+      }
+    ],
+    "structuredContent": {
+      "documentId": "1JRZvjK8-fdFitwbiKLe2NhOsk1FZNCa_TclgnFwdjao",
+      "revisionId": "AHj4eMTuthgpp4WuhGFjW8YHnmT_jnATFbIJ88KD-nKQabbxuk07w-Z-iEiM9ANEGFDDmiCjucZvPy7U23-cSNCobpTLRw-VBtrdU7xn2w",
+      "replies": [
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {}
+      ],
+      "writeControl": {
+        "requiredRevisionId": "AHj4eMTuthgpp4WuhGFjW8YHnmT_jnATFbIJ88KD-nKQabbxuk07w-Z-iEiM9ANEGFDDmiCjucZvPy7U23-cSNCobpTLRw-VBtrdU7xn2w",
+        "targetRevisionId": null
+      },
+      "document_url": "https://docs.google.com/document/d/1JRZvjK8-fdFitwbiKLe2NhOsk1FZNCa_TclgnFwdjao"
+    },
+    "isError": false
+  },
+  "image_inserts": {
+    "at": "2026-10-26T06:21:25.481Z",
+    "end": 133219,
+    "revision": "AHj4eMQ_W5oTKghrmHrhegkHdbNEjB1QngUt_aCem_Nfj3hrmUcGC7q02szEHKyM760RMipYNiIYu7eui1XurObpzeNR3Prlwv8xtr8BwQ",
+    "results": [
+      {
+        "name": "03-app-fresh.jpg",
+        "caption": "Captura 3. Partida ordinaria con contadores iniciales 0/0/1 y 500 ms; vista inferior del HUD. La interfaz conserva scroll vertical a este tamaño de ventana.",
+        "result": {
+          "content": [
+            {
+              "type": "text",
+              "text": "Action completed."
+            }
+          ],
+          "structuredContent": {
+            "documentId": "1JRZvjK8-fdFitwbiKLe2NhOsk1FZNCa_TclgnFwdjao",
+            "revisionId": "AHj4eMQJpP21OO17ww7yfsEMM9_KsmPJxMnTpIjOPmIftGRL62xWiLHP6oTvQ9ZfWhYzsAn8fuyCJcPu2kMyaAne_VEiP3DEkcgNG_Kcmw",
+            "replies": [
+              {},
+              {},
+              {},
+              {
+                "insertInlineImage": {
+                  "objectId": "kix.wcifmq3x6rh1"
+                }
+              }
+            ],
+            "writeControl": {
+              "requiredRevisionId": "AHj4eMQJpP21OO17ww7yfsEMM9_KsmPJxMnTpIjOPmIftGRL62xWiLHP6oTvQ9ZfWhYzsAn8fuyCJcPu2kMyaAne_VEiP3DEkcgNG_Kcmw",
+              "targetRevisionId": null
+            },
+            "document_url": "https://docs.google.com/document/d/1JRZvjK8-fdFitwbiKLe2NhOsk1FZNCa_TclgnFwdjao"
+          },
+          "isError": false
+        }
+      },
+      {
+        "name": "04-app-hold.jpg",
+        "caption": "Captura 4. Tablero, preview y Hold ocupado. Se probaron C y botón; el control aparece deshabilitado durante el cooldown de la pieza.",
+        "result": {
+          "content": [
+            {
+              "type": "text",
+              "text": "Action completed."
+            }
+          ],
+          "structuredContent": {
+            "documentId": "1JRZvjK8-fdFitwbiKLe2NhOsk1FZNCa_TclgnFwdjao",
+            "revisionId": "AHj4eMQ1RqU6E_TaLn_J1alMqzScExrE7ZhE1aPvnyNyme3aoWq9awwKt1lZNhfvwpfEBxVIlrk7rjbCh16b6kTx2Xv0BEah00n_qvkTGQ",
+            "replies": [
+              {},
+              {},
+              {},
+              {
+                "insertInlineImage": {
+                  "objectId": "kix.262su3q5wqu9"
+                }
+              }
+            ],
+            "writeControl": {
+              "requiredRevisionId": "AHj4eMQ1RqU6E_TaLn_J1alMqzScExrE7ZhE1aPvnyNyme3aoWq9awwKt1lZNhfvwpfEBxVIlrk7rjbCh16b6kTx2Xv0BEah00n_qvkTGQ",
+              "targetRevisionId": null
+            },
+            "document_url": "https://docs.google.com/document/d/1JRZvjK8-fdFitwbiKLe2NhOsk1FZNCa_TclgnFwdjao"
+          },
+          "isError": false
+        }
+      },
+      {
+        "name": "05-app-level-two.jpg",
+        "caption": "Captura 5. Fixture declarado: O canónica sobre huecos de la fila inferior, 900 puntos/9 líneas antes del bloqueo. La lógica real produce 1.000 puntos, 10 líneas, nivel 2 y 450 ms. Fuente: acceptance/browser-threshold.json.",
+        "result": {
+          "content": [
+            {
+              "type": "text",
+              "text": "Action completed."
+            }
+          ],
+          "structuredContent": {
+            "documentId": "1JRZvjK8-fdFitwbiKLe2NhOsk1FZNCa_TclgnFwdjao",
+            "revisionId": "AHj4eMQNfHMfnSUzFrjh8i2-MtJ1lq6Y7VwMgR31rZ4IdzOsCkZ5R1ua841kA1SDA6o0dZlHgRb0j9iJKQu7jirp8xpzdPz3xv8OqOKaWw",
+            "replies": [
+              {},
+              {},
+              {},
+              {
+                "insertInlineImage": {
+                  "objectId": "kix.qg42eb88nx5o"
+                }
+              }
+            ],
+            "writeControl": {
+              "requiredRevisionId": "AHj4eMQNfHMfnSUzFrjh8i2-MtJ1lq6Y7VwMgR31rZ4IdzOsCkZ5R1ua841kA1SDA6o0dZlHgRb0j9iJKQu7jirp8xpzdPz3xv8OqOKaWw",
+              "targetRevisionId": null
+            },
+            "document_url": "https://docs.google.com/document/d/1JRZvjK8-fdFitwbiKLe2NhOsk1FZNCa_TclgnFwdjao"
+          },
+          "isError": false
+        }
+      },
+      {
+        "name": "06-app-game-over.jpg",
+        "caption": "Captura 6. Fixture declarado de spawn J obstruido tras bloquear O. Backend active_piece=null; DOM: 200 celdas, cero activas y Hold deshabilitado. Las acciones terminales no mutan estado. Fuente: acceptance/browser-terminal.json.",
+        "result": {
+          "content": [
+            {
+              "type": "text",
+              "text": "Action completed."
+            }
+          ],
+          "structuredContent": {
+            "documentId": "1JRZvjK8-fdFitwbiKLe2NhOsk1FZNCa_TclgnFwdjao",
+            "revisionId": "AHj4eMTh4iHVqARb0YGPxzoYW8UnphfK3XHl_wnSQJu0z3H_nqW-IoHL5vOd1_0nT8V1WBRK1asD9GQavtVm7WCdFMmUnWy3833Iqb44mw",
+            "replies": [
+              {},
+              {},
+              {},
+              {
+                "insertInlineImage": {
+                  "objectId": "kix.bby4ieqkqu0g"
+                }
+              }
+            ],
+            "writeControl": {
+              "requiredRevisionId": "AHj4eMTh4iHVqARb0YGPxzoYW8UnphfK3XHl_wnSQJu0z3H_nqW-IoHL5vOd1_0nT8V1WBRK1asD9GQavtVm7WCdFMmUnWy3833Iqb44mw",
+              "targetRevisionId": null
+            },
+            "document_url": "https://docs.google.com/document/d/1JRZvjK8-fdFitwbiKLe2NhOsk1FZNCa_TclgnFwdjao"
+          },
+          "isError": false
+        }
+      },
+      {
+        "name": "07-app-restart.jpg",
+        "caption": "Captura 7. Reinicio ordinario posterior al fixture terminal: nuevo UUID, tablero limpio, Hold vacío y contadores reiniciados. Las siguientes creaciones usan la función original. Fuentes: browser-restart.json y browser-left-dom.json.",
+        "result": {
+          "content": [
+            {
+              "type": "text",
+              "text": "Action completed."
+            }
+          ],
+          "structuredContent": {
+            "documentId": "1JRZvjK8-fdFitwbiKLe2NhOsk1FZNCa_TclgnFwdjao",
+            "revisionId": "AHj4eMQ-5klNBXm3Drf76xRILWbIw0OG4UmupFXmaMOjbr4TaV4d1KOgcEtUm-z6T_Jj0MocKU0pgNf0Zfc8pTWXDvadzLLbnFSfle9NDQ",
+            "replies": [
+              {},
+              {},
+              {},
+              {
+                "insertInlineImage": {
+                  "objectId": "kix.tyfnupy829tc"
+                }
+              }
+            ],
+            "writeControl": {
+              "requiredRevisionId": "AHj4eMQ-5klNBXm3Drf76xRILWbIw0OG4UmupFXmaMOjbr4TaV4d1KOgcEtUm-z6T_Jj0MocKU0pgNf0Zfc8pTWXDvadzLLbnFSfle9NDQ",
+              "targetRevisionId": null
+            },
+            "document_url": "https://docs.google.com/document/d/1JRZvjK8-fdFitwbiKLe2NhOsk1FZNCa_TclgnFwdjao"
+          },
+          "isError": false
+        }
+      },
+      {
+        "name": "08-sonar-final-ok.jpg",
+        "caption": "Captura 8. Vista derivada del investigador, no panel nativo Sonar. Gate final OK, cobertura actualizada y análisis 0b7d51b5-586c-4af2-8c0f-221a07a197d3. Fuentes: sonar-verification.json y evidence-view/sonar-final-rebound.json.",
+        "result": {
+          "content": [
+            {
+              "type": "text",
+              "text": "Action completed."
+            }
+          ],
+          "structuredContent": {
+            "documentId": "1JRZvjK8-fdFitwbiKLe2NhOsk1FZNCa_TclgnFwdjao",
+            "revisionId": "AHj4eMQ1AqO7qmpfDHxzxMlEFrr5UKwrZkWNfuezIkPqYUYwlHIVWMHb1sExepzrdd748EZe4jQdXBlkQcmBiq7ZZkwPkdu9UmIJspwr2g",
+            "replies": [
+              {},
+              {},
+              {},
+              {
+                "insertInlineImage": {
+                  "objectId": "kix.5qzvscgwf961"
+                }
+              }
+            ],
+            "writeControl": {
+              "requiredRevisionId": "AHj4eMQ1AqO7qmpfDHxzxMlEFrr5UKwrZkWNfuezIkPqYUYwlHIVWMHb1sExepzrdd748EZe4jQdXBlkQcmBiq7ZZkwPkdu9UmIJspwr2g",
+              "targetRevisionId": null
+            },
+            "document_url": "https://docs.google.com/document/d/1JRZvjK8-fdFitwbiKLe2NhOsk1FZNCa_TclgnFwdjao"
+          },
+          "isError": false
+        }
+      },
+      {
+        "name": "09-cli-sessions-final.jpg",
+        "caption": "Captura 9. Vista derivada del investigador de las siete sesiones cerradas; N/D conserva contadores API desconocidos y la caché no se suma de nuevo. Fuente: metrics.json y registros *.run.json/JSONL.",
+        "result": {
+          "content": [
+            {
+              "type": "text",
+              "text": "Action completed."
+            }
+          ],
+          "structuredContent": {
+            "documentId": "1JRZvjK8-fdFitwbiKLe2NhOsk1FZNCa_TclgnFwdjao",
+            "revisionId": "AHj4eMQ_W5oTKghrmHrhegkHdbNEjB1QngUt_aCem_Nfj3hrmUcGC7q02szEHKyM760RMipYNiIYu7eui1XurObpzeNR3Prlwv8xtr8BwQ",
+            "replies": [
+              {},
+              {},
+              {},
+              {
+                "insertInlineImage": {
+                  "objectId": "kix.cnptzyb7aa34"
+                }
+              }
+            ],
+            "writeControl": {
+              "requiredRevisionId": "AHj4eMQ_W5oTKghrmHrhegkHdbNEjB1QngUt_aCem_Nfj3hrmUcGC7q02szEHKyM760RMipYNiIYu7eui1XurObpzeNR3Prlwv8xtr8BwQ",
+              "targetRevisionId": null
+            },
+            "document_url": "https://docs.google.com/document/d/1JRZvjK8-fdFitwbiKLe2NhOsk1FZNCa_TclgnFwdjao"
+          },
+          "isError": false
+        }
+      }
+    ]
+  }
+}
+

@@ -1,0 +1,20 @@
+.............                                                            [100%]
+============================== warnings summary ===============================
+.venv\Lib\site-packages\starlette\testclient.py:40
+  D:\KEVIN\UNIVERSIDAD\Trabajos\Proyecto\Caso 2-Tetris\Etapa 2\Bmad Method\backend\.venv\Lib\site-packages\starlette\testclient.py:40: DeprecationWarning: The anyio.abc.BlockingPortal alias is deprecated, use anyio.from_thread.BlockingPortal instead.
+    _PortalFactoryType = typing.Callable[[], typing.ContextManager[anyio.abc.BlockingPortal]]
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=============================== tests coverage ================================
+______________ coverage: platform win32, python 3.12.14-final-0 _______________
+
+Name                       Stmts   Miss  Cover   Missing
+--------------------------------------------------------
+app\core\domain.py            86      2    98%   110, 122
+app\main.py                   38      0   100%
+app\tests\test_api.py         40      0   100%
+app\tests\test_domain.py     103      0   100%
+--------------------------------------------------------
+TOTAL                        267      2    99%
+Coverage XML written to file D:\KEVIN\UNIVERSIDAD\Trabajos\Proyecto\Caso 2-Tetris\Etapa 2\Bmad Method\docs\baseline-coverage.xml
+13 passed, 1 warning in 1.26s

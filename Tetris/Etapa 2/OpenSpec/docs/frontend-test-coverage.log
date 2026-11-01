@@ -1,0 +1,32 @@
+
+> frontend@0.0.0 test
+> vitest run --coverage
+
+
+ RUN  v4.1.11 D:/KEVIN/UNIVERSIDAD/Trabajos/Proyecto/Caso 2-Tetris/Etapa 2/OpenSpec/frontend
+      Coverage enabled with v8
+
+
+ Test Files  2 passed (2)
+      Tests  5 passed (5)
+   Start at  22:38:45
+   Duration  1.92s (transform 192ms, setup 0ms, import 509ms, tests 288ms, environment 1.77s)
+
+ % Coverage report from v8
+-------------------|---------|----------|---------|---------|-------------------
+File               | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s 
+-------------------|---------|----------|---------|---------|-------------------
+All files          |   90.84 |    76.84 |   96.66 |   92.96 |                   
+ src               |   90.65 |    78.72 |     100 |    92.7 |                   
+  App.tsx          |   88.37 |    72.97 |     100 |   91.25 | ...93,109,119,129 
+ src/components    |   91.42 |       75 |    90.9 |   93.75 |                   
+  ...OverModal.tsx |   66.66 |       50 |     100 |      50 | 9                 
+  GridBoard.tsx    |   93.75 |    76.08 |      90 |   96.66 | 92                
+-------------------|---------|----------|---------|---------|-------------------
+
+=============================== Coverage summary ===============================
+Statements   : 90.84% ( 129/142 )
+Branches     : 76.84% ( 73/95 )
+Functions    : 96.66% ( 29/30 )
+Lines        : 92.96% ( 119/128 )
+================================================================================

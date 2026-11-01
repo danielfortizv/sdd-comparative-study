@@ -1,0 +1,8 @@
+{
+  "project": {
+    "key": "tetris-stage2-kiro",
+    "name": "Tetris Stage 2 Kiro",
+    "qualifier": "TRK",
+    "visibility": "public"
+  }
+}

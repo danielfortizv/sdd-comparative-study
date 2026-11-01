@@ -1,0 +1,36 @@
+(0 errores, 33 éxitos) en 03/04 y, por separado, 66 respuestas históricamente documentadas
+de 02, cuyo total API es desconocido. Los tokens cacheados son parte de entrada y no se
+suman de nuevo al total. 01-propose queda excluido por falta de estadística. Fuentes
+originales: OpenSpec/docs/metrics.json y OpenSpec/docs/*.stdout.json.
+Medición de artefactos de planificación OpenSpec
+Alcance de conteo: cuatro archivos Markdown nativos del cambio, sin duplicar el catálogo
+principal ni el archivo histórico. Etapa 1: 4 archivos, 442 líneas, 23.969 caracteres. Etapa 2:
+4 archivos, 250 líneas, 18.948 caracteres, 14 requisitos nuevos y 1 requisito modificado de
+reinicio. Código base copiado: 13 archivos, 1.366 líneas y 39.957 caracteres. El conteo de
+código final y las diferencias se harán tras completar apply. Una revisión del código base
+confirmó que el reinicio existente usa POST /api/games y crea una sesión nueva; se
+corrigieron spec, tarea y prueba externa para preservar ese contrato. La corrección manual
+de una línea de tasks.md y el ajuste posterior de spec/tarea se registran como
+intervenciones del investigador, aparte de los prompts a Gemini.
+Incidencia de apply y corrección de contrato
+05-apply (con reanudación del historial): interrumpido tras 444,118 s sin modificaciones de
+código debido a una demora del modelo. La salida parcial de tokens se conserva en el
+transcrito JSONL y en metrics.json; no se tratará como implementación completada.
+06-apply-fresh: nueva sesión con la semilla idéntica y los artefactos nativos validados; en
+curso. La especificación fue ajustada para conservar el reinicio real de Etapa 1 mediante
+POST /api/games (nueva sesión). No se ha hecho commit ni push.
+Avance de implementación OpenSpec
+06-apply-fresh: terminó en 782,457 s y no modificó el código. Gemini informó que estaba en
+Plan Mode; su agente interno recibió «Unauthorized tool call: write_file is not available» y el
+servicio Vertex devolvió respuestas 429 con reintentos. Se registra como intento sin
+implementación, aunque el proceso devolvió código 0.
+07-direct-apply: 167,938 s. Se evitó el comando slash que activaba Plan Mode, se invocó la
+ejecución directa con las instrucciones y artefactos OpenSpec y la semilla común. Se
+escribieron backend/models.py, engine.py, main.py y test_engine.py. Verificación
+independiente: 18 pruebas backend aprobadas, 1 advertencia de dependencia, 0,64 s. El
+frontend quedó pendiente.
+08-complete-frontend: seguimiento reanudado de 12,868 s; la respuesta del modelo quedó
+vacía y no escribió archivos. Se registra como intento sin avance. 09-frontend-fresh: nueva
+sesión directa y enfocada en frontend, en curso. Los conteos de tokens de 05 a 09 se
+extraerán del campo stats o transcritos JSONL, según disponibilidad, y se anexarán al
+cierre.

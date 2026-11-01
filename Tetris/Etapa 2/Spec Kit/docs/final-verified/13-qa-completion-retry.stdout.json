@@ -1,0 +1,71 @@
+{
+  "session_id": "2a105d94-35b3-4a27-a13a-a412e1e35425",
+  "response": "",
+  "stats": {
+    "models": {
+      "gemini-3.5-flash": {
+        "api": {
+          "totalRequests": 2,
+          "totalErrors": 0,
+          "totalLatencyMs": 10295,
+          "errorsByType": {}
+        },
+        "tokens": {
+          "input": 121490,
+          "prompt": 225989,
+          "candidates": 144,
+          "total": 226763,
+          "cached": 104499,
+          "thoughts": 630,
+          "tool": 0
+        },
+        "roles": {
+          "main": {
+            "totalRequests": 2,
+            "totalErrors": 0,
+            "totalLatencyMs": 10295,
+            "tokens": {
+              "input": 121490,
+              "prompt": 225989,
+              "candidates": 144,
+              "total": 226763,
+              "cached": 104499,
+              "thoughts": 630,
+              "tool": 0
+            }
+          }
+        }
+      }
+    },
+    "tools": {
+      "totalCalls": 1,
+      "totalSuccess": 1,
+      "totalFail": 0,
+      "totalDurationMs": 5,
+      "totalDecisions": {
+        "accept": 1,
+        "reject": 0,
+        "modify": 0,
+        "auto_accept": 0
+      },
+      "byName": {
+        "update_topic": {
+          "count": 1,
+          "success": 1,
+          "fail": 0,
+          "durationMs": 5,
+          "decisions": {
+            "accept": 1,
+            "reject": 0,
+            "modify": 0,
+            "auto_accept": 0
+          }
+        }
+      }
+    },
+    "files": {
+      "totalLinesAdded": 0,
+      "totalLinesRemoved": 0
+    }
+  }
+}

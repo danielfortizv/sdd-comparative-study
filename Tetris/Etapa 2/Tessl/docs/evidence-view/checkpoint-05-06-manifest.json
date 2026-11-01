@@ -1,0 +1,39 @@
+{
+  "researcher_created": true,
+  "created_at_utc": "2026-10-25T21:10:36.092306+00:00",
+  "scope": "Frozen initial candidate05 and closed spec-only06; not final07 acceptance",
+  "sources": [
+    {
+      "path": "05-implement.run.json",
+      "sha256": "C5EC556140AEC62C07A33B0CA360A33AC1E917267A3D58E80A1962B00AD99C5D"
+    },
+    {
+      "path": "05-implement.stdout.json",
+      "sha256": "18DD06A2634C6AE3ADB2B9A055F7C81D51A8BEFEAC6E40BE540DF7F83AF0AC5F"
+    },
+    {
+      "path": "06-qa01.run.json",
+      "sha256": "301EBEE8EB94EBF12081C4152883FAB4E24038CA7396E5BD3D2D455D06AA3835"
+    },
+    {
+      "path": "06-qa01.stdout.json",
+      "sha256": "D6C15D02CF38934D38C1538EEFB6EDAA442FCE8D9D7C6D9E607A1DE94F0EC21B"
+    },
+    {
+      "path": "acceptance/05-domain-authorized/domain.json",
+      "sha256": "162F93C3E83DE6A87D12DC446C02F9D4A7E9519F711BF26D732FB2447B2ED31F"
+    },
+    {
+      "path": "acceptance/05-races-configured-vitest.json",
+      "sha256": "D6224791C8A7B94CCF5C9390B59E728ED3D1391CBC1ED7125731A48A453BF780"
+    },
+    {
+      "path": "implementation-05-initial/sonar-verification.json",
+      "sha256": "11CEAEADF73F046668D2D8BF64FCB33BDB72434B09E5440709B8BB6D51A22925"
+    },
+    {
+      "path": "implementation-05-initial/metrics.json",
+      "sha256": "E14D7B484D1D3029E027F701D45049AB1C30CAE9B5601408E686B115ECA83658"
+    }
+  ]
+}

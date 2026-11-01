@@ -1,0 +1,692 @@
+{
+  "base": 73135,
+  "textBody": "\nKiro — cierre verificado de la etapa 2, opción A (23 octubre 2026)\n\nCierre técnico verificado el 23 de octubre de 2026, hora de Bogotá. La publicación en Drive y su revisión visual se registran por separado.\n\nResultado\n\n- 120 pruebas backend y 49 frontend aprobadas en una repetición independiente. Build de producción aprobado.\n- Cero hallazgos npm, tanto en el árbol completo como en producción.\n- Cinco controles externos de concurrencia aprobados, 15 registros de dominio, siete registros HTTP y nueve controles suplementarios de contrato.\n- 20/20 criterios del catálogo verificados, mediante los mecanismos declarados abajo. No es una tasa de aceptación exclusivamente en navegador.\n- Entrega íntegra de la semilla común acreditada en 7/7 entradas. Se conserva la semilla del juego 20260929, las formas canónicas y el generador de bolsa de siete piezas.\n\nPruebas y cobertura\n\n[KIRO_CIERRE_TABLA_0]\n\nEl LCOV incluye los siete módulos de producción, incluido main.tsx. La cobertura de ramas del backend no se instrumentó: los contadores 0/0 no se presentan como 0 % ni como 100 %. Las versiones 3 y 4 de Vitest usan denominadores diferentes; sus porcentajes no se comparan como si fueran idénticos.\n\nSonarQube\n\n- Proyecto tetris-stage2-kiro, versión 2.0; baseline 1.0. CE 19506ab6-d54d-41c6-ab8c-0702cb42ac9b: SUCCESS.\n- Análisis c9e3f4c9-35e0-4434-8dfd-3723413c0588: gate OK.\n- Cobertura nueva 88,7 %, duplicación nueva 0 %, cero violaciones nuevas.\n- Cobertura global 93,2 %; cero bugs, vulnerabilidades y hotspots; siete smells heredados activos.\n- Deuda: 23 minutos. Complejidad: 153; cognitiva: 114. ncloc: 784; líneas Sonar: 1292; calificaciones A.\n\nSe comprobaron los hashes de XML y LCOV usados por el análisis. El gate es el gate independiente del estudio; no se sustituye por otra configuración ni se ocultan los hallazgos heredados. No se infiere una puntuación de escalabilidad sin pruebas de carga.\n\nInvocaciones, tiempo y créditos\n\n[KIRO_CIERRE_TABLA_1]\n\nCréditos conocidos: 101,369363. Los créditos finales de 01 y 05 permanecen desconocidos.\nTiempo CLI conocido: 4.157,155 s; falta la duración de 05. Tiempo de agente conocido: 3.997,507 s; faltan 01 y 05. Son sumas de intervalos acreditados, no la duración total del proyecto.\n\nTokens de entrada, caché, salida y razonamiento: ND. Intentos, errores y éxitos API: ND. Los requestIds se conservan como identificadores y no se convierten en contadores API. La ocupación del contexto tampoco se suma como consumo de tokens.\n\nLa pregunta de 05 fue una confirmación del alcance del workflow. Se eligió la opción ofrecida de completar todo mediante la autorización existente; no hubo una nueva respuesta humana. En 02 se conserva además una referencia de confirmación no bloqueante. Todos los mensajes naturales Say de los siete intervalos fueron revisados; Reasoning queda fuera del recuento.\n\nTres intentos externos de corrección, para dos intenciones distintas. Los dos ciclos Sonar conocidos dentro de 04 se informan aparte; no se presentan como el total de todas las correcciones internas.\n\nArtefactos y deltas\n\n[KIRO_CIERRE_TABLA_2]\n\nDensidad: 99,76 líneas por archivo fuente, y 295,33 por artefacto nativo del feature. Delta fuente: +2552 / −68 líneas; neto +2484 líneas y +85906 caracteres. El delta compara estados retenidos; no reconstruye el volumen acumulado de edición.\n\nLos manifiestos y la configuración se cuentan aparte y no se suman dos veces a la fuente. Se excluyen dependencias, builds, cachés, documentación del investigador y Git. Los SHA-256 se calculan sobre los bytes originales; los recuentos de texto normalizan LF y eliminan BOM.\n\nEl corpus previsto para BERTopic contiene únicamente los tres Markdown nativos del feature de etapa 2. No se ha entrenado un modelo de temas ni se atribuyen temas o embeddings no calculados.\n\nCatálogo común de aceptación\n\n[KIRO_CIERRE_TABLA_3]\n\nLa limpieza de tres/cuatro filas se verifica por fórmula en fixtures de dominio con filas prefijadas completas y una pieza canónica. Estos casos se separan de la aceptación de gameplay normal. No se publica una tasa exclusivamente visual a partir de este catálogo mixto.\n\nLímites y desviaciones registradas\n\n- 01 se interrumpió por cambio de cuenta. 02 emitió Vibe pese al flag Spec. Desde 03 se acredita Spec/Auto por ACP antes de cada prompt. Auto no revela el modelo de backend resuelto ni consumo por rol auxiliar.\n- 05 no conserva cierre nativo: final, duración y exit son desconocidos. El límite superior de observación sirve para auditar el tramo retenido; el tiempo fuera de línea no se atribuye al agente ni a facturación.\n- Las 39 pruebas Stage1 originales, sin editar, dan 38 PASS y un FAIL de igualdad cerrada de cuatro claves. La etapa 2 exige siete claves nuevas. La copia de etapa 2 amplió esa expectativa tras revisar sus specs; no se afirma que las 39 originales pasen sin cambios.\n- En 04 se corrigieron findings estilísticos sin revisión previa de specs, según su registro. Esa parte no acredita el procedimiento spec-first. En 07 sí se revisaron los tres artefactos antes del código.\n- Se conservan los fallos de concurrencia anteriores, los dos análisis Sonar fallidos, las auditorías vulnerables, los errores de preparación/sandbox y los resultados corregidos.\n- CLI 01: 2.25.0; desde 02: 2.33.0. Vite se actualizó de 5.4.11 a 8.3.5; Vitest/coverage-v8 4.1.12 y plugin-react 6.1.2. React 18.3.1, TypeScript 5.6.3 y Python 3.10.11 se conservan. Las versiones, fechas y el modelo opaco limitan comparaciones causales entre herramientas.\n- El trabajo del investigador/Codex —helpers, revisión, verificación, navegador y documentos— está fuera de los créditos y tiempos de generación Kiro.\n\nControl de energía y estado del proyecto\n\nPor la nueva instrucción del 23 de octubre se reactivó la tarea Windows existente, con repetición horaria. La ejecución normal verificada terminó con código 0 y decisión continuar. Solo una cuota Codex válida agotada habilita la suspensión normal; los datos desconocidos no equivalen a cero y no se usan restablecimientos. El historial de cancelación se conserva en shared/quota-monitor/.\n\nEl código permanece local, sin commits ni subidas al repositorio. Tessl y BMAD siguen pausados hasta nuevas credenciales/autorización.\n\nReferencias locales\n\n- metrics.json, input-audit.json, question-audit.json y RESEARCH_LOG.md.\n- researcher-verification/final-07/verification-summary.json.\n- acceptance/final/catalog.json, informes HTTP/dominio/browser y controles de concurrencia.\n- sonar-verification.json, stage2-frontend-result-07.json, capturas y transcripts identificados por hash.\n- La publicación en Drive y el snapshot final se registran después de verificar la maquetación del documento.\n\nCapturas finales y procedencia\nFigura K-F1. Navegador real; fixture controlado del motor para el umbral de nivel: puntuación 100, líneas 10, nivel 2. No representa una partida aleatoria sin preparar.\n[KIRO_CIERRE_IMAGEN_0]\n\nFigura K-F2. Navegador real inmediatamente después de C: Hold J, siguiente I y botón Hold deshabilitado. Reinicio previo a 0/0/1.\n[KIRO_CIERRE_IMAGEN_1]\n\nFigura K-F3. Game Over obtenido con eventos reales de teclado; controles de mutación deshabilitados.\n[KIRO_CIERRE_IMAGEN_2]\n\nFigura K-F4. Vista derivada del investigador a partir de informes con hash: pruebas, auditoría, cobertura y gate. No es una captura de la interfaz nativa de SonarQube.\n[KIRO_CIERRE_IMAGEN_3]\n\nFigura K-F5. Vista derivada del investigador a partir de los registros nativos de consumo. Los intervalos desconocidos y los tokens no expuestos se conservan como ND.\n[KIRO_CIERRE_IMAGEN_4]\n\n",
+  "paragraphs": [
+    {
+      "offset": 1,
+      "length": 67,
+      "level": 2
+    },
+    {
+      "offset": 68,
+      "length": 1,
+      "level": 0
+    },
+    {
+      "offset": 69,
+      "length": 140,
+      "level": 0
+    },
+    {
+      "offset": 209,
+      "length": 1,
+      "level": 0
+    },
+    {
+      "offset": 210,
+      "length": 10,
+      "level": 3
+    },
+    {
+      "offset": 220,
+      "length": 1,
+      "level": 0
+    },
+    {
+      "offset": 221,
+      "length": 109,
+      "level": 0
+    },
+    {
+      "offset": 330,
+      "length": 69,
+      "level": 0
+    },
+    {
+      "offset": 399,
+      "length": 146,
+      "level": 0
+    },
+    {
+      "offset": 545,
+      "length": 144,
+      "level": 0
+    },
+    {
+      "offset": 689,
+      "length": 171,
+      "level": 0
+    },
+    {
+      "offset": 860,
+      "length": 1,
+      "level": 0
+    },
+    {
+      "offset": 861,
+      "length": 20,
+      "level": 3
+    },
+    {
+      "offset": 881,
+      "length": 1,
+      "level": 0
+    },
+    {
+      "offset": 904,
+      "length": 1,
+      "level": 0
+    },
+    {
+      "offset": 905,
+      "length": 298,
+      "level": 0
+    },
+    {
+      "offset": 1203,
+      "length": 1,
+      "level": 0
+    },
+    {
+      "offset": 1204,
+      "length": 10,
+      "level": 3
+    },
+    {
+      "offset": 1214,
+      "length": 1,
+      "level": 0
+    },
+    {
+      "offset": 1215,
+      "length": 108,
+      "level": 0
+    },
+    {
+      "offset": 1323,
+      "length": 58,
+      "level": 0
+    },
+    {
+      "offset": 1381,
+      "length": 74,
+      "level": 0
+    },
+    {
+      "offset": 1455,
+      "length": 99,
+      "level": 0
+    },
+    {
+      "offset": 1554,
+      "length": 105,
+      "level": 0
+    },
+    {
+      "offset": 1659,
+      "length": 1,
+      "level": 0
+    },
+    {
+      "offset": 1660,
+      "length": 256,
+      "level": 0
+    },
+    {
+      "offset": 1916,
+      "length": 1,
+      "level": 0
+    },
+    {
+      "offset": 1917,
+      "length": 32,
+      "level": 3
+    },
+    {
+      "offset": 1949,
+      "length": 1,
+      "level": 0
+    },
+    {
+      "offset": 1972,
+      "length": 1,
+      "level": 0
+    },
+    {
+      "offset": 1973,
+      "length": 89,
+      "level": 0
+    },
+    {
+      "offset": 2062,
+      "length": 187,
+      "level": 0
+    },
+    {
+      "offset": 2249,
+      "length": 1,
+      "level": 0
+    },
+    {
+      "offset": 2250,
+      "length": 242,
+      "level": 0
+    },
+    {
+      "offset": 2492,
+      "length": 1,
+      "level": 0
+    },
+    {
+      "offset": 2493,
+      "length": 366,
+      "level": 0
+    },
+    {
+      "offset": 2859,
+      "length": 1,
+      "level": 0
+    },
+    {
+      "offset": 2860,
+      "length": 200,
+      "level": 0
+    },
+    {
+      "offset": 3060,
+      "length": 1,
+      "level": 0
+    },
+    {
+      "offset": 3061,
+      "length": 20,
+      "level": 3
+    },
+    {
+      "offset": 3081,
+      "length": 1,
+      "level": 0
+    },
+    {
+      "offset": 3104,
+      "length": 1,
+      "level": 0
+    },
+    {
+      "offset": 3105,
+      "length": 243,
+      "level": 0
+    },
+    {
+      "offset": 3348,
+      "length": 1,
+      "level": 0
+    },
+    {
+      "offset": 3349,
+      "length": 275,
+      "level": 0
+    },
+    {
+      "offset": 3624,
+      "length": 1,
+      "level": 0
+    },
+    {
+      "offset": 3625,
+      "length": 191,
+      "level": 0
+    },
+    {
+      "offset": 3816,
+      "length": 1,
+      "level": 0
+    },
+    {
+      "offset": 3817,
+      "length": 29,
+      "level": 3
+    },
+    {
+      "offset": 3846,
+      "length": 1,
+      "level": 0
+    },
+    {
+      "offset": 3869,
+      "length": 1,
+      "level": 0
+    },
+    {
+      "offset": 3870,
+      "length": 271,
+      "level": 0
+    },
+    {
+      "offset": 4141,
+      "length": 1,
+      "level": 0
+    },
+    {
+      "offset": 4142,
+      "length": 35,
+      "level": 3
+    },
+    {
+      "offset": 4177,
+      "length": 1,
+      "level": 0
+    },
+    {
+      "offset": 4178,
+      "length": 211,
+      "level": 0
+    },
+    {
+      "offset": 4389,
+      "length": 213,
+      "level": 0
+    },
+    {
+      "offset": 4602,
+      "length": 267,
+      "level": 0
+    },
+    {
+      "offset": 4869,
+      "length": 205,
+      "level": 0
+    },
+    {
+      "offset": 5074,
+      "length": 179,
+      "level": 0
+    },
+    {
+      "offset": 5253,
+      "length": 274,
+      "level": 0
+    },
+    {
+      "offset": 5527,
+      "length": 151,
+      "level": 0
+    },
+    {
+      "offset": 5678,
+      "length": 1,
+      "level": 0
+    },
+    {
+      "offset": 5679,
+      "length": 41,
+      "level": 3
+    },
+    {
+      "offset": 5720,
+      "length": 1,
+      "level": 0
+    },
+    {
+      "offset": 5721,
+      "length": 389,
+      "level": 0
+    },
+    {
+      "offset": 6110,
+      "length": 1,
+      "level": 0
+    },
+    {
+      "offset": 6111,
+      "length": 135,
+      "level": 0
+    },
+    {
+      "offset": 6246,
+      "length": 1,
+      "level": 0
+    },
+    {
+      "offset": 6247,
+      "length": 20,
+      "level": 3
+    },
+    {
+      "offset": 6267,
+      "length": 1,
+      "level": 0
+    },
+    {
+      "offset": 6268,
+      "length": 73,
+      "level": 0
+    },
+    {
+      "offset": 6341,
+      "length": 62,
+      "level": 0
+    },
+    {
+      "offset": 6403,
+      "length": 92,
+      "level": 0
+    },
+    {
+      "offset": 6495,
+      "length": 106,
+      "level": 0
+    },
+    {
+      "offset": 6601,
+      "length": 110,
+      "level": 0
+    },
+    {
+      "offset": 6743,
+      "length": 169,
+      "caption": true
+    },
+    {
+      "offset": 6936,
+      "length": 130,
+      "caption": true
+    },
+    {
+      "offset": 7090,
+      "length": 101,
+      "caption": true
+    },
+    {
+      "offset": 7215,
+      "length": 168,
+      "caption": true
+    },
+    {
+      "offset": 7407,
+      "length": 167,
+      "caption": true
+    }
+  ],
+  "tables": [
+    {
+      "marker": "[KIRO_CIERRE_TABLA_0]",
+      "rows": [
+        [
+          "Medición",
+          "Resultado"
+        ],
+        [
+          "Backend",
+          "245/247 líneas: 99,19 %"
+        ],
+        [
+          "Frontend: sentencias",
+          "163/184: 88,58 %"
+        ],
+        [
+          "Frontend: ramas",
+          "76/98: 77,55 %"
+        ],
+        [
+          "Frontend: funciones",
+          "38/41: 92,68 %"
+        ],
+        [
+          "Frontend: líneas",
+          "154/163: 94,47 %"
+        ]
+      ],
+      "offset": 882
+    },
+    {
+      "marker": "[KIRO_CIERRE_TABLA_1]",
+      "rows": [
+        [
+          "ID",
+          "Propósito",
+          "CLI (s)",
+          "Agente (s)",
+          "Créditos Kiro",
+          "Aclaraciones bloqueantes"
+        ],
+        [
+          "01",
+          "Especificación interrumpida: cuenta incorrecta",
+          "140,931",
+          "ND",
+          "ND",
+          "0"
+        ],
+        [
+          "02",
+          "Especificación: Vibe observado",
+          "331,014",
+          "326,445",
+          "5,897180",
+          "0"
+        ],
+        [
+          "03",
+          "Revisión nativa Spec",
+          "395,730",
+          "393,627",
+          "8,026105",
+          "0"
+        ],
+        [
+          "04",
+          "Implementación inicial",
+          "1.796,250",
+          "1.792,693",
+          "49,458271",
+          "0"
+        ],
+        [
+          "05",
+          "QA 1 interrumpida",
+          "ND",
+          "ND",
+          "ND",
+          "1"
+        ],
+        [
+          "06",
+          "Reintento QA 1",
+          "888,976",
+          "884,667",
+          "18,924292",
+          "0"
+        ],
+        [
+          "07",
+          "QA 2: temporizadores en cola",
+          "604,254",
+          "600,075",
+          "19,063515",
+          "0"
+        ]
+      ],
+      "offset": 1950
+    },
+    {
+      "marker": "[KIRO_CIERRE_TABLA_2]",
+      "rows": [
+        [
+          "Alcance",
+          "Archivos",
+          "Líneas",
+          "Caracteres Unicode/LF"
+        ],
+        [
+          "Fuente propia de etapa 1",
+          "23",
+          "1207",
+          "33641"
+        ],
+        [
+          "Fuente de etapa 2, con tests/config",
+          "37",
+          "3691",
+          "119547"
+        ],
+        [
+          "Specs nativas heredadas",
+          "3",
+          "608",
+          "28780"
+        ],
+        [
+          "Feature nativo de etapa 2",
+          "3",
+          "886",
+          "92802"
+        ]
+      ],
+      "offset": 3082
+    },
+    {
+      "marker": "[KIRO_CIERRE_TABLA_3]",
+      "rows": [
+        [
+          "ID",
+          "Criterio",
+          "Resultado y mecanismo"
+        ],
+        [
+          "S2-01",
+          "Nuevo juego",
+          "PASS — HTTP real o engine/serializer real con estado controlado; referencias exactas en el JSON del catálogo."
+        ],
+        [
+          "S2-02",
+          "Lectura sin mutación",
+          "PASS — HTTP real o engine/serializer real con estado controlado; referencias exactas en el JSON del catálogo."
+        ],
+        [
+          "S2-03",
+          "Bloqueo sin limpiar filas",
+          "PASS — HTTP real o engine/serializer real con estado controlado; referencias exactas en el JSON del catálogo."
+        ],
+        [
+          "S2-04",
+          "Una fila",
+          "PASS — HTTP real o engine/serializer real con estado controlado; referencias exactas en el JSON del catálogo."
+        ],
+        [
+          "S2-05",
+          "Dos filas",
+          "PASS — HTTP real o engine/serializer real con estado controlado; referencias exactas en el JSON del catálogo."
+        ],
+        [
+          "S2-06",
+          "Tres filas",
+          "PASS — fixture aislado de dominio; no se afirma alcanzabilidad en juego sin rotación."
+        ],
+        [
+          "S2-07",
+          "Regla de cuatro filas",
+          "PASS — fixture aislado de dominio; no se afirma alcanzabilidad en juego sin rotación."
+        ],
+        [
+          "S2-08",
+          "Cruce de 9 a 10 líneas",
+          "PASS — HTTP real o engine/serializer real con estado controlado; referencias exactas en el JSON del catálogo."
+        ],
+        [
+          "S2-09",
+          "Suelo de gravedad: 100 ms",
+          "PASS — HTTP real o engine/serializer real con estado controlado; referencias exactas en el JSON del catálogo."
+        ],
+        [
+          "S2-10",
+          "Primer Hold",
+          "PASS — HTTP real o engine/serializer real con estado controlado; referencias exactas en el JSON del catálogo."
+        ],
+        [
+          "S2-11",
+          "Segundo Hold rechazado",
+          "PASS — HTTP real o engine/serializer real con estado controlado; referencias exactas en el JSON del catálogo."
+        ],
+        [
+          "S2-12",
+          "Hold tras bloquear",
+          "PASS — HTTP real o engine/serializer real con estado controlado; referencias exactas en el JSON del catálogo."
+        ],
+        [
+          "S2-13",
+          "Spawn reservado bloqueado",
+          "PASS — HTTP real o engine/serializer real con estado controlado; referencias exactas en el JSON del catálogo."
+        ],
+        [
+          "S2-14",
+          "Acciones tras Game Over",
+          "PASS — HTTP real o engine/serializer real con estado controlado; referencias exactas en el JSON del catálogo."
+        ],
+        [
+          "S2-15",
+          "Reinicio",
+          "PASS — HTTP real o engine/serializer real con estado controlado; referencias exactas en el JSON del catálogo."
+        ],
+        [
+          "S2-16",
+          "Contrato HTTP",
+          "PASS — HTTP real o engine/serializer real con estado controlado; referencias exactas en el JSON del catálogo."
+        ],
+        [
+          "S2-17",
+          "HUD, tecla C y botón Hold",
+          "PASS — navegador real, capturas y observaciones de HUD/controles."
+        ],
+        [
+          "S2-18",
+          "Gravedad y concurrencia",
+          "PASS — tests nativos y cinco controles externos con transporte diferido y temporizadores; captura/traza del cruce real."
+        ],
+        [
+          "S2-19",
+          "Regresión de etapa 1",
+          "PASS de comportamientos de regresión — 38 pruebas originales pasan; una igualdad de esquema cerrado incompatible se conserva como fallo esperado."
+        ],
+        [
+          "S2-20",
+          "Build de producción",
+          "PASS — build independiente y versiones registradas."
+        ]
+      ],
+      "offset": 3847
+    }
+  ],
+  "images": [
+    {
+      "marker": "[KIRO_CIERRE_IMAGEN_0]",
+      "file": "final-controlled-level-up.jpg",
+      "height": 784,
+      "offset": 6912
+    },
+    {
+      "marker": "[KIRO_CIERRE_IMAGEN_1]",
+      "file": "final-hold-key-immediate.jpg",
+      "height": 784,
+      "offset": 7066
+    },
+    {
+      "marker": "[KIRO_CIERRE_IMAGEN_2]",
+      "file": "final-game-over.jpg",
+      "height": 850,
+      "offset": 7191
+    },
+    {
+      "marker": "[KIRO_CIERRE_IMAGEN_3]",
+      "file": "final-quality-researcher-view.jpg",
+      "height": 712,
+      "offset": 7383
+    },
+    {
+      "marker": "[KIRO_CIERRE_IMAGEN_4]",
+      "file": "final-consumption-researcher-view.jpg",
+      "height": 712,
+      "offset": 7574
+    }
+  ]
+}

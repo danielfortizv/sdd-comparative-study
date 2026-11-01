@@ -1,0 +1,53 @@
+{
+  "verified_at_utc": "2026-10-21T05:25:43.297989+00:00",
+  "label": "14-qa-completion-fresh",
+  "run_interval": {
+    "started": "2026-10-21T00:18:10.7132280-05:00",
+    "ended": "2026-10-21T00:21:15.6082784-05:00",
+    "duration_seconds": 184.895,
+    "exit_code": 0
+  },
+  "deduplicated_response_count": 20,
+  "response_ids": [
+    "0f7aec5c-d2be-4fce-93dd-67b4b470f862",
+    "1028bf56-e717-406e-9374-0beffc8e1020",
+    "28810200-2c07-4d7c-9372-33183741d88c",
+    "38353125-93cd-4fc3-bc61-c05d00e49156",
+    "38bfd09e-042d-4bac-b1eb-dda62bde7e8e",
+    "41b48ac6-b776-47b4-8c21-3421c1da54cc",
+    "486eebd1-43ce-45da-8754-55eada7a2e99",
+    "49f5442d-f810-4467-882c-de1063b2bede",
+    "4a84c6c0-8c84-4c41-8e37-8e9a19c2aa87",
+    "51d1e9d1-0ed8-4fbf-8df1-0c93cad7f6b3",
+    "57a1922f-68b8-467f-bded-0670c694160b",
+    "5b009008-d701-42f5-810b-c51c95a82b4c",
+    "6909b393-be54-42dc-8f17-b82718764ea6",
+    "9ef2b068-c0dd-407b-b87c-e96fbfdf5e84",
+    "b255f7b4-885b-4b0b-8ee9-50b13b7055a8",
+    "b9542497-36cf-461e-9ad0-3ab24e8eb9c3",
+    "bac5a109-11a4-40c7-81e6-a4194ba638b3",
+    "c19148c5-b8c7-47de-9521-7e4e7ecb98f7",
+    "db8698a3-8046-4037-9259-5b3b919aa1f4",
+    "e9829b62-6aa9-49a4-bca1-e7bdc989375d"
+  ],
+  "jsonl_token_sums": {
+    "input": 720193,
+    "cached": 422234,
+    "output": 1936,
+    "thoughts": 15806
+  },
+  "matches_collector": true,
+  "prior_interval_response_id_overlap": [],
+  "api_totals": {
+    "api_requests": 20,
+    "api_errors": 0,
+    "api_successful_requests": 20
+  },
+  "resumed_scope_verification": null,
+  "transcript_paths": [
+    "transcripts-archive/session-2026-10-21T05-18-e74a3afa.2395B9F6B41A967F.jsonl",
+    "transcripts-archive/session-2026-10-21T05-18-e74a3afa.A54BA766419FBA04.jsonl",
+    "transcripts-archive/session-2026-10-21T05-18-e74a3afa.C9F4D810888536C6.jsonl"
+  ],
+  "scope": "Independent raw-JSONL parsing, deduplicated by response ID and bounded by each closed invocation; no previous resumed history counted twice. Cached is included in input. Missing model labels remain raw evidence; single-model CLI attribution is explicit."
+}

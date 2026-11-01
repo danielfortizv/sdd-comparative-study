@@ -1,0 +1,18 @@
+{
+  "project": "tetris-stage2-speckit",
+  "gate": "OK",
+  "coverage": "82.6",
+  "complexity": "190",
+  "reliability_rating": "1.0",
+  "code_smells": "0",
+  "duplicated_lines_density": "0.0",
+  "security_rating": "1.0",
+  "security_hotspots": "0",
+  "sqale_index": "0",
+  "sqale_rating": "1.0",
+  "bugs": "0",
+  "cognitive_complexity": "142",
+  "ncloc": "1085",
+  "vulnerabilities": "0",
+  "lines": "1339"
+}

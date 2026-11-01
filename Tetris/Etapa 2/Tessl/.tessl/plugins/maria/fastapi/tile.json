@@ -1,0 +1,21 @@
+{
+  "name": "maria/fastapi",
+  "version": "0.1.0",
+  "summary": "FastAPI framework with Pydantic v2 patterns, PII sanitisation, and practical workflows",
+  "docs": "docs/index.md",
+  "describes": "pkg:pypi/fastapi@0.116.1",
+  "skills": {
+    "scaffold-project": {
+      "path": "skills/scaffold-project/SKILL.md"
+    },
+    "run-check-server": {
+      "path": "skills/run-check-server/SKILL.md"
+    }
+  },
+  "private": false,
+  "rules": {
+    "pii-sanitisation": {
+      "rules": "rules/pii-sanitisation.md"
+    }
+  }
+}

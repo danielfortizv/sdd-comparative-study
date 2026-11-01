@@ -1,0 +1,136 @@
+{
+  "researcher_created": true,
+  "created_at_utc": "2026-10-23T20:20:52.638Z",
+  "status": "published_readback_and_layout_verified",
+  "document_url": "https://docs.google.com/document/d/1JRZvjK8-fdFitwbiKLe2NhOsk1FZNCa_TclgnFwdjao",
+  "document_id": "1JRZvjK8-fdFitwbiKLe2NhOsk1FZNCa_TclgnFwdjao",
+  "tab_id": "t.0",
+  "revision": "AHj4eMR-7KZtKUiP6VJbJ6k_KNOXkRMuKL5WL421RvPdwADrxUAFBpkCYkIKql5pepso3a-Oyi50Bf6CJYvBBTmDwg5gBng-fVluaROPHw",
+  "append_start_index": 73135,
+  "new_native_tables": 4,
+  "new_table_cells_verified": 143,
+  "total_inline_images": 17,
+  "new_screenshots": [
+    {
+      "file": "final-consumption-researcher-view.jpg",
+      "replies": [
+        {},
+        {
+          "insertInlineImage": {
+            "objectId": "kix.3z5qxqukz53k"
+          }
+        }
+      ]
+    },
+    {
+      "file": "final-quality-researcher-view.jpg",
+      "replies": [
+        {},
+        {
+          "insertInlineImage": {
+            "objectId": "kix.k53loj7wia0n"
+          }
+        }
+      ]
+    },
+    {
+      "file": "final-game-over.jpg",
+      "replies": [
+        {},
+        {
+          "insertInlineImage": {
+            "objectId": "kix.vnhp62g3piu0"
+          }
+        }
+      ]
+    },
+    {
+      "file": "final-hold-key-immediate.jpg",
+      "replies": [
+        {},
+        {
+          "insertInlineImage": {
+            "objectId": "kix.lgniuteqyxpo"
+          }
+        }
+      ]
+    },
+    {
+      "file": "final-controlled-level-up.jpg",
+      "replies": [
+        {},
+        {
+          "insertInlineImage": {
+            "objectId": "kix.r01n4vgqlb3"
+          }
+        }
+      ]
+    }
+  ],
+  "tables": [
+    {
+      "number": 13,
+      "rows": 6,
+      "columns": 2,
+      "start": 74018,
+      "end": 74227
+    },
+    {
+      "number": 14,
+      "rows": 8,
+      "columns": 6,
+      "start": 75275,
+      "end": 75778
+    },
+    {
+      "number": 15,
+      "rows": 5,
+      "columns": 4,
+      "start": 76890,
+      "end": 77127
+    },
+    {
+      "number": 16,
+      "rows": 21,
+      "columns": 3,
+      "start": 77872,
+      "end": 80586
+    }
+  ],
+  "pdf": {
+    "path": "publication-qa/drive-final.pdf",
+    "pages": 53,
+    "review_scope": "Final appended Kiro closure, pages 46–53, and boundary page45. Final rendered pages reviewed with prior layout equivalents; no clipping, overlap or empty page added.",
+    "render_prefix": "publication-qa/verified-page-",
+    "reviewed": true
+  },
+  "metric_provenance": "FINAL_REPORT.json, metrics.json and retained native/researcher evidence; researcher views explicitly labelled derived, not native Sonar/terminal screenshots",
+  "researcher_publication_failures": [
+    {
+      "stage": "column layout batch1",
+      "result": "HTTP400 unknown columnProperties; rejected atomically; corrected"
+    },
+    {
+      "stage": "column layout batch2",
+      "result": "HTTP400 unknown columnWidth; rejected atomically; corrected to tableColumnProperties.width"
+    },
+    {
+      "stage": "PDF retrieval",
+      "result": "Sandbox DNS failed; authorized escalated download succeeded"
+    },
+    {
+      "stage": "PDF layout",
+      "result": "Corrected wrapped Archivos heading, orphan section heading and introduced blank-page chain before final export"
+    }
+  ],
+  "quota_task": {
+    "name": "Codex-Quota-Hourly-Suspend-Kevin",
+    "state": "Ready",
+    "interval": "PT1H",
+    "last_run_local": "2026-10-23T15:13:16-05:00",
+    "last_result": 0,
+    "next_run_local_at_observation": "2026-10-23T16:13:16-05:00",
+    "suspension_tested": false
+  },
+  "repository_publication": "none; local only; no commits/push"
+}

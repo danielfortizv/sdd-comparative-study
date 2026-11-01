@@ -1,0 +1,48 @@
+{
+  "verified_at_utc": "2026-10-26T02:06:38.4139401Z",
+  "project_key": "tetris-stage2-bmad",
+  "report_task_sha256": "280906BE5E6C5FFCF5F06EF73E1B32255CC678210D536F796858AFE0C5E4B480",
+  "ce_task_id": "aaa36c7c-7114-4e0f-bf09-fae0d39bb8fc",
+  "ce_status": "SUCCESS",
+  "analysis_id": "2b6e5efb-3ea4-4875-ac65-50dfa917d5d8",
+  "submitted_at": "2026-10-25T21:06:32-05:00",
+  "executed_at": "2026-10-25T21:06:37-05:00",
+  "gate_status": "ERROR",
+  "gate_conditions": [
+    {
+      "status": "OK",
+      "metricKey": "new_coverage",
+      "comparator": "LT",
+      "errorThreshold": "80",
+      "actualValue": "85.1"
+    },
+    {
+      "status": "OK",
+      "metricKey": "new_duplicated_lines_density",
+      "comparator": "GT",
+      "errorThreshold": "3",
+      "actualValue": "2.45747"
+    },
+    {
+      "status": "ERROR",
+      "metricKey": "new_violations",
+      "comparator": "GT",
+      "errorThreshold": "0",
+      "actualValue": "31"
+    }
+  ],
+  "coverage_inputs": [
+    {
+      "path": "docs/coverage.xml",
+      "exists": true,
+      "sha256": "78CCE1BE5D3F18B488DB4938B4A80BD21AE921C00A74A741E7CD41D103DB8691",
+      "last_write_time_utc": "2026-10-26T02:03:22.2367793Z"
+    },
+    {
+      "path": "frontend/coverage/lcov.info",
+      "exists": true,
+      "sha256": "5F7016926B818F708BF566E1F0FC1B0315F202EE7142ED29F033E0DF35EEFFD0",
+      "last_write_time_utc": "2026-10-26T02:05:39.3452721Z"
+    }
+  ]
+}

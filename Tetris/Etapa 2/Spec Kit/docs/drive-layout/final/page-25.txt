@@ -1,0 +1,34 @@
+Ejecución independiente y calidad
+Una llamada exitosa al wrapper no acredita una prueba aprobada: los resultados siguientes
+se apoyan en salidas originales y exit code 0, posteriores a los cambios finales.
+Comprobación Comando (resumen) Salida; estado
+backend-tests-and-coverage python -m pytest con cobertura backend-coverage.log;
+XML exit 0
+frontend-tests-and-coverage npm run test -- --coverage frontend-test-coverage.log
+; exit 0
+frontend-production-build npm run build frontend-build.log; exit 0
+frontend-dependency-audit npm audit --json npm-audit.json; exit 0
+Las rutas, argumentos completos, directorios de ejecución y horas están en
+verification-commands.json. Los resúmenes de comandos anteriores no sustituyen ese
+registro original.
+Backend: 35 pruebas aprobadas; cobertura de sentencias 92%. Frontend: 38 pruebas
+aprobadas. Cobertura frontend: Statements 80.26%; Branches 70.25%; Functions 97.14%;
+Lines 84.07%. npm audit reporta cero vulnerabilidades.
+SonarQube: gate OK, análisis acca3bf6-e8bc-4c46-8db4-932b8609326c, tarea
+c3a9e639-7e05-4398-b9fd-3004cfdabb9f con SUCCESS. Se verifican la última tarea, el
+gate exacto, los hashes actuales XML/LCOV y las condiciones sin cambios: nueva
+cobertura ≥80 %, duplicación nueva ≤3 % y cero observaciones nuevas.
+Medida Sonar Línea base Inicial Etapa 2 Final
+Quality gate OK ERROR OK
+Cobertura global (%) 62.0 57.4 83.9
+Cobertura nueva (%) N/D 47,3 86,6
+Bugs 0 0 0
+Vulnerabilidades 2 0 0
+Hotspots 0 0 0
+Code smells 7 7 0
+Duplicación (%) 0.0 0.0 0.0
+Complejidad 110 161 194
+Complejidad cognitiva 78 103 148
+ncloc 748 1013 1098
+Deuda técnica (min) 35 35 0
+Rating mantenibilidad 1.0 1.0 1.0

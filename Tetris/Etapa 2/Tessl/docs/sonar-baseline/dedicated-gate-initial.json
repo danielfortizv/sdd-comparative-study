@@ -1,0 +1,49 @@
+{
+  "name": "Tetris Stage 2 Tessl Controlled",
+  "conditions": [
+    {
+      "id": "d3faa640-901d-46c6-84e5-c0235f056ccd",
+      "metric": "new_duplicated_lines_density",
+      "op": "GT",
+      "error": "3",
+      "isCaycCondition": true
+    },
+    {
+      "id": "6967b6de-0f29-41cb-a8b2-0d2d9f8f3676",
+      "metric": "new_security_hotspots_reviewed",
+      "op": "LT",
+      "error": "100",
+      "isCaycCondition": true
+    },
+    {
+      "id": "3a6be4a2-cc01-4358-99a4-6e9550613341",
+      "metric": "new_violations",
+      "op": "GT",
+      "error": "0",
+      "isCaycCondition": true
+    },
+    {
+      "id": "1426c689-b7b8-4625-82cb-95b9ac39b8bf",
+      "metric": "new_coverage",
+      "op": "LT",
+      "error": "80",
+      "isCaycCondition": true
+    }
+  ],
+  "isBuiltIn": false,
+  "actions": {
+    "rename": true,
+    "setAsDefault": true,
+    "copy": true,
+    "associateProjects": true,
+    "delete": true,
+    "manageConditions": true,
+    "delegate": true,
+    "manageAiCodeAssurance": false
+  },
+  "caycStatus": "compliant",
+  "isDefault": false,
+  "hasStandardConditions": false,
+  "hasMQRConditions": false,
+  "isAiCodeSupported": false
+}

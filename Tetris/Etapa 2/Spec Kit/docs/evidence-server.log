@@ -1,0 +1,6 @@
+127.0.0.1 - - [21/Oct/2026 00:40:57] "GET /metrics-panel.html HTTP/1.1" 200 -
+127.0.0.1 - - [21/Oct/2026 00:40:57] code 404, message File not found
+127.0.0.1 - - [21/Oct/2026 00:40:57] "GET /favicon.ico HTTP/1.1" 404 -
+127.0.0.1 - - [21/Oct/2026 00:41:10] "GET /requests-panel.html HTTP/1.1" 200 -
+127.0.0.1 - - [21/Oct/2026 00:41:18] "GET /sonar-panel.html HTTP/1.1" 200 -
+127.0.0.1 - - [21/Oct/2026 00:41:19] "GET /tests-panel.html HTTP/1.1" 200 -

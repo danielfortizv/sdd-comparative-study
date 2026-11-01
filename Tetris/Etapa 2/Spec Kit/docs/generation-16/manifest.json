@@ -1,0 +1,212 @@
+{
+  "label": "generation-16",
+  "created_at_utc": "2026-10-21T05:31:37.730556+00:00",
+  "scope": "application/tests, dependency manifests, Stage 2 native artifacts and available measurement reports; dependencies, caches, credentials and Git excluded",
+  "files": [
+    {
+      "path": "backend/app/__init__.py",
+      "sha256": "F05828B9387820DF77489E2BB724313F036722C1724CDF9F22C197ED1CBCBB48",
+      "bytes": 23
+    },
+    {
+      "path": "backend/app/api/__init__.py",
+      "sha256": "83D1FAB48EB8A82C77DC88FF2BBF01225FB58981683138A4A6D4166E009F7327",
+      "bytes": 30
+    },
+    {
+      "path": "backend/app/api/endpoints.py",
+      "sha256": "6C88E4A6CEE04619D3A6C3CD17DFCF82BCF415A912A42E093D820F463209F25B",
+      "bytes": 1635
+    },
+    {
+      "path": "backend/app/main.py",
+      "sha256": "9A9725BA30BC52F77BC1FACEE2BE13178AFF2EBF6C75BB6334821BC22B0F0B10",
+      "bytes": 1509
+    },
+    {
+      "path": "backend/app/models/__init__.py",
+      "sha256": "F34053FA23DD1232915F247C9921A281F8DA459D8DDE526B08285481DFFD6E82",
+      "bytes": 23
+    },
+    {
+      "path": "backend/app/models/schemas.py",
+      "sha256": "21677A9302A5D612D206AFC1FE075B0267201575DFE011922BF320EB096F7F0C",
+      "bytes": 4547
+    },
+    {
+      "path": "backend/app/services/__init__.py",
+      "sha256": "1B5C02DD0D225D90B7C77EF93B5094367566D25298DAF3AF778FB0A10B9CF3F1",
+      "bytes": 25
+    },
+    {
+      "path": "backend/app/services/game_engine.py",
+      "sha256": "208C6123F3F49669A7FA913B80498C2033886927AE8E64B9BED80F04BD79951F",
+      "bytes": 7350
+    },
+    {
+      "path": "backend/conftest.py",
+      "sha256": "CF944007849A120909546C5F4691757F8A7F7DBF3F6436C7830F1A3E63F406E7",
+      "bytes": 246
+    },
+    {
+      "path": "backend/requirements.txt",
+      "sha256": "6B3A907A24DD00DFB924873FB48D7377BC112158C2CE9097393A8C03D1CE8B81",
+      "bytes": 85
+    },
+    {
+      "path": "backend/tests/integration/test_api_us1.py",
+      "sha256": "DEA533DC612C167B2FBC0D0B7CA683984371543EBC509D1B47FFD863DCF4A120",
+      "bytes": 3393
+    },
+    {
+      "path": "backend/tests/integration/test_api_us2.py",
+      "sha256": "579F9E8C1F648E4227EB5FBAA3F188CC722763C082C72FCB56DC211ED221C3E3",
+      "bytes": 2772
+    },
+    {
+      "path": "backend/tests/integration/test_api_us3.py",
+      "sha256": "AA3A01619A5CC7D2B4A952317C7A21C7A251A640586D96FEE118559A362D8B3E",
+      "bytes": 1698
+    },
+    {
+      "path": "backend/tests/unit/test_game_engine_us1.py",
+      "sha256": "F2FAFBEDD52BF8C96BBBAD46E791ECB49FDC6AB24A1F2FEA50922A1517DCF7E2",
+      "bytes": 11574
+    },
+    {
+      "path": "backend/tests/unit/test_game_engine_us2.py",
+      "sha256": "126426B7B1794044F7C230C97A9EA5043954FA91BD3EBAFECA742A9C7F7E6E07",
+      "bytes": 3928
+    },
+    {
+      "path": "backend/tests/unit/test_game_engine_us3.py",
+      "sha256": "E743949D98915B4D633779A8508307279C174F7B58C561253513CCC1F2384A4F",
+      "bytes": 1740
+    },
+    {
+      "path": "backend/tests/unit/test_qa_iteration1.py",
+      "sha256": "7698A0279F1A1382F6D330AE79814ED6E4550CF81720A0EAF5AD53F18161F85A",
+      "bytes": 6857
+    },
+    {
+      "path": "frontend/index.html",
+      "sha256": "41816A3798A201B5D39D02A49F85DB8B9337BDEC0DEFB87E2CF3A1086328973B",
+      "bytes": 515
+    },
+    {
+      "path": "frontend/package-lock.json",
+      "sha256": "A2B611525DD30EDDBE1538D918AF80B40815E4FECE86C5766803401735698D8B",
+      "bytes": 142750
+    },
+    {
+      "path": "frontend/package.json",
+      "sha256": "7F3A38D178ED58CBCFC7DC18FF46365043FB1ED7128BCC98D97A4C182BBFBCED",
+      "bytes": 712
+    },
+    {
+      "path": "frontend/src/App.tsx",
+      "sha256": "26A5E5ABBD07A8CA47509DA7B6E2FFB145FB98FE73DE36933168607783442981",
+      "bytes": 4786
+    },
+    {
+      "path": "frontend/src/components/Board.tsx",
+      "sha256": "ED8578754EA29604C8DAB7581CDAD792A1F43BA189B8F3C06570C3AA0DD6F5A8",
+      "bytes": 1962
+    },
+    {
+      "path": "frontend/src/components/GameControls.tsx",
+      "sha256": "5132F7F7B5D40066D01F9462EEFDF633EEADC6BED5E2E9585C0A4CA8E5B11C4E",
+      "bytes": 649
+    },
+    {
+      "path": "frontend/src/components/GameOverModal.tsx",
+      "sha256": "15366AC28B43BB9FD0B88005C43AB59A53171519A3C6B563BEB2F608BF603BEF",
+      "bytes": 533
+    },
+    {
+      "path": "frontend/src/hooks/useGame.ts",
+      "sha256": "A3E99960E13271986929D8D3D4BDDFE786B911CF3C7EB7D295811CC2A0E98A37",
+      "bytes": 8431
+    },
+    {
+      "path": "frontend/src/index.css",
+      "sha256": "85C0054DF55FCA4B47A648FC93EF486BC701B640E681A84E603F20233F333D2F",
+      "bytes": 7430
+    },
+    {
+      "path": "frontend/src/main.tsx",
+      "sha256": "5C8277F7A8B95261A085753122820F0B760AFA07AC8C0414FC294E60C7AFC7DC",
+      "bytes": 251
+    },
+    {
+      "path": "frontend/src/types.ts",
+      "sha256": "1605303CE1F849B68BAD5CECE70E5F5FE3360E01B2F0D1DC04C5002EDEC2C2D2",
+      "bytes": 585
+    },
+    {
+      "path": "frontend/tests/App.test.tsx",
+      "sha256": "93DF487F3E5C3CE78864B9D7C968C9B7A7615046CF182C8AB9DEC86E2031E953",
+      "bytes": 8142
+    },
+    {
+      "path": "frontend/tests/GameOverModal.test.tsx",
+      "sha256": "6A1DB7E1FE36AE4CE60A631A5A5E1124BED9C46944D2DE9092648D60C2626BDC",
+      "bytes": 1275
+    },
+    {
+      "path": "frontend/tests/useGame.test.ts",
+      "sha256": "F158739FA474C49F01572C06D41192AA5502F8E3D831AD0F71B0D71034828DE4",
+      "bytes": 43842
+    },
+    {
+      "path": "frontend/vite.config.ts",
+      "sha256": "6778A67670EA23E5B5A63E23253570A706D7251FB663F3615D7E5C44664B4A55",
+      "bytes": 463
+    },
+    {
+      "path": "specs/002-extend-tetris-stage2/checklists/requirements.md",
+      "sha256": "F8541D1F39679C2A17ED55C1A059090B5FE957C25C0CE090CC6B63F585622018",
+      "bytes": 3370
+    },
+    {
+      "path": "specs/002-extend-tetris-stage2/contracts/api-contract.md",
+      "sha256": "5660E181250B3E9EE0F373AEAAB4C9C88E92BF6F30A1B74346C3BB1AA5314158",
+      "bytes": 4852
+    },
+    {
+      "path": "specs/002-extend-tetris-stage2/contracts/openapi.json",
+      "sha256": "61D6199E0D27FA05441FCB6D2A56FD3E9DF09EE60F484B7D74A89FC888173232",
+      "bytes": 10931
+    },
+    {
+      "path": "specs/002-extend-tetris-stage2/data-model.md",
+      "sha256": "88E45DD5639B712F6682AA6EA38B4700AC884F17BEE84DACAE497FC70A0FC7ED",
+      "bytes": 10159
+    },
+    {
+      "path": "specs/002-extend-tetris-stage2/plan.md",
+      "sha256": "5F0F306226E0E866428FAB4E79AE365740A160619E50FC73427078C94ABA20F6",
+      "bytes": 6377
+    },
+    {
+      "path": "specs/002-extend-tetris-stage2/quickstart.md",
+      "sha256": "A08ADEC2BF908F02775320DBB7B050E3C42A34F2F1E73FECE7C47056438BC674",
+      "bytes": 4665
+    },
+    {
+      "path": "specs/002-extend-tetris-stage2/research.md",
+      "sha256": "CC74335FB4C57468CBFC4DD26B36142380E7487D6D0E54EA26633351DFB5648B",
+      "bytes": 7706
+    },
+    {
+      "path": "specs/002-extend-tetris-stage2/spec.md",
+      "sha256": "2749CB45ACCBF236B88EC2F924C1FAE0B0AA784E61A3E8FE691AA280EF8AF821",
+      "bytes": 32138
+    },
+    {
+      "path": "specs/002-extend-tetris-stage2/tasks.md",
+      "sha256": "8E97859F1F6C05ADC77CDD0368AE5B1591F9DB68372EF9E6EAA69A547E575F74",
+      "bytes": 20209
+    }
+  ]
+}

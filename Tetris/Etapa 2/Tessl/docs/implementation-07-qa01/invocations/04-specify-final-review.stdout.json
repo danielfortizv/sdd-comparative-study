@@ -1,0 +1,95 @@
+{
+  "session_id": "902d861e-85c2-4fcd-a11b-0e758c3d97e4",
+  "response": "I have successfully completed the pre-implementation review and revised the two Stage 2 specification files. No application, test, dependency, or inherited Stage 1 files were modified. \n\nHere is a summary of the concrete revisions applied:\n\n### 1. Isolated-Domain Scoring Fixtures (`Req-S2-23`, `AC-S2-3`, Checklist)\n* **Removed** all references to rotating an I-piece, creating vertical or custom tetrominoes, fabricating active cells, or mutating `SHAPES` (even in test code).\n* **Specified** that 3-row and 4-row clears must be verified using programmatically pre-filled, completed rows (which are mathematically scoring-domain fixtures, unreachable in standard play).\n* **Mandated** placing a canonical, unrotated `O` block at a legal resting origin above these completed rows, locking it through the standard tick/lock/clear/scoring path to verify levels, multipliers (500x and 800x pre-lock level), and relative cells.\n\n### 2. Restart Preemption & FIFO Queueing (`Req-S2-26`, `Req-S2-27`, Ambiguity 1)\n* **Clarified** that FIFO serialization only applies to game-bound mutations (`tick`, `move`, `hold`) within a single lifecycle generation.\n* **Defined** that game creation or restarts create a new generation immediately and issue their create request (`POST /api/games`) independently without waiting on old queued/in-flight operations.\n* **Enforced** that no game-bound request may dispatch before the new game's ID is ready, that successive creation responses are generation-owned after transit and parsing, and that unmounting or restarts invalidate the active generation.\n\n### 3. Multi-Queue Timer Safety (`Req-S2-31`, `Req-S2-32`, `Req-S2-33`, Ambiguity 2)\n* **Made timer ownership safe** across two or more queued manual mutations. If mutation `A` completes while mutation `B` is already queued, `A` must not leave an active timeout that fires during or after `B`.\n* **Configured** the engine to schedule gravity ticks only when the mutation queue is idle, and to immediately cancel any exact scheduled handle on queued manual dispatches.\n* **Specified** that the gravity interval waits a full duration from the last authoritative completion, with at most one owned queued automatic tick.\n* **Added three explicit tests** to verify interval changes, game-over transitions, and protection against stale or failed completions.\n\n### 4. Explicit Pydantic Route Decorators (`Req-S2-2`, `AC-S2-1`, Checklist)\n* **Aligned** with the `maria/fastapi` rules by enforcing an explicit Pydantic `response_model` on ALL backend routes (including any existing welcome route), preserving payload and status.\n* **Removed** the unnecessary mandatory renaming of `GameStateModel` to `GameResponse` to maintain import and HTTP payload compatibility.\n\n### 5. Reproducible Commands & Directories (`Run and Test Commands`, Ambiguity 5)\n* **Corrected** the backend coverage command to compile the XML directly to the root `docs/` folder when run from `backend/` (`pytest --cov=app --cov-report=xml:../docs/coverage.xml tests/`).\n* **Detailed** the frontend Vitest command (`npx vitest run --coverage`) running from the `frontend/` directory with a compatible provider, ensuring that the production coverage includes every production module (including `main.tsx`) at `frontend/coverage/lcov.info`.\n* **Ensured** all checklist/configuration items are represented as pending (`[ ]`).\n\n### 6. Accurate Integration Provenance (Section 1 of Session Notes)\n* **Corrected** records to state that invocation 03 called `mcp_tessl_status` once and read local plugin files.\n* **Clarified** that the CLI remains unauthenticated, that the earlier authentication failure belongs to an older invocation, and that separate services (like Google Cloud SDK login) are not Tessl authentication.\n* **Omitted** any device flow, authentication, or ephemeral codes to protect system security.",
+  "stats": {
+    "models": {
+      "gemini-3.5-flash": {
+        "api": {
+          "totalRequests": 8,
+          "totalErrors": 0,
+          "totalLatencyMs": 184093,
+          "errorsByType": {}
+        },
+        "tokens": {
+          "input": 176526,
+          "prompt": 319343,
+          "candidates": 11582,
+          "total": 345517,
+          "cached": 142817,
+          "thoughts": 14592,
+          "tool": 0
+        },
+        "roles": {
+          "main": {
+            "totalRequests": 8,
+            "totalErrors": 0,
+            "totalLatencyMs": 184093,
+            "tokens": {
+              "input": 176526,
+              "prompt": 319343,
+              "candidates": 11582,
+              "total": 345517,
+              "cached": 142817,
+              "thoughts": 14592,
+              "tool": 0
+            }
+          }
+        }
+      }
+    },
+    "tools": {
+      "totalCalls": 7,
+      "totalSuccess": 7,
+      "totalFail": 0,
+      "totalDurationMs": 58,
+      "totalDecisions": {
+        "accept": 7,
+        "reject": 0,
+        "modify": 0,
+        "auto_accept": 0
+      },
+      "byName": {
+        "update_topic": {
+          "count": 2,
+          "success": 2,
+          "fail": 0,
+          "durationMs": 4,
+          "decisions": {
+            "accept": 2,
+            "reject": 0,
+            "modify": 0,
+            "auto_accept": 0
+          }
+        },
+        "read_file": {
+          "count": 3,
+          "success": 3,
+          "fail": 0,
+          "durationMs": 12,
+          "decisions": {
+            "accept": 3,
+            "reject": 0,
+            "modify": 0,
+            "auto_accept": 0
+          }
+        },
+        "write_file": {
+          "count": 2,
+          "success": 2,
+          "fail": 0,
+          "durationMs": 42,
+          "decisions": {
+            "accept": 2,
+            "reject": 0,
+            "modify": 0,
+            "auto_accept": 0
+          }
+        }
+      }
+    },
+    "files": {
+      "totalLinesAdded": 376,
+      "totalLinesRemoved": 343
+    }
+  }
+}

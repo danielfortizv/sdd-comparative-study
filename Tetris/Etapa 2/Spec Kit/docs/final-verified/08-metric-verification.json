@@ -1,0 +1,40 @@
+{
+  "verified_at_utc": "2026-10-20T13:00:10.963337+00:00",
+  "scope": "read-only audit of closed generation08 CLI statistics, deduplicated transcripts and frozen Sonar responses; session09 excluded; no application tests executed",
+  "session08": {
+    "input_tokens": 16752166,
+    "cached_tokens": 12893781,
+    "output_tokens": 36959,
+    "thought_tokens": 41527,
+    "api_requests": 202,
+    "api_errors": 54,
+    "api_successful_requests": 148,
+    "duration_seconds": 2885.87,
+    "recorded_main_responses": 140,
+    "utility_successful_requests": 8
+  },
+  "closed_through08": {
+    "known_api_totals": {
+      "api_requests": 331,
+      "api_errors": 76,
+      "api_successful_requests": 255
+    },
+    "observed_tokens": {
+      "input_tokens": 20927688,
+      "cached_tokens": 15774034,
+      "output_tokens": 77002,
+      "thought_tokens": 94130
+    },
+    "known_duration_seconds": 4721.376,
+    "recorded_main_responses": 270
+  },
+  "token_definitions": "Input=prompt including cached subset; candidates and thoughts separate; raw tokens.input=uncached input. Aggregate includes observed auxiliary model.",
+  "verified_sonar": {
+    "gate": "ERROR",
+    "coverage": 57.1,
+    "new_coverage": 44.9,
+    "new_coverage_threshold": 80,
+    "code_smells": 1
+  },
+  "verification": "all arithmetic and definition assertions passed"
+}

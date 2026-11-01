@@ -1,0 +1,48 @@
+﻿{
+    "verified_at_utc":  "2026-10-25T21:34:34.7603420Z",
+    "project_key":  "tetris-stage2-tessl",
+    "report_task_sha256":  "B14D032AD198C05C27BA48D0D37C75D3642D9A43A26428000FF6F911B6D2FD4E",
+    "ce_task_id":  "ecf9b14f-d623-4b8e-919e-30ba3c445260",
+    "ce_status":  "SUCCESS",
+    "analysis_id":  "15649d89-fd29-4e66-a610-0f15d72066a3",
+    "submitted_at":  "2026-10-25T21:33:33+0000",
+    "executed_at":  "2026-10-25T21:33:36+0000",
+    "gate_status":  "OK",
+    "gate_conditions":  [
+                            {
+                                "status":  "OK",
+                                "metricKey":  "new_coverage",
+                                "comparator":  "LT",
+                                "errorThreshold":  "80",
+                                "actualValue":  "82.7"
+                            },
+                            {
+                                "status":  "OK",
+                                "metricKey":  "new_duplicated_lines_density",
+                                "comparator":  "GT",
+                                "errorThreshold":  "3",
+                                "actualValue":  "0.0"
+                            },
+                            {
+                                "status":  "OK",
+                                "metricKey":  "new_violations",
+                                "comparator":  "GT",
+                                "errorThreshold":  "0",
+                                "actualValue":  "0"
+                            }
+                        ],
+    "coverage_inputs":  [
+                            {
+                                "path":  "docs/coverage.xml",
+                                "exists":  true,
+                                "sha256":  "BC1DD4B2214C5CD66C083C929B06644BEE3E37A9BC0822877C0A9FC04CB2A0D4",
+                                "last_write_time_utc":  "2026-10-25T21:32:29.0052689Z"
+                            },
+                            {
+                                "path":  "frontend/coverage/lcov.info",
+                                "exists":  true,
+                                "sha256":  "9D838DFD8E0B8584ACC2D3A22653DA72E714B2CC6B758E717AA9135BAD58BAC4",
+                                "last_write_time_utc":  "2026-10-25T21:32:31.7762103Z"
+                            }
+                        ]
+}

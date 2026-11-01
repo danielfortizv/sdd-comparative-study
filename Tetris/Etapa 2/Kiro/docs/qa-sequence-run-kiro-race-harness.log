@@ -1,0 +1,14 @@
+{
+  "exit_code": 1,
+  "source_hashes_unchanged": true,
+  "lcov_hash_unchanged": true,
+  "tests": {
+    "total": 3,
+    "passed": 0,
+    "failed": 3
+  },
+  "versions": {
+    "vitest": "3.2.7",
+    "@testing-library/react": "16.1.0"
+  }
+}

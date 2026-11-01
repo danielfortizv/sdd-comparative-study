@@ -1,0 +1,9 @@
+# BMAD common acceptance calibration v1.3
+
+BMAD retains its own Stage1 API: creation201, active_piece.shape, object-shaped origin/cells, integer0..7 board. O spawns at{row:0,col:4}; the six others use their inherited templates at column3. The v1.2 commonchecker assumed active_piece.type and arraycoordinates; that assumption is not a product requirement. v1.3 adds an observation-only adapter, preserving original raw responses and status codes. All seven gameplay records/eightcatalogIDs and expected rules are unchanged; older checker versions/results remain immutable.
+
+The added adapter is calibrated over all seven genuine native shapes and the pre-existing type/array representation. Native input dictionaries remain byte-equivalent as JSON data. This verifies instrumentation only; Stage2 gameplay acceptance is not claimed before implementation. Raw HTTP observations now retain response bodies. The supplemental contractv1.2 checker already accepts BMAD's top-level shape and can run unchanged with expectedcreation201.
+
+New domain fixtures must use canonical SHAPE_TEMPLATES and objects, not artificial verticalI/one-cellpieces. The inherited13test assertions are preserved; one historicalone-cellfixture is reported as such and is not reused as new canonical gameplay evidence. Three/fourrow fixtures are isolated completed-rowdomain cases, excluded from an ordinary-play-only denominator. Productionrandom.choice and canonicaltemplates remain unchanged; controlled tests use seed20260929/explicitdraws. No row-zero-lock gameover rule is imported from another tool.
+
+Own backend port8000/frontend5173 is the inherited development setup; researcher servers can use isolated runtime ports/proxy files without editing app code. No Stage2test pass has been inferred from a passing build or baselinegate.
