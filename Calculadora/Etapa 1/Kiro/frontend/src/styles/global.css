@@ -104,6 +104,19 @@ body {
   border-radius: calc(var(--radius) + 4px);
 }
 
+/* ------------------------------------------------ Mode toggle bar (Stage 4)
+ * Calculator.tsx always renders the ModeToggle inside `.calculator__modebar`
+ * at the top of the panel (Requirement 39.1). Right-align the compact toggle so
+ * it sits above the display without stretching to the full panel width. */
+.calculator__modebar {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.calculator__modebar .mode-toggle {
+  width: auto;
+}
+
 /* -------------------------------------------- Display + memory badge (Stage 2)
  * Calculator.tsx wraps the MemoryIndicator + the two displays in
  * `.calculator__display`. Position the badge in the top-left corner of the

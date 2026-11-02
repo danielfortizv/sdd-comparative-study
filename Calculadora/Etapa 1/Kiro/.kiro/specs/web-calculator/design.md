@@ -1295,3 +1295,498 @@ frontend/
       memoryIndicator.test.tsx  # NEW — 29.2 indicator shown iff register non-zero
       historyPanel.test.tsx     # NEW — 29.4 render newest-first, select expr/result, clear, empty state
 ```
+
+---
+
+# Stage 4 Design (RPN Engine Migration)
+
+This part performs a drastic architectural migration of the Evaluation_Engine from infix AST-walking evaluation to Reverse Polish Notation (RPN / postfix) evaluation: a Shunting Yard conversion produces a precedence-free RPN_Token_Sequence, and a dedicated stack-based execution engine evaluates it. **All Stage 1, Stage 2, and Stage 3 design above remains authoritative and unchanged in its externally observable behavior** — the `decimal.Decimal` precision model, the discriminated-union API contract (Requirements 5, 24), the pure React reducers, and the accessibility/responsiveness strategy all carry forward. Stage 4 is a **breaking change to the internal evaluation architecture only**: the arithmetic results, the error conditions, the API contract, and the frontend no-local-arithmetic rule are all preserved (Requirements 43.1–43.7). Nothing here weakens or overrides Requirements 1–33 (Requirement 43.7).
+
+The non-negotiable steering rules still hold without exception: **never use raw `float` in a calculation path** (the Evaluation_Stack holds `Decimal` values only — Requirement 36.6), **the frontend computes no evaluation result** (every value in both RPN_Mode and Standard_Mode comes from the backend — Requirements 39.9, 40.7, 43.5), the **success/error contract stays mutually exclusive** (Requirements 38.5, 5.5, 24.5), and **accessibility is part of "done"** (the Stack_Display is labeled and announced — Requirements 40.5, 40.6).
+
+## Stage 4 Overview
+
+Stage 4 has three pillars, each mapped to its requirements:
+
+1. **Audit before migration (Requirement 34).** Before any Stage 4 change, produce a persisted `Migration_Audit_Log` at `docs/stage4-audit-log.md` that inspects the Stage 1–Stage 3 source across four categories (functional bug, architectural flaw, Decimal_Precision issue, test coverage gap) with unique defect ids and a full Requirements 1–33 re-verification ledger, gating every remediation behind a prior logged defect id.
+2. **Engine migration (Requirements 35, 36, 37, 38).** Replace AST-walking evaluation with a deterministic AST→RPN linearization (Shunting Yard) that yields a parenthesis-free RPN_Token_Sequence, and a stack-based Stack_Evaluator that consumes it, preserving exact-Decimal results and all domain/error behavior. `engine.evaluate_expression()` stays the single public entry point with an unchanged signature.
+3. **Frontend dual-mode + tests + Docker (Requirements 39, 40, 41, 42, 43).** Add an RPN_Mode / Standard_Mode toggle with a real-time Stack_Display (X/Y/Z/T), driven by a new `rpnReducer`; refactor the test suites (backend Shunting Yard / stack / RPN-error unit tests + a Hypothesis parity property, frontend Vitest for RPN) under the reused ≥80% statement+branch coverage gate; and rebuild the containers under the unchanged entry point and contract.
+
+### Key Design Decisions
+
+| Decision | Rationale | Requirements |
+| --- | --- | --- |
+| `Migration_Audit_Log` is a persisted markdown doc at `docs/stage4-audit-log.md`, created **before** any Stage 4 edit | Durable, reviewable, diffable artifact next to `docs/SEED*.md` and the Stage 3 audit log; its creation provably precedes the migration | 34.1, 34.7 |
+| Each defect entry carries a unique id (`M-01…`), one of the four categories, affected component, reproduction input/steps, and **distinct** expected vs. actual | Makes every defect traceable and the remediation gate enforceable | 34.2, 34.3 |
+| Remediation gating: no fix without a prior logged id; re-verify every applicable Requirement 1–33 criterion with a recorded pass/fail; reject on any regression and preserve the baseline | Turns backward compatibility into an executable gate | 34.4, 34.5, 34.6, 43.6 |
+| **Keep the recursive-descent parser; add a pure AST→RPN linearization** (`engine/rpn.py: to_rpn(ast)`) rather than re-deriving a token-stream Shunting Yard | The parser already encodes PEMDAS, right-assoc `^`, the unary-minus-vs-`^` rule, functions, constants, and `root(x,n)` correctly (proved by P1); reusing it guarantees Requirement 2 precedence for free and localizes the migration to a new linearizer + evaluator. (Rejected alternative discussed below.) | 35.1, 35.2, 35.3, 35.4 |
+| RPN_Token_Sequence is a list of frozen `RpnToken` dataclasses (`Operand(Decimal)`, `BinaryOp(sym)`, `UnaryFunc(name)`, `RootOp`, `Constant(name)`) — **no parenthesis tokens** | A typed, parenthesis-free postfix model the Stack_Evaluator consumes directly; mirrors the frozen-dataclass AST/token style | 35.5, 35.6, 36.1 |
+| New `engine/rpn_evaluator.py: stack_evaluate(seq, angle_mode)` with explicit pop order: binary **right = first popped, left = second popped**; power/root **exponent/degree = first popped, base/radicand = second popped** | Pins non-commutative operand order so `8 3 -` = 5 and `root(27,3)` = 3; matches Requirements 36.2, 37.3 exactly | 36.2, 36.3, 36.4, 37.1, 37.2, 37.3 |
+| **Reuse `scientific.py`, `constants.py`, and the module-level decimal context unchanged**; the Stack_Evaluator applies the same kernels and the same `_finalize` rounding | Zero behavioral drift in math/rounding/domain handling; the migration touches only *how* operations are sequenced, not *what* they compute | 36.6, 36.7, 37.4, 37.6 |
+| `engine/__init__.py: evaluate_expression(expression, angle_mode="radians")` is unchanged in signature; internally it now does `parse → to_rpn → stack_evaluate` | The API layer, schemas, and `main.py` need no change; the contract (Requirements 5, 24) and the single-entry-point rule (`structure.md`) are preserved | 35.1, 36.5, 43.3 |
+| RPN failures reuse the `EvaluationError` base with **new subclasses `StackUnderflowError`, `SurplusOperandsError`, `EmptyStackError`, `UnprocessableTokenError`** | The existing single `EvaluationError` handler in `main.py` already maps the whole hierarchy to 4xx `ErrorResponse`; no handler change needed | 36.8, 36.9, 37.7, 38.1–38.5 |
+| With a well-formed parser, underflow/surplus/empty/bad-token are **internal invariants** (defensive), but are still raised, mapped, and tested | Requirement 38/41.3 mandate coverage of these paths even though the parser cannot normally produce them | 38.1–38.4, 41.3 |
+| Frontend dual mode via a new `state/rpnReducer.ts` (stack X/Y/Z/T + current operand) and a `mode` flag defaulting to **Standard_Mode**; new `ModeToggle.tsx` + `StackDisplay.tsx` | Standard_Mode preserves the entire Stage 1/2 infix workflow untouched; RPN state is isolated in its own pure reducer | 39.1, 39.2, 39.3, 40.1 |
+| RPN binary/unary operator action builds an **infix expression from the top stack values and submits it to the existing `/api/v1/evaluate`** (e.g. `"<Y> <op> <X>"`); results come only from the backend | The backend already accepts infix and owns all arithmetic; sending infix reuses the entire validated pipeline with **no new endpoint** and keeps "no local arithmetic" literally true (the client never computes) | 39.5, 39.9, 40.3, 43.5 |
+| Transport failure / Error_Response during an RPN op **retains the prior Stack_Display** and shows no result | Matches Requirement 14.4 and the normalized client contract; the stack is only mutated on a confirmed backend success | 40.7, 43.5 |
+| Backend & frontend tests refactored for the RPN engine; reuse the Requirement 30 Coverage_Threshold (≥80% statement **and** branch) on both layers; continue property numbering at **P25** | Coverage gate and property conventions are already established; Stage 4 extends them rather than re-inventing | 41.1–41.10 |
+| Docker topology from Stage 3 (multi-stage, non-root, Nginx proxy, Compose) is **unchanged**; only content reflecting the RPN engine changes | The entry point (`uvicorn app.main:app`) and the API contract are identical, so the container wiring carries forward as a verification concern | 42.1–42.7 |
+
+## Stage 1 Through Stage 3 Codebase Audit (Migration_Audit_Log)
+
+Requirement 34 mandates a persisted `Migration_Audit_Log` produced **before** any Stage 4 architectural change. This section is the design of that audit: where it lives, its structure, the four-category findings (grounded in the actual Stage 1–Stage 3 source), and the remediation gating. The canonical, persisted copy is written to **`docs/stage4-audit-log.md`** (alongside `docs/SEED.md`, `docs/SEED-4.md`, and `docs/stage3-audit-log.md`); this design section is its authoritative source. Every remediation MUST reference a defect id recorded here *before* it is applied (Requirement 34.4) and MUST re-verify every applicable Requirement 1–33 criterion with a recorded pass/fail outcome, rejecting any regression (Requirements 34.5, 34.6). No Stage 4 change may be applied while the log is absent or leaves any category unaddressed (Requirement 34.7).
+
+### Migration_Audit_Log location and structure
+
+- **Location:** `docs/stage4-audit-log.md`, committed **before** the first Stage 4 edit so its creation provably precedes the migration (Requirement 34.1). The inspection covers every Stage 1, Stage 2, and Stage 3 source component: `backend/app/engine/{__init__,tokenizer,parser,evaluator,scientific,constants,errors}.py`, `backend/app/api/{routes,schemas}.py`, `backend/app/main.py`, the `backend/tests/` suite (incl. `tests/properties/strategies.py`), the frontend `src/api/{types,client}.ts`, `src/state/{calculatorReducer,memoryReducer,historyReducer}.ts`, `src/hooks/{useKeyboard,useEvaluator}.ts`, `src/components/*`, and the containerization artifacts (`backend/Dockerfile`, `frontend/Dockerfile`, `frontend/nginx.conf`, `docker-compose.yml`).
+- **Per-defect record schema** (Requirement 34.3): **Defect id** (unique within the log, `M-NN`), **Category** (exactly one of the four), **Affected component** (file/module), **Reproduction** (input string or ordered steps), **Expected**, and **Actual**, with Expected and Actual stated as *distinct* values.
+- **Category coverage** (Requirement 34.2): each of the four categories — **functional bug**, **architectural flaw**, **Decimal_Precision issue**, **test coverage gap** — has either ≥1 defect entry or an explicit "No defect found" record, so no category is left unaddressed.
+- **Re-verification ledger** (Requirements 34.5, 34.6): for any applied remediation, a recorded pass/fail outcome per applicable Requirement 1–33 criterion; acceptance requires all-pass, and a fail retains the failing criterion ids and preserves the pre-remediation baseline until resolved.
+
+```mermaid
+flowchart TD
+    A["Inspect Stage 1-3 source\n(engine, api, main, tests,\nfrontend, containers)"] --> B["Write Migration_Audit_Log\n(docs/stage4-audit-log.md)"]
+    B --> C{"Category: defect found?"}
+    C -- "No (record 'none found')" --> G["Category addressed"]
+    C -- "Yes" --> D["Record M-NN: id, category,\ncomponent, repro, expected != actual"]
+    G --> H{"All four categories\naddressed?"}
+    D --> H
+    H -- "No" --> X1["Reject any Stage 4 change;\npreserve Stage 1-3 baseline (34.7)"]
+    H -- "Yes" --> E{"Apply remediation?"}
+    E -- "No prior logged id" --> X2["Reject remediation (34.4)"]
+    E -- "Has logged id" --> F["Re-verify applicable\nRequirements 1-33 -> record pass/fail"]
+    F -- "All pass" --> OK["Remediation accepted;\nStage 4 migration may proceed"]
+    F -- "Any fail" --> R["Reject/correct; retain failing ids;\npreserve baseline (34.6, 43.6)"]
+    R --> E
+```
+
+### Category 1 — Functional Bugs
+
+**No functional code bug found.** The engine (`tokenizer`, `parser`, `evaluator`, `scientific.py`, `constants.py`) and the API/transport layers were read end-to-end and cross-checked against Requirements 1–33 and the existing correctness properties P1–P24. Stage 1 arithmetic (PEMDAS structure, `+ - * /` left-associativity, `^` right-associativity, unary-minus grouping, `-3^2 == -9`) and Stage 2 scientific dispatch (trig/inverse-trig with angle-mode threading, powers/roots/logs, `pi`/`e` substitution) are consistent with the acceptance criteria. The two cosmetic items carried forward from the prior audits (the Stage 1 precedence-prose wording and the `1.2.3` message-clarity edge case) remain the only open observations; both are documentation/message-clarity only and change no accept/reject outcome. **This finding is carried forward honestly from the Stage 2 and Stage 3 audits, which reached the same conclusion.**
+
+### Category 2 — Architectural Flaws
+
+**No code-level architectural flaw found; the existing layering is exactly what makes the RPN migration safe.** The pure-`engine` boundary (transport → validation → `engine`, with `engine` importing no HTTP concerns) and the single public entry point `evaluate_expression()` mean the migration is confined to two new pure modules (`rpn.py`, `rpn_evaluator.py`) plus a two-line rewire inside `engine/__init__.py`; the API layer, schemas, and `main.py` are untouched. The only forward-looking observation relevant to the migration: the current evaluator both *sequences* operations (tree walk) and *computes* them (calls `scientific.py`/`Decimal` ops). Stage 4 cleanly separates these concerns — `to_rpn` owns sequencing, `stack_evaluate` owns dispatch, and both call the **unchanged** computation kernels — which is an improvement, not a defect in the existing code. The lone carried-forward precedence-prose wording item is documentation, not structure.
+
+### Category 3 — Decimal_Precision Issues
+
+**No precision defect found.** All calculation paths use exact `decimal.Decimal` under the module-level `decimal.Context(prec=50, ROUND_HALF_EVEN)`; a repository-wide reading found **no `float` in any backend calculation path** and **no `number` arithmetic in the frontend calculation path** (the memory register aggregates backend results with arbitrary-precision decimal-string helpers in `memoryReducer.ts`). Terminating results are normalized; non-terminating results are detected via the `Inexact` flag and rounded to ≥10 significant digits via the shared `_finalize` path. **Migration-relevant note:** the RPN migration MUST preserve this by having the Stack_Evaluator hold only `Decimal` operands on the Evaluation_Stack (never `float`) and by routing its final result through the **same** `_finalize` path, so Requirements 3.4, 17.6, 18.6, 36.6, and 36.7 continue to hold unchanged. No remediation required.
+
+### Category 4 — Test Coverage Gaps
+
+**No coverage gap in the existing Stage 1–Stage 3 behavior; a known *forward* gap for the not-yet-existing RPN surface.** The current suite enforces ≥80% statement+branch on both layers (Requirement 30) and encodes Requirements 1–25 as properties P1–P24 plus example/component tests, with the Stage 3 edge-case and container checks. Honest assessment of the migration's coverage implications:
+
+| Field | Finding |
+| --- | --- |
+| Affected component | `backend/tests/` (+ `tests/properties/strategies.py`), `frontend/src/tests/` |
+| Trigger | Planning Stage 4: the Shunting Yard linearizer (`rpn.py`), the Stack_Evaluator (`rpn_evaluator.py`), the four RPN error classes, and the frontend RPN surface (`rpnReducer`, `ModeToggle`, `StackDisplay`) **do not yet exist**, so no test exercises them |
+| Expected | Every new RPN statement and branch covered; the RPN engine cross-checked against an independent oracle; RPN-mode UI and error paths tested with the network mocked |
+| Actual | Not yet present (the code does not exist pre-migration); this is a planned gap the Stage 4 test refactor (Requirement 41) must close, not a defect in shipped code |
+| Assessment | Forward coverage requirement, recorded so the ≥80% statement+branch gate (Requirement 30, reused by Requirement 41.8–41.9) stays green once the new modules land |
+
+### Audit Summary
+
+| Category | Outcome |
+| --- | --- |
+| Functional bugs | None found (2 prior cosmetic items remain, no behavior change) |
+| Architectural flaws | None; existing pure-`engine` layering localizes the migration and cleanly separates sequencing from computation |
+| Decimal_Precision | None found; exact decimal throughout — the Stack_Evaluator must hold `Decimal` only and reuse `_finalize` |
+| Test coverage gaps | None in shipped behavior; a planned forward gap for the new RPN modules, closed by the Requirement 41 refactor under the reused ≥80% gate |
+
+Because the audit found no behavior-changing defects, no remediation is required to begin the migration; if one were applied, it would follow the gating flow above (logged id → re-verify Requirements 1–33 → reject on regression). The migration itself is validated by the backward-compatibility gate in the Testing Strategy (Requirement 43).
+
+## Stage 4 Architecture
+
+The shape of the system is unchanged — a stateful React client talking to a stateless FastAPI math oracle over the one typed endpoint `POST /api/v1/evaluate`. Stage 4 restructures the **inside** of the Evaluation_Engine: the AST produced by the recursive-descent parser is linearized to an RPN_Token_Sequence and evaluated by a stack machine. The transport/validation layers, the request/response schemas, and `main.py` are untouched.
+
+```mermaid
+flowchart LR
+    subgraph Client["Frontend_Client (React + TS, Vite)"]
+        MODE["ModeToggle\n(Standard | RPN,\ndefault Standard)"]
+        UI["Calculator UI\n(Keypad + ScientificKeypad,\nDisplays; + StackDisplay in RPN)"]
+        KB["Keyboard Handler\n(Enter pushes in RPN)"]
+        ST["State:\ncalculator/memory/history (Standard)\n+ rpnReducer (stack X/Y/Z/T,\ncurrent operand) (RPN)"]
+        API["Typed API Client"]
+        MODE --> ST
+        UI --> ST
+        KB --> ST
+        ST --> API
+        API --> ST
+    end
+
+    subgraph Server["Backend_Service (FastAPI) — contract unchanged"]
+        RT["POST /api/v1/evaluate\n(expression + angle_mode)"]
+        subgraph Engine["Evaluation_Engine (migrated internals)"]
+            PS["parse()\n(recursive-descent -> AST,\nunchanged: PEMDAS, ^, unary-,\nfunctions, constants, root)"]
+            SY["to_rpn(ast)\nShunting Yard linearization\n-> RPN_Token_Sequence\n(parenthesis-free)"]
+            SE["stack_evaluate(seq, angle_mode)\nEvaluation_Stack of Decimal\n(+ scientific.py, constants.py,\n_finalize) -- unchanged kernels"]
+            PS --> SY --> SE
+        end
+        RT --> PS
+        SE --> RT
+    end
+
+    API -- "JSON { expression, angle_mode }\n(RPN op builds infix 'Y op X')" --> RT
+    RT -- "JSON EvaluateSuccess | ErrorResponse" --> API
+```
+
+The layered ordering (transport → validation → `engine`) and the purity of the `engine` package are preserved; `to_rpn` and `stack_evaluate` are pure functions with no HTTP coupling. The decision to **keep the parser and add a linearizer** (rather than a from-scratch token-stream Shunting Yard) is what guarantees Requirement 2 precedence/associativity is inherited rather than re-implemented.
+
+### Shunting Yard: two approaches considered
+
+**Approach A (chosen) — AST→RPN linearization.** Keep `parse()` producing the AST (which already encodes PEMDAS, right-associative `^`, the unary-minus-binds-looser-than-`^` rule, functions, constants, and `root(x,n)` — all proved by P1), then linearize with a post-order traversal in `engine/rpn.py`:
+
+```
+to_rpn(NumberNode n)      -> [Operand(n.value)]
+to_rpn(ConstantNode c)    -> [Constant(c.name)]
+to_rpn(UnaryOpNode(-, x)) -> to_rpn(x) ++ [UnaryMinus]        # or fold into evaluator as negate
+to_rpn(BinaryOpNode(op,l,r)) -> to_rpn(l) ++ to_rpn(r) ++ [BinaryOp(op)]
+to_rpn(FunctionNode(f, x))   -> to_rpn(x) ++ [UnaryFunc(f)]
+to_rpn(RootNode(rad, deg))   -> to_rpn(rad) ++ to_rpn(deg) ++ [RootOp]
+```
+
+Because the AST already carries the correct structure, the post-order walk *is* a correct Shunting Yard result: operands precede their operator, no parentheses are emitted (Requirement 35.5), function/constant tokens appear in postfix position (Requirement 35.6), and the same AST always linearizes to the same sequence (determinism, Requirement 35.7). Requirements 35.2–35.4 (precedence, equal-precedence left-to-right, `^` right-to-left and unary-minus-after-`^`) hold because they are baked into the AST the walk reads.
+
+**Approach B (rejected) — token-stream Shunting Yard.** Run Dijkstra's classic operator-stack / output-queue algorithm directly over the tokenizer's output, with an explicit precedence table and associativity rules for `^` and unary minus. *Rejected* because it would **re-implement the precedence/associativity logic the parser already encodes correctly**, duplicating the one piece of the engine most likely to harbor subtle bugs (`-3^2`, `2^2^3`, unary-minus grouping) and forcing a second round of P1-style validation. Approach A reuses the already-correct, already-property-tested grammar and confines the migration to a mechanical, obviously-correct linearization. (The chosen design still satisfies every acceptance criterion of Requirement 35, which does not mandate a particular internal realization of "Shunting Yard conversion".)
+
+## Stage 4 Components and Interfaces
+
+### Backend — Evaluation_Engine migration
+
+#### `engine/rpn.py` (NEW) — Shunting Yard linearization
+
+```python
+from __future__ import annotations
+from dataclasses import dataclass
+from decimal import Decimal
+
+@dataclass(frozen=True)
+class Operand:      value: Decimal          # a numeric operand
+@dataclass(frozen=True)
+class Constant:     name: str               # "pi" | "e"
+@dataclass(frozen=True)
+class BinaryOp:     symbol: str             # "+" | "-" | "*" | "/" | "^"
+@dataclass(frozen=True)
+class UnaryFunc:    name: str               # "sin"..."atan", "ln", "log10", "sqrt", unary "neg"
+@dataclass(frozen=True)
+class RootOp:       pass                     # n-th root, two operands (radicand, degree)
+
+RpnToken = Operand | Constant | BinaryOp | UnaryFunc | RootOp
+RpnTokenSequence = list[RpnToken]
+
+def to_rpn(ast: "Node") -> RpnTokenSequence:
+    """Linearize a parsed AST into a parenthesis-free postfix sequence.
+
+    Deterministic post-order traversal (Requirement 35.7); emits no parenthesis
+    tokens (35.5); function/constant tokens appear in postfix position (35.6);
+    precedence/associativity are inherited from the AST (35.2-35.4)."""
+```
+
+- The sequence contains **no parenthesis tokens** of any kind (Requirement 35.5) — grouping is implicit in postfix order.
+- Conversion is a **pure function of the AST**, so repeated submissions of the same expression yield an identical sequence (Requirement 35.7).
+- A grammar violation never reaches `to_rpn`: `parse()` raises `InvalidSyntaxError`/`UnbalancedParenthesesError`/`InvalidCharacterError`/`EmptyExpressionError` first, so no partial RPN_Token_Sequence is ever produced for a malformed expression (Requirement 35.8). `to_rpn` runs only on a fully valid AST.
+
+#### `engine/rpn_evaluator.py` (NEW) — the Stack_Evaluator
+
+```python
+def stack_evaluate(seq: RpnTokenSequence, angle_mode: str = "radians") -> Decimal:
+    """Evaluate an RPN_Token_Sequence on a Decimal-only Evaluation_Stack.
+
+    Push each Operand/Constant; for a BinaryOp pop two (right=first, left=second);
+    for a UnaryFunc pop one; for RootOp pop two (degree=first, radicand=second).
+    Return the single remaining value through the shared _finalize path."""
+```
+
+- **Operands / constants** are pushed as `Decimal` values in sequence order; a `Constant` pushes its high-precision `Decimal` from `constants.py` (≥10 significant digits — Requirements 36.1, 37.4). The stack holds `Decimal` **only**; nothing is ever converted to `float` (Requirement 36.6).
+- **Binary operators** pop two operands — **first popped = right operand, second popped = left operand** — apply the operator with `Decimal` arithmetic, and push the result (Requirement 36.2). This pop-order convention is what makes non-commutative `-`, `/`, and `^` correct (`8 3 -` → 5, `2 3 ^` → 8).
+- **Unary functions** (`sin…atan`, `ln`, `log10`, `sqrt`, and unary `neg`) pop one operand, apply the operation via the **unchanged** `scientific.py` kernels under the active `angle_mode`, and push the result (Requirements 36.3, 37.1, 37.2).
+- **`RootOp`** pops two — **first popped = degree, second popped = radicand** — and applies the same n-th-root computation as the current `RootNode` path (Requirement 37.3).
+- **Recalled Memory_Register values** arrive as ordinary numeric operands in the submitted expression, so they are pushed like any other `Operand` with their full decimal value (Requirement 37.5).
+- On completion, if the Evaluation_Stack holds **exactly one** value it is returned through the shared `_finalize` (≥10-sig-digit, round-half-even normalization — Requirements 36.4, 36.7); irrational/non-terminating results round exactly as in Stage 1/2 because the finalize path is reused.
+- **Domain errors** raised by the kernels (`asin`/`acos` out of range, `tan` singularity, `sqrt`/even-root of negative, zero-degree root, `ln`/`log10` of non-positive, negative base to non-integer power, non-finite) propagate as the existing `DomainError` → 4xx, never a result (Requirement 37.6, reusing the Stage 2 behavior and P17).
+
+#### `engine/errors.py` (EDIT) — four new RPN error subclasses
+
+Each new class derives from `EvaluationError` (carrying `kind` + `message`) exactly like the Stage 1/2 subclasses, so the **single existing `EvaluationError` handler in `main.py` maps them all to 4xx `ErrorResponse` with no handler change** (Requirements 38.5, 24.5, 5.5):
+
+| Class | `kind` | Raised when | Requirement |
+| --- | --- | --- | --- |
+| `StackUnderflowError` | `stack_underflow` | an operator token needs more operands than the stack holds; message names the operator | 36.8, 37.7, 38.1 |
+| `SurplusOperandsError` | `surplus_operands` | after the whole sequence is consumed, >1 value remains; message names the remaining count | 36.9, 38.2 |
+| `EmptyStackError` | `empty_stack` | after consuming the sequence, 0 values remain | 38.3 |
+| `UnprocessableTokenError` | `unprocessable_token` | a token is neither a valid operand nor a supported operator/function; message names the token | 38.4 |
+
+With Approach A's well-formed parser these four conditions are **defensive internal invariants** (a valid AST always linearizes to a sequence that evaluates to exactly one value), but they are raised, mapped, and tested per Requirements 38 and 41.3.
+
+#### `engine/__init__.py` (EDIT) — rewire the single entry point
+
+`evaluate_expression(expression, angle_mode="radians")` keeps its **exact signature and docstring contract**; only its two-line body changes from `ast = parse(expression); return evaluate(ast, angle_mode)` to:
+
+```python
+ast = parse(expression)
+rpn = to_rpn(ast)
+return stack_evaluate(rpn, angle_mode)
+```
+
+`to_rpn`, `stack_evaluate`, and the four new error classes are added to the re-export list / `__all__`. The legacy AST-walking `evaluate()` MAY be retained as a test-only reference oracle for the parity property (see Testing Strategy) or removed; either way it is no longer on the request path. The API layer (`routes.py`, `schemas.py`) and `main.py` are **unchanged** (Requirements 42.6, 43.1).
+
+### Frontend — dual-mode RPN surface
+
+#### `state/rpnReducer.ts` (NEW) — pure RPN state
+
+```typescript
+export type Mode = "standard" | "rpn";
+export interface StackLevels { x?: string; y?: string; z?: string; t?: string; } // Decimal strings
+export interface RpnState {
+  mode: Mode;                 // default "standard" (Req 39.1)
+  operandEntry: string;       // the in-progress operand
+  stack: StackLevels;         // X/Y/Z/T (Req 40.1)
+  error: string | null;       // RPN error indication (mutually exclusive with a fresh result)
+}
+export type RpnAction =
+  | { type: "TOGGLE_MODE" }                 // clears operandEntry, stack, result (Req 39.2)
+  | { type: "APPEND_OPERAND_CHAR"; char: string }
+  | { type: "PUSH" }                        // Enter_Control (Req 39.4, 40.2)
+  | { type: "SET_STACK"; stack: StackLevels }   // from a confirmed backend success (Req 40.3)
+  | { type: "SET_RPN_ERROR"; error: string }    // guard/backend error (Req 39.6, 39.7, 40.7)
+  | { type: "RESET" };
+```
+
+- **`TOGGLE_MODE`** switches `mode`, and **clears** `operandEntry`, `stack`, and the result/error so no value carries across the switch (Requirement 39.2); default is `"standard"` (Requirement 39.1).
+- **`PUSH`** (Enter_Control): with a non-empty `operandEntry`, it places the operand at `X`, shifts `X→Y→Z→T` (dropping `T` if full), and clears `operandEntry` (Requirements 39.4, 40.2); with an empty `operandEntry` it is a **no-op that sets an error indication** "no operand to push" (Requirement 39.6).
+- A **binary/unary operator** in RPN is handled by the `Calculator` container (not the reducer): with enough stack values it builds an infix expression from the top values (e.g. `` `${y} ${op} ${x}` `` for a binary op, `` `${fn}(${x})` `` for a unary op) and calls `evaluateExpression`; on a confirmed **backend success** it dispatches `SET_STACK` replacing the consumed operands with the single result at `X` (Requirements 39.5, 40.3). With **fewer than the required values** it is a no-op with an "insufficient values" error indication and **no backend call** (Requirement 39.7).
+- **`SET_RPN_ERROR`** (backend Error_Response or transport failure) leaves the `stack` **unchanged** and shows no computed result (Requirements 40.7, 43.5). The reducer stays pure, React-owned, and side-effect free with an exhaustive `assertNever` guard, matching the Stage 1/2 reducer conventions.
+
+#### Components (`components/`)
+
+- **`ModeToggle.tsx`** (NEW) — selects between Standard_Mode and RPN_Mode, displays the active mode, defaults to Standard_Mode (Requirement 39.1); reuses `CalcButton` so the label + matching `aria-label` + focus/pressed pattern is inherited (Requirements 11, 12).
+- **`StackDisplay.tsx`** (NEW) — rendered only in RPN_Mode; shows the X/Y/Z/T levels with an identifying label per level and an empty-state indication when no value is held (Requirements 40.1, 40.4, 40.6). It is wrapped in an `aria-live="polite"` region so stack changes are announced (Requirement 40.5), reusing the Stage 1 display-announcement pattern.
+- **`Calculator.tsx`** (EDIT) — composes `rpnReducer` alongside the existing reducers; when `mode === "standard"` it renders and wires the **entire unchanged Stage 1/2 surface** (Requirement 39.3); when `mode === "rpn"` it renders the `StackDisplay`, routes Enter to `PUSH`, and maps operator controls to the "build infix → submit → `SET_STACK` on success" flow via `useEvaluator`.
+
+#### Hooks (`hooks/`)
+
+- **`useKeyboard.ts`** (EDIT) — in RPN_Mode the `Enter` key drives the same `PUSH` reducer action as the on-screen Enter_Control, and operator keys drive the same operator flow as their keypad buttons, so keypad and keyboard produce identical state changes (Requirement 39.8). All Stage 1/2 mappings are preserved for Standard_Mode (Requirement 39.3). The hook keeps the "callbacks via ref" pattern for stable listeners.
+- **`useEvaluator.ts`** (unchanged signature) — remains the **only** path to a result; RPN operator submissions reuse it so results come exclusively from the backend (Requirements 39.5, 39.9, 43.5). Transport failure still yields a service-unavailable error, never a local result (Requirement 40.7, reusing Requirement 14.4).
+
+#### API client / types
+
+`api/types.ts` and `api/client.ts` are **unchanged**: RPN operations submit an ordinary infix `expression` (plus `angle_mode`) to the existing endpoint and consume the existing `EvaluateSuccess | ErrorResponse` discriminated union via the `isSuccess`/`isError` guards. **No new endpoint and no contract change** — the frontend performs no arithmetic in either mode (Requirements 39.9, 43.5).
+
+### Stage 4 API Contract
+
+**Endpoint:** `POST /api/v1/evaluate` — **unchanged** (Requirements 42.6, 43.1). An RPN binary-operator action with `X = 3`, `Y = 4` and the `*` operator submits:
+
+```json
+{ "expression": "4 * 3", "angle_mode": "radians" }
+```
+Success — `200` (the client then replaces the consumed `X`/`Y` with the result at `X`):
+```json
+{ "result": "12" }
+```
+The success/error shapes stay mutually exclusive and the result remains a precision-preserving string (Requirements 5.5, 24.5, 38.5).
+
+## Stage 4 Data Models
+
+### RPN token model
+
+The new `RpnToken` union (`Operand`, `Constant`, `BinaryOp`, `UnaryFunc`, `RootOp`) defined in `engine/rpn.py` above is the only new backend data model — frozen dataclasses matching the AST/token style, carrying `Decimal` operands (never `float`). An `RpnTokenSequence` is a flat `list[RpnToken]` with **no parenthesis tokens** (Requirement 35.5).
+
+### Unchanged models
+
+The request/response contract (`EvaluateRequest`, `EvaluateSuccess`, `ErrorResponse`), the full AST node set (`NumberNode`, `UnaryOpNode`, `BinaryOpNode`, `ConstantNode`, `FunctionNode`, `RootNode`), the tokenizer token types, the high-precision `pi`/`e` constants, and the grammar are all **unchanged**. The new frontend model is the `RpnState` shape (mode + operand entry + X/Y/Z/T stack + error) in `rpnReducer.ts`.
+
+## Stage 4 Correctness Properties
+
+*A property is a characteristic or behavior that should hold true across all valid executions of a system — essentially, a formal statement about what the system should do. Properties serve as the bridge between human-readable specifications and machine-verifiable correctness guarantees.*
+
+The migrated engine (`parse → to_rpn → stack_evaluate`) stays a pure function over `(expression, angle_mode)`, so it remains an ideal property-based-testing target with Hypothesis; the new `rpnReducer` is a pure reducer tested with generator/table-driven reducer properties. These continue the existing numbering (P1–P24 above); Stage 4 adds **P25–P35**.
+
+Per the prework property reflection, the many Requirement 35/36/37 criteria about *applying operators in the correct order* (precedence, equal-precedence left-to-right, `^` right-to-left, unary minus after `^`, binary pop order, power/root pop order, scientific postfix placement, constant/memory operands) are **not** restated as individual properties: they all converge on a single **result-parity** property (P25) against an independent reference oracle — any mis-ordering, dropped token, or swapped operand would diverge from the oracle and fail P25. Likewise, the RPN error conditions (underflow/surplus/empty/bad-token) are consolidated into one error-condition family property (P29). Behaviors already covered by P1–P24 are **reused, not duplicated**, as noted after the property list.
+
+### Property 25: RPN engine matches an independent reference oracle (result parity)
+
+*For any* valid expression generated from the arithmetic grammar (spanning all precedence levels, parentheses, scientific functions, constants, and both angle modes), evaluating it through the migrated engine (`parse → to_rpn → stack_evaluate`) SHALL produce a result equal — to at least 10 significant decimal digits under Decimal_Precision — to an independent reference arithmetic oracle computing the same expression. This subsumes correct PEMDAS ordering, equal-precedence left-to-right, right-associative `^`, unary-minus-after-`^`, binary operand pop order, power/root operand order, scientific/constant postfix placement, and pre-migration result parity.
+
+**Validates: Requirements 35.2, 35.3, 35.4, 35.6, 36.2, 36.3, 36.5, 37.1, 37.2, 37.3, 37.4, 37.5, 43.3**
+
+### Property 26: Shunting Yard conversion is deterministic
+
+*For any* valid expression, converting it twice (`to_rpn(parse(expr))` evaluated on two independent submissions) SHALL produce two identical RPN_Token_Sequences (element-wise equal).
+
+**Validates: Requirements 35.7**
+
+### Property 27: The RPN_Token_Sequence is parenthesis-free
+
+*For any* valid expression — including expressions containing parentheses — the RPN_Token_Sequence produced by `to_rpn(parse(expr))` SHALL contain no parenthesis token of any kind.
+
+**Validates: Requirements 35.5**
+
+### Property 28: Well-formed RPN evaluation yields exactly one value
+
+*For any* valid expression, stack-evaluating its RPN_Token_Sequence SHALL consume the entire sequence and terminate with exactly one value remaining on the Evaluation_Stack, which is returned as the result.
+
+**Validates: Requirements 36.1, 36.4**
+
+### Property 29: Malformed RPN sequences always signal an error and never return a result
+
+*For any* malformed RPN_Token_Sequence — one that leaves the stack with too few operands for an operator (Stack_Underflow), with more than one value after consumption (Surplus_Operands), with zero values after consumption (empty stack), or containing an unprocessable token — the Stack_Evaluator SHALL raise the corresponding `EvaluationError`, surfaced by the Backend_Service as a 4xx Error_Response with a descriptive message, and SHALL NOT return a calculated result.
+
+**Validates: Requirements 36.8, 36.9, 37.7, 38.1, 38.2, 38.3, 38.4**
+
+### Property 30: Error-condition parity with the pre-migration engine
+
+*For any* expression that the reference oracle rejects as invalid (grammar violation, unmatched parentheses, or a mathematical Domain_Error), the migrated engine SHALL also reject it with a 4xx Error_Response identifying the same failure condition and SHALL NOT return a calculated result (no previously-erroring input becomes a success, and no previously-succeeding input becomes an error).
+
+**Validates: Requirements 35.8, 37.6, 43.4**
+
+### Property 31: RPN push places the operand at X and shifts prior levels
+
+*For any* RPN state with a non-empty current operand entry, dispatching `PUSH` SHALL place that operand at the X Stack_Level, shift the previously held X/Y/Z values to Y/Z/T respectively, and clear the current operand entry; *for any* RPN state with an empty operand entry, dispatching `PUSH` SHALL leave the stack and operand entry unchanged and set an error indication.
+
+**Validates: Requirements 39.4, 39.6, 40.2**
+
+### Property 32: A backend result replaces the consumed operands with a single value
+
+*For any* RPN state holding at least two values, when a confirmed Backend_Service success result for a binary operation is applied, the Stack_Display SHALL replace the two consumed operands with the single returned result at the X Stack_Level (net active-level count reduced by one), with no value computed locally.
+
+**Validates: Requirements 39.5, 40.3**
+
+### Property 33: Switching mode resets all transient state
+
+*For any* RPN or Standard state, dispatching `TOGGLE_MODE` SHALL yield a state whose current operand entry is empty, whose Stack_Display holds no value at any level, and whose Result_Display/error is cleared, so no value carries across the mode switch.
+
+**Validates: Requirements 39.2**
+
+### Property 34: Keypad and keyboard produce identical RPN state changes
+
+*For any* RPN-relevant input (an operand character, the Enter_Control/`Enter` key, or an operator), driving it through the on-screen keypad path and through the mapped physical-keyboard path SHALL produce identical resulting RPN state.
+
+**Validates: Requirements 39.8**
+
+### Property 35: RPN results come only from the backend and errors retain the stack
+
+*For any* RPN state with enough values for an operation, activating that operation SHALL obtain its result exclusively via a Backend_Service call (no local arithmetic); and *for any* RPN state, a Backend_Service Error_Response or transport failure SHALL leave the Stack_Display values exactly as they were before the operation and SHALL NOT display a locally computed result.
+
+**Validates: Requirements 39.5, 39.9, 40.7, 43.5**
+
+### Reused properties (no new Pxx)
+
+The following Stage 4 behaviors are **already** guaranteed by existing properties and are intentionally not restated (property reflection):
+
+- **P1** (engine matches PEMDAS/Decimal reference) now exercises `parse → to_rpn → stack_evaluate` unchanged, re-proving Requirements 1.x/2.x/3.2/3.3 under the RPN engine.
+- **P2** (non-terminating rounding, round-half-even) is reused because the Stack_Evaluator routes its result through the same `_finalize` path (Requirements 36.7, 3.4).
+- **P4/P5** (division-by-zero / invalid-character errors) and **P17** (all scientific domain / non-finite errors) back the RPN domain-error path (Requirements 37.6, 35.8) — the kernels are unchanged.
+- **P6** (success-XOR-error discriminated union) covers the mutually-exclusive RPN error contract (Requirement 38.5).
+- **P12** (every control exposes a matching accessible label) extends to the Stack_Display level labels (Requirement 40.6).
+- **P13** (non-conforming responses treated as errors) and Requirement 14.4 back the RPN transport-failure handling reused in P35.
+- **P20 / P21** (memory algebra / history invariants) are unchanged; recalled memory values enter the RPN path as ordinary operands (Requirement 37.5).
+- **P1–P24 as a whole** constitute the Requirement 43.1–43.2 backward-compatibility regression proof.
+
+UI-rendering and ARIA criteria (39.1 default mode, 40.1 level rendering, 40.4 empty state, 40.5 `aria-live`), the Requirement 34 audit gates, the Requirement 41 suite/coverage tooling, the Requirement 42 Docker checks, and the Requirement 43.6–43.7 process gates are **not** property-based (they are not "for all generated inputs X, P(X)" over the application's logic); they are verified by example/component tests, configuration review, CI gates, and container smoke/integration checks (see Testing Strategy).
+
+## Stage 4 Error Handling
+
+Stage 4 adds four new in-engine error classes but **no new error-mapping machinery**: all four derive from `EvaluationError`, which the single handler in `main.py` already serializes to a 4xx `ErrorResponse` with an `error` field and no `result` (Requirements 38.5, 5.5, 24.5). Every pre-existing Stage 1/2 error path (syntax, unbalanced parentheses, invalid character, empty, division-by-zero, `DomainError`, `InvalidFunctionError`) is preserved and must surface the **same** condition it did pre-migration (Requirement 43.4).
+
+| Condition | Where raised | Mapped to | Requirement |
+| --- | --- | --- | --- |
+| Grammar violation / unmatched parentheses (no RPN produced) | `parse()` (before `to_rpn`) | existing `InvalidSyntaxError` / `UnbalancedParenthesesError` → 4xx, no partial sequence | 35.8 |
+| Stack_Underflow (operator needs more operands) | `stack_evaluate` | `StackUnderflowError` → 4xx, message names the operator | 36.8, 37.7, 38.1 |
+| Surplus_Operands (>1 value after consumption) | `stack_evaluate` | `SurplusOperandsError` → 4xx, message names the remaining count | 36.9, 38.2 |
+| Empty stack (0 values after consumption) | `stack_evaluate` | `EmptyStackError` → 4xx | 38.3 |
+| Unprocessable token | `stack_evaluate` | `UnprocessableTokenError` → 4xx, message names the token | 38.4 |
+| Scientific/root/log/power Domain_Error | unchanged `scientific.py` kernels via `stack_evaluate` | existing `DomainError` → 4xx | 37.6 |
+| Frontend: RPN op with insufficient stack values / empty operand on Enter | `Calculator` / `rpnReducer` | local error indication, **no backend call**, stack unchanged | 39.6, 39.7 |
+| Frontend: backend Error_Response or unreachable during RPN op | `useEvaluator` / `rpnReducer` | service-unavailable/error indication, stack **retained**, no local result | 40.7, 43.5 |
+
+## Stage 4 Testing Strategy
+
+Stage 4 combines **PBT** (the migrated engine and the pure RPN reducer are ideal targets) with **non-PBT verification** (audit review, RPN-UI component tests, suite-completion and coverage gates, container checks). The ≥80% statement **and** branch Coverage_Threshold from Requirement 30 is **reused** on both layers (Requirements 41.8, 41.9), and the full existing P1–P24 suite is re-run as the backward-compatibility proof (Requirement 43).
+
+### Backend tests (pytest) — Requirement 41.1–41.4
+
+| Case | Test module | Assertion | Requirement | Property/backstop |
+| --- | --- | --- | --- | --- |
+| Shunting Yard conversion of ≥3 precedence levels + parentheses + `^`/unary-minus rules → expected RPN_Token_Sequence | `tests/test_rpn_conversion.py` | exact token-list equality for hand-picked expressions (`3+4*2`, `(1+2)*3`, `2^2^3`, `-3^2`, `sin(pi/2)+root(27,3)`) | 41.1 | P26, P27 |
+| Stack push/pop + operator evaluation | `tests/test_rpn_evaluator.py` | result equals expected to ≥10 sig digits; non-commutative operand order pinned (`8 3 -`=5, `root(27,3)`=3) | 41.2 | P25, P28 |
+| Each RPN error: underflow, surplus, empty stack, unprocessable token | `tests/test_rpn_errors.py` | 4xx Error_Response, no `result`, descriptive message (operator / remaining count / token named) | 41.3 | P29 |
+| **RPN parity property (Hypothesis, ≥100 examples)** | `tests/properties/test_rpn_parity.py` (+ strategy in `tests/properties/strategies.py`) | RPN engine result == independent reference oracle to ≥10 sig digits, over a strategy spanning precedence/parentheses/scientific/constants/angle modes | 41.4 | **P25** |
+| Error-condition parity | `tests/properties/test_rpn_parity.py` | oracle-rejected inputs → RPN engine 4xx, no result | — | **P30** |
+
+Each property test is tagged with the format **`# Feature: web-calculator, Property N: <text>`** and runs ≥100 iterations (reusing the Stage 1/2 Hypothesis conventions). The independent reference oracle is an evaluation path distinct from the RPN engine — either the retained legacy AST-walking `evaluate()` or a standalone `Decimal` reference in `tests/properties/strategies.py` — so parity is a genuine cross-check, not a tautology.
+
+### Frontend tests (Vitest + RTL + MSW) — Requirement 41.5–41.7
+
+All tests run with **MSW** intercepting every backend call (`src/tests/setup.ts`, `onUnhandledRequest: 'error'`) so no test hits a live service (Requirement 41.5).
+
+- **RPN input + Enter push** (`tests/rpn.test.tsx`, Requirement 41.5): entering an operand and activating the Enter_Control pushes it to the X level; the `StackDisplay` renders the active X/Y/Z/T levels. [P31]
+- **Mode switching resets state** (`tests/rpnMode.test.tsx`, Requirement 41.6): toggling between RPN_Mode and Standard_Mode resets the Stack_Display and the in-progress operand entry to empty with no residual levels. [P33]
+- **Backend-error retains the stack** (`tests/rpnError.test.tsx`, Requirement 41.7): with MSW configured to return an Error_Response during an RPN operation, an error indication renders, no result is displayed, and the pre-operation Stack_Display values are retained. [P35]
+- **RPN reducer properties** (`tests/rpnReducer.test.ts`): generator/table-driven tests for P31 (push), P32 (result-update), P33 (mode-switch reset), P34 (keypad==keyboard parity).
+
+### Coverage gates — Requirement 41.8, 41.9 (reuse Requirement 30)
+
+- **Backend:** `pytest --cov=app --cov-branch --cov-fail-under=80` plus the `[tool.coverage.report] fail_under = 80` branch gate — the run **fails** if statement or branch coverage of `app/` (including the new `rpn.py`, `rpn_evaluator.py`, and the new error classes) falls below 80%.
+- **Frontend:** `vitest run --coverage` (v8 provider) with `thresholds.statements = 80`, `thresholds.branches = 80` over `src/**` (including `rpnReducer.ts`, `ModeToggle.tsx`, `StackDisplay.tsx`) — an unmet statement or branch threshold fails the run.
+
+### Backward-compatibility regression — Requirement 43
+
+The full suite — backend pytest (Stage 1/2/3 tests + properties P1–P24 + the new Stage 4 RPN conversion/evaluator/error/parity tests) and frontend Vitest (Stage 1/2/3 component/reducer tests + the new RPN tests) — is the regression gate. **Zero failures, zero errors, and zero collection errors on both suites** is the acceptance condition (Requirements 41.10, 43.1, 43.2). Any failure against a Requirement 1–33 criterion rejects the migration and the baseline is preserved until resolved (Requirements 43.6, 43.7). Result parity to ≥10 sig digits (Requirement 43.3) and error-condition parity (Requirement 43.4) are proved by P25 and P30; the no-local-arithmetic guarantee (Requirement 43.5) by P35.
+
+### Container verification (non-PBT) — Requirement 42
+
+The Stage 3 container topology is **unchanged** because the entry point (`uvicorn app.main:app`) and the API contract are identical; only content reflecting the RPN engine changes. Verified by rebuild + smoke/integration checks:
+
+- **Backend image:** rebuilds from the unchanged multi-stage, non-root `python:3.11-slim` `Dockerfile` (Requirements 42.1, 42.5); starts and serves `POST /api/v1/evaluate` on `${PORT:-8000}` backed by the RPN engine (Requirement 42.3); a forwarded request returns an RPN-computed result in the Stage 1/2 success shape with Decimal_Precision (Requirement 42.6); a failed build exits non-zero with no tagged image (Requirement 42.7).
+- **Frontend image:** rebuilds from the unchanged multi-stage `node:20-alpine` → `nginx:alpine` `Dockerfile` serving the compiled `dist/` (Requirement 42.2); the new RPN-mode UI ships as part of the built assets.
+- **Compose:** `docker-compose.yml` brings up both services on the shared network with service-name DNS (Requirement 42.4); a request through the frontend `/api` proxy returns an RPN-computed result, and with the backend stopped the proxy yields a service-unavailable error with no result (reusing Requirement 33.4 / 14.4).
+
+> Per the steering note, long-running servers (uvicorn `--reload`, `npm run dev`, `docker compose up`) are run manually in a terminal, not as blocking automation commands. Full WCAG conformance still requires manual assistive-technology testing beyond the automated contrast/label checks.
+
+## Stage 4 Module / File Structure (additions)
+
+Only **additions/edits** are shown; every Stage 1, Stage 2, and Stage 3 file above is retained unchanged.
+
+```
+.                               # repository root
+  docs/
+    stage4-audit-log.md         # NEW — persisted Migration_Audit_Log (four categories, Req 1-33 re-verification ledger) (34)
+  docker-compose.yml            # UNCHANGED — topology preserved; rebuilt images only (42.4, 42.5)
+
+backend/
+  app/
+    engine/
+      rpn.py                    # NEW — RpnToken model + to_rpn(ast) Shunting Yard linearization (parenthesis-free, deterministic) (35)
+      rpn_evaluator.py          # NEW — stack_evaluate(seq, angle_mode): Decimal-only Evaluation_Stack, pop-order, reuse scientific/_finalize (36, 37)
+      errors.py                 # EDIT — add StackUnderflowError, SurplusOperandsError, EmptyStackError, UnprocessableTokenError (38)
+      __init__.py               # EDIT — evaluate_expression now parse -> to_rpn -> stack_evaluate (same signature); export new names (35.1, 36.5)
+      # evaluator.py            # UNCHANGED kernels; evaluate() optionally retained as a test-only reference oracle
+  Dockerfile                    # UNCHANGED — multi-stage, non-root; rebuilt under the RPN engine (42.1, 42.5, 42.7)
+  tests/
+    test_rpn_conversion.py      # NEW — 41.1 Shunting Yard -> expected RPN_Token_Sequence (precedence/parens/^/unary-minus)
+    test_rpn_evaluator.py       # NEW — 41.2 push/pop + operator eval; non-commutative operand order
+    test_rpn_errors.py          # NEW — 41.3 underflow / surplus / empty / unprocessable token -> 4xx, no result
+    properties/
+      strategies.py             # EDIT — add independent reference oracle + RPN expression strategy (P25, P30)
+      test_rpn_parity.py        # NEW — 41.4 Hypothesis >=100: RPN == oracle to >=10 sig digits (P25); error parity (P30)
+    # (Stage 1/2/3 tests + properties P1-P24 run unchanged as the Req 43.1 regression gate)
+
+frontend/
+  Dockerfile                    # UNCHANGED — node build -> nginx serve; rebuilt with RPN UI assets (42.2)
+  nginx.conf                    # UNCHANGED — SPA fallback + /api proxy (42.4)
+  src/
+    state/
+      rpnReducer.ts             # NEW — pure RPN state: mode (default standard), operand entry, X/Y/Z/T stack, error (39, 40)
+    components/
+      ModeToggle.tsx            # NEW — Standard | RPN toggle, shows active mode, defaults Standard (39.1)
+      StackDisplay.tsx (+ .css) # NEW — X/Y/Z/T levels, labels, empty-state, aria-live polite (40.1, 40.4, 40.5, 40.6)
+      Calculator.tsx            # EDIT — compose rpnReducer; Standard path unchanged; RPN op -> build infix -> submit -> SET_STACK (39, 40)
+    hooks/
+      useKeyboard.ts            # EDIT — RPN: Enter -> PUSH, operator keys -> operator flow; Stage 1/2 mappings preserved (39.8, 39.3)
+      # useEvaluator.ts         # UNCHANGED signature — still the only path to a result (39.5, 39.9, 43.5)
+    tests/
+      rpn.test.tsx              # NEW — 41.5 RPN input + Enter push + StackDisplay render
+      rpnMode.test.tsx          # NEW — 41.6 mode switch resets stack + operand entry
+      rpnError.test.tsx         # NEW — 41.7 backend error -> error shown, no result, stack retained
+      rpnReducer.test.ts        # NEW — reducer properties P31-P34
+```

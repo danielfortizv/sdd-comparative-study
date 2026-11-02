@@ -1,5 +1,10 @@
 {
-  "pbtResults": {},
+  "pbtResults": {
+    "6.2 Write property test P1 (engine matches PEMDAS/Decimal reference)": {
+      "status": "passed",
+      "lastRunTimestamp": 1793291202395
+    }
+  },
   "executionHistory": {
     "1. Scaffold backend project structure and dependencies": [
       {
@@ -909,6 +914,16 @@
         "executionId": "bada723f-07a6-4ef6-8edb-e4c54534bcdd",
         "chatSessionId": "sess_1c42345c-ac14-41ef-9d7e-9bd7e5480454",
         "timestamp": 1792713226167
+      },
+      {
+        "executionId": "130153af-9476-4379-9789-6aa6a90a6def",
+        "chatSessionId": "sess_5f14856d-41ff-4725-b9d1-b3c6178a571b",
+        "timestamp": 1793290933124
+      },
+      {
+        "executionId": "130153af-9476-4379-9789-6aa6a90a6def",
+        "chatSessionId": "sess_5f14856d-41ff-4725-b9d1-b3c6178a571b",
+        "timestamp": 1793291273958
       }
     ],
     "45. Create the backend container image artifacts": [
@@ -916,6 +931,16 @@
         "executionId": "bada723f-07a6-4ef6-8edb-e4c54534bcdd",
         "chatSessionId": "sess_1c42345c-ac14-41ef-9d7e-9bd7e5480454",
         "timestamp": 1792713226266
+      },
+      {
+        "executionId": "130153af-9476-4379-9789-6aa6a90a6def",
+        "chatSessionId": "sess_5f14856d-41ff-4725-b9d1-b3c6178a571b",
+        "timestamp": 1793291278675
+      },
+      {
+        "executionId": "130153af-9476-4379-9789-6aa6a90a6def",
+        "chatSessionId": "sess_5f14856d-41ff-4725-b9d1-b3c6178a571b",
+        "timestamp": 1793291355017
       }
     ],
     "46. Create the frontend container image artifacts": [
@@ -923,6 +948,16 @@
         "executionId": "bada723f-07a6-4ef6-8edb-e4c54534bcdd",
         "chatSessionId": "sess_1c42345c-ac14-41ef-9d7e-9bd7e5480454",
         "timestamp": 1792713226361
+      },
+      {
+        "executionId": "130153af-9476-4379-9789-6aa6a90a6def",
+        "chatSessionId": "sess_5f14856d-41ff-4725-b9d1-b3c6178a571b",
+        "timestamp": 1793291279589
+      },
+      {
+        "executionId": "130153af-9476-4379-9789-6aa6a90a6def",
+        "chatSessionId": "sess_5f14856d-41ff-4725-b9d1-b3c6178a571b",
+        "timestamp": 1793291356206
       }
     ],
     "47. Create the multi-container orchestration compose file": [
@@ -930,6 +965,16 @@
         "executionId": "bada723f-07a6-4ef6-8edb-e4c54534bcdd",
         "chatSessionId": "sess_1c42345c-ac14-41ef-9d7e-9bd7e5480454",
         "timestamp": 1792713226481
+      },
+      {
+        "executionId": "130153af-9476-4379-9789-6aa6a90a6def",
+        "chatSessionId": "sess_5f14856d-41ff-4725-b9d1-b3c6178a571b",
+        "timestamp": 1793291359846
+      },
+      {
+        "executionId": "130153af-9476-4379-9789-6aa6a90a6def",
+        "chatSessionId": "sess_5f14856d-41ff-4725-b9d1-b3c6178a571b",
+        "timestamp": 1793291370500
       }
     ],
     "49. Final Stage 3 checkpoint": [
@@ -937,6 +982,16 @@
         "executionId": "bada723f-07a6-4ef6-8edb-e4c54534bcdd",
         "chatSessionId": "sess_1c42345c-ac14-41ef-9d7e-9bd7e5480454",
         "timestamp": 1792713226551
+      },
+      {
+        "executionId": "130153af-9476-4379-9789-6aa6a90a6def",
+        "chatSessionId": "sess_5f14856d-41ff-4725-b9d1-b3c6178a571b",
+        "timestamp": 1793291375371
+      },
+      {
+        "executionId": "130153af-9476-4379-9789-6aa6a90a6def",
+        "chatSessionId": "sess_5f14856d-41ff-4725-b9d1-b3c6178a571b",
+        "timestamp": 1793291381157
       }
     ],
     "2.3 Write unit tests for the Tokenizer": [
@@ -1007,6 +1062,282 @@
         "executionId": "3c76958e-a8f5-4865-a7fb-00de7a963b6a",
         "chatSessionId": "sess_1c42345c-ac14-41ef-9d7e-9bd7e5480454",
         "timestamp": 1792717194104
+      }
+    ],
+    "50. Produce the persisted Migration_Audit_Log (before any other Stage 4 change)": [
+      {
+        "executionId": "130153af-9476-4379-9789-6aa6a90a6def",
+        "chatSessionId": "sess_5f14856d-41ff-4725-b9d1-b3c6178a571b",
+        "timestamp": 1793290912375
+      },
+      {
+        "executionId": "130153af-9476-4379-9789-6aa6a90a6def",
+        "chatSessionId": "sess_5f14856d-41ff-4725-b9d1-b3c6178a571b",
+        "timestamp": 1793291385301
+      },
+      {
+        "executionId": "130153af-9476-4379-9789-6aa6a90a6def",
+        "chatSessionId": "sess_5f14856d-41ff-4725-b9d1-b3c6178a571b",
+        "timestamp": 1793291541889
+      }
+    ],
+    "51. Extend the backend error taxonomy for RPN evaluation failures": [
+      {
+        "executionId": "130153af-9476-4379-9789-6aa6a90a6def",
+        "chatSessionId": "sess_5f14856d-41ff-4725-b9d1-b3c6178a571b",
+        "timestamp": 1793290912928
+      },
+      {
+        "executionId": "130153af-9476-4379-9789-6aa6a90a6def",
+        "chatSessionId": "sess_5f14856d-41ff-4725-b9d1-b3c6178a571b",
+        "timestamp": 1793291545859
+      },
+      {
+        "executionId": "130153af-9476-4379-9789-6aa6a90a6def",
+        "chatSessionId": "sess_5f14856d-41ff-4725-b9d1-b3c6178a571b",
+        "timestamp": 1793291686495
+      }
+    ],
+    "52. Implement the RPN token model and Shunting Yard linearization": [
+      {
+        "executionId": "130153af-9476-4379-9789-6aa6a90a6def",
+        "chatSessionId": "sess_5f14856d-41ff-4725-b9d1-b3c6178a571b",
+        "timestamp": 1793290913079
+      },
+      {
+        "executionId": "130153af-9476-4379-9789-6aa6a90a6def",
+        "chatSessionId": "sess_5f14856d-41ff-4725-b9d1-b3c6178a571b",
+        "timestamp": 1793291690696
+      },
+      {
+        "executionId": "130153af-9476-4379-9789-6aa6a90a6def",
+        "chatSessionId": "sess_5f14856d-41ff-4725-b9d1-b3c6178a571b",
+        "timestamp": 1793291861913
+      }
+    ],
+    "53. Implement the stack-based Stack_Evaluator": [
+      {
+        "executionId": "130153af-9476-4379-9789-6aa6a90a6def",
+        "chatSessionId": "sess_5f14856d-41ff-4725-b9d1-b3c6178a571b",
+        "timestamp": 1793290913203
+      },
+      {
+        "executionId": "130153af-9476-4379-9789-6aa6a90a6def",
+        "chatSessionId": "sess_5f14856d-41ff-4725-b9d1-b3c6178a571b",
+        "timestamp": 1793291866727
+      },
+      {
+        "executionId": "130153af-9476-4379-9789-6aa6a90a6def",
+        "chatSessionId": "sess_5f14856d-41ff-4725-b9d1-b3c6178a571b",
+        "timestamp": 1793292025534
+      }
+    ],
+    "54. Rewire the single engine entry point to the RPN pipeline": [
+      {
+        "executionId": "130153af-9476-4379-9789-6aa6a90a6def",
+        "chatSessionId": "sess_5f14856d-41ff-4725-b9d1-b3c6178a571b",
+        "timestamp": 1793290913314
+      },
+      {
+        "executionId": "130153af-9476-4379-9789-6aa6a90a6def",
+        "chatSessionId": "sess_5f14856d-41ff-4725-b9d1-b3c6178a571b",
+        "timestamp": 1793292026603
+      },
+      {
+        "executionId": "130153af-9476-4379-9789-6aa6a90a6def",
+        "chatSessionId": "sess_5f14856d-41ff-4725-b9d1-b3c6178a571b",
+        "timestamp": 1793292219100
+      }
+    ],
+    "55. Backend RPN engine checkpoint": [
+      {
+        "executionId": "130153af-9476-4379-9789-6aa6a90a6def",
+        "chatSessionId": "sess_5f14856d-41ff-4725-b9d1-b3c6178a571b",
+        "timestamp": 1793290913494
+      },
+      {
+        "executionId": "130153af-9476-4379-9789-6aa6a90a6def",
+        "chatSessionId": "sess_5f14856d-41ff-4725-b9d1-b3c6178a571b",
+        "timestamp": 1793292223511
+      }
+    ],
+    "56.1 Extend Hypothesis strategies and the independent reference oracle": [
+      {
+        "executionId": "130153af-9476-4379-9789-6aa6a90a6def",
+        "chatSessionId": "sess_5f14856d-41ff-4725-b9d1-b3c6178a571b",
+        "timestamp": 1793290913604
+      },
+      {
+        "executionId": "130153af-9476-4379-9789-6aa6a90a6def",
+        "chatSessionId": "sess_5f14856d-41ff-4725-b9d1-b3c6178a571b",
+        "timestamp": 1793292228276
+      },
+      {
+        "executionId": "130153af-9476-4379-9789-6aa6a90a6def",
+        "chatSessionId": "sess_5f14856d-41ff-4725-b9d1-b3c6178a571b",
+        "timestamp": 1793292448840
+      }
+    ],
+    "57. Backend coverage and backward-compatibility gate": [
+      {
+        "executionId": "130153af-9476-4379-9789-6aa6a90a6def",
+        "chatSessionId": "sess_5f14856d-41ff-4725-b9d1-b3c6178a571b",
+        "timestamp": 1793290913694
+      },
+      {
+        "executionId": "130153af-9476-4379-9789-6aa6a90a6def",
+        "chatSessionId": "sess_5f14856d-41ff-4725-b9d1-b3c6178a571b",
+        "timestamp": 1793292453095
+      },
+      {
+        "executionId": "130153af-9476-4379-9789-6aa6a90a6def",
+        "chatSessionId": "sess_5f14856d-41ff-4725-b9d1-b3c6178a571b",
+        "timestamp": 1793292529028
+      }
+    ],
+    "58. Implement the pure RPN reducer": [
+      {
+        "executionId": "130153af-9476-4379-9789-6aa6a90a6def",
+        "chatSessionId": "sess_5f14856d-41ff-4725-b9d1-b3c6178a571b",
+        "timestamp": 1793290913791
+      },
+      {
+        "executionId": "130153af-9476-4379-9789-6aa6a90a6def",
+        "chatSessionId": "sess_5f14856d-41ff-4725-b9d1-b3c6178a571b",
+        "timestamp": 1793292533253
+      },
+      {
+        "executionId": "130153af-9476-4379-9789-6aa6a90a6def",
+        "chatSessionId": "sess_5f14856d-41ff-4725-b9d1-b3c6178a571b",
+        "timestamp": 1793292767895
+      }
+    ],
+    "59.1 Implement ModeToggle and StackDisplay": [
+      {
+        "executionId": "130153af-9476-4379-9789-6aa6a90a6def",
+        "chatSessionId": "sess_5f14856d-41ff-4725-b9d1-b3c6178a571b",
+        "timestamp": 1793290913894
+      },
+      {
+        "executionId": "130153af-9476-4379-9789-6aa6a90a6def",
+        "chatSessionId": "sess_5f14856d-41ff-4725-b9d1-b3c6178a571b",
+        "timestamp": 1793292772838
+      },
+      {
+        "executionId": "130153af-9476-4379-9789-6aa6a90a6def",
+        "chatSessionId": "sess_5f14856d-41ff-4725-b9d1-b3c6178a571b",
+        "timestamp": 1793293042536
+      }
+    ],
+    "59.2 Extend useKeyboard for RPN parity": [
+      {
+        "executionId": "130153af-9476-4379-9789-6aa6a90a6def",
+        "chatSessionId": "sess_5f14856d-41ff-4725-b9d1-b3c6178a571b",
+        "timestamp": 1793290913986
+      },
+      {
+        "executionId": "130153af-9476-4379-9789-6aa6a90a6def",
+        "chatSessionId": "sess_5f14856d-41ff-4725-b9d1-b3c6178a571b",
+        "timestamp": 1793292773739
+      },
+      {
+        "executionId": "130153af-9476-4379-9789-6aa6a90a6def",
+        "chatSessionId": "sess_5f14856d-41ff-4725-b9d1-b3c6178a571b",
+        "timestamp": 1793293043748
+      }
+    ],
+    "59.3 Integrate the RPN surface into Calculator.tsx": [
+      {
+        "executionId": "130153af-9476-4379-9789-6aa6a90a6def",
+        "chatSessionId": "sess_5f14856d-41ff-4725-b9d1-b3c6178a571b",
+        "timestamp": 1793290914098
+      },
+      {
+        "executionId": "130153af-9476-4379-9789-6aa6a90a6def",
+        "chatSessionId": "sess_5f14856d-41ff-4725-b9d1-b3c6178a571b",
+        "timestamp": 1793293047794
+      },
+      {
+        "executionId": "130153af-9476-4379-9789-6aa6a90a6def",
+        "chatSessionId": "sess_5f14856d-41ff-4725-b9d1-b3c6178a571b",
+        "timestamp": 1793293395344
+      }
+    ],
+    "60. Add responsive, accessible RPN styling": [
+      {
+        "executionId": "130153af-9476-4379-9789-6aa6a90a6def",
+        "chatSessionId": "sess_5f14856d-41ff-4725-b9d1-b3c6178a571b",
+        "timestamp": 1793290914241
+      },
+      {
+        "executionId": "130153af-9476-4379-9789-6aa6a90a6def",
+        "chatSessionId": "sess_5f14856d-41ff-4725-b9d1-b3c6178a571b",
+        "timestamp": 1793293396816
+      },
+      {
+        "executionId": "130153af-9476-4379-9789-6aa6a90a6def",
+        "chatSessionId": "sess_5f14856d-41ff-4725-b9d1-b3c6178a571b",
+        "timestamp": 1793293591476
+      }
+    ],
+    "61. Frontend RPN checkpoint": [
+      {
+        "executionId": "130153af-9476-4379-9789-6aa6a90a6def",
+        "chatSessionId": "sess_5f14856d-41ff-4725-b9d1-b3c6178a571b",
+        "timestamp": 1793290914322
+      },
+      {
+        "executionId": "130153af-9476-4379-9789-6aa6a90a6def",
+        "chatSessionId": "sess_5f14856d-41ff-4725-b9d1-b3c6178a571b",
+        "timestamp": 1793293596981
+      }
+    ],
+    "63. Frontend coverage and backward-compatibility gate": [
+      {
+        "executionId": "130153af-9476-4379-9789-6aa6a90a6def",
+        "chatSessionId": "sess_5f14856d-41ff-4725-b9d1-b3c6178a571b",
+        "timestamp": 1793290914413
+      },
+      {
+        "executionId": "130153af-9476-4379-9789-6aa6a90a6def",
+        "chatSessionId": "sess_5f14856d-41ff-4725-b9d1-b3c6178a571b",
+        "timestamp": 1793293601629
+      },
+      {
+        "executionId": "130153af-9476-4379-9789-6aa6a90a6def",
+        "chatSessionId": "sess_5f14856d-41ff-4725-b9d1-b3c6178a571b",
+        "timestamp": 1793293948086
+      }
+    ],
+    "65. Final Stage 4 checkpoint": [
+      {
+        "executionId": "130153af-9476-4379-9789-6aa6a90a6def",
+        "chatSessionId": "sess_5f14856d-41ff-4725-b9d1-b3c6178a571b",
+        "timestamp": 1793290914508
+      },
+      {
+        "executionId": "130153af-9476-4379-9789-6aa6a90a6def",
+        "chatSessionId": "sess_5f14856d-41ff-4725-b9d1-b3c6178a571b",
+        "timestamp": 1793293953795
+      },
+      {
+        "executionId": "130153af-9476-4379-9789-6aa6a90a6def",
+        "chatSessionId": "sess_5f14856d-41ff-4725-b9d1-b3c6178a571b",
+        "timestamp": 1793294043453
+      }
+    ],
+    "56. Refactor and extend the backend RPN test suite": [
+      {
+        "executionId": "130153af-9476-4379-9789-6aa6a90a6def",
+        "chatSessionId": "sess_5f14856d-41ff-4725-b9d1-b3c6178a571b",
+        "timestamp": 1793292448992
+      }
+    ],
+    "59. Implement the dual-mode RPN UI components": [
+      {
+        "executionId": "130153af-9476-4379-9789-6aa6a90a6def",
+        "chatSessionId": "sess_5f14856d-41ff-4725-b9d1-b3c6178a571b",
+        "timestamp": 1793293395460
       }
     ]
   }

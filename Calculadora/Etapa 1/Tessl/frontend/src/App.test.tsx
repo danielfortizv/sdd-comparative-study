@@ -102,7 +102,7 @@ describe('Calculator Frontend Client', () => {
       expect.objectContaining({
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ operation: '12.5+3', angle_unit: 'radians' }),
+        body: JSON.stringify({ operation: '12.5+3', angle_unit: 'radians', mode: 'infix' }),
       })
     );
   });
@@ -195,7 +195,7 @@ describe('Calculator Frontend Client', () => {
     expect(fetchSpy).toHaveBeenCalledWith(
       expect.any(String),
       expect.objectContaining({
-        body: JSON.stringify({ operation: 'sin(90)', angle_unit: 'degrees' }),
+        body: JSON.stringify({ operation: 'sin(90)', angle_unit: 'degrees', mode: 'infix' }),
       })
     );
   });
@@ -415,5 +415,222 @@ describe('Calculator Frontend Client', () => {
     await waitFor(() => {
       expect(screen.getByText('Failed to evaluate expression')).toBeInTheDocument();
     });
+  });
+
+  // ==========================================
+  // STAGE 4 FRONTEND RPN TESTS
+  // ==========================================
+
+  it('supports RPN / Standard Dual Mode switching and clears on switch', () => {
+    render(<App />);
+
+    // Click '5' and '+' in standard mode
+    fireEvent.click(screen.getByRole('button', { name: '5' }));
+    fireEvent.click(screen.getByRole('button', { name: 'Add' }));
+    expect(screen.getByLabelText('Arithmetic expression')).toHaveTextContent('5+');
+
+    // Switch to RPN Stack Mode
+    const rpnBtn = screen.getByRole('button', { name: 'Switch to RPN stack mode' });
+    fireEvent.click(rpnBtn);
+
+    // Expression display should be cleared, and visual stack displays (T, Z, Y, X) should appear
+    expect(screen.queryByText('5+')).not.toBeInTheDocument();
+    expect(screen.getByText('Stack Register')).toBeInTheDocument();
+    expect(screen.getByText('X (Top)')).toBeInTheDocument();
+    expect(screen.getByLabelText('Active input value')).toHaveTextContent('0');
+
+    // Switch back to Standard Infix Mode
+    const stdBtn = screen.getByRole('button', { name: 'Switch to standard infix mode' });
+    fireEvent.click(stdBtn);
+
+    // Expression display is empty
+    expect(screen.getByLabelText('Arithmetic expression')).toHaveTextContent('');
+    expect(screen.queryByText('Stack Register')).not.toBeInTheDocument();
+  });
+
+  it('renders a dynamic RPN postfix live preview in Standard Mode', () => {
+    render(<App />);
+
+    // Type "2+3*4" in standard mode
+    fireEvent.click(screen.getByRole('button', { name: '2' }));
+    fireEvent.click(screen.getByRole('button', { name: 'Add' }));
+    fireEvent.click(screen.getByRole('button', { name: '3' }));
+    fireEvent.click(screen.getByRole('button', { name: 'Multiply' }));
+    fireEvent.click(screen.getByRole('button', { name: '4' }));
+
+    // Verify RPN dynamic preview
+    expect(screen.getByLabelText('Postfix representation preview')).toHaveTextContent('RPN Preview: 2 3 4 * +');
+  });
+
+  it('allows pushing typed values onto the stack in RPN Mode', () => {
+    render(<App />);
+
+    // Switch to RPN
+    fireEvent.click(screen.getByRole('button', { name: 'Switch to RPN stack mode' }));
+
+    // Type 42
+    fireEvent.click(screen.getByRole('button', { name: '4' }));
+    fireEvent.click(screen.getByRole('button', { name: '2' }));
+    expect(screen.getByLabelText('Active input value')).toHaveTextContent('42');
+
+    // Click PUSH/ENTER
+    fireEvent.click(screen.getByRole('button', { name: 'Push value to stack' }));
+
+    // The typed buffer is reset to 0, and level X is now 42
+    expect(screen.getByLabelText('Active input value')).toHaveTextContent('0');
+    
+    // Select all text elements or check specific level
+    const stackTops = screen.getAllByText('42');
+    expect(stackTops.length).toBeGreaterThanOrEqual(1);
+  });
+
+  it('handles immediate operator and function evaluation in RPN Mode', async () => {
+    const fetchSpy = vi.spyOn(window, 'fetch').mockResolvedValue({
+      ok: true,
+      json: async () => ({ result: 6 }),
+    } as Response);
+
+    render(<App />);
+
+    // Switch to RPN
+    fireEvent.click(screen.getByRole('button', { name: 'Switch to RPN stack mode' }));
+
+    // Push 2
+    fireEvent.click(screen.getByRole('button', { name: '2' }));
+    fireEvent.click(screen.getByRole('button', { name: 'Push value to stack' }));
+
+    // Push 3
+    fireEvent.click(screen.getByRole('button', { name: '3' }));
+    fireEvent.click(screen.getByRole('button', { name: 'Push value to stack' }));
+
+    // Click Multiply '*'
+    fireEvent.click(screen.getByRole('button', { name: 'Multiply' }));
+
+    await waitFor(() => {
+      expect(fetchSpy).toHaveBeenCalledTimes(1);
+    });
+
+    expect(fetchSpy).toHaveBeenCalledWith(
+      expect.any(String),
+      expect.objectContaining({
+        body: JSON.stringify({ operation: '2 3 *', angle_unit: 'radians', mode: 'postfix' }),
+      })
+    );
+
+    await waitFor(() => {
+      // Button '6' plus stack register '6' = 2 items
+      expect(screen.getAllByText('6').length).toBe(2);
+    });
+
+    // Test a unary function immediate evaluation (e.g. sqrt(6) evaluates to 4)
+    fetchSpy.mockResolvedValue({
+      ok: true,
+      json: async () => ({ result: 4 }),
+    } as Response);
+    fetchSpy.mockClear();
+
+    // Click 'sqrt' (automatically operates on 6 on top of the stack)
+    fireEvent.click(screen.getByRole('button', { name: 'Square root function' }));
+
+    await waitFor(() => {
+      expect(fetchSpy).toHaveBeenCalledTimes(1);
+    });
+
+    expect(fetchSpy).toHaveBeenCalledWith(
+      expect.any(String),
+      expect.objectContaining({
+        body: JSON.stringify({ operation: '6 sqrt', angle_unit: 'radians', mode: 'postfix' }),
+      })
+    );
+
+    await waitFor(() => {
+      // Button '4' plus stack register '4' = 2 items
+      expect(screen.getAllByText('4').length).toBe(2);
+    });
+  });
+
+  it('handles immediate operators: x² and 10^x in RPN Mode', async () => {
+    const fetchSpy = vi.spyOn(window, 'fetch').mockResolvedValue({
+      ok: true,
+      json: async () => ({ result: 100 }),
+    } as Response);
+
+    render(<App />);
+
+    // Switch to RPN
+    fireEvent.click(screen.getByRole('button', { name: 'Switch to RPN stack mode' }));
+
+    // Push 10
+    fireEvent.click(screen.getByRole('button', { name: '1' }));
+    fireEvent.click(screen.getByRole('button', { name: '0' }));
+    fireEvent.click(screen.getByRole('button', { name: 'Push value to stack' }));
+
+    // Click x²
+    fireEvent.click(screen.getByRole('button', { name: 'Square exponentiation' }));
+
+    await waitFor(() => {
+      expect(fetchSpy).toHaveBeenCalledTimes(1);
+    });
+
+    expect(fetchSpy).toHaveBeenCalledWith(
+      expect.any(String),
+      expect.objectContaining({
+        body: JSON.stringify({ operation: '10 2 ^', angle_unit: 'radians', mode: 'postfix' }),
+      })
+    );
+
+    // 10^x function test
+    fetchSpy.mockResolvedValue({
+      ok: true,
+      json: async () => ({ result: 1000 }),
+    } as Response);
+    fetchSpy.mockClear();
+
+    // Input 3
+    fireEvent.click(screen.getByRole('button', { name: '3' }));
+    // Click 10^x
+    fireEvent.click(screen.getByRole('button', { name: '10 to the power of x' }));
+
+    await waitFor(() => {
+      expect(fetchSpy).toHaveBeenCalledTimes(1);
+    });
+
+    expect(fetchSpy).toHaveBeenCalledWith(
+      expect.any(String),
+      expect.objectContaining({
+        body: JSON.stringify({ operation: '10 3 ^', angle_unit: 'radians', mode: 'postfix' }),
+      })
+    );
+  });
+
+  it('shows user-friendly errors on stack underflow in RPN Mode', async () => {
+    render(<App />);
+
+    // Switch to RPN
+    fireEvent.click(screen.getByRole('button', { name: 'Switch to RPN stack mode' }));
+
+    // Click '+' with empty stack
+    fireEvent.click(screen.getByRole('button', { name: 'Add' }));
+
+    // Should render stack underflow error
+    expect(screen.getByText("Insufficient operands on the stack for operator '+'")).toBeInTheDocument();
+  });
+
+  it('supports backspace popping top stack value in RPN Mode when input buffer is empty', () => {
+    render(<App />);
+
+    // Switch to RPN
+    fireEvent.click(screen.getByRole('button', { name: 'Switch to RPN stack mode' }));
+
+    // Push 5
+    fireEvent.click(screen.getByRole('button', { name: '5' }));
+    fireEvent.click(screen.getByRole('button', { name: 'Push value to stack' }));
+    // Button '5' plus stack register '5' = 2 items
+    expect(screen.getAllByText('5').length).toBe(2);
+
+    // Clicking Backspace with empty input buffer should pop/drop the 5 from stack
+    fireEvent.click(screen.getByRole('button', { name: 'Backspace' }));
+    // Only button '5' remains
+    expect(screen.getAllByText('5').length).toBe(1);
   });
 });

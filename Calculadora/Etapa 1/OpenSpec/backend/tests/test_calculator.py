@@ -212,3 +212,61 @@ def test_expanded_edge_cases():
         # Extreme exponentiation causing decimal overflow or invalid operation
         evaluate_expression("999999 ** 999999")
 
+
+# ----------------------------------------------------
+# Stage 4 RPN & Shunting Yard Tests
+# ----------------------------------------------------
+
+def test_rpn_direct_evaluation():
+    # Direct RPN evaluation using stack evaluator
+    from app.calculator import evaluate_postfix, tokenize, preprocess_tokens, infix_to_postfix
+    
+    # Test postfix conversion first
+    infix = "3 + 4 * 2 - (1 + 1)"
+    tokens = tokenize(infix)
+    preprocessed = preprocess_tokens(tokens)
+    postfix = infix_to_postfix(preprocessed)
+    assert postfix == ["3", "4", "2", "*", "+", "1", "1", "+", "-"]
+    
+    # Test postfix direct execution
+    res_stack = evaluate_postfix(["3", "4", "2", "*", "+", "1", "1", "+", "-"])
+    assert len(res_stack) == 1
+    assert res_stack[0] == decimal.Decimal("9")
+
+def test_rpn_stack_underflow():
+    from app.calculator import evaluate_postfix, CalculatorError
+    with pytest.raises(CalculatorError, match="Insufficient operands on stack"):
+        evaluate_postfix(["3", "+"])
+        
+    with pytest.raises(CalculatorError, match="Insufficient operands on stack"):
+        evaluate_postfix(["sin"])
+
+def test_rpn_api_endpoints():
+    # Test RPN mode on the POST endpoint
+    response = client.post(
+        "/api/v1/evaluate",
+        json={
+            "expression": "3 4 +",
+            "mode": "rpn",
+            "stack": []
+        }
+    )
+    assert response.status_code == 200
+    data = response.json()
+    assert decimal.Decimal(data["result"]) == decimal.Decimal("7")
+    assert data["stack"] == ["7"]
+
+    # Test executing an operation on a pre-existing stack
+    response = client.post(
+        "/api/v1/evaluate",
+        json={
+            "expression": "*",
+            "mode": "rpn",
+            "stack": ["10", "5"]
+        }
+    )
+    assert response.status_code == 200
+    data = response.json()
+    assert decimal.Decimal(data["result"]) == decimal.Decimal("50")
+    assert data["stack"] == ["50"]
+

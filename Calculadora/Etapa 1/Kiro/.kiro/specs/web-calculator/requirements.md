@@ -496,3 +496,170 @@ The following requirements extend the system per `docs/SEED-3.md` with non-funct
 4. IF the Backend_Service container is not reachable over the shared container network when the Frontend_Client forwards a request addressed to the Evaluate_Endpoint, THEN THE Compose_File SHALL cause the forwarded request to fail with a service-unavailable error indicating the backend is unreachable, without returning a computed result.
 5. THE Compose_File SHALL map exactly one host network port to the Frontend_Client container's listening port so that the Frontend_Client is reachable from the host at that mapped port.
 6. WHEN a container defined in the Compose_File exits with a non-zero (unexpected) exit status, THE Compose_File SHALL apply a restart policy that automatically attempts to restart that container unless the container was explicitly stopped by an operator.
+---
+
+## Stage 4 Requirements (RPN Engine Migration)
+
+The following requirements extend the system per `docs/SEED-4.md` with a drastic architectural migration of the Evaluation_Engine from infix expression parsing to Reverse Polish Notation (RPN / postfix) evaluation, using the Shunting Yard algorithm to convert input and a dedicated stack-based execution engine to evaluate. All Stage 1 requirements (Requirements 1 through 15), all Stage 2 requirements (Requirements 16 through 25), and all Stage 3 requirements (Requirements 26 through 33) remain in force and unchanged. Stage 4 behavior SHALL NOT weaken, remove, or override any Stage 1, Stage 2, or Stage 3 requirement. The migration is a breaking change to the internal evaluation architecture only; the externally observable arithmetic results, the API contract defined in Requirements 5 and 24, and the frontend no-local-arithmetic rule defined in Requirements 14 and 24 are preserved. The Stage 4 audit and migration requirements apply to whichever math operations, state surfaces, and endpoints are actually present in the codebase at the time Stage 4 work begins.
+
+### Glossary Additions (Stage 4)
+
+- **RPN**: Reverse Polish Notation, also called postfix notation, in which each operator follows all of its operands and no parentheses are required to express precedence (e.g., the infix Expression `3 + 4 * 2` is represented in RPN as the token sequence `3 4 2 * +`).
+- **RPN_Token_Sequence**: The ordered sequence of operand tokens and operator tokens produced by converting an Expression into postfix order, consumed by the Evaluation_Stack during evaluation.
+- **Shunting_Yard**: The algorithm executed by the Evaluation_Engine that converts an infix Expression into an RPN_Token_Sequence while honoring the PEMDAS precedence, associativity, and the exponentiation and unary-minus rules defined in Requirement 2.
+- **Evaluation_Stack**: The last-in-first-out stack within the Evaluation_Engine that holds intermediate operand values of type Decimal_Precision during stack-based evaluation of an RPN_Token_Sequence.
+- **Stack_Evaluator**: The subcomponent of the Evaluation_Engine that consumes an RPN_Token_Sequence and produces a result by pushing operand tokens onto the Evaluation_Stack and, for each operator token, popping its operands, applying the operator, and pushing the result.
+- **Stack_Underflow**: The error condition in which the Stack_Evaluator attempts to pop an operand from the Evaluation_Stack to satisfy an operator but the Evaluation_Stack holds fewer operands than the operator requires.
+- **Surplus_Operands**: The error condition in which, after the Stack_Evaluator has consumed the entire RPN_Token_Sequence, the Evaluation_Stack holds more than one value, indicating a malformed Expression with operands that no operator consumed.
+- **Stack_Level**: A single named position within the visible evaluation stack of the Frontend_Client, identified in RPN calculator convention as X (the topmost, most recently entered level), Y, Z, and T (successively lower levels).
+- **Stack_Display**: The region of the Frontend_Client that renders the current values held at the active Stack_Levels (X, Y, Z, T) in real time.
+- **RPN_Mode**: The Frontend_Client input mode in which the User enters operands and operators in postfix order and uses the Enter control to push the current operand onto the Stack_Display.
+- **Standard_Mode**: The Frontend_Client input mode in which the User enters a conventional infix Expression, preserving the Stage 1 and Stage 2 input workflow.
+- **Enter_Control**: The Frontend_Client control, available in RPN_Mode, that pushes the current operand of the Expression_Display onto the Stack_Display as a new X level.
+- **Migration_Audit_Log**: A written document, stored in the repository, that records the result of inspecting the Stage 1 through Stage 3 codebase before the Stage 4 RPN migration, including every discovered defect and every category explicitly cleared as having no defect.
+
+### Requirement 34: Stage 1 Through Stage 3 Codebase Audit Before RPN Migration
+
+**User Story:** As a developer, I want the existing Stage 1 through Stage 3 codebase inspected and its defects documented before the RPN migration, so that pre-existing issues are recorded and fixed without regressing baseline behavior.
+
+#### Acceptance Criteria
+
+1. WHEN the Stage 4 RPN migration is initiated, THE System SHALL have created and persisted in the repository a Migration_Audit_Log that records the inspection of the Stage 1 through Stage 3 codebase before any Stage 4 architectural change is applied, where the inspection covers every Stage 1, Stage 2, and Stage 3 source component and the Migration_Audit_Log is created and persisted before the first Stage 4 change.
+2. THE Migration_Audit_Log SHALL cover each of the four inspection categories (functional bug, architectural flaw, Decimal_Precision issue, and test coverage gap) with, for each category, either one or more documented defect entries or an explicit record stating that no defect was found in that category, such that no category is left unaddressed.
+3. WHEN a defect is documented in the Migration_Audit_Log, THE System SHALL record for that defect a defect identifier that is unique within the Migration_Audit_Log, the inspection category (one of the four defined categories), the affected component, the input or ordered steps that reproduce the defect, the expected result, and the observed actual result, with the expected and actual results stated as distinct values.
+4. IF a remediation is applied to a documented defect, THEN THE System SHALL require that the defect was recorded in the Migration_Audit_Log with its unique defect identifier before the remediation is applied, and SHALL reject any remediation whose corresponding defect has no prior Migration_Audit_Log entry.
+5. WHEN a documented defect is remediated, THE System SHALL re-verify every acceptance criterion defined in Requirements 1 through 33 that exercises the affected component or the behavior changed by the remediation, and SHALL record, for each such criterion, a pass or fail outcome, where the remediation is accepted only if all such criteria record a pass outcome.
+6. IF a remediation of a documented defect causes any acceptance criterion in Requirements 1 through 33 to record a fail outcome, THEN THE System SHALL reject or correct that remediation before the audit activity is marked complete, SHALL retain the identifier and failing details of each affected criterion in the Migration_Audit_Log, and SHALL preserve the pre-remediation baseline behavior until the regression is resolved.
+7. IF a Stage 4 architectural change is attempted while the Migration_Audit_Log is absent or leaves any of the four inspection categories without either a documented defect entry or an explicit no-defect record, THEN THE System SHALL reject that Stage 4 change and SHALL preserve the Stage 1 through Stage 3 baseline behavior until the Migration_Audit_Log is complete.
+
+### Requirement 35: Shunting Yard Conversion to RPN
+
+**User Story:** As a developer, I want the Evaluation_Engine to convert infix expressions to postfix order using the Shunting Yard algorithm, so that evaluation is performed on a precedence-free token sequence while preserving standard order of operations.
+
+#### Acceptance Criteria
+
+1. WHEN a valid Expression of 1 to 256 characters is submitted to the Evaluate_Endpoint, THE Evaluation_Engine SHALL convert the Expression into an RPN_Token_Sequence using the Shunting_Yard algorithm before evaluation.
+2. WHEN the Shunting_Yard algorithm converts an Expression containing operators of differing precedence, THE Evaluation_Engine SHALL order the resulting RPN_Token_Sequence such that evaluating the sequence applies operators in the precedence order defined by PEMDAS in Requirement 2.
+3. WHEN the Shunting_Yard algorithm converts an Expression containing addition, subtraction, multiplication, or division operators of equal precedence, THE Evaluation_Engine SHALL order the RPN_Token_Sequence to apply those operators from left to right as defined in Requirement 2.
+4. WHEN the Shunting_Yard algorithm converts an Expression containing a chain of exponentiation operators, THE Evaluation_Engine SHALL order the RPN_Token_Sequence to apply the exponentiation operators from right to left, and SHALL order a unary minus applied to an exponentiated operand so that exponentiation is applied before the unary minus, as defined in Requirement 2.
+5. WHEN the Shunting_Yard algorithm converts an Expression containing parentheses, THE Evaluation_Engine SHALL produce an RPN_Token_Sequence that contains no parenthesis tokens and that evaluates the parenthesized subexpressions before operators outside those parentheses.
+6. WHEN the Shunting_Yard algorithm converts an Expression containing Scientific_Functions or Mathematical_Constants defined in Requirements 17 through 19, THE Evaluation_Engine SHALL include the corresponding function and constant tokens in the RPN_Token_Sequence in postfix order.
+7. WHEN the same valid Expression is converted by the Shunting_Yard algorithm on repeated submissions, THE Evaluation_Engine SHALL produce an identical RPN_Token_Sequence for every submission.
+8. IF an Expression violates the arithmetic grammar such that the Shunting_Yard algorithm cannot produce a valid RPN_Token_Sequence, including an Expression with unmatched parentheses, THEN THE Backend_Service SHALL return an Error_Response with a descriptive message identifying the grammar violation, SHALL NOT return a calculated result, and SHALL leave no partial RPN_Token_Sequence available for evaluation.
+
+### Requirement 36: Stack-Based RPN Evaluation
+
+**User Story:** As a User, I want expressions evaluated by a stack-based RPN engine, so that results remain identical to the previous infix engine while the engine architecture is migrated.
+
+#### Acceptance Criteria
+
+1. WHEN the Stack_Evaluator processes an RPN_Token_Sequence, THE Stack_Evaluator SHALL push each operand token onto the Evaluation_Stack as a Decimal_Precision value in the order the operand tokens appear in the RPN_Token_Sequence.
+2. WHEN the Stack_Evaluator processes a binary operator token, THE Stack_Evaluator SHALL pop two operands from the Evaluation_Stack, treat the first operand popped as the right operand and the second operand popped as the left operand of the binary operator, apply the operator to those operands with Decimal_Precision, and push the Decimal_Precision result back onto the Evaluation_Stack.
+3. WHEN the Stack_Evaluator processes a unary operator or unary Scientific_Function token, THE Stack_Evaluator SHALL pop one operand from the Evaluation_Stack, apply the operation to that operand, and push the Decimal_Precision result back onto the Evaluation_Stack.
+4. WHEN the Stack_Evaluator has consumed the entire RPN_Token_Sequence and the Evaluation_Stack holds exactly one value, THE Stack_Evaluator SHALL return that single value as the calculated result.
+5. WHEN an Expression that produced a valid result under the pre-migration infix engine is evaluated by the Stack_Evaluator, THE Stack_Evaluator SHALL return a result equal to the pre-migration result to at least 10 significant decimal digits under Decimal_Precision.
+6. WHEN the Stack_Evaluator pushes an operand onto or pops an operand from the Evaluation_Stack, THE Stack_Evaluator SHALL retain the exact decimal value of that operand with Decimal_Precision and SHALL NOT convert the value to a binary floating-point representation.
+7. WHEN a result produced by the Stack_Evaluator is a non-terminating decimal, THE Stack_Evaluator SHALL return the result rounded to a minimum of 10 significant decimal digits using round-half-to-even rounding.
+8. IF the Stack_Evaluator attempts to pop an operand to satisfy an operator token but the Evaluation_Stack holds fewer operands than the operator requires, THEN the Stack_Evaluator SHALL raise a Stack_Underflow condition and THE Backend_Service SHALL return an Error_Response with a descriptive message identifying the malformed RPN_Token_Sequence and SHALL NOT return a calculated result.
+9. IF the Stack_Evaluator has consumed the entire RPN_Token_Sequence and the Evaluation_Stack holds more than one value, THEN the Stack_Evaluator SHALL raise a Surplus_Operands condition and THE Backend_Service SHALL return an Error_Response with a descriptive message identifying the malformed RPN_Token_Sequence and SHALL NOT return a calculated result.
+
+### Requirement 37: Scientific RPN Execution
+
+**User Story:** As a User, I want scientific operations to work under the RPN engine, so that trigonometric functions, logarithms, roots, powers, constants, angle modes, and memory values behave as before.
+
+#### Acceptance Criteria
+
+1. WHEN the Stack_Evaluator processes a trigonometric or inverse trigonometric function token defined in Requirement 17, THE Stack_Evaluator SHALL pop one operand from the Evaluation_Stack, apply the function under the active Angle_Mode with Decimal_Precision, and push the result onto the Evaluation_Stack.
+2. WHEN the Stack_Evaluator processes a natural logarithm, base-10 logarithm, or square-root function token defined in Requirement 18, THE Stack_Evaluator SHALL pop one operand from the Evaluation_Stack, apply the function with Decimal_Precision, and push the result onto the Evaluation_Stack.
+3. WHEN the Stack_Evaluator processes an exponentiation or n-th root operator token defined in Requirement 18, THE Stack_Evaluator SHALL pop two operands from the Evaluation_Stack, treat the first operand popped as the exponent or root degree and the second operand popped as the base or radicand, apply the operator with Decimal_Precision, and push the result onto the Evaluation_Stack.
+4. WHEN the Stack_Evaluator processes a Mathematical_Constant token defined in Requirement 19, THE Stack_Evaluator SHALL push the value of that Mathematical_Constant onto the Evaluation_Stack bounded by Decimal_Precision to a minimum of 10 significant decimal digits.
+5. WHEN the Stack_Evaluator evaluates an RPN_Token_Sequence that incorporates a recalled Memory_Register value defined in Requirement 20, THE Stack_Evaluator SHALL treat that recalled value as an operand pushed onto the Evaluation_Stack with its full decimal value under Decimal_Precision.
+6. IF the Stack_Evaluator applies a Scientific_Function, root, logarithm, or exponentiation to a popped operand outside its mathematical domain (a Domain_Error defined in Requirements 17 and 18), THEN THE Backend_Service SHALL return an Error_Response with an HTTP status code in the 4xx range and a descriptive message identifying the Domain_Error, and SHALL NOT return a calculated result.
+7. IF the Stack_Evaluator attempts to pop an operand to apply a Scientific_Function, root, logarithm, or exponentiation token but the Evaluation_Stack holds fewer operands than that token requires, THEN THE Backend_Service SHALL return an Error_Response with an HTTP status code in the 4xx range and a descriptive message identifying the insufficient operands, and SHALL NOT return a calculated result.
+
+### Requirement 38: RPN-Specific Error Handling
+
+**User Story:** As a User, I want descriptive errors for malformed RPN evaluation, so that stack underflow and surplus operand conditions are reported clearly.
+
+#### Acceptance Criteria
+
+1. IF the Stack_Evaluator attempts to pop an operand to satisfy an operator while the Evaluation_Stack holds fewer operands than that operator requires (a Stack_Underflow), THEN THE Backend_Service SHALL return an Error_Response with an HTTP status code in the 4xx range and a descriptive message identifying the Stack_Underflow and the operator that could not be satisfied, and SHALL NOT return a calculated result.
+2. IF the Stack_Evaluator has consumed the entire RPN_Token_Sequence and the Evaluation_Stack holds more than one value (Surplus_Operands), THEN THE Backend_Service SHALL return an Error_Response with an HTTP status code in the 4xx range and a descriptive message identifying the Surplus_Operands condition and the count of values remaining on the Evaluation_Stack, and SHALL NOT return a calculated result.
+3. IF the Stack_Evaluator has consumed the entire RPN_Token_Sequence and the Evaluation_Stack holds zero values, THEN THE Backend_Service SHALL return an Error_Response with an HTTP status code in the 4xx range and a descriptive message identifying that no result value remained on the Evaluation_Stack, and SHALL NOT return a calculated result.
+4. IF the Stack_Evaluator encounters a token in the RPN_Token_Sequence that is neither a valid operand token nor a supported operator or Scientific_Function token, THEN THE Backend_Service SHALL return an Error_Response with an HTTP status code in the 4xx range and a descriptive message identifying the unprocessable token, and SHALL NOT return a calculated result.
+5. WHEN the Backend_Service returns an Error_Response for any RPN evaluation failure defined in criteria 1 through 4 of this requirement, THE Backend_Service SHALL include an error message field and omit any result field, preserving the mutually exclusive success and Error_Response contract defined in Requirements 5 and 24.
+
+### Requirement 39: Dual RPN and Standard Input Modes
+
+**User Story:** As a User, I want to choose between RPN and Standard input modes, so that I can enter calculations in whichever notation I prefer.
+
+#### Acceptance Criteria
+
+1. THE Frontend_Client SHALL provide a mode control that selects between RPN_Mode and Standard_Mode, that displays the currently active mode, and that defaults to Standard_Mode in the initial state before the User selects a mode.
+2. WHEN the User activates the mode control, THE Frontend_Client SHALL switch the active input mode between RPN_Mode and Standard_Mode, update the displayed active mode, and clear the current operand entry, the Stack_Display, and the Result_Display so that no value carries across the mode switch.
+3. WHILE Standard_Mode is active, THE Frontend_Client SHALL retain the Stage 1 and Stage 2 infix input workflow defined in Requirements 8, 10, 22, and 23 without alteration.
+4. WHILE RPN_Mode is active, WHEN the User activates the Enter_Control with a non-empty current operand entry, THE Frontend_Client SHALL push the current operand onto the Stack_Display as a new X Stack_Level and clear the current operand entry for the next operand.
+5. WHILE RPN_Mode is active, WHEN the User activates a binary operator control with at least two values present across the active Stack_Levels, THE Frontend_Client SHALL submit the operation to the Backend_Service through the Evaluate_Endpoint and SHALL obtain the resulting value exclusively from the Backend_Service.
+6. WHILE RPN_Mode is active, WHEN the User activates the Enter_Control with an empty current operand entry, THE Frontend_Client SHALL leave the Stack_Display and the current operand entry unchanged and SHALL present an error indication identifying that no operand is available to push.
+7. WHILE RPN_Mode is active, WHEN the User activates a binary operator control with fewer than two values present across the active Stack_Levels, THE Frontend_Client SHALL leave the Stack_Display unchanged and SHALL present an error indication identifying that insufficient values are available for the operation.
+8. WHILE RPN_Mode is active, THE Frontend_Client SHALL drive the identical reducer actions from both the on-screen keypad and the physical keyboard, such that a keypad control and its mapped keyboard key produce the same change to the Expression_Display and the Stack_Display.
+9. THE Frontend_Client SHALL compute no arithmetic result locally in either RPN_Mode or Standard_Mode and SHALL obtain every calculated result exclusively from the Backend_Service through the Evaluate_Endpoint, as defined in Requirements 14 and 24.
+
+### Requirement 40: Real-Time Stack Display
+
+**User Story:** As a User, I want to see the evaluation stack while I work in RPN mode, so that I can track the values I have entered.
+
+#### Acceptance Criteria
+
+1. WHILE RPN_Mode is active, THE Frontend_Client SHALL render a Stack_Display showing the current values held at the active Stack_Levels identified as X, Y, Z, and T.
+2. WHEN the User pushes an operand onto the Stack_Display with the Enter_Control, THE Frontend_Client SHALL place the pushed operand at the X Stack_Level and shift the previously held values to the next higher Stack_Levels before awaiting further User input.
+3. WHEN the Backend_Service returns a calculated result for an RPN operation, THE Frontend_Client SHALL update the Stack_Display to reflect the new state of the active Stack_Levels before awaiting further User input.
+4. WHILE the Stack_Display holds no pushed value at any active Stack_Level, THE Frontend_Client SHALL render an empty-state indication for the active Stack_Levels.
+5. WHEN the Stack_Display content changes, THE Frontend_Client SHALL announce the updated Stack_Display content through an `aria-live` region with a politeness setting of `polite`.
+6. THE Frontend_Client SHALL label the Stack_Display and each rendered Stack_Level with text identifying the Stack_Level it represents.
+7. IF the Backend_Service returns an Error_Response or cannot be reached during an RPN operation, THEN THE Frontend_Client SHALL retain the Stack_Display values that were present before the operation and SHALL NOT display a locally computed result.
+
+### Requirement 41: RPN Test Suite Refactoring and Coverage
+
+**User Story:** As a developer, I want the test suites refactored for the RPN engine, so that tokenization, conversion, stack operations, and RPN errors are verified while coverage gates hold.
+
+#### Acceptance Criteria
+
+1. THE Backend_Service SHALL include pytest unit tests that verify Shunting_Yard conversion of infix Expressions into the expected RPN_Token_Sequence across cases combining at least three different operator precedence levels, parentheses, and the exponentiation and unary-minus rules defined in Requirement 2.
+2. THE Backend_Service SHALL include pytest unit tests that verify the Stack_Evaluator push and pop operations and operator evaluation defined in Requirement 36, each asserting the returned result equals the expected value to at least 10 significant decimal digits.
+3. THE Backend_Service SHALL include pytest unit tests that verify each RPN evaluation error defined in Requirement 38 — Stack_Underflow, Surplus_Operands, an empty Evaluation_Stack, and an unprocessable token — each asserting that the response is an Error_Response with an HTTP status code in the 4xx range and no calculated result.
+4. THE Backend_Service SHALL include a Hypothesis property-based test, tagged as a Stage 4 RPN property with at least 100 generated examples, that cross-checks the result returned by the RPN engine against the result produced by an independent reference arithmetic oracle, asserting equality to at least 10 significant decimal digits under Decimal_Precision.
+5. THE Frontend_Client SHALL include Vitest tests that verify RPN_Mode input handling, the Enter_Control pushing an operand onto the Stack_Display, the Stack_Display rendering the active Stack_Levels, and switching between RPN_Mode and Standard_Mode, with all Backend_Service network calls intercepted by a mock such that no test issues a network request to a live Backend_Service.
+6. THE Frontend_Client SHALL include a Vitest test that verifies switching between RPN_Mode and Standard_Mode resets the Stack_Display and the in-progress operand entry to empty with no residual Stack_Levels.
+7. THE Frontend_Client SHALL include a Vitest test that, with the intercepting mock configured to return a Backend_Service error response during an RPN_Mode operation, asserts that an error indication is rendered, no calculated result is displayed, and the Stack_Display values present before the operation are retained.
+8. WHEN the Backend_Service test suite and the Frontend_Client test suite are executed with coverage measurement enabled after the RPN migration, THE System SHALL measure statement coverage and branch coverage on each layer and apply the Coverage_Threshold defined in Requirement 30.
+9. IF the measured statement coverage or the measured branch coverage of either the Backend_Service or the Frontend_Client is below the Coverage_Threshold, THEN the test run of that layer SHALL terminate with a failing outcome and report an indication identifying that the coverage threshold was not met.
+10. WHEN the full automated test suite is executed after the RPN migration, THE System SHALL complete both the Backend_Service test suite and the Frontend_Client test suite with zero test failures, zero test errors, and zero test collection errors.
+
+### Requirement 42: Docker Verification Under the RPN Architecture
+
+**User Story:** As an operator, I want the containers to build and run under the new RPN engine, so that deployment remains intact after the migration.
+
+#### Acceptance Criteria
+
+1. WHEN the Backend_Image is built after the RPN migration, THE System SHALL produce the Backend_Image from the Backend_Dockerfile using a multi-stage build and a Non_Root_User as defined in Requirement 31.
+2. WHEN the Frontend_Image is built after the RPN migration, THE System SHALL produce the Frontend_Image from the Frontend_Dockerfile using a multi-stage build that serves the compiled static assets as defined in Requirement 32.
+3. WHEN the Backend_Image is started after the RPN migration, THE Backend_Image SHALL launch the Backend_Service listening on a configured network port in the range 1 to 65535 that serves the Evaluate_Endpoint backed by the RPN engine.
+4. WHEN the Compose_File is brought up after the RPN migration, THE System SHALL start both the Backend_Service container and the Frontend_Client container on a shared container network that resolves each service by its service name, as defined in Requirement 33.
+5. THE System SHALL preserve in the Backend_Dockerfile, the Frontend_Dockerfile, and the Compose_File the final-stage base image, the Non_Root_User directive, the exposed network port, the runtime dependency-installation step, and the orchestration settings defined in Requirements 31 through 33, changing only the content required to reflect the RPN engine architecture.
+6. WHEN a request addressed to the Evaluate_Endpoint of the running Backend_Service container is forwarded over the shared container network after the RPN migration, THE Backend_Service container SHALL return the calculated result computed by the RPN engine using the success response structure and Decimal_Precision defined in Requirements 5 and 24.
+7. IF the Backend_Image or the Frontend_Image fails to build after the RPN migration, THEN THE System SHALL terminate the build with a non-zero exit status and SHALL NOT produce a tagged image for the failed build.
+
+### Requirement 43: Backward Compatibility After RPN Migration
+
+**User Story:** As a User, I want every existing calculator feature to keep working after the RPN migration, so that the engine change does not break functionality I rely on.
+
+#### Acceptance Criteria
+
+1. WHEN the full automated test suite is executed after the RPN migration is applied, THE Backend_Service SHALL satisfy every acceptance criterion defined in Requirements 1 through 33 that applies to the Backend_Service, evidenced by every automated test that verifies those criteria recording a passing outcome and with zero reported failures and zero reported errors.
+2. WHEN the full automated test suite is executed after the RPN migration is applied, THE Frontend_Client SHALL satisfy every acceptance criterion defined in Requirements 1 through 33 that applies to the Frontend_Client, evidenced by every automated test that verifies those criteria recording a passing outcome and with zero reported failures and zero reported errors.
+3. WHEN any Expression that produced a calculated result under the pre-migration infix engine is submitted to the Evaluate_Endpoint after the RPN migration, THE Backend_Service SHALL return a result equal to the pre-migration result to at least 10 significant decimal digits under Decimal_Precision.
+4. WHEN any Expression that produced an Error_Response under the pre-migration infix engine is submitted to the Evaluate_Endpoint after the RPN migration, THE Backend_Service SHALL return an Error_Response identifying the same failure condition and SHALL NOT return a calculated result.
+5. THE Frontend_Client SHALL compute no arithmetic result locally after the RPN migration and SHALL obtain every calculated result exclusively from the Backend_Service through the Evaluate_Endpoint, as defined in Requirements 14 and 24.
+6. IF executing the full automated test suite after the RPN migration reports one or more failures or errors against any acceptance criterion in Requirements 1 through 33, THEN THE System SHALL reject or correct the migration change before the migration is considered complete.
+7. WHILE the RPN migration is in effect, THE System SHALL preserve the Stage 1 through Stage 3 behavior defined in Requirements 1 through 33.

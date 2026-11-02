@@ -81,6 +81,27 @@
   --color-scientific-border: #7c8ab5;   /* boundary on panel bg -> 5.30:1 (Req 11.3);
                                             reuses the measured display-border hue */
 
+  /* ---- RPN Stack_Display surfaces (Stage 4, Task 60) ------------------ *
+   * Additive tokens for the RPN_Mode Stack_Display (X/Y/Z/T levels). They do
+   * NOT replace or weaken any Stage 1/2 token above; they only name the colors
+   * the stack levels consume so their contrast is deterministic. Stage 4 adds
+   * no new responsive/contrast requirement numbers — these reuse the Stage 1
+   * hues and are checked against the SAME WCAG targets (body/label >= 4.5:1,
+   * large text >= 3:1, boundaries/focus >= 3:1, Req 11.1-11.4).
+   *
+   * The Stack_Display renders inside `.calculator__display`, i.e. on the panel
+   * surface (--color-panel-bg #16203a). Each level sits on its own face, reusing
+   * the Stage 1 digit face so the stack reads as a group of value "cells"
+   * consistent with the digit keys. Every ratio below was measured with a WCAG
+   * relative-luminance calculation against the ACTUAL level face it renders on. */
+  --color-stack-level-bg: #303a5c;  /* reuses the Stage 1 digit face; on panel bg
+                                        #16203a -> 1.45:1 (a surface tint, not a
+                                        required boundary) */
+  --color-stack-label: #cdd6ea;     /* X/Y/Z/T label on level face -> 7.64:1 (Req 11.1) */
+  --color-stack-value: #ffffff;     /* operand value on level face -> 11.14:1 (Req 11.1) */
+  --color-stack-empty: #aab4d0;     /* muted empty-level placeholder on level face
+                                        -> 5.38:1 (Req 11.1) */
+
   /* ---- Spacing / sizing tokens ---------------------------------------- */
   --touch-min: 44px;             /* minimum touch target on mobile (Req 9.4 / 22.5) */
   --radius: 10px;

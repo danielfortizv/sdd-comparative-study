@@ -7,7 +7,7 @@ from app.calculator import evaluate_expression
 
 app = FastAPI(
     title="High-Precision Web Calculator API",
-    description="A robust, PEMDAS-compliant arithmetic and scientific calculation backend",
+    description="A robust, PEMDAS-compliant arithmetic and scientific calculation backend with Shunting-Yard and Stack RPN engine",
     version="2.0.0"
 )
 
@@ -21,8 +21,9 @@ app.add_middleware(
 )
 
 class EvaluateRequest(BaseModel):
-    operation: str = Field(..., description="The arithmetic/scientific expression to evaluate")
+    operation: str = Field(..., description="The arithmetic/scientific expression or space-separated postfix string to evaluate")
     angle_unit: Literal["radians", "degrees"] = Field("radians", description="The angle unit for trigonometric functions")
+    mode: Literal["infix", "postfix"] = Field("infix", description="The math evaluation mode (infix standard or postfix RPN)")
 
 class EvaluateResponse(BaseModel):
     result: float = Field(..., description="The numeric result of the evaluation")
@@ -36,9 +37,10 @@ class EvaluateResponse(BaseModel):
 async def evaluate(request: EvaluateRequest):
     expression = request.operation
     angle_unit = request.angle_unit
+    mode = request.mode
     
     try:
-        decimal_result = evaluate_expression(expression, angle_unit)
+        decimal_result = evaluate_expression(expression, angle_unit, mode)
         
         # Check for non-finite values (Infinity/NaN)
         if decimal_result.is_infinite() or decimal_result.is_nan():

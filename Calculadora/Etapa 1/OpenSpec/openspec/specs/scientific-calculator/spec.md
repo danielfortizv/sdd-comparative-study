@@ -5,22 +5,18 @@ Enables scientific mathematical operations, constants, and memory register manag
 ## Requirements
 
 ### Requirement: Advanced Scientific Math Evaluation
-The backend and evaluation engine SHALL support evaluating trigonometric functions (`sin`, `cos`, `tan`, `asin`, `acos`, `atan`), logarithms (`ln`, `log10`), powers (`**`, square, base-10 power), and roots (square root, $n$-th root) with high precision.
+The backend and stack evaluation engine SHALL support evaluating trigonometric functions (sin, cos, tan, asin, acos, atan), logarithms (ln, log10), powers (**, square, base-10 power), and roots (square root, n-th root) with high precision. In RPN Mode, applying a unary scientific function (e.g., sin, ln, sqrt) SHALL pop the top value (X) from the stack, apply the function, and push the result back onto the stack. Applying a binary scientific operator (e.g., **, root) SHALL pop the top two values (X and Y), apply the function, and push the result back onto the stack.
 
-#### Scenario: Exponentiation evaluation
-- **WHEN** user requests evaluation of expression `2 ** 4`
-- **THEN** system evaluates expression and returns exactly `16`
+#### Scenario: RPN scientific exponentiation evaluation
+- **WHEN** user pushes "2", pushes "4", and applies power "**"
+- **THEN** system evaluates operation and top of stack X displays "16"
 
-#### Scenario: Square root evaluation
-- **WHEN** user requests evaluation of expression `sqrt(9)`
-- **THEN** system evaluates expression and returns exactly `3`
+#### Scenario: RPN scientific square root evaluation
+- **WHEN** user pushes "9" and applies square root "sqrt"
+- **THEN** system evaluates operation and top of stack X displays "3"
 
-#### Scenario: Natural logarithm evaluation
-- **WHEN** user requests evaluation of expression `ln(e)`
-- **THEN** system evaluates expression and returns exactly `1`
-
-#### Scenario: Domain error handling
-- **WHEN** user requests evaluation of expression `sqrt(-1)` or `ln(0)`
+#### Scenario: RPN scientific domain error handling
+- **WHEN** user pushes "-1" and applies square root "sqrt"
 - **THEN** system returns an HTTP 400 Bad Request error stating "Math domain error"
 
 ### Requirement: Trigonometric Units (Radians and Degrees Toggle)
@@ -56,8 +52,8 @@ The frontend SHALL provide an interactive history panel displaying previously ev
 - **THEN** the active input display is loaded with `10 + 20`
 
 ### Requirement: Enhanced Responsive Layout and Keyboard Mapping
-The calculator interface SHALL adapt responsively to display the scientific keypad layout alongside memory operations and history controls without clipping content, and support corresponding keyboard mappings.
+The scientific calculator layout SHALL adapt to support RPN controls in scientific mode. In RPN Mode, pressing scientific keys on the virtual or physical keyboard (e.g., pressing "p" for pi, "e" for e constant) SHALL immediately push their respective values onto the stack. Unary and binary scientific keys (e.g., sqrt, ln) SHALL immediately execute on the stack's top values.
 
-#### Scenario: Mobile responsive scientific keyboard layout
-- **WHEN** user views the calculator on a mobile screen width of 375px
-- **THEN** the scientific function keys are fully accessible without breaking the layout or causing horizontal overflow
+#### Scenario: Keyboard input of scientific constants in RPN Mode
+- **WHEN** user is in RPN Mode and presses keyboard key "p"
+- **THEN** high-precision value of pi is pushed onto the stack

@@ -20,6 +20,11 @@ DomainError             Mathematical domain violation (trig/root/log/...)   17.7
                                                                             18.7-18.11,
                                                                             24.8
 InvalidFunctionError    Unrecognized identifier / function name             24.1 path
+StackUnderflowError     RPN operator needs more operands than available     36.8, 37.7,
+                                                                            38.1
+SurplusOperandsError    RPN sequence leaves >1 value on the stack           36.9, 38.2
+EmptyStackError         RPN sequence leaves 0 values on the stack           38.3
+UnprocessableTokenError RPN token is neither a valid operand nor operator   38.4
 ======================  ==================================================  ===========
 """
 
@@ -202,6 +207,125 @@ class InvalidFunctionError(EvaluationError):
         super().__init__(message)
 
 
+class StackUnderflowError(EvaluationError):
+    """Raised when an RPN operator needs more operands than the stack holds.
+
+    During stack evaluation of a linearized (Reverse Polish) token sequence, an
+    operator or function token requires one or two operands to be present on the
+    Evaluation_Stack. When fewer values are available, the operation cannot be
+    satisfied and this error is raised, naming the offending operator. With a
+    well-formed parser this is a defensive internal invariant, but it is still
+    raised, mapped to a 4xx ``ErrorResponse``, and tested.
+
+    Requirements 36.8, 37.7, 38.1.
+    """
+
+    kind = "stack_underflow"
+
+    def __init__(
+        self,
+        message: str | None = None,
+        *,
+        operator: str | None = None,
+    ) -> None:
+        self.operator = operator
+        if message is None:
+            if operator is not None:
+                message = (
+                    f"Operator '{operator}' does not have enough operands "
+                    "to evaluate."
+                )
+            else:
+                message = "An operator does not have enough operands to evaluate."
+        super().__init__(message)
+
+
+class SurplusOperandsError(EvaluationError):
+    """Raised when the RPN sequence leaves more than one value on the stack.
+
+    After the entire token sequence has been consumed, exactly one value must
+    remain on the Evaluation_Stack. When more than one value remains, the
+    expression was under-specified and this error is raised, naming the count of
+    values that remained. With a well-formed parser this is a defensive internal
+    invariant, but it is still raised, mapped to a 4xx ``ErrorResponse``, and
+    tested.
+
+    Requirements 36.9, 38.2.
+    """
+
+    kind = "surplus_operands"
+
+    def __init__(
+        self,
+        message: str | None = None,
+        *,
+        count: int | None = None,
+    ) -> None:
+        self.count = count
+        if message is None:
+            if count is not None:
+                message = (
+                    f"The expression left {count} values on the stack; "
+                    "exactly one was expected."
+                )
+            else:
+                message = (
+                    "The expression left more than one value on the stack."
+                )
+        super().__init__(message)
+
+
+class EmptyStackError(EvaluationError):
+    """Raised when the RPN sequence leaves zero values on the stack.
+
+    After the entire token sequence has been consumed, exactly one value must
+    remain on the Evaluation_Stack. When no values remain, there is no result to
+    return and this error is raised. With a well-formed parser this is a
+    defensive internal invariant, but it is still raised, mapped to a 4xx
+    ``ErrorResponse``, and tested.
+
+    Requirement 38.3.
+    """
+
+    kind = "empty_stack"
+
+    def __init__(
+        self,
+        message: str = "The expression did not produce a result.",
+    ) -> None:
+        super().__init__(message)
+
+
+class UnprocessableTokenError(EvaluationError):
+    """Raised when an RPN token is neither a valid operand nor a known operator.
+
+    During stack evaluation, every token must be a numeric operand, a constant,
+    a supported binary operator, a unary function, or the n-th root operator.
+    Any token that matches none of these cannot be processed and this error is
+    raised, naming the offending token. With a well-formed parser this is a
+    defensive internal invariant, but it is still raised, mapped to a 4xx
+    ``ErrorResponse``, and tested.
+
+    Requirement 38.4.
+    """
+
+    kind = "unprocessable_token"
+
+    def __init__(
+        self,
+        message: str | None = None,
+        *,
+        token: str | None = None,
+    ) -> None:
+        self.token = token
+        if message is None:
+            if token is not None:
+                message = f"The expression contains an unprocessable token '{token}'."
+            else:
+                message = "The expression contains an unprocessable token."
+        super().__init__(message)
+
+
 __all__ = [
     "EvaluationError",
     "EmptyExpressionError",
@@ -211,4 +335,8 @@ __all__ = [
     "DivisionByZeroError",
     "DomainError",
     "InvalidFunctionError",
+    "StackUnderflowError",
+    "SurplusOperandsError",
+    "EmptyStackError",
+    "UnprocessableTokenError",
 ]

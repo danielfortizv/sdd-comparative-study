@@ -35,11 +35,35 @@
  * Modifier combinations (Ctrl / Meta / Alt held) are never treated as calculator
  * input, so browser and OS shortcuts (copy, paste, reload, etc.) keep working.
  *
+ * Stage 4 RPN additions (purely additive; Standard_Mode behavior is unchanged —
+ * Requirement 39.3):
+ * - The optional {@link KeyboardCallbacks.mode} field tells the hook which mode is
+ *   active. When it is absent or `"standard"`, every Stage 1/2 mapping above applies
+ *   EXACTLY as before — no RPN branch is taken and no existing behavior regresses
+ *   (Requirement 39.3).
+ * - When `mode === "rpn"`, the keyboard drives the SAME reducer actions the on-screen
+ *   RPN controls drive, so keypad and keyboard produce identical RPN state changes
+ *   (Requirement 39.8):
+ *   - `Enter` (and `=`) invoke {@link KeyboardCallbacks.onPush} — the Enter_Control
+ *     `PUSH` action — INSTEAD of `onSubmit` (Requirements 39.4, 39.8, 40.2).
+ *   - the operator keys `+ - * /` and `^` invoke {@link KeyboardCallbacks.onOperator}
+ *     with that operator — the same "build infix → submit → SET_STACK" flow the
+ *     operator keypad buttons use — INSTEAD of appending the character
+ *     (Requirements 39.5, 39.8).
+ *   - digit and decimal-point keys still append to the in-progress operand via
+ *     `onAppendChar`, matching the operand keypad buttons (Requirement 39.8).
+ *   - parentheses have no meaning in postfix entry and are left as no-ops in RPN
+ *     mode; Backspace/Escape keep their Stage 1 mappings.
+ *   When the optional RPN callbacks are not supplied, the hook degrades gracefully
+ *   to the Standard_Mode mapping so partially-wired callers never crash.
+ *
  * Requirements: 10.1, 10.2, 10.3, 10.4, 10.5, 10.6, 10.7, 10.8,
- * 23.1, 23.2, 23.3, 23.4, 23.5, 23.6
+ * 23.1, 23.2, 23.3, 23.4, 23.5, 23.6, 39.3, 39.4, 39.5, 39.8, 40.2
  */
 
 import { useEffect, useRef } from 'react';
+
+import type { Mode } from '../state/rpnReducer';
 
 /**
  * Callbacks the hook invokes in response to mapped keys. The consumer supplies
@@ -72,7 +96,37 @@ export interface KeyboardCallbacks {
   onBackspace: () => void;
   /** Reset the Expression and clear the Result_Display (`Escape`, Requirement 10.7). */
   onReset: () => void;
+  /**
+   * The active calculator mode (Stage 4). When omitted or `"standard"`, the hook
+   * applies the unchanged Stage 1/2 mapping (Requirement 39.3). When `"rpn"`, the
+   * `Enter`/`=` and operator keys are routed through {@link onPush} / {@link onOperator}
+   * so the physical keyboard drives the same RPN reducer actions as the on-screen
+   * controls (Requirement 39.8).
+   */
+  mode?: Mode;
+  /**
+   * RPN_Mode Enter_Control: push the in-progress operand entry onto the stack
+   * (`Enter` / `=` in RPN_Mode — the same `PUSH` action as the on-screen
+   * Enter_Control, Requirements 39.4, 39.8, 40.2). Optional: when `mode` is `"rpn"`
+   * but this callback is not supplied, `Enter`/`=` fall back to {@link onSubmit}.
+   */
+  onPush?: () => void;
+  /**
+   * RPN_Mode operator activation: drive the same operator flow as the on-screen
+   * operator keypad buttons (Requirements 39.5, 39.8). Invoked in RPN_Mode for the
+   * operator keys `+ - * /` and `^` with that single-character operator. Optional:
+   * when `mode` is `"rpn"` but this callback is not supplied, operator keys fall
+   * back to appending the character via {@link onAppendChar}.
+   */
+  onOperator?: (operator: string) => void;
 }
+
+/**
+ * The operator keys routed through {@link KeyboardCallbacks.onOperator} in RPN_Mode
+ * (Requirements 39.5, 39.8). These are exactly the binary operators the on-screen
+ * operator keypad exposes (`+ - * /` and the exponentiation operator `^`).
+ */
+const RPN_OPERATOR_KEYS: ReadonlySet<string> = new Set(['+', '-', '*', '/', '^']);
 
 /**
  * The set of single characters that are appended verbatim to the Expression when
@@ -262,8 +316,31 @@ export function useKeyboard(callbacks: KeyboardCallbacks): void {
       // (Requirement 23.6 — a non-continuing key discards the buffer).
       clearSequence();
 
+      const rpnMode = current.mode === 'rpn';
+
       // Mapped single-character keys → append (Requirements 10.1, 10.2, 10.3, 23.1).
       if (key.length === 1 && APPENDABLE_CHARS.has(key)) {
+        // In RPN_Mode the operator keys (`+ - * /`, `^`) drive the same operator
+        // flow as the on-screen operator buttons rather than appending the character
+        // (Requirements 39.5, 39.8). Digits and the decimal point still append to the
+        // in-progress operand entry (matching the operand keypad buttons), and
+        // parentheses — meaningless in postfix entry — are left as no-ops.
+        if (rpnMode) {
+          if (RPN_OPERATOR_KEYS.has(key)) {
+            event.preventDefault();
+            if (current.onOperator) {
+              current.onOperator(key);
+            } else {
+              // Graceful fallback for a partially-wired caller.
+              current.onAppendChar(key);
+            }
+            return;
+          }
+          if (key === '(' || key === ')') {
+            // Parentheses carry no meaning in RPN operand entry: no-op.
+            return;
+          }
+        }
         event.preventDefault();
         current.onAppendChar(key);
         return;
@@ -272,11 +349,17 @@ export function useKeyboard(callbacks: KeyboardCallbacks): void {
       switch (key) {
         // `Enter` and `=` both submit the current Expression (Requirement 10.4).
         // `=` is length-1 but intentionally excluded from APPENDABLE_CHARS so it
-        // maps to submit rather than being appended.
+        // maps to submit rather than being appended. In RPN_Mode they instead drive
+        // the Enter_Control `PUSH` action, identical to the on-screen Enter_Control
+        // (Requirements 39.4, 39.8, 40.2).
         case 'Enter':
         case '=':
           event.preventDefault();
-          current.onSubmit();
+          if (rpnMode && current.onPush) {
+            current.onPush();
+          } else {
+            current.onSubmit();
+          }
           return;
 
         // Delete the last character; preventDefault stops Backspace from

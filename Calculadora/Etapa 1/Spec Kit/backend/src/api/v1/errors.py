@@ -2,6 +2,13 @@ from fastapi import Request
 from fastapi.responses import JSONResponse
 from pydantic import BaseModel
 
+# Standardized Error Codes
+SYNTAX_ERROR = "SYNTAX_ERROR"
+STACK_UNDERFLOW = "STACK_UNDERFLOW"
+DIVISION_BY_ZERO = "DIVISION_BY_ZERO"
+DOMAIN_ERROR = "DOMAIN_ERROR"
+OVERFLOW = "OVERFLOW"
+
 class ErrorResponse(BaseModel):
     error: str
     details: str

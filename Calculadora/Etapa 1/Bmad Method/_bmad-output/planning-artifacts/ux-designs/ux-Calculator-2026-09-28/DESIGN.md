@@ -2,7 +2,7 @@
 title: Scientific Web Calculator Visual Identity
 status: active
 created: 2026-09-28
-updated: 2026-10-23
+updated: 2026-10-27
 colors:
   light:
     bg-app: "#F8F9FA"
@@ -25,6 +25,8 @@ colors:
     badge-memory-text: "#B45F06"
     badge-angle-bg: "#E2F0D9"
     badge-angle-text: "#385723"
+    badge-rpn-bg: "#E8EAED"
+    badge-rpn-text: "#1A73E8"
   dark:
     bg-app: "#202124"
     bg-frame: "#303134"
@@ -46,6 +48,8 @@ colors:
     badge-memory-text: "#F1C232"
     badge-angle-bg: "#2A3A1B"
     badge-angle-text: "#93C47D"
+    badge-rpn-bg: "#303134"
+    badge-rpn-text: "#8AB4F8"
 typography:
   font-family-display: "Courier New, Menlo, SF Mono, Consolas, monospace"
   font-family-ui: "Inter, system-ui, -apple-system, sans-serif"
@@ -75,7 +79,7 @@ This document defines the visual design system, aesthetic identity, design token
 The Scientific Web Calculator balances professional precision with contemporary minimalism. Rather than feeling flat and generic, it draws inspiration from classic, tactile, high-end hardware instruments (Braun designs and physical scientific instruments) featuring:
 - **Tactile Realism:** Buttons animate dynamically on hover, focus, and active clicks, scaling down to `0.97` to emulate physical plunge travel.
 - **Visual Depth:** Recessed screen bevels use inset box shadows to separate the digital readouts cleanly.
-- **Indicator Badges:** Smooth indicator badges provide high-contrast tracking of system states (Radian vs. Degrees modes and Memory Register states).
+- **Indicator Badges:** Smooth indicator badges provide high-contrast tracking of system states (Radian vs. Degrees modes, Memory Register states, and **RPN Mode**).
 - **Collapsible Drawer Architecture:** A responsive sliding history side panel enables review of calculations.
 
 ---
@@ -89,6 +93,9 @@ The Scientific Web Calculator balances professional precision with contemporary 
 - **Angle Unit Badge ("RAD" / "DEG"):**
   * Light Mode: Soft green fill (`#E2F0D9`) / Deep green text (`#385723`).
   * Dark Mode: Forest green fill (`#2A3A1B`) / Light green text (`#93C47D`).
+- **RPN Active Badge ("RPN"):**
+  * Light Mode: Soft grey fill (`#E8EAED`) / Blue text (`#1A73E8`).
+  * Dark Mode: Dark grey fill (`#303134`) / Light blue text (`#8AB4F8`).
 
 ### 2.2 Typographic Hierarchy
 * **Faded History Display Line:** `14px` (`size-history`), normal weight.
@@ -96,13 +103,19 @@ The Scientific Web Calculator balances professional precision with contemporary 
 * **Evaluation Output:** `40px` (`size-display-result`), bold weight.
 * Display slots use strict monospace families to completely prevent character-width jittering.
 
+### 2.3 RPN Stack Visualizer Bezel
+When operating in RPN mode, the Bezel displays a multi-level stack register view:
+- **T / Z / Y / X registers** render vertically above the active input line.
+- Labels (`T:`, `Z:`, `Y:`, `X:`) are marked in a prominent brand color (`var(--btn-operator-text)`) and values are aligned cleanly using a stable monospace font.
+- Dotted dividers (`border-bottom: 1px dashed`) separate the stack registers from the active input.
+
 ---
 
 ## 3. Responsive Layout & Spacing
 
 To preserve the minimum touch target clearance of **$48\text{px}$** (WCAG 2.1 AA) and prevent mobile screen overcrowding, the button grid employs a dual-keypad collapsible grid system:
 
-1. **Standard Arithmetic Grid:** Renders default operators, digits, decimals, Backspace, AC, and equals keys.
+1. **Standard Arithmetic Grid:** Renders default operators, digits, decimals, Backspace, AC, and equals (`=`) or **`ENTER`** keys.
 2. **Scientific Grid Expansion:** Conditional keypad slide-out containing:
    - Angle Units Toggles (`RAD/DEG`).
    - Memory Register Controls (`MC`, `MR`, `M+`, `M-`).

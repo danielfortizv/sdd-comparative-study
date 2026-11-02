@@ -5,6 +5,7 @@ interface ButtonGridProps {
   onClear: () => void;
   onBackspace: () => void;
   onEvaluate: () => void;
+  mode?: 'standard' | 'rpn';
 }
 
 interface CalcButton {
@@ -12,6 +13,7 @@ interface CalcButton {
   value: string;
   type: 'number' | 'operator' | 'action' | 'equals';
   ariaLabel: string;
+  disabledInRpn?: boolean;
 }
 
 export const ButtonGrid: React.FC<ButtonGridProps> = ({
@@ -19,12 +21,15 @@ export const ButtonGrid: React.FC<ButtonGridProps> = ({
   onClear,
   onBackspace,
   onEvaluate,
+  mode = 'standard',
 }) => {
+  const isRpn = mode === 'rpn';
+
   const buttons: CalcButton[] = [
     { label: 'AC', value: 'clear', type: 'action', ariaLabel: 'Clear all entries and reset calculator' },
     { label: '⌫', value: 'backspace', type: 'action', ariaLabel: 'Delete last character' },
-    { label: '(', value: '(', type: 'operator', ariaLabel: 'Open parenthesis' },
-    { label: ')', value: ')', type: 'operator', ariaLabel: 'Close parenthesis' },
+    { label: '(', value: '(', type: 'operator', ariaLabel: 'Open parenthesis', disabledInRpn: true },
+    { label: ')', value: ')', type: 'operator', ariaLabel: 'Close parenthesis', disabledInRpn: true },
 
     { label: '7', value: '7', type: 'number', ariaLabel: 'Number seven' },
     { label: '8', value: '8', type: 'number', ariaLabel: 'Number eight' },
@@ -43,14 +48,17 @@ export const ButtonGrid: React.FC<ButtonGridProps> = ({
 
     { label: '0', value: '0', type: 'number', ariaLabel: 'Number zero' },
     { label: '.', value: '.', type: 'number', ariaLabel: 'Decimal point' },
-    { label: '=', value: 'equals', type: 'equals', ariaLabel: 'Evaluate arithmetic expression' },
+    { label: isRpn ? 'ENTER' : '=', value: 'equals', type: isRpn ? 'action' : 'equals', ariaLabel: isRpn ? 'Push current value onto stack' : 'Evaluate arithmetic expression' },
     { label: '+', value: '+', type: 'operator', ariaLabel: 'Add operator' },
   ];
 
   return (
     <div className="calculator-button-grid" role="grid" aria-label="Calculator button keys">
       {buttons.map((btn, index) => {
+        const isDisabled = isRpn && btn.disabledInRpn;
+        
         const handleClick = () => {
+          if (isDisabled) return;
           if (btn.value === 'clear') {
             onClear();
           } else if (btn.value === 'backspace') {
@@ -66,9 +74,10 @@ export const ButtonGrid: React.FC<ButtonGridProps> = ({
           <button
             key={index}
             type="button"
-            className={`calc-btn btn-${btn.type}`}
+            className={`calc-btn btn-${btn.type} ${isDisabled ? 'disabled-key' : ''}`}
             onClick={handleClick}
             aria-label={btn.ariaLabel}
+            disabled={isDisabled}
           >
             {btn.label}
           </button>

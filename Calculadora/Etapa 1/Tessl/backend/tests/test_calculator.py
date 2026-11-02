@@ -160,3 +160,57 @@ def test_unknown_function():
     with pytest.raises(ValueError, match="Expected number, constant, function"):
         evaluate_expression("invalidfunc(5)")
 
+# ==========================================
+# STAGE 4 RPN/POSTFIX ENGINE TESTS
+# ==========================================
+
+def test_rpn_basic_evaluation():
+    # Simple arithmetic
+    assert evaluate_expression("2 3 +", mode="postfix") == Decimal("5")
+    assert evaluate_expression("10 4 -", mode="postfix") == Decimal("6")
+    assert evaluate_expression("4 5 *", mode="postfix") == Decimal("20")
+    assert evaluate_expression("20 4 /", mode="postfix") == Decimal("5")
+    # Chained expression
+    # "2 3 4 * +" equivalent to 2 + (3 * 4) = 14
+    assert evaluate_expression("2 3 4 * +", mode="postfix") == Decimal("14")
+    # "3 5 + 2 ^" equivalent to (3 + 5) ^ 2 = 64
+    assert evaluate_expression("3 5 + 2 ^", mode="postfix") == Decimal("64")
+
+def test_rpn_scientific_evaluation():
+    # Constants
+    assert evaluate_expression("pi", mode="postfix") == Decimal("3.141592653589793238462643383")
+    assert evaluate_expression("e", mode="postfix") == Decimal("2.718281828459045235360287471")
+    # Functions
+    assert pytest.approx(float(evaluate_expression("pi 2 / sin", mode="postfix"))) == 1.0
+    assert evaluate_expression("9 sqrt", mode="postfix") == Decimal("3")
+    assert pytest.approx(float(evaluate_expression("e ln", mode="postfix"))) == 1.0
+    assert evaluate_expression("100 log", mode="postfix") == Decimal("2")
+
+def test_rpn_underflow_errors():
+    # Binary operator with < 2 operands
+    with pytest.raises(ValueError, match="Insufficient operands on the stack for operator '\\+'"):
+        evaluate_expression("5 +", mode="postfix")
+    with pytest.raises(ValueError, match="Insufficient operands on the stack for operator '\\*'"):
+        evaluate_expression("*", mode="postfix")
+    # Unary operator/function with 0 operands
+    with pytest.raises(ValueError, match="Insufficient operands on the stack for function 'sin'"):
+        evaluate_expression("sin", mode="postfix")
+
+def test_rpn_unresolved_stack():
+    # Unresolved tokens left on stack
+    with pytest.raises(ValueError, match="Unexpected values on stack"):
+        evaluate_expression("2 3", mode="postfix")
+    with pytest.raises(ValueError, match="Unexpected values on stack"):
+        evaluate_expression("2 3 4 +", mode="postfix")
+
+def test_rpn_invalid_tokens():
+    with pytest.raises(ValueError, match="Expected number, constant, function, or operator"):
+        evaluate_expression("5 invalid_tok +", mode="postfix")
+    with pytest.raises(ValueError, match="Expected number, constant, function, or operator"):
+        evaluate_expression("5 @ +", mode="postfix")
+
+def test_invalid_mode():
+    with pytest.raises(ValueError, match="Invalid mode"):
+        evaluate_expression("1 + 1", mode="invalid_mode")
+
+

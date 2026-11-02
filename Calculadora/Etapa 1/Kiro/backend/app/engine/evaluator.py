@@ -291,8 +291,12 @@ def _strip_trailing_zeros(value: Decimal, ctx: Context) -> Decimal:
     exponent = normalized.as_tuple().exponent
     if isinstance(exponent, int) and exponent > 0:
         # Integral magnitude expressed with a positive exponent (e.g. 1E+1):
-        # re-expand to a plain integer form (10) via quantize to 1.
-        return normalized.quantize(Decimal(1), context=ctx)
+        # re-expand to a plain integer form (10). ``quantize(Decimal(1))`` would
+        # raise ``InvalidOperation`` once the integer needs more digits than the
+        # context precision (e.g. ``(2000^4)^4 == 6.5536E+52`` has 53 digits),
+        # so convert through ``int`` instead, which is unbounded and exact for
+        # an integral value.
+        return Decimal(int(normalized))
     return normalized
 
 

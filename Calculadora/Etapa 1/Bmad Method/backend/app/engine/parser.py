@@ -1,18 +1,17 @@
-import ast
 import decimal
-from backend.app.engine.evaluator import SafeMathEvaluator
+from decimal import Decimal
+from backend.app.engine.evaluator import tokenize, infix_to_postfix, evaluate_postfix, RPNEvaluationError
 
 class MathEvaluationError(ValueError):
     """Custom domain exception raised for mathematical evaluation or syntax errors."""
     pass
 
 def safe_parse_and_evaluate(expression: str, angle_unit: str = "radians") -> decimal.Decimal:
-    """Parses a mathematical expression string into a Python AST and evaluates it safely
+    """Parses a mathematical expression string, converts it to postfix RPN,
 
-    using a custom safe visitor pattern.
-    
-    All mathematical, syntax, and whitelisting exceptions are caught and wrapped
-    into a standardized MathEvaluationError domain exception.
+    and evaluates it safely using a stack-based evaluator. All mathematical, syntax, 
+    and whitelisting exceptions are caught and wrapped into a standardized 
+    MathEvaluationError domain exception.
     """
     if not isinstance(expression, str):
         raise MathEvaluationError("Error: Input expression must be a string")
@@ -22,25 +21,33 @@ def safe_parse_and_evaluate(expression: str, angle_unit: str = "radians") -> dec
         raise MathEvaluationError("Error: Expression is empty")
     
     try:
-        # ast.parse with mode='eval' compiles strictly as a single evaluation expression,
-        # never as multiple statements. This is highly secure.
-        tree = ast.parse(cleaned_expr, mode='eval')
-    except SyntaxError as err:
-        error_msg = str(err).lower()
-        if "unmatched" in error_msg or "never closed" in error_msg or "unclosed" in error_msg:
-            raise MathEvaluationError("Error: Unbalanced parentheses") from err
-        raise MathEvaluationError("Error: Invalid syntax structure") from err
+        tokens = tokenize(cleaned_expr)
+        if not tokens:
+            raise MathEvaluationError("Error: Expression is empty")
+            
+        postfix = infix_to_postfix(tokens)
+        stack = evaluate_postfix(postfix, angle_unit=angle_unit)
         
-    evaluator = SafeMathEvaluator(angle_unit=angle_unit)
-    try:
-        return evaluator.evaluate(tree)
+        if len(stack) > 1:
+            raise MathEvaluationError("Error: Invalid syntax structure")
+        elif not stack:
+            raise MathEvaluationError("Error: Evaluation resulted in unexpected empty stack")
+            
+        return stack[0]
     except (ZeroDivisionError, decimal.DivisionByZero) as err:
         raise MathEvaluationError("Error: Division by zero") from err
-    except (TypeError, ValueError) as err:
+    except (TypeError, ValueError, RPNEvaluationError) as err:
         err_msg = str(err)
-        # Preserve whitelisting syntax node errors
-        if "Error: Forbidden syntax node" in err_msg:
+        # Map syntax issues (like stack underflow) in standard mode to invalid syntax structure
+        if "stack underflow" in err_msg.lower():
+            raise MathEvaluationError("Error: Invalid syntax structure") from err
+        # Keep custom power-operation division by zero distinct from basic division by zero
+        if "division by zero" in err_msg.lower() and "power operation" not in err_msg.lower():
+            raise MathEvaluationError("Error: Division by zero") from err
+        if "unbalanced parentheses" in err_msg.lower():
+            raise MathEvaluationError("Error: Unbalanced parentheses") from err
+        if "forbidden" in err_msg.lower():
             raise MathEvaluationError(err_msg) from err
-        raise MathEvaluationError(f"Error: Invalid expression: {err_msg}") from err
+        raise MathEvaluationError(err_msg) from err
     except Exception as err:
         raise MathEvaluationError(f"Error: Evaluation failed: {str(err)}") from err

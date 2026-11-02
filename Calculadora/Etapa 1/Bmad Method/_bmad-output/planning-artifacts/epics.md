@@ -6,6 +6,7 @@ stepsCompleted:
   - 4
   - 5
   - 6
+  - 7
 inputDocuments:
   - _bmad-output/planning-artifacts/prds/prd-Calculator-2026-09-28/prd.md
   - _bmad-output/planning-artifacts/architecture/architecture-Calculator-2026-09-28/ARCHITECTURE-SPINE.md
@@ -33,6 +34,8 @@ This document provides the complete epic and story breakdown for the Scientific 
 * **FR-10:** High-Precision Client-Side Memory Accumulator
 * **FR-11:** Slide-Out Session Calculation History Drawer
 * **FR-12:** Multi-Container Secure Packaging & Orchestration
+* **FR-13:** Postfix Evaluation Mode
+* **FR-14:** Real-Time Stack Visualizer
 
 ---
 
@@ -61,6 +64,10 @@ Re-design the main keypad layout to cleanly support scientific functions and mem
 ### Epic 6: Security, Testing Quality & Containerization
 Enforce rigorous, automated testing gates and multi-container Docker deployments.
 **FRs covered:** FR-4, FR-12
+
+### Epic 7: Reverse Polish Notation (RPN) Stack Migration
+Migrate the evaluation engine to leverage Shunting Yard and Decimal RPN evaluation, updating the frontend UI with a dual-mode controller and real-time stack visualizer.
+**FRs covered:** FR-1, FR-2, FR-3, FR-5, FR-6, FR-9, FR-13, FR-14
 
 ---
 
@@ -151,3 +158,19 @@ Enforce rigorous, automated testing gates and multi-container Docker deployments
 #### Story 6.3: Multi-Stage Production Containerization and Unified Local Orchestration
 - **intent:** Containerize the services using multi-stage production Dockerfiles and orchestrate them via Compose.
 - **Acceptance Criteria:** Write secure backend Dockerfile (non-root run execution) and frontend Dockerfile (static asset compile with Nginx serving), orchestrated in a unified `docker-compose.yml`.
+
+---
+
+### Epic 7: Reverse Polish Notation (RPN) Stack Migration
+
+#### Story 7.1: Shunting Yard Translation and Decimal RPN Engine
+- **intent:** Build a secure Shunting Yard tokenizer and Decimal RPN stack engine resolving operators, variables, and scientific functions.
+- **Acceptance Criteria:** Infix expressions convert correctly to Postfix RPN, and Postfix tokens evaluate accurately on top of input stacks using the Decimal module.
+
+#### Story 7.2: Interactive Dual-Mode Bezel Display and Tactile RPN Keypad
+- **intent:** Update the React frontend with standard/RPN layout toggles, X-Y-Z-T stack visualizers, and ENTER button mappings.
+- **Acceptance Criteria:** Users can operate in RPN mode using the ENTER button and globally intercepted numpad ENTER hotkeys, tracking active register transitions dynamically.
+
+#### Story 7.3: RPN Test Suite Expansion and Quality Assurance Enforcement
+- **intent:** Ensure 100% of standard infix tests are preserved and append thorough RPN API and frontend tests, maintaining total code coverage >= 80%.
+- **Acceptance Criteria:** Pytest and Vitest code gates continue to pass completely with coverage exceeding 80% on both layers.

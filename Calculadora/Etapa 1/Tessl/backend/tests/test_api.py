@@ -132,3 +132,34 @@ def test_evaluate_endpoint_unexpected_error(monkeypatch):
     detail = response.json()["detail"]
     assert detail["type"] == "server error"
     assert "Unexpected engine crash" in detail["message"]
+
+# ==========================================
+# STAGE 4 POSTFIX API TESTS
+# ==========================================
+
+def test_evaluate_endpoint_postfix_success():
+    response = client.post(
+        "/api/v1/evaluate",
+        json={"operation": "2 3 4 * +", "angle_unit": "radians", "mode": "postfix"}
+    )
+    assert response.status_code == 200
+    assert response.json() == {"result": 14.0}
+
+def test_evaluate_endpoint_postfix_scientific_success():
+    response = client.post(
+        "/api/v1/evaluate",
+        json={"operation": "pi 2 / sin", "angle_unit": "radians", "mode": "postfix"}
+    )
+    assert response.status_code == 200
+    assert response.json()["result"] == 1.0
+
+def test_evaluate_endpoint_postfix_underflow_error():
+    response = client.post(
+        "/api/v1/evaluate",
+        json={"operation": "5 +", "angle_unit": "radians", "mode": "postfix"}
+    )
+    assert response.status_code == 400
+    detail = response.json()["detail"]
+    assert detail["type"] == "syntax error"
+    assert "Insufficient operands" in detail["message"]
+

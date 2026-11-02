@@ -83,3 +83,58 @@ def test_api_scientific_domain_error():
     assert json_data["status"] == "error"
     assert "Square root of a negative number" in json_data["message"]
 
+
+def test_api_rpn_postfix_addition():
+    payload = {
+        "expression": "+",
+        "stack": ["10", "20"],
+        "expr_format": "postfix"
+    }
+    response = client.post("/api/v1/evaluate", json=payload)
+    assert response.status_code == 200
+    json_data = response.json()
+    assert json_data["status"] == "success"
+    assert json_data["result"] == "30"
+    assert json_data["stack"] == ["30"]
+
+
+def test_api_rpn_postfix_complex():
+    payload = {
+        "expression": "10 20 + 3 *",
+        "stack": [],
+        "expr_format": "postfix"
+    }
+    response = client.post("/api/v1/evaluate", json=payload)
+    assert response.status_code == 200
+    json_data = response.json()
+    assert json_data["status"] == "success"
+    assert json_data["result"] == "90"
+    assert json_data["stack"] == ["90"]
+
+
+def test_api_rpn_postfix_stack_underflow():
+    payload = {
+        "expression": "+",
+        "stack": ["10"],
+        "expr_format": "postfix"
+    }
+    response = client.post("/api/v1/evaluate", json=payload)
+    assert response.status_code == 422
+    json_data = response.json()
+    assert json_data["status"] == "error"
+    assert json_data["error_type"] == "stack_underflow"
+    assert "Stack underflow" in json_data["message"]
+
+
+def test_api_rpn_invalid_stack():
+    payload = {
+        "expression": "+",
+        "stack": ["abc"],
+        "expr_format": "postfix"
+    }
+    response = client.post("/api/v1/evaluate", json=payload)
+    assert response.status_code == 422
+    json_data = response.json()
+    assert json_data["status"] == "error"
+    assert json_data["error_type"] == "invalid_stack"
+

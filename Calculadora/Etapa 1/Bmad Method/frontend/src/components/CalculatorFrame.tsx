@@ -14,6 +14,10 @@ export const CalculatorFrame: React.FC = () => {
     clearAll,
     backspace,
     evaluateFinal,
+    // Dual Mode & Stack properties
+    calcMode,
+    toggleCalcMode,
+    stack,
     // Stage 2 Hooks
     angleUnit,
     toggleAngleUnit,
@@ -57,7 +61,16 @@ export const CalculatorFrame: React.FC = () => {
             aria-label={showScientific ? "Hide scientific keypad" : "Show scientific keypad"}
             aria-pressed={showScientific}
           >
-            {showScientific ? 'Standard' : 'Scientific'}
+            {showScientific ? 'Standard Keys' : 'Scientific'}
+          </button>
+
+          <button 
+            className={`toggle-btn ${calcMode === 'rpn' ? 'active' : ''}`}
+            onClick={toggleCalcMode}
+            aria-label={calcMode === 'rpn' ? "Switch to standard infix mode" : "Switch to RPN stack mode"}
+            aria-pressed={calcMode === 'rpn'}
+          >
+            {calcMode === 'rpn' ? 'RPN Mode' : 'Standard Mode'}
           </button>
           
           <button 
@@ -77,6 +90,8 @@ export const CalculatorFrame: React.FC = () => {
           state={state}
           angleUnit={angleUnit}
           memory={memory}
+          calcMode={calcMode}
+          stack={stack}
         />
         
         <ButtonGrid
@@ -91,6 +106,7 @@ export const CalculatorFrame: React.FC = () => {
           handleMemoryOperation={handleMemoryOperation}
           clearMemory={clearMemory}
           recallMemory={recallMemory}
+          calcMode={calcMode}
         />
       </div>
 

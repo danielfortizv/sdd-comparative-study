@@ -6,11 +6,13 @@ const API_BASE_URL = typeof window !== 'undefined' && window.location.origin.inc
 
 export async function evaluateExpression(
   expression: string,
-  angleUnit: 'radians' | 'degrees' = 'radians'
+  angleUnit: 'radians' | 'degrees' = 'radians',
+  mode: 'standard' | 'rpn' = 'standard'
 ): Promise<CalculationResponse> {
   const requestPayload: CalculationRequest = {
     expression,
     angle_unit: angleUnit,
+    mode,
   };
 
   try {

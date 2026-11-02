@@ -484,3 +484,43 @@ body {
     gap: 8px;
   }
 }
+
+/* RPN Stack Display styles */
+.rpn-stack-display {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  width: 100%;
+  font-family: monospace;
+}
+
+.stack-level {
+  display: flex;
+  justify-content: space-between;
+  font-size: 1.1rem;
+  color: var(--text-expr);
+  border-bottom: 1px dashed #2d2d2d;
+  padding: 2px 0;
+}
+
+.active-level {
+  color: var(--text-res);
+  font-size: 1.4rem;
+  font-weight: bold;
+  border-bottom: 1px solid #444;
+  padding: 4px 0;
+}
+
+.level-label {
+  color: var(--btn-op);
+  font-weight: bold;
+  margin-right: 10px;
+}
+
+.stack-error-line {
+  color: var(--text-err);
+  font-size: 0.9rem;
+  margin-top: 4px;
+  text-align: right;
+  width: 100%;
+}

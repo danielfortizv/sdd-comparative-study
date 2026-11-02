@@ -295,4 +295,39 @@ describe('Web Calculator Frontend tests', () => {
     fireEvent.click(screen.getByRole('button', { name: 'Memory recall (MR)' }));
     expect(screen.getByLabelText(/Current expression/)).toHaveTextContent('5');
   });
+
+  it('supports RPN Mode dual-mode toggling, stack visualization and entry keys', async () => {
+    render(<App />);
+    
+    const modeToggleBtn = screen.getByLabelText(/Toggle calculator mode/);
+    expect(modeToggleBtn).toHaveTextContent('ALG');
+    
+    // Toggle to RPN Mode
+    fireEvent.click(modeToggleBtn);
+    expect(modeToggleBtn).toHaveTextContent('RPN');
+    
+    // Verify stack display is visible
+    expect(screen.getByLabelText('RPN Evaluation Stack')).toBeInTheDocument();
+    expect(screen.getByLabelText('Stack Level X: 0')).toBeInTheDocument();
+    expect(screen.getByLabelText('Stack Level Y: 0')).toBeInTheDocument();
+    expect(screen.getByLabelText('Stack Level Z: 0')).toBeInTheDocument();
+    expect(screen.getByLabelText('Stack Level T: 0')).toBeInTheDocument();
+
+    // Type 5 and push to stack
+    fireEvent.click(screen.getByRole('button', { name: '5' }));
+    expect(screen.getByLabelText('Stack Level X: 5')).toBeInTheDocument();
+    
+    // Click ENT button
+    const entBtn = screen.getByRole('button', { name: /Push onto stack/ });
+    fireEvent.click(entBtn);
+    
+    // Stack X should show 5 as part of rpnStack (since buffer is cleared)
+    expect(screen.getByLabelText('Stack Level X: 5')).toBeInTheDocument();
+
+    // Type 10
+    fireEvent.click(screen.getByRole('button', { name: '1' }));
+    fireEvent.click(screen.getByRole('button', { name: '0' }));
+    expect(screen.getByLabelText('Stack Level X: 10')).toBeInTheDocument(); // X has active buffer "10"
+    expect(screen.getByLabelText('Stack Level Y: 5')).toBeInTheDocument();  // Y has "5"
+  });
 });

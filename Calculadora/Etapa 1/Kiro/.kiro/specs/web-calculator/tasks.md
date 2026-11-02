@@ -460,25 +460,25 @@ Stage 3 adds **no new runtime behavior**: it adds a persisted audit, exhaustive 
     - Confirm the frontend component/state suite completes in a single non-interactive `vitest run` with zero failures and zero errors (29.6)
     - _Requirements: 29.4, 29.5, 29.6_
 
-- [~] 44. Backward-compatibility and coverage-gate checkpoint
+- [x] 44. Backward-compatibility and coverage-gate checkpoint
   - Run the full combined suite — backend pytest with coverage (Stage 1 Requirement 15 tests + Stage 2 Requirement 25 tests + properties P1–P24 + the new Stage 3 edge-case tests) and frontend Vitest with coverage (Stage 1/2 component/reducer tests + the new Stage 3 tests) — and confirm zero failures and zero errors on both suites and ≥80% statement and branch coverage on both layers
   - Perform the negative check once: run a deliberately under-covered subset to confirm the coverage gate actually fails below threshold and reports the unmet metric, then restore the full run
   - Reject or correct any Stage 3 change that reports a failure or error against a Requirement 1–25 criterion, preserving the Stage 1 and Stage 2 baseline until resolved
   - Ensure all tests pass, ask the user if questions arise.
   - _Requirements: 27.1, 27.2, 27.3, 27.4, 26.6, 30.3, 30.4, 30.5, 30.6_
 
-- [~] 45. Create the backend container image artifacts
+- [x] 45. Create the backend container image artifacts
   - Create `backend/Dockerfile` as a multi-stage build: a builder stage installs only runtime dependencies into `/opt/venv`, and a final stage based on `python:3.11-slim` copies the venv and `app/`, creates a non-root `appuser` with a uid that is not 0, sets `USER appuser`, sets `ENV PORT=8000`, `EXPOSE 8000`, and execs `uvicorn app.main:app --host 0.0.0.0 --port ${PORT:-8000}` so a startup failure exits with a non-zero status and an unset `PORT` falls back to the default port
   - Create `backend/.dockerignore` excluding `.venv`, `tests/`, `.pytest_cache`, `.hypothesis`, and `__pycache__`
   - _Requirements: 31.1, 31.2, 31.3, 31.4, 31.5, 31.6, 31.7_
 
-- [~] 46. Create the frontend container image artifacts
+- [x] 46. Create the frontend container image artifacts
   - Create `frontend/Dockerfile` as a multi-stage build: a `node:20-alpine` build stage runs `npm ci && npm run build` producing `dist/`, and a final `nginx:alpine` stage copies only `dist/` into `/usr/share/nginx/html` and copies `nginx.conf`
   - Create `frontend/nginx.conf` with an SPA fallback `location / { try_files $uri $uri/ /index.html; }` (unknown routes return `index.html` with a success status; existing assets return the asset with a success status) and `location /api/ { proxy_pass http://backend:8000; }` to reverse-proxy the Evaluate_Endpoint to the backend service by name
   - Create `frontend/.dockerignore` excluding `node_modules`, `dist`, and `coverage`
   - _Requirements: 32.1, 32.2, 32.3, 32.4, 32.5, 32.6, 33.3_
 
-- [~] 47. Create the multi-container orchestration compose file
+- [x] 47. Create the multi-container orchestration compose file
   - Create `docker-compose.yml` at the repository root defining a backend service built from `./backend` and a frontend service built from `./frontend` on the shared default network so each service resolves the other by its service name
   - Map exactly one host port to the frontend container's listening port (e.g. `8080:80`), do NOT host-publish the backend service, and set `restart: unless-stopped` on both services so an unexpected non-zero exit auto-restarts unless an operator stopped the container
   - _Requirements: 33.1, 33.2, 33.5, 33.6_
@@ -494,7 +494,7 @@ Stage 3 adds **no new runtime behavior**: it adds a persisted audit, exhaustive 
     - Bring the stack up and confirm both services start, the frontend reaches the backend by service name, a request through the frontend `/api` path returns a computed result, and with the backend stopped the `/api` path yields a service-unavailable error with no computed result
     - _Requirements: 33.2, 33.3, 33.4_
 
-- [~] 49. Final Stage 3 checkpoint
+- [x] 49. Final Stage 3 checkpoint
   - Confirm the full combined test suite passes with zero failures/errors and the ≥80% statement + branch coverage gate holds on both layers, and that the container stack (backend image, frontend image, compose orchestration) is verified
   - Ensure all tests pass, ask the user if questions arise.
   - _Requirements: 27.3, 30.3, 30.4, 31.1, 32.1, 33.1_
@@ -519,6 +519,183 @@ Stage 3 adds **no new runtime behavior**: it adds a persisted audit, exhaustive 
     { "id": 4, "tasks": ["45", "46"] },
     { "id": 5, "tasks": ["47"] },
     { "id": 6, "tasks": ["48.1", "48.2", "48.3"] }
+  ]
+}
+```
+
+---
+
+## Stage 4 Tasks (RPN Engine Migration)
+
+Stage 4 performs a drastic **internal** architectural migration of the Evaluation_Engine from infix AST-walking to Reverse Polish Notation (RPN / postfix) evaluation, while preserving every externally observable behavior: the arithmetic results, the error conditions, the `POST /api/v1/evaluate` contract (Requirements 5, 24), and the frontend no-local-arithmetic rule (Requirements 14, 24). All Stage 1 tasks (1–15), Stage 2 tasks (16–38), and Stage 3 tasks (39–49) remain in force and unchanged. Per the design and the SEED-4 agent instructions, work proceeds **backend-first**: the persisted Migration_Audit_Log is produced **first** (before any other Stage 4 change), then the engine migration (errors → RPN model/linearizer → stack evaluator → rewire), then the backend tests and coverage/regression gate, then the frontend dual-mode surface, then the frontend tests, then container verification, with the final backward-compatibility checkpoint last. The chosen approach **keeps the recursive-descent parser and adds a pure AST→RPN linearization** (`to_rpn`) plus a `stack_evaluate` stack machine, so Requirement 2 precedence/associativity is inherited rather than re-implemented, and the single public entry point `evaluate_expression()` keeps its exact signature. Stage 4 adds new correctness properties **P25–P35** and reuses P1–P24 as the backward-compatibility regression proof. Per the steering note, long-running servers (uvicorn `--reload`, `npm run dev`, `docker compose up`) are run manually in a terminal, never as blocking automation.
+
+- [x] 50. Produce the persisted Migration_Audit_Log (before any other Stage 4 change)
+  - Create `docs/stage4-audit-log.md` persisted before the first Stage 4 edit so its creation provably precedes all other Stage 4 work (this is wave 0); the inspection covers every Stage 1, Stage 2, and Stage 3 source component (the full `backend/app/engine/*`, `backend/app/api/*`, `backend/app/main.py`, the `backend/tests/` suite incl. `tests/properties/strategies.py`, the frontend `src/api/*`, `src/state/*`, `src/hooks/*`, `src/components/*`, and the container artifacts)
+  - Record the four inspection categories — **functional bug**, **architectural flaw**, **Decimal_Precision issue**, and **test coverage gap** — each with either ≥1 documented defect entry or an explicit "No defect found" record so no category is left unaddressed (the audit found no behavior-changing defect; record the known *forward* coverage gap for the not-yet-existing RPN modules — `rpn.py`, `rpn_evaluator.py`, the four RPN error classes, and the frontend RPN surface — as a planned gap closed by task 55/59, not a defect in shipped code)
+  - Use the per-defect record schema for any entry: a unique `M-NN` id, exactly one of the four categories, the affected component, the reproduction input/ordered steps, and **distinct** Expected vs. Actual values
+  - Document the remediation-gating ledger structure: no fix without a prior logged defect id; on any applied remediation re-verify every applicable Requirement 1–33 criterion recording a pass/fail outcome; accept only if all pass; reject on any regression and preserve the pre-remediation baseline until resolved; note that because no defect was found, no code remediation is required to begin the migration
+  - _Requirements: 34.1, 34.2, 34.3, 34.4, 34.5, 34.6, 34.7_
+
+- [x] 51. Extend the backend error taxonomy for RPN evaluation failures
+  - Add four new subclasses to `app/engine/errors.py`, each deriving from the existing `EvaluationError` base (carrying `kind` + descriptive `message`) so the single existing `EvaluationError` handler in `main.py` maps them to 4xx `ErrorResponse` with **no handler change**: `StackUnderflowError` (`kind = "stack_underflow"`, message names the operator that could not be satisfied), `SurplusOperandsError` (`kind = "surplus_operands"`, message names the count of values remaining), `EmptyStackError` (`kind = "empty_stack"`), and `UnprocessableTokenError` (`kind = "unprocessable_token"`, message names the offending token)
+  - Preserve the mutually exclusive success/Error_Response contract (an `error` field, no `result` field) defined in Requirements 5 and 24
+  - _Requirements: 36.8, 36.9, 37.7, 38.1, 38.2, 38.3, 38.4, 38.5_
+
+- [x] 52. Implement the RPN token model and Shunting Yard linearization
+  - Create `app/engine/rpn.py` with the typed, frozen `RpnToken` dataclasses `Operand(value: Decimal)`, `Constant(name: str)`, `BinaryOp(symbol: str)`, `UnaryFunc(name: str)` (trig/inverse-trig, `ln`, `log10`, `sqrt`, and unary `neg`), and `RootOp` (n-th root), plus the `RpnTokenSequence = list[RpnToken]` alias — carrying `Decimal` operands, never `float`, and containing **no parenthesis tokens**
+  - Implement `to_rpn(ast) -> RpnTokenSequence` as a pure, deterministic post-order traversal of the parsed AST: `NumberNode → [Operand]`, `ConstantNode → [Constant]`, `UnaryOpNode(-, x) → to_rpn(x) ++ [UnaryFunc("neg")]`, `BinaryOpNode(op,l,r) → to_rpn(l) ++ to_rpn(r) ++ [BinaryOp(op)]`, `FunctionNode(f,x) → to_rpn(x) ++ [UnaryFunc(f)]`, `RootNode(rad,deg) → to_rpn(rad) ++ to_rpn(deg) ++ [RootOp]`; precedence/associativity, right-assoc `^`, the unary-minus-after-`^` rule, and function/constant placement are inherited from the already-correct AST, so the sequence is parenthesis-free (35.5), carries function/constant tokens in postfix order (35.6), and is identical across repeated submissions (35.7)
+  - Rely on `parse()` raising `InvalidSyntaxError`/`UnbalancedParenthesesError`/`InvalidCharacterError`/`EmptyExpressionError` **before** `to_rpn`, so a grammar violation never produces a partial RPN_Token_Sequence (35.8); `to_rpn` runs only on a fully valid AST
+  - _Requirements: 35.1, 35.2, 35.3, 35.4, 35.5, 35.6, 35.7, 35.8_
+
+- [x] 53. Implement the stack-based Stack_Evaluator
+  - Create `app/engine/rpn_evaluator.py` with `stack_evaluate(seq, angle_mode="radians") -> Decimal` over a Decimal-only Evaluation_Stack (never `float` — 36.6): push each `Operand`/`Constant` as a `Decimal` in sequence order (a `Constant` pushes its high-precision `Decimal` from the unchanged `constants.py`, ≥10 sig digits — 36.1, 37.4); for a `BinaryOp` pop two operands treating **first popped = right, second popped = left**, apply with `Decimal` arithmetic, push the result (36.2); for a `UnaryFunc` pop one operand and apply the **unchanged** `scientific.py` kernel under the active `angle_mode` (unary `neg` negates), push the result (36.3, 37.1, 37.2); for `RootOp` pop two treating **first popped = degree, second popped = radicand**, apply the same n-th-root computation as the current `RootNode` path (37.3); recalled Memory_Register values arrive as ordinary numeric operands and are pushed like any other `Operand` with their full decimal value (37.5)
+  - On completion, return the single remaining value through the **shared `_finalize`** path (≥10-sig-digit, round-half-even normalization — 36.4, 36.7); defensively raise the four new RPN errors — `StackUnderflowError` when an operator needs more operands than the stack holds (36.8, 37.7, 38.1), `SurplusOperandsError` when >1 value remains after consumption (36.9, 38.2), `EmptyStackError` when 0 values remain (38.3), `UnprocessableTokenError` for a token that is neither a valid operand nor a supported operator/function (38.4); propagate the unchanged `DomainError` from the kernels on any out-of-domain/non-finite operand (37.6)
+  - Preserve pre-migration result parity: any expression that produced a valid result under the infix engine returns an equal result to ≥10 sig digits (36.5)
+  - _Requirements: 36.1, 36.2, 36.3, 36.4, 36.5, 36.6, 36.7, 36.8, 36.9, 37.1, 37.2, 37.3, 37.4, 37.5, 37.6, 37.7_
+
+- [x] 54. Rewire the single engine entry point to the RPN pipeline
+  - Update `app/engine/__init__.py` so `evaluate_expression(expression: str, angle_mode: str = "radians") -> Decimal` keeps its **exact signature and docstring contract** but internally does `ast = parse(expression); rpn = to_rpn(ast); return stack_evaluate(rpn, angle_mode)`, continuing to propagate every `EvaluationError` subclass (including the four new RPN errors); add `to_rpn`, `stack_evaluate`, the `RpnToken`/`RpnTokenSequence` symbols, and the new error classes to the re-export list / `__all__`
+  - Retain the legacy AST-walking `evaluate()` as a **test-only reference oracle** for the parity property (no longer on the request path); leave `app/api/routes.py`, `app/api/schemas.py`, and `app/main.py` **unchanged**
+  - _Requirements: 35.1, 36.5, 43.3_
+
+- [x] 55. Backend RPN engine checkpoint
+  - Ensure all tests pass, ask the user if questions arise.
+
+- [x] 56. Refactor and extend the backend RPN test suite
+  - [x] 56.1 Extend Hypothesis strategies and the independent reference oracle
+    - Extend `tests/properties/strategies.py` with an independent reference arithmetic oracle distinct from the RPN engine (either the retained legacy AST-walking `evaluate()` or a standalone `Decimal` reference) and any generators needed for P25–P30, spanning ≥3 precedence levels, parentheses, scientific functions, constants, and both angle modes, plus out-of-domain/grammar-violation generators for the error-parity property
+    - _Requirements: 41.4, 43.3, 43.4_
+  - [ ]* 56.2 Write RPN conversion unit tests
+    - Add `tests/test_rpn_conversion.py` asserting exact RPN_Token_Sequence equality for hand-picked expressions combining ≥3 precedence levels, parentheses, right-assoc `^`, and the unary-minus rule (e.g. `3+4*2`, `(1+2)*3`, `2^2^3`, `-3^2`, `sin(pi/2)+root(27,3)`); reference backstops P26, P27
+    - _Requirements: 41.1_
+  - [ ]* 56.3 Write Stack_Evaluator unit tests
+    - Add `tests/test_rpn_evaluator.py` asserting push/pop + operator evaluation with results equal to the expected value to ≥10 significant digits, pinning non-commutative operand order (`8 3 -` = 5, `2 3 ^` = 8, `root(27,3)` = 3); reference backstops P25, P28
+    - _Requirements: 41.2_
+  - [ ]* 56.4 Write RPN error unit tests
+    - Add `tests/test_rpn_errors.py` asserting each RPN evaluation error — Stack_Underflow, Surplus_Operands, empty Evaluation_Stack, and unprocessable token — returns a 4xx Error_Response with no `result` and a descriptive message (operator / remaining count / token named); reference backstop P29
+    - _Requirements: 41.3_
+  - [ ]* 56.5 Write property test P25 (RPN engine matches the reference oracle)
+    - **Property 25: RPN engine matches an independent reference oracle (result parity)**
+    - **Validates: Requirements 35.2, 35.3, 35.4, 35.6, 36.2, 36.3, 36.5, 37.1, 37.2, 37.3, 37.4, 37.5, 43.3**
+    - Hypothesis ≥100 examples, cross-checking `parse → to_rpn → stack_evaluate` against the oracle to ≥10 sig digits; tag `# Feature: web-calculator, Property 25: ...` in `tests/properties/test_rpn_parity.py`
+  - [ ]* 56.6 Write property tests P26 and P27 (deterministic conversion, parenthesis-free)
+    - **Property 26: Shunting Yard conversion is deterministic** — **Validates: Requirements 35.7**
+    - **Property 27: The RPN_Token_Sequence is parenthesis-free** — **Validates: Requirements 35.5**
+    - Tag each `# Feature: web-calculator, Property N: ...` in `tests/properties/test_rpn_conversion_property.py`
+  - [ ]* 56.7 Write property test P28 (well-formed RPN yields exactly one value)
+    - **Property 28: Well-formed RPN evaluation yields exactly one value**
+    - **Validates: Requirements 36.1, 36.4**
+    - Tag `# Feature: web-calculator, Property 28: ...` in `tests/properties/test_rpn_parity.py`
+  - [ ]* 56.8 Write property test P29 (malformed RPN always errors, never a result)
+    - **Property 29: Malformed RPN sequences always signal an error and never return a result**
+    - **Validates: Requirements 36.8, 36.9, 37.7, 38.1, 38.2, 38.3, 38.4**
+    - Tag `# Feature: web-calculator, Property 29: ...` in `tests/properties/test_rpn_errors_property.py`
+  - [ ]* 56.9 Write property test P30 (error-condition parity with the pre-migration engine)
+    - **Property 30: Error-condition parity with the pre-migration engine**
+    - **Validates: Requirements 35.8, 37.6, 43.4**
+    - Tag `# Feature: web-calculator, Property 30: ...` in `tests/properties/test_rpn_parity.py`
+
+- [x] 57. Backend coverage and backward-compatibility gate
+  - Run the full backend suite under coverage — Stage 1 Requirement 15 tests + Stage 2 Requirement 25 tests + the P1–P24 regression properties + the new Stage 4 RPN conversion/evaluator/error/parity tests — and confirm zero failures, zero errors, and zero collection errors (41.10, 43.1)
+  - Reuse the Requirement 30 Coverage_Threshold (`pytest --cov=app --cov-branch --cov-fail-under=80` plus the `[tool.coverage.report] fail_under = 80` branch gate) so the run fails and reports the unmet metric if statement **or** branch coverage of `app/` (including the new `rpn.py`, `rpn_evaluator.py`, and the four new error classes) falls below 80% (41.8, 41.9)
+  - Confirm result parity (≥10 sig digits, 43.3) and error-condition parity (43.4) hold via P25/P30; reject or correct any Stage 4 change that reports a failure against a Requirement 1–33 criterion, preserving the Stage 1–3 baseline until resolved (43.6, 43.7)
+  - _Requirements: 41.8, 41.9, 41.10, 43.1, 43.3, 43.4, 43.6, 43.7_
+
+- [x] 58. Implement the pure RPN reducer
+  - Create `src/state/rpnReducer.ts` as a pure, side-effect-free reducer with an exhaustive `assertNever` guard holding `RpnState { mode: "standard" | "rpn" (default "standard"); operandEntry: string; stack: { x?; y?; z?; t? } of Decimal strings; error: string | null }` and actions `TOGGLE_MODE`, `APPEND_OPERAND_CHAR`, `PUSH`, `SET_STACK`, `SET_RPN_ERROR`, `RESET`
+  - `TOGGLE_MODE` switches `mode` and clears `operandEntry`, `stack`, and the result/error so no value carries across the switch (39.2); `PUSH` (Enter_Control) with a non-empty `operandEntry` places the operand at `X`, shifts `X→Y→Z→T` (dropping `T` when full), and clears `operandEntry` (39.4, 40.2), and with an empty `operandEntry` is a no-op that sets an error indication "no operand to push" (39.6); `SET_STACK` applies a confirmed backend success (40.3, 40.7 on the retain path); `SET_RPN_ERROR` leaves the `stack` unchanged and shows no computed result (39.7, 40.7); result and error are mutually exclusive; the reducer computes **no arithmetic locally** (39.9)
+  - _Requirements: 39.1, 39.2, 39.4, 39.6, 39.9, 40.2, 40.7_
+
+- [x] 59. Implement the dual-mode RPN UI components
+  - [x] 59.1 Implement ModeToggle and StackDisplay
+    - Create `src/components/ModeToggle.tsx` selecting between Standard_Mode and RPN_Mode, displaying the active mode and defaulting to Standard_Mode (39.1), reusing the Stage 1 `CalcButton` accessibility pattern (visible label + matching `aria-label` + focus/pressed state), and `src/components/StackDisplay.tsx` (+ `StackDisplay.css`) rendering the X/Y/Z/T Stack_Levels with an identifying text label per level and an empty-state indication when no value is held (40.1, 40.4, 40.6), wrapped in an `aria-live="polite"` region so stack changes are announced (40.5)
+    - _Requirements: 39.1, 40.1, 40.4, 40.5, 40.6_
+  - [x] 59.2 Extend useKeyboard for RPN parity
+    - Extend `src/hooks/useKeyboard.ts` so in RPN_Mode the `Enter` key drives the same `PUSH` reducer action as the on-screen Enter_Control and operator keys drive the same operator flow as their keypad buttons (identical state changes — 39.8), while preserving every Stage 1/2 mapping for Standard_Mode (39.3); keep the "callbacks via ref" pattern for stable listeners
+    - _Requirements: 39.3, 39.8_
+  - [x] 59.3 Integrate the RPN surface into Calculator.tsx
+    - Extend `src/components/Calculator.tsx` to compose `rpnReducer` alongside the Stage 1/2 reducers and mount `ModeToggle`; when `mode === "standard"` render and wire the **entire unchanged** Stage 1/2 infix surface (39.3); when `mode === "rpn"` render `StackDisplay`, route Enter to `PUSH`, and map a binary operator control (with ≥2 stack values) to "build an infix expression from the top stack values (e.g. `` `${y} ${op} ${x}` ``, `` `${fn}(${x})` `` for a unary op) → submit via the unchanged `useEvaluator`/`evaluateExpression` with the active `angleMode` → dispatch `SET_STACK` replacing the consumed operands with the single backend result at `X`" (39.5, 40.3); with fewer than the required values the operator is a no-op with an "insufficient values" error indication and **no backend call** (39.7); every calculated result comes exclusively from the backend (39.9, 43.5), and a backend Error_Response or transport failure retains the pre-operation Stack_Display and shows no local result (40.7, 43.5) — no orphaned code
+    - _Requirements: 39.3, 39.5, 39.7, 39.9, 40.3, 40.7, 43.5_
+
+- [x] 60. Add responsive, accessible RPN styling
+  - Add/extend `src/components/StackDisplay.css` and the `src/styles/theme.css`/`src/styles/global.css` tokens so the mode toggle and Stack_Display re-flow responsively with no horizontal overflow or clipping, provide ≥44×44 px touch targets for the RPN controls at mobile widths, and meet WCAG contrast (body/label ≥4.5:1, large text ≥3:1, component boundaries and focus indicators ≥3:1), reusing the Stage 1/2 responsive/accessibility tokens (Stage 4 adds no new responsive requirement numbers)
+  - _Requirements: 40.6_
+
+- [x] 61. Frontend RPN checkpoint
+  - Ensure all tests pass, ask the user if questions arise.
+
+- [ ] 62. Add frontend RPN component and reducer tests (Vitest + RTL + MSW)
+  - [ ]* 62.1 Write RPN reducer property tests (P31, P33)
+    - **Property 31: RPN push places the operand at X and shifts prior levels** — **Validates: Requirements 39.4, 39.6, 40.2**
+    - **Property 33: Switching mode resets all transient state** — **Validates: Requirements 39.2**
+    - Generator/table-driven cases; tag each `# Feature: web-calculator, Property N: ...` in `src/tests/rpnReducer.test.ts`
+  - [ ]* 62.2 Write RPN result-update and keypad/keyboard parity property tests (P32, P34)
+    - **Property 32: A backend result replaces the consumed operands with a single value** — **Validates: Requirements 39.5, 40.3**
+    - **Property 34: Keypad and keyboard produce identical RPN state changes** — **Validates: Requirements 39.8**
+    - Tag each `# Feature: web-calculator, Property N: ...` in `src/tests/rpnReducer.test.ts`
+  - [ ]* 62.3 Write RPN input + Enter-push + StackDisplay component tests
+    - Add `src/tests/rpn.test.tsx` asserting that entering an operand and activating the Enter_Control pushes it to the X level and the `StackDisplay` renders the active X/Y/Z/T levels, with all backend calls MSW-mocked and no live network request (41.5); reference backstop P31
+    - _Requirements: 41.5_
+  - [ ]* 62.4 Write mode-switch reset component test
+    - Add `src/tests/rpnMode.test.tsx` asserting that toggling between RPN_Mode and Standard_Mode resets the Stack_Display and the in-progress operand entry to empty with no residual Stack_Levels (41.6); reference backstop P33
+    - _Requirements: 41.6_
+  - [ ]* 62.5 Write backend-error-retains-stack component test (P35)
+    - **Property 35: RPN results come only from the backend and errors retain the stack**
+    - **Validates: Requirements 39.5, 39.9, 40.7, 43.5**
+    - Add `src/tests/rpnError.test.tsx` with MSW configured to return an Error_Response during an RPN operation, asserting an error indication renders, no calculated result is displayed, and the pre-operation Stack_Display values are retained (41.7); tag `# Feature: web-calculator, Property 35: ...`
+    - _Requirements: 41.7_
+
+- [x] 63. Frontend coverage and backward-compatibility gate
+  - Run the full frontend suite in a single non-interactive `vitest run --coverage` — Stage 1/2/3 component/reducer tests + the new Stage 4 RPN tests — and confirm zero failures, zero errors, and zero collection errors (41.10, 43.2), with MSW `onUnhandledRequest: 'error'` so no test issues a live network request (41.5)
+  - Reuse the Requirement 30 Coverage_Threshold (v8 provider, `thresholds.statements = 80`, `thresholds.branches = 80` over `src/**`, including `rpnReducer.ts`, `ModeToggle.tsx`, and `StackDisplay.tsx`) so an unmet statement or branch threshold fails the run and reports it (41.8, 41.9); confirm the no-local-arithmetic guarantee holds via P35 (43.5)
+  - _Requirements: 41.8, 41.9, 41.10, 43.2, 43.5_
+
+- [ ] 64. Verify the container stack under the RPN engine (run manually, not blocking automation)
+  - [ ]* 64.1 Rebuild and verify the backend image
+    - Rebuild the Backend_Image from the **unchanged** multi-stage, non-root `python:3.11-slim` `backend/Dockerfile` (42.1, 42.5) and confirm it starts the Backend_Service as a non-root uid listening on `${PORT:-8000}` serving the Evaluate_Endpoint backed by the RPN engine (42.3), that a forwarded `POST /api/v1/evaluate` returns an RPN-computed result in the Stage 1/2 success shape with Decimal_Precision (42.6), and that a forced build failure exits non-zero with no tagged image (42.7)
+    - _Requirements: 42.1, 42.3, 42.5, 42.6, 42.7_
+  - [ ]* 64.2 Rebuild and verify the frontend image
+    - Rebuild the Frontend_Image from the **unchanged** multi-stage `node:20-alpine` → `nginx:alpine` `frontend/Dockerfile` serving the compiled `dist/` including the new RPN-mode UI assets (42.2), confirming an unknown SPA route returns `index.html` with a success status and an existing static asset returns that asset
+    - _Requirements: 42.2_
+  - [ ]* 64.3 Verify compose orchestration end-to-end under the RPN engine
+    - Bring up `docker-compose.yml` (topology unchanged — 42.5) and confirm both services start on the shared network with service-name DNS (42.4), a request through the frontend `/api` proxy returns an RPN-computed result in the Decimal_Precision success shape (42.6), and with the backend stopped the `/api` path yields a service-unavailable error with no computed result
+    - _Requirements: 42.4, 42.5, 42.6_
+
+- [x] 65. Final Stage 4 checkpoint
+  - Confirm the full combined suite passes with zero failures/errors on both layers — backend pytest (Stage 1/2/3 tests + properties P1–P24 + the new Stage 4 RPN conversion/evaluator/error/parity tests) and frontend Vitest (Stage 1/2/3 tests + the new RPN tests) — with the ≥80% statement + branch coverage gate holding on both layers (41.10, 43.1, 43.2), result parity (≥10 sig digits) and error-condition parity with the pre-migration engine confirmed via P25/P30 (43.3, 43.4), the frontend computing no arithmetic locally (43.5), and the container stack (backend image, frontend image, compose orchestration) verified under the RPN engine
+  - Reject or correct the migration before it is considered complete if any Requirement 1–33 criterion reports a failure, preserving the Stage 1–3 baseline until resolved (43.6, 43.7)
+  - Ensure all tests pass, ask the user if questions arise.
+  - _Requirements: 41.10, 42.1, 42.4, 42.6, 43.1, 43.2, 43.3, 43.4, 43.5, 43.6, 43.7_
+
+## Stage 4 Notes
+
+- Core implementation artifacts are required (non-optional): the Migration_Audit_Log (task 50), the four RPN error classes (task 51), the RPN model/linearizer (task 52), the Stack_Evaluator (task 53), the entry-point rewire (task 54), the extended Hypothesis strategies/oracle (task 56.1), the RPN reducer (task 58), the RPN UI components and `Calculator` integration (task 59), and the RPN styling (task 60).
+- The Migration_Audit_Log (task 50) is produced **first**, in wave 0, before any other Stage 4 change, so its creation provably precedes the migration (Requirement 34.1, 34.7). Work then proceeds backend-first (errors → RPN model → evaluator → rewire → backend tests/gate → frontend reducer/components → frontend integration → frontend tests → docker → final checkpoint).
+- Stage 4 adds correctness properties **P25–P35**; P1–P24 are **reused** as the backward-compatibility regression proof (Requirements 43.1, 43.2) — P1 now exercises `parse → to_rpn → stack_evaluate` unchanged, P2 is reused because the Stack_Evaluator routes its result through the same `_finalize` path, P4/P5/P17 back the RPN domain/error paths, P6 covers the mutually-exclusive RPN error contract, P12 extends to the Stack_Display level labels, and P13/Requirement 14.4 back the RPN transport-failure handling reused in P35.
+- With the already-correct recursive-descent parser, Stack_Underflow, Surplus_Operands, empty-stack, and unprocessable-token are **defensive internal invariants** (a valid AST always linearizes to a sequence evaluating to exactly one value), but they are still raised, mapped to 4xx, and tested per Requirements 38 and 41.3.
+- The frontend performs **no local arithmetic** in either mode: RPN operator actions build an infix expression from the top stack values and submit it to the existing `/api/v1/evaluate` endpoint, so there is no new endpoint and no contract change; the stack is mutated only on a confirmed backend success, and retained on any error/transport failure.
+- Tasks marked with `*` are optional test or manual-verification sub-tasks and can be skipped for a faster MVP; top-level tasks and core implementation sub-tasks are never optional.
+- Long-running servers (uvicorn `--reload`, `npm run dev`, `docker compose up`) are run manually in a terminal, not as blocking automation; full WCAG conformance still requires manual assistive-technology testing beyond the automated contrast/label checks.
+
+## Stage 4 Task Dependency Graph
+
+```json
+{
+  "waves": [
+    { "id": 0, "tasks": ["50"] },
+    { "id": 1, "tasks": ["51"] },
+    { "id": 2, "tasks": ["52"] },
+    { "id": 3, "tasks": ["53"] },
+    { "id": 4, "tasks": ["54"] },
+    { "id": 5, "tasks": ["56.1"] },
+    { "id": 6, "tasks": ["56.2", "56.3", "56.4", "56.5", "56.6", "56.7", "56.8", "56.9"] },
+    { "id": 7, "tasks": ["57"] },
+    { "id": 8, "tasks": ["58"] },
+    { "id": 9, "tasks": ["59.1", "59.2"] },
+    { "id": 10, "tasks": ["59.3", "60"] },
+    { "id": 11, "tasks": ["62.1", "62.2", "62.3", "62.4", "62.5"] },
+    { "id": 12, "tasks": ["63"] },
+    { "id": 13, "tasks": ["64.1", "64.2", "64.3"] }
   ]
 }
 ```

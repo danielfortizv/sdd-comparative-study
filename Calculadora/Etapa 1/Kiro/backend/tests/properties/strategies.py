@@ -36,7 +36,34 @@ things:
 Configuration: :data:`PROPERTY_SETTINGS` is a reusable ``@settings`` profile
 with ``max_examples=100`` (design "Configuration": minimum 100 iterations).
 
-_Requirements: 6.1, 6.3, 15.3_
+Stage 4 (RPN migration) additions
+---------------------------------
+The Stage 4 properties P25-P30 (design "Stage 4 Design (RPN Engine Migration)"
+-> "Correctness Properties" and "Testing Strategy") need a reference oracle that
+is a *distinct evaluation path* from the migrated ``parse -> to_rpn ->
+stack_evaluate`` pipeline, plus a few generators the parity/determinism/error
+properties consume. This module supplies both:
+
+* :func:`reference_evaluate_expression` -- the independent reference oracle for
+  the result-parity property (P25) and the error-condition-parity property
+  (P30). It evaluates an expression by parsing it and walking the AST with the
+  *retained legacy* :func:`app.engine.evaluate` (the AST-walking evaluator that
+  is no longer on the request path), so it never touches ``to_rpn`` /
+  ``stack_evaluate``. Agreement between it and the RPN pipeline is therefore a
+  genuine cross-check, not a tautology.
+* :func:`valid_expressions` / :func:`valid_expression_with_mode` /
+  :func:`angle_modes` -- expression-string generators spanning >=3 precedence
+  levels, parentheses, scientific functions, constants, and both angle modes
+  (reusing :func:`scientific_asts` + :func:`render`), consumed by P25-P28.
+* :func:`malformed_rpn_sequences` -- hand-crafted malformed
+  :data:`~app.engine.rpn.RpnTokenSequence` values (stack underflow, surplus
+  operands, empty, unprocessable token) for the malformed-RPN error property
+  (P29).
+* :func:`grammar_violation_expressions` and :func:`oracle_rejected_expressions`
+  -- expression strings the reference oracle rejects (grammar violations and
+  mathematical domain errors) for the error-condition-parity property (P30).
+
+_Requirements: 6.1, 6.3, 15.3, 41.4, 43.3, 43.4_
 """
 
 from __future__ import annotations
@@ -72,6 +99,23 @@ from app.engine.parser import (
     render,
 )
 
+# Stage 4: the reference oracle for P25/P30 evaluates an expression through the
+# *retained legacy* AST-walking evaluator (``parse`` then ``evaluate``), which
+# is deliberately NOT the migrated ``to_rpn`` / ``stack_evaluate`` path. Keeping
+# the oracle on a distinct evaluation path is what makes result parity (P25) and
+# error-condition parity (P30) real cross-checks rather than tautologies. The
+# RPN token model is imported only to build the *malformed* sequences the P29
+# generator yields -- never to evaluate a valid expression here.
+from app.engine import evaluate as _legacy_evaluate, parse as _parse
+from app.engine.rpn import (
+    BinaryOp,
+    Constant,
+    Operand,
+    RootOp,
+    RpnTokenSequence,
+    UnaryFunc,
+)
+
 __all__ = [
     "PROPERTY_SETTINGS",
     "MAX_EXAMPLES",
@@ -87,6 +131,15 @@ __all__ = [
     "expressions_with_invalid_character",
     "zero_divisor_expressions",
     "over_length_expressions",
+    # Stage 4 (RPN migration): reference oracle + P25-P30 generators.
+    "ANGLE_MODES",
+    "angle_modes",
+    "reference_evaluate_expression",
+    "valid_expressions",
+    "valid_expression_with_mode",
+    "malformed_rpn_sequences",
+    "grammar_violation_expressions",
+    "oracle_rejected_expressions",
     # Stage 2 in-domain scientific node generators.
     "constant_nodes",
     "function_nodes",
@@ -741,7 +794,11 @@ def _strip_trailing_zeros(value: Decimal) -> Decimal:
     normalized = value.normalize(_REFERENCE_CONTEXT)
     exponent = normalized.as_tuple().exponent
     if isinstance(exponent, int) and exponent > 0:
-        return normalized.quantize(Decimal(1), context=_REFERENCE_CONTEXT)
+        # Mirror the engine: expand an integral magnitude to a plain integer
+        # via ``int`` (unbounded/exact) rather than ``quantize(Decimal(1))``,
+        # which raises ``InvalidOperation`` when the integer needs more digits
+        # than the reference context precision (e.g. ``(2000^4)^4``).
+        return Decimal(int(normalized))
     return normalized
 
 
@@ -1118,4 +1175,310 @@ def over_length_expressions(max_length: int = 256) -> st.SearchStrategy[str]:
 
     return st.integers(min_value=0, max_value=256).map(_build).filter(
         lambda s: len(s) > max_length
+    )
+
+
+# --------------------------------------------------------------------------- #
+# Stage 4 (RPN migration): angle modes
+# --------------------------------------------------------------------------- #
+#: The two angle modes the engine accepts. The parity (P25) and determinism
+#: (P26) properties run across both so trig/inverse-trig behavior is exercised
+#: in each unit (design "Stage 4 Design" -> Property 25: "... and both angle
+#: modes").
+ANGLE_MODES = ("radians", "degrees")
+
+
+def angle_modes() -> st.SearchStrategy[str]:
+    """A strategy sampling an angle mode (``"radians"`` or ``"degrees"``)."""
+    return st.sampled_from(list(ANGLE_MODES))
+
+
+# --------------------------------------------------------------------------- #
+# Stage 4: independent reference oracle for result parity (P25) and error
+# parity (P30)
+# --------------------------------------------------------------------------- #
+def reference_evaluate_expression(
+    expression: str, angle_mode: str = "radians"
+) -> Decimal:
+    """Evaluate ``expression`` through an evaluation path distinct from the RPN engine.
+
+    This is the independent reference oracle for Property 25 (result parity) and
+    Property 30 (error-condition parity). It parses the expression into an AST
+    and evaluates that AST with the **retained legacy** AST-walking
+    :func:`app.engine.evaluate` -- the pre-migration evaluator that is no longer
+    on the request path. It deliberately does **not** call
+    :func:`app.engine.to_rpn` or :func:`app.engine.stack_evaluate`, so it is a
+    genuine second implementation of the same contract:
+
+    * For a valid expression, the oracle returns the same normalized/rounded
+      :class:`~decimal.Decimal` the migrated ``parse -> to_rpn -> stack_evaluate``
+      pipeline returns, to >=10 significant digits -- Property 25 asserts the two
+      agree.
+    * For an invalid expression, the oracle raises the same
+      :class:`~app.engine.errors.EvaluationError` subclass the migrated pipeline
+      raises at the *parse* stage (grammar violations, unbalanced parentheses)
+      or at *evaluation* (division by zero, domain errors) -- Property 30 asserts
+      the migrated engine rejects exactly the inputs the oracle rejects.
+
+    Note that both paths share the same :func:`app.engine.parse`: a grammar
+    violation is detected by ``parse`` before either evaluator runs, which is
+    precisely why no previously-erroring input can become a success and no
+    previously-succeeding input can become an error (Requirement 35.8, 43.4).
+    The genuine cross-check is in the *evaluation* step, where the oracle walks
+    the AST and the engine walks a linearized RPN sequence.
+
+    Args:
+        expression: The raw arithmetic expression string.
+        angle_mode: ``"radians"`` (default) or ``"degrees"``; threaded into the
+            legacy evaluator exactly as the engine threads it into
+            ``stack_evaluate``.
+
+    Returns:
+        The reference :class:`~decimal.Decimal` result.
+
+    Raises:
+        EvaluationError: Any subclass the legacy ``parse``/``evaluate`` path
+            raises for an invalid expression (surfaced by the API as a 4xx).
+    """
+    ast = _parse(expression)
+    return _legacy_evaluate(ast, angle_mode)
+
+
+# --------------------------------------------------------------------------- #
+# Stage 4: valid expression-string generators (P25-P28)
+# --------------------------------------------------------------------------- #
+def valid_expressions(max_depth: int = _MAX_DEPTH) -> st.SearchStrategy[str]:
+    """Valid expression *strings* spanning the full arithmetic grammar.
+
+    Built by generating an in-domain scientific AST with :func:`scientific_asts`
+    -- which composes additive/multiplicative/power/unary-minus operators over
+    numbers, named constants, unary scientific functions, and n-th roots -- and
+    serializing it with the engine's own :func:`render`. A single generated
+    string therefore spans **>=3 precedence levels** (``+ -`` < ``* /`` < ``^``),
+    parentheses (re-inserted by ``render`` to preserve grouping), scientific
+    functions, and constants, so the parity (P25), determinism (P26),
+    parenthesis-free (P27), and single-value (P28) properties exercise the whole
+    grammar from one source (design "Stage 4 Design" -> Property 25).
+
+    Because the AST is generated in-domain, ``render(ast)`` always parses and
+    evaluates without a :class:`~app.engine.errors.DomainError`; out-of-domain
+    strings are produced separately by :func:`oracle_rejected_expressions` for
+    the error-parity property (P30).
+
+    Args:
+        max_depth: Maximum AST recursion depth forwarded to
+            :func:`scientific_asts`.
+
+    Returns:
+        A strategy producing valid expression strings.
+    """
+    return scientific_asts(max_depth=max_depth).map(render)
+
+
+def valid_expression_with_mode(
+    max_depth: int = _MAX_DEPTH,
+) -> st.SearchStrategy[tuple[str, str]]:
+    """Pairs a :func:`valid_expressions` string with an angle mode.
+
+    Convenience strategy for the properties that must run across both angle
+    modes (P25, P26): yields ``(expression, angle_mode)`` tuples so a test can
+    drive ``evaluate_expression(expr, angle_mode=mode)`` and the reference
+    oracle with the same mode (design "Stage 4 Design" -> Property 25: "...
+    and both angle modes").
+
+    Returns:
+        A strategy producing ``(expression, angle_mode)`` tuples.
+    """
+    return st.tuples(valid_expressions(max_depth=max_depth), angle_modes())
+
+
+# --------------------------------------------------------------------------- #
+# Stage 4: malformed RPN_Token_Sequence generators (P29)
+# --------------------------------------------------------------------------- #
+# Each strategy yields a *malformed* RpnTokenSequence that stack_evaluate must
+# reject with the matching EvaluationError (surfaced by the API as a 4xx, never
+# a result). A well-formed to_rpn never emits these; they are built directly
+# here so Property 29 can drive the Stack_Evaluator with each defect class
+# (design "Stage 4 Design" -> Property 29 and the engine/rpn_evaluator error
+# taxonomy: StackUnderflow, SurplusOperands, EmptyStack, UnprocessableToken).
+
+
+def _underflow_sequences() -> st.SearchStrategy[RpnTokenSequence]:
+    """Sequences where an operator has too few operands (Stack_Underflow).
+
+    A binary op / root with fewer than two operands, or a unary function with
+    none, exhausts the stack before the operator can run
+    (:class:`~app.engine.errors.StackUnderflowError`).
+    """
+    operand = decimal_literals().map(Operand)
+    binary_symbol = st.sampled_from(["+", "-", "*", "/", "^"])
+    unary_name = st.sampled_from(
+        ["sin", "cos", "tan", "asin", "acos", "atan", "ln", "log10", "sqrt", "neg"]
+    )
+
+    # Binary op with zero or one operand on the stack.
+    binary_no_operand = binary_symbol.map(lambda s: [BinaryOp(s)])
+    binary_one_operand = st.builds(
+        lambda value, s: [Operand(value), BinaryOp(s)],
+        decimal_literals(),
+        binary_symbol,
+    )
+    # Unary function with an empty stack.
+    unary_no_operand = unary_name.map(lambda n: [UnaryFunc(n)])
+    # Root with zero or one operand on the stack.
+    root_no_operand = st.just([RootOp()])
+    root_one_operand = operand.map(lambda op: [op, RootOp()])
+
+    return st.one_of(
+        binary_no_operand,
+        binary_one_operand,
+        unary_no_operand,
+        root_no_operand,
+        root_one_operand,
+    )
+
+
+def _surplus_sequences() -> st.SearchStrategy[RpnTokenSequence]:
+    """Sequences leaving >1 value on the stack (Surplus_Operands).
+
+    Two or more operands with no operator (or too few operators) to combine
+    them leaves more than one value after the whole sequence is consumed
+    (:class:`~app.engine.errors.SurplusOperandsError`).
+    """
+    operands = st.lists(
+        decimal_literals().map(Operand), min_size=2, max_size=5
+    )
+    return operands
+
+
+def _empty_sequences() -> st.SearchStrategy[RpnTokenSequence]:
+    """The empty sequence, leaving zero values on the stack (Empty_Stack).
+
+    An empty RPN sequence produces no value, so finalization raises
+    :class:`~app.engine.errors.EmptyStackError`.
+    """
+    return st.just([])
+
+
+class _BogusToken:
+    """A stand-in token of an unknown type for the unprocessable-token case.
+
+    It is intentionally *not* one of the :data:`~app.engine.rpn.RpnToken`
+    variants, so the Stack_Evaluator's dispatch falls through to raising
+    :class:`~app.engine.errors.UnprocessableTokenError` (Requirement 38.4).
+    """
+
+    def __repr__(self) -> str:  # pragma: no cover - trivial
+        return "<BogusToken>"
+
+
+def _unprocessable_token_sequences() -> st.SearchStrategy[RpnTokenSequence]:
+    """Sequences containing a token that is not a valid RPN token.
+
+    A token of an unrecognized type cannot be pushed or applied, so the
+    Stack_Evaluator raises :class:`~app.engine.errors.UnprocessableTokenError`
+    (Requirement 38.4). An operand may precede it so the bogus token is reached
+    mid-walk.
+    """
+    return st.one_of(
+        st.just([_BogusToken()]),
+        decimal_literals().map(lambda d: [Operand(d), _BogusToken()]),
+    )
+
+
+def malformed_rpn_sequences() -> st.SearchStrategy[RpnTokenSequence]:
+    """Union of every malformed-RPN generator (a one-stop Property 29 source).
+
+    Yields an :data:`~app.engine.rpn.RpnTokenSequence` exhibiting one of the
+    four defect classes the Stack_Evaluator must reject -- stack underflow,
+    surplus operands, an empty stack, or an unprocessable token -- so
+    :func:`app.engine.stack_evaluate` raises the corresponding
+    :class:`~app.engine.errors.EvaluationError` (mapped to a 4xx, never a
+    result; design "Stage 4 Design" -> Property 29).
+    """
+    return st.one_of(
+        _underflow_sequences(),
+        _surplus_sequences(),
+        _empty_sequences(),
+        _unprocessable_token_sequences(),
+    )
+
+
+# --------------------------------------------------------------------------- #
+# Stage 4: oracle-rejected expression generators (P30 error-condition parity)
+# --------------------------------------------------------------------------- #
+# Expression *strings* the independent reference oracle rejects as invalid. The
+# error-condition-parity property (P30) asserts the migrated engine rejects the
+# very same inputs with a 4xx and never returns a result. Two families are
+# covered: grammar/structure violations (detected at parse) and mathematical
+# domain errors (detected at evaluation); both must stay rejections after the
+# migration (design "Stage 4 Design" -> Property 30, Requirements 35.8, 37.6,
+# 43.4). The invalid-character and zero-divisor Stage 1/2 generators are reused.
+
+
+def grammar_violation_expressions() -> st.SearchStrategy[str]:
+    """Expression strings that violate the grammar or are otherwise malformed.
+
+    Covers the parse-time rejection categories the reference oracle and the
+    migrated engine must agree on: empty / whitespace-only input
+    (:class:`~app.engine.errors.EmptyExpressionError`), invalid operator
+    sequences (:class:`~app.engine.errors.InvalidSyntaxError`), unbalanced
+    parentheses (:class:`~app.engine.errors.UnbalancedParenthesesError`), and a
+    disallowed character (:class:`~app.engine.errors.InvalidCharacterError`,
+    reusing :func:`expressions_with_invalid_character`). Each is a string the
+    *parser* rejects before either evaluator runs, so parity is guaranteed and
+    the property proves it holds (Requirement 35.8, 43.4).
+    """
+    empty_or_whitespace = st.sampled_from(["", "   ", "\t", "\n", "  \t "])
+    invalid_operator_sequence = st.sampled_from(
+        [
+            "3 + * 4",
+            "1 +",
+            "* 5",
+            "2 ** 3",
+            "4 + + 2",
+            "/ 3",
+            "5 6",
+        ]
+    )
+    unbalanced_parentheses = st.sampled_from(
+        [
+            "(1 + 2",
+            "1 + 2)",
+            "((3)",
+            "sin(1",
+            "root(8, 3",
+            ")4 + 1(",
+        ]
+    )
+    return st.one_of(
+        empty_or_whitespace,
+        invalid_operator_sequence,
+        unbalanced_parentheses,
+        expressions_with_invalid_character(),
+    )
+
+
+def oracle_rejected_expressions() -> st.SearchStrategy[str]:
+    """Union of every expression the reference oracle rejects (Property 30 source).
+
+    Combines the grammar/structure violations (:func:`grammar_violation_expressions`),
+    the zero-divisor expressions (:func:`zero_divisor_expressions`,
+    :class:`~app.engine.errors.DivisionByZeroError`), and the full mathematical
+    domain-error family (:func:`domain_error_expressions`). Every element is an
+    input the independent reference oracle rejects; Property 30 asserts the
+    migrated ``parse -> to_rpn -> stack_evaluate`` engine rejects the same input
+    with a 4xx and never a result.
+
+    .. note::
+       As with :func:`domain_error_expressions`, the ``tan`` singularity case is
+       only a domain error in *degrees* mode; a P30 test driving this union
+       should either configure degrees for the tan case or evaluate both the
+       oracle and the engine under the *same* angle mode so their agreement is
+       apples-to-apples.
+    """
+    return st.one_of(
+        grammar_violation_expressions(),
+        zero_divisor_expressions(),
+        domain_error_expressions(),
     )

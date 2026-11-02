@@ -316,6 +316,47 @@ body {
   to { opacity: 1; }
 }
 
+.rpn-badge {
+  background-color: var(--btn-operator-bg);
+  color: var(--btn-operator-text);
+  margin-left: 6px;
+}
+
+.rpn-stack-display {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  width: 100%;
+  border-bottom: 1px dashed rgba(255, 255, 255, 0.1);
+  padding-bottom: 6px;
+  margin-bottom: 6px;
+}
+
+.stack-level {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 13px;
+  color: var(--text-result-preview);
+  opacity: 0.8;
+}
+
+.stack-label {
+  font-weight: 700;
+  color: var(--btn-operator-text);
+  font-family: "Inter", sans-serif;
+}
+
+.stack-value {
+  text-align: right;
+  overflow-x: auto;
+  white-space: nowrap;
+  scrollbar-width: none;
+}
+.stack-value::-webkit-scrollbar {
+  display: none;
+}
+
 /* Keypad Section (Basic and Scientific Side-by-side or Collapsed) */
 .keypad-wrapper {
   display: flex;
