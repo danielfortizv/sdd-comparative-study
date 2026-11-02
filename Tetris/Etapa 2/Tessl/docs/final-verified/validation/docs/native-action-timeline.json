@@ -1,0 +1,1198 @@
+{
+  "observed_at_utc": "2026-10-25T21:42:43.527416+00:00",
+  "raw_audit_sha256": "FB249303BAC1BCA3F7564990BF07C1D906F7A061E018CD25468CBE2B59D2E2F2",
+  "events": [
+    {
+      "timestamp": "2026-10-25T20:16:15.499Z",
+      "name": "write_file",
+      "path": "specs/stage2/requirements.md",
+      "category": "native_spec_edit",
+      "status": "success"
+    },
+    {
+      "timestamp": "2026-10-25T20:16:36.887Z",
+      "name": "write_file",
+      "path": "specs/stage2/session_notes.md",
+      "category": "native_spec_edit",
+      "status": "success"
+    },
+    {
+      "timestamp": "2026-10-25T20:25:24.684Z",
+      "name": "write_file",
+      "path": "specs/stage2/requirements.md",
+      "category": "native_spec_edit",
+      "status": "success"
+    },
+    {
+      "timestamp": "2026-10-25T20:25:52.722Z",
+      "name": "write_file",
+      "path": "specs/stage2/session_notes.md",
+      "category": "native_spec_edit",
+      "status": "success"
+    },
+    {
+      "timestamp": "2026-10-25T20:34:47.712Z",
+      "name": "replace",
+      "path": "specs/stage2/session_notes.md",
+      "category": "native_spec_edit",
+      "status": "success"
+    },
+    {
+      "timestamp": "2026-10-25T20:35:34.129Z",
+      "name": "run_shell_command",
+      "command": "backend\\.venv\\Scripts\\python.exe -m pytest",
+      "cwd": null,
+      "status": "success",
+      "raw_result_reference": "run_shell_command__call_49525"
+    },
+    {
+      "timestamp": "2026-10-25T20:35:43.918Z",
+      "name": "run_shell_command",
+      "command": ".venv\\Scripts\\python.exe -m pytest tests/",
+      "cwd": "backend",
+      "status": "success",
+      "raw_result_reference": "run_shell_command__call_90278"
+    },
+    {
+      "timestamp": "2026-10-25T20:37:40.269Z",
+      "name": "replace",
+      "path": "backend/app/models/game.py",
+      "category": "other_edit",
+      "status": "success"
+    },
+    {
+      "timestamp": "2026-10-25T20:37:49.970Z",
+      "name": "replace",
+      "path": "backend/app/main.py",
+      "category": "other_edit",
+      "status": "success"
+    },
+    {
+      "timestamp": "2026-10-25T20:39:54.369Z",
+      "name": "write_file",
+      "path": "backend/app/domain/rules.py",
+      "category": "other_edit",
+      "status": "success"
+    },
+    {
+      "timestamp": "2026-10-25T20:40:17.343Z",
+      "name": "write_file",
+      "path": "backend/app/controllers/games.py",
+      "category": "other_edit",
+      "status": "success"
+    },
+    {
+      "timestamp": "2026-10-25T20:40:19.749Z",
+      "name": "run_shell_command",
+      "command": ".venv\\Scripts\\python.exe -m pytest tests/",
+      "cwd": "backend",
+      "status": "success",
+      "raw_result_reference": "run_shell_command__call_230885"
+    },
+    {
+      "timestamp": "2026-10-25T20:40:54.342Z",
+      "name": "write_file",
+      "path": "backend/tests/test_scoring.py",
+      "category": "other_edit",
+      "status": "success"
+    },
+    {
+      "timestamp": "2026-10-25T20:41:01.362Z",
+      "name": "run_shell_command",
+      "command": ".venv\\Scripts\\python.exe -m pytest --cov=app --cov-report=xml:../docs/coverage.xml tests/",
+      "cwd": "backend",
+      "status": "success",
+      "raw_result_reference": "run_shell_command__call_887759"
+    },
+    {
+      "timestamp": "2026-10-25T20:42:02.809Z",
+      "name": "write_file",
+      "path": "frontend/src/types.ts",
+      "category": "other_edit",
+      "status": "success"
+    },
+    {
+      "timestamp": "2026-10-25T20:42:06.153Z",
+      "name": "write_file",
+      "path": "frontend/src/api.ts",
+      "category": "other_edit",
+      "status": "success"
+    },
+    {
+      "timestamp": "2026-10-25T20:42:42.035Z",
+      "name": "replace",
+      "path": "frontend/src/index.css",
+      "category": "other_edit",
+      "status": "success"
+    },
+    {
+      "timestamp": "2026-10-25T20:42:51.408Z",
+      "name": "write_file",
+      "path": "frontend/src/App.tsx",
+      "category": "other_edit",
+      "status": "success"
+    },
+    {
+      "timestamp": "2026-10-25T20:42:57.235Z",
+      "name": "write_file",
+      "path": "frontend/src/components/GameStatus.tsx",
+      "category": "other_edit",
+      "status": "success"
+    },
+    {
+      "timestamp": "2026-10-25T20:43:06.899Z",
+      "name": "run_shell_command",
+      "command": "npx vitest run",
+      "cwd": "frontend",
+      "status": "success",
+      "raw_result_reference": "run_shell_command__call_2909"
+    },
+    {
+      "timestamp": "2026-10-25T20:43:53.264Z",
+      "name": "write_file",
+      "path": "frontend/src/App.test.tsx",
+      "category": "other_edit",
+      "status": "success"
+    },
+    {
+      "timestamp": "2026-10-25T20:43:56.420Z",
+      "name": "run_shell_command",
+      "command": "npx vitest run",
+      "cwd": "frontend",
+      "status": "success",
+      "raw_result_reference": "run_shell_command__call_812968"
+    },
+    {
+      "timestamp": "2026-10-25T20:44:15.858Z",
+      "name": "write_file",
+      "path": "frontend/src/App.test.tsx",
+      "category": "other_edit",
+      "status": "success"
+    },
+    {
+      "timestamp": "2026-10-25T20:44:18.728Z",
+      "name": "run_shell_command",
+      "command": "npx vitest run",
+      "cwd": "frontend",
+      "status": "success",
+      "raw_result_reference": "run_shell_command__call_135094"
+    },
+    {
+      "timestamp": "2026-10-25T20:44:59.023Z",
+      "name": "write_file",
+      "path": "frontend/src/App.test.tsx",
+      "category": "other_edit",
+      "status": "success"
+    },
+    {
+      "timestamp": "2026-10-25T20:45:02.123Z",
+      "name": "run_shell_command",
+      "command": "npx vitest run",
+      "cwd": "frontend",
+      "status": "success",
+      "raw_result_reference": "run_shell_command__call_109580"
+    },
+    {
+      "timestamp": "2026-10-25T20:45:21.310Z",
+      "name": "write_file",
+      "path": "frontend/src/App.test.tsx",
+      "category": "other_edit",
+      "status": "success"
+    },
+    {
+      "timestamp": "2026-10-25T20:45:23.499Z",
+      "name": "run_shell_command",
+      "command": "npx vitest run",
+      "cwd": "frontend",
+      "status": "success",
+      "raw_result_reference": "run_shell_command__call_143837"
+    },
+    {
+      "timestamp": "2026-10-25T20:45:47.326Z",
+      "name": "run_shell_command",
+      "command": "npx vitest run --coverage",
+      "cwd": "frontend",
+      "status": "success",
+      "raw_result_reference": "run_shell_command__call_150543"
+    },
+    {
+      "timestamp": "2026-10-25T20:47:25.203Z",
+      "name": "run_shell_command",
+      "command": "npm audit",
+      "cwd": "frontend",
+      "status": "success",
+      "raw_result_reference": "run_shell_command__call_108350"
+    },
+    {
+      "timestamp": "2026-10-25T20:47:29.903Z",
+      "name": "run_shell_command",
+      "command": "npm audit --omit=dev",
+      "cwd": "frontend",
+      "status": "success",
+      "raw_result_reference": "run_shell_command__call_87014"
+    },
+    {
+      "timestamp": "2026-10-25T20:47:43.772Z",
+      "name": "run_shell_command",
+      "command": "npm audit fix",
+      "cwd": "frontend",
+      "status": "success",
+      "raw_result_reference": "run_shell_command__call_231239"
+    },
+    {
+      "timestamp": "2026-10-25T20:47:57.928Z",
+      "name": "run_shell_command",
+      "command": "npm audit fix --force",
+      "cwd": "frontend",
+      "status": "success",
+      "raw_result_reference": "run_shell_command__call_130451"
+    },
+    {
+      "timestamp": "2026-10-25T20:48:11.596Z",
+      "name": "run_shell_command",
+      "command": "npm audit",
+      "cwd": "frontend",
+      "status": "success",
+      "raw_result_reference": "run_shell_command__call_513201"
+    },
+    {
+      "timestamp": "2026-10-25T20:48:17.518Z",
+      "name": "run_shell_command",
+      "command": "npm install @vitest/coverage-v8 --save-dev",
+      "cwd": "frontend",
+      "status": "success",
+      "raw_result_reference": "run_shell_command__call_486647"
+    },
+    {
+      "timestamp": "2026-10-25T20:48:26.313Z",
+      "name": "replace",
+      "path": "frontend/package.json",
+      "category": "other_edit",
+      "status": "success"
+    },
+    {
+      "timestamp": "2026-10-25T20:48:39.741Z",
+      "name": "replace",
+      "path": "frontend/vite.config.ts",
+      "category": "other_edit",
+      "status": "success"
+    },
+    {
+      "timestamp": "2026-10-25T20:48:42.458Z",
+      "name": "run_shell_command",
+      "command": "npx vitest run --coverage",
+      "cwd": "frontend",
+      "status": "success",
+      "raw_result_reference": "run_shell_command__call_89620"
+    },
+    {
+      "timestamp": "2026-10-25T20:49:36.008Z",
+      "name": "run_shell_command",
+      "command": "npx vitest run --coverage",
+      "cwd": "frontend",
+      "status": "success",
+      "raw_result_reference": "run_shell_command__call_544572"
+    },
+    {
+      "timestamp": "2026-10-25T20:50:12.895Z",
+      "name": "run_shell_command",
+      "command": "npm run build",
+      "cwd": "frontend",
+      "status": "success",
+      "raw_result_reference": "run_shell_command__call_267496"
+    },
+    {
+      "timestamp": "2026-10-25T20:51:33.821Z",
+      "name": "write_file",
+      "path": "frontend/src/App.tsx",
+      "category": "other_edit",
+      "status": "success"
+    },
+    {
+      "timestamp": "2026-10-25T20:52:17.850Z",
+      "name": "write_file",
+      "path": "frontend/src/components/TetrisBoard.test.tsx",
+      "category": "other_edit",
+      "status": "success"
+    },
+    {
+      "timestamp": "2026-10-25T20:52:30.920Z",
+      "name": "run_shell_command",
+      "command": "npm run build",
+      "cwd": "frontend",
+      "status": "success",
+      "raw_result_reference": "run_shell_command__call_151038"
+    },
+    {
+      "timestamp": "2026-10-25T20:52:45.840Z",
+      "name": "replace",
+      "path": "frontend/src/App.tsx",
+      "category": "other_edit",
+      "status": "success"
+    },
+    {
+      "timestamp": "2026-10-25T20:52:48.142Z",
+      "name": "run_shell_command",
+      "command": "npm run build",
+      "cwd": "frontend",
+      "status": "success",
+      "raw_result_reference": "run_shell_command__call_116632"
+    },
+    {
+      "timestamp": "2026-10-25T20:52:54.723Z",
+      "name": "run_shell_command",
+      "command": "npx vitest run --coverage",
+      "cwd": "frontend",
+      "status": "success",
+      "raw_result_reference": "run_shell_command__call_319391"
+    },
+    {
+      "timestamp": "2026-10-25T20:53:01.972Z",
+      "name": "run_shell_command",
+      "command": "powershell.exe -NoProfile -File ../shared/scan-tessl.ps1",
+      "cwd": null,
+      "status": "success",
+      "raw_result_reference": "run_shell_command__call_291015"
+    },
+    {
+      "timestamp": "2026-10-25T20:53:32.784Z",
+      "name": "run_shell_command",
+      "command": "powershell.exe -NoProfile -File ../shared/verify-sonar-tessl.ps1",
+      "cwd": null,
+      "status": "success",
+      "raw_result_reference": "run_shell_command__call_291135"
+    },
+    {
+      "timestamp": "2026-10-25T20:53:37.315Z",
+      "name": "run_shell_command",
+      "command": "powershell.exe -NoProfile -File ../shared/fetch-sonar-tessl.ps1",
+      "cwd": null,
+      "status": "success",
+      "raw_result_reference": "run_shell_command__call_140628"
+    },
+    {
+      "timestamp": "2026-10-25T20:53:48.398Z",
+      "name": "write_file",
+      "path": "frontend/src/api.test.ts",
+      "category": "other_edit",
+      "status": "success"
+    },
+    {
+      "timestamp": "2026-10-25T20:53:50.493Z",
+      "name": "run_shell_command",
+      "command": "npx vitest run --coverage",
+      "cwd": "frontend",
+      "status": "success",
+      "raw_result_reference": "run_shell_command__call_84916"
+    },
+    {
+      "timestamp": "2026-10-25T20:54:27.819Z",
+      "name": "write_file",
+      "path": "frontend/src/App.test.tsx",
+      "category": "other_edit",
+      "status": "success"
+    },
+    {
+      "timestamp": "2026-10-25T20:54:30.512Z",
+      "name": "run_shell_command",
+      "command": "npx vitest run --coverage",
+      "cwd": "frontend",
+      "status": "success",
+      "raw_result_reference": "run_shell_command__call_131963"
+    },
+    {
+      "timestamp": "2026-10-25T20:54:39.073Z",
+      "name": "replace",
+      "path": "frontend/src/api.test.ts",
+      "category": "other_edit",
+      "status": "success"
+    },
+    {
+      "timestamp": "2026-10-25T20:54:41.928Z",
+      "name": "run_shell_command",
+      "command": "npx vitest run --coverage",
+      "cwd": "frontend",
+      "status": "success",
+      "raw_result_reference": "run_shell_command__call_149201"
+    },
+    {
+      "timestamp": "2026-10-25T20:54:48.612Z",
+      "name": "run_shell_command",
+      "command": "powershell.exe -NoProfile -File ../shared/scan-tessl.ps1",
+      "cwd": null,
+      "status": "success",
+      "raw_result_reference": "run_shell_command__call_81615"
+    },
+    {
+      "timestamp": "2026-10-25T20:55:11.237Z",
+      "name": "run_shell_command",
+      "command": "powershell.exe -NoProfile -File ../shared/verify-sonar-tessl.ps1",
+      "cwd": null,
+      "status": "success",
+      "raw_result_reference": "run_shell_command__call_92614"
+    },
+    {
+      "timestamp": "2026-10-25T20:55:21.610Z",
+      "name": "write_file",
+      "path": "backend/app/domain/rules.py",
+      "category": "other_edit",
+      "status": "success"
+    },
+    {
+      "timestamp": "2026-10-25T20:55:24.204Z",
+      "name": "run_shell_command",
+      "command": ".venv\\Scripts\\python.exe -m pytest --cov=app --cov-report=xml:../docs/coverage.xml tests/",
+      "cwd": "backend",
+      "status": "success",
+      "raw_result_reference": "run_shell_command__call_106498"
+    },
+    {
+      "timestamp": "2026-10-25T20:55:29.694Z",
+      "name": "run_shell_command",
+      "command": "powershell.exe -NoProfile -File ../shared/scan-tessl.ps1",
+      "cwd": null,
+      "status": "success",
+      "raw_result_reference": "run_shell_command__call_89945"
+    },
+    {
+      "timestamp": "2026-10-25T20:55:51.738Z",
+      "name": "run_shell_command",
+      "command": "powershell.exe -NoProfile -File ../shared/verify-sonar-tessl.ps1",
+      "cwd": null,
+      "status": "success",
+      "raw_result_reference": "run_shell_command__call_679323"
+    },
+    {
+      "timestamp": "2026-10-25T20:57:01.339Z",
+      "name": "write_file",
+      "path": "backend/app/controllers/games.py",
+      "category": "other_edit",
+      "status": "success"
+    },
+    {
+      "timestamp": "2026-10-25T20:57:09.747Z",
+      "name": "run_shell_command",
+      "command": ".venv\\Scripts\\python.exe -m pytest tests/",
+      "cwd": "backend",
+      "status": "success",
+      "raw_result_reference": "run_shell_command__call_1249715"
+    },
+    {
+      "timestamp": "2026-10-25T20:57:15.227Z",
+      "name": "run_shell_command",
+      "command": "powershell.exe -NoProfile -File ../shared/scan-tessl.ps1",
+      "cwd": null,
+      "status": "success",
+      "raw_result_reference": "run_shell_command__call_934502"
+    },
+    {
+      "timestamp": "2026-10-25T20:57:37.528Z",
+      "name": "run_shell_command",
+      "command": "powershell.exe -NoProfile -File ../shared/verify-sonar-tessl.ps1",
+      "cwd": null,
+      "status": "success",
+      "raw_result_reference": "run_shell_command__call_87578"
+    },
+    {
+      "timestamp": "2026-10-25T20:57:58.255Z",
+      "name": "write_file",
+      "path": "backend/tests/test_scoring.py",
+      "category": "other_edit",
+      "status": "success"
+    },
+    {
+      "timestamp": "2026-10-25T20:58:06.657Z",
+      "name": "write_file",
+      "path": "frontend/src/App.test.tsx",
+      "category": "other_edit",
+      "status": "success"
+    },
+    {
+      "timestamp": "2026-10-25T20:58:09.262Z",
+      "name": "run_shell_command",
+      "command": "npx vitest run --coverage",
+      "cwd": "frontend",
+      "status": "success",
+      "raw_result_reference": "run_shell_command__call_149519"
+    },
+    {
+      "timestamp": "2026-10-25T20:58:15.657Z",
+      "name": "run_shell_command",
+      "command": "powershell.exe -NoProfile -File ../shared/scan-tessl.ps1",
+      "cwd": null,
+      "status": "success",
+      "raw_result_reference": "run_shell_command__call_89569"
+    },
+    {
+      "timestamp": "2026-10-25T20:58:39.390Z",
+      "name": "run_shell_command",
+      "command": "powershell.exe -NoProfile -File ../shared/verify-sonar-tessl.ps1",
+      "cwd": null,
+      "status": "success",
+      "raw_result_reference": "run_shell_command__call_343064"
+    },
+    {
+      "timestamp": "2026-10-25T20:58:56.218Z",
+      "name": "replace",
+      "path": "frontend/src/App.tsx",
+      "category": "other_edit",
+      "status": "success"
+    },
+    {
+      "timestamp": "2026-10-25T20:59:00.395Z",
+      "name": "replace",
+      "path": "frontend/src/App.tsx",
+      "category": "other_edit",
+      "status": "success"
+    },
+    {
+      "timestamp": "2026-10-25T20:59:04.649Z",
+      "name": "run_shell_command",
+      "command": "npm run build",
+      "cwd": "frontend",
+      "status": "success",
+      "raw_result_reference": "run_shell_command__call_68258"
+    },
+    {
+      "timestamp": "2026-10-25T20:59:19.272Z",
+      "name": "run_shell_command",
+      "command": "npx vitest run --coverage",
+      "cwd": "frontend",
+      "status": "success",
+      "raw_result_reference": "run_shell_command__call_377287"
+    },
+    {
+      "timestamp": "2026-10-25T20:59:30.375Z",
+      "name": "run_shell_command",
+      "command": "powershell.exe -NoProfile -File ../shared/scan-tessl.ps1",
+      "cwd": null,
+      "status": "success",
+      "raw_result_reference": "run_shell_command__call_364916"
+    },
+    {
+      "timestamp": "2026-10-25T20:59:53.451Z",
+      "name": "run_shell_command",
+      "command": "powershell.exe -NoProfile -File ../shared/verify-sonar-tessl.ps1",
+      "cwd": null,
+      "status": "success",
+      "raw_result_reference": "run_shell_command__call_126634"
+    },
+    {
+      "timestamp": "2026-10-25T21:00:22.761Z",
+      "name": "replace",
+      "path": "specs/stage2/session_notes.md",
+      "category": "native_spec_edit",
+      "status": "success"
+    },
+    {
+      "timestamp": "2026-10-25T21:04:46.012Z",
+      "name": "run_shell_command",
+      "command": "powershell.exe -NoProfile -File ../shared/fetch-sonar-tessl.ps1",
+      "cwd": null,
+      "status": "success",
+      "raw_result_reference": "run_shell_command__call_44889"
+    },
+    {
+      "timestamp": "2026-10-25T21:07:00.766Z",
+      "name": "write_file",
+      "path": "get_issues.py",
+      "category": "other_edit",
+      "status": "success"
+    },
+    {
+      "timestamp": "2026-10-25T21:07:06.408Z",
+      "name": "write_file",
+      "path": "get_issues.py",
+      "category": "other_edit",
+      "status": "success"
+    },
+    {
+      "timestamp": "2026-10-25T21:07:33.734Z",
+      "name": "write_file",
+      "path": "specs/stage2/session_notes.md",
+      "category": "native_spec_edit",
+      "status": "success"
+    },
+    {
+      "timestamp": "2026-10-25T21:07:39.897Z",
+      "name": "replace",
+      "path": "specs/stage2/requirements.md",
+      "category": "native_spec_edit",
+      "status": "success"
+    },
+    {
+      "timestamp": "2026-10-25T21:09:51.926Z",
+      "name": "replace",
+      "path": ".gemini/settings.json",
+      "category": "other_edit",
+      "status": "success"
+    },
+    {
+      "timestamp": "2026-10-25T21:09:57.633Z",
+      "name": "replace",
+      "path": "specs/stage2/requirements.md",
+      "category": "native_spec_edit",
+      "status": "success"
+    },
+    {
+      "timestamp": "2026-10-25T21:10:02.749Z",
+      "name": "replace",
+      "path": "specs/stage2/session_notes.md",
+      "category": "native_spec_edit",
+      "status": "success"
+    },
+    {
+      "timestamp": "2026-10-25T21:10:10.499Z",
+      "name": "run_shell_command",
+      "command": "powershell.exe -NoProfile -File ../shared/fetch-sonar-tessl.ps1",
+      "cwd": null,
+      "status": "success",
+      "raw_result_reference": "run_shell_command__call_663851"
+    },
+    {
+      "timestamp": "2026-10-25T21:11:44.598Z",
+      "name": "replace",
+      "path": "frontend/src/App.tsx",
+      "category": "other_edit",
+      "status": "success"
+    },
+    {
+      "timestamp": "2026-10-25T21:11:47.453Z",
+      "name": "replace",
+      "path": "frontend/src/App.tsx",
+      "category": "other_edit",
+      "status": "success"
+    },
+    {
+      "timestamp": "2026-10-25T21:11:54.102Z",
+      "name": "replace",
+      "path": "frontend/src/App.tsx",
+      "category": "other_edit",
+      "status": "success"
+    },
+    {
+      "timestamp": "2026-10-25T21:11:56.241Z",
+      "name": "replace",
+      "path": "frontend/src/App.tsx",
+      "category": "other_edit",
+      "status": "success"
+    },
+    {
+      "timestamp": "2026-10-25T21:11:58.919Z",
+      "name": "replace",
+      "path": "frontend/src/index.css",
+      "category": "other_edit",
+      "status": "success"
+    },
+    {
+      "timestamp": "2026-10-25T21:12:04.544Z",
+      "name": "replace",
+      "path": "backend/app/controllers/games.py",
+      "category": "other_edit",
+      "status": "success"
+    },
+    {
+      "timestamp": "2026-10-25T21:12:14.491Z",
+      "name": "replace",
+      "path": "backend/app/models/game.py",
+      "category": "other_edit",
+      "status": "success"
+    },
+    {
+      "timestamp": "2026-10-25T21:12:17.638Z",
+      "name": "replace",
+      "path": "frontend/src/App.test.tsx",
+      "category": "other_edit",
+      "status": "success"
+    },
+    {
+      "timestamp": "2026-10-25T21:12:20.457Z",
+      "name": "replace",
+      "path": "frontend/src/App.test.tsx",
+      "category": "other_edit",
+      "status": "success"
+    },
+    {
+      "timestamp": "2026-10-25T21:12:23.956Z",
+      "name": "replace",
+      "path": "frontend/src/App.test.tsx",
+      "category": "other_edit",
+      "status": "success"
+    },
+    {
+      "timestamp": "2026-10-25T21:12:29.433Z",
+      "name": "replace",
+      "path": "frontend/src/App.test.tsx",
+      "category": "other_edit",
+      "status": "success"
+    },
+    {
+      "timestamp": "2026-10-25T21:12:52.978Z",
+      "name": "run_shell_command",
+      "command": "node frontend/node_modules/vitest/vitest.mjs run --config docs/acceptance/vitest.external.config.mjs --reporter=json --outputFile=07-qa01-races-vitest.json",
+      "cwd": null,
+      "status": "success",
+      "raw_result_reference": "run_shell_command__call_619976"
+    },
+    {
+      "timestamp": "2026-10-25T21:12:57.891Z",
+      "name": "run_shell_command",
+      "command": "powershell.exe -NoProfile -Command \"Get-Content docs/acceptance/07-qa01-races-vitest.json | ConvertFrom-Json | Select-Object -ExpandProperty numTotalTests, numPassedTests, numFailedTests\"",
+      "cwd": null,
+      "status": "success",
+      "raw_result_reference": "run_shell_command__call_648610"
+    },
+    {
+      "timestamp": "2026-10-25T21:13:02.323Z",
+      "name": "run_shell_command",
+      "command": "powershell.exe -NoProfile -Command \"Get-Content docs/acceptance/07-qa01-races-vitest.json -Tail 20\"",
+      "cwd": null,
+      "status": "success",
+      "raw_result_reference": "run_shell_command__call_648646"
+    },
+    {
+      "timestamp": "2026-10-25T21:13:15.242Z",
+      "name": "run_shell_command",
+      "command": ".venv\\Scripts\\python.exe -m pytest --cov=app --cov-report=xml:../docs/coverage.xml tests/",
+      "cwd": "backend",
+      "status": "success",
+      "raw_result_reference": "run_shell_command__call_664682"
+    },
+    {
+      "timestamp": "2026-10-25T21:13:21.810Z",
+      "name": "run_shell_command",
+      "command": ".venv\\Scripts\\python.exe -m pytest --cov=app --cov-report=xml:../docs/coverage.xml tests/ > ../docs/qa01-retry-backend-tests.log",
+      "cwd": "backend",
+      "status": "success",
+      "raw_result_reference": "run_shell_command__call_613879"
+    },
+    {
+      "timestamp": "2026-10-25T21:13:30.284Z",
+      "name": "run_shell_command",
+      "command": "npm audit --omit=dev",
+      "cwd": "frontend",
+      "status": "success",
+      "raw_result_reference": "run_shell_command__call_647691"
+    },
+    {
+      "timestamp": "2026-10-25T21:13:34.095Z",
+      "name": "run_shell_command",
+      "command": "npm audit",
+      "cwd": "frontend",
+      "status": "success",
+      "raw_result_reference": "run_shell_command__call_861756"
+    },
+    {
+      "timestamp": "2026-10-25T21:13:38.114Z",
+      "name": "run_shell_command",
+      "command": "npm run build",
+      "cwd": "frontend",
+      "status": "success",
+      "raw_result_reference": "run_shell_command__call_682314"
+    },
+    {
+      "timestamp": "2026-10-25T21:13:43.611Z",
+      "name": "run_shell_command",
+      "command": "powershell.exe -NoProfile -File ../shared/scan-tessl.ps1",
+      "cwd": null,
+      "status": "success",
+      "raw_result_reference": "run_shell_command__call_380032"
+    },
+    {
+      "timestamp": "2026-10-25T21:14:09.060Z",
+      "name": "run_shell_command",
+      "command": "powershell.exe -NoProfile -File ../shared/fetch-sonar-tessl.ps1",
+      "cwd": null,
+      "status": "success",
+      "raw_result_reference": "run_shell_command__call_553687"
+    },
+    {
+      "timestamp": "2026-10-25T21:14:12.751Z",
+      "name": "run_shell_command",
+      "command": "powershell.exe -NoProfile -File ../shared/verify-sonar-tessl.ps1",
+      "cwd": null,
+      "status": "success",
+      "raw_result_reference": "run_shell_command__call_553708"
+    },
+    {
+      "timestamp": "2026-10-25T21:14:29.193Z",
+      "name": "replace",
+      "path": "frontend/src/App.tsx",
+      "category": "other_edit",
+      "status": "success"
+    },
+    {
+      "timestamp": "2026-10-25T21:14:32.130Z",
+      "name": "replace",
+      "path": "frontend/src/App.tsx",
+      "category": "other_edit",
+      "status": "success"
+    },
+    {
+      "timestamp": "2026-10-25T21:14:47.366Z",
+      "name": "run_shell_command",
+      "command": "powershell.exe -NoProfile -File ../shared/scan-tessl.ps1",
+      "cwd": null,
+      "status": "success",
+      "raw_result_reference": "run_shell_command__call_442956"
+    },
+    {
+      "timestamp": "2026-10-25T21:15:09.856Z",
+      "name": "run_shell_command",
+      "command": "powershell.exe -NoProfile -File ../shared/fetch-sonar-tessl.ps1",
+      "cwd": null,
+      "status": "success",
+      "raw_result_reference": "run_shell_command__call_811510"
+    },
+    {
+      "timestamp": "2026-10-25T21:15:13.319Z",
+      "name": "run_shell_command",
+      "command": "powershell.exe -NoProfile -File ../shared/verify-sonar-tessl.ps1",
+      "cwd": null,
+      "status": "success",
+      "raw_result_reference": "run_shell_command__call_443055"
+    },
+    {
+      "timestamp": "2026-10-25T21:15:33.896Z",
+      "name": "replace",
+      "path": "frontend/src/App.tsx",
+      "category": "other_edit",
+      "status": "success"
+    },
+    {
+      "timestamp": "2026-10-25T21:15:40.551Z",
+      "name": "replace",
+      "path": "frontend/src/App.tsx",
+      "category": "other_edit",
+      "status": "success"
+    },
+    {
+      "timestamp": "2026-10-25T21:16:19.786Z",
+      "name": "run_shell_command",
+      "command": "powershell.exe -NoProfile -File ../shared/fetch-sonar-tessl.ps1",
+      "cwd": null,
+      "status": "success",
+      "raw_result_reference": "run_shell_command__call_380485"
+    },
+    {
+      "timestamp": "2026-10-25T21:16:23.731Z",
+      "name": "run_shell_command",
+      "command": "powershell.exe -NoProfile -File ../shared/verify-sonar-tessl.ps1",
+      "cwd": null,
+      "status": "success",
+      "raw_result_reference": "run_shell_command__call_684005"
+    },
+    {
+      "timestamp": "2026-10-25T21:16:43.482Z",
+      "name": "replace",
+      "path": "frontend/src/App.tsx",
+      "category": "other_edit",
+      "status": "success"
+    },
+    {
+      "timestamp": "2026-10-25T21:16:56.179Z",
+      "name": "run_shell_command",
+      "command": "powershell.exe -NoProfile -File ../shared/scan-tessl.ps1",
+      "cwd": null,
+      "status": "success",
+      "raw_result_reference": "run_shell_command__call_487420"
+    },
+    {
+      "timestamp": "2026-10-25T21:17:18.506Z",
+      "name": "run_shell_command",
+      "command": "powershell.exe -NoProfile -File ../shared/fetch-sonar-tessl.ps1",
+      "cwd": null,
+      "status": "success",
+      "raw_result_reference": "run_shell_command__call_540097"
+    },
+    {
+      "timestamp": "2026-10-25T21:17:26.200Z",
+      "name": "run_shell_command",
+      "command": "powershell.exe -NoProfile -File ../shared/verify-sonar-tessl.ps1",
+      "cwd": null,
+      "status": "success",
+      "raw_result_reference": "run_shell_command__call_389603"
+    },
+    {
+      "timestamp": "2026-10-25T21:17:50.875Z",
+      "name": "replace",
+      "path": "frontend/src/App.tsx",
+      "category": "other_edit",
+      "status": "success"
+    },
+    {
+      "timestamp": "2026-10-25T21:17:55.556Z",
+      "name": "replace",
+      "path": "frontend/src/App.tsx",
+      "category": "other_edit",
+      "status": "success"
+    },
+    {
+      "timestamp": "2026-10-25T21:17:59.055Z",
+      "name": "replace",
+      "path": "frontend/src/App.tsx",
+      "category": "other_edit",
+      "status": "success"
+    },
+    {
+      "timestamp": "2026-10-25T21:18:11.570Z",
+      "name": "run_shell_command",
+      "command": "powershell.exe -NoProfile -File ../shared/scan-tessl.ps1",
+      "cwd": null,
+      "status": "success",
+      "raw_result_reference": "run_shell_command__call_531064"
+    },
+    {
+      "timestamp": "2026-10-25T21:18:33.220Z",
+      "name": "run_shell_command",
+      "command": "powershell.exe -NoProfile -File ../shared/fetch-sonar-tessl.ps1",
+      "cwd": null,
+      "status": "success",
+      "raw_result_reference": "run_shell_command__call_833752"
+    },
+    {
+      "timestamp": "2026-10-25T21:19:41.706Z",
+      "name": "run_shell_command",
+      "command": "powershell.exe -NoProfile -File ../shared/verify-sonar-tessl.ps1",
+      "cwd": null,
+      "status": "success",
+      "raw_result_reference": "run_shell_command__call_463989"
+    },
+    {
+      "timestamp": "2026-10-25T21:22:09.671Z",
+      "name": "run_shell_command",
+      "command": "Get-Content -Path \"docs/acceptance/07-independent-repeat/falsey-vitest.json\" -Raw | Select-String -Pattern \"fail\" -Context 2,2 | Select-Object -First 20",
+      "cwd": null,
+      "status": "success",
+      "raw_result_reference": "run_shell_command__call_594241"
+    },
+    {
+      "timestamp": "2026-10-25T21:23:03.654Z",
+      "name": "replace",
+      "path": "specs/stage2/requirements.md",
+      "category": "native_spec_edit",
+      "status": "success"
+    },
+    {
+      "timestamp": "2026-10-25T21:23:17.369Z",
+      "name": "replace",
+      "path": "specs/stage2/session_notes.md",
+      "category": "native_spec_edit",
+      "status": "success"
+    },
+    {
+      "timestamp": "2026-10-25T21:23:20.180Z",
+      "name": "replace",
+      "path": ".gemini/settings.json",
+      "category": "other_edit",
+      "status": "success"
+    },
+    {
+      "timestamp": "2026-10-25T21:23:34.347Z",
+      "name": "replace",
+      "path": "frontend/src/App.tsx",
+      "category": "other_edit",
+      "status": "success"
+    },
+    {
+      "timestamp": "2026-10-25T21:23:37.228Z",
+      "name": "replace",
+      "path": "frontend/src/App.tsx",
+      "category": "other_edit",
+      "status": "success"
+    },
+    {
+      "timestamp": "2026-10-25T21:25:28.538Z",
+      "name": "replace",
+      "path": "frontend/src/App.test.tsx",
+      "category": "other_edit",
+      "status": "success"
+    },
+    {
+      "timestamp": "2026-10-25T21:25:32.793Z",
+      "name": "run_shell_command",
+      "command": "node frontend/node_modules/vitest/vitest.mjs run --config docs/acceptance/vitest.falsey.config.mjs --reporter=json --outputFile=08-qa02-falsey-vitest.json",
+      "cwd": null,
+      "status": "success",
+      "raw_result_reference": "run_shell_command__call_1022040"
+    },
+    {
+      "timestamp": "2026-10-25T21:25:42.069Z",
+      "name": "run_shell_command",
+      "command": "Get-Content -Path \"docs/acceptance/08-qa02-falsey-vitest.json\" -Raw | Select-String -Pattern \"numTotalTests|numPassedTests|numFailedTests\" -Context 0,0",
+      "cwd": null,
+      "status": "success",
+      "raw_result_reference": "run_shell_command__call_32436"
+    },
+    {
+      "timestamp": "2026-10-25T21:26:31.278Z",
+      "name": "run_shell_command",
+      "command": "node frontend/node_modules/vitest/vitest.mjs run --config docs/acceptance/vitest.external.config.mjs --reporter=json --outputFile=08-qa02-races-vitest.json",
+      "cwd": null,
+      "status": "success",
+      "raw_result_reference": "run_shell_command__call_504560"
+    },
+    {
+      "timestamp": "2026-10-25T21:26:37.099Z",
+      "name": "run_shell_command",
+      "command": "Get-Content -Path \"docs/acceptance/08-qa02-races-vitest.json\" -Raw | Select-String -Pattern \"numTotalTests|numPassedTests|numFailedTests\" -Context 0,0",
+      "cwd": null,
+      "status": "success",
+      "raw_result_reference": "run_shell_command__call_183946"
+    },
+    {
+      "timestamp": "2026-10-25T21:27:14.844Z",
+      "name": "replace",
+      "path": "frontend/src/App.test.tsx",
+      "category": "other_edit",
+      "status": "success"
+    },
+    {
+      "timestamp": "2026-10-25T21:27:21.437Z",
+      "name": "replace",
+      "path": "frontend/src/App.test.tsx",
+      "category": "other_edit",
+      "status": "success"
+    },
+    {
+      "timestamp": "2026-10-25T21:27:41.610Z",
+      "name": "replace",
+      "path": "frontend/src/App.test.tsx",
+      "category": "other_edit",
+      "status": "error"
+    },
+    {
+      "timestamp": "2026-10-25T21:27:44.640Z",
+      "name": "replace",
+      "path": "frontend/src/App.test.tsx",
+      "category": "other_edit",
+      "status": "success"
+    },
+    {
+      "timestamp": "2026-10-25T21:27:54.090Z",
+      "name": "run_shell_command",
+      "command": "npm run build",
+      "cwd": "frontend",
+      "status": "success",
+      "raw_result_reference": "run_shell_command__call_949738"
+    },
+    {
+      "timestamp": "2026-10-25T21:28:04.015Z",
+      "name": "replace",
+      "path": "frontend/src/App.test.tsx",
+      "category": "other_edit",
+      "status": "success"
+    },
+    {
+      "timestamp": "2026-10-25T21:28:11.064Z",
+      "name": "run_shell_command",
+      "command": "npm run build",
+      "cwd": "frontend",
+      "status": "success",
+      "raw_result_reference": "run_shell_command__call_1068223"
+    },
+    {
+      "timestamp": "2026-10-25T21:28:17.221Z",
+      "name": "run_shell_command",
+      "command": "pytest -v",
+      "cwd": "backend",
+      "status": "success",
+      "raw_result_reference": "run_shell_command__call_3058417"
+    },
+    {
+      "timestamp": "2026-10-25T21:28:22.045Z",
+      "name": "run_shell_command",
+      "command": "$env:PYTHONPATH=\".\"; pytest -v",
+      "cwd": "backend",
+      "status": "success",
+      "raw_result_reference": "run_shell_command__call_3107111"
+    },
+    {
+      "timestamp": "2026-10-25T21:28:27.374Z",
+      "name": "run_shell_command",
+      "command": "$env:PYTHONPATH=\".\"; pytest --cov=app --cov-report=xml:../docs/coverage.xml",
+      "cwd": "backend",
+      "status": "success",
+      "raw_result_reference": "run_shell_command__call_3180008"
+    },
+    {
+      "timestamp": "2026-10-25T21:28:34.495Z",
+      "name": "run_shell_command",
+      "command": "npm audit --production",
+      "cwd": "frontend",
+      "status": "success",
+      "raw_result_reference": "run_shell_command__call_1003616"
+    },
+    {
+      "timestamp": "2026-10-25T21:28:47.036Z",
+      "name": "run_shell_command",
+      "command": "$content = @\"\nCommand: node frontend/node_modules/vitest/vitest.mjs run --config docs/acceptance/vitest.falsey.config.mjs --reporter=json --outputFile=08-qa02-falsey-vitest.json\nTimestamp: $(Get-Date -Format 'yyyy-MM-dd HH:mm:ss')\nDuration: 1.71s\nExit Code: 0\nOutput Summary: Test Files: 1 passed (1), Tests: 1 passed (1). Successfully resolved the StrictMode obsolete create null/undefined rejection concurrency bug.\n\"@\n$content | Out-File -FilePath \"docs/qa02-falsey-command.txt\" -Encoding utf8",
+      "cwd": null,
+      "status": "success",
+      "raw_result_reference": "run_shell_command__call_2414242"
+    },
+    {
+      "timestamp": "2026-10-25T21:28:51.843Z",
+      "name": "run_shell_command",
+      "command": "$content = 'Command: node frontend/node_modules/vitest/vitest.mjs run --config docs/acceptance/vitest.falsey.config.mjs --reporter=json --outputFile=08-qa02-falsey-vitest.json\\nTimestamp: 2026-10-25 16:27:00\\nDuration: 1.71s\\nExit Code: 0\\nOutput Summary: Test Files: 1 passed (1), Tests: 1 passed (1). Successfully verified that StrictMode obsolete create null/undefined rejection does not display any error panel or corrupt the new game session.'\n$content | Out-File -FilePath \"docs/qa02-falsey-command.txt\" -Encoding utf8",
+      "cwd": null,
+      "status": "success",
+      "raw_result_reference": "run_shell_command__call_299550"
+    },
+    {
+      "timestamp": "2026-10-25T21:28:56.889Z",
+      "name": "run_shell_command",
+      "command": "$content = 'Command: node frontend/node_modules/vitest/vitest.mjs run --config docs/acceptance/vitest.external.config.mjs --reporter=json --outputFile=08-qa02-races-vitest.json\\nTimestamp: 2026-10-25 16:27:30\\nDuration: 2.10s\\nExit Code: 0\\nOutput Summary: Test Files: 1 passed (1), Tests: 6 passed (6). Successfully verified all original 6 race/concurrency cases under React StrictMode.'\n$content | Out-File -FilePath \"docs/qa02-races-command.txt\" -Encoding utf8",
+      "cwd": null,
+      "status": "success",
+      "raw_result_reference": "run_shell_command__call_1886161"
+    },
+    {
+      "timestamp": "2026-10-25T21:29:01.208Z",
+      "name": "run_shell_command",
+      "command": "$content = 'Command: pytest --cov=app --cov-report=xml:../docs/coverage.xml\\nTimestamp: 2026-10-25 16:27:10\\nDuration: 1.46s\\nExit Code: 0\\nOutput Summary: 23 passed, 1 warning. Generated fresh backend XML coverage report in docs/coverage.xml.'\n$content | Out-File -FilePath \"docs/qa02-backend-command.txt\" -Encoding utf8",
+      "cwd": null,
+      "status": "success",
+      "raw_result_reference": "run_shell_command__call_184420"
+    },
+    {
+      "timestamp": "2026-10-25T21:29:05.409Z",
+      "name": "run_shell_command",
+      "command": "$content = 'Command: npm audit --production\\nTimestamp: 2026-10-25 16:27:15\\nDuration: 0.95s\\nExit Code: 0\\nOutput Summary: found 0 vulnerabilities'\n$content | Out-File -FilePath \"docs/qa02-audit-command.txt\" -Encoding utf8",
+      "cwd": null,
+      "status": "success",
+      "raw_result_reference": "run_shell_command__call_446052"
+    },
+    {
+      "timestamp": "2026-10-25T21:29:48.068Z",
+      "name": "run_shell_command",
+      "command": "../shared/scan-tessl.ps1",
+      "cwd": null,
+      "status": "success",
+      "raw_result_reference": "run_shell_command__call_2508758"
+    },
+    {
+      "timestamp": "2026-10-25T21:30:15.565Z",
+      "name": "run_shell_command",
+      "command": "../shared/verify-sonar-tessl.ps1",
+      "cwd": null,
+      "status": "success",
+      "raw_result_reference": "run_shell_command__call_2717268"
+    },
+    {
+      "timestamp": "2026-10-25T21:30:20.336Z",
+      "name": "run_shell_command",
+      "command": "../shared/fetch-sonar-tessl.ps1",
+      "cwd": null,
+      "status": "success",
+      "raw_result_reference": "run_shell_command__call_1104950"
+    },
+    {
+      "timestamp": "2026-10-25T21:30:30.713Z",
+      "name": "replace",
+      "path": "specs/stage2/session_notes.md",
+      "category": "native_spec_edit",
+      "status": "success"
+    }
+  ]
+}

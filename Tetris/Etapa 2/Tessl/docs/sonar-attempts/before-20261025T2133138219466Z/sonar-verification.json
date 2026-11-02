@@ -1,0 +1,48 @@
+{
+  "verified_at_utc": "2026-10-25T21:30:16.3348322Z",
+  "project_key": "tetris-stage2-tessl",
+  "report_task_sha256": "48BABC0A3E57E75FC220B43C8691A3BE408F396B1E89ACFE22AAF3B29B6E910E",
+  "ce_task_id": "49e28c6d-8958-415d-bdb3-86c0da066e14",
+  "ce_status": "SUCCESS",
+  "analysis_id": "6ffe41d7-5d49-4ff0-9eaf-7e1c2a6e76c5",
+  "submitted_at": "2026-10-25T16:30:09-05:00",
+  "executed_at": "2026-10-25T16:30:11-05:00",
+  "gate_status": "OK",
+  "gate_conditions": [
+    {
+      "status": "OK",
+      "metricKey": "new_coverage",
+      "comparator": "LT",
+      "errorThreshold": "80",
+      "actualValue": "82.7"
+    },
+    {
+      "status": "OK",
+      "metricKey": "new_duplicated_lines_density",
+      "comparator": "GT",
+      "errorThreshold": "3",
+      "actualValue": "0.0"
+    },
+    {
+      "status": "OK",
+      "metricKey": "new_violations",
+      "comparator": "GT",
+      "errorThreshold": "0",
+      "actualValue": "0"
+    }
+  ],
+  "coverage_inputs": [
+    {
+      "path": "docs/coverage.xml",
+      "exists": true,
+      "sha256": "603B1F7C7EBB34E638DD7FBF7819B14E3F45A66B08F800692505DF7D20069FFA",
+      "last_write_time_utc": "2026-10-25T21:28:30.4266338Z"
+    },
+    {
+      "path": "frontend/coverage/lcov.info",
+      "exists": true,
+      "sha256": "9D838DFD8E0B8584ACC2D3A22653DA72E714B2CC6B758E717AA9135BAD58BAC4",
+      "last_write_time_utc": "2026-10-25T21:27:50.8811006Z"
+    }
+  ]
+}

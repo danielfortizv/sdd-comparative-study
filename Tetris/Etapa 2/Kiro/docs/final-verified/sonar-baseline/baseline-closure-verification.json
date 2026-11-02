@@ -1,0 +1,194 @@
+{
+  "researcher_created": true,
+  "measured_at_utc": "2026-10-21T19:52:59.158739+00:00",
+  "status": "pass",
+  "files": [
+    {
+      "path": "backend/app/__init__.py",
+      "stage2_matches_baseline": true,
+      "stage1_unchanged": true
+    },
+    {
+      "path": "backend/app/api/__init__.py",
+      "stage2_matches_baseline": true,
+      "stage1_unchanged": true
+    },
+    {
+      "path": "backend/app/api/games.py",
+      "stage2_matches_baseline": true,
+      "stage1_unchanged": true
+    },
+    {
+      "path": "backend/app/api/schemas.py",
+      "stage2_matches_baseline": true,
+      "stage1_unchanged": true
+    },
+    {
+      "path": "backend/app/domain/__init__.py",
+      "stage2_matches_baseline": true,
+      "stage1_unchanged": true
+    },
+    {
+      "path": "backend/app/domain/models.py",
+      "stage2_matches_baseline": true,
+      "stage1_unchanged": true
+    },
+    {
+      "path": "backend/app/main.py",
+      "stage2_matches_baseline": true,
+      "stage1_unchanged": true
+    },
+    {
+      "path": "backend/app/rules/__init__.py",
+      "stage2_matches_baseline": true,
+      "stage1_unchanged": true
+    },
+    {
+      "path": "backend/app/rules/engine.py",
+      "stage2_matches_baseline": true,
+      "stage1_unchanged": true
+    },
+    {
+      "path": "backend/app/rules/pieces.py",
+      "stage2_matches_baseline": true,
+      "stage1_unchanged": true
+    },
+    {
+      "path": "backend/app/store.py",
+      "stage2_matches_baseline": true,
+      "stage1_unchanged": true
+    },
+    {
+      "path": "backend/pytest.ini",
+      "stage2_matches_baseline": true,
+      "stage1_unchanged": true
+    },
+    {
+      "path": "backend/README.md",
+      "stage2_matches_baseline": true,
+      "stage1_unchanged": true
+    },
+    {
+      "path": "backend/requirements.txt",
+      "stage2_matches_baseline": true,
+      "stage1_unchanged": true
+    },
+    {
+      "path": "backend/tests/__init__.py",
+      "stage2_matches_baseline": true,
+      "stage1_unchanged": true
+    },
+    {
+      "path": "backend/tests/test_api.py",
+      "stage2_matches_baseline": true,
+      "stage1_unchanged": true
+    },
+    {
+      "path": "backend/tests/test_rules.py",
+      "stage2_matches_baseline": true,
+      "stage1_unchanged": true
+    },
+    {
+      "path": "frontend/.gitignore",
+      "stage2_matches_baseline": true,
+      "stage1_unchanged": true
+    },
+    {
+      "path": "frontend/index.html",
+      "stage2_matches_baseline": true,
+      "stage1_unchanged": true
+    },
+    {
+      "path": "frontend/package-lock.json",
+      "stage2_matches_baseline": true,
+      "stage1_unchanged": true
+    },
+    {
+      "path": "frontend/package.json",
+      "stage2_matches_baseline": true,
+      "stage1_unchanged": true
+    },
+    {
+      "path": "frontend/README.md",
+      "stage2_matches_baseline": true,
+      "stage1_unchanged": true
+    },
+    {
+      "path": "frontend/src/api.ts",
+      "stage2_matches_baseline": true,
+      "stage1_unchanged": true
+    },
+    {
+      "path": "frontend/src/App.tsx",
+      "stage2_matches_baseline": true,
+      "stage1_unchanged": true
+    },
+    {
+      "path": "frontend/src/Board.tsx",
+      "stage2_matches_baseline": true,
+      "stage1_unchanged": true
+    },
+    {
+      "path": "frontend/src/main.tsx",
+      "stage2_matches_baseline": true,
+      "stage1_unchanged": true
+    },
+    {
+      "path": "frontend/src/types.ts",
+      "stage2_matches_baseline": true,
+      "stage1_unchanged": true
+    },
+    {
+      "path": "frontend/src/useGame.ts",
+      "stage2_matches_baseline": true,
+      "stage1_unchanged": true
+    },
+    {
+      "path": "frontend/src/vite-env.d.ts",
+      "stage2_matches_baseline": true,
+      "stage1_unchanged": true
+    },
+    {
+      "path": "frontend/tsconfig.json",
+      "stage2_matches_baseline": true,
+      "stage1_unchanged": true
+    },
+    {
+      "path": "frontend/tsconfig.node.json",
+      "stage2_matches_baseline": true,
+      "stage1_unchanged": true
+    },
+    {
+      "path": "frontend/vite.config.ts",
+      "stage2_matches_baseline": true,
+      "stage1_unchanged": true
+    },
+    {
+      "path": ".kiro/specs/tetris-stage1-option-a/design.md",
+      "stage2_matches_baseline": true,
+      "stage1_unchanged": true
+    },
+    {
+      "path": ".kiro/specs/tetris-stage1-option-a/requirements.md",
+      "stage2_matches_baseline": true,
+      "stage1_unchanged": true
+    },
+    {
+      "path": ".kiro/specs/tetris-stage1-option-a/tasks.md",
+      "stage2_matches_baseline": true,
+      "stage1_unchanged": true
+    },
+    {
+      "path": "README.md",
+      "stage2_matches_baseline": true,
+      "stage1_unchanged": true
+    }
+  ],
+  "scanner_warnings": [
+    "WARNING: SCM provider autodetection failed. Please use \"sonar.scm.provider\" to define SCM of your project, or disable the SCM Sensor in the project settings.",
+    "WARNING: Your code is analyzed as compatible with all Python 3 versions by default. You can get a more precise analysis by setting the Python version or version range in your configuration via the parameter \"sonar.python.version\"",
+    "WARNING: Retrieving only language associated files, make sure to run the analysis inside a git repository to make use of inclusions specified via \"sonar.text.inclusions\""
+  ],
+  "scanner_warning_count": 3,
+  "warning_policy": "Retained raw scanner warnings; no production source/test/coverage issue suppression introduced"
+}

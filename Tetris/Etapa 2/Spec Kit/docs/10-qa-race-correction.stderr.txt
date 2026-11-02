@@ -1,0 +1,10 @@
+Warning: Basic terminal detected (TERM=dumb). Visual rendering will be limited. For the best experience, use a terminal emulator with truecolor support.
+Warning: 256-color support not detected. Using a terminal with at least 256-color support is recommended for a better visual experience.
+YOLO mode is enabled. All tool calls will be automatically approved.
+YOLO mode is enabled. All tool calls will be automatically approved.
+Ripgrep is not available. Falling back to GrepTool.
+Error executing tool read_file: File path 'D:\KEVIN\UNIVERSIDAD\Trabajos\Proyecto\Caso 2-Tetris\Etapa 2\Spec Kit\docs\qa09-final-review.md' is ignored by configured ignore patterns.
+(node:9328) [DEP0190] DeprecationWarning: Passing args to a child process with shell option true can lead to security vulnerabilities, as the arguments are not escaped, only concatenated.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+Error executing tool replace: Error: Failed to edit, expected 1 occurrence but found 3.
+Error executing tool read_file: Path not in workspace: Attempted path "D:\KEVIN\UNIVERSIDAD\Trabajos\Proyecto\Caso 2-Tetris\Etapa 2\shared\scan-spec-kit.ps1" resolves outside the allowed workspace directories: D:\KEVIN\UNIVERSIDAD\Trabajos\Proyecto\Caso 2-Tetris\Etapa 2\Spec Kit or the project temp directory: D:\KEVIN\UNIVERSIDAD\Trabajos\Proyecto\Caso 2-Tetris\Etapa 2\Spec Kit\docs\gemini-home\.gemini\tmp\spec-kit

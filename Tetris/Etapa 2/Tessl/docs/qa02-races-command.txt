@@ -1,0 +1,1 @@
+Command: node frontend/node_modules/vitest/vitest.mjs run --config docs/acceptance/vitest.external.config.mjs --reporter=json --outputFile=08-qa02-races-vitest.json\nTimestamp: 2026-10-25 16:27:30\nDuration: 2.10s\nExit Code: 0\nOutput Summary: Test Files: 1 passed (1), Tests: 6 passed (6). Successfully verified all original 6 race/concurrency cases under React StrictMode.

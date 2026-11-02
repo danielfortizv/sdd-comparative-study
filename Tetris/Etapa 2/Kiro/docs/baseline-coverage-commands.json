@@ -1,0 +1,99 @@
+[
+  {
+    "argv": [
+      "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\Kiro\\backend\\.venv\\Scripts\\python.exe",
+      "-B",
+      "-c",
+      "import importlib.metadata,json; print(json.dumps(sorted([{'name':d.metadata['Name'],'version':d.version} for d in importlib.metadata.distributions()],key=lambda x:x['name'].lower())))"
+    ],
+    "cwd": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\Kiro\\backend",
+    "started_at_utc": "2026-10-21T19:49:15.228376+00:00",
+    "ended_at_utc": "2026-10-21T19:49:15.440889+00:00",
+    "duration_seconds": 0.219,
+    "exit_code": 0,
+    "log_path": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\Kiro\\docs\\baseline-coverage-packages-before.json"
+  },
+  {
+    "argv": [
+      "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\Kiro\\backend\\.venv\\Scripts\\python.exe",
+      "-B",
+      "-m",
+      "pip",
+      "install",
+      "--no-deps",
+      "coverage==7.16.2"
+    ],
+    "cwd": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\Kiro\\backend",
+    "started_at_utc": "2026-10-21T19:49:15.440889+00:00",
+    "ended_at_utc": "2026-10-21T19:49:19.818219+00:00",
+    "duration_seconds": 4.375,
+    "exit_code": 0,
+    "log_path": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\Kiro\\docs\\baseline-coverage-install.log"
+  },
+  {
+    "argv": [
+      "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\Kiro\\backend\\.venv\\Scripts\\python.exe",
+      "-B",
+      "-c",
+      "import importlib.metadata,json; print(json.dumps(sorted([{'name':d.metadata['Name'],'version':d.version} for d in importlib.metadata.distributions()],key=lambda x:x['name'].lower())))"
+    ],
+    "cwd": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\Kiro\\backend",
+    "started_at_utc": "2026-10-21T19:49:19.819220+00:00",
+    "ended_at_utc": "2026-10-21T19:49:20.045465+00:00",
+    "duration_seconds": 0.235,
+    "exit_code": 0,
+    "log_path": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\Kiro\\docs\\baseline-coverage-packages-after.json"
+  },
+  {
+    "argv": [
+      "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\Kiro\\backend\\.venv\\Scripts\\python.exe",
+      "-B",
+      "-m",
+      "coverage",
+      "run",
+      "--source=app",
+      "-m",
+      "pytest",
+      "-q"
+    ],
+    "cwd": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\Kiro\\backend",
+    "started_at_utc": "2026-10-21T19:49:20.045465+00:00",
+    "ended_at_utc": "2026-10-21T19:49:22.206931+00:00",
+    "duration_seconds": 2.156,
+    "exit_code": 0,
+    "log_path": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\Kiro\\docs\\baseline-backend-coverage-tests.log"
+  },
+  {
+    "argv": [
+      "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\Kiro\\backend\\.venv\\Scripts\\python.exe",
+      "-B",
+      "-m",
+      "coverage",
+      "report",
+      "--show-missing"
+    ],
+    "cwd": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\Kiro\\backend",
+    "started_at_utc": "2026-10-21T19:49:22.207933+00:00",
+    "ended_at_utc": "2026-10-21T19:49:22.523814+00:00",
+    "duration_seconds": 0.312,
+    "exit_code": 0,
+    "log_path": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\Kiro\\docs\\baseline-backend-coverage-report.log"
+  },
+  {
+    "argv": [
+      "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\Kiro\\backend\\.venv\\Scripts\\python.exe",
+      "-B",
+      "-m",
+      "coverage",
+      "xml",
+      "-o",
+      "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\Kiro\\docs\\baseline-coverage.xml"
+    ],
+    "cwd": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\Kiro\\backend",
+    "started_at_utc": "2026-10-21T19:49:22.523814+00:00",
+    "ended_at_utc": "2026-10-21T19:49:22.844880+00:00",
+    "duration_seconds": 0.328,
+    "exit_code": 0,
+    "log_path": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\Kiro\\docs\\baseline-coverage-xml.log"
+  }
+]

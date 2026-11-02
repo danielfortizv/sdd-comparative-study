@@ -1,0 +1,3 @@
+Captura 10. Visor derivado de los registros originales de pruebas, compilación y auditoría; no es una consola
+nativa. Archivo: Spec Kit/docs/screenshots/tests-panel.jpg. Fuentes: verification-commands.json;
+backend-coverage.log; frontend-test-coverage.log; frontend-build.log; npm-audit.json.

@@ -1,0 +1,88 @@
+{
+  "researcher_created": true,
+  "created_at_utc": "2026-10-23T20:22:27.565538+00:00",
+  "revision": "AHj4eMR-7KZtKUiP6VJbJ6k_KNOXkRMuKL5WL421RvPdwADrxUAFBpkCYkIKql5pepso3a-Oyi50Bf6CJYvBBTmDwg5gBng-fVluaROPHw",
+  "scope": "Published final tables, selected actual/derived screenshots, native-derived metrics and final PDF; no signed download links retained",
+  "files": [
+    {
+      "path": "screenshots/final-consumption-researcher-view.jpg",
+      "format": "JPEG",
+      "pixels": [
+        1265,
+        712
+      ],
+      "sha256": "CFFCA8A129F4491E1A588B4A0D0FDD1D08D2802FC5EA9E7F0D5F94AA599924C7"
+    },
+    {
+      "path": "screenshots/final-quality-researcher-view.jpg",
+      "format": "JPEG",
+      "pixels": [
+        1265,
+        712
+      ],
+      "sha256": "F2D76A1D46E190460802936E57CD963390B81DDC59AB22E8107A4F9C37737771"
+    },
+    {
+      "path": "screenshots/final-game-over.jpg",
+      "format": "JPEG",
+      "pixels": [
+        1265,
+        849
+      ],
+      "sha256": "FF34424E30D1FD185C2264A6E95B333484F9ACF9D7F2068425CF32AD6A74C2F5"
+    },
+    {
+      "path": "screenshots/final-hold-key-immediate.jpg",
+      "format": "JPEG",
+      "pixels": [
+        1265,
+        784
+      ],
+      "sha256": "138DD7F8D38FCBBAB79FB1AC3B2519B3A3D2BF8E6B563B574CA50E6A16D35786"
+    },
+    {
+      "path": "screenshots/final-controlled-level-up.jpg",
+      "format": "JPEG",
+      "pixels": [
+        1265,
+        784
+      ],
+      "sha256": "249819DCC606A44AA19D26E8C529236F141F2519FB9F1E4CA622E00E1C63B60F"
+    },
+    {
+      "path": "FINAL_REPORT.json",
+      "sha256": "2534E0C8433265C474D6B3F576B55549D32993506AE942D25D8466009320627D",
+      "bytes": 5789
+    },
+    {
+      "path": "FINAL_REPORT.md",
+      "sha256": "4D276CBE380E11CBBB80CD33F209486B2A49003E9A1994B1B12BD8BAD0C931A6",
+      "bytes": 10741
+    },
+    {
+      "path": "metrics.json",
+      "sha256": "0C4F83CB61A1E6B6EEFC529FE507FCC0A28ADBBC9FF0B57024392754FB7D4FE6",
+      "bytes": 147369
+    },
+    {
+      "path": "input-audit.json",
+      "sha256": "5FA63769832EDD821B50DC5CED6D0A4ED0B5E3CE988CBD3ED54EC3B96B7059E8",
+      "bytes": 15658
+    },
+    {
+      "path": "question-audit.json",
+      "sha256": "A5F1E43AA68C7F45C83182952E2B11396CA2D847DC565FB4194B3FB19F6D16A5",
+      "bytes": 432179
+    },
+    {
+      "path": "publication-qa/drive-final.pdf",
+      "sha256": "531B20852DE8CBCEF9F399A6351268F7CD8BEA65ADBED5B02513AE1B566B0654",
+      "bytes": 2354931
+    },
+    {
+      "path": "publication-qa/final-readback.json",
+      "sha256": "BFFBAEEF46D67224F8EA9B0C44AC6C1C34AA3CD0B4C40377279754C817D9A628",
+      "bytes": 74899
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "researcher_created": true,
+  "label": "05-qa",
+  "phase": "clarify",
+  "workflow": "Kiro native V3 spec mode",
+  "requested_model": "auto",
+  "runtime": {
+    "path": "C:\\Users\\Kevin Alvarez\\AppData\\Local\\Kiro-Cli\\kiro-cli.exe",
+    "sha256": "BC711541FC139D5E5FC8E07FC8FA13E9239ED039862F4A9D55C0E344BAC7C3F8",
+    "version": "kiro-cli-chat 2.33.0"
+  },
+  "prompt_sha256": "ADFDEA0CB97EF329DFF34AB951E44D82C89BF3E983F9E26E745899155008B941",
+  "seed_sha256": "63919779DD4104076FBABCB130CE296A160FA840E0B4755A2AA5D90757ADA8EF",
+  "seed_block_sha256": "60D6728689CD5CDAD7B1A386F95DAD4E34850EB5DE0AAB92E837D630DFD2B55A",
+  "prompt_characters": 9976,
+  "submission_method": "direct subprocess argument list, complete multiline prompt",
+  "resume_id": null,
+  "stdout": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\Kiro\\docs\\05-qa.stdout.jsonl",
+  "stderr": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\Kiro\\docs\\05-qa.stderr.txt",
+  "prepared_at_utc": "2026-10-22T01:21:15.727106+00:00",
+  "status": "prepared_not_submitted",
+  "model_invocation_started": false,
+  "note": "Prompt preparation only; no inference, session or usage is attributed to this record."
+}

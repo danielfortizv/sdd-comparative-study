@@ -1,0 +1,54 @@
+{
+  "researcher_created": true,
+  "verified_at_utc": "2026-10-23T20:02:19.545776+00:00",
+  "source": "Actual in-app-browser UI actions and CUA full-page screenshots",
+  "fixture": "Original app/routes/rules with researcher runtime data for first2StrictMode creates; real canonical O lock crosses9->10. Subsequent restarts use original defaults. Fixture server then stopped; normal app.main backend restarted.",
+  "observed": {
+    "initial_controlled_hud": [
+      0,
+      9,
+      1
+    ],
+    "post_lock_hud": [
+      100,
+      10,
+      2
+    ],
+    "restart_hud": [
+      0,
+      0,
+      1
+    ],
+    "restart_hold_empty": true,
+    "C_key_holds_J_next_I_and_disables_button": true,
+    "Hold_button_holds_J_next_I_and_disables_button": true,
+    "game_over_shown_and_all_mutations_disabled": true,
+    "soft_drop_UI_key_events_in_game_over_run": 160,
+    "document_title": "Tetris - Stage 2"
+  },
+  "screenshots": [
+    {
+      "path": "docs/screenshots/final-controlled-level-up.jpg",
+      "sha256": "249819DCC606A44AA19D26E8C529236F141F2519FB9F1E4CA622E00E1C63B60F"
+    },
+    {
+      "path": "docs/screenshots/final-hold-key-immediate.jpg",
+      "sha256": "138DD7F8D38FCBBAB79FB1AC3B2519B3A3D2BF8E6B563B574CA50E6A16D35786"
+    },
+    {
+      "path": "docs/screenshots/final-hold-button.jpg",
+      "sha256": "E413CF05C0F61A765F0DAEA77D9A32DCD2B4BB6538999CE6FAB38D6B28AA4126"
+    },
+    {
+      "path": "docs/screenshots/final-game-over.jpg",
+      "sha256": "FF34424E30D1FD185C2264A6E95B333484F9ACF9D7F2068425CF32AD6A74C2F5"
+    }
+  ],
+  "trace_sha256": "5E42DE17A53232FAEA68318DA9DB08208C89F79A1D8516054F657F1D7F93081D",
+  "trace_records": 643,
+  "limits": [
+    "Exact450ms/queue safety is established by fake-timer transport tests; a screenshot alone is not timing proof.",
+    "Two clip captures were discarded because the screenshot backend applied dimensions without the intended origin. Full-page JPEGs are retained; viewport was never changed.",
+    "One later Hold image was captured after a natural lock and is not used as proof of immediate disable. Immediate C/button captures were synchronized using visible state, with no injected browser state."
+  ]
+}

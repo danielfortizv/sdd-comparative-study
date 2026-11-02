@@ -1,0 +1,570 @@
+{
+  "researcher_created": true,
+  "measured_at_utc": "2026-10-21T14:32:33.308890+00:00",
+  "original_python": {
+    "python": "3.12.14",
+    "executable": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 1\\Tessl\\backend\\.venv\\Scripts\\python.exe",
+    "packages": [
+      {
+        "name": "agent-detector",
+        "version": "2.0.0"
+      },
+      {
+        "name": "annotated-doc",
+        "version": "0.0.5"
+      },
+      {
+        "name": "annotated-types",
+        "version": "0.8.0"
+      },
+      {
+        "name": "anyio",
+        "version": "4.15.1"
+      },
+      {
+        "name": "certifi",
+        "version": "2026.7.22"
+      },
+      {
+        "name": "click",
+        "version": "8.5.0"
+      },
+      {
+        "name": "colorama",
+        "version": "0.4.6"
+      },
+      {
+        "name": "coverage",
+        "version": "7.16.2"
+      },
+      {
+        "name": "detect-installer",
+        "version": "0.2.1"
+      },
+      {
+        "name": "dnspython",
+        "version": "2.8.0"
+      },
+      {
+        "name": "email-validator",
+        "version": "2.3.0"
+      },
+      {
+        "name": "fastapi",
+        "version": "0.141.1"
+      },
+      {
+        "name": "fastapi-cli",
+        "version": "0.0.32"
+      },
+      {
+        "name": "fastapi-cloud-cli",
+        "version": "0.26.0"
+      },
+      {
+        "name": "fastar",
+        "version": "0.12.0"
+      },
+      {
+        "name": "h11",
+        "version": "0.16.0"
+      },
+      {
+        "name": "httpcore",
+        "version": "1.0.9"
+      },
+      {
+        "name": "httptools",
+        "version": "0.8.0"
+      },
+      {
+        "name": "httpx",
+        "version": "0.28.1"
+      },
+      {
+        "name": "idna",
+        "version": "3.20"
+      },
+      {
+        "name": "iniconfig",
+        "version": "2.3.0"
+      },
+      {
+        "name": "Jinja2",
+        "version": "3.1.6"
+      },
+      {
+        "name": "markdown-it-py",
+        "version": "4.2.0"
+      },
+      {
+        "name": "MarkupSafe",
+        "version": "3.0.3"
+      },
+      {
+        "name": "mdurl",
+        "version": "0.1.2"
+      },
+      {
+        "name": "packaging",
+        "version": "26.3"
+      },
+      {
+        "name": "pip",
+        "version": "25.0.1"
+      },
+      {
+        "name": "pluggy",
+        "version": "1.6.0"
+      },
+      {
+        "name": "pydantic",
+        "version": "2.13.5"
+      },
+      {
+        "name": "pydantic-extra-types",
+        "version": "2.11.1"
+      },
+      {
+        "name": "pydantic-settings",
+        "version": "2.15.0"
+      },
+      {
+        "name": "pydantic_core",
+        "version": "2.46.5"
+      },
+      {
+        "name": "Pygments",
+        "version": "2.21.0"
+      },
+      {
+        "name": "pytest",
+        "version": "9.1.1"
+      },
+      {
+        "name": "pytest-cov",
+        "version": "7.1.0"
+      },
+      {
+        "name": "python-dotenv",
+        "version": "1.2.3"
+      },
+      {
+        "name": "python-multipart",
+        "version": "0.0.32"
+      },
+      {
+        "name": "PyYAML",
+        "version": "6.0.3"
+      },
+      {
+        "name": "rich",
+        "version": "15.0.0"
+      },
+      {
+        "name": "rich-toolkit",
+        "version": "0.20.5"
+      },
+      {
+        "name": "rignore",
+        "version": "0.8.1"
+      },
+      {
+        "name": "sentry-sdk",
+        "version": "2.71.0"
+      },
+      {
+        "name": "shellingham",
+        "version": "1.5.4"
+      },
+      {
+        "name": "starlette",
+        "version": "1.7.0"
+      },
+      {
+        "name": "typer",
+        "version": "0.27.2"
+      },
+      {
+        "name": "typing-inspection",
+        "version": "0.4.4"
+      },
+      {
+        "name": "typing_extensions",
+        "version": "4.16.0"
+      },
+      {
+        "name": "urllib3",
+        "version": "2.8.0"
+      },
+      {
+        "name": "uvicorn",
+        "version": "0.54.0"
+      },
+      {
+        "name": "watchfiles",
+        "version": "1.3.0"
+      },
+      {
+        "name": "websockets",
+        "version": "17.1"
+      }
+    ]
+  },
+  "stage2_python": {
+    "python": "3.12.14",
+    "executable": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\Tessl\\backend\\.venv\\Scripts\\python.exe",
+    "packages": [
+      {
+        "name": "agent-detector",
+        "version": "2.0.0"
+      },
+      {
+        "name": "annotated-doc",
+        "version": "0.0.5"
+      },
+      {
+        "name": "annotated-types",
+        "version": "0.8.0"
+      },
+      {
+        "name": "anyio",
+        "version": "4.15.1"
+      },
+      {
+        "name": "certifi",
+        "version": "2026.7.22"
+      },
+      {
+        "name": "click",
+        "version": "8.5.0"
+      },
+      {
+        "name": "colorama",
+        "version": "0.4.6"
+      },
+      {
+        "name": "coverage",
+        "version": "7.16.2"
+      },
+      {
+        "name": "detect-installer",
+        "version": "0.2.1"
+      },
+      {
+        "name": "dnspython",
+        "version": "2.8.0"
+      },
+      {
+        "name": "email-validator",
+        "version": "2.3.0"
+      },
+      {
+        "name": "fastapi",
+        "version": "0.141.1"
+      },
+      {
+        "name": "fastapi-cli",
+        "version": "0.0.32"
+      },
+      {
+        "name": "fastapi-cloud-cli",
+        "version": "0.26.0"
+      },
+      {
+        "name": "fastar",
+        "version": "0.12.0"
+      },
+      {
+        "name": "h11",
+        "version": "0.16.0"
+      },
+      {
+        "name": "httpcore",
+        "version": "1.0.9"
+      },
+      {
+        "name": "httptools",
+        "version": "0.8.0"
+      },
+      {
+        "name": "httpx",
+        "version": "0.28.1"
+      },
+      {
+        "name": "idna",
+        "version": "3.20"
+      },
+      {
+        "name": "iniconfig",
+        "version": "2.3.0"
+      },
+      {
+        "name": "Jinja2",
+        "version": "3.1.6"
+      },
+      {
+        "name": "markdown-it-py",
+        "version": "4.2.0"
+      },
+      {
+        "name": "MarkupSafe",
+        "version": "3.0.3"
+      },
+      {
+        "name": "mdurl",
+        "version": "0.1.2"
+      },
+      {
+        "name": "packaging",
+        "version": "26.3"
+      },
+      {
+        "name": "pip",
+        "version": "25.0.1"
+      },
+      {
+        "name": "pluggy",
+        "version": "1.6.0"
+      },
+      {
+        "name": "pydantic",
+        "version": "2.13.5"
+      },
+      {
+        "name": "pydantic-extra-types",
+        "version": "2.11.1"
+      },
+      {
+        "name": "pydantic-settings",
+        "version": "2.15.0"
+      },
+      {
+        "name": "pydantic_core",
+        "version": "2.46.5"
+      },
+      {
+        "name": "Pygments",
+        "version": "2.21.0"
+      },
+      {
+        "name": "pytest",
+        "version": "9.1.1"
+      },
+      {
+        "name": "pytest-cov",
+        "version": "7.1.0"
+      },
+      {
+        "name": "python-dotenv",
+        "version": "1.2.3"
+      },
+      {
+        "name": "python-multipart",
+        "version": "0.0.32"
+      },
+      {
+        "name": "PyYAML",
+        "version": "6.0.3"
+      },
+      {
+        "name": "rich",
+        "version": "15.0.0"
+      },
+      {
+        "name": "rich-toolkit",
+        "version": "0.20.5"
+      },
+      {
+        "name": "rignore",
+        "version": "0.8.1"
+      },
+      {
+        "name": "sentry-sdk",
+        "version": "2.71.0"
+      },
+      {
+        "name": "shellingham",
+        "version": "1.5.4"
+      },
+      {
+        "name": "starlette",
+        "version": "1.7.0"
+      },
+      {
+        "name": "typer",
+        "version": "0.27.2"
+      },
+      {
+        "name": "typing-inspection",
+        "version": "0.4.4"
+      },
+      {
+        "name": "typing_extensions",
+        "version": "4.16.0"
+      },
+      {
+        "name": "urllib3",
+        "version": "2.8.0"
+      },
+      {
+        "name": "uvicorn",
+        "version": "0.54.0"
+      },
+      {
+        "name": "watchfiles",
+        "version": "1.3.0"
+      },
+      {
+        "name": "websockets",
+        "version": "17.1"
+      }
+    ]
+  },
+  "same_python_version": true,
+  "exact_package_inventory_match": true,
+  "original_inventory_unchanged": true,
+  "new_coverage_packages_added": [],
+  "coverage_note": "coverage and pytest-cov were already present in the original Tessl environment and are replicated at their exact versions",
+  "app_test_spec_dependency_manifest_edits": [],
+  "pin_file": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\Tessl\\docs\\baseline-original-python-pins.txt",
+  "pin_sha256": "F0F0C1504AA728EE55339E4D366EE0FFF0B316BA644AE1B16EF6BB1FFD5E00E9",
+  "environment_controls": {
+    "PYTHONDONTWRITEBYTECODE": "1",
+    "PIP_DISABLE_PIP_VERSION_CHECK": "1",
+    "PIP_CACHE_DIR": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\Tessl\\docs\\pip-cache"
+  },
+  "source_hash_verification": {
+    "researcher_created": true,
+    "measured_at_utc": "2026-10-21T14:32:33.318891+00:00",
+    "status": "pass",
+    "files": [
+      {
+        "scope": "source",
+        "path": "backend/app/controllers/games.py",
+        "sha256": "E66DD5A94799546EB4EB9A29B64F1741B5420D5682638C4236191EE564B57528",
+        "matches_copied_stage1": true
+      },
+      {
+        "scope": "source",
+        "path": "backend/app/core/config.py",
+        "sha256": "0EDCC679E16FF9D13B206B87A6C92CBC0CCCB75412D0D7F2AFFDD2D87DAFCBE7",
+        "matches_copied_stage1": true
+      },
+      {
+        "scope": "source",
+        "path": "backend/app/domain/pieces.py",
+        "sha256": "E57C05C961EFED813DFA1CA565166C50F8B62D9FB3A9FC37121FECC470EA6D0E",
+        "matches_copied_stage1": true
+      },
+      {
+        "scope": "source",
+        "path": "backend/app/domain/rules.py",
+        "sha256": "B34A3EEBF32946630C8588A1CF7579A6185CAEC297AE7CA021B28A438362EEB5",
+        "matches_copied_stage1": true
+      },
+      {
+        "scope": "source",
+        "path": "backend/app/main.py",
+        "sha256": "D5D2B7CFF78C1FB186C3E17B8E6A43F044B95CA051DB52B98EFD59364EE3CB73",
+        "matches_copied_stage1": true
+      },
+      {
+        "scope": "source",
+        "path": "backend/app/models/game.py",
+        "sha256": "AA4EECB66FDF2A837F28D9D900471613CA9122C41A5D2DB9ED371E5FB51D609D",
+        "matches_copied_stage1": true
+      },
+      {
+        "scope": "source",
+        "path": "backend/tests/test_game.py",
+        "sha256": "EE683A8C67076B8FFC4174B3A4F974370E064F955CC18CAA952A4DE27393A4A3",
+        "matches_copied_stage1": true
+      },
+      {
+        "scope": "source",
+        "path": "frontend/index.html",
+        "sha256": "BA65391726B23EA4914755E81DFAD88CD6E0825E7FA3BF39FAFC314600393E9E",
+        "matches_copied_stage1": true
+      },
+      {
+        "scope": "source",
+        "path": "frontend/src/api.ts",
+        "sha256": "8549B363E487A861CA64B03376D6361A092E29034D92FBFCC55FFE3153391AD5",
+        "matches_copied_stage1": true
+      },
+      {
+        "scope": "source",
+        "path": "frontend/src/App.tsx",
+        "sha256": "0D018C987B3C98F4E5A10903FFE145DE0B7E8CD5870328A9DC6108EF4755BC05",
+        "matches_copied_stage1": true
+      },
+      {
+        "scope": "source",
+        "path": "frontend/src/components/GameStatus.tsx",
+        "sha256": "12B8EF0E0275B4BD162BBC2471054DB3A82F8878C7AB5D4500C026B41917AE5D",
+        "matches_copied_stage1": true
+      },
+      {
+        "scope": "source",
+        "path": "frontend/src/components/TetrisBoard.test.tsx",
+        "sha256": "A0C8C47C9A23B24CCB4C0C6B07F1E080215E4B2E25862C00CD743A8E1EE121EF",
+        "matches_copied_stage1": true
+      },
+      {
+        "scope": "source",
+        "path": "frontend/src/components/TetrisBoard.tsx",
+        "sha256": "1DDCE2645A3D6A55635AAD4906E45BB65ADC5FDAE0AF3C2DE4E5324AA6E0F845",
+        "matches_copied_stage1": true
+      },
+      {
+        "scope": "source",
+        "path": "frontend/src/index.css",
+        "sha256": "B3FB2D598EB659561FEB22EF312259355C1944B58B892413E94734DA3E4883B6",
+        "matches_copied_stage1": true
+      },
+      {
+        "scope": "source",
+        "path": "frontend/src/main.tsx",
+        "sha256": "04BC6C664005D207F6C9A42CAC1A11810F6257A77604ECC9A2DFA1F0A68959BA",
+        "matches_copied_stage1": true
+      },
+      {
+        "scope": "source",
+        "path": "frontend/src/types.ts",
+        "sha256": "CC470DD66AFC9B7416106D7CF12A9EB97602264C96C81965B556262F596A2862",
+        "matches_copied_stage1": true
+      },
+      {
+        "scope": "source",
+        "path": "frontend/vite.config.d.ts",
+        "sha256": "4B96DD19FD2949D28CE80E913412B0026DC421E5BF6C31D87C7B5EB11B5753B4",
+        "matches_copied_stage1": true
+      },
+      {
+        "scope": "source",
+        "path": "frontend/vite.config.js",
+        "sha256": "74A1617BBA280B1E9325610B607E5882ECA0C9F9379B3D8036D1300952105651",
+        "matches_copied_stage1": true
+      },
+      {
+        "scope": "source",
+        "path": "frontend/vite.config.ts",
+        "sha256": "FCD91673C825B2E6D146CF01EF5E625C8258D5B3756BECF591E5E0F46022077A",
+        "matches_copied_stage1": true
+      },
+      {
+        "scope": "specification",
+        "path": "specs/requirements.md",
+        "sha256": "089245525ADD64E41B43498D3BA241B388DDA573AE1E92FD916F7E18ED4BB27D",
+        "matches_copied_stage1": true
+      },
+      {
+        "scope": "specification",
+        "path": "specs/session_notes.md",
+        "sha256": "7202548B9023A5EA3BEB27F2C87E41B4B4AC8670F5A6340D7FABD27707B96DA1",
+        "matches_copied_stage1": true
+      }
+    ]
+  }
+}

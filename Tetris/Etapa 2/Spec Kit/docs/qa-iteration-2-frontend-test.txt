@@ -1,0 +1,31 @@
+Vitest Command: npx vitest run --coverage
+Exit Status: 0
+
+RUN  v4.1.12 D:/KEVIN/UNIVERSIDAD/Trabajos/Proyecto/Caso 2-Tetris/Etapa 2/Spec Kit/frontend
+      Coverage enabled with v8
+
+
+ Test Files  3 passed (3)
+      Tests  34 passed (34)
+   Start at  20:22:03
+   Duration  1.92s (transform 253ms, setup 0ms, import 1.67s, tests 366ms, environment 1.80s)
+
+ % Coverage report from v8
+-------------------|---------|----------|---------|---------|-------------------
+File               | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s 
+-------------------|---------|----------|---------|---------|-------------------
+All files          |   78.13 |       66 |   97.14 |    82.9 |                   
+ src               |    64.1 |    63.88 |    87.5 |   64.86 |                   
+  App.tsx          |   65.78 |    63.88 |    87.5 |   66.66 | 56-72             
+  main.tsx         |       0 |      100 |     100 |       0 | 6                 
+ src/components    |   80.64 |    59.09 |     100 |   79.31 |                   
+  Board.tsx        |      76 |       50 |     100 |      75 | 46,48-52          
+ src/hooks         |   81.37 |    68.47 |     100 |   88.97 | ...20,162,218-219 
+-------------------|---------|----------|---------|---------|-------------------
+
+=============================== Coverage summary ===============================
+Statements   : 78.13% ( 168/215 )
+Branches     : 66% ( 99/150 )
+Functions    : 97.14% ( 34/35 )
+Lines        : 82.9% ( 160/193 )
+================================================================================

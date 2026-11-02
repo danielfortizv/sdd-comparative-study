@@ -1,0 +1,1752 @@
+{
+  "researcher_created": true,
+  "observed_at_utc": "2026-10-25T21:42:43.726172+00:00",
+  "native_tool_audit_sha256": "FB249303BAC1BCA3F7564990BF07C1D906F7A061E018CD25468CBE2B59D2E2F2",
+  "commands": [
+    {
+      "run": "05-implement",
+      "timestamp": "2026-10-25T20:35:34.129Z",
+      "id": "run_shell_command__call_49525",
+      "command": "backend\\.venv\\Scripts\\python.exe -m pytest",
+      "checks": [
+        "pytest"
+      ],
+      "cwd": null,
+      "native_tool_status": "success",
+      "explicit_reported_process_exit_code": 1,
+      "output_sha256": "B39A5D0B08744D5CE7D3ABC283A5D8032734CE6B2D13FC70ED8C2DD6E94F852C",
+      "output_characters": 5255,
+      "note": "Tool success is not process/test success; absent explicit exit code stays unknown. Full raw result referenced by native tool audit ID."
+    },
+    {
+      "run": "05-implement",
+      "timestamp": "2026-10-25T20:35:43.918Z",
+      "id": "run_shell_command__call_90278",
+      "command": ".venv\\Scripts\\python.exe -m pytest tests/",
+      "checks": [
+        "pytest"
+      ],
+      "cwd": "backend",
+      "native_tool_status": "success",
+      "explicit_reported_process_exit_code": null,
+      "output_sha256": "7FD32CDEAA8CB1AA89321E331C5AE72BC330ACC6EF3A0BE07CCB1245B5B7677C",
+      "output_characters": 1062,
+      "note": "Tool success is not process/test success; absent explicit exit code stays unknown. Full raw result referenced by native tool audit ID."
+    },
+    {
+      "run": "05-implement",
+      "timestamp": "2026-10-25T20:36:20.665Z",
+      "id": "run_shell_command__call_35397",
+      "command": "npm run test",
+      "checks": [],
+      "cwd": "frontend",
+      "native_tool_status": "success",
+      "explicit_reported_process_exit_code": null,
+      "output_sha256": "7A4F97EB88079105014CDD291BEC8809AD8EE04A8FED1FAA90A5A2F736B7BA3D",
+      "output_characters": 446,
+      "note": "Tool success is not process/test success; absent explicit exit code stays unknown. Full raw result referenced by native tool audit ID."
+    },
+    {
+      "run": "05-implement",
+      "timestamp": "2026-10-25T20:40:19.749Z",
+      "id": "run_shell_command__call_230885",
+      "command": ".venv\\Scripts\\python.exe -m pytest tests/",
+      "checks": [
+        "pytest"
+      ],
+      "cwd": "backend",
+      "native_tool_status": "success",
+      "explicit_reported_process_exit_code": null,
+      "output_sha256": "7BC3C3407E4CEB66A5C405CEBB0B11D74AA6D09498D70E687D188A4FBBB35C6B",
+      "output_characters": 1061,
+      "note": "Tool success is not process/test success; absent explicit exit code stays unknown. Full raw result referenced by native tool audit ID."
+    },
+    {
+      "run": "05-implement",
+      "timestamp": "2026-10-25T20:41:01.362Z",
+      "id": "run_shell_command__call_887759",
+      "command": ".venv\\Scripts\\python.exe -m pytest --cov=app --cov-report=xml:../docs/coverage.xml tests/",
+      "checks": [
+        "pytest"
+      ],
+      "cwd": "backend",
+      "native_tool_status": "success",
+      "explicit_reported_process_exit_code": null,
+      "output_sha256": "C1ADE0CB3067ACBDBDD30E0B3D005C662BF1DAD600853774C4D99944F557CFC3",
+      "output_characters": 1359,
+      "note": "Tool success is not process/test success; absent explicit exit code stays unknown. Full raw result referenced by native tool audit ID."
+    },
+    {
+      "run": "05-implement",
+      "timestamp": "2026-10-25T20:42:59.443Z",
+      "id": "run_shell_command__call_143534",
+      "command": "npm run lint",
+      "checks": [],
+      "cwd": "frontend",
+      "native_tool_status": "success",
+      "explicit_reported_process_exit_code": null,
+      "output_sha256": "58801140A92719511E4F6CAF8F670431DE39CDDF0ABD5775F71E77B23EA037D5",
+      "output_characters": 117,
+      "note": "Tool success is not process/test success; absent explicit exit code stays unknown. Full raw result referenced by native tool audit ID."
+    },
+    {
+      "run": "05-implement",
+      "timestamp": "2026-10-25T20:43:06.899Z",
+      "id": "run_shell_command__call_2909",
+      "command": "npx vitest run",
+      "checks": [
+        "vitest"
+      ],
+      "cwd": "frontend",
+      "native_tool_status": "success",
+      "explicit_reported_process_exit_code": null,
+      "output_sha256": "BF5C4710E30CA19F6E1EC8DFF540ACDDFCF1AF32A1F743A792D6FAE6C1BFEB45",
+      "output_characters": 400,
+      "note": "Tool success is not process/test success; absent explicit exit code stays unknown. Full raw result referenced by native tool audit ID."
+    },
+    {
+      "run": "05-implement",
+      "timestamp": "2026-10-25T20:43:56.420Z",
+      "id": "run_shell_command__call_812968",
+      "command": "npx vitest run",
+      "checks": [
+        "vitest"
+      ],
+      "cwd": "frontend",
+      "native_tool_status": "success",
+      "explicit_reported_process_exit_code": 1,
+      "output_sha256": "DCFD62E9F55BF0D80EC13F836F4E806A17755FB1AAF4F229E09DAD4497DBAAC9",
+      "output_characters": 40325,
+      "note": "Tool success is not process/test success; absent explicit exit code stays unknown. Full raw result referenced by native tool audit ID."
+    },
+    {
+      "run": "05-implement",
+      "timestamp": "2026-10-25T20:44:18.728Z",
+      "id": "run_shell_command__call_135094",
+      "command": "npx vitest run",
+      "checks": [
+        "vitest"
+      ],
+      "cwd": "frontend",
+      "native_tool_status": "success",
+      "explicit_reported_process_exit_code": 1,
+      "output_sha256": "C33C858E52F3BE7C00AF9AB42E8FEC4D9F9011FF01D32B5F3A4AD16F4697F15D",
+      "output_characters": 2768,
+      "note": "Tool success is not process/test success; absent explicit exit code stays unknown. Full raw result referenced by native tool audit ID."
+    },
+    {
+      "run": "05-implement",
+      "timestamp": "2026-10-25T20:45:02.123Z",
+      "id": "run_shell_command__call_109580",
+      "command": "npx vitest run",
+      "checks": [
+        "vitest"
+      ],
+      "cwd": "frontend",
+      "native_tool_status": "success",
+      "explicit_reported_process_exit_code": 1,
+      "output_sha256": "D514345654AE013EE9995A4E2DEDDDCC5B416A8151893A1A33083B4CEC1D36B2",
+      "output_characters": 15500,
+      "note": "Tool success is not process/test success; absent explicit exit code stays unknown. Full raw result referenced by native tool audit ID."
+    },
+    {
+      "run": "05-implement",
+      "timestamp": "2026-10-25T20:45:23.499Z",
+      "id": "run_shell_command__call_143837",
+      "command": "npx vitest run",
+      "checks": [
+        "vitest"
+      ],
+      "cwd": "frontend",
+      "native_tool_status": "success",
+      "explicit_reported_process_exit_code": null,
+      "output_sha256": "E446A15F0791D4E87D5927B28EB643759BBC50397CD82C95755CCD27E8D544D5",
+      "output_characters": 3199,
+      "note": "Tool success is not process/test success; absent explicit exit code stays unknown. Full raw result referenced by native tool audit ID."
+    },
+    {
+      "run": "05-implement",
+      "timestamp": "2026-10-25T20:45:47.326Z",
+      "id": "run_shell_command__call_150543",
+      "command": "npx vitest run --coverage",
+      "checks": [
+        "vitest"
+      ],
+      "cwd": "frontend",
+      "native_tool_status": "success",
+      "explicit_reported_process_exit_code": 1,
+      "output_sha256": "0C3FED1F39A3DBEBB4D4C61995080F9759117937D12438C518F8CDC7609CAB0A",
+      "output_characters": 152,
+      "note": "Tool success is not process/test success; absent explicit exit code stays unknown. Full raw result referenced by native tool audit ID."
+    },
+    {
+      "run": "05-implement",
+      "timestamp": "2026-10-25T20:47:25.203Z",
+      "id": "run_shell_command__call_108350",
+      "command": "npm audit",
+      "checks": [
+        "npm audit"
+      ],
+      "cwd": "frontend",
+      "native_tool_status": "success",
+      "explicit_reported_process_exit_code": 1,
+      "output_sha256": "524C9CBA46AD995FDEFC22A3945A61C15220B4243579A07A08274A1DCE96E973",
+      "output_characters": 2307,
+      "note": "Tool success is not process/test success; absent explicit exit code stays unknown. Full raw result referenced by native tool audit ID."
+    },
+    {
+      "run": "05-implement",
+      "timestamp": "2026-10-25T20:47:29.903Z",
+      "id": "run_shell_command__call_87014",
+      "command": "npm audit --omit=dev",
+      "checks": [
+        "npm audit"
+      ],
+      "cwd": "frontend",
+      "native_tool_status": "success",
+      "explicit_reported_process_exit_code": null,
+      "output_sha256": "ED49FC12064CC9155CE302345BA8AC080A57B82C1A37CAF4AA34FDF55D9EF498",
+      "output_characters": 97,
+      "note": "Tool success is not process/test success; absent explicit exit code stays unknown. Full raw result referenced by native tool audit ID."
+    },
+    {
+      "run": "05-implement",
+      "timestamp": "2026-10-25T20:47:43.772Z",
+      "id": "run_shell_command__call_231239",
+      "command": "npm audit fix",
+      "checks": [
+        "npm audit"
+      ],
+      "cwd": "frontend",
+      "native_tool_status": "success",
+      "explicit_reported_process_exit_code": 1,
+      "output_sha256": "C5B7DDFAD274D64FCBB7CB0C94C086F6C0FEAE25F56648996E157A0A102FF35F",
+      "output_characters": 2083,
+      "note": "Tool success is not process/test success; absent explicit exit code stays unknown. Full raw result referenced by native tool audit ID."
+    },
+    {
+      "run": "05-implement",
+      "timestamp": "2026-10-25T20:47:57.928Z",
+      "id": "run_shell_command__call_130451",
+      "command": "npm audit fix --force",
+      "checks": [
+        "npm audit"
+      ],
+      "cwd": "frontend",
+      "native_tool_status": "success",
+      "explicit_reported_process_exit_code": null,
+      "output_sha256": "0C3609BB3CB74C30978841F686016EAC2D313255526AFA2B1C9D13FB990DDC28",
+      "output_characters": 388,
+      "note": "Tool success is not process/test success; absent explicit exit code stays unknown. Full raw result referenced by native tool audit ID."
+    },
+    {
+      "run": "05-implement",
+      "timestamp": "2026-10-25T20:48:11.596Z",
+      "id": "run_shell_command__call_513201",
+      "command": "npm audit",
+      "checks": [
+        "npm audit"
+      ],
+      "cwd": "frontend",
+      "native_tool_status": "success",
+      "explicit_reported_process_exit_code": null,
+      "output_sha256": "7238B38F625B445F86088B945CA131EB01B49F5DE34BFBEE17B5E36A37308EDD",
+      "output_characters": 98,
+      "note": "Tool success is not process/test success; absent explicit exit code stays unknown. Full raw result referenced by native tool audit ID."
+    },
+    {
+      "run": "05-implement",
+      "timestamp": "2026-10-25T20:48:17.518Z",
+      "id": "run_shell_command__call_486647",
+      "command": "npm install @vitest/coverage-v8 --save-dev",
+      "checks": [
+        "vitest"
+      ],
+      "cwd": "frontend",
+      "native_tool_status": "success",
+      "explicit_reported_process_exit_code": 1,
+      "output_sha256": "97954C878A1792707A6D0DC00415EE61C6325BD8A0B9B844D8EE51FFFF8DDBB9",
+      "output_characters": 293,
+      "note": "Tool success is not process/test success; absent explicit exit code stays unknown. Full raw result referenced by native tool audit ID."
+    },
+    {
+      "run": "05-implement",
+      "timestamp": "2026-10-25T20:48:32.457Z",
+      "id": "run_shell_command__call_677856",
+      "command": "npm install --legacy-peer-deps",
+      "checks": [],
+      "cwd": "frontend",
+      "native_tool_status": "success",
+      "explicit_reported_process_exit_code": null,
+      "output_sha256": "01538852B2A9CE41FDC71C4225A55BF2ACB45AC9C76281CDD2EA16160D2F92D3",
+      "output_characters": 234,
+      "note": "Tool success is not process/test success; absent explicit exit code stays unknown. Full raw result referenced by native tool audit ID."
+    },
+    {
+      "run": "05-implement",
+      "timestamp": "2026-10-25T20:48:42.458Z",
+      "id": "run_shell_command__call_89620",
+      "command": "npx vitest run --coverage",
+      "checks": [
+        "vitest"
+      ],
+      "cwd": "frontend",
+      "native_tool_status": "success",
+      "explicit_reported_process_exit_code": 1,
+      "output_sha256": "FA4584DA9E3B3A97EA88D2964560C1FAF8517468B50DE46630DDD216E58C7E1E",
+      "output_characters": 907,
+      "note": "Tool success is not process/test success; absent explicit exit code stays unknown. Full raw result referenced by native tool audit ID."
+    },
+    {
+      "run": "05-implement",
+      "timestamp": "2026-10-25T20:49:30.350Z",
+      "id": "run_shell_command__call_108464",
+      "command": "npm install @testing-library/dom --save-dev",
+      "checks": [],
+      "cwd": "frontend",
+      "native_tool_status": "success",
+      "explicit_reported_process_exit_code": null,
+      "output_sha256": "6F615C475F2217F15CEB337A57997FE929E522BE604DD4EC954F2678CF0B3681",
+      "output_characters": 213,
+      "note": "Tool success is not process/test success; absent explicit exit code stays unknown. Full raw result referenced by native tool audit ID."
+    },
+    {
+      "run": "05-implement",
+      "timestamp": "2026-10-25T20:49:36.008Z",
+      "id": "run_shell_command__call_544572",
+      "command": "npx vitest run --coverage",
+      "checks": [
+        "vitest"
+      ],
+      "cwd": "frontend",
+      "native_tool_status": "success",
+      "explicit_reported_process_exit_code": null,
+      "output_sha256": "B1AD3BF1D02D60B386FFB4B7CB971FE3261CBC162000654EE9F4116292F36049",
+      "output_characters": 1659,
+      "note": "Tool success is not process/test success; absent explicit exit code stays unknown. Full raw result referenced by native tool audit ID."
+    },
+    {
+      "run": "05-implement",
+      "timestamp": "2026-10-25T20:50:08.518Z",
+      "id": "run_shell_command__call_365568",
+      "command": "npx tsc --noEmit",
+      "checks": [],
+      "cwd": "frontend",
+      "native_tool_status": "success",
+      "explicit_reported_process_exit_code": null,
+      "output_sha256": "80B91888DC199D2FEB09F238A65CE73A9C1ECCB3FEBFA100933CD82CB49EED93",
+      "output_characters": 82,
+      "note": "Tool success is not process/test success; absent explicit exit code stays unknown. Full raw result referenced by native tool audit ID."
+    },
+    {
+      "run": "05-implement",
+      "timestamp": "2026-10-25T20:50:12.895Z",
+      "id": "run_shell_command__call_267496",
+      "command": "npm run build",
+      "checks": [
+        "npm run build"
+      ],
+      "cwd": "frontend",
+      "native_tool_status": "success",
+      "explicit_reported_process_exit_code": 1,
+      "output_sha256": "4C184B7966D49176668D6BAC54F61BE14C267BA53C6A435703189002F4564F2D",
+      "output_characters": 668,
+      "note": "Tool success is not process/test success; absent explicit exit code stays unknown. Full raw result referenced by native tool audit ID."
+    },
+    {
+      "run": "05-implement",
+      "timestamp": "2026-10-25T20:52:20.747Z",
+      "id": "run_shell_command__call_89214",
+      "command": "npm run lint",
+      "checks": [],
+      "cwd": "frontend",
+      "native_tool_status": "success",
+      "explicit_reported_process_exit_code": null,
+      "output_sha256": "5D93272BE8761271101CB818B825A1430F554F0D383A158A00D6D64B2F79C504",
+      "output_characters": 118,
+      "note": "Tool success is not process/test success; absent explicit exit code stays unknown. Full raw result referenced by native tool audit ID."
+    },
+    {
+      "run": "05-implement",
+      "timestamp": "2026-10-25T20:52:30.920Z",
+      "id": "run_shell_command__call_151038",
+      "command": "npm run build",
+      "checks": [
+        "npm run build"
+      ],
+      "cwd": "frontend",
+      "native_tool_status": "success",
+      "explicit_reported_process_exit_code": 1,
+      "output_sha256": "1752E473D698B3ED63C286F6394D05B66A74033EBD569D256E6DA969E590A1E9",
+      "output_characters": 285,
+      "note": "Tool success is not process/test success; absent explicit exit code stays unknown. Full raw result referenced by native tool audit ID."
+    },
+    {
+      "run": "05-implement",
+      "timestamp": "2026-10-25T20:52:48.142Z",
+      "id": "run_shell_command__call_116632",
+      "command": "npm run build",
+      "checks": [
+        "npm run build"
+      ],
+      "cwd": "frontend",
+      "native_tool_status": "success",
+      "explicit_reported_process_exit_code": null,
+      "output_sha256": "B83DDF5CDCA3694F3690F1F160B0602673C93DB8F90DE50B0EFFD8473DEBEAC1",
+      "output_characters": 446,
+      "note": "Tool success is not process/test success; absent explicit exit code stays unknown. Full raw result referenced by native tool audit ID."
+    },
+    {
+      "run": "05-implement",
+      "timestamp": "2026-10-25T20:52:54.723Z",
+      "id": "run_shell_command__call_319391",
+      "command": "npx vitest run --coverage",
+      "checks": [
+        "vitest"
+      ],
+      "cwd": "frontend",
+      "native_tool_status": "success",
+      "explicit_reported_process_exit_code": null,
+      "output_sha256": "0D3D53A7EB261AF5161F3655EEACB3A662B00FA6FC5ECF1E0688196F3BF7BD1F",
+      "output_characters": 1658,
+      "note": "Tool success is not process/test success; absent explicit exit code stays unknown. Full raw result referenced by native tool audit ID."
+    },
+    {
+      "run": "05-implement",
+      "timestamp": "2026-10-25T20:53:01.972Z",
+      "id": "run_shell_command__call_291015",
+      "command": "powershell.exe -NoProfile -File ../shared/scan-tessl.ps1",
+      "checks": [
+        "scan-tessl"
+      ],
+      "cwd": null,
+      "native_tool_status": "success",
+      "explicit_reported_process_exit_code": null,
+      "output_sha256": "D31A60547B17CDD7FBD594E00DC4F32E5B4DCD5EABE0BA0655BAB0496B364CA3",
+      "output_characters": 142,
+      "note": "Tool success is not process/test success; absent explicit exit code stays unknown. Full raw result referenced by native tool audit ID."
+    },
+    {
+      "run": "05-implement",
+      "timestamp": "2026-10-25T20:53:32.784Z",
+      "id": "run_shell_command__call_291135",
+      "command": "powershell.exe -NoProfile -File ../shared/verify-sonar-tessl.ps1",
+      "checks": [
+        "verify-sonar"
+      ],
+      "cwd": null,
+      "native_tool_status": "success",
+      "explicit_reported_process_exit_code": null,
+      "output_sha256": "1A5FF0B308368B5E4AD6F81FD94ACFEAE01A0275CE998560B35299BF33838FF6",
+      "output_characters": 2475,
+      "note": "Tool success is not process/test success; absent explicit exit code stays unknown. Full raw result referenced by native tool audit ID."
+    },
+    {
+      "run": "05-implement",
+      "timestamp": "2026-10-25T20:53:37.315Z",
+      "id": "run_shell_command__call_140628",
+      "command": "powershell.exe -NoProfile -File ../shared/fetch-sonar-tessl.ps1",
+      "checks": [],
+      "cwd": null,
+      "native_tool_status": "success",
+      "explicit_reported_process_exit_code": null,
+      "output_sha256": "B1E2444E0FCB8A61C9190B3E36C557B2BC8AAE4EFDCB91EBDECCBF8190FFBC16",
+      "output_characters": 419,
+      "note": "Tool success is not process/test success; absent explicit exit code stays unknown. Full raw result referenced by native tool audit ID."
+    },
+    {
+      "run": "05-implement",
+      "timestamp": "2026-10-25T20:53:50.493Z",
+      "id": "run_shell_command__call_84916",
+      "command": "npx vitest run --coverage",
+      "checks": [
+        "vitest"
+      ],
+      "cwd": "frontend",
+      "native_tool_status": "success",
+      "explicit_reported_process_exit_code": 1,
+      "output_sha256": "881F91D3813BB01D784E654569DE29CEA3B1B91B1584E0815B8F277743493EB7",
+      "output_characters": 1157,
+      "note": "Tool success is not process/test success; absent explicit exit code stays unknown. Full raw result referenced by native tool audit ID."
+    },
+    {
+      "run": "05-implement",
+      "timestamp": "2026-10-25T20:54:30.512Z",
+      "id": "run_shell_command__call_131963",
+      "command": "npx vitest run --coverage",
+      "checks": [
+        "vitest"
+      ],
+      "cwd": "frontend",
+      "native_tool_status": "success",
+      "explicit_reported_process_exit_code": null,
+      "output_sha256": "79C1AD6B35BADBBBF3F5D3460C41E2BD6AF3254FBAB1CBA92D32D6A8D71C6BB0",
+      "output_characters": 1662,
+      "note": "Tool success is not process/test success; absent explicit exit code stays unknown. Full raw result referenced by native tool audit ID."
+    },
+    {
+      "run": "05-implement",
+      "timestamp": "2026-10-25T20:54:41.928Z",
+      "id": "run_shell_command__call_149201",
+      "command": "npx vitest run --coverage",
+      "checks": [
+        "vitest"
+      ],
+      "cwd": "frontend",
+      "native_tool_status": "success",
+      "explicit_reported_process_exit_code": null,
+      "output_sha256": "A71A2022E889B99975CF4B1C27C9345759A89CD7219D991BEA46D2BD140FAD99",
+      "output_characters": 1580,
+      "note": "Tool success is not process/test success; absent explicit exit code stays unknown. Full raw result referenced by native tool audit ID."
+    },
+    {
+      "run": "05-implement",
+      "timestamp": "2026-10-25T20:54:48.612Z",
+      "id": "run_shell_command__call_81615",
+      "command": "powershell.exe -NoProfile -File ../shared/scan-tessl.ps1",
+      "checks": [
+        "scan-tessl"
+      ],
+      "cwd": null,
+      "native_tool_status": "success",
+      "explicit_reported_process_exit_code": null,
+      "output_sha256": "F4F4BD3EFC496D98D13E24D8B5FDF6D1E22652132E18110DC7BB420696FA8AA6",
+      "output_characters": 142,
+      "note": "Tool success is not process/test success; absent explicit exit code stays unknown. Full raw result referenced by native tool audit ID."
+    },
+    {
+      "run": "05-implement",
+      "timestamp": "2026-10-25T20:55:11.237Z",
+      "id": "run_shell_command__call_92614",
+      "command": "powershell.exe -NoProfile -File ../shared/verify-sonar-tessl.ps1",
+      "checks": [
+        "verify-sonar"
+      ],
+      "cwd": null,
+      "native_tool_status": "success",
+      "explicit_reported_process_exit_code": null,
+      "output_sha256": "307B3DE5636941D774A308789D3D0E3BA6A53AB5ABFCF31EED40324333A744D4",
+      "output_characters": 2472,
+      "note": "Tool success is not process/test success; absent explicit exit code stays unknown. Full raw result referenced by native tool audit ID."
+    },
+    {
+      "run": "05-implement",
+      "timestamp": "2026-10-25T20:55:24.204Z",
+      "id": "run_shell_command__call_106498",
+      "command": ".venv\\Scripts\\python.exe -m pytest --cov=app --cov-report=xml:../docs/coverage.xml tests/",
+      "checks": [
+        "pytest"
+      ],
+      "cwd": "backend",
+      "native_tool_status": "success",
+      "explicit_reported_process_exit_code": null,
+      "output_sha256": "0102912A7B606F5DD8C4AA46AD32AE53B91210A36C4BE2C29E15F14DF8F8AD8F",
+      "output_characters": 1360,
+      "note": "Tool success is not process/test success; absent explicit exit code stays unknown. Full raw result referenced by native tool audit ID."
+    },
+    {
+      "run": "05-implement",
+      "timestamp": "2026-10-25T20:55:29.694Z",
+      "id": "run_shell_command__call_89945",
+      "command": "powershell.exe -NoProfile -File ../shared/scan-tessl.ps1",
+      "checks": [
+        "scan-tessl"
+      ],
+      "cwd": null,
+      "native_tool_status": "success",
+      "explicit_reported_process_exit_code": null,
+      "output_sha256": "39ED377AB5160755E602E5790FC507898B40506613AC83072061EC254A7E9970",
+      "output_characters": 142,
+      "note": "Tool success is not process/test success; absent explicit exit code stays unknown. Full raw result referenced by native tool audit ID."
+    },
+    {
+      "run": "05-implement",
+      "timestamp": "2026-10-25T20:55:51.738Z",
+      "id": "run_shell_command__call_679323",
+      "command": "powershell.exe -NoProfile -File ../shared/verify-sonar-tessl.ps1",
+      "checks": [
+        "verify-sonar"
+      ],
+      "cwd": null,
+      "native_tool_status": "success",
+      "explicit_reported_process_exit_code": null,
+      "output_sha256": "62913AEC247F080C47C3FCC09539E4093DF1835ABE26FED5FD41B88C47C275D1",
+      "output_characters": 2472,
+      "note": "Tool success is not process/test success; absent explicit exit code stays unknown. Full raw result referenced by native tool audit ID."
+    },
+    {
+      "run": "05-implement",
+      "timestamp": "2026-10-25T20:56:20.291Z",
+      "id": "run_shell_command__call_151398",
+      "command": "curl.exe -s \"http://127.0.0.1:9000/api/issues/search?projects=tetris-stage2-tessl\"",
+      "checks": [],
+      "cwd": null,
+      "native_tool_status": "success",
+      "explicit_reported_process_exit_code": null,
+      "output_sha256": "EEDDAD17B83FE43D72E719844B6BA0ACEF0849AFAE8B9482DD95BD02147D41EF",
+      "output_characters": 82,
+      "note": "Tool success is not process/test success; absent explicit exit code stays unknown. Full raw result referenced by native tool audit ID."
+    },
+    {
+      "run": "05-implement",
+      "timestamp": "2026-10-25T20:56:24.360Z",
+      "id": "run_shell_command__call_239873",
+      "command": "powershell.exe -NoProfile -Command \"(Invoke-RestMethod -Uri 'http://127.0.0.1:9000/api/issues/search?projects=tetris-stage2-tessl').issues | Select-Object key, rule, message, file, line | Format-List\"",
+      "checks": [],
+      "cwd": null,
+      "native_tool_status": "success",
+      "explicit_reported_process_exit_code": null,
+      "output_sha256": "CF261CC53D4B8DCDCA90AAA88E2E8A6AD9F461CD1C5DDA33BE2F3FBCEB8F579C",
+      "output_characters": 246,
+      "note": "Tool success is not process/test success; absent explicit exit code stays unknown. Full raw result referenced by native tool audit ID."
+    },
+    {
+      "run": "05-implement",
+      "timestamp": "2026-10-25T20:56:36.191Z",
+      "id": "run_shell_command__call_91312",
+      "command": "backend\\.venv\\Scripts\\python.exe -c \"import urllib.request, json; r = urllib.request.urlopen('http://127.0.0.1:9000/api/issues/search?projects=tetris-stage2-tessl'); data = json.loads(r.read()); print([(i.get('rule'), i.get('message'), i.get('component'), i.get('line')) for i in data.get('issues', [])])\"",
+      "checks": [],
+      "cwd": null,
+      "native_tool_status": "success",
+      "explicit_reported_process_exit_code": 1,
+      "output_sha256": "8E7D1BE230543599F9754A1991EDC172105FD1B7FDC610F3691D78972E121847",
+      "output_characters": 1474,
+      "note": "Tool success is not process/test success; absent explicit exit code stays unknown. Full raw result referenced by native tool audit ID."
+    },
+    {
+      "run": "05-implement",
+      "timestamp": "2026-10-25T20:57:09.747Z",
+      "id": "run_shell_command__call_1249715",
+      "command": ".venv\\Scripts\\python.exe -m pytest tests/",
+      "checks": [
+        "pytest"
+      ],
+      "cwd": "backend",
+      "native_tool_status": "success",
+      "explicit_reported_process_exit_code": null,
+      "output_sha256": "F93AAF3CFF90DCD5F12B3141807849477E3F8E74DBD0560CB0395855C39414F8",
+      "output_characters": 1144,
+      "note": "Tool success is not process/test success; absent explicit exit code stays unknown. Full raw result referenced by native tool audit ID."
+    },
+    {
+      "run": "05-implement",
+      "timestamp": "2026-10-25T20:57:15.227Z",
+      "id": "run_shell_command__call_934502",
+      "command": "powershell.exe -NoProfile -File ../shared/scan-tessl.ps1",
+      "checks": [
+        "scan-tessl"
+      ],
+      "cwd": null,
+      "native_tool_status": "success",
+      "explicit_reported_process_exit_code": null,
+      "output_sha256": "958741CAE3A1DE2990BA2C1C1C29BA37A847DFAE7997E6FFBE9CD909D8307306",
+      "output_characters": 142,
+      "note": "Tool success is not process/test success; absent explicit exit code stays unknown. Full raw result referenced by native tool audit ID."
+    },
+    {
+      "run": "05-implement",
+      "timestamp": "2026-10-25T20:57:37.528Z",
+      "id": "run_shell_command__call_87578",
+      "command": "powershell.exe -NoProfile -File ../shared/verify-sonar-tessl.ps1",
+      "checks": [
+        "verify-sonar"
+      ],
+      "cwd": null,
+      "native_tool_status": "success",
+      "explicit_reported_process_exit_code": null,
+      "output_sha256": "94B55C72A05EF54CBD0825BBDE6C10B4770E6C952A01BF8F4FE833BE30EE7CA5",
+      "output_characters": 2472,
+      "note": "Tool success is not process/test success; absent explicit exit code stays unknown. Full raw result referenced by native tool audit ID."
+    },
+    {
+      "run": "05-implement",
+      "timestamp": "2026-10-25T20:58:09.262Z",
+      "id": "run_shell_command__call_149519",
+      "command": "npx vitest run --coverage",
+      "checks": [
+        "vitest"
+      ],
+      "cwd": "frontend",
+      "native_tool_status": "success",
+      "explicit_reported_process_exit_code": null,
+      "output_sha256": "F76B6A99D1E99B848B9A46B6D0C927080E569E612639319CB0961DEF8E6536A4",
+      "output_characters": 1580,
+      "note": "Tool success is not process/test success; absent explicit exit code stays unknown. Full raw result referenced by native tool audit ID."
+    },
+    {
+      "run": "05-implement",
+      "timestamp": "2026-10-25T20:58:15.657Z",
+      "id": "run_shell_command__call_89569",
+      "command": "powershell.exe -NoProfile -File ../shared/scan-tessl.ps1",
+      "checks": [
+        "scan-tessl"
+      ],
+      "cwd": null,
+      "native_tool_status": "success",
+      "explicit_reported_process_exit_code": null,
+      "output_sha256": "5DAA84773F011BB9DCE65BF793D47A81C5CD4034E7FC761B5127125EFD397A92",
+      "output_characters": 142,
+      "note": "Tool success is not process/test success; absent explicit exit code stays unknown. Full raw result referenced by native tool audit ID."
+    },
+    {
+      "run": "05-implement",
+      "timestamp": "2026-10-25T20:58:39.390Z",
+      "id": "run_shell_command__call_343064",
+      "command": "powershell.exe -NoProfile -File ../shared/verify-sonar-tessl.ps1",
+      "checks": [
+        "verify-sonar"
+      ],
+      "cwd": null,
+      "native_tool_status": "success",
+      "explicit_reported_process_exit_code": null,
+      "output_sha256": "4BDD327B01BC9A46F96A42072B4BCB821C9873CEF42AAA4ED22C536F82A76938",
+      "output_characters": 2472,
+      "note": "Tool success is not process/test success; absent explicit exit code stays unknown. Full raw result referenced by native tool audit ID."
+    },
+    {
+      "run": "05-implement",
+      "timestamp": "2026-10-25T20:59:04.649Z",
+      "id": "run_shell_command__call_68258",
+      "command": "npm run build",
+      "checks": [
+        "npm run build"
+      ],
+      "cwd": "frontend",
+      "native_tool_status": "success",
+      "explicit_reported_process_exit_code": null,
+      "output_sha256": "1D037D1ACBAA0FE4A9CC9FB86C717C44786786DF785B1F69D2164F3D2586876F",
+      "output_characters": 445,
+      "note": "Tool success is not process/test success; absent explicit exit code stays unknown. Full raw result referenced by native tool audit ID."
+    },
+    {
+      "run": "05-implement",
+      "timestamp": "2026-10-25T20:59:19.272Z",
+      "id": "run_shell_command__call_377287",
+      "command": "npx vitest run --coverage",
+      "checks": [
+        "vitest"
+      ],
+      "cwd": "frontend",
+      "native_tool_status": "success",
+      "explicit_reported_process_exit_code": null,
+      "output_sha256": "3A1B5443DFFF048FD140F84715D87C1DF7B516AA10B3967C833A99F456F8682F",
+      "output_characters": 1579,
+      "note": "Tool success is not process/test success; absent explicit exit code stays unknown. Full raw result referenced by native tool audit ID."
+    },
+    {
+      "run": "05-implement",
+      "timestamp": "2026-10-25T20:59:30.375Z",
+      "id": "run_shell_command__call_364916",
+      "command": "powershell.exe -NoProfile -File ../shared/scan-tessl.ps1",
+      "checks": [
+        "scan-tessl"
+      ],
+      "cwd": null,
+      "native_tool_status": "success",
+      "explicit_reported_process_exit_code": null,
+      "output_sha256": "EA32761745A9394BF4F5B2EC70990087EAF057ADC999FED96E1FA6F0C503F075",
+      "output_characters": 142,
+      "note": "Tool success is not process/test success; absent explicit exit code stays unknown. Full raw result referenced by native tool audit ID."
+    },
+    {
+      "run": "05-implement",
+      "timestamp": "2026-10-25T20:59:53.451Z",
+      "id": "run_shell_command__call_126634",
+      "command": "powershell.exe -NoProfile -File ../shared/verify-sonar-tessl.ps1",
+      "checks": [
+        "verify-sonar"
+      ],
+      "cwd": null,
+      "native_tool_status": "success",
+      "explicit_reported_process_exit_code": null,
+      "output_sha256": "5A2198B5AB32EBCF9B709E0E7077026DB600240F8CCB8418B4E4C17E8F89A1EF",
+      "output_characters": 2472,
+      "note": "Tool success is not process/test success; absent explicit exit code stays unknown. Full raw result referenced by native tool audit ID."
+    },
+    {
+      "run": "06-qa01",
+      "timestamp": "2026-10-25T21:04:46.012Z",
+      "id": "run_shell_command__call_44889",
+      "command": "powershell.exe -NoProfile -File ../shared/fetch-sonar-tessl.ps1",
+      "checks": [],
+      "cwd": null,
+      "native_tool_status": "success",
+      "explicit_reported_process_exit_code": null,
+      "output_sha256": "10FC5CD82E1487BF234D95648022008012ED370D0541DF37A4BA34F2561A1A76",
+      "output_characters": 420,
+      "note": "Tool success is not process/test success; absent explicit exit code stays unknown. Full raw result referenced by native tool audit ID."
+    },
+    {
+      "run": "06-qa01",
+      "timestamp": "2026-10-25T21:05:01.059Z",
+      "id": "run_shell_command__call_61107",
+      "command": "powershell.exe -NoProfile -Command \"Get-Content -Path docs/sonar-open-issues.json -TotalCount 200\"",
+      "checks": [],
+      "cwd": null,
+      "native_tool_status": "success",
+      "explicit_reported_process_exit_code": null,
+      "output_sha256": "4BA7E498E47F1A2A24920F3ABB11BBD3D13CC95FFB67158B3A197761084E28E0",
+      "output_characters": 9416,
+      "note": "Tool success is not process/test success; absent explicit exit code stays unknown. Full raw result referenced by native tool audit ID."
+    },
+    {
+      "run": "06-qa01",
+      "timestamp": "2026-10-25T21:05:31.969Z",
+      "id": "run_shell_command__call_50418",
+      "command": "powershell.exe -NoProfile -Command \"(Get-Content -Raw docs/sonar-open-issues.json | ConvertFrom-Json).issues | Select-Object rule, component, line, message | Format-Table -AutoSize\"",
+      "checks": [],
+      "cwd": null,
+      "native_tool_status": "success",
+      "explicit_reported_process_exit_code": null,
+      "output_sha256": "CF261CC53D4B8DCDCA90AAA88E2E8A6AD9F461CD1C5DDA33BE2F3FBCEB8F579C",
+      "output_characters": 246,
+      "note": "Tool success is not process/test success; absent explicit exit code stays unknown. Full raw result referenced by native tool audit ID."
+    },
+    {
+      "run": "06-qa01",
+      "timestamp": "2026-10-25T21:06:32.148Z",
+      "id": "run_shell_command__call_58040",
+      "command": "python -c \"import json; d = json.load(open('docs/sonar-open-issues.json')); [print(f'{i[\\\"rule\\\"]} | {i[\\\"component\\\"]} | {i[\\\"line\\\"]} | {i[\\\"message\\\"]}') for i in d['issues']]\"",
+      "checks": [],
+      "cwd": null,
+      "native_tool_status": "success",
+      "explicit_reported_process_exit_code": 1,
+      "output_sha256": "62098CF5E920BB6643A0B726A28D93DF6DE9569FEF11DEE404F7E66453996EA7",
+      "output_characters": 313,
+      "note": "Tool success is not process/test success; absent explicit exit code stays unknown. Full raw result referenced by native tool audit ID."
+    },
+    {
+      "run": "06-qa01",
+      "timestamp": "2026-10-25T21:07:02.575Z",
+      "id": "run_shell_command__call_293562",
+      "command": "python get_issues.py",
+      "checks": [],
+      "cwd": null,
+      "native_tool_status": "success",
+      "explicit_reported_process_exit_code": 1,
+      "output_sha256": "F73298AB2C5D687020BA9A33B06C8A99182DCE302341F44305EA2CA3C6284BD9",
+      "output_characters": 1220,
+      "note": "Tool success is not process/test success; absent explicit exit code stays unknown. Full raw result referenced by native tool audit ID."
+    },
+    {
+      "run": "06-qa01",
+      "timestamp": "2026-10-25T21:07:15.762Z",
+      "id": "run_shell_command__call_243251",
+      "command": "python get_issues.py",
+      "checks": [],
+      "cwd": null,
+      "native_tool_status": "success",
+      "explicit_reported_process_exit_code": null,
+      "output_sha256": "DB4D73396923AC13557ED2049BB2A0C21225B0E90E02C4D82EC440463D246A86",
+      "output_characters": 3323,
+      "note": "Tool success is not process/test success; absent explicit exit code stays unknown. Full raw result referenced by native tool audit ID."
+    },
+    {
+      "run": "06-qa01",
+      "timestamp": "2026-10-25T21:07:18.660Z",
+      "id": "run_shell_command__call_112429",
+      "command": "powershell.exe -NoProfile -Command \"Remove-Item get_issues.py\"",
+      "checks": [],
+      "cwd": null,
+      "native_tool_status": "success",
+      "explicit_reported_process_exit_code": null,
+      "output_sha256": "9314AD83F766E55F2C605ADC53160A67BC08429EE544FE473D2F8CCAA39D4965",
+      "output_characters": 82,
+      "note": "Tool success is not process/test success; absent explicit exit code stays unknown. Full raw result referenced by native tool audit ID."
+    },
+    {
+      "run": "07-qa01-retry",
+      "timestamp": "2026-10-25T21:10:05.976Z",
+      "id": "run_shell_command__call_516084",
+      "command": "powershell.exe -NoProfile -Command \"(Get-Content -LiteralPath 'docs/sonar-open-issues.json' -Raw | ConvertFrom-Json).issues | Select-Object rule,message,component,line,status | ConvertTo-Json\"",
+      "checks": [],
+      "cwd": null,
+      "native_tool_status": "success",
+      "explicit_reported_process_exit_code": null,
+      "output_sha256": "CF261CC53D4B8DCDCA90AAA88E2E8A6AD9F461CD1C5DDA33BE2F3FBCEB8F579C",
+      "output_characters": 246,
+      "note": "Tool success is not process/test success; absent explicit exit code stays unknown. Full raw result referenced by native tool audit ID."
+    },
+    {
+      "run": "07-qa01-retry",
+      "timestamp": "2026-10-25T21:10:10.499Z",
+      "id": "run_shell_command__call_663851",
+      "command": "powershell.exe -NoProfile -File ../shared/fetch-sonar-tessl.ps1",
+      "checks": [],
+      "cwd": null,
+      "native_tool_status": "success",
+      "explicit_reported_process_exit_code": null,
+      "output_sha256": "2F5318BC4C478F8E553739200CC7261FD758AE8B68904A0E552C153201DD3AA6",
+      "output_characters": 420,
+      "note": "Tool success is not process/test success; absent explicit exit code stays unknown. Full raw result referenced by native tool audit ID."
+    },
+    {
+      "run": "07-qa01-retry",
+      "timestamp": "2026-10-25T21:12:35.862Z",
+      "id": "run_shell_command__call_831994",
+      "command": "npm run test -- --coverage",
+      "checks": [],
+      "cwd": "frontend",
+      "native_tool_status": "success",
+      "explicit_reported_process_exit_code": null,
+      "output_sha256": "C527CC97CF6D9F0708769CE50236A661158A3C473BB0FACFE08D0154D853249F",
+      "output_characters": 1637,
+      "note": "Tool success is not process/test success; absent explicit exit code stays unknown. Full raw result referenced by native tool audit ID."
+    },
+    {
+      "run": "07-qa01-retry",
+      "timestamp": "2026-10-25T21:12:44.511Z",
+      "id": "run_shell_command__call_546543",
+      "command": "npm run test -- --coverage > ../docs/qa01-retry-frontend-tests.log",
+      "checks": [],
+      "cwd": "frontend",
+      "native_tool_status": "success",
+      "explicit_reported_process_exit_code": null,
+      "output_sha256": "B99CFB75E511A57E80A281DD9A765CD7356C49A58CD21D0002B39DD54428D9F0",
+      "output_characters": 80,
+      "note": "Tool success is not process/test success; absent explicit exit code stays unknown. Full raw result referenced by native tool audit ID."
+    },
+    {
+      "run": "07-qa01-retry",
+      "timestamp": "2026-10-25T21:12:52.978Z",
+      "id": "run_shell_command__call_619976",
+      "command": "node frontend/node_modules/vitest/vitest.mjs run --config docs/acceptance/vitest.external.config.mjs --reporter=json --outputFile=07-qa01-races-vitest.json",
+      "checks": [
+        "vitest"
+      ],
+      "cwd": null,
+      "native_tool_status": "success",
+      "explicit_reported_process_exit_code": null,
+      "output_sha256": "0B6C48E249C4B5E31089CD02A3F57B1DBEF5DA44C2ECD6357DB64500AB1C088E",
+      "output_characters": 206,
+      "note": "Tool success is not process/test success; absent explicit exit code stays unknown. Full raw result referenced by native tool audit ID."
+    },
+    {
+      "run": "07-qa01-retry",
+      "timestamp": "2026-10-25T21:12:57.891Z",
+      "id": "run_shell_command__call_648610",
+      "command": "powershell.exe -NoProfile -Command \"Get-Content docs/acceptance/07-qa01-races-vitest.json | ConvertFrom-Json | Select-Object -ExpandProperty numTotalTests, numPassedTests, numFailedTests\"",
+      "checks": [
+        "vitest"
+      ],
+      "cwd": null,
+      "native_tool_status": "success",
+      "explicit_reported_process_exit_code": 1,
+      "output_sha256": "19AE80FB76E72E9184F2A207499CE2DD58A0AFE407CD8C7EB8D07D87E6F6DB4D",
+      "output_characters": 238,
+      "note": "Tool success is not process/test success; absent explicit exit code stays unknown. Full raw result referenced by native tool audit ID."
+    },
+    {
+      "run": "07-qa01-retry",
+      "timestamp": "2026-10-25T21:13:02.323Z",
+      "id": "run_shell_command__call_648646",
+      "command": "powershell.exe -NoProfile -Command \"Get-Content docs/acceptance/07-qa01-races-vitest.json -Tail 20\"",
+      "checks": [
+        "vitest"
+      ],
+      "cwd": null,
+      "native_tool_status": "success",
+      "explicit_reported_process_exit_code": null,
+      "output_sha256": "659ADDAA92DF5F1DD866766F4ED4F8DABE9A7AC3B52EA365FA09AD6E75367D6F",
+      "output_characters": 2317,
+      "note": "Tool success is not process/test success; absent explicit exit code stays unknown. Full raw result referenced by native tool audit ID."
+    },
+    {
+      "run": "07-qa01-retry",
+      "timestamp": "2026-10-25T21:13:15.242Z",
+      "id": "run_shell_command__call_664682",
+      "command": ".venv\\Scripts\\python.exe -m pytest --cov=app --cov-report=xml:../docs/coverage.xml tests/",
+      "checks": [
+        "pytest"
+      ],
+      "cwd": "backend",
+      "native_tool_status": "success",
+      "explicit_reported_process_exit_code": null,
+      "output_sha256": "58F694A7B25BB6BD32FCC90FE147ED148352F89DD7A17841EA2F986AE8159308",
+      "output_characters": 1360,
+      "note": "Tool success is not process/test success; absent explicit exit code stays unknown. Full raw result referenced by native tool audit ID."
+    },
+    {
+      "run": "07-qa01-retry",
+      "timestamp": "2026-10-25T21:13:21.810Z",
+      "id": "run_shell_command__call_613879",
+      "command": ".venv\\Scripts\\python.exe -m pytest --cov=app --cov-report=xml:../docs/coverage.xml tests/ > ../docs/qa01-retry-backend-tests.log",
+      "checks": [
+        "pytest"
+      ],
+      "cwd": "backend",
+      "native_tool_status": "success",
+      "explicit_reported_process_exit_code": null,
+      "output_sha256": "0D8F24058C67804FF0307EA5FD75F0EEA89F5F75C86BB94DEDA9424EF847FF3E",
+      "output_characters": 82,
+      "note": "Tool success is not process/test success; absent explicit exit code stays unknown. Full raw result referenced by native tool audit ID."
+    },
+    {
+      "run": "07-qa01-retry",
+      "timestamp": "2026-10-25T21:13:30.284Z",
+      "id": "run_shell_command__call_647691",
+      "command": "npm audit --omit=dev",
+      "checks": [
+        "npm audit"
+      ],
+      "cwd": "frontend",
+      "native_tool_status": "success",
+      "explicit_reported_process_exit_code": null,
+      "output_sha256": "9BDD77E9386836501436651FE4350F36323891F2086E1BE67D78CA1B96B8DDA7",
+      "output_characters": 98,
+      "note": "Tool success is not process/test success; absent explicit exit code stays unknown. Full raw result referenced by native tool audit ID."
+    },
+    {
+      "run": "07-qa01-retry",
+      "timestamp": "2026-10-25T21:13:34.095Z",
+      "id": "run_shell_command__call_861756",
+      "command": "npm audit",
+      "checks": [
+        "npm audit"
+      ],
+      "cwd": "frontend",
+      "native_tool_status": "success",
+      "explicit_reported_process_exit_code": null,
+      "output_sha256": "BF5B40E1E98D92CA57A0A59538D79BA8672F5169B114BDAC1591646DB1CB8F3E",
+      "output_characters": 98,
+      "note": "Tool success is not process/test success; absent explicit exit code stays unknown. Full raw result referenced by native tool audit ID."
+    },
+    {
+      "run": "07-qa01-retry",
+      "timestamp": "2026-10-25T21:13:38.114Z",
+      "id": "run_shell_command__call_682314",
+      "command": "npm run build",
+      "checks": [
+        "npm run build"
+      ],
+      "cwd": "frontend",
+      "native_tool_status": "success",
+      "explicit_reported_process_exit_code": null,
+      "output_sha256": "0F6BC15EC4221A6278FA8EB4265097349930BC09605B1005F05D3E3018CA2215",
+      "output_characters": 445,
+      "note": "Tool success is not process/test success; absent explicit exit code stays unknown. Full raw result referenced by native tool audit ID."
+    },
+    {
+      "run": "07-qa01-retry",
+      "timestamp": "2026-10-25T21:13:43.611Z",
+      "id": "run_shell_command__call_380032",
+      "command": "powershell.exe -NoProfile -File ../shared/scan-tessl.ps1",
+      "checks": [
+        "scan-tessl"
+      ],
+      "cwd": null,
+      "native_tool_status": "success",
+      "explicit_reported_process_exit_code": null,
+      "output_sha256": "CB42C207B9AE8C5A25FBE9CF634A419ABEF84F31188FCF232AFB5E50D7C9ACA2",
+      "output_characters": 141,
+      "note": "Tool success is not process/test success; absent explicit exit code stays unknown. Full raw result referenced by native tool audit ID."
+    },
+    {
+      "run": "07-qa01-retry",
+      "timestamp": "2026-10-25T21:14:09.060Z",
+      "id": "run_shell_command__call_553687",
+      "command": "powershell.exe -NoProfile -File ../shared/fetch-sonar-tessl.ps1",
+      "checks": [],
+      "cwd": null,
+      "native_tool_status": "success",
+      "explicit_reported_process_exit_code": null,
+      "output_sha256": "6CBCF59A84DFEE0E1F40B2A78B3ABAE21AA663E5DA5AC8758BCF615D051D85C6",
+      "output_characters": 418,
+      "note": "Tool success is not process/test success; absent explicit exit code stays unknown. Full raw result referenced by native tool audit ID."
+    },
+    {
+      "run": "07-qa01-retry",
+      "timestamp": "2026-10-25T21:14:12.751Z",
+      "id": "run_shell_command__call_553708",
+      "command": "powershell.exe -NoProfile -File ../shared/verify-sonar-tessl.ps1",
+      "checks": [
+        "verify-sonar"
+      ],
+      "cwd": null,
+      "native_tool_status": "success",
+      "explicit_reported_process_exit_code": null,
+      "output_sha256": "ACF2ACA6F5C0099BA2B49B36A6EA04F49D63DD3B7530B5FFDB75C6DA6A8C297F",
+      "output_characters": 2472,
+      "note": "Tool success is not process/test success; absent explicit exit code stays unknown. Full raw result referenced by native tool audit ID."
+    },
+    {
+      "run": "07-qa01-retry",
+      "timestamp": "2026-10-25T21:14:16.685Z",
+      "id": "run_shell_command__call_380104",
+      "command": "powershell.exe -NoProfile -Command \"(Get-Content -LiteralPath 'docs/sonar-open-issues.json' -Raw | ConvertFrom-Json).issues | ForEach-Object { [PSCustomObject]@{ Rule = $_.rule; Message = $_.message; Component = $_.component; Line = $_.line } } | Format-Table -AutoSize\"",
+      "checks": [],
+      "cwd": null,
+      "native_tool_status": "success",
+      "explicit_reported_process_exit_code": null,
+      "output_sha256": "CF261CC53D4B8DCDCA90AAA88E2E8A6AD9F461CD1C5DDA33BE2F3FBCEB8F579C",
+      "output_characters": 246,
+      "note": "Tool success is not process/test success; absent explicit exit code stays unknown. Full raw result referenced by native tool audit ID."
+    },
+    {
+      "run": "07-qa01-retry",
+      "timestamp": "2026-10-25T21:14:21.763Z",
+      "id": "run_shell_command__call_834911",
+      "command": "powershell.exe -NoProfile -Command \"Select-String -Path docs/sonar-open-issues.json -Pattern '\\\"rule\\\"', '\\\"line\\\"', '\\\"message\\\"' | Select-Object -First 40\"",
+      "checks": [],
+      "cwd": null,
+      "native_tool_status": "success",
+      "explicit_reported_process_exit_code": null,
+      "output_sha256": "564125FF4BD8F4E24A73F579E8830F622C187719E2A9229F0351ACA330FC13B1",
+      "output_characters": 3803,
+      "note": "Tool success is not process/test success; absent explicit exit code stays unknown. Full raw result referenced by native tool audit ID."
+    },
+    {
+      "run": "07-qa01-retry",
+      "timestamp": "2026-10-25T21:14:34.670Z",
+      "id": "run_shell_command__call_517192",
+      "command": "npm run test -- --coverage > ../docs/qa01-retry-frontend-tests.log",
+      "checks": [],
+      "cwd": "frontend",
+      "native_tool_status": "success",
+      "explicit_reported_process_exit_code": null,
+      "output_sha256": "C087B54B1B8D8C7E7E51E019B6406BBAB075D60EEC408D972EFD35595F3EAECA",
+      "output_characters": 82,
+      "note": "Tool success is not process/test success; absent explicit exit code stays unknown. Full raw result referenced by native tool audit ID."
+    },
+    {
+      "run": "07-qa01-retry",
+      "timestamp": "2026-10-25T21:14:47.366Z",
+      "id": "run_shell_command__call_442956",
+      "command": "powershell.exe -NoProfile -File ../shared/scan-tessl.ps1",
+      "checks": [
+        "scan-tessl"
+      ],
+      "cwd": null,
+      "native_tool_status": "success",
+      "explicit_reported_process_exit_code": null,
+      "output_sha256": "782842CF0242A83B4ADC669E0486A75454E43E26A36215135A88091A86A50142",
+      "output_characters": 142,
+      "note": "Tool success is not process/test success; absent explicit exit code stays unknown. Full raw result referenced by native tool audit ID."
+    },
+    {
+      "run": "07-qa01-retry",
+      "timestamp": "2026-10-25T21:15:09.856Z",
+      "id": "run_shell_command__call_811510",
+      "command": "powershell.exe -NoProfile -File ../shared/fetch-sonar-tessl.ps1",
+      "checks": [],
+      "cwd": null,
+      "native_tool_status": "success",
+      "explicit_reported_process_exit_code": null,
+      "output_sha256": "0A9E55D3F7082B1B7AA31E8ABDB74F63F379A30BEF163E21C44637B214C3AA36",
+      "output_characters": 419,
+      "note": "Tool success is not process/test success; absent explicit exit code stays unknown. Full raw result referenced by native tool audit ID."
+    },
+    {
+      "run": "07-qa01-retry",
+      "timestamp": "2026-10-25T21:15:13.319Z",
+      "id": "run_shell_command__call_443055",
+      "command": "powershell.exe -NoProfile -File ../shared/verify-sonar-tessl.ps1",
+      "checks": [
+        "verify-sonar"
+      ],
+      "cwd": null,
+      "native_tool_status": "success",
+      "explicit_reported_process_exit_code": null,
+      "output_sha256": "61310DCD35D41998355C64ACA724AA2B6DCF111E2A44EFEA82E8589B8372BB83",
+      "output_characters": 2472,
+      "note": "Tool success is not process/test success; absent explicit exit code stays unknown. Full raw result referenced by native tool audit ID."
+    },
+    {
+      "run": "07-qa01-retry",
+      "timestamp": "2026-10-25T21:15:17.455Z",
+      "id": "run_shell_command__call_518889",
+      "command": "powershell.exe -NoProfile -Command \"Select-String -Path docs/sonar-open-issues.json -Pattern '\\\"rule\\\"', '\\\"line\\\"', '\\\"message\\\"' | Select-Object -First 40\"",
+      "checks": [],
+      "cwd": null,
+      "native_tool_status": "success",
+      "explicit_reported_process_exit_code": null,
+      "output_sha256": "6BDDD57C9A0B76FA8858F9A0992F778B01463668B5AC3E6D41EC8B513D12C077",
+      "output_characters": 3316,
+      "note": "Tool success is not process/test success; absent explicit exit code stays unknown. Full raw result referenced by native tool audit ID."
+    },
+    {
+      "run": "07-qa01-retry",
+      "timestamp": "2026-10-25T21:15:43.559Z",
+      "id": "run_shell_command__call_572292",
+      "command": "npm run test -- --coverage > ../docs/qa01-retry-frontend-tests.log",
+      "checks": [],
+      "cwd": "frontend",
+      "native_tool_status": "success",
+      "explicit_reported_process_exit_code": null,
+      "output_sha256": "036A7C6BC25371E436EDFE93BAB0E620701302A1FD57E20D4F9B6E6D821922E8",
+      "output_characters": 82,
+      "note": "Tool success is not process/test success; absent explicit exit code stays unknown. Full raw result referenced by native tool audit ID."
+    },
+    {
+      "run": "07-qa01-retry",
+      "timestamp": "2026-10-25T21:16:19.786Z",
+      "id": "run_shell_command__call_380485",
+      "command": "powershell.exe -NoProfile -File ../shared/fetch-sonar-tessl.ps1",
+      "checks": [],
+      "cwd": null,
+      "native_tool_status": "success",
+      "explicit_reported_process_exit_code": null,
+      "output_sha256": "B54300AA690183D4507D5132C8837F2FA48E3FFB5292DCE65BC6BA85155A1174",
+      "output_characters": 419,
+      "note": "Tool success is not process/test success; absent explicit exit code stays unknown. Full raw result referenced by native tool audit ID."
+    },
+    {
+      "run": "07-qa01-retry",
+      "timestamp": "2026-10-25T21:16:23.731Z",
+      "id": "run_shell_command__call_684005",
+      "command": "powershell.exe -NoProfile -File ../shared/verify-sonar-tessl.ps1",
+      "checks": [
+        "verify-sonar"
+      ],
+      "cwd": null,
+      "native_tool_status": "success",
+      "explicit_reported_process_exit_code": null,
+      "output_sha256": "357CBE877844169CCB81C6C655476C485325DD6CA94EE51551614A0C49AFC850",
+      "output_characters": 2471,
+      "note": "Tool success is not process/test success; absent explicit exit code stays unknown. Full raw result referenced by native tool audit ID."
+    },
+    {
+      "run": "07-qa01-retry",
+      "timestamp": "2026-10-25T21:16:28.447Z",
+      "id": "run_shell_command__call_493630",
+      "command": "powershell.exe -NoProfile -Command \"Select-String -Path docs/sonar-open-issues.json -Pattern '\\\"rule\\\"', '\\\"line\\\"', '\\\"message\\\"' | Select-Object -First 40\"",
+      "checks": [],
+      "cwd": null,
+      "native_tool_status": "success",
+      "explicit_reported_process_exit_code": null,
+      "output_sha256": "03EC2EF20E03C057B54D9DC2D13A74A83B757E28829A150D26CA792E77ECFF01",
+      "output_characters": 3317,
+      "note": "Tool success is not process/test success; absent explicit exit code stays unknown. Full raw result referenced by native tool audit ID."
+    },
+    {
+      "run": "07-qa01-retry",
+      "timestamp": "2026-10-25T21:16:50.479Z",
+      "id": "run_shell_command__call_833266",
+      "command": "npm run test -- --coverage > ../docs/qa01-retry-frontend-tests.log",
+      "checks": [],
+      "cwd": "frontend",
+      "native_tool_status": "success",
+      "explicit_reported_process_exit_code": null,
+      "output_sha256": "F019CC24C81676AA28ED0BB8839AB9A937BB86F7D25AB86E2737F2BD7CA4E644",
+      "output_characters": 81,
+      "note": "Tool success is not process/test success; absent explicit exit code stays unknown. Full raw result referenced by native tool audit ID."
+    },
+    {
+      "run": "07-qa01-retry",
+      "timestamp": "2026-10-25T21:16:56.179Z",
+      "id": "run_shell_command__call_487420",
+      "command": "powershell.exe -NoProfile -File ../shared/scan-tessl.ps1",
+      "checks": [
+        "scan-tessl"
+      ],
+      "cwd": null,
+      "native_tool_status": "success",
+      "explicit_reported_process_exit_code": null,
+      "output_sha256": "AEE51FA7C2781298ED8388CD40F1E5B36F01E607C018913B95688B8C7B709E47",
+      "output_characters": 142,
+      "note": "Tool success is not process/test success; absent explicit exit code stays unknown. Full raw result referenced by native tool audit ID."
+    },
+    {
+      "run": "07-qa01-retry",
+      "timestamp": "2026-10-25T21:17:18.506Z",
+      "id": "run_shell_command__call_540097",
+      "command": "powershell.exe -NoProfile -File ../shared/fetch-sonar-tessl.ps1",
+      "checks": [],
+      "cwd": null,
+      "native_tool_status": "success",
+      "explicit_reported_process_exit_code": null,
+      "output_sha256": "D3FBFB4081095592E3F27712F773EAE0866727626F52D14050935543D9CD93B2",
+      "output_characters": 419,
+      "note": "Tool success is not process/test success; absent explicit exit code stays unknown. Full raw result referenced by native tool audit ID."
+    },
+    {
+      "run": "07-qa01-retry",
+      "timestamp": "2026-10-25T21:17:26.200Z",
+      "id": "run_shell_command__call_389603",
+      "command": "powershell.exe -NoProfile -File ../shared/verify-sonar-tessl.ps1",
+      "checks": [
+        "verify-sonar"
+      ],
+      "cwd": null,
+      "native_tool_status": "success",
+      "explicit_reported_process_exit_code": null,
+      "output_sha256": "EB4E490A5B8E62EE62D5C134139D43A5C4F71343E2F9C57ABCFF1495619CBC14",
+      "output_characters": 2471,
+      "note": "Tool success is not process/test success; absent explicit exit code stays unknown. Full raw result referenced by native tool audit ID."
+    },
+    {
+      "run": "07-qa01-retry",
+      "timestamp": "2026-10-25T21:17:33.123Z",
+      "id": "run_shell_command__call_493379",
+      "command": "powershell.exe -NoProfile -Command \"Select-String -Path docs/sonar-open-issues.json -Pattern '\\\"rule\\\"', '\\\"line\\\"', '\\\"message\\\"' | Select-Object -First 40\"",
+      "checks": [],
+      "cwd": null,
+      "native_tool_status": "success",
+      "explicit_reported_process_exit_code": null,
+      "output_sha256": "3655E5647020445AFE9CCCAAFE253B301DFE20CABF8EC88318270F7C2EE0C9AD",
+      "output_characters": 3851,
+      "note": "Tool success is not process/test success; absent explicit exit code stays unknown. Full raw result referenced by native tool audit ID."
+    },
+    {
+      "run": "07-qa01-retry",
+      "timestamp": "2026-10-25T21:18:02.605Z",
+      "id": "run_shell_command__call_531019",
+      "command": "npm run test -- --coverage > ../docs/qa01-retry-frontend-tests.log",
+      "checks": [],
+      "cwd": "frontend",
+      "native_tool_status": "success",
+      "explicit_reported_process_exit_code": null,
+      "output_sha256": "1F80A948A3DF444B12226724D38FF692A9CB59E6943B31A68D55DD4804B26C00",
+      "output_characters": 82,
+      "note": "Tool success is not process/test success; absent explicit exit code stays unknown. Full raw result referenced by native tool audit ID."
+    },
+    {
+      "run": "07-qa01-retry",
+      "timestamp": "2026-10-25T21:18:11.570Z",
+      "id": "run_shell_command__call_531064",
+      "command": "powershell.exe -NoProfile -File ../shared/scan-tessl.ps1",
+      "checks": [
+        "scan-tessl"
+      ],
+      "cwd": null,
+      "native_tool_status": "success",
+      "explicit_reported_process_exit_code": null,
+      "output_sha256": "A02A3EEB5CAE3FE929AD4482894E2AD983193E6D5F3691AD3DF2FFFD17ED8BA9",
+      "output_characters": 142,
+      "note": "Tool success is not process/test success; absent explicit exit code stays unknown. Full raw result referenced by native tool audit ID."
+    },
+    {
+      "run": "07-qa01-retry",
+      "timestamp": "2026-10-25T21:18:33.220Z",
+      "id": "run_shell_command__call_833752",
+      "command": "powershell.exe -NoProfile -File ../shared/fetch-sonar-tessl.ps1",
+      "checks": [],
+      "cwd": null,
+      "native_tool_status": "success",
+      "explicit_reported_process_exit_code": null,
+      "output_sha256": "7A89ED2F34AD25C5285A3ECA3C99065C577BA835A0A4BB397FAD33B1802E2344",
+      "output_characters": 415,
+      "note": "Tool success is not process/test success; absent explicit exit code stays unknown. Full raw result referenced by native tool audit ID."
+    },
+    {
+      "run": "07-qa01-retry",
+      "timestamp": "2026-10-25T21:19:41.706Z",
+      "id": "run_shell_command__call_463989",
+      "command": "powershell.exe -NoProfile -File ../shared/verify-sonar-tessl.ps1",
+      "checks": [
+        "verify-sonar"
+      ],
+      "cwd": null,
+      "native_tool_status": "success",
+      "explicit_reported_process_exit_code": null,
+      "output_sha256": "77BA75E1AAA88ED04AB0FC4ED82EC8598AE504E076256B7F7FF84B34DBB604C4",
+      "output_characters": 2466,
+      "note": "Tool success is not process/test success; absent explicit exit code stays unknown. Full raw result referenced by native tool audit ID."
+    },
+    {
+      "run": "08-qa02",
+      "timestamp": "2026-10-25T21:22:09.671Z",
+      "id": "run_shell_command__call_594241",
+      "command": "Get-Content -Path \"docs/acceptance/07-independent-repeat/falsey-vitest.json\" -Raw | Select-String -Pattern \"fail\" -Context 2,2 | Select-Object -First 20",
+      "checks": [
+        "vitest"
+      ],
+      "cwd": null,
+      "native_tool_status": "success",
+      "explicit_reported_process_exit_code": null,
+      "output_sha256": "0BA08E2A2981ACF9D4F13162F01902DD923B0D2F4904DBA17D74B6E3086C4FBE",
+      "output_characters": 1465,
+      "note": "Tool success is not process/test success; absent explicit exit code stays unknown. Full raw result referenced by native tool audit ID."
+    },
+    {
+      "run": "08-qa02",
+      "timestamp": "2026-10-25T21:25:00.941Z",
+      "id": "run_shell_command__call_848651",
+      "command": "Get-Content -Path \"docs/acceptance/falsey.external.test.tsx\" -Raw",
+      "checks": [],
+      "cwd": null,
+      "native_tool_status": "success",
+      "explicit_reported_process_exit_code": null,
+      "output_sha256": "35C89172707FF6B2484E8E72F7648C6D345D3EA499DF5A6371FB6C91C5C1FFFA",
+      "output_characters": 2513,
+      "note": "Tool success is not process/test success; absent explicit exit code stays unknown. Full raw result referenced by native tool audit ID."
+    },
+    {
+      "run": "08-qa02",
+      "timestamp": "2026-10-25T21:25:32.793Z",
+      "id": "run_shell_command__call_1022040",
+      "command": "node frontend/node_modules/vitest/vitest.mjs run --config docs/acceptance/vitest.falsey.config.mjs --reporter=json --outputFile=08-qa02-falsey-vitest.json",
+      "checks": [
+        "vitest"
+      ],
+      "cwd": null,
+      "native_tool_status": "success",
+      "explicit_reported_process_exit_code": null,
+      "output_sha256": "B746243DB15B3748D1B7DC14EA3AC58DFD285B9AE0D6268556B678CCB3DFFE89",
+      "output_characters": 207,
+      "note": "Tool success is not process/test success; absent explicit exit code stays unknown. Full raw result referenced by native tool audit ID."
+    },
+    {
+      "run": "08-qa02",
+      "timestamp": "2026-10-25T21:25:42.069Z",
+      "id": "run_shell_command__call_32436",
+      "command": "Get-Content -Path \"docs/acceptance/08-qa02-falsey-vitest.json\" -Raw | Select-String -Pattern \"numTotalTests|numPassedTests|numFailedTests\" -Context 0,0",
+      "checks": [
+        "vitest"
+      ],
+      "cwd": null,
+      "native_tool_status": "success",
+      "explicit_reported_process_exit_code": null,
+      "output_sha256": "D031D852EF463173F40FAB0B6B6AAF35CF7DB140A5B6B3C554D90AF2DC44A07C",
+      "output_characters": 1110,
+      "note": "Tool success is not process/test success; absent explicit exit code stays unknown. Full raw result referenced by native tool audit ID."
+    },
+    {
+      "run": "08-qa02",
+      "timestamp": "2026-10-25T21:26:10.919Z",
+      "id": "run_shell_command__call_97022",
+      "command": "Get-ChildItem -Path \"docs/acceptance/\"",
+      "checks": [],
+      "cwd": null,
+      "native_tool_status": "success",
+      "explicit_reported_process_exit_code": null,
+      "output_sha256": "65655EF64398C5B4E9234071D4D752A9A3CA1293F44136A045BD6A11AEC7013E",
+      "output_characters": 1489,
+      "note": "Tool success is not process/test success; absent explicit exit code stays unknown. Full raw result referenced by native tool audit ID."
+    },
+    {
+      "run": "08-qa02",
+      "timestamp": "2026-10-25T21:26:31.278Z",
+      "id": "run_shell_command__call_504560",
+      "command": "node frontend/node_modules/vitest/vitest.mjs run --config docs/acceptance/vitest.external.config.mjs --reporter=json --outputFile=08-qa02-races-vitest.json",
+      "checks": [
+        "vitest"
+      ],
+      "cwd": null,
+      "native_tool_status": "success",
+      "explicit_reported_process_exit_code": null,
+      "output_sha256": "458F4266D53774EF8C30A2EA968DCC738AFD13F01019DA532D7A28DD339D2688",
+      "output_characters": 206,
+      "note": "Tool success is not process/test success; absent explicit exit code stays unknown. Full raw result referenced by native tool audit ID."
+    },
+    {
+      "run": "08-qa02",
+      "timestamp": "2026-10-25T21:26:37.099Z",
+      "id": "run_shell_command__call_183946",
+      "command": "Get-Content -Path \"docs/acceptance/08-qa02-races-vitest.json\" -Raw | Select-String -Pattern \"numTotalTests|numPassedTests|numFailedTests\" -Context 0,0",
+      "checks": [
+        "vitest"
+      ],
+      "cwd": null,
+      "native_tool_status": "success",
+      "explicit_reported_process_exit_code": null,
+      "output_sha256": "5688AE9D09E28A8159FBA75E9E7CF698E3F88FA53FF08B4C184F000706E7A4A1",
+      "output_characters": 2360,
+      "note": "Tool success is not process/test success; absent explicit exit code stays unknown. Full raw result referenced by native tool audit ID."
+    },
+    {
+      "run": "08-qa02",
+      "timestamp": "2026-10-25T21:26:50.335Z",
+      "id": "run_shell_command__call_3260120",
+      "command": "npm run test -- --coverage",
+      "checks": [],
+      "cwd": "frontend",
+      "native_tool_status": "success",
+      "explicit_reported_process_exit_code": 1,
+      "output_sha256": "8715FA6E393F4918C81DBAA971DBC1E67CD4655D29EE9ACCC04CBE8A00F19077",
+      "output_characters": 3936,
+      "note": "Tool success is not process/test success; absent explicit exit code stays unknown. Full raw result referenced by native tool audit ID."
+    },
+    {
+      "run": "08-qa02",
+      "timestamp": "2026-10-25T21:27:24.179Z",
+      "id": "run_shell_command__call_3388537",
+      "command": "npm run test -- --coverage",
+      "checks": [],
+      "cwd": "frontend",
+      "native_tool_status": "success",
+      "explicit_reported_process_exit_code": 1,
+      "output_sha256": "4B3941BB49724F8097F67F1FB440DDE392C8B545AE269593DC3455E9AD3141EF",
+      "output_characters": 2083,
+      "note": "Tool success is not process/test success; absent explicit exit code stays unknown. Full raw result referenced by native tool audit ID."
+    },
+    {
+      "run": "08-qa02",
+      "timestamp": "2026-10-25T21:27:47.611Z",
+      "id": "run_shell_command__call_3106195",
+      "command": "npm run test -- --coverage",
+      "checks": [],
+      "cwd": "frontend",
+      "native_tool_status": "success",
+      "explicit_reported_process_exit_code": null,
+      "output_sha256": "2C245858CE97ECA59EC5BDF278309EAAD759F2A7F3AD0ECD90D32ECC9EE154B4",
+      "output_characters": 1637,
+      "note": "Tool success is not process/test success; absent explicit exit code stays unknown. Full raw result referenced by native tool audit ID."
+    },
+    {
+      "run": "08-qa02",
+      "timestamp": "2026-10-25T21:27:54.090Z",
+      "id": "run_shell_command__call_949738",
+      "command": "npm run build",
+      "checks": [
+        "npm run build"
+      ],
+      "cwd": "frontend",
+      "native_tool_status": "success",
+      "explicit_reported_process_exit_code": 1,
+      "output_sha256": "EBEB9492AF21052677610CE7FCEA1FA162EA52528638C61866A3C5A95EF5E95C",
+      "output_characters": 346,
+      "note": "Tool success is not process/test success; absent explicit exit code stays unknown. Full raw result referenced by native tool audit ID."
+    },
+    {
+      "run": "08-qa02",
+      "timestamp": "2026-10-25T21:28:11.064Z",
+      "id": "run_shell_command__call_1068223",
+      "command": "npm run build",
+      "checks": [
+        "npm run build"
+      ],
+      "cwd": "frontend",
+      "native_tool_status": "success",
+      "explicit_reported_process_exit_code": null,
+      "output_sha256": "F8B8CBBB247B8DF1F7EB40760AAE0811BEAE7A02D1B9E34C4CAA8DE56AD52538",
+      "output_characters": 445,
+      "note": "Tool success is not process/test success; absent explicit exit code stays unknown. Full raw result referenced by native tool audit ID."
+    },
+    {
+      "run": "08-qa02",
+      "timestamp": "2026-10-25T21:28:17.221Z",
+      "id": "run_shell_command__call_3058417",
+      "command": "pytest -v",
+      "checks": [
+        "pytest"
+      ],
+      "cwd": "backend",
+      "native_tool_status": "success",
+      "explicit_reported_process_exit_code": 1,
+      "output_sha256": "7771E464CCA77312ECBDB0A53E62FD32EA53656C87A844D2B2C8BC7C997AC498",
+      "output_characters": 2807,
+      "note": "Tool success is not process/test success; absent explicit exit code stays unknown. Full raw result referenced by native tool audit ID."
+    },
+    {
+      "run": "08-qa02",
+      "timestamp": "2026-10-25T21:28:22.045Z",
+      "id": "run_shell_command__call_3107111",
+      "command": "$env:PYTHONPATH=\".\"; pytest -v",
+      "checks": [
+        "pytest"
+      ],
+      "cwd": "backend",
+      "native_tool_status": "success",
+      "explicit_reported_process_exit_code": null,
+      "output_sha256": "F5B854332D368368371672811E09EA364F42E3A91C67E0118A497F14A32B838C",
+      "output_characters": 2993,
+      "note": "Tool success is not process/test success; absent explicit exit code stays unknown. Full raw result referenced by native tool audit ID."
+    },
+    {
+      "run": "08-qa02",
+      "timestamp": "2026-10-25T21:28:27.374Z",
+      "id": "run_shell_command__call_3180008",
+      "command": "$env:PYTHONPATH=\".\"; pytest --cov=app --cov-report=xml:../docs/coverage.xml",
+      "checks": [
+        "pytest"
+      ],
+      "cwd": "backend",
+      "native_tool_status": "success",
+      "explicit_reported_process_exit_code": null,
+      "output_sha256": "AD5C34E177812FC8A5538BFCD3820C175BE2F01D3057F25370C1B0CA32DF73C3",
+      "output_characters": 1360,
+      "note": "Tool success is not process/test success; absent explicit exit code stays unknown. Full raw result referenced by native tool audit ID."
+    },
+    {
+      "run": "08-qa02",
+      "timestamp": "2026-10-25T21:28:34.495Z",
+      "id": "run_shell_command__call_1003616",
+      "command": "npm audit --production",
+      "checks": [
+        "npm audit"
+      ],
+      "cwd": "frontend",
+      "native_tool_status": "success",
+      "explicit_reported_process_exit_code": null,
+      "output_sha256": "8635F7F03B3D9DAAFDA4AB0C84B944C42539C87691228B45E1B6463EF9AD2FEF",
+      "output_characters": 151,
+      "note": "Tool success is not process/test success; absent explicit exit code stays unknown. Full raw result referenced by native tool audit ID."
+    },
+    {
+      "run": "08-qa02",
+      "timestamp": "2026-10-25T21:28:47.036Z",
+      "id": "run_shell_command__call_2414242",
+      "command": "$content = @\"\nCommand: node frontend/node_modules/vitest/vitest.mjs run --config docs/acceptance/vitest.falsey.config.mjs --reporter=json --outputFile=08-qa02-falsey-vitest.json\nTimestamp: $(Get-Date -Format 'yyyy-MM-dd HH:mm:ss')\nDuration: 1.71s\nExit Code: 0\nOutput Summary: Test Files: 1 passed (1), Tests: 1 passed (1). Successfully resolved the StrictMode obsolete create null/undefined rejection concurrency bug.\n\"@\n$content | Out-File -FilePath \"docs/qa02-falsey-command.txt\" -Encoding utf8",
+      "checks": [
+        "vitest"
+      ],
+      "cwd": null,
+      "native_tool_status": "success",
+      "explicit_reported_process_exit_code": null,
+      "output_sha256": "CF261CC53D4B8DCDCA90AAA88E2E8A6AD9F461CD1C5DDA33BE2F3FBCEB8F579C",
+      "output_characters": 246,
+      "note": "Tool success is not process/test success; absent explicit exit code stays unknown. Full raw result referenced by native tool audit ID."
+    },
+    {
+      "run": "08-qa02",
+      "timestamp": "2026-10-25T21:28:51.843Z",
+      "id": "run_shell_command__call_299550",
+      "command": "$content = 'Command: node frontend/node_modules/vitest/vitest.mjs run --config docs/acceptance/vitest.falsey.config.mjs --reporter=json --outputFile=08-qa02-falsey-vitest.json\\nTimestamp: 2026-10-25 16:27:00\\nDuration: 1.71s\\nExit Code: 0\\nOutput Summary: Test Files: 1 passed (1), Tests: 1 passed (1). Successfully verified that StrictMode obsolete create null/undefined rejection does not display any error panel or corrupt the new game session.'\n$content | Out-File -FilePath \"docs/qa02-falsey-command.txt\" -Encoding utf8",
+      "checks": [
+        "vitest"
+      ],
+      "cwd": null,
+      "native_tool_status": "success",
+      "explicit_reported_process_exit_code": null,
+      "output_sha256": "C43CCD0469055048D3D810E94698E74D44016D31CFE15E0295DD31C7E119B494",
+      "output_characters": 82,
+      "note": "Tool success is not process/test success; absent explicit exit code stays unknown. Full raw result referenced by native tool audit ID."
+    },
+    {
+      "run": "08-qa02",
+      "timestamp": "2026-10-25T21:28:56.889Z",
+      "id": "run_shell_command__call_1886161",
+      "command": "$content = 'Command: node frontend/node_modules/vitest/vitest.mjs run --config docs/acceptance/vitest.external.config.mjs --reporter=json --outputFile=08-qa02-races-vitest.json\\nTimestamp: 2026-10-25 16:27:30\\nDuration: 2.10s\\nExit Code: 0\\nOutput Summary: Test Files: 1 passed (1), Tests: 6 passed (6). Successfully verified all original 6 race/concurrency cases under React StrictMode.'\n$content | Out-File -FilePath \"docs/qa02-races-command.txt\" -Encoding utf8",
+      "checks": [
+        "vitest"
+      ],
+      "cwd": null,
+      "native_tool_status": "success",
+      "explicit_reported_process_exit_code": null,
+      "output_sha256": "E8333AF853E2E38AF0188D5E8949AC48B3971248F2E9F9C95B2DD85B2852EE68",
+      "output_characters": 81,
+      "note": "Tool success is not process/test success; absent explicit exit code stays unknown. Full raw result referenced by native tool audit ID."
+    },
+    {
+      "run": "08-qa02",
+      "timestamp": "2026-10-25T21:29:01.208Z",
+      "id": "run_shell_command__call_184420",
+      "command": "$content = 'Command: pytest --cov=app --cov-report=xml:../docs/coverage.xml\\nTimestamp: 2026-10-25 16:27:10\\nDuration: 1.46s\\nExit Code: 0\\nOutput Summary: 23 passed, 1 warning. Generated fresh backend XML coverage report in docs/coverage.xml.'\n$content | Out-File -FilePath \"docs/qa02-backend-command.txt\" -Encoding utf8",
+      "checks": [
+        "pytest"
+      ],
+      "cwd": null,
+      "native_tool_status": "success",
+      "explicit_reported_process_exit_code": null,
+      "output_sha256": "6245642066E7DBE2EC61706B0896765A6016AD48B15B478EFCBECD2DE1E62CD3",
+      "output_characters": 82,
+      "note": "Tool success is not process/test success; absent explicit exit code stays unknown. Full raw result referenced by native tool audit ID."
+    },
+    {
+      "run": "08-qa02",
+      "timestamp": "2026-10-25T21:29:05.409Z",
+      "id": "run_shell_command__call_446052",
+      "command": "$content = 'Command: npm audit --production\\nTimestamp: 2026-10-25 16:27:15\\nDuration: 0.95s\\nExit Code: 0\\nOutput Summary: found 0 vulnerabilities'\n$content | Out-File -FilePath \"docs/qa02-audit-command.txt\" -Encoding utf8",
+      "checks": [
+        "npm audit"
+      ],
+      "cwd": null,
+      "native_tool_status": "success",
+      "explicit_reported_process_exit_code": null,
+      "output_sha256": "DCC8188577AEDD840A3013883D6F44DB69DC7462F47ED52D6BF54F717B8C0180",
+      "output_characters": 81,
+      "note": "Tool success is not process/test success; absent explicit exit code stays unknown. Full raw result referenced by native tool audit ID."
+    },
+    {
+      "run": "08-qa02",
+      "timestamp": "2026-10-25T21:29:14.686Z",
+      "id": "run_shell_command__call_828166",
+      "command": "Get-ChildItem -Path \"docs/qa02-*\"",
+      "checks": [],
+      "cwd": null,
+      "native_tool_status": "success",
+      "explicit_reported_process_exit_code": null,
+      "output_sha256": "626490A1B4B1334DF98842F1B59F97DBDC66C884651AE457C29D0BF2D7145F42",
+      "output_characters": 570,
+      "note": "Tool success is not process/test success; absent explicit exit code stays unknown. Full raw result referenced by native tool audit ID."
+    },
+    {
+      "run": "08-qa02",
+      "timestamp": "2026-10-25T21:29:44.359Z",
+      "id": "run_shell_command__call_193559",
+      "command": "Get-ChildItem -Path \"../shared\"",
+      "checks": [],
+      "cwd": null,
+      "native_tool_status": "success",
+      "explicit_reported_process_exit_code": null,
+      "output_sha256": "9863A516AE0A80345438F5C1E7A955151DB0363BA91C30AF2BA4171A7082734B",
+      "output_characters": 7654,
+      "note": "Tool success is not process/test success; absent explicit exit code stays unknown. Full raw result referenced by native tool audit ID."
+    },
+    {
+      "run": "08-qa02",
+      "timestamp": "2026-10-25T21:29:48.068Z",
+      "id": "run_shell_command__call_2508758",
+      "command": "../shared/scan-tessl.ps1",
+      "checks": [
+        "scan-tessl"
+      ],
+      "cwd": null,
+      "native_tool_status": "success",
+      "explicit_reported_process_exit_code": null,
+      "output_sha256": "AB0EBA46028B3AD8C019DF4F4CDA3D6F0184C4D626312C09639D4C13C47FF659",
+      "output_characters": 141,
+      "note": "Tool success is not process/test success; absent explicit exit code stays unknown. Full raw result referenced by native tool audit ID."
+    },
+    {
+      "run": "08-qa02",
+      "timestamp": "2026-10-25T21:30:15.565Z",
+      "id": "run_shell_command__call_2717268",
+      "command": "../shared/verify-sonar-tessl.ps1",
+      "checks": [
+        "verify-sonar"
+      ],
+      "cwd": null,
+      "native_tool_status": "success",
+      "explicit_reported_process_exit_code": null,
+      "output_sha256": "5CD0DA08747ED4ADF6621AC6DA73B5A5323C6BC1EFB0DFB00B0C47F2CD619EDD",
+      "output_characters": 1529,
+      "note": "Tool success is not process/test success; absent explicit exit code stays unknown. Full raw result referenced by native tool audit ID."
+    },
+    {
+      "run": "08-qa02",
+      "timestamp": "2026-10-25T21:30:20.336Z",
+      "id": "run_shell_command__call_1104950",
+      "command": "../shared/fetch-sonar-tessl.ps1",
+      "checks": [],
+      "cwd": null,
+      "native_tool_status": "success",
+      "explicit_reported_process_exit_code": null,
+      "output_sha256": "580D93E1572ED0E51308A397622961764F3E955E931E2236DD15ED81FAB12D96",
+      "output_characters": 415,
+      "note": "Tool success is not process/test success; absent explicit exit code stays unknown. Full raw result referenced by native tool audit ID."
+    }
+  ],
+  "model_authored_note_adjudication": [
+    {
+      "path": "qa02-audit-command.txt",
+      "sha256": "F9CF04A2311435F8B4E93DB49BD6FF62EC56D0499DC0248B81495A475795E31B",
+      "classification": "model_authored_measurement_note",
+      "use_for_authoritative_timing": false,
+      "reason": "Model manually composed timestamp/duration/exit summaries, including hard-coded timestamps and literal newline escapes. Retain as artifact, derive validated timings from raw native output and independent timed subprocess reports instead."
+    },
+    {
+      "path": "qa02-backend-command.txt",
+      "sha256": "87CFFCAFF85712CD99C58E00FD6891E11CD7F382CBECCCE003C37D387D78986C",
+      "classification": "model_authored_measurement_note",
+      "use_for_authoritative_timing": false,
+      "reason": "Model manually composed timestamp/duration/exit summaries, including hard-coded timestamps and literal newline escapes. Retain as artifact, derive validated timings from raw native output and independent timed subprocess reports instead."
+    },
+    {
+      "path": "qa02-falsey-command.txt",
+      "sha256": "59F474D30DFFD92AAAAF5BA130F7AD519DA6601F9ED12A35C5E6F99293D43B14",
+      "classification": "model_authored_measurement_note",
+      "use_for_authoritative_timing": false,
+      "reason": "Model manually composed timestamp/duration/exit summaries, including hard-coded timestamps and literal newline escapes. Retain as artifact, derive validated timings from raw native output and independent timed subprocess reports instead."
+    },
+    {
+      "path": "qa02-races-command.txt",
+      "sha256": "CE008A7630A7990115F970492DD6446FC10B8F2F13D558124D18582EEBB09577",
+      "classification": "model_authored_measurement_note",
+      "use_for_authoritative_timing": false,
+      "reason": "Model manually composed timestamp/duration/exit summaries, including hard-coded timestamps and literal newline escapes. Retain as artifact, derive validated timings from raw native output and independent timed subprocess reports instead."
+    }
+  ],
+  "limitation": "This index does not infer successful exit0 from tool-call success or count every internal failed test as an external QA intent. Manual metadata statements are not raw measurements."
+}

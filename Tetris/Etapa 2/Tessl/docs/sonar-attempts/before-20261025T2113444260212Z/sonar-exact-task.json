@@ -1,0 +1,26 @@
+﻿{
+    "task":  {
+                 "id":  "ad5358ac-75af-4418-8213-060c675d2a4b",
+                 "type":  "REPORT",
+                 "componentId":  "86865631-cd75-415e-a415-61a8db5c7c91",
+                 "componentKey":  "tetris-stage2-tessl",
+                 "componentName":  "Tetris Stage 2 Tessl",
+                 "componentQualifier":  "TRK",
+                 "analysisId":  "07694e52-761f-4a31-995c-7bb9a25fe58a",
+                 "status":  "SUCCESS",
+                 "submittedAt":  "2026-10-25T20:59:49+0000",
+                 "submitterLogin":  "admin",
+                 "startedAt":  "2026-10-25T20:59:50+0000",
+                 "executedAt":  "2026-10-25T20:59:51+0000",
+                 "executionTimeMs":  997,
+                 "hasScannerContext":  true,
+                 "warningCount":  2,
+                 "warnings":  [
+                                  "SCM provider autodetection failed. Please use \"sonar.scm.provider\" to define SCM of your project, or disable the SCM Sensor in the project settings.",
+                                  "Your code is analyzed as compatible with all Python 3 versions by default. You can get a more precise analysis by setting the Python version or version range in your configuration via the parameter \"sonar.python.version\""
+                              ],
+                 "infoMessages":  [
+
+                                  ]
+             }
+}

@@ -1,0 +1,7 @@
+{
+  "researcher_created": true,
+  "at_utc": "2026-10-25T21:40:38.413043+00:00",
+  "before_sha256": "3FB1B0BB30CBED3063E55926237CEC4C9BE8002BA0107111D51C596EC9AB09F1",
+  "after_sha256": "79FD5E18BF112F675B5EB8106565929F55B70A54B6CF5ACF71193F0957BF32B3",
+  "reason": "Canonicalize manual category alias to the collector recognized postimplementation_external_correction enum. Q01/Q02 intent IDs and retry relation unchanged. Earlier automatic zero-count results were a researcher classification/collector mismatch; authoritative corrected count is3attempts/2intents. Raw CLI token/time counters unchanged."
+}

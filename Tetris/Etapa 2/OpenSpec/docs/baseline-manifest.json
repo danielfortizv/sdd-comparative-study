@@ -1,0 +1,198 @@
+[
+  {
+    "path": ".geminiignore",
+    "sha256": "416904D121FCDE26654EE10B57262AD155EB6F5509CCDC2382B1624A26920F0D"
+  },
+  {
+    "path": ".gemini/settings.json",
+    "sha256": "F516F0CB689354C3055DFE9DEFDB3AAF9F204186CD4228E44E678DA56A28364F"
+  },
+  {
+    "path": ".gemini/commands/opsx/apply.toml",
+    "sha256": "24899C4F6CD676E7F7D8BE74C093A21A487BFCFD9D3D12F4F9A08F1C9C54E52D"
+  },
+  {
+    "path": ".gemini/commands/opsx/archive.toml",
+    "sha256": "B4FFF6D6F660F74DD6DBDDF538C6EBE5FB05D25EEC6E7FD3D305B9022EF91ABD"
+  },
+  {
+    "path": ".gemini/commands/opsx/explore.toml",
+    "sha256": "FCAD1AB1E9089E8CAD5C43206922B14312B13AFC3C643C8D3CEEEEEE8E813CAD"
+  },
+  {
+    "path": ".gemini/commands/opsx/propose.toml",
+    "sha256": "51248EC45EA1DB95FFA98560D02F9B164085A4396F8D33071D81469ECAB7CAE7"
+  },
+  {
+    "path": ".gemini/commands/opsx/sync.toml",
+    "sha256": "989C0BC05DC26D09F6C65EAE7522B82E5E0006745683176F4D503B561B17C300"
+  },
+  {
+    "path": ".gemini/commands/opsx/update.toml",
+    "sha256": "D4412B6B69815720A05677DCAC22980A5B2E5BABD59FAC797C40FA32F567F9AB"
+  },
+  {
+    "path": ".gemini/skills/openspec-apply-change/SKILL.md",
+    "sha256": "C62534A7EADF04EA6CA14C6D8B97F7E0444FAA83086D71DEE6B582775D31FCE2"
+  },
+  {
+    "path": ".gemini/skills/openspec-archive-change/SKILL.md",
+    "sha256": "D0E4139E3A363AF8EFFE9FD880E145009D87F251A5F6BAF3ABEEA79E54B08E81"
+  },
+  {
+    "path": ".gemini/skills/openspec-explore/SKILL.md",
+    "sha256": "D39D55ACF29E022733CA1A7ABCE2D0DADE24431EB69015E863AB7B43C0EFC469"
+  },
+  {
+    "path": ".gemini/skills/openspec-propose/SKILL.md",
+    "sha256": "E45EB900CB3D5EE2F51A670DBCA444124F4F803430EAB68101582F6E0FDF4294"
+  },
+  {
+    "path": ".gemini/skills/openspec-sync-specs/SKILL.md",
+    "sha256": "9FABB6881DB99B76926E994FC0851BCF7394A3199C1BD298D5B477898005A1D7"
+  },
+  {
+    "path": ".gemini/skills/openspec-update-change/SKILL.md",
+    "sha256": "D81FDC45E1CCF9AFBA7A3F5DC17498FDFB220F6EE3D4B6C85773F7509CCD5423"
+  },
+  {
+    "path": "backend/engine.py",
+    "sha256": "9EAE4CC64D5EFC8275992CE833506E7A28B39B91E587C2F429535C2DBE569F7A"
+  },
+  {
+    "path": "backend/main.py",
+    "sha256": "D852ED81A1614BCD492F7DA9CFD9F122AFAD8411CA5DDE96C2BACE9D183E4BF9"
+  },
+  {
+    "path": "backend/models.py",
+    "sha256": "BA96D1922FCD680F24E12FCD53A7206D71D9060CFA4B22CABF78746B5058B1CF"
+  },
+  {
+    "path": "backend/requirements.txt",
+    "sha256": "05FD88094A148863E59F170A9434A9558AF37F0EA0DE1B79B420B8009BBFA8FB"
+  },
+  {
+    "path": "backend/test_engine.py",
+    "sha256": "E37412D2B4C4768B7C959F81E9A734281C1F5E46120A4160B4F4645BB8AE7333"
+  },
+  {
+    "path": "frontend/.gitignore",
+    "sha256": "FE718E7BABB14F3CBAD2D97F08889B9CE5215ED3FE0E43B2B8CFBFB3B9B844E8"
+  },
+  {
+    "path": "frontend/.oxlintrc.json",
+    "sha256": "B4D344818A1E1BF43997E4744A9153C8EEF770C98B58229CD86363DABB85DED4"
+  },
+  {
+    "path": "frontend/index.html",
+    "sha256": "C489CA10E39DEE2C944678C7CBE29C05C1464F0D3AD331829BE0616DFE292ADA"
+  },
+  {
+    "path": "frontend/package-lock.json",
+    "sha256": "AB370035712D68CE8B2B300132DFDE0F1DF5EB9188C7142CF21FBB539BC3865D"
+  },
+  {
+    "path": "frontend/package.json",
+    "sha256": "DF2FBBDD1CD0A9F459745D0E67F6835D0B4997844D175A04E31D050344C20F9F"
+  },
+  {
+    "path": "frontend/README.md",
+    "sha256": "FA8AAC78B8BE1993010B57F41000A243ECBA006F6731513FE4EC91E788BF2517"
+  },
+  {
+    "path": "frontend/tsconfig.app.json",
+    "sha256": "8E5D12BA330E7D86409EDEC74B95451E0DB22EE09B9426C94B5BF817571EDDB0"
+  },
+  {
+    "path": "frontend/tsconfig.json",
+    "sha256": "770B4140BBB581E2DFD9EA9946FFC9C75A1D86BA7D2DB5F77C83E37CBDF9D808"
+  },
+  {
+    "path": "frontend/tsconfig.node.json",
+    "sha256": "D366CC0827139DB39C61815F22491BBFDA56C654354A42AD7795143D314E45E8"
+  },
+  {
+    "path": "frontend/vite.config.ts",
+    "sha256": "E1EEFD0ED1639C88D1213884EF760516884DB9E168190E223FEE6B063AD3E088"
+  },
+  {
+    "path": "frontend/public/favicon.svg",
+    "sha256": "61BC9A161DE58248288E6905425D7180F0624C2865007B97D763FDAC12043A66"
+  },
+  {
+    "path": "frontend/public/icons.svg",
+    "sha256": "B45FA506195CFCDEF406BA9F0C77B36DDC1A7C224040926EC70ABC2FDEA7B93A"
+  },
+  {
+    "path": "frontend/src/api.ts",
+    "sha256": "F9546D66D70BA1FD1A41274B5D6C449DE25C39D51340C47C127F584DCE9ECFD1"
+  },
+  {
+    "path": "frontend/src/App.css",
+    "sha256": "E4E32136AD10217CE39FCAACA39B675C3DFCEB06831AE2748C64E956717356AD"
+  },
+  {
+    "path": "frontend/src/App.tsx",
+    "sha256": "4F364EF01C0E4E1BB853A2EADF59B46B96F8D2E9C7D2F7DE8B5BEC45047C98B1"
+  },
+  {
+    "path": "frontend/src/index.css",
+    "sha256": "535C25DD1F338486AB3678832FC698011C8B8D1FE4FFD3D0EF5E33181457CC9F"
+  },
+  {
+    "path": "frontend/src/main.tsx",
+    "sha256": "6E9E5807FCBD48B75A96DB5CBEF36C996262196BE42E6D4760DC86BABBE61AD2"
+  },
+  {
+    "path": "frontend/src/assets/hero.png",
+    "sha256": "881FFBCAAFC212E49ADDAD08846A5B82761355FA20624253AF3477BA33262C5C"
+  },
+  {
+    "path": "frontend/src/assets/react.svg",
+    "sha256": "35EF61ED53B323AE94A16A8EC659B3D0AF3880698791133F23B084085AB1C2E5"
+  },
+  {
+    "path": "frontend/src/assets/vite.svg",
+    "sha256": "5BE21ACD42EB7B896E517F4E0F0F11EB5C5D9E54FBBCEBE9453F033008FCCA6F"
+  },
+  {
+    "path": "frontend/src/components/GameOverModal.tsx",
+    "sha256": "66A200FEC6D4627FDB14985D8FE9C53BB8859BB1C66BE4B20F4F64AE856F2F70"
+  },
+  {
+    "path": "frontend/src/components/GridBoard.tsx",
+    "sha256": "FDAC15ED2BFB61B20F14732C1F0FB3EAA175D47320094674BFC163BF03A9F304"
+  },
+  {
+    "path": "openspec/config.yaml",
+    "sha256": "D68EEA46C9A5376048FD22D92E2BB29FDA2B97C2DA705C43A34FD6D4BC7E1CFE"
+  },
+  {
+    "path": "openspec/changes/archive/.gitkeep",
+    "sha256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"
+  },
+  {
+    "path": "openspec/changes/tetris-stage1-option-a/.openspec.yaml",
+    "sha256": "5EDC88A042FDDA2550686E54689BDD6779B13445BCAF782A1AF9426634B9B4FB"
+  },
+  {
+    "path": "openspec/changes/tetris-stage1-option-a/design.md",
+    "sha256": "9193C13910A0D84AF99B1043DD1766214B71ECCB97579E0278E8EE495361DEE2"
+  },
+  {
+    "path": "openspec/changes/tetris-stage1-option-a/proposal.md",
+    "sha256": "7A2565BB78239A79DC001B267B6480EB83A49FEE5D362F7CEF3E399208FD3870"
+  },
+  {
+    "path": "openspec/changes/tetris-stage1-option-a/tasks.md",
+    "sha256": "91B8899F728AA4CD9FA552BD6AD517C5F783B64B005CA04FAD0564424A8DD03F"
+  },
+  {
+    "path": "openspec/changes/tetris-stage1-option-a/specs/tetris-core/spec.md",
+    "sha256": "A167CECA606B5B6D7B5E39B08BD4F6609EE15BD8B1A23A390474E1738A738842"
+  },
+  {
+    "path": "openspec/specs/.gitkeep",
+    "sha256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"
+  }
+]

@@ -1,0 +1,50 @@
+﻿herramienta,intento,segundos_cli,entrada,cache_incluida,salida_candidata,pensamiento,api_intentos,api_errores,api_exitos,llamados_herramientas,creditos_kiro,modelos_observados_en_stats,exit
+OpenSpec,01-propose,,,,,,,,,,,,interrupted after sandbox network stall
+OpenSpec,02-propose-retry,622.436,1586942,1262951,15910,28623,,,,,,gemini-3.5-flash,0
+OpenSpec,03-materialize-proposal,137.359,2141393,1591392,6694,7116,23,0,23,22,,gemini-3.5-flash,0
+OpenSpec,04-correct-plan,48.902,1273520,1075890,2723,6281,10,0,10,12,,gemini-3.5-flash,0
+OpenSpec,05-apply,444.118,2623509,2252478,4391,,,,,,,gemini-3.5-flash,"interrupted after model stall, no source changes"
+OpenSpec,06-apply-fresh,782.457,2011596,1407507,56094,83511,,,,,,gemini-3.5-flash,0
+OpenSpec,07-direct-apply,167.938,382138,197261,6667,12209,14,0,14,17,,gemini-3.5-flash,0
+OpenSpec,08-complete-frontend,12.868,127382,8020,134,275,2,0,2,1,,gemini-3.5-flash,0
+OpenSpec,09-frontend-fresh,237.026,541005,253683,8066,15663,18,0,18,19,,gemini-3.5-flash,0
+OpenSpec,10-sonar-remediation,409.43,2994533,2495552,8443,19194,60,3,57,56,,gemini-3-flash-preview|gemini-3.5-flash,0
+Spec Kit,01-specify,,372306,328077,572,3622,,,,,,gemini-3.5-flash,interrupted
+Spec Kit,02-specify-retry,314.087,553753,417153,5986,8755,23,2,21,23,,gemini-3.5-flash,0
+Spec Kit,03-contract-clarification,,231106,152515,5847,18651,,,,,,gemini-3.5-flash,130
+Spec Kit,04-plan,671.273,1659066,1321138,14548,8060,52,4,48,46,,gemini-3-flash-preview|gemini-3.5-flash,0
+Spec Kit,05-tasks,304.671,293607,155479,4874,6352,13,2,11,20,,gemini-3.5-flash,0
+Spec Kit,06-tasks-full-arguments,0.084,0,0,0,0,0,0,0,0,,,1
+Spec Kit,07-tasks-native-expanded,545.391,1065684,505891,8216,7163,41,14,27,27,,gemini-3.5-flash,0
+Spec Kit,08-implement,2885.87,16752166,12893781,36959,41527,202,54,148,155,,gemini-3-flash-preview|gemini-3.5-flash,0
+Spec Kit,09-qa-correction,3450.181,10900997,8551042,40048,42080,149,39,110,100,,gemini-3-flash-preview|gemini-3.5-flash,0
+Spec Kit,10-qa-race-correction,455.055,5514887,4925600,23190,26295,60,0,60,57,,gemini-3-flash-preview|gemini-3.5-flash,0
+Spec Kit,11-qa-timer-ownership,439.318,607848,257143,2297,16381,,,,,,gemini-3.5-flash,429
+Spec Kit,12-qa-timer-retry,1513.504,1830444,1091029,10707,14468,,,,,,gemini-3.5-flash,1
+Spec Kit,13-qa-completion-retry,16.638,225989,104499,144,630,2,0,2,1,,gemini-3.5-flash,0
+Spec Kit,14-qa-completion-fresh,184.895,720193,422234,1936,15806,20,0,20,19,,gemini-3.5-flash,0
+Spec Kit,15-qa-frontend-completion,56.315,160759,0,1808,7575,2,0,2,1,,gemini-3.5-flash,0
+Spec Kit,16-qa-final-regressions,375.325,1560326,1173857,6505,15859,40,3,37,35,,gemini-3-flash-preview|gemini-3.5-flash,0
+Spec Kit,17-qa-sonar-style,313.986,1540447,1116692,4735,8890,41,3,38,36,,gemini-3-flash-preview|gemini-3.5-flash,0
+Tessl,01-specify,399.402,574303,409971,8458,12390,19,2,17,24,,gemini-3.5-flash,0
+Tessl,02-specify-correction,5.813,,,,,,,,,,,403
+Tessl,03-specify-last-mile,110.546,445013,264257,10336,8473,13,0,13,12,,gemini-3.5-flash,0
+Tessl,04-specify-final-review,187.086,319343,142817,11582,14592,8,0,8,7,,gemini-3.5-flash,0
+Tessl,05-implement,1607.145,16961692,13783860,57182,58896,170,39,131,127,,gemini-3-flash-preview|gemini-3.5-flash,0
+Tessl,06-qa01,193.479,859933,464197,3850,6770,22,3,19,22,,gemini-3.5-flash,0
+Tessl,07-qa01-retry,615.06,8712836,7429797,14769,30084,96,3,93,92,,gemini-3-flash-preview|gemini-3.5-flash,0
+Tessl,08-qa02,523.706,11831655,9608584,14548,18398,72,6,66,67,,gemini-3.5-flash,0
+BMAD,01-prd,235.503,1557313,1304035,9758,11370,34,0,34,32,,gemini-3.5-flash,0
+BMAD,02-design-stories,423.88,3808691,2971386,20830,25045,60,1,59,60,,gemini-3.5-flash,0
+BMAD,03-planning-completion,417.211,5259143,4587288,15433,18262,74,3,71,68,,gemini-3.5-flash,0
+BMAD,04-implementation,624.327,6585008,5217489,21681,28882,,,,,,gemini-3.5-flash,53
+BMAD,05-correction,581.356,5964506,5208068,8372,30475,,,,,,gemini-3.5-flash,53
+BMAD,06-quality-completion,771.706,5939693,4878238,22197,25486,,,,,,gemini-3.5-flash,53
+BMAD,07-six-sonar-findings,509.1,4315349,3340029,11012,17142,74,9,65,65,,gemini-3.5-flash,0
+Kiro,01-specify,140.931,,,,,,,,36,,,4294967295
+Kiro,02-specify-student,331.014,,,,,,,,42,5.89718,,0
+Kiro,03-native-spec-review,395.73,,,,,,,,28,8.026105,,0
+Kiro,04-implement,1796.25,,,,,,,,158,49.458271,,0
+Kiro,05-qa,,,,,,,,,14,,,
+Kiro,06-qa-retry,888.976,,,,,,,,82,18.924292,,0
+Kiro,07-queued-timer-qa,604.254,,,,,,,,56,19.063515,,0

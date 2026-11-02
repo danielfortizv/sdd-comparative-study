@@ -1,0 +1,19 @@
+{
+  "researcher_created": true,
+  "label": "domain-04-infra-retry",
+  "cwd": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\Bmad Method",
+  "command": [
+    "backend/.venv/Scripts/python.exe",
+    "../shared/acceptance/check_domain_bmad.py",
+    "--root",
+    ".",
+    "--output",
+    "docs/acceptance/domain-04-infra-retry.json"
+  ],
+  "started_at_utc": "2026-10-26T01:45:19.861211+00:00",
+  "ended_at_utc": "2026-10-26T01:45:21.421365+00:00",
+  "duration_seconds": 1.560244,
+  "exit_code": 0,
+  "log_path": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\Bmad Method\\docs\\validation\\domain-04-infra-retry.log",
+  "log_sha256": "B5C2AA0248158F0A3774D127061D16D414C2E0DA0D7E8DC110297BAA82813A1E"
+}

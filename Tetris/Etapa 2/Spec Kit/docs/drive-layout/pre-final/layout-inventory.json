@@ -1,0 +1,209 @@
+[
+  {
+    "page": 1,
+    "width": 596,
+    "height": 842,
+    "image_count": 0,
+    "images": [],
+    "text_start": "Tetris \u2014 Etapa 2 | Registro\nexperimental\nAlcance: opci\u00f3n A (puntaje escalonado, aceleraci\u00f3n progresiva, Hold y vista previa) aplicada\na las cinco herramientas. Este documento se actualiza por turnos. La primera ejecuci\u00f3n",
+    "table_count": 0,
+    "text_outside_margins_count": 0,
+    "outside_examples": []
+  },
+  {
+    "page": 2,
+    "width": 596,
+    "height": 842,
+    "image_count": 0,
+    "images": [],
+    "text_start": "OpenSpec \u2014 l\u00ednea base verificada\nCopia de Etapa 1 en Caso 2-Tetris/Etapa 2/OpenSpec. Manifiesto SHA-256:\nOpenSpec/docs/baseline-manifest.json. Especificaci\u00f3n base archivada mediante OpenSpec\n1.13.2: 30 requisitos a\u00f1adido",
+    "table_count": 0,
+    "text_outside_margins_count": 0,
+    "outside_examples": []
+  },
+  {
+    "page": 3,
+    "width": 596,
+    "height": 842,
+    "image_count": 0,
+    "images": [],
+    "text_start": "(0 errores, 33 \u00e9xitos) en 03/04 y, por separado, 66 respuestas hist\u00f3ricamente documentadas\nde 02, cuyo total API es desconocido. Los tokens cacheados son parte de entrada y no se\nsuman de nuevo al total. 01-propose queda",
+    "table_count": 0,
+    "text_outside_margins_count": 0,
+    "outside_examples": []
+  },
+  {
+    "page": 4,
+    "width": 596,
+    "height": 842,
+    "image_count": 1,
+    "images": [
+      {
+        "x0": 73.5,
+        "x1": 503.25,
+        "top": 117.13867000000005,
+        "bottom": 415.63867,
+        "width": 429.75,
+        "height": 298.49999999999994,
+        "srcsize": [
+          1440,
+          1000
+        ],
+        "name": "X11"
+      }
+    ],
+    "text_start": "Captura 1. Interfaz Tetris de Etapa 2, navegador local, resoluci\u00f3n 1440 \u00d7 1000. Muestra\ntablero, puntaje, nivel, l\u00edneas, Hold, vista previa y controles. Archivo original:\nOpenSpec/docs/screenshots/tetris-stage2-ui.png.\nC",
+    "table_count": 0,
+    "text_outside_margins_count": 0,
+    "outside_examples": []
+  },
+  {
+    "page": 5,
+    "width": 596,
+    "height": 842,
+    "image_count": 0,
+    "images": [],
+    "text_start": "Tokens y tiempo por invocaci\u00f3n (segundos | entrada | cach\u00e9 |\nsalida | intentos API o respuestas documentadas, seg\u00fan la\netiqueta):\n01-propose: no medido | no disponible | no disponible | no disponible | no disponible;\nint",
+    "table_count": 0,
+    "text_outside_margins_count": 0,
+    "outside_examples": []
+  },
+  {
+    "page": 6,
+    "width": 596,
+    "height": 842,
+    "image_count": 0,
+    "images": [],
+    "text_start": "23 \u2192 0; vulnerabilidades 5 \u2192 0; bugs 0 \u2192 0; duplicaci\u00f3n 0 % \u2192 0 %; complejidad 141 \u2192\n138; ncloc 1.290 \u2192 1.327. Quality gate final OK: cobertura de c\u00f3digo nuevo 83,0 % (m\u00ednimo\n80 %), duplicaci\u00f3n nueva 0,0 % y observacione",
+    "table_count": 0,
+    "text_outside_margins_count": 0,
+    "outside_examples": []
+  },
+  {
+    "page": 7,
+    "width": 596,
+    "height": 842,
+    "image_count": 1,
+    "images": [
+      {
+        "x0": 73.5,
+        "x1": 541.4999700000001,
+        "top": 73.5,
+        "bottom": 453.75,
+        "width": 467.9999700000001,
+        "height": 380.25,
+        "srcsize": [
+          1600,
+          1300
+        ],
+        "name": "X19"
+      }
+    ],
+    "text_start": "Captura 3. Panel comparativo reproducible de SonarQube y pruebas, generado desde\nJSON de la API local y logs. No es una captura de la interfaz web de SonarQube. Archivo:\nOpenSpec/docs/screenshots/sonar-panel-final.png.",
+    "table_count": 0,
+    "text_outside_margins_count": 0,
+    "outside_examples": []
+  },
+  {
+    "page": 8,
+    "width": 596,
+    "height": 842,
+    "image_count": 1,
+    "images": [
+      {
+        "x0": 73.5,
+        "x1": 541.4999700000001,
+        "top": 73.5,
+        "bottom": 497.25003,
+        "width": 467.9999700000001,
+        "height": 423.75003,
+        "srcsize": [
+          1600,
+          1450
+        ],
+        "name": "X22"
+      }
+    ],
+    "text_start": "SPEC KIT \u2014 INICIO DE ETAPA 2 (20 oct 2026,\nhora Bogot\u00e1)\nSe cre\u00f3 Caso 2-Tetris/Etapa 2/Spec Kit como copia de trabajo de la Etapa 1 de esta misma\nherramienta. La medici\u00f3n inicial confirm\u00f3 0 archivos de c\u00f3digo cambiados y ",
+    "table_count": 0,
+    "text_outside_margins_count": 0,
+    "outside_examples": []
+  },
+  {
+    "page": 9,
+    "width": 596,
+    "height": 842,
+    "image_count": 0,
+    "images": [],
+    "text_start": "baseline-frontend-build.log y baseline-npm-audit.json. /speckit.specify est\u00e1 en ejecuci\u00f3n;\ntodav\u00eda no se atribuye implementaci\u00f3n nueva a Spec Kit.\nIncidencia Spec Kit 01-specify: el comando slash recibi\u00f3 argumentos vac\u00edo",
+    "table_count": 0,
+    "text_outside_margins_count": 0,
+    "outside_examples": []
+  },
+  {
+    "page": 10,
+    "width": 596,
+    "height": 842,
+    "image_count": 0,
+    "images": [],
+    "text_start": "SPEC KIT \u2014 PLAN Y SONARQUBE DE L\u00cdNEA\nBASE\n04-plan complet\u00f3 los seis artefactos de planificaci\u00f3n en 671,273 s. Sus estad\u00edsticas incluyen\n50 intentos API a gemini-3.5-flash y dos intentos API autom\u00e1ticos del detector de bu",
+    "table_count": 0,
+    "text_outside_margins_count": 0,
+    "outside_examples": []
+  },
+  {
+    "page": 11,
+    "width": 596,
+    "height": 842,
+    "image_count": 0,
+    "images": [],
+    "text_start": "semilla completa y la aclaraci\u00f3n de calidad; ya se observan las correcciones en los\nartefactos. Este cambio de m\u00e9todo de env\u00edo, el intento fallido y la auditor\u00eda se conservan\ncomo incidencia experimental. Evidencia: Spec",
+    "table_count": 0,
+    "text_outside_margins_count": 0,
+    "outside_examples": []
+  },
+  {
+    "page": 12,
+    "width": 596,
+    "height": 842,
+    "image_count": 0,
+    "images": [],
+    "text_start": "aparte, los JSONL conservan 130 respuestas \u00fanicas del modelo principal, incluidas 25 de\nlas sesiones interrumpidas 01/03. Las dos respuestas auxiliares del detector de bucles\nest\u00e1n en stats JSON, no en el JSONL principal",
+    "table_count": 0,
+    "text_outside_margins_count": 0,
+    "outside_examples": []
+  },
+  {
+    "page": 13,
+    "width": 596,
+    "height": 842,
+    "image_count": 0,
+    "images": [],
+    "text_start": "igualdad estricta de entrega entre todas las ejecuciones. Los transcritos disponibles se\narchivaron con hash. Spec Kit cuenta ahora con auditor\u00eda de entrada efectiva completa\nantes de generar la aplicaci\u00f3n.\nSPEC KIT \u2014 CI",
+    "table_count": 0,
+    "text_outside_margins_count": 0,
+    "outside_examples": []
+  },
+  {
+    "page": 14,
+    "width": 596,
+    "height": 842,
+    "image_count": 0,
+    "images": [],
+    "text_start": "SPEC KIT \u2014 CIERRE DE CORRECCI\u00d3N 09:\nSONAR OK Y ACEPTACI\u00d3N FUNCIONAL\nPENDIENTE\n09-qa-correction cerr\u00f3 el 20 oct 2026 a las 08:55:23, hora Bogot\u00e1, con c\u00f3digo 0 y 3.450,181\ns instrumentados. La verificaci\u00f3n aritm\u00e9tica de la",
+    "table_count": 0,
+    "text_outside_margins_count": 0,
+    "outside_examples": []
+  },
+  {
+    "page": 15,
+    "width": 596,
+    "height": 842,
+    "image_count": 0,
+    "images": [],
+    "text_start": "SPEC KIT \u2014 CIERRE DE CORRECCI\u00d3N 10 Y\nAJUSTE DE TEMPORIZADOR 11 EN CURSO\n10-qa-race-correction cerr\u00f3 el 20 oct 2026 a las 20:25:03, hora Bogot\u00e1, con c\u00f3digo 0 y\n455,055 s instrumentados. La salida original acredita 60 inte",
+    "table_count": 0,
+    "text_outside_margins_count": 0,
+    "outside_examples": []
+  }
+]

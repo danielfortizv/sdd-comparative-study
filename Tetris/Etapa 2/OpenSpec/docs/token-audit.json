@@ -1,0 +1,22 @@
+{
+  "note": "These exact values were collected from the Gemini CLI JSONL records and printed by collect-openspec-metrics.py before Gemini CLI garbage-collected older chat files. The collection output is retained in this task transcript; the 02 values were also written to the Drive research log before garbage collection. The 05 values are the difference between the observed cumulative snapshots after runs 04 and 05. Cached input tokens are a subset of input tokens.",
+  "runs": {
+    "02-propose-retry": {
+      "source": "previously captured Gemini CLI JSONL response records, deduplicated by response ID and bounded by run timestamps",
+      "models": ["gemini-3.5-flash"],
+      "input_tokens": 1586942,
+      "cached_tokens": 1262951,
+      "output_tokens": 15910,
+      "thought_tokens": 28623,
+      "model_requests": 66
+    },
+    "05-apply": {
+      "source": "difference of exact cumulative JSONL snapshots after 04 and 05, before Gemini CLI chat cleanup",
+      "models": ["gemini-3.5-flash"],
+      "input_tokens": 2623509,
+      "cached_tokens": 2252478,
+      "output_tokens": 4391,
+      "model_requests": 24
+    }
+  }
+}

@@ -1,0 +1,55 @@
+{
+  "measured_at_utc": "2026-10-21T05:23:58.1457198Z",
+  "backend_origin": "owned Uvicorn process 14496, started from current Spec Kit backend at localhost:8000",
+  "base_url": "http://127.0.0.1:8000",
+  "source_scope": "backend/app Python files loaded for independent external API checks",
+  "backend_app_files": [
+    {
+      "path": "backend/app/__init__.py",
+      "sha256": "F05828B9387820DF77489E2BB724313F036722C1724CDF9F22C197ED1CBCBB48"
+    },
+    {
+      "path": "backend/app/main.py",
+      "sha256": "9A9725BA30BC52F77BC1FACEE2BE13178AFF2EBF6C75BB6334821BC22B0F0B10"
+    },
+    {
+      "path": "backend/app/api/__init__.py",
+      "sha256": "83D1FAB48EB8A82C77DC88FF2BBF01225FB58981683138A4A6D4166E009F7327"
+    },
+    {
+      "path": "backend/app/api/endpoints.py",
+      "sha256": "6C88E4A6CEE04619D3A6C3CD17DFCF82BCF415A912A42E093D820F463209F25B"
+    },
+    {
+      "path": "backend/app/models/__init__.py",
+      "sha256": "F34053FA23DD1232915F247C9921A281F8DA459D8DDE526B08285481DFFD6E82"
+    },
+    {
+      "path": "backend/app/models/schemas.py",
+      "sha256": "21677A9302A5D612D206AFC1FE075B0267201575DFE011922BF320EB096F7F0C"
+    },
+    {
+      "path": "backend/app/services/__init__.py",
+      "sha256": "1B5C02DD0D225D90B7C77EF93B5094367566D25298DAF3AF778FB0A10B9CF3F1"
+    },
+    {
+      "path": "backend/app/services/game_engine.py",
+      "sha256": "208C6123F3F49669A7FA913B80498C2033886927AE8E64B9BED80F04BD79951F"
+    }
+  ],
+  "checker_files": [
+    {
+      "path": "shared/acceptance/check_api.py",
+      "sha256": "8A45D6B0E8EFA52F12605C262664409E51759EF0CCCF12B88D12A3B7FC7ADC4E"
+    },
+    {
+      "path": "shared/acceptance/check_contract.py",
+      "sha256": "D56C6289EC858B160A467676B44DCEDE45DC4D852D439F9213D63EC109FB45A4"
+    }
+  ],
+  "external_catalog_records": 7,
+  "external_catalog_distinct_ids": 8,
+  "supplemental_contract_controls": 9,
+  "catalog_total_ids": 20,
+  "remaining_evidence": "production/domain, frontend, browser and build evidence mapped separately"
+}

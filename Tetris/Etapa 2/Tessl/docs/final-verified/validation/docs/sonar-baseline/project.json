@@ -1,0 +1,8 @@
+{
+  "project": {
+    "key": "tetris-stage2-tessl",
+    "name": "Tetris Stage 2 Tessl",
+    "qualifier": "TRK",
+    "visibility": "public"
+  }
+}

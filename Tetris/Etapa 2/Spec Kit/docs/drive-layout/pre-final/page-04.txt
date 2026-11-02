@@ -1,0 +1,16 @@
+Captura 1. Interfaz Tetris de Etapa 2, navegador local, resolución 1440 × 1000. Muestra
+tablero, puntaje, nivel, líneas, Hold, vista previa y controles. Archivo original:
+OpenSpec/docs/screenshots/tetris-stage2-ui.png.
+CIERRE VERIFICADO — OPENSPEC / TETRIS
+ETAPA 2 (19 oct 2026, hora Bogotá)
+Esta sección reemplaza los subtotales y estados «en curso» anteriores. Solo OpenSpec
+está ejecutado en Etapa 2; las otras cuatro herramientas siguen pendientes. No se hizo
+commit ni push.
+Protocolo y procedencia. Semilla maestra congelada en Etapa 2/shared/seed.md, SHA-256
+63919779DD4104076FBABCB130CE296A160FA840E0B4755A2AA5D90757ADA8EF.
+Gemini CLI 0.60.0, Gemini 3.5 Flash (Vertex) y OpenSpec 1.13.2. La semilla literal aparece
+en las invocaciones iniciales/nuevas 01, 02 y 06–10; 03–05 fueron aclaraciones de contexto
+sin volver a copiarla. Se conservaron los diez prompts, metadatos de ejecución, salidas y
+errores en OpenSpec/docs/. El intento 01 no tiene estadísticas de tokens ni duración final
+fiable; no se le asignaron valores estimados. Los tokens cacheados son un subconjunto de
+los tokens de entrada.

@@ -1,0 +1,119 @@
+{
+  "session_id": "8d3ae00a-0747-4979-b516-7220ce273a6e",
+  "response": "I have successfully and thoroughly revised **only** the two Stage 2 specification files on disk:\n1. `specs/stage2/requirements.md` (Atomic requirements and acceptance criteria)\n2. `specs/stage2/session_notes.md` (Design decisions, local rule reads, and traceable checklists)\n\nNo application source files, test files, or dependency configurations were created or modified during this invocation.\n\n### Summary of Exact Corrections in the Revised Specifications\n\n1. **Lifecycle Generation & Mutating Request FIFO Queueing:**\n   - Specified a client-side monotonic `generationId` incremented on each game creation/restart.\n   - Mandated a serialized FIFO request queue where no mutating request is dispatched until the preceding one's network transit and JSON parsing both complete.\n   - Enforced double-verification of active `generationId` ownership (both post-fetch and post-parse) across all success, catch, and `finally` paths. Out-of-generation responses are discarded, ensuring stale requests do not clear newer guards or reschedule timers. Old queued requests cannot block or execute against a new game ID, making Hold and controls immediately usable in the new game lifecycle even if an old hold fetch is pending.\n\n2. **Automatic Ticks & Dynamic Rescheduling:**\n   - Restricted gravity ticks to at most one owned queued/in-flight tick per generation.\n   - Outlined automatic tick coalescing (deferring automatic gravity ticks if a manual mutation is in-flight or queued) and slow-response burst prevention by always scheduling gravity timers from the moment of authoritative completion.\n   - Mandated exact cancellation of pending `setTimeout` handles on manual movement, restart, gravity interval changes, game over, and component unmount.\n   - Designed for React StrictMode setup/cleanup, ensuring that old listeners are cleaned up and input handlers are cleanly reinstalled upon restart without permanently disabling controls.\n\n3. **Explicit Frontend Verification Suite:**\n   - Specified robust frontend test scenarios in `TetrisBoard.test.tsx` using simulated delays and timer controls to verify:\n     - *Delayed Fetch Resolution* and *Delayed JSON Parsing* across restarts.\n     - *Old-Generation Queue Isolation* and *Stale Finally/Error Completion*.\n     - *Pending Hold vs. Usable Hold* during rapid restarts.\n     - *FIFO Manual Mutation Dispatching* and *Coalesced Automatic Ticks*.\n     - *Exact Timeout Cancellation* on manual inputs and level/gravity interval updates.\n     - *StrictMode Mount-Unmount-Remount Lifecycle* integrity.\n\n4. **Explicit Seed UI Requirements:**\n   - Defined layout HUDs for Score, Lines, Level, and Gravity (interval in ms).\n   - Specified Next Piece Preview (compact sub-board) and Hold Panel (showing `hold_piece` and availability status).\n   - Specified an interactive Hold button (with a `disabled` state when `can_hold` is false or the game is over), alongside its mouse click and `C`/`c` keyboard routes, keeping compatibility with all Stage 1 routes and terminal logic.\n\n5. **Scoring, Level/Gravity, and Isolated-Domain Unit Tests:**\n   - Specified that 3 and 4 row clears are evaluated strictly through explicitly labeled isolated backend unit tests (`backend/tests/test_scoring.py`) since canonical unrotated tetrominoes cannot clear 3 or 4 lines.\n   - Confirmed that shapes remain unrotated and canonical.\n   - Mandated verifying the pre-lock level at threshold-crossings (e.g., scoring at 9 lines pre-lock, updating level to 2 post-lock) and testing the 100 ms progressive gravity floor.\n\n6. **Compliance and Verification Artifacts:**\n   - Defined backend coverage XML path at `docs/coverage.xml` and frontend-src LCOV path at `frontend/coverage/lcov.info`.\n   - Outlined full production TypeScript build (`npm run build` with zero errors) and dependency audits.\n   - Enforced Pydantic response models (`response_model=GameResponse`) on all endpoints to comply with the `maria/fastapi` `pii-sanitisation` rule.\n   - Enforced strict Sonar Quality Gate compliance (New Coverage >= 80%, New Duplication <= 3%, zero violations) and designated exact compatible npm package remediation steps to patch the 7 baseline vulnerabilities.\n\n7. **Frozen Common Seed Continuity:**\n   - Retained the frozen study seed and deterministic verification setup (random seed `20260929` or explicit piece sequence lists), with no rotation, hard drops, wall kicks, combos, persistence, or multiplayer features.",
+  "stats": {
+    "models": {
+      "gemini-3.5-flash": {
+        "api": {
+          "totalRequests": 13,
+          "totalErrors": 0,
+          "totalLatencyMs": 95342,
+          "errorsByType": {}
+        },
+        "tokens": {
+          "input": 180756,
+          "prompt": 445013,
+          "candidates": 10336,
+          "total": 463822,
+          "cached": 264257,
+          "thoughts": 8473,
+          "tool": 0
+        },
+        "roles": {
+          "main": {
+            "totalRequests": 13,
+            "totalErrors": 0,
+            "totalLatencyMs": 95342,
+            "tokens": {
+              "input": 180756,
+              "prompt": 445013,
+              "candidates": 10336,
+              "total": 463822,
+              "cached": 264257,
+              "thoughts": 8473,
+              "tool": 0
+            }
+          }
+        }
+      }
+    },
+    "tools": {
+      "totalCalls": 12,
+      "totalSuccess": 12,
+      "totalFail": 0,
+      "totalDurationMs": 261,
+      "totalDecisions": {
+        "accept": 12,
+        "reject": 0,
+        "modify": 0,
+        "auto_accept": 0
+      },
+      "byName": {
+        "update_topic": {
+          "count": 2,
+          "success": 2,
+          "fail": 0,
+          "durationMs": 4,
+          "decisions": {
+            "accept": 2,
+            "reject": 0,
+            "modify": 0,
+            "auto_accept": 0
+          }
+        },
+        "glob": {
+          "count": 2,
+          "success": 2,
+          "fail": 0,
+          "durationMs": 16,
+          "decisions": {
+            "accept": 2,
+            "reject": 0,
+            "modify": 0,
+            "auto_accept": 0
+          }
+        },
+        "read_file": {
+          "count": 5,
+          "success": 5,
+          "fail": 0,
+          "durationMs": 19,
+          "decisions": {
+            "accept": 5,
+            "reject": 0,
+            "modify": 0,
+            "auto_accept": 0
+          }
+        },
+        "mcp_tessl_status": {
+          "count": 1,
+          "success": 1,
+          "fail": 0,
+          "durationMs": 178,
+          "decisions": {
+            "accept": 1,
+            "reject": 0,
+            "modify": 0,
+            "auto_accept": 0
+          }
+        },
+        "write_file": {
+          "count": 2,
+          "success": 2,
+          "fail": 0,
+          "durationMs": 44,
+          "decisions": {
+            "accept": 2,
+            "reject": 0,
+            "modify": 0,
+            "auto_accept": 0
+          }
+        }
+      }
+    },
+    "files": {
+      "totalLinesAdded": 343,
+      "totalLinesRemoved": 273
+    }
+  }
+}

@@ -1,0 +1,135 @@
+{
+  "verified_at_utc": "2026-10-21T05:32:40.323632+00:00",
+  "label": "16-qa-final-regressions",
+  "exit_code": 0,
+  "duration_seconds": 375.325,
+  "cli_stats_by_model": {
+    "gemini-3.5-flash": {
+      "api": {
+        "totalRequests": 39,
+        "totalErrors": 3,
+        "totalLatencyMs": 295175,
+        "errorsByType": {
+          "Error": 3
+        }
+      },
+      "tokens": {
+        "input": 366821,
+        "prompt": 1540678,
+        "candidates": 6376,
+        "total": 1562481,
+        "cached": 1173857,
+        "thoughts": 15427,
+        "tool": 0
+      },
+      "roles": {
+        "main": {
+          "totalRequests": 39,
+          "totalErrors": 3,
+          "totalLatencyMs": 295175,
+          "tokens": {
+            "input": 366821,
+            "prompt": 1540678,
+            "candidates": 6376,
+            "total": 1562481,
+            "cached": 1173857,
+            "thoughts": 15427,
+            "tool": 0
+          }
+        }
+      }
+    },
+    "gemini-3-flash-preview": {
+      "api": {
+        "totalRequests": 1,
+        "totalErrors": 0,
+        "totalLatencyMs": 4057,
+        "errorsByType": {}
+      },
+      "tokens": {
+        "input": 19648,
+        "prompt": 19648,
+        "candidates": 129,
+        "total": 20209,
+        "cached": 0,
+        "thoughts": 432,
+        "tool": 0
+      },
+      "roles": {
+        "utility_loop_detector": {
+          "totalRequests": 1,
+          "totalErrors": 0,
+          "totalLatencyMs": 4057,
+          "tokens": {
+            "input": 19648,
+            "prompt": 19648,
+            "candidates": 129,
+            "total": 20209,
+            "cached": 0,
+            "thoughts": 432,
+            "tool": 0
+          }
+        }
+      }
+    }
+  },
+  "known_api_totals": {
+    "attempts": 40,
+    "errors": 3,
+    "successes": 37
+  },
+  "main_jsonl_response_count": 36,
+  "main_jsonl_token_sums": {
+    "input": 1540678,
+    "cached": 1173857,
+    "output": 6376,
+    "thoughts": 15427
+  },
+  "main_jsonl_matches_cli": true,
+  "response_ids": [
+    "04a7cb22-d8ca-4aae-9b47-4e6c46e9622a",
+    "0ecc5b4a-e9c6-4314-91d6-f3eb3e0a385f",
+    "10cbf822-73e6-4571-ae32-54b80b5c75b5",
+    "11c739b6-fb3d-483e-b3d3-82ae54eb231e",
+    "1201f50c-0cf9-48f2-8ad4-86b449e1a685",
+    "1b971d99-9e0b-419e-8c98-f5e2b18d08f7",
+    "22eb3e90-0502-4272-9674-22ee78152833",
+    "2f7d6cd3-8aac-48f3-b160-6ae610e67087",
+    "32867bac-88bb-43ce-8a6d-3fef4365b888",
+    "382bfa7c-fcf1-47ab-adbb-f81cbef03b49",
+    "3db9e96a-608d-4a53-b6a4-fb6b56e34922",
+    "4169a5a8-eec2-494c-9c9c-ec4aa8a64cb7",
+    "47838dfe-481a-4d8c-a39b-e8f7ab828cf3",
+    "4968eb02-8df9-4769-a695-0eab44208c71",
+    "4d23cd84-c1cc-4cbd-962e-0b6c92a65ecf",
+    "50fdf1c4-a7e4-4330-9b02-73ce03ea124d",
+    "55a81363-124f-4645-9423-ad32c60423ae",
+    "5d3cd9d4-1eaa-474a-9ffd-6ddfbffacc5c",
+    "5f97bd56-0a65-4ca8-a3cc-a81f9bfc59c3",
+    "60731ba1-fc12-4a83-8ad9-401fe074982c",
+    "6bb5f4f4-36c7-405b-8cd7-af908d06b4f4",
+    "70e0fc4e-91ee-4925-9be2-5780d16ad3a5",
+    "807b4933-f3cf-42e0-8f90-84e90e644898",
+    "848ba96a-f4b1-4dc2-9fb5-761dd18e7531",
+    "8e682047-19bb-45b7-9b7e-60989a369791",
+    "94ec45b5-ce19-47fc-b4e0-9956866970f4",
+    "aeb79cf6-a647-44a4-9703-cc5e081f5466",
+    "b7f46275-a610-4ce9-aef6-7bfd5901594e",
+    "bc9cd3e0-a4c9-4ef8-a95f-b44fc6c54014",
+    "bd5205c4-0fb5-48d3-af3c-73a9021f98a4",
+    "c85f605f-7274-4aaa-a095-9b20c4ccd039",
+    "d92df4db-6962-4c98-b5ef-38f46d657183",
+    "de3805dd-2b75-40e3-883d-f99c31971192",
+    "e0f48ff7-18d6-41d4-bb66-19eb3c7d5420",
+    "e12875ea-58df-487f-97f9-7fd1dd18165c",
+    "e4583df6-446d-4f8e-9c4a-4b5629386a69"
+  ],
+  "auxiliary_scope": "One successful gemini-3-flash-preview utility_loop_detector call is included in completed CLI tokens/API statistics and absent from main JSONL. Do not add the two count categories.",
+  "stderr_retry_messages": 3,
+  "stderr_interpretation": "Three observed network retries align with three errors in main-model completed CLI statistics. Process exit0 and final response exist; these stacks are not a terminal process failure. They do not establish HTTP status or any failure of a wrapped test command.",
+  "source_sha256": {
+    "16-qa-final-regressions.run.json": "FBDDC587079A748710D61684689EC53A91958BA62BD1CA826A139AE7BB51B680",
+    "16-qa-final-regressions.stdout.json": "50F569224515A334F772EA05C939A7496C7C4F1704AC9D4A25F82D91F8EF78D9",
+    "16-qa-final-regressions.stderr.txt": "B5406D65A809D3F07BB9A60CC395916A518AA0B20EF2AF77397F21AC459E0748"
+  }
+}

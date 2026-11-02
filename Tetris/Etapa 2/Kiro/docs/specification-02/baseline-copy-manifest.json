@@ -1,0 +1,233 @@
+{
+  "researcher_created": true,
+  "created_at_utc": "2026-10-21T19:45:37.042688+00:00",
+  "source_root": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 1\\Kiro",
+  "destination_root": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\Kiro",
+  "files": [
+    {
+      "path": "backend/app/__init__.py",
+      "bytes": 57,
+      "sha256": "E6D9CA44CA98FBA4E73DA6EF22243087B713902D8F51C11228DE31E1B97D5D8F"
+    },
+    {
+      "path": "backend/app/api/__init__.py",
+      "bytes": 53,
+      "sha256": "4531E4A5551A74ECF743FBEFB487472CBAF7E9A33265E4F16E8AAA275BC6D8D9"
+    },
+    {
+      "path": "backend/app/api/games.py",
+      "bytes": 1625,
+      "sha256": "E552376140AAFB67A62E37EF66251FC9939284C0A713EBAA4174F43829358C50"
+    },
+    {
+      "path": "backend/app/api/schemas.py",
+      "bytes": 1506,
+      "sha256": "D6F5EB2C9685E2B72347361EA59FDEB16A439D721C5088A16DCFD301B705F453"
+    },
+    {
+      "path": "backend/app/domain/__init__.py",
+      "bytes": 41,
+      "sha256": "FA4290DBFB9CA1C266DB445F5C4B3164FD7DD9D2F523324677FD95B7372A8FDE"
+    },
+    {
+      "path": "backend/app/domain/models.py",
+      "bytes": 1688,
+      "sha256": "4FDB9925B0F08157364E97EE893B41391A021981B9181007224A8D8793C5EB4B"
+    },
+    {
+      "path": "backend/app/main.py",
+      "bytes": 810,
+      "sha256": "72D146C1330457889185164A7921F1C20D19683EEA4405DFC649813A233476F1"
+    },
+    {
+      "path": "backend/app/rules/__init__.py",
+      "bytes": 49,
+      "sha256": "387543C055C2012B7110606F70C426036B5BA9F266F55AA5B8F14CCED1756333"
+    },
+    {
+      "path": "backend/app/rules/engine.py",
+      "bytes": 4347,
+      "sha256": "A8AFB5598F437AACE13C52C54052CE1BC9F7D2EBBDDC00FEF79B08D7DF3191E6"
+    },
+    {
+      "path": "backend/app/rules/pieces.py",
+      "bytes": 1583,
+      "sha256": "D034B5B88374FC0C0FA2883F9C9C2E96BD1ACFA51072314114B2312E229C7D48"
+    },
+    {
+      "path": "backend/app/store.py",
+      "bytes": 838,
+      "sha256": "99807535D9907A6E89B1375E7D274C1D1EB0E7207859CB34D3D0A5A09AAB21BF"
+    },
+    {
+      "path": "backend/pytest.ini",
+      "bytes": 52,
+      "sha256": "4551307F5B1A58ADB7EC215D513089BA670B1737B81ADA5A5863AFE796D67343"
+    },
+    {
+      "path": "backend/README.md",
+      "bytes": 1849,
+      "sha256": "919EA99E4BD142E5A1CAA956A3E3EAD0A4107F9B158CD5335725748774EEDB29"
+    },
+    {
+      "path": "backend/requirements.txt",
+      "bytes": 78,
+      "sha256": "5AD4496E40CDFE46AEAF03CD2596243FE5ECF0C8B9B2B6BD6FD19B704187C183"
+    },
+    {
+      "path": "backend/tests/__init__.py",
+      "bytes": 0,
+      "sha256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"
+    },
+    {
+      "path": "backend/tests/test_api.py",
+      "bytes": 3102,
+      "sha256": "C3BF981F0F1F2277ABC83F94ABFD2BBFA10BF97492C55B5B8F6A5BF7B307860D"
+    },
+    {
+      "path": "backend/tests/test_rules.py",
+      "bytes": 8709,
+      "sha256": "3DC7B6921EAD493CCBCA1022B11054C84A1D097B8248364D19118868DA586451"
+    },
+    {
+      "path": "frontend/.gitignore",
+      "bytes": 26,
+      "sha256": "41E1B782BDF457B98FE9FBB8CBA15214D5550481F11CB9C0BDB6F4B3C4AF91BA"
+    },
+    {
+      "path": "frontend/index.html",
+      "bytes": 303,
+      "sha256": "2975D7EDAA83F110B023DE9F7CCA8E1F72877739B39902E940D0B22EFAB86033"
+    },
+    {
+      "path": "frontend/package-lock.json",
+      "bytes": 58261,
+      "sha256": "865984C6199FB8C57B0ABB7B3CEDFD850BFBE537AF7F0BAB102DF4EAA98CB84A"
+    },
+    {
+      "path": "frontend/package.json",
+      "bytes": 464,
+      "sha256": "9784382ED02897CB0ABFF930838B90AECCE9C7A3852F13263D96A905B697A547"
+    },
+    {
+      "path": "frontend/README.md",
+      "bytes": 1132,
+      "sha256": "CCE29B4D8380432A508B77B1F7976E4733843049690136ED18CE98AFD9A9CC0C"
+    },
+    {
+      "path": "frontend/src/api.ts",
+      "bytes": 1427,
+      "sha256": "86BA72BF1C5665878771B5D9B16DC140BC129B873380AFB3523B99ECE9CB6EA3"
+    },
+    {
+      "path": "frontend/src/App.tsx",
+      "bytes": 2472,
+      "sha256": "5752E1EE90B34E04BDC9C5F67322F41E6C1A42D5E5508F298353BCEF29C636D2"
+    },
+    {
+      "path": "frontend/src/Board.tsx",
+      "bytes": 1827,
+      "sha256": "EEE153923E1AEF8A63FF53C1F8B7A43E78DF9E60219EC68491579E881592EABC"
+    },
+    {
+      "path": "frontend/src/main.tsx",
+      "bytes": 257,
+      "sha256": "EE7B63D2A6F58647FAC79B1FC870F5895284DBF14B1B375AEE6C4BC79FF2A2CE"
+    },
+    {
+      "path": "frontend/src/types.ts",
+      "bytes": 639,
+      "sha256": "888F47CB0FCC61C6B9756F4A92D77541E85C55B450B6BCC529A0F4B96590768B"
+    },
+    {
+      "path": "frontend/src/useGame.ts",
+      "bytes": 1919,
+      "sha256": "47E8AC28FFB25CFEC53FB2F1ABC855E4FD37616F69D8E0E1EDE1B2579C3E417C"
+    },
+    {
+      "path": "frontend/src/vite-env.d.ts",
+      "bytes": 159,
+      "sha256": "6600001F6B9E18657B3314FDCF2FAD48D4F74BFAFB27FC464BB57CE670CB8EC8"
+    },
+    {
+      "path": "frontend/tsconfig.json",
+      "bytes": 562,
+      "sha256": "E09B1D7398A757EAE35C19EFCD50710803FE8DF7E8D6414D2B6F595166EBF906"
+    },
+    {
+      "path": "frontend/tsconfig.node.json",
+      "bytes": 233,
+      "sha256": "BB9FD8592A9E364641441219F10D84DAAE9BA2CA5CC85DB798EFAD6913BB8257"
+    },
+    {
+      "path": "frontend/vite.config.ts",
+      "bytes": 230,
+      "sha256": "C53F382D6512434C5BD560297D35BA716A2B704554AE7DD3AA5F00687694B63B"
+    },
+    {
+      "path": ".kiro/specs/tetris-stage1-option-a/design.md",
+      "bytes": 8055,
+      "sha256": "73E875D7EA930C39B275BECB7BE49AB153BB06536E886EEFA43E796D72F349DB"
+    },
+    {
+      "path": ".kiro/specs/tetris-stage1-option-a/requirements.md",
+      "bytes": 16856,
+      "sha256": "61E6234BDBC9CC1D7450827B9DAACCAC6C0A2B01C5060AED564E87A18F2A7C7D"
+    },
+    {
+      "path": ".kiro/specs/tetris-stage1-option-a/tasks.md",
+      "bytes": 3915,
+      "sha256": "26B03785E5B4A3C3EE71F8694EC669A03B1E4274083A6A275A98A3FF90E7A037"
+    },
+    {
+      "path": "README.md",
+      "bytes": 2286,
+      "sha256": "C9F291B179A50C314A4C129C7F1303D3857EB584D2DC27DCA729980C19C03C52"
+    }
+  ],
+  "skipped": [
+    {
+      "path": "backend/.coverage",
+      "reason": "dependency, build, cache, evidence, Git or credential exclusion"
+    },
+    {
+      "path": "backend/.pytest_cache",
+      "reason": "dependency, build, cache, evidence, Git or credential exclusion"
+    },
+    {
+      "path": "backend/.venv",
+      "reason": "dependency, build, cache, evidence, Git or credential exclusion"
+    },
+    {
+      "path": "backend/app/__pycache__",
+      "reason": "dependency, build, cache, evidence, Git or credential exclusion"
+    },
+    {
+      "path": "backend/app/api/__pycache__",
+      "reason": "dependency, build, cache, evidence, Git or credential exclusion"
+    },
+    {
+      "path": "backend/app/domain/__pycache__",
+      "reason": "dependency, build, cache, evidence, Git or credential exclusion"
+    },
+    {
+      "path": "backend/app/rules/__pycache__",
+      "reason": "dependency, build, cache, evidence, Git or credential exclusion"
+    },
+    {
+      "path": "backend/tests/__pycache__",
+      "reason": "dependency, build, cache, evidence, Git or credential exclusion"
+    },
+    {
+      "path": "frontend/dist",
+      "reason": "dependency, build, cache, evidence, Git or credential exclusion"
+    },
+    {
+      "path": "frontend/node_modules",
+      "reason": "dependency, build, cache, evidence, Git or credential exclusion"
+    }
+  ],
+  "all_copied_bytes_verified": true,
+  "stage1_files_unchanged": true,
+  "integration_adjustments": []
+}

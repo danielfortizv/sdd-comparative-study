@@ -1,0 +1,150 @@
+{
+  "source_change": {
+    "changed_files": [
+      "backend/app/api/endpoints.py",
+      "backend/app/models/schemas.py",
+      "backend/app/services/game_engine.py",
+      "backend/tests/integration/test_api_us1.py",
+      "backend/tests/integration/test_api_us2.py",
+      "backend/tests/unit/test_game_engine_us1.py",
+      "backend/tests/unit/test_game_engine_us2.py",
+      "backend/tests/unit/test_qa_iteration1.py",
+      "frontend/src/App.tsx",
+      "frontend/src/components/Board.tsx",
+      "frontend/src/hooks/useGame.ts",
+      "frontend/src/index.css",
+      "frontend/src/types.ts",
+      "frontend/tests/App.test.tsx",
+      "frontend/tests/useGame.test.ts",
+      "frontend/vite.config.ts"
+    ],
+    "changed_file_count": 16,
+    "added_lines": 2106,
+    "removed_lines": 83,
+    "net_lines": 2023,
+    "before_characters": 41297,
+    "after_characters": 105458,
+    "net_characters": 64161,
+    "character_delta_definition": "net change in total decoded Unicode text length, after BOM removal and LF normalization; not cumulative edit volume or an added/removed-character operation count"
+  },
+  "spec_stage1_copy_change": {
+    "changed_files": [],
+    "changed_file_count": 0,
+    "added_lines": 0,
+    "removed_lines": 0,
+    "net_lines": 0,
+    "before_characters": 62395,
+    "after_characters": 62395,
+    "net_characters": 0,
+    "character_delta_definition": "net change in total decoded Unicode text length, after BOM removal and LF normalization; not cumulative edit volume or an added/removed-character operation count"
+  },
+  "invocation_attempts": 11,
+  "model_invocations": 10,
+  "unclosed_invocation_labels": [],
+  "known_duration_seconds": 9065.93,
+  "runs_with_unknown_duration": [
+    "01-specify",
+    "03-contract-clarification"
+  ],
+  "observed_tokens": {
+    "input_tokens": 37951420,
+    "cached_tokens": 29507819,
+    "output_tokens": 142537,
+    "thought_tokens": 178886
+  },
+  "known_api_totals": {
+    "api_requests": 540,
+    "api_errors": 115,
+    "api_successful_requests": 425
+  },
+  "runs_without_api_stats": [
+    "01-specify",
+    "03-contract-clarification",
+    "11-qa-timer-ownership"
+  ],
+  "recorded_response_count": 442,
+  "runs_without_token_stats": [],
+  "stage2_requirement_count": 29,
+  "correction_counts": {
+    "classification_version": "researcher-reviewed v1; labels explicitly categorized, not inferred from every clarification or internal action",
+    "by_category": {
+      "initial_specification_attempt": {
+        "closed_attempts": 1,
+        "open_attempts": 0,
+        "model_observed_closed_prompts": 1,
+        "labels": [
+          "01-specify"
+        ]
+      },
+      "specification_launcher_retry": {
+        "closed_attempts": 1,
+        "open_attempts": 0,
+        "model_observed_closed_prompts": 1,
+        "labels": [
+          "02-specify-retry"
+        ]
+      },
+      "preimplementation_specification_correction": {
+        "closed_attempts": 1,
+        "open_attempts": 0,
+        "model_observed_closed_prompts": 1,
+        "labels": [
+          "03-contract-clarification"
+        ]
+      },
+      "native_planning": {
+        "closed_attempts": 1,
+        "open_attempts": 0,
+        "model_observed_closed_prompts": 1,
+        "labels": [
+          "04-plan"
+        ]
+      },
+      "native_task_generation": {
+        "closed_attempts": 1,
+        "open_attempts": 0,
+        "model_observed_closed_prompts": 1,
+        "labels": [
+          "05-tasks"
+        ]
+      },
+      "task_launcher_retry": {
+        "closed_attempts": 2,
+        "open_attempts": 0,
+        "model_observed_closed_prompts": 1,
+        "labels": [
+          "06-tasks-full-arguments",
+          "07-tasks-native-expanded"
+        ]
+      },
+      "initial_implementation": {
+        "closed_attempts": 1,
+        "open_attempts": 0,
+        "model_observed_closed_prompts": 1,
+        "labels": [
+          "08-implement"
+        ]
+      },
+      "postimplementation_external_correction": {
+        "closed_attempts": 3,
+        "open_attempts": 0,
+        "model_observed_closed_prompts": 3,
+        "labels": [
+          "09-qa-correction",
+          "10-qa-race-correction",
+          "11-qa-timer-ownership"
+        ]
+      }
+    },
+    "postimplementation_external_correction_prompts_started": 3,
+    "postimplementation_external_correction_prompts_closed": 3,
+    "postimplementation_external_correction_prompts_open": 0,
+    "postimplementation_external_correction_labels": [
+      "09-qa-correction",
+      "10-qa-race-correction",
+      "11-qa-timer-ownership"
+    ],
+    "unclassified_labels": [],
+    "scope": "External correction attempts are separate from initial implementation, preimplementation spec clarification, launcher retries, and automated within-session edits/scans. Started counts include open start metadata and do not assert successful completion. Unknown future labels remain unclassified until reviewed."
+  }
+}

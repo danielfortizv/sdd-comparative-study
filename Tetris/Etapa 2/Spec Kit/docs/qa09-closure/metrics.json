@@ -1,0 +1,1739 @@
+{
+  "measured_at_utc": "2026-10-21T01:12:45.522602+00:00",
+  "feature_directory": "specs/002-extend-tetris-stage2",
+  "source_scope": "backend/frontend .py/.ts/.tsx/.js/.jsx/.css/.html files, including tests; dependencies, build, generated coverage and caches excluded",
+  "source_attribution_scope": "current source totals include inherited Stage 1 source plus tool-generated application/test changes; researcher helpers and evidence are excluded. Text counts alone do not establish authorship.",
+  "spec_scope": "Native .md and .json artifacts in each Spec Kit feature directory; copied Stage 1 artifacts counted separately",
+  "text_counting_rules": "UTF-8 text with BOM removed and universal newlines normalized to LF; physical lines use splitlines; raw file SHA-256 uses original bytes. Line deltas compare logical lines. CRLF/LF encoding and BOM-only differences are normalized; net character lengths still count LF codepoints, including a final LF when present.",
+  "density_definition": "lines_per_file = total physical lines / included file count, rounded to two decimals; a textual density measure, not requirement density, quality, maintainability, or scalability",
+  "snapshot_scope": "closed *.run.json invocations only; active or otherwise unclosed started metadata is excluded from all invocation/token/time totals; source and spec counts reflect files at collection time",
+  "unclosed_invocation_labels": [],
+  "open_invocation_metadata": [],
+  "source_baseline": {
+    "files": 27,
+    "lines": 1412,
+    "nonblank_lines": 1217,
+    "characters": 41297,
+    "lines_per_file": 52.3,
+    "per_file": {
+      "backend/app/__init__.py": {
+        "lines": 1,
+        "nonblank_lines": 1,
+        "characters": 22,
+        "sha256": "F05828B9387820DF77489E2BB724313F036722C1724CDF9F22C197ED1CBCBB48",
+        "modified_at_utc": "2026-09-29T12:59:23.500251+00:00"
+      },
+      "backend/app/api/__init__.py": {
+        "lines": 1,
+        "nonblank_lines": 1,
+        "characters": 29,
+        "sha256": "83D1FAB48EB8A82C77DC88FF2BBF01225FB58981683138A4A6D4166E009F7327",
+        "modified_at_utc": "2026-09-29T12:59:26.644745+00:00"
+      },
+      "backend/app/api/endpoints.py": {
+        "lines": 32,
+        "nonblank_lines": 27,
+        "characters": 1126,
+        "sha256": "F3B607006C4FBF6DC8503B7291C87236C30E8A78C6B6503C6745E9C2FBA2079B",
+        "modified_at_utc": "2026-09-29T13:18:09.268022+00:00"
+      },
+      "backend/app/main.py": {
+        "lines": 52,
+        "nonblank_lines": 46,
+        "characters": 1457,
+        "sha256": "9A9725BA30BC52F77BC1FACEE2BE13178AFF2EBF6C75BB6334821BC22B0F0B10",
+        "modified_at_utc": "2026-09-29T13:17:28.102936+00:00"
+      },
+      "backend/app/models/__init__.py": {
+        "lines": 1,
+        "nonblank_lines": 1,
+        "characters": 22,
+        "sha256": "F34053FA23DD1232915F247C9921A281F8DA459D8DDE526B08285481DFFD6E82",
+        "modified_at_utc": "2026-09-29T12:59:26.651745+00:00"
+      },
+      "backend/app/models/schemas.py": {
+        "lines": 76,
+        "nonblank_lines": 66,
+        "characters": 3295,
+        "sha256": "01144B929A1F21C2475B910AF55D088727278BF468D38F920EC239E5382800A4",
+        "modified_at_utc": "2026-09-29T13:00:50.566638+00:00"
+      },
+      "backend/app/services/__init__.py": {
+        "lines": 1,
+        "nonblank_lines": 1,
+        "characters": 24,
+        "sha256": "1B5C02DD0D225D90B7C77EF93B5094367566D25298DAF3AF778FB0A10B9CF3F1",
+        "modified_at_utc": "2026-09-29T12:59:26.658939+00:00"
+      },
+      "backend/app/services/game_engine.py": {
+        "lines": 141,
+        "nonblank_lines": 116,
+        "characters": 4767,
+        "sha256": "92462F04ACC26B0EF08E30E6EF1C7867EC51F02B69657B166E348E1ABB0E526F",
+        "modified_at_utc": "2026-09-29T13:17:50.002526+00:00"
+      },
+      "backend/conftest.py": {
+        "lines": 7,
+        "nonblank_lines": 6,
+        "characters": 239,
+        "sha256": "CF944007849A120909546C5F4691757F8A7F7DBF3F6436C7830F1A3E63F406E7",
+        "modified_at_utc": "2026-09-29T13:21:31.732145+00:00"
+      },
+      "backend/tests/integration/test_api_us1.py": {
+        "lines": 71,
+        "nonblank_lines": 61,
+        "characters": 2200,
+        "sha256": "446BB07A2C2994450A6EDB38016BBA761A8E34E495951E75E59109606B52C7F0",
+        "modified_at_utc": "2026-09-29T13:18:36.307478+00:00"
+      },
+      "backend/tests/integration/test_api_us2.py": {
+        "lines": 34,
+        "nonblank_lines": 28,
+        "characters": 1223,
+        "sha256": "8DA6DBF80E50BEE5F966995A12717135958FC838B33E5BDE2EA09A5BA08A400F",
+        "modified_at_utc": "2026-09-29T13:19:03.055731+00:00"
+      },
+      "backend/tests/integration/test_api_us3.py": {
+        "lines": 46,
+        "nonblank_lines": 39,
+        "characters": 1652,
+        "sha256": "AA3A01619A5CC7D2B4A952317C7A21C7A251A640586D96FEE118559A362D8B3E",
+        "modified_at_utc": "2026-09-29T13:19:28.265881+00:00"
+      },
+      "backend/tests/unit/test_game_engine_us1.py": {
+        "lines": 125,
+        "nonblank_lines": 107,
+        "characters": 4401,
+        "sha256": "5EDC25908F51468DAA69884328FE24225F1ED7FC887200635BC81E59A8EC4926",
+        "modified_at_utc": "2026-09-29T13:20:23.864309+00:00"
+      },
+      "backend/tests/unit/test_game_engine_us2.py": {
+        "lines": 35,
+        "nonblank_lines": 29,
+        "characters": 1197,
+        "sha256": "88B03695B6AFB9DF82F83093DE17DBB3096E016E0073C5563CCFF5B561F48FFB",
+        "modified_at_utc": "2026-09-29T13:20:55.937050+00:00"
+      },
+      "backend/tests/unit/test_game_engine_us3.py": {
+        "lines": 50,
+        "nonblank_lines": 42,
+        "characters": 1690,
+        "sha256": "E743949D98915B4D633779A8508307279C174F7B58C561253513CCC1F2384A4F",
+        "modified_at_utc": "2026-09-29T13:21:07.960750+00:00"
+      },
+      "frontend/index.html": {
+        "lines": 13,
+        "nonblank_lines": 13,
+        "characters": 497,
+        "sha256": "41816A3798A201B5D39D02A49F85DB8B9337BDEC0DEFB87E2CF3A1086328973B",
+        "modified_at_utc": "2026-09-29T13:04:53.107881+00:00"
+      },
+      "frontend/src/App.tsx": {
+        "lines": 76,
+        "nonblank_lines": 67,
+        "characters": 2248,
+        "sha256": "4B3B1B1FF477CAD2A6E6A4F7B947FDC9D17386B93B1AB5D341FB9D430C28C778",
+        "modified_at_utc": "2026-09-29T13:04:29.587878+00:00"
+      },
+      "frontend/src/components/Board.tsx": {
+        "lines": 67,
+        "nonblank_lines": 60,
+        "characters": 1718,
+        "sha256": "49BFD1FE10B283F63622723E3C15DE03C4922B356F4033230F01F9962F2B0ED5",
+        "modified_at_utc": "2026-09-29T13:03:49.903562+00:00"
+      },
+      "frontend/src/components/GameControls.tsx": {
+        "lines": 21,
+        "nonblank_lines": 19,
+        "characters": 628,
+        "sha256": "5132F7F7B5D40066D01F9462EEFDF633EEADC6BED5E2E9585C0A4CA8E5B11C4E",
+        "modified_at_utc": "2026-09-29T13:04:16.426389+00:00"
+      },
+      "frontend/src/components/GameOverModal.tsx": {
+        "lines": 22,
+        "nonblank_lines": 19,
+        "characters": 511,
+        "sha256": "15366AC28B43BB9FD0B88005C43AB59A53171519A3C6B563BEB2F608BF603BEF",
+        "modified_at_utc": "2026-09-29T13:04:22.631831+00:00"
+      },
+      "frontend/src/hooks/useGame.ts": {
+        "lines": 82,
+        "nonblank_lines": 73,
+        "characters": 2256,
+        "sha256": "CCEC44271EF332621B72A64F3348FD5E9F122D86835A4FCFB2EF4C07A3C0CAB6",
+        "modified_at_utc": "2026-09-29T13:03:20.529632+00:00"
+      },
+      "frontend/src/index.css": {
+        "lines": 303,
+        "nonblank_lines": 262,
+        "characters": 5640,
+        "sha256": "B3C81FCA34C5C63F4E22916919C79E9E4FABCBA5570C9EBF5DC32BFE9F110441",
+        "modified_at_utc": "2026-09-29T13:04:48.146046+00:00"
+      },
+      "frontend/src/main.tsx": {
+        "lines": 10,
+        "nonblank_lines": 9,
+        "characters": 241,
+        "sha256": "5C8277F7A8B95261A085753122820F0B760AFA07AC8C0414FC294E60C7AFC7DC",
+        "modified_at_utc": "2026-09-29T13:04:36.807249+00:00"
+      },
+      "frontend/src/types.ts": {
+        "lines": 16,
+        "nonblank_lines": 14,
+        "characters": 402,
+        "sha256": "7CB62184355A7A3B40C9CC84D68C4CE6121A05BE67C3187345EF1A5D9B470873",
+        "modified_at_utc": "2026-09-29T13:00:53.613654+00:00"
+      },
+      "frontend/tests/GameOverModal.test.tsx": {
+        "lines": 30,
+        "nonblank_lines": 24,
+        "characters": 1245,
+        "sha256": "6A1DB7E1FE36AE4CE60A631A5A5E1124BED9C46944D2DE9092648D60C2626BDC",
+        "modified_at_utc": "2026-09-29T13:23:35.286638+00:00"
+      },
+      "frontend/tests/useGame.test.ts": {
+        "lines": 82,
+        "nonblank_lines": 70,
+        "characters": 2249,
+        "sha256": "2865783D9598B52A99F06C29E07AD3F1B6E43394477D3B24373C06BE8E7B8895",
+        "modified_at_utc": "2026-09-29T13:02:02.129337+00:00"
+      },
+      "frontend/vite.config.ts": {
+        "lines": 17,
+        "nonblank_lines": 16,
+        "characters": 318,
+        "sha256": "2FF3ACE3B35F71FF93D66437EBFBBE1CF38FC8A93D256AE11B7E6F130337B7B7",
+        "modified_at_utc": "2026-09-29T13:00:07.812826+00:00"
+      }
+    }
+  },
+  "source_current": {
+    "files": 29,
+    "lines": 2923,
+    "nonblank_lines": 2498,
+    "characters": 89456,
+    "lines_per_file": 100.79,
+    "per_file": {
+      "backend/app/__init__.py": {
+        "lines": 1,
+        "nonblank_lines": 1,
+        "characters": 22,
+        "sha256": "F05828B9387820DF77489E2BB724313F036722C1724CDF9F22C197ED1CBCBB48",
+        "modified_at_utc": "2026-09-29T12:59:23.500251+00:00"
+      },
+      "backend/app/api/__init__.py": {
+        "lines": 1,
+        "nonblank_lines": 1,
+        "characters": 29,
+        "sha256": "83D1FAB48EB8A82C77DC88FF2BBF01225FB58981683138A4A6D4166E009F7327",
+        "modified_at_utc": "2026-09-29T12:59:26.644745+00:00"
+      },
+      "backend/app/api/endpoints.py": {
+        "lines": 39,
+        "nonblank_lines": 33,
+        "characters": 1596,
+        "sha256": "6C88E4A6CEE04619D3A6C3CD17DFCF82BCF415A912A42E093D820F463209F25B",
+        "modified_at_utc": "2026-10-20T12:26:42.842497+00:00"
+      },
+      "backend/app/main.py": {
+        "lines": 52,
+        "nonblank_lines": 46,
+        "characters": 1457,
+        "sha256": "9A9725BA30BC52F77BC1FACEE2BE13178AFF2EBF6C75BB6334821BC22B0F0B10",
+        "modified_at_utc": "2026-09-29T13:17:28.102936+00:00"
+      },
+      "backend/app/models/__init__.py": {
+        "lines": 1,
+        "nonblank_lines": 1,
+        "characters": 22,
+        "sha256": "F34053FA23DD1232915F247C9921A281F8DA459D8DDE526B08285481DFFD6E82",
+        "modified_at_utc": "2026-09-29T12:59:26.651745+00:00"
+      },
+      "backend/app/models/schemas.py": {
+        "lines": 97,
+        "nonblank_lines": 85,
+        "characters": 4450,
+        "sha256": "21677A9302A5D612D206AFC1FE075B0267201575DFE011922BF320EB096F7F0C",
+        "modified_at_utc": "2026-10-20T12:20:11.757834+00:00"
+      },
+      "backend/app/services/__init__.py": {
+        "lines": 1,
+        "nonblank_lines": 1,
+        "characters": 24,
+        "sha256": "1B5C02DD0D225D90B7C77EF93B5094367566D25298DAF3AF778FB0A10B9CF3F1",
+        "modified_at_utc": "2026-09-29T12:59:26.658939+00:00"
+      },
+      "backend/app/services/game_engine.py": {
+        "lines": 212,
+        "nonblank_lines": 173,
+        "characters": 7138,
+        "sha256": "208C6123F3F49669A7FA913B80498C2033886927AE8E64B9BED80F04BD79951F",
+        "modified_at_utc": "2026-10-20T12:26:23.374786+00:00"
+      },
+      "backend/conftest.py": {
+        "lines": 7,
+        "nonblank_lines": 6,
+        "characters": 239,
+        "sha256": "CF944007849A120909546C5F4691757F8A7F7DBF3F6436C7830F1A3E63F406E7",
+        "modified_at_utc": "2026-09-29T13:21:31.732145+00:00"
+      },
+      "backend/tests/integration/test_api_us1.py": {
+        "lines": 108,
+        "nonblank_lines": 91,
+        "characters": 3285,
+        "sha256": "DEA533DC612C167B2FBC0D0B7CA683984371543EBC509D1B47FFD863DCF4A120",
+        "modified_at_utc": "2026-10-20T12:24:26.642352+00:00"
+      },
+      "backend/tests/integration/test_api_us2.py": {
+        "lines": 78,
+        "nonblank_lines": 61,
+        "characters": 2694,
+        "sha256": "579F9E8C1F648E4227EB5FBAA3F188CC722763C082C72FCB56DC211ED221C3E3",
+        "modified_at_utc": "2026-10-20T13:19:26.976011+00:00"
+      },
+      "backend/tests/integration/test_api_us3.py": {
+        "lines": 46,
+        "nonblank_lines": 39,
+        "characters": 1652,
+        "sha256": "AA3A01619A5CC7D2B4A952317C7A21C7A251A640586D96FEE118559A362D8B3E",
+        "modified_at_utc": "2026-09-29T13:19:28.265881+00:00"
+      },
+      "backend/tests/unit/test_game_engine_us1.py": {
+        "lines": 338,
+        "nonblank_lines": 298,
+        "characters": 11236,
+        "sha256": "F2FAFBEDD52BF8C96BBBAD46E791ECB49FDC6AB24A1F2FEA50922A1517DCF7E2",
+        "modified_at_utc": "2026-10-20T13:18:41.606524+00:00"
+      },
+      "backend/tests/unit/test_game_engine_us2.py": {
+        "lines": 125,
+        "nonblank_lines": 99,
+        "characters": 3803,
+        "sha256": "126426B7B1794044F7C230C97A9EA5043954FA91BD3EBAFECA742A9C7F7E6E07",
+        "modified_at_utc": "2026-10-20T12:21:51.947784+00:00"
+      },
+      "backend/tests/unit/test_game_engine_us3.py": {
+        "lines": 50,
+        "nonblank_lines": 42,
+        "characters": 1690,
+        "sha256": "E743949D98915B4D633779A8508307279C174F7B58C561253513CCC1F2384A4F",
+        "modified_at_utc": "2026-09-29T13:21:07.960750+00:00"
+      },
+      "backend/tests/unit/test_qa_iteration1.py": {
+        "lines": 161,
+        "nonblank_lines": 130,
+        "characters": 5965,
+        "sha256": "FF089F62425E87412C0A8930806B5FC4E1890DE1BBC892C51BCEF1B1591E2F8F",
+        "modified_at_utc": "2026-10-20T13:23:34.861688+00:00"
+      },
+      "frontend/index.html": {
+        "lines": 13,
+        "nonblank_lines": 13,
+        "characters": 497,
+        "sha256": "41816A3798A201B5D39D02A49F85DB8B9337BDEC0DEFB87E2CF3A1086328973B",
+        "modified_at_utc": "2026-09-29T13:04:53.107881+00:00"
+      },
+      "frontend/src/App.tsx": {
+        "lines": 144,
+        "nonblank_lines": 130,
+        "characters": 4642,
+        "sha256": "26A5E5ABBD07A8CA47509DA7B6E2FFB145FB98FE73DE36933168607783442981",
+        "modified_at_utc": "2026-10-20T13:30:36.588467+00:00"
+      },
+      "frontend/src/components/Board.tsx": {
+        "lines": 75,
+        "nonblank_lines": 68,
+        "characters": 1887,
+        "sha256": "ED8578754EA29604C8DAB7581CDAD792A1F43BA189B8F3C06570C3AA0DD6F5A8",
+        "modified_at_utc": "2026-10-20T12:50:04.994260+00:00"
+      },
+      "frontend/src/components/GameControls.tsx": {
+        "lines": 21,
+        "nonblank_lines": 19,
+        "characters": 628,
+        "sha256": "5132F7F7B5D40066D01F9462EEFDF633EEADC6BED5E2E9585C0A4CA8E5B11C4E",
+        "modified_at_utc": "2026-09-29T13:04:16.426389+00:00"
+      },
+      "frontend/src/components/GameOverModal.tsx": {
+        "lines": 22,
+        "nonblank_lines": 19,
+        "characters": 511,
+        "sha256": "15366AC28B43BB9FD0B88005C43AB59A53171519A3C6B563BEB2F608BF603BEF",
+        "modified_at_utc": "2026-09-29T13:04:22.631831+00:00"
+      },
+      "frontend/src/hooks/useGame.ts": {
+        "lines": 171,
+        "nonblank_lines": 147,
+        "characters": 5449,
+        "sha256": "7DF241724B086517D7C04686AF44C9016EC0F3F5A7B2EBBF91521ACE82E506E0",
+        "modified_at_utc": "2026-10-20T13:42:17.277866+00:00"
+      },
+      "frontend/src/index.css": {
+        "lines": 381,
+        "nonblank_lines": 330,
+        "characters": 7049,
+        "sha256": "85C0054DF55FCA4B47A648FC93EF486BC701B640E681A84E603F20233F333D2F",
+        "modified_at_utc": "2026-10-20T13:42:58.018599+00:00"
+      },
+      "frontend/src/main.tsx": {
+        "lines": 10,
+        "nonblank_lines": 9,
+        "characters": 241,
+        "sha256": "5C8277F7A8B95261A085753122820F0B760AFA07AC8C0414FC294E60C7AFC7DC",
+        "modified_at_utc": "2026-09-29T13:04:36.807249+00:00"
+      },
+      "frontend/src/types.ts": {
+        "lines": 23,
+        "nonblank_lines": 21,
+        "characters": 562,
+        "sha256": "1605303CE1F849B68BAD5CECE70E5F5FE3360E01B2F0D1DC04C5002EDEC2C2D2",
+        "modified_at_utc": "2026-10-20T12:20:19.832303+00:00"
+      },
+      "frontend/tests/App.test.tsx": {
+        "lines": 182,
+        "nonblank_lines": 165,
+        "characters": 5143,
+        "sha256": "218E4038511E33F790684890EFF5EEBD6FEDEF34D24EBA73651D107D978AE47A",
+        "modified_at_utc": "2026-10-20T13:31:05.878916+00:00"
+      },
+      "frontend/tests/GameOverModal.test.tsx": {
+        "lines": 30,
+        "nonblank_lines": 24,
+        "characters": 1245,
+        "sha256": "6A1DB7E1FE36AE4CE60A631A5A5E1124BED9C46944D2DE9092648D60C2626BDC",
+        "modified_at_utc": "2026-09-29T13:23:35.286638+00:00"
+      },
+      "frontend/tests/useGame.test.ts": {
+        "lines": 512,
+        "nonblank_lines": 425,
+        "characters": 15859,
+        "sha256": "A4D9E042838FFDCAABF5CF67B3C63D9ADF131EC1E4F89BD4A0865EB7A4EADB01",
+        "modified_at_utc": "2026-10-20T13:39:21.467281+00:00"
+      },
+      "frontend/vite.config.ts": {
+        "lines": 22,
+        "nonblank_lines": 21,
+        "characters": 441,
+        "sha256": "6778A67670EA23E5B5A63E23253570A706D7251FB663F3615D7E5C44664B4A55",
+        "modified_at_utc": "2026-10-20T13:39:53.115898+00:00"
+      }
+    }
+  },
+  "source_change": {
+    "changed_files": [
+      "backend/app/api/endpoints.py",
+      "backend/app/models/schemas.py",
+      "backend/app/services/game_engine.py",
+      "backend/tests/integration/test_api_us1.py",
+      "backend/tests/integration/test_api_us2.py",
+      "backend/tests/unit/test_game_engine_us1.py",
+      "backend/tests/unit/test_game_engine_us2.py",
+      "backend/tests/unit/test_qa_iteration1.py",
+      "frontend/src/App.tsx",
+      "frontend/src/components/Board.tsx",
+      "frontend/src/hooks/useGame.ts",
+      "frontend/src/index.css",
+      "frontend/src/types.ts",
+      "frontend/tests/App.test.tsx",
+      "frontend/tests/useGame.test.ts",
+      "frontend/vite.config.ts"
+    ],
+    "changed_file_count": 16,
+    "added_lines": 1591,
+    "removed_lines": 80,
+    "net_lines": 1511,
+    "before_characters": 41297,
+    "after_characters": 89456,
+    "net_characters": 48159,
+    "character_delta_definition": "net change in total decoded Unicode text length, after BOM removal and LF normalization; not cumulative edit volume or an added/removed-character operation count"
+  },
+  "spec_stage1": {
+    "files": 9,
+    "lines": 1233,
+    "nonblank_lines": 999,
+    "characters": 62395,
+    "lines_per_file": 137.0,
+    "per_file": {
+      "specs/001-build-tetris-core/checklists/requirements.md": {
+        "lines": 38,
+        "nonblank_lines": 28,
+        "characters": 1626,
+        "sha256": "15F30650DB4C8038B1599046A19DD5BC4F83D0F10F1F670E909CBC132F2BFC20",
+        "modified_at_utc": "2026-09-29T10:56:21.501328+00:00"
+      },
+      "specs/001-build-tetris-core/contracts/api-contract.md": {
+        "lines": 104,
+        "nonblank_lines": 87,
+        "characters": 3331,
+        "sha256": "4D3E7182C6411DDEA74C424136A5CB4DBB1EB302F4221B651FEAEFF4BD0223CC",
+        "modified_at_utc": "2026-09-29T12:26:26.417731+00:00"
+      },
+      "specs/001-build-tetris-core/contracts/openapi.json": {
+        "lines": 231,
+        "nonblank_lines": 231,
+        "characters": 5962,
+        "sha256": "F8486B0E368043EB0BEFAF2AB6248999B6D581B8594F58B51ED8C50395E99DE5",
+        "modified_at_utc": "2026-09-29T12:26:40.446616+00:00"
+      },
+      "specs/001-build-tetris-core/data-model.md": {
+        "lines": 147,
+        "nonblank_lines": 126,
+        "characters": 6409,
+        "sha256": "DE525865C6731FBDAFD84051DA112B55E2372DD2F0DE4ED895D196D974A6CC50",
+        "modified_at_utc": "2026-09-29T12:26:17.727124+00:00"
+      },
+      "specs/001-build-tetris-core/plan.md": {
+        "lines": 112,
+        "nonblank_lines": 83,
+        "characters": 4333,
+        "sha256": "24308F33052D304F066366895E835E135BD43FFFE3AFEB0C83AF6C4447CBDE0D",
+        "modified_at_utc": "2026-09-29T13:27:04.008497+00:00"
+      },
+      "specs/001-build-tetris-core/quickstart.md": {
+        "lines": 140,
+        "nonblank_lines": 117,
+        "characters": 4741,
+        "sha256": "E3FE78DF7B6D616D5417F0C6073E9B38068E5EC7E9FC7FC4309F61AE7C919CB1",
+        "modified_at_utc": "2026-09-29T13:28:00.501650+00:00"
+      },
+      "specs/001-build-tetris-core/research.md": {
+        "lines": 70,
+        "nonblank_lines": 55,
+        "characters": 5802,
+        "sha256": "5E45668F356597C5E3BA9EE12CCC36FEC9B1B2E884C9850EE2A3B91B271C321C",
+        "modified_at_utc": "2026-09-29T12:26:06.027204+00:00"
+      },
+      "specs/001-build-tetris-core/spec.md": {
+        "lines": 164,
+        "nonblank_lines": 120,
+        "characters": 14371,
+        "sha256": "14C22A836548E58DFA4D6084FD12845EC02DBF5BDA28888AD95F53C91CA41DFF",
+        "modified_at_utc": "2026-09-29T13:26:09.019053+00:00"
+      },
+      "specs/001-build-tetris-core/tasks.md": {
+        "lines": 227,
+        "nonblank_lines": 152,
+        "characters": 15820,
+        "sha256": "1C3D3B421A05B642BC8E5CB78E959D594781878D7F700A19898B2A3DFE810E9B",
+        "modified_at_utc": "2026-09-29T13:27:37.717450+00:00"
+      }
+    }
+  },
+  "spec_stage1_copy": {
+    "files": 9,
+    "lines": 1233,
+    "nonblank_lines": 999,
+    "characters": 62395,
+    "lines_per_file": 137.0,
+    "per_file": {
+      "specs/001-build-tetris-core/checklists/requirements.md": {
+        "lines": 38,
+        "nonblank_lines": 28,
+        "characters": 1626,
+        "sha256": "15F30650DB4C8038B1599046A19DD5BC4F83D0F10F1F670E909CBC132F2BFC20",
+        "modified_at_utc": "2026-09-29T10:56:21.501328+00:00"
+      },
+      "specs/001-build-tetris-core/contracts/api-contract.md": {
+        "lines": 104,
+        "nonblank_lines": 87,
+        "characters": 3331,
+        "sha256": "4D3E7182C6411DDEA74C424136A5CB4DBB1EB302F4221B651FEAEFF4BD0223CC",
+        "modified_at_utc": "2026-09-29T12:26:26.417731+00:00"
+      },
+      "specs/001-build-tetris-core/contracts/openapi.json": {
+        "lines": 231,
+        "nonblank_lines": 231,
+        "characters": 5962,
+        "sha256": "F8486B0E368043EB0BEFAF2AB6248999B6D581B8594F58B51ED8C50395E99DE5",
+        "modified_at_utc": "2026-09-29T12:26:40.446616+00:00"
+      },
+      "specs/001-build-tetris-core/data-model.md": {
+        "lines": 147,
+        "nonblank_lines": 126,
+        "characters": 6409,
+        "sha256": "DE525865C6731FBDAFD84051DA112B55E2372DD2F0DE4ED895D196D974A6CC50",
+        "modified_at_utc": "2026-09-29T12:26:17.727124+00:00"
+      },
+      "specs/001-build-tetris-core/plan.md": {
+        "lines": 112,
+        "nonblank_lines": 83,
+        "characters": 4333,
+        "sha256": "24308F33052D304F066366895E835E135BD43FFFE3AFEB0C83AF6C4447CBDE0D",
+        "modified_at_utc": "2026-09-29T13:27:04.008497+00:00"
+      },
+      "specs/001-build-tetris-core/quickstart.md": {
+        "lines": 140,
+        "nonblank_lines": 117,
+        "characters": 4741,
+        "sha256": "E3FE78DF7B6D616D5417F0C6073E9B38068E5EC7E9FC7FC4309F61AE7C919CB1",
+        "modified_at_utc": "2026-09-29T13:28:00.501650+00:00"
+      },
+      "specs/001-build-tetris-core/research.md": {
+        "lines": 70,
+        "nonblank_lines": 55,
+        "characters": 5802,
+        "sha256": "5E45668F356597C5E3BA9EE12CCC36FEC9B1B2E884C9850EE2A3B91B271C321C",
+        "modified_at_utc": "2026-09-29T12:26:06.027204+00:00"
+      },
+      "specs/001-build-tetris-core/spec.md": {
+        "lines": 164,
+        "nonblank_lines": 120,
+        "characters": 14371,
+        "sha256": "14C22A836548E58DFA4D6084FD12845EC02DBF5BDA28888AD95F53C91CA41DFF",
+        "modified_at_utc": "2026-09-29T13:26:09.019053+00:00"
+      },
+      "specs/001-build-tetris-core/tasks.md": {
+        "lines": 227,
+        "nonblank_lines": 152,
+        "characters": 15820,
+        "sha256": "1C3D3B421A05B642BC8E5CB78E959D594781878D7F700A19898B2A3DFE810E9B",
+        "modified_at_utc": "2026-09-29T13:27:37.717450+00:00"
+      }
+    }
+  },
+  "spec_stage1_copy_change": {
+    "changed_files": [],
+    "changed_file_count": 0,
+    "added_lines": 0,
+    "removed_lines": 0,
+    "net_lines": 0,
+    "before_characters": 62395,
+    "after_characters": 62395,
+    "net_characters": 0,
+    "character_delta_definition": "net change in total decoded Unicode text length, after BOM removal and LF normalization; not cumulative edit volume or an added/removed-character operation count"
+  },
+  "spec_stage2": {
+    "files": 9,
+    "lines": 1581,
+    "nonblank_lines": 1340,
+    "characters": 88211,
+    "lines_per_file": 175.67,
+    "per_file": {
+      "specs/002-extend-tetris-stage2/checklists/requirements.md": {
+        "lines": 50,
+        "nonblank_lines": 39,
+        "characters": 3320,
+        "sha256": "F8541D1F39679C2A17ED55C1A059090B5FE957C25C0CE090CC6B63F585622018",
+        "modified_at_utc": "2026-10-20T12:01:51.919010+00:00"
+      },
+      "specs/002-extend-tetris-stage2/contracts/api-contract.md": {
+        "lines": 155,
+        "nonblank_lines": 134,
+        "characters": 4697,
+        "sha256": "5660E181250B3E9EE0F373AEAAB4C9C88E92BF6F30A1B74346C3BB1AA5314158",
+        "modified_at_utc": "2026-10-20T11:48:50.781765+00:00"
+      },
+      "specs/002-extend-tetris-stage2/contracts/openapi.json": {
+        "lines": 376,
+        "nonblank_lines": 376,
+        "characters": 10555,
+        "sha256": "61D6199E0D27FA05441FCB6D2A56FD3E9DF09EE60F484B7D74A89FC888173232",
+        "modified_at_utc": "2026-10-20T11:49:00.988407+00:00"
+      },
+      "specs/002-extend-tetris-stage2/data-model.md": {
+        "lines": 200,
+        "nonblank_lines": 176,
+        "characters": 9959,
+        "sha256": "88E45DD5639B712F6682AA6EA38B4700AC884F17BEE84DACAE497FC70A0FC7ED",
+        "modified_at_utc": "2026-10-20T11:57:52.863324+00:00"
+      },
+      "specs/002-extend-tetris-stage2/plan.md": {
+        "lines": 120,
+        "nonblank_lines": 92,
+        "characters": 5991,
+        "sha256": "5F0F306226E0E866428FAB4E79AE365740A160619E50FC73427078C94ABA20F6",
+        "modified_at_utc": "2026-10-20T11:57:46.090091+00:00"
+      },
+      "specs/002-extend-tetris-stage2/quickstart.md": {
+        "lines": 111,
+        "nonblank_lines": 92,
+        "characters": 4554,
+        "sha256": "A08ADEC2BF908F02775320DBB7B050E3C42A34F2F1E73FECE7C47056438BC674",
+        "modified_at_utc": "2026-10-20T11:49:08.912078+00:00"
+      },
+      "specs/002-extend-tetris-stage2/research.md": {
+        "lines": 84,
+        "nonblank_lines": 66,
+        "characters": 7622,
+        "sha256": "CC74335FB4C57468CBFC4DD26B36142380E7487D6D0E54EA26633351DFB5648B",
+        "modified_at_utc": "2026-10-20T11:48:25.436357+00:00"
+      },
+      "specs/002-extend-tetris-stage2/spec.md": {
+        "lines": 261,
+        "nonblank_lines": 213,
+        "characters": 24572,
+        "sha256": "C284B9DC923F0F5AAB63A7D0C46BA69433FB9D5D79A0D537F4476E6F5B89F94A",
+        "modified_at_utc": "2026-10-20T12:59:21.984694+00:00"
+      },
+      "specs/002-extend-tetris-stage2/tasks.md": {
+        "lines": 224,
+        "nonblank_lines": 152,
+        "characters": 16941,
+        "sha256": "53DBF80EFDC5136CF789BF1D310A6B93BEAE3A89B0E975ED54B7048E6D705F14",
+        "modified_at_utc": "2026-10-20T13:52:02.687895+00:00"
+      }
+    }
+  },
+  "spec_stage2_change_from_empty": {
+    "changed_files": [
+      "specs/002-extend-tetris-stage2/checklists/requirements.md",
+      "specs/002-extend-tetris-stage2/contracts/api-contract.md",
+      "specs/002-extend-tetris-stage2/contracts/openapi.json",
+      "specs/002-extend-tetris-stage2/data-model.md",
+      "specs/002-extend-tetris-stage2/plan.md",
+      "specs/002-extend-tetris-stage2/quickstart.md",
+      "specs/002-extend-tetris-stage2/research.md",
+      "specs/002-extend-tetris-stage2/spec.md",
+      "specs/002-extend-tetris-stage2/tasks.md"
+    ],
+    "changed_file_count": 9,
+    "added_lines": 1581,
+    "removed_lines": 0,
+    "net_lines": 1581,
+    "before_characters": 0,
+    "after_characters": 88211,
+    "net_characters": 88211,
+    "character_delta_definition": "net change in total decoded Unicode text length, after BOM removal and LF normalization; not cumulative edit volume or an added/removed-character operation count"
+  },
+  "stage2_spec_delta_scope": "This tool creates a new Stage 2 feature directory, so native Stage 2 artifact growth is measured against an empty directory; inherited Stage 1 specs and their unchanged-copy check remain separate.",
+  "dependency_manifests_baseline": {
+    "files": 3,
+    "lines": 3615,
+    "nonblank_lines": 3615,
+    "characters": 123241,
+    "lines_per_file": 1205.0,
+    "per_file": {
+      "backend/requirements.txt": {
+        "lines": 5,
+        "nonblank_lines": 5,
+        "characters": 80,
+        "sha256": "6B3A907A24DD00DFB924873FB48D7377BC112158C2CE9097393A8C03D1CE8B81",
+        "modified_at_utc": "2026-09-29T12:59:33.718395+00:00"
+      },
+      "frontend/package-lock.json": {
+        "lines": 3584,
+        "nonblank_lines": 3584,
+        "characters": 122591,
+        "sha256": "43CE0D659E58829C96A071F930AE04B1EEA98FAD84125A0B8653A093693463C2",
+        "modified_at_utc": "2026-09-29T13:01:52.195077+00:00"
+      },
+      "frontend/package.json": {
+        "lines": 26,
+        "nonblank_lines": 26,
+        "characters": 570,
+        "sha256": "67F57EF4362A3D0B63C8D1888D973CB2382CC3B2B4F91BE063A854A2BE7F5AD9",
+        "modified_at_utc": "2026-09-29T13:01:41.849774+00:00"
+      }
+    }
+  },
+  "dependency_manifests_current": {
+    "files": 3,
+    "lines": 4099,
+    "nonblank_lines": 4099,
+    "characters": 139448,
+    "lines_per_file": 1366.33,
+    "per_file": {
+      "backend/requirements.txt": {
+        "lines": 5,
+        "nonblank_lines": 5,
+        "characters": 80,
+        "sha256": "6B3A907A24DD00DFB924873FB48D7377BC112158C2CE9097393A8C03D1CE8B81",
+        "modified_at_utc": "2026-09-29T12:59:33.718395+00:00"
+      },
+      "frontend/package-lock.json": {
+        "lines": 4063,
+        "nonblank_lines": 4063,
+        "characters": 138687,
+        "sha256": "A2B611525DD30EDDBE1538D918AF80B40815E4FECE86C5766803401735698D8B",
+        "modified_at_utc": "2026-10-20T13:38:02.526237+00:00"
+      },
+      "frontend/package.json": {
+        "lines": 31,
+        "nonblank_lines": 31,
+        "characters": 681,
+        "sha256": "7F3A38D178ED58CBCFC7DC18FF46365043FB1ED7128BCC98D97A4C182BBFBCED",
+        "modified_at_utc": "2026-10-20T13:37:45.320114+00:00"
+      }
+    }
+  },
+  "dependency_manifests_change": {
+    "changed_files": [
+      "frontend/package-lock.json",
+      "frontend/package.json"
+    ],
+    "changed_file_count": 2,
+    "added_lines": 1029,
+    "removed_lines": 545,
+    "net_lines": 484,
+    "before_characters": 123241,
+    "after_characters": 139448,
+    "net_characters": 16207,
+    "character_delta_definition": "net change in total decoded Unicode text length, after BOM removal and LF normalization; not cumulative edit volume or an added/removed-character operation count"
+  },
+  "stage2_requirement_ids": [
+    "FR-001",
+    "FR-002",
+    "FR-003",
+    "FR-004",
+    "FR-005",
+    "FR-006",
+    "FR-007",
+    "FR-008",
+    "FR-009",
+    "FR-010",
+    "FR-011",
+    "FR-012",
+    "FR-013",
+    "FR-014",
+    "FR-015",
+    "FR-016",
+    "FR-017",
+    "FR-018",
+    "FR-019",
+    "FR-020",
+    "FR-021",
+    "FR-022",
+    "FR-023",
+    "FR-024",
+    "FR-025",
+    "FR-026",
+    "FR-027",
+    "FR-028",
+    "FR-029"
+  ],
+  "runs": [
+    {
+      "workflow": "specify",
+      "label": "01-specify",
+      "prompt_sha256": "B37C6026EE4D7B0A414EB4A0374EB9C8C5AF63896A90F718448801C99AF376AC",
+      "seed_sha256": "63919779DD4104076FBABCB130CE296A160FA840E0B4755A2AA5D90757ADA8EF",
+      "requested_model": "gemini-3.5-flash",
+      "cli_version": "0.60.0",
+      "spec_kit_version": "1.0.12",
+      "started": "2026-10-20T06:16:29.1907244-05:00",
+      "ended": "2026-10-20T06:23:41.6405508-05:00",
+      "duration_seconds": null,
+      "duration_source": "not instrumented because the empty-argument invocation was interrupted",
+      "exit_code": "interrupted",
+      "reason": "native command received empty args because seed began on a new line",
+      "stdout": "Caso 2-Tetris\\Etapa 2\\Spec Kit\\docs\\01-specify.stdout.json",
+      "stderr": "Caso 2-Tetris\\Etapa 2\\Spec Kit\\docs\\01-specify.stderr.txt",
+      "classification": {
+        "category": "initial_specification_attempt",
+        "reason": "Initial native specification invocation; arguments were lost by the launcher.",
+        "external_postimplementation_correction": false
+      },
+      "cli_tool_actions": {
+        "source": "unavailable",
+        "total_calls": null,
+        "successful_calls": null,
+        "failed_calls": null
+      },
+      "tokens": {
+        "source": "Gemini CLI JSONL responses, deduplicated by response ID and run interval",
+        "models": [
+          "gemini-3.5-flash"
+        ],
+        "input_tokens": 372306,
+        "cached_tokens": 328077,
+        "output_tokens": 572,
+        "thought_tokens": 3622,
+        "api_requests": null,
+        "api_errors": null,
+        "api_successful_requests": null,
+        "api_scope": "unknown: JSONL responses cannot establish failed attempts or auxiliary API totals",
+        "model_started_observed": true,
+        "recorded_response_count": 14,
+        "recorded_response_models": [
+          "gemini-3.5-flash"
+        ],
+        "transcript_paths": [
+          "gemini-home/.gemini/tmp/spec-kit/chats/session-2026-10-20T11-16-213a8e58.jsonl",
+          "transcripts-archive/session-2026-10-20T11-16-213a8e58.A57ABF6AAA99DD68.jsonl"
+        ],
+        "transcript_coverage": "observed token-bearing JSONL responses deduplicated by response ID; does not count failed API attempts or unrecorded auxiliary calls"
+      }
+    },
+    {
+      "workflow": "specify",
+      "label": "02-specify-retry",
+      "prompt_sha256": "5F79B82470A2C143D83254F938838F23BA50E3F980E9D77512F79BE2B7E52882",
+      "seed_sha256": "63919779DD4104076FBABCB130CE296A160FA840E0B4755A2AA5D90757ADA8EF",
+      "requested_model": "gemini-3.5-flash",
+      "cli_version": "0.60.0",
+      "spec_kit_version": "1.0.12",
+      "started": "2026-10-20T06:24:38.7683176-05:00",
+      "ended": "2026-10-20T06:29:52.8548217-05:00",
+      "duration_seconds": 314.087,
+      "exit_code": 0,
+      "stdout": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\Spec Kit\\docs\\02-specify-retry.stdout.json",
+      "stderr": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\Spec Kit\\docs\\02-specify-retry.stderr.txt",
+      "classification": {
+        "category": "specification_launcher_retry",
+        "reason": "Retry of specification after argument loss; not a post-implementation correction.",
+        "external_postimplementation_correction": false
+      },
+      "cli_tool_actions": {
+        "source": "completed CLI stats.tools",
+        "total_calls": 23,
+        "successful_calls": 22,
+        "failed_calls": 1,
+        "by_tool": {
+          "update_topic": {
+            "count": 2,
+            "success": 2,
+            "fail": 0
+          },
+          "glob": {
+            "count": 6,
+            "success": 6,
+            "fail": 0
+          },
+          "read_file": {
+            "count": 11,
+            "success": 10,
+            "fail": 1
+          },
+          "run_shell_command": {
+            "count": 1,
+            "success": 1,
+            "fail": 0
+          },
+          "write_file": {
+            "count": 3,
+            "success": 3,
+            "fail": 0
+          }
+        },
+        "scope": "tool execution statistics inside one external invocation; includes reads and other actions, not just code changes or Sonar scans; never counted as additional external correction prompts. A successful tool wrapper does not establish a shell command/test pass; inspect raw exit codes and logs."
+      },
+      "tokens": {
+        "source": "Gemini CLI JSON stats",
+        "models": [
+          "gemini-3.5-flash"
+        ],
+        "input_tokens": 553753,
+        "cached_tokens": 417153,
+        "output_tokens": 5986,
+        "thought_tokens": 8755,
+        "api_requests": 23,
+        "api_errors": 2,
+        "api_successful_requests": 21,
+        "api_by_model": {
+          "gemini-3.5-flash": {
+            "api_requests": 23,
+            "api_errors": 2,
+            "api_successful_requests": 21,
+            "roles": [
+              "main"
+            ]
+          }
+        },
+        "api_scope": "all models and roles present in completed CLI statistics; requests include failed attempts",
+        "model_started_observed": true,
+        "recorded_response_count": 21,
+        "recorded_response_models": [
+          "gemini-3.5-flash"
+        ],
+        "transcript_paths": [
+          "gemini-home/.gemini/tmp/spec-kit/chats/session-2026-10-20T11-24-96f502f6.jsonl",
+          "transcripts-archive/session-2026-10-20T11-24-96f502f6.8B770F6F1AEA2AAB.jsonl"
+        ],
+        "transcript_coverage": "observed token-bearing JSONL responses deduplicated by response ID; does not count failed API attempts or unrecorded auxiliary calls"
+      }
+    },
+    {
+      "workflow": "clarify",
+      "label": "03-contract-clarification",
+      "prompt_sha256": "E21267068F1EC21E721BC5BD0719B1507D14A79123496D38354384A5373C3638",
+      "seed_sha256": "63919779DD4104076FBABCB130CE296A160FA840E0B4755A2AA5D90757ADA8EF",
+      "requested_model": "gemini-3.5-flash",
+      "cli_version": "0.60.0",
+      "spec_kit_version": "1.0.12",
+      "started": "2026-10-20T06:31:05.5286530-05:00",
+      "ended": "2026-10-20T06:38:01.9564228-05:00",
+      "duration_seconds": null,
+      "exit_code": 130,
+      "interruption": "Gemini session stopped after native spec and checklist writes; no response for over two minutes",
+      "stdout": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\Spec Kit\\docs\\03-contract-clarification.stdout.json",
+      "stderr": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\Spec Kit\\docs\\03-contract-clarification.stderr.txt",
+      "classification": {
+        "category": "preimplementation_specification_correction",
+        "reason": "Explicit contract/latency clarification before application generation.",
+        "external_postimplementation_correction": false
+      },
+      "cli_tool_actions": {
+        "source": "unavailable",
+        "total_calls": null,
+        "successful_calls": null,
+        "failed_calls": null
+      },
+      "tokens": {
+        "source": "Gemini CLI JSONL responses, deduplicated by response ID and run interval",
+        "models": [
+          "gemini-3.5-flash"
+        ],
+        "input_tokens": 231106,
+        "cached_tokens": 152515,
+        "output_tokens": 5847,
+        "thought_tokens": 18651,
+        "api_requests": null,
+        "api_errors": null,
+        "api_successful_requests": null,
+        "api_scope": "unknown: JSONL responses cannot establish failed attempts or auxiliary API totals",
+        "model_started_observed": true,
+        "recorded_response_count": 11,
+        "recorded_response_models": [
+          "gemini-3.5-flash"
+        ],
+        "transcript_paths": [
+          "gemini-home/.gemini/tmp/spec-kit/chats/session-2026-10-20T11-31-12a3f237.jsonl",
+          "transcripts-archive/session-2026-10-20T11-31-12a3f237.7BAF3DF5C2ADE6E4.jsonl"
+        ],
+        "transcript_coverage": "observed token-bearing JSONL responses deduplicated by response ID; does not count failed API attempts or unrecorded auxiliary calls"
+      }
+    },
+    {
+      "workflow": "plan",
+      "label": "04-plan",
+      "prompt_sha256": "A59260DD07CF6104090282570D7F9BFE099C89CB61CE5C28688DBCA4F80E94EF",
+      "seed_sha256": "63919779DD4104076FBABCB130CE296A160FA840E0B4755A2AA5D90757ADA8EF",
+      "requested_model": "gemini-3.5-flash",
+      "cli_version": "0.60.0",
+      "spec_kit_version": "1.0.12",
+      "started": "2026-10-20T06:38:17.4841361-05:00",
+      "ended": "2026-10-20T06:49:28.7575019-05:00",
+      "duration_seconds": 671.273,
+      "exit_code": 0,
+      "stdout": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\Spec Kit\\docs\\04-plan.stdout.json",
+      "stderr": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\Spec Kit\\docs\\04-plan.stderr.txt",
+      "classification": {
+        "category": "native_planning",
+        "reason": "Native plan generation before implementation.",
+        "external_postimplementation_correction": false
+      },
+      "cli_tool_actions": {
+        "source": "completed CLI stats.tools",
+        "total_calls": 46,
+        "successful_calls": 46,
+        "failed_calls": 0,
+        "by_tool": {
+          "update_topic": {
+            "count": 2,
+            "success": 2,
+            "fail": 0
+          },
+          "glob": {
+            "count": 2,
+            "success": 2,
+            "fail": 0
+          },
+          "read_file": {
+            "count": 26,
+            "success": 26,
+            "fail": 0
+          },
+          "grep_search": {
+            "count": 1,
+            "success": 1,
+            "fail": 0
+          },
+          "run_shell_command": {
+            "count": 2,
+            "success": 2,
+            "fail": 0
+          },
+          "list_directory": {
+            "count": 7,
+            "success": 7,
+            "fail": 0
+          },
+          "write_file": {
+            "count": 6,
+            "success": 6,
+            "fail": 0
+          }
+        },
+        "scope": "tool execution statistics inside one external invocation; includes reads and other actions, not just code changes or Sonar scans; never counted as additional external correction prompts. A successful tool wrapper does not establish a shell command/test pass; inspect raw exit codes and logs."
+      },
+      "tokens": {
+        "source": "Gemini CLI JSON stats",
+        "models": [
+          "gemini-3-flash-preview",
+          "gemini-3.5-flash"
+        ],
+        "input_tokens": 1659066,
+        "cached_tokens": 1321138,
+        "output_tokens": 14548,
+        "thought_tokens": 8060,
+        "api_requests": 52,
+        "api_errors": 4,
+        "api_successful_requests": 48,
+        "api_by_model": {
+          "gemini-3.5-flash": {
+            "api_requests": 50,
+            "api_errors": 4,
+            "api_successful_requests": 46,
+            "roles": [
+              "main"
+            ]
+          },
+          "gemini-3-flash-preview": {
+            "api_requests": 2,
+            "api_errors": 0,
+            "api_successful_requests": 2,
+            "roles": [
+              "utility_loop_detector"
+            ]
+          }
+        },
+        "api_scope": "all models and roles present in completed CLI statistics; requests include failed attempts",
+        "model_started_observed": true,
+        "recorded_response_count": 46,
+        "recorded_response_models": [
+          "gemini-3.5-flash"
+        ],
+        "transcript_paths": [
+          "gemini-home/.gemini/tmp/spec-kit/chats/session-2026-10-20T11-38-261670ce.jsonl",
+          "transcripts-archive/session-2026-10-20T11-38-261670ce.28275FCDC84E6205.jsonl"
+        ],
+        "transcript_coverage": "observed token-bearing JSONL responses deduplicated by response ID; does not count failed API attempts or unrecorded auxiliary calls"
+      }
+    },
+    {
+      "workflow": "tasks",
+      "label": "05-tasks",
+      "prompt_sha256": "8D5C88032FB7F967FC5227CAC21166F34212FA27136470D2EDA2A0C85AA3C602",
+      "seed_sha256": "63919779DD4104076FBABCB130CE296A160FA840E0B4755A2AA5D90757ADA8EF",
+      "requested_model": "gemini-3.5-flash",
+      "cli_version": "0.60.0",
+      "spec_kit_version": "1.0.12",
+      "started": "2026-10-20T06:50:29.0810464-05:00",
+      "ended": "2026-10-20T06:55:33.7517127-05:00",
+      "duration_seconds": 304.671,
+      "exit_code": 0,
+      "stdout": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\Spec Kit\\docs\\05-tasks.stdout.json",
+      "stderr": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\Spec Kit\\docs\\05-tasks.stderr.txt",
+      "classification": {
+        "category": "native_task_generation",
+        "reason": "Initial task generation; appended arguments were lost.",
+        "external_postimplementation_correction": false
+      },
+      "cli_tool_actions": {
+        "source": "completed CLI stats.tools",
+        "total_calls": 20,
+        "successful_calls": 20,
+        "failed_calls": 0,
+        "by_tool": {
+          "update_topic": {
+            "count": 2,
+            "success": 2,
+            "fail": 0
+          },
+          "glob": {
+            "count": 3,
+            "success": 3,
+            "fail": 0
+          },
+          "run_shell_command": {
+            "count": 1,
+            "success": 1,
+            "fail": 0
+          },
+          "read_file": {
+            "count": 13,
+            "success": 13,
+            "fail": 0
+          },
+          "write_file": {
+            "count": 1,
+            "success": 1,
+            "fail": 0
+          }
+        },
+        "scope": "tool execution statistics inside one external invocation; includes reads and other actions, not just code changes or Sonar scans; never counted as additional external correction prompts. A successful tool wrapper does not establish a shell command/test pass; inspect raw exit codes and logs."
+      },
+      "tokens": {
+        "source": "Gemini CLI JSON stats",
+        "models": [
+          "gemini-3.5-flash"
+        ],
+        "input_tokens": 293607,
+        "cached_tokens": 155479,
+        "output_tokens": 4874,
+        "thought_tokens": 6352,
+        "api_requests": 13,
+        "api_errors": 2,
+        "api_successful_requests": 11,
+        "api_by_model": {
+          "gemini-3.5-flash": {
+            "api_requests": 13,
+            "api_errors": 2,
+            "api_successful_requests": 11,
+            "roles": [
+              "main"
+            ]
+          }
+        },
+        "api_scope": "all models and roles present in completed CLI statistics; requests include failed attempts",
+        "model_started_observed": true,
+        "recorded_response_count": 11,
+        "recorded_response_models": [
+          "gemini-3.5-flash"
+        ],
+        "transcript_paths": [
+          "gemini-home/.gemini/tmp/spec-kit/chats/session-2026-10-20T11-50-57ca997e.jsonl",
+          "transcripts-archive/session-2026-10-20T11-50-57ca997e.F41D2926EE110728.jsonl"
+        ],
+        "transcript_coverage": "observed token-bearing JSONL responses deduplicated by response ID; does not count failed API attempts or unrecorded auxiliary calls"
+      }
+    },
+    {
+      "workflow": "tasks",
+      "submission_method": "installed native TOML prompt expanded with complete multiline arguments",
+      "label": "06-tasks-full-arguments",
+      "prompt_sha256": "36E8A2989EA345A62881A85E9286B36B61B74B86CF980CD6AC85CA2EB8A330A7",
+      "seed_sha256": "63919779DD4104076FBABCB130CE296A160FA840E0B4755A2AA5D90757ADA8EF",
+      "requested_model": "gemini-3.5-flash",
+      "cli_version": "0.60.0",
+      "spec_kit_version": "1.0.12",
+      "started": "2026-10-20T06:56:54.3854077-05:00",
+      "ended": "2026-10-20T06:56:54.4695657-05:00",
+      "duration_seconds": 0.084,
+      "exit_code": 1,
+      "stdout": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\Spec Kit\\docs\\06-tasks-full-arguments.stdout.json",
+      "stderr": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\Spec Kit\\docs\\06-tasks-full-arguments.stderr.txt",
+      "model_started": false,
+      "failure_reason": "cmd.exe rejected the command line before starting Gemini; no transcript or model request was created",
+      "classification": {
+        "category": "task_launcher_retry",
+        "reason": "Attempt to preserve multiline arguments; failed before model startup.",
+        "external_postimplementation_correction": false
+      },
+      "cli_tool_actions": {
+        "source": "unavailable",
+        "total_calls": null,
+        "successful_calls": null,
+        "failed_calls": null
+      },
+      "tokens": {
+        "source": "local launcher failure before Gemini/model startup",
+        "models": [],
+        "input_tokens": 0,
+        "cached_tokens": 0,
+        "output_tokens": 0,
+        "thought_tokens": 0,
+        "api_requests": 0,
+        "api_errors": 0,
+        "api_successful_requests": 0,
+        "model_started_observed": false,
+        "recorded_response_count": 0,
+        "recorded_response_models": [],
+        "transcript_paths": [],
+        "transcript_coverage": "model did not start"
+      }
+    },
+    {
+      "workflow": "tasks",
+      "submission_method": "installed native TOML prompt expanded with complete multiline arguments",
+      "launcher": "node direct to pinned Gemini CLI entrypoint, avoiding cmd.exe length limit",
+      "label": "07-tasks-native-expanded",
+      "prompt_sha256": "36E8A2989EA345A62881A85E9286B36B61B74B86CF980CD6AC85CA2EB8A330A7",
+      "seed_sha256": "63919779DD4104076FBABCB130CE296A160FA840E0B4755A2AA5D90757ADA8EF",
+      "requested_model": "gemini-3.5-flash",
+      "cli_version": "0.60.0",
+      "spec_kit_version": "1.0.12",
+      "started": "2026-10-20T06:57:31.9906020-05:00",
+      "ended": "2026-10-20T07:06:37.3812634-05:00",
+      "duration_seconds": 545.391,
+      "exit_code": 0,
+      "stdout": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\Spec Kit\\docs\\07-tasks-native-expanded.stdout.json",
+      "stderr": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\Spec Kit\\docs\\07-tasks-native-expanded.stderr.txt",
+      "classification": {
+        "category": "task_launcher_retry",
+        "reason": "Task-generation retry with complete native arguments; preimplementation alignment.",
+        "external_postimplementation_correction": false
+      },
+      "cli_tool_actions": {
+        "source": "completed CLI stats.tools",
+        "total_calls": 27,
+        "successful_calls": 26,
+        "failed_calls": 1,
+        "by_tool": {
+          "update_topic": {
+            "count": 2,
+            "success": 2,
+            "fail": 0
+          },
+          "glob": {
+            "count": 5,
+            "success": 5,
+            "fail": 0
+          },
+          "read_file": {
+            "count": 9,
+            "success": 8,
+            "fail": 1
+          },
+          "replace": {
+            "count": 4,
+            "success": 4,
+            "fail": 0
+          },
+          "grep_search": {
+            "count": 2,
+            "success": 2,
+            "fail": 0
+          },
+          "run_shell_command": {
+            "count": 4,
+            "success": 4,
+            "fail": 0
+          },
+          "write_file": {
+            "count": 1,
+            "success": 1,
+            "fail": 0
+          }
+        },
+        "scope": "tool execution statistics inside one external invocation; includes reads and other actions, not just code changes or Sonar scans; never counted as additional external correction prompts. A successful tool wrapper does not establish a shell command/test pass; inspect raw exit codes and logs."
+      },
+      "tokens": {
+        "source": "Gemini CLI JSON stats",
+        "models": [
+          "gemini-3.5-flash"
+        ],
+        "input_tokens": 1065684,
+        "cached_tokens": 505891,
+        "output_tokens": 8216,
+        "thought_tokens": 7163,
+        "api_requests": 41,
+        "api_errors": 14,
+        "api_successful_requests": 27,
+        "api_by_model": {
+          "gemini-3.5-flash": {
+            "api_requests": 41,
+            "api_errors": 14,
+            "api_successful_requests": 27,
+            "roles": [
+              "main"
+            ]
+          }
+        },
+        "api_scope": "all models and roles present in completed CLI statistics; requests include failed attempts",
+        "model_started_observed": true,
+        "recorded_response_count": 27,
+        "recorded_response_models": [
+          "gemini-3.5-flash"
+        ],
+        "transcript_paths": [
+          "gemini-home/.gemini/tmp/spec-kit/chats/session-2026-10-20T11-57-cf453998.jsonl",
+          "transcripts-archive/session-2026-10-20T11-57-cf453998.A0E9068FD9DD20F4.jsonl"
+        ],
+        "transcript_coverage": "observed token-bearing JSONL responses deduplicated by response ID; does not count failed API attempts or unrecorded auxiliary calls"
+      }
+    },
+    {
+      "workflow": "implement",
+      "submission_method": "installed native TOML prompt expanded with complete multiline arguments",
+      "launcher": "node direct to pinned Gemini CLI entrypoint, avoiding cmd.exe length limit",
+      "label": "08-implement",
+      "prompt_sha256": "8E655B1C8DAECCE3D3C34D750FDE4ACCDEA51D1244AAE9C29889A469A1D6EF4A",
+      "seed_sha256": "63919779DD4104076FBABCB130CE296A160FA840E0B4755A2AA5D90757ADA8EF",
+      "requested_model": "gemini-3.5-flash",
+      "cli_version": "0.60.0",
+      "spec_kit_version": "1.0.12",
+      "started": "2026-10-20T07:07:23.2772934-05:00",
+      "ended": "2026-10-20T07:55:29.1477903-05:00",
+      "duration_seconds": 2885.87,
+      "exit_code": 0,
+      "stdout": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\Spec Kit\\docs\\08-implement.stdout.json",
+      "stderr": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\Spec Kit\\docs\\08-implement.stderr.txt",
+      "classification": {
+        "category": "initial_implementation",
+        "reason": "Initial implementation invocation; automated actions within this run are not separate external correction prompts.",
+        "external_postimplementation_correction": false
+      },
+      "cli_tool_actions": {
+        "source": "completed CLI stats.tools",
+        "total_calls": 155,
+        "successful_calls": 153,
+        "failed_calls": 2,
+        "by_tool": {
+          "update_topic": {
+            "count": 6,
+            "success": 6,
+            "fail": 0
+          },
+          "glob": {
+            "count": 5,
+            "success": 5,
+            "fail": 0
+          },
+          "read_file": {
+            "count": 51,
+            "success": 49,
+            "fail": 2
+          },
+          "list_directory": {
+            "count": 6,
+            "success": 6,
+            "fail": 0
+          },
+          "run_shell_command": {
+            "count": 52,
+            "success": 52,
+            "fail": 0
+          },
+          "replace": {
+            "count": 24,
+            "success": 24,
+            "fail": 0
+          },
+          "write_file": {
+            "count": 9,
+            "success": 9,
+            "fail": 0
+          },
+          "grep_search": {
+            "count": 2,
+            "success": 2,
+            "fail": 0
+          }
+        },
+        "scope": "tool execution statistics inside one external invocation; includes reads and other actions, not just code changes or Sonar scans; never counted as additional external correction prompts. A successful tool wrapper does not establish a shell command/test pass; inspect raw exit codes and logs."
+      },
+      "tokens": {
+        "source": "Gemini CLI JSON stats",
+        "models": [
+          "gemini-3-flash-preview",
+          "gemini-3.5-flash"
+        ],
+        "input_tokens": 16752166,
+        "cached_tokens": 12893781,
+        "output_tokens": 36959,
+        "thought_tokens": 41527,
+        "api_requests": 202,
+        "api_errors": 54,
+        "api_successful_requests": 148,
+        "api_by_model": {
+          "gemini-3.5-flash": {
+            "api_requests": 194,
+            "api_errors": 54,
+            "api_successful_requests": 140,
+            "roles": [
+              "main"
+            ]
+          },
+          "gemini-3-flash-preview": {
+            "api_requests": 8,
+            "api_errors": 0,
+            "api_successful_requests": 8,
+            "roles": [
+              "utility_loop_detector"
+            ]
+          }
+        },
+        "api_scope": "all models and roles present in completed CLI statistics; requests include failed attempts",
+        "model_started_observed": true,
+        "recorded_response_count": 140,
+        "recorded_response_models": [
+          "gemini-3.5-flash"
+        ],
+        "transcript_paths": [
+          "gemini-home/.gemini/tmp/spec-kit/chats/session-2026-10-20T12-07-c8b0393f.jsonl",
+          "transcripts-archive/session-2026-10-20T12-07-c8b0393f.8F356DEC5678770D.jsonl",
+          "transcripts-archive/session-2026-10-20T12-07-c8b0393f.EE6475772BA480AA.jsonl"
+        ],
+        "transcript_coverage": "observed token-bearing JSONL responses deduplicated by response ID; does not count failed API attempts or unrecorded auxiliary calls"
+      }
+    },
+    {
+      "workflow": "clarify",
+      "submission_method": "direct clarification prompt",
+      "launcher": "node direct to pinned Gemini CLI entrypoint, avoiding cmd.exe length limit",
+      "label": "09-qa-correction",
+      "prompt_sha256": "A117285F859388798B6C0E8B53A5CD5B05FE421B6D501F3D13BEEAA262DDB932",
+      "seed_sha256": "63919779DD4104076FBABCB130CE296A160FA840E0B4755A2AA5D90757ADA8EF",
+      "requested_model": "gemini-3.5-flash",
+      "cli_version": "0.60.0",
+      "spec_kit_version": "1.0.12",
+      "started": "2026-10-20T07:57:53.4764379-05:00",
+      "ended": "2026-10-20T08:55:23.6575215-05:00",
+      "duration_seconds": 3450.181,
+      "exit_code": 0,
+      "stdout": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\Spec Kit\\docs\\09-qa-correction.stdout.json",
+      "stderr": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\Spec Kit\\docs\\09-qa-correction.stderr.txt",
+      "classification": {
+        "category": "postimplementation_external_correction",
+        "reason": "First explicit external QA correction prompt after generation 08.",
+        "external_postimplementation_correction": true
+      },
+      "cli_tool_actions": {
+        "source": "completed CLI stats.tools",
+        "total_calls": 100,
+        "successful_calls": 99,
+        "failed_calls": 1,
+        "by_tool": {
+          "update_topic": {
+            "count": 2,
+            "success": 2,
+            "fail": 0
+          },
+          "glob": {
+            "count": 7,
+            "success": 7,
+            "fail": 0
+          },
+          "read_file": {
+            "count": 32,
+            "success": 31,
+            "fail": 1
+          },
+          "run_shell_command": {
+            "count": 32,
+            "success": 32,
+            "fail": 0
+          },
+          "replace": {
+            "count": 11,
+            "success": 11,
+            "fail": 0
+          },
+          "write_file": {
+            "count": 9,
+            "success": 9,
+            "fail": 0
+          },
+          "google_web_search": {
+            "count": 5,
+            "success": 5,
+            "fail": 0
+          },
+          "read_background_output": {
+            "count": 1,
+            "success": 1,
+            "fail": 0
+          },
+          "list_background_processes": {
+            "count": 1,
+            "success": 1,
+            "fail": 0
+          }
+        },
+        "scope": "tool execution statistics inside one external invocation; includes reads and other actions, not just code changes or Sonar scans; never counted as additional external correction prompts. A successful tool wrapper does not establish a shell command/test pass; inspect raw exit codes and logs."
+      },
+      "tokens": {
+        "source": "Gemini CLI JSON stats",
+        "models": [
+          "gemini-3-flash-preview",
+          "gemini-3.5-flash"
+        ],
+        "input_tokens": 10900997,
+        "cached_tokens": 8551042,
+        "output_tokens": 40048,
+        "thought_tokens": 42080,
+        "api_requests": 149,
+        "api_errors": 39,
+        "api_successful_requests": 110,
+        "api_by_model": {
+          "gemini-3.5-flash": {
+            "api_requests": 139,
+            "api_errors": 39,
+            "api_successful_requests": 100,
+            "roles": [
+              "main"
+            ]
+          },
+          "gemini-3-flash-preview": {
+            "api_requests": 10,
+            "api_errors": 0,
+            "api_successful_requests": 10,
+            "roles": [
+              "utility_loop_detector",
+              "utility_tool"
+            ]
+          }
+        },
+        "api_scope": "all models and roles present in completed CLI statistics; requests include failed attempts",
+        "model_started_observed": true,
+        "recorded_response_count": 100,
+        "recorded_response_models": [
+          "gemini-3.5-flash"
+        ],
+        "transcript_paths": [
+          "gemini-home/.gemini/tmp/spec-kit/chats/session-2026-10-20T12-57-a7dd4aec.jsonl",
+          "transcripts-archive/session-2026-10-20T12-57-a7dd4aec.2983E822E131E77A.jsonl"
+        ],
+        "transcript_coverage": "observed token-bearing JSONL responses deduplicated by response ID; does not count failed API attempts or unrecorded auxiliary calls"
+      }
+    }
+  ],
+  "invocation_attempts": 9,
+  "model_invocations": 8,
+  "runs_with_unknown_model_start": [],
+  "prompt_count": 9,
+  "prompt_count_note": "backward-compatible alias of invocation_attempts, including launcher failures before model startup",
+  "external_prompt_scope": "invocation_attempts counts closed CLI launcher attempts, including the pre-model failure; model_invocations counts closed attempts with model evidence. Open attempts are metadata only and excluded from closed usage totals.",
+  "correction_counts": {
+    "classification_version": "researcher-reviewed v1; labels explicitly categorized, not inferred from every clarification or internal action",
+    "by_category": {
+      "initial_specification_attempt": {
+        "closed_attempts": 1,
+        "open_attempts": 0,
+        "model_observed_closed_prompts": 1,
+        "labels": [
+          "01-specify"
+        ]
+      },
+      "specification_launcher_retry": {
+        "closed_attempts": 1,
+        "open_attempts": 0,
+        "model_observed_closed_prompts": 1,
+        "labels": [
+          "02-specify-retry"
+        ]
+      },
+      "preimplementation_specification_correction": {
+        "closed_attempts": 1,
+        "open_attempts": 0,
+        "model_observed_closed_prompts": 1,
+        "labels": [
+          "03-contract-clarification"
+        ]
+      },
+      "native_planning": {
+        "closed_attempts": 1,
+        "open_attempts": 0,
+        "model_observed_closed_prompts": 1,
+        "labels": [
+          "04-plan"
+        ]
+      },
+      "native_task_generation": {
+        "closed_attempts": 1,
+        "open_attempts": 0,
+        "model_observed_closed_prompts": 1,
+        "labels": [
+          "05-tasks"
+        ]
+      },
+      "task_launcher_retry": {
+        "closed_attempts": 2,
+        "open_attempts": 0,
+        "model_observed_closed_prompts": 1,
+        "labels": [
+          "06-tasks-full-arguments",
+          "07-tasks-native-expanded"
+        ]
+      },
+      "initial_implementation": {
+        "closed_attempts": 1,
+        "open_attempts": 0,
+        "model_observed_closed_prompts": 1,
+        "labels": [
+          "08-implement"
+        ]
+      },
+      "postimplementation_external_correction": {
+        "closed_attempts": 1,
+        "open_attempts": 0,
+        "model_observed_closed_prompts": 1,
+        "labels": [
+          "09-qa-correction"
+        ]
+      }
+    },
+    "postimplementation_external_correction_prompts_started": 1,
+    "postimplementation_external_correction_prompts_closed": 1,
+    "postimplementation_external_correction_prompts_open": 0,
+    "postimplementation_external_correction_labels": [
+      "09-qa-correction"
+    ],
+    "unclassified_labels": [],
+    "scope": "External correction attempts are separate from initial implementation, preimplementation spec clarification, launcher retries, and automated within-session edits/scans. Started counts include open start metadata and do not assert successful completion. Unknown future labels remain unclassified until reviewed."
+  },
+  "known_duration_seconds": 8171.557,
+  "known_model_invocation_duration_seconds": 8171.473,
+  "total_duration_seconds": 8171.557,
+  "duration_scope": "sum of known instrumented invocation durations only, including local launcher failures; unknown durations and external verification work excluded",
+  "runs_with_unknown_duration": [
+    "01-specify",
+    "03-contract-clarification"
+  ],
+  "observed_tokens": {
+    "input_tokens": 31828685,
+    "cached_tokens": 24325076,
+    "output_tokens": 117050,
+    "thought_tokens": 136210
+  },
+  "runs_with_unknown_token_fields": {
+    "input_tokens": [],
+    "cached_tokens": [],
+    "output_tokens": [],
+    "thought_tokens": []
+  },
+  "token_scope": "completed CLI stats include every reported model/role; fallback JSONL includes only recorded responses. Input includes cached tokens; output means candidate tokens; thought tokens are separate. Unknown values are not imputed.",
+  "usage_provenance_limit": "usage totals cover the Gemini CLI experiment and its reported auxiliary roles only. Codex/researcher orchestration, read-only review agents, researcher-helper authoring, Drive/UI work, and other external verification effort are not included; these are not total project token/cost figures.",
+  "known_api_totals": {
+    "api_requests": 480,
+    "api_errors": 115,
+    "api_successful_requests": 365
+  },
+  "api_totals_scope": "known completed CLI API statistics and proven pre-model launcher zeroes only; excludes runs whose attempt/error totals are unknown",
+  "runs_without_api_stats": [
+    "01-specify",
+    "03-contract-clarification"
+  ],
+  "recorded_response_count": 370,
+  "recorded_response_scope": "unique token-bearing JSONL response IDs within each closed run interval, deduplicated across original/archive snapshots; not interchangeable with API request attempts and may omit auxiliary models",
+  "runs_without_recorded_response_stats": [],
+  "runs_without_token_stats": [],
+  "qa_change_from_generation08": {
+    "scope": "current text state versus frozen generation-08/files; includes any open QA invocation and is not a final or cumulative edit-volume claim",
+    "source": {
+      "changed_files": [
+        "backend/tests/integration/test_api_us2.py",
+        "backend/tests/unit/test_game_engine_us1.py",
+        "backend/tests/unit/test_qa_iteration1.py",
+        "frontend/src/App.tsx",
+        "frontend/src/hooks/useGame.ts",
+        "frontend/src/index.css",
+        "frontend/tests/App.test.tsx",
+        "frontend/tests/useGame.test.ts",
+        "frontend/vite.config.ts"
+      ],
+      "changed_file_count": 9,
+      "added_lines": 920,
+      "removed_lines": 153,
+      "net_lines": 767,
+      "before_characters": 63989,
+      "after_characters": 89456,
+      "net_characters": 25467,
+      "character_delta_definition": "net change in total decoded Unicode text length, after BOM removal and LF normalization; not cumulative edit volume or an added/removed-character operation count"
+    },
+    "spec_stage2": {
+      "changed_files": [
+        "specs/002-extend-tetris-stage2/spec.md",
+        "specs/002-extend-tetris-stage2/tasks.md"
+      ],
+      "changed_file_count": 2,
+      "added_lines": 91,
+      "removed_lines": 0,
+      "net_lines": 91,
+      "before_characters": 79577,
+      "after_characters": 88211,
+      "net_characters": 8634,
+      "character_delta_definition": "net change in total decoded Unicode text length, after BOM removal and LF normalization; not cumulative edit volume or an added/removed-character operation count"
+    }
+  },
+  "corpus_snapshots": [
+    {
+      "label": "generation-08",
+      "manifest": "bertopic-corpus/generation-08/manifest.json",
+      "status": "frozen generation 08 before external QA; not final",
+      "markdown_file_count": 8,
+      "analysis_status": "corpus preparation only; no BERTopic model, embeddings, topic labels or comparison scores generated"
+    }
+  ]
+}

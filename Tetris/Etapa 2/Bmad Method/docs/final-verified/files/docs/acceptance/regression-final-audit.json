@@ -1,0 +1,141 @@
+{
+  "researcher_created": true,
+  "audited_at_utc": "2026-10-26T02:23:27.972341+00:00",
+  "passed": true,
+  "original_test_count": 13,
+  "preserved_test_count": 13,
+  "original_assertion_count": 52,
+  "rows": [
+    {
+      "file": "backend/app/tests/test_api.py",
+      "test": "test_create_game_api",
+      "original_assertions": 7,
+      "current_assertions": 7,
+      "missing_or_changed": [],
+      "preserved": true,
+      "baseline_file_sha256": "396A93AEC5A2F2EF1B271C7979CCA1D5010F07821BD09D23409994406B62DE56",
+      "current_file_sha256": "02907B8D8F19B878B4A91BBD3942F49B4E4E5E2CE9010192E227902393BBEFAB"
+    },
+    {
+      "file": "backend/app/tests/test_api.py",
+      "test": "test_get_game_api",
+      "original_assertions": 4,
+      "current_assertions": 4,
+      "missing_or_changed": [],
+      "preserved": true,
+      "baseline_file_sha256": "396A93AEC5A2F2EF1B271C7979CCA1D5010F07821BD09D23409994406B62DE56",
+      "current_file_sha256": "02907B8D8F19B878B4A91BBD3942F49B4E4E5E2CE9010192E227902393BBEFAB"
+    },
+    {
+      "file": "backend/app/tests/test_api.py",
+      "test": "test_tick_game_api",
+      "original_assertions": 3,
+      "current_assertions": 3,
+      "missing_or_changed": [],
+      "preserved": true,
+      "baseline_file_sha256": "396A93AEC5A2F2EF1B271C7979CCA1D5010F07821BD09D23409994406B62DE56",
+      "current_file_sha256": "02907B8D8F19B878B4A91BBD3942F49B4E4E5E2CE9010192E227902393BBEFAB"
+    },
+    {
+      "file": "backend/app/tests/test_api.py",
+      "test": "test_move_game_api",
+      "original_assertions": 3,
+      "current_assertions": 3,
+      "missing_or_changed": [],
+      "preserved": true,
+      "baseline_file_sha256": "396A93AEC5A2F2EF1B271C7979CCA1D5010F07821BD09D23409994406B62DE56",
+      "current_file_sha256": "02907B8D8F19B878B4A91BBD3942F49B4E4E5E2CE9010192E227902393BBEFAB"
+    },
+    {
+      "file": "backend/app/tests/test_domain.py",
+      "test": "test_board_creation",
+      "original_assertions": 6,
+      "current_assertions": 6,
+      "missing_or_changed": [],
+      "preserved": true,
+      "baseline_file_sha256": "D5EB5447FC97761ACA1C621F7B5A447605C3834783C86C91862C3C0B6F5E7DCF",
+      "current_file_sha256": "EAE98252577DFD4BF07ED007361612C2A7EE680C2FA17473A191E7C1B07CA334"
+    },
+    {
+      "file": "backend/app/tests/test_domain.py",
+      "test": "test_spawning_centered_coordinates",
+      "original_assertions": 2,
+      "current_assertions": 2,
+      "missing_or_changed": [],
+      "preserved": true,
+      "baseline_file_sha256": "D5EB5447FC97761ACA1C621F7B5A447605C3834783C86C91862C3C0B6F5E7DCF",
+      "current_file_sha256": "EAE98252577DFD4BF07ED007361612C2A7EE680C2FA17473A191E7C1B07CA334"
+    },
+    {
+      "file": "backend/app/tests/test_domain.py",
+      "test": "test_collision_detection_borders",
+      "original_assertions": 4,
+      "current_assertions": 4,
+      "missing_or_changed": [],
+      "preserved": true,
+      "baseline_file_sha256": "D5EB5447FC97761ACA1C621F7B5A447605C3834783C86C91862C3C0B6F5E7DCF",
+      "current_file_sha256": "EAE98252577DFD4BF07ED007361612C2A7EE680C2FA17473A191E7C1B07CA334"
+    },
+    {
+      "file": "backend/app/tests/test_domain.py",
+      "test": "test_collision_detection_settled_blocks",
+      "original_assertions": 2,
+      "current_assertions": 2,
+      "missing_or_changed": [],
+      "preserved": true,
+      "baseline_file_sha256": "D5EB5447FC97761ACA1C621F7B5A447605C3834783C86C91862C3C0B6F5E7DCF",
+      "current_file_sha256": "EAE98252577DFD4BF07ED007361612C2A7EE680C2FA17473A191E7C1B07CA334"
+    },
+    {
+      "file": "backend/app/tests/test_domain.py",
+      "test": "test_legal_movements",
+      "original_assertions": 6,
+      "current_assertions": 6,
+      "missing_or_changed": [],
+      "preserved": true,
+      "baseline_file_sha256": "D5EB5447FC97761ACA1C621F7B5A447605C3834783C86C91862C3C0B6F5E7DCF",
+      "current_file_sha256": "EAE98252577DFD4BF07ED007361612C2A7EE680C2FA17473A191E7C1B07CA334"
+    },
+    {
+      "file": "backend/app/tests/test_domain.py",
+      "test": "test_movements_blocked",
+      "original_assertions": 3,
+      "current_assertions": 3,
+      "missing_or_changed": [],
+      "preserved": true,
+      "baseline_file_sha256": "D5EB5447FC97761ACA1C621F7B5A447605C3834783C86C91862C3C0B6F5E7DCF",
+      "current_file_sha256": "EAE98252577DFD4BF07ED007361612C2A7EE680C2FA17473A191E7C1B07CA334"
+    },
+    {
+      "file": "backend/app/tests/test_domain.py",
+      "test": "test_immediate_lock_and_spawn",
+      "original_assertions": 3,
+      "current_assertions": 3,
+      "missing_or_changed": [],
+      "preserved": true,
+      "baseline_file_sha256": "D5EB5447FC97761ACA1C621F7B5A447605C3834783C86C91862C3C0B6F5E7DCF",
+      "current_file_sha256": "EAE98252577DFD4BF07ED007361612C2A7EE680C2FA17473A191E7C1B07CA334"
+    },
+    {
+      "file": "backend/app/tests/test_domain.py",
+      "test": "test_line_clears_1_to_4_rows",
+      "original_assertions": 8,
+      "current_assertions": 8,
+      "missing_or_changed": [],
+      "preserved": true,
+      "baseline_file_sha256": "D5EB5447FC97761ACA1C621F7B5A447605C3834783C86C91862C3C0B6F5E7DCF",
+      "current_file_sha256": "EAE98252577DFD4BF07ED007361612C2A7EE680C2FA17473A191E7C1B07CA334"
+    },
+    {
+      "file": "backend/app/tests/test_domain.py",
+      "test": "test_spawning_collision_game_over",
+      "original_assertions": 1,
+      "current_assertions": 2,
+      "missing_or_changed": [],
+      "preserved": true,
+      "baseline_file_sha256": "D5EB5447FC97761ACA1C621F7B5A447605C3834783C86C91862C3C0B6F5E7DCF",
+      "current_file_sha256": "EAE98252577DFD4BF07ED007361612C2A7EE680C2FA17473A191E7C1B07CA334"
+    }
+  ],
+  "limitation": "AST assertion preservation only; fixtures/setup may change for the specified queued-piece compatibility. Execution evidence is separate."
+}

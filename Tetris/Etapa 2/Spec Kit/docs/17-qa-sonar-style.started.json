@@ -1,0 +1,8 @@
+{
+  "label": "17-qa-sonar-style",
+  "workflow": "clarify",
+  "started": "2026-10-21T00:32:41.9361548-05:00",
+  "prompt_sha256": "F3E527205F6D95D24F35D138DA0C0117BB566E968EB9F5DE461F66DAB95C42F5",
+  "seed_sha256": "63919779DD4104076FBABCB130CE296A160FA840E0B4755A2AA5D90757ADA8EF",
+  "submission_method": "direct clarification prompt"
+}

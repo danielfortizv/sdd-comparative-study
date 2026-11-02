@@ -1,0 +1,56 @@
+{
+  "created_at_utc": "2026-10-21T01:28:28.650315+00:00",
+  "scope": "immutable researcher copies of correction10 CLI usage and already-frozen generation10 quality snapshot; not final functional acceptance",
+  "files": [
+    {
+      "path": "10-qa-race-correction.run.json",
+      "source": "10-qa-race-correction.run.json",
+      "sha256": "100B2C0FABEB7E17240D76D86D2654A37881F9E95993D3CEFDA407B15E9ED559"
+    },
+    {
+      "path": "10-qa-race-correction.stdout.json",
+      "source": "10-qa-race-correction.stdout.json",
+      "sha256": "27B4A1A7076950C93DA1AC54E66775CD99DAEDF97B1C5E13D58169F501E1B6C5"
+    },
+    {
+      "path": "10-qa-race-correction.stderr.txt",
+      "source": "10-qa-race-correction.stderr.txt",
+      "sha256": "10E907D947139D06732DC25FA4057069F8D9086C4E11DD16924A3E8BD560742E"
+    },
+    {
+      "path": "metrics.json",
+      "source": "generation-10/metrics.json",
+      "sha256": "464AFF4D2EAF94EC9079F2F6449FCC95931E3751CAD34C6C66744C4DB0A7A1DD"
+    },
+    {
+      "path": "input-audit.json",
+      "source": "generation-10/input-audit.json",
+      "sha256": "E3D3B72DA016879A699237B0F24AD72A4A7063F7566907A1DDE938D1BE11167C"
+    },
+    {
+      "path": "sonar-summary.json",
+      "source": "generation-10/sonar-summary.json",
+      "sha256": "D9758893D6C0E9F25039ACF07B1A25FABD5B474B298DEF5DBB28867B68053B5B"
+    },
+    {
+      "path": "sonar-quality-gate.json",
+      "source": "generation-10/sonar-quality-gate.json",
+      "sha256": "5AA3FC243BC374E24A0F29AA18115936A2EBF423301DCB1301B61498EB9FB7E2"
+    },
+    {
+      "path": "sonar-metrics.json",
+      "source": "generation-10/sonar-metrics.json",
+      "sha256": "2036403A70B63A10C75D7CF8C2D75404380A130D174C62B5F11428C7AFED3A53"
+    },
+    {
+      "path": "sonar-task.json",
+      "source": "generation-10/sonar-task.json",
+      "sha256": "8F65107D9899ED3D99C10B00EF1383EBBA78926A93DFB04FBBF4109895589486"
+    },
+    {
+      "path": "sonar-scan.log",
+      "source": "generation-10/sonar-scan.log",
+      "sha256": "CEED14F9B17340A628E98BAF4FB893739971E05F2A8FF013114768B594B69A0A"
+    }
+  ]
+}

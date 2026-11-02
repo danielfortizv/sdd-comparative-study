@@ -1,0 +1,8 @@
+Collecting coverage==7.16.2
+  Downloading coverage-7.16.2-cp312-cp312-win_amd64.whl.metadata (8.4 kB)
+Collecting pytest-cov==7.1.0
+  Downloading pytest_cov-7.1.0-py3-none-any.whl.metadata (32 kB)
+Downloading coverage-7.16.2-cp312-cp312-win_amd64.whl (226 kB)
+Downloading pytest_cov-7.1.0-py3-none-any.whl (22 kB)
+Installing collected packages: pytest-cov, coverage
+Successfully installed coverage-7.16.2 pytest-cov-7.1.0

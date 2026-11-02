@@ -1,0 +1,43 @@
+SPEC KIT — CIERRE DE CORRECCIÓN 09:
+SONAR OK Y ACEPTACIÓN FUNCIONAL
+PENDIENTE
+09-qa-correction cerró el 20 oct 2026 a las 08:55:23, hora Bogotá, con código 0 y 3.450,181
+s instrumentados. La verificación aritmética de la salida original acredita 149 intentos API,
+39 errores y 110 éxitos: 139 intentos/39 errores/100 éxitos del modelo principal y diez
+llamadas auxiliares exitosas (cinco del detector de bucles y cinco utility_tool). Se registran
+por separado 100 respuestas principales. Uso de 09: 10.900.997 tokens de entrada,
+incluidos 8.551.042 cacheados, 40.048 de salida candidata y 42.080 de pensamiento. La
+evidencia se conserva en Spec Kit/docs/qa09-closure/ y 09-metric-verification.json.
+Acumulado cerrado hasta 09: nueve intentos de invocación, ocho que alcanzaron el modelo;
+480 intentos API conocidos, 115 errores y 365 éxitos; 370 respuestas principales como
+medida distinta. Tokens observados: 31.828.685 entrada, 24.325.076 cacheados incluidos,
+117.050 salida candidata y 136.210 pensamiento. Duración conocida: 8.171,557 s; 01/03
+siguen con duración y totales API desconocidos. No se atribuye a este acumulado una
+corrección futura 10 ni el trabajo externo de verificación, coordinación, revisión o Drive.
+Las respuestas SonarQube conservadas tras 09 muestran gate OK, cobertura global 83,1 %
+y cobertura nueva 85,8 % frente al umbral sin cambios de 80 %. Hay cero issues abiertos,
+bugs, vulnerabilidades, hotspots y code smells; duplicación 0,0 %, complejidad 167,
+complejidad cognitiva 113, ncloc 1.028 y deuda técnica 0 min. Esta medición de calidad
+corresponde al estado analizado y deberá renovarse después de cualquier cambio de
+código. No acredita por sí sola la aceptación funcional ni una puntuación de escalabilidad.
+La ejecución independiente posterior de los cuatro comandos terminó con código 0 en
+todos: 35 pruebas backend, dos advertencias y cobertura de sentencias 92 %; 18 pruebas
+frontend, cobertura de sentencias 79,39 %, líneas 81,69 % y ramas 63,63 % (70/110); build
+de producción aprobado y npm audit con cero vulnerabilidades. Los registros y estados
+originales están en generation-09/verification/. La cobertura de ramas independiente difiere
+del autoinforme anterior de Gemini, 65,21 % (75/115); se conservan ambas observaciones
+sin atribuir una causa. El primer intento aislado quedó sin salida y la misma verificación se
+repitió mediante el helper con permisos ampliados. La comparación AST conserva 18/18
+pruebas backend heredadas y 68/68 aserciones originales, con una corrección de fixture;
+esa comparación acredita preservación.
+El checker común de API v1.1 dio 7/7 registros aprobados contra el backend de 09 y cubre
+ocho IDs distintos, no los veinte escenarios: S2-01,02,03,10,11,12,15,16. La aceptación
+funcional sigue abierta: qa09-final-review.md detectó que un JSON antiguo de creación
+puede reemplazar el juego nuevo y que una mutación antigua pendiente puede bloquear su
+cola. Faltan comprobaciones reales del GET con spy/estado completo, coordenadas de los
+siete previews, evidencia independiente del evento C mayúscula y controles exactos de
+cancelación/temporización. Las siete formas coinciden por inspección estática.
+10-qa-race-correction comenzó a las 20:17:28, hora Bogotá, como segunda corrección
+externa; exige revisar primero specs/tareas y después corregir mediante Gemini. Se
+repetirán las verificaciones pertinentes al terminar. Sus tokens/tiempo, el corpus final y el
+informe final permanecen pendientes.

@@ -1,0 +1,30 @@
+{
+  "label": "final",
+  "prepared_at_utc": "2026-10-25T21:41:14.695812+00:00",
+  "status": "source snapshot after closed invocations; final acceptance must be verified separately",
+  "source_root": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\Tessl",
+  "scope": "Tessl specs/stage2/*.md recursively only; copied Stage 1 specs, JSON, researcher docs, transcripts, plugin context and application excluded",
+  "normalization": "UTF-8 without BOM; LF; complete files sorted by path and joined by two LF; no inserted labels, translation, chunking or topic modelling",
+  "analysis_status": "corpus preparation only; no BERTopic model or comparison score",
+  "files": [
+    {
+      "source": "specs/stage2/requirements.md",
+      "corpus_path": "by-file/specs/stage2/requirements.md",
+      "source_byte_sha256": "1F70F8B87B14F673AAB78FDCDB7215E29CE47E1782703CB5ACF17CF4812444C6",
+      "normalized_utf8_sha256": "8CF8758CC3BE330141E34D4C26C93D810A36B9E29110FC5527E17CAD0A152CA6",
+      "lines": 232,
+      "characters": 25808
+    },
+    {
+      "source": "specs/stage2/session_notes.md",
+      "corpus_path": "by-file/specs/stage2/session_notes.md",
+      "source_byte_sha256": "DCC4F9BA7B987A3D450F27D37DD36740C89257764DD54CD16F5DE88AF21E5B5D",
+      "normalized_utf8_sha256": "9C1F60C037BBF8FF0C26648901B6E9E58325E92A74134C4B782B54F082568098",
+      "lines": 111,
+      "characters": 9473
+    }
+  ],
+  "markdown_file_count": 2,
+  "unified_characters": 35283,
+  "unified_utf8_sha256": "CE7C497E57AE99879C2A5143E351763E02952694F388F94944605DB81A33101A"
+}

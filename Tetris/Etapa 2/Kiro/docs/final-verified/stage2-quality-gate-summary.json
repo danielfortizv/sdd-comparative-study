@@ -1,0 +1,104 @@
+{
+  "invocation": "06-qa-retry",
+  "generated_by": "Kiro native Spec workflow (brownfield revision in place)",
+  "date_america_bogota": "2026-10-23",
+  "scope": "Fresh retry of the invocation-05 QA intent; did not resume or overwrite 05; feature not recreated.",
+  "spec_validation": {
+    "requirements_md": "no format issues",
+    "design_md": "1 advisory warning (missing optional Correctness Properties section); correctness expressed via Testing Strategy + Req 16.10-16.24",
+    "tasks_md": "no format issues"
+  },
+  "provenance": {
+    "useGame_ts_before": "67F340FC713072C81F3A744292D708FA3C290F01EE489D6E3D22EF774184269B",
+    "useGame_ts_after": "B75EA8B864F8890B1531B71367EF9410ED138F6A15E5E75B6523A02903667479",
+    "api_ts_unchanged": "4321FAF77B834628E68BD07A7FE471B811B278E005FD0208367BE6966DBA533D",
+    "note": "before-hash matches HOOK_RACE_FINDINGS.md candidate; the three races were still present in the 04/05 candidate and are now fixed."
+  },
+  "corrections_applied": [
+    "R1 (Req 16.10-16.15): restart/create invalidates idRef immediately; no dispatch against old id under new generation; stale A responses (headers and json) never overwrite B; isolated per-generation queue; failed create leaves no orphan timer/guard.",
+    "R2 (Req 16.16-16.20): automatic ticks serialized through the same per-generation FIFO queue as manual work; manual input cancels the exact pending tick timeout at dispatch time; fresh rescheduling across 500->450->100.",
+    "R3 (Req 16.21-16.24): coalescing guard owned solely by the automatic tick; manual and stale completions never clear it; at most one tick queued/in-flight per generation; StrictMode/game-over/unmount cleanup preserved.",
+    "Req 17.4: index.html <title> updated from 'Tetris - Stage 1' to 'Tetris - Stage 2'.",
+    "Req 18.12/18.13: removed src/main.tsx from vite coverage exclusion; added src/main.test.tsx bootstrap/mount test; main.tsx now 100% covered and in the LCOV denominator.",
+    "Req 18.16: added src/useGame.races.test.tsx driving the real useGame hook + api client with independently deferred fetch headers and response.json() bodies and fake timers; hook not mocked.",
+    "Req 18.7-18.11 (security): remediated dev toolchain for Node 25.6.1 - vite 8.3.5, vitest 4.1.12, @vitest/coverage-v8 4.1.12, @vitejs/plugin-react 6.1.2; React 18 / TS 5.6.3 preserved.",
+    "Req 18.15: corrected frontend README overstated coverage/version claims."
+  ],
+  "commands": [
+    {
+      "result": "120 passed",
+      "exit": 0,
+      "cmd": "backend: pytest -q"
+    },
+    {
+      "result": "120 passed; TOTAL 99% coverage; docs/coverage.xml written",
+      "exit": 0,
+      "cmd": "backend: pytest --cov=app --cov-report=xml:../docs/coverage.xml"
+    },
+    {
+      "result": "162 packages; found 0 vulnerabilities",
+      "exit": 0,
+      "cmd": "frontend: npm install (clean, lockfile regenerated)"
+    },
+    {
+      "result": "tsc + vite build OK; dist/index.html title 'Tetris - Stage 2'",
+      "exit": 0,
+      "cmd": "frontend: npm run build (vite 8.3.5)"
+    },
+    {
+      "result": "47 tests passed; ~89% stmts / 94% lines; LCOV covers all production src incl main.tsx",
+      "exit": 0,
+      "cmd": "frontend: npm run test -- --coverage (vitest 4.1.12)"
+    },
+    {
+      "result": "0 vulnerabilities (was 7: 3 moderate, 2 high, 2 critical)",
+      "exit": 0,
+      "cmd": "frontend: npm audit --json (full tree)"
+    },
+    {
+      "result": "0 vulnerabilities",
+      "exit": 0,
+      "cmd": "frontend: npm audit --omit=dev --json"
+    }
+  ],
+  "test_counts": {
+    "backend_tests": 120,
+    "frontend_tests": 47,
+    "frontend_new_this_invocation": [
+      "useGame.races.test.tsx (6)",
+      "main.test.tsx (1)",
+      "useGame.test.tsx +2 error-path"
+    ]
+  },
+  "coverage": {
+    "backend_total_pct": 99,
+    "backend_xml": "docs/coverage.xml",
+    "frontend_lcov": "frontend/coverage/lcov.info",
+    "frontend_statements_pct": 89.01,
+    "frontend_lines_pct": 94.4,
+    "frontend_denominator": "all executable production src/*.ts(x): api, App, Board, Preview, main, types, useGame; excludes only *.test.*, test-setup.ts, vite-env.d.ts"
+  },
+  "audit_full_tree": {
+    "before": "7 (3 moderate, 2 high, 2 critical)",
+    "after": "0",
+    "authoritative": true
+  },
+  "preserved_evidence": [
+    "docs/quality-before-06/ (pre-06 snapshot of coverage/build/test/audit logs and prior vite.config.ts/lcov)",
+    "docs/implementation-04/, docs/quality-before-05/, docs/interrupted-05-recovered/ (untouched prior snapshots)",
+    "docs/sonar-attempt-1-fail/, sonar-attempt-2-fail/, sonar-attempt-3-pass/ (untouched)",
+    "docs/acceptance/ researcher harness + HOOK_RACE_FINDINGS.md (untouched)"
+  ],
+  "preserved_boundaries": [
+    "Frozen common seed, canonical shapes, 7-bag, spawn origin (0,3): unchanged (app/rules/pieces.py).",
+    "Stage 1 specs under .kiro/specs/tetris-stage1-option-a/: untouched.",
+    "Backend runtime pins in requirements.txt: unchanged.",
+    "Kiro HTTP 200 create contract, integer board codes, active_piece key: preserved.",
+    "No Git ops, no repo upload, no researcher helper/harness/metric changes, no CLI/model change."
+  ],
+  "remaining_for_root": [
+    "SonarQube CE scan/verify/fetch and the controlled quality gate (new coverage>=80%, new duplication<=3%, new violations=0) are researcher-owned helpers in ../shared with server credentials, outside this workspace; root reruns independently against docs/coverage.xml and frontend/coverage/lcov.info.",
+    "The 20-case external acceptance matrix and browser validation are root-owned independent checks; not claimed complete here.",
+    "The external hook-race harness (../shared/run-kiro-race-harness.py) should be rerun by root; the source hash changed from the 04 candidate, so prior external findings apply to the earlier candidate and require revalidation."
+  ]
+}

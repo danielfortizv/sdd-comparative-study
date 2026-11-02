@@ -1,0 +1,5 @@
+{
+  "researcher_created": true,
+  "initial_implementation_snapshot": "implementation-05-initial",
+  "reason": "Explicit frozen own initial implementation, before independentQ01 andQ02 corrections."
+}

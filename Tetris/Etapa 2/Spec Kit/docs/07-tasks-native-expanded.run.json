@@ -1,0 +1,17 @@
+{
+  "workflow": "tasks",
+  "submission_method": "installed native TOML prompt expanded with complete multiline arguments",
+  "launcher": "node direct to pinned Gemini CLI entrypoint, avoiding cmd.exe length limit",
+  "label": "07-tasks-native-expanded",
+  "prompt_sha256": "36E8A2989EA345A62881A85E9286B36B61B74B86CF980CD6AC85CA2EB8A330A7",
+  "seed_sha256": "63919779DD4104076FBABCB130CE296A160FA840E0B4755A2AA5D90757ADA8EF",
+  "requested_model": "gemini-3.5-flash",
+  "cli_version": "0.60.0",
+  "spec_kit_version": "1.0.12",
+  "started": "2026-10-20T06:57:31.9906020-05:00",
+  "ended": "2026-10-20T07:06:37.3812634-05:00",
+  "duration_seconds": 545.391,
+  "exit_code": 0,
+  "stdout": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\Spec Kit\\docs\\07-tasks-native-expanded.stdout.json",
+  "stderr": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\Spec Kit\\docs\\07-tasks-native-expanded.stderr.txt"
+}

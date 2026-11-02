@@ -1,0 +1,135 @@
+INFO: Starting the analysis...
+INFO: Starting SonarScanner Engine...
+INFO: Java 21.0.11 Eclipse Adoptium (64-bit)
+INFO: Load global settings
+INFO: Load global settings (done) | time=123ms
+INFO: Server id: 147B411E-AaDs0FqMYsoySKrT1xhM
+INFO: Loading required plugins
+INFO: Load plugins index
+INFO: Load plugins index (done) | time=15ms
+INFO: Load/download plugins
+INFO: Load/download plugins (done) | time=78ms
+INFO: Process project properties
+INFO: Process project properties (done) | time=27ms
+INFO: Project key: tetris-stage2-bmad
+INFO: Base dir: D:\KEVIN\UNIVERSIDAD\Trabajos\Proyecto\Caso 2-Tetris\Etapa 2\Bmad Method
+INFO: Working dir: D:\KEVIN\UNIVERSIDAD\Trabajos\Proyecto\Caso 2-Tetris\Etapa 2\Bmad Method\.sonar
+INFO: Load project settings for component key: 'tetris-stage2-bmad'
+INFO: Load project settings for component key: 'tetris-stage2-bmad' (done) | time=22ms
+INFO: Load quality profiles
+INFO: Load quality profiles (done) | time=210ms
+WARNING: SCM provider autodetection failed. Please use "sonar.scm.provider" to define SCM of your project, or disable the SCM Sensor in the project settings.
+INFO: Load active rules
+INFO: Load active rules (done) | time=413ms
+INFO: Load analysis cache
+INFO: Load analysis cache | time=51ms
+INFO: Preprocessing files...
+INFO: 3 languages detected in 11 preprocessed files (done) | time=68ms
+INFO: 5 files ignored because of inclusion/exclusion patterns
+INFO: 1 directory skipped because of exclusion patterns (content not counted)
+INFO: Loading plugins for detected languages
+INFO: Load/download plugins
+INFO: Load/download plugins (done) | time=67ms
+INFO: Load project repositories
+INFO: Load project repositories (done) | time=199ms
+INFO: Indexing files...
+INFO: Project configuration:
+INFO:   Excluded sources: frontend/src/**/*.test.ts, frontend/src/**/*.test.tsx, backend/app/tests/**, frontend/src/**/*.test.ts, frontend/src/**/*.test.tsx
+INFO:   Included tests: backend/app/tests/**, frontend/src/**/*.test.ts, frontend/src/**/*.test.tsx
+INFO: 11 files indexed (done) | time=37ms
+INFO: Quality profile for css: Sonar way
+INFO: Quality profile for py: Sonar way
+INFO: Quality profile for ts: Sonar way
+INFO: ------------- Run sensors on module Tetris Stage 2 BMAD
+INFO: Load metrics repository
+INFO: Load metrics repository (done) | time=34ms
+INFO: Sensor IaC YAML File Type Classification Sensor [iac]
+INFO: Sensor IaC YAML File Type Classification Sensor [iac] (done) | time=3ms
+INFO: Sensor IaC hadolint report Sensor [iac]
+INFO: Sensor IaC hadolint report Sensor [iac] (done) | time=1ms
+INFO: Sensor Java Config Sensor [iac]
+INFO: There are no files to be analyzed for the Java language
+INFO: Sensor Java Config Sensor [iac] (done) | time=0ms
+INFO: Sensor IaC Docker Sensor [iac]
+INFO: There are no files to be analyzed for the Docker language
+INFO: Sensor IaC Docker Sensor [iac] (done) | time=1ms
+INFO: Sensor Python Sensor [python]
+WARNING: Your code is analyzed as compatible with all Python 3 versions by default. You can get a more precise analysis by setting the Python version or version range in your configuration via the parameter "sonar.python.version"
+INFO: Starting global symbols computation
+INFO: 4 source files to be analyzed
+INFO: 4/4 source files have been analyzed
+INFO: Finished step global symbols computation in 740ms
+INFO: Starting rules execution
+INFO: 4 source files to be analyzed
+INFO: 4/4 source files have been analyzed
+INFO: Finished step rules execution in 2210ms
+INFO: The Python analyzer was able to leverage cached data from previous analyses for 0 out of 4 files. These files were not parsed.
+INFO: Sensor Python Sensor [python] (done) | time=6073ms
+INFO: Sensor Cobertura Sensor for Python coverage [python]
+INFO: Python test coverage
+INFO: Parsing report 'D:\KEVIN\UNIVERSIDAD\Trabajos\Proyecto\Caso 2-Tetris\Etapa 2\Bmad Method\docs\coverage.xml'
+INFO: Sensor Cobertura Sensor for Python coverage [python] (done) | time=1505ms
+INFO: Sensor PythonXUnitSensor [python]
+INFO: Sensor PythonXUnitSensor [python] (done) | time=652ms
+INFO: Sensor Python Dependency Sensor [python]
+INFO: Sensor Python Dependency Sensor [python] (done) | time=28ms
+INFO: Sensor JavaScript/TypeScript Coverage [javascript]
+INFO: Analysing [D:\KEVIN\UNIVERSIDAD\Trabajos\Proyecto\Caso 2-Tetris\Etapa 2\Bmad Method\frontend\coverage\lcov.info]
+INFO: Sensor JavaScript/TypeScript Coverage [javascript] (done) | time=29ms
+INFO: Sensor TextAndSecretsSensor [text]
+INFO: Available processors: 16
+INFO: Using 16 threads for analysis.
+INFO: Start fetching files for the text and secrets analysis
+INFO: Using Git CLI to retrieve dirty files
+WARNING: Retrieving only language associated files, make sure to run the analysis inside a git repository to make use of inclusions specified via "sonar.text.inclusions"
+INFO: Starting the text and secrets analysis
+INFO: 9 source files to be analyzed for the text and secrets analysis
+INFO: 9/9 source files have been analyzed for the text and secrets analysis
+INFO: Sensor TextAndSecretsSensor [text] (done) | time=1200ms
+INFO: ------------- Run sensors on project
+INFO: Sensor JavaScript/TypeScript/CSS analysis [javascript]
+INFO: Detected os: Windows 11 arch: amd64 alpine: false. Platform: WIN_X64
+INFO: Deploy location D:\KEVIN\UNIVERSIDAD\Trabajos\Proyecto\Caso 2-Tetris\Etapa 2\Bmad Method\.sonar-user-home\js\node-runtime, tagetRuntime: D:\KEVIN\UNIVERSIDAD\Trabajos\Proyecto\Caso 2-Tetris\Etapa 2\Bmad Method\.sonar-user-home\js\node-runtime\node.exe,  version: D:\KEVIN\UNIVERSIDAD\Trabajos\Proyecto\Caso 2-Tetris\Etapa 2\Bmad Method\.sonar-user-home\js\node-runtime\version.txt
+INFO: Using embedded Node.js runtime.
+INFO: Using Node.js executable: 'D:\KEVIN\UNIVERSIDAD\Trabajos\Proyecto\Caso 2-Tetris\Etapa 2\Bmad Method\.sonar-user-home\js\node-runtime\node.exe'.
+INFO: Memory configuration: OS (24501 MB), Node.js (4288 MB).
+INFO: gRPC analyze-project server listening on 127.0.0.1:57234
+INFO: Plugin version: [13.8.0.44569]
+INFO: Found 7 tsconfig.json file(s): [D:/KEVIN/UNIVERSIDAD/Trabajos/Proyecto/Caso 2-Tetris/Etapa 2/Bmad Method/docs/candidate-07-before-external-final/files/frontend/tsconfig.json, D:/KEVIN/UNIVERSIDAD/Trabajos/Proyecto/Caso 2-Tetris/Etapa 2/Bmad Method/docs/implementation-04-initial-partial/files/frontend/tsconfig.json, D:/KEVIN/UNIVERSIDAD/Trabajos/Proyecto/Caso 2-Tetris/Etapa 2/Bmad Method/docs/implementation-05-lifecycle-fixed/files/frontend/tsconfig.json, D:/KEVIN/UNIVERSIDAD/Trabajos/Proyecto/Caso 2-Tetris/Etapa 2/Bmad Method/docs/specification-01-prd/files/frontend/tsconfig.json, D:/KEVIN/UNIVERSIDAD/Trabajos/Proyecto/Caso 2-Tetris/Etapa 2/Bmad Method/docs/specification-02-before-completion/files/frontend/tsconfig.json, D:/KEVIN/UNIVERSIDAD/Trabajos/Proyecto/Caso 2-Tetris/Etapa 2/Bmad Method/docs/specification-03-before-build/files/frontend/tsconfig.json, D:/KEVIN/UNIVERSIDAD/Trabajos/Proyecto/Caso 2-Tetris/Etapa 2/Bmad Method/frontend/tsconfig.json]
+INFO: 5 source files to be analyzed
+INFO: Creating TypeScript(6.0.3) program with configuration file D:/KEVIN/UNIVERSIDAD/Trabajos/Proyecto/Caso 2-Tetris/Etapa 2/Bmad Method/docs/candidate-07-before-external-final/files/frontend/tsconfig.json [lib: lib.dom.d.ts, lib.dom.iterable.d.ts, lib.es2020.d.ts]
+INFO: No files to analyze from tsconfig D:/KEVIN/UNIVERSIDAD/Trabajos/Proyecto/Caso 2-Tetris/Etapa 2/Bmad Method/docs/candidate-07-before-external-final/files/frontend/tsconfig.json
+INFO: Creating TypeScript(6.0.3) program with configuration file D:/KEVIN/UNIVERSIDAD/Trabajos/Proyecto/Caso 2-Tetris/Etapa 2/Bmad Method/docs/implementation-04-initial-partial/files/frontend/tsconfig.json [lib: lib.dom.d.ts, lib.dom.iterable.d.ts, lib.es2020.d.ts]
+INFO: No files to analyze from tsconfig D:/KEVIN/UNIVERSIDAD/Trabajos/Proyecto/Caso 2-Tetris/Etapa 2/Bmad Method/docs/implementation-04-initial-partial/files/frontend/tsconfig.json
+INFO: Creating TypeScript(6.0.3) program with configuration file D:/KEVIN/UNIVERSIDAD/Trabajos/Proyecto/Caso 2-Tetris/Etapa 2/Bmad Method/docs/implementation-05-lifecycle-fixed/files/frontend/tsconfig.json [lib: lib.dom.d.ts, lib.dom.iterable.d.ts, lib.es2020.d.ts]
+INFO: No files to analyze from tsconfig D:/KEVIN/UNIVERSIDAD/Trabajos/Proyecto/Caso 2-Tetris/Etapa 2/Bmad Method/docs/implementation-05-lifecycle-fixed/files/frontend/tsconfig.json
+INFO: Creating TypeScript(6.0.3) program with configuration file D:/KEVIN/UNIVERSIDAD/Trabajos/Proyecto/Caso 2-Tetris/Etapa 2/Bmad Method/docs/specification-01-prd/files/frontend/tsconfig.json [lib: lib.dom.d.ts, lib.dom.iterable.d.ts, lib.es2020.d.ts]
+INFO: No files to analyze from tsconfig D:/KEVIN/UNIVERSIDAD/Trabajos/Proyecto/Caso 2-Tetris/Etapa 2/Bmad Method/docs/specification-01-prd/files/frontend/tsconfig.json
+INFO: Creating TypeScript(6.0.3) program with configuration file D:/KEVIN/UNIVERSIDAD/Trabajos/Proyecto/Caso 2-Tetris/Etapa 2/Bmad Method/docs/specification-02-before-completion/files/frontend/tsconfig.json [lib: lib.dom.d.ts, lib.dom.iterable.d.ts, lib.es2020.d.ts]
+INFO: No files to analyze from tsconfig D:/KEVIN/UNIVERSIDAD/Trabajos/Proyecto/Caso 2-Tetris/Etapa 2/Bmad Method/docs/specification-02-before-completion/files/frontend/tsconfig.json
+INFO: Creating TypeScript(6.0.3) program with configuration file D:/KEVIN/UNIVERSIDAD/Trabajos/Proyecto/Caso 2-Tetris/Etapa 2/Bmad Method/docs/specification-03-before-build/files/frontend/tsconfig.json [lib: lib.dom.d.ts, lib.dom.iterable.d.ts, lib.es2020.d.ts]
+INFO: No files to analyze from tsconfig D:/KEVIN/UNIVERSIDAD/Trabajos/Proyecto/Caso 2-Tetris/Etapa 2/Bmad Method/docs/specification-03-before-build/files/frontend/tsconfig.json
+INFO: Creating TypeScript(6.0.3) program with configuration file D:/KEVIN/UNIVERSIDAD/Trabajos/Proyecto/Caso 2-Tetris/Etapa 2/Bmad Method/frontend/tsconfig.json [lib: lib.dom.d.ts, lib.dom.iterable.d.ts, lib.es2020.d.ts]
+INFO: Analyzing 4 file(s) from tsconfig D:/KEVIN/UNIVERSIDAD/Trabajos/Proyecto/Caso 2-Tetris/Etapa 2/Bmad Method/frontend/tsconfig.json (125 total files in program)
+INFO: 5/5 source files have been analyzed
+INFO: Hit the cache for 0 out of 4
+INFO: Miss the cache for 4 out of 4: ANALYSIS_MODE_INELIGIBLE [4/4]
+INFO: Sensor JavaScript/TypeScript/CSS analysis [javascript] (done) | time=19252ms
+INFO: Sensor IaC Project Sensor [iac]
+INFO: Sensor IaC Project Sensor [iac] (done) | time=2ms
+INFO: Sensor Zero Coverage Sensor
+INFO: Sensor Zero Coverage Sensor (done) | time=0ms
+INFO: ------------- Gather SCA dependencies on project
+INFO: Dependency analysis skipped
+INFO: SCM Publisher No SCM system was detected. You can use the 'sonar.scm.provider' property to explicitly specify it.
+INFO: CPD Executor 2 files had no CPD blocks
+INFO: CPD Executor Calculating CPD for 3 files
+INFO: CPD Executor CPD calculation finished (done) | time=33ms
+INFO: Analysis report generated in 153ms, dir size=453.9 kB
+INFO: Analysis report compressed in 448ms, zip size=112.4 kB
+INFO: Analysis report uploaded in 180ms
+INFO: ANALYSIS SUCCESSFUL, you can find the results at: http://127.0.0.1:9000/dashboard?id=tetris-stage2-bmad
+INFO: Note that you will be able to access the updated dashboard once the server has processed the submitted analysis report
+INFO: More about the report processing at http://127.0.0.1:9000/api/ce/task?id=8db7be6c-2891-4e55-99e7-1c0c03b97ea6
+INFO: Analysis total time: 34.356 s
+INFO: SonarScanner Engine completed successfully

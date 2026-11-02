@@ -1,0 +1,31 @@
+
+> tetris-stage1-option-a-frontend@0.1.0 test
+> vitest run --coverage
+
+
+ RUN  v4.1.12 D:/KEVIN/UNIVERSIDAD/Trabajos/Proyecto/Caso 2-Tetris/Etapa 2/Kiro/frontend
+      Coverage enabled with v8
+
+
+ Test Files  7 passed (7)
+      Tests  47 passed (47)
+   Start at  14:24:50
+   Duration  2.99s (transform 215ms, setup 4.54s, import 229ms, tests 1.40s, environment 6.55s)
+
+ % Coverage report from v8
+-------------|---------|----------|---------|---------|-------------------------
+File         | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s       
+-------------|---------|----------|---------|---------|-------------------------
+All files    |   89.01 |    78.57 |   92.68 |    94.4 |                         
+ App.tsx     |   96.29 |    91.66 |   88.88 |   96.15 | 119                     
+ Board.tsx   |     100 |       80 |     100 |     100 | 44-70                   
+ Preview.tsx |     100 |       90 |     100 |     100 | 45                      
+ useGame.ts  |   83.03 |       68 |   88.23 |   91.48 | ...,111-112,127-129,145 
+-------------|---------|----------|---------|---------|-------------------------
+
+=============================== Coverage summary ===============================
+Statements   : 89.01% ( 162/182 )
+Branches     : 78.57% ( 77/98 )
+Functions    : 92.68% ( 38/41 )
+Lines        : 94.4% ( 152/161 )
+================================================================================

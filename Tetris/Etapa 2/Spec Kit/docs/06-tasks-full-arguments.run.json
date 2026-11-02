@@ -1,0 +1,18 @@
+{
+  "workflow": "tasks",
+  "submission_method": "installed native TOML prompt expanded with complete multiline arguments",
+  "label": "06-tasks-full-arguments",
+  "prompt_sha256": "36E8A2989EA345A62881A85E9286B36B61B74B86CF980CD6AC85CA2EB8A330A7",
+  "seed_sha256": "63919779DD4104076FBABCB130CE296A160FA840E0B4755A2AA5D90757ADA8EF",
+  "requested_model": "gemini-3.5-flash",
+  "cli_version": "0.60.0",
+  "spec_kit_version": "1.0.12",
+  "started": "2026-10-20T06:56:54.3854077-05:00",
+  "ended": "2026-10-20T06:56:54.4695657-05:00",
+  "duration_seconds": 0.084,
+  "exit_code": 1,
+  "stdout": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\Spec Kit\\docs\\06-tasks-full-arguments.stdout.json",
+  "stderr": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\Spec Kit\\docs\\06-tasks-full-arguments.stderr.txt",
+  "model_started": false,
+  "failure_reason": "cmd.exe rejected the command line before starting Gemini; no transcript or model request was created"
+}

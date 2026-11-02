@@ -1,0 +1,8 @@
+{
+  "label": "12-qa-timer-retry",
+  "workflow": "clarify",
+  "started": "2026-10-20T20:35:28.0045886-05:00",
+  "prompt_sha256": "1548CC48397B147DB21812C6076D5FA8EFEF300FDB8E53B8CC0D602CC05E02E4",
+  "seed_sha256": "63919779DD4104076FBABCB130CE296A160FA840E0B4755A2AA5D90757ADA8EF",
+  "submission_method": "direct clarification prompt"
+}

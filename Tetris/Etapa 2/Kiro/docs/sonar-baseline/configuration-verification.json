@@ -1,0 +1,35 @@
+{
+  "researcher_created": true,
+  "configured_at_utc": "2026-10-21T19:50:16.9092482Z",
+  "project_key": "tetris-stage2-kiro",
+  "gate_name": "Tetris Stage 2 Kiro Controlled",
+  "conditions": [
+    {
+      "id": "72d7cd63-5982-468f-9e15-0d6a59cb17b7",
+      "metric": "new_violations",
+      "op": "GT",
+      "error": "0",
+      "isCaycCondition": true
+    },
+    {
+      "id": "42b5f207-53c3-4e99-9d42-27c00a59c94f",
+      "metric": "new_coverage",
+      "op": "LT",
+      "error": "80",
+      "isCaycCondition": true
+    },
+    {
+      "id": "e7b72af6-177b-4a29-9987-e63da7396017",
+      "metric": "new_duplicated_lines_density",
+      "op": "GT",
+      "error": "3",
+      "isCaycCondition": true
+    }
+  ],
+  "new_code_type": "PREVIOUS_VERSION",
+  "baseline_project_version": "1.0",
+  "final_project_version": "2.0",
+  "built_in_gate_unchanged": true,
+  "baseline_frontend_lcov_available": false,
+  "warning": "The first baseline analysis can have no evaluated new-code conditions. Baseline gate status is not final Stage 2 acceptance."
+}

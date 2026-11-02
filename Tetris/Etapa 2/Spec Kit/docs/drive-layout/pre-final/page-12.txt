@@ -1,0 +1,44 @@
+aparte, los JSONL conservan 130 respuestas únicas del modelo principal, incluidas 25 de
+las sesiones interrumpidas 01/03. Las dos respuestas auxiliares del detector de bucles
+están en stats JSON, no en el JSONL principal. No se suman esas categorías entre sí. Los
+tokens de entrada/caché/salida anteriores sí permanecen coherentes y se conservarán con
+esta separación en el colector.
+El tiempo conocido de 1.835,506 s incluye 0,084 s del fallo local 06; las sesiones completas
+que alcanzaron Gemini suman 1.835,422 s. Se mantienen como desconocidas las
+duraciones de 01 y 03. Los siete registros cerrados son intentos de invocación, de los
+cuales seis alcanzaron el modelo. El hash 63919779… corresponde al archivo Markdown
+maestro completo; se distinguirá del hash UTF-8 del bloque de semilla extraído. Los 21.527
+caracteres de la entrada de 07 son el conteo crudo; tras normalizar CRLF a LF son 21.300.
+Ambas representaciones tendrán campos separados.
+Se archivaron copias con hash SHA-256 de los transcritos disponibles fuera del almacén
+temporal de Gemini, en Spec Kit/docs/transcripts-archive/, con manifest.json. Los snapshots
+en curso se etiquetan como tales y el cierre generará una copia nueva, sin sobrescribir la
+anterior.
+La revisión independiente del borrador detectó pruebas que repiten fórmulas locales,
+controles de cola sin contar llamadas aleatorias, verificaciones parciales de
+inmutabilidad/reinicio y riesgos de respuestas antiguas durante reinicio del frontend.
+También se observó una orientación incorrecta en el preview de T; los estilos de preview
+estaban pendientes cuando se revisó. Son hallazgos de una implementación todavía
+abierta, registrados en Spec Kit/docs/QA_FINDINGS.md. Se revisarán al cerrar 08 y
+cualquier corrección se efectuará mediante specs nativas y Gemini. No se contarán como
+aceptación aprobada pruebas que no ejerciten el código de producción, ni se atribuyen
+estos hallazgos estáticos al contador de bugs de SonarQube.
+ERRATA DE MEDICIÓN — OPENSPEC
+La cifra anterior de 283 solicitudes combinaba intentos API y respuestas registradas y se
+retira como total comparable. Las estadísticas completas disponibles acreditan 127 intentos
+API, 3 errores y 124 intentos exitosos en 03/04/07/08/09/10. Los totales API de 01/02/05/06
+son desconocidos. Por separado hay 229 respuestas documentadas: 139 conservadas
+actualmente (06=66, 09=18, 10=55) y 90 recuperadas de registros históricos (02=66,
+05=24). En 10, dos solicitudes auxiliares exitosas del detector de bucles aparecen en stats
+JSON, no en el JSONL principal. Las categorías no se suman.
+Se corrigió el colector de investigación y se preservaron el script y métricas previas en
+OpenSpec/docs/measurement-before-definition-fix/. La comparación registrada en
+measurement-definition-verification.json confirma que no cambiaron los conteos de
+código/specs, la duración conocida ni los tokens observados: 13.682.018 entrada,
+10.544.734 cacheados incluidos y 109.122 salida candidata. La evidencia de uso es parcial.
+Los resultados funcionales y de SonarQube ya ejecutados no cambian.
+La semilla maestra de instrucciones permaneció idéntica, pero los archivos de entrada
+previstos no prueban por sí solos la entrega efectiva completa en todos los mensajes
+OpenSpec. Faltan entradas originales de varias sesiones; las entradas retenidas de
+06/09/10 no contienen el bloque completo en su primer mensaje. Esto no demuestra
+ausencia de contexto posterior ni incumplimiento funcional, pero limita una afirmación de

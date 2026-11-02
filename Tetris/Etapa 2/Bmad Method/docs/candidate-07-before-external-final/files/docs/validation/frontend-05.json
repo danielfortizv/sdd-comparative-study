@@ -1,0 +1,20 @@
+{
+  "researcher_created": true,
+  "label": "frontend-05",
+  "cwd": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\Bmad Method",
+  "command": [
+    "C:/Program Files/nodejs/node.exe",
+    "frontend/node_modules/vitest/vitest.mjs",
+    "run",
+    "--config",
+    "docs/acceptance/vitest.external.config.mjs",
+    "--reporter=json",
+    "--outputFile=docs/acceptance/frontend-05.json"
+  ],
+  "started_at_utc": "2026-10-26T01:57:02.917367+00:00",
+  "ended_at_utc": "2026-10-26T01:57:06.051189+00:00",
+  "duration_seconds": 3.134204,
+  "exit_code": 0,
+  "log_path": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\Bmad Method\\docs\\validation\\frontend-05.log",
+  "log_sha256": "E45BBD9DD73EB4D8F1D2D66BD4745CC01E577842B4BDBF9393682E28A9299F38"
+}

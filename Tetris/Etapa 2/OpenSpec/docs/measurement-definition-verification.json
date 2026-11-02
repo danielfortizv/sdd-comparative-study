@@ -1,0 +1,35 @@
+{
+  "verified_at_utc": "2026-10-20T12:43:22.548483+00:00",
+  "scope": "researcher measurement definitions only; application, tests, native specs, prompts and original evidence unchanged",
+  "preserved_source_and_spec_fields": [
+    "source_scope",
+    "spec_scope",
+    "source_baseline",
+    "source_final",
+    "source_change",
+    "spec_stage1",
+    "spec_stage2",
+    "stage2_requirement_statements"
+  ],
+  "preserved_token_totals": {
+    "input_tokens": 13682018,
+    "cached_tokens": 10544734,
+    "output_tokens": 109122
+  },
+  "known_api_totals": {
+    "api_requests": 127,
+    "api_errors": 3,
+    "api_successful_requests": 124
+  },
+  "retained_response_count": 139,
+  "historical_response_count": 90,
+  "documented_response_count": 229,
+  "verification": "passed all assertions",
+  "sha256": {
+    "Etapa 2/shared/collect-openspec-metrics.py": "88845D6E20CBD535EBCC4CBF7692BBAF6AADB28F0E51173C80B91F9E3B51628D",
+    "Etapa 2/OpenSpec/docs/metrics.json": "46FA38C8A3721055FE74927093D6589A7A7FD534B6920EA4EF71A7C88DA61CB4",
+    "Etapa 2/OpenSpec/docs/token-audit.json": "A853324A9D58AAEB7E0374CF5FB05A1A2A0BE3D506AB9BD3AA4344B4A6764058",
+    "Etapa 2/OpenSpec/docs/measurement-before-definition-fix/collect-openspec-metrics.py": "EE59C93C7C0289CCAC51BE3031677FAC98ECDC7039B402F61816D952B66395B8",
+    "Etapa 2/OpenSpec/docs/measurement-before-definition-fix/metrics.json": "839947E69B748B553E83A58F28E2B2ABCD43F081BBE6EE207BB17AE0AB9FC4EC"
+  }
+}

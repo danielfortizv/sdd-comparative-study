@@ -1,0 +1,50 @@
+{
+  "created_at_utc": "2026-10-21T01:17:05.885260+00:00",
+  "scope": "research evidence copies after correction09 and before later Sonar/report overwrites; no application source copied or changed; Sonar pass is not functional acceptance",
+  "files": [
+    {
+      "path": "09-qa-correction.run.json",
+      "sha256": "124E9B10C5EEA3C20B40E5AF4D935FD53A2220380E309DB3143124B16CCFA1EA"
+    },
+    {
+      "path": "09-qa-correction.stdout.json",
+      "sha256": "0C296AB6FDA6D876B215B97D7577CED2A17643AD73E706AD2D25F2E6CA704815"
+    },
+    {
+      "path": "metrics.json",
+      "sha256": "90DD88B025FBB0E95BF8E9AAFA76607E16EE78CE6D71B20D7AABD71D35799A39"
+    },
+    {
+      "path": "input-audit.json",
+      "sha256": "D4C7AB1CCBE4111FAAFAFF8B7D1229E20482CE7628424022A025DB6F1D24D6D7"
+    },
+    {
+      "path": "sonar-summary.json",
+      "sha256": "5EAB80DA2290B78A5B1C98E27693E7B86DD3DCB88DFCBD030B70B1AC0B053076"
+    },
+    {
+      "path": "sonar-quality-gate.json",
+      "sha256": "1129CF3998A7D4C13B4A61F348CFE29BDB316527D33DFD4636C80FC0186EA9A9"
+    },
+    {
+      "path": "sonar-metrics.json",
+      "sha256": "7160CA151DF3ECBC3BDE161737F5776B514647E3911863B966618A9329435938"
+    },
+    {
+      "path": "sonar-open-issues.json",
+      "sha256": "001F06C9BEE0E8BC1D18840AA2310BE5215E31E472854DEB9A4C2A59E57AD22D"
+    },
+    {
+      "path": "sonar-task.json",
+      "sha256": "A4D3F82D4831F83FA9A1C20FCA4FC4792C88B3F5F1F7E42D8346B084DA4E04CB"
+    },
+    {
+      "path": "sonar-scan.log",
+      "sha256": "DF500A34B52B1E3F0CD4A1307D044BF8AE58783E1205E229C2C0BD1251D55423"
+    },
+    {
+      "path": "qa09-final-review.md",
+      "sha256": "2955C38F70A1C807B7681ABAFE987AAC3ADAC26046C1823A600BAE998B742260"
+    }
+  ]
+}

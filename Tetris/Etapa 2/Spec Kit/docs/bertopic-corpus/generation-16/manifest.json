@@ -1,0 +1,80 @@
+{
+  "prepared_at_utc": "2026-10-21T05:31:56.675825+00:00",
+  "label": "generation-16",
+  "status": "intermediate generation-16 snapshot; quality gate ERROR discovered before final acceptance; preserved before QA-4 remediation",
+  "source_root": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\Spec Kit",
+  "scope": "native Stage 2 .md artifacts only; copied Stage 1 specs, JSON/OpenAPI schema, tool templates, research docs, transcripts and application source excluded",
+  "normalization": "UTF-8 without BOM, LF newlines; no prose removed, stemmed, translated, chunked or deduplicated across different artifacts. Native task/checklist/research/contract text is retained. The shared seed is not injected as a separate document.",
+  "unified_definition": "lexicographically sorted source paths; complete normalized per-file texts joined by exactly two LF characters; no researcher headings or filenames inserted into corpus text",
+  "analysis_status": "corpus preparation only; no BERTopic model, embeddings, topic labels or comparison scores generated",
+  "files": [
+    {
+      "source": "specs/002-extend-tetris-stage2/checklists/requirements.md",
+      "corpus_path": "by-file/specs/002-extend-tetris-stage2/checklists/requirements.md",
+      "source_byte_sha256": "F8541D1F39679C2A17ED55C1A059090B5FE957C25C0CE090CC6B63F585622018",
+      "normalized_utf8_sha256": "B0F77DECAD4D748E109EB647C73EEFC908A562EE5C562E02DDA39560E5BF241D",
+      "lines": 50,
+      "characters": 3320
+    },
+    {
+      "source": "specs/002-extend-tetris-stage2/contracts/api-contract.md",
+      "corpus_path": "by-file/specs/002-extend-tetris-stage2/contracts/api-contract.md",
+      "source_byte_sha256": "5660E181250B3E9EE0F373AEAAB4C9C88E92BF6F30A1B74346C3BB1AA5314158",
+      "normalized_utf8_sha256": "1319F1DCAC65D2141EFC3413A657F6DE447326C75D097AE458A08BC2AE9A2031",
+      "lines": 155,
+      "characters": 4697
+    },
+    {
+      "source": "specs/002-extend-tetris-stage2/data-model.md",
+      "corpus_path": "by-file/specs/002-extend-tetris-stage2/data-model.md",
+      "source_byte_sha256": "88E45DD5639B712F6682AA6EA38B4700AC884F17BEE84DACAE497FC70A0FC7ED",
+      "normalized_utf8_sha256": "E31B468C737A2E20C23CB109782025F4388EEED6E6128B1392B9C5DEC24A3ED8",
+      "lines": 200,
+      "characters": 9959
+    },
+    {
+      "source": "specs/002-extend-tetris-stage2/plan.md",
+      "corpus_path": "by-file/specs/002-extend-tetris-stage2/plan.md",
+      "source_byte_sha256": "5F0F306226E0E866428FAB4E79AE365740A160619E50FC73427078C94ABA20F6",
+      "normalized_utf8_sha256": "5F0F306226E0E866428FAB4E79AE365740A160619E50FC73427078C94ABA20F6",
+      "lines": 120,
+      "characters": 5991
+    },
+    {
+      "source": "specs/002-extend-tetris-stage2/quickstart.md",
+      "corpus_path": "by-file/specs/002-extend-tetris-stage2/quickstart.md",
+      "source_byte_sha256": "A08ADEC2BF908F02775320DBB7B050E3C42A34F2F1E73FECE7C47056438BC674",
+      "normalized_utf8_sha256": "90C37E674012CB62D05D1D73DFDF802537DB0806E23F30AB1E0B6E4391698007",
+      "lines": 111,
+      "characters": 4554
+    },
+    {
+      "source": "specs/002-extend-tetris-stage2/research.md",
+      "corpus_path": "by-file/specs/002-extend-tetris-stage2/research.md",
+      "source_byte_sha256": "CC74335FB4C57468CBFC4DD26B36142380E7487D6D0E54EA26633351DFB5648B",
+      "normalized_utf8_sha256": "426F5E969EE518A2DF887E5911780292EB83A9B4EFC72EE6EBD7F972D08C9E35",
+      "lines": 84,
+      "characters": 7622
+    },
+    {
+      "source": "specs/002-extend-tetris-stage2/spec.md",
+      "corpus_path": "by-file/specs/002-extend-tetris-stage2/spec.md",
+      "source_byte_sha256": "2749CB45ACCBF236B88EC2F924C1FAE0B0AA784E61A3E8FE691AA280EF8AF821",
+      "normalized_utf8_sha256": "AE462CC4D25984F7952A438A8E64FBAFEAAA85BE122B4931F683F9F08F48D955",
+      "lines": 343,
+      "characters": 31795
+    },
+    {
+      "source": "specs/002-extend-tetris-stage2/tasks.md",
+      "corpus_path": "by-file/specs/002-extend-tetris-stage2/tasks.md",
+      "source_byte_sha256": "8E97859F1F6C05ADC77CDD0368AE5B1591F9DB68372EF9E6EAA69A547E575F74",
+      "normalized_utf8_sha256": "7971B5A2FF048A843E44536D115D120A95DD24A61395F2C7A4CC73E6A43570F9",
+      "lines": 252,
+      "characters": 19934
+    }
+  ],
+  "markdown_file_count": 8,
+  "unified_characters": 87886,
+  "unified_utf8_sha256": "A17C31EE419F1DF58E462BBDACCB257E5A047CE2397C8A8EC5DE5EA3AB3330BE",
+  "designation_correction": "Originally prepared under final while the exact Sonar analysis was pending. Preserved as generation-16 after five active issues made that analysis gateERROR. Corpus text/hash is unchanged; no final results are implied."
+}

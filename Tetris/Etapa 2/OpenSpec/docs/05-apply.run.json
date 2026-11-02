@@ -1,0 +1,15 @@
+{
+  "workflow": "apply",
+  "label": "05-apply",
+  "prompt_sha256": "2ECEF5853D1DDB925EA081E33B8A0CBB6131E79371E9D5F1103B1EDBD12E0761",
+  "seed_sha256": "63919779DD4104076FBABCB130CE296A160FA840E0B4755A2AA5D90757ADA8EF",
+  "requested_model": "gemini-3.5-flash",
+  "cli_version": "0.60.0",
+  "openspec_version": "1.13.2",
+  "started": "2026-10-19T15:22:31.8212819-05:00",
+  "ended": "2026-10-19T15:29:55.9390658-05:00",
+  "duration_seconds": 444.118,
+  "exit_code": "interrupted after model stall, no source changes",
+  "stdout": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\OpenSpec\\docs\\05-apply.stdout.json",
+  "stderr": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\OpenSpec\\docs\\05-apply.stderr.txt"
+}

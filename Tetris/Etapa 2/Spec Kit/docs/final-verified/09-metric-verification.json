@@ -1,0 +1,51 @@
+{
+  "verified_at_utc": "2026-10-21T01:17:05.989398+00:00",
+  "scope": "read-only CLI arithmetic and saved Sonar responses; no app tests run and no claim of independent functional pass",
+  "session09": {
+    "duration_seconds": 3450.181,
+    "input_tokens": 10900997,
+    "cached_tokens": 8551042,
+    "output_tokens": 40048,
+    "thought_tokens": 42080,
+    "api_requests": 149,
+    "api_errors": 39,
+    "api_successful_requests": 110,
+    "recorded_main_responses": 100,
+    "main_api": {
+      "attempts": 139,
+      "errors": 39,
+      "successes": 100
+    },
+    "auxiliary_api": {
+      "attempts": 10,
+      "errors": 0,
+      "successes": 10,
+      "roles": [
+        "utility_loop_detector",
+        "utility_tool"
+      ]
+    }
+  },
+  "closed_through09": {
+    "known_api_totals": {
+      "api_requests": 480,
+      "api_errors": 115,
+      "api_successful_requests": 365
+    },
+    "observed_tokens": {
+      "input_tokens": 31828685,
+      "cached_tokens": 24325076,
+      "output_tokens": 117050,
+      "thought_tokens": 136210
+    },
+    "recorded_main_responses": 370,
+    "known_duration_seconds": 8171.557
+  },
+  "sonar": {
+    "gate": "OK",
+    "coverage": 83.1,
+    "new_coverage": 85.8,
+    "open_issues": 0
+  },
+  "status": "assertions passed; functional acceptance still pending"
+}

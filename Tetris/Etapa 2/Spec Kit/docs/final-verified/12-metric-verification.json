@@ -1,0 +1,67 @@
+{
+  "verified_at_utc": "2026-10-21T05:25:43.289959+00:00",
+  "label": "12-qa-timer-retry",
+  "run_interval": {
+    "started": "2026-10-20T20:35:28.0045886-05:00",
+    "ended": "2026-10-20T21:00:41.5090227-05:00",
+    "duration_seconds": 1513.504,
+    "exit_code": 1
+  },
+  "deduplicated_response_count": 21,
+  "response_ids": [
+    "111f86fb-9457-4548-b0c3-460f8aecc3d8",
+    "1a30d8b8-6e9c-450d-a05d-2d030657e92f",
+    "2887efca-a650-4065-b2c6-4f7a22cedb53",
+    "33b59535-b06d-47c0-acee-55bce88d9b16",
+    "4c671acf-a4bf-444d-b923-f3a3d3d3ec61",
+    "4cdf271c-91ef-445f-bcf3-e321e5e72e10",
+    "52bb1ceb-2744-465d-8d87-9ef82863b4a7",
+    "5c7d932a-ef59-4fe8-aed3-b0f09290ce6f",
+    "686c4f30-080c-4a9f-b911-f713fde3466f",
+    "728f0ead-64a4-4ca4-a708-d7e907e9641b",
+    "72ab87ce-b5f6-46ed-aa5c-699eeb3f2de7",
+    "767aa013-fb8c-43c1-9b38-ea1ec22b24cc",
+    "7740c176-67d1-4e2a-a6eb-a4f00bb668c5",
+    "a76275cc-a238-4342-89a5-0082d7cd08b2",
+    "b97bd0c7-4ded-4b5f-bbf9-2f3f3d663d9e",
+    "c70dadf4-699d-4073-9c78-06e15fbff187",
+    "dd198ebe-f1bd-46a5-affa-49b575300dd1",
+    "e4163b09-a5fc-4880-8258-8773d9640063",
+    "f1dd1423-1cc5-4ab3-960d-754cdca2bcfa",
+    "f2c7bb1b-6241-4e71-8f63-b57111291c38",
+    "ff4ef369-29d3-4b08-b61e-a19d303e3eaf"
+  ],
+  "jsonl_token_sums": {
+    "input": 1830444,
+    "cached": 1091029,
+    "output": 10707,
+    "thoughts": 14468
+  },
+  "matches_collector": true,
+  "prior_interval_response_id_overlap": [],
+  "api_totals": {
+    "api_requests": null,
+    "api_errors": null,
+    "api_successful_requests": null
+  },
+  "resumed_scope_verification": {
+    "status": "no completed CLI counters; main JSONL interval only",
+    "retry_of": "11-qa-timer-ownership",
+    "main_model": "gemini-3.5-flash",
+    "main_recorded_responses": 21,
+    "main_cli_successful_requests": null,
+    "token_comparisons": null,
+    "definition": "No completed CLI API/model statistics were saved. Response IDs are deduplicated across resumed original/archive files and bounded by this run's start/end, excluding prior-attempt responses. Only observed main JSONL tokens are reported; API attempts/errors/successes and unrecorded auxiliary usage remain unknown."
+  },
+  "transcript_paths": [
+    "transcripts-archive/session-2026-10-21T01-26-2a105d94.2630BFA512AE737A.jsonl",
+    "transcripts-archive/session-2026-10-21T01-26-2a105d94.FFB6834455EE27A5.jsonl"
+  ],
+  "scope": "Independent raw-JSONL parsing, deduplicated by response ID and bounded by each closed invocation; no previous resumed history counted twice. Cached is included in input. Missing model labels remain raw evidence; single-model CLI attribution is explicit.",
+  "terminal_failure": {
+    "kind": "network_fetch_failed",
+    "stdout_bytes": 0,
+    "error_json_location": "stderr",
+    "api_aggregates_unknown": true
+  }
+}

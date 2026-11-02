@@ -1,0 +1,35 @@
+﻿{
+    "projectStatus":  {
+                          "status":  "OK",
+                          "conditions":  [
+                                             {
+                                                 "status":  "OK",
+                                                 "metricKey":  "new_coverage",
+                                                 "comparator":  "LT",
+                                                 "errorThreshold":  "80",
+                                                 "actualValue":  "82.7"
+                                             },
+                                             {
+                                                 "status":  "OK",
+                                                 "metricKey":  "new_duplicated_lines_density",
+                                                 "comparator":  "GT",
+                                                 "errorThreshold":  "3",
+                                                 "actualValue":  "0.0"
+                                             },
+                                             {
+                                                 "status":  "OK",
+                                                 "metricKey":  "new_violations",
+                                                 "comparator":  "GT",
+                                                 "errorThreshold":  "0",
+                                                 "actualValue":  "0"
+                                             }
+                                         ],
+                          "ignoredConditions":  false,
+                          "period":  {
+                                         "mode":  "PREVIOUS_VERSION",
+                                         "date":  "2026-10-25T16:11:07+0000",
+                                         "parameter":  "1.0"
+                                     },
+                          "caycStatus":  "non-compliant"
+                      }
+}

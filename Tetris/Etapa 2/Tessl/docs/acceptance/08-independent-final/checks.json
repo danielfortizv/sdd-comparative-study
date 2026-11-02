@@ -1,0 +1,18 @@
+[
+  {
+    "label": "npm-ci",
+    "argv": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js",
+      "ci",
+      "--no-fund",
+      "--no-audit"
+    ],
+    "cwd": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\Tessl\\frontend",
+    "started_at_utc": "2026-10-25T21:31:45.464005+00:00",
+    "ended_at_utc": "2026-10-25T21:31:46.995285+00:00",
+    "duration_seconds": 1.531,
+    "exit_code": 4294963248,
+    "error": null
+  }
+]

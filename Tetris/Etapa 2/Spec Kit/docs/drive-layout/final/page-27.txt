@@ -1,0 +1,7 @@
+Aceptación: veinte escenarios y mecanismos
+El checker común devuelve siete registros aprobados que cubren ocho IDs distintos; el
+control suplementario S2-16 añade nueve comprobaciones HTTP sin añadir IDs al catálogo.
+La siguiente matriz registra evidencia de API, dominio, pruebas de interfaz y navegador por
+separado. Los fixtures de tres/cuatro filas son dominio aislado; no se presentan como
+partidas alcanzables ni como pruebas manuales de UI. No se calcula una tasa de gameplay
+a partir de estos mecanismos combinados.

@@ -1,0 +1,23 @@
+{
+  "stage": "stage2-frontend",
+  "commands": [
+    { "cmd": "npm install", "cwd": "frontend", "exit": 0, "log": "docs/stage2-frontend-install.log" },
+    { "cmd": "npm run test -- --coverage", "cwd": "frontend", "exit": 0, "log": "docs/stage2-frontend-test.log", "lcov": "frontend/coverage/lcov.info" },
+    { "cmd": "npm run build", "cwd": "frontend", "exit": 0, "log": "docs/stage2-frontend-build.log" },
+    { "cmd": "npm audit --json", "cwd": "frontend", "exit": 1, "output": "docs/stage2-npm-audit.json" },
+    { "cmd": "npm audit --omit=dev --json", "cwd": "frontend", "exit": 0, "output": "docs/stage2-npm-audit-production.json" }
+  ],
+  "tests_passed": 38,
+  "tests_failed": 0,
+  "coverage_statements_percent": 89.75,
+  "coverage_lcov": "frontend/coverage/lcov.info",
+  "lcov_production_modules": ["src/App.tsx", "src/Board.tsx", "src/Preview.tsx", "src/api.ts", "src/types.ts", "src/useGame.ts"],
+  "production_runtime_vulnerabilities": 0,
+  "full_tree_vulnerabilities": { "moderate": 3, "high": 2, "critical": 2, "total": 7 },
+  "audit_notes": "All 7 full-tree findings are in dev-only test tooling (vitest, @vitest/coverage-v8, @vitest/mocker, vite-node, tinypool, esbuild, source-map-js, and the dev copy of vite pulled by vitest). `npm audit --omit=dev` reports 0, so the production runtime (react, react-dom) and the production build (vite 5.4.21) are clean. The remaining dev-tooling advisories are only fixable by a major upgrade to Vitest 4.x, which requires Vite >= 6 and would break the preserved Vite 5 production pin; they are recorded honestly rather than force-fixed or suppressed.",
+  "remediations_applied": [
+    "vite bumped 5.4.11 -> 5.4.21 (non-major patch, clears the 3 baseline production-tree advisories: esbuild moderate, source-map-js high, vite high)",
+    "vitest + @vitest/coverage-v8 chosen at the highest Vite-5-compatible line (3.2.7) to minimize dev-tooling advisories while preserving the Vite 5 pin"
+  ],
+  "runtime_pins_changed": "vite 5.4.11 -> 5.4.21 (documented compatible security remediation, non-major); react/react-dom/typescript unchanged"
+}

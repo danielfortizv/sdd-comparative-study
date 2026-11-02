@@ -1,0 +1,12 @@
+{
+  "01-prd": {
+    "category": "initial_specification",
+    "reason": "NativeBMADheadless Stage2PRD from ownStage1; no app/test changes.",
+    "qa_intent_id": null
+  },
+  "02-design-stories": {
+    "category": "preimplementation_spec_revision",
+    "reason": "Correct concrete PRD contradictions and run native architecture/epics/stories before code.",
+    "qa_intent_id": null
+  }
+}

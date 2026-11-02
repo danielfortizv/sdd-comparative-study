@@ -1,0 +1,76 @@
+{
+  "component": {
+    "key": "tetris-stage2-speckit",
+    "name": "Tetris Stage 2 Spec Kit",
+    "qualifier": "TRK",
+    "measures": [
+      {
+        "metric": "coverage",
+        "value": "83.9",
+        "bestValue": false
+      },
+      {
+        "metric": "complexity",
+        "value": "194"
+      },
+      {
+        "metric": "reliability_rating",
+        "value": "1.0",
+        "bestValue": true
+      },
+      {
+        "metric": "code_smells",
+        "value": "0",
+        "bestValue": true
+      },
+      {
+        "metric": "duplicated_lines_density",
+        "value": "0.0",
+        "bestValue": true
+      },
+      {
+        "metric": "security_rating",
+        "value": "1.0",
+        "bestValue": true
+      },
+      {
+        "metric": "security_hotspots",
+        "value": "0",
+        "bestValue": true
+      },
+      {
+        "metric": "sqale_index",
+        "value": "0",
+        "bestValue": true
+      },
+      {
+        "metric": "sqale_rating",
+        "value": "1.0",
+        "bestValue": true
+      },
+      {
+        "metric": "bugs",
+        "value": "0",
+        "bestValue": true
+      },
+      {
+        "metric": "cognitive_complexity",
+        "value": "148",
+        "bestValue": false
+      },
+      {
+        "metric": "ncloc",
+        "value": "1098"
+      },
+      {
+        "metric": "vulnerabilities",
+        "value": "0",
+        "bestValue": true
+      },
+      {
+        "metric": "lines",
+        "value": "1355"
+      }
+    ]
+  }
+}

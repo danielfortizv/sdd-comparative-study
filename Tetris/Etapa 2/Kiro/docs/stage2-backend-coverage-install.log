@@ -1,0 +1,30 @@
+Requirement already satisfied: fastapi==0.115.6 in .\.venv\lib\site-packages (from -r D:\KEVIN\UNIVERSIDAD\Trabajos\Proyecto\Caso 2-Tetris\Etapa 2\Kiro\backend\requirements.txt (line 1)) (0.115.6)
+Requirement already satisfied: uvicorn==0.34.0 in .\.venv\lib\site-packages (from -r D:\KEVIN\UNIVERSIDAD\Trabajos\Proyecto\Caso 2-Tetris\Etapa 2\Kiro\backend\requirements.txt (line 2)) (0.34.0)
+Requirement already satisfied: pydantic==2.10.4 in .\.venv\lib\site-packages (from -r D:\KEVIN\UNIVERSIDAD\Trabajos\Proyecto\Caso 2-Tetris\Etapa 2\Kiro\backend\requirements.txt (line 3)) (2.10.4)
+Requirement already satisfied: pytest==8.3.4 in .\.venv\lib\site-packages (from -r D:\KEVIN\UNIVERSIDAD\Trabajos\Proyecto\Caso 2-Tetris\Etapa 2\Kiro\backend\requirements.txt (line 4)) (8.3.4)
+Requirement already satisfied: httpx==0.28.1 in .\.venv\lib\site-packages (from -r D:\KEVIN\UNIVERSIDAD\Trabajos\Proyecto\Caso 2-Tetris\Etapa 2\Kiro\backend\requirements.txt (line 5)) (0.28.1)
+Collecting pytest-cov==6.0.0 (from -r requirements-dev.txt (line 6))
+  Downloading pytest_cov-6.0.0-py3-none-any.whl.metadata (27 kB)
+Requirement already satisfied: starlette<0.42.0,>=0.40.0 in .\.venv\lib\site-packages (from fastapi==0.115.6->-r D:\KEVIN\UNIVERSIDAD\Trabajos\Proyecto\Caso 2-Tetris\Etapa 2\Kiro\backend\requirements.txt (line 1)) (0.41.3)
+Requirement already satisfied: typing-extensions>=4.8.0 in .\.venv\lib\site-packages (from fastapi==0.115.6->-r D:\KEVIN\UNIVERSIDAD\Trabajos\Proyecto\Caso 2-Tetris\Etapa 2\Kiro\backend\requirements.txt (line 1)) (4.16.0)
+Requirement already satisfied: annotated-types>=0.6.0 in .\.venv\lib\site-packages (from pydantic==2.10.4->-r D:\KEVIN\UNIVERSIDAD\Trabajos\Proyecto\Caso 2-Tetris\Etapa 2\Kiro\backend\requirements.txt (line 3)) (0.8.0)
+Requirement already satisfied: pydantic-core==2.27.2 in .\.venv\lib\site-packages (from pydantic==2.10.4->-r D:\KEVIN\UNIVERSIDAD\Trabajos\Proyecto\Caso 2-Tetris\Etapa 2\Kiro\backend\requirements.txt (line 3)) (2.27.2)
+Requirement already satisfied: click>=7.0 in .\.venv\lib\site-packages (from uvicorn==0.34.0->-r D:\KEVIN\UNIVERSIDAD\Trabajos\Proyecto\Caso 2-Tetris\Etapa 2\Kiro\backend\requirements.txt (line 2)) (8.5.0)
+Requirement already satisfied: h11>=0.8 in .\.venv\lib\site-packages (from uvicorn==0.34.0->-r D:\KEVIN\UNIVERSIDAD\Trabajos\Proyecto\Caso 2-Tetris\Etapa 2\Kiro\backend\requirements.txt (line 2)) (0.16.0)
+Requirement already satisfied: colorama in .\.venv\lib\site-packages (from pytest==8.3.4->-r D:\KEVIN\UNIVERSIDAD\Trabajos\Proyecto\Caso 2-Tetris\Etapa 2\Kiro\backend\requirements.txt (line 4)) (0.4.6)
+Requirement already satisfied: exceptiongroup>=1.0.0rc8 in .\.venv\lib\site-packages (from pytest==8.3.4->-r D:\KEVIN\UNIVERSIDAD\Trabajos\Proyecto\Caso 2-Tetris\Etapa 2\Kiro\backend\requirements.txt (line 4)) (1.3.1)
+Requirement already satisfied: iniconfig in .\.venv\lib\site-packages (from pytest==8.3.4->-r D:\KEVIN\UNIVERSIDAD\Trabajos\Proyecto\Caso 2-Tetris\Etapa 2\Kiro\backend\requirements.txt (line 4)) (2.3.0)
+Requirement already satisfied: packaging in .\.venv\lib\site-packages (from pytest==8.3.4->-r D:\KEVIN\UNIVERSIDAD\Trabajos\Proyecto\Caso 2-Tetris\Etapa 2\Kiro\backend\requirements.txt (line 4)) (26.3)
+Requirement already satisfied: pluggy<2,>=1.5 in .\.venv\lib\site-packages (from pytest==8.3.4->-r D:\KEVIN\UNIVERSIDAD\Trabajos\Proyecto\Caso 2-Tetris\Etapa 2\Kiro\backend\requirements.txt (line 4)) (1.6.0)
+Requirement already satisfied: tomli>=1 in .\.venv\lib\site-packages (from pytest==8.3.4->-r D:\KEVIN\UNIVERSIDAD\Trabajos\Proyecto\Caso 2-Tetris\Etapa 2\Kiro\backend\requirements.txt (line 4)) (2.4.1)
+Requirement already satisfied: anyio in .\.venv\lib\site-packages (from httpx==0.28.1->-r D:\KEVIN\UNIVERSIDAD\Trabajos\Proyecto\Caso 2-Tetris\Etapa 2\Kiro\backend\requirements.txt (line 5)) (4.15.1)
+Requirement already satisfied: certifi in .\.venv\lib\site-packages (from httpx==0.28.1->-r D:\KEVIN\UNIVERSIDAD\Trabajos\Proyecto\Caso 2-Tetris\Etapa 2\Kiro\backend\requirements.txt (line 5)) (2026.7.22)
+Requirement already satisfied: httpcore==1.* in .\.venv\lib\site-packages (from httpx==0.28.1->-r D:\KEVIN\UNIVERSIDAD\Trabajos\Proyecto\Caso 2-Tetris\Etapa 2\Kiro\backend\requirements.txt (line 5)) (1.0.9)
+Requirement already satisfied: idna in .\.venv\lib\site-packages (from httpx==0.28.1->-r D:\KEVIN\UNIVERSIDAD\Trabajos\Proyecto\Caso 2-Tetris\Etapa 2\Kiro\backend\requirements.txt (line 5)) (3.20)
+Requirement already satisfied: coverage>=7.5 in .\.venv\lib\site-packages (from coverage[toml]>=7.5->pytest-cov==6.0.0->-r requirements-dev.txt (line 6)) (7.16.2)
+Downloading pytest_cov-6.0.0-py3-none-any.whl (22 kB)
+Installing collected packages: pytest-cov
+Successfully installed pytest-cov-6.0.0
+
+[notice] A new release of pip is available: 26.2.1 -> 26.2.2
+[notice] To update, run: python.exe -m pip install --upgrade pip

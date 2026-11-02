@@ -1,0 +1,76 @@
+﻿{
+    "component":  {
+                      "key":  "tetris-stage2-tessl",
+                      "name":  "Tetris Stage 2 Tessl",
+                      "qualifier":  "TRK",
+                      "measures":  [
+                                       {
+                                           "metric":  "coverage",
+                                           "value":  "85.3",
+                                           "bestValue":  false
+                                       },
+                                       {
+                                           "metric":  "complexity",
+                                           "value":  "149"
+                                       },
+                                       {
+                                           "metric":  "reliability_rating",
+                                           "value":  "1.0",
+                                           "bestValue":  true
+                                       },
+                                       {
+                                           "metric":  "code_smells",
+                                           "value":  "12",
+                                           "bestValue":  false
+                                       },
+                                       {
+                                           "metric":  "duplicated_lines_density",
+                                           "value":  "0.0",
+                                           "bestValue":  true
+                                       },
+                                       {
+                                           "metric":  "security_rating",
+                                           "value":  "3.0",
+                                           "bestValue":  false
+                                       },
+                                       {
+                                           "metric":  "security_hotspots",
+                                           "value":  "0",
+                                           "bestValue":  true
+                                       },
+                                       {
+                                           "metric":  "sqale_index",
+                                           "value":  "62",
+                                           "bestValue":  false
+                                       },
+                                       {
+                                           "metric":  "sqale_rating",
+                                           "value":  "1.0",
+                                           "bestValue":  true
+                                       },
+                                       {
+                                           "metric":  "bugs",
+                                           "value":  "0",
+                                           "bestValue":  true
+                                       },
+                                       {
+                                           "metric":  "cognitive_complexity",
+                                           "value":  "125",
+                                           "bestValue":  false
+                                       },
+                                       {
+                                           "metric":  "ncloc",
+                                           "value":  "1127"
+                                       },
+                                       {
+                                           "metric":  "vulnerabilities",
+                                           "value":  "1",
+                                           "bestValue":  false
+                                       },
+                                       {
+                                           "metric":  "lines",
+                                           "value":  "1403"
+                                       }
+                                   ]
+                  }
+}

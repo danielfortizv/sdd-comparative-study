@@ -1,0 +1,72 @@
+<!doctype html><html lang="es"><meta charset="utf-8"><title>Tetris Etapa 2 · Pruebas Spec Kit</title>
+<style>
+*{box-sizing:border-box}body{margin:0;background:#09111f;color:#e8f0ff;font:18px/1.45 Segoe UI,Arial,sans-serif;padding:48px}
+h1{font-size:36px;margin:0 0 8px;color:#65e9f5}h2{font-size:23px;color:#a9b9ff;margin:34px 0 14px}
+.sub{color:#b4c3d9;margin-bottom:30px}.cards{display:flex;gap:18px;flex-wrap:wrap}.card{background:#14233a;border:1px solid #294362;border-radius:12px;padding:20px;min-width:220px}
+.num{font-size:30px;font-weight:700;color:#8fffc4}.lbl{font-size:14px;color:#bdc9da;text-transform:uppercase;letter-spacing:.07em}
+table{width:100%;border-collapse:collapse;background:#101e31;font-size:15px}th,td{padding:11px 12px;border:1px solid #29415b;text-align:left;vertical-align:top}th{background:#18304a;color:#8deeff}tr:nth-child(even){background:#15243a}
+.note{color:#c9d4e5;font-size:14px;margin-top:24px}pre{background:#101e31;border:1px solid #29415b;border-radius:8px;padding:18px;white-space:pre-wrap;font:13px/1.35 Consolas,monospace}
+</style><body><h1>Tetris Etapa 2 · Pruebas Spec Kit</h1><div class="sub">Ejecución independiente del investigador sobre la versión verificada</div><table><thead><tr><th>Verificación</th><th>Código de retorno</th><th>Archivo original</th></tr></thead><tbody><tr><td>backend-tests-and-coverage</td><td>0</td><td>backend-coverage.log</td></tr><tr><td>frontend-tests-and-coverage</td><td>0</td><td>frontend-test-coverage.log</td></tr><tr><td>frontend-production-build</td><td>0</td><td>frontend-build.log</td></tr><tr><td>frontend-dependency-audit</td><td>0</td><td>npm-audit.json</td></tr></tbody></table><h2>Backend: cobertura y resultado</h2><pre>=============================== tests coverage ================================
+______________ coverage: platform win32, python 3.12.14-final-0 _______________
+
+Name                          Stmts   Miss  Cover   Missing
+-----------------------------------------------------------
+app\__init__.py                   0      0   100%
+app\api\__init__.py               0      0   100%
+app\api\endpoints.py             27      2    93%   26, 32
+app\main.py                      11      1    91%   52
+app\models\__init__.py            0      0   100%
+app\models\schemas.py            85     12    86%   13, 20, 23, 26, 33, 36, 59, 62, 65, 72, 79, 86
+app\services\__init__.py          0      0   100%
+app\services\game_engine.py     113      4    96%   65, 80, 111, 182
+-----------------------------------------------------------
+TOTAL                           236     19    92%
+Coverage XML written to file D:\KEVIN\UNIVERSIDAD\Trabajos\Proyecto\Caso 2-Tetris\Etapa 2\Spec Kit\docs\coverage.xml
+35 passed, 2 warnings in 2.49s</pre><h2>Frontend: cobertura y resultado</h2><pre>
+ RUN  v4.1.12 D:/KEVIN/UNIVERSIDAD/Trabajos/Proyecto/Caso 2-Tetris/Etapa 2/Spec Kit/frontend
+      Coverage enabled with v8
+
+
+ Test Files  3 passed (3)
+      Tests  38 passed (38)
+   Start at  00:38:24
+   Duration  2.71s (transform 394ms, setup 0ms, import 2.54s, tests 676ms, environment 2.68s)
+
+ % Coverage report from v8
+-------------------|---------|----------|---------|---------|-------------------
+File               | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s 
+-------------------|---------|----------|---------|---------|-------------------
+All files          |   80.26 |    70.25 |   97.14 |   84.07 |                   
+ src               |    64.1 |    63.88 |    87.5 |   64.86 |                   
+  App.tsx          |   65.78 |    63.88 |    87.5 |   66.66 | 56-72             
+  main.tsx         |       0 |      100 |     100 |       0 | 6                 
+ src/components    |   80.64 |    59.09 |     100 |   79.31 |                   
+  Board.tsx        |      76 |       50 |     100 |      75 | 46,48-52          
+ src/hooks         |   84.31 |       75 |     100 |   90.37 |                   
+  useGame.ts       |   84.31 |       75 |     100 |   90.37 | ...21-222,226-227 
+-------------------|---------|----------|---------|---------|-------------------
+
+=============================== Coverage summary ===============================
+Statements   : 80.26% ( 179/223 )
+Branches     : 70.25% ( 111/158 )
+Functions    : 97.14% ( 34/35 )
+Lines        : 84.07% ( 169/201 )
+================================================================================</pre><h2>Compilación de producción</h2><pre>&gt; tetris-frontend@0.1.0 build
+&gt; tsc &amp;&amp; vite build
+
+vite v6.4.4 building for production...
+transforming...
+✓ 31 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                   0.61 kB │ gzip:  0.41 kB
+dist/assets/index-B0OJroUd.css    5.39 kB │ gzip:  1.43 kB
+dist/assets/index-BwR3k4sY.js   151.79 kB │ gzip: 48.67 kB
+✓ built in 763ms</pre><h2>Dependencias npm</h2><pre>{
+  &quot;info&quot;: 0,
+  &quot;low&quot;: 0,
+  &quot;moderate&quot;: 0,
+  &quot;high&quot;: 0,
+  &quot;critical&quot;: 0,
+  &quot;total&quot;: 0
+}</pre><div class="note">Visor local de registros originales; no es una captura de una consola. Solo se retiran códigos ANSI de color para legibilidad. Comandos completos, argumentos, fechas y códigos de retorno: docs/verification-commands.json. Los archivos originales no se modifican.</div></body></html>

@@ -1,0 +1,129 @@
+[
+  {
+    "argv": [
+      "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 1\\Kiro\\backend\\.venv\\Scripts\\python.exe",
+      "-B",
+      "-c",
+      "import importlib.metadata,json,platform,sys; print(json.dumps({'python':platform.python_version(),'executable':sys.executable,'packages':sorted([{'name':d.metadata['Name'],'version':d.version} for d in importlib.metadata.distributions()],key=lambda x:x['name'].lower())}))"
+    ],
+    "cwd": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\Kiro\\backend",
+    "started_at_utc": "2026-10-21T19:46:24.748668+00:00",
+    "ended_at_utc": "2026-10-21T19:46:24.989631+00:00",
+    "duration_seconds": 0.234,
+    "exit_code": 0,
+    "log_path": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\Kiro\\docs\\baseline-original-python-inventory.json"
+  },
+  {
+    "argv": [
+      "C:\\Users\\Kevin Alvarez\\AppData\\Local\\Programs\\Python\\Python310\\python.exe",
+      "-B",
+      "-m",
+      "venv",
+      "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\Kiro\\backend\\.venv"
+    ],
+    "cwd": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\Kiro\\backend",
+    "started_at_utc": "2026-10-21T19:46:24.990632+00:00",
+    "ended_at_utc": "2026-10-21T19:46:35.338227+00:00",
+    "duration_seconds": 10.344,
+    "exit_code": 0,
+    "log_path": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\Kiro\\docs\\baseline-python-venv-create.log"
+  },
+  {
+    "argv": [
+      "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\Kiro\\backend\\.venv\\Scripts\\python.exe",
+      "-B",
+      "-m",
+      "pip",
+      "install",
+      "--requirement",
+      "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\Kiro\\docs\\baseline-original-python-pins.txt"
+    ],
+    "cwd": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\Kiro\\backend",
+    "started_at_utc": "2026-10-21T19:46:35.338227+00:00",
+    "ended_at_utc": "2026-10-21T19:47:00.792403+00:00",
+    "duration_seconds": 25.453,
+    "exit_code": 0,
+    "log_path": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\Kiro\\docs\\baseline-python-install.log"
+  },
+  {
+    "argv": [
+      "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\Kiro\\backend\\.venv\\Scripts\\python.exe",
+      "-B",
+      "-c",
+      "import importlib.metadata,json,platform,sys; print(json.dumps({'python':platform.python_version(),'executable':sys.executable,'packages':sorted([{'name':d.metadata['Name'],'version':d.version} for d in importlib.metadata.distributions()],key=lambda x:x['name'].lower())}))"
+    ],
+    "cwd": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\Kiro\\backend",
+    "started_at_utc": "2026-10-21T19:47:00.793406+00:00",
+    "ended_at_utc": "2026-10-21T19:47:01.116120+00:00",
+    "duration_seconds": 0.328,
+    "exit_code": 0,
+    "log_path": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\Kiro\\docs\\baseline-current-python-inventory.json"
+  },
+  {
+    "argv": [
+      "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 1\\Kiro\\backend\\.venv\\Scripts\\python.exe",
+      "-B",
+      "-c",
+      "import importlib.metadata,json,platform,sys; print(json.dumps({'python':platform.python_version(),'executable':sys.executable,'packages':sorted([{'name':d.metadata['Name'],'version':d.version} for d in importlib.metadata.distributions()],key=lambda x:x['name'].lower())}))"
+    ],
+    "cwd": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\Kiro\\backend",
+    "started_at_utc": "2026-10-21T19:47:01.116120+00:00",
+    "ended_at_utc": "2026-10-21T19:47:01.323640+00:00",
+    "duration_seconds": 0.203,
+    "exit_code": 0,
+    "log_path": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\Kiro\\docs\\baseline-original-python-inventory-after.json"
+  },
+  {
+    "argv": [
+      "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\Kiro\\backend\\.venv\\Scripts\\python.exe",
+      "-B",
+      "-m",
+      "pytest",
+      "-q"
+    ],
+    "cwd": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\Kiro\\backend",
+    "started_at_utc": "2026-10-21T19:47:01.324645+00:00",
+    "ended_at_utc": "2026-10-21T19:47:02.655261+00:00",
+    "duration_seconds": 1.344,
+    "exit_code": 0,
+    "log_path": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\Kiro\\docs\\baseline-backend-tests.log"
+  },
+  {
+    "argv": [
+      "C:\\Program Files\\nodejs\\npm.cmd",
+      "ci"
+    ],
+    "cwd": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\Kiro\\frontend",
+    "started_at_utc": "2026-10-21T19:47:02.656260+00:00",
+    "ended_at_utc": "2026-10-21T19:47:11.143951+00:00",
+    "duration_seconds": 8.484,
+    "exit_code": 0,
+    "log_path": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\Kiro\\docs\\baseline-npm-ci.log"
+  },
+  {
+    "argv": [
+      "C:\\Program Files\\nodejs\\npm.cmd",
+      "run",
+      "build"
+    ],
+    "cwd": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\Kiro\\frontend",
+    "started_at_utc": "2026-10-21T19:47:11.145452+00:00",
+    "ended_at_utc": "2026-10-21T19:47:13.587215+00:00",
+    "duration_seconds": 2.438,
+    "exit_code": 0,
+    "log_path": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\Kiro\\docs\\baseline-frontend-build.log"
+  },
+  {
+    "argv": [
+      "C:\\Program Files\\nodejs\\npm.cmd",
+      "audit",
+      "--json"
+    ],
+    "cwd": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\Kiro\\frontend",
+    "started_at_utc": "2026-10-21T19:47:13.588215+00:00",
+    "ended_at_utc": "2026-10-21T19:47:15.034813+00:00",
+    "duration_seconds": 1.453,
+    "exit_code": 1,
+    "log_path": "D:\\KEVIN\\UNIVERSIDAD\\Trabajos\\Proyecto\\Caso 2-Tetris\\Etapa 2\\Kiro\\docs\\baseline-npm-audit.json"
+  }
+]

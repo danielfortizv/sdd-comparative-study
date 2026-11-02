@@ -1,0 +1,26 @@
+{
+  "qualitygates": [
+    {
+      "name": "Sonar way",
+      "isDefault": true,
+      "isBuiltIn": true,
+      "actions": {
+        "rename": false,
+        "setAsDefault": false,
+        "copy": true,
+        "associateProjects": false,
+        "delete": false,
+        "manageConditions": false,
+        "delegate": false,
+        "manageAiCodeAssurance": false
+      },
+      "caycStatus": "compliant",
+      "hasStandardConditions": false,
+      "hasMQRConditions": false,
+      "isAiCodeSupported": false
+    }
+  ],
+  "actions": {
+    "create": true
+  }
+}

@@ -1,0 +1,28 @@
+[INFO] kas.server.starting {"product":"KAS (Kiro Agent Server)","version":"0.66.48"}
+[INFO] Auth: --auth=acp-callback (host-mediated refresh via _kiro/auth/getAccessToken)
+[INFO] acp.content_collection.resolved {"enabled":true}
+[INFO] acp.remote_sessions.enabled {"endpoint":"https://app.kiro.dev"}
+[INFO] [KiroAgent] MCP subsystem initialized
+[ERROR] (node:15368) ExperimentalWarning: SQLite is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+[INFO] fs.workflow.recipes.readDir.ok {"system":"fs","tier":"user","durationMs":12}
+[INFO] fs.workflow.recipes.readDir.ok {"system":"fs","tier":"cloud","durationMs":23}
+[INFO] fs.workflow.recipeCatalog.refreshShared.ok {"system":"fs","trigger":"startup","durationMs":45}
+[INFO] [KRS] <-- GenerateAssistantResponseCommand done totalEvents=8
+[INFO] [KRS] <-- GenerateAssistantResponseCommand done totalEvents=16
+[INFO] [KRS] <-- GenerateAssistantResponseCommand done totalEvents=84
+[INFO] [KRS] <-- GenerateAssistantResponseCommand done totalEvents=82
+[INFO] [KRS] <-- GenerateAssistantResponseCommand done totalEvents=115
+[INFO] [KRS] <-- GenerateAssistantResponseCommand done totalEvents=145
+[INFO] [KRS] <-- GenerateAssistantResponseCommand done totalEvents=43
+[INFO] [KRS] <-- GenerateAssistantResponseCommand done totalEvents=287
+[INFO] [KRS] <-- GenerateAssistantResponseCommand done totalEvents=1033
+[INFO] [KRS] <-- GenerateAssistantResponseCommand done totalEvents=852
+[INFO] [KRS] <-- GenerateAssistantResponseCommand done totalEvents=665
+[INFO] [KRS] <-- GenerateAssistantResponseCommand done totalEvents=207
+[INFO] [KRS] <-- GenerateAssistantResponseCommand done totalEvents=184
+[INFO] [KRS] <-- GenerateAssistantResponseCommand done totalEvents=417
+[INFO] [KRS] <-- GenerateAssistantResponseCommand done totalEvents=35
+[INFO] [KRS] <-- GenerateAssistantResponseCommand done totalEvents=577
+[INFO] [KRS] <-- GenerateAssistantResponseCommand done totalEvents=35
+[INFO] [KRS] <-- GenerateAssistantResponseCommand done totalEvents=991

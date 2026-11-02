@@ -1,0 +1,170 @@
+{
+  "audited_at_utc": "2026-10-21T14:40:29.067719+00:00",
+  "status": "Closed retained intervals manually audited.",
+  "tool": "Tessl Stage 2",
+  "count_definition": "A blocking clarification question is emitted main-model natural-language text requesting missing user/researcher input before proceeding. Count requests, not punctuation; quoted/template-only questions are excluded by manual adjudication.",
+  "closed_run_labels": [
+    "01-specify"
+  ],
+  "pending_run_labels": [],
+  "manual_review_required_closed_labels": [],
+  "closed_runs_observed_blocking_question_count": 0,
+  "all_started_runs_observed_blocking_question_count": 0,
+  "reviewed_unique_natural_language_messages": 1,
+  "runs": [
+    {
+      "label": "01-specify",
+      "state": "closed",
+      "started": "2026-10-21T09:30:32.7733099-05:00",
+      "ended": "2026-10-21T09:37:12.1758072-05:00",
+      "observed_until": null,
+      "exit_code": 0,
+      "metadata_path": "01-specify.run.json",
+      "metadata_sha256": "427B7205B22BB778ED21B86E7E106EE5CFB41850BE8CD815AF5C9BAC9593638C",
+      "main_model": "gemini-3.5-flash",
+      "review_status": "manually_reviewed_retained_interval",
+      "candidate_signature_sha256": "3126FC1B9FE30C993816F842DC453F893620A58068EA5085255273B237ABE4E4",
+      "natural_language_message_count": 1,
+      "tool_requested_blocking_questions_observed": 0,
+      "candidate_messages": [
+        {
+          "candidate_id": "08c8cdbc-c131-4ede-9b86-b365f410cbd7/15d2c984-3c44-4d65-87a3-bd63ad5a2ef1",
+          "session_id": "08c8cdbc-c131-4ede-9b86-b365f410cbd7",
+          "response_id": "15d2c984-3c44-4d65-87a3-bd63ad5a2ef1",
+          "timestamp": "2026-10-21T14:37:12.117Z",
+          "models_observed": [
+            "gemini-3.5-flash"
+          ],
+          "attribution": "main_model",
+          "text": "I have completed the research, design, and specification phase for **Stage 2, Option A**, strictly adhering to the legacy codebase structures, seed guidelines, and project-specific conventions. No application code, test files, dependencies, or inherited Stage 1 specifications have been modified in this phase.\n\n### 1. Concrete Files Finalized on Disk\n* **`specs/stage2/requirements.md`**: Contains 30 atomic, testable requirements (`Req-S2-1` to `Req-S2-30`) covering state schema expansions, piece spawning lifecycles, first and swap hold mechanisms, progressive scoring/levels, terminal game-over rules, and advanced frontend dynamic timer rescheduling, coalescing, and request-generation controls. It also maps 10 comprehensive Stage 2 Acceptance Criteria (`AC-S2-1` to `AC-S2-10`).\n* **`specs/stage2/session_notes.md`**: Contains a detailed traceable implementation checklist, material ambiguity resolutions, and evidence of Tessl MCP live status.\n\n---\n\n### 2. Live Tessl MCP Integration Evidence\nAs required, authentic status from our Tessl tools was successfully captured and logged under `specs/stage2/session_notes.md`:\n* **`mcp_tessl_status`**: Succeeded locally, showing `manifest.summary.inSync: 2` with plugins `maria/fastapi` and `softaworks/agent-toolkit` (containing `react-dev`) fully in-sync.\n* **`mcp_tessl_skills_available`**: Rejected due to missing authentication in our headless/CI environment, confirming live, active connectivity with the Tessl MCP registry.\n\n---\n\n### 3. Material Ambiguities and System Design Resolutions\n* **Three- and Four-Row Scoring:** Unrotated canonical shapes have a maximum height of 2 rows, making 3/4-row line clears mathematically impossible in normal UI gameplay.\n  * *Resolution:* Unit testing of 3-row and 4-row scoring multipliers ($500 \\times L$ and $800 \\times L$) is validated strictly via explicitly labeled isolated-domain unit test fixtures in `backend/tests/test_game.py` using custom board states. No UI gameplay claims or rotation mechanisms are introduced.\n* **Row-Zero Locking vs. Preview Draw:**\n  * *Resolution:* If a piece locks at row 0 (immediate game over), no normal spawn is attempted. The previewed `next_piece` is preserved exactly as is, without being consumed or advanced. For obstructed spawns at rows > 0, `next_piece` is consumed and a new preview drawn before transitioning to `\"game_over\"`.\n* **Hold Rejection Compatibility:**\n  * *Resolution:* Rejected hold operations (e.g., calling hold when `can_hold` is false or game is over) return HTTP 200 with the completely unmodified game state.\n* **Frontend State Integrity & Dynamic Gravity Timer:**\n  * *Resolution:* The frontend tracks `generationId` sequences on every request, discarding out-of-order/stale responses. It detects changes to `gravity_interval_ms` and dynamically cancels the old timer to schedule a new one with the updated interval. It also coalesces automatic ticks with user-triggered movements/holds.\n\nThe specifications are ready on disk. I am prepared to proceed with the implementation once you issue a directive!",
+          "snippet": "I have completed the research, design, and specification phase for **Stage 2, Option A**, strictly adhering to the legacy codebase structures, seed guidelines, and project-specific conventions. No application code, test files, dependencies, or inherited Stage 1 specifications have been modified in this phase.\n\n### 1. Concrete Files Finalized on Disk\n* **`specs/stage2/requirements.md`**: Contains 30 atomic, testable requirements (`Req-S2-1` to `Req-S2-30`) covering state schema expansions, piece ",
+          "decoded_text_utf8_sha256": "92B373765739C5521AA375B021AC24CBF5D9B2989172F4CD4EAD0501C739B35A",
+          "characters": 3072,
+          "text_variants": [
+            {
+              "text": "I have completed the research, design, and specification phase for **Stage 2, Option A**, strictly adhering to the legacy codebase structures, seed guidelines, and project-specific conventions. No application code, test files, dependencies, or inherited Stage 1 specifications have been modified in this phase.\n\n### 1. Concrete Files Finalized on Disk\n* **`specs/stage2/requirements.md`**: Contains 30 atomic, testable requirements (`Req-S2-1` to `Req-S2-30`) covering state schema expansions, piece spawning lifecycles, first and swap hold mechanisms, progressive scoring/levels, terminal game-over rules, and advanced frontend dynamic timer rescheduling, coalescing, and request-generation controls. It also maps 10 comprehensive Stage 2 Acceptance Criteria (`AC-S2-1` to `AC-S2-10`).\n* **`specs/stage2/session_notes.md`**: Contains a detailed traceable implementation checklist, material ambiguity resolutions, and evidence of Tessl MCP live status.\n\n---\n\n### 2. Live Tessl MCP Integration Evidence\nAs required, authentic status from our Tessl tools was successfully captured and logged under `specs/stage2/session_notes.md`:\n* **`mcp_tessl_status`**: Succeeded locally, showing `manifest.summary.inSync: 2` with plugins `maria/fastapi` and `softaworks/agent-toolkit` (containing `react-dev`) fully in-sync.\n* **`mcp_tessl_skills_available`**: Rejected due to missing authentication in our headless/CI environment, confirming live, active connectivity with the Tessl MCP registry.\n\n---\n\n### 3. Material Ambiguities and System Design Resolutions\n* **Three- and Four-Row Scoring:** Unrotated canonical shapes have a maximum height of 2 rows, making 3/4-row line clears mathematically impossible in normal UI gameplay.\n  * *Resolution:* Unit testing of 3-row and 4-row scoring multipliers ($500 \\times L$ and $800 \\times L$) is validated strictly via explicitly labeled isolated-domain unit test fixtures in `backend/tests/test_game.py` using custom board states. No UI gameplay claims or rotation mechanisms are introduced.\n* **Row-Zero Locking vs. Preview Draw:**\n  * *Resolution:* If a piece locks at row 0 (immediate game over), no normal spawn is attempted. The previewed `next_piece` is preserved exactly as is, without being consumed or advanced. For obstructed spawns at rows > 0, `next_piece` is consumed and a new preview drawn before transitioning to `\"game_over\"`.\n* **Hold Rejection Compatibility:**\n  * *Resolution:* Rejected hold operations (e.g., calling hold when `can_hold` is false or game is over) return HTTP 200 with the completely unmodified game state.\n* **Frontend State Integrity & Dynamic Gravity Timer:**\n  * *Resolution:* The frontend tracks `generationId` sequences on every request, discarding out-of-order/stale responses. It detects changes to `gravity_interval_ms` and dynamically cancels the old timer to schedule a new one with the updated interval. It also coalesces automatic ticks with user-triggered movements/holds.\n\nThe specifications are ready on disk. I am prepared to proceed with the implementation once you issue a directive!",
+              "decoded_text_utf8_sha256": "92B373765739C5521AA375B021AC24CBF5D9B2989172F4CD4EAD0501C739B35A",
+              "characters": 3072,
+              "models": [
+                "gemini-3.5-flash"
+              ],
+              "timestamps": [
+                "2026-10-21T14:37:12.117Z"
+              ],
+              "tokens_present": true,
+              "locations": [
+                {
+                  "path": "gemini-home/.gemini/tmp/tessl/chats/session-2026-10-21T14-30-08c8cdbc.jsonl",
+                  "line": 85,
+                  "container": "event"
+                },
+                {
+                  "path": "transcripts-archive/session-2026-10-21T14-30-08c8cdbc.542FFFA6EC1DF888.jsonl",
+                  "line": 85,
+                  "container": "event"
+                }
+              ]
+            }
+          ],
+          "variant_conflict": false,
+          "transcript_copies": [
+            "gemini-home/.gemini/tmp/tessl/chats/session-2026-10-21T14-30-08c8cdbc.jsonl",
+            "transcripts-archive/session-2026-10-21T14-30-08c8cdbc.542FFFA6EC1DF888.jsonl"
+          ],
+          "manual_adjudication": {
+            "selected_text_sha256": "92B373765739C5521AA375B021AC24CBF5D9B2989172F4CD4EAD0501C739B35A",
+            "blocking_question_count": 0,
+            "classification": "emitted_main_text",
+            "reason": "Specification completion/design-resolution self-report followed by a workflow handoff to the later implementation phase; no request for missing user information. The closing readiness statement is not a blocking clarification question. Claims about files, tests, integration/authentication or mathematical reachability are not endorsed or independently verified by this text audit."
+          }
+        }
+      ],
+      "excluded_candidates": [],
+      "cli_final_response": {
+        "path": "01-specify.stdout.json",
+        "state": "matched retained candidate; not counted twice",
+        "matches": [
+          "08c8cdbc-c131-4ede-9b86-b365f410cbd7/15d2c984-3c44-4d65-87a3-bd63ad5a2ef1"
+        ],
+        "sha256": "F747B4C5F02D5EAE0297BDFAF9DB01F49AE5F69DDEDF036FDC04D256E6E13037",
+        "bytes": 6077
+      },
+      "recorded_main_response_count": 17,
+      "observed_tool_names": [
+        "glob",
+        "mcp_tessl_skills_available",
+        "mcp_tessl_status",
+        "read_file",
+        "update_topic",
+        "write_file"
+      ],
+      "interactive_question_tool_names_observed": [],
+      "manual_interval_review": {
+        "run_metadata_sha256": "427B7205B22BB778ED21B86E7E106EE5CFB41850BE8CD815AF5C9BAC9593638C",
+        "candidate_signature_sha256": "3126FC1B9FE30C993816F842DC453F893620A58068EA5085255273B237ABE4E4",
+        "reviewed_at_utc": "2026-10-21T14:39:57Z",
+        "reviewer": "researcher",
+        "coverage_note": "Read the complete 3,072-character emitted main text. One unique natural-language report is retained in identical original/archive copies and exactly matches completed CLI response. Seventeen main response IDs include tool-only/empty-text events, which are not natural-language messages. This is observed retained coverage, not a guarantee about unrecorded output.",
+        "messages": {
+          "08c8cdbc-c131-4ede-9b86-b365f410cbd7/15d2c984-3c44-4d65-87a3-bd63ad5a2ef1": {
+            "selected_text_sha256": "92B373765739C5521AA375B021AC24CBF5D9B2989172F4CD4EAD0501C739B35A",
+            "blocking_question_count": 0,
+            "classification": "emitted_main_text",
+            "reason": "Specification completion/design-resolution self-report followed by a workflow handoff to the later implementation phase; no request for missing user information. The closing readiness statement is not a blocking clarification question. Claims about files, tests, integration/authentication or mathematical reachability are not endorsed or independently verified by this text audit."
+          }
+        }
+      },
+      "coverage": "retained timestamp-bounded text only; original/archive copies deduplicated by session/response identity before counting. Failed, empty, unrecorded or active output does not prove an absolute absence of questions."
+    }
+  ],
+  "source_files": [
+    {
+      "path": "gemini-home/.gemini/tmp/tessl/chats/session-2026-10-21T14-30-08c8cdbc.jsonl",
+      "bytes_read": 288412,
+      "sha256": "542FFFA6EC1DF888989975ABF2C307CD4B28F8D2E89DEAE8916745D8BD55E869",
+      "snapshot_scope": "bytes observed by this audit; an active source may append later"
+    },
+    {
+      "path": "transcripts-archive/session-2026-10-21T14-30-08c8cdbc.542FFFA6EC1DF888.jsonl",
+      "bytes_read": 288412,
+      "sha256": "542FFFA6EC1DF888989975ABF2C307CD4B28F8D2E89DEAE8916745D8BD55E869",
+      "snapshot_scope": "bytes observed by this audit; an active source may append later"
+    }
+  ],
+  "source_read_warnings": [],
+  "unassigned_text_requires_review": [],
+  "interval_definition": "Timezone-qualified start/end nanoseconds are applied before deduplication, including resumed history appended to an older session. Active intervals end at this audit's observation timestamp. Timestamped embedded/replayed messages retain their original timestamp.",
+  "deduplication": "session ID plus response ID; every text variant and source-copy location retained. Longer prefix-complete text is displayed, conflicting variants require an explicit reviewed selected hash. Matching completed CLI response is never counted again.",
+  "exclusions": [
+    "thoughts/reasoning/signatures",
+    "function/tool calls, arguments and results",
+    "user/native-template text",
+    "exact unlabeled/no-token synthetic CLI notices",
+    "explicitly labeled auxiliary-model text"
+  ],
+  "external_researcher_prompts": [
+    {
+      "label": "01-specify",
+      "run_state": "closed",
+      "phase_metadata": "specify",
+      "intended_input_path": "01-specify.prompt.txt",
+      "classification_status": "manually reviewed intended prompt",
+      "kind": "initial specification request with recorded workflow clarification",
+      "clarification_bearing": true,
+      "corrective_intent": false,
+      "reply_to_model_blocking_question": false,
+      "delivery_scope": "intended prompt only; no claim of complete effective delivery, no inference from phase name; separate input audit is authoritative",
+      "intended_prompt_sha256": "BFF90383515B217A2FAB69C2732D48B6CFF185EDFDE9D5C108236B3B8103AF00",
+      "prompt_sha256": "BFF90383515B217A2FAB69C2732D48B6CFF185EDFDE9D5C108236B3B8103AF00",
+      "reviewed_at_utc": "2026-10-21T14:36:16Z",
+      "reason": "Initial specification-only request includes a researcher-origin workflow clarification of inherited contract, terminal draws, domain fixtures and deterministic acceptance. It is not a later fix or a reply to an emitted model question."
+    }
+  ],
+  "external_researcher_prompt_summary": {
+    "scope": "one intended prompt per recorded invocation; manually reviewed classification only, not input-delivery proof or count of QA intents",
+    "closed_manually_classified_clarification_bearing_attempts": 1,
+    "pending_manually_classified_clarification_bearing_attempts": 0,
+    "unclassified_labels": []
+  },
+  "limitation": "Unknown/unreviewed counts remain null. Active sessions are pending, even when no natural-language text has yet been retained. A zero observed count requires a hash-bound manual review of a closed retained interval and cannot establish that no unrecorded question exists. This audit does not assess implementation correctness or input delivery."
+}

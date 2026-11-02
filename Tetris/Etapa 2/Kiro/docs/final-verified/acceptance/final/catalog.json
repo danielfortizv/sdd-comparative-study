@@ -1,0 +1,200 @@
+{
+  "researcher_created": true,
+  "verified_at_utc": "2026-10-23T20:02:19.547776+00:00",
+  "catalog_count": 20,
+  "passed": 20,
+  "cases": [
+    {
+      "id": "S2-01",
+      "scenario": "Nuevo juego",
+      "status": "pass",
+      "mechanism": "HTTP real, contrato200 conservado",
+      "evidence": [
+        "acceptance/final/api.json",
+        "acceptance/final/contract.json"
+      ]
+    },
+    {
+      "id": "S2-02",
+      "scenario": "Lectura pura",
+      "status": "pass",
+      "mechanism": "HTTP real, contrato200 conservado",
+      "evidence": [
+        "acceptance/final/api.json",
+        "acceptance/final/contract.json"
+      ]
+    },
+    {
+      "id": "S2-03",
+      "scenario": "Bloqueo sin filas",
+      "status": "pass",
+      "mechanism": "Engine/serializer reales, estado controlado y piezas canónicas",
+      "evidence": [
+        "acceptance/final/domain.json"
+      ]
+    },
+    {
+      "id": "S2-04",
+      "scenario": "Una fila",
+      "status": "pass",
+      "mechanism": "Engine/serializer reales, estado controlado y piezas canónicas",
+      "evidence": [
+        "acceptance/final/domain.json"
+      ]
+    },
+    {
+      "id": "S2-05",
+      "scenario": "Dos filas",
+      "status": "pass",
+      "mechanism": "Engine/serializer reales, estado controlado y piezas canónicas",
+      "evidence": [
+        "acceptance/final/domain.json"
+      ]
+    },
+    {
+      "id": "S2-06",
+      "scenario": "Tres filas",
+      "status": "pass",
+      "mechanism": "Fixture aislado de dominio: filas completas prefijadas, O canónica; no se afirma alcanzabilidad en juego sin rotación",
+      "evidence": [
+        "acceptance/final/domain.json"
+      ]
+    },
+    {
+      "id": "S2-07",
+      "scenario": "Cuatro filas",
+      "status": "pass",
+      "mechanism": "Fixture aislado de dominio: filas completas prefijadas, O canónica; no se afirma alcanzabilidad en juego sin rotación",
+      "evidence": [
+        "acceptance/final/domain.json"
+      ]
+    },
+    {
+      "id": "S2-08",
+      "scenario": "Cruce9->10",
+      "status": "pass",
+      "mechanism": "Engine/serializer reales, estado controlado y piezas canónicas",
+      "evidence": [
+        "acceptance/final/domain.json"
+      ]
+    },
+    {
+      "id": "S2-09",
+      "scenario": "Suelo de gravedad100ms",
+      "status": "pass",
+      "mechanism": "Engine/serializer reales, estado controlado y piezas canónicas",
+      "evidence": [
+        "acceptance/final/domain.json"
+      ]
+    },
+    {
+      "id": "S2-10",
+      "scenario": "Primer Hold",
+      "status": "pass",
+      "mechanism": "HTTP real, contrato200 conservado",
+      "evidence": [
+        "acceptance/final/api.json",
+        "acceptance/final/contract.json"
+      ]
+    },
+    {
+      "id": "S2-11",
+      "scenario": "Rechazo segundo Hold",
+      "status": "pass",
+      "mechanism": "HTTP real, contrato200 conservado",
+      "evidence": [
+        "acceptance/final/api.json",
+        "acceptance/final/contract.json"
+      ]
+    },
+    {
+      "id": "S2-12",
+      "scenario": "Hold tras bloqueo",
+      "status": "pass",
+      "mechanism": "HTTP real, contrato200 conservado",
+      "evidence": [
+        "acceptance/final/api.json",
+        "acceptance/final/contract.json"
+      ]
+    },
+    {
+      "id": "S2-13",
+      "scenario": "Spawn reservado bloqueado",
+      "status": "pass",
+      "mechanism": "Engine/serializer reales, estado controlado y piezas canónicas",
+      "evidence": [
+        "acceptance/final/domain.json"
+      ]
+    },
+    {
+      "id": "S2-14",
+      "scenario": "Inmutabilidad terminal",
+      "status": "pass",
+      "mechanism": "Engine/serializer reales, estado controlado y piezas canónicas",
+      "evidence": [
+        "acceptance/final/domain.json"
+      ]
+    },
+    {
+      "id": "S2-15",
+      "scenario": "Reinicio",
+      "status": "pass",
+      "mechanism": "HTTP real, contrato200 conservado",
+      "evidence": [
+        "acceptance/final/api.json",
+        "acceptance/final/contract.json"
+      ]
+    },
+    {
+      "id": "S2-16",
+      "scenario": "Contrato API",
+      "status": "pass",
+      "mechanism": "HTTP real, contrato200 conservado",
+      "evidence": [
+        "acceptance/final/api.json",
+        "acceptance/final/contract.json"
+      ]
+    },
+    {
+      "id": "S2-17",
+      "scenario": "HUD y controles",
+      "status": "pass",
+      "mechanism": "Navegador real: HUD, teclaC, botónHold, reserva,preview y bloqueo",
+      "evidence": [
+        "acceptance/final/browser-observations.json"
+      ]
+    },
+    {
+      "id": "S2-18",
+      "scenario": "Gravedad y concurrencia",
+      "status": "pass",
+      "mechanism": "49 tests nativos +5 controles externos de transporte/tiempo; captura y traza de cruce real",
+      "evidence": [
+        "acceptance/hook-races-freshness.json",
+        "acceptance\\queued-timer-runs\\20261023T194625580785Z\\run.json",
+        "acceptance/final/browser-observations.json"
+      ]
+    },
+    {
+      "id": "S2-19",
+      "scenario": "Regresión",
+      "status": "pass",
+      "mechanism": "120 pruebas actuales;38legacy originales aprobadas,1igualdad cerrada incompatible retenida; colisiones/tablero/movimiento/bloqueo",
+      "evidence": [
+        "researcher-verification/final-07/verification-summary.json",
+        "acceptance/original-stage1/original-tests-results.json",
+        "acceptance/final/domain.json"
+      ]
+    },
+    {
+      "id": "S2-20",
+      "scenario": "Build",
+      "status": "pass",
+      "mechanism": "npm run build independiente, dependencias/versiones y hashes retenidos",
+      "evidence": [
+        "researcher-verification/final-07/verification-summary.json"
+      ]
+    }
+  ],
+  "rate_scope": "20/20 criterios con mecanismos mixtos; no es tasa exclusiva de navegador. S2-06/07 son fixtures aislados de dominio y se separan de aceptación de gameplay normal."
+}

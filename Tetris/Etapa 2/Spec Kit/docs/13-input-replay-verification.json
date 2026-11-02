@@ -1,0 +1,31 @@
+{
+  "status": "pass",
+  "verified_at_utc": "2026-10-21T05:28:35.017492+00:00",
+  "label": "13-qa-completion-retry",
+  "first_user_like_record_complete_seed": false,
+  "first_user_like_record_kind": "synthetic CLI session_context followed by replayed12 input",
+  "matching_actual_submission": {
+    "message_id": "dd2cc98c-56aa-45b7-9942-448316e22645",
+    "timestamp": "2026-10-21T05:16:26.981Z",
+    "session_id": "2a105d94-35b3-4a27-a13a-a412e1e35425",
+    "transcript_copies": [
+      "transcripts-archive/session-2026-10-21T01-26-2a105d94.FFB6834455EE27A5.jsonl"
+    ],
+    "raw_utf8_sha256": "9B63AA309C8FA64DA74100C7936FFFE7C8DC77EB4C7FE6316BBF6EF121850DC8",
+    "raw_characters": 9263,
+    "normalized_utf8_sha256": "9B63AA309C8FA64DA74100C7936FFFE7C8DC77EB4C7FE6316BBF6EF121850DC8",
+    "normalized_characters": 9263,
+    "complete_seed_present": true
+  },
+  "first_token_response_id": "9a2587ed-dcb9-4585-9203-12939b9b6922",
+  "first_token_response_timestamp": "2026-10-21T05:16:33.299Z",
+  "submission_precedes_first_token_response": true,
+  "application_work_observed": false,
+  "application_work_evidence": "CLI response empty; sole tool update_topic; file-add/remove statistics0/0. This exception concerns a no-application-work resume attempt and does not relax seed requirements for code-producing correction invocations.",
+  "source_hashes": {
+    "13-qa-completion-retry.prompt.txt": "9B63AA309C8FA64DA74100C7936FFFE7C8DC77EB4C7FE6316BBF6EF121850DC8",
+    "13-qa-completion-retry.run.json": "13177469BD28586CAFCCD526E50565DD4B83D9FDE9E56294456B2B27894B9528",
+    "13-qa-completion-retry.stdout.json": "F1BA50EA4CE4D73D61D68A7D6533D710985650480ECB8506FC0209497E9FEA0C",
+    "transcripts-archive/session-2026-10-21T01-26-2a105d94.FFB6834455EE27A5.jsonl": "FFB6834455EE27A5D8287851BA21B083D6B91B761933502B75DF8DE8A22F87C7"
+  }
+}

@@ -1,0 +1,68 @@
+{
+  "verified_at_utc": "2026-10-20T13:07:36.797417+00:00",
+  "scope": "researcher-only schema verification; no app/tests/native specifications modified or tests run",
+  "checks": {
+    "unchanged_closed08_usage": true,
+    "frozen08_metrics_preserved": true,
+    "net_character_and_line_deltas": true,
+    "lines_per_file_density": true,
+    "external_correction_09_open_count": true,
+    "eight_file_markdown_only_corpus": true,
+    "per_file_hashes_and_unified_content": true,
+    "final_corpus_blocked_while_QA_open": true
+  },
+  "generation08_corpus": {
+    "file_count": 8,
+    "normalized_file_characters": 69022,
+    "unified_characters": 69036
+  },
+  "generation08_cli_tool_actions": {
+    "source": "completed CLI stats.tools",
+    "total_calls": 155,
+    "successful_calls": 153,
+    "failed_calls": 2,
+    "by_tool": {
+      "update_topic": {
+        "count": 6,
+        "success": 6,
+        "fail": 0
+      },
+      "glob": {
+        "count": 5,
+        "success": 5,
+        "fail": 0
+      },
+      "read_file": {
+        "count": 51,
+        "success": 49,
+        "fail": 2
+      },
+      "list_directory": {
+        "count": 6,
+        "success": 6,
+        "fail": 0
+      },
+      "run_shell_command": {
+        "count": 52,
+        "success": 52,
+        "fail": 0
+      },
+      "replace": {
+        "count": 24,
+        "success": 24,
+        "fail": 0
+      },
+      "write_file": {
+        "count": 9,
+        "success": 9,
+        "fail": 0
+      },
+      "grep_search": {
+        "count": 2,
+        "success": 2,
+        "fail": 0
+      }
+    },
+    "scope": "tool execution statistics inside one external invocation; includes reads and other actions, not just code changes or Sonar scans; never counted as additional external correction prompts. A successful tool wrapper does not establish a shell command/test pass; inspect raw exit codes and logs."
+  }
+}

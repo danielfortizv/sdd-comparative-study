@@ -1,0 +1,21 @@
+{
+  "researcher_created": true,
+  "fetched_at_utc": "2026-10-22T01:18:00.5616908Z",
+  "project": "tetris-stage2-kiro",
+  "baseline": false,
+  "gate": "OK",
+  "coverage": "91.7",
+  "complexity": "150",
+  "reliability_rating": "1.0",
+  "code_smells": "7",
+  "duplicated_lines_density": "0.0",
+  "security_rating": "1.0",
+  "security_hotspots": "0",
+  "sqale_index": "23",
+  "sqale_rating": "1.0",
+  "bugs": "0",
+  "cognitive_complexity": "97",
+  "ncloc": "772",
+  "vulnerabilities": "0",
+  "lines": "1235"
+}
