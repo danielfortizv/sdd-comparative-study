@@ -1,0 +1,28 @@
+version: '3.8'
+
+services:
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+    networks:
+      - calculator-network
+    restart: always
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    ports:
+      - "80:8080" # Maps standard privileged port 80 on host to unprivileged Nginx port 8080 in container
+    networks:
+      - calculator-network
+    depends_on:
+      - backend
+    restart: always
+
+networks:
+  calculator-network:
+    driver: bridge

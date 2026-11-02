@@ -1,0 +1,78 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "CalculatorEvaluationContract",
+  "description": "API Contract for the high-precision backend calculator evaluation endpoint.",
+  "endpoint": "/api/v1/evaluate",
+  "method": "POST",
+  "headers": {
+    "Content-Type": "application/json"
+  },
+  "request": {
+    "type": "object",
+    "required": ["expression"],
+    "properties": {
+      "expression": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 1000,
+        "description": "Infix mathematical expression or space-separated postfix RPN token sequence.",
+        "examples": [
+          "12.5 + 3 * (4 - 1.5) / 2",
+          "12.5 3 4 1.5 - * 2 / +"
+        ]
+      },
+      "angle_unit": {
+        "type": "string",
+        "enum": ["radians", "degrees"],
+        "default": "radians",
+        "description": "Angular measurements unit for trigonometric scientific operations."
+      },
+      "mode": {
+        "type": "string",
+        "enum": ["standard", "rpn"],
+        "default": "standard",
+        "description": "Standard triggers PEMDAS Shunting Yard infix parsing; RPN runs raw postfix stack evaluation."
+      }
+    }
+  },
+  "responses": {
+    "200": {
+      "description": "Successful calculation evaluation result.",
+      "type": "object",
+      "required": ["expression", "result"],
+      "properties": {
+        "expression": {
+          "type": "string",
+          "description": "The exact evaluated input expression."
+        },
+        "result": {
+          "type": "string",
+          "description": "The highly precise computed decimal result."
+        },
+        "stack": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "The remaining stack values. Present when mode is rpn."
+        }
+      }
+    },
+    "400": {
+      "description": "Error payload indicating invalid mathematical syntax, stack underflow, division by zero, or domain violations.",
+      "type": "object",
+      "required": ["error_code", "message"],
+      "properties": {
+        "error_code": {
+          "type": "string",
+          "enum": ["SYNTAX_ERROR", "STACK_UNDERFLOW", "DIVISION_BY_ZERO", "DOMAIN_ERROR", "OVERFLOW"],
+          "description": "A structured computer-readable error code."
+        },
+        "message": {
+          "type": "string",
+          "description": "A clear, descriptive error explanation suitable for non-technical user display."
+        }
+      }
+    }
+  }
+}

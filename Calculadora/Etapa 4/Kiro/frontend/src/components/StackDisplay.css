@@ -1,0 +1,88 @@
+/*
+ * StackDisplay.css — grid/layout structure for the RPN Stack_Display
+ * (Task 59.1; Requirements 40.1, 40.4, 40.5, 40.6).
+ *
+ * This file owns LAYOUT STRUCTURE ONLY: the vertical T->X stack of levels and
+ * the label|value two-column alignment within each level. The color tokens it
+ * consumes (--color-stack-level-bg / -label / -value / -empty) are defined in
+ * styles/theme.css under the Stage 4 block with their measured WCAG ratios; the
+ * contrast-safe fallbacks here keep the component legible even in isolation.
+ *
+ * Contrast (checked against the actual level face --color-stack-level-bg
+ * #303a5c, which renders on the panel surface): label 7.64:1, value 11.14:1,
+ * empty placeholder 5.38:1 — each >= 4.5:1 (Req 11.1). See theme.css for the
+ * full derivation.
+ *
+ * Responsive: `min-width: 0` on the container, list, level, and value plus
+ * `overflow-wrap: anywhere` / `word-break: break-word` let long Decimal operand
+ * strings wrap instead of forcing the panel wider, so the Stack_Display
+ * re-flows with no horizontal overflow or clipping across mobile (320-767),
+ * tablet (768-1023), and desktop (1024-2560) — mirroring HistoryPanel.css
+ * (cf. Requirements 22.3, 22.4, 11.4). The stack levels are non-interactive
+ * status rows (role="status"); the RPN *controls* are `.calc-button`s in
+ * RpnKeypad/ModeToggle, so the >=44x44px touch target and focus/pressed
+ * indicators are inherited from CalcButton.css.
+ */
+
+.stack-display {
+  width: 100%;
+  min-width: 0;
+}
+
+/* The four levels render top-visible-first (T -> X). An <ol> models the ordered
+   stack; list chrome is reset so only the level rows show. */
+.stack-display__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: calc(var(--gap, 0.5rem) / 2);
+  min-width: 0;
+}
+
+/* Each level is a label | value row: a fixed, narrow label column (X/Y/Z/T) and
+   a flexible, right-aligned value column that wraps long operands. */
+.stack-display__level {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: baseline;
+  gap: var(--gap, 0.5rem);
+  min-width: 0;
+  padding: calc(var(--gap, 0.5rem) / 2) var(--gap, 0.5rem);
+  border-radius: var(--radius, 10px);
+  /* Light surface separating each level; real tokens arrive in task 60. */
+  background-color: var(--color-stack-level-bg, var(--color-digit-bg, #303a5c));
+}
+
+/* Short identifying label (X/Y/Z/T). The accessible name lives on the value
+   span, so the visible label is aria-hidden to avoid double announcement. */
+.stack-display__label {
+  font-family: inherit;
+  font-weight: 700;
+  font-size: 0.9rem;
+  line-height: 1.2;
+  letter-spacing: 0.04em;
+  text-align: left;
+  user-select: none;
+  color: var(--color-stack-label, var(--color-muted, #c3ccdf));
+}
+
+/* The operand value, right-aligned and wrapping so long Decimal strings never
+   push the width or clip (cf. Requirements 22.3, 22.4). */
+.stack-display__value {
+  min-width: 0;
+  text-align: right;
+  font-family: inherit;
+  font-variant-numeric: tabular-nums;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+  color: var(--color-stack-value, var(--color-digit-text, #ffffff));
+}
+
+/* Empty-state indication for a level that holds no value (Requirements 40.4,
+   40.6): a muted placeholder glyph distinguishes "no value" from a real zero. */
+.stack-display__value--empty {
+  color: var(--color-stack-empty, var(--color-muted, #c3ccdf));
+  font-style: italic;
+}

@@ -1,0 +1,129 @@
+/*
+ * HistoryPanel.css — responsive, accessible layout for the History_Panel
+ * (Task 36; Requirements 21.2-21.8, 22.3, 22.4, 22.5, 22.9, 11.1-11.4).
+ *
+ * The panel re-flows with no horizontal overflow or clipping across all three
+ * breakpoints: long expressions/results wrap (overflow-wrap) instead of pushing
+ * the width, and a long list scrolls VERTICALLY inside a capped-height region
+ * rather than overflowing horizontally (Req 22.3, 22.4, 22.9). Entry controls
+ * are `.calc-button`s, so the >=44px touch target and the focus/pressed
+ * indicators are inherited from CalcButton.css (Req 22.5, 11.4). The Clear
+ * button mirrors the same `.calc-button` chrome.
+ *
+ * Contrast: the title uses `--color-scientific-heading` -> 10.67:1 on the panel
+ * bg (Req 11.1/11.2); the empty-state text uses `--color-muted` (>7:1); the
+ * panel boundary uses `--color-scientific-border` -> 5.30:1 (Req 11.3).
+ */
+
+.history-panel {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap, 0.5rem);
+  width: 100%;
+  min-width: 0;
+  /* A light divider separates the history region from the keypads above
+     without pushing width; boundary >= 3:1 on the panel bg (Req 11.3). */
+  border-top: 1px solid var(--color-scientific-border, #7c8ab5);
+  padding-top: var(--gap, 0.5rem);
+}
+
+.history-panel__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--gap, 0.5rem);
+  flex-wrap: wrap;
+}
+
+.history-panel__title {
+  margin: 0;
+  /* Large/bold heading text: 10.67:1 on the panel bg (Req 11.1/11.2). */
+  color: var(--color-scientific-heading, #cdd6ea);
+  font-size: 1rem;
+}
+
+/* The Clear control is a `.calc-button`; reaffirm the 44px touch floor so it
+   stays tappable at mobile widths even with its short "Clear" label (Req 22.5). */
+.history-panel__clear {
+  min-height: var(--touch-min, 44px);
+  min-width: var(--touch-min, 44px);
+}
+
+/* Empty-state message shown when there are no entries (Requirement 21.8). */
+.history-panel__empty {
+  margin: 0;
+  color: var(--color-muted, #c3ccdf); /* secondary text, > 7:1 (Req 11.1) */
+}
+
+/* Newest-first list of entries (Requirement 21.2). A long history scrolls
+   vertically inside a capped-height region so it never overflows horizontally
+   and never pushes the panel taller than the viewport (Req 22.3, 22.9). */
+.history-panel__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap, 0.5rem);
+  min-width: 0;
+  max-height: clamp(10rem, 40vh, 22rem);
+  overflow-y: auto;
+  /* Keep the vertical scrollbar from overlapping the right-aligned text. */
+  overflow-x: hidden;
+}
+
+/*
+ * Each entry exposes two independently selectable controls: the expression and
+ * the result (Requirements 21.3, 21.4). They stack within the row and each
+ * fills the available width so both are comfortable touch targets.
+ */
+.history-panel__item {
+  display: flex;
+  flex-direction: column;
+  gap: calc(var(--gap, 0.5rem) / 2);
+  min-width: 0;
+}
+
+/*
+ * Long expressions/results wrap instead of forcing the panel wider (Req 22.3);
+ * the button text can span multiple lines, so allow auto height while keeping
+ * the inherited 44px minimum (Req 22.5). `height: auto` lets a wrapped,
+ * multi-line label grow downward rather than clip (Req 22.4).
+ */
+.history-panel__expression,
+.history-panel__result {
+  width: 100%;
+  min-width: 0;
+  height: auto;
+  min-height: var(--touch-min, 44px);
+  text-align: right;
+  white-space: normal;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+/* =========================================================================
+ * Responsive re-flow (Req 22.3, 22.4, 22.9)
+ * On wider viewports the two entry controls sit side by side (expression | =
+ * result) to use the extra width, still wrapping long content and never
+ * overflowing horizontally.
+ * ========================================================================= */
+@media (min-width: 768px) {
+  .history-panel__item {
+    flex-direction: row;
+    align-items: stretch;
+  }
+
+  .history-panel__expression {
+    flex: 1 1 60%;
+  }
+
+  .history-panel__result {
+    flex: 1 1 40%;
+  }
+
+  /* A little more room for the list on taller tablet/desktop layouts. */
+  .history-panel__list {
+    max-height: clamp(12rem, 45vh, 28rem);
+  }
+}

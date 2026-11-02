@@ -1,0 +1,61 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Evaluate Expression Request & Response Contract",
+  "description": "API Contract for scientific calculation evaluation endpoint POST /api/v1/evaluate",
+  "endpoint": {
+    "path": "/api/v1/evaluate",
+    "method": "POST",
+    "headers": {
+      "Content-Type": "application/json"
+    }
+  },
+  "request": {
+    "type": "object",
+    "properties": {
+      "expression": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 1000,
+        "description": "Mathematical formula to parse and compute.",
+        "examples": ["sin(pi / 2) + 3 ^ 2"]
+      },
+      "angle_unit": {
+        "type": "string",
+        "enum": ["radians", "degrees"],
+        "default": "radians",
+        "description": "Angle unit to apply on trigonometric functions."
+      }
+    },
+    "required": ["expression"]
+  },
+  "responses": {
+    "200": {
+      "description": "Successful expression evaluation.",
+      "type": "object",
+      "properties": {
+        "expression": {
+          "type": "string"
+        },
+        "result": {
+          "type": "string",
+          "description": "Computed precise decimal value as a string."
+        }
+      },
+      "required": ["expression", "result"]
+    },
+    "400": {
+      "description": "Bad Request due to syntax error, domain error, or division by zero.",
+      "type": "object",
+      "properties": {
+        "error": {
+          "type": "string",
+          "enum": ["DIVISION_BY_ZERO", "SYNTAX_ERROR", "DOMAIN_ERROR", "OVERFLOW"]
+        },
+        "details": {
+          "type": "string"
+        }
+      },
+      "required": ["error", "details"]
+    }
+  }
+}
