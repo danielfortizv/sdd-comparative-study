@@ -1,0 +1,15 @@
+﻿{
+    "FechaRegistro":  "2026-11-04T01:01:56.6926745-05:00",
+    "Caso":  "Shift Bank",
+    "Herramienta":  "Tessl",
+    "Etapa":  2,
+    "Opcion":  "A",
+    "Origen":  "C:\\Users\\danie\\Documents2\\sdd-comparative-study\\Shift-Bank\\Etapa 1\\Tessl",
+    "Destino":  "C:\\Users\\danie\\Documents2\\sdd-comparative-study\\Shift-Bank\\Etapa 2\\Tessl",
+    "ArchivosVerificados":  66,
+    "DiferenciasSHA256":  0,
+    "EnlacesCopiados":  0,
+    "BaseSQLiteCopiada":  false,
+    "SemillaComunAprobada":  false,
+    "Estado":  "Copia verificada; integracion y pruebas pendientes"
+}
