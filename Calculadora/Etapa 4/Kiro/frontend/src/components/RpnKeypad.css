@@ -1,0 +1,61 @@
+/*
+ * Structural CSS Grid arrangement for the RPN_Mode on-screen keypad
+ * (Requirement 39.8 input parity; reuses the Stage 1 keypad structure). Digits
+ * 1-9 form a 3x3 block (7-8-9 / 4-5-6 / 1-2-3), `0`/`.` sit in the row below,
+ * the operators (+ - * / ^) occupy a dedicated column on the right, and the
+ * Enter_Control spans the bottom row. Theming (sizing, colour, touch targets)
+ * is inherited from CalcButton.css / the shared tokens in theme.css.
+ */
+
+.rpn-keypad {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr) 1fr;
+  grid-template-areas:
+    "k7      k8      k9      kdiv"
+    "k4      k5      k6      kmul"
+    "k1      k2      k3      ksub"
+    "k0      k0      kdot    kadd"
+    "kclear  kclear  kpow    kpow"
+    "kenter  kenter  kenter  kenter";
+  gap: var(--gap);
+  grid-auto-rows: minmax(var(--touch-min), 1fr);
+  width: 100%;
+}
+
+/* Digit 3x3 block: 7-8-9 / 4-5-6 / 1-2-3 (Requirement 8.2). */
+.rpn-keypad__key--k7 { grid-area: k7; }
+.rpn-keypad__key--k8 { grid-area: k8; }
+.rpn-keypad__key--k9 { grid-area: k9; }
+.rpn-keypad__key--k4 { grid-area: k4; }
+.rpn-keypad__key--k5 { grid-area: k5; }
+.rpn-keypad__key--k6 { grid-area: k6; }
+.rpn-keypad__key--k1 { grid-area: k1; }
+.rpn-keypad__key--k2 { grid-area: k2; }
+.rpn-keypad__key--k3 { grid-area: k3; }
+
+/* `0` positioned in the row below the 1-9 keypad (Requirement 8.2). */
+.rpn-keypad__key--k0 { grid-area: k0; }
+.rpn-keypad__key--kdot { grid-area: kdot; }
+
+/* Operators in a dedicated column region separated from the digits (Requirement 8.3). */
+.rpn-keypad__key--kdiv { grid-area: kdiv; }
+.rpn-keypad__key--kmul { grid-area: kmul; }
+.rpn-keypad__key--ksub { grid-area: ksub; }
+.rpn-keypad__key--kadd { grid-area: kadd; }
+.rpn-keypad__key--kpow { grid-area: kpow; }
+
+/* Clear and Enter controls. */
+.rpn-keypad__key--kclear { grid-area: kclear; }
+.rpn-keypad__key--kenter { grid-area: kenter; }
+
+@media (max-width: 767px) {
+  .rpn-keypad {
+    gap: clamp(0.3rem, 1.5vw, 0.5rem);
+  }
+}
+
+@media (min-width: 768px) {
+  .rpn-keypad {
+    gap: 0.6rem;
+  }
+}

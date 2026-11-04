@@ -1,0 +1,98 @@
+/*
+ * ScientificKeypad.css — responsive, accessible layout for the Scientific_Keypad
+ * (Task 36; Requirements 22.1, 22.2, 22.3, 22.4, 22.5, 22.9, 11.1-11.4).
+ *
+ * This file owns the keypad structure, the collapse class hook, and the
+ * responsive grid that re-flows across the three breakpoints with no horizontal
+ * overflow or clipping. The per-button theming, the >=44x44px touch target, and
+ * the visible focus/pressed indicators are inherited from CalcButton.css — every
+ * scientific and memory control is a `.calc-button` (variant="action"), so it
+ * already meets the 44px floor (min-width/min-height: var(--touch-min)) and the
+ * double-ring focus indicator at every width, including mobile (Req 22.5, 11.4).
+ *
+ * Contrast: controls reuse the Stage 1 `--color-action-*` pair (8.40:1 label,
+ * Req 11.1) and `--color-border-strong` boundary; keypad-specific chrome below
+ * (the group border) uses `--color-scientific-border` -> 5.30:1 on the panel bg
+ * (>= 3:1, Req 11.3).
+ */
+
+.scientific-keypad {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap, 0.5rem);
+  width: 100%;
+  /* Never let the inner grid force this container wider than its panel column
+     (prevents horizontal overflow at 320px, Req 22.3). */
+  min-width: 0;
+}
+
+/* Header row: angle-mode toggle on the left, collapse/expand control on the right. */
+.scientific-keypad__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--gap, 0.5rem);
+  flex-wrap: wrap;
+}
+
+/*
+ * The collapsible controls region. `hidden` (set by the component when
+ * collapsed) removes it from layout and the accessibility tree.
+ *
+ * Mobile default (320-767): a dense 3-column grid. 3 x var(--touch-min) (132px)
+ * + 2 gaps (~0.6-1rem) + the panel's side padding fits comfortably inside the
+ * narrowest 320px viewport (available width ~ 320 - ~1.3rem padding ~= 300px;
+ * 132px targets + gaps leaves ample slack), so nothing overflows or clips and
+ * every target stays >= 44x44px (Req 22.3, 22.5). The tighter --gap-sci keeps
+ * the columns comfortable at the smallest widths without shrinking targets.
+ */
+.scientific-keypad__controls {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(var(--touch-min, 44px), 1fr));
+  grid-auto-rows: minmax(var(--touch-min, 44px), auto);
+  gap: var(--gap-sci, var(--gap, 0.5rem));
+  min-width: 0;
+}
+
+/* The native `hidden` attribute must win over the grid display above. */
+.scientific-keypad__controls[hidden] {
+  display: none;
+}
+
+/* Keep the collapse label on one line. */
+.scientific-keypad__collapse {
+  white-space: nowrap;
+}
+
+/*
+ * Each scientific / memory control is a `.calc-button`, so the 44px touch-target
+ * floor and the focus ring are inherited (CalcButton.css). Reaffirm the floor on
+ * the grid cells so a cell can never collapse a control below 44px even if the
+ * column track is narrow at 320px (Req 22.5).
+ */
+.scientific-keypad__key {
+  min-width: var(--touch-min, 44px);
+  min-height: var(--touch-min, 44px);
+}
+
+/* =========================================================================
+ * Responsive re-flow (Req 22.2, 22.3, 22.4, 22.9)
+ * ========================================================================= */
+
+/* Tablet: 768-1023px. The panel is wider here (global.css), so re-flow the
+   scientific controls to 4 columns; still no horizontal overflow (Req 22.4). */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .scientific-keypad__controls {
+    grid-template-columns: repeat(4, minmax(var(--touch-min, 44px), 1fr));
+    gap: var(--gap, 0.5rem);
+  }
+}
+
+/* Desktop: 1024-2560px. Wider panel -> 5 columns; capped by the panel
+   max-width so it never overflows on very wide screens (Req 22.4, 22.9). */
+@media (min-width: 1024px) {
+  .scientific-keypad__controls {
+    grid-template-columns: repeat(5, minmax(var(--touch-min, 44px), 1fr));
+    gap: var(--gap, 0.5rem);
+  }
+}

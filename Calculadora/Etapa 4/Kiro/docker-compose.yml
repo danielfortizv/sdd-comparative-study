@@ -1,0 +1,29 @@
+# Multi-container orchestration for the web calculator (Requirement 33).
+# Brings up the FastAPI backend and the Nginx-served frontend on a shared
+# network; the frontend reverse-proxies /api to the backend by service name.
+services:
+  backend:
+    build:
+      context: ./backend
+    # Not host-published: reached only via the frontend /api proxy over the
+    # shared network, keeping a single ingress (Requirement 33.2, 33.3).
+    expose:
+      - "8000"
+    environment:
+      - PORT=8000
+    # Auto-restart on an unexpected (non-zero) exit unless explicitly stopped
+    # by an operator (Requirement 33.6).
+    restart: unless-stopped
+
+  frontend:
+    build:
+      context: ./frontend
+    # Exactly one host port mapped to the frontend container so it is reachable
+    # from the host (Requirement 33.5). Host 8080 -> container 80.
+    ports:
+      - "8080:80"
+    # Nginx proxies /api to http://backend:8000 (see frontend/nginx.conf);
+    # depends_on orders startup so the proxy target resolves (Requirement 33.2).
+    depends_on:
+      - backend
+    restart: unless-stopped

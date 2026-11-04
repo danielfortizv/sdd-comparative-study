@@ -1,0 +1,101 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "Basic Web Calculator API",
+    "description": "High-precision stateless arithmetic expression evaluation service compliant with strict PEMDAS precedence standards.",
+    "version": "1.0.0"
+  },
+  "paths": {
+    "/api/v1/evaluate": {
+      "post": {
+        "summary": "Evaluate Arithmetic Expression",
+        "description": "Parses and evaluates a mathematical string with absolute decimal precision.",
+        "operationId": "evaluateExpression",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CalculationRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Calculation completed successfully.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CalculationResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Evaluation failed due to mathematical errors or invalid syntax constraints.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "CalculationRequest": {
+        "type": "object",
+        "required": [
+          "expression"
+        ],
+        "properties": {
+          "expression": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 1000,
+            "example": "12.5 + 3 * (4 - 1.5) / 2"
+          }
+        }
+      },
+      "CalculationResponse": {
+        "type": "object",
+        "required": [
+          "expression",
+          "result"
+        ],
+        "properties": {
+          "expression": {
+            "type": "string",
+            "example": "12.5 + 3 * (4 - 1.5) / 2"
+          },
+          "result": {
+            "type": "string",
+            "example": "16.25"
+          }
+        }
+      },
+      "ErrorResponse": {
+        "type": "object",
+        "required": [
+          "error",
+          "details"
+        ],
+        "properties": {
+          "error": {
+            "type": "string",
+            "example": "DIVISION_BY_ZERO"
+          },
+          "details": {
+            "type": "string",
+            "example": "Cannot divide a decimal number by exactly zero."
+          }
+        }
+      }
+    }
+  }
+}

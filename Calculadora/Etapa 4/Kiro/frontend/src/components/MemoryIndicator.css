@@ -1,0 +1,45 @@
+/*
+ * MemoryIndicator.css — styling for the Memory_Register badge (Task 35.1;
+ * Requirements 20.6, 20.7, 11.3).
+ *
+ * The badge is a small "M" chip shown only while the Memory_Register is
+ * non-zero (Requirements 20.6/20.7 — the show/hide decision is made in TSX by
+ * conditionally rendering the element; this file only styles the shown state).
+ *
+ * Contrast (Requirement 11.3): the badge is a graphical UI element, so its
+ * boundary/graphic must keep >= 3:1 contrast against its adjacent background.
+ * The real theme tuning lives in styles/theme.css (task 36); this file consumes
+ * the shared tokens where available and falls back to colors that are already
+ * clearly contrast-compliant:
+ *   - label `#ffffff` on face `#303a5c`  -> 11.14:1 (text, Req 11.1, exceeds 11.3)
+ *   - border `#8b9bd4` on face `#303a5c` -> ~4.10:1 (boundary/graphic, Req 11.3)
+ * so the badge boundary stays >= 3:1 even before task 36 tunes the palette.
+ */
+
+.memory-indicator {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 1.5rem;
+  min-height: 1.5rem;
+  padding: 0.1rem 0.4rem;
+
+  font-family: inherit;
+  font-size: 0.85rem;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: 0.02em;
+
+  /* Face + label meet text contrast; border keeps the badge boundary >= 3:1
+     against the badge face (Requirement 11.3). Task 36 introduces dedicated
+     memory-badge tokens; the digit tokens remain as contrast-safe fallbacks:
+       - label #ffffff on badge face #2d7d5a -> 4.73:1 (text, Req 11.1)
+       - border #a7f0cc on badge face #2d7d5a -> 4.52:1 (boundary, Req 11.3)
+       - border #a7f0cc on panel bg   #16203a -> 9.97:1 (boundary, Req 11.3) */
+  color: var(--color-memory-badge-text, var(--color-digit-text, #ffffff));
+  background-color: var(--color-memory-badge-bg, var(--color-digit-bg, #303a5c));
+  border: 2px solid
+    var(--color-memory-badge-border, var(--color-border-digit, #8b9bd4));
+  border-radius: var(--radius, 10px);
+  user-select: none;
+}
