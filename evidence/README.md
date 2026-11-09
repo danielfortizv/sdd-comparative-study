@@ -1,19 +1,25 @@
 # Evidence
 
-This directory stores execution evidence, separated by type:
+This directory stores experiment evidence organized by case study, development stage, and SDD tool. Place each artifact in the folder for the implementation it documents.
 
-- [`screenshots/`](screenshots/) for visual evidence;
-- [`logs/`](logs/) for tool, agent, test, and execution logs;
-- [`metrics/`](metrics/) for measurements and structured metric records.
+```text
+evidence/
+└── <case study>/
+    └── <development stage>/
+        └── <tool>/
+            ├── prompt_logs/
+            ├── screenshots/
+            └── metrics/
+```
 
-## Naming Convention
+The directory names are `Calculadora`, `Tetris`, `E-commerce`, and `Shift-Bank`; `Etapa 1` through `Etapa 4`; and `OpenSpec`, `Spec Kit`, `Tessl`, `Bmad Method`, and `Kiro`.
 
-Use the following base convention:
+## Evidence Categories
 
-`<tool>_<scenario>_<phase>_<description>`
+- **`prompt_logs/`** stores the `.jsonl` transcript of the session that generated the implementation.
+- **`screenshots/`** stores screenshots of Gemini CLI session statistics and the final functioning frontend.
+- **`metrics/`** stores supporting metric files, such as Excel workbooks or CSV files, when the metrics cannot be obtained from the prompt logs or screenshots.
 
-Use lowercase, stable identifiers and add an experiment or run identifier when needed to prevent collisions. Examples of names are conventions only, not evidence: `openspec_greenfield_planning_context`, `speckit_brownfield_validation_tests`.
+Keep evidence with the case, stage, and tool it belongs to so each implementation can be inspected independently.
 
-Record the file format, source, timestamp or order, and related experiment ID in the corresponding experiment metadata. Never overwrite evidence from an earlier run; create a new uniquely identified file instead.
-
-Do not add screenshots, logs, or metrics until they are produced by an actual experiment.
+Copies of this evidence are also stored in the corresponding implementation's `docs/` directory. This directory provides a centralized, consistently organized copy across cases, stages, and tools.

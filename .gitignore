@@ -56,6 +56,9 @@ coverage/
 .tmp/
 tmp/
 
+# SonarQube scanner working directories
+.scannerwork/
+
 # Temporary logs and OS-generated files
 *.tmp
 *.temp
