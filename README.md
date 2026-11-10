@@ -10,34 +10,26 @@ Repository for an undergraduate thesis at Universidad de los Andes comparing fiv
 
 ## Purpose
 
-This repository is the reproducible evidence base for the study. It will preserve the requirements, prompts, native tool artifacts, generated code, tests, execution records, observations, and other evidence needed to compare the approaches under equivalent conditions.
+This repository preserves the case implementations, shared seeds, tool artifacts, generated code, tests, execution evidence, and research documents for an exploratory comparison of SDD approaches. It records specific experimental runs; it does not claim that LLM-generated outputs can be reproduced exactly.
 
-The Tetris case is organized under [`Tetris/`](Tetris/README.md), with separate [`Etapa 1`](Tetris/Etapa%201/README.md) and [`Etapa 2`](Tetris/Etapa%202/README.md) directories. Each stage contains independent OpenSpec, GitHub Spec Kit, Tessl, BMad Method, and Kiro implementations, native specifications, tests, measured metrics, and SonarQube evidence. The Stage 2 report includes an advisor script, the Tetris thesis extract, charts, screenshots, and records for 49 invocation attempts. Other cases retain their own case directories.
+The four case studies have overviews and run instructions in their case directories: [`Calculator`](Calculadora/README.md), [`Tetris`](Tetris/README.md), [`E-commerce`](E-commerce/README.md), and [`Banking System`](Shift-Bank/README.md). Implementations are grouped by development stage and SDD tool, with shared artifacts kept alongside the relevant case where applicable.
 
 ## Scenarios
 
 - **Greenfield:** the tool starts from an approved case description without an existing application codebase.
 - **Brownfield:** the tool works with an approved existing repository and must account for its current structure, behavior, and constraints.
 
-The final cases are pending approval. The placeholders in [`cases/`](cases/) must be completed before the first experiment.
+Stage 1 represents greenfield initialization; later stages evolve an existing implementation and therefore introduce brownfield changes.
 
 ## Repository Structure
 
 | Path | Purpose |
 | --- | --- |
-| [`docs/`](docs/) | Methodology, criteria, reproducibility guidance, and experiment metadata template. |
-| [`cases/`](cases/) | Approved or pending greenfield and brownfield case definitions. |
+| [`docs/`](docs/) | Academic-document descriptions, methodology, evaluation criteria, and study scope. |
 | [`Tetris/`](Tetris/README.md) | Tetris case, organized by stage and then by the five tools, with shared protocol and reports. |
-| [`prompts/`](prompts/) | Exact prompts and prompt-use records. |
-| [`evidence/`](evidence/) | Screenshots, logs, and metrics captured during execution. |
-| [`results/`](results/) | Evidence-based observations and comparison templates. |
+| [`seeds/`](seeds/) | Shared seed inputs organized by development stage and case study. |
+| [`evidence/`](evidence/) | Session transcripts, screenshots, and supporting metric files organized by case, stage, and tool. |
 
-## Reproducibility Goal
+## Interpretation of Results
 
-Each experiment should be repeatable from the same functional requirements, acceptance criteria, initial repository state, tool and model versions, environment, and evaluation procedure. Previous evidence must remain immutable and traceable to the commits and prompts that produced it. See [`docs/reproducibility.md`](docs/reproducibility.md).
-
-## Status
-
-**Work in progress.** Tetris has verified Stage 1 and Stage 2 snapshots. Stage 1 provenance remains in [`Tetris/Etapa 1/PROGRESS.md`](Tetris/Etapa%201/PROGRESS.md); Stage 2 results, limitations, and the publication scope are documented in [`Tetris/Etapa 2/README.md`](Tetris/Etapa%202/README.md). Final cross-case conclusions are not yet established.
-
-> **Important:** Do not treat empty templates or pending placeholders as experimental evidence. Add evidence only after an experiment has actually been executed.
+Shared seeds and documented conditions support traceability and comparison, but LLM nondeterminism, limited repeated runs, and platform differences—particularly Kiro's inaccessible underlying model—make this an exploratory study rather than an exact or fully reproducible experiment. See [`docs/reproducibility.md`](docs/reproducibility.md).
