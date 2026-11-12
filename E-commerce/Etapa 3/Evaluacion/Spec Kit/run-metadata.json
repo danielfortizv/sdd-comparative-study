@@ -1,0 +1,35 @@
+{
+  "tool": "Spec Kit",
+  "exit_code": -1,
+  "mode": "auto_edit",
+  "wall_seconds": 136.0984115,
+  "completed_utc": "2026-11-07T03:41:03.3201307Z",
+  "started_utc": "2026-11-07T03:38:47.224613Z",
+  "provider": "Vertex AI",
+  "corrections": [],
+  "seed_sha256": "B63986D4EADBB0E6AAD8AC0F21DAC5DC50CC1980F54448ECB2E39BB23451E395",
+  "model": "gemini-3.5-flash",
+  "stage": 3,
+  "cli_version": "0.60.0",
+  "final_status": "specifications-and-code-complete; local validation passed",
+  "final_validation": {
+    "production_build": "passed",
+    "backend_tests": "passed",
+    "real_e2e": "passed",
+    "docker_runtime": "not executed: Docker unavailable",
+    "remote_github_actions": "not executed",
+    "frontend_tests": "passed"
+  },
+  "followup_prompt_files": [
+    "ci-compatibility-prompt.txt",
+    "ci-lint-fix-prompt.txt",
+    "stage3-authorized-prompt.txt"
+  ],
+  "final_seed_sha256": "B63986D4EADBB0E6AAD8AC0F21DAC5DC50CC1980F54448ECB2E39BB23451E395",
+  "final_collection_utc": "2026-11-07T05:06:36.7687487Z",
+  "workflow_version_source": "Vendored .specify scripts/templates inherited from Stage 2; exact hashes retained in starting-snapshot.json",
+  "effective_approval_modes": [
+    "auto_edit",
+    "yolo"
+  ]
+}

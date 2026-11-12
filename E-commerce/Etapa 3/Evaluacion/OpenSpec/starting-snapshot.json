@@ -1,0 +1,246 @@
+{
+  "source": "C:\\Users\\jeron\\OneDrive\\Escritorio\\uni\\implementacion Ecommerce\\Caso 3-Ecommerce\\Etapa 2\\OpenSpec",
+  "seed_sha256": "B63986D4EADBB0E6AAD8AC0F21DAC5DC50CC1980F54448ECB2E39BB23451E395",
+  "files": [
+    {
+      "path": ".gemini/commands/opsx/apply.toml",
+      "sha256": "24899c4f6cd676e7f7d8be74c093a21a487bfcfd9d3d12f4f9a08f1c9c54e52d"
+    },
+    {
+      "path": ".gemini/commands/opsx/archive.toml",
+      "sha256": "b4fff6d6f660f74dd6dbddf538c6ebe5fb05d25eec6e7fd3d305b9022ef91abd"
+    },
+    {
+      "path": ".gemini/commands/opsx/explore.toml",
+      "sha256": "fcad1ab1e9089e8cad5c43206922b14312b13afc3c643c8d3ceeeeee8e813cad"
+    },
+    {
+      "path": ".gemini/commands/opsx/propose.toml",
+      "sha256": "51248ec45ea1db95ffa98560d02f9b164085a4396f8d33071d81469ecab7cae7"
+    },
+    {
+      "path": ".gemini/commands/opsx/sync.toml",
+      "sha256": "989c0bc05dc26d09f6c65eae7522b82e5e0006745683176f4d503b561b17c300"
+    },
+    {
+      "path": ".gemini/commands/opsx/update.toml",
+      "sha256": "d4412b6b69815720a05677dcac22980a5b2e5babd59fac797c40fa32f567f9ab"
+    },
+    {
+      "path": ".gemini/settings.json",
+      "sha256": "65e9975f58bb495094fbc7c8f90759d286fde65d437cb91f53b307a98c28d9ae"
+    },
+    {
+      "path": ".gemini/skills/openspec-apply-change/SKILL.md",
+      "sha256": "c62534a7eadf04ea6ca14c6d8b97f7e0444faa83086d71dee6b582775d31fce2"
+    },
+    {
+      "path": ".gemini/skills/openspec-archive-change/SKILL.md",
+      "sha256": "d0e4139e3a363af8effe9fd880e145009d87f251a5f6baf3abeea79e54b08e81"
+    },
+    {
+      "path": ".gemini/skills/openspec-explore/SKILL.md",
+      "sha256": "d39d55acf29e022733ca1a7abce2d0dade24431eb69015e863ab7b43c0efc469"
+    },
+    {
+      "path": ".gemini/skills/openspec-propose/SKILL.md",
+      "sha256": "e45eb900cb3d5ee2f51a670dbca444124f4f803430eab68101582f6e0fdf4294"
+    },
+    {
+      "path": ".gemini/skills/openspec-sync-specs/SKILL.md",
+      "sha256": "9fabb6881db99b76926e994fc0851bcf7394a3199c1bd298d5b477898005a1d7"
+    },
+    {
+      "path": ".gemini/skills/openspec-update-change/SKILL.md",
+      "sha256": "d81fdc45e1ccf9afba7a3f5dc17498fdfb220f6ee3d4b6c85773f7509ccd5423"
+    },
+    {
+      "path": "backend/app/auth.py",
+      "sha256": "e2ac0bf5e37354e941bbc2a90f295a96aec0dd72458dfec5261c8e069e767037"
+    },
+    {
+      "path": "backend/app/database.py",
+      "sha256": "dede225ad8e2aab3eb15ca72b718e634d3be8864d6ae880e822e0a7530068731"
+    },
+    {
+      "path": "backend/app/main.py",
+      "sha256": "9716fdfeb0c1d5492dec4b8715b42ce81f7f8662393925e58d5e8c1391c03345"
+    },
+    {
+      "path": "backend/app/schemas.py",
+      "sha256": "1669402e6c2df8bb41753f1ffa6650921b8b4ccdd89397564c02131973485a5f"
+    },
+    {
+      "path": "backend/app/test_reviews.py",
+      "sha256": "8e8da5368a13a81f16ca0a4571ee8c0be075bf2bbfaf3bf1169141ed717d996c"
+    },
+    {
+      "path": "backend/requirements.txt",
+      "sha256": "e8df592e13416aa4badb175724c068755d23747476d703977f6987093800ac6e"
+    },
+    {
+      "path": "canonical-seed-stage-2.md",
+      "sha256": "d557e3e09fd6d296349e56279d95d88c9350c8a022328c793d0a657fc7630f43"
+    },
+    {
+      "path": "canonical-seed-stage-3.md",
+      "sha256": "b63986d4eadbb0e6aad8ac0f21dac5dc50cc1980f54448ecb2e39bb23451e395"
+    },
+    {
+      "path": "especificacion-semilla-final-en.md",
+      "sha256": "45ddfded6ebffdaec9fceb5818d319a3dc3d66a79a9a6b887557aaccd64b446d"
+    },
+    {
+      "path": "frontend/index.html",
+      "sha256": "7ab21bc6e2dcdf8f48ee21e414ec7d2874dc7166af0dacd2f3d5609313f06082"
+    },
+    {
+      "path": "frontend/package-lock.json",
+      "sha256": "1e4fab28edf594723111d01af6ca655957c262dd5654a08c7d68870c17225f94"
+    },
+    {
+      "path": "frontend/package.json",
+      "sha256": "5e5f8fe4d5fccf8ba6e4b59a682e93ff23fe300e0d2e44367f0fc42f6c1459ab"
+    },
+    {
+      "path": "frontend/postcss.config.js",
+      "sha256": "374f669f08b18e67d0a7264fa45b71228017e604fe7f6db8a5c1bd5ba27e5c98"
+    },
+    {
+      "path": "frontend/src/App.tsx",
+      "sha256": "02e17e4c012fa9bbd72ed12813bd6fe09c951e3aefca2040e9891e4e1e984eb2"
+    },
+    {
+      "path": "frontend/src/components/FormInput.tsx",
+      "sha256": "10e1c0e8faab8915acdf815fa4792bda4f2ffdb5ff968872ba5b2e463269f7d6"
+    },
+    {
+      "path": "frontend/src/components/Header.tsx",
+      "sha256": "94c9ef6ce14ddb55699bae2d6e2fa87c31c594ca32d3573bb304e69284b86b06"
+    },
+    {
+      "path": "frontend/src/components/ProductCard.tsx",
+      "sha256": "05643202245dc3c78958dfa6e8f5eeed6232b326eb4b99e367c2507992bf3ed3"
+    },
+    {
+      "path": "frontend/src/context/AuthContext.tsx",
+      "sha256": "dfeb880e7b153a7466dc131315e16576c0ad8763e9f94735f5e0048168b471e2"
+    },
+    {
+      "path": "frontend/src/context/CartContext.tsx",
+      "sha256": "948478d176d39dd285cf8abcc4a0a72109c3e876bba00abbb52bf35c653a75e9"
+    },
+    {
+      "path": "frontend/src/index.css",
+      "sha256": "cb8508e6f2463d0cc3e3f4c6015a995faf06a53db7a89a07e9c0bb91935d6706"
+    },
+    {
+      "path": "frontend/src/main.tsx",
+      "sha256": "5c8277f7a8b95261a085753122820f0b760afa07ac8c0414fc294e60c7afc7dc"
+    },
+    {
+      "path": "frontend/src/pages/CartPage.tsx",
+      "sha256": "7b8a7ddbcd9e2a8d33f463c2793a4136b00b4cce91ed59c261a03cde0654f3b0"
+    },
+    {
+      "path": "frontend/src/pages/CatalogPage.tsx",
+      "sha256": "ffa8f794e47938ccfc8a9521c29d23d61a4b6cc0eca9a5b4c3b52b319c142428"
+    },
+    {
+      "path": "frontend/src/pages/CheckoutPage.tsx",
+      "sha256": "0effb73bf919724abb78526450326ceb05826fdeb53a6ef155b246ec9e758a72"
+    },
+    {
+      "path": "frontend/src/pages/ConfirmationPage.tsx",
+      "sha256": "96db3895df1caedee311ff71cd714f0aebfc1ad12a994d136317fe74dd40018f"
+    },
+    {
+      "path": "frontend/src/pages/LoginPage.tsx",
+      "sha256": "b0d630880b05a5fd6261b7fc93676e72ceb4d018cbac5b4d8547cbfb04ed8b6d"
+    },
+    {
+      "path": "frontend/src/pages/ModerationPage.tsx",
+      "sha256": "979006ab26564e36f1038769ce02fdbb225444f8104d028ac8aa1bca317ffda5"
+    },
+    {
+      "path": "frontend/src/pages/ProductDetailPage.tsx",
+      "sha256": "9612b603a7843a5936c568e8169664dc08603e927cea19dd4ac09e53bb475768"
+    },
+    {
+      "path": "frontend/tailwind.config.js",
+      "sha256": "af56bf883fdeb1a969e93a860f72b9afd5f3bbca20686c47a2314a82369ff670"
+    },
+    {
+      "path": "frontend/tsconfig.json",
+      "sha256": "3000241a7e241a348d09c591f39d6c44617bc0ee45afc2f7b31730c02feaab23"
+    },
+    {
+      "path": "frontend/vite.config.ts",
+      "sha256": "947ebe13f00e0965b27b738f17469203441f8ea322ed19f5921b76c5141dc895"
+    },
+    {
+      "path": "openspec/changes/archive/.gitkeep",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "openspec/changes/stage-1-ecommerce/.openspec.yaml",
+      "sha256": "e002504731ceb6e8fcf026b601ec3f0568d075aa00e43292bbd0642986212f03"
+    },
+    {
+      "path": "openspec/changes/stage-1-ecommerce/design.md",
+      "sha256": "b20d085701816c6ab9ae98c496f8e2d20e56fe5cbed8c51351a8bc8737c33fce"
+    },
+    {
+      "path": "openspec/changes/stage-1-ecommerce/proposal.md",
+      "sha256": "f0547bd74784f735707f234aadac1aa25bbf770838abc51ad2ddfd21442936a9"
+    },
+    {
+      "path": "openspec/changes/stage-1-ecommerce/specs/stage-1-ecommerce/spec.md",
+      "sha256": "640df61827d38f3321446fcc1ed01fc16c28fcfe661d3a9f1e5f162c781c2f87"
+    },
+    {
+      "path": "openspec/changes/stage-1-ecommerce/tasks.md",
+      "sha256": "c133f302e81951941bc8c2ef5d54efc85be8dca24b53f6a3fe2dc252a301bb59"
+    },
+    {
+      "path": "openspec/changes/stage-2-reviews/.openspec.yaml",
+      "sha256": "9b4b840064a33a6866a0ebc375b496fbdc2387a324f6c8fb4f21b270218c0d37"
+    },
+    {
+      "path": "openspec/changes/stage-2-reviews/design.md",
+      "sha256": "5896863596b2f0bbbdb512cf331d907513051d15b74c0cea6f6861b0ea1407c8"
+    },
+    {
+      "path": "openspec/changes/stage-2-reviews/proposal.md",
+      "sha256": "c06c1f10f0663e0ffc69965ebd75e05bf3c0b5e0338b2f2449ae4274d2cf31f3"
+    },
+    {
+      "path": "openspec/changes/stage-2-reviews/specs/product-reviews/spec.md",
+      "sha256": "07b690497beddcd4f766c31da805e272b7bd6f3f02e8e74815168cccfabbb762"
+    },
+    {
+      "path": "openspec/changes/stage-2-reviews/tasks.md",
+      "sha256": "21c343945b6676be379353d79805b7c6d4223cb70152006e614fce6fb2b92856"
+    },
+    {
+      "path": "openspec/config.yaml",
+      "sha256": "c6625f208242c09e61618ffb04104af398eb3cfbc9218daf7a14c3962f381693"
+    },
+    {
+      "path": "openspec/specs/.gitkeep",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "openspec/specs/product-reviews/spec.md",
+      "sha256": "11a8b793372892c207c0497d7dc6c894c2e8dd5ba0703ad55d8afbf7521dc4da"
+    },
+    {
+      "path": "README.md",
+      "sha256": "170e6fdfb4df6969957f04578e2a0161da78c8c8952bbc78fdf8d5c908b8fe74"
+    },
+    {
+      "path": "Start-Gemini.ps1",
+      "sha256": "c62460d7476e583e3e4066e2f91611e9fa08b8d97099b38f3f460cfb23ef726f"
+    }
+  ]
+}

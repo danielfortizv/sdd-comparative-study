@@ -1,0 +1,42 @@
+{
+  "component": {
+    "key": "kiro-s1-official-01",
+    "name": "Kiro Stage 1 Official 01",
+    "qualifier": "TRK",
+    "measures": [
+      {
+        "metric": "coverage",
+        "value": "88.8",
+        "bestValue": false
+      },
+      {
+        "metric": "lines_to_cover",
+        "value": "1163"
+      },
+      {
+        "metric": "uncovered_conditions",
+        "value": "27",
+        "bestValue": false
+      },
+      {
+        "metric": "branch_coverage",
+        "value": "83.4",
+        "bestValue": false
+      },
+      {
+        "metric": "uncovered_lines",
+        "value": "122",
+        "bestValue": false
+      },
+      {
+        "metric": "conditions_to_cover",
+        "value": "163"
+      },
+      {
+        "metric": "line_coverage",
+        "value": "89.5",
+        "bestValue": false
+      }
+    ]
+  }
+}

@@ -1,0 +1,65 @@
+============================= test session starts =============================
+platform win32 -- Python 3.13.9, pytest-8.4.2, pluggy-1.5.0
+rootdir: C:\Users\jeron\OneDrive\Escritorio\uni\implementacion Ecommerce\Caso 3-Ecommerce\Etapa 3\OpenSpec\backend
+plugins: anyio-4.10.0, cov-7.1.0
+collected 2 items
+
+app\test_reviews.py ..                                                   [100%]
+
+============================== warnings summary ===============================
+..\..\..\..\..\..\..\..\anaconda3\Lib\site-packages\fastapi\testclient.py:1
+  C:\Users\jeron\anaconda3\Lib\site-packages\fastapi\testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.
+    from starlette.testclient import TestClient as TestClient  # noqa
+
+app\schemas.py:9
+  C:\Users\jeron\OneDrive\Escritorio\uni\implementacion Ecommerce\Caso 3-Ecommerce\Etapa 3\OpenSpec\backend\app\schemas.py:9: PydanticDeprecatedSince20: Support for class-based `config` is deprecated, use ConfigDict instead. Deprecated in Pydantic V2.0 to be removed in V3.0. See Pydantic V2 Migration Guide at https://errors.pydantic.dev/2.12/migration/
+    class UserOut(BaseModel):
+
+app\schemas.py:20
+  C:\Users\jeron\OneDrive\Escritorio\uni\implementacion Ecommerce\Caso 3-Ecommerce\Etapa 3\OpenSpec\backend\app\schemas.py:20: PydanticDeprecatedSince20: Support for class-based `config` is deprecated, use ConfigDict instead. Deprecated in Pydantic V2.0 to be removed in V3.0. See Pydantic V2 Migration Guide at https://errors.pydantic.dev/2.12/migration/
+    class ProductOut(BaseModel):
+
+app\schemas.py:36
+  C:\Users\jeron\OneDrive\Escritorio\uni\implementacion Ecommerce\Caso 3-Ecommerce\Etapa 3\OpenSpec\backend\app\schemas.py:36: PydanticDeprecatedSince20: Support for class-based `config` is deprecated, use ConfigDict instead. Deprecated in Pydantic V2.0 to be removed in V3.0. See Pydantic V2 Migration Guide at https://errors.pydantic.dev/2.12/migration/
+    class ReviewOut(BaseModel):
+
+app\schemas.py:49
+  C:\Users\jeron\OneDrive\Escritorio\uni\implementacion Ecommerce\Caso 3-Ecommerce\Etapa 3\OpenSpec\backend\app\schemas.py:49: PydanticDeprecatedSince20: Support for class-based `config` is deprecated, use ConfigDict instead. Deprecated in Pydantic V2.0 to be removed in V3.0. See Pydantic V2 Migration Guide at https://errors.pydantic.dev/2.12/migration/
+    class ProductDetailOut(BaseModel):
+
+app\main.py:46
+  C:\Users\jeron\OneDrive\Escritorio\uni\implementacion Ecommerce\Caso 3-Ecommerce\Etapa 3\OpenSpec\backend\app\main.py:46: DeprecationWarning: 
+          on_event is deprecated, use lifespan event handlers instead.
+  
+          Read more about it in the
+          [FastAPI docs for Lifespan Events](https://fastapi.tiangolo.com/advanced/events/).
+          
+    @app.on_event("startup")
+
+..\..\..\..\..\..\..\..\anaconda3\Lib\site-packages\fastapi\applications.py:4744
+  C:\Users\jeron\anaconda3\Lib\site-packages\fastapi\applications.py:4744: DeprecationWarning: 
+          on_event is deprecated, use lifespan event handlers instead.
+  
+          Read more about it in the
+          [FastAPI docs for Lifespan Events](https://fastapi.tiangolo.com/advanced/events/).
+          
+    return self.router.on_event(event_type)  # ty: ignore[deprecated]
+
+app/test_reviews.py::TestReviewsWorkflow::test_caching_and_invalidation_flow
+app/test_reviews.py::TestReviewsWorkflow::test_caching_and_invalidation_flow
+app/test_reviews.py::TestReviewsWorkflow::test_complete_reviews_and_moderation_flow
+app/test_reviews.py::TestReviewsWorkflow::test_complete_reviews_and_moderation_flow
+  C:\Users\jeron\OneDrive\Escritorio\uni\implementacion Ecommerce\Caso 3-Ecommerce\Etapa 3\OpenSpec\backend\app\auth.py:23: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+    expire = datetime.datetime.utcnow() + datetime.timedelta(hours=24)
+
+app/test_reviews.py::TestReviewsWorkflow::test_caching_and_invalidation_flow
+app/test_reviews.py::TestReviewsWorkflow::test_complete_reviews_and_moderation_flow
+  C:\Users\jeron\anaconda3\Lib\site-packages\sqlalchemy\sql\schema.py:3624: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+    return util.wrap_callable(lambda ctx: fn(), fn)  # type: ignore
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=============================== tests coverage ================================
+_______________ coverage: platform win32, python 3.13.9-final-0 _______________
+
+Coverage XML written to file coverage.xml
+======================= 2 passed, 13 warnings in 12.87s =======================

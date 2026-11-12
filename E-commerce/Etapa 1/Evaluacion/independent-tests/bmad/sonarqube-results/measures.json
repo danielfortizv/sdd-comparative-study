@@ -1,0 +1,67 @@
+{
+  "component": {
+    "key": "bmad-s1-official-01",
+    "name": "BMAD Stage 1 Official 01",
+    "qualifier": "TRK",
+    "measures": [
+      {
+        "metric": "coverage",
+        "value": "88.6",
+        "bestValue": false
+      },
+      {
+        "metric": "bugs",
+        "value": "1",
+        "bestValue": false
+      },
+      {
+        "metric": "reliability_rating",
+        "value": "2.0",
+        "bestValue": false
+      },
+      {
+        "metric": "code_smells",
+        "value": "8",
+        "bestValue": false
+      },
+      {
+        "metric": "duplicated_lines_density",
+        "value": "0.0",
+        "bestValue": true
+      },
+      {
+        "metric": "ncloc_language_distribution",
+        "value": "css=482;py=182;ts=597"
+      },
+      {
+        "metric": "cognitive_complexity",
+        "value": "62",
+        "bestValue": false
+      },
+      {
+        "metric": "security_rating",
+        "value": "1.0",
+        "bestValue": true
+      },
+      {
+        "metric": "ncloc",
+        "value": "1261"
+      },
+      {
+        "metric": "vulnerabilities",
+        "value": "0",
+        "bestValue": true
+      },
+      {
+        "metric": "sqale_index",
+        "value": "34",
+        "bestValue": false
+      },
+      {
+        "metric": "sqale_rating",
+        "value": "1.0",
+        "bestValue": true
+      }
+    ]
+  }
+}

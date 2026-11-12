@@ -1,0 +1,8 @@
+Finish one blocking Stage 3 CI correction through the native Spec Kit workflow. The implementation and all three real Playwright E2E tests already pass locally. However an independent build using CI=true (the environment GitHub Actions automatically uses) FAILED with the following exact inherited ESLint warnings, so the new CI pipeline cannot succeed yet:
+
+- frontend/src/components/ModeratorDashboard.tsx: useEffect missing fetchModerationReviews dependency, line 31.
+- frontend/src/components/ProductDetails.tsx: unused identifier from useAuth, line 13; useEffect missing fetchReviews dependency, line 44.
+
+Read only those two components and the relevant native Stage 3 specs/tasks under specs/003-delivery-caching. Add a concise spec clarification that the frontend production build must succeed with CI=true, then fix the React hooks using stable callbacks and correct dependencies, and remove the unused binding. Preserve all UI/business behavior. Do not disable CI, suppress ESLint, weaken checks or undertake unrelated refactoring. The current effects' fetch functions can be memoized with useCallback using their real token/product-id dependencies.
+
+Run the frontend unit tests with coverage to preserve frontend/coverage/lcov.info, run a successful production build with CI=true, and rerun the existing three real E2E tests because these components changed. Backend code is unchanged; do not repeat backend tests or regenerate backend coverage unnecessarily. Clean up owned test servers. Update native tasks and README with actual final results and keep Docker runtime marked unavailable. No broad audit, no questions, no approval gates, and no final answer promising future work: make the corrections and execute the checks now.

@@ -1,0 +1,151 @@
+ The final narrow semantic corrections have been successfully applied to the native implementation task list at
+  specs/001-stage1-ecommerce/tasks.md.
+
+  Changed Files
+  The only file that has been modified is:
+   - specs/001-stage1-ecommerce/tasks.md
+
+  All other baseline files, specifications, planning documents, checklists, and the project constitution remained
+  untouched and retained their exact approved structures and checksums. No application code, directories, or scaffolding
+  were created.
+
+  ---
+
+  Implementation Task List Summary Metrics
+
+   - Total Task Count: 44 tasks
+   - Task Count by Phase / User Story:
+     - Phase 1: Setup: 4 tasks (T001 - T004)
+     - Phase 2: Foundational: 5 tasks (T005 - T009)
+     - Phase 3: User Story 1 (Priority P1 - Product Browsing & Local Cart MVP): 7 tasks (T010 - T016)
+     - Phase 4: User Story 2 (Priority P2 - Basic Authentication & Cart Preservation): 10 tasks (T017 - T026)
+     - Phase 5: User Story 3 (Priority P3 - Simulated Checkout & Purchase Confirmation): 7 tasks (T027 - T033)
+     - Phase 6: User Story 4 (Priority P4 - Overall System Behavior, Feedback, & Accessibility): 7 tasks (T034 - T040)
+     - Phase 7: Polish & Quality Validation: 4 tasks (T041 - T044)
+   - Exact [P] Parallel Markers Count: 26 parallel task markers (tasks targeting backend/src/main.py or
+     frontend/src/App.tsx have been strictly run sequentially to avoid git write or merge conflicts).
+   - Coverage Status:
+     - 88 Active Requirements: Mapped directly to actionable implementation or verification tasks in the rebuilt,
+       semantically valid ## Traceability Index.
+     - 2 Conditional Requirements: FR-009 and FR-010 are explicitly recorded as Not Activated in the index (no expanded
+       product view is in scope for Stage 1).
+
+  Summary of Applied Corrections:
+   1. Infrastructure Mappings: Cleaned setup mappings for T001, T002, T003, and T009. Mapped ATC-004 (frontend/backend
+      clear interface communication) strictly to tasks that actually establish or validate that interface (T005, T008,
+      and T041).
+   2. Authentication Mappings:
+      - T017 (backend auth tests): Mapped only to backend registration and login logic tests, removing cart-preservation
+        and password-display parameters.
+      - T018 (frontend auth tests): Mapped strictly to client session, header validation, and form validations.
+      - T019 and T020 (registration and sign-in endpoints): Removed frontend-only requirements. Left post-registration
+        session status completely unspecified.
+      - T022 (AuthContext) and T025 (AuthStatus indicators and local sign-out action) are mapped precisely.
+        Cart-preservation on sign-out is identified as an approved plan choice, not FR-034/035.
+      - T023 and T024 are updated with the technology-neutral identifiers and safe inputs validation.
+   3. Checkout Mappings: Removed FR-053 (comprehensible post-checkout starting state), FR-046 and FR-047 (address-book
+      exclusions) from the T032 confirmation panel task, as the panel alone does not enforce those states or
+      constraints.
+   4. US4 Test Layers: Retargeted T034 to frontend/src/tests/JourneyIntegration.test.tsx for integrated journey tests
+      (FR-055 to FR-060), keeping T035 at frontend/src/tests/IntegrationUX.test.tsx (FR-061 to FR-077). Backend unit
+      tests no longer claim UI validation.
+   5. Explicit Integration Tasks:
+      - T036 (Toast Notifications): Lists affected frontend files (FeedbackToast.tsx, Catalog.tsx, Cart.tsx,
+        SignInForm.tsx, ConfirmationScreen.tsx).
+      - T037 (Loading/Empty/Error States): Lists affected frontend views (StateFallbacks.tsx, Catalog.tsx, Cart.tsx,
+        RegisterForm.tsx, SignInForm.tsx, CheckoutPage.tsx).
+   6. Focusable and Keyboard Navigation (T040): Rewrote T040 to focus strictly on implementing and verifying semantic,
+      focusable, and keyboard-operable controls and navigation across the main journey in frontend/src/App.tsx.
+   7. Removed FR-040 from T029: Checkout request handling is not the implementation task for secure database storage.
+   8. Traceability Index Rebuild: Rebuilt every affected row in the Traceability Index based on the newly corrected
+      mappings, ensuring absolute consistency.
+
+  This task list represents the native implementation planning checkpoint. Actual coding, directory scaffolding,
+  dependency installations, and implementation tasks execution must NOT begin until separate, explicit human approval is
+  granted.
+
+  I have stopped for your human review.
+▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄
+ > /stats
+▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀
+╭──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
+│                                                                                                                      │
+│  Session Stats                                                                                                       │
+│                                                                                                                      │
+│  Interaction Summary                                                                                                 │
+│  Session ID:                 1bc711ec-5417-4546-a723-352e97ba5333                                                    │
+│  Auth Method:                vertex-ai                                                                               │
+│  Tool Calls:                 80 ( ✓ 80 x 0 )                                                                         │
+│  Success Rate:               100.0%                                                                                  │
+│  User Agreement:             100.0% (80 reviewed)                                                                    │
+│  Code Changes:               +3082 -2131                                                                             │
+│                                                                                                                      │
+│  Performance                                                                                                         │
+│  Wall Time:                  30h 2m 54s                                                                              │
+│  Agent Active:               19h 52m 9s                                                                              │
+│    » API Time:               20m 29s (1.7%)                                                                          │
+│    » Tool Time:              19h 31m 40s (98.3%)                                                                     │
+│                                                                                                                      │
+│                                                                                                                      │
+│  Model Usage                                                                                                         │
+│  Use /model to view model quota information                                                                          │
+│                                                                                                                      │
+│  Model                           Reqs  Input Tokens   Cache Reads Output Tokens                                      │
+│  ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────  │
+│  gemini-3.5-flash                  92     9.581.951     7.912.188        75.634                                      │
+│    ↳ main                          92     9.581.951     7.912.188        75.634                                      │
+╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄
+ > /stats model
+▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀
+╭──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
+│                                                                                                                      │
+│  Model Stats For Nerds                                                                                               │
+│                                                                                                                      │
+│  Auth Method:                vertex-ai                                                                               │
+│                                                                                                                      │
+│  Metric                      gemini-3.5-flash                                                                        │
+│  ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────  │
+│  API                                                                                                                 │
+│  Requests                    92                                                                                      │
+│  Errors                      1 (1.1%)                                                                                │
+│  Avg Latency                 13.4s                                                                                   │
+│  Tokens                                                                                                              │
+│  Total                       9.732.072                                                                               │
+│    ↳ Input                   1.669.763                                                                               │
+│    ↳ Cache Reads             7.912.188 (82.6%)                                                                       │
+│    ↳ Thoughts                74.487                                                                                  │
+│    ↳ Output                  75.634                                                                                  │
+│  Roles                                                                                                               │
+│  main                                                                                                                │
+│    ↳ Requests                92                                                                                      │
+│    ↳ Input                   1.669.763                                                                               │
+│    ↳ Output                  75.634                                                                                  │
+│    ↳ Cache Reads             7.912.188                                                                               │
+╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄
+ > /stats tools
+▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀
+╭────────────────────────────────────────────────────────────────────╮
+│                                                                    │
+│  Tool Stats For Nerds                                              │
+│                                                                    │
+│  Tool Name                   Calls   Success Rate   Avg Duration   │
+│  ────────────────────────────────────────────────────────────────  │
+│  update_topic                   24         100.0%            3ms   │
+│  glob                            2         100.0%           26ms   │
+│  read_file                      10         100.0%           53ms   │
+│  list_directory                  2         100.0%           21ms   │
+│  write_file                     34         100.0%           46ms   │
+│  exit_plan_mode                  1         100.0%          50.1s   │
+│  run_shell_command               3         100.0%     6h 30m 15s   │
+│  grep_search                     4         100.0%          104ms   │
+│                                                                    │
+│  User Decision Summary                                             │
+│  Total Reviewed Suggestions:                                  78   │
+│   » Accepted:                                                 78   │
+│   » Rejected:                                                  0   │
+│   » Modified:                                                  0   │
+│  ────────────────────────────────────────────────────────────────  │
+│   Overall Agreement Rate:                                 100.0%   │
+╰────────────────────────────────────────────────────────────────────╯

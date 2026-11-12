@@ -1,0 +1,30 @@
+{
+  "mode": "auto_edit",
+  "stage": 3,
+  "started_utc": "2026-11-07T02:51:44.5406971Z",
+  "seed_sha256": "B63986D4EADBB0E6AAD8AC0F21DAC5DC50CC1980F54448ECB2E39BB23451E395",
+  "model": "gemini-3.5-flash",
+  "tool": "Tessl",
+  "wall_seconds": 795.4867079,
+  "cli_version": "0.60.0",
+  "corrections": [],
+  "exit_code": 0,
+  "completed_utc": "2026-11-07T03:05:00.0241515Z",
+  "provider": "Vertex AI",
+  "final_status": "specifications-and-code-complete; local validation passed",
+  "final_validation": {
+    "production_build": "passed",
+    "backend_tests": "passed",
+    "real_e2e": "passed",
+    "docker_runtime": "not executed: Docker unavailable",
+    "remote_github_actions": "not executed",
+    "frontend_tests": "passed"
+  },
+  "followup_prompt_files": [
+    "ci-finalization-2-prompt.txt",
+    "ci-finalization-prompt.txt"
+  ],
+  "final_seed_sha256": "B63986D4EADBB0E6AAD8AC0F21DAC5DC50CC1980F54448ECB2E39BB23451E395",
+  "final_collection_utc": "2026-11-07T05:06:36.7298765Z",
+  "framework_version_observed_at_collection": "0.119.0"
+}

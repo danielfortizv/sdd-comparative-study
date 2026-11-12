@@ -1,0 +1,137 @@
+/* Global styles for the integrated journey.
+ *
+ * The layout is mobile-first (R13.1): base rules target narrow/mobile screens
+ * with full-width, wrapping, stacked content; a single min-width media query
+ * layers on the roomier desktop presentation. Everything uses flexible widths
+ * and wrapping so the interface stays clear, consistent, and usable from small
+ * phones up to wide desktops without horizontal scrolling. No layout rule
+ * depends on a pointer, so keyboard operation of the journey is unaffected
+ * (R13.4). */
+
+:root {
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+  line-height: 1.5;
+
+  /* Shared spacing/sizing tokens keep the layout consistent across views. */
+  --page-max-width: 960px;
+  --content-gap: 1.5rem;
+  --card-min-width: 14rem;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  /* Smaller gutters on mobile; generous ones once there is room. */
+  padding: 0.75rem;
+}
+
+/* Media and form controls stay within their container on every screen size so
+ * nothing overflows a narrow viewport. */
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+input,
+button,
+select,
+textarea {
+  font: inherit;
+  max-width: 100%;
+}
+
+main {
+  display: grid;
+  gap: var(--content-gap);
+  width: 100%;
+  max-width: var(--page-max-width);
+  margin: 0 auto;
+}
+
+/* In-page journey navigation: wraps onto multiple lines on narrow screens so
+ * every destination stays reachable (R13.1). Links are comfortably sized tap
+ * and focus targets. */
+.journey-nav ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  list-style: none;
+  margin: 0.5rem 0 0;
+  padding: 0;
+}
+
+.journey-nav a {
+  display: inline-block;
+  padding: 0.4rem 0.6rem;
+}
+
+/* Forms stack their controls and stretch to the available width on mobile. */
+form {
+  display: grid;
+  gap: 0.75rem;
+}
+
+form label {
+  display: block;
+}
+
+form input {
+  width: 100%;
+}
+
+/* Product listing: a responsive grid that fits as many flexible cards per row
+ * as the viewport allows, collapsing to a single column on narrow screens
+ * (R13.1). */
+.product-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: var(--content-gap);
+  grid-template-columns: repeat(auto-fill, minmax(var(--card-min-width), 1fr));
+}
+
+.product-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+}
+
+.product-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: auto;
+}
+
+/* Keep a clear, consistent visible focus indicator so the keyboard journey is
+ * always traceable (R13.4). */
+:focus-visible {
+  outline: 2px solid #2563eb;
+  outline-offset: 2px;
+}
+
+/* Desktop and larger: roomier gutters and spacing. The flexible widths above
+ * continue to apply, so the layout stays consistent, just with more breathing
+ * room (R13.1). */
+@media (min-width: 640px) {
+  body {
+    padding: 1rem;
+  }
+
+  .journey-nav ul {
+    gap: 1rem;
+  }
+
+  .journey-nav a {
+    padding: 0.25rem 0.5rem;
+  }
+}

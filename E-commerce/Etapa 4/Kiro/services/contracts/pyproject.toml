@@ -1,0 +1,14 @@
+[project]
+name = "stage4-contracts"
+version = "0.1.0"
+description = "Shared, stateless contracts (event envelope, event types, tokens, settings) for the Stage 4 microservices."
+requires-python = ">=3.11"
+dependencies = ["pydantic>=2.10"]
+
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools]
+packages = ["contracts"]
+package-dir = {"contracts" = "."}

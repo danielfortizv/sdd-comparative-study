@@ -1,0 +1,11 @@
+{
+  "completed_utc": "2026-11-07T09:57:15.2315169Z",
+  "tool": "OpenSpec",
+  "shell": "Windows PowerShell 5.1",
+  "driver": "independent wrapper smoke; no application/test source changes",
+  "gateway_http": 200,
+  "started_utc": "2026-11-07T09:57:01.6815824Z",
+  "host_pid": 41684,
+  "owned_ports_remaining": 0,
+  "frontend_http": 200
+}

@@ -1,0 +1,117 @@
+✦ The native planning artifacts have been successfully corrected and are ready for human review.
+
+  Changed Files
+  The following files were updated under specs/001-stage1-ecommerce/:
+   - specs/001-stage1-ecommerce/plan.md (Updated dependencies, storage choices, and versions)
+   - specs/001-stage1-ecommerce/research.md (Updated password security mechanism and catalog storage definitions)
+   - specs/001-stage1-ecommerce/data-model.md (Updated identifier schemes, opaque checkout schemas, and product
+     references)
+   - specs/001-stage1-ecommerce/quickstart.md (Rewrote validation steps for seed-behavior compliance, removed
+     unestablished versions)
+   - specs/001-stage1-ecommerce/contracts/api.md (Revised REST schemas to be explicitly non-normative, generic
+     placeholders)
+   - specs/001-stage1-ecommerce/checklists/requirements.md (Qualified the final Feature Readiness checklist item)
+
+  Summary of Applied Corrections:
+   1. Unestablished Version Removal: Removed specific numeric minimum versions (e.g., Python 3.10+, Node.js 18+, FastAPI
+      v0.100+) from plan.md and quickstart.md. All entries now refer strictly to compatible local versions.
+   2. Registration Session Status: Removed any statement requiring registration not to automatically authenticate.
+      Registration creates an account, and sign-in is a separate action that activates the session, but the
+      post-registration session status is left unspecified.
+   3. Invented Fields & Rules Cleaned: Replaced username/email with a technology-neutral identifier. Removed uniqueness
+      rules, field length constraints, and non-empty thresholds. Defined checkout demonstration details as a minimal,
+      completely opaque set of parameters. Product IDs are treated strictly as internal technical references.
+   4. Quickstart Outcomes Standardised: Removed all invented observable outcomes (e.g., username display, exact
+      page/control/button labels, specific cart-counter values, and mandatory cart resets). Validation now targets only
+      the seed-approved behaviors (including starting a new purchase from a comprehensible state).
+   5. Standardised Password Hashing: Selected Python's standard library hashlib.pbkdf2_hmac as the single coherent
+      hashing approach (explicitly labeled as a technical choice, not a functional requirement).
+   6. Consistent Catalog Storage: Consolidated catalog storage across all planning documents as: "an in-memory list on
+      the backend component initialized from a local static JSON file."
+   7. Implementation-Level Interface Choices: Labeled REST paths, HTTP status codes, local ports, and session-token
+      schemas as implementation-level choices. All JSON payload schemas in contracts/api.md are marked explicitly as
+      non-normative samples utilizing generic placeholder keys.
+
+  I have stopped for your human review.
+▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄
+ > /stats
+▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀
+╭──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
+│                                                                                                                      │
+│  Session Stats                                                                                                       │
+│                                                                                                                      │
+│  Interaction Summary                                                                                                 │
+│  Session ID:                 1bc711ec-5417-4546-a723-352e97ba5333                                                    │
+│  Auth Method:                vertex-ai                                                                               │
+│  Tool Calls:                 53 ( ✓ 53 x 0 )                                                                         │
+│  Success Rate:               100.0%                                                                                  │
+│  User Agreement:             100.0% (53 reviewed)                                                                    │
+│  Code Changes:               +1719 -1129                                                                             │
+│                                                                                                                      │
+│  Performance                                                                                                         │
+│  Wall Time:                  50m 26s                                                                                 │
+│  Agent Active:               12m 28s                                                                                 │
+│    » API Time:               10m 39s (85.4%)                                                                         │
+│    » Tool Time:              1m 49s (14.6%)                                                                          │
+│                                                                                                                      │
+│                                                                                                                      │
+│  Model Usage                                                                                                         │
+│  Use /model to view model quota information                                                                          │
+│                                                                                                                      │
+│  Model                           Reqs  Input Tokens   Cache Reads Output Tokens                                      │
+│  ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────  │
+│  gemini-3.5-flash                  59     3.956.957     3.052.990        35.722                                      │
+│    ↳ main                          59     3.956.957     3.052.990        35.722                                      │
+╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄
+ > /stats model
+▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀
+╭──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
+│                                                                                                                      │
+│  Model Stats For Nerds                                                                                               │
+│                                                                                                                      │
+│  Auth Method:                vertex-ai                                                                               │
+│                                                                                                                      │
+│  Metric                      gemini-3.5-flash                                                                        │
+│  ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────  │
+│  API                                                                                                                 │
+│  Requests                    59                                                                                      │
+│  Errors                      1 (1.7%)                                                                                │
+│  Avg Latency                 10.8s                                                                                   │
+│  Tokens                                                                                                              │
+│  Total                       4.033.540                                                                               │
+│    ↳ Input                   903.967                                                                                 │
+│    ↳ Cache Reads             3.052.990 (77.2%)                                                                       │
+│    ↳ Thoughts                40.861                                                                                  │
+│    ↳ Output                  35.722                                                                                  │
+│  Roles                                                                                                               │
+│  main                                                                                                                │
+│    ↳ Requests                59                                                                                      │
+│    ↳ Input                   903.967                                                                                 │
+│    ↳ Output                  35.722                                                                                  │
+│    ↳ Cache Reads             3.052.990                                                                               │
+╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄
+ > /stats tools
+▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀
+╭────────────────────────────────────────────────────────────────────╮
+│                                                                    │
+│  Tool Stats For Nerds                                              │
+│                                                                    │
+│  Tool Name                   Calls   Success Rate   Avg Duration   │
+│  ────────────────────────────────────────────────────────────────  │
+│  update_topic                   16         100.0%            2ms   │
+│  glob                            2         100.0%           26ms   │
+│  read_file                       8         100.0%           35ms   │
+│  list_directory                  2         100.0%           21ms   │
+│  write_file                     23         100.0%           34ms   │
+│  exit_plan_mode                  1         100.0%          50.1s   │
+│  run_shell_command               1         100.0%          57.9s   │
+│                                                                    │
+│  User Decision Summary                                             │
+│  Total Reviewed Suggestions:                                  52   │
+│   » Accepted:                                                 52   │
+│   » Rejected:                                                  0   │
+│   » Modified:                                                  0   │
+│  ────────────────────────────────────────────────────────────────  │
+│   Overall Agreement Rate:                                 100.0%   │

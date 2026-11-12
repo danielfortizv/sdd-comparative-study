@@ -1,0 +1,898 @@
+{
+  "pbtResults": {
+    "4.2 Write property test for registration validation": {
+      "status": "passed",
+      "lastRunTimestamp": 1791018511769
+    },
+    "4.3 Write property test for registration error message safety": {
+      "status": "passed",
+      "lastRunTimestamp": 1791018530861
+    },
+    "4.4 Write property test for valid registration creating an account": {
+      "status": "passed",
+      "lastRunTimestamp": 1791018598554
+    },
+    "4.5 Write property test for passwords not stored as plain text": {
+      "status": "passed",
+      "lastRunTimestamp": 1791018679301
+    },
+    "4.7 Write property test for sign-in validation": {
+      "status": "passed",
+      "lastRunTimestamp": 1791018768474
+    },
+    "4.8 Write property test for sign-out ending the session": {
+      "status": "passed",
+      "lastRunTimestamp": 1791018821439
+    },
+    "5.2 Write property test for confirmation derivation": {
+      "status": "passed",
+      "lastRunTimestamp": 1791018924175
+    },
+    "7.4 Write property test for cart contents preserved across navigation": {
+      "status": "passed",
+      "lastRunTimestamp": 1791019598473
+    },
+    "9.2 Write property test for adding a product makes it present": {
+      "status": "passed",
+      "lastRunTimestamp": 1791021621188
+    },
+    "12.6 Write property test for cart-checkout consistency": {
+      "status": "passed",
+      "lastRunTimestamp": 1791021656230
+    },
+    "12.4 Write property test for checkout reachable only when cart is non-empty": {
+      "status": "passed",
+      "lastRunTimestamp": 1791022020597
+    },
+    "12.2 Write property test for completion blocked while not identified": {
+      "status": "passed",
+      "lastRunTimestamp": 1791022038957
+    }
+  },
+  "executionHistory": {
+    "1. Set up separate frontend and backend project structure": [
+      {
+        "executionId": "7178abb2-3ec2-4d05-b6a6-48fe95506f60",
+        "chatSessionId": "sess_4b7cca2e-4823-447d-bf37-1a3963086efd",
+        "timestamp": 1791017291012
+      },
+      {
+        "executionId": "7178abb2-3ec2-4d05-b6a6-48fe95506f60",
+        "chatSessionId": "sess_4b7cca2e-4823-447d-bf37-1a3963086efd",
+        "timestamp": 1791017304787
+      },
+      {
+        "executionId": "7178abb2-3ec2-4d05-b6a6-48fe95506f60",
+        "chatSessionId": "sess_4b7cca2e-4823-447d-bf37-1a3963086efd",
+        "timestamp": 1791017763707
+      }
+    ],
+    "2.1 Define backend data models and in-process demonstration store": [
+      {
+        "executionId": "7178abb2-3ec2-4d05-b6a6-48fe95506f60",
+        "chatSessionId": "sess_4b7cca2e-4823-447d-bf37-1a3963086efd",
+        "timestamp": 1791017292617
+      },
+      {
+        "executionId": "7178abb2-3ec2-4d05-b6a6-48fe95506f60",
+        "chatSessionId": "sess_4b7cca2e-4823-447d-bf37-1a3963086efd",
+        "timestamp": 1791017767514
+      },
+      {
+        "executionId": "7178abb2-3ec2-4d05-b6a6-48fe95506f60",
+        "chatSessionId": "sess_4b7cca2e-4823-447d-bf37-1a3963086efd",
+        "timestamp": 1791017909011
+      }
+    ],
+    "2.2 Write unit tests for the data-access layer": [
+      {
+        "executionId": "7178abb2-3ec2-4d05-b6a6-48fe95506f60",
+        "chatSessionId": "sess_4b7cca2e-4823-447d-bf37-1a3963086efd",
+        "timestamp": 1791017292722
+      },
+      {
+        "executionId": "7178abb2-3ec2-4d05-b6a6-48fe95506f60",
+        "chatSessionId": "sess_4b7cca2e-4823-447d-bf37-1a3963086efd",
+        "timestamp": 1791017913148
+      },
+      {
+        "executionId": "7178abb2-3ec2-4d05-b6a6-48fe95506f60",
+        "chatSessionId": "sess_4b7cca2e-4823-447d-bf37-1a3963086efd",
+        "timestamp": 1791018421403
+      }
+    ],
+    "3.1 Implement catalog retrieval service and endpoints": [
+      {
+        "executionId": "7178abb2-3ec2-4d05-b6a6-48fe95506f60",
+        "chatSessionId": "sess_4b7cca2e-4823-447d-bf37-1a3963086efd",
+        "timestamp": 1791017292813
+      },
+      {
+        "executionId": "7178abb2-3ec2-4d05-b6a6-48fe95506f60",
+        "chatSessionId": "sess_4b7cca2e-4823-447d-bf37-1a3963086efd",
+        "timestamp": 1791017914539
+      },
+      {
+        "executionId": "7178abb2-3ec2-4d05-b6a6-48fe95506f60",
+        "chatSessionId": "sess_4b7cca2e-4823-447d-bf37-1a3963086efd",
+        "timestamp": 1791018422765
+      }
+    ],
+    "3.2 Write unit tests for catalog endpoints": [
+      {
+        "executionId": "7178abb2-3ec2-4d05-b6a6-48fe95506f60",
+        "chatSessionId": "sess_4b7cca2e-4823-447d-bf37-1a3963086efd",
+        "timestamp": 1791017292892
+      },
+      {
+        "executionId": "7178abb2-3ec2-4d05-b6a6-48fe95506f60",
+        "chatSessionId": "sess_4b7cca2e-4823-447d-bf37-1a3963086efd",
+        "timestamp": 1791018431628
+      },
+      {
+        "executionId": "7178abb2-3ec2-4d05-b6a6-48fe95506f60",
+        "chatSessionId": "sess_4b7cca2e-4823-447d-bf37-1a3963086efd",
+        "timestamp": 1791018693928
+      }
+    ],
+    "4.1 Implement registration service and `POST /auth/register`": [
+      {
+        "executionId": "7178abb2-3ec2-4d05-b6a6-48fe95506f60",
+        "chatSessionId": "sess_4b7cca2e-4823-447d-bf37-1a3963086efd",
+        "timestamp": 1791017292961
+      },
+      {
+        "executionId": "7178abb2-3ec2-4d05-b6a6-48fe95506f60",
+        "chatSessionId": "sess_4b7cca2e-4823-447d-bf37-1a3963086efd",
+        "timestamp": 1791017915944
+      },
+      {
+        "executionId": "7178abb2-3ec2-4d05-b6a6-48fe95506f60",
+        "chatSessionId": "sess_4b7cca2e-4823-447d-bf37-1a3963086efd",
+        "timestamp": 1791018424169
+      }
+    ],
+    "4.2 Write property test for registration validation": [
+      {
+        "executionId": "7178abb2-3ec2-4d05-b6a6-48fe95506f60",
+        "chatSessionId": "sess_4b7cca2e-4823-447d-bf37-1a3963086efd",
+        "timestamp": 1791017293045
+      },
+      {
+        "executionId": "7178abb2-3ec2-4d05-b6a6-48fe95506f60",
+        "chatSessionId": "sess_4b7cca2e-4823-447d-bf37-1a3963086efd",
+        "timestamp": 1791018433007
+      },
+      {
+        "executionId": "7178abb2-3ec2-4d05-b6a6-48fe95506f60",
+        "chatSessionId": "sess_4b7cca2e-4823-447d-bf37-1a3963086efd",
+        "timestamp": 1791018695262
+      }
+    ],
+    "4.3 Write property test for registration error message safety": [
+      {
+        "executionId": "7178abb2-3ec2-4d05-b6a6-48fe95506f60",
+        "chatSessionId": "sess_4b7cca2e-4823-447d-bf37-1a3963086efd",
+        "timestamp": 1791017293120
+      },
+      {
+        "executionId": "7178abb2-3ec2-4d05-b6a6-48fe95506f60",
+        "chatSessionId": "sess_4b7cca2e-4823-447d-bf37-1a3963086efd",
+        "timestamp": 1791018434439
+      },
+      {
+        "executionId": "7178abb2-3ec2-4d05-b6a6-48fe95506f60",
+        "chatSessionId": "sess_4b7cca2e-4823-447d-bf37-1a3963086efd",
+        "timestamp": 1791018696652
+      }
+    ],
+    "4.4 Write property test for valid registration creating an account": [
+      {
+        "executionId": "7178abb2-3ec2-4d05-b6a6-48fe95506f60",
+        "chatSessionId": "sess_4b7cca2e-4823-447d-bf37-1a3963086efd",
+        "timestamp": 1791017293198
+      },
+      {
+        "executionId": "7178abb2-3ec2-4d05-b6a6-48fe95506f60",
+        "chatSessionId": "sess_4b7cca2e-4823-447d-bf37-1a3963086efd",
+        "timestamp": 1791018435812
+      },
+      {
+        "executionId": "7178abb2-3ec2-4d05-b6a6-48fe95506f60",
+        "chatSessionId": "sess_4b7cca2e-4823-447d-bf37-1a3963086efd",
+        "timestamp": 1791018698464
+      }
+    ],
+    "4.5 Write property test for passwords not stored as plain text": [
+      {
+        "executionId": "7178abb2-3ec2-4d05-b6a6-48fe95506f60",
+        "chatSessionId": "sess_4b7cca2e-4823-447d-bf37-1a3963086efd",
+        "timestamp": 1791017293279
+      },
+      {
+        "executionId": "7178abb2-3ec2-4d05-b6a6-48fe95506f60",
+        "chatSessionId": "sess_4b7cca2e-4823-447d-bf37-1a3963086efd",
+        "timestamp": 1791018436982
+      },
+      {
+        "executionId": "7178abb2-3ec2-4d05-b6a6-48fe95506f60",
+        "chatSessionId": "sess_4b7cca2e-4823-447d-bf37-1a3963086efd",
+        "timestamp": 1791018699433
+      }
+    ],
+    "4.6 Implement sign-in/sign-out service and `POST /auth/login`, `POST /auth/logout`": [
+      {
+        "executionId": "7178abb2-3ec2-4d05-b6a6-48fe95506f60",
+        "chatSessionId": "sess_4b7cca2e-4823-447d-bf37-1a3963086efd",
+        "timestamp": 1791017293396
+      },
+      {
+        "executionId": "7178abb2-3ec2-4d05-b6a6-48fe95506f60",
+        "chatSessionId": "sess_4b7cca2e-4823-447d-bf37-1a3963086efd",
+        "timestamp": 1791017917982
+      },
+      {
+        "executionId": "7178abb2-3ec2-4d05-b6a6-48fe95506f60",
+        "chatSessionId": "sess_4b7cca2e-4823-447d-bf37-1a3963086efd",
+        "timestamp": 1791018425573
+      }
+    ],
+    "4.7 Write property test for sign-in validation": [
+      {
+        "executionId": "7178abb2-3ec2-4d05-b6a6-48fe95506f60",
+        "chatSessionId": "sess_4b7cca2e-4823-447d-bf37-1a3963086efd",
+        "timestamp": 1791017293466
+      },
+      {
+        "executionId": "7178abb2-3ec2-4d05-b6a6-48fe95506f60",
+        "chatSessionId": "sess_4b7cca2e-4823-447d-bf37-1a3963086efd",
+        "timestamp": 1791018704216
+      },
+      {
+        "executionId": "7178abb2-3ec2-4d05-b6a6-48fe95506f60",
+        "chatSessionId": "sess_4b7cca2e-4823-447d-bf37-1a3963086efd",
+        "timestamp": 1791018940716
+      }
+    ],
+    "4.8 Write property test for sign-out ending the session": [
+      {
+        "executionId": "7178abb2-3ec2-4d05-b6a6-48fe95506f60",
+        "chatSessionId": "sess_4b7cca2e-4823-447d-bf37-1a3963086efd",
+        "timestamp": 1791017293542
+      },
+      {
+        "executionId": "7178abb2-3ec2-4d05-b6a6-48fe95506f60",
+        "chatSessionId": "sess_4b7cca2e-4823-447d-bf37-1a3963086efd",
+        "timestamp": 1791018705598
+      },
+      {
+        "executionId": "7178abb2-3ec2-4d05-b6a6-48fe95506f60",
+        "chatSessionId": "sess_4b7cca2e-4823-447d-bf37-1a3963086efd",
+        "timestamp": 1791018942184
+      }
+    ],
+    "4.9 Write property test for register-then-sign-in round trip": [
+      {
+        "executionId": "7178abb2-3ec2-4d05-b6a6-48fe95506f60",
+        "chatSessionId": "sess_4b7cca2e-4823-447d-bf37-1a3963086efd",
+        "timestamp": 1791017293609
+      },
+      {
+        "executionId": "7178abb2-3ec2-4d05-b6a6-48fe95506f60",
+        "chatSessionId": "sess_4b7cca2e-4823-447d-bf37-1a3963086efd",
+        "timestamp": 1791018707000
+      },
+      {
+        "executionId": "7178abb2-3ec2-4d05-b6a6-48fe95506f60",
+        "chatSessionId": "sess_4b7cca2e-4823-447d-bf37-1a3963086efd",
+        "timestamp": 1791018937882
+      }
+    ],
+    "4.10 Write unit tests for authentication error message content": [
+      {
+        "executionId": "7178abb2-3ec2-4d05-b6a6-48fe95506f60",
+        "chatSessionId": "sess_4b7cca2e-4823-447d-bf37-1a3963086efd",
+        "timestamp": 1791017293701
+      },
+      {
+        "executionId": "7178abb2-3ec2-4d05-b6a6-48fe95506f60",
+        "chatSessionId": "sess_4b7cca2e-4823-447d-bf37-1a3963086efd",
+        "timestamp": 1791018708457
+      },
+      {
+        "executionId": "7178abb2-3ec2-4d05-b6a6-48fe95506f60",
+        "chatSessionId": "sess_4b7cca2e-4823-447d-bf37-1a3963086efd",
+        "timestamp": 1791018943517
+      }
+    ],
+    "5.1 Implement checkout confirmation service and `POST /checkout/confirm`": [
+      {
+        "executionId": "7178abb2-3ec2-4d05-b6a6-48fe95506f60",
+        "chatSessionId": "sess_4b7cca2e-4823-447d-bf37-1a3963086efd",
+        "timestamp": 1791017293760
+      },
+      {
+        "executionId": "7178abb2-3ec2-4d05-b6a6-48fe95506f60",
+        "chatSessionId": "sess_4b7cca2e-4823-447d-bf37-1a3963086efd",
+        "timestamp": 1791017918850
+      },
+      {
+        "executionId": "7178abb2-3ec2-4d05-b6a6-48fe95506f60",
+        "chatSessionId": "sess_4b7cca2e-4823-447d-bf37-1a3963086efd",
+        "timestamp": 1791018426915
+      }
+    ],
+    "5.2 Write property test for confirmation derivation": [
+      {
+        "executionId": "7178abb2-3ec2-4d05-b6a6-48fe95506f60",
+        "chatSessionId": "sess_4b7cca2e-4823-447d-bf37-1a3963086efd",
+        "timestamp": 1791017293823
+      },
+      {
+        "executionId": "7178abb2-3ec2-4d05-b6a6-48fe95506f60",
+        "chatSessionId": "sess_4b7cca2e-4823-447d-bf37-1a3963086efd",
+        "timestamp": 1791018709557
+      },
+      {
+        "executionId": "7178abb2-3ec2-4d05-b6a6-48fe95506f60",
+        "chatSessionId": "sess_4b7cca2e-4823-447d-bf37-1a3963086efd",
+        "timestamp": 1791018939285
+      }
+    ],
+    "5.3 Write unit tests for the fictitious-payment notice and non-persistence": [
+      {
+        "executionId": "7178abb2-3ec2-4d05-b6a6-48fe95506f60",
+        "chatSessionId": "sess_4b7cca2e-4823-447d-bf37-1a3963086efd",
+        "timestamp": 1791017293876
+      },
+      {
+        "executionId": "7178abb2-3ec2-4d05-b6a6-48fe95506f60",
+        "chatSessionId": "sess_4b7cca2e-4823-447d-bf37-1a3963086efd",
+        "timestamp": 1791018944822
+      },
+      {
+        "executionId": "7178abb2-3ec2-4d05-b6a6-48fe95506f60",
+        "chatSessionId": "sess_4b7cca2e-4823-447d-bf37-1a3963086efd",
+        "timestamp": 1791019298769
+      }
+    ],
+    "6. Checkpoint - backend complete": [
+      {
+        "executionId": "7178abb2-3ec2-4d05-b6a6-48fe95506f60",
+        "chatSessionId": "sess_4b7cca2e-4823-447d-bf37-1a3963086efd",
+        "timestamp": 1791017293954
+      },
+      {
+        "executionId": "7178abb2-3ec2-4d05-b6a6-48fe95506f60",
+        "chatSessionId": "sess_4b7cca2e-4823-447d-bf37-1a3963086efd",
+        "timestamp": 1791019303097
+      }
+    ],
+    "7.1 Implement the HTTP/JSON API client": [
+      {
+        "executionId": "7178abb2-3ec2-4d05-b6a6-48fe95506f60",
+        "chatSessionId": "sess_4b7cca2e-4823-447d-bf37-1a3963086efd",
+        "timestamp": 1791017294031
+      },
+      {
+        "executionId": "7178abb2-3ec2-4d05-b6a6-48fe95506f60",
+        "chatSessionId": "sess_4b7cca2e-4823-447d-bf37-1a3963086efd",
+        "timestamp": 1791019308761
+      },
+      {
+        "executionId": "7178abb2-3ec2-4d05-b6a6-48fe95506f60",
+        "chatSessionId": "sess_4b7cca2e-4823-447d-bf37-1a3963086efd",
+        "timestamp": 1791019488380
+      }
+    ],
+    "7.2 Implement in-memory cart state and session state": [
+      {
+        "executionId": "7178abb2-3ec2-4d05-b6a6-48fe95506f60",
+        "chatSessionId": "sess_4b7cca2e-4823-447d-bf37-1a3963086efd",
+        "timestamp": 1791017294102
+      },
+      {
+        "executionId": "7178abb2-3ec2-4d05-b6a6-48fe95506f60",
+        "chatSessionId": "sess_4b7cca2e-4823-447d-bf37-1a3963086efd",
+        "timestamp": 1791019309861
+      },
+      {
+        "executionId": "7178abb2-3ec2-4d05-b6a6-48fe95506f60",
+        "chatSessionId": "sess_4b7cca2e-4823-447d-bf37-1a3963086efd",
+        "timestamp": 1791019489424
+      }
+    ],
+    "7.3 Write property test for cart total equals the sum of line totals": [
+      {
+        "executionId": "7178abb2-3ec2-4d05-b6a6-48fe95506f60",
+        "chatSessionId": "sess_4b7cca2e-4823-447d-bf37-1a3963086efd",
+        "timestamp": 1791017294181
+      },
+      {
+        "executionId": "7178abb2-3ec2-4d05-b6a6-48fe95506f60",
+        "chatSessionId": "sess_4b7cca2e-4823-447d-bf37-1a3963086efd",
+        "timestamp": 1791019500252
+      },
+      {
+        "executionId": "7178abb2-3ec2-4d05-b6a6-48fe95506f60",
+        "chatSessionId": "sess_4b7cca2e-4823-447d-bf37-1a3963086efd",
+        "timestamp": 1791021396633
+      }
+    ],
+    "7.4 Write property test for cart contents preserved across navigation": [
+      {
+        "executionId": "7178abb2-3ec2-4d05-b6a6-48fe95506f60",
+        "chatSessionId": "sess_4b7cca2e-4823-447d-bf37-1a3963086efd",
+        "timestamp": 1791017294256
+      },
+      {
+        "executionId": "7178abb2-3ec2-4d05-b6a6-48fe95506f60",
+        "chatSessionId": "sess_4b7cca2e-4823-447d-bf37-1a3963086efd",
+        "timestamp": 1791019501292
+      },
+      {
+        "executionId": "7178abb2-3ec2-4d05-b6a6-48fe95506f60",
+        "chatSessionId": "sess_4b7cca2e-4823-447d-bf37-1a3963086efd",
+        "timestamp": 1791021397980
+      }
+    ],
+    "8.1 Implement the Catalog component": [
+      {
+        "executionId": "7178abb2-3ec2-4d05-b6a6-48fe95506f60",
+        "chatSessionId": "sess_4b7cca2e-4823-447d-bf37-1a3963086efd",
+        "timestamp": 1791017294331
+      },
+      {
+        "executionId": "7178abb2-3ec2-4d05-b6a6-48fe95506f60",
+        "chatSessionId": "sess_4b7cca2e-4823-447d-bf37-1a3963086efd",
+        "timestamp": 1791019495563
+      },
+      {
+        "executionId": "7178abb2-3ec2-4d05-b6a6-48fe95506f60",
+        "chatSessionId": "sess_4b7cca2e-4823-447d-bf37-1a3963086efd",
+        "timestamp": 1791021391971
+      }
+    ],
+    "8.2 Write property test for catalog-cart product identity consistency": [
+      {
+        "executionId": "7178abb2-3ec2-4d05-b6a6-48fe95506f60",
+        "chatSessionId": "sess_4b7cca2e-4823-447d-bf37-1a3963086efd",
+        "timestamp": 1791017294405
+      },
+      {
+        "executionId": "7178abb2-3ec2-4d05-b6a6-48fe95506f60",
+        "chatSessionId": "sess_4b7cca2e-4823-447d-bf37-1a3963086efd",
+        "timestamp": 1791021568889
+      },
+      {
+        "executionId": "7178abb2-3ec2-4d05-b6a6-48fe95506f60",
+        "chatSessionId": "sess_4b7cca2e-4823-447d-bf37-1a3963086efd",
+        "timestamp": 1791021899582
+      }
+    ],
+    "9.1 Implement the Cart component with add, adjust, remove, and empty state": [
+      {
+        "executionId": "7178abb2-3ec2-4d05-b6a6-48fe95506f60",
+        "chatSessionId": "sess_4b7cca2e-4823-447d-bf37-1a3963086efd",
+        "timestamp": 1791017294485
+      },
+      {
+        "executionId": "7178abb2-3ec2-4d05-b6a6-48fe95506f60",
+        "chatSessionId": "sess_4b7cca2e-4823-447d-bf37-1a3963086efd",
+        "timestamp": 1791019497020
+      },
+      {
+        "executionId": "7178abb2-3ec2-4d05-b6a6-48fe95506f60",
+        "chatSessionId": "sess_4b7cca2e-4823-447d-bf37-1a3963086efd",
+        "timestamp": 1791021393811
+      }
+    ],
+    "9.2 Write property test for adding a product makes it present": [
+      {
+        "executionId": "7178abb2-3ec2-4d05-b6a6-48fe95506f60",
+        "chatSessionId": "sess_4b7cca2e-4823-447d-bf37-1a3963086efd",
+        "timestamp": 1791017294555
+      },
+      {
+        "executionId": "7178abb2-3ec2-4d05-b6a6-48fe95506f60",
+        "chatSessionId": "sess_4b7cca2e-4823-447d-bf37-1a3963086efd",
+        "timestamp": 1791021566056
+      },
+      {
+        "executionId": "7178abb2-3ec2-4d05-b6a6-48fe95506f60",
+        "chatSessionId": "sess_4b7cca2e-4823-447d-bf37-1a3963086efd",
+        "timestamp": 1791021900965
+      }
+    ],
+    "9.3 Write property test for removing a product makes it absent": [
+      {
+        "executionId": "7178abb2-3ec2-4d05-b6a6-48fe95506f60",
+        "chatSessionId": "sess_4b7cca2e-4823-447d-bf37-1a3963086efd",
+        "timestamp": 1791017294626
+      },
+      {
+        "executionId": "7178abb2-3ec2-4d05-b6a6-48fe95506f60",
+        "chatSessionId": "sess_4b7cca2e-4823-447d-bf37-1a3963086efd",
+        "timestamp": 1791021567596
+      },
+      {
+        "executionId": "7178abb2-3ec2-4d05-b6a6-48fe95506f60",
+        "chatSessionId": "sess_4b7cca2e-4823-447d-bf37-1a3963086efd",
+        "timestamp": 1791021902291
+      }
+    ],
+    "9.4 Write unit tests for cart feedback and empty state": [
+      {
+        "executionId": "7178abb2-3ec2-4d05-b6a6-48fe95506f60",
+        "chatSessionId": "sess_4b7cca2e-4823-447d-bf37-1a3963086efd",
+        "timestamp": 1791017294694
+      },
+      {
+        "executionId": "7178abb2-3ec2-4d05-b6a6-48fe95506f60",
+        "chatSessionId": "sess_4b7cca2e-4823-447d-bf37-1a3963086efd",
+        "timestamp": 1791021917140
+      },
+      {
+        "executionId": "7178abb2-3ec2-4d05-b6a6-48fe95506f60",
+        "chatSessionId": "sess_4b7cca2e-4823-447d-bf37-1a3963086efd",
+        "timestamp": 1791022320958
+      }
+    ],
+    "10. Checkpoint - catalog and cart complete": [
+      {
+        "executionId": "7178abb2-3ec2-4d05-b6a6-48fe95506f60",
+        "chatSessionId": "sess_4b7cca2e-4823-447d-bf37-1a3963086efd",
+        "timestamp": 1791017294764
+      },
+      {
+        "executionId": "7178abb2-3ec2-4d05-b6a6-48fe95506f60",
+        "chatSessionId": "sess_4b7cca2e-4823-447d-bf37-1a3963086efd",
+        "timestamp": 1791022729157
+      }
+    ],
+    "11.1 Implement the Authentication component (registration, sign-in, sign-out, session indicator)": [
+      {
+        "executionId": "7178abb2-3ec2-4d05-b6a6-48fe95506f60",
+        "chatSessionId": "sess_4b7cca2e-4823-447d-bf37-1a3963086efd",
+        "timestamp": 1791017294840
+      },
+      {
+        "executionId": "7178abb2-3ec2-4d05-b6a6-48fe95506f60",
+        "chatSessionId": "sess_4b7cca2e-4823-447d-bf37-1a3963086efd",
+        "timestamp": 1791019498853
+      },
+      {
+        "executionId": "7178abb2-3ec2-4d05-b6a6-48fe95506f60",
+        "chatSessionId": "sess_4b7cca2e-4823-447d-bf37-1a3963086efd",
+        "timestamp": 1791021395208
+      }
+    ],
+    "11.2 Write property test for passwords never appearing as plain text in outputs": [
+      {
+        "executionId": "7178abb2-3ec2-4d05-b6a6-48fe95506f60",
+        "chatSessionId": "sess_4b7cca2e-4823-447d-bf37-1a3963086efd",
+        "timestamp": 1791017294923
+      },
+      {
+        "executionId": "7178abb2-3ec2-4d05-b6a6-48fe95506f60",
+        "chatSessionId": "sess_4b7cca2e-4823-447d-bf37-1a3963086efd",
+        "timestamp": 1791021570303
+      },
+      {
+        "executionId": "7178abb2-3ec2-4d05-b6a6-48fe95506f60",
+        "chatSessionId": "sess_4b7cca2e-4823-447d-bf37-1a3963086efd",
+        "timestamp": 1791021903704
+      }
+    ],
+    "11.3 Write unit tests for auth form fields, labels, masking, indicators, and confirmations": [
+      {
+        "executionId": "7178abb2-3ec2-4d05-b6a6-48fe95506f60",
+        "chatSessionId": "sess_4b7cca2e-4823-447d-bf37-1a3963086efd",
+        "timestamp": 1791017295051
+      },
+      {
+        "executionId": "7178abb2-3ec2-4d05-b6a6-48fe95506f60",
+        "chatSessionId": "sess_4b7cca2e-4823-447d-bf37-1a3963086efd",
+        "timestamp": 1791022325682
+      },
+      {
+        "executionId": "7178abb2-3ec2-4d05-b6a6-48fe95506f60",
+        "chatSessionId": "sess_4b7cca2e-4823-447d-bf37-1a3963086efd",
+        "timestamp": 1791022721826
+      }
+    ],
+    "12.1 Implement the Checkout component with identification gate and completion": [
+      {
+        "executionId": "7178abb2-3ec2-4d05-b6a6-48fe95506f60",
+        "chatSessionId": "sess_4b7cca2e-4823-447d-bf37-1a3963086efd",
+        "timestamp": 1791017295123
+      },
+      {
+        "executionId": "7178abb2-3ec2-4d05-b6a6-48fe95506f60",
+        "chatSessionId": "sess_4b7cca2e-4823-447d-bf37-1a3963086efd",
+        "timestamp": 1791021403262
+      },
+      {
+        "executionId": "7178abb2-3ec2-4d05-b6a6-48fe95506f60",
+        "chatSessionId": "sess_4b7cca2e-4823-447d-bf37-1a3963086efd",
+        "timestamp": 1791021559366
+      }
+    ],
+    "12.2 Write property test for completion blocked while not identified": [
+      {
+        "executionId": "7178abb2-3ec2-4d05-b6a6-48fe95506f60",
+        "chatSessionId": "sess_4b7cca2e-4823-447d-bf37-1a3963086efd",
+        "timestamp": 1791017295207
+      },
+      {
+        "executionId": "7178abb2-3ec2-4d05-b6a6-48fe95506f60",
+        "chatSessionId": "sess_4b7cca2e-4823-447d-bf37-1a3963086efd",
+        "timestamp": 1791021911605
+      },
+      {
+        "executionId": "7178abb2-3ec2-4d05-b6a6-48fe95506f60",
+        "chatSessionId": "sess_4b7cca2e-4823-447d-bf37-1a3963086efd",
+        "timestamp": 1791022315382
+      }
+    ],
+    "12.3 Write property test for authentication preserving the active cart": [
+      {
+        "executionId": "7178abb2-3ec2-4d05-b6a6-48fe95506f60",
+        "chatSessionId": "sess_4b7cca2e-4823-447d-bf37-1a3963086efd",
+        "timestamp": 1791017295293
+      },
+      {
+        "executionId": "7178abb2-3ec2-4d05-b6a6-48fe95506f60",
+        "chatSessionId": "sess_4b7cca2e-4823-447d-bf37-1a3963086efd",
+        "timestamp": 1791021912933
+      },
+      {
+        "executionId": "7178abb2-3ec2-4d05-b6a6-48fe95506f60",
+        "chatSessionId": "sess_4b7cca2e-4823-447d-bf37-1a3963086efd",
+        "timestamp": 1791022316713
+      }
+    ],
+    "12.4 Write property test for checkout reachable only when cart is non-empty": [
+      {
+        "executionId": "7178abb2-3ec2-4d05-b6a6-48fe95506f60",
+        "chatSessionId": "sess_4b7cca2e-4823-447d-bf37-1a3963086efd",
+        "timestamp": 1791017295363
+      },
+      {
+        "executionId": "7178abb2-3ec2-4d05-b6a6-48fe95506f60",
+        "chatSessionId": "sess_4b7cca2e-4823-447d-bf37-1a3963086efd",
+        "timestamp": 1791021914457
+      },
+      {
+        "executionId": "7178abb2-3ec2-4d05-b6a6-48fe95506f60",
+        "chatSessionId": "sess_4b7cca2e-4823-447d-bf37-1a3963086efd",
+        "timestamp": 1791022318171
+      }
+    ],
+    "12.5 Write property test for completion resetting to a new-purchase state": [
+      {
+        "executionId": "7178abb2-3ec2-4d05-b6a6-48fe95506f60",
+        "chatSessionId": "sess_4b7cca2e-4823-447d-bf37-1a3963086efd",
+        "timestamp": 1791017295440
+      },
+      {
+        "executionId": "7178abb2-3ec2-4d05-b6a6-48fe95506f60",
+        "chatSessionId": "sess_4b7cca2e-4823-447d-bf37-1a3963086efd",
+        "timestamp": 1791021915865
+      },
+      {
+        "executionId": "7178abb2-3ec2-4d05-b6a6-48fe95506f60",
+        "chatSessionId": "sess_4b7cca2e-4823-447d-bf37-1a3963086efd",
+        "timestamp": 1791022320231
+      }
+    ],
+    "12.6 Write property test for cart-checkout consistency": [
+      {
+        "executionId": "7178abb2-3ec2-4d05-b6a6-48fe95506f60",
+        "chatSessionId": "sess_4b7cca2e-4823-447d-bf37-1a3963086efd",
+        "timestamp": 1791017295519
+      },
+      {
+        "executionId": "7178abb2-3ec2-4d05-b6a6-48fe95506f60",
+        "chatSessionId": "sess_4b7cca2e-4823-447d-bf37-1a3963086efd",
+        "timestamp": 1791021571549
+      },
+      {
+        "executionId": "7178abb2-3ec2-4d05-b6a6-48fe95506f60",
+        "chatSessionId": "sess_4b7cca2e-4823-447d-bf37-1a3963086efd",
+        "timestamp": 1791021904847
+      }
+    ],
+    "12.7 Write unit tests for checkout notice, gate options, and minimum information": [
+      {
+        "executionId": "7178abb2-3ec2-4d05-b6a6-48fe95506f60",
+        "chatSessionId": "sess_4b7cca2e-4823-447d-bf37-1a3963086efd",
+        "timestamp": 1791017295601
+      },
+      {
+        "executionId": "7178abb2-3ec2-4d05-b6a6-48fe95506f60",
+        "chatSessionId": "sess_4b7cca2e-4823-447d-bf37-1a3963086efd",
+        "timestamp": 1791022326560
+      },
+      {
+        "executionId": "7178abb2-3ec2-4d05-b6a6-48fe95506f60",
+        "chatSessionId": "sess_4b7cca2e-4823-447d-bf37-1a3963086efd",
+        "timestamp": 1791022722947
+      }
+    ],
+    "13. Checkpoint - all views complete": [
+      {
+        "executionId": "7178abb2-3ec2-4d05-b6a6-48fe95506f60",
+        "chatSessionId": "sess_4b7cca2e-4823-447d-bf37-1a3963086efd",
+        "timestamp": 1791017295686
+      },
+      {
+        "executionId": "7178abb2-3ec2-4d05-b6a6-48fe95506f60",
+        "chatSessionId": "sess_4b7cca2e-4823-447d-bf37-1a3963086efd",
+        "timestamp": 1791022730500
+      }
+    ],
+    "14.1 Implement shared feedback and system states": [
+      {
+        "executionId": "7178abb2-3ec2-4d05-b6a6-48fe95506f60",
+        "chatSessionId": "sess_4b7cca2e-4823-447d-bf37-1a3963086efd",
+        "timestamp": 1791017295758
+      },
+      {
+        "executionId": "7178abb2-3ec2-4d05-b6a6-48fe95506f60",
+        "chatSessionId": "sess_4b7cca2e-4823-447d-bf37-1a3963086efd",
+        "timestamp": 1791023368554
+      },
+      {
+        "executionId": "7178abb2-3ec2-4d05-b6a6-48fe95506f60",
+        "chatSessionId": "sess_4b7cca2e-4823-447d-bf37-1a3963086efd",
+        "timestamp": 1791023611889
+      }
+    ],
+    "14.2 Implement responsive and accessible interface": [
+      {
+        "executionId": "7178abb2-3ec2-4d05-b6a6-48fe95506f60",
+        "chatSessionId": "sess_4b7cca2e-4823-447d-bf37-1a3963086efd",
+        "timestamp": 1791017295847
+      },
+      {
+        "executionId": "7178abb2-3ec2-4d05-b6a6-48fe95506f60",
+        "chatSessionId": "sess_4b7cca2e-4823-447d-bf37-1a3963086efd",
+        "timestamp": 1791023612965
+      },
+      {
+        "executionId": "7178abb2-3ec2-4d05-b6a6-48fe95506f60",
+        "chatSessionId": "sess_4b7cca2e-4823-447d-bf37-1a3963086efd",
+        "timestamp": 1791023904515
+      }
+    ],
+    "14.3 Wire the integrated journey end to end": [
+      {
+        "executionId": "7178abb2-3ec2-4d05-b6a6-48fe95506f60",
+        "chatSessionId": "sess_4b7cca2e-4823-447d-bf37-1a3963086efd",
+        "timestamp": 1791017295926
+      },
+      {
+        "executionId": "7178abb2-3ec2-4d05-b6a6-48fe95506f60",
+        "chatSessionId": "sess_4b7cca2e-4823-447d-bf37-1a3963086efd",
+        "timestamp": 1791022737514
+      },
+      {
+        "executionId": "7178abb2-3ec2-4d05-b6a6-48fe95506f60",
+        "chatSessionId": "sess_4b7cca2e-4823-447d-bf37-1a3963086efd",
+        "timestamp": 1791023363449
+      }
+    ],
+    "14.4 Write integration and smoke tests": [
+      {
+        "executionId": "7178abb2-3ec2-4d05-b6a6-48fe95506f60",
+        "chatSessionId": "sess_4b7cca2e-4823-447d-bf37-1a3963086efd",
+        "timestamp": 1791017296001
+      },
+      {
+        "executionId": "7178abb2-3ec2-4d05-b6a6-48fe95506f60",
+        "chatSessionId": "sess_4b7cca2e-4823-447d-bf37-1a3963086efd",
+        "timestamp": 1791023911004
+      },
+      {
+        "executionId": "7178abb2-3ec2-4d05-b6a6-48fe95506f60",
+        "chatSessionId": "sess_4b7cca2e-4823-447d-bf37-1a3963086efd",
+        "timestamp": 1791025676386
+      }
+    ],
+    "15. Final checkpoint - ensure all tests pass": [
+      {
+        "executionId": "7178abb2-3ec2-4d05-b6a6-48fe95506f60",
+        "chatSessionId": "sess_4b7cca2e-4823-447d-bf37-1a3963086efd",
+        "timestamp": 1791017296082
+      },
+      {
+        "executionId": "7178abb2-3ec2-4d05-b6a6-48fe95506f60",
+        "chatSessionId": "sess_4b7cca2e-4823-447d-bf37-1a3963086efd",
+        "timestamp": 1791026048293
+      }
+    ],
+    "2. Backend data layer and demonstration data store": [
+      {
+        "executionId": "7178abb2-3ec2-4d05-b6a6-48fe95506f60",
+        "chatSessionId": "sess_4b7cca2e-4823-447d-bf37-1a3963086efd",
+        "timestamp": 1791018421476
+      }
+    ],
+    "3. Catalog API and service": [
+      {
+        "executionId": "7178abb2-3ec2-4d05-b6a6-48fe95506f60",
+        "chatSessionId": "sess_4b7cca2e-4823-447d-bf37-1a3963086efd",
+        "timestamp": 1791018694002
+      }
+    ],
+    "4. Authentication API and service (credential contract: identifier + password)": [
+      {
+        "executionId": "7178abb2-3ec2-4d05-b6a6-48fe95506f60",
+        "chatSessionId": "sess_4b7cca2e-4823-447d-bf37-1a3963086efd",
+        "timestamp": 1791018943583
+      }
+    ],
+    "5. Checkout confirmation API and service (non-persistent)": [
+      {
+        "executionId": "7178abb2-3ec2-4d05-b6a6-48fe95506f60",
+        "chatSessionId": "sess_4b7cca2e-4823-447d-bf37-1a3963086efd",
+        "timestamp": 1791019298857
+      }
+    ],
+    "7. Frontend API client and shared journey state": [
+      {
+        "executionId": "7178abb2-3ec2-4d05-b6a6-48fe95506f60",
+        "chatSessionId": "sess_4b7cca2e-4823-447d-bf37-1a3963086efd",
+        "timestamp": 1791021398026
+      }
+    ],
+    "8. Catalog view": [
+      {
+        "executionId": "7178abb2-3ec2-4d05-b6a6-48fe95506f60",
+        "chatSessionId": "sess_4b7cca2e-4823-447d-bf37-1a3963086efd",
+        "timestamp": 1791021899748
+      }
+    ],
+    "9. Cart view and cart operations": [
+      {
+        "executionId": "7178abb2-3ec2-4d05-b6a6-48fe95506f60",
+        "chatSessionId": "sess_4b7cca2e-4823-447d-bf37-1a3963086efd",
+        "timestamp": 1791022321064
+      }
+    ],
+    "11. Authentication view": [
+      {
+        "executionId": "7178abb2-3ec2-4d05-b6a6-48fe95506f60",
+        "chatSessionId": "sess_4b7cca2e-4823-447d-bf37-1a3963086efd",
+        "timestamp": 1791022721999
+      }
+    ],
+    "12. Checkout view and identification gate": [
+      {
+        "executionId": "7178abb2-3ec2-4d05-b6a6-48fe95506f60",
+        "chatSessionId": "sess_4b7cca2e-4823-447d-bf37-1a3963086efd",
+        "timestamp": 1791022723204
+      }
+    ],
+    "14. Cross-cutting states, accessibility, and journey wiring": [
+      {
+        "executionId": "7178abb2-3ec2-4d05-b6a6-48fe95506f60",
+        "chatSessionId": "sess_4b7cca2e-4823-447d-bf37-1a3963086efd",
+        "timestamp": 1791025676573
+      }
+    ],
+    "16. Remove prescribed iteration counts and the custom property-test timeout": [
+      {
+        "executionId": "95590c34-a170-43ca-a67b-e25ad189e7d4",
+        "chatSessionId": "sess_aa0c449d-678a-4f40-809c-3002ff20f78a",
+        "timestamp": 1791027494191
+      },
+      {
+        "executionId": "95590c34-a170-43ca-a67b-e25ad189e7d4",
+        "chatSessionId": "sess_aa0c449d-678a-4f40-809c-3002ff20f78a",
+        "timestamp": 1791028371543
+      }
+    ]
+  }
+}

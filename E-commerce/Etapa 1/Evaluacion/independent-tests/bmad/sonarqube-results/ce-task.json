@@ -1,0 +1,21 @@
+{
+  "task": {
+    "id": "b0eef614-fb99-4e6f-8e2b-c077736bd77e",
+    "type": "REPORT",
+    "componentId": "550861b8-310d-4a90-b8ad-695ae8304535",
+    "componentKey": "bmad-s1-official-01",
+    "componentName": "BMAD Stage 1 Official 01",
+    "componentQualifier": "TRK",
+    "analysisId": "353ea37c-f30f-4a03-b1b7-80129fa0ef02",
+    "status": "SUCCESS",
+    "submittedAt": "2026-10-05T14:45:24+02:00",
+    "submitterLogin": "admin",
+    "startedAt": "2026-10-05T14:45:25+02:00",
+    "executedAt": "2026-10-05T14:45:38+02:00",
+    "executionTimeMs": 12141,
+    "hasScannerContext": true,
+    "warningCount": 0,
+    "warnings": [],
+    "infoMessages": []
+  }
+}

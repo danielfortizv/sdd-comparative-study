@@ -1,0 +1,9 @@
+{
+  "completed_utc": "2026-11-07T04:10:08.9675401Z",
+  "exit_code": 0,
+  "wall_seconds": 346.7251851,
+  "approval_mode": "yolo",
+  "attempt": "ci-lint-fix",
+  "started_utc": "2026-11-07T04:04:22.2460228Z",
+  "session_id": ""
+}

@@ -1,0 +1,9 @@
+{
+  "exit_code": -1,
+  "attempt": "stage3-authorized",
+  "approval_mode": "yolo",
+  "session_id": "",
+  "wall_seconds": 1391.0055719,
+  "completed_utc": "2026-11-07T04:04:18.3027992Z",
+  "started_utc": "2026-11-07T03:41:07.3032955Z"
+}

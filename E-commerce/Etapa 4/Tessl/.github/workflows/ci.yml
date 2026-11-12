@@ -1,0 +1,102 @@
+name: Stage 4 Continuous Integration
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    services:
+      rabbitmq:
+        image: rabbitmq:3-management
+        ports:
+          - 5672:5672
+          - 15672:15672
+        env:
+          RABBITMQ_DEFAULT_USER: ecommerce
+          RABBITMQ_DEFAULT_PASS: stage4-demo
+          RABBITMQ_DEFAULT_VHOST: stage4_tessl
+
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v4
+
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.10'
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '18'
+
+    - name: Install Backend Dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r backend/requirements.txt
+
+    - name: Run Backend Pytest Suite
+      run: |
+        python -m pytest backend/test_api.py --cov=backend/app --cov-report=xml:backend/coverage.xml
+
+    - name: Run Distributed Integration Suite
+      run: |
+        python backend/test_distributed.py
+
+    - name: Install Frontend Dependencies
+      run: |
+        cd frontend
+        npm ci
+
+    - name: Run Frontend Tests
+      run: |
+        cd frontend
+        npx vitest run --coverage
+
+    - name: Build Frontend Production Assets
+      run: |
+        cd frontend
+        npm run build
+
+    - name: Install Playwright Browsers
+      run: |
+        cd frontend
+        npx playwright install --with-deps chromium
+
+    - name: Run Playwright E2E Tests
+      run: |
+        # Ensure local DB files are clean
+        rm -f backend/identity.db backend/commerce.db backend/reviews.db
+        rm -f identity.db commerce.db reviews.db
+
+        # Start microservices in background
+        cd backend
+        python -m uvicorn app.identity:app --host 127.0.0.1 --port 18401 &
+        identity_pid=$!
+        python -m uvicorn app.commerce:app --host 127.0.0.1 --port 18402 &
+        commerce_pid=$!
+        python -m uvicorn app.reviews:app --host 127.0.0.1 --port 18403 &
+        reviews_pid=$!
+        python -m uvicorn app.gateway:app --host 127.0.0.1 --port 18400 &
+        gateway_pid=$!
+        cd ..
+
+        cd frontend
+        npm run dev -- --port 18500 --strictPort --host 127.0.0.1 &
+        frontend_pid=$!
+
+        # Wait for servers to be up
+        echo "Waiting for servers to start..."
+        npx wait-on http://127.0.0.1:18400/api/products http://127.0.0.1:18500 --timeout 30000
+
+        # Run E2E tests
+        npx playwright test
+
+        # Clean up background jobs
+        echo "Cleaning up background servers..."
+        kill $identity_pid $commerce_pid $reviews_pid $gateway_pid $frontend_pid

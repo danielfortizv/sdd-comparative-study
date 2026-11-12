@@ -1,0 +1,10 @@
+{
+  "gateway_port": 18200,
+  "identity_port": 18201,
+  "commerce_port": 18202,
+  "reviews_port": 18203,
+  "frontend_port": 18300,
+  "amqp_url": "amqp://ecommerce:stage4-demo@127.0.0.1:5672/stage4_kiro",
+  "event_namespace": "stage4.kiro",
+  "broker_note": "Real RabbitMQ 3.12.1 in Ubuntu/WSL, exposed through an owned localhost-only TCP forwarder; real Windows publish/consume verified. Broker is shared, vhosts isolated: test outages by stopping only your own consumer/connection, not the global broker. Demo credentials only. Docker unavailable."
+}

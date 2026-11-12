@@ -1,0 +1,107 @@
+ The technical planning artifacts for the Stage 1 E-Commerce Application have been successfully created according to
+  the constraints of especificacion-semilla-final-en.md and the approved project constitution.
+
+  Created/Changed Files
+  The following files were created or modified within the feature directory (specs/001-stage1-ecommerce/):
+   - specs/001-stage1-ecommerce/plan.md (Main implementation plan)
+   - specs/001-stage1-ecommerce/research.md (Phase 0 research and decisions)
+   - specs/001-stage1-ecommerce/data-model.md (Phase 1 entity schemas and relationships)
+   - specs/001-stage1-ecommerce/quickstart.md (Phase 1 validation scenario guide)
+   - specs/001-stage1-ecommerce/contracts/api.md (Phase 1 REST API contract schemas)
+
+  Planning Decisions Highlight:
+   - Component Separation: Handled through two separate and independently reviewable directory trees: frontend/
+     (React/TS) and backend/ (Python/FastAPI).
+   - Demonstration Storage: Static JSON for the product catalog; local Python in-memory state for user registration and
+     sign-in. This meets the seed demonstration requirement with zero external database dependencies.
+   - Durable Cart Persistence: Intentionally omitted (using React state only) because the seed specifies that durable
+     persistence across browser closures is not mandatory.
+   - Passwords Security: Strictly secure-hashed on registration and verified on sign-in without displaying or storing
+     them in plain text, satisfying academic-level data protection.
+   - Scope Compliance: No task lists, test frameworks, databases, or application code have been created. Exclusions
+     (e.g., real payments, advanced profiles, local storage, text search, and CI/CD) remain completely preserved.
+
+  I have stopped for your human review.
+▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄
+ > /stats
+▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀
+╭──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
+│                                                                                                                      │
+│  Session Stats                                                                                                       │
+│                                                                                                                      │
+│  Interaction Summary                                                                                                 │
+│  Session ID:                 1bc711ec-5417-4546-a723-352e97ba5333                                                    │
+│  Auth Method:                vertex-ai                                                                               │
+│  Tool Calls:                 45 ( ✓ 45 x 0 )                                                                         │
+│  Success Rate:               100.0%                                                                                  │
+│  User Agreement:             100.0% (45 reviewed)                                                                    │
+│  Code Changes:               +1345 -714                                                                              │
+│                                                                                                                      │
+│  Performance                                                                                                         │
+│  Wall Time:                  42m 13s                                                                                 │
+│  Agent Active:               10m 34s                                                                                 │
+│    » API Time:               8m 45s (82.8%)                                                                          │
+│    » Tool Time:              1m 48s (17.2%)                                                                          │
+│                                                                                                                      │
+│                                                                                                                      │
+│  Model Usage                                                                                                         │
+│  Use /model to view model quota information                                                                          │
+│                                                                                                                      │
+│  Model                           Reqs  Input Tokens   Cache Reads Output Tokens                                      │
+│  ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────  │
+│  gemini-3.5-flash                  49     2.856.903     2.015.710        29.267                                      │
+│    ↳ main                          49     2.856.903     2.015.710        29.267                                      │
+╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄
+ > /stats model
+▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀
+╭──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
+│                                                                                                                      │
+│  Model Stats For Nerds                                                                                               │
+│                                                                                                                      │
+│  Auth Method:                vertex-ai                                                                               │
+│                                                                                                                      │
+│  Metric                      gemini-3.5-flash                                                                        │
+│  ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────  │
+│  API                                                                                                                 │
+│  Requests                    49                                                                                      │
+│  Errors                      0 (0.0%)                                                                                │
+│  Avg Latency                 10.7s                                                                                   │
+│  Tokens                                                                                                              │
+│  Total                       2.922.336                                                                               │
+│    ↳ Input                   841.193                                                                                 │
+│    ↳ Cache Reads             2.015.710 (70.6%)                                                                       │
+│    ↳ Thoughts                36.166                                                                                  │
+│    ↳ Output                  29.267                                                                                  │
+│  Roles                                                                                                               │
+│  main                                                                                                                │
+│    ↳ Requests                49                                                                                      │
+│    ↳ Input                   841.193                                                                                 │
+│    ↳ Output                  29.267                                                                                  │
+│    ↳ Cache Reads             2.015.710                                                                               │
+╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄
+ > /stats tools
+▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀
+╭────────────────────────────────────────────────────────────────────╮
+│                                                                    │
+│  Tool Stats For Nerds                                              │
+│                                                                    │
+│  Tool Name                   Calls   Success Rate   Avg Duration   │
+│  ────────────────────────────────────────────────────────────────  │
+│  update_topic                   14         100.0%            2ms   │
+│  glob                            2         100.0%           26ms   │
+│  read_file                       8         100.0%           35ms   │
+│  list_directory                  2         100.0%           21ms   │
+│  write_file                     17         100.0%           29ms   │
+│  exit_plan_mode                  1         100.0%          50.1s   │
+│  run_shell_command               1         100.0%          57.9s   │
+│                                                                    │
+│  User Decision Summary                                             │
+│  Total Reviewed Suggestions:                                  44   │
+│   » Accepted:                                                 44   │
+│   » Rejected:                                                  0   │
+│   » Modified:                                                  0   │
+│  ────────────────────────────────────────────────────────────────  │
+│   Overall Agreement Rate:                                 100.0%   │
+╰─────────────────────────────────────

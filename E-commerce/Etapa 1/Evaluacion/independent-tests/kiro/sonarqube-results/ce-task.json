@@ -1,0 +1,24 @@
+{
+  "task": {
+    "id": "236135b9-cde9-44c6-82ee-e805575d3ba4",
+    "type": "REPORT",
+    "componentId": "fa9bc00f-2ae4-4e90-b116-7d70b1de7a98",
+    "componentKey": "kiro-s1-official-01",
+    "componentName": "Kiro Stage 1 Official 01",
+    "componentQualifier": "TRK",
+    "analysisId": "31518209-509e-4cb7-a037-a852ba029d4b",
+    "status": "SUCCESS",
+    "submittedAt": "2026-10-05T20:41:12+02:00",
+    "submitterLogin": "admin",
+    "startedAt": "2026-10-05T20:41:13+02:00",
+    "executedAt": "2026-10-05T20:41:16+02:00",
+    "executionTimeMs": 2964,
+    "hasScannerContext": true,
+    "warningCount": 2,
+    "warnings": [
+      "SCM provider autodetection failed. Please use \"sonar.scm.provider\" to define SCM of your project, or disable the SCM Sensor in the project settings.",
+      "Your code is analyzed as compatible with all Python 3 versions by default. You can get a more precise analysis by setting the exact Python version in your configuration via the parameter \"sonar.python.version\""
+    ],
+    "infoMessages": []
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "platform": "Ubuntu 24.04 WSL",
+  "isolation": "one vhost per tool",
+  "checked_utc": "2026-11-07T08:56:28.2768672Z",
+  "note": "Local infrastructure provided by driver; not an in-memory event implementation. Shared broker, isolated tool vhosts.",
+  "host": "172.24.13.12",
+  "version": "3.12.1",
+  "windows_publish_consume": "passed",
+  "broker": "RabbitMQ",
+  "port": 5672,
+  "windows_endpoint": "127.0.0.1:5672",
+  "upstream_endpoint": "172.24.13.12:5672",
+  "transport": "localhost-only TCP forwarding to real WSL RabbitMQ",
+  "handshake_rechecked_utc": "2026-11-07T09:09:23.114369+00:00",
+  "driver_forwarder_pid": 10668
+}
