@@ -1,0 +1,58 @@
+# Docker Compose local runner (Stage 3, Option A).
+#
+# Publishes ONLY the frontend on host port 5183; the backend is reachable only
+# on the internal network. A named volume provides durable, writable storage
+# for the backend SQLite directory. Each service defines a health check. The
+# backend runs exactly one worker. The two services use distinct non-root users
+# (backend: tetris; frontend: nginx).
+#
+# Compose project name: tetris-stage3-kiro (set via `-p` or COMPOSE_PROJECT_NAME).
+
+name: tetris-stage3-kiro
+
+services:
+  backend:
+    build:
+      context: ./backend
+    environment:
+      TETRIS_DB_PATH: /data/high-scores.sqlite3
+      # Restrictive CORS: the frontend proxies same-origin /api, so no browser
+      # cross-origin call is required; override for custom origins if needed.
+      TETRIS_ALLOWED_ORIGINS: "http://localhost:5183,http://127.0.0.1:5183"
+    volumes:
+      - highscores-data:/data
+    networks:
+      - internal
+    # No ports published: backend stays internal to the Compose network.
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request,sys; sys.exit(0 if urllib.request.urlopen('http://127.0.0.1:8000/health').status==200 else 1)"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 10s
+    restart: unless-stopped
+
+  frontend:
+    build:
+      context: ./frontend
+    depends_on:
+      backend:
+        condition: service_healthy
+    ports:
+      - "5183:5183"
+    networks:
+      - internal
+    healthcheck:
+      test: ["CMD", "wget", "-q", "-O", "/dev/null", "http://127.0.0.1:5183/"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 10s
+    restart: unless-stopped
+
+networks:
+  internal:
+    driver: bridge
+
+volumes:
+  highscores-data:

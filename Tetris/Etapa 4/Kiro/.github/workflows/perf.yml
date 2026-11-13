@@ -1,0 +1,38 @@
+# SEPARATE, manually triggered performance job for Tetris Stage 3 (Option A).
+#
+# This is NEVER part of the ordinary unit pipeline (Req 15.5, 16.7). It only
+# runs on explicit manual dispatch. IMPORTANT: a hosted runner does NOT provide
+# a real physical foreground display, so a hosted run of this job is a
+# convenience trigger only and is NOT evidence of real display presentation
+# (Req 14.4). The authoritative benchmark is the documented local manual
+# command in perf/README.md run on a real machine. This file is a configuration
+# artifact and not evidence of a hosted Actions run (Req 16.6).
+
+name: perf (manual only)
+
+on:
+  workflow_dispatch:
+
+jobs:
+  benchmark:
+    name: Browser performance benchmark (manual, foreground caveat)
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: perf
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "24"
+      - name: Install (reproducible, from committed lockfile)
+        run: npm ci
+      - name: Install Chromium
+        run: npm run install:browser
+      - name: Note on hosted display limitation
+        run: echo "A hosted runner has no physical foreground display; results here are not evidence of real display presentation. Use the documented local manual command for authoritative results."
+      # The actual benchmark step is intentionally left to manual local runs.
+      # Uncomment to attempt a hosted run with the honest caveat above:
+      # - name: Run benchmark (hosted; not a real foreground display)
+      #   run: xvfb-run -a npm run benchmark

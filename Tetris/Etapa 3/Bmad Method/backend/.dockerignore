@@ -1,0 +1,21 @@
+# Dockerignore for FastAPI backend
+.venv/
+venv/
+app/tests/
+tests/
+data/
+.pytest_cache/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.db
+*.sqlite3
+.env*
+.git
+.github
+credentials/
+secrets/
+benchmark-results/
+benchmark_results/
+benchmark.js

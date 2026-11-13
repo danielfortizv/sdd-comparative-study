@@ -1,0 +1,21 @@
+# Dockerignore for React frontend
+node_modules/
+dist/
+src/App.test.tsx
+src/main.test.tsx
+tests/
+.venv/
+venv/
+.pytest_cache/
+.vitest/
+__pycache__/
+data/
+*.sqlite3
+.git
+.github
+.env*
+credentials/
+secrets/
+benchmark-results/
+benchmark_results/
+benchmark.js
