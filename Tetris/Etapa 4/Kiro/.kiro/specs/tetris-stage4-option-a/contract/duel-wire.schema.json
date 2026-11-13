@@ -1,0 +1,708 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://kiro.local/tetris-stage4-option-a/duel-wire.schema.json",
+  "title": "Tetris Stage 4 Option A duel wire contract",
+  "description": "Single versioned wire contract for the Stage 4 Option A two-seat duel. All messages are discriminated by the 'type' field via the top-level oneOf. Coordinates are split into two kinds: an anchor/origin coordinate (anchorCoord) that MAY be negative within exact conservative bounds so that valid negative anchors and kick-produced origins are expressible, and an absolute OCCUPIED cell (occupiedCell) that MUST lie on the 20x10 board (rows 0..19, columns 0..9); those absolute per-cell bounds ARE expressed here in JSON Schema. Strict runtime typing ADDITIONALLY requires a JSON-decoded Python int for protocol_version, expected_revision, and revision so that bool, string, and float values are rejected at runtime; JSON Schema 'integer' may accept 1.0 (a lexical float with an integral value), so this schema ALONE does NOT reject lexical floats. That is a runtime semantic rule and an explicit test obligation, not a schema-expressible constraint. Integer fields carry explicit SAFE upper bounds (revision, score, total_lines and final_revision at 9007199254740991 = 2^53 - 1, the largest integer exactly representable as an IEEE-754 double; level at 100000) so no JS-imprecise magnitude is accepted. gravity_interval_ms is bounded 100..500 inclusive, consistent with the inherited formula max(100, 500 - 50*(level-1)). action_id follows the canonical seat-prefixed grammar ^(A|B)-([1-9][0-9]{0,14})$ (a positive decimal ordinal with no leading zeros and 1..15 digits, expressing an ACTUAL maximum ordinal of 999999999999999, NOT 2^53-1); on an ActionMessage the prefix MUST equal seat_id (enforced by per-seat if/then). An 'ack' is always an acceptance (applied is const true); a non-acceptance is a 'reject'. StateFrame carries an OPTIONAL room_status (waiting/playing/finished) so a seat learns the peer joined and the room started through the authoritative state frame. The reject reason not_started covers an action received while the room is waiting; the unreachable unknown_action_id reason was removed.",
+  "$defs": {
+    "pieceType": {
+      "type": "string",
+      "enum": ["I", "O", "T", "S", "Z", "J", "L"]
+    },
+    "seat": {
+      "type": "string",
+      "enum": ["A", "B"]
+    },
+    "actionId": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 64,
+      "description": "A client-generated per-seat action id with the canonical grammar seat-letter, hyphen, positive decimal ordinal with NO leading zeros and 1..15 digits. The ordinal is extracted by stripping the 'A-'/'B-' prefix and parsing the decimal. The 15-digit decimal cap expresses an ACTUAL maximum ordinal of 999999999999999; this is NOT claimed to be 2^53-1, it is a smaller exactly-expressible bound that stays within the safe-integer ceiling. The prefix letter MUST equal the owning seat_id (the seat-prefix rule is enforced per-seat on ActionMessage). The pattern uses a trailing negative lookahead '(?![\\s\\S])' INSTEAD of '$' so that the FULL STRING must match: '$' matches before a trailing line terminator in the Draft 2020-12 validator, which wrongly accepted 'A-1\\n', so a trailing LF, CR, CRLF, U+2028 (LINE SEPARATOR), or U+2029 (PARAGRAPH SEPARATOR) is now rejected because no character may follow the ordinal.",
+      "pattern": "^(A|B)-([1-9][0-9]{0,14})(?![\\s\\S])"
+    },
+    "safeInteger": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 9007199254740991
+    },
+    "anchorCoord": {
+      "type": "array",
+      "description": "A single [row, column] ANCHOR/origin coordinate. The row component ranges -4..19 and the column component ranges -3..9 to permit valid negative anchors that rotated offsets (for example negative origins from kicks or rotations) may produce. This def is used ONLY for the active piece origin; occupied cells use occupiedCell and must be on the board.",
+      "prefixItems": [
+        {
+          "type": "integer",
+          "minimum": -4,
+          "maximum": 19
+        },
+        {
+          "type": "integer",
+          "minimum": -3,
+          "maximum": 9
+        }
+      ],
+      "items": false,
+      "minItems": 2,
+      "maxItems": 2
+    },
+    "occupiedCell": {
+      "type": "array",
+      "description": "A single [row, column] absolute OCCUPIED board cell. The row component is 0..19 and the column component is 0..9; these simple per-cell absolute bounds are enforced here in JSON Schema.",
+      "prefixItems": [
+        {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 19
+        },
+        {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9
+        }
+      ],
+      "items": false,
+      "minItems": 2,
+      "maxItems": 2
+    },
+    "boardRow": {
+      "type": "array",
+      "items": {
+        "type": "integer",
+        "minimum": 0,
+        "maximum": 7
+      },
+      "minItems": 10,
+      "maxItems": 10
+    },
+    "board": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/boardRow"
+      },
+      "minItems": 20,
+      "maxItems": 20
+    },
+    "activePiece": {
+      "description": "The active (falling) piece object. 'origin' is an anchorCoord (may be negative within bounds); 'cells' is exactly four DISTINCT absolute occupied cells, each on the 20x10 board.",
+      "type": "object",
+      "properties": {
+        "type": {
+          "$ref": "#/$defs/pieceType"
+        },
+        "origin": {
+          "$ref": "#/$defs/anchorCoord"
+        },
+        "cells": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/occupiedCell"
+          },
+          "minItems": 4,
+          "maxItems": 4,
+          "uniqueItems": true
+        }
+      },
+      "required": ["type", "origin", "cells"],
+      "additionalProperties": false
+    },
+    "Hello": {
+      "type": "object",
+      "description": "Inbound handshake. There is intentionally NO authentication and NO player-name collection; there is intentionally NO client_name field.",
+      "properties": {
+        "type": {
+          "const": "hello"
+        },
+        "protocol_version": {
+          "type": "integer",
+          "const": 1
+        },
+        "room_id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 64
+        }
+      },
+      "required": ["type", "protocol_version", "room_id"],
+      "additionalProperties": false
+    },
+    "ActionMessage": {
+      "type": "object",
+      "description": "Inbound player action targeting the sender's seat. The action_id follows the canonical grammar and its seat prefix MUST equal seat_id (enforced by the allOf seat-prefix conditionals below).",
+      "properties": {
+        "type": {
+          "const": "action"
+        },
+        "protocol_version": {
+          "type": "integer",
+          "const": 1
+        },
+        "room_id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 64
+        },
+        "seat_id": {
+          "$ref": "#/$defs/seat"
+        },
+        "action_id": {
+          "$ref": "#/$defs/actionId"
+        },
+        "expected_revision": {
+          "$ref": "#/$defs/safeInteger"
+        },
+        "kind": {
+          "type": "string",
+          "enum": ["left", "right", "down", "cw", "ccw", "hold"]
+        }
+      },
+      "required": [
+        "type",
+        "protocol_version",
+        "room_id",
+        "seat_id",
+        "action_id",
+        "expected_revision",
+        "kind"
+      ],
+      "additionalProperties": false,
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "seat_id": {
+                "const": "A"
+              }
+            },
+            "required": ["seat_id"]
+          },
+          "then": {
+            "properties": {
+              "action_id": {
+                "pattern": "^A-([1-9][0-9]{0,14})(?![\\s\\S])"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "seat_id": {
+                "const": "B"
+              }
+            },
+            "required": ["seat_id"]
+          },
+          "then": {
+            "properties": {
+              "action_id": {
+                "pattern": "^B-([1-9][0-9]{0,14})(?![\\s\\S])"
+              }
+            }
+          }
+        }
+      ]
+    },
+    "Welcome": {
+      "type": "object",
+      "description": "Outbound acceptance of a hello, assigning the seat and reporting current room status.",
+      "properties": {
+        "type": {
+          "const": "welcome"
+        },
+        "protocol_version": {
+          "type": "integer",
+          "const": 1
+        },
+        "room_id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 64
+        },
+        "seat_id": {
+          "$ref": "#/$defs/seat"
+        },
+        "room_status": {
+          "type": "string",
+          "enum": ["waiting", "playing", "finished"]
+        }
+      },
+      "required": ["type", "protocol_version", "room_id", "seat_id", "room_status"],
+      "additionalProperties": false
+    },
+    "StateFrame": {
+      "type": "object",
+      "description": "Outbound authoritative per-seat state snapshot at a given revision. The status/active_piece relationship is enforced: when status is 'playing' the active_piece is a non-null object; when status is 'game_over' the active_piece is null (terminal-null condition). The REQUIRED room_status field carries the room-level lifecycle status (waiting/playing/finished) on EVERY state frame, so a seat always learns through the authoritative frame it already consumes that the peer joined and the room transitioned (waiting -> playing -> finished), WITHOUT any undocumented event and WITHOUT client prediction. room_status is the ROOM lifecycle; the per-seat 'status' field is the SEAT's board status (playing/game_over).",
+      "properties": {
+        "type": {
+          "const": "state"
+        },
+        "protocol_version": {
+          "type": "integer",
+          "const": 1
+        },
+        "room_id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 64
+        },
+        "seat_id": {
+          "$ref": "#/$defs/seat"
+        },
+        "revision": {
+          "$ref": "#/$defs/safeInteger"
+        },
+        "status": {
+          "type": "string",
+          "enum": ["playing", "game_over"]
+        },
+        "room_status": {
+          "type": "string",
+          "enum": ["waiting", "playing", "finished"]
+        },
+        "board": {
+          "$ref": "#/$defs/board"
+        },
+        "active_piece": {
+          "oneOf": [
+            {
+              "$ref": "#/$defs/activePiece"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "next_piece": {
+          "oneOf": [
+            {
+              "$ref": "#/$defs/pieceType"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "hold_piece": {
+          "oneOf": [
+            {
+              "$ref": "#/$defs/pieceType"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "can_hold": {
+          "type": "boolean"
+        },
+        "score": {
+          "$ref": "#/$defs/safeInteger"
+        },
+        "total_lines": {
+          "$ref": "#/$defs/safeInteger"
+        },
+        "level": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 100000
+        },
+        "gravity_interval_ms": {
+          "type": "integer",
+          "minimum": 100,
+          "maximum": 500
+        }
+      },
+      "required": [
+        "type",
+        "protocol_version",
+        "room_id",
+        "seat_id",
+        "revision",
+        "status",
+        "room_status",
+        "board",
+        "active_piece",
+        "next_piece",
+        "hold_piece",
+        "can_hold",
+        "score",
+        "total_lines",
+        "level",
+        "gravity_interval_ms"
+      ],
+      "additionalProperties": false,
+      "if": {
+        "properties": {
+          "status": {
+            "const": "playing"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "active_piece": {
+            "$ref": "#/$defs/activePiece"
+          }
+        }
+      },
+      "else": {
+        "properties": {
+          "active_piece": {
+            "type": "null"
+          }
+        }
+      }
+    },
+    "Ack": {
+      "type": "object",
+      "description": "Outbound acknowledgement correlated to an action_id. An 'ack' is ALWAYS an acceptance: applied is the constant true. For an accepted state-changing action no_op=false and revision is the NEW authoritative revision. For a legal no-op (for example a fully rejected rotation, or any O-piece rotation which is a full no-op) no_op=true and revision equals the UNCHANGED authoritative revision. A non-acceptance is a 'reject', never an 'ack'. A duplicate action_id still present in the bounded 256-entry per-seat reply cache with an IDENTICAL request fingerprint returns the cached Ack or Reject identically (idempotent) and never re-applies; a reused action_id with a CHANGED fingerprint, and an uncached action_id whose ordinal is at or below the per-seat monotonic high-water mark (including a never-seen old ordinal skipped by a jump), are Rejected with duplicate_action_conflict, never re-applied and never accepted as a new action.",
+      "properties": {
+        "type": {
+          "const": "ack"
+        },
+        "protocol_version": {
+          "type": "integer",
+          "const": 1
+        },
+        "room_id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 64
+        },
+        "seat_id": {
+          "$ref": "#/$defs/seat"
+        },
+        "action_id": {
+          "$ref": "#/$defs/actionId"
+        },
+        "revision": {
+          "$ref": "#/$defs/safeInteger"
+        },
+        "applied": {
+          "type": "boolean",
+          "const": true
+        },
+        "no_op": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "type",
+        "protocol_version",
+        "room_id",
+        "seat_id",
+        "action_id",
+        "revision",
+        "applied",
+        "no_op"
+      ],
+      "additionalProperties": false
+    },
+    "Reject": {
+      "type": "object",
+      "description": "Outbound rejection of an action, correlated to action_id. Reason mapping: stale_revision when expected_revision < authoritative; future_revision when expected_revision > authoritative; not_seat_owner when the sender does not own the named seat; not_started when an action arrives while the room is still in the waiting status (the room has not started, so the action is not applied, does not advance the per-seat revision, and does not consume the seat's action ordinal / high-water mark); bad_type, missing_field, and extra_field for schema violations; rate_limited and oversize for bounds violations; duplicate_action_conflict when a reused action_id arrives with a DIFFERENT request fingerprint than the originally cached action, OR when an uncached action_id has an ordinal at or below the per-seat monotonic high-water mark (including a never-seen old ordinal skipped by a jump) - in every such case the server rejects the reuse and never silently reapplies a processed action or accepts it as new. There is no unknown_action_id reason: all action_ids are client-generated, so a server-issued-id correlation is unreachable and the reason was removed.",
+      "properties": {
+        "type": {
+          "const": "reject"
+        },
+        "protocol_version": {
+          "type": "integer",
+          "const": 1
+        },
+        "room_id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 64
+        },
+        "seat_id": {
+          "$ref": "#/$defs/seat"
+        },
+        "action_id": {
+          "$ref": "#/$defs/actionId"
+        },
+        "reason": {
+          "type": "string",
+          "enum": [
+            "stale_revision",
+            "future_revision",
+            "not_seat_owner",
+            "not_started",
+            "bad_type",
+            "missing_field",
+            "extra_field",
+            "rate_limited",
+            "oversize",
+            "duplicate_action_conflict"
+          ]
+        },
+        "authoritative_revision": {
+          "$ref": "#/$defs/safeInteger"
+        }
+      },
+      "required": [
+        "type",
+        "protocol_version",
+        "room_id",
+        "seat_id",
+        "action_id",
+        "reason",
+        "authoritative_revision"
+      ],
+      "additionalProperties": false
+    },
+    "ErrorFrame": {
+      "type": "object",
+      "description": "Outbound connection or room level error. 'detail' is a short English string with no filesystem path, no SQL text, no exception or class name, and no stack trace. The 'malformed_message' reason is the schema-valid outbound path for an APPLICATION-VISIBLE UNCORRELATABLE malformed inbound message - one whose action_id is missing, wrong-typed, or non-canonical, or whose payload is invalid JSON or an in-band binary frame - because such a message has no valid action_id to echo in a Reject and inventing a placeholder id is forbidden; an ErrorFrame has no action_id, so it is the correct correlation-free vehicle. A wire-level invalid-UTF8 TEXT frame is NOT a malformed_message ErrorFrame: it is rejected by the WebSocket transport before the application receives a decoded message and is handled as a transport-level fail-the-connection close with the standard code 1007 (RFC 6455 section 8.1 / section 7.4.1) carrying a library-managed bounded reason, with no application-controlled JSON reply. A message that DOES carry a valid canonical action_id but is malformed in OTHER fields is instead a Reject with bad_type/missing_field/extra_field.",
+      "properties": {
+        "type": {
+          "const": "error"
+        },
+        "protocol_version": {
+          "type": "integer",
+          "const": 1
+        },
+        "room_id": {
+          "oneOf": [
+            {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 64
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "seat_id": {
+          "oneOf": [
+            {
+              "$ref": "#/$defs/seat"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "reason": {
+          "type": "string",
+          "enum": [
+            "room_not_found",
+            "room_full",
+            "room_closed",
+            "protocol_version_unsupported",
+            "handshake_timeout",
+            "malformed_message",
+            "internal"
+          ]
+        },
+        "detail": {
+          "type": "string",
+          "maxLength": 200
+        }
+      },
+      "required": ["type", "protocol_version", "room_id", "seat_id", "reason", "detail"],
+      "additionalProperties": false
+    },
+    "Outcome": {
+      "type": "object",
+      "description": "Outbound terminal duel result. The result/seat relationship is enforced per result. For win: winning_seat and losing_seat are each a seat, DISTINCT from each other, and forfeiting_seat is null. For draw (simultaneous top-out): winning_seat, losing_seat, and forfeiting_seat are all null. For forfeit: forfeiting_seat is the disconnected seat, losing_seat equals forfeiting_seat, and winning_seat is the other (surviving) seat, distinct from forfeiting_seat.",
+      "properties": {
+        "type": {
+          "const": "outcome"
+        },
+        "protocol_version": {
+          "type": "integer",
+          "const": 1
+        },
+        "room_id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 64
+        },
+        "result": {
+          "type": "string",
+          "enum": ["win", "draw", "forfeit"]
+        },
+        "winning_seat": {
+          "oneOf": [
+            {
+              "$ref": "#/$defs/seat"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "losing_seat": {
+          "oneOf": [
+            {
+              "$ref": "#/$defs/seat"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "forfeiting_seat": {
+          "oneOf": [
+            {
+              "$ref": "#/$defs/seat"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "final_revision": {
+          "type": "object",
+          "properties": {
+            "A": {
+              "$ref": "#/$defs/safeInteger"
+            },
+            "B": {
+              "$ref": "#/$defs/safeInteger"
+            }
+          },
+          "required": ["A", "B"],
+          "additionalProperties": false
+        }
+      },
+      "required": [
+        "type",
+        "protocol_version",
+        "room_id",
+        "result",
+        "winning_seat",
+        "losing_seat",
+        "forfeiting_seat",
+        "final_revision"
+      ],
+      "additionalProperties": false,
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "result": {
+                "const": "win"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "forfeiting_seat": {
+                "type": "null"
+              }
+            },
+            "oneOf": [
+              {
+                "properties": {
+                  "winning_seat": {
+                    "const": "A"
+                  },
+                  "losing_seat": {
+                    "const": "B"
+                  }
+                }
+              },
+              {
+                "properties": {
+                  "winning_seat": {
+                    "const": "B"
+                  },
+                  "losing_seat": {
+                    "const": "A"
+                  }
+                }
+              }
+            ]
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "result": {
+                "const": "draw"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "winning_seat": {
+                "type": "null"
+              },
+              "losing_seat": {
+                "type": "null"
+              },
+              "forfeiting_seat": {
+                "type": "null"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "result": {
+                "const": "forfeit"
+              }
+            }
+          },
+          "then": {
+            "oneOf": [
+              {
+                "properties": {
+                  "forfeiting_seat": {
+                    "const": "A"
+                  },
+                  "losing_seat": {
+                    "const": "A"
+                  },
+                  "winning_seat": {
+                    "const": "B"
+                  }
+                }
+              },
+              {
+                "properties": {
+                  "forfeiting_seat": {
+                    "const": "B"
+                  },
+                  "losing_seat": {
+                    "const": "B"
+                  },
+                  "winning_seat": {
+                    "const": "A"
+                  }
+                }
+              }
+            ]
+          }
+        }
+      ]
+    }
+  },
+  "oneOf": [
+    {
+      "$ref": "#/$defs/Hello"
+    },
+    {
+      "$ref": "#/$defs/ActionMessage"
+    },
+    {
+      "$ref": "#/$defs/Welcome"
+    },
+    {
+      "$ref": "#/$defs/StateFrame"
+    },
+    {
+      "$ref": "#/$defs/Ack"
+    },
+    {
+      "$ref": "#/$defs/Reject"
+    },
+    {
+      "$ref": "#/$defs/ErrorFrame"
+    },
+    {
+      "$ref": "#/$defs/Outcome"
+    }
+  ]
+}
