@@ -1,0 +1,14 @@
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+.coverage
+coverage.xml
+htmlcov/
+tests/
+app/data/review_images/*.png
+app/data/review_images/*.jpg
+app/data/review_images/*.jpeg
+app/data/review_images/*.gif
+app/data/review_images/*.webp
+.git/

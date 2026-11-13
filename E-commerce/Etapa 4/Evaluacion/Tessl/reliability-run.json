@@ -1,0 +1,166 @@
+{
+  "session_id": "c4121fe2-6287-4121-81cd-f3f7706e87c2",
+  "response": "I have resolved all material Stage 4 persistence and reliability gaps in the workspace and successfully verified them using the newly implemented acceptance suite and original distributed tests.\n\n### 🛠️ Summary of Corrective Actions Applied\n\n1. **PowerShell Launcher & Persistence (`Start-Services.ps1` & `Stop-Services.ps1`)**:\n   - Removed database file deletions on normal startup to preserve user profiles, pending events, and projection state.\n   - Configured services to execute in a truly detached background mode by redirecting standard output and error to local files under `logs/`, resolving terminal hangs.\n   - Switched frontend Vite execution to use local `node` directly to enable clean child process tracking.\n   - Replaced broad port-killing with a recursive process tree helper (`Stop-ProcessTree`) inside `Stop-Services.ps1` to stop only owned descendant trees.\n\n2. **Durable AMQP, Bounded Retries, and DLQ Topology (`commerce.py` & `reviews.py`)**:\n   - Introduced a Dead-Letter Exchange (`stage4.tessl.exchange.dlx`) and durable DLQ (`commerce.review_projection_queue.dlq`).\n   - Declared the main queue with dead-letter attributes (`x-dead-letter-exchange` and `x-dead-letter-routing-key`), configuring manual acknowledgments (`ch.basic_ack`).\n   - Implemented a concise bounded retry callback policy (3 attempts with a 1-second delay). Permanent failures are negative-acknowledged (`basic_nack(requeue=False)`), routing them directly to the DLQ.\n   - Added a 406 `PRECONDITION_FAILED` queue recreation fallback block to seamlessly migrate existing broker queues with mismatched arguments without manual intervention.\n\n3. **Mandatory Routing, Confirmations, and Outbox Durability (`reviews.py`)**:\n   - Published events with `mandatory=True` and publisher confirmations (`confirm_delivery`). Caught `pika.exceptions.UnroutableError` to retain unroutable events in the outbox as unprocessed.\n   - Configured the Reviews outbox worker to pre-declare and bind the consumer queue with matching parameters on connect, guaranteeing message storage even if Commerce starts late.\n\n4. **Terminal-state contract (`reviews.py` & `commerce.py`)**:\n   - Added transactionally staged `review.rejected` events in the outbox.\n   - Updated Commerce consumer to handle `review.rejected` by deleting the review from `public_reviews` and clearing the corresponding reviews cache.\n   - Updated both approval and rejection envelopes to carry `version` and `type` alongside `event_id`, `correlation_id`, `timestamp`, and `payload`.\n\n---\n\n### 🧪 Executed Test Evidence\n\nI created and ran the isolated real-RabbitMQ subprocess acceptance test suite, which successfully verified the entire system end-to-end:\n\n```powershell\npython backend/test_reliability_acceptance.py\n```\n\n```text\n==================================================\n   STAGE 4 RELIABILITY & PERSISTENCE ACCEPTANCE   \n==================================================\nIsolated Exchange: test_exchange_429a1bcf\nIsolated Queue: test_queue_429a1bcf\nIsolated Identity DB: C:\\Users\\jeron\\OneDrive\\Escritorio\\uni\\implementacion Ecommerce\\Caso 3-Ecommerce\\Etapa 4\\Tessl\\backend\\test_identity_429a1bcf.db\nIsolated Commerce DB: C:\\Users\\jeron\\OneDrive\\Escritorio\\uni\\implementacion Ecommerce\\Caso 3-Ecommerce\\Etapa 4\\Tessl\\backend\\test_commerce_429a1bcf.db\nIsolated Reviews DB: C:\\Users\\jeron\\OneDrive\\Escritorio\\uni\\implementacion Ecommerce\\Caso 3-Ecommerce\\Etapa 4\\Tessl\\backend\\test_reviews_429a1bcf.db\nStarting identity on port 18401...\nStarting commerce on port 18402...\nStarting reviews on port 18403...\nStarting gateway on port 18400...\n[SUCCESS] All services started and listening.\n\n--- Registering standard user and moderator ---\nUser credentials established successfully.\n\n--- [TEST CASE 1] Stop Commerce only, Approve review while offline, Recovery ---\nReview 1 submitted (ID: 5) and is pending.\nConfirmed pending review is hidden.\nStopping Commerce microservice process tree...\nCommerce is offline.\nModerator approved review while Commerce was offline.\nVerified that Reviews successfully published the event to RabbitMQ.\nRabbitMQ Queue test_queue_429a1bcf contains 1 queued message(s).\nRestarting Commerce service...\nStarting commerce on port 18402...\nCommerce restored.\nWaiting for eventual consistency recovery...\n[SUCCESS] Test Case 1 Passed: Offline recovery succeeded perfectly.\n\n--- [TEST CASE 2] Idempotency (Duplicate message ingestion) ---\nDirectly republishing identical event payload to exchange...\n[SUCCESS] Test Case 2 Passed: Duplicate message discarded safely, idempotence retained.\n\n--- [TEST CASE 3] Outbox durability with unavailable AMQP & Service Restart ---\nReview 2 submitted (ID: 6).\nStopping Reviews service to restart with unavailable AMQP URL...\nReviews restarted with an unreachable AMQP broker.\nModerator approved review while Reviews was pointing to unreachable AMQP broker.\nConfirmed outbox event remains pending (processed = 0).\nSimulating service restart: Stopping Reviews service...\nRestarting Reviews service with bad AMQP to prove survival...\nConfirmed pending outbox survived restart and remains unprocessed.\nStopping Reviews and restoring connection to real AMQP broker...\nReviews restored with real AMQP.\nWaiting for outbox to publish and commerce to ingest...\nVerified review successfully propagated to Commerce projection.\nConfirmed outbox row is now processed = 1 in Reviews DB.\n[SUCCESS] Test Case 3 Passed: Pending outbox survived restarts and delivered successfully.\n\n--- [TEST CASE 4] Poison-message DLQ assertion ---\nPublishing poison message directly to queue test_queue_429a1bcf...\nWaiting for consumer callback to run bounded retries (3 attempts) and DLQ the message...\nConsuming from DLQ to assert poison message arrived...\nDLQ Message received: {'type': 'review.approved', 'payload': {'review_id': 'NOT_AN_INT', 'product_id': 1, 'rating': 'poison'}}\n[SUCCESS] Test Case 4 Passed: Poison-message DLQ assertion succeeded.\n\n--- [TEST CASE 5] Terminal-state contract (moderation rejection) ---\nConfirmed approved review is visible in public projection.\nModerator successfully rejected the already approved review.\nWaiting for rejection event to propagate...\nConfirmed rejected review was successfully removed from public projection!\n[SUCCESS] Test Case 5 Passed: Terminal-state contract verified successfully.\n\n--- [TEST CASE 6] Normal launcher stop/start persistence check ---\nStopping temp acceptance services...\nRunning Start-Services.ps1...\nPort 18401 is active and listening.\nPort 18402 is active and listening.\nPort 18403 is active and listening.\nPort 18400 is active and listening.\nPort 18500 is active and listening.\nRegistering a user 'persist_user' in the normal running stack...\nUser registered successfully in normal running stack.\nRunning Stop-Services.ps1...\nAll microservices are verified offline.\nRunning Start-Services.ps1 again...\nAttempting login of 'persist_user' to prove store persistence...\nStopping standard microservices stack...\n[SUCCESS] Test Case 6 Passed: Stores correctly preserved across start/stop cycles!\n\n==================================================\n  ALL RELIABILITY ACCEPTANCE TESTS PASSED PERFECTLY!\n==================================================\n```\n\nAdditionally, the original distributed test suite now runs flawlessly alongside the updated code:\n\n```powershell\npython backend/test_distributed.py\n```\n\n```text\n==================================================\n   STAGE 4 DISTRIBUTED STACK VERIFICATION SUITE   \n==================================================\nRemoved previous backend/identity.db\nRemoved previous backend/commerce.db\nRemoved previous backend/reviews.db\nStarting app.identity:app on port 18401...\nStarting app.commerce:app on port 18402...\nStarting app.reviews:app on port 18403...\nStarting app.gateway:app on port 18400...\n\n[SUCCESS] All microservices are active and listening.\n\n[TEST 1] Registering and logging in standard user via Gateway...\nSuccess: dist_buyer registered and authenticated.\n\n[TEST 2] Retrieving product list and verifying cache...\nSuccess: Catalog of 5 products served correctly.\n\n[TEST 3] Submitting a pending review for product 1...\nSuccess: Review submitted. ID: 5, Status: pending\n\n[TEST 4] Verifying the pending review is NOT visible in public reviews (Commerce)...\nSuccess: Pending review remains hidden from public catalog.\n\n[TEST 5] Verifying that non-moderator cannot access moderation dashboard...\nSuccess: Standard user was correctly denied access to moderation controls.\n\n[TEST 6] Logging in as moderator and approving the review...\nSuccess: Moderator approved review. Outbox event staged.\nWaiting for event-driven projection updates (up to 5s)...\nSuccess: Approved review successfully propagated to public reviews projection via RabbitMQ!\n\n[TEST 7] Verifying idempotent delivery (duplicate message ingestion check)...\nDuplicate event published directly to RabbitMQ.\nSuccess: Consumer is fully idempotent; duplicate events are discarded safely without duplicate record insertion.\n\n[TEST 8] Verifying simulated checkout flow via Gateway...\nSuccess: Simulated checkout completed successfully.\n\n==================================================\n  ALL STAGE 4 DISTRIBUTED TESTS PASSED PERFECTLY! \n==================================================\n\nShutting down backend microservice processes...\nAll processes cleanly terminated.\n```\n\nUnit and coverage tests also pass successfully, and backend coverage was refreshed (`backend/coverage.xml`).\n\n---\n\n### ⚠️ Limitations\n- **Docker and Remote CI**: As requested, Docker environments and remote CI pipelines were not executed, but the local PowerShell `run-ci.ps1` and unit tests are fully compliant with the changes.\n- **Frontend Assets**: Frontend `lcov`/build evidence was preserved entirely without running unaffected checks.",
+  "stats": {
+    "models": {
+      "gemini-3.5-flash": {
+        "api": {
+          "totalRequests": 71,
+          "totalErrors": 6,
+          "totalLatencyMs": 665499,
+          "errorsByType": {
+            "ApiError": 6
+          }
+        },
+        "tokens": {
+          "input": 907115,
+          "prompt": 5746960,
+          "candidates": 22898,
+          "total": 5804152,
+          "cached": 4839845,
+          "thoughts": 34294,
+          "tool": 0
+        },
+        "roles": {
+          "main": {
+            "totalRequests": 71,
+            "totalErrors": 6,
+            "totalLatencyMs": 665499,
+            "tokens": {
+              "input": 907115,
+              "prompt": 5746960,
+              "candidates": 22898,
+              "total": 5804152,
+              "cached": 4839845,
+              "thoughts": 34294,
+              "tool": 0
+            }
+          }
+        }
+      },
+      "gemini-3-flash-preview": {
+        "api": {
+          "totalRequests": 3,
+          "totalErrors": 0,
+          "totalLatencyMs": 25656,
+          "errorsByType": {}
+        },
+        "tokens": {
+          "input": 58466,
+          "prompt": 58466,
+          "candidates": 338,
+          "total": 60290,
+          "cached": 0,
+          "thoughts": 1486,
+          "tool": 0
+        },
+        "roles": {
+          "utility_loop_detector": {
+            "totalRequests": 3,
+            "totalErrors": 0,
+            "totalLatencyMs": 25656,
+            "tokens": {
+              "input": 58466,
+              "prompt": 58466,
+              "candidates": 338,
+              "total": 60290,
+              "cached": 0,
+              "thoughts": 1486,
+              "tool": 0
+            }
+          }
+        }
+      }
+    },
+    "tools": {
+      "totalCalls": 65,
+      "totalSuccess": 65,
+      "totalFail": 0,
+      "totalDurationMs": 64712,
+      "totalDecisions": {
+        "accept": 65,
+        "reject": 0,
+        "modify": 0,
+        "auto_accept": 0
+      },
+      "byName": {
+        "update_topic": {
+          "count": 2,
+          "success": 2,
+          "fail": 0,
+          "durationMs": 8,
+          "decisions": {
+            "accept": 2,
+            "reject": 0,
+            "modify": 0,
+            "auto_accept": 0
+          }
+        },
+        "read_file": {
+          "count": 35,
+          "success": 35,
+          "fail": 0,
+          "durationMs": 304,
+          "decisions": {
+            "accept": 35,
+            "reject": 0,
+            "modify": 0,
+            "auto_accept": 0
+          }
+        },
+        "grep_search": {
+          "count": 7,
+          "success": 7,
+          "fail": 0,
+          "durationMs": 930,
+          "decisions": {
+            "accept": 7,
+            "reject": 0,
+            "modify": 0,
+            "auto_accept": 0
+          }
+        },
+        "replace": {
+          "count": 12,
+          "success": 12,
+          "fail": 0,
+          "durationMs": 478,
+          "decisions": {
+            "accept": 12,
+            "reject": 0,
+            "modify": 0,
+            "auto_accept": 0
+          }
+        },
+        "write_file": {
+          "count": 3,
+          "success": 3,
+          "fail": 0,
+          "durationMs": 36,
+          "decisions": {
+            "accept": 3,
+            "reject": 0,
+            "modify": 0,
+            "auto_accept": 0
+          }
+        },
+        "run_shell_command": {
+          "count": 6,
+          "success": 6,
+          "fail": 0,
+          "durationMs": 62956,
+          "decisions": {
+            "accept": 6,
+            "reject": 0,
+            "modify": 0,
+            "auto_accept": 0
+          }
+        }
+      }
+    },
+    "files": {
+      "totalLinesAdded": 854,
+      "totalLinesRemoved": 202
+    }
+  }
+}

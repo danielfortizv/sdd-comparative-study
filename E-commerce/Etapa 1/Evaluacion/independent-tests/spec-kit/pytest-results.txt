@@ -1,0 +1,35 @@
+============================= test session starts =============================
+platform win32 -- Python 3.13.9, pytest-9.1.1, pluggy-1.6.0 -- C:\Users\jeron\OneDrive\Escritorio\uni\implementacion Ecommerce\Caso 3-Ecommerce\Etapa 1\Evaluacion\independent-tests\openspec\.venv\Scripts\python.exe
+cachedir: .pytest_cache
+rootdir: C:\Users\jeron\OneDrive\Escritorio\uni\implementacion Ecommerce\Caso 3-Ecommerce\Etapa 1\Evaluacion\independent-tests\spec-kit
+plugins: anyio-4.15.1, cov-7.1.0
+collecting ... collected 8 items
+
+test_backend.py::test_catalog_contract_and_cache PASSED                  [ 12%]
+test_backend.py::test_registration_hashing_duplicate_and_validation PASSED [ 25%]
+test_backend.py::test_signin_success_and_failures PASSED                 [ 37%]
+test_backend.py::test_token_parser_and_signout PASSED                    [ 50%]
+test_backend.py::test_checkout_auth_cart_and_item_validation PASSED      [ 62%]
+test_backend.py::test_checkout_demo_validation_and_success PASSED        [ 75%]
+test_backend.py::test_catalog_load_failure_is_handled PASSED             [ 87%]
+test_backend.py::test_global_middleware_returns_non_sensitive_error PASSED [100%]
+
+============================== warnings summary ===============================
+..\openspec\.venv\Lib\site-packages\fastapi\testclient.py:1
+  C:\Users\jeron\OneDrive\Escritorio\uni\implementacion Ecommerce\Caso 3-Ecommerce\Etapa 1\Evaluacion\independent-tests\openspec\.venv\Lib\site-packages\fastapi\testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.
+    from starlette.testclient import TestClient as TestClient  # noqa
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=============================== tests coverage ================================
+_______________ coverage: platform win32, python 3.13.9-final-0 _______________
+
+Name                                                                                                                        Stmts   Miss  Cover   Missing
+---------------------------------------------------------------------------------------------------------------------------------------------------------
+C:\Users\jeron\OneDrive\Escritorio\uni\implementacion Ecommerce\Caso 3-Ecommerce\Etapa 1\Spec Kit\backend\src\main.py         106      1    99%   186
+C:\Users\jeron\OneDrive\Escritorio\uni\implementacion Ecommerce\Caso 3-Ecommerce\Etapa 1\Spec Kit\backend\src\security.py      18      0   100%
+C:\Users\jeron\OneDrive\Escritorio\uni\implementacion Ecommerce\Caso 3-Ecommerce\Etapa 1\Spec Kit\backend\src\storage.py       22      0   100%
+---------------------------------------------------------------------------------------------------------------------------------------------------------
+TOTAL                                                                                                                         146      1    99%
+Coverage XML written to file coverage-backend.xml
+Coverage JSON written to file coverage-backend.json
+======================== 8 passed, 1 warning in 1.29s =========================

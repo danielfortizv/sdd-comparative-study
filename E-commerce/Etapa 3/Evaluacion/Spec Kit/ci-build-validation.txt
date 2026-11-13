@@ -1,0 +1,20 @@
+
+> stage1-ecommerce-frontend@1.0.0 build
+> react-scripts build
+
+Creating an optimized production build...
+
+Treating warnings as errors because process.env.CI = true.
+Most CI servers set it automatically.
+
+Failed to compile.
+
+[eslint] 
+src\components\ModeratorDashboard.tsx
+  Line 31:6:  React Hook useEffect has a missing dependency: 'fetchModerationReviews'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+
+src\components\ProductDetails.tsx
+  Line 13:18:  'identifier' is assigned a value but never used                                                                  @typescript-eslint/no-unused-vars
+  Line 44:6:   React Hook useEffect has a missing dependency: 'fetchReviews'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+
+

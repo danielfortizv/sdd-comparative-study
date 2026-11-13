@@ -1,0 +1,249 @@
+{
+  "run_id": "TESSL-S1-OFFICIAL-01",
+  "checked_at": "2026-10-05T18:36:16.1793255Z",
+  "total": 30,
+  "unchanged": 30,
+  "changed": 0,
+  "files": [
+    {
+      "path": ".gemini/settings.json",
+      "expected_bytes": 151,
+      "actual_bytes": 151,
+      "expected_sha256": "2265FCB3E3D3F8BFC95F117C5680F92B94BEC665D0191CDE532D4DD32CBDC48C",
+      "actual_sha256": "2265FCB3E3D3F8BFC95F117C5680F92B94BEC665D0191CDE532D4DD32CBDC48C",
+      "unchanged": true
+    },
+    {
+      "path": ".tessl/RULES.md",
+      "expected_bytes": 175,
+      "actual_bytes": 175,
+      "expected_sha256": "6C7A5640D11596B6A21E8216F36976E3CF132FD90445D2A8E3A3267D9BB209BA",
+      "actual_sha256": "6C7A5640D11596B6A21E8216F36976E3CF132FD90445D2A8E3A3267D9BB209BA",
+      "unchanged": true
+    },
+    {
+      "path": "AGENTS.md",
+      "expected_bytes": 100,
+      "actual_bytes": 100,
+      "expected_sha256": "49C4EB0943423EACB23348F847A9F1A96B0ECA55934018C4F9EAD7908760D701",
+      "actual_sha256": "49C4EB0943423EACB23348F847A9F1A96B0ECA55934018C4F9EAD7908760D701",
+      "unchanged": true
+    },
+    {
+      "path": "backend/api_test.py",
+      "expected_bytes": 6628,
+      "actual_bytes": 6628,
+      "expected_sha256": "E7FA1FB2EE7896691D29ECAADFB1E4FA0EB961F3BCFF30360D0EEDA143ACFD02",
+      "actual_sha256": "E7FA1FB2EE7896691D29ECAADFB1E4FA0EB961F3BCFF30360D0EEDA143ACFD02",
+      "unchanged": true
+    },
+    {
+      "path": "backend/app/auth.py",
+      "expected_bytes": 1508,
+      "actual_bytes": 1508,
+      "expected_sha256": "32CC333C7C7E92E8FDF718CA37290AA75A29A6D28E1C8111ED12A9F8ACDD8253",
+      "actual_sha256": "32CC333C7C7E92E8FDF718CA37290AA75A29A6D28E1C8111ED12A9F8ACDD8253",
+      "unchanged": true
+    },
+    {
+      "path": "backend/app/database.py",
+      "expected_bytes": 2218,
+      "actual_bytes": 2218,
+      "expected_sha256": "50FC82E5A153F81009F5B70361D7CE1401514988F83551E4D3FAF46C2EF5D59A",
+      "actual_sha256": "50FC82E5A153F81009F5B70361D7CE1401514988F83551E4D3FAF46C2EF5D59A",
+      "unchanged": true
+    },
+    {
+      "path": "backend/app/main.py",
+      "expected_bytes": 5953,
+      "actual_bytes": 5953,
+      "expected_sha256": "F8A0D4BEC52FBF904B0B1A905AEE18E6549B78841BB9EFFA2D67BFF4CD68F9B7",
+      "actual_sha256": "F8A0D4BEC52FBF904B0B1A905AEE18E6549B78841BB9EFFA2D67BFF4CD68F9B7",
+      "unchanged": true
+    },
+    {
+      "path": "backend/app/models.py",
+      "expected_bytes": 1613,
+      "actual_bytes": 1613,
+      "expected_sha256": "774E75A026690398893BDD5842794F711734D593CF7D4624BE60AE1D572EB951",
+      "actual_sha256": "774E75A026690398893BDD5842794F711734D593CF7D4624BE60AE1D572EB951",
+      "unchanged": true
+    },
+    {
+      "path": "backend/README.md",
+      "expected_bytes": 751,
+      "actual_bytes": 751,
+      "expected_sha256": "0B7B5953D7907E8C85F7B3C2664C2DE1AAC8F9340638D647AB11421583004349",
+      "actual_sha256": "0B7B5953D7907E8C85F7B3C2664C2DE1AAC8F9340638D647AB11421583004349",
+      "unchanged": true
+    },
+    {
+      "path": "backend/requirements.txt",
+      "expected_bytes": 52,
+      "actual_bytes": 52,
+      "expected_sha256": "C9802EDD80D1DEE0D773CEB7655B4CEB5193BFADFD10A8DB6FD14687C67405AA",
+      "actual_sha256": "C9802EDD80D1DEE0D773CEB7655B4CEB5193BFADFD10A8DB6FD14687C67405AA",
+      "unchanged": true
+    },
+    {
+      "path": "especificacion-semilla-final-en.md",
+      "expected_bytes": 8760,
+      "actual_bytes": 8760,
+      "expected_sha256": "45DDFDED6EBFFDAEC9FCEB5818D319A3DC3D66A79A9A6B887557AACCD64B446D",
+      "actual_sha256": "45DDFDED6EBFFDAEC9FCEB5818D319A3DC3D66A79A9A6B887557AACCD64B446D",
+      "unchanged": true
+    },
+    {
+      "path": "frontend/index.html",
+      "expected_bytes": 324,
+      "actual_bytes": 324,
+      "expected_sha256": "9144CBA4CD432B0A3948A6679B62ADC5F8CC09D8E094B681F860E18BF64BA781",
+      "actual_sha256": "9144CBA4CD432B0A3948A6679B62ADC5F8CC09D8E094B681F860E18BF64BA781",
+      "unchanged": true
+    },
+    {
+      "path": "frontend/package-lock.json",
+      "expected_bytes": 60425,
+      "actual_bytes": 60425,
+      "expected_sha256": "6AD04F2D9DA8775DAD14FD40D6FC546B6D48CCA0D24B2BA5484F27CC9CDF55FF",
+      "actual_sha256": "6AD04F2D9DA8775DAD14FD40D6FC546B6D48CCA0D24B2BA5484F27CC9CDF55FF",
+      "unchanged": true
+    },
+    {
+      "path": "frontend/package.json",
+      "expected_bytes": 488,
+      "actual_bytes": 488,
+      "expected_sha256": "9EC8E633506834C57E3471E042ACC3769A4D1833B006E2D233EAF0784EEF06E9",
+      "actual_sha256": "9EC8E633506834C57E3471E042ACC3769A4D1833B006E2D233EAF0784EEF06E9",
+      "unchanged": true
+    },
+    {
+      "path": "frontend/README.md",
+      "expected_bytes": 534,
+      "actual_bytes": 534,
+      "expected_sha256": "EFEB5D87BE2C4254479ED4549EF8AC9DB9B0508DD773EC634A2CA05697A8ADDB",
+      "actual_sha256": "EFEB5D87BE2C4254479ED4549EF8AC9DB9B0508DD773EC634A2CA05697A8ADDB",
+      "unchanged": true
+    },
+    {
+      "path": "frontend/src/App.tsx",
+      "expected_bytes": 1219,
+      "actual_bytes": 1219,
+      "expected_sha256": "CF2A674DBC20E97780F8DE932B3E83540718DE0B5DB59AFC9FE1DB75DEE7BB1D",
+      "actual_sha256": "CF2A674DBC20E97780F8DE932B3E83540718DE0B5DB59AFC9FE1DB75DEE7BB1D",
+      "unchanged": true
+    },
+    {
+      "path": "frontend/src/components/Auth.tsx",
+      "expected_bytes": 3633,
+      "actual_bytes": 3633,
+      "expected_sha256": "B026D07AF6E9ABBE9FDBA1DED033BBC01909D4CB6DE009D1B814CB774980CA05",
+      "actual_sha256": "B026D07AF6E9ABBE9FDBA1DED033BBC01909D4CB6DE009D1B814CB774980CA05",
+      "unchanged": true
+    },
+    {
+      "path": "frontend/src/components/Cart.tsx",
+      "expected_bytes": 3737,
+      "actual_bytes": 3737,
+      "expected_sha256": "EB56B47BFC5B57B32D0CD85AE111DD5971C19F8DD3DBB82888DD4DDAB06A5869",
+      "actual_sha256": "EB56B47BFC5B57B32D0CD85AE111DD5971C19F8DD3DBB82888DD4DDAB06A5869",
+      "unchanged": true
+    },
+    {
+      "path": "frontend/src/components/Catalog.tsx",
+      "expected_bytes": 2280,
+      "actual_bytes": 2280,
+      "expected_sha256": "238CA9CBFFCE554D20338D699F74E9B6319A51B871A91E0B16F9D5A923A59F7E",
+      "actual_sha256": "238CA9CBFFCE554D20338D699F74E9B6319A51B871A91E0B16F9D5A923A59F7E",
+      "unchanged": true
+    },
+    {
+      "path": "frontend/src/components/Checkout.tsx",
+      "expected_bytes": 5212,
+      "actual_bytes": 5212,
+      "expected_sha256": "995F3930D98742557311D09799A499F175F3C1A2D24F0B443C46844489E30CAC",
+      "actual_sha256": "995F3930D98742557311D09799A499F175F3C1A2D24F0B443C46844489E30CAC",
+      "unchanged": true
+    },
+    {
+      "path": "frontend/src/components/Header.tsx",
+      "expected_bytes": 1598,
+      "actual_bytes": 1598,
+      "expected_sha256": "011834924A2187DB973D87B40BEC593D4A5F0097D5673113F8122FA24BAB899A",
+      "actual_sha256": "011834924A2187DB973D87B40BEC593D4A5F0097D5673113F8122FA24BAB899A",
+      "unchanged": true
+    },
+    {
+      "path": "frontend/src/context/AppContext.tsx",
+      "expected_bytes": 10236,
+      "actual_bytes": 10236,
+      "expected_sha256": "76A62B49AC1468649719A413239FA2BFE3D94FEAE32A9952DB65920BDA510368",
+      "actual_sha256": "76A62B49AC1468649719A413239FA2BFE3D94FEAE32A9952DB65920BDA510368",
+      "unchanged": true
+    },
+    {
+      "path": "frontend/src/index.css",
+      "expected_bytes": 12258,
+      "actual_bytes": 12258,
+      "expected_sha256": "1228607A1496FC4408327A397F2D55A3AD9A453CB62665B1435543FCF886A08E",
+      "actual_sha256": "1228607A1496FC4408327A397F2D55A3AD9A453CB62665B1435543FCF886A08E",
+      "unchanged": true
+    },
+    {
+      "path": "frontend/src/main.tsx",
+      "expected_bytes": 250,
+      "actual_bytes": 250,
+      "expected_sha256": "1A2C80094FECD6B181676D20C622BDAE01EB6680429428274D9EE37E4F96036B",
+      "actual_sha256": "1A2C80094FECD6B181676D20C622BDAE01EB6680429428274D9EE37E4F96036B",
+      "unchanged": true
+    },
+    {
+      "path": "frontend/tsconfig.json",
+      "expected_bytes": 575,
+      "actual_bytes": 575,
+      "expected_sha256": "37203E8F5DDEAEA21D8755A6F4A0065466B2C74E526927E287E6E4421E9160E5",
+      "actual_sha256": "37203E8F5DDEAEA21D8755A6F4A0065466B2C74E526927E287E6E4421E9160E5",
+      "unchanged": true
+    },
+    {
+      "path": "frontend/vite.config.ts",
+      "expected_bytes": 232,
+      "actual_bytes": 232,
+      "expected_sha256": "316AFB46A887DF9AEAD1B4FE73C2900DA04E75640AFC78CCD18D7616EACCBB69",
+      "actual_sha256": "316AFB46A887DF9AEAD1B4FE73C2900DA04E75640AFC78CCD18D7616EACCBB69",
+      "unchanged": true
+    },
+    {
+      "path": "specs/requirements.md",
+      "expected_bytes": 6641,
+      "actual_bytes": 6641,
+      "expected_sha256": "2913C82E0F27FABDA607354E8EBEBF9A1026F00DEEB857383CF5E6085119E018",
+      "actual_sha256": "2913C82E0F27FABDA607354E8EBEBF9A1026F00DEEB857383CF5E6085119E018",
+      "unchanged": true
+    },
+    {
+      "path": "specs/tasks.md",
+      "expected_bytes": 5911,
+      "actual_bytes": 5911,
+      "expected_sha256": "4D1DDE4B3640B93BFDCD3ECA6CBD5358E71F770C98060EC8F63C513EDFE90512",
+      "actual_sha256": "4D1DDE4B3640B93BFDCD3ECA6CBD5358E71F770C98060EC8F63C513EDFE90512",
+      "unchanged": true
+    },
+    {
+      "path": "specs/technical_design.md",
+      "expected_bytes": 3228,
+      "actual_bytes": 3228,
+      "expected_sha256": "014B0D71B5D2814BB20A3ACC9EC162AF5DC766158F6665E44538702EC956AC26",
+      "actual_sha256": "014B0D71B5D2814BB20A3ACC9EC162AF5DC766158F6665E44538702EC956AC26",
+      "unchanged": true
+    },
+    {
+      "path": "tessl.json",
+      "expected_bytes": 116,
+      "actual_bytes": 116,
+      "expected_sha256": "B9B2C59DFC819B26B886C59EAB2D9D16F2110197C07E0C2BA08D6747FD1FA885",
+      "actual_sha256": "B9B2C59DFC819B26B886C59EAB2D9D16F2110197C07E0C2BA08D6747FD1FA885",
+      "unchanged": true
+    }
+  ]
+}

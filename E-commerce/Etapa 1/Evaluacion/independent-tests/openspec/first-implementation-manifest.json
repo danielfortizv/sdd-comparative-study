@@ -1,0 +1,172 @@
+{
+  "run_id": "OPENSPEC-S1-OFFICIAL-01",
+  "tool": "OpenSpec",
+  "source_workspace": "C:/Users/jeron/OneDrive/Escritorio/uni/implementacion Ecommerce/Caso 3-Ecommerce/Etapa 1/OpenSpec",
+  "frozen_snapshot": "C:/Users/jeron/OneDrive/Escritorio/uni/implementacion Ecommerce/Caso 3-Ecommerce/Etapa 1/Evaluacion/independent-tests/openspec/frozen-first-implementation",
+  "scope": "First valid implementation before post-implementation corrective round 2",
+  "provenance": {
+    "official_initial_implementation_transcript": "Evidencias/OpenSpec/session-implementacion-inicial.jsonl",
+    "corrective_transcript": "Evidencias/OpenSpec/session-aplicacion-correctiva-ronda-2.jsonl",
+    "corrective_transcript_sha256": "BBD43EEA0ADA1937DBF96BC367304686A2B385F911A703103FD7090D44AE25B9",
+    "method": "Current tree copied without generated artifacts; the three exact corrective replace operations were reversed in reverse chronological order.",
+    "reversed_replacements": [
+      {
+        "path": "frontend/src/pages/CheckoutPage.tsx",
+        "corrected_fragment_sha256": "034A0763BAAB1B6BB25F3E9CDC4CDD451A468B7F69F6EA4BFFEBC17534863100",
+        "restored_fragment_sha256": "2B433EAB6E47ABA4AB6949B4F394E97051E2A1C49704581EC372630210890F0E"
+      },
+      {
+        "path": "frontend/src/pages/CheckoutPage.tsx",
+        "corrected_fragment_sha256": "15E3FF36BA929140BBD591D08985B8A7C0C763E70EB75F901E525C9BAC16A8F1",
+        "restored_fragment_sha256": "C699F3F42638ED6E80C61C8FFC70EE3E886DB3499AC387E6C8DEA9BB32B49330"
+      },
+      {
+        "path": "frontend/src/pages/ConfirmationPage.tsx",
+        "corrected_fragment_sha256": "C6E30C8C5D2E9E41013DBD4AF4D117936B43AE903E9D7F227BC1F476A8AE0DFD",
+        "restored_fragment_sha256": "5C5738080E86E5E3F78F67ADD778F5263D56FD2823E4BE5A0CD2E03EE9116E72"
+      }
+    ]
+  },
+  "excluded": [
+    "frontend/node_modules/**",
+    "frontend/dist/**",
+    "frontend/build/**",
+    "frontend/.vite/**",
+    "backend/.venv/**",
+    "backend/ecommerce.db",
+    "**/__pycache__/**",
+    "**/.pytest_cache/**",
+    "**/coverage/**",
+    "openspec/**",
+    ".gemini/**",
+    "especificacion-semilla-final-en.md",
+    "docs/**"
+  ],
+  "files": [
+    {
+      "path": "backend/app/auth.py",
+      "bytes": 1262,
+      "sha256": "E2AC0BF5E37354E941BBC2A90F295A96AEC0DD72458DFEC5261C8E069E767037"
+    },
+    {
+      "path": "backend/app/database.py",
+      "bytes": 3181,
+      "sha256": "97CB40FD601ACCBB155AC7F7367E6711075C6930C7FF0BE615446599C3365A26"
+    },
+    {
+      "path": "backend/app/main.py",
+      "bytes": 3729,
+      "sha256": "0C37945E5EBFBD99D867E723D74F07422B6676D654A7968ADA2239893C20C001"
+    },
+    {
+      "path": "backend/app/schemas.py",
+      "bytes": 655,
+      "sha256": "E88C91284AD901C2E131AAD15A2E868981C13AAB0A5712113805CB91E5751F2A"
+    },
+    {
+      "path": "backend/requirements.txt",
+      "bytes": 109,
+      "sha256": "E8DF592E13416AA4BADB175724C068755D23747476D703977F6987093800AC6E"
+    },
+    {
+      "path": "frontend/index.html",
+      "bytes": 369,
+      "sha256": "7AB21BC6E2DCDF8F48EE21E414EC7D2874DC7166AF0DACD2F3D5609313F06082"
+    },
+    {
+      "path": "frontend/package-lock.json",
+      "bytes": 94649,
+      "sha256": "1E4FAB28EDF594723111D01AF6CA655957C262DD5654A08C7D68870C17225F94"
+    },
+    {
+      "path": "frontend/package.json",
+      "bytes": 753,
+      "sha256": "5E5F8FE4D5FCCF8BA6E4B59A682E93FF23FE300E0D2E44367F0FC42F6C1459AB"
+    },
+    {
+      "path": "frontend/postcss.config.js",
+      "bytes": 86,
+      "sha256": "374F669F08B18E67D0A7264FA45B71228017E604FE7F6DB8A5C1BD5BA27E5C98"
+    },
+    {
+      "path": "frontend/src/App.tsx",
+      "bytes": 2310,
+      "sha256": "E8BDA65724AA6197460E6C2F8C549EF8F6B15ADC31F99A8EFFEEF691F2750C85"
+    },
+    {
+      "path": "frontend/src/components/FormInput.tsx",
+      "bytes": 1404,
+      "sha256": "10E1C0E8FAAB8915ACDF815FA4792BDA4F2FFDB5FF968872BA5B2E463269F7D6"
+    },
+    {
+      "path": "frontend/src/components/Header.tsx",
+      "bytes": 6451,
+      "sha256": "A7BA3E9A7E24167731CA50CBD1FAC0049BF03C6146291EA0C532AD342C5EB67A"
+    },
+    {
+      "path": "frontend/src/components/ProductCard.tsx",
+      "bytes": 3259,
+      "sha256": "63F2206EE619D9EA22EA2406EA40650263388E288EBCDC27A19424C152387699"
+    },
+    {
+      "path": "frontend/src/context/AuthContext.tsx",
+      "bytes": 1758,
+      "sha256": "DFEB880E7B153A7466DC131315E16576C0AD8763E9F94735F5E0048168B471E2"
+    },
+    {
+      "path": "frontend/src/context/CartContext.tsx",
+      "bytes": 2549,
+      "sha256": "948478D176D39DD285CF8ABCC4A0A72109C3E876BBA00ABBB52BF35C653A75E9"
+    },
+    {
+      "path": "frontend/src/index.css",
+      "bytes": 160,
+      "sha256": "CB8508E6F2463D0CC3E3F4C6015A995FAF06A53DB7A89A07E9C0BB91935D6706"
+    },
+    {
+      "path": "frontend/src/main.tsx",
+      "bytes": 251,
+      "sha256": "5C8277F7A8B95261A085753122820F0B760AFA07AC8C0414FC294E60C7AFC7DC"
+    },
+    {
+      "path": "frontend/src/pages/CartPage.tsx",
+      "bytes": 6593,
+      "sha256": "7B8A7DDBCD9E2A8D33F463C2793A4136B00B4CCE91ED59C261A03CDE0654F3B0"
+    },
+    {
+      "path": "frontend/src/pages/CatalogPage.tsx",
+      "bytes": 3701,
+      "sha256": "FFA8F794E47938CCFC8A9521C29D23D61A4B6CC0ECA9A5B4C3B52B319C142428"
+    },
+    {
+      "path": "frontend/src/pages/CheckoutPage.tsx",
+      "bytes": 5871,
+      "sha256": "C56E367C7DCE215EB7C6A317524E3D77CC7F9FC20CB24C38AAB110612BD5CA34"
+    },
+    {
+      "path": "frontend/src/pages/ConfirmationPage.tsx",
+      "bytes": 3899,
+      "sha256": "21E211B13AA3EED23128CC140E7934F9D133C8F22BDC1E26995F0A00A3F37523"
+    },
+    {
+      "path": "frontend/src/pages/LoginPage.tsx",
+      "bytes": 7802,
+      "sha256": "B0D630880B05A5FD6261B7FC93676E72CEB4D018CBAC5B4D8547CBFB04ED8B6D"
+    },
+    {
+      "path": "frontend/tailwind.config.js",
+      "bytes": 193,
+      "sha256": "AF56BF883FDEB1A969E93A860F72B9AFD5F3BBCA20686C47A2314A82369FF670"
+    },
+    {
+      "path": "frontend/tsconfig.json",
+      "bytes": 607,
+      "sha256": "3000241A7E241A348D09C591F39D6C44617BC0EE45AFC2F7B31730C02FEAAB23"
+    },
+    {
+      "path": "frontend/vite.config.ts",
+      "bytes": 231,
+      "sha256": "947EBE13F00E0965B27B738F17469203441F8EA322ED19F5921B76C5141DC895"
+    }
+  ]
+}

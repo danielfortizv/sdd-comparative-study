@@ -1,0 +1,113 @@
+# Stage 4 distributed stack: RabbitMQ + three business services + gateway +
+# frontend. One command brings the whole stack up on a user-defined bridge
+# network:
+#
+#     docker compose -f docker-compose.stage4.yml up --build
+#
+# NOTE (honest limitation): Docker was NOT available in the environment where
+# Stage 4 was validated (RabbitMQ runs in WSL and there is no Docker on PATH).
+# This Compose file and the service Dockerfile are provided and validated by
+# inspection and by CI, but a local container run was NOT executed and is not
+# claimed. Validate natively with scripts/start-stack.ps1 against the WSL broker.
+#
+# No paid external service is used and nothing is deployed anywhere.
+
+services:
+  rabbitmq:
+    image: rabbitmq:3.13-management
+    environment:
+      RABBITMQ_DEFAULT_USER: ecommerce
+      RABBITMQ_DEFAULT_PASS: stage4-demo
+      RABBITMQ_DEFAULT_VHOST: stage4_kiro
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    networks: [stage4]
+    healthcheck:
+      test: ["CMD", "rabbitmq-diagnostics", "-q", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+      start_period: 20s
+
+  identity:
+    build: { context: ./services }
+    image: stage4-service
+    working_dir: /app/identity
+    command: ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "18201"]
+    environment:
+      AMQP_URL: amqp://ecommerce:stage4-demo@rabbitmq:5672/stage4_kiro
+      IDENTITY_DB_PATH: /data/identity.db
+    volumes: ["identity-data:/data"]
+    ports: ["18201:18201"]
+    networks: [stage4]
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request,sys; sys.exit(0 if urllib.request.urlopen('http://127.0.0.1:18201/health').status==200 else 1)"]
+      interval: 10s
+      timeout: 3s
+      retries: 5
+      start_period: 10s
+
+  commerce:
+    build: { context: ./services }
+    image: stage4-service
+    working_dir: /app/commerce
+    command: ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "18202"]
+    environment:
+      AMQP_URL: amqp://ecommerce:stage4-demo@rabbitmq:5672/stage4_kiro
+      COMMERCE_DB_PATH: /data/commerce.db
+      REVIEWS_URL: http://reviews:18203
+    volumes: ["commerce-data:/data"]
+    ports: ["18202:18202"]
+    depends_on:
+      rabbitmq: { condition: service_healthy }
+    networks: [stage4]
+
+  reviews:
+    build: { context: ./services }
+    image: stage4-service
+    working_dir: /app/reviews
+    command: ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "18203"]
+    environment:
+      AMQP_URL: amqp://ecommerce:stage4-demo@rabbitmq:5672/stage4_kiro
+      REVIEWS_DB_PATH: /data/reviews.db
+      REVIEW_IMAGE_DIR: /data/review_images
+      COMMERCE_URL: http://commerce:18202
+    volumes: ["reviews-data:/data"]
+    ports: ["18203:18203"]
+    depends_on:
+      rabbitmq: { condition: service_healthy }
+    networks: [stage4]
+
+  gateway:
+    build: { context: ./services }
+    image: stage4-service
+    working_dir: /app/gateway
+    command: ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "18200"]
+    environment:
+      IDENTITY_URL: http://identity:18201
+      COMMERCE_URL: http://commerce:18202
+      REVIEWS_URL: http://reviews:18203
+      FRONTEND_PORT: "18300"
+    ports: ["18200:18200"]
+    depends_on: [identity, commerce, reviews]
+    networks: [stage4]
+
+  frontend:
+    build:
+      context: ./frontend
+      args:
+        VITE_API_BASE_URL: http://localhost:18200
+    image: stage4-frontend
+    ports: ["18300:80"]
+    depends_on: [gateway]
+    networks: [stage4]
+
+volumes:
+  identity-data:
+  commerce-data:
+  reviews-data:
+
+networks:
+  stage4:
+    driver: bridge

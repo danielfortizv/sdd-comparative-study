@@ -1,0 +1,23 @@
+{
+  "task": {
+    "id": "70f60284-99d2-44b3-b02c-539246d3b2fd",
+    "type": "REPORT",
+    "componentId": "f5dc357c-50e9-4ae6-a71b-d65bf28ba269",
+    "componentKey": "tessl-s1-official-01",
+    "componentName": "Tessl Stage 1 Official 01",
+    "componentQualifier": "TRK",
+    "analysisId": "2dc5c730-b78a-48d3-b1cc-9290c731f8b2",
+    "status": "SUCCESS",
+    "submittedAt": "2026-10-05T20:34:52+02:00",
+    "submitterLogin": "admin",
+    "startedAt": "2026-10-05T20:34:53+02:00",
+    "executedAt": "2026-10-05T20:34:58+02:00",
+    "executionTimeMs": 5222,
+    "hasScannerContext": true,
+    "warningCount": 1,
+    "warnings": [
+      "Your code is analyzed as compatible with all Python 3 versions by default. You can get a more precise analysis by setting the exact Python version in your configuration via the parameter \"sonar.python.version\""
+    ],
+    "infoMessages": []
+  }
+}

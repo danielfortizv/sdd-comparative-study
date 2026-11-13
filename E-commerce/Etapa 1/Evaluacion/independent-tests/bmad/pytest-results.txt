@@ -1,0 +1,104 @@
+...F.FFF                                                                 [100%]
+================================== FAILURES ===================================
+________ test_duplicate_registration_does_not_reveal_account_existence ________
+
+tmp_path = WindowsPath('C:/Users/jeron/AppData/Local/Temp/pytest-of-jeron/pytest-1/test_duplicate_registration_do0')
+
+    def test_duplicate_registration_does_not_reveal_account_existence(tmp_path: Path) -> None:
+        client = make_client(tmp_path)
+        credentials = {"username": "duplicate-user", "password": "secret"}
+        assert client.post("/api/register", json=credentials).status_code == 201
+        response = client.post("/api/register", json=credentials)
+        assert response.status_code == 400
+>       assert "already registered" not in response.json()["detail"].lower()
+E       AssertionError: assert 'already registered' not in 'the usernam... registered.'
+E         
+E         'already registered' is contained here:
+E           the username is already registered.
+
+Caso 3-Ecommerce\Etapa 1\Evaluacion\independent-tests\bmad\test_backend.py:64: AssertionError
+_______________ test_checkout_uses_authoritative_catalog_values _______________
+
+tmp_path = WindowsPath('C:/Users/jeron/AppData/Local/Temp/pytest-of-jeron/pytest-1/test_checkout_uses_authoritati0')
+
+    def test_checkout_uses_authoritative_catalog_values(tmp_path: Path) -> None:
+        client = make_client(tmp_path)
+        response = client.post(
+            "/api/checkout",
+            json={
+                "items": [{"id": 1, "quantity": 2, "price": 0.01}],
+                "summary_total": 0.02,
+            },
+        )
+        assert response.status_code == 200
+        summary = response.json()["order_summary"]
+>       assert summary["items"][0]["price"] == 59.99
+E       assert 0.01 == 59.99
+
+Caso 3-Ecommerce\Etapa 1\Evaluacion\independent-tests\bmad\test_backend.py:84: AssertionError
+____________________ test_checkout_rejects_unknown_product ____________________
+
+tmp_path = WindowsPath('C:/Users/jeron/AppData/Local/Temp/pytest-of-jeron/pytest-1/test_checkout_rejects_unknown_0')
+
+    def test_checkout_rejects_unknown_product(tmp_path: Path) -> None:
+        client = make_client(tmp_path)
+        response = client.post(
+            "/api/checkout",
+            json={
+                "items": [{"id": 999, "quantity": 1, "price": 500}],
+                "summary_total": 500,
+            },
+        )
+>       assert response.status_code == 400
+E       assert 200 == 400
+E        +  where 200 = <Response [200 OK]>.status_code
+
+Caso 3-Ecommerce\Etapa 1\Evaluacion\independent-tests\bmad\test_backend.py:98: AssertionError
+__________________ test_checkout_rejects_unavailable_product __________________
+
+tmp_path = WindowsPath('C:/Users/jeron/AppData/Local/Temp/pytest-of-jeron/pytest-1/test_checkout_rejects_unavaila0')
+
+    def test_checkout_rejects_unavailable_product(tmp_path: Path) -> None:
+        client = make_client(tmp_path)
+        response = client.post(
+            "/api/checkout",
+            json={
+                "items": [{"id": 4, "quantity": 1, "price": 120}],
+                "summary_total": 120,
+            },
+        )
+>       assert response.status_code == 400
+E       assert 200 == 400
+E        +  where 200 = <Response [200 OK]>.status_code
+
+Caso 3-Ecommerce\Etapa 1\Evaluacion\independent-tests\bmad\test_backend.py:110: AssertionError
+============================== warnings summary ===============================
+..\..\..\..\AppData\Local\Temp\bmad-s1-verify-venv\Lib\site-packages\fastapi\testclient.py:1
+  C:\Users\jeron\AppData\Local\Temp\bmad-s1-verify-venv\Lib\site-packages\fastapi\testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.
+    from starlette.testclient import TestClient as TestClient  # noqa
+
+Caso 3-Ecommerce\Etapa 1\Bmad Method\backend\main.py:19
+  C:\Users\jeron\OneDrive\Escritorio\uni\implementacion Ecommerce\Caso 3-Ecommerce\Etapa 1\Bmad Method\backend\main.py:19: DeprecationWarning: 
+          on_event is deprecated, use lifespan event handlers instead.
+  
+          Read more about it in the
+          [FastAPI docs for Lifespan Events](https://fastapi.tiangolo.com/advanced/events/).
+          
+    @app.on_event("startup")
+
+..\..\..\..\AppData\Local\Temp\bmad-s1-verify-venv\Lib\site-packages\fastapi\applications.py:4744
+  C:\Users\jeron\AppData\Local\Temp\bmad-s1-verify-venv\Lib\site-packages\fastapi\applications.py:4744: DeprecationWarning: 
+          on_event is deprecated, use lifespan event handlers instead.
+  
+          Read more about it in the
+          [FastAPI docs for Lifespan Events](https://fastapi.tiangolo.com/advanced/events/).
+          
+    return self.router.on_event(event_type)  # ty: ignore[deprecated]
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ===========================
+FAILED Caso 3-Ecommerce/Etapa 1/Evaluacion/independent-tests/bmad/test_backend.py::test_duplicate_registration_does_not_reveal_account_existence
+FAILED Caso 3-Ecommerce/Etapa 1/Evaluacion/independent-tests/bmad/test_backend.py::test_checkout_uses_authoritative_catalog_values
+FAILED Caso 3-Ecommerce/Etapa 1/Evaluacion/independent-tests/bmad/test_backend.py::test_checkout_rejects_unknown_product
+FAILED Caso 3-Ecommerce/Etapa 1/Evaluacion/independent-tests/bmad/test_backend.py::test_checkout_rejects_unavailable_product
+4 failed, 4 passed, 3 warnings in 1.09s

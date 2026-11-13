@@ -1,0 +1,26 @@
+{
+  "prompt_file": "ci-prompt.txt",
+  "started_utc": "2026-11-07T09:36:06.5701574Z",
+  "attempt": "ci",
+  "completed_utc": "2026-11-07T09:37:38.5474846Z",
+  "cli_version": "0.60.0",
+  "provider": "Vertex AI",
+  "model": "gemini-3.5-flash",
+  "mode": "yolo; single-run preauthorized local implementation",
+  "tool": "OpenSpec",
+  "prompt_sha256": "5CABA73AC4E1164038EB8590A22C8AD09B13E47C89B9D7C698B9C6B0F992BA2B",
+  "exit_code": 0,
+  "runtime": {
+    "gateway_port": 18000,
+    "identity_port": 18001,
+    "commerce_port": 18002,
+    "reviews_port": 18003,
+    "frontend_port": 18100,
+    "amqp_url": "amqp://ecommerce:stage4-demo@127.0.0.1:5672/stage4_openspec",
+    "event_namespace": "stage4.openspec",
+    "broker_note": "Real RabbitMQ 3.12.1 in Ubuntu/WSL, exposed through an owned localhost-only TCP forwarder; real Windows publish/consume verified. Broker is shared, vhosts isolated: test outages by stopping only your own consumer/connection, not the global broker. Demo credentials only. Docker unavailable."
+  },
+  "seed_sha256": "8BDC6F77CE23CA124B1013621855A405AFCD0E38259EDDF519971CCCA1AB5D26",
+  "stage": 4,
+  "wall_seconds": 91.980741
+}

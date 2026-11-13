@@ -1,0 +1,26 @@
+{
+  "completed_utc": "2026-11-07T09:08:20.5169621Z",
+  "provider": "Vertex AI",
+  "mode": "yolo; single-run preauthorized local implementation",
+  "tool": "OpenSpec",
+  "attempt": "initial",
+  "model": "gemini-3.5-flash",
+  "started_utc": "2026-11-07T08:53:55.4789886Z",
+  "cli_version": "0.60.0",
+  "prompt_sha256": "553ECEDC46B356989795D94B2E57D38CDC865165ED5D16D7FE6725B50AB6D937",
+  "seed_sha256": "8BDC6F77CE23CA124B1013621855A405AFCD0E38259EDDF519971CCCA1AB5D26",
+  "exit_code": -1,
+  "prompt_file": "initial-prompt.txt",
+  "stage": 4,
+  "runtime": {
+    "gateway_port": 18000,
+    "identity_port": 18001,
+    "commerce_port": 18002,
+    "reviews_port": 18003,
+    "frontend_port": 18100,
+    "amqp_url": "amqp://ecommerce:stage4-demo@127.0.0.1:5672/stage4_openspec",
+    "event_namespace": "stage4.openspec",
+    "broker_note": "Local RabbitMQ in Ubuntu/WSL. This account is a local demonstration credential only. Docker is unavailable on this host."
+  },
+  "wall_seconds": 865.0397343
+}

@@ -1,0 +1,11 @@
+{
+  "started_utc": "2026-11-07T09:51:51.1637477Z",
+  "shell": "Windows PowerShell 5.1",
+  "gateway_http": 200,
+  "completed_utc": "2026-11-07T09:52:05.0123192Z",
+  "owned_ports_remaining": 0,
+  "tool": "Kiro",
+  "frontend_http": 200,
+  "host_pid": 27580,
+  "driver": "independent wrapper smoke; no application/test source changes"
+}

@@ -1,0 +1,116 @@
+version: '3.8'
+
+services:
+  rabbitmq:
+    image: rabbitmq:3.12-management-alpine
+    container_name: stage4-rabbitmq
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    environment:
+      RABBITMQ_DEFAULT_USER: ecommerce
+      RABBITMQ_DEFAULT_PASS: stage4-demo
+      RABBITMQ_DEFAULT_VHOST: stage4_speckit
+    networks:
+      - ecommerce-net
+    healthcheck:
+      test: ["CMD", "rabbitmq-diagnostics", "-q", "ping"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  identity-service:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: identity-service
+    command: ["python", "-m", "uvicorn", "src.services.identity.main:app", "--host", "0.0.0.0", "--port", "18601"]
+    ports:
+      - "18601:18601"
+    environment:
+      - IDENTITY_DB_PATH=identity.db
+      - JWT_SECRET=stage4-super-secret-key-12345678
+    networks:
+      - ecommerce-net
+
+  commerce-service:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: commerce-service
+    command: ["python", "-m", "uvicorn", "src.services.commerce.main:app", "--host", "0.0.0.0", "--port", "18602"]
+    ports:
+      - "18602:18602"
+    environment:
+      - COMMERCE_DB_PATH=commerce.db
+      - AMQP_URL=amqp://ecommerce:stage4-demo@rabbitmq:5672/stage4_speckit
+      - EVENT_NAMESPACE=stage4.speckit
+      - JWT_SECRET=stage4-super-secret-key-12345678
+    depends_on:
+      rabbitmq:
+        condition: service_healthy
+    networks:
+      - ecommerce-net
+
+  reviews-service:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: reviews-service
+    command: ["python", "-m", "uvicorn", "src.services.reviews.main:app", "--host", "0.0.0.0", "--port", "18603"]
+    ports:
+      - "18603:18603"
+    environment:
+      - REVIEWS_DB_PATH=reviews.db
+      - AMQP_URL=amqp://ecommerce:stage4-demo@rabbitmq:5672/stage4_speckit
+      - EVENT_NAMESPACE=stage4.speckit
+      - JWT_SECRET=stage4-super-secret-key-12345678
+    depends_on:
+      rabbitmq:
+        condition: service_healthy
+    networks:
+      - ecommerce-net
+
+  gateway:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: api-gateway
+    command: ["python", "-m", "uvicorn", "src.services.gateway.main:app", "--host", "0.0.0.0", "--port", "18600"]
+    ports:
+      - "18600:18600"
+    environment:
+      - IDENTITY_SERVICE_URL=http://identity-service:18601
+      - COMMERCE_SERVICE_URL=http://commerce-service:18602
+      - REVIEWS_SERVICE_URL=http://reviews-service:18603
+    depends_on:
+      - identity-service
+      - commerce-service
+      - reviews-service
+    networks:
+      - ecommerce-net
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:18600/api/products')"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 5s
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+      args:
+        - REACT_APP_API_URL=http://localhost:18600
+    container_name: ecommerce-frontend
+    ports:
+      - "18700:3000"
+    networks:
+      - ecommerce-net
+    depends_on:
+      gateway:
+        condition: service_healthy
+
+networks:
+  ecommerce-net:
+    driver: bridge

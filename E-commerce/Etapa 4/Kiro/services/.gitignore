@@ -1,0 +1,10 @@
+.venv/
+__pycache__/
+*.pyc
+*.db
+*.db-wal
+*.db-shm
+*/review_images/*
+!*/review_images/.gitignore
+*.egg-info/
+.stage4-pids.json

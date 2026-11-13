@@ -1,0 +1,78 @@
+name: Stage 3 Continuous Integration
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v4
+
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.10'
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '18'
+
+    - name: Install Backend Dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r backend/requirements.txt
+
+    - name: Run Backend Tests
+      run: |
+        python -m pytest backend/test_api.py --cov=backend --cov-report=xml:backend/coverage.xml
+
+    - name: Install Frontend Dependencies
+      run: |
+        cd frontend
+        npm ci
+
+    - name: Run Frontend Tests
+      run: |
+        cd frontend
+        npx vitest run --coverage
+
+    - name: Build Frontend
+      run: |
+        cd frontend
+        npm run build
+
+    - name: Install Playwright Browsers
+      run: |
+        cd frontend
+        npx playwright install --with-deps chromium
+
+    - name: Run E2E Tests
+      run: |
+        # Start backend server in the background
+        cd backend
+        python -m uvicorn app.main:app --host 127.0.0.1 --port 8000 &
+        backend_pid=$!
+        cd ..
+
+        # Start frontend server in the background
+        cd frontend
+        npm run dev &
+        frontend_pid=$!
+
+        # Wait for servers to be up
+        echo "Waiting for servers to start..."
+        npx wait-on http://127.0.0.1:8000/api/products http://localhost:3000 --timeout 30000
+
+        # Run E2E tests
+        npx playwright test
+
+        # Clean up background jobs
+        echo "Cleaning up background servers..."
+        kill $backend_pid $frontend_pid

@@ -1,0 +1,23 @@
+{
+  "task": {
+    "id": "07b12c97-eb28-4a12-b432-60706f7dbf76",
+    "type": "REPORT",
+    "componentId": "08237014-e759-45bc-9a45-7f61ab8f284e",
+    "componentKey": "openspec-s1-official-01",
+    "componentName": "OpenSpec Stage 1 Official",
+    "componentQualifier": "TRK",
+    "analysisId": "0a9ec711-1c51-480c-95f7-c8f017c91323",
+    "status": "SUCCESS",
+    "submittedAt": "2026-10-05T21:09:08+02:00",
+    "submitterLogin": "admin",
+    "startedAt": "2026-10-05T21:09:08+02:00",
+    "executedAt": "2026-10-05T21:09:11+02:00",
+    "executionTimeMs": 2491,
+    "hasScannerContext": true,
+    "warningCount": 1,
+    "warnings": [
+      "SCM provider autodetection failed. Please use \"sonar.scm.provider\" to define SCM of your project, or disable the SCM Sensor in the project settings."
+    ],
+    "infoMessages": []
+  }
+}

@@ -1,0 +1,411 @@
+{
+  "run_id": "SPECKIT-S1-OFFICIAL-01",
+  "workspace": "C:/Users/jeron/OneDrive/Escritorio/uni/implementacion Ecommerce/Caso 3-Ecommerce/Etapa 1/Spec Kit",
+  "scope": "First implementation before independent coverage tests and SonarQube baseline",
+  "frozen_at": "2026-10-07T03:31:17-05:00",
+  "approved_tasks_deviation": "T025 [P] marker was reintroduced during implementation; preserved without correction",
+  "excluded": [
+    "frontend/node_modules/**",
+    "frontend/build/**",
+    "frontend/coverage/**",
+    "backend/.venv/**",
+    "backend/__pycache__/**",
+    "backend/.pytest_cache/**",
+    "**/.coverage",
+    "**/*.pyc",
+    "**/test.db",
+    ".git/**"
+  ],
+  "files": [
+    {
+      "path": ".gemini/commands/speckit.analyze.toml",
+      "bytes": 11529,
+      "sha256": "4B420B73A4A20B977DF05ED7F23AE459DA606A9EE52452D4F7184EC3D03EB27A"
+    },
+    {
+      "path": ".gemini/commands/speckit.checklist.toml",
+      "bytes": 22145,
+      "sha256": "5FC9C0B795D20BD1685553E1D8C5BCD2CAFEC424011FBD6A9DCADE9FBA8922A4"
+    },
+    {
+      "path": ".gemini/commands/speckit.clarify.toml",
+      "bytes": 19086,
+      "sha256": "D7D847E351164B41E1DF67F7529E9C65FE1066670F66902C6EF44C3D8CEA18F6"
+    },
+    {
+      "path": ".gemini/commands/speckit.constitution.toml",
+      "bytes": 10005,
+      "sha256": "C220664C3546920B980CA88FEA0A64428C71895D9D93BA76A70FB069AC396D15"
+    },
+    {
+      "path": ".gemini/commands/speckit.converge.toml",
+      "bytes": 12526,
+      "sha256": "2792479E2E70518D4186705653F1F560522E78B0AFCFDB448CC8C91E36B2CBFB"
+    },
+    {
+      "path": ".gemini/commands/speckit.implement.toml",
+      "bytes": 12575,
+      "sha256": "F7F0BC8E6D10FE5DE3C818E8A98578FF17E0BAFCFC167699F212D586406D0345"
+    },
+    {
+      "path": ".gemini/commands/speckit.plan.toml",
+      "bytes": 7741,
+      "sha256": "7204AF64AFA802F2443990CAB11BC63BCCC7C48CB7E0796AB71A7ED683B93CCA"
+    },
+    {
+      "path": ".gemini/commands/speckit.specify.toml",
+      "bytes": 18131,
+      "sha256": "128AC8CE4C22657F6947824B21580321486D38DE482796B971593BF4657F4FBD"
+    },
+    {
+      "path": ".gemini/commands/speckit.tasks.toml",
+      "bytes": 11080,
+      "sha256": "F3E8FFB6705E3F91E3B3508944471448B7EDFFB230CBAF496F5970BFC7639032"
+    },
+    {
+      "path": ".gemini/commands/speckit.taskstoissues.toml",
+      "bytes": 7555,
+      "sha256": "2F4F7354D5026744C2CD03B0740B9FA761A7DAE1DB2398C04168187715B67F38"
+    },
+    {
+      "path": ".gitignore",
+      "bytes": 411,
+      "sha256": "AEF5763A1B6F5DF4747FAAF06A0B2C9ABB4ED9FA762253353378A7D065C84141"
+    },
+    {
+      "path": ".specify/.gitignore",
+      "bytes": 384,
+      "sha256": "8C908410D177A1EF3D0DEE16D7AD55F2AC3333DF3104C4D4ADEE1C9B82F1DBC1"
+    },
+    {
+      "path": ".specify/feature.json",
+      "bytes": 59,
+      "sha256": "2FE22A60938AE622E24032BA825D195FA84370FA1314D5E946FDBD7F2A0D0CD1"
+    },
+    {
+      "path": ".specify/init-options.json",
+      "bytes": 157,
+      "sha256": "AA1FC1B9824C50710905DD4D9980B14560E8892CB49AFF902C6AAEFBABB08CDE"
+    },
+    {
+      "path": ".specify/integration.json",
+      "bytes": 290,
+      "sha256": "55EAE3C89DE8ED560607E39725968819B37B654CB6D4DC6AFC96760BCFCB91F8"
+    },
+    {
+      "path": ".specify/integrations/gemini.manifest.json",
+      "bytes": 1281,
+      "sha256": "7E79E1671E4D8F97E3C67DEFF2DB0265DD26DB037E2DFD9FFE81A2ED398B9611"
+    },
+    {
+      "path": ".specify/integrations/speckit.manifest.json",
+      "bytes": 1535,
+      "sha256": "0129756426F64D41D724920BE5C6AB9A637E4F68CEF15E61CCAF45FA16F0442F"
+    },
+    {
+      "path": ".specify/memory/.constitution-template.json",
+      "bytes": 103,
+      "sha256": "8FC4B39294BAE0C10D59547AD7D415B6F0E890D656CBF7171DD567F4E9054711"
+    },
+    {
+      "path": ".specify/memory/constitution.md",
+      "bytes": 2949,
+      "sha256": "1DA31889965932AF2F6F357E975FD6E5CB6B3DFF88703AF416F0137D4DA172B2"
+    },
+    {
+      "path": ".specify/scripts/powershell/check-prerequisites.ps1",
+      "bytes": 6631,
+      "sha256": "95C43B2C210004BE4E2E6DA8D6B0E293FB95BC6A54BB7BCB0D92EDBD55539D9B"
+    },
+    {
+      "path": ".specify/scripts/powershell/common.ps1",
+      "bytes": 34307,
+      "sha256": "434FAA822DE5B4E717960B005C875E90EA8559F6B75520FAB7CBF4B88403A9C3"
+    },
+    {
+      "path": ".specify/scripts/powershell/create-new-feature.ps1",
+      "bytes": 13794,
+      "sha256": "4B6E1ED5F2E95D8890BFBA4F03264E6CB3DF01C620F80781C91803BC9E7534E4"
+    },
+    {
+      "path": ".specify/scripts/powershell/resolve-template.ps1",
+      "bytes": 889,
+      "sha256": "E49C565A09902E4EBD4B5A51C4E014D5067FDEE5B1592F15CB44EF31F430D745"
+    },
+    {
+      "path": ".specify/scripts/powershell/setup-plan.ps1",
+      "bytes": 3058,
+      "sha256": "3B8173F1553BBF67AE021AF949A29E2D3E3BB35805BE95E4BA8D0AB83173C66F"
+    },
+    {
+      "path": ".specify/scripts/powershell/setup-tasks.ps1",
+      "bytes": 3892,
+      "sha256": "5AEBEFF2B84D6E369EC9BB3B5B73A9A1195EC4B927274F6A2DF95AA9EBA7E949"
+    },
+    {
+      "path": ".specify/templates/checklist-template.md",
+      "bytes": 2033,
+      "sha256": "3F4124A13FFBC0C2D8E979D9A08248F29CE53CC6C324A8303A6AE0D231B78836"
+    },
+    {
+      "path": ".specify/templates/constitution-template.md",
+      "bytes": 2346,
+      "sha256": "CE7549540FA45543CCA797A150201D868E64495FDFF39DC38246FB17BD4024B3"
+    },
+    {
+      "path": ".specify/templates/plan-template.md",
+      "bytes": 3682,
+      "sha256": "5EF0E4C97B36E9F91372DC6EB8E5A7E515AF8958CF1A9286E43A1EBD9BD48540"
+    },
+    {
+      "path": ".specify/templates/spec-template.md",
+      "bytes": 4556,
+      "sha256": "3945437FC35CD30A5B2BF7BEEA680337C3516826D3EFA5A6B92C4A7ECA1BA28E"
+    },
+    {
+      "path": ".specify/templates/tasks-template.md",
+      "bytes": 9171,
+      "sha256": "C731575D8099B3F871861186FBD1A592B51B2BA57FB99E1A0DAB439FF6D5608F"
+    },
+    {
+      "path": ".specify/workflows/speckit/workflow.yml",
+      "bytes": 2118,
+      "sha256": "177761C5E7DF28126BEEA043B5CB45AEAF7958090C022DC11AC71399422FCFBC"
+    },
+    {
+      "path": ".specify/workflows/workflow-registry.json",
+      "bytes": 381,
+      "sha256": "C51A2B6161947A9EBD83266EC5BDF5F50513A3C85D8512AA75411FE492EB7FBF"
+    },
+    {
+      "path": "backend/requirements.txt",
+      "bytes": 99,
+      "sha256": "D3D91D4B50ECD7A43DB817B2D737782F9604E95721A6B4165EDC4D9330364494"
+    },
+    {
+      "path": "backend/src/data/catalog.json",
+      "bytes": 1205,
+      "sha256": "91C4F6CC1333A2AF8D906AA52E945C0A183C070310B7D1E7EAED5CE6E11A9ED1"
+    },
+    {
+      "path": "backend/src/main.py",
+      "bytes": 8651,
+      "sha256": "8E9B82943150C8F3A9209FCC5EB86B865A4F49B8D4B9EFFE3383A256AAF15F5C"
+    },
+    {
+      "path": "backend/src/security.py",
+      "bytes": 1100,
+      "sha256": "F497B5120245504DC34D81546E5CB757EFE6013EBCD0144EEA676EE3161EBBAB"
+    },
+    {
+      "path": "backend/src/storage.py",
+      "bytes": 1221,
+      "sha256": "71D7E9BDF3D5B03281F126F2387C199A0807CE17194701E6C3F554F12DEE2B2B"
+    },
+    {
+      "path": "backend/tests/conftest.py",
+      "bytes": 414,
+      "sha256": "83237C5392AFB431AFAD08B0D607A1483CFD6DB0CEBAAD2C07B14D4B30B852C1"
+    },
+    {
+      "path": "backend/tests/test_auth.py",
+      "bytes": 1675,
+      "sha256": "EA0ADF20BEE9628EAF0AC518BF958AC3DE75082CFBCB49817B72B45F3E69F718"
+    },
+    {
+      "path": "backend/tests/test_catalog.py",
+      "bytes": 1118,
+      "sha256": "EFDF13F93958D1F4F7FC3E497A7A075A7A316101E2B93B985C48CCBD5BDAFDE1"
+    },
+    {
+      "path": "backend/tests/test_checkout.py",
+      "bytes": 2112,
+      "sha256": "4739D1121B54AFE881AA45A185BEA889E3D7FFE8AC07234475110833E18AAFA6"
+    },
+    {
+      "path": "backend/tests/test_integration.py",
+      "bytes": 1541,
+      "sha256": "ACBE365381F231D5C77B5C9D5FE040DF249EA461A206AEE9EE031304980532FB"
+    },
+    {
+      "path": "especificacion-semilla-final-en.md",
+      "bytes": 8760,
+      "sha256": "45DDFDED6EBFFDAEC9FCEB5818D319A3DC3D66A79A9A6B887557AACCD64B446D"
+    },
+    {
+      "path": "frontend/package-lock.json",
+      "bytes": 691669,
+      "sha256": "876186ED43E7AE1467C646F90E0676EE7CA593573FC8815C416461918BD920AA"
+    },
+    {
+      "path": "frontend/package.json",
+      "bytes": 1115,
+      "sha256": "6035910BA13E4AD720D95E1AC004B5E87E04363C41331EE810FCEA7FBD667C31"
+    },
+    {
+      "path": "frontend/src/App.tsx",
+      "bytes": 5138,
+      "sha256": "51A401D6300D05F423D6F43D2D2F75429E44EB3209C577189D80ACE70C7BAF95"
+    },
+    {
+      "path": "frontend/src/components/AuthStatus.tsx",
+      "bytes": 1343,
+      "sha256": "6C0E6AF7F20A426DDB5C507A16AEB063C84CB3957A2FB26C808B47F9C64C6D8D"
+    },
+    {
+      "path": "frontend/src/components/Cart.tsx",
+      "bytes": 3728,
+      "sha256": "46F40DA35BB891754EEF7202736083EC8DF76096F244B52C2DB7F1809A231B2C"
+    },
+    {
+      "path": "frontend/src/components/Catalog.tsx",
+      "bytes": 2754,
+      "sha256": "A5CC33D9820164D2B24526DB52CD5B5367726B9B5AE59510309F300A63222160"
+    },
+    {
+      "path": "frontend/src/components/CheckoutForm.tsx",
+      "bytes": 3532,
+      "sha256": "7805F7BA5D1C5743AB76D81C1EB17F0639B9D2DC86997D03CD1F84B7247A0885"
+    },
+    {
+      "path": "frontend/src/components/CheckoutSummary.tsx",
+      "bytes": 1639,
+      "sha256": "F5ADD872FA9B77FDDBB7DD6F55F4EDF52BC4F622183A26EFA73429AB42F990A4"
+    },
+    {
+      "path": "frontend/src/components/ConfirmationScreen.tsx",
+      "bytes": 3015,
+      "sha256": "8E672C15760CAB03E74340190249D9D212427F79A3AD150A02A4DAF63329EE2D"
+    },
+    {
+      "path": "frontend/src/components/FeedbackToast.tsx",
+      "bytes": 2257,
+      "sha256": "F6DBCBA9EF196E29B90DADC6196B5DC7355E043B6C0425E8181E9E1C953C4F24"
+    },
+    {
+      "path": "frontend/src/components/RegisterForm.tsx",
+      "bytes": 2999,
+      "sha256": "F4F42E0614E3E93D9CE6BEADB6713C7FA200C5E191353514657325011ABC0325"
+    },
+    {
+      "path": "frontend/src/components/SignInForm.tsx",
+      "bytes": 2981,
+      "sha256": "4BA97997A4960452CFF4FA9EBA00D18155A72AF0A935FA6DFCB924E3411B34A1"
+    },
+    {
+      "path": "frontend/src/components/StateFallbacks.tsx",
+      "bytes": 1799,
+      "sha256": "EBEA43AB4F3FD59FD25168D3F2E2307DFB2B75B910D358AC4333FDBDFB160FFC"
+    },
+    {
+      "path": "frontend/src/context/AuthContext.tsx",
+      "bytes": 2118,
+      "sha256": "DE9623597C6764804D8539A0782FC5557F3291BE77D544AB471F690D185BFC21"
+    },
+    {
+      "path": "frontend/src/context/CartContext.tsx",
+      "bytes": 3081,
+      "sha256": "39450273663AFE33959436823E34283FE32070FB5A8F5AA4334D329E4FF0F059"
+    },
+    {
+      "path": "frontend/src/index.css",
+      "bytes": 6293,
+      "sha256": "242916FA978C698B26A7383D7D4C7779F4AFB77B122DD79CC333E54E19D1FF1F"
+    },
+    {
+      "path": "frontend/src/index.tsx",
+      "bytes": 286,
+      "sha256": "F9E1A2FDAF7ECA4FCEA81DE8306F5A0AFCA490493F402D5E0077607791F00F07"
+    },
+    {
+      "path": "frontend/src/pages/CatalogPage.tsx",
+      "bytes": 543,
+      "sha256": "930DE56B4C90B5E70D283F79C025294A8D590C30393CC484DE8B4ABBA2EDC7E4"
+    },
+    {
+      "path": "frontend/src/pages/CheckoutPage.tsx",
+      "bytes": 4022,
+      "sha256": "D87B660807A3E8A37C08E5D7759FC0A85A3D947F91443A0A0A8E561CAA828880"
+    },
+    {
+      "path": "frontend/src/services/api.ts",
+      "bytes": 3220,
+      "sha256": "236566181B5566BDB0F0909E00E86BFCDA80D2A06F6D9B06C50691AF2F03A506"
+    },
+    {
+      "path": "frontend/src/setupTests.ts",
+      "bytes": 246,
+      "sha256": "C630B70E0F17B0FDDF547079FD2EC64E6D677252588037F873F1008F307F49B9"
+    },
+    {
+      "path": "frontend/src/tests/Auth.test.tsx",
+      "bytes": 4162,
+      "sha256": "1BFC877CD9311539495C84C8ECC5EFB09A4C6EF0DCD85638DF9463395EC76CD6"
+    },
+    {
+      "path": "frontend/src/tests/CatalogCart.test.tsx",
+      "bytes": 2968,
+      "sha256": "2CC2A275B88CC0678B0A4169930FD257B49CE6792763EDF6B9EAFBEB49714BAA"
+    },
+    {
+      "path": "frontend/src/tests/Checkout.test.tsx",
+      "bytes": 3803,
+      "sha256": "520D9BEED097E8C13ACDDA32C1BC1AA82E7EE7716646D1C346762C6705440DBD"
+    },
+    {
+      "path": "frontend/src/tests/IntegrationUX.test.tsx",
+      "bytes": 2105,
+      "sha256": "0CF16BB248DF798EBF06B9D6040CD78FA441ADFCA58F573E2412EB14A63EDC1B"
+    },
+    {
+      "path": "frontend/src/tests/JourneyIntegration.test.tsx",
+      "bytes": 4352,
+      "sha256": "1E92571BA1C6796916B5CB411CF745A37F115FFA5B8AAAFFD4227861A1C0F4A3"
+    },
+    {
+      "path": "frontend/tsconfig.json",
+      "bytes": 561,
+      "sha256": "01DE5C9DDB9DF52B7A126403FA3EBE7A217D3C897D8A34434F5C6E152A8123D7"
+    },
+    {
+      "path": "specs/001-stage1-ecommerce/checklists/requirements.md",
+      "bytes": 2978,
+      "sha256": "889BCCC25E408A20700BA314953F9CB84FF17594F6242711404F8A56420D33F9"
+    },
+    {
+      "path": "specs/001-stage1-ecommerce/contracts/api.md",
+      "bytes": 5195,
+      "sha256": "E270BE6EB37FF45F2A1A32E5E305FCFE9CD18308EBCFD8137C150A14D7CF324D"
+    },
+    {
+      "path": "specs/001-stage1-ecommerce/data-model.md",
+      "bytes": 3062,
+      "sha256": "AE9FC878E3D9320B274E936B59793037E32BB8C07928A2ACA753DB5C871CBE95"
+    },
+    {
+      "path": "specs/001-stage1-ecommerce/plan.md",
+      "bytes": 4462,
+      "sha256": "DF1F05A88CB33E54CF7EBB864D55B1082F06500A11B01CAF05462BE47B462D4A"
+    },
+    {
+      "path": "specs/001-stage1-ecommerce/quickstart.md",
+      "bytes": 6089,
+      "sha256": "15A63B9FAD68A17595F789E8AB03A6F1E10A1499FC89D249A4893A07856B2D1A"
+    },
+    {
+      "path": "specs/001-stage1-ecommerce/research.md",
+      "bytes": 3174,
+      "sha256": "35706B0EAEB1C661B0DCF55512725EA3907EAE6FBBFFED797FA731BEBD449A1F"
+    },
+    {
+      "path": "specs/001-stage1-ecommerce/spec.md",
+      "bytes": 18628,
+      "sha256": "1CFCAC37DA2AB1666A84B805883E3DA452E462FB31016E38127EF70C2A4E9923"
+    },
+    {
+      "path": "specs/001-stage1-ecommerce/tasks.md",
+      "bytes": 27204,
+      "sha256": "A97C9D96169F1FC95B3E6E9B962AC980C39CB1DC00926E26AA004F3491431E78"
+    }
+  ]
+}
