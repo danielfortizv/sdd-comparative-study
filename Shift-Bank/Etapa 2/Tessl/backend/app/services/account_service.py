@@ -2,7 +2,7 @@ from datetime import datetime, timezone, timedelta
 from typing import List, Optional
 from fastapi import HTTPException, status
 from sqlalchemy.orm import Session
-from backend.app.models import User, Account, Transaction, MfaState
+from backend.app.models import User, Account, Transaction, MfaState, TransferLimit
 
 
 DEFAULT_USER_ID = 1
@@ -31,6 +31,14 @@ def seed_initial_data(db: Session) -> User:
         threshold=1000.00,
     )
     db.add(mfa_state)
+
+    # Create default transfer limits
+    limits = TransferLimit(
+        user_id=user.id,
+        per_transaction_limit=5000.00,
+        daily_limit=10000.00,
+    )
+    db.add(limits)
 
     now = datetime.now(timezone.utc)
 

@@ -22,6 +22,9 @@ class User(Base):
 
     accounts = relationship("Account", back_populates="owner")
     mfa_state = relationship("MfaState", back_populates="user", uselist=False)
+    beneficiaries = relationship("Beneficiary", back_populates="user", cascade="all, delete-orphan")
+    recurring_schedules = relationship("RecurringSchedule", back_populates="user", cascade="all, delete-orphan")
+    transfer_limits = relationship("TransferLimit", back_populates="user", uselist=False, cascade="all, delete-orphan")
 
 
 class Account(Base):
@@ -40,19 +43,41 @@ class Account(Base):
     transactions = relationship("Transaction", back_populates="account", order_by="desc(Transaction.created_at)")
 
 
+class Beneficiary(Base):
+    __tablename__ = "beneficiaries"
+
+    id = Column(Integer, primary_key=True, index=True)
+    user_id = Column(Integer, ForeignKey("users.id"), nullable=False)
+    name = Column(String, nullable=False)
+    routing_number = Column(String, nullable=False)
+    account_number = Column(String, nullable=False)
+    bank_name = Column(String, nullable=False)
+    created_at = Column(DateTime, default=lambda: datetime.now(timezone.utc))
+
+    user = relationship("User", back_populates="beneficiaries")
+
+
 class Transfer(Base):
     __tablename__ = "transfers"
 
     id = Column(Integer, primary_key=True, index=True)
+    transfer_type = Column(String, nullable=False, default="internal")  # "internal" | "ach"
     from_account_id = Column(Integer, ForeignKey("accounts.id"), nullable=False)
-    to_account_id = Column(Integer, ForeignKey("accounts.id"), nullable=False)
+    to_account_id = Column(Integer, ForeignKey("accounts.id"), nullable=True)
+    beneficiary_id = Column(Integer, ForeignKey("beneficiaries.id"), nullable=True)
+    recipient_name = Column(String, nullable=True)
+    routing_number = Column(String, nullable=True)
+    account_number = Column(String, nullable=True)
+    bank_name = Column(String, nullable=True)
     amount = Column(Float, nullable=False)
-    status = Column(String, nullable=False, default="completed")  # "completed" | "mfa_required" | "failed"
+    status = Column(String, nullable=False, default="completed")  # "completed" | "pending" | "settled" | "failed" | "mfa_required"
     description = Column(String, nullable=True)
     created_at = Column(DateTime, default=lambda: datetime.now(timezone.utc))
+    settled_at = Column(DateTime, nullable=True)
 
     from_account = relationship("Account", foreign_keys=[from_account_id])
     to_account = relationship("Account", foreign_keys=[to_account_id])
+    beneficiary = relationship("Beneficiary", foreign_keys=[beneficiary_id])
     transactions = relationship("Transaction", back_populates="transfer")
 
 
@@ -67,6 +92,7 @@ class Transaction(Base):
     balance_after = Column(Float, nullable=False)
     description = Column(String, nullable=False)
     reference = Column(String, nullable=True)
+    status = Column(String, nullable=False, default="completed")  # "completed" | "pending" | "failed"
     created_at = Column(DateTime, default=lambda: datetime.now(timezone.utc))
 
     account = relationship("Account", back_populates="transactions")
@@ -83,3 +109,42 @@ class MfaState(Base):
     threshold = Column(Float, nullable=False, default=1000.00)
 
     user = relationship("User", back_populates="mfa_state")
+
+
+class RecurringSchedule(Base):
+    __tablename__ = "recurring_schedules"
+
+    id = Column(Integer, primary_key=True, index=True)
+    user_id = Column(Integer, ForeignKey("users.id"), nullable=False)
+    transfer_type = Column(String, nullable=False, default="internal")  # "internal" | "ach"
+    from_account_id = Column(Integer, ForeignKey("accounts.id"), nullable=False)
+    to_account_id = Column(Integer, ForeignKey("accounts.id"), nullable=True)
+    beneficiary_id = Column(Integer, ForeignKey("beneficiaries.id"), nullable=True)
+    recipient_name = Column(String, nullable=True)
+    routing_number = Column(String, nullable=True)
+    account_number = Column(String, nullable=True)
+    bank_name = Column(String, nullable=True)
+    amount = Column(Float, nullable=False)
+    frequency = Column(String, nullable=False)  # "daily" | "weekly" | "monthly"
+    status = Column(String, nullable=False, default="active")  # "active" | "paused" | "cancelled"
+    description = Column(String, nullable=True)
+    next_execution_date = Column(DateTime, nullable=False)
+    last_executed_at = Column(DateTime, nullable=True)
+    failure_count = Column(Integer, nullable=False, default=0)
+    created_at = Column(DateTime, default=lambda: datetime.now(timezone.utc))
+
+    user = relationship("User", back_populates="recurring_schedules")
+    from_account = relationship("Account", foreign_keys=[from_account_id])
+    to_account = relationship("Account", foreign_keys=[to_account_id])
+    beneficiary = relationship("Beneficiary", foreign_keys=[beneficiary_id])
+
+
+class TransferLimit(Base):
+    __tablename__ = "transfer_limits"
+
+    id = Column(Integer, primary_key=True, index=True)
+    user_id = Column(Integer, ForeignKey("users.id"), unique=True, nullable=False)
+    per_transaction_limit = Column(Float, nullable=False, default=5000.00)
+    daily_limit = Column(Float, nullable=False, default=10000.00)
+
+    user = relationship("User", back_populates="transfer_limits")

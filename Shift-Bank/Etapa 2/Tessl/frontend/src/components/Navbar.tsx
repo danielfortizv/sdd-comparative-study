@@ -2,10 +2,17 @@ import React from 'react';
 
 interface NavbarProps {
   onOpenTransfer: () => void;
+  onOpenRecurring?: () => void;
+  onOpenLimits?: () => void;
   isMfaLocked?: boolean;
 }
 
-export const Navbar: React.FC<NavbarProps> = ({ onOpenTransfer, isMfaLocked }) => {
+export const Navbar: React.FC<NavbarProps> = ({
+  onOpenTransfer,
+  onOpenRecurring,
+  onOpenLimits,
+  isMfaLocked,
+}) => {
   return (
     <header className="navbar">
       <div className="navbar-container">
@@ -14,14 +21,39 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenTransfer, isMfaLocked }) =
             <span className="logo-icon">🏦</span>
             <span className="brand-name">Shift<strong>Bank</strong></span>
           </div>
-          <span className="env-badge">Stage 1 Mock</span>
+          <span className="env-badge">Stage 2 Live</span>
         </div>
 
         <div className="navbar-actions">
+          {onOpenLimits && (
+            <button
+              className="btn btn-secondary"
+              onClick={onOpenLimits}
+              aria-label="Transfer Limits"
+              data-testid="nav-limits-btn"
+            >
+              <span className="btn-icon">⚙️</span>
+              Limits
+            </button>
+          )}
+
+          {onOpenRecurring && (
+            <button
+              className="btn btn-secondary"
+              onClick={onOpenRecurring}
+              aria-label="Recurring Payments"
+              data-testid="nav-recurring-btn"
+            >
+              <span className="btn-icon">🔄</span>
+              Recurring
+            </button>
+          )}
+
           <button
             className="btn btn-primary"
             onClick={onOpenTransfer}
             aria-label="Transfer Money"
+            data-testid="nav-transfer-btn"
           >
             <span className="btn-icon">⇄</span>
             Transfer Money

@@ -61,6 +61,9 @@ class MfaRequiredResponse(BaseModel):
   `[@test] ../backend/tests/test_transfers.py`
 - Fails with HTTP 400 if `amount` exceeds the available balance of the source account.
   `[@test] ../backend/tests/test_transfers.py`
+- Fails with HTTP 400 if `amount` exceeds the configured per-transaction limit or causes cumulative transfers to exceed the daily transfer limit.
+  `[@test] ../backend/tests/test_transfers.py`
+  `[@test] ../backend/tests/test_transfer_limits.py`
 - Fails with HTTP 404 if either source or destination account does not exist or does not belong to the user.
   `[@test] ../backend/tests/test_transfers.py`
 

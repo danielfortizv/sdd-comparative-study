@@ -4,6 +4,8 @@ from backend.app.database import get_db
 from backend.app.schemas import (
     TransferRequest,
     TransferResponse,
+    AchTransferRequest,
+    AchTransferResponse,
     MfaRequiredResponse,
     MfaVerifyRequest,
     MfaVerifyResponse,
@@ -28,6 +30,26 @@ def create_transfer(
 ):
     """Execute an internal transfer between user accounts."""
     return transfer_service.execute_transfer(
+        db=db,
+        user_id=account_service.DEFAULT_USER_ID,
+        request=request,
+    )
+
+
+@router.post(
+    "/transfers/ach",
+    response_model=AchTransferResponse,
+    status_code=status.HTTP_200_OK,
+    responses={
+        428: {"model": MfaRequiredResponse, "description": "MFA Security PIN required"},
+    },
+)
+def create_ach_transfer(
+    request: AchTransferRequest,
+    db: Session = Depends(get_db),
+):
+    """Execute an external ACH transfer to a beneficiary or ad-hoc account."""
+    return transfer_service.execute_ach_transfer(
         db=db,
         user_id=account_service.DEFAULT_USER_ID,
         request=request,

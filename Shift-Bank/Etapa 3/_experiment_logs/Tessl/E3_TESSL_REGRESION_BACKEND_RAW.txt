@@ -1,0 +1,194 @@
+============================= test session starts =============================
+platform win32 -- Python 3.13.2, pytest-9.1.1, pluggy-1.6.0 -- C:\Users\danie\AppData\Local\Programs\Python\Python313\python.exe
+cachedir: .pytest_cache
+rootdir: C:\Users\danie\Documents2\sdd-comparative-study\Shift-Bank\Etapa 3\Tessl
+plugins: anyio-4.15.1
+collecting ... collected 43 items
+
+backend/tests/test_accounts.py::test_get_accounts_returns_all_seed_accounts [Scheduler] Error during scheduler cycle: (sqlite3.OperationalError) no such table: transfers
+[SQL: SELECT transfers.id AS transfers_id, transfers.transfer_type AS transfers_transfer_type, transfers.from_account_id AS transfers_from_account_id, transfers.to_account_id AS transfers_to_account_id, transfers.beneficiary_id AS transfers_beneficiary_id, transfers.recipient_name AS transfers_recipient_name, transfers.routing_number AS transfers_routing_number, transfers.account_number AS transfers_account_number, transfers.bank_name AS transfers_bank_name, transfers.amount AS transfers_amount, transfers.status AS transfers_status, transfers.description AS transfers_description, transfers.created_at AS transfers_created_at, transfers.settled_at AS transfers_settled_at 
+FROM transfers 
+WHERE transfers.transfer_type = ? AND transfers.status = ?]
+[parameters: ('ach', 'pending')]
+(Background on this error at: https://sqlalche.me/e/21/e3q8)
+PASSED [  2%]
+backend/tests/test_accounts.py::test_get_account_by_id_success [Scheduler] Error during scheduler cycle: (sqlite3.OperationalError) no such table: transfers
+[SQL: SELECT transfers.id AS transfers_id, transfers.transfer_type AS transfers_transfer_type, transfers.from_account_id AS transfers_from_account_id, transfers.to_account_id AS transfers_to_account_id, transfers.beneficiary_id AS transfers_beneficiary_id, transfers.recipient_name AS transfers_recipient_name, transfers.routing_number AS transfers_routing_number, transfers.account_number AS transfers_account_number, transfers.bank_name AS transfers_bank_name, transfers.amount AS transfers_amount, transfers.status AS transfers_status, transfers.description AS transfers_description, transfers.created_at AS transfers_created_at, transfers.settled_at AS transfers_settled_at 
+FROM transfers 
+WHERE transfers.transfer_type = ? AND transfers.status = ?]
+[parameters: ('ach', 'pending')]
+(Background on this error at: https://sqlalche.me/e/21/e3q8)
+PASSED    [  4%]
+backend/tests/test_accounts.py::test_get_account_by_id_not_found [Scheduler] Error during scheduler cycle: (sqlite3.OperationalError) no such table: transfers
+[SQL: SELECT transfers.id AS transfers_id, transfers.transfer_type AS transfers_transfer_type, transfers.from_account_id AS transfers_from_account_id, transfers.to_account_id AS transfers_to_account_id, transfers.beneficiary_id AS transfers_beneficiary_id, transfers.recipient_name AS transfers_recipient_name, transfers.routing_number AS transfers_routing_number, transfers.account_number AS transfers_account_number, transfers.bank_name AS transfers_bank_name, transfers.amount AS transfers_amount, transfers.status AS transfers_status, transfers.description AS transfers_description, transfers.created_at AS transfers_created_at, transfers.settled_at AS transfers_settled_at 
+FROM transfers 
+WHERE transfers.transfer_type = ? AND transfers.status = ?]
+[parameters: ('ach', 'pending')]
+(Background on this error at: https://sqlalche.me/e/21/e3q8)
+PASSED  [  6%]
+backend/tests/test_ach_transfers.py::test_beneficiary_lifecycle [Scheduler] Error during scheduler cycle: (sqlite3.OperationalError) no such table: transfers
+[SQL: SELECT transfers.id AS transfers_id, transfers.transfer_type AS transfers_transfer_type, transfers.from_account_id AS transfers_from_account_id, transfers.to_account_id AS transfers_to_account_id, transfers.beneficiary_id AS transfers_beneficiary_id, transfers.recipient_name AS transfers_recipient_name, transfers.routing_number AS transfers_routing_number, transfers.account_number AS transfers_account_number, transfers.bank_name AS transfers_bank_name, transfers.amount AS transfers_amount, transfers.status AS transfers_status, transfers.description AS transfers_description, transfers.created_at AS transfers_created_at, transfers.settled_at AS transfers_settled_at 
+FROM transfers 
+WHERE transfers.transfer_type = ? AND transfers.status = ?]
+[parameters: ('ach', 'pending')]
+(Background on this error at: https://sqlalche.me/e/21/e3q8)
+PASSED   [  9%]
+backend/tests/test_ach_transfers.py::test_ach_transfer_with_saved_beneficiary_under_threshold PASSED [ 11%]
+backend/tests/test_ach_transfers.py::test_ach_transfer_ad_hoc_with_save_beneficiary PASSED [ 13%]
+backend/tests/test_ach_transfers.py::test_ach_transfer_mfa_pin_required PASSED [ 16%]
+backend/tests/test_ach_transfers.py::test_ach_transfer_validation_errors [Scheduler] Error during scheduler cycle: (sqlite3.OperationalError) no such table: transfers
+[SQL: SELECT transfers.id AS transfers_id, transfers.transfer_type AS transfers_transfer_type, transfers.from_account_id AS transfers_from_account_id, transfers.to_account_id AS transfers_to_account_id, transfers.beneficiary_id AS transfers_beneficiary_id, transfers.recipient_name AS transfers_recipient_name, transfers.routing_number AS transfers_routing_number, transfers.account_number AS transfers_account_number, transfers.bank_name AS transfers_bank_name, transfers.amount AS transfers_amount, transfers.status AS transfers_status, transfers.description AS transfers_description, transfers.created_at AS transfers_created_at, transfers.settled_at AS transfers_settled_at 
+FROM transfers 
+WHERE transfers.transfer_type = ? AND transfers.status = ?]
+[parameters: ('ach', 'pending')]
+(Background on this error at: https://sqlalche.me/e/21/e3q8)
+PASSED [ 18%]
+backend/tests/test_ach_transfers.py::test_ach_settlement_and_failure_refund [Scheduler] Error during scheduler cycle: (sqlite3.OperationalError) no such table: transfers
+[SQL: SELECT transfers.id AS transfers_id, transfers.transfer_type AS transfers_transfer_type, transfers.from_account_id AS transfers_from_account_id, transfers.to_account_id AS transfers_to_account_id, transfers.beneficiary_id AS transfers_beneficiary_id, transfers.recipient_name AS transfers_recipient_name, transfers.routing_number AS transfers_routing_number, transfers.account_number AS transfers_account_number, transfers.bank_name AS transfers_bank_name, transfers.amount AS transfers_amount, transfers.status AS transfers_status, transfers.description AS transfers_description, transfers.created_at AS transfers_created_at, transfers.settled_at AS transfers_settled_at 
+FROM transfers 
+WHERE transfers.transfer_type = ? AND transfers.status = ?]
+[parameters: ('ach', 'pending')]
+(Background on this error at: https://sqlalche.me/e/21/e3q8)
+PASSED [ 20%]
+backend/tests/test_ach_transfers.py::test_ach_transfer_limits_enforcement PASSED [ 23%]
+backend/tests/test_ach_transfers.py::test_ach_transfer_additional_validation_errors PASSED [ 25%]
+backend/tests/test_mfa.py::test_mfa_status_initial [Scheduler] Error during scheduler cycle: (sqlite3.OperationalError) no such table: transfers
+[SQL: SELECT transfers.id AS transfers_id, transfers.transfer_type AS transfers_transfer_type, transfers.from_account_id AS transfers_from_account_id, transfers.to_account_id AS transfers_to_account_id, transfers.beneficiary_id AS transfers_beneficiary_id, transfers.recipient_name AS transfers_recipient_name, transfers.routing_number AS transfers_routing_number, transfers.account_number AS transfers_account_number, transfers.bank_name AS transfers_bank_name, transfers.amount AS transfers_amount, transfers.status AS transfers_status, transfers.description AS transfers_description, transfers.created_at AS transfers_created_at, transfers.settled_at AS transfers_settled_at 
+FROM transfers 
+WHERE transfers.transfer_type = ? AND transfers.status = ?]
+[parameters: ('ach', 'pending')]
+(Background on this error at: https://sqlalche.me/e/21/e3q8)
+PASSED                [ 27%]
+backend/tests/test_mfa.py::test_mfa_verify_correct_pin [Scheduler] Error during scheduler cycle: (sqlite3.OperationalError) no such table: transfers
+[SQL: SELECT transfers.id AS transfers_id, transfers.transfer_type AS transfers_transfer_type, transfers.from_account_id AS transfers_from_account_id, transfers.to_account_id AS transfers_to_account_id, transfers.beneficiary_id AS transfers_beneficiary_id, transfers.recipient_name AS transfers_recipient_name, transfers.routing_number AS transfers_routing_number, transfers.account_number AS transfers_account_number, transfers.bank_name AS transfers_bank_name, transfers.amount AS transfers_amount, transfers.status AS transfers_status, transfers.description AS transfers_description, transfers.created_at AS transfers_created_at, transfers.settled_at AS transfers_settled_at 
+FROM transfers 
+WHERE transfers.transfer_type = ? AND transfers.status = ?]
+[parameters: ('ach', 'pending')]
+(Background on this error at: https://sqlalche.me/e/21/e3q8)
+PASSED            [ 30%]
+backend/tests/test_mfa.py::test_mfa_verify_incorrect_pin_decrements_attempts [Scheduler] Error during scheduler cycle: (sqlite3.OperationalError) no such table: transfers
+[SQL: SELECT transfers.id AS transfers_id, transfers.transfer_type AS transfers_transfer_type, transfers.from_account_id AS transfers_from_account_id, transfers.to_account_id AS transfers_to_account_id, transfers.beneficiary_id AS transfers_beneficiary_id, transfers.recipient_name AS transfers_recipient_name, transfers.routing_number AS transfers_routing_number, transfers.account_number AS transfers_account_number, transfers.bank_name AS transfers_bank_name, transfers.amount AS transfers_amount, transfers.status AS transfers_status, transfers.description AS transfers_description, transfers.created_at AS transfers_created_at, transfers.settled_at AS transfers_settled_at 
+FROM transfers 
+WHERE transfers.transfer_type = ? AND transfers.status = ?]
+[parameters: ('ach', 'pending')]
+(Background on this error at: https://sqlalche.me/e/21/e3q8)
+PASSED [ 32%]
+backend/tests/test_mfa.py::test_mfa_three_failed_attempts_triggers_lockout [Scheduler] Error during scheduler cycle: (sqlite3.OperationalError) no such table: transfers
+[SQL: SELECT transfers.id AS transfers_id, transfers.transfer_type AS transfers_transfer_type, transfers.from_account_id AS transfers_from_account_id, transfers.to_account_id AS transfers_to_account_id, transfers.beneficiary_id AS transfers_beneficiary_id, transfers.recipient_name AS transfers_recipient_name, transfers.routing_number AS transfers_routing_number, transfers.account_number AS transfers_account_number, transfers.bank_name AS transfers_bank_name, transfers.amount AS transfers_amount, transfers.status AS transfers_status, transfers.description AS transfers_description, transfers.created_at AS transfers_created_at, transfers.settled_at AS transfers_settled_at 
+FROM transfers 
+WHERE transfers.transfer_type = ? AND transfers.status = ?]
+[parameters: ('ach', 'pending')]
+(Background on this error at: https://sqlalche.me/e/21/e3q8)
+PASSED [ 34%]
+backend/tests/test_recurring_payments.py::test_recurring_schedule_creation PASSED [ 37%]
+backend/tests/test_recurring_payments.py::test_recurring_schedule_lifecycle PASSED [ 39%]
+backend/tests/test_recurring_payments.py::test_recurring_execution_success_and_date_advancement [Scheduler] Error during scheduler cycle: (sqlite3.OperationalError) no such table: transfers
+[SQL: SELECT transfers.id AS transfers_id, transfers.transfer_type AS transfers_transfer_type, transfers.from_account_id AS transfers_from_account_id, transfers.to_account_id AS transfers_to_account_id, transfers.beneficiary_id AS transfers_beneficiary_id, transfers.recipient_name AS transfers_recipient_name, transfers.routing_number AS transfers_routing_number, transfers.account_number AS transfers_account_number, transfers.bank_name AS transfers_bank_name, transfers.amount AS transfers_amount, transfers.status AS transfers_status, transfers.description AS transfers_description, transfers.created_at AS transfers_created_at, transfers.settled_at AS transfers_settled_at 
+FROM transfers 
+WHERE transfers.transfer_type = ? AND transfers.status = ?]
+[parameters: ('ach', 'pending')]
+(Background on this error at: https://sqlalche.me/e/21/e3q8)
+PASSED [ 41%]
+backend/tests/test_recurring_payments.py::test_recurring_execution_failure_on_insufficient_funds [Scheduler] Error during scheduler cycle: (sqlite3.OperationalError) no such table: transfers
+[SQL: SELECT transfers.id AS transfers_id, transfers.transfer_type AS transfers_transfer_type, transfers.from_account_id AS transfers_from_account_id, transfers.to_account_id AS transfers_to_account_id, transfers.beneficiary_id AS transfers_beneficiary_id, transfers.recipient_name AS transfers_recipient_name, transfers.routing_number AS transfers_routing_number, transfers.account_number AS transfers_account_number, transfers.bank_name AS transfers_bank_name, transfers.amount AS transfers_amount, transfers.status AS transfers_status, transfers.description AS transfers_description, transfers.created_at AS transfers_created_at, transfers.settled_at AS transfers_settled_at 
+FROM transfers 
+WHERE transfers.transfer_type = ? AND transfers.status = ?]
+[parameters: ('ach', 'pending')]
+(Background on this error at: https://sqlalche.me/e/21/e3q8)
+PASSED [ 44%]
+backend/tests/test_recurring_payments.py::test_pause_cancelled_or_paused_schedule_fails PASSED [ 46%]
+backend/tests/test_recurring_payments.py::test_recurring_schedule_creation_omitted_start_date_advances_interval [Scheduler] Error during scheduler cycle: (sqlite3.OperationalError) no such table: transfers
+[SQL: SELECT transfers.id AS transfers_id, transfers.transfer_type AS transfers_transfer_type, transfers.from_account_id AS transfers_from_account_id, transfers.to_account_id AS transfers_to_account_id, transfers.beneficiary_id AS transfers_beneficiary_id, transfers.recipient_name AS transfers_recipient_name, transfers.routing_number AS transfers_routing_number, transfers.account_number AS transfers_account_number, transfers.bank_name AS transfers_bank_name, transfers.amount AS transfers_amount, transfers.status AS transfers_status, transfers.description AS transfers_description, transfers.created_at AS transfers_created_at, transfers.settled_at AS transfers_settled_at 
+FROM transfers 
+WHERE transfers.transfer_type = ? AND transfers.status = ?]
+[parameters: ('ach', 'pending')]
+(Background on this error at: https://sqlalche.me/e/21/e3q8)
+PASSED [ 48%]
+backend/tests/test_recurring_payments.py::test_process_due_endpoint PASSED [ 51%]
+backend/tests/test_recurring_payments.py::test_recurring_schedule_validation_errors [Scheduler] Error during scheduler cycle: (sqlite3.OperationalError) no such table: transfers
+[SQL: SELECT transfers.id AS transfers_id, transfers.transfer_type AS transfers_transfer_type, transfers.from_account_id AS transfers_from_account_id, transfers.to_account_id AS transfers_to_account_id, transfers.beneficiary_id AS transfers_beneficiary_id, transfers.recipient_name AS transfers_recipient_name, transfers.routing_number AS transfers_routing_number, transfers.account_number AS transfers_account_number, transfers.bank_name AS transfers_bank_name, transfers.amount AS transfers_amount, transfers.status AS transfers_status, transfers.description AS transfers_description, transfers.created_at AS transfers_created_at, transfers.settled_at AS transfers_settled_at 
+FROM transfers 
+WHERE transfers.transfer_type = ? AND transfers.status = ?]
+[parameters: ('ach', 'pending')]
+(Background on this error at: https://sqlalche.me/e/21/e3q8)
+PASSED [ 53%]
+backend/tests/test_recurring_payments.py::test_paused_and_cancelled_schedules_skipped_by_scheduler [Scheduler] Error during scheduler cycle: (sqlite3.OperationalError) no such table: transfers
+[SQL: SELECT transfers.id AS transfers_id, transfers.transfer_type AS transfers_transfer_type, transfers.from_account_id AS transfers_from_account_id, transfers.to_account_id AS transfers_to_account_id, transfers.beneficiary_id AS transfers_beneficiary_id, transfers.recipient_name AS transfers_recipient_name, transfers.routing_number AS transfers_routing_number, transfers.account_number AS transfers_account_number, transfers.bank_name AS transfers_bank_name, transfers.amount AS transfers_amount, transfers.status AS transfers_status, transfers.description AS transfers_description, transfers.created_at AS transfers_created_at, transfers.settled_at AS transfers_settled_at 
+FROM transfers 
+WHERE transfers.transfer_type = ? AND transfers.status = ?]
+[parameters: ('ach', 'pending')]
+(Background on this error at: https://sqlalche.me/e/21/e3q8)
+PASSED [ 55%]
+backend/tests/test_recurring_payments.py::test_recurring_ach_execution_success [Scheduler] Error during scheduler cycle: (sqlite3.OperationalError) no such table: transfers
+[SQL: SELECT transfers.id AS transfers_id, transfers.transfer_type AS transfers_transfer_type, transfers.from_account_id AS transfers_from_account_id, transfers.to_account_id AS transfers_to_account_id, transfers.beneficiary_id AS transfers_beneficiary_id, transfers.recipient_name AS transfers_recipient_name, transfers.routing_number AS transfers_routing_number, transfers.account_number AS transfers_account_number, transfers.bank_name AS transfers_bank_name, transfers.amount AS transfers_amount, transfers.status AS transfers_status, transfers.description AS transfers_description, transfers.created_at AS transfers_created_at, transfers.settled_at AS transfers_settled_at 
+FROM transfers 
+WHERE transfers.transfer_type = ? AND transfers.status = ?]
+[parameters: ('ach', 'pending')]
+(Background on this error at: https://sqlalche.me/e/21/e3q8)
+PASSED [ 58%]
+backend/tests/test_transactions.py::test_get_all_transactions_returns_seed_movements [Scheduler] Error during scheduler cycle: (sqlite3.OperationalError) no such table: transfers
+[SQL: SELECT transfers.id AS transfers_id, transfers.transfer_type AS transfers_transfer_type, transfers.from_account_id AS transfers_from_account_id, transfers.to_account_id AS transfers_to_account_id, transfers.beneficiary_id AS transfers_beneficiary_id, transfers.recipient_name AS transfers_recipient_name, transfers.routing_number AS transfers_routing_number, transfers.account_number AS transfers_account_number, transfers.bank_name AS transfers_bank_name, transfers.amount AS transfers_amount, transfers.status AS transfers_status, transfers.description AS transfers_description, transfers.created_at AS transfers_created_at, transfers.settled_at AS transfers_settled_at 
+FROM transfers 
+WHERE transfers.transfer_type = ? AND transfers.status = ?]
+[parameters: ('ach', 'pending')]
+(Background on this error at: https://sqlalche.me/e/21/e3q8)
+PASSED [ 60%]
+backend/tests/test_transactions.py::test_get_transactions_filtered_by_account PASSED [ 62%]
+backend/tests/test_transactions.py::test_transfer_creates_synchronized_transactions PASSED [ 65%]
+backend/tests/test_transactions.py::test_get_transactions_invalid_account_fails PASSED [ 67%]
+backend/tests/test_transfer_limits.py::test_limits_query_and_defaults [Scheduler] Error during scheduler cycle: (sqlite3.OperationalError) no such table: transfers
+[SQL: SELECT transfers.id AS transfers_id, transfers.transfer_type AS transfers_transfer_type, transfers.from_account_id AS transfers_from_account_id, transfers.to_account_id AS transfers_to_account_id, transfers.beneficiary_id AS transfers_beneficiary_id, transfers.recipient_name AS transfers_recipient_name, transfers.routing_number AS transfers_routing_number, transfers.account_number AS transfers_account_number, transfers.bank_name AS transfers_bank_name, transfers.amount AS transfers_amount, transfers.status AS transfers_status, transfers.description AS transfers_description, transfers.created_at AS transfers_created_at, transfers.settled_at AS transfers_settled_at 
+FROM transfers 
+WHERE transfers.transfer_type = ? AND transfers.status = ?]
+[parameters: ('ach', 'pending')]
+(Background on this error at: https://sqlalche.me/e/21/e3q8)
+PASSED [ 69%]
+backend/tests/test_transfer_limits.py::test_limits_update_validation PASSED [ 72%]
+backend/tests/test_transfer_limits.py::test_limits_enforcement_per_transaction_and_daily [Scheduler] Error during scheduler cycle: (sqlite3.OperationalError) no such table: transfers
+[SQL: SELECT transfers.id AS transfers_id, transfers.transfer_type AS transfers_transfer_type, transfers.from_account_id AS transfers_from_account_id, transfers.to_account_id AS transfers_to_account_id, transfers.beneficiary_id AS transfers_beneficiary_id, transfers.recipient_name AS transfers_recipient_name, transfers.routing_number AS transfers_routing_number, transfers.account_number AS transfers_account_number, transfers.bank_name AS transfers_bank_name, transfers.amount AS transfers_amount, transfers.status AS transfers_status, transfers.description AS transfers_description, transfers.created_at AS transfers_created_at, transfers.settled_at AS transfers_settled_at 
+FROM transfers 
+WHERE transfers.transfer_type = ? AND transfers.status = ?]
+[parameters: ('ach', 'pending')]
+(Background on this error at: https://sqlalche.me/e/21/e3q8)
+PASSED [ 74%]
+backend/tests/test_transfers.py::test_transfer_under_threshold_executes_without_pin PASSED [ 76%]
+backend/tests/test_transfers.py::test_transfer_over_threshold_requires_pin PASSED [ 79%]
+backend/tests/test_transfers.py::test_transfer_exact_boundary_1000_executes_without_pin [Scheduler] Error during scheduler cycle: (sqlite3.OperationalError) no such table: transfers
+[SQL: SELECT transfers.id AS transfers_id, transfers.transfer_type AS transfers_transfer_type, transfers.from_account_id AS transfers_from_account_id, transfers.to_account_id AS transfers_to_account_id, transfers.beneficiary_id AS transfers_beneficiary_id, transfers.recipient_name AS transfers_recipient_name, transfers.routing_number AS transfers_routing_number, transfers.account_number AS transfers_account_number, transfers.bank_name AS transfers_bank_name, transfers.amount AS transfers_amount, transfers.status AS transfers_status, transfers.description AS transfers_description, transfers.created_at AS transfers_created_at, transfers.settled_at AS transfers_settled_at 
+FROM transfers 
+WHERE transfers.transfer_type = ? AND transfers.status = ?]
+[parameters: ('ach', 'pending')]
+(Background on this error at: https://sqlalche.me/e/21/e3q8)
+PASSED [ 81%]
+backend/tests/test_transfers.py::test_transfer_exact_boundary_1000_01_without_pin_returns_http_428 PASSED [ 83%]
+backend/tests/test_transfers.py::test_transfer_exact_boundary_1000_01_with_valid_pin_succeeds PASSED [ 86%]
+backend/tests/test_transfers.py::test_transfer_over_threshold_with_valid_pin_succeeds PASSED [ 88%]
+backend/tests/test_transfers.py::test_transfer_to_same_account_fails [Scheduler] Error during scheduler cycle: (sqlite3.OperationalError) no such table: transfers
+[SQL: SELECT transfers.id AS transfers_id, transfers.transfer_type AS transfers_transfer_type, transfers.from_account_id AS transfers_from_account_id, transfers.to_account_id AS transfers_to_account_id, transfers.beneficiary_id AS transfers_beneficiary_id, transfers.recipient_name AS transfers_recipient_name, transfers.routing_number AS transfers_routing_number, transfers.account_number AS transfers_account_number, transfers.bank_name AS transfers_bank_name, transfers.amount AS transfers_amount, transfers.status AS transfers_status, transfers.description AS transfers_description, transfers.created_at AS transfers_created_at, transfers.settled_at AS transfers_settled_at 
+FROM transfers 
+WHERE transfers.transfer_type = ? AND transfers.status = ?]
+[parameters: ('ach', 'pending')]
+(Background on this error at: https://sqlalche.me/e/21/e3q8)
+PASSED [ 90%]
+backend/tests/test_transfers.py::test_transfer_insufficient_funds_fails PASSED [ 93%]
+backend/tests/test_transfers.py::test_transfer_non_positive_amount_fails [Scheduler] Error during scheduler cycle: (sqlite3.OperationalError) no such table: transfers
+[SQL: SELECT transfers.id AS transfers_id, transfers.transfer_type AS transfers_transfer_type, transfers.from_account_id AS transfers_from_account_id, transfers.to_account_id AS transfers_to_account_id, transfers.beneficiary_id AS transfers_beneficiary_id, transfers.recipient_name AS transfers_recipient_name, transfers.routing_number AS transfers_routing_number, transfers.account_number AS transfers_account_number, transfers.bank_name AS transfers_bank_name, transfers.amount AS transfers_amount, transfers.status AS transfers_status, transfers.description AS transfers_description, transfers.created_at AS transfers_created_at, transfers.settled_at AS transfers_settled_at 
+FROM transfers 
+WHERE transfers.transfer_type = ? AND transfers.status = ?]
+[parameters: ('ach', 'pending')]
+(Background on this error at: https://sqlalche.me/e/21/e3q8)
+PASSED [ 95%]
+backend/tests/test_transfers.py::test_transfer_more_than_two_decimals_fails PASSED [ 97%]
+backend/tests/test_transfers.py::test_transfer_non_existent_account_fails PASSED [100%]
+
+============================== warnings summary ===============================
+..\..\..\..\..\AppData\Local\Programs\Python\Python313\Lib\site-packages\fastapi\testclient.py:1
+  C:\Users\danie\AppData\Local\Programs\Python\Python313\Lib\site-packages\fastapi\testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.
+    from starlette.testclient import TestClient as TestClient  # noqa
+
+backend/tests/test_ach_transfers.py::test_ach_transfer_additional_validation_errors
+  C:\Users\danie\Documents2\sdd-comparative-study\Shift-Bank\Etapa 3\Tessl\backend\app\routers\transfers.py:52: StarletteDeprecationWarning: 'HTTP_422_UNPROCESSABLE_ENTITY' is deprecated. Use 'HTTP_422_UNPROCESSABLE_CONTENT' instead.
+    return transfer_service.execute_ach_transfer(
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+======================= 43 passed, 2 warnings in 2.27s ========================

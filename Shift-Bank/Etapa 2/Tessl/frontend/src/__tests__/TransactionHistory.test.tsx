@@ -155,4 +155,35 @@ describe('TransactionHistory Component', () => {
 
     expect(screen.getByTestId('empty-transactions-state')).toBeInTheDocument();
   });
+
+  it('displays pending status badge for ACH transfers until settled', () => {
+    const pendingTransactions: Transaction[] = [
+      {
+        id: 104,
+        account_id: 1,
+        account_name: 'Primary Checking',
+        transfer_id: 5,
+        transaction_type: 'debit',
+        amount: 200.0,
+        balance_after: 2300.0,
+        description: 'ACH Transfer to Electric Utility',
+        reference: 'ACH-00005-OUT',
+        status: 'pending',
+        created_at: '2026-01-21T10:00:00Z',
+      },
+    ];
+
+    render(
+      <TransactionHistory
+        transactions={pendingTransactions}
+        accounts={mockAccounts}
+        selectedAccountId={null}
+        onSelectAccount={vi.fn()}
+      />
+    );
+
+    const pendingBadge = screen.getByTestId('tx-pending-badge-104');
+    expect(pendingBadge).toBeInTheDocument();
+    expect(pendingBadge).toHaveTextContent('Pending');
+  });
 });

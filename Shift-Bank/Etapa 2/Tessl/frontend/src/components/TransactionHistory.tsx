@@ -108,7 +108,18 @@ export const TransactionHistory: React.FC<TransactionHistoryProps> = ({
                   <tr key={tx.id} data-testid={`transaction-row-${tx.id}`}>
                     <td className="tx-date">{formatDate(tx.created_at)}</td>
                     <td className="tx-desc">
-                      <div className="tx-desc-title">{tx.description}</div>
+                      <div className="tx-desc-title" style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+                        <span>{tx.description}</span>
+                        {tx.status === 'pending' && (
+                          <span
+                            className="badge badge-warning"
+                            data-testid={`tx-pending-badge-${tx.id}`}
+                            style={{ fontSize: '0.7rem', padding: '2px 6px' }}
+                          >
+                            Pending
+                          </span>
+                        )}
+                      </div>
                       {tx.reference && (
                         <div className="tx-ref" data-testid={`tx-ref-${tx.id}`}>
                           Ref: {tx.reference}

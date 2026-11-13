@@ -1,0 +1,141 @@
+﻿{
+    "project_key":  "Shift-Bank---Stage-2---Tessl",
+    "stage":  "2.0-post-correction",
+    "task":  {
+                 "id":  "c6c214cc-fecb-444f-8cfe-ca94508c56fd",
+                 "type":  "REPORT",
+                 "componentId":  "75e5c389-5808-4a7d-95bd-e60e10dcc810",
+                 "componentKey":  "Shift-Bank---Stage-2---Tessl",
+                 "componentName":  "Shift Bank - Stage 2 - Tessl",
+                 "componentQualifier":  "TRK",
+                 "analysisId":  "13466a97-984f-4cb6-b272-340526825451",
+                 "status":  "SUCCESS",
+                 "submittedAt":  "2026-11-13T18:22:37+0000",
+                 "submitterLogin":  "admin",
+                 "startedAt":  "2026-11-13T18:22:39+0000",
+                 "executedAt":  "2026-11-13T18:22:41+0000",
+                 "executionTimeMs":  1622,
+                 "hasScannerContext":  true,
+                 "warningCount":  2,
+                 "warnings":  [
+                                  "SCM provider autodetection failed. Please use \"sonar.scm.provider\" to define SCM of your project, or disable the SCM Sensor in the project settings.",
+                                  "Your code is analyzed as compatible with all Python 3 versions by default. You can get a more precise analysis by setting the Python version or version range in your configuration via the parameter \"sonar.python.version\""
+                              ],
+                 "infoMessages":  [
+
+                                  ]
+             },
+    "measures":  [
+                     {
+                         "metric":  "coverage",
+                         "value":  "0.0",
+                         "bestValue":  false
+                     },
+                     {
+                         "metric":  "code_smells",
+                         "value":  "51",
+                         "bestValue":  false
+                     },
+                     {
+                         "metric":  "duplicated_lines_density",
+                         "value":  "0.8",
+                         "bestValue":  false
+                     },
+                     {
+                         "metric":  "software_quality_security_rating",
+                         "value":  "1.0",
+                         "bestValue":  true
+                     },
+                     {
+                         "metric":  "software_quality_security_issues",
+                         "value":  "0",
+                         "bestValue":  true
+                     },
+                     {
+                         "metric":  "software_quality_maintainability_remediation_effort",
+                         "value":  "231",
+                         "bestValue":  false
+                     },
+                     {
+                         "metric":  "sqale_index",
+                         "value":  "276",
+                         "bestValue":  false
+                     },
+                     {
+                         "metric":  "bugs",
+                         "value":  "0",
+                         "bestValue":  true
+                     },
+                     {
+                         "metric":  "software_quality_reliability_issues",
+                         "value":  "26",
+                         "bestValue":  false
+                     },
+                     {
+                         "metric":  "cognitive_complexity",
+                         "value":  "337",
+                         "bestValue":  false
+                     },
+                     {
+                         "metric":  "ncloc",
+                         "value":  "4267"
+                     },
+                     {
+                         "metric":  "software_quality_maintainability_issues",
+                         "value":  "42",
+                         "bestValue":  false
+                     },
+                     {
+                         "metric":  "software_quality_reliability_rating",
+                         "value":  "3.0",
+                         "bestValue":  false
+                     },
+                     {
+                         "metric":  "vulnerabilities",
+                         "value":  "0",
+                         "bestValue":  true
+                     },
+                     {
+                         "metric":  "lines",
+                         "value":  "5004"
+                     },
+                     {
+                         "metric":  "software_quality_maintainability_rating",
+                         "value":  "1.0",
+                         "bestValue":  true
+                     }
+                 ],
+    "quality_gate":  {
+                         "status":  "ERROR",
+                         "conditions":  [
+                                            {
+                                                "status":  "ERROR",
+                                                "metricKey":  "new_coverage",
+                                                "comparator":  "LT",
+                                                "errorThreshold":  "80",
+                                                "actualValue":  "0.0"
+                                            },
+                                            {
+                                                "status":  "OK",
+                                                "metricKey":  "new_duplicated_lines_density",
+                                                "comparator":  "GT",
+                                                "errorThreshold":  "3",
+                                                "actualValue":  "0.0"
+                                            },
+                                            {
+                                                "status":  "OK",
+                                                "metricKey":  "new_violations",
+                                                "comparator":  "GT",
+                                                "errorThreshold":  "0",
+                                                "actualValue":  "0"
+                                            }
+                                        ],
+                         "ignoredConditions":  false,
+                         "period":  {
+                                        "mode":  "PREVIOUS_VERSION",
+                                        "date":  "2026-11-13T17:49:27+0000",
+                                        "parameter":  "2.0-initial"
+                                    },
+                         "caycStatus":  "compliant"
+                     }
+}
