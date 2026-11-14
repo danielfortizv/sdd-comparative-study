@@ -1,0 +1,43 @@
+# Exclude Git and Github workflows
+.git
+.github
+
+# Exclude private, spec, and documentation folders
+.specify
+docs
+specs
+MEMORY.md
+GEMINI.md
+
+# Exclude local environment files
+.env
+.env.*
+
+# Exclude Python build/cache artifacts and virtual environments
+**/__pycache__/
+**/*.pyc
+**/*.pyo
+**/*.pyd
+.pytest_cache/
+.coverage
+htmlcov/
+venv/
+.venv/
+backend/tests/
+
+# Exclude Node.js dependencies and build caches
+**/node_modules/
+**/dist/
+**/build/
+.npm
+.eslintcache
+frontend/tests/
+
+# Exclude SQLite local database files
+**/*.sqlite3
+**/*.sqlite3-journal
+**/*.sqlite3-wal
+
+# Exclude OS generated files
+.DS_Store
+Thumbs.db

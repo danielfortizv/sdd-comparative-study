@@ -1,0 +1,4702 @@
+{
+  "positive": [
+    {
+      "name": "hello",
+      "message": {
+        "type": "hello",
+        "protocol_version": 1,
+        "room_id": "room-42"
+      }
+    },
+    {
+      "name": "welcome_waiting",
+      "message": {
+        "type": "welcome",
+        "protocol_version": 1,
+        "room_id": "room-42",
+        "seat_id": "A",
+        "room_status": "waiting"
+      }
+    },
+    {
+      "name": "action_cw",
+      "message": {
+        "type": "action",
+        "protocol_version": 1,
+        "room_id": "room-42",
+        "seat_id": "A",
+        "action_id": "A-1",
+        "expected_revision": 18,
+        "kind": "cw"
+      }
+    },
+    {
+      "name": "action_max_ordinal",
+      "message": {
+        "type": "action",
+        "protocol_version": 1,
+        "room_id": "room-42",
+        "seat_id": "A",
+        "action_id": "A-999999999999999",
+        "expected_revision": 18,
+        "kind": "left"
+      }
+    },
+    {
+      "name": "state_waiting_room_status",
+      "message": {
+        "type": "state",
+        "protocol_version": 1,
+        "room_id": "room-42",
+        "seat_id": "A",
+        "revision": 0,
+        "status": "playing",
+        "room_status": "waiting",
+        "board": [
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        ],
+        "active_piece": {
+          "type": "T",
+          "origin": [
+            0,
+            3
+          ],
+          "cells": [
+            [
+              0,
+              4
+            ],
+            [
+              1,
+              3
+            ],
+            [
+              1,
+              4
+            ],
+            [
+              1,
+              5
+            ]
+          ]
+        },
+        "next_piece": "L",
+        "hold_piece": null,
+        "can_hold": true,
+        "score": 0,
+        "total_lines": 0,
+        "level": 1,
+        "gravity_interval_ms": 500
+      }
+    },
+    {
+      "name": "reject_not_started",
+      "message": {
+        "type": "reject",
+        "protocol_version": 1,
+        "room_id": "room-42",
+        "seat_id": "A",
+        "action_id": "A-1",
+        "reason": "not_started",
+        "authoritative_revision": 0
+      }
+    },
+    {
+      "name": "state_playing",
+      "message": {
+        "type": "state",
+        "protocol_version": 1,
+        "room_id": "room-42",
+        "seat_id": "A",
+        "revision": 18,
+        "status": "playing",
+        "room_status": "playing",
+        "board": [
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        ],
+        "active_piece": {
+          "type": "T",
+          "origin": [
+            0,
+            3
+          ],
+          "cells": [
+            [
+              0,
+              4
+            ],
+            [
+              1,
+              3
+            ],
+            [
+              1,
+              4
+            ],
+            [
+              1,
+              5
+            ]
+          ]
+        },
+        "next_piece": "L",
+        "hold_piece": null,
+        "can_hold": true,
+        "score": 0,
+        "total_lines": 0,
+        "level": 1,
+        "gravity_interval_ms": 500
+      }
+    },
+    {
+      "name": "state_playing_negative_i_anchor",
+      "message": {
+        "type": "state",
+        "protocol_version": 1,
+        "room_id": "room-42",
+        "seat_id": "B",
+        "revision": 5,
+        "status": "playing",
+        "room_status": "playing",
+        "board": [
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            1,
+            1,
+            1,
+            1,
+            0,
+            0,
+            0,
+            0
+          ]
+        ],
+        "active_piece": {
+          "type": "I",
+          "origin": [
+            0,
+            -1
+          ],
+          "cells": [
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              1
+            ],
+            [
+              0,
+              2
+            ],
+            [
+              0,
+              3
+            ]
+          ]
+        },
+        "next_piece": "O",
+        "hold_piece": null,
+        "can_hold": true,
+        "score": 100,
+        "total_lines": 0,
+        "level": 1,
+        "gravity_interval_ms": 500
+      }
+    },
+    {
+      "name": "state_game_over",
+      "message": {
+        "type": "state",
+        "protocol_version": 1,
+        "room_id": "room-42",
+        "seat_id": "A",
+        "revision": 73,
+        "status": "game_over",
+        "room_status": "finished",
+        "board": [
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        ],
+        "active_piece": null,
+        "next_piece": null,
+        "hold_piece": "O",
+        "can_hold": false,
+        "score": 1200,
+        "total_lines": 8,
+        "level": 2,
+        "gravity_interval_ms": 450
+      }
+    },
+    {
+      "name": "ack_applied",
+      "message": {
+        "type": "ack",
+        "protocol_version": 1,
+        "room_id": "room-42",
+        "seat_id": "A",
+        "action_id": "A-1",
+        "revision": 19,
+        "applied": true,
+        "no_op": false
+      }
+    },
+    {
+      "name": "ack_legal_no_op",
+      "message": {
+        "type": "ack",
+        "protocol_version": 1,
+        "room_id": "room-42",
+        "seat_id": "A",
+        "action_id": "A-2",
+        "revision": 19,
+        "applied": true,
+        "no_op": true
+      }
+    },
+    {
+      "name": "reject_stale_revision",
+      "message": {
+        "type": "reject",
+        "protocol_version": 1,
+        "room_id": "room-42",
+        "seat_id": "A",
+        "action_id": "A-3",
+        "reason": "stale_revision",
+        "authoritative_revision": 18
+      }
+    },
+    {
+      "name": "reject_future_revision",
+      "message": {
+        "type": "reject",
+        "protocol_version": 1,
+        "room_id": "room-42",
+        "seat_id": "A",
+        "action_id": "A-4",
+        "reason": "future_revision",
+        "authoritative_revision": 18
+      }
+    },
+    {
+      "name": "reject_not_seat_owner",
+      "message": {
+        "type": "reject",
+        "protocol_version": 1,
+        "room_id": "room-42",
+        "seat_id": "B",
+        "action_id": "B-5",
+        "reason": "not_seat_owner",
+        "authoritative_revision": 20
+      }
+    },
+    {
+      "name": "reject_duplicate_action_conflict",
+      "message": {
+        "type": "reject",
+        "protocol_version": 1,
+        "room_id": "room-42",
+        "seat_id": "A",
+        "action_id": "A-1",
+        "reason": "duplicate_action_conflict",
+        "authoritative_revision": 19
+      }
+    },
+    {
+      "name": "error_room_not_found",
+      "message": {
+        "type": "error",
+        "protocol_version": 1,
+        "room_id": null,
+        "seat_id": null,
+        "reason": "room_not_found",
+        "detail": "No such room."
+      }
+    },
+    {
+      "name": "outcome_win",
+      "message": {
+        "type": "outcome",
+        "protocol_version": 1,
+        "room_id": "room-42",
+        "result": "win",
+        "winning_seat": "A",
+        "losing_seat": "B",
+        "forfeiting_seat": null,
+        "final_revision": {
+          "A": 54,
+          "B": 51
+        }
+      }
+    },
+    {
+      "name": "outcome_draw",
+      "message": {
+        "type": "outcome",
+        "protocol_version": 1,
+        "room_id": "room-42",
+        "result": "draw",
+        "winning_seat": null,
+        "losing_seat": null,
+        "forfeiting_seat": null,
+        "final_revision": {
+          "A": 60,
+          "B": 60
+        }
+      }
+    },
+    {
+      "name": "outcome_forfeit",
+      "message": {
+        "type": "outcome",
+        "protocol_version": 1,
+        "room_id": "room-42",
+        "result": "forfeit",
+        "winning_seat": "A",
+        "losing_seat": "B",
+        "forfeiting_seat": "B",
+        "final_revision": {
+          "A": 40,
+          "B": 37
+        }
+      }
+    },
+    {
+      "name": "action_b1_canonical",
+      "message": {
+        "type": "action",
+        "protocol_version": 1,
+        "room_id": "room-42",
+        "seat_id": "B",
+        "action_id": "B-1",
+        "expected_revision": 3,
+        "kind": "left"
+      }
+    },
+    {
+      "name": "error_malformed_message",
+      "message": {
+        "type": "error",
+        "protocol_version": 1,
+        "room_id": "room-42",
+        "seat_id": "A",
+        "reason": "malformed_message",
+        "detail": "Action id missing or not canonical; cannot correlate a reply."
+      }
+    },
+    {
+      "name": "error_malformed_message_no_room",
+      "message": {
+        "type": "error",
+        "protocol_version": 1,
+        "room_id": null,
+        "seat_id": null,
+        "reason": "malformed_message",
+        "detail": "Inbound frame was not valid UTF-8 JSON text."
+      }
+    }
+  ],
+  "negative": [
+    {
+      "name": "wrong_type_expected_revision_string",
+      "schema_rejects": true,
+      "why": "expected_revision must be an integer but is given as a string.",
+      "message": {
+        "type": "action",
+        "protocol_version": 1,
+        "room_id": "room-42",
+        "seat_id": "A",
+        "action_id": "A-6",
+        "expected_revision": "18",
+        "kind": "cw"
+      }
+    },
+    {
+      "name": "missing_required_field_action_without_kind",
+      "schema_rejects": true,
+      "why": "action requires the 'kind' field, which is absent.",
+      "message": {
+        "type": "action",
+        "protocol_version": 1,
+        "room_id": "room-42",
+        "seat_id": "A",
+        "action_id": "A-7",
+        "expected_revision": 18
+      }
+    },
+    {
+      "name": "extra_undocumented_field_hello_client_name",
+      "schema_rejects": true,
+      "why": "hello has additionalProperties false and there is intentionally no client_name field; client_name is NOT allowed.",
+      "message": {
+        "type": "hello",
+        "protocol_version": 1,
+        "room_id": "room-42",
+        "client_name": "Alice"
+      }
+    },
+    {
+      "name": "bad_enum_action_kind_spin",
+      "schema_rejects": true,
+      "why": "'spin' is not a member of the kind enum (left, right, down, cw, ccw, hold).",
+      "message": {
+        "type": "action",
+        "protocol_version": 1,
+        "room_id": "room-42",
+        "seat_id": "A",
+        "action_id": "A-8",
+        "expected_revision": 18,
+        "kind": "spin"
+      }
+    },
+    {
+      "name": "lexical_float_revision",
+      "schema_rejects": false,
+      "why": "revision is given as 1.0, a lexical float. JSON Schema 'integer' MAY accept 1.0 because its value is integral, so the schema alone does not necessarily reject this; strict runtime typing requires a JSON-decoded Python int and rejects the float. This case is documented RUNTIME-ONLY and is NOT asserted to be schema-rejected.",
+      "message": {
+        "type": "ack",
+        "protocol_version": 1,
+        "room_id": "room-42",
+        "seat_id": "A",
+        "action_id": "A-9",
+        "revision": 1.0,
+        "applied": true,
+        "no_op": false
+      }
+    },
+    {
+      "name": "board_wrong_size_19_rows",
+      "schema_rejects": true,
+      "why": "board must contain exactly 20 rows but only 19 are provided.",
+      "message": {
+        "type": "state",
+        "protocol_version": 1,
+        "room_id": "room-42",
+        "seat_id": "A",
+        "revision": 18,
+        "status": "playing",
+        "room_status": "playing",
+        "board": [
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        ],
+        "active_piece": null,
+        "next_piece": "L",
+        "hold_piece": null,
+        "can_hold": true,
+        "score": 0,
+        "total_lines": 0,
+        "level": 1,
+        "gravity_interval_ms": 500
+      }
+    },
+    {
+      "name": "occupied_cell_negative_row",
+      "schema_rejects": true,
+      "why": "An occupied cell has a negative row (-1). Occupied cells must be absolute on-board cells with rows 0..19; only the anchor/origin may be negative.",
+      "message": {
+        "type": "state",
+        "protocol_version": 1,
+        "room_id": "room-42",
+        "seat_id": "A",
+        "revision": 7,
+        "status": "playing",
+        "room_status": "playing",
+        "board": [
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        ],
+        "active_piece": {
+          "type": "T",
+          "origin": [
+            0,
+            3
+          ],
+          "cells": [
+            [
+              -1,
+              4
+            ],
+            [
+              1,
+              3
+            ],
+            [
+              1,
+              4
+            ],
+            [
+              1,
+              5
+            ]
+          ]
+        },
+        "next_piece": "L",
+        "hold_piece": null,
+        "can_hold": true,
+        "score": 0,
+        "total_lines": 0,
+        "level": 1,
+        "gravity_interval_ms": 500
+      }
+    },
+    {
+      "name": "occupied_cell_column_out_of_range",
+      "schema_rejects": true,
+      "why": "An occupied cell has column 10, which is off the 10-wide board (columns 0..9).",
+      "message": {
+        "type": "state",
+        "protocol_version": 1,
+        "room_id": "room-42",
+        "seat_id": "A",
+        "revision": 7,
+        "status": "playing",
+        "room_status": "playing",
+        "board": [
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        ],
+        "active_piece": {
+          "type": "I",
+          "origin": [
+            0,
+            6
+          ],
+          "cells": [
+            [
+              0,
+              7
+            ],
+            [
+              0,
+              8
+            ],
+            [
+              0,
+              9
+            ],
+            [
+              0,
+              10
+            ]
+          ]
+        },
+        "next_piece": "L",
+        "hold_piece": null,
+        "can_hold": true,
+        "score": 0,
+        "total_lines": 0,
+        "level": 1,
+        "gravity_interval_ms": 500
+      }
+    },
+    {
+      "name": "duplicate_occupied_cells_not_four_distinct",
+      "schema_rejects": true,
+      "why": "cells has four items but two are identical [1,4], so it is not four distinct cells.",
+      "message": {
+        "type": "state",
+        "protocol_version": 1,
+        "room_id": "room-42",
+        "seat_id": "A",
+        "revision": 7,
+        "status": "playing",
+        "room_status": "playing",
+        "board": [
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        ],
+        "active_piece": {
+          "type": "T",
+          "origin": [
+            0,
+            3
+          ],
+          "cells": [
+            [
+              0,
+              4
+            ],
+            [
+              1,
+              4
+            ],
+            [
+              1,
+              4
+            ],
+            [
+              1,
+              5
+            ]
+          ]
+        },
+        "next_piece": "L",
+        "hold_piece": null,
+        "can_hold": true,
+        "score": 0,
+        "total_lines": 0,
+        "level": 1,
+        "gravity_interval_ms": 500
+      }
+    },
+    {
+      "name": "playing_state_with_null_active_piece",
+      "schema_rejects": true,
+      "why": "status is playing but active_piece is null; a playing state frame must carry a non-null active piece.",
+      "message": {
+        "type": "state",
+        "protocol_version": 1,
+        "room_id": "room-42",
+        "seat_id": "A",
+        "revision": 7,
+        "status": "playing",
+        "room_status": "playing",
+        "board": [
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        ],
+        "active_piece": null,
+        "next_piece": "L",
+        "hold_piece": null,
+        "can_hold": true,
+        "score": 0,
+        "total_lines": 0,
+        "level": 1,
+        "gravity_interval_ms": 500
+      }
+    },
+    {
+      "name": "game_over_state_with_non_null_active_piece",
+      "schema_rejects": true,
+      "why": "status is game_over but active_piece is a non-null object; a terminal state frame must carry a null active piece.",
+      "message": {
+        "type": "state",
+        "protocol_version": 1,
+        "room_id": "room-42",
+        "seat_id": "A",
+        "revision": 73,
+        "status": "game_over",
+        "room_status": "finished",
+        "board": [
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        ],
+        "active_piece": {
+          "type": "T",
+          "origin": [
+            0,
+            3
+          ],
+          "cells": [
+            [
+              0,
+              4
+            ],
+            [
+              1,
+              3
+            ],
+            [
+              1,
+              4
+            ],
+            [
+              1,
+              5
+            ]
+          ]
+        },
+        "next_piece": null,
+        "hold_piece": "O",
+        "can_hold": false,
+        "score": 1200,
+        "total_lines": 8,
+        "level": 2,
+        "gravity_interval_ms": 450
+      }
+    },
+    {
+      "name": "gravity_interval_zero",
+      "schema_rejects": true,
+      "why": "gravity_interval_ms is 0, below the inclusive lower bound of 100 implied by max(100, 500 - 50*(level-1)).",
+      "message": {
+        "type": "state",
+        "protocol_version": 1,
+        "room_id": "room-42",
+        "seat_id": "A",
+        "revision": 7,
+        "status": "playing",
+        "room_status": "playing",
+        "board": [
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        ],
+        "active_piece": {
+          "type": "T",
+          "origin": [
+            0,
+            3
+          ],
+          "cells": [
+            [
+              0,
+              4
+            ],
+            [
+              1,
+              3
+            ],
+            [
+              1,
+              4
+            ],
+            [
+              1,
+              5
+            ]
+          ]
+        },
+        "next_piece": "L",
+        "hold_piece": null,
+        "can_hold": true,
+        "score": 0,
+        "total_lines": 0,
+        "level": 1,
+        "gravity_interval_ms": 0
+      }
+    },
+    {
+      "name": "gravity_interval_above_max",
+      "schema_rejects": true,
+      "why": "gravity_interval_ms is 600, above the inclusive upper bound of 500.",
+      "message": {
+        "type": "state",
+        "protocol_version": 1,
+        "room_id": "room-42",
+        "seat_id": "A",
+        "revision": 7,
+        "status": "playing",
+        "room_status": "playing",
+        "board": [
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        ],
+        "active_piece": {
+          "type": "T",
+          "origin": [
+            0,
+            3
+          ],
+          "cells": [
+            [
+              0,
+              4
+            ],
+            [
+              1,
+              3
+            ],
+            [
+              1,
+              4
+            ],
+            [
+              1,
+              5
+            ]
+          ]
+        },
+        "next_piece": "L",
+        "hold_piece": null,
+        "can_hold": true,
+        "score": 0,
+        "total_lines": 0,
+        "level": 1,
+        "gravity_interval_ms": 600
+      }
+    },
+    {
+      "name": "unsafe_integer_revision",
+      "schema_rejects": true,
+      "why": "revision exceeds the safe-integer ceiling 9007199254740991 (2^53 - 1), so it is a JS-imprecise magnitude.",
+      "message": {
+        "type": "ack",
+        "protocol_version": 1,
+        "room_id": "room-42",
+        "seat_id": "A",
+        "action_id": "A-10",
+        "revision": 9007199254740992,
+        "applied": true,
+        "no_op": false
+      }
+    },
+    {
+      "name": "unsafe_integer_level",
+      "schema_rejects": true,
+      "why": "level 100001 exceeds the documented ceiling of 100000.",
+      "message": {
+        "type": "state",
+        "protocol_version": 1,
+        "room_id": "room-42",
+        "seat_id": "A",
+        "revision": 7,
+        "status": "playing",
+        "room_status": "playing",
+        "board": [
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        ],
+        "active_piece": {
+          "type": "T",
+          "origin": [
+            0,
+            3
+          ],
+          "cells": [
+            [
+              0,
+              4
+            ],
+            [
+              1,
+              3
+            ],
+            [
+              1,
+              4
+            ],
+            [
+              1,
+              5
+            ]
+          ]
+        },
+        "next_piece": "L",
+        "hold_piece": null,
+        "can_hold": true,
+        "score": 0,
+        "total_lines": 0,
+        "level": 100001,
+        "gravity_interval_ms": 100
+      }
+    },
+    {
+      "name": "unsafe_integer_score",
+      "schema_rejects": true,
+      "why": "score exceeds the safe-integer ceiling 9007199254740991 (2^53 - 1).",
+      "message": {
+        "type": "state",
+        "protocol_version": 1,
+        "room_id": "room-42",
+        "seat_id": "A",
+        "revision": 7,
+        "status": "game_over",
+        "room_status": "finished",
+        "board": [
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        ],
+        "active_piece": null,
+        "next_piece": null,
+        "hold_piece": null,
+        "can_hold": false,
+        "score": 9007199254740992,
+        "total_lines": 8,
+        "level": 2,
+        "gravity_interval_ms": 450
+      }
+    },
+    {
+      "name": "unsafe_integer_total_lines",
+      "schema_rejects": true,
+      "why": "total_lines exceeds the safe-integer ceiling 9007199254740991 (2^53 - 1).",
+      "message": {
+        "type": "state",
+        "protocol_version": 1,
+        "room_id": "room-42",
+        "seat_id": "A",
+        "revision": 7,
+        "status": "game_over",
+        "room_status": "finished",
+        "board": [
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        ],
+        "active_piece": null,
+        "next_piece": null,
+        "hold_piece": null,
+        "can_hold": false,
+        "score": 1200,
+        "total_lines": 9007199254740992,
+        "level": 2,
+        "gravity_interval_ms": 450
+      }
+    },
+    {
+      "name": "win_with_null_winner",
+      "schema_rejects": true,
+      "why": "result is win but winning_seat is null; a win must name both distinct seats.",
+      "message": {
+        "type": "outcome",
+        "protocol_version": 1,
+        "room_id": "room-42",
+        "result": "win",
+        "winning_seat": null,
+        "losing_seat": "B",
+        "forfeiting_seat": null,
+        "final_revision": {
+          "A": 54,
+          "B": 51
+        }
+      }
+    },
+    {
+      "name": "win_same_seat_both_sides",
+      "schema_rejects": true,
+      "why": "result is win but winning_seat and losing_seat are the same seat; they must be distinct.",
+      "message": {
+        "type": "outcome",
+        "protocol_version": 1,
+        "room_id": "room-42",
+        "result": "win",
+        "winning_seat": "A",
+        "losing_seat": "A",
+        "forfeiting_seat": null,
+        "final_revision": {
+          "A": 54,
+          "B": 51
+        }
+      }
+    },
+    {
+      "name": "draw_with_winner",
+      "schema_rejects": true,
+      "why": "result is draw but winning_seat is non-null; a draw must have all three seat fields null.",
+      "message": {
+        "type": "outcome",
+        "protocol_version": 1,
+        "room_id": "room-42",
+        "result": "draw",
+        "winning_seat": "A",
+        "losing_seat": null,
+        "forfeiting_seat": null,
+        "final_revision": {
+          "A": 60,
+          "B": 60
+        }
+      }
+    },
+    {
+      "name": "forfeit_wrong_loser",
+      "schema_rejects": true,
+      "why": "result is forfeit but losing_seat (A) does not equal forfeiting_seat (B); the loser must equal the forfeiter and the winner must be the other seat.",
+      "message": {
+        "type": "outcome",
+        "protocol_version": 1,
+        "room_id": "room-42",
+        "result": "forfeit",
+        "winning_seat": "A",
+        "losing_seat": "A",
+        "forfeiting_seat": "B",
+        "final_revision": {
+          "A": 40,
+          "B": 37
+        }
+      }
+    },
+    {
+      "name": "action_id_leading_zero",
+      "schema_rejects": true,
+      "why": "action_id ordinal has a leading zero (A-01); the canonical grammar ^(A|B)-([1-9][0-9]{0,14})$ forbids leading zeros.",
+      "message": {
+        "type": "action",
+        "protocol_version": 1,
+        "room_id": "room-42",
+        "seat_id": "A",
+        "action_id": "A-01",
+        "expected_revision": 18,
+        "kind": "cw"
+      }
+    },
+    {
+      "name": "action_id_one_past_max",
+      "schema_rejects": true,
+      "why": "action_id ordinal A-1000000000000000 has sixteen digits, one past the 15-digit maximum ordinal 999999999999999, so it fails the canonical grammar pattern.",
+      "message": {
+        "type": "action",
+        "protocol_version": 1,
+        "room_id": "room-42",
+        "seat_id": "A",
+        "action_id": "A-1000000000000000",
+        "expected_revision": 18,
+        "kind": "cw"
+      }
+    },
+    {
+      "name": "action_id_seat_prefix_mismatch",
+      "schema_rejects": true,
+      "why": "seat_id is A but action_id is B-3; the per-seat if/then seat-prefix rule on ActionMessage requires the action_id prefix to equal seat_id.",
+      "message": {
+        "type": "action",
+        "protocol_version": 1,
+        "room_id": "room-42",
+        "seat_id": "A",
+        "action_id": "B-3",
+        "expected_revision": 18,
+        "kind": "cw"
+      }
+    },
+    {
+      "name": "ack_applied_false",
+      "schema_rejects": true,
+      "why": "ack carries applied:false; an ack is always an acceptance, so applied is const true and a non-acceptance must be a reject, not an ack.",
+      "message": {
+        "type": "ack",
+        "protocol_version": 1,
+        "room_id": "room-42",
+        "seat_id": "A",
+        "action_id": "A-11",
+        "revision": 18,
+        "applied": false,
+        "no_op": false
+      }
+    },
+    {
+      "name": "action_before_start_waiting",
+      "schema_rejects": false,
+      "why": "This action message is itself schema-valid; it exercises the RUNTIME waiting-gate rule. An action received while the room_status is waiting is rejected at runtime with reason not_started WITHOUT mutating the board, advancing the per-seat revision, or consuming the seat's action ordinal / high-water mark. The schema cannot observe room status from a single inbound action, so this is a documented RUNTIME-only obligation, not a schema rejection.",
+      "message": {
+        "type": "action",
+        "protocol_version": 1,
+        "room_id": "room-42",
+        "seat_id": "A",
+        "action_id": "A-1",
+        "expected_revision": 0,
+        "kind": "left"
+      }
+    },
+    {
+      "name": "action_id_trailing_lf",
+      "schema_rejects": true,
+      "why": "action_id has a trailing LF (\\n). The canonical grammar uses a trailing negative lookahead instead of \\$, so no character may follow the ordinal; a trailing line terminator is rejected.",
+      "message": {
+        "type": "action",
+        "protocol_version": 1,
+        "room_id": "room-42",
+        "seat_id": "A",
+        "action_id": "A-1\n",
+        "expected_revision": 18,
+        "kind": "cw"
+      }
+    },
+    {
+      "name": "action_id_trailing_cr",
+      "schema_rejects": true,
+      "why": "action_id has a trailing CR (\\r); rejected because no character may follow the ordinal.",
+      "message": {
+        "type": "action",
+        "protocol_version": 1,
+        "room_id": "room-42",
+        "seat_id": "A",
+        "action_id": "A-1\r",
+        "expected_revision": 18,
+        "kind": "cw"
+      }
+    },
+    {
+      "name": "action_id_trailing_crlf",
+      "schema_rejects": true,
+      "why": "action_id has a trailing CRLF (\\r\\n); rejected because no character may follow the ordinal.",
+      "message": {
+        "type": "action",
+        "protocol_version": 1,
+        "room_id": "room-42",
+        "seat_id": "A",
+        "action_id": "A-1\r\n",
+        "expected_revision": 18,
+        "kind": "cw"
+      }
+    },
+    {
+      "name": "action_id_trailing_ls",
+      "schema_rejects": true,
+      "why": "action_id has a trailing U+2028 LINE SEPARATOR; rejected because no character may follow the ordinal.",
+      "message": {
+        "type": "action",
+        "protocol_version": 1,
+        "room_id": "room-42",
+        "seat_id": "A",
+        "action_id": "A-1 ",
+        "expected_revision": 18,
+        "kind": "cw"
+      }
+    },
+    {
+      "name": "action_id_trailing_ps",
+      "schema_rejects": true,
+      "why": "action_id has a trailing U+2029 PARAGRAPH SEPARATOR; rejected because no character may follow the ordinal.",
+      "message": {
+        "type": "action",
+        "protocol_version": 1,
+        "room_id": "room-42",
+        "seat_id": "A",
+        "action_id": "A-1 ",
+        "expected_revision": 18,
+        "kind": "cw"
+      }
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "name": "tetris-stage3-perf-harness",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "description": "Playwright-Chromium browser performance benchmark harness for Stage 3 (Option A). Timing-sensitive; run manually, never in ordinary unit CI.",
+  "scripts": {
+    "benchmark": "node benchmark.mjs",
+    "validate:instrument": "node validate-instrument.mjs",
+    "install:browser": "playwright install chromium"
+  },
+  "dependencies": {
+    "playwright": "1.56.0"
+  }
+}

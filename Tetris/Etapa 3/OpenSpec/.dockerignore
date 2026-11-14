@@ -1,0 +1,49 @@
+# Operational Isolation and Security Exclusions (PACKAGING-CONTEXT-01)
+# Explicit complete exclusions for the build context
+docs/
+.gemini/
+.git/
+.github/
+.pytest_cache/
+.coverage
+coverage.xml
+backend/coverage.xml
+frontend/coverage/
+
+# Local virtual environments and nested environments
+venv/
+.venv/
+env/
+**/venv/
+**/.venv/
+**/env/
+_toolchain/
+
+# Dotenv and local environment files
+.env
+**/.env
+**/.env.*
+**/.env.local
+
+# Node modules and build assets
+node_modules/
+frontend/node_modules/
+frontend/dist/
+frontend/.vitest-tmp/
+
+# Caches, builds, coverage and database directories
+caches/
+build/
+coverage/
+runtimeDB/
+credentials/
+**/*.sqlite3
+**/data/*.sqlite3
+
+# Python caches and test/dev files
+__pycache__/
+backend/__pycache__/
+**/*.pyc
+**/*.pyo
+backend/test*.py
+backend/requirements-dev.txt

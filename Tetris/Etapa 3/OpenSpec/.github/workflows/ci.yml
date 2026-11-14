@@ -1,0 +1,98 @@
+name: Continuous Integration
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+
+jobs:
+  backend:
+    name: Backend CI
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: "pip"
+
+      - name: Install Dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r backend/requirements-dev.txt
+
+      - name: Run Backend Tests & Coverage
+        run: |
+          pytest backend/ --cov=backend --cov-report=xml:backend/coverage.xml
+        env:
+          PYTHONPATH: "."
+
+      - name: Run Backend Security Audit (CI-AUDIT-01)
+        run: |
+          pip install pip-audit
+          pip-audit
+
+  frontend:
+    name: Frontend CI
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js (RUNTIME-POLICY-01)
+        uses: actions/setup-node@v4
+        with:
+          node-version: "24"
+          cache: "npm"
+          cache-dependency-path: frontend/package-lock.json
+
+      - name: Install Dependencies
+        working-directory: frontend
+        run: npm ci
+
+      - name: Run Frontend Lint
+        working-directory: frontend
+        run: npm run lint
+
+      - name: Run Frontend Tests & Coverage
+        working-directory: frontend
+        run: npm test
+
+      - name: Build Frontend Production Assets
+        working-directory: frontend
+        run: npm run build
+
+      - name: Run Frontend Security Audit (CI-AUDIT-01)
+        working-directory: frontend
+        run: npm audit --audit-level=moderate
+
+  docker:
+    name: Docker Build Validation (PACKAGING-ISOLATION-01)
+    runs-on: ubuntu-latest
+    needs: [backend, frontend]
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Validate Backend Dockerfile
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          file: Dockerfile
+          push: false
+          tags: tetris-stage3-openspec-backend:validate
+
+      - name: Validate Frontend Dockerfile
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          file: Dockerfile.frontend
+          push: false
+          tags: tetris-stage3-openspec-frontend:validate
