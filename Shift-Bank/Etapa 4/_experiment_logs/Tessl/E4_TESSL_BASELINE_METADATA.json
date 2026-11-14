@@ -1,0 +1,89 @@
+﻿{
+    "recorded_at":  "2026-11-13T19:05:04.9090187-05:00",
+    "stage":  "4",
+    "source":  "C:\\Users\\danie\\Documents2\\sdd-comparative-study\\Shift-Bank\\Etapa 3\\Tessl",
+    "destination":  "C:\\Users\\danie\\Documents2\\sdd-comparative-study\\Shift-Bank\\Etapa 4\\Tessl",
+    "evidence_directory":  "C:\\Users\\danie\\Documents2\\sdd-comparative-study\\Shift-Bank\\Etapa 4\\_experiment_logs\\Tessl",
+    "arch":  {
+                 "backend":  "FastAPI+SQLAlchemy with routers for accounts, transfers, transactions, beneficiaries, limits, recurring, crypto, and audit",
+                 "frontend":  "React + TypeScript + Vite + Vitest",
+                 "data":  "SQLite with WAL; startup migration for encryption and admin secret validation",
+                 "deployment":  "docker-compose + nginx + TLS + persistent SQLite volume",
+                 "sdd":  "vendored tessl-labs/spec-driven-development v2.0.1 via tessl.json + .tessl RULES + 4 skill hooks",
+                 "security":  "RSA-OAEP/AES-GCM field encryption, HMAC audit chain, fail-closed startup verification",
+                 "tests":  "backend pytest with application-specific suites; frontend Vitest + production build"
+             },
+    "copy":  {
+                 "status":  "Stage 4 isolated copy prepared",
+                 "included_files":  112,
+                 "excluded_files":  5954,
+                 "missing_from_stage4":  11,
+                 "sha256_manifest":  "E4_TESSL_BASELINE_SHA256.csv",
+                 "specs_manifest":  "E4_TESSL_BASELINE_SPECS.csv",
+                 "omitted_runtime_artifacts":  [
+                                                   "node_modules",
+                                                   "dist",
+                                                   ".pytest_cache",
+                                                   ".scannerwork",
+                                                   ".coverage",
+                                                   "coverage.xml",
+                                                   "__pycache__",
+                                                   "*.db, *.db-wal, *.db-shm"
+                                               ]
+             },
+    "sdd":  {
+                "cli_version":  "0.118.1",
+                "plugin":  "tessl-labs/spec-driven-development",
+                "plugin_version":  "2.0.1",
+                "junction_count":  16,
+                "skill_names":  [
+                                    "requirement-gathering",
+                                    "spec-verification",
+                                    "spec-writer",
+                                    "work-review"
+                                ]
+            },
+    "verification":  {
+                         "sha256_matches":  112,
+                         "sha256_mismatches":  0,
+                         "status":  "112 source files match Stage 3; 11 generated runtime files are excluded from the baseline and remain outside the clean source set"
+                     },
+    "validation":  {
+                       "backend_tests":  {
+                                             "command":  "python -m pytest backend/tests -v",
+                                             "exit_code":  0,
+                                             "result":  "86 passed, 3 warnings",
+                                             "evidence":  "E4_TESSL_BASELINE_TESTS.txt"
+                                         },
+                       "frontend_tests":  {
+                                              "command":  "npm test",
+                                              "exit_code":  1,
+                                              "result":  "37 passed, 2 failed in crypto test file",
+                                              "evidence":  "E4_TESSL_FRONTEND_TESTS.txt"
+                                          },
+                       "frontend_build":  {
+                                              "command":  "npm run build",
+                                              "exit_code":  0,
+                                              "result":  "production bundle built successfully",
+                                              "evidence":  "E4_TESSL_FRONTEND_BUILD.txt"
+                                          },
+                       "known_blocker":  "crypto web-key import in frontend tests fails during RSA-OAEP importKey call; no implementation changes were made"
+                   },
+    "preparation_incidents":  [
+                                    {
+                                      "date":  "2026-11-13T19:05:00-05:00",
+                                      "type":  "wrong_evidence_directory",
+                                      "detail":  "The Stage 4 evidence was initially written to the wrong directory, C:\\Users\\danie\\Documents2\\sdd-comparative-study\\Shift-Bank\\Etapa 4_experiment_logs\\Tessl. The original files were preserved and copied to the corrected location, C:\\Users\\danie\\Documents2\\sdd-comparative-study\\Shift-Bank\\Etapa 4\\_experiment_logs\\Tessl."
+                                    },
+                                    {
+                                      "date":  "2026-11-13T19:08:00-05:00",
+                                      "type":  "copy_restore",
+                                      "detail":  "The Stage 4 working tree was accidentally removed by a cleanup command and then restored from Stage 3. The restored tree was revalidated against the Stage 3 baseline before any implementation work."
+                                    },
+                                    {
+                                      "date":  "2026-11-13T19:05:37-05:00",
+                                      "type":  "frontend_crypto_failure",
+                                      "detail":  "Vitest reported two inherited frontend crypto failures in src/__tests__/crypto.test.ts: both fail with TypeError from SubtleCrypto.importKey receiving an invalid key buffer. The failure remains an inherited blocker and was not resolved by modifying app code or test config."
+                                    }
+                                ]
+}

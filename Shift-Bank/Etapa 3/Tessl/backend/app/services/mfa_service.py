@@ -34,37 +34,77 @@ def get_mfa_status(db: Session, user_id: int) -> dict:
     }
 
 
-def verify_pin(db: Session, user_id: int, pin: str) -> bool:
+def verify_pin(db: Session, user_id: int, pin: str, commit: bool = True) -> bool:
     """
     Validate the provided PIN against the mock PIN.
     Tracks failed attempts and applies lockout if 3 consecutive failures occur.
+    Guarantees security state changes and audit events commit atomically.
+    When commit=False (during financial transfers), successful verification avoids
+    prematurely committing or releasing transaction locks, allowing the outer transaction
+    to commit the entire financial operation atomically.
     """
+    from backend.app.services import audit_service
+
     state = get_or_create_mfa_state(db, user_id)
 
     if state.is_locked:
+        db.rollback()
+        audit_service.record_audit_event(
+            db=db,
+            event_type="mfa_lockout_rejected",
+            status="FAILURE",
+            details={"reason": "MFA_ACCOUNT_LOCKED", "max_attempts": MAX_ATTEMPTS},
+            actor_id=user_id,
+        )
+        db.commit()
         raise HTTPException(
             status_code=status.HTTP_423_LOCKED,
             detail="MFA verification is locked due to 3 failed attempts. Please contact support.",
         )
 
     if pin == MOCK_PIN:
-        # Success: reset failed attempts
+        # Success: reset failed attempts and record audit event
         state.failed_attempts = 0
-        db.commit()
+        audit_service.record_audit_event(
+            db=db,
+            event_type="mfa_verified",
+            status="SUCCESS",
+            details={"auth_method": "security_pin", "status": "verified"},
+            actor_id=user_id,
+        )
+        if commit:
+            db.commit()
         return True
 
-    # Failed attempt
+    # Failed attempt: rollback any caller-staged financial mutations before recording failure state
+    db.rollback()
+    state = get_or_create_mfa_state(db, user_id)
     state.failed_attempts += 1
+
     if state.failed_attempts >= MAX_ATTEMPTS:
         state.is_locked = True
+        audit_service.record_audit_event(
+            db=db,
+            event_type="mfa_locked",
+            status="FAILURE",
+            details={"reason": "MFA_LOCKED", "attempts": MAX_ATTEMPTS},
+            actor_id=user_id,
+        )
         db.commit()
         raise HTTPException(
             status_code=status.HTTP_423_LOCKED,
             detail="MFA verification is locked due to 3 failed attempts. Please contact support.",
         )
 
-    db.commit()
     remaining = MAX_ATTEMPTS - state.failed_attempts
+    audit_service.record_audit_event(
+        db=db,
+        event_type="mfa_attempt_failed",
+        status="FAILURE",
+        details={"failed_attempt_number": state.failed_attempts, "remaining_attempts": remaining},
+        actor_id=user_id,
+    )
+    db.commit()
     raise HTTPException(
         status_code=status.HTTP_400_BAD_REQUEST,
         detail=f"Invalid Security PIN. {remaining} attempt(s) remaining.",

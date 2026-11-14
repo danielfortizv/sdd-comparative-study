@@ -1,7 +1,7 @@
 import re
 from datetime import datetime
-from typing import Optional
-from pydantic import BaseModel, Field, field_validator
+from typing import Optional, List, Union, Dict, Any
+from pydantic import BaseModel, Field, field_validator, model_validator
 
 
 class AccountResponse(BaseModel):
@@ -90,14 +90,46 @@ class MfaStatusResponse(BaseModel):
 
 
 # ==========================================
+# Stage 3 Cryptographic Schemas
+# ==========================================
+
+class EncryptedEnvelope(BaseModel):
+    ciphertext: str       # Base64-encoded encrypted data
+    encrypted_key: str    # Base64-encoded session key encrypted with server public key
+    iv: str               # Base64-encoded initialization vector / nonce (96-bit for AES-GCM)
+    tag: str              # Base64-encoded authentication tag (128-bit)
+    key_id: str           # Identifier of the server public key used
+
+
+class EncryptedFieldPayload(BaseModel):
+    __encrypted__: bool = True
+    key_id: str
+    encrypted_key: str
+    iv: str
+    ciphertext: str
+    tag: str
+
+
+# ==========================================
 # Stage 2 Schemas
 # ==========================================
 
 class BeneficiaryCreateRequest(BaseModel):
     name: str = Field(..., min_length=1)
-    routing_number: str = Field(..., min_length=9, max_length=9)
-    account_number: str = Field(..., min_length=4, max_length=17)
+    routing_number: Union[str, EncryptedFieldPayload, Dict[str, Any]]
+    account_number: Union[str, EncryptedFieldPayload, Dict[str, Any]]
     bank_name: str = Field(..., min_length=1)
+
+    @model_validator(mode="before")
+    @classmethod
+    def decrypt_sensitive_fields(cls, data: Any) -> Any:
+        if isinstance(data, dict):
+            from backend.app.services.crypto_service import decrypt_field_if_needed
+            if "routing_number" in data and data["routing_number"] is not None:
+                data["routing_number"] = decrypt_field_if_needed(data["routing_number"])
+            if "account_number" in data and data["account_number"] is not None:
+                data["account_number"] = decrypt_field_if_needed(data["account_number"])
+        return data
 
     @field_validator("name", "bank_name")
     @classmethod
@@ -109,17 +141,19 @@ class BeneficiaryCreateRequest(BaseModel):
 
     @field_validator("routing_number")
     @classmethod
-    def validate_routing(cls, v: str) -> str:
-        if not re.fullmatch(r"^\d{9}$", v):
+    def validate_routing(cls, v: Any) -> str:
+        v_str = str(v).strip()
+        if not re.fullmatch(r"^\d{9}$", v_str):
             raise ValueError("Routing number must be exactly 9 digits")
-        return v
+        return v_str
 
     @field_validator("account_number")
     @classmethod
-    def validate_account(cls, v: str) -> str:
-        if not re.fullmatch(r"^\d{4,17}$", v):
+    def validate_account(cls, v: Any) -> str:
+        v_str = str(v).strip()
+        if not re.fullmatch(r"^\d{4,17}$", v_str):
             raise ValueError("Account number must be between 4 and 17 digits")
-        return v
+        return v_str
 
 
 class BeneficiaryResponse(BaseModel):
@@ -141,10 +175,21 @@ class AchTransferRequest(BaseModel):
     pin: Optional[str] = None
     beneficiary_id: Optional[int] = None
     recipient_name: Optional[str] = None
-    routing_number: Optional[str] = None
-    account_number: Optional[str] = None
+    routing_number: Optional[Union[str, EncryptedFieldPayload, Dict[str, Any]]] = None
+    account_number: Optional[Union[str, EncryptedFieldPayload, Dict[str, Any]]] = None
     bank_name: Optional[str] = None
     save_beneficiary: Optional[bool] = False
+
+    @model_validator(mode="before")
+    @classmethod
+    def decrypt_sensitive_fields(cls, data: Any) -> Any:
+        if isinstance(data, dict):
+            from backend.app.services.crypto_service import decrypt_field_if_needed
+            if "routing_number" in data and data["routing_number"] is not None:
+                data["routing_number"] = decrypt_field_if_needed(data["routing_number"])
+            if "account_number" in data and data["account_number"] is not None:
+                data["account_number"] = decrypt_field_if_needed(data["account_number"])
+        return data
 
     @field_validator("amount")
     @classmethod
@@ -156,9 +201,9 @@ class AchTransferRequest(BaseModel):
 
     @field_validator("routing_number")
     @classmethod
-    def validate_routing(cls, v: Optional[str]) -> Optional[str]:
+    def validate_routing(cls, v: Optional[Any]) -> Optional[str]:
         if v is not None:
-            v_str = v.strip()
+            v_str = str(v).strip()
             if v_str and not re.fullmatch(r"^\d{9}$", v_str):
                 raise ValueError("Routing number must be exactly 9 digits")
             return v_str or None
@@ -166,9 +211,9 @@ class AchTransferRequest(BaseModel):
 
     @field_validator("account_number")
     @classmethod
-    def validate_account(cls, v: Optional[str]) -> Optional[str]:
+    def validate_account(cls, v: Optional[Any]) -> Optional[str]:
         if v is not None:
-            v_str = v.strip()
+            v_str = str(v).strip()
             if v_str and not re.fullmatch(r"^\d{4,17}$", v_str):
                 raise ValueError("Account number must be between 4 and 17 digits")
             return v_str or None
@@ -198,14 +243,25 @@ class RecurringScheduleCreateRequest(BaseModel):
     to_account_id: Optional[int] = None
     beneficiary_id: Optional[int] = None
     recipient_name: Optional[str] = None
-    routing_number: Optional[str] = None
-    account_number: Optional[str] = None
+    routing_number: Optional[Union[str, EncryptedFieldPayload, Dict[str, Any]]] = None
+    account_number: Optional[Union[str, EncryptedFieldPayload, Dict[str, Any]]] = None
     bank_name: Optional[str] = None
     amount: float = Field(..., gt=0, description="Amount must be strictly positive")
     frequency: str = Field(..., description="Must be 'daily', 'weekly', or 'monthly'")
     start_date: Optional[datetime] = None
     description: Optional[str] = None
     pin: Optional[str] = None
+
+    @model_validator(mode="before")
+    @classmethod
+    def decrypt_sensitive_fields(cls, data: Any) -> Any:
+        if isinstance(data, dict):
+            from backend.app.services.crypto_service import decrypt_field_if_needed
+            if "routing_number" in data and data["routing_number"] is not None:
+                data["routing_number"] = decrypt_field_if_needed(data["routing_number"])
+            if "account_number" in data and data["account_number"] is not None:
+                data["account_number"] = decrypt_field_if_needed(data["account_number"])
+        return data
 
     @field_validator("transfer_type")
     @classmethod

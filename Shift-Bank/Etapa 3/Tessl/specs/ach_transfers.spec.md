@@ -5,6 +5,8 @@ targets:
   - ../backend/app/routers/transfers.py
   - ../backend/app/routers/beneficiaries.py
   - ../backend/app/services/transfer_service.py
+  - ../backend/app/services/crypto_service.py
+  - ../backend/app/services/audit_service.py
   - ../backend/app/services/scheduler.py
   - ../backend/app/models.py
   - ../frontend/src/components/TransferModal.tsx
@@ -117,6 +119,24 @@ class AchTransferResponse(BaseModel):
 - When an ACH transfer settles, its `status` is updated to `settled` and `settled_at` timestamp is recorded.
   `[@test] ../backend/tests/test_ach_transfers.py`
 - If an ACH transfer transitions to `failed`, the debited amount is refunded to the source account balance and transaction status is updated accordingly.
+  `[@test] ../backend/tests/test_ach_transfers.py`
+
+## Data Protection, Encryption at Rest & Audit Ledger Integration
+
+- Sensitive banking coordinates (account numbers and routing numbers in `beneficiaries` and `transfers`) are stored encrypted at rest using AES-256-GCM authenticated encryption (`enc:v1:<iv>:<tag>:<ciphertext>`).
+  `[@test] ../backend/tests/test_encryption.py`
+  `[@test] ../backend/tests/test_ach_transfers.py`
+- Beneficiary query and transfer query responses preserve `routing_number` and `account_number` schema fields for authenticated owner operations, maintaining contract compatibility with existing Stage 2 tests. Third-party account numbers are masked to the last 4 digits (e.g. `****5678`) in audit logs, error messages, and transaction history references.
+  `[@test] ../backend/tests/test_encryption.py`
+  `[@test] ../backend/tests/test_ach_transfers.py`
+- Emits immutable audit log entry `transfer_ach_initiated` with `status="SUCCESS"` (or `status="FAILURE"`) upon ACH initiation, with failure events preserved during transaction rollback.
+  `[@test] ../backend/tests/test_audit_log.py`
+  `[@test] ../backend/tests/test_ach_transfers.py`
+- Background scheduler emits `transfer_ach_settled` (or `transfer_ach_failed`) audit events upon reaching terminal settlement states.
+  `[@test] ../backend/tests/test_audit_log.py`
+  `[@test] ../backend/tests/test_ach_transfers.py`
+- Beneficiary creation and deletion operations emit `beneficiary_created` and `beneficiary_deleted` audit events with sanitized metadata.
+  `[@test] ../backend/tests/test_audit_log.py`
   `[@test] ../backend/tests/test_ach_transfers.py`
 
 ## User Interface Display

@@ -9,7 +9,26 @@ from sqlalchemy import (
     Boolean,
 )
 from sqlalchemy.orm import relationship
+from sqlalchemy.types import TypeDecorator
 from backend.app.database import Base
+
+
+class EncryptedString(TypeDecorator):
+    """SQLAlchemy TypeDecorator that encrypts sensitive data with AES-256-GCM at rest."""
+    impl = String
+    cache_ok = True
+
+    def process_bind_param(self, value, dialect):
+        if value is None:
+            return None
+        from backend.app.services.crypto_service import encrypt_at_rest
+        return encrypt_at_rest(str(value))
+
+    def process_result_value(self, value, dialect):
+        if value is None:
+            return None
+        from backend.app.services.crypto_service import decrypt_at_rest
+        return decrypt_at_rest(value)
 
 
 class User(Base):
@@ -49,8 +68,8 @@ class Beneficiary(Base):
     id = Column(Integer, primary_key=True, index=True)
     user_id = Column(Integer, ForeignKey("users.id"), nullable=False)
     name = Column(String, nullable=False)
-    routing_number = Column(String, nullable=False)
-    account_number = Column(String, nullable=False)
+    routing_number = Column(EncryptedString, nullable=False)
+    account_number = Column(EncryptedString, nullable=False)
     bank_name = Column(String, nullable=False)
     created_at = Column(DateTime, default=lambda: datetime.now(timezone.utc))
 
@@ -66,8 +85,8 @@ class Transfer(Base):
     to_account_id = Column(Integer, ForeignKey("accounts.id"), nullable=True)
     beneficiary_id = Column(Integer, ForeignKey("beneficiaries.id"), nullable=True)
     recipient_name = Column(String, nullable=True)
-    routing_number = Column(String, nullable=True)
-    account_number = Column(String, nullable=True)
+    routing_number = Column(EncryptedString, nullable=True)
+    account_number = Column(EncryptedString, nullable=True)
     bank_name = Column(String, nullable=True)
     amount = Column(Float, nullable=False)
     status = Column(String, nullable=False, default="completed")  # "completed" | "pending" | "settled" | "failed" | "mfa_required"
@@ -121,8 +140,8 @@ class RecurringSchedule(Base):
     to_account_id = Column(Integer, ForeignKey("accounts.id"), nullable=True)
     beneficiary_id = Column(Integer, ForeignKey("beneficiaries.id"), nullable=True)
     recipient_name = Column(String, nullable=True)
-    routing_number = Column(String, nullable=True)
-    account_number = Column(String, nullable=True)
+    routing_number = Column(EncryptedString, nullable=True)
+    account_number = Column(EncryptedString, nullable=True)
     bank_name = Column(String, nullable=True)
     amount = Column(Float, nullable=False)
     frequency = Column(String, nullable=False)  # "daily" | "weekly" | "monthly"
@@ -148,3 +167,61 @@ class TransferLimit(Base):
     daily_limit = Column(Float, nullable=False, default=10000.00)
 
     user = relationship("User", back_populates="transfer_limits")
+
+
+class AuditLog(Base):
+    __tablename__ = "audit_logs"
+
+    id = Column(Integer, primary_key=True, autoincrement=True, index=True)
+    event_id = Column(String, unique=True, nullable=False, index=True)
+    timestamp = Column(String(40), nullable=False, default=lambda: datetime.now(timezone.utc).isoformat())
+    event_type = Column(String, nullable=False, index=True)
+    actor_id = Column(Integer, nullable=True)
+    status = Column(String, nullable=False)  # "SUCCESS" | "FAILURE"
+    details = Column(String, nullable=False, default="{}")  # Canonical JSON
+    previous_hash = Column(String(64), nullable=False)
+    current_hash = Column(String(64), nullable=False, index=True)
+    signature = Column(String(64), nullable=False)
+
+
+from sqlalchemy import event, DDL
+
+# Trigger DDL for SQLite to prevent UPDATE and DELETE
+event.listen(
+    AuditLog.__table__,
+    "after_create",
+    DDL(
+        """
+        CREATE TRIGGER IF NOT EXISTS prevent_audit_log_update
+        BEFORE UPDATE ON audit_logs
+        BEGIN
+            SELECT RAISE(FAIL, 'UPDATE operations are strictly forbidden on audit_logs ledger');
+        END;
+        """
+    ),
+)
+
+event.listen(
+    AuditLog.__table__,
+    "after_create",
+    DDL(
+        """
+        CREATE TRIGGER IF NOT EXISTS prevent_audit_log_delete
+        BEFORE DELETE ON audit_logs
+        BEGIN
+            SELECT RAISE(FAIL, 'DELETE operations are strictly forbidden on audit_logs ledger');
+        END;
+        """
+    ),
+)
+
+
+@event.listens_for(AuditLog, "before_update")
+def receive_before_update(mapper, connection, target):
+    raise RuntimeError("UPDATE operations are strictly forbidden on audit_logs ledger")
+
+
+@event.listens_for(AuditLog, "before_delete")
+def receive_before_delete(mapper, connection, target):
+    raise RuntimeError("DELETE operations are strictly forbidden on audit_logs ledger")
+

@@ -3,6 +3,7 @@ name: Mock Multi-Factor Authentication
 description: Multi-factor verification with Security PIN and lockout for sensitive transfer operations exceeding $1,000
 targets:
   - ../backend/app/services/mfa_service.py
+  - ../backend/app/services/audit_service.py
   - ../backend/app/routers/transfers.py
   - ../backend/app/models.py
   - ../frontend/src/components/MfaModal.tsx
@@ -41,6 +42,24 @@ class MfaStatusResponse(BaseModel):
 - After 3 consecutive incorrect PIN attempts, the MFA status becomes locked (`locked = True`, `remaining_attempts = 0`).
   `[@test] ../backend/tests/test_mfa.py`
 - While locked, any transfer requiring MFA is rejected with HTTP 423 Locked.
+  `[@test] ../backend/tests/test_mfa.py`
+
+## Audit Ledger & Security Integration
+
+- Successful PIN verification emits an immutable audit event `mfa_verified` with `status="SUCCESS"`.
+  `[@test] ../backend/tests/test_audit_log.py`
+  `[@test] ../backend/tests/test_mfa.py`
+- Failed PIN verification attempts emit an immutable audit event `mfa_attempt_failed` with `status="FAILURE"` recording the remaining attempts count.
+  `[@test] ../backend/tests/test_audit_log.py`
+  `[@test] ../backend/tests/test_mfa.py`
+- Reaching the 3-attempt limit triggers and emits an audit event `mfa_locked` with `status="FAILURE"`.
+  `[@test] ../backend/tests/test_audit_log.py`
+  `[@test] ../backend/tests/test_mfa.py`
+- Transfer operations rejected due to locked MFA status emit an audit event `mfa_lockout_rejected` with `status="FAILURE"`.
+  `[@test] ../backend/tests/test_audit_log.py`
+  `[@test] ../backend/tests/test_mfa.py`
+- Audit log entry details, server logs, and error responses must NEVER contain the raw Security PIN or plaintext credentials.
+  `[@test] ../backend/tests/test_audit_log.py`
   `[@test] ../backend/tests/test_mfa.py`
 
 ## User Interface Display

@@ -176,6 +176,63 @@ def test_ach_transfer_mfa_pin_required(client):
     assert ok_pin.json()["status"] == "pending"
 
 
+def test_ach_transfer_with_save_beneficiary_and_incorrect_pin_does_not_save_beneficiary(client, db_session):
+    """When an ACH transfer > $1,000 with save_beneficiary=True fails MFA, no beneficiary or transfer is created,
+    and source account balance is unchanged, while failed attempt is recorded."""
+    from sqlalchemy import text
+
+    # Initial balance of account 2 (Savings has $10,000)
+    init_balance = db_session.execute(text("SELECT balance FROM accounts WHERE id = 2")).fetchone()[0]
+
+    resp = client.post(
+        "/api/transfers/ach",
+        json={
+            "from_account_id": 2,
+            "amount": 1500.00,
+            "recipient_name": "Unsaved Vendor",
+            "routing_number": "123456789",
+            "account_number": "9876543210",
+            "bank_name": "Test Bank",
+            "save_beneficiary": True,
+            "pin": "0000",  # Incorrect PIN
+        },
+    )
+    assert resp.status_code == 400
+    assert "Invalid Security PIN" in resp.json()["detail"]
+
+    # 1. Beneficiary must NOT exist in the database
+    bens = db_session.execute(
+        text("SELECT count(*) FROM beneficiaries WHERE name = 'Unsaved Vendor'")
+    ).fetchone()[0]
+    assert bens == 0
+
+    # 2. Transfer must NOT exist in the database
+    transfers = db_session.execute(
+        text("SELECT count(*) FROM transfers WHERE recipient_name = 'Unsaved Vendor'")
+    ).fetchone()[0]
+    assert transfers == 0
+
+    # 3. Source account balance must NOT be debited
+    final_balance = db_session.execute(text("SELECT balance FROM accounts WHERE id = 2")).fetchone()[0]
+    assert final_balance == init_balance
+
+    # 4. MFA failure must be durably committed with remaining attempts = 2
+    mfa_state = db_session.execute(text("SELECT failed_attempts FROM mfa_states WHERE user_id = 1")).fetchone()
+    assert mfa_state is not None
+    assert mfa_state[0] == 1
+
+    # 5. Audit log must contain mfa_attempt_failed and transfer_ach_initiated (FAILURE), but NO beneficiary_created
+    mfa_audit = db_session.execute(
+        text("SELECT count(*) FROM audit_logs WHERE event_type = 'mfa_attempt_failed' AND status = 'FAILURE'")
+    ).fetchone()[0]
+    assert mfa_audit >= 1
+
+    ben_audit = db_session.execute(
+        text("SELECT count(*) FROM audit_logs WHERE event_type = 'beneficiary_created'")
+    ).fetchone()[0]
+    assert ben_audit == 0
+
+
 def test_ach_transfer_validation_errors(client):
     """Test validation errors for insufficient funds, bad routing numbers, and missing beneficiaries."""
     # Insufficient funds

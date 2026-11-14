@@ -88,7 +88,7 @@ def create_recurring_schedule(
     if request.amount > SENSITIVE_THRESHOLD:
         if not request.pin or not request.pin.strip():
             raise MfaRequiredException()
-        mfa_service.verify_pin(db, user_id, request.pin.strip())
+        mfa_service.verify_pin(db, user_id, request.pin.strip(), commit=False)
 
     now = datetime.now(timezone.utc)
     if request.start_date is not None:
@@ -122,6 +122,22 @@ def create_recurring_schedule(
         created_at=now,
     )
     db.add(schedule)
+    db.flush()
+
+    from backend.app.services import audit_service
+    audit_service.record_audit_event(
+        db=db,
+        event_type="recurring_schedule_created",
+        status="SUCCESS",
+        details={
+            "schedule_id": schedule.id,
+            "transfer_type": schedule.transfer_type,
+            "amount": schedule.amount,
+            "frequency": schedule.frequency,
+        },
+        actor_id=user_id,
+    )
+
     db.commit()
     db.refresh(schedule)
     return schedule
@@ -154,6 +170,7 @@ def get_schedule_by_id(db: Session, schedule_id: int, user_id: int) -> Recurring
 
 def pause_schedule(db: Session, schedule_id: int, user_id: int) -> RecurringSchedule:
     """Pause an active recurring schedule."""
+    from backend.app.services import audit_service
     schedule = get_schedule_by_id(db, schedule_id, user_id)
     if schedule.status == "cancelled":
         raise HTTPException(
@@ -166,6 +183,13 @@ def pause_schedule(db: Session, schedule_id: int, user_id: int) -> RecurringSche
             detail="Schedule is already paused",
         )
     schedule.status = "paused"
+    audit_service.record_audit_event(
+        db=db,
+        event_type="recurring_schedule_paused",
+        status="SUCCESS",
+        details={"schedule_id": schedule.id},
+        actor_id=user_id,
+    )
     db.commit()
     db.refresh(schedule)
     return schedule
@@ -173,6 +197,7 @@ def pause_schedule(db: Session, schedule_id: int, user_id: int) -> RecurringSche
 
 def resume_schedule(db: Session, schedule_id: int, user_id: int) -> RecurringSchedule:
     """Resume a paused recurring schedule."""
+    from backend.app.services import audit_service
     schedule = get_schedule_by_id(db, schedule_id, user_id)
     if schedule.status == "cancelled":
         raise HTTPException(
@@ -185,6 +210,13 @@ def resume_schedule(db: Session, schedule_id: int, user_id: int) -> RecurringSch
             detail="Schedule is already active",
         )
     schedule.status = "active"
+    audit_service.record_audit_event(
+        db=db,
+        event_type="recurring_schedule_resumed",
+        status="SUCCESS",
+        details={"schedule_id": schedule.id},
+        actor_id=user_id,
+    )
     db.commit()
     db.refresh(schedule)
     return schedule
@@ -192,8 +224,16 @@ def resume_schedule(db: Session, schedule_id: int, user_id: int) -> RecurringSch
 
 def cancel_schedule(db: Session, schedule_id: int, user_id: int) -> RecurringSchedule:
     """Cancel a recurring schedule permanently."""
+    from backend.app.services import audit_service
     schedule = get_schedule_by_id(db, schedule_id, user_id)
     schedule.status = "cancelled"
+    audit_service.record_audit_event(
+        db=db,
+        event_type="recurring_schedule_cancelled",
+        status="SUCCESS",
+        details={"schedule_id": schedule.id},
+        actor_id=user_id,
+    )
     db.commit()
     db.refresh(schedule)
     return schedule
@@ -206,8 +246,10 @@ def execute_due_recurring_schedules(
     """
     Evaluates active recurring payment schedules whose next_execution_date <= target_time.
     Executes transfers autonomously without interactive PIN, verifying balance and daily limits.
-    Advances next_execution_date on both success and failure.
+    Advances next_execution_date on both success and failure and emits audit events.
     """
+    from backend.app.services import audit_service
+
     if target_time is None:
         target_time = datetime.now(timezone.utc)
 
@@ -240,6 +282,17 @@ def execute_due_recurring_schedules(
             # Record failed execution attempt and advance to next due date
             schedule.failure_count += 1
             schedule.next_execution_date = _advance_date(schedule.next_execution_date, schedule.frequency)
+            audit_service.record_audit_event(
+                db=db,
+                event_type="recurring_payment_executed",
+                status="FAILURE",
+                details={
+                    "schedule_id": schedule.id,
+                    "amount": schedule.amount,
+                    "reason": "Insufficient balance or transfer limit exceeded",
+                },
+                actor_id=user_id,
+            )
             db.commit()
             results.append({
                 "schedule_id": schedule.id,
@@ -254,6 +307,17 @@ def execute_due_recurring_schedules(
             if not to_acc:
                 schedule.failure_count += 1
                 schedule.next_execution_date = _advance_date(schedule.next_execution_date, schedule.frequency)
+                audit_service.record_audit_event(
+                    db=db,
+                    event_type="recurring_payment_executed",
+                    status="FAILURE",
+                    details={
+                        "schedule_id": schedule.id,
+                        "amount": schedule.amount,
+                        "reason": f"Destination account {schedule.to_account_id} not found",
+                    },
+                    actor_id=user_id,
+                )
                 db.commit()
                 continue
 
@@ -332,6 +396,21 @@ def execute_due_recurring_schedules(
         # Update schedule execution tracking
         schedule.last_executed_at = now
         schedule.next_execution_date = _advance_date(schedule.next_execution_date, schedule.frequency)
+
+        # Record audit event for successful execution
+        audit_service.record_audit_event(
+            db=db,
+            event_type="recurring_payment_executed",
+            status="SUCCESS",
+            details={
+                "schedule_id": schedule.id,
+                "transfer_type": schedule.transfer_type,
+                "amount": schedule.amount,
+                "transfer_id": transfer.id,
+            },
+            actor_id=user_id,
+        )
+
         db.commit()
         db.refresh(schedule)
 

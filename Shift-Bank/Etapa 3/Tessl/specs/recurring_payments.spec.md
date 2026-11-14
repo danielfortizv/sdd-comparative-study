@@ -4,6 +4,8 @@ description: Configure and manage scheduled recurring transfers with automated b
 targets:
   - ../backend/app/routers/recurring.py
   - ../backend/app/services/recurring_service.py
+  - ../backend/app/services/crypto_service.py
+  - ../backend/app/services/audit_service.py
   - ../backend/app/services/scheduler.py
   - ../backend/app/models.py
   - ../frontend/src/components/RecurringPayments.tsx
@@ -107,6 +109,21 @@ class RecurringScheduleResponse(BaseModel):
 - If execution fails (e.g., insufficient funds or daily limit exceeded), records the failed attempt, leaves the schedule `active`, and advances `next_execution_date` to the next cycle.
   `[@test] ../backend/tests/test_recurring_payments.py`
 - Schedules with status `paused` or `cancelled` are ignored by the scheduler.
+  `[@test] ../backend/tests/test_recurring_payments.py`
+
+## Data Protection, Encryption at Rest & Audit Ledger Integration
+
+- Ad-hoc recipient coordinates (account and routing numbers stored in `recurring_schedules`) are encrypted at rest using AES-256-GCM authenticated encryption (`enc:v1:<iv>:<tag>:<ciphertext>`).
+  `[@test] ../backend/tests/test_encryption.py`
+  `[@test] ../backend/tests/test_recurring_payments.py`
+- Schedule query responses preserve `routing_number` and `account_number` schema fields for authenticated owner operations, maintaining contract compatibility with existing Stage 2 tests. Third-party account numbers are masked to the last 4 digits (e.g. `****5678`) in audit logs, error messages, and execution transaction references.
+  `[@test] ../backend/tests/test_encryption.py`
+  `[@test] ../backend/tests/test_recurring_payments.py`
+- Emits immutable audit log events for schedule configuration lifecycle: `recurring_schedule_created`, `recurring_schedule_paused`, `recurring_schedule_resumed`, and `recurring_schedule_cancelled`.
+  `[@test] ../backend/tests/test_audit_log.py`
+  `[@test] ../backend/tests/test_recurring_payments.py`
+- Automated background executions emit `recurring_payment_executed` with `status="SUCCESS"` or `status="FAILURE"`, recording masked details and preserving failed execution logs.
+  `[@test] ../backend/tests/test_audit_log.py`
   `[@test] ../backend/tests/test_recurring_payments.py`
 
 ## User Interface Display

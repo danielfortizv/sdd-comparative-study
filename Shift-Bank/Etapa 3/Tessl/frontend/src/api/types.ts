@@ -54,6 +54,26 @@ export interface MfaVerifyResponse {
 }
 
 // ==========================================
+// Stage 3 Interfaces
+// ==========================================
+
+export interface PublicKeyResponse {
+  key_id: string;
+  algorithm: string;
+  public_key: string;
+  expires_at: string;
+}
+
+export interface EncryptedFieldPayload {
+  __encrypted__: true;
+  key_id: string;
+  encrypted_key: string;
+  iv: string;
+  ciphertext: string;
+  tag: string;
+}
+
+// ==========================================
 // Stage 2 Interfaces
 // ==========================================
 
@@ -69,8 +89,8 @@ export interface Beneficiary {
 
 export interface BeneficiaryCreateRequest {
   name: string;
-  routing_number: string;
-  account_number: string;
+  routing_number: string | EncryptedFieldPayload;
+  account_number: string | EncryptedFieldPayload;
   bank_name: string;
 }
 
@@ -81,8 +101,8 @@ export interface AchTransferRequest {
   pin?: string;
   beneficiary_id?: number;
   recipient_name?: string;
-  routing_number?: string;
-  account_number?: string;
+  routing_number?: string | EncryptedFieldPayload;
+  account_number?: string | EncryptedFieldPayload;
   bank_name?: string;
   save_beneficiary?: boolean;
 }
@@ -128,8 +148,8 @@ export interface RecurringScheduleCreateRequest {
   to_account_id?: number;
   beneficiary_id?: number;
   recipient_name?: string;
-  routing_number?: string;
-  account_number?: string;
+  routing_number?: string | EncryptedFieldPayload;
+  account_number?: string | EncryptedFieldPayload;
   bank_name?: string;
   amount: number;
   frequency: 'daily' | 'weekly' | 'monthly';

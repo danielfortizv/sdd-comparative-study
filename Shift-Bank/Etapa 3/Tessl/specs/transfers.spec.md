@@ -4,6 +4,7 @@ description: Transfer money between the authenticated user's own bank accounts w
 targets:
   - ../backend/app/routers/transfers.py
   - ../backend/app/services/transfer_service.py
+  - ../backend/app/services/audit_service.py
   - ../backend/app/models.py
   - ../frontend/src/components/TransferModal.tsx
 ---
@@ -65,6 +66,18 @@ class MfaRequiredResponse(BaseModel):
   `[@test] ../backend/tests/test_transfers.py`
   `[@test] ../backend/tests/test_transfer_limits.py`
 - Fails with HTTP 404 if either source or destination account does not exist or does not belong to the user.
+  `[@test] ../backend/tests/test_transfers.py`
+
+## Audit Ledger & Security Integration
+
+- Successful internal transfers emit an immutable audit log entry `transfer_internal` with `status="SUCCESS"` recording the transfer ID, masked account references, and amount.
+  `[@test] ../backend/tests/test_audit_log.py`
+  `[@test] ../backend/tests/test_transfers.py`
+- Failed internal transfers (due to balance, limit breaches, or MFA failures) emit an immutable audit log entry `transfer_internal` with `status="FAILURE"` and failure reason, preserved in the audit log even when the business transaction rolls back.
+  `[@test] ../backend/tests/test_audit_log.py`
+  `[@test] ../backend/tests/test_transfers.py`
+- Audit log entries and error responses must never expose Security PINs or sensitive credentials in plaintext.
+  `[@test] ../backend/tests/test_audit_log.py`
   `[@test] ../backend/tests/test_transfers.py`
 
 ## User Interface Display
