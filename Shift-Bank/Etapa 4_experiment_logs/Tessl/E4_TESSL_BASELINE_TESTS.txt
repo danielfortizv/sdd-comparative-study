@@ -1,0 +1,117 @@
+﻿Command: python -m pytest backend/tests -v
+Working directory: C:\Users\danie\Documents2\sdd-comparative-study\Shift-Bank\Etapa 4\Tessl
+Started: 2026-11-13T19:05:10.8567928-05:00
+
+============================= test session starts =============================
+platform win32 -- Python 3.13.2, pytest-9.1.1, pluggy-1.6.0 -- C:\Users\danie\AppData\Local\Programs\Python\Python313\python.exe
+cachedir: .pytest_cache
+rootdir: C:\Users\danie\Documents2\sdd-comparative-study\Shift-Bank\Etapa 4\Tessl
+plugins: anyio-4.15.1, locust-2.47.0, cov-7.1.0
+collecting ... collected 86 items
+
+backend/tests/test_accounts.py::test_get_accounts_returns_all_seed_accounts PASSED [  1%]
+backend/tests/test_accounts.py::test_get_account_by_id_success PASSED    [  2%]
+backend/tests/test_accounts.py::test_get_account_by_id_not_found PASSED  [  3%]
+backend/tests/test_ach_transfers.py::test_beneficiary_lifecycle PASSED   [  4%]
+backend/tests/test_ach_transfers.py::test_ach_transfer_with_saved_beneficiary_under_threshold PASSED [  5%]
+backend/tests/test_ach_transfers.py::test_ach_transfer_ad_hoc_with_save_beneficiary PASSED [  6%]
+backend/tests/test_ach_transfers.py::test_ach_transfer_mfa_pin_required PASSED [  8%]
+backend/tests/test_ach_transfers.py::test_ach_transfer_with_save_beneficiary_and_incorrect_pin_does_not_save_beneficiary PASSED [  9%]
+backend/tests/test_ach_transfers.py::test_ach_transfer_validation_errors PASSED [ 10%]
+backend/tests/test_ach_transfers.py::test_ach_settlement_and_failure_refund PASSED [ 11%]
+backend/tests/test_ach_transfers.py::test_ach_transfer_limits_enforcement PASSED [ 12%]
+backend/tests/test_ach_transfers.py::test_ach_transfer_additional_validation_errors PASSED [ 13%]
+backend/tests/test_audit_log.py::test_genesis_block_and_chain_construction PASSED [ 15%]
+backend/tests/test_audit_log.py::test_tamper_detection_on_modified_details PASSED [ 16%]
+backend/tests/test_audit_log.py::test_tamper_detection_on_modified_signature PASSED [ 17%]
+backend/tests/test_audit_log.py::test_immutability_triggers_prevent_update_and_delete PASSED [ 18%]
+backend/tests/test_audit_log.py::test_rollback_consistency_preserves_failed_operations PASSED [ 19%]
+backend/tests/test_audit_log.py::test_fail_closed_audit_guarantee PASSED [ 20%]
+backend/tests/test_audit_log.py::test_audit_verify_endpoint_authorization PASSED [ 22%]
+backend/tests/test_audit_log.py::test_sensitive_data_redaction_in_audit_payloads PASSED [ 23%]
+backend/tests/test_audit_log.py::test_concurrent_audit_writes_maintain_chain_integrity PASSED [ 24%]
+backend/tests/test_audit_log.py::test_comprehensive_event_types_coverage PASSED [ 25%]
+backend/tests/test_audit_log.py::test_failure_audit_persistence_error_propagation PASSED [ 26%]
+backend/tests/test_audit_log.py::test_mfa_state_and_audit_event_atomic_consistency PASSED [ 27%]
+backend/tests/test_audit_log.py::test_structured_error_code_sanitization_in_audit_payloads PASSED [ 29%]
+backend/tests/test_audit_log.py::test_multi_process_sqlite_write_locking_with_begin_immediate PASSED [ 30%]
+backend/tests/test_audit_log.py::test_genuine_os_subprocess_concurrent_audit_writes PASSED [ 31%]
+backend/tests/test_audit_log.py::test_read_only_queries_do_not_acquire_write_lock PASSED [ 32%]
+backend/tests/test_audit_log.py::test_two_connections_read_only_does_not_reserve_writer_lock PASSED [ 33%]
+backend/tests/test_deployment_config.py::test_docker_compose_configuration_file PASSED [ 34%]
+backend/tests/test_deployment_config.py::test_dockerfiles_structure PASSED [ 36%]
+backend/tests/test_deployment_config.py::test_nginx_configuration_rules PASSED [ 37%]
+backend/tests/test_deployment_config.py::test_env_example_documentation PASSED [ 38%]
+backend/tests/test_deployment_config.py::test_development_tls_certificates_validity PASSED [ 39%]
+backend/tests/test_deployment_config.py::test_validate_admin_key_at_startup_enforcement PASSED [ 40%]
+backend/tests/test_deployment_config.py::test_validate_encryption_key_at_startup_enforcement PASSED [ 41%]
+backend/tests/test_deployment_config.py::test_validate_audit_key_at_startup_enforcement PASSED [ 43%]
+backend/tests/test_deployment_config.py::test_generate_development_certificates_fresh_and_idempotent PASSED [ 44%]
+backend/tests/test_encryption.py::test_public_key_endpoint_success PASSED [ 45%]
+backend/tests/test_encryption.py::test_rejection_of_invalid_key_id PASSED [ 46%]
+backend/tests/test_encryption.py::test_rejection_of_expired_key PASSED   [ 47%]
+backend/tests/test_encryption.py::test_invalid_encrypted_payload_handling PASSED [ 48%]
+backend/tests/test_encryption.py::test_end_to_end_encrypted_beneficiary_creation PASSED [ 50%]
+backend/tests/test_encryption.py::test_tamper_detection_at_rest PASSED   [ 51%]
+backend/tests/test_encryption.py::test_strict_persistence_validation_on_unencrypted_read PASSED [ 52%]
+backend/tests/test_encryption.py::test_fail_fast_on_missing_or_invalid_encryption_key PASSED [ 53%]
+backend/tests/test_encryption.py::test_idempotent_database_migration PASSED [ 54%]
+backend/tests/test_encryption.py::test_backward_compatibility_with_plaintext_requests PASSED [ 55%]
+backend/tests/test_encryption.py::test_migration_failure_executes_atomic_rollback_without_data_loss PASSED [ 56%]
+backend/tests/test_encryption.py::test_startup_halts_when_migration_fails PASSED [ 58%]
+backend/tests/test_encryption.py::test_migration_verification_detects_unencrypted_routing_and_rolls_back PASSED [ 59%]
+backend/tests/test_encryption.py::test_migration_verification_detects_corrupt_account_length_and_rolls_back PASSED [ 60%]
+backend/tests/test_encryption.py::test_migration_verification_detects_unencrypted_transfer_record PASSED [ 61%]
+backend/tests/test_load_performance.py::test_load_benchmark_report_sla_compliance PASSED [ 62%]
+backend/tests/test_mfa.py::test_mfa_status_initial PASSED                [ 63%]
+backend/tests/test_mfa.py::test_mfa_verify_correct_pin PASSED            [ 65%]
+backend/tests/test_mfa.py::test_mfa_verify_incorrect_pin_decrements_attempts PASSED [ 66%]
+backend/tests/test_mfa.py::test_mfa_three_failed_attempts_triggers_lockout PASSED [ 67%]
+backend/tests/test_recurring_payments.py::test_recurring_schedule_creation PASSED [ 68%]
+backend/tests/test_recurring_payments.py::test_recurring_schedule_lifecycle PASSED [ 69%]
+backend/tests/test_recurring_payments.py::test_recurring_execution_success_and_date_advancement PASSED [ 70%]
+backend/tests/test_recurring_payments.py::test_recurring_execution_failure_on_insufficient_funds PASSED [ 72%]
+backend/tests/test_recurring_payments.py::test_pause_cancelled_or_paused_schedule_fails PASSED [ 73%]
+backend/tests/test_recurring_payments.py::test_recurring_schedule_creation_omitted_start_date_advances_interval PASSED [ 74%]
+backend/tests/test_recurring_payments.py::test_process_due_endpoint PASSED [ 75%]
+backend/tests/test_recurring_payments.py::test_recurring_schedule_validation_errors PASSED [ 76%]
+backend/tests/test_recurring_payments.py::test_paused_and_cancelled_schedules_skipped_by_scheduler PASSED [ 77%]
+backend/tests/test_recurring_payments.py::test_recurring_ach_execution_success PASSED [ 79%]
+backend/tests/test_transactions.py::test_get_all_transactions_returns_seed_movements PASSED [ 80%]
+backend/tests/test_transactions.py::test_get_transactions_filtered_by_account PASSED [ 81%]
+backend/tests/test_transactions.py::test_transfer_creates_synchronized_transactions PASSED [ 82%]
+backend/tests/test_transactions.py::test_get_transactions_invalid_account_fails PASSED [ 83%]
+backend/tests/test_transfer_limits.py::test_limits_query_and_defaults PASSED [ 84%]
+backend/tests/test_transfer_limits.py::test_limits_update_validation PASSED [ 86%]
+backend/tests/test_transfer_limits.py::test_limits_enforcement_per_transaction_and_daily PASSED [ 87%]
+backend/tests/test_transfers.py::test_transfer_under_threshold_executes_without_pin PASSED [ 88%]
+backend/tests/test_transfers.py::test_transfer_over_threshold_requires_pin PASSED [ 89%]
+backend/tests/test_transfers.py::test_transfer_exact_boundary_1000_executes_without_pin PASSED [ 90%]
+backend/tests/test_transfers.py::test_transfer_exact_boundary_1000_01_without_pin_returns_http_428 PASSED [ 91%]
+backend/tests/test_transfers.py::test_transfer_exact_boundary_1000_01_with_valid_pin_succeeds PASSED [ 93%]
+backend/tests/test_transfers.py::test_transfer_over_threshold_with_valid_pin_succeeds PASSED [ 94%]
+backend/tests/test_transfers.py::test_transfer_to_same_account_fails PASSED [ 95%]
+backend/tests/test_transfers.py::test_transfer_insufficient_funds_fails PASSED [ 96%]
+backend/tests/test_transfers.py::test_transfer_non_positive_amount_fails PASSED [ 97%]
+backend/tests/test_transfers.py::test_transfer_more_than_two_decimals_fails PASSED [ 98%]
+backend/tests/test_transfers.py::test_transfer_non_existent_account_fails PASSED [100%]
+
+============================== warnings summary ===============================
+..\..\..\..\..\AppData\Local\Programs\Python\Python313\Lib\site-packages\fastapi\testclient.py:1
+  C:\Users\danie\AppData\Local\Programs\Python\Python313\Lib\site-packages\fastapi\testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.
+    from starlette.testclient import TestClient as TestClient  # noqa
+
+backend/tests/test_ach_transfers.py::test_ach_transfer_additional_validation_errors
+  C:\Users\danie\Documents2\sdd-comparative-study\Shift-Bank\Etapa 4\Tessl\backend\app\routers\transfers.py:52: StarletteDeprecationWarning: 'HTTP_422_UNPROCESSABLE_ENTITY' is deprecated. Use 'HTTP_422_UNPROCESSABLE_CONTENT' instead.
+    return transfer_service.execute_ach_transfer(
+
+backend/tests/test_encryption.py::test_invalid_encrypted_payload_handling
+  C:\Users\danie\Documents2\sdd-comparative-study\Shift-Bank\Etapa 4\Tessl\backend\app\services\crypto_service.py:257: StarletteDeprecationWarning: 'HTTP_422_UNPROCESSABLE_ENTITY' is deprecated. Use 'HTTP_422_UNPROCESSABLE_CONTENT' instead.
+    return decrypt_envelope(val)
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+======================= 86 passed, 3 warnings in 5.27s ========================
+
+Exit code: 0
+Finished: 2026-11-13T19:05:17.6123216-05:00
+

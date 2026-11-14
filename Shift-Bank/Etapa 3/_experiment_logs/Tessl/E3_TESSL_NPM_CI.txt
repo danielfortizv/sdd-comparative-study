@@ -1,0 +1,5 @@
+﻿Command: npm ci
+Working directory: C:\Users\danie\Documents2\sdd-comparative-study\Shift-Bank\Etapa 3\Tessl\frontend
+Started: 2026-11-13T14:13:38.4090670-05:00
+
+Result note: first attempt was interrupted by PowerShell handling npm's stderr deprecation warning before exit capture; no regression suite ran during that attempt. The lockfile install was retried and completed successfully; see E3_TESSL_NPM_CI_ATTEMPT_02.txt.

@@ -1,0 +1,53 @@
+% Fragmentos para la tesis de Shift Bank, etapa 2, Tessl.
+% Requieren booktabs, array, tabularx; adaptar a la tabla de cinco herramientas.
+% Las variaciones siguen la Guia de Estandarizacion y usan \newline.
+% NO mezclar datos clasicos de SonarQube con incidencias MQR.
+% Evitar interpretar N/D como cero.
+
+% DIMENSION 1: CONSUMO. E1 fue una sesion documentada y E2 dos sesiones;
+% las comparaciones descriptivas tienen distinta cobertura.
+% Columnas: Herramienta & Tok In & Tok Cache & Tok Out & Cred & Costo ($)
+Tessl & 22.273.164\newline (+33,85\%) & 20.447.304\newline (+32,22\%) & 92.615\newline (+30,05\%) & N/A & N/D \\
+
+% DIMENSION 1: ESFUERZO. Msgs no equivale a sugerencias aprobadas.
+% Columnas: Herramienta & Msgs & Tool Calls & Tiempo (s) [agent active]
+Tessl & N/D & 237\newline (+54,90\%) & 3.106\newline (-58,33\%) \\
+% Tiempo de pared: 7.159 s E2, frente a 9.807 s E1 (no homogéneos).
+
+% DIMENSION 2: VOLUMEN, HALLAZGOS CLASICOS y COBERTURA.
+% Columnas: Herramienta & LOC & Hallazgos & Hal/KLOC & Cob (%)
+Tessl & 4.267\newline (+95,55\%) & 51\newline (+142,86\%) & 11,95\newline (+24,19\%) & N/D \\
+
+% DIMENSION 2: ESTATICA TRADICIONAL.
+% Columnas: Herramienta & Bugs & Vulns & Smells & Deuda (m) & Comp. Cog. & Dupl. (%) & Rating
+Tessl & 0 & 0 & 51\newline (+142,86\%) & 276\newline (+236,59\%) & 337\newline (+243,88\%) & 0,8\% & A/A/A \\
+% Nota obligatoria: en MQR el rating de fiabilidad es C con 26 issues;
+% NO se debe presentar A/A/A como si fuera el rating MQR.
+
+% DIMENSION 2: DIFF LOC — los hashes no bastan para contar lineas.
+% Columnas: Herramienta & LOC & LOC Nu. & LOC Mod. & LOC Del.
+Tessl & 4.267\newline (+95,55\%) & N/D & N/D & N/D \\
+
+% DIMENSION 3: ESPECIFICACIONES.
+% Columnas: Herramienta & Archs .md & Lin. Spec & Densidad & Ratio C/E & # Req & Req/CLOD
+Tessl & 7\newline (+75,00\%) & 575\newline (+138,59\%) & 82,14\newline (+36,34\%) & 7,42\newline (-18,04\%) & 121\newline (+137,25\%) & 21,04\newline (-0,56\%) \\
+% El conteo de 121 requisitos es declarado por Gemini; no auditoria externa.
+
+% DIMENSION 3: RESUMEN DE 5 NUMEROS. Cuartiles PERCENTILE.INC.
+% Columnas: Herramienta & Minimo & Q1 & Mediana & Q3 & Maximo
+Tessl & 53\newline (0\%) & 56\newline (+5,66\%) & 71\newline (+26,79\%) & 101\newline (+59,68\%) & 137\newline (+80,26\%) \\
+
+% DIMENSION 4: TABLA REQUISITOS MINIMOS (segun la opcion A de la matriz).
+% REQ-E2-01: Transferencias a terceros por ACH/interbancarias simuladas.
+% REQ-E2-02: Programacion de pagos recurrentes.
+% REQ-E2-03: Limites dinamicos por operacion y dia.
+% Estado: tests automatizados y auditoria del agente positivos;
+% aceptacion individual manual N/D; validar frente a SEED-2.md oficial aun faltante.
+
+% DIMENSION 5: RETROALIMENTACION DOCUMENTAL.
+% Alto: transicion cancelado -> pausado -> activo; corregida mediante spec y tests.
+% Medio: start_date omitida => ejecucion inmediata; corregida.
+% Medio: validacion routing solo en submit; corregida.
+% Medio: prueba de limite diario con suma incorrecta; corregida.
+% Medio: comparacion datetime naive/aware; corregida en el test.
+% Menor: historial refund ACH sin asiento compensatorio; alcance original preservado.

@@ -1,0 +1,125 @@
+﻿{
+    "recorded_at":  "2026-11-13T14:17:36.3664488-05:00",
+    "stage":  "3",
+    "tool":  "Tessl",
+    "source":  "C:\\Users\\danie\\Documents2\\sdd-comparative-study\\Shift-Bank\\Etapa 2\\Tessl",
+    "destination":  "C:\\Users\\danie\\Documents2\\sdd-comparative-study\\Shift-Bank\\Etapa 3\\Tessl",
+    "evidence_directory":  "C:\\Users\\danie\\Documents2\\sdd-comparative-study\\Shift-Bank\\Etapa 3\\_experiment_logs\\Tessl",
+    "source_state":  "Stage 2 working tree had 34 git status entries at initial inspection; live filesystem state copied without source edits",
+    "file_integrity":  {
+                           "source_file_count":  5720,
+                           "included_count":  82,
+                           "excluded_count":  5638,
+                           "sha256_match_count":  82,
+                           "sha256_mismatch_count":  0,
+                           "sha256_manifest":  "E3_TESSL_BASELINE_SHA256.csv",
+                           "file_inventory":  "E3_TESSL_FILE_INVENTORY.csv",
+                           "exclusions_by_reason":  {
+                                                        "mutable SQLite sample state; recreated by startup seeder":  1,
+                                                        "generated dependency install directory":  5601,
+                                                        "pytest cache":  5,
+                                                        "Python bytecode/cache":  28,
+                                                        "generated build output directory":  3
+                                                    }
+                       },
+    "database":  {
+                     "copied":  false,
+                     "source_file":  "shift_bank.db",
+                     "source_size_bytes":  94208,
+                     "read_only_integrity_check":  "ok",
+                     "tables_and_row_counts":  {
+                                                   "users":  1,
+                                                   "accounts":  2,
+                                                   "transactions":  3,
+                                                   "transfers":  0,
+                                                   "beneficiaries":  0,
+                                                   "recurring_schedules":  0,
+                                                   "transfer_limits":  1,
+                                                   "mfa_states":  1
+                                               },
+                     "regeneration":  "backend/app/main.py calls Base.metadata.create_all and seed_initial_data; the source database held the standard seeded user/accounts/transactions and empty new-feature tables",
+                     "test_database_url":  "sqlite:// (in-memory, test-process only)",
+                     "direct_hash":  "not recorded; source DB excluded and a later hash attempt was blocked by another process holding the file open"
+                 },
+    "tessl":  {
+                  "configuration":  "tessl.json",
+                  "mode":  "vendored",
+                  "cli_version":  "0.118.1",
+                  "plugin":  "tessl-labs/spec-driven-development",
+                  "plugin_version":  "2.0.1",
+                  "spec_before_code_rule_present":  true,
+                  "junction_count":  16,
+                  "junction_target_root":  "C:\\Users\\danie\\Documents2\\sdd-comparative-study\\Shift-Bank\\Etapa 3\\Tessl",
+                  "stage1_or_stage2_paths_in_integration_configuration":  0
+              },
+    "tools":  {
+                  "python":  "3.13.2",
+                  "pytest":  "9.1.1",
+                  "fastapi":  "0.142.2",
+                  "uvicorn":  "0.54.0",
+                  "pydantic":  "2.12.5",
+                  "sqlalchemy":  "2.1.6",
+                  "httpx":  "0.28.1",
+                  "node":  "v20.17.0",
+                  "npm":  "11.6.3",
+                  "gemini_cli":  "0.65.0 (version query only; not used for functional development)"
+              },
+    "dependencies":  {
+                         "frontend":  {
+                                          "install":  "npm ci",
+                                          "lockfile_version":  3,
+                                          "exit_code":  0,
+                                          "scope":  "Stage 3 frontend only",
+                                          "npm_reported_vulnerabilities":  {
+                                                                               "moderate":  2,
+                                                                               "high":  1,
+                                                                               "critical":  2
+                                                                           }
+                                      },
+                         "backend":  {
+                                         "install":  "not run",
+                                         "reason":  "requirements.txt is not a lockfile; all declared runtime/test dependencies were already present in the selected Python environment",
+                                         "lockfile":  "none",
+                                         "versions_recorded":  true
+                                     }
+                     },
+    "regression_tests":  {
+                             "backend":  {
+                                             "command":  "python -m pytest backend\\tests -v",
+                                             "runs":  1,
+                                             "exit_code":  0,
+                                             "passed":  43,
+                                             "warnings":  2,
+                                             "additional_log_issue":  "background scheduler emitted SQLite no-such-table errors because the test process used in-memory SQLite across threads; no test failed"
+                                         },
+                             "frontend":  {
+                                              "command":  "npm test (vitest run)",
+                                              "runs":  1,
+                                              "exit_code":  0,
+                                              "test_files_passed":  6,
+                                              "tests_passed":  35,
+                                              "additional_log_issue":  "React act(...) warnings in RecurringPayments tests"
+                                          }
+                         },
+    "methodology":  {
+                        "stage2_source_read_only":  true,
+                        "source_database_copied":  false,
+                        "excluded_database_regenerable":  true,
+                        "new_stage3_specifications_created":  false,
+                        "seed3_created":  false,
+                        "stage3_functional_option_selected":  false,
+                        "gemini_functional_development_invoked":  false,
+                        "stage2_initial_regression_logs_not_used_as_final_counts":  true,
+                        "npm_ci_first_attempt":  "interrupted by PowerShell native-stderr handling of a deprecation warning; second npm ci completed with exit code 0",
+                        "dependencies_or_application_updated":  false
+                    },
+    "evidence_files":  [
+                           "E3_TESSL_COPIA_ROBOCOPY.txt",
+                           "E3_TESSL_NPM_CI.txt",
+                           "E3_TESSL_NPM_CI_ATTEMPT_02.txt",
+                           "E3_TESSL_REGRESION_BACKEND.txt",
+                           "E3_TESSL_REGRESION_BACKEND_RAW.txt",
+                           "E3_TESSL_REGRESION_FRONTEND.txt",
+                           "E3_TESSL_REGRESION_FRONTEND_RAW.txt"
+                       ]
+}
