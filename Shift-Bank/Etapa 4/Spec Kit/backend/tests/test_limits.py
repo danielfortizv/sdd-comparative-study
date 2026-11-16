@@ -12,6 +12,8 @@ def reset_db():
     """Resets the isolated test database before each test."""
     conn = get_connection()
     cursor = conn.cursor()
+    for table in ("recurring_occurrences", "history_projection", "domain_events", "idempotency_records", "projection_checkpoints", "stage4_migration_markers"):
+        cursor.execute(f"DROP TABLE IF EXISTS {table};")
     cursor.execute("DROP TABLE IF EXISTS recurring_schedules;")
     cursor.execute("DROP TABLE IF EXISTS limits;")
     cursor.execute("DROP TABLE IF EXISTS beneficiaries;")
@@ -96,7 +98,8 @@ def test_per_transfer_limit_boundaries():
         "amount": "500000.01"
     })
     assert r.status_code == 400
-    assert "exceeds per-transfer limit" in r.json()["detail"].lower()
+    assert r.json()["detail"]["code"] == "LIMIT_EXCEEDED"
+    assert "per-transfer limit" in r.json()["detail"]["message"].lower()
 
     # 2. Transfer exactly equal to limit: COP 500,000.00 -> Must succeed
     r2 = client.post("/api/transfers", json={
@@ -123,7 +126,8 @@ def test_mfa_cannot_bypass_limits():
     })
     # Must fail with 400 Bad Request immediately, never return 202 PENDING_MFA
     assert r.status_code == 400
-    assert "per-transfer limit" in r.json()["detail"].lower()
+    assert r.json()["detail"]["code"] == "LIMIT_EXCEEDED"
+    assert "per-transfer limit" in r.json()["detail"]["message"].lower()
 
 
 def test_daily_limit_accumulation_scenario():
@@ -169,7 +173,8 @@ def test_daily_limit_accumulation_scenario():
         "amount": "10.00"
     })
     assert r4.status_code == 400
-    assert "daily limit" in r4.json()["detail"].lower()
+    assert r4.json()["detail"]["code"] == "LIMIT_EXCEEDED"
+    assert "daily limit" in r4.json()["detail"]["message"].lower()
 
 
 def test_daily_limit_immediate_reduction_clamping():
@@ -203,7 +208,8 @@ def test_daily_limit_immediate_reduction_clamping():
         "amount": "100.00"
     })
     assert r_blocked.status_code == 400
-    assert "daily limit" in r_blocked.json()["detail"].lower()
+    assert r_blocked.json()["detail"]["code"] == "LIMIT_EXCEEDED"
+    assert "daily limit" in r_blocked.json()["detail"]["message"].lower()
 
 
 def test_utc_midnight_windowing():
@@ -263,4 +269,5 @@ def test_mfa_confirmation_revalidates_limits():
     r_confirm = client.post(f"/api/transfers/{transfer_id}/confirm-mfa", json={"code": "123456"})
     # Must fail because transfer amount 1,500,000.00 exceeds the updated daily limit 1,000,000.00
     assert r_confirm.status_code == 400
-    assert "daily limit" in r_confirm.json()["detail"].lower()
+    assert r_confirm.json()["detail"]["code"] == "LIMIT_EXCEEDED"
+    assert "daily limit" in r_confirm.json()["detail"]["message"].lower()

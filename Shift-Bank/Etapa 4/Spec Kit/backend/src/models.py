@@ -2,7 +2,7 @@ from datetime import datetime
 from decimal import Decimal, InvalidOperation
 from typing import Literal
 
-from pydantic import BaseModel, field_validator, model_validator
+from pydantic import BaseModel, Field, field_validator, model_validator
 
 
 def _validate_decimal_amount(v: str) -> str:
@@ -26,12 +26,14 @@ class AccountResponse(BaseModel):
     name: str
     balance: str
     currency: str = "COP"
+    version: int = 0
 
 
 class TransferCreate(BaseModel):
     source_account_id: str
     destination_account_id: str
     amount: str
+    expected_versions: dict[str, int] = Field(default_factory=dict)
 
     @field_validator("amount")
     @classmethod
@@ -47,11 +49,42 @@ class TransferResponse(BaseModel):
     status: str
     created_at: str
     expires_at: str | None = None
+    source_version: int | None = None
+    destination_version: int | None = None
+    source_account_id: str | None = None
+    destination_account_id: str | None = None
+
+
+class ConversionCreate(BaseModel):
+    source_account_id: str
+    destination_account_id: str
+    source_amount: str
+    expected_versions: dict[str, int] = Field(default_factory=dict)
+
+    @field_validator("source_amount")
+    @classmethod
+    def validate_conversion_amount(cls, v: str) -> str:
+        return _validate_decimal_amount(v)
+
+
+class ConversionResponse(BaseModel):
+    id: str
+    source_account_id: str
+    destination_account_id: str
+    source_amount: str
+    source_currency: str
+    destination_amount: str
+    destination_currency: str
+    rate_numerator: int
+    rate_denominator: int
+    source_version: int
+    destination_version: int
 
 
 class MFACodeConfirm(BaseModel):
     code: str = ""
     mfa_code: str | None = None
+    expected_versions: dict[str, int] = Field(default_factory=dict)
 
     @model_validator(mode="before")
     @classmethod
@@ -85,6 +118,11 @@ class HistoryEntryResponse(BaseModel):
     amount: str
     description: str
     date: str
+    currency: str = "COP"
+    counter_amount: str | None = None
+    counter_currency: str | None = None
+    rate_numerator: int | None = None
+    rate_denominator: int | None = None
 
 
 # ==============================================================================
@@ -165,6 +203,7 @@ class AchTransferCreate(BaseModel):
     routing_number: str
     account_number: str
     save_beneficiary: bool = False
+    expected_versions: dict[str, int] = Field(default_factory=dict)
 
     @field_validator("amount")
     @classmethod
@@ -208,6 +247,8 @@ class AchTransferResponse(BaseModel):
     status: str
     created_at: str
     expires_at: str | None = None
+    currency: str = "COP"
+    source_version: int = 0
 
 
 # ==============================================================================
@@ -225,6 +266,7 @@ class RecurringScheduleCreate(BaseModel):
     bank_name: str | None = None
     routing_number: str | None = None
     account_number: str | None = None
+    expected_versions: dict[str, int] = Field(default_factory=dict)
 
     @field_validator("amount")
     @classmethod
@@ -275,6 +317,7 @@ class RecurringScheduleResponse(BaseModel):
     last_executed_at: str | None = None
     mfa_expires_at: str | None = None
     created_at: str
+    currency: str = "COP"
 
 
 # ==============================================================================

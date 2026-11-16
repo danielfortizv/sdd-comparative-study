@@ -7,38 +7,26 @@ sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "s
 
 from fastapi.testclient import TestClient
 from main import app
-from database import init_db, DB_PATH, get_connection
+import database
+from database import init_db, get_connection
 
 @pytest.fixture(scope="function", autouse=True)
-def reset_db():
+def reset_db(tmp_path, monkeypatch):
     """Resets the database before each test to ensure test isolation."""
-    # Delete the DB file if it exists to force schema recreations and clean seeds
-    if os.path.exists(DB_PATH):
-        try:
-            os.remove(DB_PATH)
-        except PermissionError:
-            pass # Keep using it if locked, but init_db will handle existing table data if we drop them or clear tables.
-    
-    # We can connect and clear the tables directly for clean run-to-run states
-    conn = get_connection()
-    cursor = conn.cursor()
-    cursor.execute("DROP TABLE IF EXISTS transfers;")
-    cursor.execute("DROP TABLE IF EXISTS accounts;")
-    conn.commit()
-    conn.close()
-    
-    init_db()
+    isolated_path = str(tmp_path / "test_api.sqlite")
+    monkeypatch.setenv("TEST_DB_PATH", isolated_path)
+    init_db(isolated_path)
     yield
 
 def test_get_accounts():
-    """Verifies GET /api/accounts retrieves exactly 2 seeded accounts with friendly names."""
+    """Verifies GET /api/accounts retrieves inherited and additive Stage 4 accounts."""
     client = TestClient(app)
     response = client.get("/api/accounts")
     
     assert response.status_code == 200
     data = response.json()
     assert isinstance(data, list)
-    assert len(data) == 2
+    assert len(data) == 6
     
     checking = next(a for a in data if a["name"] == "Checking")
     assert checking["balance"] == "5000000.00"
@@ -59,7 +47,7 @@ def test_transfer_same_account():
     }
     response = client.post("/api/transfers", json=payload)
     assert response.status_code == 400
-    assert "different" in response.json()["detail"]
+    assert response.json()["detail"]["code"] == "INVALID_TRANSFER"
 
 
 def test_transfer_non_positive_amount():
@@ -95,7 +83,7 @@ def test_transfer_insufficient_funds():
     }
     response = client.post("/api/transfers", json=payload)
     assert response.status_code == 400
-    assert "Insufficient" in response.json()["detail"]
+    assert response.json()["detail"]["code"] == "INSUFFICIENT_FUNDS"
 
 
 def test_transfer_success_under_one_million():
@@ -264,7 +252,7 @@ def test_sensitive_transfer_invalid_mfa_code():
     # 2. Confirm with bad code
     confirm_res = client.post(f"/api/transfers/{tx_id}/mfa", json={"code": "111111"})
     assert confirm_res.status_code == 401
-    assert "invalid" in confirm_res.json()["detail"].lower()
+    assert confirm_res.json()["detail"]["code"] == "MFA_INVALID"
 
     # 3. Verify transfer record is still PENDING_MFA in database
     conn = get_connection()
@@ -341,8 +329,8 @@ def test_sensitive_transfer_insufficient_funds_at_confirmation():
 
     # 4. Confirm the pending 4,500,000 transfer. Re-validation must catch checking balance (4,100,000) < amount (4,500,000).
     confirm_res = client.post(f"/api/transfers/{tx_id}/mfa", json={"code": "123456"})
-    assert confirm_res.status_code == 409
-    
+    assert confirm_res.status_code == 400
+    assert confirm_res.json()["detail"]["code"] == "INSUFFICIENT_FUNDS"
     # 5. Verify balances remain at drained level, and transfer status is permanently FAILED in database
     conn = get_connection()
     cursor = conn.cursor()
@@ -377,7 +365,7 @@ def test_sensitive_transfer_on_demand_expiration():
     # 3. Confirm with correct code
     confirm_res = client.post(f"/api/transfers/{tx_id}/mfa", json={"code": "123456"})
     assert confirm_res.status_code == 410
-    assert "expired" in confirm_res.json()["detail"].lower()
+    assert confirm_res.json()["detail"]["code"] == "MFA_EXPIRED"
 
     # 4. Verify DB state is EXPIRED and balances remain unchanged
     conn = get_connection()

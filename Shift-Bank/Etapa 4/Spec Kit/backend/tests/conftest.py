@@ -3,6 +3,7 @@ import sys
 import json
 import base64
 import secrets
+import uuid
 import shutil
 import pytest
 from starlette.testclient import TestClient as StarletteTestClient
@@ -47,8 +48,17 @@ import database
 import crypto
 
 
-def create_test_client_envelope(payload_dict: dict) -> dict:
+def create_test_client_envelope(payload_dict: dict, inject_expected_versions: bool = True) -> dict:
     """Shared test helper that wraps a payload dict into a valid CryptographicEnvelope."""
+    if inject_expected_versions and "source_account_id" in payload_dict and "destination_account_id" in payload_dict and "expected_versions" not in payload_dict:
+        conn = _orig_get_connection()
+        try:
+            rows = conn.cursor().execute("SELECT id,version FROM accounts").fetchall()
+            versions = {r[0]: int(r[1] or 0) for r in rows}
+            payload_dict["expected_versions"] = {payload_dict["source_account_id"]: versions.get(payload_dict["source_account_id"], 0),
+                                                  payload_dict["destination_account_id"]: versions.get(payload_dict["destination_account_id"], 0)}
+        finally:
+            conn.close()
     pub_pem = crypto.load_public_key_pem()
     pub_key = serialization.load_pem_public_key(pub_pem.encode("utf-8"))
 
@@ -87,6 +97,7 @@ _orig_request = StarletteTestClient.request
 
 ENCRYPTED_TARGET_PREFIXES = (
     "/api/transfers",
+    "/api/conversions",
     "/api/ach/transfers",
     "/api/beneficiaries",
     "/api/limits",
@@ -116,6 +127,68 @@ def _test_client_request(self, method: str, url, *args, **kwargs):
     if method.upper() in ("POST", "PUT") and "json" in kwargs:
         payload = kwargs["json"]
         url_str = str(url)
+        if method.upper() == "POST" and url_str.endswith("/api/transfers") and isinstance(payload, dict) and not all(k in payload for k in ("encrypted_key", "iv", "ciphertext", "tag")):
+            if "expected_versions" not in payload:
+                conn = _orig_get_connection()
+                try:
+                    rows = conn.cursor().execute("SELECT id,version FROM accounts").fetchall()
+                    versions = {r[0]: int(r[1] or 0) for r in rows}
+                finally:
+                    conn.close()
+                payload["expected_versions"] = {payload.get("source_account_id"): versions.get(payload.get("source_account_id"), 0),
+                                                payload.get("destination_account_id"): versions.get(payload.get("destination_account_id"), 0)}
+            outgoing_headers = dict(kwargs.get("headers") or {})
+            outgoing_headers.setdefault("Idempotency-Key", str(uuid.uuid4()))
+            kwargs["headers"] = outgoing_headers
+        if method.upper() == "POST" and url_str.endswith("/api/conversions") and isinstance(payload, dict) and not all(k in payload for k in ("encrypted_key", "iv", "ciphertext", "tag")):
+            if "expected_versions" not in payload:
+                conn = _orig_get_connection()
+                try:
+                    rows = conn.cursor().execute("SELECT id,version FROM accounts").fetchall()
+                    versions = {r[0]: int(r[1] or 0) for r in rows}
+                finally:
+                    conn.close()
+                payload["expected_versions"] = {payload.get("source_account_id"): versions.get(payload.get("source_account_id"), 0),
+                                                payload.get("destination_account_id"): versions.get(payload.get("destination_account_id"), 0)}
+            outgoing_headers = dict(kwargs.get("headers") or {})
+            outgoing_headers.setdefault("Idempotency-Key", str(uuid.uuid4()))
+            kwargs["headers"] = outgoing_headers
+        if method.upper() == "POST" and (url_str.endswith("/api/transfers/ach") or url_str.endswith("/api/ach/transfers") or url_str.endswith("/api/recurring-schedules")) and isinstance(payload, dict) and not all(k in payload for k in ("encrypted_key", "iv", "ciphertext", "tag")):
+            source_id = payload.get("source_account_id")
+            expected = payload.get("expected_versions")
+            if not expected and source_id:
+                conn = _orig_get_connection()
+                try:
+                    ids = [source_id]
+                    if payload.get("destination_account_id"):
+                        ids.append(payload["destination_account_id"])
+                    rows = conn.cursor().execute("SELECT id,version FROM accounts WHERE id IN (%s)" % ",".join("?" for _ in ids), ids).fetchall()
+                    payload["expected_versions"] = {row[0]: int(row[1] or 0) for row in rows}
+                finally:
+                    conn.close()
+            outgoing_headers = dict(kwargs.get("headers") or {})
+            outgoing_headers.setdefault("Idempotency-Key", str(uuid.uuid4()))
+            kwargs["headers"] = outgoing_headers
+        if method.upper() == "POST" and ("/confirm-mfa" in url_str or url_str.endswith("/mfa")) and isinstance(payload, dict) and not all(k in payload for k in ("encrypted_key", "iv", "ciphertext", "tag")):
+            transfer_id = url_str.rstrip("/").split("/")[-2]
+            if "expected_versions" not in payload:
+                conn = _orig_get_connection()
+                try:
+                    row = conn.cursor().execute("SELECT source_account_id,destination_account_id FROM transfers WHERE id=?", (transfer_id,)).fetchone()
+                    if row is None and "/recurring-schedules/" in url_str:
+                        schedule = conn.cursor().execute("SELECT source_account_id,destination_account_id FROM recurring_schedules WHERE id=?", (transfer_id,)).fetchone()
+                        row = schedule
+                    versions_rows = conn.cursor().execute("SELECT id,version FROM accounts").fetchall()
+                    versions = {r[0]: int(r[1] or 0) for r in versions_rows}
+                finally:
+                    conn.close()
+                if row:
+                    payload["expected_versions"] = {row[0]: versions.get(row[0], 0)}
+                    if row[1]:
+                        payload["expected_versions"][row[1]] = versions.get(row[1], 0)
+            outgoing_headers = dict(kwargs.get("headers") or {})
+            outgoing_headers.setdefault("Idempotency-Key", str(uuid.uuid4()))
+            kwargs["headers"] = outgoing_headers
         if _is_encrypted_target(url_str):
             # If payload is already a CryptographicEnvelope, preserve it as-is
             if isinstance(payload, dict) and all(k in payload for k in ("encrypted_key", "iv", "ciphertext", "tag")):
@@ -123,6 +196,14 @@ def _test_client_request(self, method: str, url, *args, **kwargs):
             elif isinstance(payload, dict):
                 # Wrap plaintext dict in an encrypted envelope through test transport
                 kwargs["json"] = create_test_client_envelope(payload)
+        if method.upper() == "POST" and url_str.endswith("/api/transfers"):
+            outgoing_headers = dict(kwargs.get("headers") or {})
+            outgoing_headers.setdefault("Idempotency-Key", str(uuid.uuid4()))
+            kwargs["headers"] = outgoing_headers
+        if method.upper() == "POST" and ("/confirm-mfa" in url_str or url_str.endswith("/mfa")):
+            outgoing_headers = dict(kwargs.get("headers") or {})
+            outgoing_headers.setdefault("Idempotency-Key", str(uuid.uuid4()))
+            kwargs["headers"] = outgoing_headers
 
     return _orig_request(self, method, url, *args, **kwargs)
 
@@ -234,6 +315,28 @@ def reset_limits_to_defaults():
         pass
     finally:
         conn.close()
+    yield
+
+
+@pytest.fixture(autouse=True)
+def reset_disposable_financial_state():
+    """Restore seeded account/transaction state between tests in the disposable DB.
+
+    Append-only audit records remain intact; mutable financial and Stage 4 projection
+    tables are rebuilt so a test cannot change another test's baseline.
+    """
+    conn = _orig_get_connection()
+    try:
+        cursor = conn.cursor()
+        for table in ("recurring_occurrences", "history_projection", "domain_events", "idempotency_records",
+                      "projection_checkpoints", "stage4_migration_markers"):
+            cursor.execute(f"DROP TABLE IF EXISTS {table};")
+        for table in ("recurring_schedules", "limits", "beneficiaries", "transfers", "accounts"):
+            cursor.execute(f"DROP TABLE IF EXISTS {table};")
+        conn.commit()
+    finally:
+        conn.close()
+    database.init_db(TEST_DB_PATH)
     yield
 
 

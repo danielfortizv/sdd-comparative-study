@@ -1,0 +1,8 @@
+# Dependencias SOLO de desarrollo/pruebas (Etapa 2, Tarea 1).
+# NO forman parte del runtime de la aplicación (ver requirements.txt).
+# Se instalan aparte para no contaminar las dependencias de producción heredadas de la Etapa 1.
+
+-r requirements.txt
+
+pytest==8.3.4
+httpx==0.28.1

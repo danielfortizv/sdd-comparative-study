@@ -1,26 +1,19 @@
 from datetime import datetime, timedelta, timezone
 from decimal import Decimal
+import os
 
 import pytest
-from database import DB_PATH, get_connection, init_db
+from database import get_connection, init_db
 from fastapi.testclient import TestClient
 from main import app
 
 
 @pytest.fixture(scope="function", autouse=True)
-def reset_db():
+def reset_db(tmp_path, monkeypatch):
     """Resets the isolated test database before each test."""
-    conn = get_connection()
-    cursor = conn.cursor()
-    cursor.execute("DROP TABLE IF EXISTS recurring_schedules;")
-    cursor.execute("DROP TABLE IF EXISTS limits;")
-    cursor.execute("DROP TABLE IF EXISTS beneficiaries;")
-    cursor.execute("DROP TABLE IF EXISTS transfers;")
-    cursor.execute("DROP TABLE IF EXISTS accounts;")
-    conn.commit()
-    conn.close()
-
-    init_db()
+    isolated_path = str(tmp_path / "test_stage2_regression.sqlite")
+    monkeypatch.setenv("TEST_DB_PATH", isolated_path)
+    init_db(isolated_path)
     yield
 
 
@@ -36,7 +29,7 @@ def test_inherited_account_balances_and_seeds():
     assert resp.status_code == 200
     accounts = resp.json()
 
-    assert len(accounts) == 2
+    assert len(accounts) == 6
     checking = next(a for a in accounts if a["id"] == "acc_checking_123")
     savings = next(a for a in accounts if a["id"] == "acc_savings_456")
 
@@ -53,6 +46,7 @@ def test_inherited_account_balances_and_seeds():
     assert len(history) == 2
     # Newest first: tr_seeded_2 at 10:05, tr_seeded_1 at 10:00
     assert history[0]["id"] == "tr_seeded_2"
+    assert all(item["currency"] == "COP" for item in history)
     assert history[0]["direction"] == "outgoing"
     assert history[0]["amount"] == "100000.00"
     assert history[0]["description"] == "Transfer from Checking to Savings"
@@ -61,6 +55,54 @@ def test_inherited_account_balances_and_seeds():
     assert history[1]["direction"] == "incoming"
     assert history[1]["amount"] == "500000.00"
     assert history[1]["description"] == "Transfer from Savings to Checking"
+
+
+def test_stage4_public_contracts_health_audit_and_guarded_simulators(monkeypatch):
+    client = TestClient(app)
+    accounts = client.get("/api/accounts")
+    assert accounts.status_code == 200 and len(accounts.json()) == 6
+    checking = next(row for row in accounts.json() if row["id"] == "acc_checking_123")
+    assert checking["currency"] == "COP" and checking["version"] == 0
+    history = client.get("/api/accounts/acc_checking_123/history")
+    assert history.status_code == 200 and all(row["currency"] == "COP" for row in history.json())
+    limits = client.get("/api/limits")
+    assert limits.status_code == 200
+    assert limits.json()["per_transfer_limit"] == "5000000.00"
+    assert client.get("/api/health").status_code == 200
+    assert client.get("/api/audit/verify").status_code == 401
+    assert client.get("/api/audit/verify", headers={"X-Audit-Admin-Key": os.environ["AUDIT_ADMIN_KEY"]}).status_code == 200
+
+    monkeypatch.setenv("ENABLE_TEST_ENDPOINTS", "false")
+    assert client.post("/api/test/recurring/run-due").status_code == 404
+    monkeypatch.setenv("ENABLE_TEST_ENDPOINTS", "true")
+    guarded = client.post("/api/test/recurring/run-due")
+    assert guarded.status_code == 200 and guarded.json()["processed_count"] == 0
+
+
+def test_stage4_cutover_marker_and_history_import_do_not_double_apply_balances():
+    conn = get_connection()
+    try:
+        marker = conn.cursor().execute("SELECT account_count,history_count FROM stage4_migration_markers WHERE migration_key='e4-cutover-v1'").fetchone()
+        assert marker == (6, 2)
+        events = conn.cursor().execute("SELECT COUNT(*) FROM domain_events WHERE event_type='LegacyHistoryImported'").fetchone()[0]
+        assert events == 2
+        checking = conn.cursor().execute("SELECT balance,currency FROM accounts WHERE id='acc_checking_123'").fetchone()
+        assert checking == ("5000000.00", "COP")
+    finally:
+        conn.close()
+
+
+def test_stage4_cutover_marker_and_history_import_do_not_double_apply_balances():
+    conn = get_connection()
+    try:
+        marker = conn.cursor().execute("SELECT account_count,history_count FROM stage4_migration_markers WHERE migration_key='e4-cutover-v1'").fetchone()
+        assert marker == (6, 2)
+        events = conn.cursor().execute("SELECT COUNT(*) FROM domain_events WHERE event_type='LegacyHistoryImported'").fetchone()[0]
+        assert events == 2
+        checking = conn.cursor().execute("SELECT balance,currency FROM accounts WHERE id='acc_checking_123'").fetchone()
+        assert checking == ("5000000.00", "COP")
+    finally:
+        conn.close()
 
 
 def test_multi_state_left_join_account_history():

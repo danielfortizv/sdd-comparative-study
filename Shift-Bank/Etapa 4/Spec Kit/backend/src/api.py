@@ -4,7 +4,7 @@ from datetime import datetime, timedelta, timezone
 from decimal import Decimal, InvalidOperation
 
 from database import get_connection
-from fastapi import APIRouter, HTTPException, Request, Response, status
+from fastapi import APIRouter, Header, HTTPException, Request, Response, status
 from fastapi.responses import JSONResponse
 from models import (
     AccountResponse,
@@ -15,6 +15,8 @@ from models import (
     BeneficiaryCreate,
     BeneficiaryResponse,
     CryptographicEnvelope,
+    ConversionCreate,
+    ConversionResponse,
     HealthResponse,
     HistoryEntryResponse,
     LimitResponse,
@@ -47,6 +49,8 @@ from services import (
     update_limits,
     validate_transfer_limits,
     verify_audit_ledger,
+    execute_stage4_command,
+    confirm_stage4_mfa,
 )
 from crypto import (
     DecryptionError,
@@ -202,6 +206,33 @@ def verify_audit_trail(
         conn.close()
 
 
+@router.get("/projections/status")
+def get_projection_status(request: Request):
+    """Returns authorized projection checkpoint metadata without financial payloads."""
+    _require_audit_admin(request)
+    from projections import projection_status
+    conn = get_connection()
+    try:
+        return projection_status(conn)
+    finally:
+        conn.close()
+
+
+@router.post("/projections/rebuild")
+def rebuild_account_projection(request: Request):
+    """Replays the immutable event stream under admin authorization; fails closed on invariant errors."""
+    _require_audit_admin(request)
+    from projections import projection_status, rebuild_projection
+    conn = get_connection()
+    try:
+        count = rebuild_projection(conn)
+        return {"rebuilt_events": count, **projection_status(conn)}
+    except Exception:
+        raise HTTPException(status_code=500, detail={"code":"PERSISTENCE_INTEGRITY_FAILURE","message":"Projection replay failed validation"}) from None
+    finally:
+        conn.close()
+
+
 @router.get("/audit/records", response_model=list[AuditRecordResponse])
 def get_audit_records(
     request: Request,
@@ -310,7 +341,7 @@ def get_accounts():
     try:
         conn = get_connection()
         cursor = conn.cursor()
-        cursor.execute("SELECT id, name, balance, currency FROM accounts ORDER BY name ASC;")
+        cursor.execute("SELECT id, name, balance, currency, version FROM accounts ORDER BY name ASC;")
         rows = cursor.fetchall()
         conn.close()
 
@@ -320,7 +351,8 @@ def get_accounts():
                 id=row[0],
                 name=row[1],
                 balance=decrypt_val(row[2]),
-                currency=row[3]
+                currency=row[3],
+                version=row[4]
             ))
         return accounts
     except Exception as e:  # noqa: BLE001
@@ -359,10 +391,28 @@ def get_account_history(account_id: str):
             amount = decrypt_val(amount_enc)
             recipient_name = decrypt_val(rec_name_enc)
             bank_name = decrypt_val(bank_enc)
+            counter_amount = counter_currency = None
+            rate_numerator = rate_denominator = None
 
             if tx_type == "ACH":
                 direction = "outgoing"
                 description = f"ACH Transfer to {recipient_name} ({bank_name}) - {status_str}"
+            elif tx_type == "CONVERSION":
+                direction = "outgoing" if src_id == account_id else "incoming"
+                description = f"Currency conversion from {src_name} to {dest_name}"
+                projection = cursor.execute("SELECT event_id FROM history_projection WHERE history_id=?", (f"{t_id}:{account_id}",)).fetchone()
+                if projection:
+                    raw_event = cursor.execute("SELECT payload_json FROM domain_events WHERE event_id=?", (projection[0],)).fetchone()
+                    if raw_event:
+                        event_payload = json.loads(decrypt_val(raw_event[0]))
+                        rate_numerator = event_payload.get("rate_numerator")
+                        rate_denominator = event_payload.get("rate_denominator")
+                        if direction == "outgoing":
+                            counter_amount = f"{Decimal(event_payload['destination_amount_minor']) / Decimal(100):.2f}"
+                            counter_currency = cursor.execute("SELECT currency FROM accounts WHERE id=?", (_dest_id,)).fetchone()[0]
+                        else:
+                            counter_amount = f"{Decimal(event_payload['source_amount_minor']) / Decimal(100):.2f}"
+                            counter_currency = cursor.execute("SELECT currency FROM accounts WHERE id=?", (src_id,)).fetchone()[0]
             else:
                 direction = "outgoing" if src_id == account_id else "incoming"
                 if dest_name and src_name:
@@ -375,7 +425,12 @@ def get_account_history(account_id: str):
                 direction=direction,
                 amount=amount,
                 description=description,
-                date=created_at
+                date=created_at,
+                currency=cursor.execute("SELECT currency FROM accounts WHERE id=?", (account_id,)).fetchone()[0],
+                counter_amount=counter_amount,
+                counter_currency=counter_currency,
+                rate_numerator=rate_numerator,
+                rate_denominator=rate_denominator
             ))
         return history
 
@@ -392,12 +447,28 @@ def get_account_history(account_id: str):
 # ==============================================================================
 
 @router.post("/transfers", response_model=TransferResponse)
-def initiate_transfer(envelope: CryptographicEnvelope, response: Response):
+def initiate_transfer(envelope: CryptographicEnvelope, response: Response,
+                      idempotency_key: str | None = Header(None, alias="Idempotency-Key")):
     """Initiates a standard or sensitive fund transfer from an encrypted client envelope.
     If amount is >= COP 1,000,000, enters PENDING_MFA state and returns 202 Accepted.
     Otherwise, executes atomically returning 200 OK.
     """
     payload = _decrypt_envelope_to_model(envelope, TransferCreate)
+
+    if idempotency_key is None:
+        raise HTTPException(status_code=422, detail={"code": "INVALID_IDEMPOTENCY_KEY", "message": "Idempotency-Key header is required"})
+    conn = get_connection()
+    try:
+        result, replay = execute_stage4_command(conn, "TRANSFER", idempotency_key, payload.model_dump())
+        if result["status"] == "PENDING_MFA":
+            response.status_code = status.HTTP_202_ACCEPTED
+        return TransferResponse.model_validate(result)
+    except HTTPException:
+        raise
+    except Exception:
+        raise HTTPException(status_code=500, detail={"code":"PERSISTENCE_INTEGRITY_FAILURE","message":"Transfer could not be persisted safely"}) from None
+    finally:
+        conn.close()
 
     if payload.source_account_id == payload.destination_account_id:
         raise HTTPException(
@@ -558,14 +629,36 @@ def initiate_transfer(envelope: CryptographicEnvelope, response: Response):
         conn.close()
 
 
+@router.post("/conversions", response_model=ConversionResponse)
+def create_conversion(envelope: CryptographicEnvelope,
+                      idempotency_key: str | None = Header(None, alias="Idempotency-Key")):
+    payload = _decrypt_envelope_to_model(envelope, ConversionCreate)
+    if idempotency_key is None:
+        raise HTTPException(status_code=422, detail={"code": "INVALID_IDEMPOTENCY_KEY", "message": "Idempotency-Key header is required"})
+    conn = get_connection()
+    try:
+        result, _replay = execute_stage4_command(conn, "CONVERSION", idempotency_key, payload.model_dump())
+        return ConversionResponse.model_validate(result)
+    except HTTPException:
+        raise
+    except Exception:
+        raise HTTPException(status_code=500, detail={"code":"PERSISTENCE_INTEGRITY_FAILURE","message":"Conversion could not be persisted safely"}) from None
+    finally:
+        conn.close()
+
+
 @router.post("/transfers/ach", response_model=AchTransferResponse)
 @router.post("/ach/transfers", response_model=AchTransferResponse)
-def initiate_ach_transfer(envelope: CryptographicEnvelope, response: Response):
+def initiate_ach_transfer(envelope: CryptographicEnvelope, response: Response,
+                          idempotency_key: str | None = Header(None, alias="Idempotency-Key")):
     """Initiates an ACH transfer from an encrypted client envelope."""
     payload = _decrypt_envelope_to_model(envelope, AchTransferCreate)
     conn = get_connection()
     try:
-        status_code, resp_model = process_ach_transfer(conn, payload)
+        if not idempotency_key:
+            raise HTTPException(422, detail={"code":"INVALID_IDEMPOTENCY_KEY","message":"Idempotency-Key header is required"})
+        from services import process_ach_transfer_stage4
+        status_code, resp_model = process_ach_transfer_stage4(conn, payload, idempotency_key)
         response.status_code = status_code
         return resp_model
     finally:
@@ -574,12 +667,24 @@ def initiate_ach_transfer(envelope: CryptographicEnvelope, response: Response):
 
 @router.post("/transfers/{transfer_id}/confirm-mfa", response_model=MFAConfirmResponse)
 @router.post("/transfers/{transfer_id}/mfa", response_model=MFAConfirmResponse)
-def confirm_mfa(transfer_id: str, envelope: CryptographicEnvelope):
+def confirm_mfa(transfer_id: str, envelope: CryptographicEnvelope,
+                idempotency_key: str | None = Header(None, alias="Idempotency-Key")):
     """Submits encrypted MFA code to finalize a sensitive pending transfer."""
     payload = _decrypt_envelope_to_model(envelope, MFACodeConfirm)
     conn = get_connection()
     try:
         cursor = conn.cursor()
+        stage4 = cursor.execute("SELECT stage4_command_id FROM transfers WHERE id=?", (transfer_id,)).fetchone()
+        if stage4 and stage4[0]:
+            if idempotency_key is None:
+                raise HTTPException(status_code=422, detail={"code": "INVALID_IDEMPOTENCY_KEY", "message": "Idempotency-Key header is required"})
+            try:
+                result, _replay = confirm_stage4_mfa(conn, transfer_id, idempotency_key, payload)
+            except HTTPException:
+                raise
+            except Exception:
+                raise HTTPException(status_code=500, detail={"code":"PERSISTENCE_INTEGRITY_FAILURE","message":"MFA confirmation could not be persisted safely"}) from None
+            return MFAConfirmResponse.model_validate(result)
 
         cursor.execute(
             "SELECT id, source_account_id, destination_account_id, amount, status, expires_at, transfer_type FROM transfers WHERE id = ?;",
@@ -731,12 +836,16 @@ def get_user_recurring_schedules():
 
 
 @router.post("/recurring-schedules", response_model=RecurringScheduleResponse)
-def create_new_recurring_schedule(envelope: CryptographicEnvelope, response: Response):
+def create_new_recurring_schedule(envelope: CryptographicEnvelope, response: Response,
+                                  idempotency_key: str | None = Header(None, alias="Idempotency-Key")):
     """Creates a recurring payment schedule from an encrypted client envelope."""
     payload = _decrypt_envelope_to_model(envelope, RecurringScheduleCreate)
     conn = get_connection()
     try:
-        status_code, resp_model = create_recurring_schedule(conn, payload)
+        if not idempotency_key:
+            raise HTTPException(422, detail={"code":"INVALID_IDEMPOTENCY_KEY","message":"Idempotency-Key header is required"})
+        from services import create_recurring_schedule_stage4
+        status_code, resp_model = create_recurring_schedule_stage4(conn, payload, idempotency_key)
         response.status_code = status_code
         return resp_model
     finally:
@@ -744,12 +853,16 @@ def create_new_recurring_schedule(envelope: CryptographicEnvelope, response: Res
 
 
 @router.post("/recurring-schedules/{schedule_id}/confirm-mfa", response_model=RecurringScheduleResponse)
-def confirm_schedule_mfa(schedule_id: str, envelope: CryptographicEnvelope):
+def confirm_schedule_mfa(schedule_id: str, envelope: CryptographicEnvelope,
+                         idempotency_key: str | None = Header(None, alias="Idempotency-Key")):
     """Validates encrypted MFA code for a sensitive recurring schedule."""
     payload = _decrypt_envelope_to_model(envelope, MFACodeConfirm)
     conn = get_connection()
     try:
-        return confirm_recurring_schedule_mfa(conn, schedule_id, payload.code)
+        if not idempotency_key:
+            raise HTTPException(422,detail={"code":"INVALID_IDEMPOTENCY_KEY","message":"Idempotency-Key header is required"})
+        from services import confirm_recurring_schedule_mfa_stage4
+        return confirm_recurring_schedule_mfa_stage4(conn,schedule_id,payload,idempotency_key)
     finally:
         conn.close()
 

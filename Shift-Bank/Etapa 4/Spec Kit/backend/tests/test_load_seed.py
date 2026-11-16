@@ -32,7 +32,7 @@ def test_synthetic_load_db_seeding(synthetic_load_db):
     raw_conn = sqlite3.connect(db_path)
     cursor = raw_conn.cursor()
 
-    cursor.execute("SELECT id, name, balance, currency FROM accounts ORDER BY id ASC;")
+    cursor.execute("SELECT id, name, balance, currency FROM accounts WHERE currency = 'COP' ORDER BY id ASC;")
     accounts = cursor.fetchall()
     assert len(accounts) >= 6
 

@@ -108,7 +108,10 @@ def seed_load_database(db_path: str = DEFAULT_LOAD_DB_PATH, clean: bool = True) 
     conn.commit()
 
     # 4. Verify integrity and consistency
-    cursor.execute("SELECT COUNT(*) FROM accounts;")
+    # This synthetic benchmark profile contains COP account funds only. Stage 4
+    # adds USD/EUR/GBP reference accounts, whose balances must not be summed into
+    # a COP total.
+    cursor.execute("SELECT COUNT(*) FROM accounts WHERE currency = 'COP';")
     account_count = cursor.fetchone()[0]
 
     cursor.execute("PRAGMA integrity_check;")
@@ -141,7 +144,7 @@ def verify_funds_conservation(db_path: str = DEFAULT_LOAD_DB_PATH, expected_tota
     conn = database.get_connection(target_path)
     cursor = conn.cursor()
 
-    cursor.execute("SELECT id, name, balance FROM accounts;")
+    cursor.execute("SELECT id, name, balance FROM accounts WHERE currency = 'COP';")
     rows = cursor.fetchall()
     conn.close()
 

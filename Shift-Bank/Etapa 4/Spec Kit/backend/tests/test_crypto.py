@@ -10,6 +10,18 @@ from cryptography.hazmat.primitives.ciphers.aead import AESGCM
 import crypto
 from fastapi.testclient import TestClient
 from main import app
+import database
+
+
+def add_expected_versions(payload):
+    conn = database.get_connection()
+    try:
+        versions = dict(conn.cursor().execute("SELECT id,version FROM accounts").fetchall())
+    finally:
+        conn.close()
+    payload["expected_versions"] = {payload["source_account_id"]: int(versions[payload["source_account_id"]]),
+                                     payload["destination_account_id"]: int(versions[payload["destination_account_id"]])}
+    return payload
 
 
 def create_client_envelope(payload_dict: dict, public_pem: str) -> dict:
@@ -151,11 +163,11 @@ def test_api_transfer_with_encrypted_envelope():
     client = TestClient(app)
     pub_pem = crypto.load_public_key_pem()
 
-    transfer_data = {
+    transfer_data = add_expected_versions({
         "source_account_id": "acc_checking_123",
         "destination_account_id": "acc_savings_456",
         "amount": "200000.00",
-    }
+    })
     envelope = create_client_envelope(transfer_data, pub_pem)
 
     res = client.post("/api/transfers", json=envelope)
@@ -203,11 +215,11 @@ def test_api_sensitive_transfer_and_encrypted_mfa():
     pub_pem = crypto.load_public_key_pem()
 
     # 1. Initiate sensitive transfer
-    transfer_data = {
+    transfer_data = add_expected_versions({
         "source_account_id": "acc_checking_123",
         "destination_account_id": "acc_savings_456",
         "amount": "1200000.00",
-    }
+    })
     envelope = create_client_envelope(transfer_data, pub_pem)
 
     res = client.post("/api/transfers", json=envelope)
@@ -217,7 +229,9 @@ def test_api_sensitive_transfer_and_encrypted_mfa():
     tx_id = data["id"]
 
     # 2. Confirm MFA with encrypted PIN
-    mfa_data = {"code": "123456"}
+    mfa_data = {"code": "123456", "expected_versions": add_expected_versions({
+        "source_account_id": "acc_checking_123", "destination_account_id": "acc_savings_456", "amount": "1.00"
+    })["expected_versions"]}
     mfa_envelope = create_client_envelope(mfa_data, pub_pem)
 
     confirm_res = client.post(f"/api/transfers/{tx_id}/confirm-mfa", json=mfa_envelope)
@@ -293,11 +307,11 @@ def test_fail_closed_encryption_failure_injection(monkeypatch):
 
     client = TestClient(app)
     pub_pem = crypto.load_public_key_pem()
-    transfer_data = {
+    transfer_data = add_expected_versions({
         "source_account_id": "acc_checking_123",
         "destination_account_id": "acc_savings_456",
         "amount": "100000.00",
-    }
+    })
     envelope = create_client_envelope(transfer_data, pub_pem)
 
     res = client.post("/api/transfers", json=envelope)

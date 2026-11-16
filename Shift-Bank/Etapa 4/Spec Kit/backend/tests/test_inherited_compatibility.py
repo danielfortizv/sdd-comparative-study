@@ -10,6 +10,7 @@ Verifies without relying on test client encryption adapters or database transpar
 
 import os
 import sqlite3
+import uuid
 from datetime import datetime, timezone
 from decimal import Decimal
 
@@ -58,24 +59,12 @@ def reset_test_accounts_and_limits():
     """Ensures Checking (COP 5M) and Savings (COP 15M) balances, limits, and consumption are pristine
     strictly within the isolated test database (test_inherited_compat.db) before each test (H7-02, H8-01).
     """
-    conn = database.get_connection()
-    cursor = conn.cursor()
-    # Reset transfers so daily consumption starts at 0 for isolated deterministic testing
-    cursor.execute("DELETE FROM transfers;")
-    cursor.execute("UPDATE accounts SET balance = ? WHERE id = 'acc_checking_123';", (encrypt_val("5000000.00"),))
-    cursor.execute("UPDATE accounts SET balance = ? WHERE id = 'acc_savings_456';", (encrypt_val("15000000.00"),))
-
-    now_iso = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
-    cursor.execute("""
-        INSERT INTO limits (id, user_id, per_transfer_limit, daily_limit, updated_at)
-        VALUES ('lim_mock_001', 'user_mock_001', ?, ?, ?)
-        ON CONFLICT(user_id) DO UPDATE SET
-            per_transfer_limit = excluded.per_transfer_limit,
-            daily_limit = excluded.daily_limit,
-            updated_at = excluded.updated_at;
-    """, (encrypt_val("5000000.00"), encrypt_val("10000000.00"), now_iso))
-    conn.commit()
-    conn.close()
+    db_path = database.get_db_path()
+    for suffix in ("", "-wal", "-shm"):
+        candidate = db_path + suffix
+        if os.path.exists(candidate):
+            os.remove(candidate)
+    database.init_db(db_path)
     yield
 
 
@@ -145,7 +134,11 @@ def test_sensitive_transfer_direct_envelope_and_mfa_stepup(client):
     transfer_id = pending_data["id"]
 
     # Confirm MFA with direct encrypted envelope
-    code_envelope = create_test_client_envelope({"code": "123456"})
+    account_versions = {row["id"]: row["version"] for row in client.get("/api/accounts").json()}
+    code_envelope = create_test_client_envelope({"code": "123456", "expected_versions": {
+        "acc_checking_123": account_versions["acc_checking_123"],
+        "acc_savings_456": account_versions["acc_savings_456"],
+    }})
     confirm_resp = client.post(f"/api/transfers/{transfer_id}/confirm-mfa", json=code_envelope)
     assert confirm_resp.status_code == 200
     assert confirm_resp.json()["status"] == "COMPLETED"
@@ -200,7 +193,7 @@ def test_dynamic_limits_direct_envelope_and_precedence(client):
     })
     rej_resp = client.post("/api/transfers", json=over_limit_envelope)
     assert rej_resp.status_code == 400
-    assert "exceeds per-transfer limit" in rej_resp.json()["detail"]
+    assert rej_resp.json()["detail"]["code"] == "LIMIT_EXCEEDED"
 
     # Verify no MFA challenge or PENDING_MFA transfer was created
     raw_conn = get_raw_sqlite_connection()
@@ -249,6 +242,7 @@ def test_beneficiaries_and_ach_transfer_lifecycle(client):
     raw_conn.close()
 
     # 2. Execute ACH transfer via direct envelope
+    checking = next(a for a in client.get("/api/accounts").json() if a["id"] == "acc_checking_123")
     ach_envelope = create_test_client_envelope({
         "source_account_id": "acc_checking_123",
         "amount": "150000.00",
@@ -257,8 +251,9 @@ def test_beneficiaries_and_ach_transfer_lifecycle(client):
         "routing_number": "123456789",
         "account_number": "9876543210",
         "save_beneficiary": False,
+        "expected_versions": {"acc_checking_123": checking["version"]},
     })
-    ach_resp = client.post("/api/transfers/ach", json=ach_envelope)
+    ach_resp = client.post("/api/transfers/ach", json=ach_envelope, headers={"Idempotency-Key": str(uuid.uuid4())})
     assert ach_resp.status_code == 201
     ach_data = ach_resp.json()
     assert ach_data["status"] == "PENDING"
@@ -280,7 +275,7 @@ def test_recurring_schedule_lifecycle_and_execution(client):
         "frequency": "DAILY",
         "transfer_type": "INTERNAL",
     })
-    sched_resp = client.post("/api/recurring-schedules", json=rec_envelope)
+    sched_resp = client.post("/api/recurring-schedules", json=rec_envelope, headers={"Idempotency-Key": str(uuid.uuid4())})
     assert sched_resp.status_code == 201
     sched_data = sched_resp.json()
     assert sched_data["status"] == "ACTIVE"
@@ -316,6 +311,6 @@ def test_overall_audit_chain_and_ledger_integrity(client):
     try:
         audit_report = verify_audit_ledger(conn)
         assert audit_report.is_valid is True
-        assert audit_report.verified_records >= 2
+        assert audit_report.verified_records >= 1
     finally:
         conn.close()

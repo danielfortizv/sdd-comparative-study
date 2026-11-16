@@ -21,6 +21,7 @@ import ssl
 import subprocess
 import sys
 import time
+import uuid
 import urllib.error
 import urllib.parse
 import urllib.request
@@ -382,6 +383,119 @@ def run_deployment_smoke_tests(
     return results
 
 
+def run_stage4_smoke_tests(
+    https_base_url: str,
+    http_base_url: str,
+    cert_path: str,
+    admin_key: str,
+    compose_file: str,
+    compose_project: str,
+) -> dict:
+    """Exercise Stage 4 through the isolated HTTPS/Nginx deployment contract."""
+    ssl_ctx = create_ssl_context(cert_path)
+    results = {}
+    status, _, headers = make_request(f"{http_base_url}/api/health", follow_redirects=False)
+    redirect_ok = status in (301, 308) and headers.get("Location", "").startswith("https://")
+    results["http_to_https_redirect"] = {"status": status, "passed": redirect_ok}
+    assert redirect_ok, f"HTTP did not redirect to HTTPS: {status}"
+
+    status, html, _ = make_request(f"{https_base_url}/", ssl_context=ssl_ctx)
+    spa_ok = status == 200 and isinstance(html, str) and ("<div id=\"root\"" in html or "<!doctype html>" in html.lower())
+    results["https_spa"] = {"status": status, "passed": spa_ok}
+    assert spa_ok, f"HTTPS SPA failed: {status}"
+
+    status, health, _ = make_request(f"{https_base_url}/api/health", ssl_context=ssl_ctx)
+    healthy = status == 200 and health.get("status") == "healthy" and health.get("database") == "connected" and health.get("crypto_keys_loaded") is True
+    results["health"] = {"status": status, "body": health, "passed": healthy}
+    assert healthy, f"Stage 4 health failed: {health}"
+
+    status, accounts, _ = make_request(f"{https_base_url}/api/accounts", ssl_context=ssl_ctx)
+    assert status == 200 and isinstance(accounts, list), f"Account query failed: {status}"
+    initial = {a["id"]: a for a in accounts}
+    expected_accounts = {
+        "acc_checking_123": ("COP", Decimal("5000000.00")),
+        "acc_savings_456": ("COP", Decimal("15000000.00")),
+        "CHK-1001": ("USD", Decimal("2500.00")),
+        "SAV-2001": ("USD", Decimal("10000.00")),
+        "EUR-3001": ("EUR", Decimal("0.00")),
+        "GBP-4001": ("GBP", Decimal("0.00")),
+    }
+    for account_id, (currency, balance) in expected_accounts.items():
+        item = initial.get(account_id)
+        assert item and item.get("currency") == currency and Decimal(item["balance"]) == balance, f"Account mismatch: {account_id}"
+    results["currency_accounts"] = {"count": len(accounts), "passed": True}
+
+    status, pub_key_resp, _ = make_request(f"{https_base_url}/api/crypto/public-key", ssl_context=ssl_ctx)
+    assert status == 200 and "public_key" in pub_key_resp, "RSA public key endpoint failed"
+    pub_key_pem = pub_key_resp["public_key"]
+    source, destination = "CHK-1001", "SAV-2001"
+    key = str(uuid.uuid4())
+    payload = {
+        "source_account_id": source,
+        "destination_account_id": destination,
+        "amount": "0.01",
+        "expected_versions": {source: initial[source]["version"], destination: initial[destination]["version"]},
+    }
+    envelope = create_client_envelope(pub_key_pem, payload)
+    headers = {"Idempotency-Key": key}
+    status, transfer, _ = make_request(f"{https_base_url}/api/transfers", method="POST", data=envelope, headers=headers, ssl_context=ssl_ctx)
+    assert status in (200, 201) and transfer.get("status") == "COMPLETED", f"Encrypted Stage 4 transfer failed: {status} {transfer}"
+    results["encrypted_versioned_transfer"] = {"status": status, "passed": True}
+
+    status, after, _ = make_request(f"{https_base_url}/api/accounts", ssl_context=ssl_ctx)
+    assert status == 200, "Post-transfer account query failed"
+    post = {a["id"]: a for a in after}
+    assert Decimal(post[source]["balance"]) == Decimal(initial[source]["balance"]) - Decimal("0.01")
+    assert Decimal(post[destination]["balance"]) == Decimal(initial[destination]["balance"]) + Decimal("0.01")
+    assert all(post[a]["balance"] == initial[a]["balance"] for a in ("acc_checking_123", "acc_savings_456", "EUR-3001", "GBP-4001"))
+
+    status, replay, _ = make_request(f"{https_base_url}/api/transfers", method="POST", data=envelope, headers=headers, ssl_context=ssl_ctx)
+    assert status in (200, 201) and replay.get("id") == transfer.get("id"), f"Idempotent replay failed: {status} {replay}"
+    status, changed, _ = make_request(f"{https_base_url}/api/accounts", ssl_context=ssl_ctx)
+    assert status == 200 and {a["id"]: a["balance"] for a in changed} == {a["id"]: a["balance"] for a in after}, "Replay applied a second financial effect"
+    changed_payload = {**payload, "amount": "0.02"}
+    status, conflict, _ = make_request(f"{https_base_url}/api/transfers", method="POST", data=create_client_envelope(pub_key_pem, changed_payload), headers=headers, ssl_context=ssl_ctx)
+    assert status == 409 and conflict.get("detail", {}).get("code") == "IDEMPOTENCY_KEY_CONFLICT", f"Idempotency conflict code mismatch: {status} {conflict}"
+    results["idempotency_replay_and_conflict"] = {"replay_status": 200, "conflict_status": status, "passed": True}
+
+    effective_admin_key = admin_key or os.environ.get("AUDIT_ADMIN_KEY", "")
+    assert effective_admin_key, "Test-only audit admin key was not supplied"
+    admin_headers = {"X-Audit-Admin-Key": effective_admin_key}
+    status, audit, _ = make_request(f"{https_base_url}/api/audit/verify", headers=admin_headers, ssl_context=ssl_ctx)
+    assert status == 200 and audit.get("is_valid") is True, f"Audit HMAC verification failed: {audit}"
+    status, projection, _ = make_request(f"{https_base_url}/api/projections/status", headers=admin_headers, ssl_context=ssl_ctx)
+    assert status == 200 and projection.get("checkpoint_sequence", 0) <= projection.get("latest_event_sequence", -1), f"Projection status is invalid: {projection}"
+    status, rebuild, _ = make_request(f"{https_base_url}/api/projections/rebuild", method="POST", headers=admin_headers, ssl_context=ssl_ctx)
+    assert status == 200 and rebuild.get("latest_event_sequence") == rebuild.get("checkpoint_sequence"), f"Projection replay/checkpoint failed: {rebuild}"
+    results["audit_and_projection_replay"] = {"audit_records": audit.get("verified_records"), "rebuilt_events": rebuild.get("rebuilt_events"), "passed": True}
+
+    status, _, _ = make_request(f"{https_base_url}/api/audit/verify", ssl_context=ssl_ctx)
+    assert status in (401, 403), f"Audit endpoint accepted missing credentials: {status}"
+    results["unauthorized_audit_rejected"] = {"status": status, "passed": True}
+
+    before_restart = {a["id"]: a["balance"] for a in changed}
+    cmd = ["docker", "compose", "-p", compose_project, "-f", compose_file, "restart", "backend"]
+    subprocess.run(cmd, cwd=PROJECT_ROOT, check=True, capture_output=True, text=True)
+    time.sleep(5)
+    ready = False
+    for _ in range(20):
+        try:
+            status, health, _ = make_request(f"{https_base_url}/api/health", ssl_context=ssl_ctx)
+            if status == 200 and health.get("status") == "healthy":
+                ready = True
+                break
+        except Exception:
+            pass
+        time.sleep(1)
+    assert ready, "Backend did not recover after isolated restart"
+    status, persisted, _ = make_request(f"{https_base_url}/api/accounts", ssl_context=ssl_ctx)
+    assert status == 200 and {a["id"]: a["balance"] for a in persisted} == before_restart, "Balances changed across restart"
+    status, persisted_audit, _ = make_request(f"{https_base_url}/api/audit/verify", headers=admin_headers, ssl_context=ssl_ctx)
+    assert status == 200 and persisted_audit.get("is_valid") is True, "Audit changed across restart"
+    results["restart_persistence"] = {"passed": True, "audit_valid": True}
+    return results
+
+
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Shift Bank Stage 3 Deployment Smoke Test")
     parser.add_argument("--https-url", default=DEFAULT_HTTPS_URL, help="Base HTTPS URL (default: https://localhost:8443)")
@@ -391,9 +505,21 @@ if __name__ == "__main__":
     parser.add_argument("--compose-file", default="deployment/docker-compose.yml", help="Compose file used for isolated restart verification")
     parser.add_argument("--compose-project", default="", help="Compose project name used for isolated restart verification")
     parser.add_argument("--skip-restart", action="store_true", help="Skip container restart test")
+    parser.add_argument("--stage4", action="store_true", help="Run Stage 4 isolated deployment checks")
     args = parser.parse_args()
 
-    run_deployment_smoke_tests(
+    if args.stage4:
+        results = run_stage4_smoke_tests(
+            https_base_url=args.https_url,
+            http_base_url=args.http_url,
+            cert_path=args.cert_path,
+            admin_key=args.admin_key,
+            compose_file=args.compose_file,
+            compose_project=args.compose_project,
+        )
+        print(json.dumps(results, sort_keys=True))
+    else:
+        run_deployment_smoke_tests(
         https_base_url=args.https_url,
         http_base_url=args.http_url,
         cert_path=args.cert_path,
@@ -401,4 +527,4 @@ if __name__ == "__main__":
         test_restarts=not args.skip_restart,
         compose_file=args.compose_file,
         compose_project=args.compose_project,
-    )
+        )

@@ -11,6 +11,7 @@ import {
   AchTransferResponse,
   RecurringSchedule,
   RecurringScheduleCreate,
+  ConversionResponse,
 } from './types';
 import { encryptPayload } from './crypto';
 
@@ -30,6 +31,36 @@ function getErrorMessage(errData: any, defaultMsg: string): string {
     return errData.detail.detail || JSON.stringify(errData.detail);
   }
   return String(errData.detail);
+}
+
+export class BankApiError extends Error {
+  constructor(message: string, readonly code: string | undefined, readonly status: number) {
+    super(message);
+    this.name = 'BankApiError';
+  }
+}
+
+export function createIdempotencyKey(): string {
+  return globalThis.crypto.randomUUID();
+}
+
+async function readApiError(res: Response, fallback: string): Promise<BankApiError> {
+  const data = await res.json().catch(() => ({}));
+  const detail = data?.detail;
+  const code = typeof detail === 'object' ? detail.code : undefined;
+  const message = typeof detail === 'object' ? detail.message : getErrorMessage(data, fallback);
+  return new BankApiError(message || fallback, code, res.status);
+}
+
+async function encryptedPost<T>(path: string, payload: object, key: string): Promise<T> {
+  const envelope = await encryptPayload(payload);
+  const res = await fetch(`${API_BASE_URL}${path}`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', 'Idempotency-Key': key },
+    body: JSON.stringify(envelope),
+  });
+  if (!res.ok && res.status !== 202 && res.status !== 201) throw await readApiError(res, 'Bank request failed');
+  return res.json();
 }
 
 /**
@@ -64,25 +95,16 @@ export async function fetchHistory(accountId: string): Promise<HistoryEntry[]> {
 export async function initiateTransfer(
   sourceAccountId: string,
   destinationAccountId: string,
-  amount: string
+  amount: string,
+  expectedVersions: Record<string, number> = {},
+  key = createIdempotencyKey(),
 ): Promise<Transfer> {
-  const envelope = await encryptPayload({
+  return encryptedPost<Transfer>('/transfers', {
     source_account_id: sourceAccountId,
     destination_account_id: destinationAccountId,
     amount,
-  });
-
-  const res = await fetch(`${API_BASE_URL}/transfers`, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(envelope),
-  });
-
-  if (!res.ok && res.status !== 202) {
-    const errData = await res.json().catch(() => ({}));
-    throw new Error(getErrorMessage(errData, 'Failed to initiate transfer'));
-  }
-  return res.json();
+    expected_versions: expectedVersions,
+  }, key);
 }
 
 /**
@@ -91,21 +113,15 @@ export async function initiateTransfer(
  */
 export async function confirmMFA(
   transferId: string,
-  code: string
+  code: string,
+  expectedVersions: Record<string, number> = {},
+  key = createIdempotencyKey(),
 ): Promise<MFAConfirmResponse> {
-  const envelope = await encryptPayload({ code });
+  return encryptedPost(`/transfers/${transferId}/confirm-mfa`, { code, expected_versions: expectedVersions }, key);
+}
 
-  const res = await fetch(`${API_BASE_URL}/transfers/${transferId}/confirm-mfa`, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(envelope),
-  });
-
-  if (!res.ok) {
-    const errData = await res.json().catch(() => ({}));
-    throw new Error(getErrorMessage(errData, 'Failed to verify MFA code'));
-  }
-  return res.json();
+export async function convertFunds(payload: { source_account_id: string; destination_account_id: string; source_amount: string; expected_versions: Record<string, number> }, key: string): Promise<ConversionResponse> {
+  return encryptedPost('/conversions', payload, key);
 }
 
 /**
@@ -191,20 +207,8 @@ export async function deleteBeneficiary(id: string): Promise<void> {
  * Encrypts ACH transfer details into CryptographicEnvelope.
  * Can return 201 Created (Pending settlement) or 202 Accepted (Pending MFA).
  */
-export async function initiateAchTransfer(payload: AchTransferCreate): Promise<AchTransferResponse> {
-  const envelope = await encryptPayload(payload);
-
-  const res = await fetch(`${API_BASE_URL}/transfers/ach`, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(envelope),
-  });
-
-  if (!res.ok && res.status !== 202) {
-    const errData = await res.json().catch(() => ({}));
-    throw new Error(getErrorMessage(errData, 'Failed to initiate ACH transfer'));
-  }
-  return res.json();
+export async function initiateAchTransfer(payload: AchTransferCreate, key = createIdempotencyKey()): Promise<AchTransferResponse> {
+  return encryptedPost('/transfers/ach', payload, key);
 }
 
 /**
@@ -224,40 +228,16 @@ export async function fetchSchedules(): Promise<RecurringSchedule[]> {
  * Encrypts schedule instructions into CryptographicEnvelope.
  * Can return 201 Created (ACTIVE) or 202 Accepted (PENDING_MFA).
  */
-export async function createSchedule(payload: RecurringScheduleCreate): Promise<RecurringSchedule> {
-  const envelope = await encryptPayload(payload);
-
-  const res = await fetch(`${API_BASE_URL}/recurring-transfers`, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(envelope),
-  });
-
-  if (!res.ok && res.status !== 202) {
-    const errData = await res.json().catch(() => ({}));
-    throw new Error(getErrorMessage(errData, 'Failed to create recurring schedule'));
-  }
-  return res.json();
+export async function createSchedule(payload: RecurringScheduleCreate, key = createIdempotencyKey()): Promise<RecurringSchedule> {
+  return encryptedPost('/recurring-schedules', payload, key);
 }
 
 /**
  * Stage 2: Confirms MFA code for a sensitive recurring schedule (D-03, D-05).
  * Encrypts MFA code into CryptographicEnvelope.
  */
-export async function confirmScheduleMFA(scheduleId: string, code: string): Promise<RecurringSchedule> {
-  const envelope = await encryptPayload({ code });
-
-  const res = await fetch(`${API_BASE_URL}/recurring-transfers/${scheduleId}/confirm-mfa`, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(envelope),
-  });
-
-  if (!res.ok) {
-    const errData = await res.json().catch(() => ({}));
-    throw new Error(getErrorMessage(errData, 'Failed to verify schedule MFA code'));
-  }
-  return res.json();
+export async function confirmScheduleMFA(scheduleId: string, code: string, expectedVersions: Record<string, number> = {}, key = createIdempotencyKey()): Promise<RecurringSchedule> {
+  return encryptedPost(`/recurring-schedules/${scheduleId}/confirm-mfa`, { code, expected_versions: expectedVersions }, key);
 }
 
 /**

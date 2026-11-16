@@ -13,6 +13,8 @@ def reset_db():
     """Resets the isolated test database before each test."""
     conn = get_connection()
     cursor = conn.cursor()
+    for table in ("recurring_occurrences", "history_projection", "domain_events", "idempotency_records", "projection_checkpoints", "stage4_migration_markers"):
+        cursor.execute(f"DROP TABLE IF EXISTS {table};")
     cursor.execute("DROP TABLE IF EXISTS recurring_schedules;")
     cursor.execute("DROP TABLE IF EXISTS limits;")
     cursor.execute("DROP TABLE IF EXISTS beneficiaries;")
@@ -217,7 +219,8 @@ def test_ach_limits_evaluated_before_mfa():
     resp = client.post("/api/transfers/ach", json=payload)
     # Must fail immediately with 400, never enter PENDING_MFA (A14)
     assert resp.status_code == 400
-    assert "per-transfer limit" in resp.json()["detail"].lower()
+    assert resp.json()["detail"]["code"] == "LIMIT_EXCEEDED"
+    assert "limit" in resp.json()["detail"]["message"].lower()
 
 
 def test_sensitive_ach_transfer_and_mfa_confirmation():

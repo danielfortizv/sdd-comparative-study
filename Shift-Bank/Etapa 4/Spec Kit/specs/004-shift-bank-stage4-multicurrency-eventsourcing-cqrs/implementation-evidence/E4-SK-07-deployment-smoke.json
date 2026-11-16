@@ -1,0 +1,20 @@
+{
+  "command": "python deployment/smoke_test.py --stage4 --https-url https://localhost:18443 --http-url http://localhost:18080 --cert-path .e4sk07-deploy-test/certs/localhost_cert.pem --compose-file .e4sk07-compose.yml --compose-project e4sk07",
+  "compose_project": "e4sk07",
+  "services": ["backend", "nginx"],
+  "test_only_secrets": "generated randomly and not recorded",
+  "isolated_volume": "e4sk07_e4sk07_stage4_data (created for this run)",
+  "results": {
+    "http_to_https_redirect": {"passed": true, "status": 301},
+    "https_spa": {"passed": true, "status": 200},
+    "health": {"passed": true, "status": 200, "database": "connected", "crypto_keys_loaded": true, "scheduler_active": true},
+    "currency_accounts": {"passed": true, "count": 6, "COP_and_D02_initial_values_verified": true},
+    "encrypted_versioned_transfer": {"passed": true, "status": 200, "same_currency_USD": true},
+    "idempotency_replay": {"passed": true, "replay_status": 200, "no_duplicate_financial_effect": true},
+    "idempotency_conflict": {"passed": true, "status": 409, "code": "IDEMPOTENCY_KEY_CONFLICT"},
+    "projection_rebuild": {"passed": true, "events_rebuilt": 9},
+    "audit_hmac_verification": {"passed": true, "verified_records": 3},
+    "unauthorized_audit_rejection": {"passed": true, "status": 401},
+    "backend_restart_persistence": {"passed": true, "balances_and_audit_preserved": true}
+  }
+}

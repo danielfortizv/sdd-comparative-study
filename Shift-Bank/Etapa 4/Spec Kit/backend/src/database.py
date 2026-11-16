@@ -1,6 +1,7 @@
 import os
 import sqlite3
 import sys
+import hashlib
 from datetime import datetime, timezone
 
 # Define default database file path in the backend directory
@@ -168,6 +169,163 @@ def migrate_legacy_plaintext_records(conn: sqlite3.Connection, storage_key: byte
 
         conn.commit()
         return migrated_fields
+    except Exception:
+        conn.rollback()
+        raise
+
+
+def migrate_stage4(conn: sqlite3.Connection) -> dict:
+    """Atomically snapshot inherited COP state and provision D-02 accounts once.
+
+    Historical transfers are imported into the event/history stream without applying
+    their value to balances; account snapshots represent the current cutover balances.
+    """
+    from services import decrypt_val, encrypt_val, append_audit_record
+    from event_store import append_event
+    from money import to_minor, format_minor
+    from datetime import datetime, timezone
+    import uuid
+
+    cursor = conn.cursor()
+    cursor.execute("BEGIN IMMEDIATE")
+    try:
+        cursor.execute("""
+            CREATE TABLE IF NOT EXISTS stage4_migration_markers(
+                migration_key TEXT PRIMARY KEY, applied_at TEXT NOT NULL, account_count INTEGER NOT NULL,
+                history_count INTEGER NOT NULL
+            )
+        """)
+        cursor.execute("""
+            CREATE TABLE IF NOT EXISTS domain_events(
+                sequence INTEGER PRIMARY KEY AUTOINCREMENT,
+                event_id TEXT NOT NULL UNIQUE, command_id TEXT NOT NULL,
+                event_type TEXT NOT NULL, schema_version INTEGER NOT NULL,
+                occurred_at TEXT NOT NULL, account_ids_json TEXT NOT NULL,
+                payload_json TEXT NOT NULL
+            )
+        """)
+        cursor.execute("""
+            CREATE TABLE IF NOT EXISTS idempotency_records(
+                idempotency_key TEXT PRIMARY KEY, command_type TEXT NOT NULL,
+                request_fingerprint TEXT NOT NULL, response_json TEXT NOT NULL, created_at TEXT NOT NULL
+            )
+        """)
+        cursor.execute("""
+            CREATE TABLE IF NOT EXISTS history_projection(
+                history_id TEXT PRIMARY KEY, account_id TEXT NOT NULL REFERENCES accounts(id),
+                event_id TEXT NOT NULL, direction TEXT NOT NULL, amount_minor TEXT NOT NULL,
+                currency TEXT NOT NULL, occurred_at TEXT NOT NULL, description TEXT NOT NULL
+            )
+        """)
+        cursor.execute("""
+            CREATE TABLE IF NOT EXISTS projection_checkpoints(
+                projection_name TEXT PRIMARY KEY, event_sequence INTEGER NOT NULL,
+                event_hash TEXT NOT NULL, updated_at TEXT NOT NULL
+            )
+        """)
+        cursor.execute("""
+            CREATE TABLE IF NOT EXISTS recurring_occurrences(
+                schedule_id TEXT NOT NULL REFERENCES recurring_schedules(id),
+                occurrence_key TEXT NOT NULL,
+                command_id TEXT NOT NULL UNIQUE,
+                status TEXT NOT NULL,
+                created_at TEXT NOT NULL,
+                PRIMARY KEY(schedule_id, occurrence_key)
+            )
+        """)
+        cols = {row[1] for row in cursor.execute("PRAGMA table_info(accounts)").fetchall()}
+        for name, definition in (("balance_minor", "TEXT"), ("version", "INTEGER NOT NULL DEFAULT 0"),
+                                 ("provisioning_source", "TEXT")):
+            if name not in cols:
+                cursor.execute(f"ALTER TABLE accounts ADD COLUMN {name} {definition}")
+        transfer_cols = {row[1] for row in cursor.execute("PRAGMA table_info(transfers)").fetchall()}
+        if "currency" not in transfer_cols:
+            cursor.execute("ALTER TABLE transfers ADD COLUMN currency TEXT")
+        if "stage4_command_id" not in transfer_cols:
+            cursor.execute("ALTER TABLE transfers ADD COLUMN stage4_command_id TEXT")
+        if "expected_versions_json" not in transfer_cols:
+            cursor.execute("ALTER TABLE transfers ADD COLUMN expected_versions_json TEXT")
+        if "currency" not in {row[1] for row in cursor.execute("PRAGMA table_info(recurring_schedules)").fetchall()}:
+            cursor.execute("ALTER TABLE recurring_schedules ADD COLUMN currency TEXT NOT NULL DEFAULT 'COP'")
+        if "expected_versions_json" not in {row[1] for row in cursor.execute("PRAGMA table_info(recurring_schedules)").fetchall()}:
+            cursor.execute("ALTER TABLE recurring_schedules ADD COLUMN expected_versions_json TEXT")
+        cursor.execute("UPDATE transfers SET currency=COALESCE((SELECT currency FROM accounts WHERE accounts.id=transfers.source_account_id),'COP') WHERE currency IS NULL")
+        cursor.execute("CREATE TRIGGER IF NOT EXISTS trg_domain_events_no_update BEFORE UPDATE ON domain_events BEGIN SELECT RAISE(ABORT,'Domain events are append-only'); END")
+        cursor.execute("CREATE TRIGGER IF NOT EXISTS trg_domain_events_no_delete BEFORE DELETE ON domain_events BEGIN SELECT RAISE(ABORT,'Domain events are append-only'); END")
+        cursor.execute("CREATE TRIGGER IF NOT EXISTS trg_accounts_currency_immutable BEFORE UPDATE OF currency ON accounts WHEN NEW.currency <> OLD.currency BEGIN SELECT RAISE(ABORT,'Account currency is immutable'); END")
+
+        marker = cursor.execute("SELECT 1 FROM stage4_migration_markers WHERE migration_key='e4-cutover-v1'").fetchone()
+        if marker:
+            conn.commit()
+            return {"already_applied": True, "accounts": 0, "history": 0}
+
+        accounts = cursor.execute("SELECT id,name,balance,currency FROM accounts ORDER BY id").fetchall()
+        if not accounts:
+            raise RuntimeError("Cannot cut over an empty account set")
+        ref_ids = {"CHK-1001", "SAV-2001", "EUR-3001", "GBP-4001"}
+        for account_id, name, balance_text, currency in accounts:
+            if account_id in ref_ids:
+                continue
+            balance = to_minor(decrypt_val(balance_text))
+            cursor.execute("UPDATE accounts SET balance_minor=?,version=0,provisioning_source='E3_CUTOVER' WHERE id=?", (encrypt_val(str(balance)), account_id))
+            event_id = str(uuid.uuid5(uuid.NAMESPACE_URL, f"shift-bank:e4:opening:{account_id}"))
+            append_event(cursor, event_id=event_id, command_id=f"cutover:{account_id}",
+                         event_type="AccountOpeningBalanceSnapshot", account_ids=[account_id],
+                         payload={"account_id": account_id, "balance_minor": balance, "currency": currency})
+
+        ref_accounts = (
+            ("CHK-1001", "Checking USD", 250000, "USD"),
+            ("SAV-2001", "Savings USD", 1000000, "USD"),
+            ("EUR-3001", "Euro Account", 0, "EUR"),
+            ("GBP-4001", "Sterling Account", 0, "GBP"),
+        )
+        for account_id, name, balance, currency in ref_accounts:
+            existing = cursor.execute("SELECT name,balance,currency FROM accounts WHERE id=?", (account_id,)).fetchone()
+            if existing is not None:
+                existing_balance = to_minor(decrypt_val(existing[1]))
+                if existing[0] != name or existing[2] != currency or existing_balance != balance:
+                    raise RuntimeError(f"Conflicting pre-existing D-02 account {account_id}; migration aborted")
+            else:
+                cursor.execute("INSERT INTO accounts(id,name,balance,currency,balance_minor,version,provisioning_source) VALUES(?,?,?,?,?,0,'D02_REFERENCE')",
+                               (account_id, name, encrypt_val(format_minor(balance)), currency, encrypt_val(str(balance))))
+            cursor.execute("UPDATE accounts SET balance_minor=?,version=0,provisioning_source='D02_REFERENCE' WHERE id=?",
+                           (encrypt_val(str(balance)), account_id))
+            event_id = str(uuid.uuid5(uuid.NAMESPACE_URL, f"shift-bank:e4:opening:{account_id}"))
+            append_event(cursor, event_id=event_id, command_id=f"cutover:{account_id}",
+                         event_type="ReferenceAccountProvisioned", account_ids=[account_id],
+                         payload={"account_id": account_id, "balance_minor": balance, "currency": currency})
+
+        transfers = cursor.execute("SELECT id,source_account_id,destination_account_id,amount,status,created_at,transfer_type FROM transfers ORDER BY created_at,id").fetchall()
+        account_currency = {row[0]: row[3] for row in accounts}
+        for tx_id, source, destination, amount, tx_status, occurred_at, tx_type in transfers:
+            value = to_minor(decrypt_val(amount))
+            targets = [x for x in (source, destination) if x is not None]
+            event_id = str(uuid.uuid5(uuid.NAMESPACE_URL, f"shift-bank:e4:legacy-history:{tx_id}"))
+            append_event(cursor, event_id=event_id, command_id=f"legacy:{tx_id}",
+                         event_type="LegacyHistoryImported", account_ids=targets,
+                         occurred_at=occurred_at,
+                         payload={"history_id": tx_id, "source_account_id": source,
+                                  "destination_account_id": destination, "amount_minor": value,
+                                  "currency": account_currency.get(source, "COP"), "status": tx_status,
+                                  "transfer_type": tx_type})
+            for account_id, direction in ((source, "outgoing"), (destination, "incoming")):
+                if account_id:
+                    cursor.execute("INSERT INTO history_projection VALUES(?,?,?,?,?,?,?,?)",
+                                   (f"{tx_id}:{account_id}", account_id, event_id, direction, encrypt_val(str(value)),
+                                    account_currency.get(account_id, "COP"), occurred_at,
+                                    f"Legacy {tx_type} {tx_status.lower()}"))
+
+        now = datetime.now(timezone.utc).isoformat()
+        rows = cursor.execute("SELECT sequence,event_id,payload_json FROM domain_events ORDER BY sequence").fetchall()
+        seq = rows[-1][0] if rows else 0
+        event_hash = hashlib.sha256("".join(f"{r[0]}:{r[1]}:{r[2]}\n" for r in rows).encode()).hexdigest()
+        account_count = cursor.execute("SELECT COUNT(*) FROM accounts").fetchone()[0]
+        cursor.execute("INSERT INTO stage4_migration_markers VALUES('e4-cutover-v1',?,?,?)", (now, account_count, len(transfers)))
+        cursor.execute("INSERT OR REPLACE INTO projection_checkpoints VALUES('accounts',?,?,?)", (seq, event_hash, now))
+        append_audit_record(cursor, "STAGE4_CUTOVER_COMPLETED", "system", "e4-cutover-v1",
+                            {"account_count": account_count, "legacy_history_count": len(transfers)})
+        conn.commit()
+        return {"already_applied": False, "accounts": account_count, "history": len(transfers)}
     except Exception:
         conn.rollback()
         raise
@@ -399,13 +557,13 @@ def init_db(db_path: str | None = None):
         """, (now_iso,))
         conn.commit()
 
-    # 8. Stage 3: Safe, idempotent legacy plaintext migration (FR-013, T008)
-    if os.environ.get("BANK_STORAGE_KEY"):
-        try:
-            migrate_legacy_plaintext_records(conn)
-        except Exception as e:
-            conn.close()
-            raise RuntimeError(f"Database startup migration failed: {e}")
+    # 8. Safe, idempotent inherited encryption and Stage 4 cutover. Missing keys fail closed.
+    try:
+        migrate_legacy_plaintext_records(conn)
+        migrate_stage4(conn)
+    except Exception as e:
+        conn.close()
+        raise RuntimeError(f"Database startup migration failed: {e}")
 
     # Verify integrity and foreign key constraints
     cursor.execute("PRAGMA integrity_check;")

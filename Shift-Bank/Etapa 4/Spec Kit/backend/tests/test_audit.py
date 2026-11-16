@@ -161,18 +161,19 @@ def test_audit_immutability_triggers_prevent_update_and_delete(tmp_path):
 
     cursor.execute("""
         INSERT INTO audit_logs (id, timestamp, event_type, actor_id, resource_id, payload_digest, previous_hash, record_hmac)
-        VALUES (1, '2026-11-15T20:00:00Z', 'TEST_EVENT', 'user_mock_001', 'test_res', 'digest', 'prev', 'hmac');
+        VALUES ((SELECT COALESCE(MAX(id),0)+1 FROM audit_logs), '2026-11-15T20:00:00Z', 'TEST_EVENT', 'user_mock_001', 'test_res', 'digest', 'prev', 'hmac');
     """)
+    inserted_id = cursor.execute("SELECT MAX(id) FROM audit_logs").fetchone()[0]
     raw_conn.commit()
 
     # Attempt UPDATE
     with pytest.raises((sqlite3.OperationalError, sqlite3.IntegrityError)) as exc_update:
-        cursor.execute("UPDATE audit_logs SET event_type = 'MODIFIED' WHERE id = 1;")
+        cursor.execute("UPDATE audit_logs SET event_type = 'MODIFIED' WHERE id = ?;", (inserted_id,))
     assert "Audit log is append-only" in str(exc_update.value) or "immutable" in str(exc_update.value).lower()
 
     # Attempt DELETE
     with pytest.raises((sqlite3.OperationalError, sqlite3.IntegrityError)) as exc_delete:
-        cursor.execute("DELETE FROM audit_logs WHERE id = 1;")
+        cursor.execute("DELETE FROM audit_logs WHERE id = ?;", (inserted_id,))
     assert "Audit log is append-only" in str(exc_delete.value) or "immutable" in str(exc_delete.value).lower()
 
     raw_conn.close()
@@ -219,13 +220,14 @@ def test_audit_verification_detects_record_tampering(tmp_path):
 
     # Tamper with record 1 digest out-of-band (disabling trigger temporarily)
     cursor.execute("DROP TRIGGER IF EXISTS trg_prevent_audit_update;")
-    cursor.execute("UPDATE audit_logs SET payload_digest = 'tampered_bad_digest' WHERE id = 1;")
+    first_id = cursor.execute("SELECT MIN(id) FROM audit_logs").fetchone()[0]
+    cursor.execute("UPDATE audit_logs SET payload_digest = 'tampered_bad_digest' WHERE id = ?;", (first_id,))
     conn.commit()
 
     # Verify tamper is detected
     res_tampered = verify_audit_ledger(conn)
     assert res_tampered.is_valid is False
-    assert res_tampered.broken_sequence == 1
+    assert res_tampered.broken_sequence == first_id
     conn.close()
 
 
@@ -242,13 +244,13 @@ def test_audit_tail_truncation_detected_with_external_checkpoint(tmp_path):
     append_audit_record(cursor, "EVENT_2", "user_mock_001", "res_2")
     conn.commit()
 
-    # Capture checkpoint of current head (seq=2)
-    cursor.execute("SELECT id, record_hmac FROM audit_logs WHERE id = 2;")
+    # Capture checkpoint of the current head, including the Stage 4 cutover record.
+    cursor.execute("SELECT id, record_hmac FROM audit_logs ORDER BY id DESC LIMIT 1;")
     head_seq, head_hmac = cursor.fetchone()
 
-    # Truncate record 2 out-of-band
+    # Truncate the head out-of-band so preceding sequence IDs remain contiguous.
     cursor.execute("DROP TRIGGER IF EXISTS trg_prevent_audit_delete;")
-    cursor.execute("DELETE FROM audit_logs WHERE id = 2;")
+    cursor.execute("DELETE FROM audit_logs WHERE id = ?;", (head_seq,))
     conn.commit()
 
     # Verify against external checkpoint (expected_count=head_seq, expected_head_hash=head_hmac)

@@ -5,9 +5,9 @@ Features:
 2. TLS Verification: Uses trusted local development certificate for secure HTTPS verification (no verify=False).
 3. on_start: Fetches backend RSA public key from /api/crypto/public-key and loads account IDs.
 4. Workload distribution (FR-026):
-   - @task(6): Balance reads (GET /api/accounts) [60%]
-   - @task(3): History reads (GET /api/accounts/{id}/history) [30%]
-   - @task(1): Internal transfers (POST /api/transfers) with AES-GCM + RSA-OAEP envelope [10%]
+   - 6 balance reads per fixed operation cycle [60%]
+   - 3 history reads per fixed operation cycle [30%]
+   - 1 same-currency internal transfer per fixed operation cycle [10%]
 5. Concurrency & Timing Profile (FR-025, H5-02):
    - 30 virtual users ramped up at 5 users/sec.
    - Detects observed ramp-up completion when 30 active users are reached.
@@ -162,6 +162,12 @@ def on_request(request_type, name, response_time, response_length, response=None
         classification = "success"
     elif status_code == 400:
         classification = "expected_rejection"
+    elif status_code == 409 and response is not None:
+        try:
+            code = response.json().get("detail", {}).get("code")
+        except Exception:
+            code = None
+        classification = "expected_rejection" if code == "ACCOUNT_VERSION_CONFLICT" else "unexpected_failure"
     elif status_code is not None and status_code >= 500:
         classification = "unexpected_failure"
     elif status_code is not None and status_code in (401, 403, 404, 422):
@@ -291,8 +297,8 @@ def on_quitting(environment, **kwargs):
             "banking_workload_requests": banking_workload_count,
             "operational_distribution": {
                 "balance_reads": {"count": balance_count, "pct_of_workload": balance_pct},
-                "history_reads": {"count": history_count, "pct_of_workload": history_pct},
                 "internal_transfers": {"count": transfer_count, "pct_of_workload": transfer_pct},
+                "history_reads": {"count": history_count, "pct_of_workload": history_pct},
             },
             "initialization_handshake_requests": {
                 "public_key_fetches": handshake_count,
@@ -379,7 +385,8 @@ class BankingUser(HttpUser):
     wait_time = between(0.1, 0.3)
 
     server_public_key = None
-    account_ids: list[str] = ["acc_checking_123", "acc_savings_456"]
+    account_ids: list[str] = ["CHK-1001", "SAV-2001"]
+    accounts: dict[str, dict] = {}
 
     def on_start(self):
         """Initializes virtual user session: configures trusted local TLS certificate and fetches RSA public key."""
@@ -421,7 +428,8 @@ class BankingUser(HttpUser):
                 if resp.status_code == 200:
                     data = resp.json()
                     if isinstance(data, list) and len(data) >= 2:
-                        self.account_ids = [acc["id"] for acc in data if "id" in acc]
+                        self.accounts = {acc["id"]: acc for acc in data if "id" in acc}
+                        self.account_ids = list(self.accounts)
                     resp.success()
                 else:
                     resp.failure(f"Accounts fetch failed: HTTP {resp.status_code}")
@@ -470,7 +478,6 @@ class BankingUser(HttpUser):
     # ==========================================================================
     # Task 1: Account Balance Overview (Configured Weight: 60%)
     # ==========================================================================
-    @task(6)
     def view_account_balances(self):
         """Retrieves customer accounts and decrypted balances (FR-026)."""
         with self.client.get("/api/accounts", name="/api/accounts", catch_response=True) as resp:
@@ -480,9 +487,8 @@ class BankingUser(HttpUser):
                 resp.failure(f"GET /api/accounts failed: HTTP {resp.status_code}")
 
     # ==========================================================================
-    # Task 2: Account Transaction History (Configured Weight: 30%)
+    # Task 2: Account Transaction History (Configured Weight: 10%)
     # ==========================================================================
-    @task(3)
     def view_account_history(self):
         """Retrieves transaction history for an account (FR-026)."""
         acc_id = random.choice(self.account_ids) if self.account_ids else "acc_checking_123"
@@ -496,24 +502,29 @@ class BankingUser(HttpUser):
                 resp.failure(f"GET {url} failed: HTTP {resp.status_code}")
 
     # ==========================================================================
-    # Task 3: Internal Fund Transfer (Configured Weight: 10%)
+    # Task 3: Internal Fund Transfer (Configured Weight: 30%)
     # ==========================================================================
-    @task(1)
     def execute_internal_transfer(self):
         """
         Executes internal transfer using client-side encrypted envelope (FR-026).
-        Uses a small amount (COP 100.00) well below MFA threshold (< COP 1,000,000.00)
-        and well within synthetic limits (COP 50,000,000.00) to ensure smooth execution.
+        Uses a small currency-specific amount below the MFA threshold and never mixes currencies.
         """
-        if len(self.account_ids) < 2:
-            src, dst = "acc_checking_123", "acc_savings_456"
-        else:
-            src, dst = random.sample(self.account_ids, 2)
+        usd_accounts = [account for account in self.accounts.values() if account.get("currency") == "USD"]
+        cop_accounts = [account for account in self.accounts.values() if account.get("currency") == "COP"]
+        candidates = usd_accounts if len(usd_accounts) >= 2 else cop_accounts
+        if len(candidates) < 2:
+            logger.error("No same-currency account pair is available for a transfer.")
+            return
+        source, destination = random.sample(candidates, 2)
+        src, dst = source["id"], destination["id"]
+        source_amount = "0.01" if source.get("currency") != "COP" else "100.00"
+        versions = {src: source.get("version", 0), dst: destination.get("version", 0)}
 
         transfer_data = {
             "source_account_id": src,
             "destination_account_id": dst,
-            "amount": "100.00",
+            "amount": source_amount,
+            "expected_versions": versions,
         }
 
         try:
@@ -522,11 +533,31 @@ class BankingUser(HttpUser):
             logger.error(f"Client encryption error: {e}")
             return
 
-        with self.client.post("/api/transfers", json=envelope, name="/api/transfers", catch_response=True) as resp:
+        headers = {"Idempotency-Key": str(__import__("uuid").uuid4())}
+        with self.client.post("/api/transfers", json=envelope, headers=headers, name="/api/transfers", catch_response=True) as resp:
             if resp.status_code in (200, 201):
+                try:
+                    data = resp.json()
+                    self.accounts[src]["version"] = data.get("source_version", versions[src] + 1)
+                    self.accounts[dst]["version"] = data.get("destination_version", versions[dst] + 1)
+                except Exception:
+                    pass
                 resp.success()
             elif resp.status_code == 400:
                 # Expected banking rejection (e.g. limit or balance check)
                 resp.success()
+            elif resp.status_code == 409 and resp.json().get("detail", {}).get("code") == "ACCOUNT_VERSION_CONFLICT":
+                # A stale version is an expected concurrent-command rejection. Do not
+                # issue a hidden balance read that would distort the requested mix.
+                resp.success()
             else:
                 resp.failure(f"POST /api/transfers unexpected failure: HTTP {resp.status_code}")
+
+    @task
+    def workload_cycle(self):
+        """Keep measured operation counts at the required 60/30/10 mix."""
+        for _ in range(6):
+            self.view_account_balances()
+        for _ in range(3):
+            self.view_account_history()
+        self.execute_internal_transfer()

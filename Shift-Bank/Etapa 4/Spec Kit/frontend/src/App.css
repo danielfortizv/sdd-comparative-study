@@ -76,6 +76,34 @@ header {
   gap: 1rem;
 }
 
+.account-currency-group {
+  min-width: 0;
+  padding: 0.75rem;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+}
+
+.account-currency-group > h3 {
+  margin: 0 0 0.75rem;
+  font-size: 1rem;
+}
+
+.account-currency-group .account-card + .account-card {
+  margin-top: 0.75rem;
+}
+
+.account-currency {
+  color: var(--secondary-color);
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.history-conversion-detail {
+  margin-top: 0.25rem;
+  color: var(--secondary-color);
+  font-size: 0.8rem;
+}
+
 @media (min-width: 576px) {
   .accounts-container {
     grid-template-columns: 1fr 1fr;

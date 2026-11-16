@@ -26,12 +26,38 @@ import {
   pauseSchedule,
   resumeSchedule,
   cancelSchedule,
+  convertFunds,
+  createIdempotencyKey,
 } from './services';
+import { formatDecimalMoney, parseMinorUnits } from './money';
+
+function formatMinorForApi(minor: bigint): string {
+  return `${minor / 100n}.${(minor % 100n).toString().padStart(2, '0')}`;
+}
+
+function commandErrorMessage(error: unknown, fallback: string): string {
+  const typed = error as { code?: string; message?: string };
+  if (typed.code === 'ACCOUNT_VERSION_CONFLICT') return 'An account changed. Refresh balances and retry.';
+  if (typed.code === 'IDEMPOTENCY_KEY_CONFLICT') {
+    return 'This retry key was already used for a different request.';
+  }
+  return typed.message || fallback;
+}
 
 function App() {
   const [accounts, setAccounts] = useState<Account[]>([]);
   const [selectedAccountId, setSelectedAccountId] = useState<string | null>(null);
   const [history, setHistory] = useState<HistoryEntry[]>([]);
+  const [conversionSourceId, setConversionSourceId] = useState('CHK-1001');
+  const [conversionDestinationId, setConversionDestinationId] = useState('EUR-3001');
+  const [conversionAmount, setConversionAmount] = useState('');
+  const [conversionError, setConversionError] = useState<string | null>(null);
+  const [conversionSubmitting, setConversionSubmitting] = useState(false);
+  const transferKeyRef = useRef<string | null>(null);
+  const conversionKeyRef = useRef<string | null>(null);
+  const mfaKeysRef = useRef<Record<string, string>>({});
+  const achKeyRef = useRef<string | null>(null);
+  const scheduleKeyRef = useRef<string | null>(null);
 
   // Stage 2: Dynamic Limits States (User Story 1, T014)
   const [limits, setLimits] = useState<LimitResponse | null>(null);
@@ -142,11 +168,8 @@ function App() {
     const isValidDecimal = (val: string) => {
       const trimmed = val.trim();
       if (!trimmed) return false;
-      const parts = trimmed.split('.');
-      if (parts.length > 2) return false;
-      if (parts.length === 2 && parts[1].length > 2) return false;
-      const num = parseFloat(trimmed);
-      return !isNaN(num) && num > 0;
+      try { return parseMinorUnits(trimmed) > 0n; }
+      catch { return false; }
     };
 
     if (!isValidDecimal(perTransferInput) || !isValidDecimal(dailyLimitInput)) {
@@ -154,14 +177,14 @@ function App() {
       return;
     }
 
-    const perNum = parseFloat(perTransferInput);
-    const dailyNum = parseFloat(dailyLimitInput);
+    const perNum = formatMinorForApi(parseMinorUnits(perTransferInput));
+    const dailyNum = formatMinorForApi(parseMinorUnits(dailyLimitInput));
 
     try {
       setLimitsSubmitting(true);
       const updated = await updateLimits({
-        per_transfer_limit: perNum.toFixed(2),
-        daily_limit: dailyNum.toFixed(2),
+        per_transfer_limit: perNum,
+        daily_limit: dailyNum,
       });
       setLimits(updated);
       setLimitsSuccess("Transfer limits updated successfully!");
@@ -186,6 +209,7 @@ function App() {
   // Real-time routing number change handler (ACH-10, A05)
   const handleAchRoutingChange = (val: string) => {
     setAchRoutingNumber(val);
+    achKeyRef.current = null;
     const trimmed = val.trim();
     if (!trimmed) {
       setAchRoutingError(null);
@@ -199,6 +223,7 @@ function App() {
   // Real-time account number change handler (A06)
   const handleAchAccountChange = (val: string) => {
     setAchAccountNumber(val);
+    achKeyRef.current = null;
     const trimmed = val.trim();
     if (!trimmed) {
       setAchAccountError(null);
@@ -211,6 +236,7 @@ function App() {
 
   // Beneficiary dropdown selector handler
   const handleBeneficiarySelect = (benId: string) => {
+    achKeyRef.current = null;
     setSelectedBeneficiaryId(benId);
     setAchRoutingError(null);
     setAchAccountError(null);
@@ -289,8 +315,8 @@ function App() {
     const parts = trimmed.split('.');
     if (parts.length > 2) return false;
     if (parts.length === 2 && parts[1].length > 2) return false;
-    const num = parseFloat(trimmed);
-    return !isNaN(num) && num > 0;
+    try { return parseMinorUnits(trimmed) > 0n; }
+    catch { return false; }
   };
 
   // ACH Transfer Submit Handler (User Story 2, T025)
@@ -318,17 +344,18 @@ function App() {
       return;
     }
 
-    const amt = parseFloat(achAmount);
+    const amt = parseMinorUnits(achAmount);
     const srcAccount = accounts.find(a => a.id === achSourceAccountId);
-    if (srcAccount && amt > parseFloat(srcAccount.balance)) {
+    if (srcAccount && amt > parseMinorUnits(srcAccount.balance)) {
       setAchFormError("Insufficient funds.");
       return;
     }
 
     try {
       setAchSubmitting(true);
-      const formattedAmountStr = amt.toFixed(2);
+      const formattedAmountStr = formatMinorForApi(amt);
 
+      achKeyRef.current ??= createIdempotencyKey();
       const result = await initiateAchTransfer({
         source_account_id: achSourceAccountId || (accounts[0] ? accounts[0].id : ''),
         amount: formattedAmountStr,
@@ -337,18 +364,23 @@ function App() {
         routing_number: routing,
         account_number: account,
         save_beneficiary: achSaveBeneficiary,
-      });
+        expected_versions: { [achSourceAccountId]: srcAccount?.version ?? 0 },
+      }, achKeyRef.current);
 
       if (result.status === 'PENDING_MFA') {
         // Trigger shared MFA modal for sensitive ACH transfer
         setPendingTransfer({
           id: result.id,
+          source_account_id: achSourceAccountId,
+          transfer_type: 'ACH',
+          destination_account_id: undefined,
           source_account: result.source_account,
           destination_account: `${result.recipient_name} (${result.bank_name})`,
           amount: result.amount,
           status: 'PENDING_MFA',
           created_at: result.created_at,
           expires_at: result.expires_at || null,
+          source_version: result.source_version,
         });
         setPendingMfaSchedule(null);
         setTimeLeft(300);
@@ -356,6 +388,7 @@ function App() {
       } else {
         setSuccess(`ACH Transfer of ${formatCurrency(formattedAmountStr)} to ${result.recipient_name} initiated successfully (Pending settlement).`);
         setAchAmount('');
+        achKeyRef.current = null;
         if (selectedBeneficiaryId === 'new') {
           setAchRecipientName('');
           setAchBankName('');
@@ -366,7 +399,7 @@ function App() {
         await loadBeneficiariesData();
       }
     } catch (err: any) {
-      setAchFormError(err.message || "Failed to initiate ACH transfer.");
+      setAchFormError(commandErrorMessage(err, 'Failed to initiate ACH transfer.'));
     } finally {
       setAchSubmitting(false);
     }
@@ -414,8 +447,8 @@ function App() {
 
     try {
       setSchedSubmitting(true);
-      const amtNum = parseFloat(schedAmount);
-      const formattedAmountStr = amtNum.toFixed(2);
+      const amtMinor = parseMinorUnits(schedAmount);
+      const formattedAmountStr = formatMinorForApi(amtMinor);
 
       const payload: RecurringScheduleCreate = {
         transfer_type: schedType,
@@ -428,9 +461,11 @@ function App() {
         bank_name: schedType === 'ACH' ? schedBankName.trim() : undefined,
         routing_number: schedType === 'ACH' ? schedRouting.trim() : undefined,
         account_number: schedType === 'ACH' ? schedAccount.trim() : undefined,
+        expected_versions: Object.fromEntries([schedSourceAccountId, ...(schedType === 'INTERNAL' ? [schedDestAccountId] : [])].map(id => [id, accounts.find(a => a.id === id)?.version ?? 0])),
       };
 
-      const result = await createSchedule(payload);
+      scheduleKeyRef.current ??= createIdempotencyKey();
+      const result = await createSchedule(payload, scheduleKeyRef.current);
 
       if (result.status === 'PENDING_MFA') {
         // Sensitive recurring schedule requires MFA
@@ -441,12 +476,13 @@ function App() {
       } else {
         setSuccess(`Recurring schedule to ${result.destination_display} created successfully!`);
         setShowAddSchedule(false);
+        scheduleKeyRef.current = null;
         setSchedAmount('');
         setSchedStartDate('');
         await loadSchedulesData();
       }
     } catch (err: any) {
-      setSchedFormError(err.message || "Failed to create recurring schedule.");
+      setSchedFormError(commandErrorMessage(err, 'Failed to create recurring schedule.'));
     } finally {
       setSchedSubmitting(false);
     }
@@ -571,13 +607,9 @@ function App() {
   }, [showMfaModal, timeLeft]);
 
   // Format currency helper (strictly Colombian Peso)
-  const formatCurrency = (amount: string) => {
-    const num = parseFloat(amount);
-    return new Intl.NumberFormat('es-CO', {
-      style: 'currency',
-      currency: 'COP',
-      minimumFractionDigits: 2,
-    }).format(num);
+  const formatCurrency = (amount: string, currency = 'COP') => {
+    try { return formatDecimalMoney(amount, currency, 'es-CO'); }
+    catch { return `${currency} ${amount}`; }
   };
 
   // Format date helper
@@ -604,6 +636,45 @@ function App() {
     return `${mins}:${secs < 10 ? '0' : ''}${secs}`;
   };
 
+  const handleConversionSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setConversionError(null);
+    const source = accounts.find(account => account.id === conversionSourceId);
+    const destination = accounts.find(account => account.id === conversionDestinationId);
+    if (!source || !destination || source.currency === 'COP' || destination.currency === 'COP' || source.currency === destination.currency) {
+      setConversionError('Choose two different USD, EUR, or GBP accounts. COP has no approved conversion rate.');
+      return;
+    }
+    let amountMinor: bigint;
+    try { amountMinor = parseMinorUnits(conversionAmount); }
+    catch { setConversionError('Enter a positive amount with at most two decimal places.'); return; }
+    if (amountMinor <= 0n || amountMinor > parseMinorUnits(source.balance)) {
+      setConversionError(amountMinor <= 0n ? 'Amount must be greater than zero.' : 'Insufficient funds.');
+      return;
+    }
+    conversionKeyRef.current ??= createIdempotencyKey();
+    setConversionSubmitting(true);
+    try {
+      const result = await convertFunds({
+        source_account_id: source.id,
+        destination_account_id: destination.id,
+        source_amount: formatMinorForApi(amountMinor),
+        expected_versions: { [source.id]: source.version ?? 0, [destination.id]: destination.version ?? 0 },
+      }, conversionKeyRef.current);
+      setSuccess(`Converted ${formatCurrency(result.source_amount, result.source_currency)} to ${formatCurrency(result.destination_amount, result.destination_currency)} at ${result.rate_numerator}/${result.rate_denominator}.`);
+      setConversionAmount('');
+      conversionKeyRef.current = null;
+      await loadAccountsData(selectedAccountId || source.id);
+    } catch (err) {
+      const error = err as { code?: string; message?: string };
+      setConversionError(error.code === 'ACCOUNT_VERSION_CONFLICT' ? 'An account changed. Refresh balances and retry.' :
+        error.code === 'IDEMPOTENCY_KEY_CONFLICT' ? 'This retry key was used for a different conversion.' :
+        error.message || 'Conversion failed.');
+    } finally {
+      setConversionSubmitting(false);
+    }
+  };
+
   // Transfer Submit Handler (User Stories 2 & 4)
   const handleTransferSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -622,15 +693,19 @@ function App() {
       return;
     }
 
-    const amountNum = parseFloat(transferAmount);
+    const amountMinor = parseMinorUnits(transferAmount);
     const sourceAccount = accounts.find(a => a.id === sourceAccountId);
     if (!sourceAccount) {
       setFormError("Source account not found.");
       return;
     }
 
-    const sourceBalance = parseFloat(sourceAccount.balance);
-    if (amountNum > sourceBalance) {
+    const destinationAccount = accounts.find(a => a.id === destinationAccountId);
+    if (!destinationAccount || destinationAccount.currency !== sourceAccount.currency) {
+      setFormError('Internal transfers require accounts with the same currency.');
+      return;
+    }
+    if (amountMinor > parseMinorUnits(sourceAccount.balance)) {
       setFormError("Insufficient funds.");
       return;
     }
@@ -638,12 +713,15 @@ function App() {
     // 2. Call API
     try {
       setFormSubmitting(true);
-      const formattedAmountStr = amountNum.toFixed(2);
+      const formattedAmountStr = formatMinorForApi(amountMinor);
+      transferKeyRef.current ??= createIdempotencyKey();
 
       const transferResult = await initiateTransfer(
         sourceAccountId,
         destinationAccountId,
-        formattedAmountStr
+        formattedAmountStr,
+        { [sourceAccountId]: sourceAccount.version ?? 0, [destinationAccountId]: destinationAccount.version ?? 0 },
+        transferKeyRef.current
       );
 
       // Handle sensitive transfer pending MFA (202 Accepted response)
@@ -665,10 +743,14 @@ function App() {
         // Direct standard transfer success
         setSuccess(`Transfer of ${formatCurrency(formattedAmountStr)} executed successfully!`);
         setTransferAmount(''); // Clear form input
+        transferKeyRef.current = null;
         await loadAccountsData(selectedAccountId || sourceAccountId);
       }
     } catch (err: any) {
-      setFormError(err.message || "An error occurred initiating the transfer.");
+      const code = (err as { code?: string }).code;
+      setFormError(code === 'ACCOUNT_VERSION_CONFLICT' ? 'Account changed during submission. Refresh balances and retry.' :
+        code === 'IDEMPOTENCY_KEY_CONFLICT' ? 'This retry key was already used for a different request.' :
+        err.message || "An error occurred initiating the transfer.");
     } finally {
       setFormSubmitting(false);
     }
@@ -689,19 +771,35 @@ function App() {
 
       if (pendingMfaSchedule) {
         // Confirm Recurring Schedule MFA
-        await confirmScheduleMFA(pendingMfaSchedule.id, mfaCode);
+        const source = accounts.find(a => a.id === pendingMfaSchedule.source_account_id);
+        mfaKeysRef.current[pendingMfaSchedule.id] ??= createIdempotencyKey();
+        await confirmScheduleMFA(pendingMfaSchedule.id, mfaCode,
+          source ? { [source.id]: source.version ?? 0 } : {}, mfaKeysRef.current[pendingMfaSchedule.id]);
         setSuccess(`Recurring schedule to ${pendingMfaSchedule.destination_display} activated successfully!`);
         setShowMfaModal(false);
         setPendingMfaSchedule(null);
+        delete mfaKeysRef.current[pendingMfaSchedule.id];
+        scheduleKeyRef.current = null;
         setMfaCode('');
         await loadSchedulesData();
       } else if (pendingTransfer) {
         // Confirm Transfer MFA
-        const res = await confirmMFA(pendingTransfer.id, mfaCode);
+        const accountIds = [pendingTransfer.source_account_id, pendingTransfer.destination_account_id].filter((id): id is string => !!id);
+        const versions = Object.fromEntries(accountIds.map(id => [id, accounts.find(a => a.id === id)?.version ?? 0]));
+        mfaKeysRef.current[pendingTransfer.id] ??= createIdempotencyKey();
+        const res = await confirmMFA(pendingTransfer.id, mfaCode, versions, mfaKeysRef.current[pendingTransfer.id]);
 
         if (res.status === 'COMPLETED' || res.status === 'PENDING') {
           setSuccess(`Transfer of ${formatCurrency(pendingTransfer.amount)} verified successfully!`);
-          setTransferAmount(''); // Clear transfer form input
+          if (pendingTransfer.transfer_type === 'ACH') {
+            setAchAmount('');
+            achKeyRef.current = null;
+            await loadBeneficiariesData();
+          } else {
+            setTransferAmount('');
+            transferKeyRef.current = null;
+          }
+          delete mfaKeysRef.current[pendingTransfer.id];
           
           // Remove from pending list if confirming a resumed transfer
           setPendingTransfersList(prev => prev.filter(t => t.id !== pendingTransfer.id));
@@ -715,7 +813,7 @@ function App() {
         }
       }
     } catch (err: any) {
-      setMfaError(err.message || "MFA confirmation failed.");
+      setMfaError(commandErrorMessage(err, 'MFA confirmation failed.'));
     } finally {
       setMfaSubmitting(false);
     }
@@ -787,7 +885,7 @@ function App() {
               <div>
                 <strong>{tx.source_account} to {tx.destination_account}</strong>
                 <div style={{ fontSize: '0.85rem', color: 'var(--secondary-color)' }}>
-                  Amount: {formatCurrency(tx.amount)}
+                  Amount: {formatCurrency(tx.amount, tx.currency ?? 'COP')}
                 </div>
               </div>
               <button
@@ -811,17 +909,46 @@ function App() {
             <section className="accounts-section">
               <h2 className="section-title">Account Overview</h2>
               <div className="accounts-container">
-                {accounts.map((acc) => (
-                  <div
-                    key={acc.id}
-                    className={`account-card ${selectedAccountId === acc.id ? 'selected' : ''}`}
-                    onClick={() => setSelectedAccountId(acc.id)}
-                  >
-                    <div className="account-type">{acc.name}</div>
-                    <div className="account-balance">{formatCurrency(acc.balance)}</div>
+                {[...new Set(accounts.map(account => account.currency))].sort().map(currency => (
+                  <div className="account-currency-group" key={currency} aria-label={`${currency} accounts`}>
+                    <h3>{currency}</h3>
+                    {accounts.filter(account => account.currency === currency).map((acc) => (
+                      <div key={acc.id} className={`account-card ${selectedAccountId === acc.id ? 'selected' : ''}`}
+                        onClick={() => setSelectedAccountId(acc.id)}>
+                        <div className="account-type">{acc.name}</div>
+                        <div className="account-currency">{acc.currency}</div>
+                        <div className="account-balance">{formatCurrency(acc.balance, acc.currency)}</div>
+                      </div>
+                    ))}
                   </div>
                 ))}
               </div>
+            </section>
+
+            <section className="conversion-section">
+              <h2 className="section-title">Currency Conversion</h2>
+              <p>Fixed simulated USD/EUR/GBP rates. COP is shown separately and cannot be converted.</p>
+              {conversionError && <div className="alert alert-danger">{conversionError}</div>}
+              <form onSubmit={handleConversionSubmit}>
+                <div className="form-group">
+                  <label htmlFor="conversion-source">From account</label>
+                  <select id="conversion-source" value={conversionSourceId} onChange={event => { setConversionSourceId(event.target.value); conversionKeyRef.current = null; }}>
+                    {accounts.filter(account => account.currency !== 'COP').map(account => <option key={account.id} value={account.id}>{account.name} ({account.currency})</option>)}
+                  </select>
+                </div>
+                <div className="form-group">
+                  <label htmlFor="conversion-destination">To account</label>
+                  <select id="conversion-destination" value={conversionDestinationId} onChange={event => { setConversionDestinationId(event.target.value); conversionKeyRef.current = null; }}>
+                    {accounts.filter(account => account.currency !== 'COP').map(account => <option key={account.id} value={account.id}>{account.name} ({account.currency})</option>)}
+                  </select>
+                </div>
+                <div className="form-group">
+                  <label htmlFor="conversion-amount">Amount ({accounts.find(account => account.id === conversionSourceId)?.currency ?? 'USD'})</label>
+                  <input id="conversion-amount" type="text" inputMode="decimal" value={conversionAmount}
+                    onChange={event => { setConversionAmount(event.target.value); conversionKeyRef.current = null; }} />
+                </div>
+                <button type="submit" className="btn btn-primary" disabled={conversionSubmitting}>{conversionSubmitting ? 'Converting…' : 'Convert'}</button>
+              </form>
             </section>
 
             {/* Dynamic Limits Section (User Story 1, T014) */}
@@ -945,7 +1072,17 @@ function App() {
                           <td className={tx.direction === 'incoming' ? 'direction-incoming' : 'direction-outgoing'}>
                             {tx.direction === 'incoming' ? 'Incoming' : 'Outgoing'}
                           </td>
-                          <td>{formatCurrency(tx.amount)}</td>
+                          <td>
+                            {formatCurrency(tx.amount, tx.currency)}
+                            {tx.counter_amount && tx.counter_currency && (
+                              <div className="history-conversion-detail">
+                                Converted value: {formatCurrency(tx.counter_amount, tx.counter_currency)}
+                                {tx.rate_numerator != null && tx.rate_denominator != null && (
+                                  <span> · Rate {tx.rate_numerator}/{tx.rate_denominator}</span>
+                                )}
+                              </div>
+                            )}
+                          </td>
                           <td>{tx.description}</td>
                         </tr>
                       ))}
@@ -1121,7 +1258,7 @@ function App() {
                           id="sched-type-select"
                           className="form-select"
                           value={schedType}
-                          onChange={(e) => setSchedType(e.target.value as 'INTERNAL' | 'ACH')}
+                          onChange={(e) => { setSchedType(e.target.value as 'INTERNAL' | 'ACH'); scheduleKeyRef.current = null; }}
                         >
                           <option value="INTERNAL">Internal Transfer</option>
                           <option value="ACH">ACH Transfer</option>
@@ -1134,10 +1271,10 @@ function App() {
                           id="sched-source-select"
                           className="form-select"
                           value={schedSourceAccountId || (accounts[0] ? accounts[0].id : '')}
-                          onChange={(e) => setSchedSourceAccountId(e.target.value)}
+                          onChange={(e) => { setSchedSourceAccountId(e.target.value); scheduleKeyRef.current = null; }}
                         >
-                          {accounts.map(a => (
-                            <option key={a.id} value={a.id}>{a.name} ({formatCurrency(a.balance)})</option>
+                          {accounts.filter(a => schedType === 'INTERNAL' || a.currency === 'COP' || a.currency === 'USD').map(a => (
+                            <option key={a.id} value={a.id}>{a.name} ({formatCurrency(a.balance, a.currency)})</option>
                           ))}
                         </select>
                       </div>
@@ -1149,9 +1286,9 @@ function App() {
                             id="sched-dest-select"
                             className="form-select"
                             value={schedDestAccountId || (accounts[1] ? accounts[1].id : '')}
-                            onChange={(e) => setSchedDestAccountId(e.target.value)}
+                            onChange={(e) => { setSchedDestAccountId(e.target.value); scheduleKeyRef.current = null; }}
                           >
-                            {accounts.map(a => (
+                          {accounts.filter(a => a.currency === accounts.find(x => x.id === schedSourceAccountId)?.currency && a.id !== schedSourceAccountId).map(a => (
                               <option key={a.id} value={a.id}>{a.name}</option>
                             ))}
                           </select>
@@ -1167,6 +1304,7 @@ function App() {
                               onChange={(e) => {
                                 const val = e.target.value;
                                 setSchedBeneficiaryId(val);
+                                scheduleKeyRef.current = null;
                                 if (val !== 'new') {
                                   const b = beneficiaries.find(x => x.id === val);
                                   if (b) {
@@ -1198,7 +1336,7 @@ function App() {
                               className="form-input"
                               placeholder="Recipient name"
                               value={schedRecipientName}
-                              onChange={(e) => setSchedRecipientName(e.target.value)}
+                              onChange={(e) => { setSchedRecipientName(e.target.value); scheduleKeyRef.current = null; }}
                               disabled={schedBeneficiaryId !== 'new'}
                               required
                             />
@@ -1212,7 +1350,7 @@ function App() {
                               className="form-input"
                               placeholder="Bank name"
                               value={schedBankName}
-                              onChange={(e) => setSchedBankName(e.target.value)}
+                              onChange={(e) => { setSchedBankName(e.target.value); scheduleKeyRef.current = null; }}
                               disabled={schedBeneficiaryId !== 'new'}
                               required
                             />
@@ -1229,6 +1367,7 @@ function App() {
                               value={schedRouting}
                               onChange={(e) => {
                                 setSchedRouting(e.target.value);
+                                scheduleKeyRef.current = null;
                                 const val = e.target.value.trim();
                                 if (val && (val.length !== 9 || !/^\d+$/.test(val))) {
                                   setSchedRoutingError("Routing number must be exactly 9 numeric digits.");
@@ -1251,7 +1390,7 @@ function App() {
                               className="form-input"
                               placeholder="Account number"
                               value={schedAccount}
-                              onChange={(e) => setSchedAccount(e.target.value)}
+                              onChange={(e) => { setSchedAccount(e.target.value); scheduleKeyRef.current = null; }}
                               disabled={schedBeneficiaryId !== 'new'}
                               required
                             />
@@ -1260,16 +1399,17 @@ function App() {
                       )}
 
                       <div className="form-group">
-                        <label htmlFor="sched-amount-input" className="form-label">Amount (COP)</label>
+                        <label htmlFor="sched-amount-input" className="form-label">Amount ({accounts.find(a => a.id === schedSourceAccountId)?.currency ?? 'COP'})</label>
                         <input
                           id="sched-amount-input"
-                          type="number"
-                          step="0.01"
+                          type="text"
+                          inputMode="decimal"
                           className="form-input"
                           placeholder="e.g. 150000.00"
                           value={schedAmount}
                           onChange={(e) => {
                             setSchedAmount(e.target.value);
+                            scheduleKeyRef.current = null;
                             setSchedFormError(null);
                           }}
                           required
@@ -1282,7 +1422,7 @@ function App() {
                           id="sched-frequency-select"
                           className="form-select"
                           value={schedFrequency}
-                          onChange={(e) => setSchedFrequency(e.target.value as RecurringFrequency)}
+                          onChange={(e) => { setSchedFrequency(e.target.value as RecurringFrequency); scheduleKeyRef.current = null; }}
                         >
                           <option value="DAILY">Daily (every 24 hours)</option>
                           <option value="WEEKLY">Weekly (every 7 days)</option>
@@ -1297,7 +1437,7 @@ function App() {
                           type="date"
                           className="form-input"
                           value={schedStartDate}
-                          onChange={(e) => setSchedStartDate(e.target.value)}
+                          onChange={(e) => { setSchedStartDate(e.target.value); scheduleKeyRef.current = null; }}
                         />
                         <span style={{ fontSize: '0.75rem', color: 'var(--secondary-color)' }}>
                           Leave blank to execute after 1 interval. Future dates start at 00:00:00 UTC.
@@ -1339,7 +1479,7 @@ function App() {
                           <tr key={s.id}>
                             <td><strong>{s.transfer_type}</strong></td>
                             <td>{s.destination_display}</td>
-                            <td>{formatCurrency(s.amount)}</td>
+                            <td>{formatCurrency(s.amount, s.currency)}</td>
                             <td>{s.frequency}</td>
                             <td>
                               <span className={`badge-status badge-${s.status.toLowerCase().replace('_', '-')}`}>
@@ -1452,11 +1592,12 @@ function App() {
                         value={sourceAccountId}
                         onChange={(e) => {
                           setSourceAccountId(e.target.value);
+                          transferKeyRef.current = null;
                           setFormError(null);
                         }}
                       >
                         {accounts.map(a => (
-                          <option key={a.id} value={a.id}>{a.name}</option>
+                          <option key={a.id} value={a.id} disabled={a.currency !== accounts.find(x => x.id === sourceAccountId)?.currency}>{a.name} ({a.currency})</option>
                         ))}
                       </select>
                     </div>
@@ -1469,26 +1610,28 @@ function App() {
                         value={destinationAccountId}
                         onChange={(e) => {
                           setDestinationAccountId(e.target.value);
+                          transferKeyRef.current = null;
                           setFormError(null);
                         }}
                       >
                         {accounts.map(a => (
-                          <option key={a.id} value={a.id}>{a.name}</option>
+                          <option key={a.id} value={a.id} disabled={a.currency !== accounts.find(x => x.id === sourceAccountId)?.currency}>{a.name} ({a.currency})</option>
                         ))}
                       </select>
                     </div>
 
                     <div className="form-group">
-                      <label htmlFor="amount-input" className="form-label">Amount (COP)</label>
+                        <label htmlFor="amount-input" className="form-label">Amount ({accounts.find(a => a.id === sourceAccountId)?.currency ?? 'COP'})</label>
                       <input
                         id="amount-input"
-                        type="number"
-                        step="0.01"
+                        type="text"
+                        inputMode="decimal"
                         className="form-input"
                         placeholder="Enter amount"
                         value={transferAmount}
                         onChange={(e) => {
                           setTransferAmount(e.target.value);
+                          transferKeyRef.current = null;
                           setFormError(null);
                         }}
                       />
@@ -1517,11 +1660,12 @@ function App() {
                         value={achSourceAccountId}
                         onChange={(e) => {
                           setAchSourceAccountId(e.target.value);
+                            achKeyRef.current = null;
                           setAchFormError(null);
                         }}
                       >
                         {accounts.map(a => (
-                          <option key={a.id} value={a.id}>{a.name} ({formatCurrency(a.balance)})</option>
+                          <option key={a.id} value={a.id} disabled={a.currency === 'EUR' || a.currency === 'GBP'}>{a.name} ({formatCurrency(a.balance, a.currency)})</option>
                         ))}
                       </select>
                     </div>
@@ -1549,7 +1693,7 @@ function App() {
                         className="form-input"
                         placeholder="Recipient full name"
                         value={achRecipientName}
-                        onChange={(e) => setAchRecipientName(e.target.value)}
+                        onChange={(e) => { setAchRecipientName(e.target.value); achKeyRef.current = null; }}
                         disabled={selectedBeneficiaryId !== 'new'}
                         required
                       />
@@ -1563,7 +1707,7 @@ function App() {
                         className="form-input"
                         placeholder="Recipient bank name"
                         value={achBankName}
-                        onChange={(e) => setAchBankName(e.target.value)}
+                        onChange={(e) => { setAchBankName(e.target.value); achKeyRef.current = null; }}
                         disabled={selectedBeneficiaryId !== 'new'}
                         required
                       />
@@ -1607,7 +1751,7 @@ function App() {
                           <input
                             type="checkbox"
                             checked={achSaveBeneficiary}
-                            onChange={(e) => setAchSaveBeneficiary(e.target.checked)}
+                            onChange={(e) => { setAchSaveBeneficiary(e.target.checked); achKeyRef.current = null; }}
                           />
                           Save as beneficiary for future transfers
                         </label>
@@ -1615,16 +1759,17 @@ function App() {
                     )}
 
                     <div className="form-group">
-                      <label htmlFor="ach-amount-input" className="form-label">Amount (COP)</label>
+                      <label htmlFor="ach-amount-input" className="form-label">Amount ({accounts.find(a => a.id === achSourceAccountId)?.currency ?? 'COP'})</label>
                       <input
                         id="ach-amount-input"
-                        type="number"
-                        step="0.01"
+                        type="text"
+                        inputMode="decimal"
                         className="form-input"
                         placeholder="Enter amount"
                         value={achAmount}
                         onChange={(e) => {
                           setAchAmount(e.target.value);
+                          achKeyRef.current = null;
                           setAchFormError(null);
                         }}
                         required

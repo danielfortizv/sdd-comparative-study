@@ -15,6 +15,7 @@ import sqlite3
 import uuid
 from datetime import datetime, timedelta, timezone
 from decimal import Decimal
+from fractions import Fraction
 
 from fastapi import HTTPException, status
 from models import (
@@ -37,6 +38,284 @@ from crypto import (
     is_encrypted,
 )
 from database import get_connection, get_next_audit_sequence
+
+
+def _stage4_account(cursor, account_id: str):
+    row = cursor.execute("SELECT id,name,balance,currency,balance_minor,version FROM accounts WHERE id=?", (account_id,)).fetchone()
+    if row is None:
+        raise HTTPException(status_code=404, detail={"code": "ACCOUNT_NOT_FOUND", "message": "Account not found"})
+    minor = row[4]
+    if minor is None:
+        from money import to_minor
+        minor = to_minor(decrypt_val(row[2]))
+    else:
+        minor = int(decrypt_val(minor))
+    return {"id": row[0], "name": row[1], "balance": int(minor), "currency": row[3], "version": int(row[5])}
+
+
+def _stage4_policy(cursor, account, amount_minor: int):
+    from money import usd_equivalent_minor, requires_mfa, to_minor
+    currency = account["currency"]
+    if currency == "COP":
+        configured = cursor.execute("SELECT per_transfer_limit,daily_limit FROM limits WHERE user_id='user_mock_001'").fetchone()
+        if configured:
+            per_cap = to_minor(decrypt_val(configured[0]))
+            day_cap = to_minor(decrypt_val(configured[1]))
+        else:
+            per_cap, day_cap = 500_000_000, 1_000_000_000
+    else:
+        eq = usd_equivalent_minor(amount_minor, currency)
+        if eq > 500_000 or eq > 1_000_000:
+            raise HTTPException(status_code=400, detail={"code": "LIMIT_EXCEEDED", "message": "Transfer exceeds currency policy"})
+        per_cap, day_cap = 500_000, 1_000_000
+    start = datetime.now(timezone.utc).replace(hour=0, minute=0, second=0, microsecond=0).isoformat()
+    rows = cursor.execute("SELECT amount,source_account_id FROM transfers WHERE created_at>=? AND status IN ('COMPLETED','PENDING','SETTLED')", (start,)).fetchall()
+    used = Fraction(0)
+    for amount, source_id in rows:
+        other = cursor.execute("SELECT currency FROM accounts WHERE id=?", (source_id,)).fetchone()
+        if other and other[0] == currency:
+            used += usd_equivalent_minor(to_minor(decrypt_val(amount)), currency) if currency != "COP" else Fraction(to_minor(decrypt_val(amount)))
+    current = usd_equivalent_minor(amount_minor, currency) if currency != "COP" else Fraction(amount_minor)
+    if current > per_cap:
+        raise HTTPException(status_code=400, detail={"code": "LIMIT_EXCEEDED", "message": "Amount exceeds per-transfer limit"})
+    if used + current > day_cap:
+        raise HTTPException(status_code=400, detail={"code": "LIMIT_EXCEEDED", "message": "Transfer would exceed daily limit"})
+    return requires_mfa(amount_minor, currency)
+
+
+def execute_stage4_command(conn: sqlite3.Connection, command_type: str, key: str, payload: dict):
+    """Atomically execute a transfer/conversion; exact replay precedes version checks."""
+    import json
+    import uuid
+    from idempotency import validate_key, fingerprint, lookup, store
+    from event_store import append_event
+    from money import to_minor, format_minor, convert_minor
+    try:
+        key = validate_key(key)
+    except ValueError:
+        raise HTTPException(status_code=422, detail={"code":"INVALID_IDEMPOTENCY_KEY","message":"Idempotency-Key must be a UUID"}) from None
+    digest = fingerprint(command_type, payload)
+    conn.execute("BEGIN IMMEDIATE")
+    cursor = conn.cursor()
+    try:
+        prior = lookup(cursor, key, digest)
+        if prior == "CONFLICT":
+            raise HTTPException(status_code=409, detail={"code": "IDEMPOTENCY_KEY_CONFLICT", "message": "Idempotency key was used for a different request"})
+        if prior is not None:
+            conn.commit()
+            return json.loads(prior), True
+        source = _stage4_account(cursor, payload["source_account_id"])
+        destination = _stage4_account(cursor, payload["destination_account_id"])
+        expected = payload.get("expected_versions") or {}
+        if any(account_id not in expected for account_id in (source["id"], destination["id"])):
+            raise HTTPException(status_code=422, detail={"code":"MISSING_ACCOUNT_VERSION","message":"Expected versions are required for every affected account"})
+        if expected.get(source["id"]) != source["version"] or expected.get(destination["id"]) != destination["version"]:
+            raise HTTPException(status_code=409, detail={"code": "ACCOUNT_VERSION_CONFLICT", "message": "One or more account versions are stale"})
+        if source["id"] == destination["id"]:
+            raise HTTPException(status_code=400, detail={"code": "INVALID_TRANSFER", "message": "Source and destination accounts must differ"})
+        amount = to_minor(payload.get("amount", payload.get("source_amount")))
+        if source["balance"] < amount:
+            raise HTTPException(status_code=400, detail={"code": "INSUFFICIENT_FUNDS", "message": "Insufficient funds"})
+        mfa_required = _stage4_policy(cursor, source, amount)
+        if command_type == "TRANSFER":
+            if source["currency"] != destination["currency"]:
+                raise HTTPException(status_code=422, detail={"code": "INVALID_CURRENCY", "message": "Internal transfers require matching currencies"})
+            dest_amount, numerator, denominator = amount, 1, 1
+        else:
+            try:
+                dest_amount, numerator, denominator = convert_minor(amount, source["currency"], destination["currency"])
+            except ValueError:
+                raise HTTPException(status_code=422, detail={"code": "UNSUPPORTED_CURRENCY_PAIR", "message": "Currency pair is unsupported"}) from None
+        if mfa_required:
+            if command_type != "TRANSFER":
+                raise HTTPException(status_code=403, detail={"code": "MFA_REQUIRED", "message": "MFA confirmation is required before this command can execute"})
+            from datetime import timedelta
+            command_id = str(uuid.uuid4())
+            transfer_id = f"tr_{uuid.uuid4().hex}"
+            now = datetime.now(timezone.utc)
+            created_at = now.isoformat()
+            expires_at = (now + timedelta(minutes=5)).isoformat()
+            event_id = str(uuid.uuid4())
+            append_event(cursor, event_id=event_id, command_id=command_id,
+                         event_type="InternalTransferMfaPending", account_ids=[source["id"], destination["id"]],
+                         payload={"transfer_id": transfer_id, "amount_minor": amount, "currency": source["currency"]}, occurred_at=created_at)
+            cursor.execute("""INSERT INTO transfers(id,source_account_id,destination_account_id,amount,status,created_at,expires_at,transfer_type,currency,stage4_command_id,expected_versions_json)
+                              VALUES(?,?,?,?, 'PENDING_MFA', ?,?,'INTERNAL',?,?,?)""",
+                           (transfer_id, source["id"], destination["id"], encrypt_val(format_minor(amount)), created_at,
+                            expires_at, source["currency"], command_id, json.dumps(expected, sort_keys=True)))
+            append_audit_record(cursor, "TRANSFER_PENDING_MFA", "user_mock_001", transfer_id,
+                                {"transfer_id": transfer_id, "currency": source["currency"]})
+            response = {"id": transfer_id, "source_account": source["name"], "destination_account": destination["name"],
+                        "amount": format_minor(amount), "status": "PENDING_MFA", "created_at": created_at,
+                        "expires_at": expires_at, "source_version": source["version"], "destination_version": destination["version"],
+                        "source_account_id": source["id"], "destination_account_id": destination["id"]}
+            store(cursor, key, command_type, digest, json.dumps(response, separators=(",", ":")), created_at)
+            conn.commit()
+            return response, False
+
+        command_id = str(uuid.uuid4())
+        tx_id = f"tr_{uuid.uuid4().hex}"
+        now = datetime.now(timezone.utc).isoformat()
+        source_new, destination_new = source["balance"] - amount, destination["balance"] + dest_amount
+        event_type = "InternalTransferCompleted" if command_type == "TRANSFER" else "CurrencyConversionCompleted"
+        from event_handlers import internal_transfer_legs, conversion_legs
+        legs = (internal_transfer_legs(source["id"], destination["id"], source["currency"], amount,
+                                       source["version"], destination["version"])
+                if command_type == "TRANSFER" else
+                conversion_legs(source["id"], destination["id"], source["currency"], destination["currency"],
+                                amount, dest_amount, source["version"], destination["version"]))
+        event_id = str(uuid.uuid4())
+        event_payload = {"legs": legs, "source_amount_minor": amount, "destination_amount_minor": dest_amount,
+                         "rate_numerator": numerator, "rate_denominator": denominator, "transfer_id": tx_id}
+        append_event(cursor, event_id=event_id, command_id=command_id, event_type=event_type,
+                     account_ids=[source["id"], destination["id"]], payload=event_payload, occurred_at=now)
+        cursor.execute("UPDATE accounts SET balance=?,balance_minor=?,version=? WHERE id=? AND version=?",
+                       (encrypt_val(format_minor(source_new)), encrypt_val(str(source_new)), source["version"]+1, source["id"], source["version"]))
+        if cursor.rowcount != 1:
+            raise HTTPException(status_code=409, detail={"code": "ACCOUNT_VERSION_CONFLICT", "message": "Source account version changed"})
+        cursor.execute("UPDATE accounts SET balance=?,balance_minor=?,version=? WHERE id=? AND version=?",
+                       (encrypt_val(format_minor(destination_new)), encrypt_val(str(destination_new)), destination["version"]+1, destination["id"], destination["version"]))
+        if cursor.rowcount != 1:
+            raise HTTPException(status_code=409, detail={"code": "ACCOUNT_VERSION_CONFLICT", "message": "Destination account version changed"})
+        cursor.execute("""INSERT INTO transfers(id,source_account_id,destination_account_id,amount,status,created_at,expires_at,transfer_type,currency)
+                          VALUES(?,?,?,?, 'COMPLETED', ?,NULL,?,?)""",
+                       (tx_id, source["id"], destination["id"], encrypt_val(format_minor(amount)), now,
+                        "INTERNAL" if command_type == "TRANSFER" else "CONVERSION", source["currency"]))
+        cursor.execute("INSERT INTO history_projection VALUES(?,?,?,?,?,?,?,?)",
+                       (f"{tx_id}:{source['id']}", source["id"], event_id, "outgoing", encrypt_val(str(amount)), source["currency"], now,
+                        f"Currency conversion from {source['name']} to {destination['name']}" if command_type == "CONVERSION" else f"Transfer to {destination['name']}"))
+        cursor.execute("INSERT INTO history_projection VALUES(?,?,?,?,?,?,?,?)",
+                       (f"{tx_id}:{destination['id']}", destination["id"], event_id, "incoming", encrypt_val(str(dest_amount)), destination["currency"], now,
+                        f"Currency conversion from {source['name']} to {destination['name']}" if command_type == "CONVERSION" else f"Transfer from {source['name']}"))
+        append_audit_record(cursor, "TRANSFER_COMPLETED" if command_type == "TRANSFER" else "CONVERSION_COMPLETED", "user_mock_001", tx_id,
+                            {"event_id": event_id, "currency": source["currency"], "command_type": command_type})
+        if command_type == "TRANSFER":
+            response = {"id": tx_id, "source_account": source["name"], "destination_account": destination["name"],
+                        "amount": format_minor(amount), "status": "COMPLETED", "created_at": now, "expires_at": None,
+                        "source_version": source["version"]+1, "destination_version": destination["version"]+1,
+                        "source_account_id": source["id"], "destination_account_id": destination["id"]}
+        else:
+            response = {"id": tx_id, "source_account_id": source["id"], "destination_account_id": destination["id"],
+                        "source_amount": format_minor(amount), "source_currency": source["currency"],
+                        "destination_amount": format_minor(dest_amount), "destination_currency": destination["currency"],
+                        "rate_numerator": numerator, "rate_denominator": denominator,
+                        "source_version": source["version"]+1, "destination_version": destination["version"]+1}
+        store(cursor, key, command_type, digest, json.dumps(response, separators=(",", ":")), now)
+        conn.commit()
+        return response, False
+    except HTTPException as rejection:
+        conn.rollback()
+        detail = rejection.detail if isinstance(rejection.detail, dict) else {}
+        try:
+            log_rejection_audit_event("STAGE4_COMMAND_REJECTED", "user_mock_001", None,
+                                      {"command_type": command_type, "reason_code": detail.get("code", "COMMAND_REJECTED")})
+        except HTTPException:
+            raise
+        raise
+    except Exception:
+        conn.rollback()
+        raise
+
+
+def confirm_stage4_mfa(conn: sqlite3.Connection, transfer_id: str, key: str, payload):
+    import json
+    import uuid
+    from idempotency import validate_key, fingerprint, lookup, store
+    from event_store import append_event
+    from money import to_minor, format_minor
+    if payload.code != "123456":
+        log_rejection_audit_event("STAGE4_MFA_FAILED", "user_mock_001", transfer_id, {"reason_code":"MFA_INVALID"})
+        raise HTTPException(status_code=401, detail={"code": "MFA_INVALID", "message": "Invalid verification code"})
+    try:
+        key = validate_key(key)
+    except ValueError:
+        raise HTTPException(status_code=422, detail={"code":"INVALID_IDEMPOTENCY_KEY","message":"Idempotency-Key must be a UUID"}) from None
+    canonical = {"transfer_id": transfer_id, "expected_versions": payload.expected_versions}
+    digest = fingerprint("TRANSFER_CONFIRMATION", canonical)
+    conn.execute("BEGIN IMMEDIATE")
+    cursor = conn.cursor()
+    try:
+        prior = lookup(cursor, key, digest)
+        if prior == "CONFLICT":
+            raise HTTPException(status_code=409, detail={"code": "IDEMPOTENCY_KEY_CONFLICT", "message": "Idempotency key was used for a different request"})
+        if prior is not None:
+            conn.commit()
+            return json.loads(prior), True
+        row = cursor.execute("SELECT source_account_id,destination_account_id,amount,status,expires_at,currency,stage4_command_id,transfer_type FROM transfers WHERE id=?", (transfer_id,)).fetchone()
+        if row is None or row[6] is None:
+            raise HTTPException(status_code=404, detail={"code": "TRANSFER_NOT_FOUND", "message": "Transfer not found"})
+        source_id,destination_id,amount_text,tx_status,expires_at,currency,command_id,transfer_type = row
+        if tx_status != "PENDING_MFA":
+            raise HTTPException(status_code=409, detail={"code": "TRANSFER_STATE_CONFLICT", "message": "Transfer is no longer pending MFA"})
+        if expires_at and datetime.fromisoformat(expires_at) < datetime.now(timezone.utc):
+            append_event(cursor,event_id=str(uuid.uuid4()),command_id=command_id,event_type="AchTransferMfaResolved" if transfer_type == "ACH" else "InternalTransferMfaResolved",
+                         account_ids=[source_id,destination_id],payload={"transfer_id":transfer_id,"outcome":"EXPIRED","reason_code":"MFA_EXPIRED"})
+            cursor.execute("UPDATE transfers SET status='EXPIRED' WHERE id=?", (transfer_id,))
+            append_audit_record(cursor, "STAGE4_TRANSFER_MFA_EXPIRED", "user_mock_001", transfer_id)
+            conn.commit()
+            raise HTTPException(status_code=410, detail={"code": "MFA_EXPIRED", "message": "MFA verification window has expired"})
+        source = _stage4_account(cursor, source_id)
+        expected = payload.expected_versions
+        required_ids = [source_id] + ([destination_id] if destination_id else [])
+        if any(account_id not in expected for account_id in required_ids):
+            raise HTTPException(status_code=422,detail={"code":"MISSING_ACCOUNT_VERSION","message":"Expected versions are required for every affected account"})
+        if expected.get(source_id) != source["version"] or (destination_id and expected.get(destination_id) != _stage4_account(cursor, destination_id)["version"]):
+            raise HTTPException(status_code=409, detail={"code": "ACCOUNT_VERSION_CONFLICT", "message": "One or more account versions are stale"})
+        amount = to_minor(decrypt_val(amount_text))
+        now = datetime.now(timezone.utc).isoformat()
+        if source["balance"] < amount:
+            event_id = str(uuid.uuid4())
+            append_event(cursor,event_id=event_id,command_id=command_id,event_type="AchTransferMfaResolved" if transfer_type == "ACH" else "InternalTransferMfaResolved",
+                         account_ids=[source_id,destination_id],payload={"transfer_id":transfer_id,"outcome":"FAILED","reason_code":"INSUFFICIENT_FUNDS"})
+            cursor.execute("UPDATE transfers SET status='FAILED' WHERE id=?",(transfer_id,))
+            append_audit_record(cursor,"STAGE4_TRANSFER_MFA_FAILED","user_mock_001",command_id,{"reason_code":"INSUFFICIENT_FUNDS"})
+            conn.commit()
+            raise HTTPException(status_code=400, detail={"code": "INSUFFICIENT_FUNDS", "message": "Insufficient funds"})
+        _stage4_policy(cursor, source, amount)
+        if transfer_type == "ACH":
+            from money import format_minor
+            from event_store import append_event
+            new_balance = source["balance"] - amount
+            new_version = source["version"] + 1
+            event_id = str(uuid.uuid4())
+            append_event(cursor,event_id=event_id,command_id=command_id,event_type="AchTransferInitiated",account_ids=[source_id],occurred_at=now,
+                         payload={"reference_id":transfer_id,"amount_minor":amount,"currency":currency,"account_version":new_version,"mfa_confirmed":True})
+            cursor.execute("UPDATE accounts SET balance=?,balance_minor=?,version=? WHERE id=? AND version=?",
+                           (encrypt_val(format_minor(new_balance)),encrypt_val(str(new_balance)),new_version,source_id,source["version"]))
+            if cursor.rowcount != 1:
+                raise HTTPException(status_code=409,detail={"code":"ACCOUNT_VERSION_CONFLICT","message":"Source account version changed"})
+            cursor.execute("UPDATE transfers SET status='PENDING' WHERE id=? AND status='PENDING_MFA'",(transfer_id,))
+            cursor.execute("INSERT INTO history_projection VALUES(?,?,?,?,?,?,?,?)",
+                           (f"{transfer_id}:{source_id}",source_id,event_id,"outgoing",encrypt_val(str(amount)),currency,now,"ACH transfer pending settlement"))
+            append_audit_record(cursor,"ACH_TRANSFER_PENDING","user_mock_001",transfer_id,{"currency":currency,"mfa":True})
+            result={"id":transfer_id,"status":"PENDING","message":"ACH transfer accepted and pending settlement"}
+            store(cursor,key,"TRANSFER_CONFIRMATION",digest,json.dumps(result,separators=(",",":")),now)
+            conn.commit()
+            return result,False
+        destination = _stage4_account(cursor, destination_id)
+        source_new,destination_new = source["balance"]-amount,destination["balance"]+amount
+        event_id = str(uuid.uuid4())
+        append_event(cursor,event_id=event_id,command_id=command_id,event_type="InternalTransferCompleted",
+                     account_ids=[source_id,destination_id],payload={"legs":[
+                         {"account_id":source_id,"delta_minor":-amount,"currency":currency,"version":source["version"]+1},
+                         {"account_id":destination_id,"delta_minor":amount,"currency":currency,"version":destination["version"]+1}],"mfa_confirmed":True,"transfer_id":transfer_id},occurred_at=now)
+        cursor.execute("UPDATE accounts SET balance=?,balance_minor=?,version=? WHERE id=? AND version=?",(encrypt_val(format_minor(source_new)),encrypt_val(str(source_new)),source["version"]+1,source_id,source["version"]))
+        if cursor.rowcount != 1:
+            raise HTTPException(status_code=409, detail={"code":"ACCOUNT_VERSION_CONFLICT","message":"Source account version changed"})
+        cursor.execute("UPDATE accounts SET balance=?,balance_minor=?,version=? WHERE id=? AND version=?",(encrypt_val(format_minor(destination_new)),encrypt_val(str(destination_new)),destination["version"]+1,destination_id,destination["version"]))
+        if cursor.rowcount != 1:
+            raise HTTPException(status_code=409, detail={"code":"ACCOUNT_VERSION_CONFLICT","message":"Destination account version changed"})
+        cursor.execute("UPDATE transfers SET status='COMPLETED' WHERE id=?",(transfer_id,))
+        for aid,direction,minor,description in ((source_id,"outgoing",amount,f"Transfer to {destination['name']}"),(destination_id,"incoming",amount,f"Transfer from {source['name']}")):
+            cursor.execute("INSERT INTO history_projection VALUES(?,?,?,?,?,?,?,?)",(f"{transfer_id}:{aid}",aid,event_id,direction,encrypt_val(str(minor)),currency,now,description))
+        append_audit_record(cursor,"TRANSFER_COMPLETED","user_mock_001",transfer_id,{"event_id":event_id,"mfa":True})
+        response={"id":transfer_id,"status":"COMPLETED","message":"Transfer completed successfully"}
+        store(cursor,key,"TRANSFER_CONFIRMATION",digest,json.dumps(response,separators=(",",":")),now)
+        conn.commit()
+        return response,False
+    except Exception:
+        conn.rollback()
+        raise
 
 
 def decrypt_val(val: str | None) -> str | None:
@@ -260,7 +539,7 @@ def get_daily_consumption(
     cursor.execute("""
         SELECT t.amount
         FROM transfers t
-        WHERE t.source_account_id IN (SELECT id FROM accounts)
+        WHERE t.source_account_id IN (SELECT id FROM accounts WHERE currency = 'COP')
           AND t.created_at >= ? AND t.created_at < ?
           AND t.status IN ('COMPLETED', 'PENDING', 'SETTLED');
     """, (start_iso, next_start_iso))
@@ -955,7 +1234,7 @@ def list_recurring_schedules(conn: sqlite3.Connection, user_id: str = "user_mock
                r.destination_account_id, da.name AS dest_account_name,
                r.recipient_name, r.bank_name, r.routing_number, r.account_number,
                r.amount, r.frequency, r.status, r.next_due_date, r.last_executed_at,
-               r.mfa_expires_at, r.created_at
+               r.mfa_expires_at, r.created_at, r.currency
         FROM recurring_schedules r
         JOIN accounts sa ON r.source_account_id = sa.id
         LEFT JOIN accounts da ON r.destination_account_id = da.id
@@ -993,6 +1272,7 @@ def list_recurring_schedules(conn: sqlite3.Connection, user_id: str = "user_mock
                 last_executed_at=r[14],
                 mfa_expires_at=r[15],
                 created_at=r[16],
+                currency=r[17] or "COP",
             )
         )
     return results
@@ -1051,6 +1331,11 @@ def confirm_recurring_schedule_mfa(
             WHERE id = ?;
         """, (schedule_id,))
 
+        from event_store import append_event
+        append_event(cursor,event_id=str(uuid.uuid4()),command_id=str(uuid.uuid4()),event_type="RecurringScheduleMfaConfirmed",
+                     account_ids=[cursor.execute("SELECT source_account_id FROM recurring_schedules WHERE id=?",(schedule_id,)).fetchone()[0]],
+                     payload={"reference_id":schedule_id,"status":"ACTIVE"})
+
         append_audit_record(cursor, "RECURRING_MFA_VERIFIED", user_id, schedule_id)
         append_audit_record(cursor, "RECURRING_SCHEDULE_ACTIVATED", user_id, schedule_id)
         conn.commit()
@@ -1082,6 +1367,9 @@ def pause_recurring_schedule(
     conn.execute("BEGIN IMMEDIATE;")
     try:
         cursor.execute("UPDATE recurring_schedules SET status = 'PAUSED' WHERE id = ?;", (schedule_id,))
+        from event_store import append_event
+        source_id=cursor.execute("SELECT source_account_id FROM recurring_schedules WHERE id=?",(schedule_id,)).fetchone()[0]
+        append_event(cursor,event_id=str(uuid.uuid4()),command_id=str(uuid.uuid4()),event_type="RecurringSchedulePaused",account_ids=[source_id],payload={"reference_id":schedule_id,"status":"PAUSED"})
         append_audit_record(cursor, "RECURRING_SCHEDULE_PAUSED", user_id, schedule_id)
         conn.commit()
     except Exception:
@@ -1112,6 +1400,9 @@ def resume_recurring_schedule(
     conn.execute("BEGIN IMMEDIATE;")
     try:
         cursor.execute("UPDATE recurring_schedules SET status = 'ACTIVE' WHERE id = ?;", (schedule_id,))
+        from event_store import append_event
+        source_id=cursor.execute("SELECT source_account_id FROM recurring_schedules WHERE id=?",(schedule_id,)).fetchone()[0]
+        append_event(cursor,event_id=str(uuid.uuid4()),command_id=str(uuid.uuid4()),event_type="RecurringScheduleResumed",account_ids=[source_id],payload={"reference_id":schedule_id,"status":"ACTIVE"})
         append_audit_record(cursor, "RECURRING_SCHEDULE_RESUMED", user_id, schedule_id)
         conn.commit()
     except Exception:
@@ -1142,6 +1433,9 @@ def cancel_recurring_schedule(
     conn.execute("BEGIN IMMEDIATE;")
     try:
         cursor.execute("UPDATE recurring_schedules SET status = 'CANCELLED' WHERE id = ?;", (schedule_id,))
+        from event_store import append_event
+        source_id=cursor.execute("SELECT source_account_id FROM recurring_schedules WHERE id=?",(schedule_id,)).fetchone()[0]
+        append_event(cursor,event_id=str(uuid.uuid4()),command_id=str(uuid.uuid4()),event_type="RecurringScheduleCancelled",account_ids=[source_id],payload={"reference_id":schedule_id,"status":"CANCELLED"})
         append_audit_record(cursor, "RECURRING_SCHEDULE_CANCELLED", user_id, schedule_id)
         conn.commit()
     except Exception:
@@ -1262,4 +1556,390 @@ def execute_due_recurring_schedules(conn: sqlite3.Connection) -> tuple[int, int]
         return (processed_count, failed_count)
     except Exception:
         conn.execute("ROLLBACK;")
+        raise
+
+
+# Stage 4 operational flows. These replace the legacy balance-only ACH/recurring
+# implementations above while keeping the inherited endpoint surface intact.
+def process_ach_transfer_stage4(conn: sqlite3.Connection, payload: AchTransferCreate, key: str,
+                                user_id: str = "user_mock_001") -> tuple[int, AchTransferResponse]:
+    import json
+    from idempotency import validate_key, fingerprint, lookup, store
+    from event_store import append_event
+    from money import to_minor, format_minor
+
+    try:
+        key = validate_key(key)
+    except ValueError:
+        raise HTTPException(422, detail={"code": "INVALID_IDEMPOTENCY_KEY", "message": "Idempotency-Key must be a UUID"}) from None
+    canonical = payload.model_dump()
+    digest = fingerprint("ACH_INITIATION", canonical)
+    conn.execute("BEGIN IMMEDIATE")
+    cursor = conn.cursor()
+    try:
+        prior = lookup(cursor, key, digest)
+        if prior == "CONFLICT":
+            raise HTTPException(409, detail={"code": "IDEMPOTENCY_KEY_CONFLICT", "message": "Idempotency key was used for a different request"})
+        if prior is not None:
+            conn.commit()
+            response = json.loads(prior)
+            return (202 if response["status"] == "PENDING_MFA" else 201), AchTransferResponse(**response)
+        account = _stage4_account(cursor, payload.source_account_id)
+        if account["id"] not in payload.expected_versions:
+            raise HTTPException(422, detail={"code":"MISSING_ACCOUNT_VERSION","message":"Expected source account version is required"})
+        if payload.expected_versions.get(account["id"]) != account["version"]:
+            raise HTTPException(409, detail={"code": "ACCOUNT_VERSION_CONFLICT", "message": "Source account version is stale"})
+        if account["currency"] not in {"COP", "USD"}:
+            raise HTTPException(422, detail={"code": "INVALID_CURRENCY", "message": "ACH is supported only for COP legacy and USD accounts"})
+        amount = to_minor(payload.amount)
+        if account["balance"] < amount:
+            raise HTTPException(400, detail={"code": "INSUFFICIENT_FUNDS", "message": "Insufficient funds"})
+        mfa_required = _stage4_policy(cursor, account, amount)
+        now = datetime.now(timezone.utc)
+        now_iso = now.isoformat()
+        transfer_id = f"tr_ach_{uuid.uuid4().hex}"
+        command_id = str(uuid.uuid4())
+        expires_at = (now + timedelta(minutes=5)).isoformat() if mfa_required else None
+        event_type = "AchTransferMfaPending" if mfa_required else "AchTransferInitiated"
+        append_event(cursor, event_id=str(uuid.uuid4()), command_id=command_id, event_type=event_type,
+                     account_ids=[account["id"]], occurred_at=now_iso,
+                     payload={"reference_id": transfer_id, "amount_minor": amount, "currency": account["currency"],
+                              "source_account_id": account["id"], "account_version": account["version"] + (0 if mfa_required else 1)})
+        if payload.save_beneficiary:
+            cursor.execute("""INSERT INTO beneficiaries(id,user_id,name,bank_name,routing_number,account_number,created_at)
+                              VALUES(?,?,?,?,?,?,?)""",
+                           (f"ben_{uuid.uuid4().hex[:12]}", user_id, encrypt_val(payload.recipient_name),
+                            encrypt_val(payload.bank_name), encrypt_val(payload.routing_number),
+                            encrypt_val(payload.account_number), now_iso))
+        status_text = "PENDING_MFA" if mfa_required else "PENDING"
+        cursor.execute("""INSERT INTO transfers(id,source_account_id,destination_account_id,amount,status,created_at,expires_at,
+                          transfer_type,recipient_name,bank_name,routing_number,account_number,currency,stage4_command_id,expected_versions_json)
+                          VALUES(?,?,NULL,?,?,?,?, 'ACH',?,?,?,?,?,?,?)""",
+                       (transfer_id, account["id"], encrypt_val(format_minor(amount)), status_text, now_iso, expires_at,
+                        encrypt_val(payload.recipient_name), encrypt_val(payload.bank_name), encrypt_val(payload.routing_number),
+                        encrypt_val(payload.account_number), account["currency"], command_id,
+                        json.dumps(payload.expected_versions, sort_keys=True)))
+        version = account["version"]
+        if not mfa_required:
+            next_balance = account["balance"] - amount
+            cursor.execute("UPDATE accounts SET balance=?,balance_minor=?,version=? WHERE id=? AND version=?",
+                           (encrypt_val(format_minor(next_balance)), encrypt_val(str(next_balance)), version + 1,
+                            account["id"], version))
+            if cursor.rowcount != 1:
+                raise HTTPException(409, detail={"code": "ACCOUNT_VERSION_CONFLICT", "message": "Source account version changed"})
+            cursor.execute("INSERT INTO history_projection VALUES(?,?,?,?,?,?,?,?)",
+                           (f"{transfer_id}:{account['id']}", account["id"], cursor.execute("SELECT event_id FROM domain_events WHERE command_id=? ORDER BY sequence DESC LIMIT 1", (command_id,)).fetchone()[0],
+                            "outgoing", encrypt_val(str(amount)), account["currency"], now_iso, "ACH transfer pending settlement"))
+        append_audit_record(cursor, "ACH_TRANSFER_PENDING_MFA" if mfa_required else "ACH_TRANSFER_PENDING", user_id,
+                            transfer_id, {"amount": format_minor(amount), "currency": account["currency"],
+                                          "recipient": payload.recipient_name, "account": f"***{payload.account_number[-3:]}"})
+        result = {"id": transfer_id, "transfer_type": "ACH", "source_account": account["name"],
+                  "recipient_name": payload.recipient_name, "bank_name": payload.bank_name,
+                  "routing_number": payload.routing_number, "account_number": payload.account_number,
+                  "amount": format_minor(amount), "status": status_text, "created_at": now_iso,
+                  "expires_at": expires_at, "currency": account["currency"], "source_version": version + (0 if mfa_required else 1)}
+        store(cursor, key, "ACH_INITIATION", digest, json.dumps(result, separators=(",", ":")), now_iso)
+        conn.commit()
+        return (202 if mfa_required else 201), AchTransferResponse(**result)
+    except HTTPException as rejection:
+        conn.rollback()
+        detail = rejection.detail if isinstance(rejection.detail, dict) else {}
+        log_rejection_audit_event("ACH_TRANSFER_REJECTED", user_id, None,
+                                  {"reason_code": detail.get("code", "ACH_REJECTED")})
+        raise
+    except Exception:
+        conn.rollback()
+        raise
+
+
+def confirm_recurring_schedule_mfa_stage4(conn: sqlite3.Connection, schedule_id: str, payload, key: str,
+                                          user_id: str = "user_mock_001") -> RecurringScheduleResponse:
+    import json
+    from idempotency import validate_key, fingerprint, lookup, store
+    from event_store import append_event
+    try:
+        key=validate_key(key)
+    except ValueError:
+        raise HTTPException(422,detail={"code":"INVALID_IDEMPOTENCY_KEY","message":"Idempotency-Key must be a UUID"}) from None
+    canonical={"schedule_id":schedule_id,"expected_versions":payload.expected_versions}
+    digest=fingerprint("RECURRING_MFA_CONFIRMATION",canonical)
+    conn.execute("BEGIN IMMEDIATE")
+    cursor=conn.cursor()
+    try:
+        previous=lookup(cursor,key,digest)
+        if previous == "CONFLICT":
+            raise HTTPException(409,detail={"code":"IDEMPOTENCY_KEY_CONFLICT","message":"Idempotency key was used for a different request"})
+        if previous:
+            conn.commit()
+            return get_recurring_schedule(conn,schedule_id,user_id)
+        row=cursor.execute("SELECT status,mfa_expires_at,source_account_id FROM recurring_schedules WHERE id=? AND user_id=?",(schedule_id,user_id)).fetchone()
+        if not row:
+            raise HTTPException(404,detail={"code":"SCHEDULE_NOT_FOUND","message":"Recurring schedule not found"})
+        state,expires,source_id=row
+        if state == "EXPIRED":
+            raise HTTPException(410,detail={"code":"MFA_EXPIRED","message":"MFA verification window has expired"})
+        if state != "PENDING_MFA":
+            raise HTTPException(409,detail={"code":"TRANSFER_STATE_CONFLICT","message":"Schedule is no longer pending MFA"})
+        account=_stage4_account(cursor,source_id)
+        if source_id not in payload.expected_versions:
+            raise HTTPException(422,detail={"code":"MISSING_ACCOUNT_VERSION","message":"Expected source account version is required"})
+        if payload.expected_versions.get(source_id) != account["version"]:
+            raise HTTPException(409,detail={"code":"ACCOUNT_VERSION_CONFLICT","message":"Source account version is stale"})
+        if expires and datetime.fromisoformat(expires.replace("Z","+00:00")) < datetime.now(timezone.utc):
+            cursor.execute("UPDATE recurring_schedules SET status='EXPIRED' WHERE id=? AND status='PENDING_MFA'",(schedule_id,))
+            append_audit_record(cursor,"RECURRING_MFA_EXPIRED",user_id,schedule_id)
+            conn.commit()
+            raise HTTPException(410,detail={"code":"MFA_EXPIRED","message":"MFA verification window has expired"})
+        if payload.code != "123456":
+            raise HTTPException(401,detail={"code":"MFA_INVALID","message":"Invalid verification code"})
+        cursor.execute("UPDATE recurring_schedules SET status='ACTIVE',mfa_expires_at=NULL WHERE id=? AND status='PENDING_MFA'",(schedule_id,))
+        if cursor.rowcount != 1:
+            raise HTTPException(409,detail={"code":"TRANSFER_STATE_CONFLICT","message":"Schedule state changed"})
+        append_event(cursor,event_id=str(uuid.uuid4()),command_id=str(uuid.uuid4()),event_type="RecurringScheduleMfaConfirmed",
+                     account_ids=[source_id],payload={"reference_id":schedule_id,"status":"ACTIVE"})
+        append_audit_record(cursor,"RECURRING_MFA_VERIFIED",user_id,schedule_id)
+        store(cursor,key,"RECURRING_MFA_CONFIRMATION",digest,json.dumps({"schedule_id":schedule_id,"status":"ACTIVE"},separators=(",",":")),datetime.now(timezone.utc).isoformat())
+        conn.commit()
+    except Exception:
+        conn.rollback()
+        raise
+    return get_recurring_schedule(conn,schedule_id,user_id)
+
+
+def settle_eligible_ach_transfers(conn: sqlite3.Connection, delay_seconds: int = 10) -> int:
+    from event_store import append_event
+    from money import to_minor
+    cutoff = (datetime.now(timezone.utc) - timedelta(seconds=delay_seconds)).strftime("%Y-%m-%dT%H:%M:%SZ")
+    now = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+    conn.execute("BEGIN IMMEDIATE")
+    cursor = conn.cursor()
+    try:
+        rows = cursor.execute("SELECT id,source_account_id,amount,currency,stage4_command_id FROM transfers WHERE transfer_type='ACH' AND status='PENDING' AND created_at<=? ORDER BY created_at,id", (cutoff,)).fetchall()
+        settled = 0
+        for transfer_id, source_id, amount_enc, currency, command_id in rows:
+            cursor.execute("UPDATE transfers SET status='SETTLED',settled_at=? WHERE id=? AND status='PENDING'", (now, transfer_id))
+            if cursor.rowcount != 1:
+                continue
+            amount = to_minor(decrypt_val(amount_enc))
+            append_event(cursor, event_id=str(uuid.uuid4()), command_id=command_id or str(uuid.uuid4()),
+                         event_type="AchTransferSettled", account_ids=[source_id], occurred_at=now,
+                         payload={"reference_id": transfer_id, "amount_minor": amount, "currency": currency or "COP"})
+            append_audit_record(cursor, "ACH_TRANSFER_SETTLED", "system_scheduler", transfer_id,
+                                {"currency": currency or "COP"})
+            settled += 1
+        conn.commit()
+        return settled
+    except Exception:
+        conn.rollback()
+        raise
+
+
+def fail_ach_transfer(conn: sqlite3.Connection, transfer_id: str) -> dict:
+    from event_store import append_event
+    from money import to_minor, format_minor
+    now = datetime.now(timezone.utc).isoformat()
+    conn.execute("BEGIN IMMEDIATE")
+    cursor = conn.cursor()
+    try:
+        row = cursor.execute("SELECT source_account_id,amount,status,transfer_type,currency,stage4_command_id FROM transfers WHERE id=?", (transfer_id,)).fetchone()
+        if not row:
+            raise HTTPException(404, detail={"code": "TRANSFER_NOT_FOUND", "message": "Transfer not found"})
+        source_id, amount_enc, current, kind, currency, command_id = row
+        if kind != "ACH" or current != "PENDING":
+            raise HTTPException(409, detail={"code": "TRANSFER_STATE_CONFLICT", "message": "Only pending ACH transfers can be failed"})
+        account = _stage4_account(cursor, source_id)
+        amount = to_minor(decrypt_val(amount_enc))
+        next_balance = account["balance"] + amount
+        cursor.execute("UPDATE transfers SET status='FAILED',failed_at=?,refunded_at=? WHERE id=? AND status='PENDING'", (now, now, transfer_id))
+        if cursor.rowcount != 1:
+            raise HTTPException(409, detail={"code": "TRANSFER_STATE_CONFLICT", "message": "ACH transfer already transitioned"})
+        new_version = account["version"] + 1
+        cursor.execute("UPDATE accounts SET balance=?,balance_minor=?,version=? WHERE id=? AND version=?",
+                       (encrypt_val(format_minor(next_balance)), encrypt_val(str(next_balance)), new_version, source_id, account["version"]))
+        if cursor.rowcount != 1:
+            raise HTTPException(409, detail={"code": "ACCOUNT_VERSION_CONFLICT", "message": "Account version changed"})
+        command_id = command_id or str(uuid.uuid4())
+        event_id = str(uuid.uuid4())
+        append_event(cursor, event_id=event_id, command_id=command_id, event_type="AchTransferFailed",
+                     account_ids=[source_id], occurred_at=now,
+                     payload={"reference_id": transfer_id, "amount_minor": amount, "currency": currency or account["currency"],
+                              "delta_minor": amount, "version": new_version})
+        cursor.execute("INSERT INTO history_projection VALUES(?,?,?,?,?,?,?,?)",
+                       (f"{transfer_id}:refund:{source_id}", source_id, event_id, "incoming", encrypt_val(str(amount)),
+                        currency or account["currency"], now, "ACH failed; refund credited"))
+        append_audit_record(cursor, "ACH_TRANSFER_FAILED", "system_scheduler", transfer_id,
+                            {"refund_amount": format_minor(amount), "currency": currency or account["currency"]})
+        conn.commit()
+        return {"id": transfer_id, "status": "FAILED", "refunded_amount": format_minor(amount), "source_version": new_version}
+    except Exception:
+        conn.rollback()
+        raise
+
+
+def create_recurring_schedule_stage4(conn: sqlite3.Connection, payload: RecurringScheduleCreate, key: str,
+                                     user_id: str = "user_mock_001") -> tuple[int, RecurringScheduleResponse]:
+    import json
+    from idempotency import validate_key, fingerprint, lookup, store
+    from event_store import append_event
+    from money import to_minor, format_minor
+    try:
+        key = validate_key(key)
+    except ValueError:
+        raise HTTPException(422, detail={"code": "INVALID_IDEMPOTENCY_KEY", "message": "Idempotency-Key must be a UUID"}) from None
+    digest = fingerprint("RECURRING_SCHEDULE_CREATE", payload.model_dump())
+    conn.execute("BEGIN IMMEDIATE")
+    cursor = conn.cursor()
+    try:
+        prior = lookup(cursor, key, digest)
+        if prior == "CONFLICT":
+            raise HTTPException(409, detail={"code": "IDEMPOTENCY_KEY_CONFLICT", "message": "Idempotency key was used for a different request"})
+        if prior:
+            conn.commit()
+            value = json.loads(prior)
+            return (202 if value["status"] == "PENDING_MFA" else 201), RecurringScheduleResponse(**value)
+        source = _stage4_account(cursor, payload.source_account_id)
+        required_versions=[source["id"]]
+        if payload.expected_versions.get(source["id"]) != source["version"]:
+            if source["id"] not in payload.expected_versions:
+                raise HTTPException(422,detail={"code":"MISSING_ACCOUNT_VERSION","message":"Expected source account version is required"})
+            raise HTTPException(409, detail={"code": "ACCOUNT_VERSION_CONFLICT", "message": "Source account version is stale"})
+        destination_name = None
+        destination = None
+        if payload.transfer_type == "INTERNAL":
+            destination = _stage4_account(cursor, payload.destination_account_id or "")
+            required_versions.append(destination["id"])
+            if destination["id"] == source["id"] or destination["currency"] != source["currency"]:
+                raise HTTPException(422, detail={"code": "INVALID_CURRENCY", "message": "Recurring internal transfers require distinct same-currency accounts"})
+            if payload.expected_versions.get(destination["id"]) != destination["version"]:
+                if destination["id"] not in payload.expected_versions:
+                    raise HTTPException(422,detail={"code":"MISSING_ACCOUNT_VERSION","message":"Expected destination account version is required"})
+                raise HTTPException(409, detail={"code": "ACCOUNT_VERSION_CONFLICT", "message": "Destination account version is stale"})
+            destination_name = destination["name"]
+        elif source["currency"] not in {"COP", "USD"}:
+            raise HTTPException(422, detail={"code": "INVALID_CURRENCY", "message": "Recurring ACH is supported only for COP and USD"})
+        amount = to_minor(payload.amount)
+        mfa = _stage4_policy(cursor, source, amount)
+        now = datetime.now(timezone.utc)
+        due = _calculate_first_due_date(now, payload.frequency, payload.start_date)
+        schedule_id = f"rec_{uuid.uuid4().hex}"
+        state = "PENDING_MFA" if mfa else "ACTIVE"
+        expires = (now + timedelta(seconds=300)).isoformat() if mfa else None
+        names = {"transfer_type": payload.transfer_type, "destination_account_id": payload.destination_account_id,
+                 "dest_account_name": destination_name, "recipient_name": payload.recipient_name,
+                 "bank_name": payload.bank_name, "account_number": payload.account_number}
+        display = _format_schedule_destination(names)
+        cursor.execute("""INSERT INTO recurring_schedules(id,user_id,transfer_type,source_account_id,destination_account_id,
+            recipient_name,bank_name,routing_number,account_number,amount,frequency,status,start_date,next_due_date,
+            last_executed_at,mfa_expires_at,created_at,currency,expected_versions_json)
+            VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,NULL,?,?,?,?)""",
+            (schedule_id,user_id,payload.transfer_type,source["id"],payload.destination_account_id,
+             encrypt_val(payload.recipient_name),encrypt_val(payload.bank_name),encrypt_val(payload.routing_number),
+             encrypt_val(payload.account_number),encrypt_val(format_minor(amount)),payload.frequency,state,
+             payload.start_date,due,expires,now.isoformat(),source["currency"],json.dumps(payload.expected_versions,sort_keys=True)))
+        append_event(cursor,event_id=str(uuid.uuid4()),command_id=str(uuid.uuid4()),event_type="RecurringScheduleCreated",
+                     account_ids=[source["id"]]+([destination["id"]] if destination else []),occurred_at=now.isoformat(),
+                     payload={"reference_id":schedule_id,"amount_minor":amount,"currency":source["currency"],"frequency":payload.frequency,"status":state})
+        append_audit_record(cursor,"RECURRING_SCHEDULE_CREATED",user_id,schedule_id,{"amount":format_minor(amount),"currency":source["currency"],"frequency":payload.frequency,"status":state})
+        result={"id":schedule_id,"transfer_type":payload.transfer_type,"source_account_id":source["id"],"source_account":source["name"],
+                "destination_display":display,"amount":format_minor(amount),"frequency":payload.frequency,"status":state,
+                "next_due_date":due,"last_executed_at":None,"mfa_expires_at":expires,"created_at":now.isoformat(),"currency":source["currency"]}
+        store(cursor,key,"RECURRING_SCHEDULE_CREATE",digest,json.dumps(result,separators=(",",":")),now.isoformat())
+        conn.commit()
+        return (202 if mfa else 201), RecurringScheduleResponse(**result)
+    except HTTPException as rejection:
+        conn.rollback()
+        detail = rejection.detail if isinstance(rejection.detail,dict) else {}
+        log_rejection_audit_event("RECURRING_SCHEDULE_REJECTED",user_id,None,{"reason_code":detail.get("code","SCHEDULE_REJECTED")})
+        raise
+    except Exception:
+        conn.rollback()
+        raise
+
+
+def execute_due_recurring_schedules(conn: sqlite3.Connection) -> tuple[int, int]:
+    import json
+    from event_store import append_event
+    from idempotency import fingerprint, store
+    from money import to_minor, format_minor
+    now = datetime.now(timezone.utc)
+    # Persist one canonical UTC representation so lexicographic due-date checks
+    # remain correct against inherited timestamps ending in ``Z``.
+    now_iso = now.strftime("%Y-%m-%dT%H:%M:%SZ")
+    conn.execute("BEGIN IMMEDIATE")
+    cursor = conn.cursor()
+    completed = failed = 0
+    try:
+        cursor.execute("UPDATE recurring_schedules SET status='EXPIRED' WHERE status='PENDING_MFA' AND mfa_expires_at IS NOT NULL AND mfa_expires_at<?", (now_iso,))
+        due = cursor.execute("""SELECT id,user_id,transfer_type,source_account_id,destination_account_id,recipient_name,
+            bank_name,routing_number,account_number,amount,frequency,next_due_date,currency
+            FROM recurring_schedules WHERE status='ACTIVE' AND next_due_date<=? ORDER BY next_due_date,id""", (now_iso,)).fetchall()
+        for row in due:
+            sid,user,kind,src_id,dst_id,recipient,bank,routing,account_enc,amount_enc,frequency,due_at,currency=row
+            occurrence_key = due_at
+            command_id = str(uuid.uuid5(uuid.NAMESPACE_URL, f"shift-bank:recurring:{sid}:{occurrence_key}"))
+            try:
+                cursor.execute("INSERT INTO recurring_occurrences(schedule_id,occurrence_key,command_id,status,created_at) VALUES(?,?,?,'CLAIMED',?)",
+                               (sid,occurrence_key,command_id,now_iso))
+            except sqlite3.IntegrityError:
+                continue
+            amount = to_minor(decrypt_val(amount_enc))
+            source = _stage4_account(cursor,src_id)
+            destination = _stage4_account(cursor,dst_id) if kind == "INTERNAL" else None
+            reason = None
+            try:
+                if source["currency"] != currency or (destination and destination["currency"] != currency):
+                    raise HTTPException(422, detail={"code":"INVALID_CURRENCY","message":"Schedule currency no longer matches account"})
+                if destination and source["currency"] != destination["currency"]:
+                    raise HTTPException(422, detail={"code":"INVALID_CURRENCY","message":"Recurring internal transfer currencies differ"})
+                if source["balance"] < amount:
+                    raise HTTPException(400, detail={"code":"INSUFFICIENT_FUNDS","message":"Insufficient funds"})
+                _stage4_policy(cursor,source,amount)
+            except HTTPException as exc:
+                detail=exc.detail if isinstance(exc.detail,dict) else {}
+                reason=detail.get("code","EXECUTION_REJECTED")
+            next_due = _calculate_next_interval_due_date(occurrence_key,frequency)
+            if reason:
+                cursor.execute("UPDATE recurring_occurrences SET status='FAILED' WHERE schedule_id=? AND occurrence_key=?",(sid,occurrence_key))
+                append_event(cursor,event_id=str(uuid.uuid4()),command_id=command_id,event_type="RecurringExecutionFailed",
+                             account_ids=[src_id]+([dst_id] if dst_id else []),occurred_at=now_iso,
+                             payload={"reference_id":sid,"amount_minor":amount,"currency":currency,"occurrence_key":occurrence_key,"reason_code":reason})
+                append_audit_record(cursor,"RECURRING_EXECUTION_FAILED",user,sid,{"reason_code":reason,"occurrence_key":occurrence_key})
+                failed += 1
+            else:
+                transfer_id=f"tr_rec_{uuid.uuid5(uuid.NAMESPACE_URL, f'{sid}:{occurrence_key}').hex}"
+                event_id=str(uuid.uuid4())
+                new_source=source["balance"]-amount
+                source_version=source["version"]+1
+                cursor.execute("UPDATE accounts SET balance=?,balance_minor=?,version=? WHERE id=? AND version=?",
+                               (encrypt_val(format_minor(new_source)),encrypt_val(str(new_source)),source_version,src_id,source["version"]))
+                if cursor.rowcount != 1: raise RuntimeError("Recurring source account version changed during locked execution")
+                if destination:
+                    new_dest=destination["balance"]+amount
+                    dest_version=destination["version"]+1
+                    cursor.execute("UPDATE accounts SET balance=?,balance_minor=?,version=? WHERE id=? AND version=?",
+                                   (encrypt_val(format_minor(new_dest)),encrypt_val(str(new_dest)),dest_version,dst_id,destination["version"]))
+                    if cursor.rowcount != 1: raise RuntimeError("Recurring destination account version changed during locked execution")
+                    event_type="InternalTransferCompleted"
+                    event_payload={"transfer_id":transfer_id,"legs":[{"account_id":src_id,"delta_minor":-amount,"currency":currency,"version":source_version},{"account_id":dst_id,"delta_minor":amount,"currency":currency,"version":dest_version}],"recurring_schedule_id":sid,"occurrence_key":occurrence_key,"rate_numerator":1,"rate_denominator":1}
+                    event_accounts=[src_id,dst_id]
+                    cursor.execute("INSERT INTO transfers(id,source_account_id,destination_account_id,amount,status,created_at,transfer_type,currency,stage4_command_id) VALUES(?,?,?,?,'COMPLETED',?,'INTERNAL',?,?)",
+                                   (transfer_id,src_id,dst_id,encrypt_val(format_minor(amount)),now_iso,currency,command_id))
+                    for aid,direction,desc in ((src_id,"outgoing",f"Transfer to {destination['name']}"),(dst_id,"incoming",f"Transfer from {source['name']}")):
+                        cursor.execute("INSERT INTO history_projection VALUES(?,?,?,?,?,?,?,?)",(f"{transfer_id}:{aid}",aid,event_id,direction,encrypt_val(str(amount)),currency,now_iso,desc))
+                else:
+                    event_type="AchTransferInitiated"
+                    event_payload={"reference_id":transfer_id,"amount_minor":amount,"currency":currency,"account_version":source_version,"recurring_schedule_id":sid,"occurrence_key":occurrence_key}
+                    event_accounts=[src_id]
+                    cursor.execute("INSERT INTO transfers(id,source_account_id,destination_account_id,amount,status,created_at,transfer_type,recipient_name,bank_name,routing_number,account_number,currency,stage4_command_id) VALUES(?,?,NULL,?,'PENDING',?,'ACH',?,?,?,?,?,?)",
+                                   (transfer_id,src_id,encrypt_val(format_minor(amount)),now_iso,recipient,bank,routing,account_enc,currency,command_id))
+                    cursor.execute("INSERT INTO history_projection VALUES(?,?,?,?,?,?,?,?)",(f"{transfer_id}:{src_id}",src_id,event_id,"outgoing",encrypt_val(str(amount)),currency,now_iso,"Recurring ACH pending settlement"))
+                append_event(cursor,event_id=event_id,command_id=command_id,event_type=event_type,account_ids=event_accounts,occurred_at=now_iso,payload=event_payload)
+                cursor.execute("UPDATE recurring_occurrences SET status='COMPLETED' WHERE schedule_id=? AND occurrence_key=?",(sid,occurrence_key))
+                append_audit_record(cursor,"RECURRING_TRANSFER_EXECUTED",user,sid,{"currency":currency,"amount":format_minor(amount),"transfer_id":transfer_id,"occurrence_key":occurrence_key})
+                completed += 1
+            cursor.execute("UPDATE recurring_schedules SET next_due_date=?,last_executed_at=? WHERE id=? AND next_due_date=? AND status='ACTIVE'",(next_due,now_iso,sid,occurrence_key))
+        conn.commit()
+        return completed,failed
+    except Exception:
+        conn.rollback()
         raise

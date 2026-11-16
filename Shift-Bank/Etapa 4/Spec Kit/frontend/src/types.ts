@@ -3,6 +3,7 @@ export interface Account {
   name: string;
   balance: string;
   currency: string;
+  version?: number;
 }
 
 export interface Transfer {
@@ -13,6 +14,12 @@ export interface Transfer {
   status: 'PENDING_MFA' | 'COMPLETED' | 'FAILED' | 'EXPIRED';
   created_at: string;
   expires_at: string | null;
+  source_version?: number;
+  destination_version?: number;
+  source_account_id?: string;
+  destination_account_id?: string;
+  currency?: string;
+  transfer_type?: 'INTERNAL' | 'ACH';
 }
 
 export interface HistoryEntry {
@@ -21,6 +28,11 @@ export interface HistoryEntry {
   amount: string;
   description: string;
   date: string;
+  currency?: string;
+  counter_amount?: string | null;
+  counter_currency?: string | null;
+  rate_numerator?: number | null;
+  rate_denominator?: number | null;
 }
 
 export interface MFAConfirmResponse {
@@ -31,6 +43,8 @@ export interface MFAConfirmResponse {
 
 export interface ApiError {
   detail: string;
+  code?: string;
+  status?: number;
 }
 
 // Stage 2: Dynamic Limits (LIM-01..09, D-01, D-07)
@@ -73,6 +87,7 @@ export interface AchTransferCreate {
   routing_number: string;
   account_number: string;
   save_beneficiary: boolean;
+  expected_versions: Record<string, number>;
 }
 
 export interface AchTransferResponse {
@@ -87,6 +102,8 @@ export interface AchTransferResponse {
   status: 'PENDING' | 'PENDING_MFA' | 'SETTLED' | 'FAILED';
   created_at: string;
   expires_at?: string | null;
+  currency?: string;
+  source_version?: number;
 }
 
 // Stage 2: Recurring Schedules (REC-01..12, D-03, D-05, D-09)
@@ -106,6 +123,7 @@ export interface RecurringSchedule {
   last_executed_at: string | null;
   mfa_expires_at: string | null;
   created_at: string;
+  currency?: string;
 }
 
 export interface RecurringScheduleCreate {
@@ -119,6 +137,21 @@ export interface RecurringScheduleCreate {
   bank_name?: string;
   routing_number?: string;
   account_number?: string;
+  expected_versions: Record<string, number>;
+}
+
+export interface ConversionResponse {
+  id: string;
+  source_account_id: string;
+  destination_account_id: string;
+  source_amount: string;
+  source_currency: string;
+  destination_amount: string;
+  destination_currency: string;
+  rate_numerator: number;
+  rate_denominator: number;
+  source_version: number;
+  destination_version: number;
 }
 
 // Stage 3: Application-Layer Encryption & Deployment (E3-ENC-01, E3-AUD-01, E3-DEP-01)

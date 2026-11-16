@@ -1,0 +1,4 @@
+Command: python -m pytest tests/test_stage4_migration.py -q --basetemp='..\\.stage4-pytest-tmp'
+Outcome: 2 passed, 1 failed in 0.83s.
+Failure: conflicting D-02 rollback test compared the raw accounts.balance field to plaintext. Stage 3 legacy plaintext migration had already encrypted the same unchanged balance before Stage 4's transactional cutover failed.
+Observed data: the field was an enc:v1 AES-GCM envelope; earlier two tests verified decryption behavior. Correction: assert decrypted value equals the original COP amount and retain the assertion that Stage 4 event tables rolled back.

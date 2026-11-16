@@ -26,6 +26,8 @@ vi.mock('./services', () => {
     fetchSchedules: vi.fn().mockResolvedValue([]),
     createSchedule: vi.fn(),
     confirmScheduleMFA: vi.fn(),
+    convertFunds: vi.fn(),
+    createIdempotencyKey: vi.fn(() => '00000000-0000-4000-8000-000000000001'),
     pauseSchedule: vi.fn(),
     resumeSchedule: vi.fn(),
     cancelSchedule: vi.fn(),
@@ -106,7 +108,7 @@ describe('User Story 2: Transfer Between Own Accounts', () => {
 
     const sourceSelect = screen.getByLabelText(/Source Account/i);
     const destSelect = screen.getByLabelText(/Destination Account/i);
-    const amountInput = screen.getByLabelText(/Amount/i);
+    const amountInput = screen.getByLabelText(/Amount/i, { selector: '#amount-input' });
     const transferButton = screen.getByRole('button', { name: /Transfer/i });
 
     fireEvent.change(sourceSelect, { target: { value: 'acc_checking_123' } });
@@ -155,7 +157,9 @@ describe('User Story 2: Transfer Between Own Accounts', () => {
       expect(services.initiateTransfer).toHaveBeenCalledWith(
         'acc_checking_123',
         'acc_savings_456',
-        '300000.00'
+        '300000.00',
+        { acc_checking_123: 0, acc_savings_456: 0 },
+        '00000000-0000-4000-8000-000000000001'
       );
       expect(services.fetchAccounts).toHaveBeenCalledTimes(2);
     });
@@ -323,7 +327,7 @@ describe('User Story 3: Transaction History & Pre-seeded Movements', () => {
 
     expect(screen.getAllByRole('row').length).toBe(3);
 
-    const amountInput = screen.getByLabelText(/Amount/i);
+    const amountInput = screen.getByLabelText(/Amount/i, { selector: '#amount-input' });
     const transferButton = screen.getByRole('button', { name: /Transfer/i });
 
     vi.mocked(services.fetchHistory).mockResolvedValue([
@@ -344,7 +348,9 @@ describe('User Story 3: Transaction History & Pre-seeded Movements', () => {
       expect(services.initiateTransfer).toHaveBeenCalledWith(
         'acc_checking_123',
         'acc_savings_456',
-        '200000.00'
+        '200000.00',
+        { acc_checking_123: 0, acc_savings_456: 0 },
+        '00000000-0000-4000-8000-000000000001'
       );
       expect(services.fetchHistory).toHaveBeenCalledTimes(2);
     });
@@ -401,7 +407,7 @@ describe('User Story 4: Mock Multi-Factor Authentication & State Machine', () =>
     });
 
     // Submit sensitive transfer (COP 1,500,000)
-    const amountInput = screen.getByLabelText(/Amount/i);
+    const amountInput = screen.getByLabelText(/Amount/i, { selector: '#amount-input' });
     const transferButton = screen.getByRole('button', { name: /Transfer/i });
 
     fireEvent.change(amountInput, { target: { value: '1500000' } });
@@ -474,7 +480,7 @@ describe('User Story 4: Mock Multi-Factor Authentication & State Machine', () =>
     fireEvent.click(refreshedConfirmButton);
 
     await waitFor(() => {
-      expect(services.confirmMFA).toHaveBeenCalledWith('tr_sensitive_888', '123456');
+      expect(services.confirmMFA).toHaveBeenCalledWith('tr_sensitive_888', '123456', {}, '00000000-0000-4000-8000-000000000001');
     });
 
     // Expect modal to close, global success alert to render, and balances to refresh
@@ -611,6 +617,7 @@ describe('Stage 2 User Story 2: ACH Transfers & Beneficiaries', () => {
 
     const routingInput = screen.getByLabelText(/Routing Number \(9 digits\)/i);
     const submitBtn = screen.getByRole('button', { name: /Send ACH Transfer/i });
+    fireEvent.change(screen.getByLabelText(/Source Account/i, { selector: '#ach-source-select' }), { target: { value: 'acc_checking_123' } });
 
     // 1. Enter 8 digits: real-time inline warning and disabled button
     fireEvent.change(routingInput, { target: { value: '12345678' } });
@@ -705,6 +712,8 @@ describe('Stage 2 User Story 2: ACH Transfers & Beneficiaries', () => {
 
     fireEvent.click(submitBtn);
 
+    await waitFor(() => expect(services.initiateAchTransfer).toHaveBeenCalled());
+
     // 2. Expect MFA Modal to open for sensitive ACH transfer
     await waitFor(() => {
       expect(screen.getByRole('heading', { name: /MFA Verification/i })).toBeInTheDocument();
@@ -724,7 +733,7 @@ describe('Stage 2 User Story 2: ACH Transfers & Beneficiaries', () => {
     fireEvent.click(mfaConfirmBtn);
 
     await waitFor(() => {
-      expect(services.confirmMFA).toHaveBeenCalledWith('tr_ach_sensitive', '123456');
+      expect(services.confirmMFA).toHaveBeenCalledWith('tr_ach_sensitive', '123456', { acc_checking_123: 0 }, '00000000-0000-4000-8000-000000000001');
     });
   });
 });
@@ -850,9 +859,13 @@ describe('Stage 2 User Story 3: Scheduled Recurring Payments', () => {
 
     const amountInput = screen.getByLabelText(/Amount \(COP\)/i, { selector: '#sched-amount-input' });
     const createBtn = screen.getByRole('button', { name: /Create Schedule/i });
+    fireEvent.change(screen.getByLabelText(/Source Account/i, { selector: '#sched-source-select' }), { target: { value: 'acc_checking_123' } });
+    fireEvent.change(screen.getByLabelText(/Destination Account/i, { selector: '#sched-dest-select' }), { target: { value: 'acc_savings_456' } });
 
     fireEvent.change(amountInput, { target: { value: '1500000' } });
     fireEvent.click(createBtn);
+
+    await waitFor(() => expect(services.createSchedule).toHaveBeenCalled());
 
     // Expect MFA modal to open for recurring schedule
     await waitFor(() => {
@@ -883,8 +896,79 @@ describe('Stage 2 User Story 3: Scheduled Recurring Payments', () => {
     fireEvent.click(mfaConfirmBtn);
 
     await waitFor(() => {
-      expect(services.confirmScheduleMFA).toHaveBeenCalledWith('rec_sensitive_1', '123456');
+      expect(services.confirmScheduleMFA).toHaveBeenCalledWith('rec_sensitive_1', '123456', { acc_checking_123: 0 }, '00000000-0000-4000-8000-000000000001');
     });
+  });
+});
+
+describe('Stage 4 currency dashboard and conversion', () => {
+  beforeEach(() => vi.clearAllMocks());
+
+  test('groups account balances and history by currency and submits exact conversion metadata', async () => {
+    vi.mocked(services.fetchAccounts).mockResolvedValue([
+      { id: 'acc_checking_123', name: 'Checking', balance: '5000000.00', currency: 'COP', version: 4 },
+      { id: 'CHK-1001', name: 'Checking USD', balance: '2500.00', currency: 'USD', version: 2 },
+      { id: 'EUR-3001', name: 'Euro Wallet', balance: '0.00', currency: 'EUR', version: 7 },
+      { id: 'GBP-4001', name: 'Pound Wallet', balance: '0.00', currency: 'GBP', version: 1 },
+    ]);
+    vi.mocked(services.fetchHistory).mockResolvedValue([{
+      id: 'legacy-cop-history', direction: 'outgoing', amount: '120000.00',
+      currency: 'COP', description: 'Legacy COP payment', date: '2026-11-14T10:00:00Z',
+    }, {
+      id: 'usd-eur-conversion', direction: 'outgoing', amount: '100.00', currency: 'USD',
+      counter_amount: '90.00', counter_currency: 'EUR', rate_numerator: 9, rate_denominator: 10,
+      description: 'Currency conversion from Checking USD to Euro Wallet', date: '2026-11-14T11:00:00Z',
+    }]);
+    vi.mocked(services.convertFunds).mockResolvedValue({
+      id: 'conversion-1', source_account_id: 'CHK-1001', destination_account_id: 'EUR-3001',
+      source_amount: '100.00', source_currency: 'USD', destination_amount: '90.00',
+      destination_currency: 'EUR', rate_numerator: 9, rate_denominator: 10,
+      source_version: 3, destination_version: 8,
+    });
+
+    render(<App />);
+    await waitFor(() => expect(screen.getByLabelText('GBP accounts')).toBeInTheDocument());
+
+    expect(screen.getByLabelText('COP accounts')).toHaveTextContent('COP 5.000.000,00');
+    expect(screen.getByLabelText('USD accounts')).toHaveTextContent('USD 2.500,00');
+    expect(screen.queryByText(/estimated USD total/i)).not.toBeInTheDocument();
+    expect(screen.getByText('COP 120.000,00')).toBeInTheDocument();
+    expect(screen.getByText(/Converted value: EUR 90\.00|Converted value: EUR 90,00/)).toBeInTheDocument();
+    expect(screen.getByText(/Rate 9\/10/)).toBeInTheDocument();
+    expect(within(screen.getByLabelText('From account')).queryByText(/Checking \(COP\)/)).not.toBeInTheDocument();
+
+    fireEvent.change(screen.getByLabelText('From account'), { target: { value: 'CHK-1001' } });
+    fireEvent.change(screen.getByLabelText('To account'), { target: { value: 'EUR-3001' } });
+    fireEvent.change(screen.getByLabelText(/Amount \(USD\)/), { target: { value: '100.00' } });
+    fireEvent.click(screen.getByRole('button', { name: 'Convert' }));
+
+    await waitFor(() => expect(services.convertFunds).toHaveBeenCalledWith({
+      source_account_id: 'CHK-1001', destination_account_id: 'EUR-3001', source_amount: '100.00',
+      expected_versions: { 'CHK-1001': 2, 'EUR-3001': 7 },
+    }, '00000000-0000-4000-8000-000000000001'));
+  });
+
+  test('sends USD versions and displays the backend MFA decision for an over-threshold transfer', async () => {
+    vi.mocked(services.fetchAccounts).mockResolvedValue([
+      { id: 'CHK-1001', name: 'Checking USD', balance: '2500.00', currency: 'USD', version: 4 },
+      { id: 'SAV-2001', name: 'Savings USD', balance: '10000.00', currency: 'USD', version: 9 },
+    ]);
+    vi.mocked(services.fetchHistory).mockResolvedValue([]);
+    vi.mocked(services.initiateTransfer).mockResolvedValue({
+      id: 'usd-mfa-1', source_account: 'Checking USD', destination_account: 'Savings USD',
+      source_account_id: 'CHK-1001', destination_account_id: 'SAV-2001', currency: 'USD',
+      amount: '1000.01', status: 'PENDING_MFA', created_at: '2026-11-16T00:00:00Z',
+      expires_at: '2026-11-16T00:05:00Z',
+    });
+    render(<App />);
+    await waitFor(() => expect(screen.getByLabelText('USD accounts')).toBeInTheDocument());
+    fireEvent.change(screen.getByLabelText(/Source Account/i, { selector: '#source-select' }), { target: { value: 'CHK-1001' } });
+    fireEvent.change(screen.getByLabelText(/Destination Account/i, { selector: '#dest-select' }), { target: { value: 'SAV-2001' } });
+    fireEvent.change(screen.getByLabelText(/Amount \(USD\)/i, { selector: '#amount-input' }), { target: { value: '1000.01' } });
+    fireEvent.click(screen.getByRole('button', { name: 'Transfer' }));
+    await waitFor(() => expect(screen.getByRole('heading', { name: 'MFA Verification' })).toBeInTheDocument());
+    expect(services.initiateTransfer).toHaveBeenCalledWith('CHK-1001', 'SAV-2001', '1000.01',
+      { 'CHK-1001': 4, 'SAV-2001': 9 }, '00000000-0000-4000-8000-000000000001');
   });
 });
 

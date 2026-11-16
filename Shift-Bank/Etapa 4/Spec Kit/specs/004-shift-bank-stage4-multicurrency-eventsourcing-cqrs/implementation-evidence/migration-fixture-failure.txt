@@ -1,0 +1,4 @@
+Command: python -m pytest tests/test_stage4_migration.py -q --basetemp='..\\.stage4-pytest-tmp'
+Outcome: 3 failed during fixture construction before migration code ran.
+Cause: the E3 fixture declared all 15 transfer columns but its positional INSERT supplied only 8 values.
+Correction: make fixture insertion name the 8 supplied columns explicitly; no application behavior is implicated.

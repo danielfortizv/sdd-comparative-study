@@ -1,0 +1,132 @@
+COMMAND: docker run --rm sonarsource/sonar-scanner-cli:latest with read-only E4 source mount and ephemeral token via environment
+EXIT_CODE: 0
+14:51:18.491 WARN  Property 'sonar.working.directory' with value '/tmp/.scannerwork' is overridden with value '/tmp/e4sk07-sonar-scanner'
+14:51:18.498 INFO  Scanner configuration file: /opt/sonar-scanner/conf/sonar-scanner.properties
+14:51:18.499 INFO  Project root configuration file: NONE
+14:51:18.511 INFO  SonarScanner CLI 8.1.0.6389
+14:51:18.515 INFO  Linux 6.6.87.2-microsoft-standard-WSL2 amd64
+14:51:19.452 INFO  Communicating with SonarQube Community Build 26.9.0.129388
+14:51:19.453 INFO  JRE provisioning: os[linux], arch[x86_64]
+14:51:25.254 INFO  Starting SonarScanner Engine...
+14:51:25.255 INFO  Java 21.0.11 Eclipse Adoptium (64-bit)
+14:51:26.462 INFO  Load global settings
+14:51:26.563 INFO  Load global settings (done) | time=100ms
+14:51:26.566 INFO  Server id: 147B411E-AaHk1o9wsS23Oy67_JQD
+14:51:26.577 INFO  Loading required plugins
+14:51:26.577 INFO  Load plugins index
+14:51:26.603 INFO  Load plugins index (done) | time=26ms
+14:51:26.603 INFO  Load/download plugins
+14:51:28.087 INFO  Load/download plugins (done) | time=1484ms
+14:51:28.365 INFO  Process project properties
+14:51:28.380 INFO  Process project properties (done) | time=15ms
+14:51:28.391 INFO  Project key: shiftbank-stage4-e4sk07
+14:51:28.392 INFO  Base dir: /usr/src
+14:51:28.392 INFO  Working dir: /tmp/e4sk07-sonar-scanner
+14:51:28.402 INFO  Load project settings for component key: 'shiftbank-stage4-e4sk07'
+14:51:28.420 INFO  Load project settings for component key: 'shiftbank-stage4-e4sk07' (done) | time=18ms
+14:51:28.448 INFO  Load quality profiles
+14:51:28.526 INFO  Load quality profiles (done) | time=77ms
+14:51:28.571 INFO  Load active rules
+14:51:29.004 INFO  Load active rules (done) | time=432ms
+14:51:29.012 INFO  Load analysis cache
+14:51:29.026 INFO  Load analysis cache (404) | time=14ms
+14:51:29.125 INFO  Preprocessing files...
+14:51:29.230 INFO  3 languages detected in 20 preprocessed files (done) | time=105ms
+14:51:29.231 INFO  0 files ignored because of inclusion/exclusion patterns
+14:51:29.232 INFO  Loading plugins for detected languages
+14:51:29.232 INFO  Load/download plugins
+14:51:35.581 INFO  Load/download plugins (done) | time=6348ms
+14:51:35.781 INFO  Load project repositories
+14:51:35.897 INFO  Load project repositories (done) | time=115ms
+14:51:35.927 INFO  Indexing files...
+14:51:35.928 INFO  Project configuration:
+14:51:35.928 INFO    Excluded sources: **/*.test.ts, **/*.test.tsx, **/__pycache__/**
+14:51:35.995 INFO  20 files indexed (done) | time=68ms
+14:51:35.996 INFO  Quality profile for css: Sonar way
+14:51:35.996 INFO  Quality profile for py: Sonar way
+14:51:35.997 INFO  Quality profile for ts: Sonar way
+14:51:35.997 INFO  ------------- Run sensors on module Shift Bank Stage 4 E4-SK-07
+14:51:36.056 INFO  Load metrics repository
+14:51:36.085 INFO  Load metrics repository (done) | time=29ms
+14:51:36.621 INFO  Sensor IaC YAML File Type Classification Sensor [iac]
+14:51:36.624 INFO  Sensor IaC YAML File Type Classification Sensor [iac] (done) | time=3ms
+14:51:36.625 INFO  Sensor IaC hadolint report Sensor [iac]
+14:51:36.625 INFO  Sensor IaC hadolint report Sensor [iac] (done) | time=0ms
+14:51:36.625 INFO  Sensor Java Config Sensor [iac]
+14:51:36.626 INFO  There are no files to be analyzed for the Java language
+14:51:36.626 INFO  Sensor Java Config Sensor [iac] (done) | time=0ms
+14:51:36.626 INFO  Sensor IaC Docker Sensor [iac]
+14:51:36.627 INFO  There are no files to be analyzed for the Docker language
+14:51:36.627 INFO  Sensor IaC Docker Sensor [iac] (done) | time=1ms
+14:51:36.627 INFO  Sensor Python Sensor [python]
+14:51:36.631 WARN  Your code is analyzed as compatible with all Python 3 versions by default. You can get a more precise analysis by setting the Python version or version range in your configuration via the parameter "sonar.python.version"
+14:51:36.981 INFO  Starting global symbols computation
+14:51:36.984 INFO  12 source files to be analyzed
+14:51:37.507 INFO  12/12 source files have been analyzed
+14:51:37.508 INFO  Finished step global symbols computation in 525ms
+14:51:37.541 INFO  Starting rules execution
+14:51:37.541 INFO  12 source files to be analyzed
+14:51:39.218 INFO  12/12 source files have been analyzed
+14:51:39.218 INFO  Finished step rules execution in 1676ms
+14:51:39.219 INFO  The Python analyzer was able to leverage cached data from previous analyses for 0 out of 12 files. These files were not parsed.
+14:51:39.221 INFO  Sensor Python Sensor [python] (done) | time=2593ms
+14:51:39.221 INFO  Sensor Cobertura Sensor for Python coverage [python]
+14:51:39.263 INFO  Sensor Cobertura Sensor for Python coverage [python] (done) | time=41ms
+14:51:39.263 INFO  Sensor PythonXUnitSensor [python]
+14:51:39.302 INFO  Sensor PythonXUnitSensor [python] (done) | time=38ms
+14:51:39.302 INFO  Sensor Python Dependency Sensor [python]
+14:51:39.305 INFO  Sensor Python Dependency Sensor [python] (done) | time=3ms
+14:51:39.306 INFO  Sensor TextAndSecretsSensor [text]
+14:51:39.319 INFO  Available processors: 12
+14:51:39.319 INFO  Using 12 threads for analysis.
+14:51:39.542 INFO  The property "sonar.tests" is not set. To improve the analysis accuracy, we categorize a file as a test file if any of the following is true:
+  * The filename starts with "test"
+  * The filename contains "test." or "tests."
+  * Any directory in the file path is named: "doc", "docs", "test", "tests", "mock" or "mocks"
+  * Any directory in the file path has a name ending in "test" or "tests"
+
+14:51:39.562 INFO  Start fetching files for the text and secrets analysis
+14:51:39.576 INFO  Using Git CLI to retrieve dirty files
+14:51:39.588 WARN  Retrieving only language associated files, make sure to run the analysis inside a git repository to make use of inclusions specified via "sonar.text.inclusions"
+14:51:39.589 INFO  Starting the text and secrets analysis
+14:51:39.591 INFO  20 source files to be analyzed for the text and secrets analysis
+14:51:39.678 INFO  20/20 source files have been analyzed for the text and secrets analysis
+14:51:39.678 INFO  Skipped 1 file(s) in the secrets analysis due to automatic test file detection
+14:51:39.680 INFO  Sensor TextAndSecretsSensor [text] (done) | time=373ms
+14:51:39.681 INFO  ------------- Run sensors on project
+14:51:39.876 INFO  Sensor JavaScript/TypeScript/CSS analysis [javascript]
+14:51:40.177 INFO  Detected os: Linux arch: amd64 alpine: false. Platform: LINUX_X64
+14:51:40.177 INFO  Deploy location /opt/sonar-scanner/.sonar/js/node-runtime, tagetRuntime: /opt/sonar-scanner/.sonar/js/node-runtime/node,  version: /opt/sonar-scanner/.sonar/js/node-runtime/version.txt
+14:51:42.479 INFO  Using embedded Node.js runtime.
+14:51:42.480 INFO  Using Node.js executable: '/opt/sonar-scanner/.sonar/js/node-runtime/node'.
+14:51:44.625 INFO  Memory configuration: OS (40055 MB), Node.js (4288 MB).
+14:51:44.633 INFO  gRPC analyze-project server listening on 127.0.0.1:33513
+14:51:44.775 INFO  Plugin version: [13.8.0.44569]
+14:51:46.723 INFO  Found 0 tsconfig.json file(s): []
+14:51:49.429 INFO  8 source files to be analyzed
+14:51:49.429 INFO  Analyzing 7 file(s) using default options [lib: lib.esnext.d.ts, lib.dom.d.ts]
+14:51:49.430 INFO  8/8 source files have been analyzed
+14:51:49.442 INFO  Hit the cache for 0 out of 7
+14:51:49.442 INFO  Miss the cache for 7 out of 7: ANALYSIS_MODE_INELIGIBLE [7/7]
+14:51:49.443 INFO  Sensor JavaScript/TypeScript/CSS analysis [javascript] (done) | time=9566ms
+14:51:49.443 INFO  Sensor IaC Project Sensor [iac]
+14:51:49.444 INFO  Sensor IaC Project Sensor [iac] (done) | time=1ms
+14:51:49.444 INFO  Sensor Zero Coverage Sensor
+14:51:49.463 INFO  Sensor Zero Coverage Sensor (done) | time=18ms
+14:51:49.463 INFO  ------------- Gather SCA dependencies on project
+14:51:49.469 INFO  Dependency analysis skipped
+14:51:49.472 INFO  SCM Publisher is disabled
+14:51:49.483 INFO  CPD Executor 3 files had no CPD blocks
+14:51:49.483 INFO  CPD Executor Calculating CPD for 17 files
+14:51:49.510 INFO  CPD Executor CPD calculation finished (done) | time=27ms
+14:51:49.679 INFO  Analysis report generated in 163ms, dir size=1.2 MB
+14:51:49.751 INFO  Analysis report compressed in 71ms, zip size=505.4 kB
+14:51:49.800 INFO  Analysis report uploaded in 48ms
+14:51:49.801 INFO  ANALYSIS SUCCESSFUL, you can find the results at: http://host.docker.internal:19000/dashboard?id=shiftbank-stage4-e4sk07
+14:51:49.801 INFO  Note that you will be able to access the updated dashboard once the server has processed the submitted analysis report
+14:51:49.801 INFO  More about the report processing at http://host.docker.internal:19000/api/ce/task?id=6da5e1a1-02e4-4d45-9b19-90d1c18d6216
+14:51:50.073 INFO  Analysis total time: 21.935 s
+14:51:50.092 INFO  SonarScanner Engine completed successfully
+14:51:50.201 INFO  EXECUTION SUCCESS
+14:51:50.202 INFO  Total time: 31.706s
+

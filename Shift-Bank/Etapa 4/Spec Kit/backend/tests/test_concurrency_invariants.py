@@ -59,8 +59,9 @@ def test_concurrent_transfers_conserve_funds(client):
     with concurrent.futures.ThreadPoolExecutor(max_workers=5) as executor:
         results = list(executor.map(_execute_transfer, tasks))
 
-    # All transfers succeeded
-    assert all(code in (200, 201) for code in results)
+    # D-14 rejects commands whose expected versions became stale while racing.
+    assert all(code in (200, 201, 409) for code in results)
+    assert any(code in (200, 201) for code in results)
 
     # Verify funds conservation
     conn = get_connection()
@@ -105,7 +106,7 @@ def test_concurrent_transfers_cannot_bypass_limits(client):
         outcomes = [f.result() for f in futures]
 
     successes = [o for o in outcomes if o[0] in (200, 201)]
-    rejections = [o for o in outcomes if o[0] == 400]
+    rejections = [o for o in outcomes if o[0] in (400, 409)]
 
     # Exactly 1 transfer of 300.00 can succeed before the 500.00 daily limit is reached!
     # The remaining 4 MUST be rejected with HTTP 400!

@@ -43,6 +43,7 @@ describe('Frontend Crypto Wrapper (Web Crypto API)', () => {
       source_account_id: 'acc_checking_123',
       destination_account_id: 'acc_savings_456',
       amount: '150000.00',
+      expected_versions: { acc_checking_123: 4, acc_savings_456: 7 },
     };
 
     const envelope = await encryptPayload(payload);
