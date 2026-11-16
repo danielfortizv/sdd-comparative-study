@@ -1,0 +1,4 @@
+command=node_modules\.bin\vitest.cmd run
+start=2026-11-15T18:50:10.9837986-05:00
+end=2026-11-15T18:50:11.3466638-05:00
+exit_code=1
