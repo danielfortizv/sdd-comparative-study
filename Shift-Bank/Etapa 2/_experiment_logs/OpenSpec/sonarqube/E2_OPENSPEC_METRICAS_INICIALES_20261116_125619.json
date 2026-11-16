@@ -1,0 +1,106 @@
+{
+    "component":  {
+                      "key":  "Shift-Bank---Stage-2---OpenSpec",
+                      "name":  "Shift Bank - Stage 2 - OpenSpec",
+                      "qualifier":  "TRK",
+                      "measures":  [
+                                       {
+                                           "metric":  "coverage",
+                                           "value":  "0.0",
+                                           "bestValue":  false
+                                       },
+                                       {
+                                           "metric":  "complexity",
+                                           "value":  "387"
+                                       },
+                                       {
+                                           "metric":  "reliability_rating",
+                                           "value":  "3.0",
+                                           "bestValue":  false
+                                       },
+                                       {
+                                           "metric":  "code_smells",
+                                           "value":  "41",
+                                           "bestValue":  false
+                                       },
+                                       {
+                                           "metric":  "duplicated_lines_density",
+                                           "value":  "0.0",
+                                           "bestValue":  true
+                                       },
+                                       {
+                                           "metric":  "software_quality_security_rating",
+                                           "value":  "1.0",
+                                           "bestValue":  true
+                                       },
+                                       {
+                                           "metric":  "security_rating",
+                                           "value":  "1.0",
+                                           "bestValue":  true
+                                       },
+                                       {
+                                           "metric":  "software_quality_security_issues",
+                                           "value":  "0",
+                                           "bestValue":  true
+                                       },
+                                       {
+                                           "metric":  "software_quality_maintainability_remediation_effort",
+                                           "value":  "246",
+                                           "bestValue":  false
+                                       },
+                                       {
+                                           "metric":  "sqale_index",
+                                           "value":  "246",
+                                           "bestValue":  false
+                                       },
+                                       {
+                                           "metric":  "sqale_rating",
+                                           "value":  "1.0",
+                                           "bestValue":  true
+                                       },
+                                       {
+                                           "metric":  "bugs",
+                                           "value":  "5",
+                                           "bestValue":  false
+                                       },
+                                       {
+                                           "metric":  "software_quality_reliability_issues",
+                                           "value":  "5",
+                                           "bestValue":  false
+                                       },
+                                       {
+                                           "metric":  "cognitive_complexity",
+                                           "value":  "288",
+                                           "bestValue":  false
+                                       },
+                                       {
+                                           "metric":  "ncloc",
+                                           "value":  "1354"
+                                       },
+                                       {
+                                           "metric":  "software_quality_maintainability_issues",
+                                           "value":  "41",
+                                           "bestValue":  false
+                                       },
+                                       {
+                                           "metric":  "software_quality_reliability_rating",
+                                           "value":  "3.0",
+                                           "bestValue":  false
+                                       },
+                                       {
+                                           "metric":  "vulnerabilities",
+                                           "value":  "0",
+                                           "bestValue":  true
+                                       },
+                                       {
+                                           "metric":  "lines",
+                                           "value":  "1621"
+                                       },
+                                       {
+                                           "metric":  "software_quality_maintainability_rating",
+                                           "value":  "1.0",
+                                           "bestValue":  true
+                                       }
+                                   ]
+                  }
+}

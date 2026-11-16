@@ -43,6 +43,34 @@ body {
   color: var(--bg);
 }
 
+/* Navegación por secciones (tabs) */
+.tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 0 0 20px;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 12px;
+}
+
+.tab {
+  background: #e2e8f0;
+  color: var(--text);
+  padding: 8px 14px;
+  border-radius: 999px;
+  font-size: 14px;
+}
+
+.tab:hover:not(:disabled) {
+  background: #cbd5e1;
+}
+
+.tab-active,
+.tab-active:hover:not(:disabled) {
+  background: var(--primary);
+  color: #fff;
+}
+
 .layout {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -221,20 +249,41 @@ button.secondary {
   color: var(--muted);
 }
 
-.badge-completed {
+.badge-completed,
+.badge-settled {
   background: #dcfce7;
   color: var(--success);
 }
 
-.badge-pending_mfa {
+.badge-pending_mfa,
+.badge-pending,
+.badge-pending_auth {
   background: #fef3c7;
   color: var(--warn);
 }
 
 .badge-failed,
-.badge-expired {
+.badge-expired,
+.badge-cancelled {
   background: #fee2e2;
   color: var(--error);
+}
+
+/* Estados de pagos recurrentes (Etapa 2) */
+.badge-active {
+  background: #dcfce7;
+  color: var(--success);
+}
+
+.badge-paused {
+  background: #fef3c7;
+  color: var(--warn);
+}
+
+.recurring-actions {
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  margin-top: 12px;
 }
 
 /* Modal MFA */
@@ -263,4 +312,82 @@ button.secondary {
   .layout {
     grid-template-columns: 1fr;
   }
+}
+
+/* Beneficiarios y ACH (Etapa 2) */
+.beneficiary-list {
+  list-style: none;
+  margin: 0 0 20px;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.beneficiary-item {
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 12px 14px;
+}
+
+.beneficiary-main {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+}
+
+.beneficiary-name {
+  font-weight: 600;
+}
+
+.beneficiary-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  margin-top: 6px;
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.beneficiary-account {
+  font-variant-numeric: tabular-nums;
+}
+
+.beneficiary-form h3,
+.transfer-form h3 {
+  margin: 4px 0 0;
+  font-size: 15px;
+  color: var(--text);
+}
+
+/* Selección de modo e inputs booleanos */
+.ach-mode {
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 10px 12px;
+  display: flex;
+  gap: 16px;
+  margin: 0;
+}
+
+.ach-mode legend {
+  font-size: 14px;
+  color: var(--muted);
+  padding: 0 6px;
+}
+
+label.radio,
+label.checkbox {
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
+  color: var(--text);
+}
+
+label.radio input,
+label.checkbox input {
+  width: auto;
+  padding: 0;
 }

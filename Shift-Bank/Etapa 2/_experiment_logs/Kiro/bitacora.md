@@ -1909,3 +1909,2759 @@ Kiro consideró que la implementación puede comenzar por la Tarea 1 sin comprom
 
 La siguiente iteración dará inicio a la fase de implementación controlada, comenzando por la infraestructura de pruebas y manteniendo la autorización humana entre tareas.
 
+### Iteración 16 — Implementación de la Tarea 1: preparación del arnés de pruebas
+
+**Fecha:** 16 de noviembre de 2026  
+**Herramienta:** Kiro (modo Auto)  
+**Etapa:** 2 — Complejidad funcional y estado  
+**Fase SDD:** Implementación controlada — Fase A  
+**Tarea ejecutada:** 1 de 46  
+**Estado:** COMPLETED, según el reporte del agente.
+
+#### 1. Objetivo
+
+Establecer un entorno automatizado de pruebas para el backend de Shift Bank, utilizando una base de datos SQLite aislada, antes de modificar el comportamiento heredado de la Etapa 1.
+
+La infraestructura debía permitir ejecutar pruebas reproducibles sin afectar las bases de datos históricas ni alterar el código de aplicación.
+
+#### 2. Actividades realizadas
+
+Kiro inspeccionó la estructura del backend heredado y su mecanismo de acceso a datos.
+
+Identificó que `get_connection()` utiliza la ruta configurada en `DB_PATH` y que los endpoints obtienen conexiones mediante las dependencias de FastAPI.
+
+Con base en esta arquitectura, decidió implementar el aislamiento directamente en los fixtures de prueba, sin modificar el código de producción.
+
+El agente realizó las siguientes actividades:
+
+1. Configuró dependencias de desarrollo para pruebas.
+2. Creó la configuración mínima de pytest.
+3. Implementó fixtures reutilizables con bases de datos temporales.
+4. Incorporó pruebas de validación del arnés.
+5. Ejecutó las pruebas.
+6. Verificó el aislamiento y la preservación de la Etapa 1.
+7. Marcó la Tarea 1 como completada.
+8. Registró la sesión como evidencia experimental.
+
+#### 3. Archivos creados y modificados
+
+| Archivo | Acción |
+|---|---|
+| `backend/requirements-dev.txt` | Creado |
+| `backend/pytest.ini` | Creado |
+| `backend/tests/conftest.py` | Creado |
+| `backend/tests/test_harness.py` | Creado |
+| `backend/.gitignore` | Modificado |
+| `.kiro/specs/shift-bank-stage2/tasks.md` | Modificado |
+| `_experiment_logs/Kiro/sesiones/E2_KIRO_SESION_01_TAREA_01.md` | Creado |
+
+Las rutas del backend corresponden a la copia independiente `Etapa 2/Kiro/`.
+
+No se reportaron modificaciones en `backend/app/`.
+
+#### 4. Dependencias utilizadas
+
+Kiro incorporó las siguientes dependencias de prueba:
+
+- `pytest==8.3.4`
+- `httpx==0.28.1`
+
+Estas dependencias quedaron declaradas en `requirements-dev.txt`, separadas de las dependencias de ejecución.
+
+Se instalaron en el entorno virtual existente de la copia de Etapa 2.
+
+El archivo `requirements.txt` de producción permaneció sin cambios.
+
+#### 5. Estrategia de aislamiento SQLite
+
+El agente implementó el fixture `isolated_db_path`, que crea una base de datos temporal independiente para cada prueba.
+
+La ruta utilizada sigue el patrón:
+
+`shift_bank_test_<uuid>.db`
+
+El fixture utiliza `monkeypatch` para redirigir `config.DB_PATH` y `db.DB_PATH` hacia la base de datos temporal.
+
+Adicionalmente, se implementó `app_client`, que utiliza `TestClient` como administrador de contexto para inicializar la aplicación heredada contra la base de datos aislada.
+
+Al finalizar la prueba, los archivos temporales y auxiliares se eliminan.
+
+Esta estrategia permite reutilizar el backend existente sin modificar su lógica de negocio.
+
+#### 6. Pruebas ejecutadas
+
+Kiro reportó cuatro pruebas del arnés destinadas a verificar:
+
+1. Importación e inicialización del entorno de prueba.
+2. Creación y disponibilidad de la base de datos temporal.
+3. Acceso a la aplicación FastAPI utilizando la base de datos aislada.
+4. Independencia entre bases de datos utilizadas por pruebas diferentes.
+
+**Comando ejecutado:**
+
+`python -m pytest -v`
+
+**Resultado reportado:**
+
+| Métrica | Valor |
+|---|---:|
+| Pruebas ejecutadas | 4 |
+| Pruebas aprobadas | 4 |
+| Pruebas fallidas | 0 |
+| Warnings | 7 |
+| Duración pytest | 0,73 s |
+| Código de salida | 0 |
+
+**Tasa de aprobación del arnés:**
+
+4/4 = **100 %**.
+
+Este resultado valida únicamente la infraestructura de pruebas y no debe interpretarse como aprobación de la suite de regresión heredada.
+
+#### 7. Advertencias y limitaciones
+
+Kiro identificó advertencias asociadas a:
+
+- Uso heredado de `on_event("startup")`, marcado como deprecado en FastAPI.
+- Un alias de AnyIO utilizado indirectamente por `TestClient`.
+
+El agente consideró que estas advertencias no impidieron completar el arnés.
+
+La migración del mecanismo de inicialización hacia `lifespan` permanece planificada para una tarea posterior.
+
+No se reportaron fallos que exigieran iteraciones correctivas.
+
+#### 8. Preservación de datos históricos
+
+Según la verificación del agente:
+
+- La base de datos histórica de Etapa 1 conservó su tamaño de 36.864 bytes.
+- Su fecha de última modificación permaneció en 13/10/2026.
+- El estado Git de `Etapa 1/Kiro` permaneció limpio.
+- No quedaron bases de datos temporales residuales.
+- No se creó una base de datos persistente `shift_bank.db` dentro del backend de Etapa 2.
+
+Estas comprobaciones respaldan el aislamiento reportado, aunque no sustituyen una comparación criptográfica independiente del contenido de la base histórica.
+
+#### 9. Seguimiento del plan de implementación
+
+Kiro actualizó exclusivamente la casilla correspondiente a la Tarea 1.
+
+| Estado | Cantidad |
+|---|---:|
+| Tareas completadas | 1 |
+| Tareas pendientes | 45 |
+| Total | 46 |
+
+No se ejecutaron las tareas 2–46.
+
+#### 10. Evidencia experimental
+
+**Registro generado:**
+
+`Etapa 2/_experiment_logs/Kiro/sesiones/E2_KIRO_SESION_01_TAREA_01.md`
+
+La evidencia reportada comprende las modificaciones realizadas, los comandos ejecutados, los resultados de pytest y las comprobaciones de aislamiento.
+
+Las métricas de duración total de interacción, consumo de tokens, créditos y llamadas a herramientas no estuvieron disponibles.
+
+#### 11. Evaluación del resultado
+
+La Tarea 1 cumplió los criterios de finalización reportados:
+
+- Infraestructura pytest funcional.
+- Pruebas de infraestructura ejecutadas satisfactoriamente.
+- Base de datos temporal aislada.
+- Aplicación FastAPI accesible desde el cliente de pruebas.
+- Código de aplicación heredado sin modificaciones.
+- Evidencia experimental registrada.
+
+El resultado constituye el primer avance ejecutable de la fase de implementación controlada.
+
+#### 12. Estado de cierre
+
+**Tarea 1 completada según Kiro.**
+
+El proyecto dispone ahora de un arnés de pruebas para establecer progresivamente una línea base de regresión de la Etapa 1.
+
+La siguiente interacción ejecutará exclusivamente la Tarea 2, dedicada a verificar cuentas, saldos iniciales y contratos de consulta, conservando la separación entre pruebas y código de aplicación.
+
+### Iteración 17 — Implementación de la Tarea 2: regresión de cuentas y saldos
+
+**Fecha:** 16 de noviembre de 2026  
+**Herramienta:** Kiro (modo Auto)  
+**Etapa:** 2 — Complejidad funcional y estado  
+**Fase SDD:** Implementación controlada — Fase A  
+**Tarea ejecutada:** 2 de 46  
+**Estado:** COMPLETED, según el reporte del agente.
+
+#### 1. Objetivo
+
+Establecer pruebas automatizadas de regresión para el endpoint de consulta de cuentas y los saldos iniciales heredados de la Etapa 1.
+
+Se buscó registrar el comportamiento observable de la API antes de introducir modificaciones funcionales en las fases siguientes.
+
+#### 2. Actividades realizadas
+
+Kiro inspeccionó el comportamiento heredado de las cuentas, los esquemas de respuesta y la inicialización de datos.
+
+Posteriormente, creó ocho pruebas automatizadas utilizando los fixtures de base de datos aislada desarrollados durante la Tarea 1.
+
+Ejecutó las pruebas individuales y la suite acumulada, verificó el aislamiento de datos y actualizó el seguimiento de tareas.
+
+#### 3. Casos de prueba implementados
+
+Se creó el archivo:
+
+`Etapa 2/Kiro/backend/tests/test_regression_accounts.py`
+
+Contiene los siguientes ocho casos:
+
+| Caso de prueba | Comportamiento verificado |
+|---|---|
+| `test_get_accounts_responde_200` | El endpoint GET `/api/accounts` responde HTTP 200. |
+| `test_estructura_de_respuesta_de_cuentas` | Se conserva la estructura `accounts`, con campos `name` y `balance`. |
+| `test_cuentas_checking_y_savings_presentes` | Se conservan las cuentas Checking y Savings y su orden. |
+| `test_saldos_iniciales_heredados` | Se verifican los saldos originales de ambas cuentas. |
+| `test_representacion_monetaria_decimal_string_2_decimales` | Los saldos se devuelven como cadenas decimales con dos cifras. |
+| `test_sin_identificadores_internos_en_la_respuesta` | No se exponen identificadores internos de cuentas o clientes. |
+| `test_consistencia_entre_api_y_db_aislada` | Los montos publicados coinciden con los almacenados en SQLite. |
+| `test_lectura_no_altera_saldos` | Las consultas repetidas no modifican los saldos. |
+
+#### 4. Comportamiento heredado registrado
+
+La implementación de Etapa 1 utiliza dos cuentas:
+
+| Cuenta | Saldo inicial COP | Representación SQLite en centavos |
+|---|---:|---:|
+| Checking | 5.000.000,00 | 500.000.000 |
+| Savings | 15.000.000,00 | 1.500.000.000 |
+
+Los saldos son almacenados mediante valores enteros y expuestos mediante cadenas decimales.
+
+El endpoint preserva la estructura:
+
+```json
+{
+  "accounts": [
+    {
+      "name": "Checking",
+      "balance": "5000000.00"
+    },
+    {
+      "name": "Savings",
+      "balance": "15000000.00"
+    }
+  ]
+}
+```
+
+No se incluyen identificadores internos en la respuesta pública.
+
+#### 5. Ejecución de pruebas
+
+**Pruebas específicas de la Tarea 2:**
+
+`python -m pytest tests/test_regression_accounts.py -v`
+
+Resultado reportado:
+
+- 8 passed.
+- 0 failed.
+- 19 warnings.
+- Duración: 1,13 segundos.
+- Código de salida: 0.
+
+**Suite acumulada:**
+
+`python -m pytest -q`
+
+Resultado reportado:
+
+- 12 passed.
+- 0 failed.
+- 0 skipped.
+- 23 warnings.
+- Duración: 0,95 segundos.
+- Código de salida: 0.
+
+La suite acumulada incorpora las cuatro pruebas del arnés y las ocho pruebas de regresión de cuentas.
+
+**Tasa de aprobación de las pruebas ejecutadas:** 100 %.
+
+Esta cifra describe únicamente los casos implementados hasta el momento, no la cobertura funcional completa de la aplicación.
+
+#### 6. Advertencias y limitaciones
+
+El agente reportó advertencias de deprecación asociadas al mecanismo heredado `on_event` de FastAPI y a AnyIO.
+
+No se reportaron fallos en las pruebas.
+
+No se detectaron discrepancias entre los saldos y contratos esperados y el comportamiento observado.
+
+Las pruebas no abarcan todavía transferencias internas, MFA ni nuevas funcionalidades de la Etapa 2.
+
+#### 7. Preservación de la Etapa 1
+
+Según Kiro:
+
+- La base de datos histórica conservó su tamaño de 36.864 bytes.
+- Se mantuvo la fecha de modificación del 13 de octubre de 2026.
+- El estado Git de Etapa 1 permaneció limpio.
+- No se generó `shift_bank.db` persistente en el backend de Etapa 2.
+- No quedaron bases de datos temporales residuales.
+- No se modificó código de aplicación.
+
+Estas verificaciones corresponden al reporte de la herramienta.
+
+#### 8. Archivos creados y modificados
+
+**Creado:**
+
+`Etapa 2/Kiro/backend/tests/test_regression_accounts.py`
+
+**Modificado:**
+
+`Etapa 2/Kiro/.kiro/specs/shift-bank-stage2/tasks.md`
+
+**Evidencia creada:**
+
+`Etapa 2/_experiment_logs/Kiro/sesiones/E2_KIRO_SESION_02_TAREA_02.md`
+
+No se instalaron nuevas dependencias.
+
+#### 9. Seguimiento de implementación
+
+| Estado | Cantidad |
+|---|---:|
+| Tareas completadas | 2 |
+| Tareas pendientes | 44 |
+| Total de tareas | 46 |
+| Avance por cantidad de tareas | 4,35 % |
+
+El avance porcentual corresponde exclusivamente al número de tareas marcadas; no representa esfuerzo ni complejidad relativa.
+
+#### 10. Métricas experimentales
+
+- Nuevas pruebas automatizadas: 8.
+- Pruebas acumuladas: 12.
+- Pruebas acumuladas exitosas: 12.
+- Pruebas fallidas: 0.
+- Archivos de código de aplicación modificados: 0.
+- Nuevos archivos de prueba: 1.
+- Sesiones de implementación completadas: 2.
+- Tokens consumidos: N/D.
+- Créditos consumidos: N/D.
+- Tiempo total de interacción: N/D.
+- Llamadas a herramientas: N/D.
+
+#### 11. Estado de cierre
+
+**Tarea 2 completada según Kiro.**
+
+Se estableció una línea base automatizada para la consulta de cuentas y saldos heredados.
+
+La siguiente iteración ejecutará exclusivamente la Tarea 3, enfocada en las transferencias internas, su comportamiento financiero y su representación en el historial.
+
+La implementación de funcionalidades nuevas de la Etapa 2 permanece pendiente.
+
+### Iteración 18 — Implementación de la Tarea 3: regresión de transferencias internas
+
+**Fecha:** 16 de noviembre de 2026  
+**Herramienta:** Kiro (modo Auto)  
+**Etapa:** 2 — Complejidad funcional y estado  
+**Fase SDD:** Implementación controlada — Fase A  
+**Tarea ejecutada:** 3 de 46  
+**Estado:** COMPLETED, según el reporte del agente.
+
+#### 1. Objetivo
+
+Implementar pruebas automatizadas de regresión para las transferencias internas heredadas de la Etapa 1, verificando su comportamiento financiero, validaciones, estados y representación en la API.
+
+Las pruebas debían enfocarse en la ruta sin MFA y preservar la base de datos histórica.
+
+#### 2. Actividades realizadas
+
+Kiro revisó el comportamiento heredado del router de transferencias, los servicios, los repositorios y los esquemas de respuesta.
+
+Confirmó que las transferencias inferiores a 1.000.000 COP se completan directamente, sin requerir MFA.
+
+Posteriormente:
+
+1. Creó las pruebas automatizadas de transferencias internas.
+2. Ejecutó los nuevos casos de regresión.
+3. Ejecutó la suite acumulada del backend.
+4. Verificó el aislamiento de base de datos.
+5. Confirmó, según su reporte, que la Etapa 1 permanecía intacta.
+6. Marcó exclusivamente la Tarea 3 como completada.
+7. Registró la sesión de implementación.
+
+#### 3. Archivo de pruebas generado
+
+**Ruta:**
+
+`Etapa 2/Kiro/backend/tests/test_regression_internal_transfers.py`
+
+**Cantidad de pruebas:** 12.
+
+Los casos desarrollados cubren las siguientes categorías:
+
+| Categoría | Comportamiento verificado |
+|---|---|
+| Transferencia exitosa | Creación sin MFA, HTTP 201 y estado `COMPLETED`. |
+| Actualización de saldos | Débito del origen y crédito del destino. |
+| Conservación de fondos | El total de Checking + Savings permanece constante. |
+| Consulta posterior | Los nuevos saldos aparecen correctamente en la API. |
+| Historial | La nueva transferencia se registra conservando las dos históricas. |
+| Compatibilidad | Estructura heredada, estados en mayúsculas y montos decimal-string. |
+| Validación de cuentas | Rechazo de origen y destino iguales. |
+| Validación monetaria | Rechazo de montos no positivos o con precisión inválida. |
+| Fondos insuficientes | Rechazo cuando el saldo disponible no alcanza. |
+| Consistencia financiera | Solicitudes inválidas no modifican los saldos. |
+
+#### 4. Comportamiento heredado confirmado
+
+**Endpoint de creación:**
+
+`POST /api/transfers`
+
+Las transferencias inferiores al umbral MFA producen una respuesta HTTP 201 y se completan inmediatamente.
+
+Respuesta exitosa reportada:
+
+```json
+{
+  "status": "COMPLETED",
+  "mfa_required": false
+}
+```
+
+**Errores heredados confirmados:**
+
+| Código | HTTP | Condición |
+|---|---:|---|
+| `SAME_ACCOUNT` | 400 | Origen y destino iguales. |
+| `NON_POSITIVE_AMOUNT` | 400 | Monto cero o negativo. |
+| `INVALID_AMOUNT` | 400 | Formato o precisión monetaria inválida. |
+| `INSUFFICIENT_FUNDS` | 400 | Saldo insuficiente. |
+
+La respuesta de error conserva la estructura:
+
+`{"error":{"code":"...","message":"..."}}`
+
+#### 5. Historial de transferencias
+
+El endpoint:
+
+`GET /api/transfers`
+
+Devuelve entradas con fecha, dirección, monto, descripción y estado.
+
+Kiro confirmó que el historial inicial contiene dos transferencias sembradas:
+
+- 500.000 COP de Savings a Checking.
+- 100.000 COP de Checking a Savings.
+
+Estas operaciones históricas no modifican los saldos iniciales sembrados.
+
+Al crear una transferencia nueva, se añade un movimiento sin eliminar las entradas históricas.
+
+Se preservan los nombres amigables de cuentas y los estados en mayúsculas.
+
+#### 6. Consistencia financiera
+
+Según las pruebas ejecutadas por Kiro:
+
+- El débito y el crédito de una transferencia válida se aplican conjuntamente.
+- La suma de saldos de ambas cuentas se conserva.
+- Las solicitudes rechazadas no producen cambios parciales.
+- La persistencia utiliza centavos enteros.
+- La API representa los montos mediante cadenas decimales con dos cifras.
+
+Las pruebas aportan evidencia del comportamiento observado en los casos ejecutados, pero no demuestran todavía corrección bajo todas las condiciones de concurrencia o fallo de proceso.
+
+#### 7. Resultados de pruebas
+
+**Pruebas específicas de la Tarea 3:**
+
+`python -m pytest tests/test_regression_internal_transfers.py -v`
+
+| Métrica | Resultado |
+|---|---:|
+| Pruebas ejecutadas | 12 |
+| Aprobadas | 12 |
+| Fallidas | 0 |
+| Warnings | 27 |
+| Tiempo | 1,24 s |
+| Código de salida | 0 |
+
+**Suite acumulada:**
+
+`python -m pytest -q`
+
+| Métrica | Resultado |
+|---|---:|
+| Pruebas ejecutadas | 24 |
+| Aprobadas | 24 |
+| Fallidas | 0 |
+| Warnings | 47 |
+| Tiempo | 1,94 s |
+| Código de salida | 0 |
+
+La suite incluye:
+
+- 4 pruebas del arnés de la Tarea 1.
+- 8 pruebas de cuentas de la Tarea 2.
+- 12 pruebas de transferencias internas de la Tarea 3.
+
+**Tasa de aprobación:** 100 % de las pruebas ejecutadas.
+
+#### 8. Advertencias y limitaciones
+
+Kiro reportó advertencias de deprecación asociadas al mecanismo `on_event` de FastAPI y a AnyIO.
+
+No se reportaron fallos ni iteraciones correctivas.
+
+La ruta MFA quedó expresamente excluida de esta tarea, al corresponder a la Tarea 4.
+
+Tampoco se ejecutaron pruebas de las funcionalidades nuevas de la Etapa 2.
+
+#### 9. Archivos creados y modificados
+
+**Archivo creado:**
+
+`Etapa 2/Kiro/backend/tests/test_regression_internal_transfers.py`
+
+**Archivo modificado:**
+
+`Etapa 2/Kiro/.kiro/specs/shift-bank-stage2/tasks.md`
+
+**Evidencia creada:**
+
+`Etapa 2/_experiment_logs/Kiro/sesiones/E2_KIRO_SESION_03_TAREA_03.md`
+
+Según el agente, no se modificó código de aplicación ni se instalaron dependencias adicionales.
+
+#### 10. Protección del baseline
+
+Kiro confirmó que:
+
+- La base de datos histórica conservó su tamaño de 36.864 bytes.
+- Su fecha de última modificación permaneció en 13/10/2026.
+- El estado Git de Etapa 1 permaneció limpio.
+- No se creó una base de datos persistente en el backend de Etapa 2.
+- No quedaron bases de datos temporales residuales.
+
+Estas comprobaciones fueron reportadas por el agente y no constituyen una verificación independiente mediante hashes.
+
+#### 11. Seguimiento de implementación
+
+| Estado | Cantidad |
+|---|---:|
+| Tareas completadas | 3 |
+| Tareas pendientes | 43 |
+| Total | 46 |
+| Avance por cantidad | 6,52 % |
+
+El avance porcentual indica únicamente la proporción de tareas completadas, no el esfuerzo ni la complejidad relativa.
+
+#### 12. Métricas experimentales
+
+- Nuevas pruebas automatizadas: 12.
+- Pruebas acumuladas: 24.
+- Pruebas acumuladas exitosas: 24.
+- Fallos reportados: 0.
+- Nuevos archivos de prueba: 1.
+- Archivos de aplicación modificados: 0.
+- Tokens consumidos: N/D.
+- Créditos consumidos: N/D.
+- Duración total de la interacción: N/D.
+- Llamadas a herramientas: N/D.
+
+#### 13. Estado de cierre
+
+**Tarea 3 completada según Kiro.**
+
+La línea base de regresión cubre ahora la infraestructura de pruebas, las consultas de cuentas y las transferencias internas sin MFA.
+
+La siguiente iteración ejecutará exclusivamente la Tarea 4, dedicada a verificar el mecanismo de autenticación multifactor heredado, incluyendo su umbral, expiración, validación y efectos financieros.
+
+### Iteración 19 — Implementación de la Tarea 4: regresión del mecanismo MFA heredado
+
+**Fecha:** 16 de noviembre de 2026  
+**Herramienta:** Kiro (modo Auto)  
+**Etapa:** 2 — Complejidad funcional y estado  
+**Fase SDD:** Implementación controlada — Fase A  
+**Tarea ejecutada:** 4 de 46  
+**Estado:** COMPLETED, según el reporte del agente.
+
+#### 1. Objetivo
+
+Implementar pruebas automatizadas de regresión para el mecanismo de autenticación multifactor (MFA) heredado de la Etapa 1.
+
+Las pruebas debían verificar el umbral de autorización, los estados de transferencia, la expiración temporal, la validación del código, la consistencia financiera y la protección frente a confirmaciones repetidas.
+
+El propósito fue preservar el comportamiento original antes de reutilizar el mecanismo MFA en las nuevas funcionalidades ACH y recurrentes.
+
+#### 2. Actividades realizadas
+
+Kiro inspeccionó la implementación heredada del servicio de transferencias, las rutas MFA, la configuración y los mecanismos de persistencia.
+
+Confirmó las reglas de autorización existentes y creó pruebas utilizando el arnés de SQLite aislado.
+
+Para verificar la expiración sin depender de esperas reales, implementó un control determinista del tiempo mediante `monkeypatch`.
+
+Posteriormente, ejecutó las pruebas específicas y la suite acumulada, verificó el aislamiento de datos y registró la sesión experimental.
+
+#### 3. Archivo de pruebas generado
+
+**Ruta:**
+
+`Etapa 2/Kiro/backend/tests/test_regression_mfa.py`
+
+**Cantidad de pruebas nuevas:** 14.
+
+Las pruebas se distribuyen en seis categorías funcionales:
+
+| Categoría | Comportamiento verificado |
+|---|---|
+| Umbral MFA | Montos inferiores, iguales y superiores a 1.000.000 COP. |
+| Autorización pendiente | Estado `PENDING_MFA`, sin movimientos financieros. |
+| Confirmación correcta | Código válido, transición a `COMPLETED` y actualización de saldos. |
+| Confirmación incorrecta | Error correspondiente, conservación del estado y ausencia de bloqueo. |
+| Expiración | Rechazo tras cinco minutos, transición a `EXPIRED`. |
+| Consistencia e idempotencia | Revalidación de fondos y protección frente a confirmaciones repetidas. |
+
+#### 4. Comportamiento MFA heredado confirmado
+
+Kiro identificó las siguientes propiedades en la implementación de Etapa 1:
+
+| Propiedad | Valor o comportamiento |
+|---|---|
+| Umbral MFA | Mayor o igual a 1.000.000 COP |
+| Código simulado | `123456` |
+| Validez temporal | 300 segundos |
+| Estado inicial sensible | `PENDING_MFA` |
+| Confirmación válida | `COMPLETED` |
+| Autorización expirada | `EXPIRED` |
+| Intentos incorrectos | No generan bloqueo |
+| Expiración | Evaluación perezosa al consultar o confirmar |
+| Verificación de fondos | Se repite al confirmar |
+
+Las transferencias que requieren MFA no modifican saldos hasta obtener autorización válida.
+
+#### 5. Códigos de respuesta observados
+
+| Situación | Código HTTP | Código de error o estado |
+|---|---:|---|
+| Creación de transferencia sensible | 201 | `PENDING_MFA` |
+| Confirmación correcta | 200 | `COMPLETED` |
+| Código MFA incorrecto | 401 | `INVALID_MFA_CODE` |
+| Autorización expirada | 409 | `EXPIRED` |
+| Fondos insuficientes al confirmar | 409 | `INSUFFICIENT_FUNDS` |
+| Referencia inexistente | 404 | `NOT_FOUND` |
+
+El agente confirmó que un código incorrecto no marca automáticamente la transferencia como `FAILED` y que no existe una política de bloqueo por múltiples intentos incorrectos.
+
+#### 6. Pruebas de expiración determinista
+
+La implementación heredada utiliza la función `_now_utc()` para determinar el tiempo actual.
+
+Kiro utilizó `monkeypatch` sobre `app.service._now_utc` dentro del entorno de pruebas para simular el avance del reloj por encima de los cinco minutos de validez.
+
+Este enfoque permitió comprobar la transición a `EXPIRED` sin esperar cinco minutos reales.
+
+No fue necesario modificar el código de producción.
+
+#### 7. Revalidación de fondos e idempotencia
+
+Para simular fondos insuficientes al confirmar una operación MFA, el agente modificó el saldo únicamente dentro de la base de datos aislada de prueba.
+
+Se comprobó que, cuando los fondos son insuficientes, la confirmación devuelve un error y no ejecuta el movimiento financiero.
+
+También se verificó que una confirmación repetida sobre una transferencia ya completada no vuelve a debitar ni acreditar fondos.
+
+Según el reporte, la segunda confirmación fue rechazada y los saldos permanecieron invariables.
+
+Estas pruebas aportan evidencia de los casos ejecutados, aunque no constituyen una demostración exhaustiva de idempotencia frente a concurrencia o fallos de proceso.
+
+#### 8. Resultados de pruebas
+
+**Pruebas específicas de la Tarea 4:**
+
+`python -m pytest tests/test_regression_mfa.py -v`
+
+| Métrica | Resultado |
+|---|---:|
+| Pruebas ejecutadas | 14 |
+| Aprobadas | 14 |
+| Fallidas | 0 |
+| Warnings | 31 |
+| Duración | 1,32 s |
+| Código de salida | 0 |
+
+**Suite acumulada:**
+
+`python -m pytest -q`
+
+| Métrica | Resultado |
+|---|---:|
+| Pruebas ejecutadas | 38 |
+| Aprobadas | 38 |
+| Fallidas | 0 |
+| Omitidas | 0 |
+| Warnings | 75 |
+| Duración | 2,52 s |
+| Código de salida | 0 |
+
+La suite acumulada comprende:
+
+- 4 pruebas del arnés.
+- 8 pruebas de cuentas.
+- 12 pruebas de transferencias internas.
+- 14 pruebas MFA.
+
+**Tasa de aprobación de las pruebas ejecutadas:** 100 %.
+
+#### 9. Advertencias y limitaciones
+
+El agente reportó advertencias relacionadas con:
+
+- El mecanismo `on_event` deprecado en FastAPI.
+- AnyIO y su integración con el cliente de pruebas.
+
+Las advertencias no impidieron la ejecución de las pruebas.
+
+No se reportaron pruebas fallidas.
+
+El agente realizó una corrección menor de legibilidad en el propio archivo de prueba antes de ejecutar los casos.
+
+Las pruebas no abarcan todavía MFA de transferencias ACH ni autorización de programaciones recurrentes.
+
+#### 10. Archivos creados y modificados
+
+**Archivo creado:**
+
+`Etapa 2/Kiro/backend/tests/test_regression_mfa.py`
+
+**Archivo modificado:**
+
+`Etapa 2/Kiro/.kiro/specs/shift-bank-stage2/tasks.md`
+
+**Evidencia creada:**
+
+`Etapa 2/_experiment_logs/Kiro/sesiones/E2_KIRO_SESION_04_TAREA_04.md`
+
+Según Kiro, no se modificaron archivos de aplicación, especificaciones aprobadas ni configuraciones MFA.
+
+No se instalaron dependencias adicionales.
+
+#### 11. Preservación del baseline
+
+Kiro informó que:
+
+- La base de datos histórica permaneció con 36.864 bytes.
+- La fecha de última modificación continuó siendo 13/10/2026.
+- La Etapa 1 permaneció con estado Git limpio.
+- No se creó una base de datos persistente en la copia de Etapa 2.
+- No quedaron bases de datos temporales residuales.
+
+Estas verificaciones corresponden al reporte del agente.
+
+#### 12. Seguimiento de implementación
+
+| Estado | Cantidad |
+|---|---:|
+| Tareas completadas | 4 |
+| Tareas pendientes | 42 |
+| Total | 46 |
+| Avance por cantidad de tareas | 8,70 % |
+
+El porcentaje representa únicamente la proporción de tareas completadas, sin ponderación por complejidad.
+
+#### 13. Métricas experimentales
+
+- Nuevas pruebas automatizadas: 14.
+- Pruebas acumuladas: 38.
+- Pruebas acumuladas exitosas: 38.
+- Pruebas fallidas: 0.
+- Nuevos archivos de prueba: 1.
+- Archivos de código de aplicación modificados: 0.
+- Nuevas dependencias: 0.
+- Tokens consumidos: N/D.
+- Créditos consumidos: N/D.
+- Tiempo total de interacción: N/D.
+- Llamadas a herramientas: N/D.
+
+#### 14. Estado de cierre
+
+**Tarea 4 completada según Kiro.**
+
+Se amplió la línea base de regresión para incluir el mecanismo MFA heredado, sus condiciones de autorización, expiración y consistencia financiera.
+
+La siguiente iteración ejecutará exclusivamente la Tarea 5, dedicada a verificar los contratos públicos de API, los formatos de respuesta y el historial de transferencias.
+
+La implementación de las nuevas funcionalidades de la Etapa 2 continúa pendiente.
+
+### Iteración 20 — Implementación de la Tarea 5: regresión de contratos de API e historial
+
+**Fecha:** 16 de noviembre de 2026  
+**Herramienta:** Kiro (modo Auto)  
+**Etapa:** 2 — Complejidad funcional y estado  
+**Fase SDD:** Implementación controlada — Fase A  
+**Tarea ejecutada:** 5 de 46  
+**Estado:** COMPLETED, según el reporte del agente.
+
+#### 1. Objetivo
+
+Implementar pruebas automatizadas para preservar los contratos públicos de la API heredada de la Etapa 1, incluyendo las estructuras de respuesta, el historial de transferencias, las convenciones de estados y los errores HTTP.
+
+La tarea busca establecer evidencia verificable de compatibilidad antes de introducir las extensiones funcionales de la Etapa 2.
+
+#### 2. Actividades realizadas
+
+Kiro inspeccionó las rutas, esquemas y convenciones de serialización de la API heredada.
+
+Confirmó el comportamiento observable de los endpoints de cuentas, transferencias y MFA.
+
+Posteriormente, desarrolló trece pruebas de contrato, ejecutó la suite individual y acumulada, verificó el aislamiento de datos y actualizó el seguimiento de tareas.
+
+No se reportaron cambios en el código de producción.
+
+#### 3. Archivo de pruebas generado
+
+**Ruta:**
+
+`Etapa 2/Kiro/backend/tests/test_regression_api_contracts.py`
+
+**Cantidad de pruebas nuevas:** 13.
+
+Las pruebas abarcan cuatro grupos:
+
+| Grupo | Verificaciones |
+|---|---|
+| Contrato público | Estructuras y códigos de respuesta de cuentas, transferencias y MFA. |
+| Historial | Campos, orden, estados, movimientos históricos y representación monetaria. |
+| Errores | Códigos HTTP, códigos de dominio y estructura pública de errores. |
+| Compatibilidad | Preservación estricta de la representación heredada de transferencias internas. |
+
+#### 4. Contratos heredados registrados
+
+**Consulta de cuentas:**
+
+`GET /api/accounts`
+
+Retorna el objeto `accounts`, con nombre y saldo de cada cuenta.
+
+**Creación de transferencias:**
+
+`POST /api/transfers`
+
+Retorna HTTP 201 tanto para transferencias completadas directamente como para operaciones pendientes de MFA.
+
+**Confirmación MFA:**
+
+`POST /api/transfers/{reference}/mfa`
+
+La autorización exitosa retorna HTTP 200 y un objeto con el estado de la transferencia.
+
+**Historial:**
+
+`GET /api/transfers`
+
+Retorna un objeto `transfers`, cuyas entradas internas contienen:
+
+- `date`.
+- `direction`, con campos `from` y `to`.
+- `amount`.
+- `description`.
+- `status`.
+
+Se preserva el orden descendente por fecha de creación y, como criterio secundario, por identificador de fila.
+
+Los estados heredados se mantienen en mayúsculas.
+
+#### 5. Verificación del historial
+
+Según el reporte, las pruebas confirmaron:
+
+- Presencia de las dos transferencias históricas sembradas.
+- Incorporación de nuevos movimientos al historial.
+- Visibilidad de transferencias pendientes de MFA.
+- Nombres amigables en el origen y destino.
+- Representación monetaria decimal-string.
+- Ausencia de identificadores internos en la respuesta.
+- Ordenación de movimientos recientes antes de registros históricos.
+
+La prueba de contrato exige actualmente la representación estricta de las entradas internas heredadas.
+
+#### 6. Convenciones de error
+
+Kiro reportó la verificación de respuestas con la estructura:
+
+`{"error":{"code":"...","message":"..."}}`
+
+Entre los códigos comprobados se encuentran:
+
+| Código de error | HTTP |
+|---|---:|
+| `SAME_ACCOUNT` | 400 |
+| `NON_POSITIVE_AMOUNT` | 400 |
+| `INVALID_AMOUNT` | 400 |
+| `INVALID_MFA_CODE` | 401 |
+| `NOT_FOUND` | 404 |
+
+Las operaciones rechazadas no modificaron los saldos en los escenarios evaluados.
+
+#### 7. Resultados de pruebas
+
+**Pruebas específicas de la Tarea 5:**
+
+`python -m pytest tests/test_regression_api_contracts.py -v`
+
+| Métrica | Resultado |
+|---|---:|
+| Pruebas ejecutadas | 13 |
+| Aprobadas | 13 |
+| Fallidas | 0 |
+| Warnings | 29 |
+| Duración | 1,13 s |
+| Código de salida | 0 |
+
+**Suite acumulada:**
+
+`python -m pytest -q`
+
+| Métrica | Resultado |
+|---|---:|
+| Pruebas ejecutadas | 51 |
+| Aprobadas | 51 |
+| Fallidas | 0 |
+| Omitidas | 0 |
+| Warnings | 101 |
+| Duración | 2,98 s |
+| Código de salida | 0 |
+
+Distribución acumulada:
+
+| Origen | Pruebas |
+|---|---:|
+| Tarea 1 — Arnés | 4 |
+| Tarea 2 — Cuentas | 8 |
+| Tarea 3 — Transferencias internas | 12 |
+| Tarea 4 — MFA | 14 |
+| Tarea 5 — Contratos de API | 13 |
+| **Total** | **51** |
+
+**Tasa de aprobación observada:** 100 %.
+
+Esta cifra representa las pruebas ejecutadas, no la cobertura exhaustiva de la aplicación.
+
+#### 8. Advertencias y limitaciones
+
+El agente reportó advertencias de deprecación relacionadas con `on_event` de FastAPI y AnyIO.
+
+No se reportaron fallos ni iteraciones correctivas durante la ejecución.
+
+El checkpoint formal de la Fase A todavía no se ha ejecutado.
+
+#### 9. Consideración de compatibilidad para la Etapa 2
+
+Se identifica una posible incompatibilidad futura entre las pruebas estrictas de contrato de Etapa 1 y la extensión de historial aprobada para Etapa 2.
+
+Las pruebas actuales exigen que las entradas internas no incorporen campos adicionales como `type` o `beneficiary`.
+
+Sin embargo, la decisión E2-KIRO-D03 establece que el historial unificado deberá distinguir transferencias internas y ACH mediante el campo de tipo.
+
+Por tanto, durante la implementación posterior será necesario diferenciar:
+
+- La preservación de los campos y comportamientos heredados.
+- Las extensiones aditivas expresamente autorizadas por el contrato de Etapa 2.
+- Los asertos estrictos que describen exclusivamente el baseline previo.
+
+Esta observación no constituye un fallo de la Tarea 5, dado que las pruebas representan correctamente la API original. Tampoco autoriza modificar de manera anticipada las pruebas.
+
+Deberá resolverse durante la integración del historial unificado, manteniendo evidencia de la versión original.
+
+#### 10. Preservación de datos y aplicación heredada
+
+Kiro informó que:
+
+- La base de datos histórica conservó 36.864 bytes.
+- Su fecha de modificación permaneció en 13/10/2026.
+- El estado Git de Etapa 1 permaneció limpio.
+- No se creó una base persistente de pruebas en Etapa 2.
+- No quedaron bases de datos temporales residuales.
+- No se modificó código de aplicación.
+
+Las comprobaciones corresponden al reporte del agente.
+
+#### 11. Archivos creados y modificados
+
+**Creado:**
+
+`Etapa 2/Kiro/backend/tests/test_regression_api_contracts.py`
+
+**Modificado:**
+
+`Etapa 2/Kiro/.kiro/specs/shift-bank-stage2/tasks.md`
+
+**Evidencia creada:**
+
+`Etapa 2/_experiment_logs/Kiro/sesiones/E2_KIRO_SESION_05_TAREA_05.md`
+
+No se instalaron dependencias adicionales.
+
+#### 12. Seguimiento de implementación
+
+| Estado | Cantidad |
+|---|---:|
+| Tareas completadas | 5 |
+| Tareas pendientes | 41 |
+| Total de tareas | 46 |
+| Avance por cantidad | 10,87 % |
+
+El avance porcentual refleja únicamente el número de tareas completadas, sin ponderar complejidad.
+
+#### 13. Métricas experimentales
+
+- Nuevas pruebas automatizadas: 13.
+- Pruebas acumuladas: 51.
+- Pruebas acumuladas exitosas: 51.
+- Pruebas fallidas: 0.
+- Nuevos archivos de prueba: 1.
+- Archivos de aplicación modificados: 0.
+- Tokens consumidos: N/D.
+- Créditos consumidos: N/D.
+- Duración total de interacción: N/D.
+- Llamadas a herramientas: N/D.
+
+#### 14. Estado de cierre
+
+**Tarea 5 completada según Kiro.**
+
+La fase A cuenta con pruebas automatizadas de infraestructura, cuentas, transferencias internas, MFA y contratos públicos de API.
+
+La siguiente interacción ejecutará exclusivamente la Tarea 6, destinada a consolidar el checkpoint de regresión y preservar evidencia verificable del estado heredado antes de comenzar la evolución del esquema SQLite.
+
+### Iteración 21 — Tarea 6: checkpoint de regresión y cierre de la Fase A
+
+**Fecha:** 16 de noviembre de 2026  
+**Herramienta:** Kiro (modo Auto)  
+**Etapa:** 2 — Complejidad funcional y estado  
+**Fase SDD:** Implementación controlada — Fase A  
+**Tarea ejecutada:** 6 de 46  
+**Estado:** COMPLETED — Checkpoint A: PASS, según el reporte de Kiro.
+
+#### 1. Objetivo
+
+Consolidar y verificar la línea base automatizada de regresión de la Etapa 1 antes de iniciar modificaciones sobre el código y el esquema SQLite de la copia de trabajo de Etapa 2.
+
+El checkpoint debía comprobar tanto el funcionamiento heredado como la integridad de los artefactos originales mediante evidencia reproducible.
+
+#### 2. Actividades realizadas
+
+Kiro ejecutó la suite completa de regresión desarrollada durante las tareas 1–5.
+
+Posteriormente realizó verificaciones del estado Git, comparaciones SHA-256 de las fuentes heredadas y comprobaciones de integridad de la base de datos histórica.
+
+El agente también documentó una consideración de compatibilidad entre las pruebas estrictas del historial heredado y la futura extensión del historial unificado.
+
+Finalmente, registró el checkpoint y marcó la Tarea 6 como completada.
+
+#### 3. Resultado del checkpoint
+
+**Checkpoint A: PASS.**
+
+Comando ejecutado:
+
+`python -m pytest`
+
+| Métrica | Resultado |
+|---|---:|
+| Pruebas ejecutadas | 51 |
+| Pruebas exitosas | 51 |
+| Pruebas fallidas | 0 |
+| Pruebas omitidas | 0 |
+| Advertencias | 101 |
+| Duración reportada | 2,84 s |
+| Código de salida | 0 |
+
+Todas las pruebas existentes aprobaron.
+
+#### 4. Inventario de pruebas del baseline
+
+| Archivo | Categoría | Pruebas |
+|---|---|---:|
+| `test_harness.py` | Infraestructura y aislamiento | 4 |
+| `test_regression_accounts.py` | Cuentas y saldos | 8 |
+| `test_regression_internal_transfers.py` | Transferencias internas | 12 |
+| `test_regression_mfa.py` | Autenticación multifactor | 14 |
+| `test_regression_api_contracts.py` | Contratos API e historial | 13 |
+| **Total** | | **51** |
+
+Esta suite constituye la referencia automatizada para detectar regresiones durante las fases posteriores.
+
+No representa una prueba exhaustiva de todas las condiciones posibles de concurrencia, fallos de proceso o funcionalidades futuras.
+
+#### 5. Verificación de integridad mediante SHA-256
+
+Kiro comparó las 12 fuentes Python heredadas del directorio `backend/app/` de la copia de Etapa 2 con los hashes registrados durante la preparación experimental.
+
+**Resultado reportado:**
+
+- Archivos comparados: 12.
+- Coincidencias: 12.
+- Discrepancias: 0.
+
+Se confirmó mediante comparación de contenido que las fuentes heredadas permanecían idénticas al baseline inicial.
+
+El agente creó un inventario de hashes para documentar esta comprobación.
+
+#### 6. Integridad de la base de datos histórica
+
+**Archivo histórico:**
+
+`Etapa 1/Kiro/backend/shift_bank.db`
+
+**SHA-256 reportado:**
+
+`407B0E132E76900FBF59412C31A2D8047A666F2BE1856BE1FF6B88531C89B4A8`
+
+Kiro confirmó que la base de datos histórica permaneció sin modificaciones.
+
+No se encontraron bases de datos temporales residuales ni una base de datos persistente `shift_bank.db` dentro del backend de la copia de Etapa 2.
+
+Los saldos y registros sembrados fueron verificados funcionalmente mediante las pruebas ejecutadas sobre bases de datos aisladas.
+
+#### 7. Estado del repositorio
+
+**Rama:** `ShiftBank`.
+
+**HEAD al cierre:**
+
+`da4209dc3ea9eda08f13de08abe29800bcdf6513`
+
+Kiro observó que el repositorio había avanzado respecto al commit inicial de implementación:
+
+`ebf1017`
+
+El agente atribuyó el cambio a actividad externa en el monorepositorio.
+
+No se verificó independientemente el origen de dicha actividad, pero se reportó que `Etapa 1/Kiro` mantenía un estado Git limpio.
+
+La evolución del HEAD se conserva como observación experimental.
+
+#### 8. Consideración de compatibilidad del historial
+
+Kiro identificó que dos pruebas de la Tarea 5 establecen expectativas estrictas sobre el historial de transferencias internas:
+
+- `test_internas_no_tienen_campos_ach`
+- `test_historial_estructura_y_campos`
+
+Las pruebas reflejan correctamente la representación heredada, que no incluye el campo `type`.
+
+Sin embargo, E2-KIRO-D03 y E2-KIRO-D05 establecen la incorporación de tipos de transferencia y beneficiarios ACH al historial unificado.
+
+El agente propuso conservar la evidencia del checkpoint original y adaptar las aserciones afectadas durante la Tarea 25, cuando se implemente el historial extendido.
+
+La adaptación deberá distinguir entre alteraciones regresivas y extensiones aditivas expresamente autorizadas.
+
+**Estado:** Consideración documentada. No se modificaron las pruebas durante el checkpoint.
+
+#### 9. Advertencias y limitaciones
+
+La ejecución acumulada produjo 101 advertencias, principalmente asociadas al mecanismo heredado `on_event` de FastAPI y a AnyIO.
+
+Estas advertencias no impidieron completar el checkpoint.
+
+La migración hacia `lifespan` continúa planificada para una tarea posterior.
+
+No se implementó ni verificó todavía ninguna de las funcionalidades nuevas de Etapa 2.
+
+#### 10. Evidencia experimental creada
+
+**Registro de checkpoint:**
+
+`Etapa 2/_experiment_logs/Kiro/sesiones/E2_KIRO_SESION_06_CHECKPOINT_A.md`
+
+**Inventario de integridad:**
+
+`Etapa 2/_experiment_logs/Kiro/preparacion/E2_KIRO_CHECKPOINT_A_APP_SHA256.csv`
+
+Ambos archivos fueron reportados como nuevos.
+
+#### 11. Archivos modificados
+
+**Modificado:**
+
+`Etapa 2/Kiro/.kiro/specs/shift-bank-stage2/tasks.md`
+
+Se marcó exclusivamente la Tarea 6 como completada.
+
+Según Kiro, no se modificaron:
+
+- Código fuente de aplicación.
+- Archivos de pruebas.
+- Fixtures de pruebas.
+- `requirements.md` ni `design.md`.
+- Implementación original de la Etapa 1.
+- Evidencia experimental histórica.
+
+#### 12. Seguimiento de implementación
+
+| Estado | Cantidad |
+|---|---:|
+| Tareas completadas | 6 |
+| Tareas pendientes | 40 |
+| Total | 46 |
+| Avance por cantidad de tareas | 13,04 % |
+
+El porcentaje corresponde al número de tareas completadas, sin ponderar su complejidad o esfuerzo.
+
+#### 13. Métricas experimentales
+
+- Nuevas pruebas creadas en esta interacción: 0.
+- Pruebas ejecutadas: 51.
+- Pruebas exitosas: 51.
+- Discrepancias SHA-256 en fuentes heredadas: 0.
+- Checkpoints aprobados: 1.
+- Archivos de evidencia creados: 2.
+- Archivos de código de aplicación modificados: 0.
+- Tokens consumidos: N/D.
+- Créditos consumidos: N/D.
+- Duración total de la interacción: N/D.
+- Llamadas a herramientas: N/D.
+
+#### 14. Estado de cierre
+
+**Fase A completada según Kiro, con checkpoint PASS.**
+
+Se consolidó una línea base automatizada de 51 pruebas y se documentó la integridad de las fuentes heredadas y de la base de datos histórica.
+
+La siguiente fase corresponde a la evolución de la persistencia SQLite.
+
+La Tarea 7 iniciará la Fase B y constituirá la primera intervención prevista sobre el código de aplicación de la copia independiente de Etapa 2.
+
+Esta fase deberá conservar las garantías de compatibilidad establecidas por el checkpoint A.
+
+### Iteración 22 — Implementación de la Tarea 7: migración transaccional de SQLite
+
+**Fecha:** 16 de noviembre de 2026  
+**Herramienta:** Kiro (modo Auto)  
+**Etapa:** 2 — Complejidad funcional y estado  
+**Fase SDD:** Implementación controlada — Fase B  
+**Tarea ejecutada:** 7 de 46  
+**Estado:** COMPLETED, según el reporte del agente.
+
+#### 1. Objetivo
+
+Iniciar la evolución del esquema SQLite de Shift Bank para soportar las nuevas funcionalidades de la Etapa 2, preservando las cuentas, saldos, transferencias históricas y contratos de API heredados.
+
+La migración debía ser aditiva, transaccional e idempotente, sin modificar la base de datos original de Etapa 1.
+
+#### 2. Actividades realizadas
+
+Kiro revisó la implementación heredada del acceso a datos y el diseño arquitectónico aprobado.
+
+Identificó un solapamiento entre las tareas 7 y 8 respecto a la creación de las nuevas tablas.
+
+El agente delimitó la Tarea 7 a la infraestructura transaccional de migración y a la extensión de la tabla `transfer`, posponiendo la definición de las cuatro tablas nuevas y sus restricciones a la Tarea 8.
+
+Posteriormente:
+
+1. Subdividió la Tarea 7 para mejorar su seguimiento.
+2. Implementó la función de migración.
+3. Integró la migración con la inicialización heredada.
+4. Desarrolló pruebas específicas.
+5. Ejecutó la suite acumulada.
+6. Verificó la integridad de la base de datos histórica.
+7. Registró la actividad y actualizó el seguimiento de tareas.
+
+#### 3. Refinamiento del plan de tareas
+
+Como respuesta al hallazgo T-1 de la auditoría de planificación, Kiro creó cinco subtareas marcables:
+
+| Subtarea | Descripción | Estado reportado |
+|---|---|---|
+| 7.1 | Implementar `migrate()` con control transaccional. | Completada |
+| 7.2 | Implementar `_column_exists` utilizando `PRAGMA`. | Completada |
+| 7.3 | Incorporar nuevas columnas a `transfer`. | Completada |
+| 7.4 | Normalizar la clasificación heredada mediante backfill. | Completada |
+| 7.5 | Integrar la migración después de `init_schema`. | Completada |
+
+No se modificó la numeración de las 46 tareas principales.
+
+#### 4. Cambios en código de aplicación
+
+**Archivos modificados:**
+
+- `Etapa 2/Kiro/backend/app/db.py`
+- `Etapa 2/Kiro/backend/app/main.py`
+
+En `db.py`, Kiro reportó la incorporación de:
+
+- La función `migrate(conn)`.
+- El helper `_column_exists`.
+- La definición `_TRANSFER_NEW_COLUMNS`.
+
+En `main.py`, añadió la importación y llamada correspondiente a la migración durante la inicialización de la aplicación.
+
+El orden de arranque quedó establecido como:
+
+`init_schema → migrate → seed`
+
+Se mantuvo temporalmente el mecanismo heredado `on_event`, cuya migración hacia `lifespan` corresponde a una tarea posterior.
+
+#### 5. Evolución de la tabla transfer
+
+Kiro reportó la incorporación de las siguientes columnas:
+
+| Columna | Tipo o definición |
+|---|---|
+| `type` | `TEXT NOT NULL DEFAULT 'internal'` |
+| `beneficiary_id` | `TEXT` |
+| `beneficiary_snapshot` | `TEXT` |
+| `settled_at` | `TEXT` |
+| `refunded` | `INTEGER NOT NULL DEFAULT 0` |
+| `schedule_id` | `TEXT` |
+
+Se utilizó `PRAGMA table_info` para comprobar la existencia de columnas antes de ejecutar cada modificación.
+
+Los registros históricos fueron clasificados como transferencias internas mediante el valor predeterminado y la normalización prevista.
+
+#### 6. Atomicidad e idempotencia de migración
+
+El mecanismo implementado agrupa las operaciones de modificación del esquema dentro de una transacción SQLite.
+
+Según el reporte de Kiro:
+
+- La migración puede ejecutarse repetidamente sin duplicar columnas.
+- Un fallo simulado durante la migración provoca rollback.
+- Los saldos heredados permanecen sin modificaciones.
+- Las transferencias históricas se conservan.
+- El mecanismo de conexión original continúa funcionando.
+
+Estas garantías fueron evaluadas mediante las pruebas de la tarea, no mediante la suite completa de migración prevista para la Tarea 13.
+
+#### 7. Pruebas implementadas
+
+**Archivo creado:**
+
+`Etapa 2/Kiro/backend/tests/test_migration.py`
+
+**Cantidad de pruebas nuevas:** 6.
+
+Las pruebas verificaron:
+
+- Aplicación del esquema migrado.
+- Idempotencia mediante ejecución repetida.
+- Conservación de saldos.
+- Preservación de movimientos históricos.
+- Clasificación de transferencias internas.
+- Rollback y compatibilidad del acceso a datos.
+
+#### 8. Resultados de pruebas
+
+**Pruebas de migración:**
+
+Kiro reportó **6/6 pruebas exitosas**.
+
+**Suite completa:**
+
+Comando ejecutado:
+
+`python -m pytest`
+
+| Métrica | Resultado |
+|---|---:|
+| Pruebas ejecutadas | 57 |
+| Pruebas exitosas | 57 |
+| Pruebas fallidas | 0 |
+| Pruebas omitidas | 0 |
+| Advertencias | 101 |
+| Duración | 3,13 s |
+| Código de salida | 0 |
+
+La suite incorpora las 51 pruebas del checkpoint A y las 6 pruebas nuevas de migración.
+
+Las pruebas estrictas del historial heredado continuaron aprobando porque la migración modificó el esquema de persistencia, pero no la representación pública del endpoint.
+
+#### 9. Verificación de integridad histórica
+
+**Base de datos original:**
+
+`Etapa 1/Kiro/backend/shift_bank.db`
+
+**SHA-256 antes y después, reportado por Kiro:**
+
+`407B0E132E76900FBF59412C31A2D8047A666F2BE1856BE1FF6B88531C89B4A8`
+
+El agente confirmó que:
+
+- La base de datos histórica no fue utilizada como objetivo de migración.
+- La Etapa 1 mantuvo su estado Git limpio.
+- No quedaron archivos temporales de base de datos.
+- No se creó una base persistente no autorizada en Etapa 2.
+
+#### 10. Diferencias de código
+
+Kiro reportó el siguiente cambio neto aproximado por archivo:
+
+| Archivo | Diferencia |
+|---|---|
+| `backend/app/db.py` | +63 líneas |
+| `backend/app/main.py` | +2 / −1 líneas |
+
+Los cambios se limitaron a la infraestructura de migración y su integración con la inicialización existente.
+
+No se introdujo ninguna de las funcionalidades bancarias nuevas.
+
+#### 11. Observación sobre el límite entre tareas
+
+La definición original de la Tarea 7 mencionaba la creación de nuevas tablas e índices, mientras que la Tarea 8 contemplaba la definición detallada de sus esquemas y restricciones.
+
+Kiro decidió diferir esos elementos a la Tarea 8 y marcó la Tarea 7 como completada bajo el alcance reducido.
+
+**Clasificación:** Ajuste de frontera y dependencia entre tareas.
+
+La decisión fue explicada en la interacción, pero supone una diferencia respecto al alcance originalmente descrito para la Tarea 7.
+
+Se debe verificar durante la siguiente tarea que todos los elementos diferidos queden implementados. La evidencia histórica no debe modificarse retrospectivamente para ocultar este ajuste.
+
+#### 12. Archivos creados y modificados
+
+**Modificados:**
+
+- `Etapa 2/Kiro/backend/app/db.py`
+- `Etapa 2/Kiro/backend/app/main.py`
+- `Etapa 2/Kiro/.kiro/specs/shift-bank-stage2/tasks.md`
+
+**Creados:**
+
+- `Etapa 2/Kiro/backend/tests/test_migration.py`
+- `Etapa 2/_experiment_logs/Kiro/sesiones/E2_KIRO_SESION_07_TAREA_07.md`
+
+No se reportaron nuevas dependencias.
+
+#### 13. Seguimiento de implementación
+
+| Estado | Cantidad |
+|---|---:|
+| Tareas principales completadas | 7 |
+| Tareas pendientes | 39 |
+| Total de tareas principales | 46 |
+| Subtareas de Tarea 7 completadas | 5 |
+| Avance por tareas principales | 15,22 % |
+
+El porcentaje refleja únicamente la proporción de tareas marcadas, sin ponderación por complejidad.
+
+#### 14. Métricas experimentales
+
+- Nuevas pruebas automatizadas: 6.
+- Pruebas acumuladas exitosas: 57.
+- Regresiones detectadas: 0.
+- Archivos de aplicación modificados: 2.
+- Archivos de prueba creados: 1.
+- Archivos de evidencia creados: 1.
+- Tokens consumidos: N/D.
+- Créditos consumidos: N/D.
+- Duración total de interacción: N/D.
+- Llamadas a herramientas: N/D.
+
+#### 15. Estado de cierre
+
+**Tarea 7 completada según Kiro**, con la infraestructura de migración y la extensión de la tabla `transfer` implementadas.
+
+La siguiente interacción corresponde a la Tarea 8, destinada a incorporar las cuatro tablas nuevas, sus relaciones, restricciones e índices.
+
+La aprobación de esta continuación no implica todavía autorización para implementar servicios financieros, transferencias ACH, pagos recurrentes o el scheduler.
+
+### Iteración 23 — Implementación de la Tarea 8: tablas, restricciones e índices de SQLite
+
+**Fecha:** 16 de noviembre de 2026  
+**Herramienta:** Kiro (modo Auto)  
+**Etapa:** 2 — Complejidad funcional y estado  
+**Fase SDD:** Implementación controlada — Fase B  
+**Tarea ejecutada:** 8 de 46  
+**Estado:** COMPLETED, según el reporte del agente.
+
+#### 1. Objetivo
+
+Completar la evolución estructural de la base de datos SQLite mediante la incorporación de las cuatro tablas requeridas por la Etapa 2, incluyendo relaciones, restricciones de unicidad e índices.
+
+La implementación debía integrarse con el mecanismo de migración transaccional desarrollado durante la Tarea 7, sin afectar los datos ni el funcionamiento heredado de la Etapa 1.
+
+#### 2. Actividades realizadas
+
+Kiro revisó el diseño arquitectónico y el código de migración existente.
+
+Posteriormente:
+
+1. Dividió la Tarea 8 en siete subtareas marcables.
+2. Implementó las cuatro tablas nuevas.
+3. Incorporó claves foráneas e índices.
+4. Integró el DDL en la función `migrate()`.
+5. Creó pruebas de validación del esquema.
+6. Detectó y corrigió un defecto en el orden de creación de índices.
+7. Ejecutó satisfactoriamente las pruebas específicas y la suite acumulada.
+8. Verificó la integridad de los datos históricos.
+9. Registró la evidencia y marcó la tarea como completada.
+
+#### 3. Refinamiento de tareas
+
+Kiro creó siete subtareas:
+
+| Subtarea | Descripción | Estado |
+|---|---|---|
+| 8.1 | Implementación de `beneficiary`. | Completada |
+| 8.2 | Implementación de `recurring_schedule`. | Completada |
+| 8.3 | Implementación de `transfer_limit`. | Completada |
+| 8.4 | Implementación de `schedule_execution`. | Completada |
+| 8.5 | Incorporación de claves foráneas e índices. | Completada |
+| 8.6 | Integración del DDL en `migrate()`. | Completada |
+| 8.7 | Verificación del esquema. | Completada |
+
+Se mantuvieron las 46 tareas principales del plan.
+
+#### 4. Tablas incorporadas
+
+**Tabla `beneficiary`**
+
+Campos reportados:
+
+- `id`
+- `customer_id`
+- `name`
+- `bank`
+- `routing_number`
+- `account_number`
+- `created_at`
+- `deleted_at`
+
+Esta entidad soportará el almacenamiento de beneficiarios externos y su asociación con el cliente.
+
+**Tabla `recurring_schedule`**
+
+Campos reportados:
+
+- `id`
+- `customer_id`
+- `type`
+- `from_kind`
+- `to_kind`
+- `beneficiary_id`
+- `beneficiary_snapshot`
+- `amount_cents`
+- `description`
+- `frequency`
+- `status`
+- `requires_mfa`
+- `authorized`
+- `next_run_at`
+- `created_at`
+
+La tabla almacenará las programaciones recurrentes, sus características y su próximo momento de ejecución.
+
+**Tabla `transfer_limit`**
+
+Campos reportados:
+
+- `customer_id`
+- `per_transfer_cents`
+- `daily_cents`
+- `updated_at`
+
+Almacenará los límites monetarios configurables por cliente.
+
+**Tabla `schedule_execution`**
+
+Campos reportados:
+
+- `id`
+- `schedule_id`
+- `due_at`
+- `outcome`
+- `transfer_id`
+- `created_at`
+
+Esta tabla registrará la identidad de cada ocurrencia recurrente procesada.
+
+#### 5. Relaciones y restricciones
+
+Kiro reportó las siguientes relaciones:
+
+| Entidad | Relación |
+|---|---|
+| `beneficiary` | Referencia al cliente. |
+| `recurring_schedule` | Referencias al cliente y al beneficiario. |
+| `transfer_limit` | Referencia al cliente. |
+| `schedule_execution` | Referencias a la programación y a la transferencia correspondiente. |
+
+Se incorporó la restricción:
+
+`UNIQUE(schedule_id, due_at)`
+
+Esta combinación identifica de manera única cada ocurrencia programada, evitando registrar dos veces la misma ejecución.
+
+La restricción será un componente fundamental para implementar la idempotencia financiera de los pagos recurrentes en tareas posteriores.
+
+La tabla `transfer_limit` utiliza `customer_id` como clave primaria.
+
+#### 6. Índices incorporados
+
+Kiro reportó cuatro índices:
+
+| Índice | Finalidad |
+|---|---|
+| `idx_transfer_created_at` | Consulta y ordenamiento de transferencias. |
+| `idx_transfer_type_status` | Filtrado por tipo y estado. |
+| `idx_schedule_due` | Identificación de programaciones próximas a ejecutarse. |
+| `idx_beneficiary_customer` | Consulta de beneficiarios asociados a clientes. |
+
+Estos índices buscan facilitar las futuras operaciones sin modificar la representación pública de la API.
+
+#### 7. Limitación de claves foráneas heredadas
+
+Las columnas `transfer.beneficiary_id` y `transfer.schedule_id`, agregadas durante la Tarea 7, no incluyen restricciones de clave foránea declaradas.
+
+Kiro explicó que SQLite no permite incorporar determinadas restricciones mediante `ALTER TABLE` sin reconstruir la tabla.
+
+Se decidió no reconstruir la tabla heredada, para evitar una migración destructiva y preservar la compatibilidad.
+
+Las nuevas tablas sí incluyen sus respectivas referencias.
+
+**Estado:** Limitación arquitectónica documentada. La implementación de integridad referencial de las columnas añadidas a `transfer` deberá considerar esta condición.
+
+#### 8. Integración de migraciones
+
+La función `migrate()` ejecuta las operaciones de DDL dentro de una transacción.
+
+El orden definitivo reportado es:
+
+1. Creación de tablas nuevas.
+2. Extensión de columnas de `transfer`.
+3. Normalización de `transfer.type`.
+4. Creación de índices.
+
+El agente utilizó `conn.execute()` para cada sentencia en lugar de `executescript()`, evitando el commit implícito que podría comprometer la atomicidad de la migración.
+
+#### 9. Fallo detectado y corrección
+
+Durante la primera ejecución de las pruebas se detectó un fallo real de implementación:
+
+`no such column: type`
+
+**Causa identificada:** el agente intentó crear el índice `idx_transfer_type_status` antes de agregar la columna `type` a la tabla heredada `transfer`.
+
+Esta secuencia provocó un error durante la migración, afectando también la inicialización de las pruebas que dependían del arranque de FastAPI.
+
+**Acción correctiva:** Kiro reordenó la función de migración para crear los índices únicamente después de agregar y normalizar las columnas necesarias.
+
+El nuevo orden fue:
+
+`Tablas → ALTER TABLE → backfill → índices`
+
+Tras la corrección, las pruebas volvieron a ejecutarse exitosamente.
+
+**Clasificación experimental:** Defecto de implementación detectado mediante pruebas y corregido en la misma interacción.
+
+**Iteraciones correctivas observadas:** 1.
+
+No se modificaron ni debilitaron las aserciones para ocultar el fallo.
+
+#### 10. Pruebas implementadas
+
+**Archivo creado:**
+
+`Etapa 2/Kiro/backend/tests/test_schema_stage2.py`
+
+**Pruebas nuevas:** 12.
+
+Las verificaciones incluyen:
+
+- Existencia de las cuatro tablas.
+- Presencia de columnas esperadas.
+- Claves foráneas.
+- Índices.
+- Aplicación de la restricción `UNIQUE(schedule_id, due_at)`.
+- Idempotencia de la migración.
+- Compatibilidad con bases ya migradas por la Tarea 7.
+- Conservación de saldos y transferencias históricas.
+- Rollback ante errores simulados.
+
+#### 11. Resultados de pruebas
+
+**Pruebas específicas de la Tarea 8:**
+
+- 12 ejecutadas.
+- 12 exitosas.
+- 0 fallidas.
+
+**Suite acumulada:**
+
+Comando:
+
+`python -m pytest`
+
+| Métrica | Resultado |
+|---|---:|
+| Pruebas ejecutadas | 69 |
+| Pruebas exitosas | 69 |
+| Pruebas fallidas | 0 |
+| Pruebas omitidas | 0 |
+| Advertencias | 101 |
+| Duración | 3,91 s |
+| Código de salida | 0 |
+
+Distribución:
+
+| Grupo | Pruebas |
+|---|---:|
+| Regresión de la Fase A | 51 |
+| Migración — Tarea 7 | 6 |
+| Esquema — Tarea 8 | 12 |
+| **Total** | **69** |
+
+Las 51 pruebas originales de regresión permanecieron aprobadas.
+
+#### 12. Preservación de la base de datos histórica
+
+**Archivo:**
+
+`Etapa 1/Kiro/backend/shift_bank.db`
+
+**SHA-256 reportado antes y después:**
+
+`407B0E132E76900FBF59412C31A2D8047A666F2BE1856BE1FF6B88531C89B4A8`
+
+Kiro confirmó que:
+
+- La base de datos histórica no fue modificada.
+- La Etapa 1 conservó un estado Git limpio.
+- No quedaron bases de datos temporales residuales.
+- No se creó una base de datos persistente no autorizada en Etapa 2.
+
+#### 13. Archivos creados y modificados
+
+**Modificados:**
+
+- `Etapa 2/Kiro/backend/app/db.py`
+- `Etapa 2/Kiro/.kiro/specs/shift-bank-stage2/tasks.md`
+
+**Creados:**
+
+- `Etapa 2/Kiro/backend/tests/test_schema_stage2.py`
+- `Etapa 2/_experiment_logs/Kiro/sesiones/E2_KIRO_SESION_08_TAREA_08.md`
+
+El archivo `main.py` conserva los cambios de la Tarea 7, pero no fue modificado nuevamente durante la Tarea 8.
+
+#### 14. Aclaración de frontera entre Tareas 7 y 8
+
+La Tarea 7 había implementado el mecanismo transaccional y la extensión de la tabla `transfer`, difiriendo la creación de tablas al alcance de la Tarea 8.
+
+En esta interacción se incorporó el DDL pendiente.
+
+Se mantiene la distinción histórica entre ambos trabajos; no se reescribió la evidencia anterior.
+
+Con ello, Kiro declaró completada la implementación estructural prevista para ambas tareas.
+
+#### 15. Seguimiento de implementación
+
+| Estado | Cantidad |
+|---|---:|
+| Tareas principales completadas | 8 |
+| Tareas principales pendientes | 38 |
+| Total | 46 |
+| Subtareas 7.x completadas | 5 |
+| Subtareas 8.x completadas | 7 |
+| Avance por tareas principales | 17,39 % |
+
+El avance porcentual refleja el número de tareas marcadas, sin ponderación por complejidad.
+
+#### 16. Métricas experimentales
+
+- Nuevas tablas: 4.
+- Índices reportados: 4.
+- Nuevas pruebas: 12.
+- Pruebas acumuladas exitosas: 69.
+- Fallos detectados durante implementación: 1.
+- Iteraciones correctivas: 1.
+- Archivos de aplicación modificados: 1.
+- Nuevos archivos de prueba: 1.
+- Tokens consumidos: N/D.
+- Créditos consumidos: N/D.
+- Duración total de interacción: N/D.
+- Llamadas a herramientas: N/D.
+
+#### 17. Estado de cierre
+
+**Tarea 8 completada según Kiro.**
+
+La base de datos de Shift Bank dispone ahora de las estructuras necesarias para almacenar beneficiarios, límites configurables, programaciones recurrentes y ejecuciones individuales.
+
+Las pruebas de esquema, idempotencia, rollback y regresión fueron reportadas como exitosas después de corregir el orden de migración.
+
+La siguiente tarea corresponde a la abstracción del reloj para permitir pruebas deterministas de operaciones dependientes del tiempo, manteniendo el comportamiento MFA heredado y sin ejecutar todavía el scheduler.
+
+### Iteración 24 — Implementación de la Tarea 9: abstracción de reloj determinista
+
+**Fecha:** 16 de noviembre de 2026  
+**Herramienta:** Kiro (modo Auto)  
+**Etapa:** 2 — Complejidad funcional y estado  
+**Fase SDD:** Implementación controlada — Fase B  
+**Tarea ejecutada:** 9 de 46  
+**Estado:** COMPLETED, según el reporte del agente.
+
+#### 1. Objetivo
+
+Implementar una abstracción de reloj inyectable para facilitar las pruebas automatizadas de funcionalidades dependientes del tiempo, particularmente liquidaciones ACH y pagos recurrentes.
+
+La implementación debía permitir controlar y avanzar el tiempo de manera determinista, sin modificar el reloj del sistema, introducir dependencias externas ni alterar el comportamiento MFA heredado de Etapa 1.
+
+#### 2. Actividades realizadas
+
+Kiro revisó el diseño arquitectónico y el mecanismo de tiempo utilizado por el servicio heredado de transferencias.
+
+Confirmó que `app.service._now_utc()` utiliza un datetime UTC y que las fechas se representan mediante el formato ISO:
+
+`%Y-%m-%dT%H:%M:%SZ`
+
+El agente decidió implementar la nueva abstracción como un componente independiente, sin modificar `service.py`.
+
+Posteriormente:
+
+1. Creó el módulo `clock.py`.
+2. Implementó los relojes de producción y pruebas.
+3. Incorporó funciones auxiliares de fechas.
+4. Creó diez pruebas automatizadas.
+5. Ejecutó las pruebas nuevas y la suite acumulada.
+6. Verificó específicamente las pruebas MFA heredadas.
+7. Comprobó la integridad de la base de datos histórica.
+8. Actualizó la Tarea 9 y registró la sesión.
+
+#### 3. Abstracción implementada
+
+**Archivo creado:**
+
+`Etapa 2/Kiro/backend/app/clock.py`
+
+Componentes reportados:
+
+| Componente | Función |
+|---|---|
+| `Clock` | Protocolo con el método `now_utc()`. |
+| `SystemClock` | Obtiene la hora UTC real del sistema. |
+| `system_clock` | Instancia predeterminada para producción. |
+| `ManualClock` | Permite controlar el tiempo desde las pruebas. |
+| `iso()` | Formatea instantes según la convención ISO heredada. |
+| `parse_iso()` | Interpreta las fechas persistidas. |
+| `utc_day_bounds()` | Calcula los límites de un día UTC. |
+
+La abstracción utiliza objetos `datetime` con información de zona horaria y no requiere librerías externas.
+
+#### 4. Estrategia de inyección temporal
+
+La interfaz principal es:
+
+`now_utc() -> datetime`
+
+Las futuras funcionalidades podrán recibir una implementación de `Clock` mediante un parámetro o dependencia.
+
+Durante las pruebas, `ManualClock` permite fijar el instante actual y modificarlo mediante:
+
+- `set(moment)`
+- `advance(seconds/minutes/hours/days)`
+
+Las lecturas repetidas del reloj manual no avanzan automáticamente el tiempo.
+
+Esto permite simular vencimientos y cambios de fecha sin utilizar esperas reales.
+
+El reloj de pruebas mantiene su propio estado controlado, sin requerir modificar una variable global compartida.
+
+#### 5. Compatibilidad con MFA heredada
+
+La implementación original de Etapa 1 utiliza:
+
+`app.service._now_utc()`
+
+Las pruebas creadas durante la Tarea 4 controlan esta función mediante `monkeypatch`.
+
+Kiro preservó el mecanismo sin refactorizarlo ni modificar su contrato observable.
+
+**Resultado reportado:**
+
+- `service.py` no fue modificado.
+- El umbral y la duración MFA permanecieron intactos.
+- La expiración heredada conserva su funcionamiento.
+- Las pruebas MFA continúan utilizando su mecanismo original de control temporal.
+- Las 14 pruebas MFA permanecen exitosas.
+
+La nueva abstracción queda disponible para funcionalidades de Etapa 2 que se implementarán posteriormente.
+
+#### 6. Pruebas automatizadas
+
+**Archivo creado:**
+
+`Etapa 2/Kiro/backend/tests/test_clock.py`
+
+**Cantidad de pruebas nuevas:** 10.
+
+Las pruebas verificaron:
+
+- Obtención de un instante UTC válido.
+- Uso de un reloj fijo.
+- Avance determinista del tiempo.
+- Estabilidad de lecturas repetidas.
+- Cambio explícito del instante.
+- Cálculo de fronteras diarias UTC.
+- Formato de fechas compatible con Etapa 1.
+- Interpretación de fechas persistidas.
+- Manejo de instantes sin zona horaria.
+- Simulación temporal sin `sleep()`.
+
+#### 7. Resultados de pruebas
+
+**Pruebas específicas del reloj:**
+
+- Ejecutadas: 10.
+- Exitosas: 10.
+- Fallidas: 0.
+
+**Regresión MFA:**
+
+- Ejecutadas: 14.
+- Exitosas: 14.
+- Fallidas: 0.
+
+**Suite acumulada:**
+
+Comando:
+
+`python -m pytest`
+
+| Métrica | Resultado |
+|---|---:|
+| Pruebas ejecutadas | 79 |
+| Pruebas exitosas | 79 |
+| Pruebas fallidas | 0 |
+| Pruebas omitidas | 0 |
+| Advertencias | 101 |
+| Duración | 3,95 s |
+| Código de salida | 0 |
+
+Distribución acumulada:
+
+| Grupo | Pruebas |
+|---|---:|
+| Regresión de Fase A | 51 |
+| Migración — Tarea 7 | 6 |
+| Esquema — Tarea 8 | 12 |
+| Reloj — Tarea 9 | 10 |
+| **Total** | **79** |
+
+La tasa de aprobación observada fue del 100 % de las pruebas ejecutadas.
+
+#### 8. Advertencias y limitaciones
+
+No se reportaron pruebas fallidas ni correcciones posteriores a la primera ejecución.
+
+Las 101 advertencias corresponden a mecanismos heredados de FastAPI y AnyIO, previamente identificados.
+
+La abstracción de reloj todavía no está integrada en transferencias ACH ni pagos recurrentes, debido a que estas funcionalidades no han sido implementadas.
+
+No se modificó el servicio MFA heredado.
+
+#### 9. Preservación de datos históricos
+
+Kiro verificó que la base de datos histórica mantuviera su hash original.
+
+**SHA-256 reportado antes y después:**
+
+`407B0E132E76900FBF59412C31A2D8047A666F2BE1856BE1FF6B88531C89B4A8`
+
+También confirmó:
+
+- Etapa 1 con estado Git limpio.
+- Ausencia de bases de datos temporales residuales.
+- Ausencia de modificaciones nuevas en `service.py`.
+- Ausencia de cambios en los contratos de API.
+
+#### 10. Archivos creados y modificados
+
+**Creados:**
+
+- `Etapa 2/Kiro/backend/app/clock.py`
+- `Etapa 2/Kiro/backend/tests/test_clock.py`
+- `Etapa 2/_experiment_logs/Kiro/sesiones/E2_KIRO_SESION_09_TAREA_09.md`
+
+**Modificado:**
+
+`Etapa 2/Kiro/.kiro/specs/shift-bank-stage2/tasks.md`
+
+Se marcó exclusivamente la Tarea 9 como completada.
+
+Los archivos `db.py` y `main.py` conservan cambios de tareas anteriores, pero Kiro no los modificó nuevamente en esta interacción.
+
+#### 11. Seguimiento de implementación
+
+| Estado | Cantidad |
+|---|---:|
+| Tareas principales completadas | 9 |
+| Tareas principales pendientes | 37 |
+| Total de tareas principales | 46 |
+| Avance por cantidad de tareas | 19,57 % |
+
+El avance representa exclusivamente la proporción de tareas completadas, sin ponderación por esfuerzo.
+
+#### 12. Métricas experimentales
+
+- Nuevos módulos de aplicación: 1.
+- Nuevos archivos de prueba: 1.
+- Pruebas nuevas: 10.
+- Pruebas acumuladas exitosas: 79.
+- Regresiones observadas: 0.
+- Archivos heredados de aplicación modificados: 0.
+- Dependencias externas nuevas: 0.
+- Tokens consumidos: N/D.
+- Créditos consumidos: N/D.
+- Duración total de interacción: N/D.
+- Llamadas a herramientas: N/D.
+
+#### 13. Estado de cierre
+
+**Tarea 9 completada según Kiro.**
+
+La aplicación cuenta ahora con una abstracción temporal reutilizable que permitirá implementar pruebas deterministas de procesos programados y liquidaciones simuladas.
+
+La compatibilidad MFA heredada fue preservada y verificada mediante la suite automatizada.
+
+La siguiente interacción ejecutará exclusivamente la Tarea 10, dedicada a establecer utilidades compartidas para gestionar operaciones financieras transaccionales bajo SQLite, sin implementar todavía la lógica de negocio de las nuevas funcionalidades.
+
+### Iteración 25 — Tarea 10: utilidades de transacción financiera
+
+**Fecha:** 16 de noviembre de 2026  
+**Herramienta:** Kiro (modo Auto)  
+**Fase:** B — Infraestructura compartida  
+**Estado:** COMPLETED, según Kiro.
+
+#### Objetivo
+
+Implementar una utilidad reutilizable para ejecutar múltiples operaciones SQLite dentro de una única transacción financiera, garantizando commit o rollback conjunto.
+
+#### Implementación
+
+Se creó `backend/app/txn.py`, que incorpora:
+
+- `financial_transaction(conn)`: administrador de contexto que inicia `BEGIN IMMEDIATE`, confirma los cambios al finalizar correctamente y ejecuta rollback ante excepciones.
+- `TransactionError`: impide abrir una transacción anidada sobre una conexión que ya tiene una transacción activa.
+
+La utilidad permite componer operaciones de repositorio sin commits intermedios.
+
+No se modificó `repository.py` ni el método heredado `apply_transfer`.
+
+#### Pruebas y resultados
+
+Se creó `backend/tests/test_txn.py` con nueve pruebas para verificar commit, rollback, atomicidad de operaciones múltiples, ausencia de commits intermedios, anidamiento y bloqueo entre conexiones SQLite.
+
+| Métrica | Resultado |
+|---|---:|
+| Pruebas nuevas | 9 |
+| Pruebas acumuladas | 88 |
+| Pruebas exitosas | 88 |
+| Fallidas | 0 |
+| Warnings | 101 |
+| Duración de la suite | 5,10 s |
+
+Kiro confirmó que la base de datos histórica conservó su SHA-256:
+
+`407B0E132E76900FBF59412C31A2D8047A666F2BE1856BE1FF6B88531C89B4A8`
+
+#### Archivos y evidencia
+
+**Creados:**
+
+- `backend/app/txn.py`
+- `backend/tests/test_txn.py`
+- `_experiment_logs/Kiro/sesiones/E2_KIRO_SESION_10_TAREA_10.md`
+
+**Modificado:**
+
+- `.kiro/specs/shift-bank-stage2/tasks.md`
+
+Se completaron la Tarea 10 y sus seis subtareas. Las tareas 11–46 permanecieron pendientes.
+
+#### Métricas experimentales
+
+- Nuevas pruebas: 9.
+- Tareas principales completadas: 10/46.
+- Nuevos módulos de aplicación: 1.
+- Regresiones reportadas: 0.
+- Tokens, créditos por interacción y tiempo total: N/D.
+
+#### Observación metodológica
+
+Después de completar la Tarea 10, el investigador identificó que la ejecución individual de tareas, los prompts extensos y los informes reiterativos estaban incrementando el costo operativo del experimento.
+
+Se decidió proponer una optimización del procedimiento a partir de la Tarea 11, agrupando tareas relacionadas y reduciendo las solicitudes repetitivas.
+
+Este cambio deberá documentarse como ajuste del protocolo de ejecución y tenerse en cuenta al interpretar las métricas de esfuerzo e interacciones frente a las demás herramientas SDD.
+
+#### Cierre
+
+**Tarea 10 completada.** Se implementó y verificó la infraestructura transaccional compartida. Las operaciones financieras de Etapa 2 siguen pendientes de implementación.
+
+### Iteración 25 — Tarea 10: utilidades de transacción financiera
+
+**Fecha:** 16 de noviembre de 2026  
+**Herramienta:** Kiro (modo Auto)  
+**Fase:** B — Infraestructura compartida  
+**Estado:** COMPLETED, según Kiro.
+
+#### Objetivo
+
+Implementar una utilidad reutilizable para ejecutar múltiples operaciones SQLite dentro de una única transacción financiera, garantizando commit o rollback conjunto.
+
+#### Implementación
+
+Se creó `backend/app/txn.py`, que incorpora:
+
+- `financial_transaction(conn)`: administrador de contexto que inicia `BEGIN IMMEDIATE`, confirma los cambios al finalizar correctamente y ejecuta rollback ante excepciones.
+- `TransactionError`: impide abrir una transacción anidada sobre una conexión que ya tiene una transacción activa.
+
+La utilidad permite componer operaciones de repositorio sin commits intermedios.
+
+No se modificó `repository.py` ni el método heredado `apply_transfer`.
+
+#### Pruebas y resultados
+
+Se creó `backend/tests/test_txn.py` con nueve pruebas para verificar commit, rollback, atomicidad de operaciones múltiples, ausencia de commits intermedios, anidamiento y bloqueo entre conexiones SQLite.
+
+| Métrica | Resultado |
+|---|---:|
+| Pruebas nuevas | 9 |
+| Pruebas acumuladas | 88 |
+| Pruebas exitosas | 88 |
+| Fallidas | 0 |
+| Warnings | 101 |
+| Duración de la suite | 5,10 s |
+
+Kiro confirmó que la base de datos histórica conservó su SHA-256:
+
+`407B0E132E76900FBF59412C31A2D8047A666F2BE1856BE1FF6B88531C89B4A8`
+
+#### Archivos y evidencia
+
+**Creados:**
+
+- `backend/app/txn.py`
+- `backend/tests/test_txn.py`
+- `_experiment_logs/Kiro/sesiones/E2_KIRO_SESION_10_TAREA_10.md`
+
+**Modificado:**
+
+- `.kiro/specs/shift-bank-stage2/tasks.md`
+
+Se completaron la Tarea 10 y sus seis subtareas. Las tareas 11–46 permanecieron pendientes.
+
+#### Métricas experimentales
+
+- Nuevas pruebas: 9.
+- Tareas principales completadas: 10/46.
+- Nuevos módulos de aplicación: 1.
+- Regresiones reportadas: 0.
+- Tokens, créditos por interacción y tiempo total: N/D.
+
+#### Observación metodológica
+
+Después de completar la Tarea 10, el investigador identificó que la ejecución individual de tareas, los prompts extensos y los informes reiterativos estaban incrementando el costo operativo del experimento.
+
+Se decidió proponer una optimización del procedimiento a partir de la Tarea 11, agrupando tareas relacionadas y reduciendo las solicitudes repetitivas.
+
+Este cambio deberá documentarse como ajuste del protocolo de ejecución y tenerse en cuenta al interpretar las métricas de esfuerzo e interacciones frente a las demás herramientas SDD.
+
+#### Cierre
+
+**Tarea 10 completada.** Se implementó y verificó la infraestructura transaccional compartida. Las operaciones financieras de Etapa 2 siguen pendientes de implementación.
+
+### Iteración 26 — Cierre de la Fase B y verificación del lote 11–13
+
+**Fecha:** 16 de noviembre de 2026  
+**Herramienta:** Kiro  
+**Fase:** B — Infraestructura compartida  
+**Estado:** COMPLETED, según el agente.
+
+#### Objetivo
+
+Confirmar la finalización del lote de tareas 11–13 y la estabilidad de la suite automatizada, evitando ejecutar nuevamente trabajo ya completado.
+
+#### Implementación previamente realizada
+
+Según el reporte de Kiro, el lote anterior completó:
+
+| Tarea | Implementación |
+|---|---|
+| 11 | Configuración de límites predeterminados D01 y siembra idempotente mediante `seed_limits()`. |
+| 12 | Migración del arranque de FastAPI al mecanismo `lifespan`. |
+| 13 | Pruebas adicionales de migración SQLite. |
+
+**Archivos del lote:**
+
+- `backend/app/config.py`
+- `backend/app/seed.py`
+- `backend/app/main.py`
+- `backend/tests/test_migration_suite.py`
+- `.kiro/specs/shift-bank-stage2/tasks.md`
+
+**Evidencia existente:**
+
+`Etapa 2/_experiment_logs/Kiro/sesiones/E2_KIRO_SESION_11-13_LOTE.md`
+
+#### Verificación de la interacción actual
+
+Kiro identificó que la nueva autorización repetía un lote ya ejecutado y decidió no volver a implementar las tareas.
+
+Realizó una comprobación del estado y ejecutó nuevamente la suite de pruebas.
+
+| Métrica | Resultado |
+|---|---:|
+| Pruebas acumuladas | 95 |
+| Pruebas exitosas | 95 |
+| Fallidas | 0 |
+| Omitidas | 0 |
+| Advertencias | 1 |
+| Tareas completadas | 13/46 |
+
+La comprobación inicial de `tasks.md` falló por una ruta relativa incorrecta en PowerShell. El agente corrigió la ruta y confirmó que las tareas 11–13 estaban marcadas como completadas.
+
+No se reportaron defectos funcionales nuevos.
+
+#### Integridad experimental
+
+Kiro confirmó que:
+
+- La base de datos histórica conserva su SHA-256.
+- La Etapa 1 permanece intacta.
+- No se repitieron implementaciones.
+- No se generó evidencia duplicada.
+- No se ejecutaron tareas de la Fase C.
+
+Las métricas de tokens, créditos por lote y duración total no estuvieron disponibles.
+
+#### Observación metodológica
+
+La ejecución por lotes sustituye la autorización individual utilizada inicialmente. Esta diferencia de procedimiento deberá considerarse al comparar esfuerzo, interacciones y consumo de recursos entre herramientas.
+
+En esta interacción, el agente identificó correctamente una autorización repetida y evitó modificaciones innecesarias.
+
+#### Cierre
+
+**Fase B completada según Kiro.** La suite acumulada alcanza 95 pruebas exitosas.
+
+La siguiente fase corresponde a las tareas 14–18, enfocadas en límites dinámicos, validación transaccional y concurrencia.
+
+### Iteración 27 — Implementación del lote 14–18: límites dinámicos
+
+**Fecha:** 16 de noviembre de 2026  
+**Herramienta:** Kiro  
+**Etapa:** 2 — Complejidad funcional y estado  
+**Fase SDD:** Implementación — Fase C  
+**Estado:** COMPLETED, según Kiro.
+
+#### 1. Objetivo
+
+Implementar límites monetarios configurables para las transferencias, incluyendo límites individuales, consumo diario UTC, validaciones transaccionales y pruebas de concurrencia.
+
+#### 2. Implementación realizada
+
+Kiro reportó la ejecución de las tareas 14–18:
+
+| Tarea | Funcionalidad |
+|---|---|
+| 14 | Servicio de límites configurables. |
+| 15 | Cálculo y validación del consumo diario UTC. |
+| 16 | Integración de límites con transferencias internas y MFA. |
+| 17 | Endpoints de consulta y actualización de límites. |
+| 18 | Pruebas de límites y concurrencia. |
+
+Se conservaron los valores predeterminados de D01:
+
+- Límite por transferencia: 5.000.000 COP.
+- Límite diario UTC: 10.000.000 COP.
+
+Los cálculos utilizan centavos enteros.
+
+#### 3. Archivos modificados
+
+**Creados:**
+
+- `backend/app/limit_service.py`
+- `backend/app/routers/limits.py`
+- `backend/tests/test_limits.py`
+
+**Modificados:**
+
+- `backend/app/repository.py`
+- `backend/app/service.py`
+- `backend/app/routers/transfers.py`
+- `backend/app/main.py`
+- `.kiro/specs/shift-bank-stage2/tasks.md`
+
+Se añadió `apply_transfer_in_tx` para permitir movimientos financieros sin commits internos y reutilizar `financial_transaction`.
+
+El método heredado `apply_transfer` permaneció sin modificaciones, según el agente.
+
+#### 4. Atomicidad y concurrencia
+
+Kiro informó que las verificaciones de límites, el cálculo del consumo diario y el débito se realizan dentro de una transacción SQLite `BEGIN IMMEDIATE`.
+
+También implementó una prueba con dos conexiones SQLite independientes, comprobando el bloqueo de escritura y la posterior reevaluación del límite diario.
+
+La autorización MFA vuelve a comprobar los límites antes del débito.
+
+**Observación técnica pendiente:** el reporte describe la creación y confirmación de ciertas filas de transferencia por separado del movimiento financiero. Conviene verificar si esto puede producir estados persistentes intermedios ante fallos de proceso, aunque el chequeo de límites y el débito sean atómicos entre sí.
+
+#### 5. Defecto detectado y corrección
+
+Durante las pruebas, falló un caso de verificación relacionado con A14.
+
+**Causa:** el test intentaba crear una transferencia pendiente de MFA cuyo monto ya excedía el límite diario. El sistema la rechazaba durante la validación inicial, antes de alcanzar `PENDING_MFA`.
+
+**Corrección:** crear la transferencia con un límite inicialmente suficiente y reducir posteriormente el límite antes de confirmar el PIN.
+
+Esto permitió comprobar que una autorización MFA válida no puede omitir los límites vigentes.
+
+**Iteraciones correctivas reportadas:** 1.
+
+#### 6. Resultados de pruebas
+
+| Métrica | Resultado |
+|---|---:|
+| Nuevas pruebas | 11 |
+| Pruebas del lote exitosas | 11/11 |
+| Pruebas acumuladas | 106 |
+| Pruebas exitosas | 106 |
+| Fallidas | 0 |
+| Omitidas | 0 |
+| Advertencias | 1 |
+
+Las 51 pruebas originales de regresión de la Fase A permanecieron exitosas.
+
+No se reportaron regresiones funcionales al cierre del lote.
+
+#### 7. Integridad experimental
+
+Kiro confirmó que:
+
+- La base de datos histórica conservó su SHA-256.
+- La Etapa 1 permaneció intacta.
+- No quedaron bases de datos temporales residuales.
+- No se implementaron ACH, recurrentes ni scheduler.
+- Se conservaron las evidencias anteriores.
+
+#### 8. Evidencia generada
+
+`Etapa 2/_experiment_logs/Kiro/sesiones/E2_KIRO_SESION_14-18_FASE_C.md`
+
+Se registró la finalización de las cinco tareas y el refinamiento de subtareas 15 y 16.
+
+#### 9. Métricas de avance
+
+- Tareas completadas: 18/46.
+- Tareas pendientes: 28.
+- Avance por número de tareas: 39,13 %.
+- Pruebas acumuladas exitosas: 106.
+- Fallos corregidos durante el lote: 1.
+- Tokens, créditos y duración total: N/D.
+
+#### 10. Cierre
+
+**Fase C completada según Kiro.**
+
+Los límites dinámicos fueron implementados y sometidos a pruebas funcionales, de concurrencia y regresión.
+
+La siguiente fase corresponde a beneficiarios y transferencias ACH (tareas 19–26), incluyendo autorización MFA, liquidación, reembolso e historial unificado.
+
+La ejecución autónoma del settlement seguirá dependiendo de la integración del scheduler prevista para la Tarea 32.
+
+### Iteración 28 — Implementación de Fase D y verificación del modo de ejecución de Kiro
+
+**Fecha:** 16 de noviembre de 2026  
+**Herramienta:** Kiro (modo Auto)  
+**Etapa:** 2 — Complejidad funcional y estado  
+**Fase:** D — Beneficiarios y transferencias ACH  
+**Estado:** Tareas 19–26 completadas según Kiro.
+
+#### Implementación realizada
+
+Kiro informó que completó las ocho tareas de la Fase D, incorporando:
+
+- Gestión y validación de beneficiarios.
+- Transferencias ACH con beneficiarios guardados y ad hoc.
+- Autorización MFA y estado `pending_auth`.
+- Débito financiero atómico y estado `pending`.
+- Liquidación y reembolso idempotentes.
+- Historial unificado de transferencias internas y ACH.
+
+Se crearon seis archivos nuevos, incluidos los servicios y routers de ACH, beneficiarios y `tests/test_ach.py`.
+
+Se modificaron `routers/transfers.py`, `main.py` y cuatro archivos de pruebas para admitir la extensión aprobada del historial mediante `type`.
+
+#### Resultados de pruebas
+
+| Métrica | Resultado reportado |
+|---|---:|
+| Pruebas nuevas | 16 |
+| Pruebas acumuladas | 122 |
+| Pruebas exitosas | 122 |
+| Fallidas | 0 |
+| Omitidas | 0 |
+| Advertencias | 1 |
+
+La segunda interacción confirmó nuevamente el resultado de 122 pruebas exitosas sin reimplementar funcionalidades.
+
+#### Defectos y correcciones
+
+**Defecto 1 — Alias de cuenta origen ACH**
+
+La solicitud ACH no interpretaba correctamente el campo JSON `from`, porque faltaba el alias en el esquema Pydantic.
+
+Como consecuencia, algunas operaciones debitaban la cuenta predeterminada en lugar de la cuenta solicitada.
+
+Kiro detectó el problema mediante las pruebas, agregó el alias correspondiente y verificó la corrección.
+
+**Defecto 2 — Aserciones incompatibles con el historial extendido**
+
+Cuatro aserciones estrictas del baseline heredado rechazaban el campo adicional `type`.
+
+Kiro las adapt
+
+### Iteración 29 — Verificación de artefactos y preparación del handoff a Kiro Spec
+
+**Fecha:** 16 de noviembre de 2026  
+**Herramienta:** Kiro  
+**Actividad:** Verificación de solo lectura  
+**Estado:** Handoff documental verificado; reconocimiento por la interfaz nativa pendiente.
+
+#### Objetivo
+
+Verificar la existencia, estructura y estado de los artefactos SDD antes de continuar la implementación mediante el flujo nativo de Kiro Specs.
+
+#### Resultados reportados
+
+Kiro confirmó la existencia de:
+
+- `requirements.md`: 34.532 bytes.
+- `design.md`: 48.320 bytes.
+- `tasks.md`: 33.924 bytes.
+
+Los documentos se encuentran en `.kiro/specs/shift-bank-stage2/`.
+
+El agente verificó 26 tareas principales completadas y 20 pendientes.
+
+#### Preservación de implementación
+
+Se reportaron:
+
+- 122 pruebas automatizadas exitosas en la última verificación.
+- 13 registros de sesiones de implementación.
+- Decisiones D01–D07 preservadas.
+- Base de datos histórica sin modificaciones.
+- Ningún archivo modificado durante esta interacción.
+
+#### Hallazgo metodológico
+
+El agente confirmó que las tareas anteriores se habían ejecutado en una sesión de chat convencional, utilizando los archivos de especificación directamente.
+
+La presencia de artefactos SDD válidos no demuestra que se haya utilizado el mecanismo nativo de ejecución de Specs.
+
+Desde la sesión actual no fue posible verificar el reconocimiento por la interfaz del IDE.
+
+#### Decisión de continuación
+
+Se conservará toda la implementación existente. Se verificará el reconocimiento de la spec desde el panel nativo de Kiro antes de iniciar nuevas tareas.
+
+No se repetirán las tareas completadas ni se reclasificará retrospectivamente la modalidad utilizada.
+
+#### Métricas
+
+- Tareas completadas: 26/46.
+- Avance: 56,52 %.
+- Pruebas acumuladas exitosas: 122.
+- Nuevas tareas ejecutadas: 0.
+- Archivos modificados: 0.
+- Consumo de créditos de esta interacción: N/D.
+
+#### Cierre
+
+**Handoff documental completado.** Pendiente únicamente la comprobación visual del panel de Specs y la transición efectiva al ejecutor nativo.
+
+### Iteración 30 — Identificación del mecanismo de ejecución nativo de Kiro
+
+**Fecha:** 16 de noviembre de 2026  
+**Herramienta:** Kiro  
+**Etapa:** 2 — Complejidad funcional y estado  
+**Actividad:** Verificación metodológica  
+**Estado:** Sin implementación nueva.
+
+#### 1. Objetivo
+
+Determinar si la sesión actual de Kiro puede ejecutar directamente tareas mediante el mecanismo nativo de Specs.
+
+#### 2. Resultado
+
+El agente confirmó que la sesión convencional de chat no recibe automáticamente la tarea seleccionada en el panel nativo de Specs.
+
+Por tanto, no puede afirmar que una ejecución iniciada mediante instrucciones textuales en ese chat corresponda al ejecutor nativo de especificaciones.
+
+#### 3. Decisión
+
+Continuar el experimento utilizando la interfaz nativa de Specs de Kiro, iniciando la Tarea 27 mediante la acción Start Task.
+
+Se preservarán las 26 tareas previamente implementadas y se documentará la diferencia entre los dos mecanismos de ejecución.
+
+No se realizará una repetición automática de las tareas anteriores.
+
+#### 4. Estado de implementación
+
+- Tareas completadas: 26/46.
+- Tareas pendientes: 20.
+- Avance por número de tareas: 56,52 %.
+- Última suite reportada: 122 pruebas exitosas.
+- Código modificado durante esta interacción: ninguno.
+- Tareas nuevas ejecutadas: ninguna.
+- Créditos consumidos: N/D.
+
+#### 5. Consideración metodológica
+
+La ejecución anterior corresponde a desarrollo asistido por Kiro mediante artefactos SDD manipulados desde el chat convencional.
+
+La siguiente ejecución deberá iniciar desde el panel de Specs para comprobar el funcionamiento del ejecutor nativo.
+
+Ambas modalidades deberán distinguirse en el análisis del esfuerzo, el consumo de créditos y la interacción con la herramienta.
+
+#### 6. Cierre
+
+La interacción concluyó sin modificaciones. Se estableció como siguiente acción iniciar la Tarea 27 desde el panel nativo de Kiro Specs.
+
+### Iteración 31 — Ejecución nativa de la Tarea 27: creación de pagos recurrentes
+
+**Fecha:** 16 de noviembre de 2026  
+**Herramienta:** Kiro  
+**Modalidad:** Ejecución nativa de Specs mediante `spec-task-execution`  
+**Fase:** E — Pagos recurrentes y scheduler  
+**Estado:** COMPLETED, según el reporte del agente.
+
+#### Objetivo
+
+Implementar la creación y persistencia de programaciones recurrentes, incluyendo validación de parámetros, cálculo de la primera ejecución y almacenamiento de beneficiarios ACH.
+
+#### Implementación
+
+Kiro ejecutó la Tarea 27 mediante el subagente nativo de tareas de especificación.
+
+Se realizaron los siguientes cambios:
+
+| Archivo | Cambio |
+|---|---|
+| `app/recurring_service.py` | Creado: servicio `create_schedule(...)`. |
+| `app/repository.py` | Modificado: modelo `Schedule` y funciones de persistencia. |
+| `app/config.py` | Modificado: intervalos de recurrencia. |
+| `tests/test_recurring.py` | Creado: 18 pruebas automatizadas. |
+
+Se implementaron:
+
+- Validación de monto, frecuencia, cuenta origen y destino.
+- Frecuencias diaria (1 día), semanal (7 días) y mensual (30 días).
+- Primera ejecución en una fecha futura explícita o después de un intervalo completo.
+- Persistencia de programaciones internas y ACH.
+- Snapshot de beneficiarios ACH.
+- Creación sin movimientos financieros inmediatos.
+
+#### Resultados de pruebas
+
+| Métrica | Resultado |
+|---|---:|
+| Pruebas nuevas | 18 |
+| Pruebas nuevas exitosas | 18 |
+| Suite acumulada | 140 |
+| Pruebas exitosas | 140 |
+| Regresiones reportadas | 0 |
+| Advertencias | 1 |
+
+El agente confirmó que la creación de schedules no modifica los saldos de las cuentas.
+
+#### Alcance pendiente
+
+La Tarea 27 no incluye:
+
+- Autorización MFA al crear programaciones sensibles.
+- Pausa, reanudación y cancelación.
+- Ejecución financiera recurrente.
+- Scheduler autónomo.
+- Endpoints de gestión.
+
+Estos elementos permanecen asignados a tareas posteriores.
+
+#### Evidencia metodológica
+
+Esta es la primera tarea de la Etapa 2 cuya salida confirma la participación del subagente `spec-task-execution`.
+
+Las tareas 1–26 se habían desarrollado desde el chat convencional, utilizando los artefactos SDD del workspace.
+
+La distinción entre ambas modalidades debe conservarse para analizar esfuerzo, créditos e interacciones.
+
+No se proporcionó una ruta de exportación de sesión en el reporte; queda pendiente conservar la evidencia nativa correspondiente.
+
+#### Avance
+
+- Tareas completadas: 27/46.
+- Avance: 58,70 %.
+- Pruebas acumuladas exitosas: 140.
+- Créditos consumidos en esta tarea: N/D.
+
+#### Cierre
+
+**Tarea 27 completada según Kiro.** La creación y persistencia de pagos recurrentes está implementada y verificada.
+
+La siguiente tarea corresponde a la autorización MFA de programaciones sensibles.
+
+### Iteración 32 — Autorización MFA para programaciones recurrentes y revisión de consumo
+
+**Fecha:** 16 de noviembre de 2026  
+**Herramienta:** Kiro, modo Auto  
+**Modalidad:** Ejecución nativa mediante `spec-task-execution`  
+**Tarea:** 28/46  
+**Estado:** COMPLETED, según Kiro.
+
+#### Implementación
+
+Se modificó `recurring_service.create_schedule` para exigir autorización MFA al crear programaciones recurrentes sensibles.
+
+Para montos iguales o superiores a 1.000.000 COP:
+
+- Código ausente: `MFA_REQUIRED`.
+- Código incorrecto: `INVALID_MFA_CODE`.
+- Código válido: programación persistida con `requires_mfa=1` y `authorized=1`.
+
+Las programaciones no sensibles mantienen su creación directa con `authorized=1`.
+
+La validación ocurre antes de persistir, por lo que los intentos rechazados no generan programaciones.
+
+No se modificó el mecanismo MFA heredado ni se implementó MFA interactiva durante ejecuciones automáticas.
+
+#### Pruebas
+
+| Métrica | Resultado |
+|---|---:|
+| Nuevas pruebas MFA recurrente | 5 |
+| Pruebas recurrentes acumuladas | 23 |
+| Pruebas de compatibilidad seleccionadas | 42 |
+| Suite backend acumulada | 145 |
+| Fallidas | 0 |
+
+#### Observación presupuestal
+
+El investigador reportó un consumo acumulado de aproximadamente **310 de 1.000 créditos**.
+
+Con 28 de 46 tareas completadas en la Etapa 2, se identificó un riesgo de presupuesto para finalizar las Etapas 3 y 4.
+
+Se estableció como objetivo provisional finalizar la Etapa 2 antes de alcanzar 430 créditos acumulados, reservando recursos para las etapas posteriores.
+
+Esta asignación es un presupuesto de control, no una predicción estadística del consumo futuro.
+
+#### Próximo paso
+
+Ejecutar la Tarea 29 desde Kiro Specs, manteniendo la modalidad nativa y reduciendo interacciones, auditorías y documentación redundante.
+
+**Avance:** 60,87 % de las tareas de la Etapa 2.
+
+### Iteración 33 — Implementación del ciclo de vida de pagos recurrentes
+
+**Fecha:** 16 de noviembre de 2026  
+**Herramienta:** Kiro  
+**Modalidad:** Ejecución nativa mediante `spec-task-execution`  
+**Tarea:** 29/46  
+**Estado:** COMPLETED, según el reporte del agente.
+
+#### Objetivo
+
+Implementar las operaciones de pausa, reanudación y cancelación de programaciones recurrentes conforme a la decisión D06 y los contratos REC-06, REC-07 y REC-08.
+
+#### Implementación
+
+**Archivos modificados:**
+
+- `backend/app/recurring_service.py`
+- `backend/app/repository.py`
+
+Se implementaron las siguientes transiciones:
+
+| Operación | Transición | Comportamiento |
+|---|---|---|
+| Pausar | `active → paused` | Suspende futuras ejecuciones. |
+| Reanudar | `paused → active` | Recalcula la próxima ejecución desde el momento de reanudación. |
+| Cancelar | `active/paused → cancelled` | Estado terminal, sin posibilidad de reactivación. |
+
+Las transiciones inválidas generan `INVALID_STATE_TRANSITION`.
+
+Las programaciones inexistentes o ajenas al cliente generan `NOT_FOUND`.
+
+La reanudación utiliza `next_run_at = now + intervalo`, evitando ejecutar retroactivamente pagos omitidos.
+
+#### Persistencia y compatibilidad
+
+Se creó `update_schedule_status` en el repositorio.
+
+La implementación conserva el comportamiento de creación de programaciones de la Tarea 27 y la autorización MFA de la Tarea 28.
+
+No se añadieron movimientos financieros ni ejecuciones automáticas.
+
+#### Pruebas
+
+| Métrica | Resultado |
+|---|---:|
+| Pruebas nuevas | 14 |
+| Pruebas recurrentes acumuladas | 37 |
+| Suite backend acumulada | 159 |
+| Fallidas | 0 |
+| Regresiones reportadas | 0 |
+
+Las pruebas cubren transiciones válidas, rechazo de transiciones ilegales, cancelación terminal, propiedad de las programaciones y reanudación sin ejecución retroactiva para las tres frecuencias.
+
+#### Riesgo identificado para la siguiente tarea
+
+El método `update_schedule_status` realiza un commit propio. Este comportamiento es adecuado para transiciones administrativas independientes, pero no debe introducirse dentro de una operación financiera que requiere una única transacción.
+
+La Tarea 30 deberá garantizar la atomicidad entre el registro de ejecución, el movimiento monetario y la actualización de `next_run_at`.
+
+#### Avance y métricas
+
+- Tareas completadas: 29/46.
+- Avance: 63,04 %.
+- Pruebas acumuladas: 159.
+- Créditos consumidos específicamente en esta tarea: N/D.
+- Último consumo acumulado comunicado por el investigador: 310/1.000 créditos, anterior a esta ejecución.
+- Defectos reportados durante esta tarea: ninguno.
+- Ruta de evidencia de sesión: no informada.
+
+#### Cierre
+
+La Tarea 29 fue completada y verificada según el reporte de Kiro. La siguiente tarea corresponde a la ejecución financiera durable e idempotente de ocurrencias recurrentes.
+
+### Iteración 34 — Tarea 30 y decisión de automatizar la implementación restante
+
+**Herramienta:** Kiro — ejecutor nativo de Specs.  
+**Tarea 30:** COMPLETED, según el reporte del agente.
+
+Se implementó `process_due()` para ejecutar pagos recurrentes mediante transacciones SQLite atómicas, con control de idempotencia basado en `UNIQUE(schedule_id, due_at)`, revalidación de fondos y límites, y actualización del próximo vencimiento.
+
+Durante el desarrollo se identificó una violación de clave foránea al intentar referenciar una transferencia aún inexistente. Se corrigió insertando primero la ejecución con `transfer_id=NULL` y asociando posteriormente la transferencia dentro de la misma transacción. También se corrigieron dos pruebas cuya preparación de datos activaba MFA inesperadamente.
+
+**Resultados:** 16 pruebas nuevas; 175 pruebas acumuladas exitosas; ninguna regresión final reportada.
+
+**Avance:** 30/46 tareas (65,22 %).  
+**Créditos acumulados comunicados:** 332/1.000.
+
+**Decisión metodológica:** utilizar la función nativa `Run all Tasks` de Kiro para las tareas 31–46, conservando la evidencia de ejecución y supervisando el consumo acumulado. La ejecución automática no implica por sí misma menor consumo de créditos.
+

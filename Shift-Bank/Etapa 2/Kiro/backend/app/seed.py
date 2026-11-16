@@ -103,3 +103,40 @@ def seed(conn: sqlite3.Connection) -> None:
     )
 
     conn.commit()
+
+
+# --- Siembra de límites por defecto (Etapa 2, Tarea 11) -----------------------
+
+def seed_limits(conn: sqlite3.Connection) -> None:
+    """Siembra idempotente de los límites por defecto del cliente mock (E2-KIRO-D01).
+
+    Inserta una fila en `transfer_limit` con los valores por defecto (por transferencia
+    500.000.000 centavos; diario 1.000.000.000 centavos) solo si el cliente aún no tiene
+    límites configurados. No altera la siembra de la Etapa 1 ni los límites ya existentes.
+
+    Requiere que el cliente mock ya exista (seed() se ejecuta antes en el arranque).
+    """
+    from .config import DEFAULT_DAILY_LIMIT_CENTS, DEFAULT_PER_TRANSFER_LIMIT_CENTS
+
+    row = conn.execute("SELECT id FROM customer LIMIT 1").fetchone()
+    if row is None:
+        return  # sin cliente sembrado aún; nada que hacer
+    customer_id = row["id"]
+
+    existing = conn.execute(
+        "SELECT 1 FROM transfer_limit WHERE customer_id = ?", (customer_id,)
+    ).fetchone()
+    if existing is not None:
+        return  # idempotente: no sobrescribe límites ya configurados
+
+    conn.execute(
+        """INSERT INTO transfer_limit (customer_id, per_transfer_cents, daily_cents, updated_at)
+           VALUES (?, ?, ?, ?)""",
+        (
+            customer_id,
+            DEFAULT_PER_TRANSFER_LIMIT_CENTS,
+            DEFAULT_DAILY_LIMIT_CENTS,
+            _iso(_now_utc()),
+        ),
+    )
+    conn.commit()

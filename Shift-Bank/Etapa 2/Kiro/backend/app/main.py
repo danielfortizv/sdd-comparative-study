@@ -4,14 +4,54 @@ Registra los routers, habilita CORS para el frontend y ejecuta la siembra idempo
 del estado inicial en el arranque (Requisitos 9.1, 1.1).
 """
 
+from contextlib import asynccontextmanager
+
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
-from .db import get_connection, init_schema
-from .routers import accounts, transfers
-from .seed import seed
+from .db import get_connection, init_schema, migrate
+from .routers import accounts, ach, beneficiaries, limits, recurring, transfers
+from .scheduler import Scheduler
+from .seed import seed, seed_limits
 
-app = FastAPI(title="Shift Bank", version="1.0.0")
+
+def _initialize_database() -> None:
+    """Inicialización del arranque: esquema E1 → migración E2 → siembra → límites.
+
+    Orden (Tarea 12): `init_schema` (E1) y `migrate` (E2) son idempotentes; `seed` (E1) y
+    `seed_limits` (E2, Tarea 11) también. Reiniciar no duplica datos.
+    """
+    conn = get_connection()
+    try:
+        init_schema(conn)
+        migrate(conn)          # Etapa 2 (Tarea 7/8): evolución aditiva, idempotente, transaccional.
+        seed(conn)             # Etapa 1: cliente, cuentas, históricas (idempotente).
+        seed_limits(conn)      # Etapa 2 (Tarea 11): límites por defecto (idempotente).
+    finally:
+        conn.close()
+
+
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    """Ciclo de vida de la app (Tarea 12/32): reemplaza `on_event("startup")` por `lifespan`.
+
+    En el arranque inicializa la base de datos y lanza la **única** tarea asyncio del scheduler
+    de fondo (Tarea 32, D02/D07): cada `SCHEDULER_TICK_SECONDS` ejecuta los recurrentes vencidos
+    y el barrido de settlement ACH. En el apagado la cancela limpiamente (Req. 10.2). No se
+    expone ningún endpoint administrativo para dispararlos (Req. 10.6). La recuperación tras
+    reinicio es natural vía `next_run_at`/`schedule_execution` (no hay estado en memoria).
+    """
+    _initialize_database()
+    scheduler = Scheduler()
+    scheduler.start()
+    app.state.scheduler = scheduler
+    try:
+        yield
+    finally:
+        await scheduler.stop()
+
+
+app = FastAPI(title="Shift Bank", version="1.0.0", lifespan=lifespan)
 
 app.add_middleware(
     CORSMiddleware,
@@ -22,13 +62,7 @@ app.add_middleware(
 
 app.include_router(accounts.router)
 app.include_router(transfers.router)
-
-
-@app.on_event("startup")
-def _startup() -> None:
-    conn = get_connection()
-    try:
-        init_schema(conn)
-        seed(conn)
-    finally:
-        conn.close()
+app.include_router(limits.router)
+app.include_router(beneficiaries.router)
+app.include_router(ach.router)
+app.include_router(recurring.router)

@@ -34,6 +34,9 @@ _DOMAIN_HTTP = {
     "EXPIRED": 409,
     "INSUFFICIENT_FUNDS_CONFIRM": 409,
     "NOT_FOUND": 404,
+    # Etapa 2 (Fase C): límites dinámicos → 409 (LIM-03/LIM-04).
+    "LIMIT_EXCEEDED_PER_TRANSFER": 409,
+    "LIMIT_EXCEEDED_DAILY": 409,
 }
 
 
@@ -93,21 +96,55 @@ def confirm_mfa(reference: str, payload: MfaRequest, conn=Depends(_conn)):
     return JSONResponse(status_code=200, content={"status": status})
 
 
-@router.get("/transfers", response_model=TransfersHistoryResponse)
-def get_history(conn=Depends(_conn)) -> TransfersHistoryResponse:
-    transfers = service.list_history(conn)
-    items: list[TransferHistoryItem] = []
-    for t in transfers:
-        items.append(
-            TransferHistoryItem(
-                date=t.created_at,
-                direction=TransferDirection(
-                    from_=ACCOUNT_DISPLAY_NAMES.get(t.from_kind, t.from_kind),
-                    to=ACCOUNT_DISPLAY_NAMES.get(t.to_kind, t.to_kind),
-                ),
-                amount=format_cents(t.amount_cents),
-                description=t.description,
-                status=t.status,
-            )
-        )
-    return TransfersHistoryResponse(transfers=items)
+@router.get("/transfers")
+def get_history(conn=Depends(_conn)) -> JSONResponse:
+    """Historial unificado (Etapa 2, Tarea 25).
+
+    Extensión ADITIVA (D03/D05): cada entrada gana `type` ('internal'|'ach'). Las internas
+    conservan su representación de Etapa 1 — `direction {from,to}` con nombres amigables y
+    estados MAYÚSCULAS — sin renombrar ni eliminar campos. Las ACH añaden `beneficiary`
+    (enmascarado) y usan estados en minúsculas. Aplica expiración perezosa a los pendientes
+    internos (reutiliza `service.list_history`).
+    """
+    import json
+
+    # Camino heredado: aplica expiración perezosa a internos PENDING_MFA vencidos.
+    service.list_history(conn)
+
+    rows = conn.execute(
+        """SELECT created_at, type, from_kind, to_kind, amount_cents, description, status,
+                  beneficiary_snapshot
+           FROM transfer ORDER BY created_at DESC, rowid DESC"""
+    ).fetchall()
+
+    items: list[dict] = []
+    for r in rows:
+        ttype = r["type"] or "internal"
+        if ttype == "ach":
+            snap = json.loads(r["beneficiary_snapshot"]) if r["beneficiary_snapshot"] else {}
+            items.append({
+                "type": "ach",
+                "date": r["created_at"],
+                "amount": format_cents(r["amount_cents"]),
+                "description": r["description"],
+                "status": r["status"],
+                "beneficiary": {
+                    "name": snap.get("name", ""),
+                    "bank": snap.get("bank", ""),
+                    "account_masked": "••••" + str(snap.get("account_number", ""))[-4:],
+                },
+            })
+        else:
+            # Interna: forma heredada EXACTA + campo aditivo `type`.
+            items.append({
+                "type": "internal",
+                "date": r["created_at"],
+                "direction": {
+                    "from": ACCOUNT_DISPLAY_NAMES.get(r["from_kind"], r["from_kind"]),
+                    "to": ACCOUNT_DISPLAY_NAMES.get(r["to_kind"], r["to_kind"]),
+                },
+                "amount": format_cents(r["amount_cents"]),
+                "description": r["description"],
+                "status": r["status"],
+            })
+    return JSONResponse(status_code=200, content={"transfers": items})

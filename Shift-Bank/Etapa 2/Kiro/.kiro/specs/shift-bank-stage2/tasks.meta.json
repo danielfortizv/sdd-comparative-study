@@ -1,0 +1,300 @@
+{
+  "pbtResults": {},
+  "executionHistory": {
+    "27. Implementar la creación y persistencia de schedules (`recurring_service.py`, `repository.py`)": [
+      {
+        "executionId": "3d6250d2-f6f0-4908-8b13-f4eee4b88063",
+        "chatSessionId": "sess_2cd5be7f-f327-404e-858a-f678de8604c6",
+        "timestamp": 1794849858676
+      },
+      {
+        "executionId": "3d6250d2-f6f0-4908-8b13-f4eee4b88063",
+        "chatSessionId": "sess_2cd5be7f-f327-404e-858a-f678de8604c6",
+        "timestamp": 1794850169047
+      }
+    ],
+    "28. Implementar la autorización MFA en la creación de schedules sensibles": [
+      {
+        "executionId": "c9470b5c-25cc-4a0c-b692-fec15095d660",
+        "chatSessionId": "sess_2cd5be7f-f327-404e-858a-f678de8604c6",
+        "timestamp": 1794850366895
+      },
+      {
+        "executionId": "c9470b5c-25cc-4a0c-b692-fec15095d660",
+        "chatSessionId": "sess_2cd5be7f-f327-404e-858a-f678de8604c6",
+        "timestamp": 1794850559826
+      }
+    ],
+    "29. Implementar los controles de ciclo de vida y la reanudación sin catch-up (D06)": [
+      {
+        "executionId": "0d7b7948-87e8-406a-8247-0279b6d6da0b",
+        "chatSessionId": "sess_2cd5be7f-f327-404e-858a-f678de8604c6",
+        "timestamp": 1794850823020
+      },
+      {
+        "executionId": "0d7b7948-87e8-406a-8247-0279b6d6da0b",
+        "chatSessionId": "sess_2cd5be7f-f327-404e-858a-f678de8604c6",
+        "timestamp": 1794850980584
+      }
+    ],
+    "30. Implementar la ejecución durable y atómica de ocurrencias (`recurring_service.process_due`)": [
+      {
+        "executionId": "da879bab-f56d-4260-bd0f-2e08ffb62b6e",
+        "chatSessionId": "sess_2cd5be7f-f327-404e-858a-f678de8604c6",
+        "timestamp": 1794851106625
+      },
+      {
+        "executionId": "da879bab-f56d-4260-bd0f-2e08ffb62b6e",
+        "chatSessionId": "sess_2cd5be7f-f327-404e-858a-f678de8604c6",
+        "timestamp": 1794851663115
+      }
+    ],
+    "31. Implementar el manejo de fallo de negocio en la ejecución recurrente": [
+      {
+        "executionId": "23ea79b4-e0e8-4b6e-b2a7-f75a277f8f0a",
+        "chatSessionId": "sess_7f1b54d0-e77f-4cb7-b439-d06e5aa2dca1",
+        "timestamp": 1794851828173
+      },
+      {
+        "executionId": "23ea79b4-e0e8-4b6e-b2a7-f75a277f8f0a",
+        "chatSessionId": "sess_7f1b54d0-e77f-4cb7-b439-d06e5aa2dca1",
+        "timestamp": 1794851836628
+      },
+      {
+        "executionId": "23ea79b4-e0e8-4b6e-b2a7-f75a277f8f0a",
+        "chatSessionId": "sess_7f1b54d0-e77f-4cb7-b439-d06e5aa2dca1",
+        "timestamp": 1794851977850
+      }
+    ],
+    "32. Implementar el scheduler de fondo (único worker) y su ciclo de vida (`scheduler.py`)": [
+      {
+        "executionId": "23ea79b4-e0e8-4b6e-b2a7-f75a277f8f0a",
+        "chatSessionId": "sess_7f1b54d0-e77f-4cb7-b439-d06e5aa2dca1",
+        "timestamp": 1794851828259
+      },
+      {
+        "executionId": "23ea79b4-e0e8-4b6e-b2a7-f75a277f8f0a",
+        "chatSessionId": "sess_7f1b54d0-e77f-4cb7-b439-d06e5aa2dca1",
+        "timestamp": 1794851981347
+      },
+      {
+        "executionId": "23ea79b4-e0e8-4b6e-b2a7-f75a277f8f0a",
+        "chatSessionId": "sess_7f1b54d0-e77f-4cb7-b439-d06e5aa2dca1",
+        "timestamp": 1794852288472
+      }
+    ],
+    "33. Implementar los endpoints de recurrentes (`routers/recurring.py`)": [
+      {
+        "executionId": "23ea79b4-e0e8-4b6e-b2a7-f75a277f8f0a",
+        "chatSessionId": "sess_7f1b54d0-e77f-4cb7-b439-d06e5aa2dca1",
+        "timestamp": 1794851828304
+      },
+      {
+        "executionId": "23ea79b4-e0e8-4b6e-b2a7-f75a277f8f0a",
+        "chatSessionId": "sess_7f1b54d0-e77f-4cb7-b439-d06e5aa2dca1",
+        "timestamp": 1794852291796
+      },
+      {
+        "executionId": "23ea79b4-e0e8-4b6e-b2a7-f75a277f8f0a",
+        "chatSessionId": "sess_7f1b54d0-e77f-4cb7-b439-d06e5aa2dca1",
+        "timestamp": 1794852487025
+      }
+    ],
+    "34. **(verificación)** Pruebas deterministas de recurrentes (reloj inyectable)": [
+      {
+        "executionId": "23ea79b4-e0e8-4b6e-b2a7-f75a277f8f0a",
+        "chatSessionId": "sess_7f1b54d0-e77f-4cb7-b439-d06e5aa2dca1",
+        "timestamp": 1794851828432
+      },
+      {
+        "executionId": "23ea79b4-e0e8-4b6e-b2a7-f75a277f8f0a",
+        "chatSessionId": "sess_7f1b54d0-e77f-4cb7-b439-d06e5aa2dca1",
+        "timestamp": 1794852490299
+      },
+      {
+        "executionId": "23ea79b4-e0e8-4b6e-b2a7-f75a277f8f0a",
+        "chatSessionId": "sess_7f1b54d0-e77f-4cb7-b439-d06e5aa2dca1",
+        "timestamp": 1794852713724
+      }
+    ],
+    "35. Extender el cliente de API y los tipos (`api/client.ts`, `types.ts`)": [
+      {
+        "executionId": "23ea79b4-e0e8-4b6e-b2a7-f75a277f8f0a",
+        "chatSessionId": "sess_7f1b54d0-e77f-4cb7-b439-d06e5aa2dca1",
+        "timestamp": 1794851828549
+      },
+      {
+        "executionId": "23ea79b4-e0e8-4b6e-b2a7-f75a277f8f0a",
+        "chatSessionId": "sess_7f1b54d0-e77f-4cb7-b439-d06e5aa2dca1",
+        "timestamp": 1794852717450
+      },
+      {
+        "executionId": "23ea79b4-e0e8-4b6e-b2a7-f75a277f8f0a",
+        "chatSessionId": "sess_7f1b54d0-e77f-4cb7-b439-d06e5aa2dca1",
+        "timestamp": 1794852865258
+      }
+    ],
+    "36. Añadir navegación por secciones sin romper la vista interna (`App.tsx`)": [
+      {
+        "executionId": "23ea79b4-e0e8-4b6e-b2a7-f75a277f8f0a",
+        "chatSessionId": "sess_7f1b54d0-e77f-4cb7-b439-d06e5aa2dca1",
+        "timestamp": 1794851828612
+      },
+      {
+        "executionId": "23ea79b4-e0e8-4b6e-b2a7-f75a277f8f0a",
+        "chatSessionId": "sess_7f1b54d0-e77f-4cb7-b439-d06e5aa2dca1",
+        "timestamp": 1794852868499
+      },
+      {
+        "executionId": "23ea79b4-e0e8-4b6e-b2a7-f75a277f8f0a",
+        "chatSessionId": "sess_7f1b54d0-e77f-4cb7-b439-d06e5aa2dca1",
+        "timestamp": 1794852960559
+      }
+    ],
+    "37. Implementar el formulario ACH y la gestión de beneficiarios (`AchTransferForm.tsx`, `BeneficiariesPanel.tsx`)": [
+      {
+        "executionId": "23ea79b4-e0e8-4b6e-b2a7-f75a277f8f0a",
+        "chatSessionId": "sess_7f1b54d0-e77f-4cb7-b439-d06e5aa2dca1",
+        "timestamp": 1794851828678
+      },
+      {
+        "executionId": "23ea79b4-e0e8-4b6e-b2a7-f75a277f8f0a",
+        "chatSessionId": "sess_7f1b54d0-e77f-4cb7-b439-d06e5aa2dca1",
+        "timestamp": 1794852964379
+      },
+      {
+        "executionId": "23ea79b4-e0e8-4b6e-b2a7-f75a277f8f0a",
+        "chatSessionId": "sess_7f1b54d0-e77f-4cb7-b439-d06e5aa2dca1",
+        "timestamp": 1794853154012
+      }
+    ],
+    "38. Extender el historial para internas y ACH (`HistoryList.tsx`)": [
+      {
+        "executionId": "23ea79b4-e0e8-4b6e-b2a7-f75a277f8f0a",
+        "chatSessionId": "sess_7f1b54d0-e77f-4cb7-b439-d06e5aa2dca1",
+        "timestamp": 1794851828741
+      },
+      {
+        "executionId": "23ea79b4-e0e8-4b6e-b2a7-f75a277f8f0a",
+        "chatSessionId": "sess_7f1b54d0-e77f-4cb7-b439-d06e5aa2dca1",
+        "timestamp": 1794853157432
+      },
+      {
+        "executionId": "23ea79b4-e0e8-4b6e-b2a7-f75a277f8f0a",
+        "chatSessionId": "sess_7f1b54d0-e77f-4cb7-b439-d06e5aa2dca1",
+        "timestamp": 1794853242096
+      }
+    ],
+    "39. Implementar los paneles de recurrentes y de límites (`RecurringPanel.tsx`, `LimitsPanel.tsx`)": [
+      {
+        "executionId": "23ea79b4-e0e8-4b6e-b2a7-f75a277f8f0a",
+        "chatSessionId": "sess_7f1b54d0-e77f-4cb7-b439-d06e5aa2dca1",
+        "timestamp": 1794851828815
+      },
+      {
+        "executionId": "23ea79b4-e0e8-4b6e-b2a7-f75a277f8f0a",
+        "chatSessionId": "sess_7f1b54d0-e77f-4cb7-b439-d06e5aa2dca1",
+        "timestamp": 1794853245827
+      },
+      {
+        "executionId": "23ea79b4-e0e8-4b6e-b2a7-f75a277f8f0a",
+        "chatSessionId": "sess_7f1b54d0-e77f-4cb7-b439-d06e5aa2dca1",
+        "timestamp": 1794853445406
+      }
+    ],
+    "40. **(verificación)** Ejecutar la suite de regresión de la Etapa 1": [
+      {
+        "executionId": "23ea79b4-e0e8-4b6e-b2a7-f75a277f8f0a",
+        "chatSessionId": "sess_7f1b54d0-e77f-4cb7-b439-d06e5aa2dca1",
+        "timestamp": 1794851828882
+      },
+      {
+        "executionId": "23ea79b4-e0e8-4b6e-b2a7-f75a277f8f0a",
+        "chatSessionId": "sess_7f1b54d0-e77f-4cb7-b439-d06e5aa2dca1",
+        "timestamp": 1794853449203
+      },
+      {
+        "executionId": "23ea79b4-e0e8-4b6e-b2a7-f75a277f8f0a",
+        "chatSessionId": "sess_7f1b54d0-e77f-4cb7-b439-d06e5aa2dca1",
+        "timestamp": 1794853617094
+      }
+    ],
+    "41. **(verificación)** Ejecutar la suite completa de aceptación de la Etapa 2": [
+      {
+        "executionId": "23ea79b4-e0e8-4b6e-b2a7-f75a277f8f0a",
+        "chatSessionId": "sess_7f1b54d0-e77f-4cb7-b439-d06e5aa2dca1",
+        "timestamp": 1794851828930
+      },
+      {
+        "executionId": "23ea79b4-e0e8-4b6e-b2a7-f75a277f8f0a",
+        "chatSessionId": "sess_7f1b54d0-e77f-4cb7-b439-d06e5aa2dca1",
+        "timestamp": 1794853620847
+      }
+    ],
+    "42. **(verificación)** A20 — build de producción del frontend + suite completa": [
+      {
+        "executionId": "23ea79b4-e0e8-4b6e-b2a7-f75a277f8f0a",
+        "chatSessionId": "sess_7f1b54d0-e77f-4cb7-b439-d06e5aa2dca1",
+        "timestamp": 1794851828983
+      },
+      {
+        "executionId": "23ea79b4-e0e8-4b6e-b2a7-f75a277f8f0a",
+        "chatSessionId": "sess_7f1b54d0-e77f-4cb7-b439-d06e5aa2dca1",
+        "timestamp": 1794853856261
+      },
+      {
+        "executionId": "23ea79b4-e0e8-4b6e-b2a7-f75a277f8f0a",
+        "chatSessionId": "sess_7f1b54d0-e77f-4cb7-b439-d06e5aa2dca1",
+        "timestamp": 1794853993439
+      }
+    ],
+    "43. **(verificación)** A21 — inspección manual en navegador": [
+      {
+        "executionId": "23ea79b4-e0e8-4b6e-b2a7-f75a277f8f0a",
+        "chatSessionId": "sess_7f1b54d0-e77f-4cb7-b439-d06e5aa2dca1",
+        "timestamp": 1794851829032
+      },
+      {
+        "executionId": "23ea79b4-e0e8-4b6e-b2a7-f75a277f8f0a",
+        "chatSessionId": "sess_7f1b54d0-e77f-4cb7-b439-d06e5aa2dca1",
+        "timestamp": 1794854033130
+      }
+    ],
+    "44. **(verificación)** Integridad de BD y preservación de datos de la Etapa 1": [
+      {
+        "executionId": "23ea79b4-e0e8-4b6e-b2a7-f75a277f8f0a",
+        "chatSessionId": "sess_7f1b54d0-e77f-4cb7-b439-d06e5aa2dca1",
+        "timestamp": 1794851829081
+      },
+      {
+        "executionId": "23ea79b4-e0e8-4b6e-b2a7-f75a277f8f0a",
+        "chatSessionId": "sess_7f1b54d0-e77f-4cb7-b439-d06e5aa2dca1",
+        "timestamp": 1794854056791
+      }
+    ],
+    "45. Registrar resultados reales, iteraciones correctivas y limitaciones": [
+      {
+        "executionId": "23ea79b4-e0e8-4b6e-b2a7-f75a277f8f0a",
+        "chatSessionId": "sess_7f1b54d0-e77f-4cb7-b439-d06e5aa2dca1",
+        "timestamp": 1794851829129
+      },
+      {
+        "executionId": "23ea79b4-e0e8-4b6e-b2a7-f75a277f8f0a",
+        "chatSessionId": "sess_7f1b54d0-e77f-4cb7-b439-d06e5aa2dca1",
+        "timestamp": 1794854316273
+      }
+    ],
+    "46. Recolectar evidencia estandarizada (código, pruebas, análisis estático)": [
+      {
+        "executionId": "23ea79b4-e0e8-4b6e-b2a7-f75a277f8f0a",
+        "chatSessionId": "sess_7f1b54d0-e77f-4cb7-b439-d06e5aa2dca1",
+        "timestamp": 1794851829191
+      },
+      {
+        "executionId": "23ea79b4-e0e8-4b6e-b2a7-f75a277f8f0a",
+        "chatSessionId": "sess_7f1b54d0-e77f-4cb7-b439-d06e5aa2dca1",
+        "timestamp": 1794854518849
+      }
+    ]
+  }
+}

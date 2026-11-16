@@ -6,12 +6,24 @@ import { useEffect, useMemo, useState } from "react";
 
 import { ApiRequestError, confirmMfa } from "../api/client";
 
+// Resultado mínimo que el diálogo necesita para decidir si la verificación tuvo éxito.
+// Las internas devuelven `COMPLETED`; las ACH `pending` (ya debitada tras autorizar).
+interface MfaConfirmResult {
+  status: string;
+}
+
+// Estados que cuentan como verificación exitosa, por cada flujo soportado.
+const SUCCESS_STATUSES = new Set(["COMPLETED", "pending"]);
+
 interface Props {
   reference: string;
   expiresAt: string;
   amount: string;
   onCompleted: () => void;
   onDismiss: () => void;
+  // Función de confirmación opcional. Por defecto usa la MFA interna (`confirmMfa`);
+  // las ACH sensibles pasan `confirmAchMfa` sin romper el uso interno existente.
+  confirm?: (reference: string, code: string) => Promise<MfaConfirmResult>;
 }
 
 function secondsLeft(expiresAt: string): number {
@@ -19,7 +31,14 @@ function secondsLeft(expiresAt: string): number {
   return Math.max(0, Math.floor(diff / 1000));
 }
 
-export function MfaDialog({ reference, expiresAt, amount, onCompleted, onDismiss }: Props) {
+export function MfaDialog({
+  reference,
+  expiresAt,
+  amount,
+  onCompleted,
+  onDismiss,
+  confirm = confirmMfa,
+}: Props) {
   const [code, setCode] = useState("");
   const [error, setError] = useState<string | null>(null);
   const [submitting, setSubmitting] = useState(false);
@@ -43,8 +62,8 @@ export function MfaDialog({ reference, expiresAt, amount, onCompleted, onDismiss
     setError(null);
     setSubmitting(true);
     try {
-      const res = await confirmMfa(reference, code.trim());
-      if (res.status === "COMPLETED") {
+      const res = await confirm(reference, code.trim());
+      if (SUCCESS_STATUSES.has(res.status)) {
         onCompleted();
       }
     } catch (err) {

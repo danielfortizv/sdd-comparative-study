@@ -9,9 +9,10 @@ import uuid
 from dataclasses import dataclass
 from datetime import datetime, timedelta, timezone
 
-from . import repository
+from . import limit_service, repository
 from .config import MFA_CODE, MFA_THRESHOLD, MFA_TTL_SECONDS
 from .money import InvalidAmountError, decimal_to_cents, parse_amount
+from .txn import financial_transaction
 
 _VALID_KINDS = {"checking", "savings"}
 
@@ -90,28 +91,45 @@ def create_transfer(
     now = _now_utc()
     requires_mfa = amount >= MFA_THRESHOLD
 
+    # Límites: feedback temprano (no autoritativo) antes de crear/MFA. La verificación
+    # autoritativa se repite dentro de la transacción financiera (F8/F9, LIM-07). El orden es
+    # fondos → límites → (si aplica) MFA (Requisito 14.5, D04).
+    try:
+        limit_service.check(conn, amount_cents, now)
+    except limit_service.LimitError as exc:
+        raise DomainError(exc.code, exc.message) from exc
+
     if not requires_mfa:
-        # Ejecución inmediata (Requisito 6.1): crear COMPLETED aplicando saldos atómicamente.
+        # Ejecución inmediata (Requisito 6.1): crear la fila y, dentro de UNA transacción
+        # financiera, revalidar límites y aplicar saldos atómicamente (F8/F9).
         created = repository.create_transfer(
             conn,
             from_kind=from_kind,
             to_kind=to_kind,
             amount_cents=amount_cents,
             description=description,
-            status="PENDING_MFA",  # estado transitorio; se consolida en apply_transfer
+            status="PENDING_MFA",  # estado transitorio; se consolida al aplicar
             requires_mfa=False,
             created_at=_iso(now),
             expires_at=None,
             reference=None,
         )
-        repository.apply_transfer(
-            conn,
-            transfer_id=created.id,
-            from_kind=from_kind,
-            to_kind=to_kind,
-            amount_cents=amount_cents,
-            completed_at=_iso(now),
-        )
+        try:
+            with financial_transaction(conn):
+                # Revalidación autoritativa de límites + débito en la misma transacción.
+                limit_service.check(conn, amount_cents, now)
+                repository.apply_transfer_in_tx(
+                    conn,
+                    transfer_id=created.id,
+                    from_kind=from_kind,
+                    to_kind=to_kind,
+                    amount_cents=amount_cents,
+                    completed_at=_iso(now),
+                )
+        except limit_service.LimitError as exc:
+            # El límite se superó entre el pre-chequeo y la transacción; no se debitó.
+            repository.update_transfer_status(conn, created.id, "FAILED")
+            raise DomainError(exc.code, exc.message) from exc
         return CreateResult(status="COMPLETED", requires_mfa=False, reference=None, expires_at=None)
 
     # Monto >= umbral (Requisito 6.2, 6.3, 6.4): crear PENDING_MFA sin tocar saldos.
@@ -176,15 +194,24 @@ def confirm_mfa(conn: sqlite3.Connection, *, reference: str, code: str) -> str:
         repository.update_transfer_status(conn, transfer.id, "FAILED")
         raise DomainError("INSUFFICIENT_FUNDS", "Fondos insuficientes al confirmar la transferencia")
 
-    # Correcto, válida y con fondos: aplicar saldos atómicamente y marcar COMPLETED (Requisito 7.3, 7.4).
-    repository.apply_transfer(
-        conn,
-        transfer_id=transfer.id,
-        from_kind=transfer.from_kind,
-        to_kind=transfer.to_kind,
-        amount_cents=transfer.amount_cents,
-        completed_at=_iso(_now_utc()),
-    )
+    # Correcto, válida y con fondos: verificar límites y aplicar saldos en la MISMA transacción
+    # financiera (LIM-07, A14: el límite se comprueba antes de completar; un PIN correcto nunca
+    # salta un límite). Si el límite se supera, marca FAILED sin débito.
+    now = _now_utc()
+    try:
+        with financial_transaction(conn):
+            limit_service.check(conn, transfer.amount_cents, now)
+            repository.apply_transfer_in_tx(
+                conn,
+                transfer_id=transfer.id,
+                from_kind=transfer.from_kind,
+                to_kind=transfer.to_kind,
+                amount_cents=transfer.amount_cents,
+                completed_at=_iso(now),
+            )
+    except limit_service.LimitError as exc:
+        repository.update_transfer_status(conn, transfer.id, "FAILED")
+        raise DomainError(exc.code, exc.message) from exc
     return "COMPLETED"
 
 

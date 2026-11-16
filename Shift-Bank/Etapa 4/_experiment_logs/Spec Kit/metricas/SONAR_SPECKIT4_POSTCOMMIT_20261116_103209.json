@@ -1,0 +1,16 @@
+﻿{
+    "commit":  "da4209dc3ea9eda08f13de08abe29800bcdf6513",
+    "quality_gate":  {
+                         "status":  "NONE",
+                         "conditions":  [
+
+                                        ],
+                         "caycStatus":  "compliant"
+                     },
+    "metrics":  {
+
+                },
+    "extracted_at":  "2026-11-16T10:32:09.3976523-05:00",
+    "coverage_note":  "Verificar si se importo realmente un reporte de cobertura.",
+    "project":  "Shift-Bank---Stage-4---Spec-Kit"
+}
