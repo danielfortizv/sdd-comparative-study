@@ -16,14 +16,13 @@ if backend_src not in sys.path:
     sys.path.insert(0, backend_src)
 
 # Configure isolated test database path to strictly prevent modifying backend/shift_bank.db (D-02, F-10)
-TEST_DB_PATH = os.path.abspath(os.path.join(os.path.dirname(__file__), "test_shift_bank.db"))
-os.environ["TEST_DB_PATH"] = TEST_DB_PATH
+TEST_DB_PATH = None
 os.environ["ENABLE_TEST_ENDPOINTS"] = "true"
 
 # Cryptographic test keys configuration (T002)
-TEST_CERTS_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), "test_certs"))
-TEST_PRIV_KEY_PATH = os.path.join(TEST_CERTS_DIR, "test_bank_private.pem")
-TEST_PUB_KEY_PATH = os.path.join(TEST_CERTS_DIR, "test_bank_public.pem")
+TEST_CERTS_DIR = None
+TEST_PRIV_KEY_PATH = None
+TEST_PUB_KEY_PATH = None
 
 # Generate secure random test keys dynamically
 TEST_STORAGE_KEY = secrets.token_hex(32)  # 256-bit AES storage key
@@ -33,32 +32,16 @@ TEST_AUDIT_ADMIN_KEY = secrets.token_urlsafe(32)
 os.environ["BANK_STORAGE_KEY"] = TEST_STORAGE_KEY
 os.environ["AUDIT_SIGNING_KEY"] = TEST_AUDIT_SIGNING_KEY
 os.environ["AUDIT_ADMIN_KEY"] = TEST_AUDIT_ADMIN_KEY
-os.environ["BANK_PRIVATE_KEY_PATH"] = TEST_PRIV_KEY_PATH
-os.environ["BANK_PUBLIC_KEY_PATH"] = TEST_PUB_KEY_PATH
-
-
 def _setup_test_crypto_keys():
     """Generates an ephemeral RSA-2048 keypair for testing if not already generated."""
-    os.makedirs(TEST_CERTS_DIR, exist_ok=True)
-    if not os.path.exists(TEST_PRIV_KEY_PATH) or not os.path.exists(TEST_PUB_KEY_PATH):
-        private_key = rsa.generate_private_key(public_exponent=65537, key_size=2048)
-        priv_pem = private_key.private_bytes(
-            encoding=serialization.Encoding.PEM,
-            format=serialization.PrivateFormat.PKCS8,
-            encryption_algorithm=serialization.NoEncryption(),
-        )
-        pub_pem = private_key.public_key().public_bytes(
-            encoding=serialization.Encoding.PEM,
-            format=serialization.PublicFormat.SubjectPublicKeyInfo,
-        )
-        with open(TEST_PRIV_KEY_PATH, "wb") as f:
-            f.write(priv_pem)
-        with open(TEST_PUB_KEY_PATH, "wb") as f:
-            f.write(pub_pem)
+    private_key = rsa.generate_private_key(public_exponent=65537, key_size=2048)
+    priv_pem = private_key.private_bytes(encoding=serialization.Encoding.PEM, format=serialization.PrivateFormat.PKCS8, encryption_algorithm=serialization.NoEncryption())
+    pub_pem = private_key.public_key().public_bytes(encoding=serialization.Encoding.PEM, format=serialization.PublicFormat.SubjectPublicKeyInfo)
+    with open(TEST_PRIV_KEY_PATH, "wb") as f:
+        f.write(priv_pem)
+    with open(TEST_PUB_KEY_PATH, "wb") as f:
+        f.write(pub_pem)
 
-
-# Initialize keys immediately for module-level imports
-_setup_test_crypto_keys()
 
 import database
 import crypto
@@ -208,30 +191,23 @@ database.get_connection = _test_get_connection
 
 
 @pytest.fixture(scope="session", autouse=True)
-def isolated_test_database():
+def isolated_test_database(tmp_path_factory):
     """Session fixture ensuring tests run strictly against an isolated database and clean up afterward."""
+    global TEST_DB_PATH, TEST_CERTS_DIR, TEST_PRIV_KEY_PATH, TEST_PUB_KEY_PATH
+    session_root = tmp_path_factory.mktemp("shift_bank_pytest")
+    TEST_DB_PATH = str(session_root / "test_shift_bank.db")
+    TEST_CERTS_DIR = str(session_root / "certs")
+    TEST_PRIV_KEY_PATH = os.path.join(TEST_CERTS_DIR, "test_bank_private.pem")
+    TEST_PUB_KEY_PATH = os.path.join(TEST_CERTS_DIR, "test_bank_public.pem")
     os.environ["TEST_DB_PATH"] = TEST_DB_PATH
+    os.environ["BANK_PRIVATE_KEY_PATH"] = TEST_PRIV_KEY_PATH
+    os.environ["BANK_PUBLIC_KEY_PATH"] = TEST_PUB_KEY_PATH
     os.environ["ENABLE_TEST_ENDPOINTS"] = "true"
+    os.makedirs(TEST_CERTS_DIR, exist_ok=False)
     _setup_test_crypto_keys()
-
-    if os.path.exists(TEST_DB_PATH):
-        try:
-            os.remove(TEST_DB_PATH)
-        except OSError:
-            pass
     database.init_db(TEST_DB_PATH)
     yield
-    # Teardown: clean up test database file and test certs directory
-    if os.path.exists(TEST_DB_PATH):
-        try:
-            os.remove(TEST_DB_PATH)
-        except OSError:
-            pass
-    if os.path.exists(TEST_CERTS_DIR):
-        try:
-            shutil.rmtree(TEST_CERTS_DIR)
-        except OSError:
-            pass
+    # pytest owns session_root and removes only this uniquely created directory.
 
 
 @pytest.fixture(autouse=True)

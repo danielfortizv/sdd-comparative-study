@@ -2952,3 +2952,1196 @@ Se autoriza una intervención H8-03 centrada exclusivamente en implementar las c
 **Estado:** IMPLEMENTACIÓN MARCADA COMO COMPLETA — CIERRE TÉCNICO BLOQUEADO POR EVIDENCIA.
 
 ---
+
+---
+
+## 29. Hito 8 — Migración de agente y continuación de la verificación
+
+### Interacción H8-C01 — Transición de Gemini CLI a Codex
+
+**Fecha local:** 2026-11-16  
+**Herramienta SDD:** GitHub Spec Kit  
+**Agente anterior:** Gemini CLI  
+**Agente actual:** Codex  
+**Motivo de transición:** Interrupción del entorno Gemini CLI por deshabilitación de facturación de Google Cloud.  
+**Estado:** Verificación incompleta; aprobación pendiente.
+
+### 29.1. Objetivo
+
+Reanudar el trabajo correctivo H8-03 sin reiniciar el experimento, regenerar artefactos previamente completados ni modificar las etapas históricas.
+
+La transición constituye un cambio de agente de implementación, no un cambio de herramienta SDD.
+
+### 29.2. Inspección inicial
+
+Codex identificó:
+
+- Proyecto estructurado mediante GitHub Spec Kit.
+- Las 38 tareas marcadas como completadas.
+- Existencia de evidencia de los tres benchmarks Locust.
+- Documentación de aceptación y operación previamente generada.
+- Archivos no rastreados en el repositorio, preservados sin modificación.
+
+El agente indicó que no encontró el archivo `.tessl/RULES.md` en la ubicación esperada.
+
+### 29.3. Modificaciones realizadas
+
+**Archivo:** `deployment/smoke_test.py`
+
+Codex reportó dos ediciones:
+
+1. Incorporación de capturas de saldos iniciales y cálculo del saldo agregado.
+2. Incorporación de verificaciones posteriores a las transferencias recíprocas, incluida la selección de cuenta para MFA según el saldo actualizado.
+
+El objetivo es comprobar la conservación monetaria sin restablecer artificialmente los saldos de la base persistente.
+
+No se reportaron modificaciones a especificaciones, contratos históricos ni benchmarks.
+
+### 29.4. Observaciones de la revisión
+
+**OBS-H8-C01-A — Verificación no ejecutada.**
+
+Codex no ejecutó las suites backend, frontend, compilación ni pruebas Docker después de sus modificaciones.
+
+Por tanto, no existen nuevos resultados PASS atribuibles a esta interacción.
+
+**OBS-H8-C01-B — Aislamiento de pruebas.**
+
+El agente identificó una fixture que utiliza `backend/tests/test_shift_bank.db` y elimina archivos durante la preparación y limpieza.
+
+Debe comprobarse el alcance real de esta fixture y su interacción con la base temporal del módulo de compatibilidad antes de ejecutar pytest.
+
+**OBS-H8-C01-C — Configuración de límites.**
+
+Codex afirmó que el smoke test inspeccionado no contiene incrementos automáticos de límites.
+
+Esta afirmación debe contrastarse con el código actual, dado que en H8-02 se registró una edición que introducía esa operación.
+
+**OBS-H8-C01-D — Efectos secundarios de Docker.**
+
+Las pruebas de despliegue pueden reiniciar el backend y generar movimientos y registros de auditoría persistentes.
+
+Las transferencias recíprocas pueden restaurar saldos, pero no eliminan esos efectos secundarios.
+
+Por ello, deben ejecutarse sobre almacenamiento experimental aislado.
+
+**OBS-H8-C01-E — Registro de transición.**
+
+Codex reconoció que todavía no ha registrado formalmente el cambio de agente en la bitácora experimental.
+
+### 29.5. Resultados de esta interacción
+
+| Verificación | Resultado |
+|---|---|
+| Inspección de repositorio | Parcialmente completada |
+| Corrección del smoke test | Editada; pendiente de prueba |
+| Backend pytest | No ejecutado |
+| Frontend Vitest | No ejecutado |
+| Compilación frontend | No ejecutada |
+| Docker smoke tests | No ejecutados |
+| Registro de transición | Pendiente |
+
+Los resultados históricos de 97 pruebas backend, 13 frontend y nueve verificaciones Docker pertenecen a ejecuciones anteriores y no deben presentarse como nuevas mediciones de Codex.
+
+### 29.6. Implicaciones experimentales D1–D5
+
+**D1 — Esfuerzo:** La interacción de Codex debe contabilizarse separadamente de las sesiones Gemini. No se dispone todavía de telemetría consolidada de tiempo o tokens.
+
+**D2 — Calidad:** Se introdujeron nuevas comprobaciones de conservación de balances, aún sin validación automatizada.
+
+**D3 — Especificaciones:** Se preservó GitHub Spec Kit; no se reportaron cambios en los requisitos aprobados.
+
+**D4 — Cumplimiento:** No se actualiza el estado de aceptación debido a la ausencia de nuevas ejecuciones de verificación.
+
+**D5 — Intervenciones:** Se registra una transición de agente por indisponibilidad del entorno anterior y una nueva intervención de revisión humana. No debe atribuirse a Gemini el trabajo ejecutado por Codex.
+
+### 29.7. Decisión humana
+
+**GO para H8-04 — Verificación pendiente y cierre correctivo.**
+
+Se autoriza comprobar el aislamiento de pruebas, validar los cambios existentes y ejecutar las verificaciones no destructivas.
+
+Las pruebas Docker deberán utilizar un entorno desechable, independiente de los volúmenes persistentes históricos.
+
+No se autoriza iniciar la evaluación experimental final.
+
+### 29.8. Próxima interacción
+
+**H8-04:** Verificación completa, corrección de discrepancias reales y registro definitivo de la transición.
+
+**Estado:** IMPLEMENTACIÓN COMPLETA — VALIDACIÓN DE CODEX PENDIENTE.
+
+---
+
+---
+
+## 30. Hito 8 — Identificación de riesgos de aislamiento experimental
+
+### Interacción H8-04 — Inspección preventiva de bases de datos
+
+**Fecha local:** 2026-11-16  
+**Agente:** Codex  
+**Herramienta SDD:** GitHub Spec Kit  
+**Evidencia:** Transcripción de ejecución H8-04 proporcionada por el investigador.  
+**Resultado:** Verificación bloqueada preventivamente.
+
+### 30.1. Objetivo
+
+Completar las verificaciones pendientes de H8-03 sin comprometer bases de datos persistentes, claves criptográficas ni evidencia histórica.
+
+### 30.2. Inspección realizada
+
+Codex examinó la configuración de pruebas, las referencias a `TEST_DB_PATH`, el despliegue Docker y los cambios previos en `deployment/smoke_test.py`.
+
+Identificó que la fixture general de pytest utiliza la ruta fija:
+
+`backend/tests/test_shift_bank.db`
+
+La configuración elimina este archivo al iniciar y finalizar la sesión de pruebas.
+
+El agente también identificó que la configuración de Docker Compose define nombres de contenedores, puertos, red y volumen persistente, por lo que no es seguro asumir aislamiento al ejecutar el despliegue habitual.
+
+### 30.3. Hallazgos
+
+**H8-04-01 — Eliminación potencial de bases preexistentes.**
+
+La utilización de una ruta fija para el almacenamiento de pruebas representa un riesgo cuando el archivo ya existe y contiene información que debe preservarse.
+
+Se requiere reemplazarla por una ruta temporal única, con limpieza restringida exclusivamente a los archivos creados por esa ejecución.
+
+**H8-04-02 — Aislamiento Docker insuficiente.**
+
+La configuración normal de Docker Compose no demuestra independencia respecto al despliegue persistente existente.
+
+Se deben separar contenedores, puertos, redes, volúmenes y credenciales antes de permitir nuevas pruebas destructivas o con efectos persistentes.
+
+**H8-04-03 — Correcciones anteriores conservadas.**
+
+Codex confirmó la presencia de verificaciones de conservación monetaria y transferencias recíprocas en el smoke test.
+
+También informó que no encontró incrementos automáticos de límites en la versión inspeccionada.
+
+Estas observaciones todavía requieren validación mediante ejecución segura.
+
+**H8-04-04 — Documentación experimental.**
+
+Los documentos operacionales y de aceptación contienen información sobre limitaciones de seguridad y benchmarks históricos, pero conservan afirmaciones que deberán contrastarse con los resultados de la siguiente verificación.
+
+El cambio de agente Gemini CLI → Codex continúa pendiente de registro en el repositorio.
+
+### 30.4. Ejecuciones y modificaciones
+
+| Actividad | Resultado |
+|---|---|
+| Inspección de configuración SQLite | Realizada |
+| Inspección de aislamiento Docker | Realizada |
+| Inspección de smoke test | Realizada |
+| Modificaciones de código | Ninguna |
+| Backend pytest | No ejecutado |
+| Frontend Vitest | No ejecutado |
+| Compilación frontend | No ejecutada |
+| Docker smoke tests | No ejecutados |
+
+No se registraron nuevos resultados de rendimiento ni cumplimiento funcional durante esta interacción.
+
+### 30.5. Interpretación experimental
+
+La suspensión preventiva de pruebas constituye una decisión de seguridad del nuevo agente ante un riesgo identificado en la infraestructura de verificación.
+
+Este resultado no debe clasificarse como fallo funcional de Shift Bank ni como una ejecución exitosa de las pruebas.
+
+Tampoco implica que se hayan perdido datos: el riesgo fue identificado antes de ejecutar las operaciones potencialmente destructivas.
+
+### 30.6. Implicaciones para D1–D5
+
+**D1 — Esfuerzo:** Se registra tiempo dedicado a inspección y diagnóstico, sin ejecución de suites.
+
+**D2 — Calidad:** Se identificó un riesgo relacionado con el ciclo de vida de archivos temporales.
+
+**D3 — Especificaciones:** No se reportaron cambios a los requisitos aprobados.
+
+**D4 — Cumplimiento:** Se mantiene el último estado verificado; la nueva ejecución completa continúa pendiente.
+
+**D5 — Retroalimentación:** Se registra una intervención correctiva humana H8-05 para autorizar el aislamiento seguro y retomar las pruebas.
+
+### 30.7. Decisión humana
+
+**GO para H8-05 — Corrección segura del entorno de pruebas.**
+
+Se autoriza modificar exclusivamente la infraestructura de pruebas necesaria para utilizar recursos temporales únicos y verificar la implementación existente.
+
+Las pruebas Docker permanecerán bloqueadas mientras no se demuestre aislamiento completo.
+
+### 30.8. Próxima interacción
+
+**H8-05:** Corrección del aislamiento pytest, ejecución de regresiones y revisión final de evidencia.
+
+**Pendientes posteriores:** Aprobación del Hito 8, evaluación estática y consolidación experimental.
+
+**Estado:** IMPLEMENTACIÓN COMPLETA — VERIFICACIÓN BLOQUEADA HASTA CORREGIR AISLAMIENTO.
+
+---
+
+---
+
+## 31. Hito 8 — Corrección del aislamiento de pruebas y bloqueo de pytest
+
+### Interacción H8-05 — Aislamiento temporal y error de permisos
+
+**Fecha local:** 2026-11-16  
+**Agente:** Codex  
+**Herramienta SDD:** GitHub Spec Kit  
+**Evidencia:** Transcripción H8-05 proporcionada por el investigador.  
+**Resultado:** Corrección parcial implementada; verificación bloqueada.
+
+### 31.1. Objetivo
+
+Eliminar la dependencia de rutas fijas para bases de datos y certificados de prueba, evitando operaciones de limpieza sobre archivos preexistentes.
+
+### 31.2. Modificaciones realizadas
+
+**Archivo modificado:** `backend/tests/conftest.py`
+
+Codex reemplazó la configuración de la base de pruebas mediante una ruta fija por un mecanismo que utiliza directorios temporales administrados por pytest.
+
+También trasladó la generación de claves de prueba al contexto de la fixture de sesión y eliminó la generación prematura durante la importación del módulo.
+
+No se reportaron modificaciones a bases de datos persistentes, certificados originales, volúmenes Docker ni benchmarks históricos.
+
+### 31.3. Incidencias observadas
+
+**INC-H8-05-A — Ruta incorrecta de ejecución.**
+
+La primera invocación utilizó una ubicación incorrecta para `pytest.exe`, por lo que las pruebas no se ejecutaron.
+
+**INC-H8-05-B — Inicialización prematura de claves.**
+
+La siguiente ejecución presentó un error durante la recolección de pruebas, relacionado con la generación de claves antes de crear los directorios temporales.
+
+Codex eliminó la llamada prematura.
+
+**INC-H8-05-C — Permisos del directorio temporal.**
+
+La ejecución posterior alcanzó la preparación de fixtures, pero pytest no pudo crear su directorio temporal predeterminado bajo `%TEMP%/pytest-of-danie`.
+
+Se registraron **97 errores de configuración**.
+
+Estos errores impiden evaluar las aserciones funcionales y no deben interpretarse como 97 regresiones bancarias.
+
+### 31.4. Resultados de verificación
+
+| Verificación | Resultado |
+|---|---|
+| Modificación de aislamiento pytest | Implementada; pendiente de validación |
+| Recolección inicial de pruebas | ERROR |
+| Ejecución backend posterior | 97 errores de setup |
+| Frontend Vitest | No ejecutado |
+| Compilación frontend | No ejecutada |
+| Docker smoke tests | No ejecutados |
+| Registro de transición | Pendiente |
+
+No existen nuevas cifras de pruebas exitosas atribuibles a H8-05.
+
+### 31.5. Revisión de seguridad
+
+El agente mantuvo bloqueada la ejecución Docker debido a que la configuración existente utiliza recursos persistentes compartidos.
+
+La próxima interacción debe solucionar el problema de permisos mediante un directorio temporal nuevo, sin cambiar permisos globales del sistema ni eliminar directorios existentes.
+
+### 31.6. Implicaciones experimentales D1–D5
+
+**D1 — Esfuerzo:** Se registran tres intentos de ejecución, modificaciones de fixtures y diagnóstico de permisos. La telemetría específica de Codex permanece pendiente.
+
+**D2 — Calidad:** Se mejoró el diseño de aislamiento de pruebas, pero su funcionamiento completo todavía no está demostrado.
+
+**D3 — Especificaciones:** No se observaron modificaciones a los requisitos aprobados.
+
+**D4 — Cumplimiento:** No se actualizan los indicadores de cumplimiento funcional por ausencia de ejecuciones válidas.
+
+**D5 — Retroalimentación:** Se registra la intervención correctiva H8-06, derivada del bloqueo ambiental identificado durante H8-05.
+
+### 31.7. Decisión humana
+
+**GO para H8-06 — Recuperación del entorno de pruebas.**
+
+Se autoriza configurar un directorio temporal exclusivo, verificar la inicialización de fixtures y completar las pruebas no destructivas pendientes.
+
+Las pruebas Docker continúan bloqueadas hasta demostrar un aislamiento independiente.
+
+### 31.8. Próxima interacción
+
+**H8-06:** Resolver permisos de pytest, ejecutar regresiones backend/frontend y registrar evidencia real.
+
+**Estado:** IMPLEMENTACIÓN COMPLETA — VALIDACIÓN FINAL BLOQUEADA POR ENTORNO DE PRUEBAS.
+
+---
+
+---
+
+## 32. Hito 8 — Recuperación del entorno de pruebas con Codex
+
+### Interacción H8-06 — Resolución de errores temporales y nuevas restricciones
+
+**Fecha local:** 2026-11-16  
+**Agente:** Codex  
+**Herramienta SDD:** GitHub Spec Kit  
+**Evidencia:** Transcripción H8-06 proporcionada por el investigador.  
+**Resultado:** Recuperación parcial del entorno; verificación incompleta.
+
+### 32.1. Objetivo
+
+Resolver el bloqueo de permisos de pytest identificado en H8-05, completar las pruebas automatizadas y registrar formalmente la continuidad del experimento después del cambio de agente.
+
+### 32.2. Acciones realizadas
+
+Codex configuró un directorio temporal local y único mediante un identificador GUID, comprobando que no existiera antes de utilizarlo como argumento `--basetemp`.
+
+Se corrigió adicionalmente la inicialización de claves de prueba en `backend/tests/conftest.py`, asegurando que el directorio de certificados temporales estuviera disponible antes de generar el material criptográfico.
+
+No se reportaron modificaciones deliberadas a bases de datos persistentes, secretos de despliegue ni resultados históricos.
+
+### 32.3. Resultados backend
+
+| Ejecución | Resultado |
+|---|---|
+| Primer intento con directorio local | 97 errores de preparación |
+| Segundo intento después de corregir fixtures | 96 PASS / 1 FAIL |
+| Tiempo de segunda ejecución | 15,53 segundos |
+
+El único fallo restante corresponde a:
+
+`test_secret_generator.py::test_create_only_refusal_when_file_exists`
+
+La prueba falló porque las restricciones de permisos aplicadas al archivo temporal generado en Windows impidieron que el propio proceso de pruebas pudiera volver a leerlo.
+
+El agente conservó las aserciones y evitó relajar las restricciones de seguridad.
+
+### 32.4. Bloqueos adicionales
+
+**INC-H8-06-A — Permisos de archivos Windows.**
+
+El generador aplica controles ACL destinados a proteger secretos. Es necesario verificar que dichos controles permiten el acceso del propietario legítimo sin ampliar permisos innecesariamente.
+
+**INC-H8-06-B — Ejecución frontend.**
+
+La invocación inicial de npm mediante PowerShell fue bloqueada por la política de ejecución.
+
+La alternativa `npm.cmd` evitó ese primer obstáculo, pero Vitest tampoco inició correctamente porque esbuild intentó acceder a un directorio fuera del espacio autorizado del agente.
+
+**INC-H8-06-C — Registro experimental.**
+
+Codex identificó el directorio de bitácoras, pero no pudo escribir el registro porque estaba fuera de su raíz autorizada.
+
+**INC-H8-06-D — Docker.**
+
+Las pruebas de despliegue permanecieron bloqueadas debido a la falta de aislamiento independiente de los recursos persistentes.
+
+### 32.5. Estado de los artefactos
+
+**Archivo modificado:** `backend/tests/conftest.py`.
+
+Se reportó la creación de dos directorios temporales `.pytest-h8-06-*`, conservados sin eliminarlos.
+
+No se reportaron modificaciones a los benchmarks, especificaciones históricas ni claves de producción.
+
+### 32.6. Evaluación de la interacción
+
+El problema original de `%TEMP%` quedó superado, permitiendo ejecutar los 97 casos de prueba.
+
+Sin embargo, **no puede afirmarse que la suite backend haya pasado completamente**, debido al fallo de permisos del generador de secretos.
+
+Las pruebas frontend, la compilación y las verificaciones Docker continúan pendientes.
+
+### 32.7. Implicaciones experimentales D1–D5
+
+**D1 — Esfuerzo:** Se registran dos intentos de pytest, diagnóstico de permisos Windows y ejecución fallida de herramientas frontend. La telemetría de Codex se mantiene separada de Gemini.
+
+**D2 — Calidad:** Se mejoró la configuración temporal de pruebas. Permanece un problema en la aplicación de permisos ACL.
+
+**D3 — Especificaciones:** No se reportan modificaciones a contratos funcionales aprobados.
+
+**D4 — Cumplimiento:** 96 pruebas backend exitosas y una fallida. No se actualiza el cumplimiento final hasta concluir las verificaciones.
+
+**D5 — Retroalimentación:** Se registra una nueva intervención correctiva humana H8-07 motivada por restricciones de entorno y permisos, no por una regresión funcional bancaria demostrada.
+
+### 32.8. Decisión humana
+
+**GO para H8-07 — Corrección de permisos y verificación final.**
+
+Se autoriza corregir el problema ACL, completar las pruebas backend/frontend y registrar la transición de agente mediante acceso limitado o un fragmento preparado para incorporación manual.
+
+Docker continúa bloqueado hasta demostrar aislamiento completo.
+
+### 32.9. Próxima interacción
+
+**H8-07:** Corrección de permisos Windows, ejecución de regresiones y finalización del registro experimental.
+
+**Estado:** IMPLEMENTACIÓN COMPLETA — CIERRE EXPERIMENTAL TODAVÍA PENDIENTE.
+
+---
+
+
+## 33. H8-07 — Codex final environment verification (2026-11-16)
+
+**Agent transition:** Gemini CLI was replaced by Codex after the Google Cloud billing interruption. This section records Codex work only; prior Gemini implementation, benchmark runs, and measurements remain attributed to Gemini and are not reattributed here.
+
+- Corrected `backend/tests/conftest.py` to use a unique pytest-managed database and test-certificate directory under a fresh project-local `--basetemp`. Existing fixed-path databases/certificates are no longer removed or overwritten by the session fixture.
+- Corrected `scripts/generate_deployment_secrets.py` Windows ACL identity selection. The managed process executes as `ZORRO\CodexSandboxOffline` while `%USERNAME%` named `danie`; using the latter after removing inheritance made the creating process unable to read its own temporary test file. The helper now grants read/write only to the actual `whoami` identity.
+- Backend command: `.venv\Scripts\pytest.exe --basetemp <fresh non-existing project-local .pytest-h8-07-* path> -q` — **97 passed, 0 failed**, one Starlette/httpx deprecation warning; 13.29 s.
+- Frontend command: `npm.cmd --prefix frontend test -- --run` — **13 passed** across 2 test files.
+- Production build: `npm.cmd --prefix frontend run build` — **PASS**, TypeScript and Vite build completed (33 modules).
+- Docker smoke tests: **BLOCKED / NOT RUN**. Existing Compose resource names and persistent deployment prevent an independently confirmed isolated run; no containers, volumes, or deployment secrets were touched.
+- No Locust benchmark was run. Historical Gemini benchmark attempts and reports remain unchanged and retain their existing attribution.
+- Human review remains required; this entry does not claim approval or alter historical evidence.
+
+## 34. H8-08 — Isolated Docker verification (2026-11-16)
+
+**Agent attribution:** Codex performed this inspection. No Gemini implementation or measurement is claimed in this section.
+
+- Inspected `deployment/docker-compose.yml` and `deployment/smoke_test.py`. Compose uses fixed container names (`shift_bank_backend`, `shift_bank_nginx`), host ports 8080/8443, network `shift_bank_network`, named volume `shift_bank_smoke_data`, the existing `deployment/docker.env`, and mounts `backend/certs` read-only for backend and Nginx.
+- Smoke test has nine numbered checks, but Test 9 restarts backend through the fixed `deployment/docker-compose.yml`; Test 1 expects the redirect target to contain port 8443. Therefore an isolated overlay would also require configurable smoke-test restart compose path and redirect port (or isolated test launcher adaptation), plus unique host ports, containers, network, volume, disposable database, generated TLS certificates, and temporary cryptographic secrets.
+- Docker CLI is installed (`Docker 29.9.3`, Compose `v5.7.0`), but `docker version` reports permission denied connecting to `npipe:////./pipe/docker_engine`; Docker daemon access is unavailable. Resolved Compose configuration and resource overlap could not be independently checked against a live daemon.
+- **Docker smoke tests: BLOCKED / NOT RUN.** No Docker resources or production secrets/certificates were touched. No financial-limit change, database reset, or benchmark execution occurred.
+- No Docker result or measurement is attributed to Gemini. Human review remains required.
+
+
+---
+
+## 33. Hito 8 — Recuperación completa de pruebas automatizadas
+
+### Interacción H8-07 — Corrección de permisos y validación no Docker
+
+**Fecha local:** 2026-11-16  
+**Agente:** Codex  
+**Herramienta SDD:** GitHub Spec Kit  
+**Evidencia:** Transcripción H8-07 proporcionada por el investigador.  
+**Resultado:** GO para H8-08.
+
+### 33.1. Objetivo
+
+Resolver los problemas de permisos identificados en H8-06, recuperar las verificaciones backend/frontend y registrar la continuidad experimental tras la transición de Gemini CLI a Codex.
+
+### 33.2. Corrección de permisos Windows
+
+Codex identificó que el fallo de `test_create_only_refusal_when_file_exists` se debía a una diferencia entre el usuario indicado por la variable de entorno `USERNAME` y la identidad real del proceso.
+
+El proceso se ejecutaba como `ZORRO\CodexSandboxOffline`, mientras que `USERNAME` identificaba a `danie`.
+
+Al restringir las ACL utilizando el segundo valor, el proceso perdía acceso de lectura al archivo que había generado.
+
+**Corrección aplicada:**
+
+En `scripts/generate_deployment_secrets.py`, Codex modificó la identificación del propietario autorizado para utilizar la identidad efectiva del proceso.
+
+Esta corrección conserva el propósito de restringir los permisos del archivo, permitiendo el acceso al proceso propietario legítimo.
+
+### 33.3. Aislamiento de pruebas
+
+Se mantuvieron las correcciones previas de `backend/tests/conftest.py`:
+
+- Base SQLite temporal única administrada por pytest.
+- Certificados de prueba generados en un directorio temporal.
+- Inicialización de claves después de crear los directorios correspondientes.
+- Eliminación de dependencias respecto a rutas fijas durante la limpieza.
+
+La ejecución de pytest utilizó un directorio `--basetemp` nuevo dentro del proyecto.
+
+### 33.4. Resultados automatizados
+
+| Verificación | Resultado | Tiempo |
+|---|---|---|
+| Backend pytest | 97 PASS, 0 FAIL | 13,29 s |
+| Frontend Vitest | 13 PASS | 2,42 s |
+| Compilación TypeScript y Vite | PASS | 599 ms |
+| Docker smoke tests | No ejecutados | — |
+| Locust | No ejecutado | — |
+
+La suite backend presentó una advertencia de deprecación relacionada con Starlette/httpx, sin impedir la ejecución.
+
+La compilación frontend transformó 33 módulos satisfactoriamente.
+
+### 33.5. Registro de transición experimental
+
+Codex informó haber agregado una entrada a la bitácora existente de la Etapa 3.
+
+El registro distingue la implementación y los benchmarks históricos producidos mediante Gemini CLI de las correcciones y verificaciones ejecutadas posteriormente por Codex.
+
+Esta separación es necesaria para preservar la atribución de resultados cuando se consoliden las métricas experimentales.
+
+### 33.6. Limitaciones pendientes
+
+**OBS-H8-07-A — Docker no verificado.**
+
+No se ejecutaron las pruebas Docker debido a que la configuración disponible comparte identificadores de recursos con el despliegue persistente.
+
+Se requiere un entorno Docker independiente antes de realizar la validación final.
+
+**OBS-H8-07-B — Directorios temporales históricos.**
+
+Los directorios `.pytest-h8-06-*` permanecieron en el proyecto. Codex no los eliminó para respetar las restricciones de preservación.
+
+**OBS-H8-07-C — Verificación de transferencias recíprocas.**
+
+Las aserciones de restauración de saldos y auditoría fueron inspeccionadas, pero su ejecución efectiva en Docker continúa pendiente.
+
+### 33.7. Impacto experimental D1–D5
+
+**D1 — Esfuerzo:** Se registra una nueva intervención Codex que incluye diagnóstico ACL y ejecución de suites. Las mediciones del agente no deben mezclarse con las de Gemini.
+
+**D2 — Calidad:** Se corrigió un fallo de permisos Windows y se obtuvo una suite backend completamente exitosa.
+
+**D3 — Especificaciones:** No se reportaron modificaciones a los contratos o requisitos aprobados de Spec Kit.
+
+**D4 — Cumplimiento:** Se verificaron exitosamente 97 pruebas backend, 13 frontend y la compilación de producción. Docker continúa pendiente.
+
+**D5 — Correcciones humanas:** La intervención H8-07 resolvió los bloqueos principales de H8-06. Permanece una validación relacionada con el aislamiento del despliegue Docker.
+
+### 33.8. Decisión humana
+
+**GO — H8-07 aprobado.**
+
+Se aceptan los resultados de las pruebas backend/frontend y la corrección del problema ACL.
+
+Se autoriza H8-08 exclusivamente para verificar el despliegue Docker mediante recursos independientes.
+
+La configuración original, las bases persistentes, las claves existentes y los benchmarks históricos deberán permanecer intactos.
+
+### 33.9. Próxima interacción
+
+**H8-08:** Despliegue Docker aislado, ejecución de nueve smoke tests y revisión de integridad financiera y de auditoría.
+
+Una vez aprobado el cierre técnico, continuará la evaluación experimental correspondiente.
+
+**Estado:** VERIFICACIÓN BACKEND/FRONTEND APROBADA — DOCKER PENDIENTE.
+
+---
+
+---
+
+## 34. Hito 8 — Bloqueo de Docker y preparación de SonarQube
+
+### Interacción H8-08 — Inspección de despliegue aislado
+
+**Fecha local:** 2026-11-16  
+**Agente:** Codex  
+**Herramienta SDD:** GitHub Spec Kit  
+**Evidencia:** Transcripción H8-08 proporcionada por el investigador.  
+**Resultado:** Docker bloqueado; verificación pendiente.
+
+### 34.1. Objetivo
+
+Validar el despliegue de Shift Bank E3 mediante una configuración Docker completamente aislada, preservando los recursos persistentes y la evidencia experimental previa.
+
+### 34.2. Inspección realizada
+
+Codex inspeccionó:
+
+- `deployment/docker-compose.yml`
+- `deployment/smoke_test.py`
+- Configuración de contenedores, puertos, redes y volúmenes.
+- Referencias a secretos y certificados.
+- Comportamiento de reinicio del backend durante las pruebas.
+
+El agente identificó referencias a recursos fijos que impiden considerar seguro el despliegue habitual como entorno experimental desechable.
+
+### 34.3. Incidencia principal
+
+**INC-H8-08-A — Acceso denegado al motor Docker.**
+
+El comando `docker version` no logró establecer comunicación con:
+
+`npipe:////./pipe/docker_engine`
+
+Docker CLI y Compose se encuentran instalados, pero el agente no dispone de acceso operativo confirmado al motor.
+
+Por consiguiente, no pudo levantar un entorno aislado ni ejecutar las nueve verificaciones de despliegue.
+
+### 34.4. Riesgos identificados
+
+**H8-08-01 — Recursos compartidos.**
+
+La configuración original define nombres fijos de contenedores, puertos, red y volumen.
+
+**H8-08-02 — Material criptográfico.**
+
+El despliegue referencia certificados y secretos existentes que no deben utilizarse en un experimento desechable sin garantizar su independencia.
+
+**H8-08-03 — Ejecución de smoke tests.**
+
+El script de pruebas utiliza referencias fijas al archivo Compose y al puerto HTTPS 8443.
+
+Estas referencias deben parametrizarse para evitar que las pruebas reinicien el despliegue original.
+
+### 34.5. Resultados
+
+| Actividad | Resultado |
+|---|---|
+| Inspección de Compose | Realizada |
+| Inspección del smoke test | Realizada |
+| Acceso al motor Docker | Denegado |
+| Validación de aislamiento operativo | No realizada |
+| Smoke tests Docker | 0 ejecutados |
+| Modificaciones de implementación | Ninguna reportada |
+| Registro en bitácora | Realizado por Codex |
+
+Los resultados Docker obtenidos anteriormente mediante Gemini CLI permanecen como evidencia histórica, pero no sustituyen la validación aislada solicitada.
+
+### 34.6. Configuración SonarQube proporcionada por el investigador
+
+Se registra la siguiente información para la evaluación estática posterior:
+
+| Campo | Valor |
+|---|---|
+| Servidor SonarQube | `http://localhost:9000` |
+| Clave del proyecto | `Shift-Bank---Stage-3---Spec-Kit` |
+| Variable de entorno del token | `SONAR_TOKEN_SPECKIT3` |
+
+El investigador también proporcionó un badge de estado del Quality Gate.
+
+El token incluido en el enlace no se reproduce en la bitácora por seguridad.
+
+**Estado de SonarQube:** No ejecutado durante H8-08.
+
+Los resultados futuros deberán registrarse únicamente después de ejecutar el análisis y obtener métricas verificables del proyecto correspondiente.
+
+### 34.7. Implicaciones experimentales D1–D5
+
+**D1 — Esfuerzo:** Se registra tiempo de inspección y diagnóstico de Docker atribuible a Codex, sin ejecución de pruebas.
+
+**D2 — Calidad:** Se identificaron dependencias de configuración que dificultan el aislamiento del despliegue.
+
+**D3 — Especificaciones:** No se reportaron modificaciones a contratos ni requisitos aprobados.
+
+**D4 — Cumplimiento:** La validación Docker aislada permanece pendiente; no se actualizan los resultados de aceptación.
+
+**D5 — Retroalimentación:** Se registra una nueva intervención humana H8-09 para solucionar el acceso a Docker y completar las verificaciones.
+
+### 34.8. Decisión humana
+
+**GO para H8-09 — Recuperación del acceso Docker y preparación de despliegue aislado.**
+
+Se autoriza diagnosticar el acceso al motor, preparar una configuración independiente y ejecutar pruebas únicamente cuando el aislamiento haya sido confirmado.
+
+Se mantiene bloqueada la evaluación SonarQube hasta finalizar el cierre técnico.
+
+### 34.9. Próxima interacción
+
+**H8-09:** Recuperación del acceso Docker, aislamiento de recursos y ejecución de los nueve smoke tests.
+
+**Posteriormente:** Evaluación SonarQube y consolidación experimental D1–D5.
+
+**Estado:** IMPLEMENTACIÓN COMPLETA — DOCKER AISLADO PENDIENTE — SONARQUBE CONFIGURADO PARA EVALUACIÓN POSTERIOR.
+
+---
+
+---
+
+## 35. Hito 8 — Diagnóstico del acceso Docker y decisión de cierre
+
+**Interacción:** H8-09  
+**Fecha:** 2026-11-16  
+**Agente:** Codex  
+**Herramienta SDD:** GitHub Spec Kit  
+**Estado:** Acceso Docker recuperado parcialmente. Verificación aislada pendiente.
+
+### 35.1. Resultados
+
+Codex comprobó que Docker Desktop era accesible mediante un contexto de ejecución elevado.
+
+El despliegue original estaba activo con contenedores `shift_bank_nginx` y `shift_bank_backend`, puertos 8080/8443, red y volúmenes persistentes existentes.
+
+El agente modificó `deployment/smoke_test.py` para permitir especificar el archivo Compose del reinicio y calcular dinámicamente el puerto HTTPS esperado.
+
+No ejecutó los smoke tests ni inició recursos adicionales.
+
+### 35.2. Hallazgos
+
+El bloqueo principal dejó de ser la disponibilidad del motor Docker y pasó a ser la preparación de un despliegue aislado.
+
+No se registraron modificaciones a secretos, bases de datos ni contenedores originales.
+
+El registro de H8-09 en la bitácora permanece pendiente.
+
+### 35.3. Decisión humana
+
+Se autoriza H8-10 para completar de manera integral la preparación, ejecución y corrección de las pruebas Docker aisladas.
+
+No se autorizan modificaciones de los recursos originales ni la alteración de evidencia histórica.
+
+Una vez obtenidos los resultados Docker, el siguiente paso será la evaluación SonarQube, seguida de la consolidación D1–D5.
+
+### 35.4. Implicaciones D1–D5
+
+- **D1:** Iteración de diagnóstico adicional atribuible a Codex.
+- **D2:** Identificación de dependencias operacionales del despliegue.
+- **D3:** Especificaciones existentes preservadas.
+- **D4:** Sin nueva ejecución válida de Docker.
+- **D5:** Intervención humana para reducir ciclos correctivos y concentrar el cierre.
+
+**Estado:** IMPLEMENTACIÓN TERMINADA — VALIDACIÓN DOCKER PENDIENTE.
+
+---
+
+2
+## 35. H8-10 — Isolated Docker verification (Codex, 2026-11-16)
+
+**Attribution:** Codex prepared and executed this isolated verification. It does not alter attribution of Gemini implementation or historical Locust measurements.
+
+- Prepared a temporary Compose override and fully resolved Compose file in `.sb-h810-967924cae6-v6rgv6n4/`. The generated deployment used project `sb-h810-967924cae6`, containers `sb-h810-967924cae6_backend` and `_nginx`, network `sb-h810-967924cae6_network`, volume `sb-h810-967924cae6_data`, and host ports 18080/18443. Disposable DB was on that named volume. It used temporary RSA/TLS certificates and generated test-only secrets; no values are recorded here.
+- Before startup, resolved Compose JSON assertions checked exact unique container names, only ports 18080/18443 (base 8080/8443 were overridden), and the unique named volume/network. Host port bind checks succeeded. Prior Docker inventory showed the original containers using 8080/8443, original network `shift_bank_network`, and existing volumes `shift_bank_data`, `shift_bank_h6_data`, and `shift_bank_smoke_data`; isolated identifiers did not overlap.
+- Built and started only the isolated project using `scripts/run_isolated_docker_smoke.py`; both containers became healthy/started. The existing deployment was not restarted or modified.
+- Smoke tests **1–9 passed**: HTTP→HTTPS redirect to 18443; SPA over TLS; health/keys/database; seeded accounts; encrypted transfer; MFA challenge and encrypted confirmation; valid HMAC audit verification (8 records); unauthorized audit rejection (401); restart persistence with valid audit.
+- Balance invariants: initial Checking COP 5,000,000.00 and Savings COP 15,000,000.00. Both reciprocal transfer pairs asserted exact per-account balances equal to the initial snapshot and aggregate conservation (COP 20,000,000.00). No limits were raised or reset.
+- Read-only SQLite inspection inside isolated backend: accounts 2/2 encrypted, limits 2/2 encrypted, transfer amounts 6/6 encrypted (`enc:v1:` prefix).
+- After verification, isolated nginx and backend containers were stopped; isolated volume and generated evidence/config remain available for review. No original volumes/resources or production certs/secrets were changed.
+- SonarQube was not run. Human review remains required.
+
+
+---
+
+## 36. Hito 8 — Validación Docker aislada y cierre técnico
+
+### Interacción H8-10 — Verificación final de despliegue
+
+**Fecha:** 2026-11-16  
+**Agente:** Codex  
+**Herramienta SDD:** GitHub Spec Kit  
+**Evidencia:** `Pasted text(20261116-091116).txt`  
+**Resultado:** HITO 8 APROBADO.
+
+### 36.1. Objetivo
+
+Completar la validación Docker pendiente mediante un despliegue completamente aislado, preservando la implementación original, los recursos persistentes y los resultados experimentales anteriores.
+
+### 36.2. Implementación del entorno aislado
+
+Codex creó el script:
+
+`scripts/run_isolated_docker_smoke.py`
+
+Este permite preparar una configuración temporal de Docker Compose con recursos independientes.
+
+Se verificaron las siguientes separaciones:
+
+| Recurso | Despliegue original | Despliegue aislado |
+|---|---|---|
+| HTTP | 8080 | 18080 |
+| HTTPS | 8443 | 18443 |
+| Contenedores | `shift_bank_*` | `sb-h810-*` |
+| Red | `shift_bank_network` | Red independiente |
+| Volumen SQLite | Persistente original | Volumen experimental |
+| Secretos | Originales | Generados para pruebas |
+| Certificados | Originales | Temporales |
+
+La configuración Compose resuelta fue revisada antes de iniciar los recursos.
+
+### 36.3. Correcciones durante la ejecución
+
+Se registraron errores iniciales relacionados con la definición de volúmenes, resolución de configuración y validación de identificadores.
+
+Codex corrigió el script de aislamiento y volvió a ejecutar el procedimiento.
+
+También modificó `deployment/smoke_test.py` para permitir seleccionar el proyecto Compose y verificar el puerto HTTPS correspondiente al entorno experimental.
+
+Las correcciones permanecieron dentro del alcance autorizado H8-10.
+
+### 36.4. Resultados de las pruebas Docker
+
+| Prueba | Resultado |
+|---|---|
+| Redirección HTTP → HTTPS | PASS |
+| Aplicación React sobre TLS | PASS |
+| Health check backend | PASS |
+| Consulta de cuentas | PASS |
+| Transferencia cifrada | PASS |
+| MFA y confirmación cifrada | PASS |
+| Verificación autorizada de auditoría | PASS |
+| Rechazo de verificación no autorizada | PASS |
+| Persistencia tras reinicio | PASS |
+
+**Resultado total: 9/9 PASS.**
+
+### 36.5. Verificación financiera
+
+Las pruebas incluyeron transferencias ordinarias y operaciones sujetas a MFA, seguidas de transferencias recíprocas.
+
+Codex comprobó la restauración exacta de los saldos originales.
+
+| Cuenta | Saldo después de las pruebas |
+|---|---:|
+| Checking | COP 5.000.000,00 |
+| Savings | COP 15.000.000,00 |
+| **Total** | **COP 20.000.000,00** |
+
+No se reportaron modificaciones automáticas de límites ni reinicialización de cuentas persistentes.
+
+### 36.6. Cifrado y auditoría
+
+La ejecución verificó:
+
+- Ocho registros de auditoría válidos.
+- Integridad de la cadena criptográfica.
+- Rechazo HTTP 401 para verificación no autorizada.
+- Persistencia de saldos y registros tras reiniciar el backend.
+- Cifrado en SQLite de dos balances, dos campos de límites y seis importes de transferencia.
+
+La inspección de persistencia se efectuó mediante una consulta de solo lectura.
+
+### 36.7. Preservación del entorno original
+
+Los contenedores experimentales quedaron detenidos tras la verificación.
+
+El volumen aislado y sus archivos temporales se conservaron para revisión.
+
+Codex reportó que los contenedores, volúmenes, certificados, secretos y bases de datos originales no fueron modificados.
+
+### 36.8. Archivos generados o modificados
+
+- `deployment/smoke_test.py`: parametrización del proyecto Compose y del puerto HTTPS.
+- `scripts/run_isolated_docker_smoke.py`: creación y ejecución del despliegue experimental aislado.
+- `E3_SPECKIT_BITACORA_EXPERIMENTAL.md`: incorporación de la evidencia H8-10 atribuida a Codex.
+
+### 36.9. Evaluación D1–D5
+
+**D1 — Esfuerzo:** Se registra una interacción de Codex que incluye preparación del entorno, correcciones de Compose, ejecución Docker y registro de evidencia. La telemetría completa permanece pendiente de consolidación.
+
+**D2 — Calidad:** La validación confirma que los mecanismos de cifrado, auditoría y despliegue funcionan bajo el escenario aislado ejecutado. El análisis SonarQube permanece pendiente.
+
+**D3 — Especificaciones:** Se preservaron los contratos existentes y se añadieron herramientas de verificación reproducible.
+
+**D4 — Cumplimiento:** Se obtuvieron 9/9 pruebas Docker exitosas, conservación monetaria exacta y persistencia criptográfica verificada.
+
+**D5 — Correcciones:** Se registran errores y correcciones de configuración Docker durante H8-10, atribuibles exclusivamente a Codex.
+
+### 36.10. Decisión humana
+
+**GO — HITO 8 APROBADO.**
+
+Se acepta la validación técnica de Shift Bank Etapa 3:
+
+- 38/38 tareas implementadas.
+- 97/97 pruebas backend aprobadas.
+- 13/13 pruebas frontend aprobadas.
+- Compilación de producción satisfactoria.
+- 9/9 pruebas Docker aisladas aprobadas.
+- Benchmark Locust previamente validado.
+- Integridad financiera y auditoría verificadas.
+
+La implementación y su validación técnica se consideran completas para el alcance del experimento.
+
+### 36.11. Próxima fase
+
+**H9-01 — Evaluación experimental final.**
+
+Actividades pendientes:
+
+1. Ejecutar SonarQube con el proyecto `Shift-Bank---Stage-3---Spec-Kit`.
+2. Obtener métricas reales de calidad estática.
+3. Consolidar las dimensiones experimentales D1–D5.
+4. Preparar el informe final para revisión humana.
+
+No se reproducen credenciales ni valores de tokens.
+
+**Estado:** HITO 8 APROBADO — IMPLEMENTACIÓN Y VALIDACIÓN TÉCNICA COMPLETAS — EVALUACIÓN EXPERIMENTAL AUTORIZADA.
+
+---
+
+
+## 37. H9-01 — Evaluación experimental final parcial (Codex, 2026-11-16)
+
+**Resultado:** evaluación parcial; análisis SonarQube y métricas autenticadas pendientes. Codex no reatribuye a Gemini trabajo propio, pruebas ejecutadas por Codex ni métricas de benchmarking previas.
+
+- Se inspeccionaron `specs/003-shift-bank-stage3/`, `checklists/acceptance_review.md`, `tasks.md`, la guía de medición `../_codex_prep/02_EVIDENCIAS_Y_METRICAS.md`, `locust/reports/` y la bitácora. La especificación declara 35 FR y 38 escenarios; tasks reporta 38/38 completadas.
+- Verificación funcional reportada desde evidencia H8: backend 97/97; Vitest 13/13; build PASS; Docker aislado 9/9. H8-10 verificó conservación por cuenta (Checking COP 5,000,000.00, Savings COP 15,000,000.00; total COP 20,000,000.00), 8 registros de auditoría válidos y persistencia tras reinicio. Consulta SQLite de solo lectura confirmó 2/2 balances, 2/2 límites y 6/6 importes cifrados.
+- Benchmark histórico Gemini: intento 1 no conservó fondos (+COP 800); intento 2 conservó fondos pero usó TLS no verificado y careció de muestreo de concurrencia 1 Hz; intento 3: 30 usuarios/60 s, lectura p95 138.84 ms, transferencia p95 357.77 ms, 7,076 solicitudes operativas + 5 handshakes, 757 entradas HMAC verificadas y COP 600,000,000.00 conservados. Codex no repitió Locust.
+- **SonarQube no ejecutado:** `SONAR_TOKEN_SPECKIT3` no estaba configurada en el entorno; `sonar-scanner` local no estaba disponible. No se intentó acceso anónimo ni se usó credencial alternativa. Quality Gate, reliability/security/maintainability, bugs/vulnerabilities/smells/debt, LOC/complexity/duplication y coverage: **N/D** para Stage 3.
+- **D1:** tokens, costo, mensajes y tiempo activo/wall por herramienta N/D sin telemetría durable suficiente; no se estimaron. **D2:** Sonar pendiente; valores Tessl no se sustituyen por valores Spec Kit. **D3:** siete artefactos core previstos (`spec`, `plan`, `research`, `data-model`, API contract, quickstart, tasks) y checklist de aceptación; métricas de densidad/Req-CLOD y distribución N/D por falta de extracción con regla congelada. **D4:** resultados funcionales indicados arriba. **D5:** incidentes de facturación Gemini, aislamiento pytest/ACL Windows, ACL de identidad corregida y Compose aislado se describen con atribución Codex/Gemini separada.
+- Informe derivado: `Spec Kit/reports/h9-01-final-experimental-evaluation.md`. N/D significa dato no disponible, nunca cero.
+- No se modificó código para mejorar ratings; no se ejecutó SonarQube, no se hizo consolidación D1-D5 académica, y los benchmarks históricos permanecen sin cambios.
+
+**Acción necesaria para cerrar H9-01:** configurar de manera segura `SONAR_TOKEN_SPECKIT3` en el entorno de ejecución y completar el escaneo/consulta autenticada; no compartir el token en chat ni guardarlo en archivos del proyecto.
+
+---
+
+## 37. Hito 9 — Consolidación experimental parcial y bloqueo de SonarQube
+
+### Interacción H9-01 — Preparación de evaluación final
+
+**Fecha:** 2026-11-16  
+**Agente:** Codex  
+**Herramienta SDD:** GitHub Spec Kit  
+**Evidencia:** Transcripción H9-01 proporcionada por el investigador.  
+**Resultado:** Evaluación parcialmente completada.
+
+### 37.1. Objetivo
+
+Realizar el análisis estático mediante SonarQube y consolidar las cinco dimensiones experimentales D1–D5 utilizando exclusivamente los resultados verificables de Shift Bank Etapa 3.
+
+### 37.2. Fuentes inspeccionadas
+
+Codex reportó haber consultado:
+
+- Especificaciones aprobadas de la Etapa 3.
+- Guía de estandarización de métricas.
+- Bitácora experimental de Spec Kit.
+- Matriz de aceptación final.
+- Resultados históricos de los tres benchmarks Locust.
+- Documentación de preparación y transferencia entre agentes.
+
+### 37.3. Resultados de SonarQube
+
+El agente comprobó que la variable de entorno `SONAR_TOKEN_SPECKIT3` no estaba disponible en su proceso.
+
+También informó que no encontró una instalación local de `sonar-scanner`.
+
+Debido a estas condiciones, no ejecutó el análisis de código.
+
+| Métrica | Resultado |
+|---|---|
+| Quality Gate | N/D |
+| Reliability | N/D |
+| Security | N/D |
+| Maintainability | N/D |
+| Duplicación | N/D |
+| Cobertura SonarQube | N/D |
+| Deuda técnica | N/D |
+
+**N/D significa no disponible, no un resultado de cero.**
+
+No se generó evidencia nueva de calidad estática durante esta interacción.
+
+### 37.4. Consolidación experimental preliminar
+
+**D1 — Esfuerzo y consumo**
+
+No se encontraron mediciones duraderas suficientes para consolidar completamente tokens, costos y tiempos de ejecución.
+
+Codex conservó los valores faltantes como N/D, sin estimarlos artificialmente ni combinar telemetría de Gemini con la de Codex.
+
+**D2 — Calidad del código**
+
+La evaluación SonarQube permanece pendiente.
+
+Los resultados funcionales y de pruebas automatizadas no se utilizaron como sustitutos de métricas de análisis estático.
+
+**D3 — Artefactos de especificación**
+
+Codex identificó siete artefactos principales y la lista de aceptación.
+
+Se registraron 35 requisitos funcionales, 38 escenarios y 38 tareas completadas.
+
+Las métricas derivadas que requieren extracción uniforme permanecen pendientes.
+
+**D4 — Cumplimiento funcional**
+
+La consolidación recuperó los siguientes resultados históricos:
+
+| Evidencia | Resultado |
+|---|---|
+| Backend | 97/97 PASS |
+| Frontend | 13/13 PASS |
+| Build | PASS |
+| Docker aislado | 9/9 PASS |
+| Conservación monetaria Docker | COP 20.000.000 exactos |
+| Cifrado persistente | Verificado en los campos inspeccionados |
+| Auditoría | Verificada |
+| Locust | Tercer intento validado |
+
+No se repitieron las pruebas durante H9-01.
+
+**D5 — Correcciones y retrabajo**
+
+El informe preliminar distingue las incidencias de implementación de Gemini CLI y las intervenciones correctivas posteriores de Codex.
+
+Se identificaron como eventos relevantes la interrupción de facturación de Google Cloud, la corrección del aislamiento de pruebas, los problemas de ACL Windows y el despliegue Docker aislado.
+
+La cuantificación definitiva permanece pendiente.
+
+### 37.5. Artefactos generados
+
+Codex creó el archivo:
+
+`reports/h9-01-final-experimental-evaluation.md`
+
+El documento recoge los resultados disponibles y señala explícitamente las métricas pendientes.
+
+También informó haber agregado los hallazgos a la bitácora experimental existente.
+
+No se reportaron modificaciones a la implementación bancaria, los benchmarks históricos ni las especificaciones aprobadas.
+
+### 37.6. Hallazgos de revisión humana
+
+**H9-01-01 — Credencial no disponible.**
+
+La variable requerida para autenticar SonarQube no estaba configurada en el entorno del agente.
+
+**H9-01-02 — Analizador no disponible.**
+
+No se encontró una instalación local del ejecutable SonarScanner.
+
+**H9-01-03 — Telemetría parcial.**
+
+Los resultados disponibles no permiten calcular todos los indicadores de esfuerzo sin introducir supuestos no respaldados por evidencia.
+
+Estas limitaciones deben permanecer explícitas en el informe final.
+
+### 37.7. Decisión humana
+
+**GO para H9-02 — Finalización de SonarQube y métricas.**
+
+Se acepta el reporte preliminar como base de consolidación.
+
+Se autoriza configurar el acceso seguro a SonarQube, ejecutar el análisis, obtener sus métricas y completar el informe con los datos realmente disponibles.
+
+No se autoriza modificar código únicamente para mejorar las calificaciones estáticas.
+
+### 37.8. Próxima interacción
+
+**H9-02:** Ejecución SonarQube, consolidación final D1–D5 y presentación del informe experimental para revisión humana.
+
+**Estado:** IMPLEMENTACIÓN Y PRUEBAS COMPLETAS — EVALUACIÓN EXPERIMENTAL PENDIENTE DE SONARQUBE.
+
+---
+
+
+## 38. H9-02 — Diagnóstico SonarQube (Codex, 2026-11-16)
+
+- Proceso/usuario/máquina: comprobación de presencia de `SONAR_TOKEN_SPECKIT3` dio **unset** en los tres scopes; no se leyó ni mostró ningún valor.
+- Conectividad no autenticada únicamente al endpoint de salud del sistema: `GET http://localhost:9000/api/system/status` respondió HTTP 200, estado `UP`.
+- `sonar-scanner` no está instalado localmente. No se ejecutó análisis ni consultas autenticadas del proyecto; no se intentó acceso anónimo ni se tomó token de otro origen.
+- Por tanto, Quality Gate, ratings de reliability/security/maintainability, bugs, vulnerabilidades, smells, deuda, LOC, duplicación, cobertura e ID del análisis son N/D. Los resultados Tessl/E2 no sustituyen a Stage 3 Spec Kit.
+- Informe H9-01 actualizado: `Spec Kit/reports/h9-01-final-experimental-evaluation.md`. D1/D3 permanecen N/D donde faltan telemetría y extracción normalizada reproducible; D4 recoge pruebas y benchmarks con atribución conservada; D5 documenta incidentes/correcciones Codex separados del trabajo/mediciones Gemini.
+
+**Bloqueo externo y acción exacta:** configure el secreto `SONAR_TOKEN_SPECKIT3` en el entorno seguro del proceso que inicia el agente Codex y abra una sesión nueva. No pegue el token en el chat ni lo guarde en archivos del repositorio. Después se podrá invocar un scanner compatible (por ejemplo, scanner CLI en contenedor Docker ya disponible), ejecutar el análisis con el proyecto `Shift-Bank---Stage-3---Spec-Kit` y recuperar Quality Gate/métricas con autenticación basada únicamente en esa variable.
+
+**H9-02 permanece incompleto** hasta contar con el token en ese entorno y registrar el análisis/medidas reales.
+
+## 39. H9-03 — Reintento de cierre SonarQube (Codex, 2026-11-16)
+
+- Presencia de `SONAR_TOKEN_SPECKIT3` comprobada sin leer ni imprimir el valor: ausente en scopes Process, User y Machine del entorno visible para esta sesión.
+- `http://localhost:9000/api/system/status`: HTTP 200, estado `UP`.
+- No se usó el secreto escrito en el mensaje del usuario; la instrucción requiere autenticación exclusivamente mediante la variable de entorno. No se ejecutó scanner ni se consultaron endpoints autenticados. No se intentó acceso anónimo al proyecto.
+- Quality Gate, métricas y analysis ID continúan N/D. El informe H9-01 se actualizó con el nuevo resultado de presencia por scopes y conserva el resumen D1-D5 basado únicamente en evidencia disponible.
+
+**Acción humana exacta:** configure `SONAR_TOKEN_SPECKIT3` en el entorno del proceso que lanza esta sesión de Codex y abra una sesión nueva. No envíe el token por chat ni lo copie a archivos del repositorio. La sesión deberá confirmar solo `SET=True`, ejecutar scanner compatible para `Shift-Bank---Stage-3---Spec-Kit` y recuperar resultados autenticados.
+
+**H9-03 sin cierre:** falta la disponibilidad segura de la variable en el proceso del agente; no hay métricas Sonar nuevas.
+
+## 40. H9 — Consolidación final de evaluación experimental (Codex, 2026-11-16)
+
+**Fuentes Sonar suministradas por el investigador:** `Spec Kit/reports/sonarqube_metrics_speckit3.json` y `Spec Kit/reports/sonarqube_quality_gate_speckit3.json`. Codex leyó los archivos; no ejecutó ni repitió análisis Sonar.
+
+- Proyecto: key `Shift-Bank---Stage-3---Spec-Kit`, coincide con `component.key` del JSON de métricas.
+- Quality Gate: `NONE`; lista `conditions` vacía. No puede reportarse PASS ni FAIL.
+- CAYC status: `compliant`, conforme al campo del JSON; no equivale a Quality Gate aprobado.
+- `component.measures` está vacío. Analysis ID, versiones del scanner/servidor vinculadas al análisis y todas las medidas solicitadas (ratings reliability/security/maintainability, bugs, vulnerabilidades, smells, deuda, LOC, duplicación y coverage) son N/D.
+- Reporte actualizado: `Spec Kit/reports/h9-01-final-experimental-evaluation.md`. D1 (telemetría por agente) y submétricas D3 sin extracción normalizada permanecen N/D. D4 y D5 integran únicamente evidencia registrada, separando Gemini CLI de Codex; no se estimaron tokens, costos, tiempos ni métricas ausentes.
+- Resultados funcionales ya documentados: 38/38 tareas; backend 97/97; frontend 13/13; build PASS; Docker aislado 9/9. Tres intentos Locust históricos conservados según sus reportes y atribución.
+- No se ejecutaron análisis, Docker, Locust ni suites de pruebas en H9. No se modificó código de aplicación.
+
+**Conclusión:** cierre de la consolidación documental D1–D5 con vacíos señalados explícitamente; la evidencia Sonar recibida es incompleta y no permite una conclusión de calidad estática ni de gate. Para esa conclusión se requiere export con measures pobladas, status/conditions del gate calculados y metadatos de análisis. Se entrega para revisión humana.
+
+## 41. H9 — Resultados SonarQube validados y cierre documental (Codex, 2026-11-16)
+
+**Procedencia:** archivos suministrados por el investigador tras análisis SonarQube manual sobre snapshot aislado: `Spec Kit/reports/sonarqube_metrics_speckit3_validated.json` y `Spec Kit/reports/sonarqube_quality_gate_speckit3_validated.json`. Codex leyó/exportó cifras; no reejecutó SonarScanner. La atribución de implementación/benchmark a Gemini CLI y las correcciones/verificación H8 a Codex permanecen separadas.
+
+| Métrica exportada | Valor |
+|---|---:|
+| Project key / qualifier | `Shift-Bank---Stage-3---Spec-Kit` / TRK |
+| Quality Gate | OK; conditions vacías; ignoredConditions=false |
+| CAYC status | compliant |
+| Bugs / reliability rating | 3 / 3.0 (C) |
+| Vulnerabilities / security rating | 1 / 2.0 (B) |
+| Security hotspots | 0 |
+| Code smells / maintainability rating | 70 / 1.0 (A) |
+| Deuda técnica (sqale_index) | 508 min = 8 h 28 min |
+| NCLOC | 6,204 |
+| Duplicated lines density | 0.0% |
+| Coverage | 0.0 reportado; el JSON no incluye alcance/importación del reporte de cobertura. No interpretar como porcentaje de pruebas ejecutadas. |
+| Incidencias clásicas agregadas | 74 = 3 bugs + 1 vulnerability + 70 smells; densidad calculada 74 / 6.204 = 11.93 incidencias/KLOC. No se suman métricas MQR.
+
+Analysis ID/fecha, versiones del scanner/servidor, SHA/revisión del snapshot, configuración/exclusiones, condiciones de gate y cobertura instrumentada/importada: N/D en los dos JSON. Aunque el status exportado es OK, conditions está vacío; se reporta sin inferir umbrales. El snapshot aislado limita atribución exacta al árbol de trabajo actual.
+
+El informe `Spec Kit/reports/h9-01-final-experimental-evaluation.md` fue actualizado. D1 tokens/costos/tiempos por agente y medidas D3 normalizadas faltantes permanecen N/D; D4 incorpora resultados registrados (38/38 tasks, 97/97 backend, 13/13 frontend, build PASS, Docker 9/9; tres benchmarks conservados); D5 conserva incidentes/remediaciones con atribución Gemini/Codex. Coverage 0.0 no representa 0% tests pasados.
+
+**Conclusión:** consolidación documental D1–D5 lista para revisión humana con N/D y limitaciones de reproducibilidad indicados. Quality Gate exportado OK; calidad estática reporta 3 bugs, 1 vulnerabilidad, 70 smells, rating C/B/A, 0 hotspots, deuda 508 min, 0% duplicación, 6,204 NCLOC y cobertura exportada 0.0 sin contexto de importación. No se modificó código ni se reejecutaron pruebas, Docker, Locust o Sonar.
+
+
+---
+
+## 39. Hito 9 — Validación de SonarQube y cierre experimental
+
+**Fecha:** 2026-11-16  
+**Agente de consolidación:** Codex  
+**Herramienta SDD:** GitHub Spec Kit  
+**Evidencia:** Exportaciones SonarQube validadas e informe H9.  
+**Resultado:** Evaluación consolidada, pendiente de aprobación documental final.
+
+### 39.1. Análisis SonarQube
+
+El investigador ejecutó manualmente SonarScanner sobre una copia aislada del código fuente para evitar conflictos de acceso con los directorios temporales de pytest.
+
+La ejecución finalizó satisfactoriamente y SonarQube procesó el análisis.
+
+El proceso utilizó SonarScanner 5.1.0 y SonarQube Server 26.9.0, con 23 archivos indexados.
+
+### 39.2. Resultados medidos
+
+| Métrica | Resultado |
+|---|---:|
+| Quality Gate | OK |
+| Bugs | 3 |
+| Reliability Rating | C |
+| Vulnerabilidades | 1 |
+| Security Rating | B |
+| Security Hotspots | 0 |
+| Code Smells | 70 |
+| Maintainability Rating | A |
+| Deuda técnica | 508 minutos |
+| Líneas de código (NCLOC) | 6.204 |
+| Duplicación | 0,0% |
+| Cobertura reportada | 0,0% |
+| Incidencias por KLOC | 11,93 |
+
+El Quality Gate reportó `OK`, aunque la exportación no proporcionó condiciones individuales ni umbrales.
+
+La cobertura reportada no cuenta con evidencia suficiente de importación para interpretarse como cobertura efectiva de las pruebas.
+
+### 39.3. Consolidación D1–D5
+
+**D1 — Esfuerzo:** Se conservan como N/D las mediciones de tokens, costos y tiempos que no cuentan con telemetría verificable. No se combinan arbitrariamente registros de Gemini CLI y Codex.
+
+**D2 — Calidad:** Se incorporan las métricas reales de SonarQube. Se documentan tres bugs, una vulnerabilidad y 70 code smells, aun cuando el Quality Gate sea OK.
+
+**D3 — Especificaciones:** Se conservan los artefactos aprobados, los 35 requisitos funcionales, los 38 escenarios y las 38 tareas completadas. Las métricas normalizadas que carecen de extracción reproducible permanecen N/D.
+
+**D4 — Cumplimiento:** Se mantienen los resultados verificables: 97/97 pruebas backend, 13/13 frontend, compilación de producción exitosa, 9/9 pruebas Docker aisladas y benchmark Locust histórico validado.
+
+**D5 — Intervenciones:** Se preserva el registro de correcciones, bloqueos y cambios de agente, con atribución diferenciada para Gemini CLI y Codex.
+
+### 39.4. Limitaciones de reproducibilidad
+
+El análisis SonarQube fue ejecutado sobre una copia temporal aislada.
+
+Aunque permitió finalizar el análisis, la exportación no identifica una revisión Git exacta ni demuestra equivalencia completa con el árbol de trabajo original.
+
+Tampoco se dispone de identificadores de análisis y metadatos suficientes para reconstruir todas las condiciones del Quality Gate.
+
+Estas limitaciones deben señalarse en el informe académico.
+
+### 39.5. Decisión humana
+
+**GO — Cierre documental de la Etapa 3.**
+
+Se consideran completadas las actividades de implementación, pruebas funcionales, benchmark y análisis estático previstas en el proceso ejecutado.
+
+La consolidación experimental está disponible para revisión, conservando explícitamente los indicadores N/D.
+
+Se autoriza únicamente la revisión final de consistencia, procedencia y documentación, sin nuevas iteraciones de implementación.
+
+**Estado:** ETAPA 3 — EVIDENCIA CONSOLIDADA — CIERRE DOCUMENTAL PENDIENTE.
+
+---
+
+
+**Cierre final de documentación (complemento de la sección 41; sin nuevo hito):** la evidencia de ejecución registrada indica SonarScanner 5.1.0, SonarQube 26.9.0, snapshot aislado y 23 archivos indexados. No se asigna revisión Git. Quality Gate exportado `OK` no incluye condiciones; coverage exportada 0.0% carece de contexto verificable de importación. Se confirma que el informe final conserva métricas disponibles y marca como N/D D1 y submétricas D3 sin evidencia. La atribución Gemini CLI/Codex permanece separada. Se acepta el paquete documental para revisión humana, sujeto a las limitaciones de reproducibilidad indicadas en el informe.

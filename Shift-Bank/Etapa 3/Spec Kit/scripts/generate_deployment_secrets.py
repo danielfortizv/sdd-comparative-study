@@ -49,23 +49,30 @@ def restrict_file_permissions(file_path: str) -> dict:
     info = {"platform": sys.platform, "path": abs_path, "success": False, "method": ""}
 
     if sys.platform == "win32":
-        user = os.environ.get("USERNAME")
-        if user:
+        try:
+            # Use the identity executing this process. USERNAME may name a different
+            # interactive account in managed/sandboxed sessions, leaving the creator
+            # without read access after inheritance is removed.
+            identity = subprocess.run(
+                ["whoami"], capture_output=True, text=True, check=True
+            ).stdout.strip()
+        except Exception as e:
+            identity = ""
+            info["method"] = f"Could not determine current Windows identity: {e}"
+        if identity:
             try:
                 # /inheritance:r removes all inherited permissions
                 # /grant:r gives exclusive access without preserving broad inheritance
                 res = subprocess.run(
-                    ["icacls", abs_path, "/inheritance:r", "/grant:r", f"{user}:(R,W)"],
+                    ["icacls", abs_path, "/inheritance:r", "/grant:r", f"{identity}:(R,W)"],
                     capture_output=True,
                     text=True,
                     check=False,
                 )
                 info["success"] = (res.returncode == 0)
-                info["method"] = f"Windows icacls restricted to user '{user}' (RW)"
+                info["method"] = f"Windows icacls restricted to current process identity '{identity}' (RW)"
             except Exception as e:
                 info["method"] = f"icacls failed: {e}"
-        else:
-            info["method"] = "USERNAME environment variable not found on Windows"
     else:
         try:
             os.chmod(abs_path, stat.S_IRUSR | stat.S_IWUSR)

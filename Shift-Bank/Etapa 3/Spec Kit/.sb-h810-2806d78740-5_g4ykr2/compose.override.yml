@@ -1,0 +1,25 @@
+services:
+  backend:
+    container_name: sb-h810-2806d78740_backend
+    env_file: [C:/Users/danie/Documents2/sdd-comparative-study/Shift-Bank/Etapa 3/Spec Kit/.sb-h810-2806d78740-5_g4ykr2/docker.env]
+    volumes:
+      - h810_data:/app/data
+      - C:/Users/danie/Documents2/sdd-comparative-study/Shift-Bank/Etapa 3/Spec Kit/.sb-h810-2806d78740-5_g4ykr2/certs:/app/certs:ro
+  nginx:
+    container_name: sb-h810-2806d78740_nginx
+    ports: ["18080:80", "18443:443"]
+    volumes:
+      - C:/Users/danie/Documents2/sdd-comparative-study/Shift-Bank/Etapa 3/Spec Kit/.sb-h810-2806d78740-5_g4ykr2/nginx.conf:/etc/nginx/nginx.conf:ro
+      - C:/Users/danie/Documents2/sdd-comparative-study/Shift-Bank/Etapa 3/Spec Kit/.sb-h810-2806d78740-5_g4ykr2/certs:/etc/nginx/certs:ro
+volumes:
+  h810_data:
+    name: sb-h810-2806d78740_data
+  shift_bank_smoke_data:
+    name: sb-h810-2806d78740_data
+  shift_bank_h6_data:
+    name: sb-h810-2806d78740_unused_h6
+  shift_bank_data:
+    name: sb-h810-2806d78740_unused
+networks:
+  shift_bank_network:
+    name: sb-h810-2806d78740_network

@@ -22,6 +22,7 @@ import subprocess
 import sys
 import time
 import urllib.error
+import urllib.parse
 import urllib.request
 from decimal import Decimal
 
@@ -134,6 +135,8 @@ def run_deployment_smoke_tests(
     cert_path: str = DEFAULT_CERT_PATH,
     admin_key: str = "",
     test_restarts: bool = True,
+    compose_file: str = "deployment/docker-compose.yml",
+    compose_project: str = "",
 ) -> dict:
     """Executes the full Stage 3 deployment smoke verification suite."""
     print("=" * 80)
@@ -151,7 +154,12 @@ def run_deployment_smoke_tests(
     status, _, headers = make_request(f"{http_base_url}/api/health", follow_redirects=False)
     location = headers.get("Location", "")
     print(f"  Response Status: {status} | Location: {location}")
-    is_redirect_ok = status in (301, 308) and "8443" in location and location.startswith("https://")
+    expected_https_port = urllib.parse.urlparse(https_base_url).port or 443
+    is_redirect_ok = (
+        status in (301, 308)
+        and f":{expected_https_port}" in location
+        and location.startswith("https://")
+    )
     results["http_to_https_redirect"] = {
         "status_code": status,
         "location": location,
@@ -337,7 +345,10 @@ def run_deployment_smoke_tests(
         pre_balances = {a["id"]: a["balance"] for a in pre_accounts}
 
         print("  Restarting backend container via docker compose...")
-        cmd = ["docker", "compose", "-f", "deployment/docker-compose.yml", "restart", "backend"]
+        cmd = ["docker", "compose"]
+        if compose_project:
+            cmd.extend(["-p", compose_project])
+        cmd.extend(["-f", compose_file, "restart", "backend"])
         subprocess.run(cmd, cwd=PROJECT_ROOT, check=True, capture_output=True, text=True)
 
         print("  Waiting for backend to restore healthy status...")
@@ -377,6 +388,8 @@ if __name__ == "__main__":
     parser.add_argument("--http-url", default=DEFAULT_HTTP_URL, help="Base HTTP URL (default: http://localhost:8080)")
     parser.add_argument("--cert-path", default=DEFAULT_CERT_PATH, help="Path to trusted TLS certificate")
     parser.add_argument("--admin-key", default="", help="Audit admin key (optional, falls back to env)")
+    parser.add_argument("--compose-file", default="deployment/docker-compose.yml", help="Compose file used for isolated restart verification")
+    parser.add_argument("--compose-project", default="", help="Compose project name used for isolated restart verification")
     parser.add_argument("--skip-restart", action="store_true", help="Skip container restart test")
     args = parser.parse_args()
 
@@ -386,4 +399,6 @@ if __name__ == "__main__":
         cert_path=args.cert_path,
         admin_key=args.admin_key,
         test_restarts=not args.skip_restart,
+        compose_file=args.compose_file,
+        compose_project=args.compose_project,
     )
