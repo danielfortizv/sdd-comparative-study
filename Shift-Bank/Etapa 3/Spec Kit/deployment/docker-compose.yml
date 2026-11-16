@@ -1,0 +1,68 @@
+# ==============================================================================
+# Shift Bank Stage 3 — Docker Compose Deployment Manifest (E3-DEP-01, FR-027, T029)
+# Multi-container stack: Nginx HTTPS Reverse Proxy + FastAPI Backend + Persistent SQLite
+# ==============================================================================
+
+services:
+  backend:
+    build:
+      context: ..
+      dockerfile: deployment/Dockerfile.backend
+    container_name: shift_bank_backend
+    restart: unless-stopped
+    env_file:
+      - docker.env
+    environment:
+      - SHIFT_BANK_DB_PATH=/app/data/shift_bank.db
+      - BANK_PRIVATE_KEY_PATH=/app/certs/bank_private.pem
+      - BANK_PUBLIC_KEY_PATH=/app/certs/bank_public.pem
+      - ENVIRONMENT=${ENVIRONMENT:-production}
+      - ENABLE_TEST_ENDPOINTS=${ENABLE_TEST_ENDPOINTS:-false}
+    volumes:
+      - shift_bank_smoke_data:/app/data
+      - ../backend/certs:/app/certs:ro
+    networks:
+      - shift_bank_network
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/api/health')"]
+      interval: 5s
+      timeout: 3s
+      retries: 5
+      start_period: 5s
+
+  nginx:
+    build:
+      context: ..
+      dockerfile: deployment/Dockerfile.frontend
+    container_name: shift_bank_nginx
+    restart: unless-stopped
+    ports:
+      - "8080:80"
+      - "8443:443"
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro
+      - ../backend/certs:/etc/nginx/certs:ro
+    depends_on:
+      backend:
+        condition: service_healthy
+    networks:
+      - shift_bank_network
+    healthcheck:
+      test: ["CMD-SHELL", "wget -q --spider --no-check-certificate https://127.0.0.1/api/health || exit 1"]
+      interval: 5s
+      timeout: 3s
+      retries: 5
+      start_period: 5s
+
+volumes:
+  shift_bank_data:
+    name: shift_bank_data
+  shift_bank_h6_data:
+    name: shift_bank_h6_data
+  shift_bank_smoke_data:
+    name: shift_bank_smoke_data
+
+networks:
+  shift_bank_network:
+    name: shift_bank_network
+    driver: bridge

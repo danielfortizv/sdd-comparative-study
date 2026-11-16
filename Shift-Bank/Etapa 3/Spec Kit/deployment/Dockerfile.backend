@@ -1,0 +1,37 @@
+# ==============================================================================
+# Shift Bank Stage 3 — Backend Dockerfile (E3-DEP-01, FR-027, T028)
+# Base: Python 3.13-slim with non-root security execution (bankuser)
+# ==============================================================================
+
+FROM python:3.13-slim
+
+ENV PYTHONUNBUFFERED=1 \
+    PYTHONDONTWRITEBYTECODE=1 \
+    PIP_NO_CACHE_DIR=1
+
+# Create unprivileged bankuser group and user (UID/GID 1000)
+RUN groupadd -g 1000 bankuser && \
+    useradd -u 1000 -g bankuser -m -s /bin/bash bankuser
+
+WORKDIR /app
+
+# Create persistent data and certs mount points with proper ownership
+RUN mkdir -p /app/data /app/certs && \
+    chown -R bankuser:bankuser /app
+
+# Install Python dependencies
+COPY backend/requirements.txt /app/requirements.txt
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Copy backend application source
+COPY --chown=bankuser:bankuser backend/src/ /app/
+
+# Declare persistent SQLite volume mount
+VOLUME ["/app/data"]
+
+USER bankuser
+
+EXPOSE 8000
+
+# Run with single worker process to guarantee single-instance background scheduler (FR-034)
+CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000", "--workers", "1"]

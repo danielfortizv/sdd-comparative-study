@@ -1,0 +1,4 @@
+Command: python -m pytest tests/test_stage4_migration.py tests/test_stage4_events.py tests/test_stage4_currency.py tests/test_stage4_concurrency.py tests/test_stage4_api_contracts.py tests/test_stage4_atomicity.py -q --basetemp='..\\.stage4-pytest-tmp'
+Outcome: 15 passed, 1 failed.
+Failure: event append-only trigger probes caused sqlite3.Connection to remain in a transaction; replay correctly refused nested BEGIN IMMEDIATE.
+Correction: rollback the test connection after intentional constraint violations before invoking the independent replay transaction. No product behavior change.

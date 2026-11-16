@@ -1,0 +1,32 @@
+Git baseline and status
+=======================
+
+Repository root:
+C:\Users\danie\Documents2\sdd-comparative-study
+
+Stage 1 source:
+Shift-Bank/Etapa 1/Spec Kit
+
+Stage 2 copy:
+Shift-Bank/Etapa 2/Spec Kit
+
+Branch:
+ShiftBank
+
+HEAD:
+130ca53c2854e042f89c8a957182c7925b176d6f
+
+Pre-copy status:
+`git status --short` returned no entries. The Stage 1 Spec Kit scoped status was also clean.
+
+Post-preparation status:
+The repository status contains untracked files only under:
+- Shift-Bank/Etapa 2/Spec Kit
+- Shift-Bank/Etapa 2/_experiment_logs/Spec Kit
+
+No tracked Stage 1 files were modified. The Stage 1 Spec Kit scoped status is clean. The tracked Stage 1 database was additionally checked with `git diff --quiet HEAD -- Shift-Bank/Etapa 1/Spec Kit/backend/shift_bank.db`; exit code 0 confirmed no change.
+
+No files outside the Stage 2 Spec Kit application and its dedicated experimental evidence directory were modified. No commit or staging operation was performed.
+
+Status caveat:
+The backend tests generated `Shift-Bank/Etapa 2/Spec Kit/backend/shift_bank.db`. It is an isolated Stage 2 runtime artifact, is not part of either baseline manifest, and appears as an untracked file because the inherited `.gitignore` does not exclude it.

@@ -1,0 +1,9 @@
+SOURCE=C:\Users\danie\Documents2\sdd-comparative-study\Shift-Bank\Etapa 1\OpenSpec
+DESTINATION=C:\Users\danie\Documents2\sdd-comparative-study\Shift-Bank\Etapa 2\OpenSpec
+LOG_DIR=C:\Users\danie\Documents2\sdd-comparative-study\Shift-Bank\Etapa 2\_experiment_logs\OpenSpec
+Source files=36
+Destination files=36
+Missing files=0
+Unexpected files=0
+Hash mismatches=0
+VERIFICATION: all eligible source files copied byte-for-byte with matching SHA-256 hashes.

@@ -1,0 +1,127 @@
+{
+  "name": "sb-h810-967924cae6",
+  "networks": {
+    "shift_bank_network": {
+      "name": "sb-h810-967924cae6_network",
+      "driver": "bridge",
+      "ipam": {}
+    }
+  },
+  "services": {
+    "backend": {
+      "restart": "unless-stopped",
+      "container_name": "sb-h810-967924cae6_backend",
+      "command": null,
+      "entrypoint": null,
+      "environment": {
+        "AUDIT_ADMIN_KEY": "qM4YCtCG_ZeFWj4suorpliwBHLaevib_-lyafxZk62U",
+        "AUDIT_SIGNING_KEY": "6G6GwZR0iedxEXzyREAi3FKWUiXA0z7Quc8MMeeaTyw",
+        "BANK_PRIVATE_KEY_PATH": "/app/certs/bank_private.pem",
+        "BANK_PUBLIC_KEY_PATH": "/app/certs/bank_public.pem",
+        "BANK_STORAGE_KEY": "5d5ffc3fe5c12d6d53d393043efa59b4710e127c2ae3f9405d59f08197d4328c",
+        "ENABLE_TEST_ENDPOINTS": "false",
+        "ENVIRONMENT": "production",
+        "SHIFT_BANK_DATA_VOLUME": "shift_bank_h6_data",
+        "SHIFT_BANK_DB_PATH": "/app/data/shift_bank.db"
+      },
+      "networks": {
+        "shift_bank_network": null
+      },
+      "volumes": [
+        {
+          "type": "volume",
+          "source": "h810_data",
+          "target": "/app/data",
+          "volume": {}
+        },
+        {
+          "type": "bind",
+          "source": "C:/Users/danie/Documents2/sdd-comparative-study/Shift-Bank/Etapa 3/Spec Kit/.sb-h810-967924cae6-v6rgv6n4/certs",
+          "target": "/app/certs",
+          "read_only": true,
+          "bind": {}
+        }
+      ],
+      "build": {
+        "context": "C:\\Users\\danie\\Documents2\\sdd-comparative-study\\Shift-Bank\\Etapa 3\\Spec Kit",
+        "dockerfile": "deployment/Dockerfile.backend"
+      },
+      "healthcheck": {
+        "test": [
+          "CMD",
+          "python",
+          "-c",
+          "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/api/health')"
+        ],
+        "timeout": "3s",
+        "interval": "5s",
+        "retries": 5,
+        "start_period": "5s"
+      }
+    },
+    "nginx": {
+      "restart": "unless-stopped",
+      "container_name": "sb-h810-967924cae6_nginx",
+      "command": null,
+      "entrypoint": null,
+      "networks": {
+        "shift_bank_network": null
+      },
+      "volumes": [
+        {
+          "type": "bind",
+          "source": "C:/Users/danie/Documents2/sdd-comparative-study/Shift-Bank/Etapa 3/Spec Kit/.sb-h810-967924cae6-v6rgv6n4/nginx.conf",
+          "target": "/etc/nginx/nginx.conf",
+          "read_only": true,
+          "bind": {}
+        },
+        {
+          "type": "bind",
+          "source": "C:/Users/danie/Documents2/sdd-comparative-study/Shift-Bank/Etapa 3/Spec Kit/.sb-h810-967924cae6-v6rgv6n4/certs",
+          "target": "/etc/nginx/certs",
+          "read_only": true,
+          "bind": {}
+        }
+      ],
+      "build": {
+        "context": "C:\\Users\\danie\\Documents2\\sdd-comparative-study\\Shift-Bank\\Etapa 3\\Spec Kit",
+        "dockerfile": "deployment/Dockerfile.frontend"
+      },
+      "depends_on": {
+        "backend": {
+          "condition": "service_healthy",
+          "required": true
+        }
+      },
+      "healthcheck": {
+        "test": [
+          "CMD-SHELL",
+          "wget -q --spider --no-check-certificate https://127.0.0.1/api/health || exit 1"
+        ],
+        "timeout": "3s",
+        "interval": "5s",
+        "retries": 5,
+        "start_period": "5s"
+      },
+      "ports": [
+        {
+          "mode": "ingress",
+          "target": 80,
+          "published": "18080",
+          "protocol": "tcp"
+        },
+        {
+          "mode": "ingress",
+          "target": 443,
+          "published": "18443",
+          "protocol": "tcp"
+        }
+      ]
+    }
+  },
+  "volumes": {
+    "h810_data": {
+      "name": "sb-h810-967924cae6_data"
+    }
+  }
+}

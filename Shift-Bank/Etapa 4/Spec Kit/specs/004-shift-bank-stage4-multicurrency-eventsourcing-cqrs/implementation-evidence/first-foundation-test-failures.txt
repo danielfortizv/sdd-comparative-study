@@ -1,0 +1,6 @@
+Command: python -m pytest tests/test_stage4_migration.py tests/test_stage4_events.py tests/test_stage4_currency.py tests/test_stage4_concurrency.py -q --basetemp='..\\.stage4-pytest-tmp'
+Outcome: 7 passed, 3 failed.
+Findings:
+1. Fresh baseline has two seeded transfer history events, so event count is 8 (2 opening snapshots + 4 reference accounts + 2 legacy imports), not 7. Adjust the test expectation only.
+2. `Fraction(8,10)` normalizes to 4/5. The contract requires preserving the stated rational table numerator/denominator in responses/events; retain raw pair constants separately from exact Fraction arithmetic.
+3. `from_minor(1230)` returned numerically exact Decimal('12.3'); formatter should preserve the canonical two-decimal representation. Quantize to cents.

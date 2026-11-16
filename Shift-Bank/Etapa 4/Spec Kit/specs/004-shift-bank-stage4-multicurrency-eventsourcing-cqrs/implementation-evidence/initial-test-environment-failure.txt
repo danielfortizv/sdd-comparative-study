@@ -1,0 +1,5 @@
+Command: python -m pytest tests/test_stage4_migration.py -q
+Working directory: Shift-Bank/Etapa 4/Spec Kit/backend
+Outcome: 3 setup errors; 0 tests executed.
+Cause: pytest attempted to create C:\Users\danie\AppData\Local\Temp\pytest-of-danie and the workspace sandbox denied it with PermissionError [WinError 5].
+Correction: subsequent focused runs set pytest --basetemp to a uniquely named disposable directory under this authorized E4 workspace. This was an environment setup failure, not an application test failure.
