@@ -1,0 +1,167 @@
+{
+    "component":  {
+                      "key":  "Shift-Bank---Stage-4---Kiro",
+                      "name":  "Shift Bank Etapa 4 (Kiro)",
+                      "qualifier":  "TRK",
+                      "measures":  [
+                                       {
+                                           "metric":  "duplicated_lines_density",
+                                           "value":  "0.0",
+                                           "bestValue":  true
+                                       },
+                                       {
+                                           "metric":  "duplicated_lines",
+                                           "value":  "0",
+                                           "bestValue":  true
+                                       },
+                                       {
+                                           "metric":  "software_quality_security_rating",
+                                           "value":  "1.0",
+                                           "bestValue":  true
+                                       },
+                                       {
+                                           "metric":  "new_vulnerabilities",
+                                           "period":  {
+                                                          "index":  1,
+                                                          "value":  "0",
+                                                          "bestValue":  true
+                                                      }
+                                       },
+                                       {
+                                           "metric":  "new_coverage",
+                                           "period":  {
+                                                          "index":  1,
+                                                          "value":  "10.5",
+                                                          "bestValue":  false
+                                                      }
+                                       },
+                                       {
+                                           "metric":  "software_quality_maintainability_remediation_effort",
+                                           "value":  "728",
+                                           "bestValue":  false
+                                       },
+                                       {
+                                           "metric":  "sqale_index",
+                                           "value":  "768",
+                                           "bestValue":  false
+                                       },
+                                       {
+                                           "metric":  "sqale_rating",
+                                           "value":  "1.0",
+                                           "bestValue":  true
+                                       },
+                                       {
+                                           "metric":  "bugs",
+                                           "value":  "0",
+                                           "bestValue":  true
+                                       },
+                                       {
+                                           "metric":  "lines_to_cover",
+                                           "value":  "4437"
+                                       },
+                                       {
+                                           "metric":  "branch_coverage",
+                                           "value":  "50.8",
+                                           "bestValue":  false
+                                       },
+                                       {
+                                           "metric":  "new_violations",
+                                           "period":  {
+                                                          "index":  1,
+                                                          "value":  "0",
+                                                          "bestValue":  true
+                                                      }
+                                       },
+                                       {
+                                           "metric":  "ncloc",
+                                           "value":  "6261"
+                                       },
+                                       {
+                                           "metric":  "reliability_remediation_effort",
+                                           "value":  "0",
+                                           "bestValue":  true
+                                       },
+                                       {
+                                           "metric":  "software_quality_reliability_rating",
+                                           "value":  "3.0",
+                                           "bestValue":  false
+                                       },
+                                       {
+                                           "metric":  "line_coverage",
+                                           "value":  "49.6",
+                                           "bestValue":  false
+                                       },
+                                       {
+                                           "metric":  "coverage",
+                                           "value":  "49.6",
+                                           "bestValue":  false
+                                       },
+                                       {
+                                           "metric":  "reliability_rating",
+                                           "value":  "1.0",
+                                           "bestValue":  true
+                                       },
+                                       {
+                                           "metric":  "code_smells",
+                                           "value":  "158",
+                                           "bestValue":  false
+                                       },
+                                       {
+                                           "metric":  "security_rating",
+                                           "value":  "1.0",
+                                           "bestValue":  true
+                                       },
+                                       {
+                                           "metric":  "violations",
+                                           "value":  "158",
+                                           "bestValue":  false
+                                       },
+                                       {
+                                           "metric":  "software_quality_reliability_remediation_effort",
+                                           "value":  "55",
+                                           "bestValue":  false
+                                       },
+                                       {
+                                           "metric":  "sqale_debt_ratio",
+                                           "value":  "0.4",
+                                           "bestValue":  false
+                                       },
+                                       {
+                                           "metric":  "security_hotspots",
+                                           "value":  "0",
+                                           "bestValue":  true
+                                       },
+                                       {
+                                           "metric":  "new_bugs",
+                                           "period":  {
+                                                          "index":  1,
+                                                          "value":  "0",
+                                                          "bestValue":  true
+                                                      }
+                                       },
+                                       {
+                                           "metric":  "new_code_smells",
+                                           "period":  {
+                                                          "index":  1,
+                                                          "value":  "0",
+                                                          "bestValue":  true
+                                                      }
+                                       },
+                                       {
+                                           "metric":  "uncovered_lines",
+                                           "value":  "2236",
+                                           "bestValue":  false
+                                       },
+                                       {
+                                           "metric":  "vulnerabilities",
+                                           "value":  "0",
+                                           "bestValue":  true
+                                       },
+                                       {
+                                           "metric":  "software_quality_maintainability_rating",
+                                           "value":  "1.0",
+                                           "bestValue":  true
+                                       }
+                                   ]
+                  }
+}

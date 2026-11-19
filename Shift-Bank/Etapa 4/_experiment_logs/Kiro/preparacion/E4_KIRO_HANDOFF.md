@@ -1,33 +1,46 @@
 # E4 Kiro handoff — preparation only
 
-## Objective and scope
+## Objective and inherited workspace
 
-Stage 4 Option A is to evolve Kiro's own completed Stage 3 Shift Bank implementation toward multicurrency accounts, simulated FX, Event Sourcing and CQRS. Kiro must perform discovery, author its native Specs, make architecture decisions through the approved workflow, and implement only after the required researcher gates. This handoff is experimental context, not `requirements.md` or `design.md`.
+Stage 4 Option A evolves Kiro's own completed Stage 3 Shift Bank toward multicurrency accounts, simulated FX, Event Sourcing and CQRS. Prepared copy: `Etapa 4/Kiro`; source: `Etapa 3/Kiro`. FastAPI backend/tests: `backend/app/`, `backend/tests/`; React/TypeScript and Vitest: `frontend/src/`; load scripts: `loadtest/`; deployment: root `docker-compose.yml`, `backend/Dockerfile`, `frontend/Dockerfile`, `frontend/nginx.conf`. Kiro specs: `.kiro/specs/shift-bank`, `shift-bank-stage2`, `shift-bank-stage3`.
 
-## Inherited workspace
+Inherited safeguards include decimal/cents money arithmetic, atomic transfers, mock MFA and transfer limits, ACH/recurring controls, encrypted sensitive snapshots, append-only HMAC audit records and idempotent migrations. The DB defaults to `backend/app/shift_bank.db`; the inherited tests isolate SQLite per test. `SHIFT_AUDIT_HMAC_KEY` supplies the audit secret; encryption keys are external environment configuration.
 
-Prepared copy: `Etapa 4/Kiro`; source: `Etapa 3/Kiro`. Backend is `backend/app/` (FastAPI, SQLite, encryption, audit, ACH, recurring, transfer limits); tests are `backend/tests/`. React/TypeScript frontend and Vitest tests are in `frontend/src/`. Load scripts are in `loadtest/`. Deployment assets are root `docker-compose.yml`, `backend/Dockerfile`, `frontend/Dockerfile`, and `frontend/nginx.conf`. Kiro's inherited specs are in `.kiro/specs/shift-bank`, `shift-bank-stage2`, and `shift-bank-stage3`.
+## Verified seed and D-01–D-14 guide decisions
 
-Inherited invariants include decimal money handling, atomic transfers, mocked MFA and configured limits; encrypted beneficiary and ACH snapshots; append-only HMAC audit records; migration idempotence; recurring/ACH safeguards; no sensitive plaintext in API responses. DB default is `backend/app/shift_bank.db`, overridden by config/environment/test monkeypatches. Audit HMAC key variable is `SHIFT_AUDIT_HMAC_KEY`; encryption keys are external configuration.
+Canonical experiment seed: `Etapa 4/SEED-4.md`; unchanged evidence copy: `Etapa 4/_experiment_logs/Kiro/preparacion/SEED-4.md`; SHA-256 `8d7e32d3cb359b3d1c442b0f71d83dfd6bde5eb31e9af62d74581d47f0fd3047`. Its text matches the complete Annex A block extracted from the official guide. Guide, seed and summary exact paths/hashes are recorded in `source-verification.md`.
 
-## Seed and decision references
+The official guide decision table and supplied summary agree on these contracts (the summary is not the original approval transcript):
 
-Expected common seed location is a researcher-owned shared location outside native Kiro Specs. **Canonical seed is currently unavailable**: the only local `SEED-4.md` is an extracted appendix packet, and its own README states the standalone master was not supplied. Its extracted SHA-256 is `8d7e32d3cb359b3d1c442b0f71d83dfd6bde5eb31e9af62d74581d47f0fd3047`; this is not verified as the canonical original. The official replication guide was also not found. Do not proceed to specification authoring until the researcher supplies/verifies both.
+- **D-01:** One fixed currency per account: USD, EUR or GBP; never mix currencies in one balance.
+- **D-02:** Preserve CHK-1001 USD 2,500.00 and SAV-2001 USD 10,000.00; add EUR-3001 and GBP-4001 at 0.00.
+- **D-03:** Backend Decimal; frontend BigInt/minor units; two-decimal strings; exact rational FX rates; HALF_UP once at the end; no fees or financial floating point.
+- **D-04:** Internal transfers only within one currency; cross-currency flows only through `/api/conversions`.
+- **D-05:** Durable append-only SQLite domain events separate from legacy audit; migration without double counting.
+- **D-06:** CQRS projections update synchronously and atomically with events; deterministic rebuild; fail closed on inconsistency.
+- **D-07:** USD-equivalent limits 5,000.00 per operation and 10,000.00 daily; MFA only when unrounded USD equivalent is strictly greater than 1,000.00.
+- **D-08:** ACH originates only in USD; recurring internal transfers stay same-currency; recurring ACH is USD-only.
+- **D-09:** Composite events; account version increments once per affected account; ACH debit at pending, no second debit at settlement, one refund on failure.
+- **D-10:** Dashboard totals remain separated by currency; estimated USD is presentation-only.
+- **D-11:** AES-GCM encryption, HMAC-chained audit, atomic event/projection/audit/idempotency effects, auditable failures.
+- **D-12:** Preserve FastAPI, React, SQLite and Compose/Nginx/TLS deployment capability; do not claim unobserved deployment verification.
+- **D-13:** UUID `Idempotency-Key` required for internal transfer, FX and ACH; exact replay has no new effects; changed payload with reused key returns 409.
+- **D-14:** Expected account versions required; stale request returns 409 `ACCOUNT_VERSION_CONFLICT`; idempotency replay is checked before version validation.
 
-The local D-01–D-14 sheet is explicitly a **summary**, not the full approval record. It describes: D-01 fixed USD/EUR/GBP per account; D-02 reference USD checking/savings plus zero EUR/GBP accounts; D-03 Decimal/BigInt minor units, exact rational rates and one final HALF_UP rounding; D-04 same-currency internal transfers, FX via conversion; D-05 durable append-only domain events separate from audit; D-06 synchronous atomic CQRS projections and deterministic fail-closed replay; D-07 USD-equivalent limits and strict greater-than MFA threshold; D-08 USD-only ACH and same-currency recurring internal transfers; D-09 composite event/version/ACH debit/refund rules; D-10 currency-separated dashboard totals; D-11 AES-GCM/HMAC/atomicity; D-12 preserve FastAPI/React/SQLite/Docker-Nginx-TLS; D-13 UUID idempotency semantics; D-14 mandatory account versions and stale-version conflict semantics. These are provisional summaries only, not approved exact contracts.
+## Mandatory inherited-data conflict
 
-The packet also identifies an unresolved baseline conflict: historical decisions presume USD values/IDs while inherited Stage 3 may use different values and thresholds. Kiro should inventory actual Stage 3 behavior and report the conflict for researcher resolution; it must not convert balances or infer a reconciliation.
+Kiro Stage 3 seeds checking at **COP 5,000,000.00** and savings at **COP 15,000,000.00** (`backend/app/seed.py`, integer cents; no account currency column). Its requirements identify COP and MFA at/above COP 1,000,000.00. D-02 instead requires USD reference accounts with different IDs and values. This is an unresolved COP/USD and account-identity migration conflict. Do not convert, reinterpret, overwrite or migrate monetary data until the researcher explicitly approves a reconciliation.
 
-## Kiro workflow and gates
+## Baselines, limitations and D1
 
-Begin with read-only discovery. Do not create or approve Stage 4 native Specs, change code, migrate data, or run functional tests until the researcher verifies the canonical seed and decision records and approves the discovery/requirements plan. Use Kiro's native Specs workflow, keep requirements/design/tasks in Kiro's native locations once authorized, and pause for explicit review at each specification and implementation approval gate. Keep the reference packet outside native Specs.
+Observed inherited baseline: backend **372 passed, 1 warning**; Vitest **3 passed**; production build **passed**. Commands, outputs, timestamps, exit codes and versions are in the preparation evidence folder. Source/copy SHA comparison: 117/117 matches; no Stage 3 source hash changed. Stage 3 SonarQube POST retains one unresolved/new `typescript:S8786` finding and a failed new-code Quality Gate; preserve it as inherited evidence. No Stage 4 functional tests, migrations, scans or benchmarks were run.
 
-## Baseline and inherited limitations
+PRE-KIRO D1 snapshot (researcher supplied, 2026-11-18 America/Bogota): **Kiro Student**, 898.98/1000 credits used, **101.02 remaining**, reset displayed 2026-12-01. This is a starting snapshot, not Stage 4 consumption. The screenshot was supplied by the researcher; no local image copy is claimed. Future sessions, exports, actual messages, tool calls, timestamps and credit deltas belong under `preparacion/D1/`.
 
-Stage 3's final report records backend 372 passed, Vitest 3 passed, frontend build exit 0, and Docker/HTTPS validations passing. These are historical Stage 3 results, not Stage 4 baseline runs. Preparation did not run pytest, Vitest or build because a safe disposable external secrets setup was not established. Evidence/status: `Etapa 4/_experiment_logs/Kiro/preparacion/E4_KIRO_PREPARATION_STATUS.md`; copy hash list: `stage4_kiro_source_manifest.csv` in the same directory.
+## Kiro workflow and approval gates
 
-Inherited SonarQube POST limitation: one unresolved/new `typescript:S8786` finding and new-code Quality Gate ERROR. Preserve this observation without correction. The inherited scanner config references the Stage 3 project; never use it to submit Stage 4 analysis.
+Begin with read-only discovery. Do not create Stage 4 `requirements.md`, `design.md` or `tasks.md`, edit code/tests, migrate data, or run functional tests during discovery. Kiro must use its native Specs workflow after discovery and only after researcher approval; pause for approval at specification and separate implementation gates. Keep this handoff and measurement evidence outside native Specs.
 
-## First Kiro prompt (discovery only)
+## Exact initial Kiro prompt — read-only discovery
 
-“Perform read-only Stage 4 discovery for Shift Bank Option A from this inherited Kiro Stage 3 workspace. Do not create or edit requirements.md, design.md, tasks.md, application code, tests, or migrations. First inventory the actual accounts, currencies/balances, limits, MFA, ACH, recurring, encryption, audit, migration, deployment, and test contracts with file references. Identify conflicts between inherited behavior and the provided Stage 4 decision summaries. The canonical common SEED-4.md and official replication guide are not yet verified; do not treat the local extracted packet or decision summaries as authoritative. Report the missing inputs and stop before proposing or approving specifications.”
+“Read the Stage 4 seed and D-01–D-14 decision summary, then inspect only this Kiro Stage 3 implementation. Perform read-only discovery: inventory actual accounts, seeded balances/currency, limits, MFA, ACH, recurring payments, encryption, audit, migrations, deployment and regression contracts with file references. Explicitly flag the COP Stage 3 balances and account identity versus D-02's USD accounts as a researcher decision; do not convert or change data. Do not create or edit Specs, code, tests or migrations, and do not run tests. Return findings and questions only, then stop for researcher review.”

@@ -239,6 +239,46 @@ def setup_loadtest_db(db_path: Path | None = None) -> Path:
     return resolved
 
 
+# --- Etapa 4: aislamiento con la fixture multidivisa D-02 (Tarea 24) ----------
+
+def seed_synthetic_db_stage4(db_path: Path) -> None:
+    """Inicializa y siembra la DB sintética con la fixture D-02 de la Etapa 4 (DK-01).
+
+    Reutiliza `init_schema → migrate → seed_stage4 → seed_limits` y luego ajusta saldos
+    amplios en las cuentas USD y límites amplios para que la carga multidivisa (conversiones
+    e internas pequeñas) no agote fondos ni dispare límites por diseño. No toca la Etapa 3.
+    """
+    random.seed(LOADTEST_RANDOM_SEED)
+    import app.db as db
+    import app.seed as seed
+
+    conn = db.get_connection(db_path)
+    try:
+        db.init_schema(conn)
+        db.migrate(conn)
+        seed.seed_stage4(conn)
+        seed.seed_limits(conn)
+        # Saldos amplios en las cuentas USD para sostener 60 s de operaciones pequeñas.
+        conn.execute("UPDATE account SET balance_cents = ? WHERE currency = 'USD'",
+                     (LOADTEST_CHECKING_BALANCE_CENTS,))
+        # Fondos iniciales amplios también en EUR/GBP para conversiones de ida y vuelta.
+        conn.execute("UPDATE account SET balance_cents = ? WHERE currency IN ('EUR','GBP')",
+                     (LOADTEST_CHECKING_BALANCE_CENTS,))
+        _apply_loadtest_values(conn)
+        conn.commit()
+    finally:
+        conn.close()
+
+
+def setup_loadtest_db_stage4(db_path: Path | None = None) -> Path:
+    """Aísla + siembra la fixture D-02 de la Etapa 4. Fija `SHIFT_SEED_MODE=stage4` para el
+    uvicorn hijo (coherencia con la app real) y devuelve la `DB_PATH` resuelta."""
+    resolved = configure_isolation(db_path)
+    os.environ["SHIFT_SEED_MODE"] = "stage4"
+    seed_synthetic_db_stage4(resolved)
+    return resolved
+
+
 def _read_balances(db_path: Path) -> dict[str, int]:
     """Lee los saldos sembrados (centavos) para la verificación de sanity."""
     conn = sqlite3.connect(str(db_path))

@@ -11,9 +11,20 @@ from fastapi.middleware.cors import CORSMiddleware
 
 from . import config
 from .db import get_connection, init_schema, migrate, migrate_encryption
-from .routers import accounts, ach, audit, beneficiaries, limits, recurring, transfers
+from .routers import (
+    accounts,
+    ach,
+    audit,
+    beneficiaries,
+    conversions,
+    limits,
+    recurring,
+    transfers,
+)
 from .scheduler import Scheduler
-from .seed import seed, seed_limits
+import os
+
+from .seed import seed, seed_limits, seed_stage4
 
 
 def _initialize_database() -> None:
@@ -25,10 +36,20 @@ def _initialize_database() -> None:
     conn = get_connection()
     try:
         init_schema(conn)
-        migrate(conn)              # Etapa 2 (Tarea 7/8): evolución aditiva, idempotente, transaccional.
+        migrate(conn)              # Etapa 2/3/4: evolución aditiva, idempotente, transaccional.
         migrate_encryption(conn)   # Etapa 3 (Tarea 8): cifra en reposo registros heredados; idempotente/transaccional.
-        seed(conn)                 # Etapa 1: cliente, cuentas, históricas (idempotente).
-        seed_limits(conn)      # Etapa 2 (Tarea 11): límites por defecto (idempotente).
+        # Etapa 4 (Tarea 6, DK-01): fixture experimental D-02 (reset controlado, NO conversión
+        # COP->USD). Es el estado inicial de la aplicación de la Etapa 4. La siembra COP heredada
+        # (`seed`) se conserva para preservar el BASELINE de regresión heredado (AC4-20): el arnés
+        # de pruebas heredado puede seleccionarla con `SHIFT_SEED_MODE=legacy` mientras la app real
+        # arranca con la fixture D-02 (modo por defecto). Esto mantiene verde la regresión heredada
+        # como baseline preservado y migra las pruebas al modelo multidivisa de forma deliberada en
+        # las tareas de puertos currency-aware (13–15), en lugar de romperlas en bloque.
+        if os.environ.get("SHIFT_SEED_MODE") == "legacy":
+            seed(conn)             # Etapa 1 (baseline heredado para el arnés de regresión).
+        else:
+            seed_stage4(conn)      # Etapa 4: cuentas D-02 + ACCOUNT_OPENED + proyección (idempotente).
+        seed_limits(conn)          # Etapa 2 (Tarea 11): límites por defecto (idempotente).
     finally:
         conn.close()
 
@@ -76,5 +97,7 @@ app.include_router(limits.router)
 app.include_router(beneficiaries.router)
 app.include_router(ach.router)
 app.include_router(recurring.router)
+# Etapa 4 (Tarea 12/13): conversiones FX y transferencias internas multidivisa (v2).
+app.include_router(conversions.router)
 # Etapa 3 (Tarea 15): verificación de auditoría protegida por SHIFT_ADMIN_TOKEN (§2.5/§2.6).
 app.include_router(audit.router)

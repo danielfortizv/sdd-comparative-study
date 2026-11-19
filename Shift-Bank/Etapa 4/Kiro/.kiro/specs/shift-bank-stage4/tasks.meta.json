@@ -1,0 +1,290 @@
+{
+  "pbtResults": {},
+  "executionHistory": {
+    "1. (auto) (verificación) Capturar la regresión heredada verde de partida": [
+      {
+        "executionId": "e4-stage4-m0-baseline",
+        "chatSessionId": "sess_1ff6a378-9e70-41c4-88b1-a77db18ef81f",
+        "timestamp": 1763526293000,
+        "result": "backend 372 passed exit 0; vitest 3 passed exit 0; build 41 modules exit 0"
+      }
+    ],
+    "2. (auto) Registrar el baseline de medición D1 del NUEVO account": [
+      {
+        "executionId": "e4-stage4-m0-baseline",
+        "chatSessionId": "sess_1ff6a378-9e70-41c4-88b1-a77db18ef81f",
+        "timestamp": 1763526293000,
+        "result": "D1 snapshot recorded: new account 30.24/969.76; 898.98 marked historical"
+      }
+    ],
+    "3. (auto) Preparar la captura de evidencia experimental de la Etapa 4": [
+      {
+        "executionId": "e4-stage4-m0-baseline",
+        "chatSessionId": "sess_1ff6a378-9e70-41c4-88b1-a77db18ef81f",
+        "timestamp": 1763526293000,
+        "result": "_experiment_logs/Kiro/E4 structure created with timestamped artifacts"
+      }
+    ],
+    "5. (auto) Migración de esquema aditiva: account (currency/public_id/version) + índices": [
+      {
+        "executionId": "e4-stage4-m1-schema",
+        "chatSessionId": "sess_1ff6a378-9e70-41c4-88b1-a77db18ef81f",
+        "timestamp": 1763527800000,
+        "result": "db.migrate extendido; 7 tests schema4 passed; migration suites 25 passed; full 390 passed exit 0"
+      }
+    ],
+    "6. (auto) Fixture experimental de la Etapa 4 (seed D-02) sin tocar la Etapa 3": [
+      {
+        "executionId": "e4-stage4-m1-fixture",
+        "chatSessionId": "sess_1ff6a378-9e70-41c4-88b1-a77db18ef81f",
+        "timestamp": 1763528400000,
+        "result": "seed_stage4 D-02 fixture (dual-seed Path A); 4 fixture tests passed; full 394 passed exit 0"
+      }
+    ],
+    "7. (auto) Motor FX exacto (app/fx.py) con tasas racionales fijas y ROUND_HALF_UP": [
+      {
+        "executionId": "e4-stage4-m1-fx",
+        "chatSessionId": "sess_1ff6a378-9e70-41c4-88b1-a77db18ef81f",
+        "timestamp": 1763527200000,
+        "result": "fx.py + guide rate matrix (USD/EUR 9/10, USD/GBP 8/10, cross EUR/GBP 8/9); 11 FX tests passed"
+      }
+    ],
+    "8. (auto) Almacén de eventos de dominio (domain_event) append-only, separado de auditoría": [
+      {
+        "executionId": "e4-stage4-m2-events",
+        "chatSessionId": "sess_1ff6a378-9e70-41c4-88b1-a77db18ef81f",
+        "timestamp": 1763530800000,
+        "result": "app/events.py; 4 event-store tests passed (append-only, version-unique, composite op, separate from audit_log)"
+      }
+    ],
+    "9. (auto) Proyecciones CQRS (account_projection) y reconstrucción determinista": [
+      {
+        "executionId": "e4-stage4-m2-projections",
+        "chatSessionId": "sess_1ff6a378-9e70-41c4-88b1-a77db18ef81f",
+        "timestamp": 1763531400000,
+        "result": "app/projections.py; 4 projection tests passed (sync update, deterministic rebuild, fail-closed consistency check)"
+      }
+    ],
+    "10. (auto) Patrón de comando atómico (app/command.py): evento+proyección+auditoría+versión": [
+      {
+        "executionId": "e4-stage4-m2-command",
+        "chatSessionId": "sess_1ff6a378-9e70-41c4-88b1-a77db18ef81f",
+        "timestamp": 1763532000000,
+        "result": "app/command.py; 3 atomicity tests passed (version+1 per account, injected-failure full rollback, unknown account no effects); full 405 passed exit 0"
+      }
+    ],
+    "11. (auto) Idempotencia (idempotency_key) y versión optimista en el patrón de comando": [
+      {
+        "executionId": "e4-stage4-m3-idempotency",
+        "chatSessionId": "sess_1ff6a378-9e70-41c4-88b1-a77db18ef81f",
+        "timestamp": 1763535600000,
+        "result": "app/idempotency.py; 5 tests passed (uuid key, exact replay no new effects, payload-diff 409, stale version 409, replay-before-version DK-04); full 410 passed exit 0"
+      }
+    ],
+    "12. (auto) Conversión FX (conversion_service.py + routers/conversions.py)": [
+      {
+        "executionId": "e4-stage4-m4-conversions",
+        "chatSessionId": "sess_1ff6a378-9e70-41c4-88b1-a77db18ef81f",
+        "timestamp": 1763539200000,
+        "result": "POST /api/conversions composite event; 10 conversion-API tests passed on D-02 fixture (rate 9/10, 100 USD->90 EUR, idempotency replay/409, version 409, limit 409)"
+      }
+    ],
+    "13. (auto) Transferencias internas misma-moneda (service.py adaptado)": [
+      {
+        "executionId": "e4-stage4-m4-internal",
+        "chatSessionId": "sess_1ff6a378-9e70-41c4-88b1-a77db18ef81f",
+        "timestamp": 1763539200000,
+        "result": "POST /api/v2/transfers same-currency; cross-currency -> 422 CROSS_CURRENCY_NOT_ALLOWED; verified in test_conversion_api"
+      }
+    ],
+    "14. (auto) Límites y MFA en equivalente USD (limit_service.py adaptado)": [
+      {
+        "executionId": "e4-stage4-m4-limits-usd",
+        "chatSessionId": "sess_1ff6a378-9e70-41c4-88b1-a77db18ef81f",
+        "timestamp": 1763540000000,
+        "result": "limit_service USD funcs + fx.requires_mfa_usd; 4 USD-limit unit tests (fixed SQLite 1000_00 literal)"
+      },
+      {
+        "executionId": "e4-stage4-m6-mfa-enforcement",
+        "chatSessionId": "sess_1ff6a378-9e70-41c4-88b1-a77db18ef81f",
+        "timestamp": 1763548800000,
+        "result": "REOPENED: wired real MFA flow into v2 endpoints (v2_pending_mfa + /api/v2/mfa confirm); 6 MFA integration tests passed on D-02 (boundary 1000.00 no-MFA vs 1000.01 PENDING_MFA no balance move; confirm applies; wrong code 401)"
+      }
+    ],
+    "15. (auto) Restricciones de divisa para ACH y recurrentes (ach/recurring)": [
+      {
+        "executionId": "e4-stage4-m4-currency-guard",
+        "chatSessionId": "sess_1ff6a378-9e70-41c4-88b1-a77db18ef81f",
+        "timestamp": 1763540600000,
+        "result": "app/currency_guard.py unit tests (4 passed) — guard functions only, NOT yet invoked by services"
+      },
+      {
+        "executionId": "e4-stage4-m6-guard-integration",
+        "chatSessionId": "sess_1ff6a378-9e70-41c4-88b1-a77db18ef81f",
+        "timestamp": 1763549400000,
+        "result": "REOPENED: wired guards into ach_service.create_ach and recurring_service.create_schedule (ACH USD-only before _INTERNAL_KINDS); 6 integration tests passed; full 440 passed exit 0"
+      }
+    ],
+    "16. (auto) Adaptar tipos, cliente API y headers de comando en el frontend": [
+      {
+        "executionId": "e4-stage4-m5-frontend-client",
+        "chatSessionId": "sess_1ff6a378-9e70-41c4-88b1-a77db18ef81f",
+        "timestamp": 1763544000000,
+        "result": "stage4/currencyFormat.ts (string/bigint), stage4/apiV2.ts (Idempotency-Key UUID + Expected-Version); Vitest 14 passed (3 legacy + 11 stage4)"
+      }
+    ],
+    "17. (auto) Dashboard multidivisa y formulario de conversión (UI)": [
+      {
+        "executionId": "e4-stage4-m5-frontend-ui",
+        "chatSessionId": "sess_1ff6a378-9e70-41c4-88b1-a77db18ef81f",
+        "timestamp": 1763544600000,
+        "result": "MultiCurrencyDashboard + ConversionForm wired into App.tsx (Multidivisa tab); Vitest 14 passed; build 45 modules exit 0 (was 41)"
+      }
+    ],
+    "18. (auto) (verificación) Atomicidad compuesta y fail-closed end-to-end": [
+      {
+        "executionId": "e4-stage4-m6-verify",
+        "chatSessionId": "sess_1ff6a378-9e70-41c4-88b1-a77db18ef81f",
+        "timestamp": 1763550000000,
+        "result": "command atomicity + audit atomicity suites green (part of 48-test M6 verification batch)"
+      }
+    ],
+    "19. (auto) (verificación) Event Sourcing/CQRS: persistencia, replay y rebuild sin doble conteo": [
+      {
+        "executionId": "e4-stage4-m6-verify",
+        "chatSessionId": "sess_1ff6a378-9e70-41c4-88b1-a77db18ef81f",
+        "timestamp": 1763550000000,
+        "result": "event_store + projection + rebuild deterministic suites green"
+      }
+    ],
+    "20. (auto) (verificación) Concurrencia: idempotencia, versión y multiproceso SQLite": [
+      {
+        "executionId": "e4-stage4-m6-verify",
+        "chatSessionId": "sess_1ff6a378-9e70-41c4-88b1-a77db18ef81f",
+        "timestamp": 1763550000000,
+        "result": "test_stage4_concurrency (3 new: same-key one effect, distinct keys, projection consistent) + inherited test_concurrency_sqlite green"
+      }
+    ],
+    "21. (auto) (verificación) Fallo y recuperación: retry ACH, reembolso único, recovery tras reinicio": [
+      {
+        "executionId": "e4-stage4-m6-verify",
+        "chatSessionId": "sess_1ff6a378-9e70-41c4-88b1-a77db18ef81f",
+        "timestamp": 1763550000000,
+        "result": "inherited test_ach + test_scheduler green under Stage 4 code; 48-test batch passed exit 0"
+      }
+    ],
+    "22. (auto) (verificación) Regresión completa backend + frontend": [
+      {
+        "executionId": "e4-stage4-m6-regression",
+        "chatSessionId": "sess_1ff6a378-9e70-41c4-88b1-a77db18ef81f",
+        "timestamp": 1763551200000,
+        "result": "backend 444 passed exit 0; frontend Vitest 14 passed; build 45 modules exit 0"
+      }
+    ],
+    "23. (auto) Generación de cobertura (backend + frontend)": [
+      {
+        "executionId": "e4-stage4-m6-coverage",
+        "chatSessionId": "sess_1ff6a378-9e70-41c4-88b1-a77db18ef81f",
+        "timestamp": 1763551800000,
+        "result": "backend coverage.xml 94% TOTAL; frontend coverage/lcov.info via v8 (overall 7.24% — inherited React components untested, honest number)"
+      }
+    ],
+    "24. (auto) (verificación) Carga Locust con invariantes multidivisa": [
+      {
+        "executionId": "e4-stage4-m6-load",
+        "chatSessionId": "sess_1ff6a378-9e70-41c4-88b1-a77db18ef81f",
+        "timestamp": 1763552400000,
+        "result": "SUPPLEMENTARY: in-process invariant batch (40 ops) passed. NOT the live benchmark."
+      },
+      {
+        "executionId": "e4-stage4-m6b-load-live",
+        "chatSessionId": "sess_1ff6a378-9e70-41c4-88b1-a77db18ef81f",
+        "timestamp": 1763556000000,
+        "result": "LIVE Locust 30u/5s/60s vs uvicorn+D-02 fixture: 8409 requests, 0 failures; p95 reads 53/61ms (<200), p95 ops 73/71ms (<500); dist ~60/30/10. Post-load verify_all invariants_ok=True + audit_chain_ok=True. PASS. Evidence: carga/LOAD-SUMMARY.md + results_stage4/locust_run_*_stats.csv"
+      }
+    ],
+    "26. (auto) Preparar sonar-project.properties de la Etapa 4 (proyecto key separado)": [
+      {
+        "executionId": "e4-stage4-m7-sonar-config",
+        "chatSessionId": "sess_1ff6a378-9e70-41c4-88b1-a77db18ef81f",
+        "timestamp": 1763553000000,
+        "result": "sonar-project-stage4.properties with projectKey=Shift-Bank---Stage-4---Kiro (NOT Stage 3); coverage paths backend/coverage.xml + frontend/coverage/lcov.info both present"
+      }
+    ],
+    "27. (auto) Escaneo SonarQube PRE de la Etapa 4 (exportación/verificación de evidencia)": [
+      {
+        "executionId": "e4-stage4-m7-sonar-pre",
+        "chatSessionId": "sess_1ff6a378-9e70-41c4-88b1-a77db18ef81f",
+        "timestamp": 1763560000000,
+        "result": "PRE evidence verified (researcher-run scan): CE task c69bea55 status=SUCCESS, analysisId=cd37bcc9; QualityGate=OK (no conditions, CAYC compliant); 162 unresolved issues (161 CODE_SMELL + 1 VULNERABILITY typescript:S2245 apiV2.ts:47 Math.random), 0 resolved; coverage 49.7% (branch 51.7%) with backend coverage.xml + frontend lcov.info imported (confirmed in scanner.log); pagination 162==162 single page. Raw JSON under _experiment_logs/Kiro/E4/sonarqube/. No scan or code change performed by the agent."
+      }
+    ],
+    "28. (GATE INVESTIGADOR) Revisión del PRE-scan antes de la fase correctiva": [
+      {
+        "executionId": "e4-stage4-m7-sonar-pre-gate",
+        "chatSessionId": "sess_1ff6a378-9e70-41c4-88b1-a77db18ef81f",
+        "timestamp": 1763561000000,
+        "result": "APPROVED by researcher: PRE analysisId cd37bcc9, QG OK, 162 issues (0 bug/1 vuln/161 smell), coverage 49.7%, debt 783min. Original PRE evidence preserved. Authorizes one bounded corrective pass (T29)."
+      }
+    ],
+    "29. (auto) Correcciones dirigidas por SonarQube (sin cambiar comportamiento aprobado)": [
+      {
+        "executionId": "e4-stage4-m7-sonar-fix",
+        "chatSessionId": "sess_1ff6a378-9e70-41c4-88b1-a77db18ef81f",
+        "timestamp": 1763562000000,
+        "result": "Bounded pass: FIXED typescript:S2245 (apiV2.ts newIdempotencyKey -> crypto.randomUUID/getRandomValues, fail-safe, no Math.random; UUID v4 + idempotency contract preserved); FIXED typescript:S6759 on the 2 Stage4 components (Readonly<Props>), left 8 inherited components untouched. DELIBERATELY NOT edited python:S9073/S5778/S9083 (124 findings, 100% in test files, 0 in app/ — avoided test-churn anti-pattern, preserved regression baseline + Stage 3). No exclusions/QG/scope/coverage manipulation. Vitest 14 passed; build 45 modules exit 0; backend 444 passed exit 0; coverage regenerated same scope (backend coverage.xml + frontend lcov.info). Record: _experiment_logs/Kiro/E4/sonarqube/T29_CORRECTIVE_RECORD.md"
+      }
+    ],
+    "30. (GATE INVESTIGADOR) (verificación) Escaneo final de SonarQube (mismo alcance/cobertura)": [
+      {
+        "executionId": "e4-stage4-m7-sonar-post-gate",
+        "chatSessionId": "sess_1ff6a378-9e70-41c4-88b1-a77db18ef81f",
+        "timestamp": 1763565000000,
+        "result": "APPROVED by researcher. POST verified: CE task 171f9bef status=SUCCESS, analysisId=bb7434e4-29e5-424e-8799-8f2c8b1cc936, scanner exit 0; QualityGate OK (new_violations=0). Config byte-identical to PRE. PRE->POST: issues 162->158, vulnerabilities 1->0, code_smells 161->158, security MQR C->A, reliability MQR D->C, debt 783->768min, coverage 49.7->49.6% (same scope/method), duplication 0->0. By issue-key: 4 resolved (S2245+S7767 apiV2.ts:47, 2x S6759 Stage4 components), 0 introduced. typescript:S2245 CLOSED/FIXED confirmed. Raw PRE+POST evidence preserved."
+      }
+    ],
+    "31. (auto) Consolidar la evidencia experimental final y el reporte de la Etapa 4": [
+      {
+        "executionId": "e4-stage4-m7-final",
+        "chatSessionId": "sess_1ff6a378-9e70-41c4-88b1-a77db18ef81f",
+        "timestamp": 1763566000000,
+        "result": "Final docs produced under _experiment_logs/Kiro/E4/: E4_KIRO_FINAL_REPORT.md, E4_KIRO_METRICS_SUMMARY.md, E4_KIRO_EVIDENCE_INDEX.md, E4_KIRO_LIMITATIONS.md + E4_Iteracion_11.md. 31/31 tasks. D1 usage deltas N/D (only researcher PRE snapshot 30.24/969.76 on disk; no session-usage export). PowerShell POST export summary error recorded as non-scanner incident (scan SUCCESS)."
+      }
+    ],
+    "25. (auto) (verificación) Validación de despliegue local (Compose/Nginx/TLS)": [
+      {
+        "executionId": "e4-stage4-m6-deploy",
+        "chatSessionId": "sess_1ff6a378-9e70-41c4-88b1-a77db18ef81f",
+        "timestamp": 1763552700000,
+        "result": "PARTIAL (superseded): only docker compose config exit 0; full cycle not yet run."
+      },
+      {
+        "executionId": "e4-stage4-m6b-deploy-live",
+        "chatSessionId": "sess_1ff6a378-9e70-41c4-88b1-a77db18ef81f",
+        "timestamp": 1763556600000,
+        "result": "LIVE PASS: build+up exit 0, backend+nginx healthy; HTTPS /api/v2/accounts 200 (D-02 fixture); HTTP->HTTPS 301; multicurrency conversion over HTTPS 200 (9/10, 100USD->90EUR); persistence across restart (CHK 2400/v2, EUR 90/v2); audit verify {ok:true}; fail-closed with blank keys (backend stuck Restarting, ConfigError). Teardown down -v, .env+certs removed, workspace clean. Evidence: despliegue/DEPLOYMENT-VALIDATION.md"
+      }
+    ]
+  },
+  "waves": [
+    { "wave": 0, "milestone": "M0", "tasks": [1, 2, 3], "depends_on": [] },
+    { "wave": 1, "milestone": "M0", "tasks": [4], "gate": true, "depends_on": [0] },
+    { "wave": 2, "milestone": "M1", "tasks": [5, 6, 7], "depends_on": [1] },
+    { "wave": 3, "milestone": "M2", "tasks": [8, 9, 10], "depends_on": [2] },
+    { "wave": 4, "milestone": "M3", "tasks": [11], "depends_on": [3] },
+    { "wave": 5, "milestone": "M4", "tasks": [12, 13, 14, 15], "depends_on": [4] },
+    { "wave": 6, "milestone": "M5", "tasks": [16, 17], "depends_on": [5] },
+    { "wave": 7, "milestone": "M6", "tasks": [18, 19, 20, 21], "depends_on": [5] },
+    { "wave": 8, "milestone": "M6", "tasks": [22, 23, 24, 25], "depends_on": [6, 7] },
+    { "wave": 9, "milestone": "M7", "tasks": [26, 27], "depends_on": [8] },
+    { "wave": 10, "milestone": "M7", "tasks": [28], "gate": true, "depends_on": [9] },
+    { "wave": 11, "milestone": "M7", "tasks": [29], "depends_on": [10] },
+    { "wave": 12, "milestone": "M7", "tasks": [30], "gate": true, "depends_on": [11] },
+    { "wave": 13, "milestone": "M7", "tasks": [31], "depends_on": [12] }
+  ],
+  "gates": {
+    "4": "G-SPEC aprobacion de los tres Specs antes de implementar",
+    "28": "G-SONAR-PRE revision del PRE-scan antes de la fase correctiva",
+    "30": "G-SONAR-FINAL escaneo final comparable 1:1 con el PRE"
+  }
+}

@@ -205,6 +205,104 @@ _STAGE3_AUDIT_TRIGGERS: list[str] = [
 ]
 
 
+# --- DDL de la Etapa 4 (multidivisa, Event Sourcing, CQRS, idempotencia) ------
+#
+# design.md §1.1–§1.4. Evolución ADITIVA, idempotente y transaccional sobre el esquema heredado,
+# dentro de la MISMA transacción explícita de `migrate` (sin `executescript`, F11). No se elimina
+# ninguna tabla/columna heredada.
+
+# §1.1 — columnas nuevas de `account` (currency/public_id/version) para el modelo multidivisa y la
+# concurrencia optimista (D-01/D-02/D-09/D-14, DK-02). `currency` lleva DEFAULT 'USD' NOT NULL
+# para clasificar las filas heredadas sin backfill destructivo; `version` arranca en 0.
+_STAGE4_ACCOUNT_COLUMNS: list[tuple[str, str]] = [
+    ("currency", "TEXT NOT NULL DEFAULT 'USD'"),
+    ("public_id", "TEXT"),
+    ("version", "INTEGER NOT NULL DEFAULT 0"),
+]
+
+# También se clasifica `transfer.currency` (aditivo) para que las internas/ACH heredadas queden en
+# USD, coherente con la fixture D-02 (no mezcla de monedas en una fila).
+_STAGE4_TRANSFER_COLUMNS: list[tuple[str, str]] = [
+    ("currency", "TEXT NOT NULL DEFAULT 'USD'"),
+]
+
+# §1.2 — almacén de eventos de dominio append-only, SEPARADO de `audit_log` (D-05). Una fila por
+# cuenta afectada; `UNIQUE(aggregate_id, aggregate_ver)` impide aplicar dos veces la misma versión
+# (anti-duplicado). `operation_id` agrupa un evento compuesto (p. ej. una conversión de 2 cuentas).
+_STAGE4_EVENT_TABLES: list[str] = [
+    """CREATE TABLE IF NOT EXISTS domain_event (
+        seq           INTEGER PRIMARY KEY AUTOINCREMENT,
+        event_id      TEXT NOT NULL UNIQUE,
+        event_type    TEXT NOT NULL,
+        aggregate_id  TEXT NOT NULL,
+        aggregate_ver INTEGER NOT NULL,
+        operation_id  TEXT NOT NULL,
+        currency      TEXT NOT NULL,
+        amount_minor  INTEGER NOT NULL,
+        payload       TEXT NOT NULL,
+        occurred_at   TEXT NOT NULL,
+        UNIQUE (aggregate_id, aggregate_ver)
+    )""",
+    # §1.3 — read model CQRS. Fuente autoritativa de las consultas de saldo; se actualiza en la
+    # MISMA transacción que `domain_event`. `version` debe igualar `account.version`.
+    """CREATE TABLE IF NOT EXISTS account_projection (
+        account_id    TEXT PRIMARY KEY,
+        public_id     TEXT NOT NULL,
+        kind          TEXT NOT NULL,
+        currency      TEXT NOT NULL,
+        balance_minor INTEGER NOT NULL,
+        version       INTEGER NOT NULL,
+        updated_at    TEXT NOT NULL
+    )""",
+    # §1.4 — registro de idempotencia (D-13). `request_hash` permite distinguir replay exacto
+    # (mismo payload) de reuse con payload distinto (-> 409).
+    """CREATE TABLE IF NOT EXISTS idempotency_key (
+        id            TEXT PRIMARY KEY,
+        operation     TEXT NOT NULL,
+        request_hash  TEXT NOT NULL,
+        response_json TEXT NOT NULL,
+        status_code   INTEGER NOT NULL,
+        created_at    TEXT NOT NULL
+    )""",
+    # Etapa 4 (Tarea 14, D-07) — operaciones v2 (conversión/transferencia) pendientes de MFA
+    # cuando el equivalente USD SIN redondear > USD 1,000.00. Guarda el plan validado para
+    # aplicarlo al confirmar el código MFA, sin mover saldos hasta entonces. `reference` es el
+    # identificador público de confirmación; `expires_at` la ventana MFA heredada (5 min).
+    """CREATE TABLE IF NOT EXISTS v2_pending_mfa (
+        reference     TEXT PRIMARY KEY,
+        operation     TEXT NOT NULL,
+        from_public   TEXT NOT NULL,
+        to_public     TEXT NOT NULL,
+        amount_minor  INTEGER NOT NULL,
+        dest_minor    INTEGER NOT NULL,
+        rate          TEXT NOT NULL,
+        idempotency_key TEXT NOT NULL,
+        status        TEXT NOT NULL,
+        created_at    TEXT NOT NULL,
+        expires_at    TEXT NOT NULL
+    )""",
+]
+
+_STAGE4_EVENT_INDEXES: list[str] = [
+    "CREATE INDEX IF NOT EXISTS idx_event_aggregate ON domain_event (aggregate_id, aggregate_ver)",
+    "CREATE INDEX IF NOT EXISTS idx_event_operation ON domain_event (operation_id)",
+    "CREATE UNIQUE INDEX IF NOT EXISTS ux_account_public_id ON account (public_id)",
+    "CREATE UNIQUE INDEX IF NOT EXISTS ux_account_kind_ccy ON account (customer_id, kind, currency)",
+]
+
+# Triggers append-only del almacén de eventos (mismo patrón que `audit_log`): abortan UPDATE/DELETE
+# ordinarios. No son WORM absoluto frente a un DBA que altere el esquema (limitación documentada),
+# pero impiden la mutación desde la aplicación o SQL casual (D-05, inmutabilidad de eventos).
+_STAGE4_EVENT_TRIGGERS: list[str] = [
+    """CREATE TRIGGER IF NOT EXISTS domain_event_no_update
+       BEFORE UPDATE ON domain_event
+       BEGIN SELECT RAISE(ABORT, 'domain_event is append-only'); END""",
+    """CREATE TRIGGER IF NOT EXISTS domain_event_no_delete
+       BEFORE DELETE ON domain_event
+       BEGIN SELECT RAISE(ABORT, 'domain_event is append-only'); END""",
+]
+
+
 def _column_exists(conn: sqlite3.Connection, table: str, column: str) -> bool:
     """Devuelve True si `column` ya existe en `table` (vía PRAGMA table_info).
 
@@ -261,6 +359,26 @@ def migrate(conn: sqlite3.Connection) -> None:
         for stmt in _STAGE3_AUDIT_TABLES:
             conn.execute(stmt)
         for stmt in _STAGE3_AUDIT_TRIGGERS:
+            conn.execute(stmt)
+
+        # Etapa 4 (Tarea 5) — multidivisa + Event Sourcing + CQRS + idempotencia. Aditivo e
+        # idempotente, dentro de la misma transacción. Primero las columnas nuevas de `account`
+        # y `transfer` (condicionales a existencia, como la Etapa 2), luego las tablas/índices/
+        # triggers nuevos. Los índices únicos de `account` van DESPUÉS de añadir `public_id`/
+        # `currency` (de los que dependen).
+        for name, type_clause in _STAGE4_ACCOUNT_COLUMNS:
+            if not _column_exists(conn, "account", name):
+                conn.execute(f"ALTER TABLE account ADD COLUMN {name} {type_clause}")
+        for name, type_clause in _STAGE4_TRANSFER_COLUMNS:
+            if not _column_exists(conn, "transfer", name):
+                conn.execute(f"ALTER TABLE transfer ADD COLUMN {name} {type_clause}")
+        conn.execute("UPDATE account SET currency = 'USD' WHERE currency IS NULL")
+        conn.execute("UPDATE transfer SET currency = 'USD' WHERE currency IS NULL")
+        for stmt in _STAGE4_EVENT_TABLES:
+            conn.execute(stmt)
+        for stmt in _STAGE4_EVENT_INDEXES:
+            conn.execute(stmt)
+        for stmt in _STAGE4_EVENT_TRIGGERS:
             conn.execute(stmt)
 
         conn.commit()

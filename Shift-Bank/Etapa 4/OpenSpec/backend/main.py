@@ -117,7 +117,10 @@ def _call(fn, *args, **kwargs):
 def get_accounts():
     conn = get_db_connection()
     try:
-        return [dict(r) for r in conn.execute("SELECT id,name,balance FROM accounts ORDER BY CASE id WHEN 'acc_checking' THEN 0 ELSE 1 END")]
+        return [dict(r) for r in conn.execute(
+            """SELECT id,name,balance,public_reference,currency,migration_state
+               FROM accounts ORDER BY CASE id WHEN 'acc_checking' THEN 0 ELSE 1 END"""
+        )]
     finally:
         conn.close()
 

@@ -86,7 +86,17 @@ def _resolve_beneficiary(conn: sqlite3.Connection, customer_id: str, *, benefici
 def create_ach(conn: sqlite3.Connection, *, amount_raw: str, description: str,
                from_kind: str = "checking", beneficiary_id: str | None = None,
                adhoc: dict | None = None, save_adhoc: bool = False) -> AchCreateResult:
-    """Crea/autoriza una transferencia ACH (Tarea 21/22)."""
+    """Crea/autoriza una transferencia ACH (Tarea 21/22).
+
+    Etapa 4 (Tarea 15, D-08): ACH solo puede originarse desde una cuenta USD. Se aplica la guardia
+    de divisa al inicio; si la cuenta de origen no es USD, se rechaza sin mover saldos. En la
+    fixture D-02, `checking`/`savings` son USD, por lo que el flujo heredado sigue funcionando.
+    """
+    from . import currency_guard
+    try:
+        currency_guard.require_ach_origin_usd(conn, kind=from_kind)
+    except currency_guard.CurrencyGuardError as exc:
+        raise AchError(exc.code, exc.message) from exc
     customer_id = _customer_id(conn)
 
     # Resolver y validar el beneficiario (formato; propiedad si es guardado).

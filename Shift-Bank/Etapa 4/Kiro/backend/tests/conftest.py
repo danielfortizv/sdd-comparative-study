@@ -61,6 +61,12 @@ def _set_test_key_env() -> None:
     os.environ.setdefault("SHIFT_ENC_ACTIVE_KID", TEST_ENC_KID)
     os.environ.setdefault("SHIFT_AUDIT_HMAC_KEY", TEST_AUDIT_HMAC_KEY)
     os.environ.setdefault("SHIFT_ADMIN_TOKEN", TEST_ADMIN_TOKEN)
+    # Etapa 4 (DK-01): el arnés de regresión HEREDADO usa la siembra COP heredada por defecto,
+    # para preservar el baseline de regresión verde (AC4-20) mientras los puertos currency-aware
+    # (tareas 13–15) migran las pruebas al modelo multidivisa. Las pruebas de la fixture D-02
+    # ponen explícitamente `SHIFT_SEED_MODE` a su valor por defecto (stage4) vía el fixture
+    # `stage4_app_client`. `setdefault` respeta cualquier valor que el entorno ya traiga.
+    os.environ.setdefault("SHIFT_SEED_MODE", "legacy")
 
 
 _set_test_key_env()
@@ -125,5 +131,24 @@ def app_client(isolated_db_path):
     import app.main as main
     importlib.reload(main)
 
+    with TestClient(main.app) as client:
+        yield client
+
+
+@pytest.fixture()
+def stage4_app_client(isolated_db_path, monkeypatch):
+    """Cliente de la app con la fixture experimental D-02 de la Etapa 4 (DK-01).
+
+    Fuerza `SHIFT_SEED_MODE=stage4` para que el arranque siembre las cuentas
+    CHK-1001/SAV-2001/EUR-3001/GBP-4001 (D-02) en lugar de la siembra COP heredada. Lo usan las
+    pruebas nuevas de multidivisa/conversión/eventos/idempotencia. No toca datos de la Etapa 3.
+    """
+    import importlib
+
+    from fastapi.testclient import TestClient
+
+    monkeypatch.setenv("SHIFT_SEED_MODE", "stage4")
+    import app.main as main
+    importlib.reload(main)
     with TestClient(main.app) as client:
         yield client

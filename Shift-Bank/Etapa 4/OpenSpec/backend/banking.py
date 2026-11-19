@@ -9,6 +9,7 @@ import time
 import uuid
 
 from database import get_db_connection
+from account_model import AccountModelError, resolve_account_reference
 from encryption import EncryptionError, protect_record, reveal_record
 from audit import AuditError, append_event, audit_rejections
 
@@ -145,7 +146,10 @@ def validate_per_transfer(conn, value: Decimal):
 
 
 def _account(conn, account_id):
-    row = conn.execute("SELECT id,name,balance FROM accounts WHERE id=?", (account_id,)).fetchone()
+    try:
+        row = resolve_account_reference(conn, account_id)
+    except AccountModelError as exc:
+        raise BankingError(str(exc)) from None
     if row is None: raise BankingError("Source account not found")
     return row
 
@@ -153,20 +157,20 @@ def _account(conn, account_id):
 @audit_rejections("internal_transfer")
 def create_internal(data: dict, at=None):
     at = at or now_utc(); value = amount(data.get("amount")); src_id = data.get("source_account_id"); dst_id = data.get("destination_account_id")
-    if src_id == dst_id: raise BankingError("Source and destination accounts must be different")
     conn = get_db_connection()
     try:
         _begin(conn); src = _account(conn, src_id); dst = _account(conn, dst_id)
+        if src["id"] == dst["id"]: raise BankingError("Source and destination accounts must be different")
         if Decimal(src["balance"]) < value: raise BankingError(INSUFFICIENT_FUNDS)
         validate_limits(conn, value, at)
         txid = "tx_" + uuid.uuid4().hex[:16]; timestamp = iso(at)
         if value >= MFA_THRESHOLD:
             conn.execute("""INSERT INTO transactions(id,source_account_id,source_account_name,destination_account_id,destination_account_name,amount,timestamp,status)
-                VALUES(?,?,?,?,?,?,?,'PENDING_MFA')""", (txid,src_id,src["name"],dst_id,dst["name"],money(value),timestamp))
-            append_event(conn,"internal_transfer_attempt",txid,"pending_mfa",{"source_account_id":src_id,"destination_account_id":dst_id,"amount":money(value)},at)
+                VALUES(?,?,?,?,?,?,?,'PENDING_MFA')""", (txid,src["id"],src["name"],dst["id"],dst["name"],money(value),timestamp))
+            append_event(conn,"internal_transfer_attempt",txid,"pending_mfa",{"source_account_id":src["id"],"destination_account_id":dst["id"],"amount":money(value)},at)
             conn.commit(); return {"status":"PENDING_MFA","transfer_id":txid}
         _execute_internal(conn, txid, src, dst, value, timestamp, at)
-        append_event(conn,"internal_transfer_completed",txid,"completed",{"source_account_id":src_id,"destination_account_id":dst_id,"amount":money(value)},at)
+        append_event(conn,"internal_transfer_completed",txid,"completed",{"source_account_id":src["id"],"destination_account_id":dst["id"],"amount":money(value)},at)
         conn.commit()
         return _transaction_json(txid,src,dst,value,timestamp,"COMPLETED")
     except Exception:
@@ -574,6 +578,13 @@ def recover_schedules(now=None):
 def all_history(account_id=None):
     conn=get_db_connection()
     try:
+        if account_id:
+            try:
+                resolved = resolve_account_reference(conn, account_id)
+            except AccountModelError as exc:
+                raise BankingError(str(exc)) from None
+            if resolved is not None:
+                account_id = resolved["id"]
         q="SELECT * FROM transactions"; params=()
         if account_id: q+=" WHERE source_account_id=? OR destination_account_id=?"; params=(account_id,account_id)
         results=[]

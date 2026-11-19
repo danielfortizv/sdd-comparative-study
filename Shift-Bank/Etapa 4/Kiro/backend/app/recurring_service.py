@@ -250,16 +250,39 @@ def create_schedule(
     amount_cents = _parse_amount_cents(amount_raw)
     interval = _interval(frequency)
 
-    if from_kind not in _INTERNAL_KINDS:
-        raise RecurringError("INVALID_SOURCE", "La cuenta de origen no es válida")
-
     resolved_to_kind: str | None = None
     resolved_bid: str | None = None
     snapshot_json: str | None = None
 
+    from . import currency_guard
+
+    # Etapa 4 (Tarea 15, D-08): la guardia de divisa se evalúa ANTES de la restricción heredada
+    # de origen interno. Para ACH la regla es "solo USD" y aplica a CUALQUIER cuenta real (no solo
+    # checking/savings); evaluarla primero da el código de divisa correcto en vez de un genérico
+    # INVALID_SOURCE cuando el origen es una cuenta EUR/GBP válida de la fixture D-02.
+    if type == "ach":
+        try:
+            currency_guard.require_recurring_ach_usd(conn, kind=from_kind)
+        except currency_guard.CurrencyGuardError as exc:
+            raise RecurringError(exc.code, exc.message) from exc
+
+    if from_kind not in _INTERNAL_KINDS:
+        raise RecurringError("INVALID_SOURCE", "La cuenta de origen no es válida")
+
     if type == "internal":
         resolved_to_kind = _resolve_internal_destination(from_kind, to_kind)
-    else:  # ach
+        # Etapa 4 (Tarea 15, D-08): recurrente interno debe mantener la MISMA moneda. Se resuelve
+        # por `kind` (las cuentas de la fixture D-02 tienen moneda por cuenta).
+        try:
+            src_ccy = currency_guard.account_currency(conn, kind=from_kind)
+            dst_ccy = currency_guard.account_currency(conn, kind=resolved_to_kind)
+            if src_ccy is not None and dst_ccy is not None and src_ccy != dst_ccy:
+                raise currency_guard.CurrencyGuardError(
+                    "CROSS_CURRENCY_NOT_ALLOWED",
+                    "Un recurrente interno debe mantener la misma moneda en origen y destino")
+        except currency_guard.CurrencyGuardError as exc:
+            raise RecurringError(exc.code, exc.message) from exc
+    else:  # ach (la guardia USD ya se aplicó arriba, antes de _INTERNAL_KINDS)
         resolved_bid, snapshot = _resolve_ach_snapshot(
             conn, customer_id, beneficiary_id=beneficiary_id, adhoc=adhoc)
         snapshot_json = json.dumps(snapshot)

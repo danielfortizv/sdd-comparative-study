@@ -1,0 +1,1 @@
+session_id,session_type,start_timestamp_tz,end_timestamp_tz,user_messages,agent_messages,tool_calls,elapsed_seconds,credits_before,credits_after,credit_delta,export_file,evidence_notes

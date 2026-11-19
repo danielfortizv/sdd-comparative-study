@@ -1,0 +1,111 @@
+﻿{
+    "iteration":  "10",
+    "change":  "stage4-multicurrency-event-sourcing-cqrs",
+    "algorithm":  "SHA-256",
+    "artifact_root":  "Etapa 4/OpenSpec/openspec/changes/stage4-multicurrency-event-sourcing-cqrs/",
+    "file_count":  20,
+    "requirement_count":  28,
+    "scenario_count":  83,
+    "files":  [
+                  {
+                      "path":  ".openspec.yaml",
+                      "bytes":  164,
+                      "sha256":  "717136fca51b130250ce1ec7702fe7f009cba05b2fa5c35feb08158366912cef"
+                  },
+                  {
+                      "path":  "design.md",
+                      "bytes":  10151,
+                      "sha256":  "f48275207b68338bc45f02bf7b3be1438ff1bc4f5c009d83d26bfac11d00ff19"
+                  },
+                  {
+                      "path":  "proposal.md",
+                      "bytes":  3733,
+                      "sha256":  "b125445719a9509b77375e3347d4caa3135a5d68aecedb488ba1a2126c99595f"
+                  },
+                  {
+                      "path":  "README.md",
+                      "bytes":  150,
+                      "sha256":  "247791bd049b116b90e47df9d345bc3f72a93f5e32f5e34c24d050e4058e9c5c"
+                  },
+                  {
+                      "path":  "specs/ach-operations/spec.md",
+                      "bytes":  1384,
+                      "sha256":  "271fdb530cbc1084a0e9c569c83d25e13905a2887310d285ab4a597615874fb8"
+                  },
+                  {
+                      "path":  "specs/bank-accounts/spec.md",
+                      "bytes":  1819,
+                      "sha256":  "2d1812a272a32b0ba00f47d7434a77117b527d05abf68a82c3fa8ce58171b719"
+                  },
+                  {
+                      "path":  "specs/client-and-api-compatibility/spec.md",
+                      "bytes":  2378,
+                      "sha256":  "30916e82a4bbc794d5ea2c0ed79d56f13f9802e33a0502068fb1b921b408b681"
+                  },
+                  {
+                      "path":  "specs/cqrs-projections/spec.md",
+                      "bytes":  1899,
+                      "sha256":  "3c71d75834b5af01cf2bb60b26fa9683d866f8a2df89bb43165cb9b0b5278b75"
+                  },
+                  {
+                      "path":  "specs/currency-conversion/spec.md",
+                      "bytes":  2888,
+                      "sha256":  "163104c113a83f08485dd0b17cfd8b98e2b359b0c44f5419f8cc3a5db62343c3"
+                  },
+                  {
+                      "path":  "specs/deployment-continuity/spec.md",
+                      "bytes":  1882,
+                      "sha256":  "c63e5cbb9c409297d89c72893c60eb1ec9b8bb6f84aeee4b6452d41f2036090b"
+                  },
+                  {
+                      "path":  "specs/domain-events/spec.md",
+                      "bytes":  2692,
+                      "sha256":  "c33b93852245d30e38fe3486ba206f935e02d877199a6a0b4ab424fff0c9d329"
+                  },
+                  {
+                      "path":  "specs/financial-commands/spec.md",
+                      "bytes":  2227,
+                      "sha256":  "8ee82db7166b2a1085abda397124ae030b38115b1fa092f7d471748820f4ce4d"
+                  },
+                  {
+                      "path":  "specs/financial-integrity/spec.md",
+                      "bytes":  2099,
+                      "sha256":  "5fc16990eb268e91d408acc67df4c756a8313e6b8221d24aa05ead4fc0ca08a6"
+                  },
+                  {
+                      "path":  "specs/mfa/spec.md",
+                      "bytes":  1420,
+                      "sha256":  "df99398cd01225cc8b5ba75613a963e642a6a0ed3932e920ba4fa06b346722f6"
+                  },
+                  {
+                      "path":  "specs/migration-and-reconciliation/spec.md",
+                      "bytes":  7263,
+                      "sha256":  "62db29e4dc1fc51ae6152b9dc33f6b1b6af5bd5c13e386fde727ff2085842393"
+                  },
+                  {
+                      "path":  "specs/recurring-operations/spec.md",
+                      "bytes":  2399,
+                      "sha256":  "76136b6f57a29efca5115961a29807201a4cea2237e047cec01fe2f900456ecd"
+                  },
+                  {
+                      "path":  "specs/transaction-history/spec.md",
+                      "bytes":  1469,
+                      "sha256":  "6715f353c9d8b3103af659b6dadc12ebc4923570a3e1ef2ef6cd18e3fbd7a344"
+                  },
+                  {
+                      "path":  "specs/transfer-limits/spec.md",
+                      "bytes":  5350,
+                      "sha256":  "db4a87d4d84b2bb8b14de40fc6aed38c815203b3f0f1ff85ea6c79e7e45d0bb5"
+                  },
+                  {
+                      "path":  "specs/transfers/spec.md",
+                      "bytes":  1349,
+                      "sha256":  "09dae6aa94c65cb6110103d1bd5cb820cc8c32d165cf2ce64b4d6870a07ad74e"
+                  },
+                  {
+                      "path":  "tasks.md",
+                      "bytes":  5651,
+                      "sha256":  "c6b3e5ea878eb95b2730df9a9c20595711392ae404a467008c51e73cf44cf452"
+                  }
+              ]
+}

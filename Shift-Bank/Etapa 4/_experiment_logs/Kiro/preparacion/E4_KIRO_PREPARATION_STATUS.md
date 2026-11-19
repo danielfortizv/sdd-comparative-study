@@ -1,32 +1,34 @@
 # Stage 4 Kiro preparation status
 
-Date: 2026-11-17 (local)
+Updated: 2026-11-18 (America/Bogota)
 
-## Source inventory
+## Source and copy integrity
 
-- Source: `Etapa 3/Kiro`; destination: `Etapa 4/Kiro` (was absent before preparation).
-- Git branch `ShiftBank`, revision `08311b42d1d5745540af459775b4bb24de181947`.
-- The repository working tree was not clean; `git status --short` showed numerous unrelated Stage 2/3/4 artifacts and an existing untracked Stage 4 Kiro path during this preparation. Source files were not edited.
-- Stage 3 Kiro tasks show task 36 checked. The final report says backend regression 372 passed, frontend Vitest 3 passed, and production build exit 0. It records Docker/HTTPS validation as passing.
-- SonarQube PRE/POST: preserve the inherited limitation: one unresolved/new `typescript:S8786` at `AccountsPanel.tsx:17`; POST new-code Quality Gate ERROR (new coverage 39.7% below 80% and one new violation). No scan was run for Stage 4.
-- DB path defaults to `backend/app/shift_bank.db`; tests patch `app.config.DB_PATH` and `app.db.DB_PATH` with temporary paths. Audit HMAC key comes from `SHIFT_AUDIT_HMAC_KEY`; encryption is externally configured. Inherited conftest contains a fixed test key, so baseline execution was withheld pending disposable external secret setup.
+- Source `Etapa 3/Kiro`; destination `Etapa 4/Kiro`. Git branch `ShiftBank`, revision `08311b42d1d5745540af459775b4bb24de181947`.
+- 117 transferable files: 117 source/destination SHA-256 matches, 0 source hashes changed, 0 missing copies, 0 mismatches. Stage 3 was not modified by this preparation.
+- Stage 3 Kiro tasks show task 36 complete. App areas: `backend/app/`, `backend/tests/`, `frontend/src/`, `loadtest/`; inherited Kiro specs under `.kiro/specs/`.
+- Kiro Stage 3 actual seed data: checking (`kind=checking`) COP 5,000,000.00; savings (`kind=savings`) COP 15,000,000.00. The Stage 3 schema stores integer cents without a currency column; seed comments and specs identify COP. D-02 instead names CHK-1001 USD 2,500.00 and SAV-2001 USD 10,000.00 plus EUR-3001/GBP-4001 at zero. This is a material currency, identifier, and balance conflict. Researcher approval is required; no conversion or banking data change was made.
+- DB default: `backend/app/shift_bank.db`; inherited test fixture patches per-test temporary DB paths. Test secrets were generated ephemerally for the observed baseline.
 
-## Copy and exclusions
+## Supplied source verification
 
-The Stage 3 Kiro tree was copied to `Etapa 4/Kiro` with backend, tests, frontend, `.kiro` specs, load-test scripts, Docker/Compose/Nginx, environment templates, scanner config, manifests and lockfiles. Excluded virtual environments, dependency trees, Git metadata, generated `loadtest/results`, caches, database/WAL/SHM files, credentials and key/certificate files. Generated backend coverage files copied by the first pass were removed. See `stage4_kiro_source_manifest.csv` for destination SHA-256 values. A complete source-to-destination comparison manifest has not yet been produced.
+Exact paths and SHA-256 values are recorded in `source-verification.md`. The supplied seed hash matches the required digest `8d7e32d3cb359b3d1c442b0f71d83dfd6bde5eb31e9af62d74581d47f0fd3047`. The guide's complete Annex A seed text, extracted from DOCX XML, is character-equivalent after whitespace normalization; the seed copy in this evidence folder is byte-identical to `Etapa 4/SEED-4.md`.
 
-## Essential contract blocker
+D-01 through D-14 were checked against the guide's decision table and the supplied summary sheet. The summary explicitly is not the original approval transcript; this preparation verifies the guide table/summary, not the missing original conversation records. The full decision references are in the handoff.
 
-The official `Guia_replicacion_Etapa4_Shift_Bank_SDD.docx` and standalone canonical `SEED-4(1).md` were not found in the supplied repository. The only seed is an extracted packet copy whose README explicitly says the standalone master was unavailable and records a provisional extracted hash `8d7e32d3cb359b3d1c442b0f71d83dfd6bde5eb31e9af62d74581d47f0fd3047`. It is not copied into the Kiro workspace or represented as canonical. The accompanying D-01–D-14 sheet labels itself a summary, not the full approved records. Therefore exact seed integrity, official guide review, exact approved-decision wording, and a verified handoff cannot be claimed.
+## Baseline and environment
 
-## Baselines
+- Backend pytest: **372 passed, 1 warning, exit 0**.
+- Frontend Vitest: **3 passed, exit 0**.
+- Frontend production build: **passed, exit 0**; 41 modules transformed.
+- Environment: Python 3.13.2; isolated pip 24.3.1; Node.js v24.19.0; npm 11.17.0; Vitest 2.1.9; Vite 5.4.21.
+- Exact successful command records, stdout, timestamps and exit codes are in this directory. Disposable `.venv`, `node_modules`, build output, caches, and pytest temporary DBs were removed after the baseline. No Stage 4 functional tests, migrations, SonarQube scans, or benchmarks were run.
+- Stage 3 SonarQube POST limitation is inherited: one unresolved/new `typescript:S8786` at `AccountsPanel.tsx:17` and a failed new-code Quality Gate (new coverage 39.7% below 80%, one new violation). It was not altered.
 
-Backend pytest, Vitest and production build were not run in this preparation. No test output is represented as a Stage 4 baseline. Tests should only run after isolated dependency setup and disposable database plus externally generated disposable encryption/audit secrets. No functional tests, migrations, scans or benchmarks were run.
+## PRE-KIRO D1 credit snapshot
 
-## D1 protocol and initial balance
+Researcher-provided snapshot dated **2026-11-18 (America/Bogota)**: Kiro Student plan; **898.98 / 1000 credits used**, **101.02 remaining**; next reset displayed **2026-12-01**. This is the PRE-KIRO D1 starting snapshot, not Stage 4 credit consumption. The screenshot was supplied by the researcher; no local screenshot image was identified or copied. Session exports and interaction tracking templates are under `D1/`. No Kiro session has been invoked or logged for this preparation; preserve future session timestamps, exports, actual messages, calls and credits there.
 
-Start Stage 4 measurements at a new D1 baseline. Record a verified Kiro credit snapshot before the first measured interaction; current balance is `N/D`. For each session preserve export, start/end timestamps with timezone, actual user/agent message counts, tool calls by category, elapsed time, credit change and source evidence. Keep setup activity separate; never infer missing values. Preserve Stage 3 D1 evidence in its existing Stage 3 location.
+## Readiness and limits
 
-## SonarQube isolation plan
-
-The inherited `sonar-project.properties` names the Stage 3 component. Preserve it only as historical reference. Before any separately authorized Stage 4 scan, make a Stage 4-specific config with a new project key, Stage 4 base directory, fresh coverage imports, and explicit exclusions; never submit Stage 4 sources under the Stage 3 key. No scan was run.
+Ready for Kiro read-only discovery using the prompt in `E4_KIRO_HANDOFF.md`. Resolve the COP/USD D-02 conflict with the researcher before finalizing specifications or implementing migration behavior. Do not infer FX conversion or overwrite inherited monetary values. Preserve the Stage 3 scanner configuration only as historical reference; any future authorized Stage 4 scan needs a separate project key.

@@ -105,6 +105,95 @@ def seed(conn: sqlite3.Connection) -> None:
     conn.commit()
 
 
+# --- Fixture experimental de la Etapa 4 (D-02, DK-01, Tarea 6) -----------------
+#
+# RESET EXPERIMENTAL CONTROLADO (DK-01): la Etapa 4 parte de una fixture SEPARADA con los saldos
+# de la decisión D-02. Esto NO es una conversión COP->USD ni una migración que preserve valor
+# monetario; es una discontinuidad experimental DECLARADA. El estado y la evidencia de la Etapa 3
+# (COP) se preservan sin modificación en su propio árbol; esta siembra no los lee ni los altera.
+#
+# Las cuatro cuentas usan `kind` distintos para no colisionar con la restricción heredada
+# UNIQUE(customer_id, kind) y, a la vez, respetar el índice UNIQUE(customer_id, kind, currency).
+# Cada cuenta recibe un identificador público inmutable (D-02) y su moneda fija (D-01).
+_STAGE4_ACCOUNTS: list[tuple[str, str, str, str, int]] = [
+    # (public_id, kind, display_name, currency, balance_minor)
+    ("CHK-1001", "checking", "Checking", "USD", 2_500_00),
+    ("SAV-2001", "savings", "Savings", "USD", 10_000_00),
+    ("EUR-3001", "eur", "EUR Account", "EUR", 0),
+    ("GBP-4001", "gbp", "GBP Account", "GBP", 0),
+]
+
+
+def is_stage4_seeded(conn: sqlite3.Connection) -> bool:
+    """True si la fixture D-02 ya existe (idempotencia de `seed_stage4`)."""
+    row = conn.execute(
+        "SELECT COUNT(*) AS n FROM account WHERE public_id IN ('CHK-1001','SAV-2001','EUR-3001','GBP-4001')"
+    ).fetchone()
+    return row is not None and row["n"] >= len(_STAGE4_ACCOUNTS)
+
+
+def seed_stage4(conn: sqlite3.Connection) -> None:
+    """Siembra idempotente de la fixture experimental de la Etapa 4 (D-02, DK-01).
+
+    Crea el cliente mock (si falta), las cuatro cuentas D-02 con su `public_id`/moneda/saldo y
+    versión inicial 1, un evento de dominio `ACCOUNT_OPENED` por cuenta (saldo inicial) y la
+    proyección CQRS inicial coherente. No deriva ni toca datos de la Etapa 3. Idempotente: si las
+    cuentas ya existen, no hace nada.
+
+    Nota de no-doble-conteo (D-05, R6-4): el saldo inicial se representa EXACTAMENTE por el evento
+    `ACCOUNT_OPENED` (amount_minor = saldo inicial) y la proyección se fija a ese mismo valor; no
+    hay transferencias históricas que re-muevan el saldo en esta fixture.
+    """
+    if is_stage4_seeded(conn):
+        return
+
+    row = conn.execute("SELECT id FROM customer LIMIT 1").fetchone()
+    if row is None:
+        customer_id = str(uuid.uuid4())
+        conn.execute(
+            "INSERT INTO customer (id, name) VALUES (?, ?)",
+            (customer_id, "Shift Bank Customer"),
+        )
+    else:
+        customer_id = row["id"]
+
+    now = _iso(_now_utc())
+    for public_id, kind, display_name, currency, balance_minor in _STAGE4_ACCOUNTS:
+        existing = conn.execute(
+            "SELECT id FROM account WHERE public_id = ?", (public_id,)
+        ).fetchone()
+        if existing is not None:
+            continue
+        account_id = str(uuid.uuid4())
+        version = 1  # ACCOUNT_OPENED aplica la versión 1
+        conn.execute(
+            """INSERT INTO account
+               (id, customer_id, kind, display_name, balance_cents, currency, public_id, version)
+               VALUES (?, ?, ?, ?, ?, ?, ?, ?)""",
+            (account_id, customer_id, kind, display_name, balance_minor, currency, public_id, version),
+        )
+        # Evento de dominio ACCOUNT_OPENED (saldo inicial como delta +balance_minor).
+        conn.execute(
+            """INSERT INTO domain_event
+               (event_id, event_type, aggregate_id, aggregate_ver, operation_id,
+                currency, amount_minor, payload, occurred_at)
+               VALUES (?, 'ACCOUNT_OPENED', ?, 1, ?, ?, ?, ?, ?)""",
+            (
+                str(uuid.uuid4()), account_id, str(uuid.uuid4()), currency, balance_minor,
+                f'{{"public_id":"{public_id}","kind":"{kind}"}}', now,
+            ),
+        )
+        # Proyección CQRS inicial coherente (version == account.version).
+        conn.execute(
+            """INSERT INTO account_projection
+               (account_id, public_id, kind, currency, balance_minor, version, updated_at)
+               VALUES (?, ?, ?, ?, ?, 1, ?)""",
+            (account_id, public_id, kind, currency, balance_minor, now),
+        )
+
+    conn.commit()
+
+
 # --- Siembra de límites por defecto (Etapa 2, Tarea 11) -----------------------
 
 def seed_limits(conn: sqlite3.Connection) -> None:

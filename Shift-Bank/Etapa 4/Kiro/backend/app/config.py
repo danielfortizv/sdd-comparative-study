@@ -15,8 +15,40 @@ from pathlib import Path
 # Ruta del archivo SQLite. Se ubica junto al paquete backend.
 DB_PATH: Path = Path(__file__).resolve().parent.parent / "shift_bank.db"
 
-# Umbral de MFA: montos >= a este valor requieren MFA (Requisito 6.2).
+# Umbral de MFA heredado (Etapa 1–3, COP). Preservado como referencia histórica; la Etapa 4
+# usa el umbral en equivalente USD (ver MFA_THRESHOLD_USD) sobre el modelo multidivisa.
 MFA_THRESHOLD: Decimal = Decimal("1000000")
+
+# --- Etapa 4: multidivisa y FX (D-01, D-03, D-07) ----------------------------
+#
+# Monedas soportadas (ISO-4217), todas con 2 decimales (D-01). No se mezclan saldos de monedas
+# distintas (D-01). El conjunto es cerrado; una moneda fuera de él se rechaza como error de
+# dominio controlado.
+SUPPORTED_CURRENCIES: tuple[str, ...] = ("USD", "EUR", "GBP")
+
+# Tasas de cambio racionales FIJAS, expresadas como unidades de la moneda POR 1 USD
+# (D-03: tasas racionales exactas, sin servicio externo en vivo, sin floats). Se guardan como
+# cadenas y se elevan a `fractions.Fraction` en `fx.py` para aritmética exacta. Son valores de
+# simulación determinista; viven versionados en el repo (no hay API FX externa, SEED-4).
+# Matriz oficial de la guía Etapa 4 (racionales exactos):
+#   USD/EUR = 9/10, USD/GBP = 8/10, EUR/USD = 10/9, GBP/USD = 10/8,
+#   EUR/GBP = 8/9, GBP/EUR = 9/8.
+# Expresadas aquí como "unidades de la moneda por 1 USD": EUR = 9/10, GBP = 8/10. Las cruzadas
+# EUR<->GBP derivan exactamente de estas (EUR/GBP = (8/10)/(9/10) = 8/9; GBP/EUR = 9/8).
+FX_RATES_PER_USD: dict[str, str] = {
+    "USD": "1",
+    "EUR": "9/10",   # USD/EUR = 9/10 (0.90 EUR por USD)
+    "GBP": "8/10",   # USD/GBP = 8/10 (0.80 GBP por USD)
+}
+
+# Límites dinámicos de la Etapa 4 en equivalente USD (D-07). Por operación USD 5,000.00; diario
+# acumulado USD 10,000.00 (día UTC). En unidades menores (centavos USD).
+LIMIT_PER_OP_USD_MINOR: int = 5_000_00
+LIMIT_DAILY_USD_MINOR: int = 10_000_00
+
+# Umbral de MFA en equivalente USD (D-07): MFA requerida cuando el equivalente USD SIN redondear
+# es ESTRICTAMENTE mayor que USD 1,000.00.
+MFA_THRESHOLD_USD: Decimal = Decimal("1000.00")
 
 # Código MFA simulado fijo (Requisito 7.1).
 MFA_CODE: str = "123456"

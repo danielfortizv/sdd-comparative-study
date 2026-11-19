@@ -20,6 +20,11 @@ import { LimitsPanel } from "./components/LimitsPanel";
 import { MfaDialog } from "./components/MfaDialog";
 import { RecurringPanel } from "./components/RecurringPanel";
 import { TransferForm } from "./components/TransferForm";
+// Etapa 4 (T16/T17): dashboard multidivisa y formulario de conversión.
+import type { AccountV2 } from "./stage4/apiV2";
+import { getAccountsV2 } from "./stage4/apiV2";
+import { ConversionForm } from "./stage4/ConversionForm";
+import { MultiCurrencyDashboard } from "./stage4/MultiCurrencyDashboard";
 import type {
   Account,
   Beneficiary,
@@ -42,10 +47,12 @@ type Section =
   | "beneficiaries"
   | "recurring"
   | "limits"
-  | "history";
+  | "history"
+  | "multicurrency";
 
 const SECTIONS: ReadonlyArray<{ id: Section; label: string }> = [
   { id: "transfers", label: "Transferencias" },
+  { id: "multicurrency", label: "Multidivisa" },
   { id: "ach", label: "ACH" },
   { id: "beneficiaries", label: "Beneficiarios" },
   { id: "recurring", label: "Recurrentes" },
@@ -62,6 +69,18 @@ export default function App() {
   const [pending, setPending] = useState<PendingMfa | null>(null);
   const [loadError, setLoadError] = useState<string | null>(null);
   const [section, setSection] = useState<Section>("transfers");
+  // Etapa 4: cuentas multidivisa (v2). Se cargan de forma independiente y tolerante a fallo para
+  // no romper la experiencia heredada si el endpoint v2 no estuviera disponible.
+  const [accountsV2, setAccountsV2] = useState<AccountV2[]>([]);
+
+  const refreshV2 = useCallback(async () => {
+    try {
+      const res = await getAccountsV2();
+      setAccountsV2(res.accounts);
+    } catch {
+      setAccountsV2([]);
+    }
+  }, []);
 
   const refresh = useCallback(async () => {
     try {
@@ -85,7 +104,8 @@ export default function App() {
 
   useEffect(() => {
     void refresh();
-  }, [refresh]);
+    void refreshV2();
+  }, [refresh, refreshV2]);
 
   function handlePendingMfa(reference: string, expiresAt: string, amount: string) {
     setPending({ reference, expiresAt, amount });
@@ -131,6 +151,19 @@ export default function App() {
         >
           <AccountsPanel accounts={accounts} />
           <TransferForm onCompleted={refresh} onPendingMfa={handlePendingMfa} />
+        </main>
+      )}
+
+      {/* Etapa 4 (T17): dashboard multidivisa + conversión. */}
+      {section === "multicurrency" && (
+        <main
+          className="layout"
+          role="tabpanel"
+          id="panel-multicurrency"
+          aria-labelledby="tab-multicurrency"
+        >
+          <MultiCurrencyDashboard accounts={accountsV2} />
+          <ConversionForm accounts={accountsV2} onDone={refreshV2} />
         </main>
       )}
 

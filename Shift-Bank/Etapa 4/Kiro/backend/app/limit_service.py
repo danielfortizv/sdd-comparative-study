@@ -96,6 +96,56 @@ def check(conn: sqlite3.Connection, amount_cents: int, now: datetime) -> None:
                          "El monto supera el límite diario acumulado")
 
 
+# --- Etapa 4: límites en equivalente USD (D-07, Tarea 14) ---------------------
+#
+# Los límites de la Etapa 4 se expresan en equivalente USD (centavos USD): por operación
+# USD 5,000.00 y diario acumulado USD 10,000.00 (día UTC). El consumo diario se calcula sumando el
+# equivalente USD de cada operación consumida del día, usando las mismas tasas racionales fijas
+# (D-03), sin floats. La verificación debe ejecutarse DENTRO de la transacción financiera (LIM-07,
+# sin TOCTOU). La igualdad exacta se permite (LIM-05).
+
+
+def daily_consumption_usd_minor(conn: sqlite3.Connection, now: datetime) -> int:
+    """Suma el consumo del día UTC en equivalente USD (centavos USD), derivado de los eventos de
+    dominio de débito del día (D-05/D-07). Cuenta débitos (amount_minor < 0) de internas, FX, ACH
+    y recurrentes; convierte cada uno a USD con la tasa fija de su moneda.
+    """
+    from . import fx
+
+    start, end = clock.utc_day_bounds(now)
+    start_iso, end_iso = clock.iso(start), clock.iso(end)
+    rows = conn.execute(
+        """SELECT currency, amount_minor FROM domain_event
+           WHERE occurred_at >= ? AND occurred_at < ?
+             AND amount_minor < 0
+             AND event_type IN (
+                 'INTERNAL_TRANSFER_DEBITED','CONVERSION_DEBITED','ACH_DEBITED','RECURRING_DEBITED'
+             )""",
+        (start_iso, end_iso),
+    ).fetchall()
+    total = 0
+    for r in rows:
+        total += fx.usd_equivalent_minor(abs(int(r["amount_minor"])), r["currency"])
+    return total
+
+
+def check_usd(conn: sqlite3.Connection, usd_minor: int, now: datetime) -> None:
+    """Verifica los límites de la Etapa 4 en equivalente USD (D-07). Lanza `LimitError`.
+
+    `usd_minor` es el equivalente USD (centavos USD) de la operación, ya redondeado una vez por
+    `fx.usd_equivalent_minor`. Permite igualdad exacta (LIM-05).
+    """
+    from .config import LIMIT_DAILY_USD_MINOR, LIMIT_PER_OP_USD_MINOR
+
+    if usd_minor > LIMIT_PER_OP_USD_MINOR:
+        raise LimitError("LIMIT_EXCEEDED_PER_TRANSFER",
+                         "El monto (equivalente USD) supera el límite por operación")
+    consumed = daily_consumption_usd_minor(conn, now)
+    if consumed + usd_minor > LIMIT_DAILY_USD_MINOR:
+        raise LimitError("LIMIT_EXCEEDED_DAILY",
+                         "El monto (equivalente USD) supera el límite diario acumulado")
+
+
 def update_limits(conn: sqlite3.Connection, *, per_transfer_raw: str | None,
                   daily_raw: str | None, now: datetime) -> Limits:
     """Actualiza los límites validando la entrada (LIM-09).

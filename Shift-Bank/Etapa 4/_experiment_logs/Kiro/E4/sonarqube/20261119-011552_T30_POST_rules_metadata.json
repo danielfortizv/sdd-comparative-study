@@ -1,0 +1,1233 @@
+{
+    "entries":  [
+                    {
+                        "rule":  {
+                                     "key":  "python:S107",
+                                     "repo":  "python",
+                                     "name":  "Functions, methods and lambdas should not have too many parameters",
+                                     "createdAt":  "2026-09-29T20:31:11+0000",
+                                     "severity":  "MAJOR",
+                                     "status":  "READY",
+                                     "isTemplate":  false,
+                                     "tags":  [
+
+                                              ],
+                                     "sysTags":  [
+                                                     "brain-overload"
+                                                 ],
+                                     "lang":  "py",
+                                     "langName":  "Python",
+                                     "params":  [
+                                                    {
+                                                        "key":  "max",
+                                                        "htmlDesc":  "Maximum authorized number of parameters",
+                                                        "defaultValue":  "13",
+                                                        "type":  "INTEGER"
+                                                    }
+                                                ],
+                                     "defaultDebtRemFnType":  "CONSTANT_ISSUE",
+                                     "debtRemFnType":  "CONSTANT_ISSUE",
+                                     "type":  "CODE_SMELL",
+                                     "defaultRemFnType":  "CONSTANT_ISSUE",
+                                     "defaultRemFnBaseEffort":  "20min",
+                                     "remFnType":  "CONSTANT_ISSUE",
+                                     "remFnBaseEffort":  "20min",
+                                     "remFnOverloaded":  false,
+                                     "scope":  "ALL",
+                                     "isExternal":  false,
+                                     "descriptionSections":  [
+                                                                 {
+                                                                     "key":  "root_cause",
+                                                                     "content":  "\u003cp\u003eFunctions, methods, or lambdas with a long parameter list are difficult to use, as maintainers must figure out the role of each parameter and keep\ntrack of their position.\u003c/p\u003e\n\u003cpre\u003e\ndef set_coordinates(x1, y1, z1, x2, y2, z2): # Noncompliant\n    # ...\n\u003c/pre\u003e\n\u003cp\u003eThe solution can be to:\u003c/p\u003e\n\u003cul\u003e\n  \u003cli\u003eSplit the function, method, or lambda into smaller ones\u003c/li\u003e\n\u003c/ul\u003e\n\u003cpre\u003e\n# Each function does a part of what the original set_coordinates function was doing, so confusion risks are lower\ndef set_origin(x, y, z):\n   # ...\n\ndef set_size(width, height, depth):\n   # ...\n\u003c/pre\u003e\n\u003cul\u003e\n  \u003cli\u003eFind a better data structure for the parameters that group data in a way that makes sense for the specific application domain\u003c/li\u003e\n\u003c/ul\u003e\n\u003cpre\u003e\n@dataclass\nclass Point: # In geometry, Point is a logical structure to group data\n    x: int\n    y: int\n    z: int\n\ndef set_coordinates(p1: Point, p2: Point):\n    # ...\n\u003c/pre\u003e\n\u003cp\u003eThis rule raises an issue when a function, a method, or a lambda has more parameters than the provided threshold.\u003c/p\u003e\n\u003ch3\u003eExceptions\u003c/h3\u003e\n\u003cp\u003eThe first argument of non-static methods, i.e., \u003ccode\u003eself\u003c/code\u003e or \u003ccode\u003ecls\u003c/code\u003e, is not counted as it is mandatory and passed\nautomatically.\u003c/p\u003e"
+                                                                 }
+                                                             ],
+                                     "educationPrinciples":  [
+
+                                                             ],
+                                     "updatedAt":  "2026-09-29T20:31:11+0000",
+                                     "cleanCodeAttribute":  "FOCUSED",
+                                     "cleanCodeAttributeCategory":  "ADAPTABLE",
+                                     "impacts":  [
+                                                     {
+                                                         "softwareQuality":  "MAINTAINABILITY",
+                                                         "severity":  "MEDIUM"
+                                                     }
+                                                 ]
+                                 },
+                        "actives":  [
+
+                                    ]
+                    },
+                    {
+                        "rule":  {
+                                     "key":  "python:S1135",
+                                     "repo":  "python",
+                                     "name":  "Track uses of \"TODO\" tags",
+                                     "createdAt":  "2026-09-29T20:31:11+0000",
+                                     "severity":  "INFO",
+                                     "status":  "READY",
+                                     "isTemplate":  false,
+                                     "tags":  [
+
+                                              ],
+                                     "sysTags":  [
+                                                     "cwe"
+                                                 ],
+                                     "lang":  "py",
+                                     "langName":  "Python",
+                                     "params":  [
+
+                                                ],
+                                     "defaultDebtRemFnType":  "CONSTANT_ISSUE",
+                                     "debtRemFnType":  "CONSTANT_ISSUE",
+                                     "type":  "CODE_SMELL",
+                                     "defaultRemFnType":  "CONSTANT_ISSUE",
+                                     "defaultRemFnBaseEffort":  "0min",
+                                     "remFnType":  "CONSTANT_ISSUE",
+                                     "remFnBaseEffort":  "0min",
+                                     "remFnOverloaded":  false,
+                                     "scope":  "ALL",
+                                     "isExternal":  false,
+                                     "descriptionSections":  [
+                                                                 {
+                                                                     "key":  "resources",
+                                                                     "content":  "\u003cul\u003e\n  \u003cli\u003eCWE - \u003ca href=\"https://cwe.mitre.org/data/definitions/546\"\u003eCWE-546 - Suspicious Comment\u003c/a\u003e\u003c/li\u003e\n\u003c/ul\u003e"
+                                                                 },
+                                                                 {
+                                                                     "key":  "root_cause",
+                                                                     "content":  "\u003cp\u003eDevelopers often use \u003ccode\u003eTODO\u003c/code\u003e tags to mark areas in the code where additional work or improvements are needed but are not implemented\nimmediately. However, these \u003ccode\u003eTODO\u003c/code\u003e tags sometimes get overlooked or forgotten, leading to incomplete or unfinished code. This rule aims to\nidentify and address unattended \u003ccode\u003eTODO\u003c/code\u003e tags to ensure a clean and maintainable codebase. This description explores why this is a problem\nand how it can be fixed to improve the overall code quality.\u003c/p\u003e\n\u003ch3\u003eWhat is the potential impact?\u003c/h3\u003e\n\u003cp\u003eUnattended \u003ccode\u003eTODO\u003c/code\u003e tags in code can have significant implications for the development process and the overall codebase.\u003c/p\u003e\n\u003cp\u003eIncomplete Functionality: When developers leave \u003ccode\u003eTODO\u003c/code\u003e tags without implementing the corresponding code, it results in incomplete\nfunctionality within the software. This can lead to unexpected behavior or missing features, adversely affecting the end-user experience.\u003c/p\u003e\n\u003cp\u003eMissed Bug Fixes: If developers do not promptly address \u003ccode\u003eTODO\u003c/code\u003e tags, they might overlook critical bug fixes and security updates.\nDelayed bug fixes can result in more severe issues and increase the effort required to resolve them later.\u003c/p\u003e\n\u003cp\u003eImpact on Collaboration: In team-based development environments, unattended \u003ccode\u003eTODO\u003c/code\u003e tags can hinder collaboration. Other team members\nmight not be aware of the intended changes, leading to conflicts or redundant efforts in the codebase.\u003c/p\u003e\n\u003cp\u003eCodebase Bloat: The accumulation of unattended \u003ccode\u003eTODO\u003c/code\u003e tags over time can clutter the codebase and make it difficult to distinguish\nbetween work in progress and completed code. This bloat can make it challenging to maintain an organized and efficient codebase.\u003c/p\u003e\n\u003cp\u003eAddressing this code smell is essential to ensure a maintainable, readable, reliable codebase and promote effective collaboration among\ndevelopers.\u003c/p\u003e\n\u003ch3\u003eNoncompliant code example\u003c/h3\u003e\n\u003cpre\u003e\ndef doSomething:\n  # TODO : Complete function\n\u003c/pre\u003e"
+                                                                 }
+                                                             ],
+                                     "educationPrinciples":  [
+
+                                                             ],
+                                     "updatedAt":  "2026-09-29T20:31:11+0000",
+                                     "cleanCodeAttribute":  "COMPLETE",
+                                     "cleanCodeAttributeCategory":  "INTENTIONAL",
+                                     "impacts":  [
+                                                     {
+                                                         "softwareQuality":  "MAINTAINABILITY",
+                                                         "severity":  "INFO"
+                                                     }
+                                                 ]
+                                 },
+                        "actives":  [
+
+                                    ]
+                    },
+                    {
+                        "rule":  {
+                                     "key":  "python:S1481",
+                                     "repo":  "python",
+                                     "name":  "Unused local variables should be removed",
+                                     "createdAt":  "2026-09-29T20:31:11+0000",
+                                     "severity":  "MINOR",
+                                     "status":  "READY",
+                                     "isTemplate":  false,
+                                     "tags":  [
+
+                                              ],
+                                     "sysTags":  [
+                                                     "unused"
+                                                 ],
+                                     "lang":  "py",
+                                     "langName":  "Python",
+                                     "params":  [
+                                                    {
+                                                        "key":  "regex",
+                                                        "htmlDesc":  "Regular expression used to identify variable name to ignore.",
+                                                        "defaultValue":  "(_[a-zA-Z0-9_]*|dummy|unused|ignored)",
+                                                        "type":  "STRING"
+                                                    }
+                                                ],
+                                     "defaultDebtRemFnType":  "CONSTANT_ISSUE",
+                                     "debtRemFnType":  "CONSTANT_ISSUE",
+                                     "type":  "CODE_SMELL",
+                                     "defaultRemFnType":  "CONSTANT_ISSUE",
+                                     "defaultRemFnBaseEffort":  "5min",
+                                     "remFnType":  "CONSTANT_ISSUE",
+                                     "remFnBaseEffort":  "5min",
+                                     "remFnOverloaded":  false,
+                                     "scope":  "ALL",
+                                     "isExternal":  false,
+                                     "descriptionSections":  [
+                                                                 {
+                                                                     "key":  "how_to_fix",
+                                                                     "content":  "\u003cp\u003eThe fix for this issue is straightforward. Once you ensure the unused variable is not part of an incomplete implementation leading to bugs, you\njust need to remove it.\u003c/p\u003e\n\n\u003ch4\u003eNoncompliant code example\u003c/h4\u003e\n\u003cpre data-diff-id=\"1\" data-diff-type=\"noncompliant\"\u003e\ndef hello(name):\n    message = \"Hello \" + name # Noncompliant - message is unused\n    print(name)\nfor i in range(10): # Noncompliant - i is unused\n    foo()\n\u003c/pre\u003e\n\u003ch4\u003eCompliant solution\u003c/h4\u003e\n\u003cpre data-diff-id=\"1\" data-diff-type=\"compliant\"\u003e\ndef hello(name):\n    message = \"Hello \" + name\n    print(message)\nfor _ in range(10):\n    foo()\n\u003c/pre\u003e"
+                                                                 },
+                                                                 {
+                                                                     "key":  "root_cause",
+                                                                     "content":  "\u003cp\u003eAn unused local variable is a variable that has been declared but is not used anywhere in the block of code where it is defined. It is dead code,\ncontributing to unnecessary complexity and leading to confusion when reading the code. Therefore, it should be removed from your code to maintain\nclarity and efficiency.\u003c/p\u003e\n\u003ch3\u003eWhat is the potential impact?\u003c/h3\u003e\n\u003cp\u003eHaving unused local variables in your code can lead to several issues:\u003c/p\u003e\n\u003cul\u003e\n  \u003cli\u003e\u003cstrong\u003eDecreased Readability\u003c/strong\u003e: Unused variables can make your code more difficult to read. They add extra lines and complexity, which\n  can distract from the main logic of the code.\u003c/li\u003e\n  \u003cli\u003e\u003cstrong\u003eMisunderstanding\u003c/strong\u003e: When other developers read your code, they may wonder why a variable is declared but not used. This can lead\n  to confusion and misinterpretation of the codeâs intent.\u003c/li\u003e\n  \u003cli\u003e\u003cstrong\u003ePotential for Bugs\u003c/strong\u003e: If a variable is declared but not used, it might indicate a bug or incomplete code. For example, if you\n  declared a variable intending to use it in a calculation, but then forgot to do so, your program might not work as expected.\u003c/li\u003e\n  \u003cli\u003e\u003cstrong\u003eMaintenance Issues\u003c/strong\u003e: Unused variables can make code maintenance more difficult. If a programmer sees an unused variable, they\n  might think it is a mistake and try to \u0027fix\u0027 the code, potentially introducing new bugs.\u003c/li\u003e\n  \u003cli\u003e\u003cstrong\u003eMemory Usage\u003c/strong\u003e: Although modern compilers are smart enough to ignore unused variables, not all compilers do this. In such cases,\n  unused variables take up memory space, leading to inefficient use of resources.\u003c/li\u003e\n\u003c/ul\u003e\n\u003cp\u003eIn summary, unused local variables can make your code less readable, more confusing, and harder to maintain, and they can potentially lead to bugs\nor inefficient memory use. Therefore, it is best to remove them.\u003c/p\u003e\n\u003ch3\u003eExceptions\u003c/h3\u003e\n\u003cp\u003e\u003ccode\u003e_\u003c/code\u003e will not raise an issue for this rule. The following examples are compliant:\u003c/p\u003e\n\u003cpre\u003e\nfor _ in range(10):\n    do_something()\nusername, login, _ = auth\ndo_something_else(username, login)\n\u003c/pre\u003e"
+                                                                 }
+                                                             ],
+                                     "educationPrinciples":  [
+
+                                                             ],
+                                     "updatedAt":  "2026-09-29T20:31:11+0000",
+                                     "cleanCodeAttribute":  "CLEAR",
+                                     "cleanCodeAttributeCategory":  "INTENTIONAL",
+                                     "impacts":  [
+                                                     {
+                                                         "softwareQuality":  "MAINTAINABILITY",
+                                                         "severity":  "LOW"
+                                                     }
+                                                 ]
+                                 },
+                        "actives":  [
+
+                                    ]
+                    },
+                    {
+                        "rule":  {
+                                     "key":  "python:S3776",
+                                     "repo":  "python",
+                                     "name":  "Cognitive Complexity of functions should not be too high",
+                                     "createdAt":  "2026-09-29T20:31:11+0000",
+                                     "severity":  "CRITICAL",
+                                     "status":  "READY",
+                                     "isTemplate":  false,
+                                     "tags":  [
+
+                                              ],
+                                     "sysTags":  [
+                                                     "brain-overload"
+                                                 ],
+                                     "lang":  "py",
+                                     "langName":  "Python",
+                                     "params":  [
+                                                    {
+                                                        "key":  "threshold",
+                                                        "htmlDesc":  "The maximum authorized complexity.",
+                                                        "defaultValue":  "15",
+                                                        "type":  "INTEGER"
+                                                    }
+                                                ],
+                                     "defaultDebtRemFnType":  "LINEAR_OFFSET",
+                                     "debtRemFnType":  "LINEAR_OFFSET",
+                                     "type":  "CODE_SMELL",
+                                     "defaultRemFnType":  "LINEAR_OFFSET",
+                                     "defaultRemFnGapMultiplier":  "1min",
+                                     "defaultRemFnBaseEffort":  "5min",
+                                     "remFnType":  "LINEAR_OFFSET",
+                                     "remFnGapMultiplier":  "1min",
+                                     "remFnBaseEffort":  "5min",
+                                     "remFnOverloaded":  false,
+                                     "gapDescription":  "per complexity point over the threshold",
+                                     "scope":  "ALL",
+                                     "isExternal":  false,
+                                     "descriptionSections":  [
+                                                                 {
+                                                                     "key":  "root_cause",
+                                                                     "content":  "\u003cp\u003eCognitive Complexity is a measure of how hard it is to understand the control flow of a unit of code. Code with high cognitive complexity is hard\nto read, understand, test, and modify.\u003c/p\u003e\n\u003cp\u003eAs a rule of thumb, high cognitive complexity is a sign that the code should be refactored into smaller, easier-to-manage pieces.\u003c/p\u003e\n\u003ch3\u003eWhich syntax in code does impact cognitive complexity score?\u003c/h3\u003e\n\u003cp\u003eHere are the core concepts:\u003c/p\u003e\n\u003cul\u003e\n  \u003cli\u003e\u003cstrong\u003eCognitive complexity is incremented each time the code breaks the normal linear reading flow.\u003c/strong\u003e\n    \u003cbr\u003e\n    This concerns, for example, loop structures, conditionals, catches, switches, jumps to labels, and conditions mixing multiple operators.\u003c/li\u003e\n  \u003cli\u003e\u003cstrong\u003eEach nesting level increases complexity.\u003c/strong\u003e\n    \u003cbr\u003e\n    During code reading, the deeper you go through nested layers, the harder it becomes to keep the context in mind.\u003c/li\u003e\n  \u003cli\u003e\u003cstrong\u003eMethod calls are free\u003c/strong\u003e\n    \u003cbr\u003e\n    A well-picked method name is a summary of multiple lines of code. A reader can first explore a high-level view of what the code is performing then\n    go deeper and deeper by looking at called functions content.\n    \u003cbr\u003e\n    \u003cem\u003eNote:\u003c/em\u003e This does not apply to recursive calls, those will increment cognitive score.\u003c/li\u003e\n\u003c/ul\u003e\n\u003cp\u003eThe method of computation is fully detailed in the pdf linked in the resources.\u003c/p\u003e\n\u003ch3\u003eWhat is the potential impact?\u003c/h3\u003e\n\u003cp\u003eDevelopers spend more time reading and understanding code than writing it. High cognitive complexity slows down changes and increases the cost of\nmaintenance.\u003c/p\u003e"
+                                                                 },
+                                                                 {
+                                                                     "key":  "how_to_fix",
+                                                                     "content":  "\u003cp\u003eReducing cognitive complexity can be challenging.\n  \u003cbr\u003e\n  Here are a few suggestions:\u003c/p\u003e\n\u003cul\u003e\n  \u003cli\u003e\u003cstrong\u003eExtract complex conditions in a new function.\u003c/strong\u003e\n    \u003cbr\u003e\n    Mixed operators in condition will increase complexity. Extracting the condition in a new function with an appropriate name will reduce cognitive\n    load.\u003c/li\u003e\n  \u003cli\u003e\u003cstrong\u003eBreak down large functions.\u003c/strong\u003e\n    \u003cbr\u003e\n    Large functions can be hard to understand and maintain. If a function is doing too many things, consider breaking it down into smaller, more\n    manageable functions. Each function should have a single responsibility.\u003c/li\u003e\n  \u003cli\u003e\u003cstrong\u003eAvoid deep nesting by returning early.\u003c/strong\u003e\n    \u003cbr\u003e\n    To avoid the nesting of conditions, process exceptional cases first and return early.\u003c/li\u003e\n\u003c/ul\u003e\n\n\u003cp\u003e\u003cstrong\u003eExtraction of a complex condition in a new function.\u003c/strong\u003e\u003c/p\u003e\n\u003ch4\u003eNoncompliant code example\u003c/h4\u003e\n\u003cp\u003eThe code is using a complex condition and has a cognitive cost of 5.\u003c/p\u003e\n\u003cpre data-diff-id=\"1\" data-diff-type=\"noncompliant\"\u003e\ndef process_eligible_users(users):\n    for user in users:             # +1 (for)\n        if ((user.is_active and    # +1 (if) +1 (nested) +1 (multiple conditions)\n            user.has_profile) or   # +1 (mixed operator)\n            user.age \u0026gt; 18 ):\n            user.process()\n\u003c/pre\u003e\n\u003ch4\u003eCompliant solution\u003c/h4\u003e\n\u003cp\u003eEven if the cognitive complexity of the whole program did not change, it is easier for a reader to understand the code of the\n\u003ccode\u003eprocess_eligible_users\u003c/code\u003e function, which now only has a cognitive cost of 3.\u003c/p\u003e\n\u003cpre data-diff-id=\"1\" data-diff-type=\"compliant\"\u003e\ndef process_eligible_users(users):\n    for user in users:             # +1 (for)\n        if is_eligible_user(user): # +1 (if) +1 (nested)\n            user.process()\n\ndef is_eligible_user(user):\n    return ((user.is_active and user.has_profile) or user.age \u0026gt; 18) # +1 (multiple conditions) +1 (mixed operators)\n\u003c/pre\u003e\n\u003cp\u003e\u003cstrong\u003eBreak down large functions.\u003c/strong\u003e\u003c/p\u003e\n\u003ch4\u003eNoncompliant code example\u003c/h4\u003e\n\u003cp\u003e\u003cem\u003eNote:\u003c/em\u003e The code is simplified here, to illustrate the purpose. Please imagine there is more happening in the process.\n  \u003cbr\u003e\u003c/p\u003e\n\u003cp\u003eThe bellow code has a cognitive complexity score of 8.\u003c/p\u003e\n\u003cpre data-diff-id=\"3\" data-diff-type=\"noncompliant\"\u003e\ndef process_user(user):\n    if user.is_active():             # +1 (if)\n        if user.has_profile():       # +1 (if) +1 (nested)\n            ... # process active user with profile\n        else:                        # +1 (else)\n            ... # process active user without profile\n    else:                            # +1 (else)\n        if user.has_profile():       # +1 (if) +1 (nested)\n            ... # process inactive user with profile\n        else:                        # +1 (else)\n            ... # process inactive user without profile\n\u003c/pre\u003e\n\u003cp\u003eThis function could be refactored into smaller functions: The complexity is spread over multiple functions and the breaks in flow are no more\nnested.\n  \u003cbr\u003e\n  The \u003ccode\u003eprocess_user\u003c/code\u003e has now a complexity score of two.\u003c/p\u003e\n\u003ch4\u003eCompliant solution\u003c/h4\u003e\n\u003cpre data-diff-id=\"3\" data-diff-type=\"compliant\"\u003e\ndef process_user(user):\n    if user.is_active():             # +1 (if)\n        process_active_user(user)\n    else:                            # +1 (else)\n        process_inactive_user(user)\n\ndef process_active_user(user):\n    if user.has_profile():           # +1 (if) +1 (nested)\n        ... # process active user with profile\n    else:                            # +1 (else)\n        ... # process active user without profile\n\ndef process_inactive_user(user):\n    if user.has_profile():           # +1 (if) +1 (nested)\n        ... # process inactive user with profile\n    else:                            # +1 (else)\n        ... # process inactive user without profile\n\u003c/pre\u003e\n\u003cp\u003e\u003cstrong\u003eAvoid deep nesting by returning early.\u003c/strong\u003e\u003c/p\u003e\n\u003ch4\u003eNoncompliant code example\u003c/h4\u003e\n\u003cp\u003eThe below code has a cognitive complexity of 6.\u003c/p\u003e\n\u003cpre data-diff-id=\"4\" data-diff-type=\"noncompliant\"\u003e\ndef calculate(data):\n    if data is not None:  # +1 (if)\n        total = 0\n        for item in data: # +1 (for) +1 (nested)\n            if item \u0026gt; 0:  # +1 (if)  +2 (nested)\n                total += item * 2\n        return total\n\u003c/pre\u003e\n\u003ch4\u003eCompliant solution\u003c/h4\u003e\n\u003cp\u003eChecking for the edge case first flattens the \u003ccode\u003eif\u003c/code\u003e statements and reduces the cognitive complexity to 4.\u003c/p\u003e\n\u003cpre data-diff-id=\"4\" data-diff-type=\"compliant\"\u003e\ndef calculate(data):\n    if data is None:      # +1 (if)\n        return None\n    total = 0\n    for item in data:     # +1 (for)\n        if item \u0026gt; 0:      # +1 (if) +1 (nested)\n            total += item * 2\n    return total\n\u003c/pre\u003e\n\u003ch3\u003ePitfalls\u003c/h3\u003e\n\u003cp\u003eAs this code is complex, ensure that you have unit tests that cover the code before refactoring.\u003c/p\u003e"
+                                                                 },
+                                                                 {
+                                                                     "key":  "introduction",
+                                                                     "content":  "\u003cp\u003eThis rule raises an issue when the code cognitive complexity of a function is above a certain threshold.\u003c/p\u003e"
+                                                                 },
+                                                                 {
+                                                                     "key":  "resources",
+                                                                     "content":  "\u003ch3\u003eDocumentation\u003c/h3\u003e\n\u003cul\u003e\n  \u003cli\u003eSonar - \u003ca href=\"https://www.sonarsource.com/docs/CognitiveComplexity.pdf\"\u003eCognitive Complexity\u003c/a\u003e\u003c/li\u003e\n\u003c/ul\u003e\n\u003ch3\u003eArticles \u0026amp; blog posts\u003c/h3\u003e\n\u003cul\u003e\n  \u003cli\u003eSonar Blog - \u003ca href=\"https://www.sonarsource.com/blog/5-clean-code-tips-for-reducing-cognitive-complexity/\"\u003e5 Clean Code Tips for Reducing\n  Cognitive Complexity\u003c/a\u003e\u003c/li\u003e\n\u003c/ul\u003e"
+                                                                 }
+                                                             ],
+                                     "educationPrinciples":  [
+
+                                                             ],
+                                     "updatedAt":  "2026-09-29T20:31:11+0000",
+                                     "cleanCodeAttribute":  "FOCUSED",
+                                     "cleanCodeAttributeCategory":  "ADAPTABLE",
+                                     "impacts":  [
+                                                     {
+                                                         "softwareQuality":  "MAINTAINABILITY",
+                                                         "severity":  "HIGH"
+                                                     }
+                                                 ]
+                                 },
+                        "actives":  [
+
+                                    ]
+                    },
+                    {
+                        "rule":  {
+                                     "key":  "python:S5713",
+                                     "repo":  "python",
+                                     "name":  "A subclass should not be in the same \"except\" statement as a parent class",
+                                     "createdAt":  "2026-09-29T20:31:11+0000",
+                                     "severity":  "MINOR",
+                                     "status":  "READY",
+                                     "isTemplate":  false,
+                                     "tags":  [
+
+                                              ],
+                                     "sysTags":  [
+                                                     "error-handling",
+                                                     "bad-practice",
+                                                     "unused"
+                                                 ],
+                                     "lang":  "py",
+                                     "langName":  "Python",
+                                     "params":  [
+
+                                                ],
+                                     "defaultDebtRemFnType":  "CONSTANT_ISSUE",
+                                     "debtRemFnType":  "CONSTANT_ISSUE",
+                                     "type":  "CODE_SMELL",
+                                     "defaultRemFnType":  "CONSTANT_ISSUE",
+                                     "defaultRemFnBaseEffort":  "1min",
+                                     "remFnType":  "CONSTANT_ISSUE",
+                                     "remFnBaseEffort":  "1min",
+                                     "remFnOverloaded":  false,
+                                     "scope":  "ALL",
+                                     "isExternal":  false,
+                                     "descriptionSections":  [
+                                                                 {
+                                                                     "key":  "introduction",
+                                                                     "content":  "\u003cp\u003eThis rule raises an issue when an exception class is duplicated in an \u003ccode\u003eexcept\u003c/code\u003e statement, or when an exception class has a parent class\nin the same \u003ccode\u003eexcept\u003c/code\u003e statement.\u003c/p\u003e"
+                                                                 },
+                                                                 {
+                                                                     "key":  "root_cause",
+                                                                     "content":  "\u003cp\u003eIn Python it is possible to catch multiple types of exception in a single \u003ccode\u003eexcept\u003c/code\u003e statement using a tuple of the exceptions.\u003c/p\u003e\n\u003cp\u003eRepeating an exception class in a single \u003ccode\u003eexcept\u003c/code\u003e statement will not fail but it does not have any effect. Either the exception class is\nnot the one which should be caught, or it is duplicated code which should be removed.\u003c/p\u003e\n\u003cp\u003eHaving a subclass and a parent class in the same \u003ccode\u003eexcept\u003c/code\u003e statement does not provide any benefit either. It is enough to keep only the\nparent class.\u003c/p\u003e\n\n\u003ch4\u003eNoncompliant code example\u003c/h4\u003e\n\u003cpre data-diff-id=\"1\" data-diff-type=\"noncompliant\"\u003e\ntry:\n    ...\nexcept (TypeError, TypeError):  # Noncompliant: duplicated code or incorrect exception class.\n    print(\"Foo\")\n\ntry:\n    ...\nexcept (NotImplementedError, RuntimeError):  # Noncompliant: NotImplementedError inherits from RuntimeError.\n    print(\"Foo\")\n\u003c/pre\u003e\n\u003ch4\u003eCompliant solution\u003c/h4\u003e\n\u003cpre data-diff-id=\"1\" data-diff-type=\"compliant\"\u003e\ntry:\n    ...\nexcept (TypeError, ValueError):\n    print(\"Foo\")\n\ntry:\n    ...\nexcept RuntimeError:\n    print(\"Foo\")\n\u003c/pre\u003e"
+                                                                 },
+                                                                 {
+                                                                     "key":  "resources",
+                                                                     "content":  "\u003ch3\u003eDocumentation\u003c/h3\u003e\n\u003cul\u003e\n  \u003cli\u003ePython Documentation - \u003ca href=\"https://docs.python.org/3/tutorial/errors.html#handling-exceptions\"\u003eHandling Exceptions\u003c/a\u003e\u003c/li\u003e\n  \u003cli\u003ePython Documentation - \u003ca href=\"https://docs.python.org/3/library/exceptions.html#exception-hierarchy\"\u003eException hierarchy\u003c/a\u003e\u003c/li\u003e\n\u003c/ul\u003e"
+                                                                 }
+                                                             ],
+                                     "educationPrinciples":  [
+
+                                                             ],
+                                     "updatedAt":  "2026-09-29T20:31:11+0000",
+                                     "cleanCodeAttribute":  "LOGICAL",
+                                     "cleanCodeAttributeCategory":  "INTENTIONAL",
+                                     "impacts":  [
+                                                     {
+                                                         "softwareQuality":  "MAINTAINABILITY",
+                                                         "severity":  "LOW"
+                                                     }
+                                                 ]
+                                 },
+                        "actives":  [
+
+                                    ]
+                    },
+                    {
+                        "rule":  {
+                                     "key":  "python:S5778",
+                                     "repo":  "python",
+                                     "name":  "Only one method invocation is expected when testing runtime exceptions",
+                                     "createdAt":  "2026-09-29T20:31:11+0000",
+                                     "severity":  "MAJOR",
+                                     "status":  "READY",
+                                     "isTemplate":  false,
+                                     "tags":  [
+
+                                              ],
+                                     "sysTags":  [
+                                                     "tests",
+                                                     "pytest",
+                                                     "unittest"
+                                                 ],
+                                     "lang":  "py",
+                                     "langName":  "Python",
+                                     "params":  [
+
+                                                ],
+                                     "defaultDebtRemFnType":  "CONSTANT_ISSUE",
+                                     "debtRemFnType":  "CONSTANT_ISSUE",
+                                     "type":  "CODE_SMELL",
+                                     "defaultRemFnType":  "CONSTANT_ISSUE",
+                                     "defaultRemFnBaseEffort":  "5min",
+                                     "remFnType":  "CONSTANT_ISSUE",
+                                     "remFnBaseEffort":  "5min",
+                                     "remFnOverloaded":  false,
+                                     "scope":  "TEST",
+                                     "isExternal":  false,
+                                     "descriptionSections":  [
+                                                                 {
+                                                                     "key":  "resources",
+                                                                     "content":  "\u003ch3\u003eDocumentation\u003c/h3\u003e\n\u003cul\u003e\n  \u003cli\u003epytest documentation - \u003ca href=\"https://docs.pytest.org/en/stable/how-to/assert.html#assertions-about-expected-exceptions\"\u003eOfficial pytest guide\n  on testing exceptions\u003c/a\u003e\u003c/li\u003e\n  \u003cli\u003eunittest documentation - \u003ca href=\"https://docs.python.org/3/library/unittest.html#unittest.TestCase.assertRaises\"\u003ePython standard library\n  documentation on assertRaises\u003c/a\u003e\u003c/li\u003e\n\u003c/ul\u003e"
+                                                                 },
+                                                                 {
+                                                                     "key":  "root_cause",
+                                                                     "content":  "\u003cp\u003eWhen writing tests for exception handling, clarity is essential. If you chain multiple method calls within the code being tested for an exception,\nit becomes ambiguous which specific call is expected to raise that exception.\u003c/p\u003e\n\u003cp\u003eFor example, both \u003ccode\u003eparse_payment(payload)\u003c/code\u003e and \u003ccode\u003enormalize()\u003c/code\u003e could raise a \u003ccode\u003eValueError\u003c/code\u003e:\u003c/p\u003e\n\u003cpre\u003e\nwith pytest.raises(ValueError):\n    parse_payment(payload).normalize()\n\u003c/pre\u003e\n\u003cp\u003eThe test does not make it explicit which method is expected to raise the exception. This ambiguity makes the test harder to read and maintain.\u003c/p\u003e\n\u003cp\u003eBy isolating the method call you want to test, you make your test explicit and unambiguous. This improves readability and maintainability, and\nmakes your test suite a better specification of expected behavior.\u003c/p\u003e\n\u003ch3\u003eWhat is the potential impact?\u003c/h3\u003e\n\u003cp\u003eWriting tests with multiple method calls when testing for exceptions reduces test quality:\u003c/p\u003e\n\u003cul\u003e\n  \u003cli\u003e\u003cstrong\u003eIncorrect test coverage\u003c/strong\u003e: You may think youâre testing one methodâs exception behavior when youâre actually testing\n  anotherâs.\u003c/li\u003e\n  \u003cli\u003e\u003cstrong\u003eMaintenance burden\u003c/strong\u003e: Other developers (or future you) will struggle to understand what the test is verifying.\u003c/li\u003e\n  \u003cli\u003e\u003cstrong\u003eReduced confidence\u003c/strong\u003e: Passing tests donât guarantee that the specific behavior you intended to test is working correctly.\u003c/li\u003e\n\u003c/ul\u003e"
+                                                                 },
+                                                                 {
+                                                                     "key":  "introduction",
+                                                                     "content":  "\u003cp\u003eThis rule raises an issue when a test for an expected exception contains multiple method calls, making it unclear which call is expected to raise\nthe exception.\u003c/p\u003e"
+                                                                 },
+                                                                 {
+                                                                     "key":  "how_to_fix",
+                                                                     "content":  "\u003cp\u003eWhen using pytestâs \u003ccode\u003epytest.raises()\u003c/code\u003e context manager, extract intermediate method calls into separate variables before the assertion.\nThis ensures only the final method call that you want to test is inside the exception-testing block.\u003c/p\u003e\n\n\u003ch4\u003eNoncompliant code example\u003c/h4\u003e\n\u003cpre data-diff-id=\"1\" data-diff-type=\"noncompliant\"\u003e\nimport pytest\n\ndef test_normalize_rejects_negative_amount():\n    with pytest.raises(ValueError):  # Noncompliant\n        parse_payment(payload).normalize()\n\u003c/pre\u003e\n\u003ch4\u003eCompliant solution\u003c/h4\u003e\n\u003cpre data-diff-id=\"1\" data-diff-type=\"compliant\"\u003e\nimport pytest\n\ndef test_normalize_rejects_negative_amount():\n    payment = parse_payment(payload)\n    with pytest.raises(ValueError):\n        payment.normalize()\n\u003c/pre\u003e",
+                                                                     "context":  {
+                                                                                     "displayName":  "pytest",
+                                                                                     "key":  "pytest"
+                                                                                 }
+                                                                 },
+                                                                 {
+                                                                     "key":  "how_to_fix",
+                                                                     "content":  "\u003cp\u003eWhen using unittestâs \u003ccode\u003eassertRaises()\u003c/code\u003e method, extract intermediate method calls before the assertion. This makes it clear which\nspecific method is being tested for the exception.\u003c/p\u003e\n\n\u003ch4\u003eNoncompliant code example\u003c/h4\u003e\n\u003cpre data-diff-id=\"2\" data-diff-type=\"noncompliant\"\u003e\nimport unittest\n\nclass TestPayment(unittest.TestCase):\n    def test_normalize_rejects_negative_amount(self):\n        self.assertRaises(ValueError, lambda: parse_payment(payload).normalize())  # Noncompliant\n\u003c/pre\u003e\n\u003ch4\u003eCompliant solution\u003c/h4\u003e\n\u003cpre data-diff-id=\"2\" data-diff-type=\"compliant\"\u003e\nimport unittest\n\nclass TestPayment(unittest.TestCase):\n    def test_normalize_rejects_negative_amount(self):\n        payment = parse_payment(payload)\n        self.assertRaises(ValueError, payment.normalize)\n\u003c/pre\u003e",
+                                                                     "context":  {
+                                                                                     "displayName":  "unittest",
+                                                                                     "key":  "unittest"
+                                                                                 }
+                                                                 }
+                                                             ],
+                                     "educationPrinciples":  [
+
+                                                             ],
+                                     "updatedAt":  "2026-09-29T20:31:11+0000",
+                                     "cleanCodeAttribute":  "CLEAR",
+                                     "cleanCodeAttributeCategory":  "INTENTIONAL",
+                                     "impacts":  [
+                                                     {
+                                                         "softwareQuality":  "MAINTAINABILITY",
+                                                         "severity":  "MEDIUM"
+                                                     }
+                                                 ]
+                                 },
+                        "actives":  [
+
+                                    ]
+                    },
+                    {
+                        "rule":  {
+                                     "key":  "python:S8409",
+                                     "repo":  "python",
+                                     "name":  "FastAPI routes should not specify redundant \"response_model\" parameters",
+                                     "createdAt":  "2026-09-29T20:31:11+0000",
+                                     "severity":  "MINOR",
+                                     "status":  "READY",
+                                     "isTemplate":  false,
+                                     "tags":  [
+
+                                              ],
+                                     "sysTags":  [
+                                                     "fastapi",
+                                                     "api",
+                                                     "redundant"
+                                                 ],
+                                     "lang":  "py",
+                                     "langName":  "Python",
+                                     "params":  [
+
+                                                ],
+                                     "defaultDebtRemFnType":  "CONSTANT_ISSUE",
+                                     "debtRemFnType":  "CONSTANT_ISSUE",
+                                     "type":  "CODE_SMELL",
+                                     "defaultRemFnType":  "CONSTANT_ISSUE",
+                                     "defaultRemFnBaseEffort":  "2min",
+                                     "remFnType":  "CONSTANT_ISSUE",
+                                     "remFnBaseEffort":  "2min",
+                                     "remFnOverloaded":  false,
+                                     "scope":  "MAIN",
+                                     "isExternal":  false,
+                                     "descriptionSections":  [
+                                                                 {
+                                                                     "key":  "resources",
+                                                                     "content":  "\u003ch3\u003eDocumentation\u003c/h3\u003e\n\u003cul\u003e\n  \u003cli\u003eFastAPI Documentation - Response Model - \u003ca href=\"https://fastapi.tiangolo.com/tutorial/response-model/\"\u003eOfficial FastAPI documentation\n  explaining response models and return type annotations\u003c/a\u003e\u003c/li\u003e\n  \u003cli\u003eRuff Rule FAST001 - \u003ca href=\"https://docs.astral.sh/ruff/rules/fast-api-redundant-response-model/\"\u003eRuff linter rule documentation for detecting\n  redundant response_model parameters\u003c/a\u003e\u003c/li\u003e\n\u003c/ul\u003e"
+                                                                 },
+                                                                 {
+                                                                     "key":  "root_cause",
+                                                                     "content":  "\u003cp\u003eFastAPI automatically infers the response model from a functionâs return type annotation. When you specify the same type in both the return\nannotation and the \u003ccode\u003eresponse_model\u003c/code\u003e parameter, you create unnecessary duplication.\u003c/p\u003e\n\u003cp\u003eThis duplication has several drawbacks:\u003c/p\u003e\n\u003cul\u003e\n  \u003cli\u003e\u003cstrong\u003eMaintenance burden\u003c/strong\u003e: When the response type needs to change, you must update it in two places, increasing the risk of\n  inconsistencies.\u003c/li\u003e\n  \u003cli\u003e\u003cstrong\u003eCode verbosity\u003c/strong\u003e: The redundant parameter adds visual noise without providing additional value.\u003c/li\u003e\n  \u003cli\u003e\u003cstrong\u003eConfusion\u003c/strong\u003e: Developers might wonder if the two specifications serve different purposes or if they should be kept in sync.\u003c/li\u003e\n\u003c/ul\u003e\n\u003cp\u003eFastAPIâs automatic inference from return type annotations is the recommended approach. The \u003ccode\u003eresponse_model\u003c/code\u003e parameter exists for\nspecial cases where you need to override the default behavior, such as when returning a different model internally than what should be serialized in\nthe response.\u003c/p\u003e\n\u003ch3\u003eWhat is the potential impact?\u003c/h3\u003e\n\u003cp\u003eThis issue affects code maintainability and clarity. While it doesnât cause runtime errors or security vulnerabilities, it makes the codebase\nharder to maintain and understand. Developers may waste time keeping redundant specifications synchronized or debugging issues caused by mismatches\nbetween the two declarations.\u003c/p\u003e"
+                                                                 },
+                                                                 {
+                                                                     "key":  "how_to_fix",
+                                                                     "content":  "\u003cp\u003eRemove the \u003ccode\u003eresponse_model\u003c/code\u003e parameter from the route decorator and rely solely on the functionâs return type annotation. FastAPI will\nautomatically use the return type annotation to generate the response schema and validate the response.\u003c/p\u003e\n\n\u003ch4\u003eNoncompliant code example\u003c/h4\u003e\n\u003cpre data-diff-id=\"1\" data-diff-type=\"noncompliant\"\u003e\n@app.post(\"/items/\", response_model=Item)  # Noncompliant\nasync def create_item(item: Item) -\u0026gt; Item:\n    return item\n\u003c/pre\u003e\n\u003ch4\u003eCompliant solution\u003c/h4\u003e\n\u003cpre data-diff-id=\"1\" data-diff-type=\"compliant\"\u003e\n@app.post(\"/items/\")\nasync def create_item(item: Item) -\u0026gt; Item:\n    return item\n\u003c/pre\u003e\n\u003cp\u003eFor GET endpoints, the same principle applies. Remove the redundant \u003ccode\u003eresponse_model\u003c/code\u003e parameter and let FastAPI infer the response type\nfrom the return annotation.\u003c/p\u003e\n\u003ch4\u003eNoncompliant code example\u003c/h4\u003e\n\u003cpre data-diff-id=\"2\" data-diff-type=\"noncompliant\"\u003e\n@app.get(\"/users/{user_id}\", response_model=User)  # Noncompliant\ndef get_user(user_id: int) -\u0026gt; User:\n    return fetch_user(user_id)\n\u003c/pre\u003e\n\u003ch4\u003eCompliant solution\u003c/h4\u003e\n\u003cpre data-diff-id=\"2\" data-diff-type=\"compliant\"\u003e\n@app.get(\"/users/{user_id}\")\ndef get_user(user_id: int) -\u0026gt; User:\n    return fetch_user(user_id)\n\u003c/pre\u003e\n\u003cp\u003eWhen you need to return a different type internally than what should be serialized (a legitimate use case for \u003ccode\u003eresponse_model\u003c/code\u003e), keep\nthe \u003ccode\u003eresponse_model\u003c/code\u003e parameter. This example shows when \u003ccode\u003eresponse_model\u003c/code\u003e is appropriate because the internal return type\nincludes sensitive data that shouldnât be exposed.\u003c/p\u003e\n\u003ch4\u003eNoncompliant code example\u003c/h4\u003e\n\u003cpre data-diff-id=\"3\" data-diff-type=\"noncompliant\"\u003e\n@app.get(\"/users/{user_id}\", response_model=UserPublic)\ndef get_user(user_id: int) -\u0026gt; UserPublic:  # Noncompliant: types match\n    user = fetch_user_with_password(user_id)\n    return UserPublic(**user.dict())\n\u003c/pre\u003e\n\u003ch4\u003eCompliant solution\u003c/h4\u003e\n\u003cpre data-diff-id=\"3\" data-diff-type=\"compliant\"\u003e\n@app.get(\"/users/{user_id}\", response_model=UserPublic)\ndef get_user(user_id: int) -\u0026gt; UserInternal:\n    # Returns UserInternal but serializes as UserPublic\n    return fetch_user_with_password(user_id)\n\u003c/pre\u003e",
+                                                                     "context":  {
+                                                                                     "displayName":  "FastAPI",
+                                                                                     "key":  "fastapi"
+                                                                                 }
+                                                                 },
+                                                                 {
+                                                                     "key":  "introduction",
+                                                                     "content":  "\u003cp\u003eThis is an issue when a FastAPI route decorator includes a \u003ccode\u003eresponse_model\u003c/code\u003e parameter that duplicates the functionâs return type\nannotation.\u003c/p\u003e"
+                                                                 }
+                                                             ],
+                                     "educationPrinciples":  [
+
+                                                             ],
+                                     "updatedAt":  "2026-09-29T20:31:11+0000",
+                                     "cleanCodeAttribute":  "CLEAR",
+                                     "cleanCodeAttributeCategory":  "INTENTIONAL",
+                                     "impacts":  [
+                                                     {
+                                                         "softwareQuality":  "MAINTAINABILITY",
+                                                         "severity":  "LOW"
+                                                     }
+                                                 ]
+                                 },
+                        "actives":  [
+
+                                    ]
+                    },
+                    {
+                        "rule":  {
+                                     "key":  "python:S8410",
+                                     "repo":  "python",
+                                     "name":  "FastAPI dependencies should use \"Annotated\" type hints",
+                                     "createdAt":  "2026-09-29T20:31:11+0000",
+                                     "severity":  "MINOR",
+                                     "status":  "READY",
+                                     "isTemplate":  false,
+                                     "tags":  [
+
+                                              ],
+                                     "sysTags":  [
+                                                     "convention",
+                                                     "fastapi",
+                                                     "type-hint"
+                                                 ],
+                                     "lang":  "py",
+                                     "langName":  "Python",
+                                     "params":  [
+
+                                                ],
+                                     "defaultDebtRemFnType":  "CONSTANT_ISSUE",
+                                     "debtRemFnType":  "CONSTANT_ISSUE",
+                                     "type":  "CODE_SMELL",
+                                     "defaultRemFnType":  "CONSTANT_ISSUE",
+                                     "defaultRemFnBaseEffort":  "5min",
+                                     "remFnType":  "CONSTANT_ISSUE",
+                                     "remFnBaseEffort":  "5min",
+                                     "remFnOverloaded":  false,
+                                     "scope":  "MAIN",
+                                     "isExternal":  false,
+                                     "descriptionSections":  [
+                                                                 {
+                                                                     "key":  "introduction",
+                                                                     "content":  "\u003cp\u003eThis rule raises an issue when FastAPI route handler parameters use \u003ccode\u003eDepends()\u003c/code\u003e, \u003ccode\u003eQuery()\u003c/code\u003e, \u003ccode\u003ePath()\u003c/code\u003e,\n\u003ccode\u003eBody()\u003c/code\u003e, or similar dependency injection functions as default parameter values instead of within \u003ccode\u003eAnnotated\u003c/code\u003e type hints.\u003c/p\u003e"
+                                                                 },
+                                                                 {
+                                                                     "key":  "resources",
+                                                                     "content":  "\u003ch3\u003eDocumentation\u003c/h3\u003e\n\u003cul\u003e\n  \u003cli\u003eFastAPI Documentation - Dependencies - \u003ca href=\"https://fastapi.tiangolo.com/tutorial/dependencies/\"\u003eOfficial FastAPI documentation on\n  dependency injection\u003c/a\u003e\u003c/li\u003e\n  \u003cli\u003eFastAPI Documentation - Advantages of Annotated - \u003ca\n  href=\"https://fastapi.tiangolo.com/tutorial/query-params-str-validations/#advantages-of-annotated\"\u003eFastAPI guide on why to prefer Annotated\u003c/a\u003e\u003c/li\u003e\n  \u003cli\u003ePython typing.Annotated - \u003ca href=\"https://docs.python.org/3/library/typing.html#typing.Annotated\"\u003ePython documentation for the Annotated type\n  hint\u003c/a\u003e\u003c/li\u003e\n\u003c/ul\u003e"
+                                                                 },
+                                                                 {
+                                                                     "key":  "root_cause",
+                                                                     "content":  "\u003cp\u003eFastAPI originally allowed declaring dependencies by using them as default parameter values. While this approach still works, it has several\ndrawbacks that make code harder to maintain and understand.\u003c/p\u003e\n\u003cp\u003eUsing FastAPI functions such as \u003ccode\u003eDepends()\u003c/code\u003e, \u003ccode\u003eQuery()\u003c/code\u003e, \u003ccode\u003ePath()\u003c/code\u003e, and \u003ccode\u003eBody()\u003c/code\u003e as parameter default\nvalues mixes two different concerns: the parameterâs actual Python default value and FastAPIâs request handling metadata.\u003c/p\u003e\n\u003cp\u003eThe modern \u003ccode\u003eAnnotated\u003c/code\u003e syntax keeps the type and any real Python default value in their usual places, while still making the\nFastAPI-specific behavior explicit.\u003c/p\u003e\n\u003cp\u003eUsing \u003ccode\u003eAnnotated\u003c/code\u003e consistently across your codebase also aligns with FastAPIâs current recommendations and ensures your code follows\nmodern Python typing conventions introduced in Python 3.9.\u003c/p\u003e\n\u003cp\u003eThe old syntax mixes concerns by using the default value mechanism for dependency injection, which is semantically confusing since the \"default\"\nisnât really a default value in the traditional sense.\u003c/p\u003e\n\u003ch3\u003eWhat is the potential impact?\u003c/h3\u003e\n\u003cp\u003eUsing this old syntax makes code less maintainable in several ways:\u003c/p\u003e\n\u003cul\u003e\n  \u003cli\u003eThe functionâs default value no longer represents the real Python default value of the parameter\u003c/li\u003e\n  \u003cli\u003eIf the function is called outside FastAPI, omitted arguments can produce FastAPI metadata objects instead of business values\u003c/li\u003e\n  \u003cli\u003eDevelopers reading the code must mentally separate the dependency injection mechanism from the actual parameter type\u003c/li\u003e\n  \u003cli\u003eMixing old and new syntax across a codebase creates inconsistency that increases cognitive load\u003c/li\u003e\n  \u003cli\u003eFuture FastAPI versions may deprecate or remove support for the old syntax, requiring migration work\u003c/li\u003e\n\u003c/ul\u003e"
+                                                                 },
+                                                                 {
+                                                                     "key":  "how_to_fix",
+                                                                     "content":  "\u003cp\u003eReplace dependency declarations in default values with \u003ccode\u003eAnnotated\u003c/code\u003e type hints. Import \u003ccode\u003eAnnotated\u003c/code\u003e from the\n\u003ccode\u003etyping\u003c/code\u003e module (Python 3.9+) or \u003ccode\u003etyping_extensions\u003c/code\u003e (Python 3.8 and earlier). The first argument to \u003ccode\u003eAnnotated\u003c/code\u003e is\nthe actual type of the parameter, and the second argument is the dependency injection specification. If the parameter has a real default value, keep\nit as the normal Python default after the annotation.\u003c/p\u003e\n\n\u003ch4\u003eNoncompliant code example\u003c/h4\u003e\n\u003cpre data-diff-id=\"1\" data-diff-type=\"noncompliant\"\u003e\nfrom dataclasses import dataclass\nfrom fastapi import Depends, FastAPI\n\napp = FastAPI()\n\n@dataclass\nclass User:\n    username: str\n\ndef get_current_user() -\u0026gt; User:\n    return User(username=\"alice\")\n\n@app.get(\"/items/\")\ndef read_items(user = Depends(get_current_user)):  # Noncompliant\n    return {\"user\": user.username}\n\u003c/pre\u003e\n\u003ch4\u003eCompliant solution\u003c/h4\u003e\n\u003cpre data-diff-id=\"1\" data-diff-type=\"compliant\"\u003e\nfrom dataclasses import dataclass\nfrom typing import Annotated\nfrom fastapi import Depends, FastAPI\n\napp = FastAPI()\n\n@dataclass\nclass User:\n    username: str\n\ndef get_current_user() -\u0026gt; User:\n    return User(username=\"alice\")\n\n@app.get(\"/items/\")\ndef read_items(user: Annotated[User, Depends(get_current_user)]):\n    return {\"user\": user.username}\n\u003c/pre\u003e\n\u003cp\u003eThe same pattern applies to query parameters, path parameters, and request body parameters. Use \u003ccode\u003eAnnotated\u003c/code\u003e to combine the type with the\nparameter specification.\u003c/p\u003e\n\u003ch4\u003eNoncompliant code example\u003c/h4\u003e\n\u003cpre data-diff-id=\"2\" data-diff-type=\"noncompliant\"\u003e\nfrom fastapi import FastAPI, Query\n\napp = FastAPI()\n\n@app.get(\"/search/\")\ndef search_items(\n    q: str = Query(\"latest\", max_length=50)  # Noncompliant\n):\n    return {\"query\": q}\n\u003c/pre\u003e\n\u003ch4\u003eCompliant solution\u003c/h4\u003e\n\u003cpre data-diff-id=\"2\" data-diff-type=\"compliant\"\u003e\nfrom typing import Annotated\nfrom fastapi import FastAPI, Query\n\napp = FastAPI()\n\n@app.get(\"/search/\")\ndef search_items(\n    q: Annotated[str, Query(max_length=50)] = \"latest\"\n):\n    return {\"query\": q}\n\u003c/pre\u003e\n\u003cp\u003eFor complex dependencies that return specific types, specify the return type explicitly in the \u003ccode\u003eAnnotated\u003c/code\u003e declaration to improve type\nsafety.\u003c/p\u003e\n\u003ch4\u003eNoncompliant code example\u003c/h4\u003e\n\u003cpre data-diff-id=\"3\" data-diff-type=\"noncompliant\"\u003e\nfrom fastapi import Depends, FastAPI\n\napp = FastAPI()\n\nasync def common_parameters(q: str | None = None, skip: int = 0):\n    return {\"q\": q, \"skip\": skip}\n\n@app.get(\"/items/\")\nasync def read_items(commons: dict = Depends(common_parameters)):  # Noncompliant\n    return commons\n\u003c/pre\u003e\n\u003ch4\u003eCompliant solution\u003c/h4\u003e\n\u003cpre data-diff-id=\"3\" data-diff-type=\"compliant\"\u003e\nfrom typing import Annotated\nfrom fastapi import Depends, FastAPI\n\napp = FastAPI()\n\nasync def common_parameters(q: str | None = None, skip: int = 0):\n    return {\"q\": q, \"skip\": skip}\n\n@app.get(\"/items/\")\nasync def read_items(commons: Annotated[dict, Depends(common_parameters)]):\n    return commons\n\u003c/pre\u003e",
+                                                                     "context":  {
+                                                                                     "displayName":  "FastAPI",
+                                                                                     "key":  "fastapi"
+                                                                                 }
+                                                                 }
+                                                             ],
+                                     "educationPrinciples":  [
+
+                                                             ],
+                                     "updatedAt":  "2026-09-29T20:31:11+0000",
+                                     "cleanCodeAttribute":  "CLEAR",
+                                     "cleanCodeAttributeCategory":  "INTENTIONAL",
+                                     "impacts":  [
+                                                     {
+                                                         "softwareQuality":  "MAINTAINABILITY",
+                                                         "severity":  "LOW"
+                                                     }
+                                                 ]
+                                 },
+                        "actives":  [
+
+                                    ]
+                    },
+                    {
+                        "rule":  {
+                                     "key":  "python:S9073",
+                                     "repo":  "python",
+                                     "name":  "Composite assertions should be split",
+                                     "createdAt":  "2026-09-29T20:31:11+0000",
+                                     "severity":  "MAJOR",
+                                     "status":  "READY",
+                                     "isTemplate":  false,
+                                     "tags":  [
+
+                                              ],
+                                     "sysTags":  [
+                                                     "pytest"
+                                                 ],
+                                     "lang":  "py",
+                                     "langName":  "Python",
+                                     "params":  [
+
+                                                ],
+                                     "defaultDebtRemFnType":  "CONSTANT_ISSUE",
+                                     "debtRemFnType":  "CONSTANT_ISSUE",
+                                     "type":  "CODE_SMELL",
+                                     "defaultRemFnType":  "CONSTANT_ISSUE",
+                                     "defaultRemFnBaseEffort":  "5min",
+                                     "remFnType":  "CONSTANT_ISSUE",
+                                     "remFnBaseEffort":  "5min",
+                                     "remFnOverloaded":  false,
+                                     "scope":  "MAIN",
+                                     "isExternal":  false,
+                                     "descriptionSections":  [
+                                                                 {
+                                                                     "key":  "root_cause",
+                                                                     "content":  "\u003cp\u003eComposite assertions hide which condition failed. When several checks are joined in a single \u003ccode\u003eassert\u003c/code\u003e, a failure reports the whole\nexpression as false instead of pointing at the specific condition that broke.\u003c/p\u003e\n\u003ch3\u003eAssertions joined with \u003ccode\u003eand\u003c/code\u003e\u003c/h3\u003e\n\u003cp\u003e\u003ccode\u003eassert a and b\u003c/code\u003e verifies two independent facts in one statement. If the assertion fails, the message does not clearly identify whether\n\u003ccode\u003ea\u003c/code\u003e, \u003ccode\u003eb\u003c/code\u003e, or both were false:\u003c/p\u003e\n\u003cpre\u003e\ndef test_user(user):\n    assert user.is_active and user.is_verified  # Which condition failed?\n\u003c/pre\u003e\n\u003cp\u003eSplitting into separate asserts makes each failure actionable:\u003c/p\u003e\n\u003cpre\u003e\ndef test_user(user):\n    assert user.is_active\n    assert user.is_verified\n\u003c/pre\u003e\n\u003ch3\u003eNegated \u003ccode\u003eor\u003c/code\u003e expressions\u003c/h3\u003e\n\u003cp\u003e\u003ccode\u003eassert not (a or b)\u003c/code\u003e is equivalent to asserting that both \u003ccode\u003ea\u003c/code\u003e and \u003ccode\u003eb\u003c/code\u003e are false (De Morganâs law). It has the\nsame opacity problem as an \u003ccode\u003eand\u003c/code\u003e chain:\u003c/p\u003e\n\u003cpre\u003e\ndef test_axis_hidden(axis):\n    assert not (axis.visible or axis.label_visible)  # Which flag is still true?\n\u003c/pre\u003e\n\u003cp\u003eSplit it into independent negated asserts:\u003c/p\u003e\n\u003cpre\u003e\ndef test_axis_hidden(axis):\n    assert not axis.visible\n    assert not axis.label_visible\n\u003c/pre\u003e\n\u003ch3\u003eWhy plain \u003ccode\u003eor\u003c/code\u003e is excluded\u003c/h3\u003e\n\u003cp\u003e\u003ccode\u003eassert a or b\u003c/code\u003e means at least one condition must hold. Replacing it with two separate asserts would require both to hold and would\nchange the testâs intent. This rule therefore does not flag that form.\u003c/p\u003e\n\u003ch3\u003eWhat is the potential impact?\u003c/h3\u003e\n\u003cp\u003eWhen a composite assertion fails, developers spend extra time deciphering which condition broke. Opaque failure messages slow down debugging and\nmake flaky or partial regressions harder to diagnose. Splitting assertions keeps each check independent and produces clearer failure reports.\u003c/p\u003e"
+                                                                 },
+                                                                 {
+                                                                     "key":  "resources",
+                                                                     "content":  "\u003ch3\u003eDocumentation\u003c/h3\u003e\n\u003cul\u003e\n  \u003cli\u003eRuff - \u003ca href=\"https://docs.astral.sh/ruff/rules/pytest-composite-assertion/\"\u003epytest-composite-assertion (PT018)\u003c/a\u003e\u003c/li\u003e\n  \u003cli\u003eflake8-pytest-style - \u003ca href=\"https://github.com/m-burst/flake8-pytest-style/blob/master/docs/rules/PT018.md\"\u003ePT018\u003c/a\u003e\u003c/li\u003e\n  \u003cli\u003epytest documentation - \u003ca href=\"https://docs.pytest.org/en/stable/how-to/assert.html#asserting-with-the-assert-statement\"\u003eAsserting with the\n  assert statement\u003c/a\u003e\u003c/li\u003e\n\u003c/ul\u003e"
+                                                                 },
+                                                                 {
+                                                                     "key":  "introduction",
+                                                                     "content":  "\u003cp\u003eThis rule raises an issue when a test assertion combines multiple independent conditions with \u003ccode\u003eand\u003c/code\u003e, or when it asserts the negation of\nan \u003ccode\u003eor\u003c/code\u003e expression (\u003ccode\u003eassert not (a or b)\u003c/code\u003e).\u003c/p\u003e\n\u003cp\u003eIt does not raise an issue on plain \u003ccode\u003eassert a or b\u003c/code\u003e, because splitting that form would change the meaning from \"at least one condition\nholds\" to \"all conditions hold\".\u003c/p\u003e"
+                                                                 },
+                                                                 {
+                                                                     "key":  "how_to_fix",
+                                                                     "content":  "\u003cp\u003eSplit composite assertions into separate \u003ccode\u003eassert\u003c/code\u003e statements, one per independent condition. For \u003ccode\u003eassert not (a or b)\u003c/code\u003e, use\nDe Morganâs law and write \u003ccode\u003eassert not a\u003c/code\u003e and \u003ccode\u003eassert not b\u003c/code\u003e.\u003c/p\u003e\n\u003cp\u003eThis applies to:\u003c/p\u003e\n\u003cul\u003e\n  \u003cli\u003e\u003ccode\u003eassert a and b\u003c/code\u003e (and longer \u003ccode\u003eand\u003c/code\u003e chains) that combine independent conditions\u003c/li\u003e\n  \u003cli\u003e\u003ccode\u003eassert not (a or b)\u003c/code\u003e (De Morgan-equivalent negation of an \u003ccode\u003eor\u003c/code\u003e expression)\u003c/li\u003e\n\u003c/ul\u003e\n\u003cp\u003ePlain \u003ccode\u003eassert a or b\u003c/code\u003e is not flagged, because splitting it would change the meaning of the test.\u003c/p\u003e\n\n\u003ch4\u003eNoncompliant code example\u003c/h4\u003e\n\u003cpre data-diff-id=\"1\" data-diff-type=\"noncompliant\"\u003e\ndef test_user(user):\n    assert user.is_active and user.is_verified  # Noncompliant\n\u003c/pre\u003e\n\u003ch4\u003eCompliant solution\u003c/h4\u003e\n\u003cpre data-diff-id=\"1\" data-diff-type=\"compliant\"\u003e\ndef test_user(user):\n    assert user.is_active\n    assert user.is_verified\n\u003c/pre\u003e\n\u003ch4\u003eNoncompliant code example\u003c/h4\u003e\n\u003cpre data-diff-id=\"2\" data-diff-type=\"noncompliant\"\u003e\ndef test_axis_hidden(axis):\n    assert not (axis.visible or axis.label_visible)  # Noncompliant\n\u003c/pre\u003e\n\u003ch4\u003eCompliant solution\u003c/h4\u003e\n\u003cpre data-diff-id=\"2\" data-diff-type=\"compliant\"\u003e\ndef test_axis_hidden(axis):\n    assert not axis.visible\n    assert not axis.label_visible\n\u003c/pre\u003e"
+                                                                 }
+                                                             ],
+                                     "educationPrinciples":  [
+
+                                                             ],
+                                     "updatedAt":  "2026-09-29T20:31:11+0000",
+                                     "cleanCodeAttribute":  "CLEAR",
+                                     "cleanCodeAttributeCategory":  "INTENTIONAL",
+                                     "impacts":  [
+                                                     {
+                                                         "softwareQuality":  "MAINTAINABILITY",
+                                                         "severity":  "MEDIUM"
+                                                     }
+                                                 ]
+                                 },
+                        "actives":  [
+
+                                    ]
+                    },
+                    {
+                        "rule":  {
+                                     "key":  "python:S9083",
+                                     "repo":  "python",
+                                     "name":  "Pytest fixture and mark decorators should use consistent parentheses style",
+                                     "createdAt":  "2026-09-29T20:31:11+0000",
+                                     "severity":  "MINOR",
+                                     "status":  "READY",
+                                     "isTemplate":  false,
+                                     "tags":  [
+
+                                              ],
+                                     "sysTags":  [
+                                                     "tests",
+                                                     "pytest"
+                                                 ],
+                                     "lang":  "py",
+                                     "langName":  "Python",
+                                     "params":  [
+                                                    {
+                                                        "key":  "requireParentheses",
+                                                        "htmlDesc":  "Whether argument-free pytest fixture and mark decorators should use empty parentheses.",
+                                                        "defaultValue":  "false",
+                                                        "type":  "BOOLEAN"
+                                                    }
+                                                ],
+                                     "defaultDebtRemFnType":  "CONSTANT_ISSUE",
+                                     "debtRemFnType":  "CONSTANT_ISSUE",
+                                     "type":  "CODE_SMELL",
+                                     "defaultRemFnType":  "CONSTANT_ISSUE",
+                                     "defaultRemFnBaseEffort":  "1min",
+                                     "remFnType":  "CONSTANT_ISSUE",
+                                     "remFnBaseEffort":  "1min",
+                                     "remFnOverloaded":  false,
+                                     "scope":  "TEST",
+                                     "isExternal":  false,
+                                     "descriptionSections":  [
+                                                                 {
+                                                                     "key":  "introduction",
+                                                                     "content":  "\u003cp\u003eThis rule raises an issue when an argument-free \u003ccode\u003e@pytest.fixture\u003c/code\u003e or \u003ccode\u003e@pytest.mark.*\u003c/code\u003e decorator uses parentheses\ninconsistently with the configured style.\u003c/p\u003e\n\u003cp\u003eBy default, empty parentheses are not allowed, matching the official pytest documentation. Analysis may be configured to require empty parentheses\ninstead.\u003c/p\u003e"
+                                                                 },
+                                                                 {
+                                                                     "key":  "root_cause",
+                                                                     "content":  "\u003cp\u003eFor argument-free \u003ccode\u003e@pytest.fixture\u003c/code\u003e and \u003ccode\u003e@pytest.mark.*\u003c/code\u003e decorators, parentheses are optional:\u003c/p\u003e\n\u003cpre\u003e\n@pytest.fixture\ndef sample():\n    return 1\n\n@pytest.fixture()\ndef other():\n    return 2\n\u003c/pre\u003e\n\u003cp\u003eBoth forms are valid, but mixing them makes tests harder to scan and review. Prefer one style consistently. The default style omits empty\nparentheses, which matches pytestâs own documentation.\u003c/p\u003e\n\u003cp\u003eDecorators that take arguments still need parentheses:\u003c/p\u003e\n\u003cpre\u003e\n@pytest.fixture(scope=\u0027module\u0027)\ndef db():\n    ...\n\n@pytest.mark.parametrize(\u0027value\u0027, [1, 2])\ndef test_values(value):\n    ...\n\u003c/pre\u003e\n\u003ch3\u003eWhat is the potential impact?\u003c/h3\u003e\n\u003cp\u003eInconsistent parentheses on fixtures and marks add noise during reviews without changing behavior. Aligning on one style keeps test suites easier\nto read and maintain.\u003c/p\u003e"
+                                                                 },
+                                                                 {
+                                                                     "key":  "resources",
+                                                                     "content":  "\u003ch3\u003eDocumentation\u003c/h3\u003e\n\u003cul\u003e\n  \u003cli\u003epytest documentation - \u003ca href=\"https://docs.pytest.org/en/stable/reference/reference.html#pytest.fixture\"\u003epytest.fixture\u003c/a\u003e\u003c/li\u003e\n  \u003cli\u003epytest documentation - \u003ca href=\"https://docs.pytest.org/en/stable/reference/reference.html#marks\"\u003eMarks\u003c/a\u003e\u003c/li\u003e\n  \u003cli\u003eRuff - \u003ca href=\"https://docs.astral.sh/ruff/rules/pytest-fixture-incorrect-parentheses-style/\"\u003ePT001:\n  pytest-fixture-incorrect-parentheses-style\u003c/a\u003e\u003c/li\u003e\n  \u003cli\u003eRuff - \u003ca href=\"https://docs.astral.sh/ruff/rules/pytest-incorrect-mark-parentheses-style/\"\u003ePT023:\n  pytest-incorrect-mark-parentheses-style\u003c/a\u003e\u003c/li\u003e\n\u003c/ul\u003e"
+                                                                 },
+                                                                 {
+                                                                     "key":  "how_to_fix",
+                                                                     "content":  "\u003cp\u003eOmit empty parentheses on argument-free \u003ccode\u003e@pytest.fixture\u003c/code\u003e and \u003ccode\u003e@pytest.mark.*\u003c/code\u003e decorators (the default style). If analysis is\nconfigured to require parentheses, add empty \u003ccode\u003e()\u003c/code\u003e instead.\u003c/p\u003e\n\u003cp\u003eDo not change decorators that already pass arguments.\u003c/p\u003e\n\n\u003ch4\u003eNoncompliant code example\u003c/h4\u003e\n\u003cpre data-diff-id=\"1\" data-diff-type=\"noncompliant\"\u003e\nimport pytest\n\n@pytest.fixture()  # Noncompliant\ndef sample():\n    return 1\n\n@pytest.mark.slow()  # Noncompliant\ndef test_sample(sample):\n    assert sample == 1\n\u003c/pre\u003e\n\u003ch4\u003eCompliant solution\u003c/h4\u003e\n\u003cpre data-diff-id=\"1\" data-diff-type=\"compliant\"\u003e\nimport pytest\n\n@pytest.fixture\ndef sample():\n    return 1\n\n@pytest.mark.slow\ndef test_sample(sample):\n    assert sample == 1\n\u003c/pre\u003e"
+                                                                 }
+                                                             ],
+                                     "educationPrinciples":  [
+
+                                                             ],
+                                     "updatedAt":  "2026-09-29T20:31:11+0000",
+                                     "cleanCodeAttribute":  "CONVENTIONAL",
+                                     "cleanCodeAttributeCategory":  "CONSISTENT",
+                                     "impacts":  [
+                                                     {
+                                                         "softwareQuality":  "MAINTAINABILITY",
+                                                         "severity":  "LOW"
+                                                     }
+                                                 ]
+                                 },
+                        "actives":  [
+
+                                    ]
+                    },
+                    {
+                        "rule":  {
+                                     "key":  "python:S9100",
+                                     "repo":  "python",
+                                     "name":  "Pytest fixtures without teardown should use return instead of yield",
+                                     "createdAt":  "2026-09-29T20:31:11+0000",
+                                     "severity":  "MAJOR",
+                                     "status":  "READY",
+                                     "isTemplate":  false,
+                                     "tags":  [
+
+                                              ],
+                                     "sysTags":  [
+                                                     "tests",
+                                                     "pytest"
+                                                 ],
+                                     "lang":  "py",
+                                     "langName":  "Python",
+                                     "params":  [
+
+                                                ],
+                                     "defaultDebtRemFnType":  "CONSTANT_ISSUE",
+                                     "debtRemFnType":  "CONSTANT_ISSUE",
+                                     "type":  "CODE_SMELL",
+                                     "defaultRemFnType":  "CONSTANT_ISSUE",
+                                     "defaultRemFnBaseEffort":  "5min",
+                                     "remFnType":  "CONSTANT_ISSUE",
+                                     "remFnBaseEffort":  "5min",
+                                     "remFnOverloaded":  false,
+                                     "scope":  "TEST",
+                                     "isExternal":  false,
+                                     "descriptionSections":  [
+                                                                 {
+                                                                     "key":  "introduction",
+                                                                     "content":  "\u003cp\u003eThis rule raises an issue when a \u003ccode\u003e@pytest.fixture\u003c/code\u003e yields a value with no teardown code after the \u003ccode\u003eyield\u003c/code\u003e.\u003c/p\u003e"
+                                                                 },
+                                                                 {
+                                                                     "key":  "how_to_fix",
+                                                                     "content":  "\u003cp\u003eWhen a fixture has no teardown, replace \u003ccode\u003eyield\u003c/code\u003e with \u003ccode\u003ereturn\u003c/code\u003e.\u003c/p\u003e\n\n\u003ch4\u003eNoncompliant code example\u003c/h4\u003e\n\u003cpre data-diff-id=\"1\" data-diff-type=\"noncompliant\"\u003e\nimport pytest\n\n@pytest.fixture\ndef useless_yield():\n    data = load()\n    yield data  # Noncompliant\n\u003c/pre\u003e\n\u003ch4\u003eCompliant solution\u003c/h4\u003e\n\u003cpre data-diff-id=\"1\" data-diff-type=\"compliant\"\u003e\nimport pytest\n\n@pytest.fixture\ndef useless_yield():\n    return load()\n\u003c/pre\u003e"
+                                                                 },
+                                                                 {
+                                                                     "key":  "root_cause",
+                                                                     "content":  "\u003cp\u003eA fixture should use \u003ccode\u003eyield\u003c/code\u003e only when there is teardown after the test. Yielding with nothing afterward is equivalent to\n\u003ccode\u003ereturn\u003c/code\u003e, but reads as if cleanup were intended:\u003c/p\u003e\n\u003cpre\u003e\n@pytest.fixture\ndef useless_yield():\n    data = load()\n    yield data\n\u003c/pre\u003e\n\u003cp\u003eUse \u003ccode\u003ereturn\u003c/code\u003e when no teardown is needed:\u003c/p\u003e\n\u003cpre\u003e\n@pytest.fixture\ndef useless_yield():\n    return load()\n\u003c/pre\u003e\n\u003ch3\u003eWhat is the potential impact?\u003c/h3\u003e\n\u003cp\u003eA useless \u003ccode\u003eyield\u003c/code\u003e suggests teardown that does not exist, which misleads readers about fixture lifecycle and resource ownership.\u003c/p\u003e"
+                                                                 },
+                                                                 {
+                                                                     "key":  "resources",
+                                                                     "content":  "\u003ch3\u003eDocumentation\u003c/h3\u003e\n\u003cul\u003e\n  \u003cli\u003epytest documentation - \u003ca href=\"https://docs.pytest.org/en/stable/how-to/fixtures.html#yield-fixtures-recommended\"\u003eYield fixtures\n  (recommended)\u003c/a\u003e\u003c/li\u003e\n  \u003cli\u003eRuff - \u003ca href=\"https://docs.astral.sh/ruff/rules/pytest-useless-yield-fixture/\"\u003ePT022 â pytest-useless-yield-fixture\u003c/a\u003e\u003c/li\u003e\n\u003c/ul\u003e\n\u003ch3\u003eRelated rules\u003c/h3\u003e\n\u003cul\u003e\n  \u003cli\u003e\u003ca href=\u0027/coding_rules#rule_key=python%3AS8994\u0027\u003eS8994\u003c/a\u003e - Fixtures should not contain more than one yield\u003c/li\u003e\n  \u003cli\u003e\u003ca href=\u0027/coding_rules#rule_key=python%3AS9080\u0027\u003eS9080\u003c/a\u003e - Pytest fixtures should use yield for teardown\u003c/li\u003e\n\u003c/ul\u003e"
+                                                                 }
+                                                             ],
+                                     "educationPrinciples":  [
+
+                                                             ],
+                                     "updatedAt":  "2026-09-29T20:31:11+0000",
+                                     "cleanCodeAttribute":  "CLEAR",
+                                     "cleanCodeAttributeCategory":  "INTENTIONAL",
+                                     "impacts":  [
+                                                     {
+                                                         "softwareQuality":  "MAINTAINABILITY",
+                                                         "severity":  "MEDIUM"
+                                                     }
+                                                 ]
+                                 },
+                        "actives":  [
+
+                                    ]
+                    },
+                    {
+                        "rule":  {
+                                     "key":  "typescript:S2245",
+                                     "repo":  "typescript",
+                                     "name":  "Pseudorandom number generators (PRNGs) should not be used in security contexts",
+                                     "createdAt":  "2026-09-29T20:31:12+0000",
+                                     "severity":  "MAJOR",
+                                     "status":  "READY",
+                                     "isTemplate":  false,
+                                     "tags":  [
+
+                                              ],
+                                     "sysTags":  [
+                                                     "cwe",
+                                                     "former-hotspot"
+                                                 ],
+                                     "lang":  "ts",
+                                     "langName":  "TypeScript",
+                                     "params":  [
+
+                                                ],
+                                     "defaultDebtRemFnType":  "CONSTANT_ISSUE",
+                                     "debtRemFnType":  "CONSTANT_ISSUE",
+                                     "type":  "VULNERABILITY",
+                                     "defaultRemFnType":  "CONSTANT_ISSUE",
+                                     "defaultRemFnBaseEffort":  "10min",
+                                     "remFnType":  "CONSTANT_ISSUE",
+                                     "remFnBaseEffort":  "10min",
+                                     "remFnOverloaded":  false,
+                                     "scope":  "MAIN",
+                                     "isExternal":  false,
+                                     "descriptionSections":  [
+                                                                 {
+                                                                     "key":  "root_cause",
+                                                                     "content":  "\u003cp\u003eWhen software generates predictable values in a context requiring unpredictability, an attacker who knows or can guess the internal state of the\nPRNG may predict the next value that will be generated. The rule flags the use of non-cryptographic PRNGs in contexts where a cryptographically secure\npseudorandom number generator (CSPRNG) is required, such as generating encryption keys, tokens, or other secret values.\u003c/p\u003e\n\u003cp\u003eAs the \u003ccode\u003eMath.random()\u003c/code\u003e function relies on a weak pseudorandom number generator, this function should not be used for security-critical\napplications or for protecting sensitive data. In such contexts, a cryptographically strong pseudorandom number generator (CSPRNG) should be used\ninstead.\u003c/p\u003e\n\u003ch3\u003eWhat is the potential impact?\u003c/h3\u003e\n\u003ch4\u003ePredictable values\u003c/h4\u003e\n\u003cp\u003eIf an attacker can predict the values generated by a PRNG, they may be able to guess session tokens, encryption keys, password reset links, or\nother secrets, leading to unauthorized access or impersonation.\u003c/p\u003e\n\u003ch4\u003eBroken cryptography\u003c/h4\u003e\n\u003cp\u003eUsing a non-cryptographic PRNG to generate keys or initialization vectors weakens the security of the cryptographic scheme, potentially making it\ntrivially breakable.\u003c/p\u003e"
+                                                                 },
+                                                                 {
+                                                                     "key":  "how_to_fix",
+                                                                     "content":  "\u003cp\u003eUse a cryptographically secure pseudorandom number generator (CSPRNG) instead of a non-cryptographic PRNG.\u003c/p\u003e\n\u003ch4\u003eNoncompliant code example\u003c/h4\u003e\n\u003cpre data-diff-id=\"1\" data-diff-type=\"noncompliant\"\u003e\nconst val = Math.random(); // Noncompliant\n\u003c/pre\u003e\n\u003ch4\u003eCompliant solution\u003c/h4\u003e\n\u003cpre data-diff-id=\"1\" data-diff-type=\"compliant\"\u003e\n// === Client side ===\nconst crypto = window.crypto || window.msCrypto;\nvar array = new Uint32Array(1);\ncrypto.getRandomValues(array);\n\n// === Server side ===\nconst crypto = require(\u0027crypto\u0027);\nconst buf = crypto.randomBytes(1);\n\u003c/pre\u003e"
+                                                                 },
+                                                                 {
+                                                                     "key":  "introduction",
+                                                                     "content":  "\u003cp\u003ePseudorandom number generators (PRNGs) produce sequences that only approximate true randomness and are not suitable for security-sensitive\ncontexts.\u003c/p\u003e"
+                                                                 },
+                                                                 {
+                                                                     "key":  "resources",
+                                                                     "content":  "\u003ch3\u003eDocumentation\u003c/h3\u003e\n\u003cul\u003e\n  \u003cli\u003eOWASP - \u003ca href=\"https://cheatsheetseries.owasp.org/cheatsheets/Cryptographic_Storage_Cheat_Sheet.html#secure-random-number-generation\"\u003eSecure\n  Random Number Generation Cheat Sheet\u003c/a\u003e\u003c/li\u003e\n\u003c/ul\u003e\n\u003ch3\u003eStandards\u003c/h3\u003e\n\u003cul\u003e\n  \u003cli\u003eOWASP - \u003ca href=\"https://owasp.org/Top10/A02_2021-Cryptographic_Failures/\"\u003eTop 10 2021 Category A2 - Cryptographic Failures\u003c/a\u003e\u003c/li\u003e\n  \u003cli\u003eOWASP - \u003ca href=\"https://owasp.org/www-project-top-ten/2017/A3_2017-Sensitive_Data_Exposure\"\u003eTop 10 2017 Category A3 - Sensitive Data\n  Exposure\u003c/a\u003e\u003c/li\u003e\n  \u003cli\u003eCWE - \u003ca href=\"https://cwe.mitre.org/data/definitions/338\"\u003eCWE-338 - Use of Cryptographically Weak Pseudo-Random Number Generator\n  (PRNG)\u003c/a\u003e\u003c/li\u003e\n  \u003cli\u003eCWE - \u003ca href=\"https://cwe.mitre.org/data/definitions/330\"\u003eCWE-330 - Use of Insufficiently Random Values\u003c/a\u003e\u003c/li\u003e\n  \u003cli\u003eCWE - \u003ca href=\"https://cwe.mitre.org/data/definitions/326\"\u003eCWE-326 - Inadequate Encryption Strength\u003c/a\u003e\u003c/li\u003e\n  \u003cli\u003eCWE - \u003ca href=\"https://cwe.mitre.org/data/definitions/1241\"\u003eCWE-1241 - Use of Predictable Algorithm in Random Number Generator\u003c/a\u003e\u003c/li\u003e\n\u003c/ul\u003e"
+                                                                 }
+                                                             ],
+                                     "educationPrinciples":  [
+
+                                                             ],
+                                     "updatedAt":  "2026-09-29T20:31:12+0000",
+                                     "cleanCodeAttribute":  "TRUSTWORTHY",
+                                     "cleanCodeAttributeCategory":  "RESPONSIBLE",
+                                     "impacts":  [
+                                                     {
+                                                         "softwareQuality":  "SECURITY",
+                                                         "severity":  "MEDIUM"
+                                                     }
+                                                 ]
+                                 },
+                        "actives":  [
+
+                                    ]
+                    },
+                    {
+                        "rule":  {
+                                     "key":  "typescript:S3358",
+                                     "repo":  "typescript",
+                                     "name":  "Ternary operators should not be nested",
+                                     "createdAt":  "2026-09-29T20:31:12+0000",
+                                     "severity":  "MAJOR",
+                                     "status":  "READY",
+                                     "isTemplate":  false,
+                                     "tags":  [
+
+                                              ],
+                                     "sysTags":  [
+                                                     "editable-source",
+                                                     "confusing"
+                                                 ],
+                                     "lang":  "ts",
+                                     "langName":  "TypeScript",
+                                     "params":  [
+
+                                                ],
+                                     "defaultDebtRemFnType":  "CONSTANT_ISSUE",
+                                     "debtRemFnType":  "CONSTANT_ISSUE",
+                                     "type":  "CODE_SMELL",
+                                     "defaultRemFnType":  "CONSTANT_ISSUE",
+                                     "defaultRemFnBaseEffort":  "5min",
+                                     "remFnType":  "CONSTANT_ISSUE",
+                                     "remFnBaseEffort":  "5min",
+                                     "remFnOverloaded":  false,
+                                     "scope":  "MAIN",
+                                     "isExternal":  false,
+                                     "descriptionSections":  [
+                                                                 {
+                                                                     "key":  "root_cause",
+                                                                     "content":  "\u003cp\u003eNested ternaries are hard to read and can make the order of operations complex to understand.\u003c/p\u003e\n\u003cpre\u003e\nfunction getReadableStatus(job) {\n  return job.isRunning() ? \"Running\" : job.hasErrors() ? \"Failed\" : \"Succeeded \";  // Noncompliant\n}\n\u003c/pre\u003e\n\u003cp\u003eInstead, use another line to express the nested operation in a separate statement.\u003c/p\u003e\n\u003cpre\u003e\nfunction getReadableStatus(job) {\n  if (job.isRunning()) {\n    return \"Running\";\n  }\n  return job.hasErrors() ? \"Failed\" : \"Succeeded\";\n}\n\u003c/pre\u003e\n\u003ch3\u003eExceptions\u003c/h3\u003e\n\u003cp\u003eThis rule does not apply in JSX expressions to support conditional rendering and conditional attributes as long as the nesting happens in separate\nJSX expression containers, i.e. JSX elements embedding JavaScript code, as shown below:\u003c/p\u003e\n\u003cpre\u003e\nreturn (\n\u0026lt;\u0026gt;\n  {isLoading ? (\n    \u0026lt;Loader active /\u0026gt;\n  ) : (\n    \u0026lt;Panel label={isEditing ? \u0027Open\u0027 : \u0027Not open\u0027}\u0026gt;\n      \u0026lt;a\u0026gt;{isEditing ? \u0027Close now\u0027 : \u0027Start now\u0027}\u0026lt;/a\u0026gt;\n      \u0026lt;Checkbox onClick={!saving ? setSaving(saving =\u0026gt; !saving) : null} /\u0026gt;\n    \u0026lt;/Panel\u0026gt;\n  )}\n\u0026lt;/\u0026gt;\n);\n\u003c/pre\u003e\n\u003cp\u003eIf you have nested ternaries in the same JSX expression container, refactor your logic into a separate function like that:\u003c/p\u003e\n\u003cpre\u003e\nfunction myComponent(condition) {\n  if (condition \u0026lt; 0) {\n    return \u0027\u0026lt;DownSign\u0026gt;it is negative\u0026lt;/DownSign\u0026gt;\u0027;\n  } else if (condition \u0026gt; 0) {\n    return \u0027\u0026lt;UpSign\u0026gt;it is positive\u0026lt;/UpSign\u0026gt;\u0027;\n  } else {\n    return \u0027\u0026lt;BarSign\u0026gt;it is zero\u0026lt;/BarSign\u0026gt;\u0027;\n  }\n}\n\nreturn (\n  {myComponent(foo)}\n);\n\u003c/pre\u003e"
+                                                                 },
+                                                                 {
+                                                                     "key":  "resources",
+                                                                     "content":  "\u003ch3\u003eArticles \u0026amp; blog posts\u003c/h3\u003e\n\u003cul\u003e\n  \u003cli\u003eSonar - \u003ca href=\"https://www.sonarsource.com/blog/stop-nesting-ternaries-javascript/\"\u003eStop nesting ternaries in JavaScript\u003c/a\u003e\u003c/li\u003e\n\u003c/ul\u003e"
+                                                                 }
+                                                             ],
+                                     "educationPrinciples":  [
+
+                                                             ],
+                                     "updatedAt":  "2026-09-29T20:31:12+0000",
+                                     "cleanCodeAttribute":  "CLEAR",
+                                     "cleanCodeAttributeCategory":  "INTENTIONAL",
+                                     "impacts":  [
+                                                     {
+                                                         "softwareQuality":  "MAINTAINABILITY",
+                                                         "severity":  "MEDIUM"
+                                                     }
+                                                 ]
+                                 },
+                        "actives":  [
+
+                                    ]
+                    },
+                    {
+                        "rule":  {
+                                     "key":  "typescript:S6759",
+                                     "repo":  "typescript",
+                                     "name":  "React props should be read-only",
+                                     "createdAt":  "2026-09-29T20:31:12+0000",
+                                     "severity":  "MINOR",
+                                     "status":  "READY",
+                                     "isTemplate":  false,
+                                     "tags":  [
+
+                                              ],
+                                     "sysTags":  [
+                                                     "type-dependent",
+                                                     "react"
+                                                 ],
+                                     "lang":  "ts",
+                                     "langName":  "TypeScript",
+                                     "params":  [
+
+                                                ],
+                                     "defaultDebtRemFnType":  "CONSTANT_ISSUE",
+                                     "debtRemFnType":  "CONSTANT_ISSUE",
+                                     "type":  "CODE_SMELL",
+                                     "defaultRemFnType":  "CONSTANT_ISSUE",
+                                     "defaultRemFnBaseEffort":  "5min",
+                                     "remFnType":  "CONSTANT_ISSUE",
+                                     "remFnBaseEffort":  "5min",
+                                     "remFnOverloaded":  false,
+                                     "scope":  "MAIN",
+                                     "isExternal":  false,
+                                     "descriptionSections":  [
+                                                                 {
+                                                                     "key":  "root_cause",
+                                                                     "content":  "\u003cp\u003eReact props should be read-only because it helps to enforce the principle of immutability in React functional components. By making props\nread-only, you ensure that the data passed from a parent component to a child component cannot be modified directly by the child component. This helps\nmaintain a clear data flow and prevents unexpected side effects.\u003c/p\u003e\n\u003cp\u003eIf props were mutable, child components could modify the props directly, leading to unpredictable behavior and making it harder to track down bugs.\nBy enforcing read-only props, React promotes a more predictable and maintainable codebase. Additionally, read-only props enable performance\noptimizations in Reactâs rendering process by avoiding unnecessary re-renders of components.\u003c/p\u003e\n\u003cp\u003eOverall, enforcing read-only props in React helps improve code reliability, maintainability, and performance.\u003c/p\u003e\n\u003cpre data-diff-id=\"1\" data-diff-type=\"noncompliant\"\u003e\ninterface Props {\n  name: string;\n}\n\nfunction Welcome(props: Props) { // Noncompliant: The component props are not read-only\n  return \u0026lt;div\u0026gt;Hello {props.name}\u0026lt;/div\u0026gt;;\n}\n\u003c/pre\u003e\n\u003cp\u003eYou should use TypeScriptâs utility type \u003ccode\u003eReadonly\u003c/code\u003e to make your functional component props read-only.\u003c/p\u003e\n\u003cpre data-diff-id=\"1\" data-diff-type=\"compliant\"\u003e\ninterface Props {\n  name: string;\n}\n\nfunction Welcome(props: Readonly\u0026lt;Props\u0026gt;) {\n  return \u0026lt;div\u0026gt;Hello {props.name}\u0026lt;/div\u0026gt;;\n}\n\u003c/pre\u003e\n\u003cp\u003eAlternatively, you can use TypeScriptâs modifier \u003ccode\u003ereadonly\u003c/code\u003e to mark all the props of your functional component individually as\nread-only.\u003c/p\u003e\n\u003cpre data-diff-id=\"1\" data-diff-type=\"compliant\"\u003e\ninterface Props {\n  readonly name: string;\n}\n\nfunction Welcome(props: Props) {\n  return \u0026lt;div\u0026gt;Hello {props.name}\u0026lt;/div\u0026gt;;\n}\n\u003c/pre\u003e"
+                                                                 },
+                                                                 {
+                                                                     "key":  "resources",
+                                                                     "content":  "\u003ch3\u003eDocumentation\u003c/h3\u003e\n\u003cul\u003e\n  \u003cli\u003eReact Documentation - \u003ca href=\"https://react.dev/learn/passing-props-to-a-component\"\u003ePassing Props to a Component\u003c/a\u003e\u003c/li\u003e\n  \u003cli\u003eTypeScript Documentation - \u003ca href=\"https://www.typescriptlang.org/docs/handbook/utility-types.html#readonlytype\"\u003eReadonly\u0026lt;Type\u0026gt;\u003c/a\u003e\u003c/li\u003e\n  \u003cli\u003eTypeScript Documentation - \u003ca href=\"https://www.typescriptlang.org/docs/handbook/2/classes.html#readonly\"\u003ereadonly\u003c/a\u003e\u003c/li\u003e\n\u003c/ul\u003e"
+                                                                 }
+                                                             ],
+                                     "educationPrinciples":  [
+
+                                                             ],
+                                     "updatedAt":  "2026-09-29T20:31:12+0000",
+                                     "cleanCodeAttribute":  "CONVENTIONAL",
+                                     "cleanCodeAttributeCategory":  "CONSISTENT",
+                                     "impacts":  [
+                                                     {
+                                                         "softwareQuality":  "MAINTAINABILITY",
+                                                         "severity":  "LOW"
+                                                     }
+                                                 ]
+                                 },
+                        "actives":  [
+
+                                    ]
+                    },
+                    {
+                        "rule":  {
+                                     "key":  "typescript:S6772",
+                                     "repo":  "typescript",
+                                     "name":  "Spacing between inline elements should be explicit",
+                                     "createdAt":  "2026-09-29T20:31:12+0000",
+                                     "severity":  "MAJOR",
+                                     "status":  "READY",
+                                     "isTemplate":  false,
+                                     "tags":  [
+
+                                              ],
+                                     "sysTags":  [
+                                                     "react"
+                                                 ],
+                                     "lang":  "ts",
+                                     "langName":  "TypeScript",
+                                     "params":  [
+
+                                                ],
+                                     "defaultDebtRemFnType":  "CONSTANT_ISSUE",
+                                     "debtRemFnType":  "CONSTANT_ISSUE",
+                                     "type":  "CODE_SMELL",
+                                     "defaultRemFnType":  "CONSTANT_ISSUE",
+                                     "defaultRemFnBaseEffort":  "5min",
+                                     "remFnType":  "CONSTANT_ISSUE",
+                                     "remFnBaseEffort":  "5min",
+                                     "remFnOverloaded":  false,
+                                     "scope":  "MAIN",
+                                     "isExternal":  false,
+                                     "descriptionSections":  [
+                                                                 {
+                                                                     "key":  "root_cause",
+                                                                     "content":  "\u003cp\u003eReact JSX differs from the HTML standard in the way it handles newline characters and surrounding whitespace. HTML collapses multiple whitespace\ncharacters (including newlines) into a single whitespace, but JSX removes such sequences completely, leaving no space between inline elements\nseparated by the line break. This difference in behavior can be confusing and may result in unintended layout, for example, missing whitespace between\nthe link content and the surrounding text.\u003c/p\u003e\n\u003cp\u003eTo avoid such issues, you should never rely on newline characters in JSX, and explicitly specify whether you want whitespace between inline\nelements separated by a line break.\u003c/p\u003e\n\u003cpre data-diff-id=\"1\" data-diff-type=\"noncompliant\"\u003e\n\u0026lt;div\u0026gt;{/* Noncompliant: ambiguous spacing */}\n  Here is some\n  \u0026lt;a\u0026gt;space\u0026lt;/a\u0026gt;\n\u0026lt;/div\u0026gt;\n\n\u0026lt;div\u0026gt;{/* Noncompliant: ambiguous spacing */}\n  \u0026lt;a\u0026gt;No space\u0026lt;/a\u0026gt;\n  between these\n\u0026lt;/div\u0026gt;\n\u003c/pre\u003e\n\u003cp\u003eTo fix the issue, either insert an explicit JSX space as a string expression \u003ccode\u003e{\u0027 \u0027}\u003c/code\u003e, or insert an empty comment expression \u003ccode\u003e{/*\n*/}\u003c/code\u003e to indicate that the two parts will be joined together with no space between them.\u003c/p\u003e\n\u003cpre data-diff-id=\"1\" data-diff-type=\"compliant\"\u003e\n\u0026lt;div\u0026gt;\n  Here is some{\u0027 \u0027}\n  \u0026lt;a\u0026gt;space\u0026lt;/a\u0026gt;\n\u0026lt;/div\u0026gt;\n\n\u0026lt;div\u0026gt;\n  \u0026lt;a\u0026gt;No space\u0026lt;/a\u0026gt;{/*\n  */}between these\n\u0026lt;/div\u0026gt;\n\u003c/pre\u003e"
+                                                                 },
+                                                                 {
+                                                                     "key":  "resources",
+                                                                     "content":  "\u003ch3\u003eDocumentation\u003c/h3\u003e\n\u003cul\u003e\n  \u003cli\u003e\u003ca href=\"https://github.com/jsx-eslint/eslint-plugin-react\"\u003eeslint-plugin-react\u003c/a\u003e - Rule \u003ca\n  href=\"https://github.com/jsx-eslint/eslint-plugin-react/blob/HEAD/docs/rules/jsx-child-element-spacing.md\"\u003ejsx-child-element-spacing\u003c/a\u003e\u003c/li\u003e\n  \u003cli\u003eReact Documentation - \u003ca href=\"https://react.dev/learn#writing-markup-with-jsx\"\u003eWriting markup with JSX\u003c/a\u003e\u003c/li\u003e\n  \u003cli\u003eMDN web docs - \u003ca\n  href=\"https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model/Whitespace#spaces_in_between_inline_and_inline-block_elements\"\u003eSpaces\n  in between inline and inline-block elements\u003c/a\u003e\u003c/li\u003e\n\u003c/ul\u003e"
+                                                                 }
+                                                             ],
+                                     "educationPrinciples":  [
+
+                                                             ],
+                                     "updatedAt":  "2026-09-29T20:31:12+0000",
+                                     "cleanCodeAttribute":  "FORMATTED",
+                                     "cleanCodeAttributeCategory":  "CONSISTENT",
+                                     "impacts":  [
+                                                     {
+                                                         "softwareQuality":  "MAINTAINABILITY",
+                                                         "severity":  "MEDIUM"
+                                                     },
+                                                     {
+                                                         "softwareQuality":  "RELIABILITY",
+                                                         "severity":  "LOW"
+                                                     }
+                                                 ]
+                                 },
+                        "actives":  [
+
+                                    ]
+                    },
+                    {
+                        "rule":  {
+                                     "key":  "typescript:S6819",
+                                     "repo":  "typescript",
+                                     "name":  "Prefer tag over ARIA role",
+                                     "createdAt":  "2026-09-29T20:31:12+0000",
+                                     "severity":  "MAJOR",
+                                     "status":  "READY",
+                                     "isTemplate":  false,
+                                     "tags":  [
+
+                                              ],
+                                     "sysTags":  [
+                                                     "accessibility",
+                                                     "react"
+                                                 ],
+                                     "lang":  "ts",
+                                     "langName":  "TypeScript",
+                                     "params":  [
+
+                                                ],
+                                     "defaultDebtRemFnType":  "CONSTANT_ISSUE",
+                                     "debtRemFnType":  "CONSTANT_ISSUE",
+                                     "type":  "CODE_SMELL",
+                                     "defaultRemFnType":  "CONSTANT_ISSUE",
+                                     "defaultRemFnBaseEffort":  "5min",
+                                     "remFnType":  "CONSTANT_ISSUE",
+                                     "remFnBaseEffort":  "5min",
+                                     "remFnOverloaded":  false,
+                                     "scope":  "MAIN",
+                                     "isExternal":  false,
+                                     "descriptionSections":  [
+                                                                 {
+                                                                     "key":  "resources",
+                                                                     "content":  "\u003ch3\u003eDocumentation\u003c/h3\u003e\n\u003cul\u003e\n  \u003cli\u003e\u003ca href=\"https://github.com/jsx-eslint/eslint-plugin-jsx-a11y\"\u003eeslint-plugin-jsx-a11y\u003c/a\u003e - Rule \u003ca\n  href=\"https://github.com/jsx-eslint/eslint-plugin-jsx-a11y/blob/HEAD/docs/rules/prefer-tag-over-role.md\"\u003eprefer-tag-over-role\u003c/a\u003e\u003c/li\u003e\n  \u003cli\u003eMDN web docs - \u003ca href=\"https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Techniques\"\u003eUsing ARIA: Roles, states, and\n  properties\u003c/a\u003e\u003c/li\u003e\n  \u003cli\u003eMDN web docs - \u003ca href=\"https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles\"\u003eARIA roles (Reference)\u003c/a\u003e\u003c/li\u003e\n\u003c/ul\u003e\n\u003ch3\u003eStandards\u003c/h3\u003e\n\u003cul\u003e\n  \u003cli\u003eW3C - \u003ca href=\"https://www.w3.org/TR/wai-aria-1.2/\"\u003eAccessible Rich Internet Applications (WAI-ARIA) 1.2\u003c/a\u003e\u003c/li\u003e\n\u003c/ul\u003e"
+                                                                 },
+                                                                 {
+                                                                     "key":  "root_cause",
+                                                                     "content":  "\u003cp\u003eARIA (Accessible Rich Internet Applications) roles can make custom user interface patterns more accessible, but they should not be used to recreate\nsemantics that HTML already provides. When a native HTML element already matches the intended semantics and behavior, prefer that element over adding\na role to a generic container.\u003c/p\u003e\n\u003cp\u003eFor example, instead of using a div element with a button role (\u003ccode\u003e\u0026lt;div role=\"button\"\u0026gt;Click me\u0026lt;/div\u0026gt;\u003c/code\u003e), use a button element\n(\u003ccode\u003e\u0026lt;button\u0026gt;Click me\u0026lt;/button\u0026gt;\u003c/code\u003e).\u003c/p\u003e\n\u003cp\u003eUsing the native element preserves built-in semantics, browser behavior, keyboard interaction, and assistive technology support with less code to\nmaintain. ARIA is still appropriate when no suitable HTML element exists for the pattern you need, or when the available HTML elements do not fit the\ncomponentâs structure or behavior.\u003c/p\u003e\n\u003cpre data-diff-id=\"1\" data-diff-type=\"noncompliant\"\u003e\n\u0026lt;div role=\"button\" onClick={handleClick} /* Noncompliant */\u0026gt;Click me\u0026lt;/div\u0026gt;\n\u003c/pre\u003e\n\u003cp\u003eReplace the ARIA role with an appropriate HTML tag.\u003c/p\u003e\n\u003cpre data-diff-id=\"1\" data-diff-type=\"compliant\"\u003e\n\u0026lt;button onClick={handleClick}\u0026gt;Click me\u0026lt;/button\u0026gt;\n\u003c/pre\u003e\n\u003ctable\u003e\n  \u003ctbody\u003e\n    \u003ctr\u003e\n      \u003ctd\u003eNote\u003c/td\u003e\n      \u003ctd\u003e\n        \u003cp\u003eThe suggested replacement is generated from a role-to-tag mapping. For roles such as \u003ccode\u003egroup\u003c/code\u003e, \u003ccode\u003edialog\u003c/code\u003e, or a named\n        \u003ccode\u003eregion\u003c/code\u003e, check that the suggested tag matches the intended semantics before applying it mechanically.\u003c/p\u003e\n      \u003c/td\u003e\n    \u003c/tr\u003e\n  \u003c/tbody\u003e\n\u003c/table\u003e\n\u003ch2\u003eExceptions\u003c/h2\u003e\n\u003cp\u003eSome valid ARIA patterns are intentionally ignored when there is no direct native replacement, for example custom components, inline SVG icons, and\nstructural roles used inside composite widgets. Composite widget containers are ignored when their related child roles are rendered as part of the\nsame widget.\u003c/p\u003e\n\u003cp\u003eInline SVG elements with \u003ccode\u003erole=\"img\"\u003c/code\u003e are not raised when they already expose an accessible name through a non-empty\n\u003ccode\u003earia-label\u003c/code\u003e, \u003ccode\u003earia-labelledby\u003c/code\u003e, or direct \u003ccode\u003e\u0026lt;title\u0026gt;\u003c/code\u003e child. This is a valid icon pattern when the SVG needs to\nstay inline.\u003c/p\u003e\n\u003cpre\u003e\n\u0026lt;svg role=\"img\" aria-label=\"Settings\" viewBox=\"0 0 24 24\"\u0026gt;\n  \u0026lt;path d=\"M10 10\" /\u0026gt;\n\u0026lt;/svg\u0026gt;\n\n\u0026lt;span id=\"arrow-label\" hidden\u0026gt;Arrow Down\u0026lt;/span\u0026gt;\n\u0026lt;svg role=\"img\" aria-labelledby=\"arrow-label\" viewBox=\"0 0 24 24\"\u0026gt;\n  \u0026lt;path d=\"M12 4v16\" /\u0026gt;\n\u0026lt;/svg\u0026gt;\n\n\u0026lt;svg role=\"img\" viewBox=\"0 0 24 24\"\u0026gt;\n  \u0026lt;title\u0026gt;Arrow Down\u0026lt;/title\u0026gt;\n  \u0026lt;path d=\"M12 4v16\" /\u0026gt;\n\u0026lt;/svg\u0026gt;\n\u003c/pre\u003e\n\u003cp\u003eGeneric containers with \u003ccode\u003erole=\"group\"\u003c/code\u003e are not raised when they represent a control cluster or a structural subgroup inside a composite\nwidget. For grouped listboxes, the group must be inside a \u003ccode\u003elistbox\u003c/code\u003e and must render \u003ccode\u003eoption\u003c/code\u003e descendants that are not owned by a\nnested \u003ccode\u003elistbox\u003c/code\u003e. The rule keeps reporting when several form controls share one accessible name and \u003ccode\u003e\u0026lt;fieldset\u0026gt;\u003c/code\u003e is the\ncloser semantic alternative.\u003c/p\u003e\n\u003cpre\u003e\n\u0026lt;form\u0026gt;\n  \u0026lt;div role=\"group\" aria-label=\"View mode\"\u0026gt;\n    \u0026lt;button type=\"button\"\u0026gt;Grid\u0026lt;/button\u0026gt;\n    \u0026lt;button type=\"button\"\u0026gt;List\u0026lt;/button\u0026gt;\n  \u0026lt;/div\u0026gt;\n\u0026lt;/form\u0026gt;\n\n\u0026lt;div role=\"listbox\"\u0026gt;\n  \u0026lt;div role=\"group\" aria-label=\"Cities\"\u0026gt;\n    {cities.map(city =\u0026gt; (\n      \u0026lt;div role=\"option\" key={city}\u0026gt;\n        {city}\n      \u0026lt;/div\u0026gt;\n    ))}\n  \u0026lt;/div\u0026gt;\n\u0026lt;/div\u0026gt;\n\u003c/pre\u003e"
+                                                                 }
+                                                             ],
+                                     "educationPrinciples":  [
+
+                                                             ],
+                                     "updatedAt":  "2026-09-29T20:31:12+0000",
+                                     "cleanCodeAttribute":  "CONVENTIONAL",
+                                     "cleanCodeAttributeCategory":  "CONSISTENT",
+                                     "impacts":  [
+                                                     {
+                                                         "softwareQuality":  "MAINTAINABILITY",
+                                                         "severity":  "MEDIUM"
+                                                     }
+                                                 ]
+                                 },
+                        "actives":  [
+
+                                    ]
+                    },
+                    {
+                        "rule":  {
+                                     "key":  "typescript:S7721",
+                                     "repo":  "typescript",
+                                     "name":  "Functions should be moved to the highest possible scope",
+                                     "createdAt":  "2026-09-29T20:31:12+0000",
+                                     "severity":  "MAJOR",
+                                     "status":  "READY",
+                                     "isTemplate":  false,
+                                     "tags":  [
+
+                                              ],
+                                     "sysTags":  [
+                                                     "performance",
+                                                     "optimization",
+                                                     "editable-source",
+                                                     "javascript"
+                                                 ],
+                                     "lang":  "ts",
+                                     "langName":  "TypeScript",
+                                     "params":  [
+
+                                                ],
+                                     "defaultDebtRemFnType":  "CONSTANT_ISSUE",
+                                     "debtRemFnType":  "CONSTANT_ISSUE",
+                                     "type":  "CODE_SMELL",
+                                     "defaultRemFnType":  "CONSTANT_ISSUE",
+                                     "defaultRemFnBaseEffort":  "5min",
+                                     "remFnType":  "CONSTANT_ISSUE",
+                                     "remFnBaseEffort":  "5min",
+                                     "remFnOverloaded":  false,
+                                     "scope":  "MAIN",
+                                     "isExternal":  false,
+                                     "descriptionSections":  [
+                                                                 {
+                                                                     "key":  "introduction",
+                                                                     "content":  "\u003cp\u003eThis is an issue when a function is defined in a nested scope but doesnât use any variables from that scope, meaning it could be moved to a higher\nscope.\u003c/p\u003e"
+                                                                 },
+                                                                 {
+                                                                     "key":  "root_cause",
+                                                                     "content":  "\u003cp\u003eWhen functions are defined in nested scopes unnecessarily, it creates several problems:\u003c/p\u003e\n\u003cp\u003e\u003cstrong\u003ePerformance Impact\u003c/strong\u003e: Functions defined inside other functions are recreated every time the outer function runs. This wastes memory\nand processing time, especially in frequently called code.\u003c/p\u003e\n\u003cp\u003e\u003cstrong\u003eEngine Optimization\u003c/strong\u003e: JavaScript engines like V8 have optimization limits. Functions in nested scopes are harder to optimize, which\ncan slow down your application.\u003c/p\u003e\n\u003cp\u003e\u003cstrong\u003eCode Readability\u003c/strong\u003e: Functions at higher scopes are easier to find and understand. When a function doesnât depend on its surrounding\ncontext, placing it at the top level makes the code structure clearer.\u003c/p\u003e\n\u003cp\u003e\u003cstrong\u003eMemory Usage\u003c/strong\u003e: Each function instance takes up memory. Creating the same function repeatedly in nested scopes increases memory\nconsumption unnecessarily.\u003c/p\u003e\n\u003cp\u003eThe rule identifies functions that capture no variables from their enclosing scope, meaning they can be safely moved to a higher level without\nchanging their behavior.\u003c/p\u003e\n\u003ch3\u003eWhat is the potential impact?\u003c/h3\u003e\n\u003cp\u003eMoving functions to appropriate scopes improves application performance by reducing function recreation overhead and enabling better JavaScript\nengine optimizations. It also enhances code maintainability by making function dependencies clearer and reducing memory usage in frequently executed\ncode paths.\u003c/p\u003e\n\u003ch3\u003eHow to fix?\u003c/h3\u003e\n\u003cp\u003eMove the function declaration to the module level when it doesnât capture any variables from the enclosing scope.\u003c/p\u003e\n\u003ch4\u003eNon-compliant code example\u003c/h4\u003e\n\u003cpre data-diff-id=\"1\" data-diff-type=\"noncompliant\"\u003e\nexport function doFoo(foo) {\n\t// Does not capture anything from the scope\n\tfunction doBar(bar) { // Noncompliant\n\t\treturn bar === \u0027bar\u0027;\n\t}\n\n\treturn doBar;\n}\n\u003c/pre\u003e\n\u003ch4\u003eCompliant code example\u003c/h4\u003e\n\u003cpre data-diff-id=\"1\" data-diff-type=\"compliant\"\u003e\nfunction doBar(bar) {\n\treturn bar === \u0027bar\u0027;\n}\n\nexport function doFoo(foo) {\n\treturn doBar;\n}\n\u003c/pre\u003e\n\u003ch3\u003eDocumentation\u003c/h3\u003e\n\u003cul\u003e\n  \u003cli\u003e\u003ca href=\"https://github.com/sindresorhus/eslint-plugin-unicorn#readme\"\u003eeslint-plugin-unicorn\u003c/a\u003e - Rule \u003ca\n  href=\"https://github.com/sindresorhus/eslint-plugin-unicorn/blob/HEAD/docs/rules/consistent-function-scoping.md\"\u003econsistent-function-scoping\u003c/a\u003e\u003c/li\u003e\n  \u003cli\u003eJavaScript Function Hoisting - \u003ca href=\"https://developer.mozilla.org/en-US/docs/Glossary/Hoisting\"\u003eMDN documentation on JavaScript hoisting\n  behavior\u003c/a\u003e\u003c/li\u003e\n\u003c/ul\u003e\n\u003ch3\u003eStandards\u003c/h3\u003e\n\u003cul\u003e\n  \u003cli\u003eESLint: prefer-const - \u003ca href=\"https://eslint.org/docs/latest/rules/prefer-const\"\u003eRelated ESLint rule for variable declaration\n  optimization\u003c/a\u003e\u003c/li\u003e\n\u003c/ul\u003e"
+                                                                 }
+                                                             ],
+                                     "educationPrinciples":  [
+
+                                                             ],
+                                     "updatedAt":  "2026-09-29T20:31:12+0000",
+                                     "cleanCodeAttribute":  "EFFICIENT",
+                                     "cleanCodeAttributeCategory":  "INTENTIONAL",
+                                     "impacts":  [
+                                                     {
+                                                         "softwareQuality":  "MAINTAINABILITY",
+                                                         "severity":  "MEDIUM"
+                                                     }
+                                                 ]
+                                 },
+                        "actives":  [
+
+                                    ]
+                    },
+                    {
+                        "rule":  {
+                                     "key":  "typescript:S7767",
+                                     "repo":  "typescript",
+                                     "name":  "Bitwise operators should not be used to truncate numbers",
+                                     "createdAt":  "2026-09-29T20:31:12+0000",
+                                     "severity":  "MAJOR",
+                                     "status":  "READY",
+                                     "isTemplate":  false,
+                                     "tags":  [
+
+                                              ],
+                                     "sysTags":  [
+                                                     "es2015",
+                                                     "confusing"
+                                                 ],
+                                     "lang":  "ts",
+                                     "langName":  "TypeScript",
+                                     "params":  [
+
+                                                ],
+                                     "defaultDebtRemFnType":  "CONSTANT_ISSUE",
+                                     "debtRemFnType":  "CONSTANT_ISSUE",
+                                     "type":  "CODE_SMELL",
+                                     "defaultRemFnType":  "CONSTANT_ISSUE",
+                                     "defaultRemFnBaseEffort":  "5min",
+                                     "remFnType":  "CONSTANT_ISSUE",
+                                     "remFnBaseEffort":  "5min",
+                                     "remFnOverloaded":  false,
+                                     "scope":  "MAIN",
+                                     "isExternal":  false,
+                                     "descriptionSections":  [
+                                                                 {
+                                                                     "key":  "root_cause",
+                                                                     "content":  "\u003cp\u003eUsing bitwise operators to truncate numbers is a common JavaScript \"hack\" that appears in many codebases. While these operations can truncate\ndecimal numbers to integers, they create several problems:\u003c/p\u003e\n\u003cp\u003e\u003cstrong\u003eClarity and Intent\u003c/strong\u003e: Bitwise operations like \u003ccode\u003ex | 0\u003c/code\u003e or \u003ccode\u003e~~x\u003c/code\u003e are not immediately clear to most developers.\nThe intent to truncate a number is hidden behind cryptic syntax that requires specific JavaScript knowledge to understand.\u003c/p\u003e\n\u003cp\u003e\u003cstrong\u003eReliability Issues\u003c/strong\u003e: These bitwise operations only work correctly for numbers within the 32-bit signed integer range\n(-2,147,483,648 to 2,147,483,647). For numbers outside this range, the results can be unexpected and incorrect. For example, \u003ccode\u003e9999999999 |\n0\u003c/code\u003e returns \u003ccode\u003e1410065407\u003c/code\u003e instead of \u003ccode\u003e9999999999\u003c/code\u003e.\u003c/p\u003e\n\u003cp\u003e\u003cstrong\u003eMaintenance Burden\u003c/strong\u003e: Code using these patterns is harder to maintain because:\u003c/p\u003e\n\u003cul\u003e\n  \u003cli\u003eNew team members may not understand the intent\u003c/li\u003e\n  \u003cli\u003eThe limitations are not obvious from the code\u003c/li\u003e\n  \u003cli\u003eDebugging issues with large numbers becomes more difficult\u003c/li\u003e\n\u003c/ul\u003e\n\u003cp\u003e\u003cstrong\u003eModern Alternative\u003c/strong\u003e: \u003ccode\u003eMath.trunc()\u003c/code\u003e was introduced in ES2015 specifically for this purpose. It clearly expresses the\nintent to truncate a number and works correctly for all JavaScript numbers, including those outside the 32-bit integer range.\u003c/p\u003e\n\u003ch3\u003eWhat is the potential impact?\u003c/h3\u003e\n\u003cp\u003eUsing bitwise operators for number truncation can lead to incorrect results when working with large numbers, making applications unreliable. The\nunclear syntax also reduces code maintainability and increases the likelihood of bugs during development and maintenance.\u003c/p\u003e\n\u003ch3\u003eHow to fix?\u003c/h3\u003e\n\u003cp\u003eReplace bitwise OR with zero with \u003ccode\u003eMath.trunc()\u003c/code\u003e to clearly express the intent and ensure correct behavior for all numbers.\u003c/p\u003e\n\u003ch4\u003eNon-compliant code example\u003c/h4\u003e\n\u003cpre data-diff-id=\"1\" data-diff-type=\"noncompliant\"\u003e\nconst result = value | 0; // Noncompliant\n\u003c/pre\u003e\n\u003ch4\u003eCompliant code example\u003c/h4\u003e\n\u003cpre data-diff-id=\"1\" data-diff-type=\"compliant\"\u003e\nconst result = Math.trunc(value);\n\u003c/pre\u003e\n\u003ch3\u003eDocumentation\u003c/h3\u003e\n\u003cul\u003e\n  \u003cli\u003e\u003ca href=\"https://github.com/sindresorhus/eslint-plugin-unicorn#readme\"\u003eeslint-plugin-unicorn\u003c/a\u003e - Rule \u003ca\n  href=\"https://github.com/sindresorhus/eslint-plugin-unicorn/blob/HEAD/docs/rules/prefer-math-trunc.md\"\u003eprefer-math-trunc\u003c/a\u003e\u003c/li\u003e\n  \u003cli\u003eMDN - Math.trunc() - \u003ca href=\"https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/trunc\"\u003eOfficial\n  documentation for the Math.trunc() method\u003c/a\u003e\u003c/li\u003e\n  \u003cli\u003eMDN - Bitwise operators - \u003ca\n  href=\"https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators#bitwise_shift_operators\"\u003eDocumentation about JavaScript bitwise\n  operators and their behavior\u003c/a\u003e\u003c/li\u003e\n\u003c/ul\u003e"
+                                                                 },
+                                                                 {
+                                                                     "key":  "introduction",
+                                                                     "content":  "\u003cp\u003eThis rule raises an issue when bitwise operators like \u003ccode\u003e| 0\u003c/code\u003e, \u003ccode\u003e~~\u003c/code\u003e, \u003ccode\u003e\u0026gt;\u0026gt; 0\u003c/code\u003e, \u003ccode\u003e\u0026lt;\u0026lt; 0\u003c/code\u003e, or\n\u003ccode\u003e^ 0\u003c/code\u003e are used to truncate numbers instead of using \u003ccode\u003eMath.trunc()\u003c/code\u003e.\u003c/p\u003e"
+                                                                 }
+                                                             ],
+                                     "educationPrinciples":  [
+
+                                                             ],
+                                     "updatedAt":  "2026-09-29T20:31:12+0000",
+                                     "cleanCodeAttribute":  "CLEAR",
+                                     "cleanCodeAttributeCategory":  "INTENTIONAL",
+                                     "impacts":  [
+                                                     {
+                                                         "softwareQuality":  "MAINTAINABILITY",
+                                                         "severity":  "HIGH"
+                                                     },
+                                                     {
+                                                         "softwareQuality":  "RELIABILITY",
+                                                         "severity":  "HIGH"
+                                                     }
+                                                 ]
+                                 },
+                        "actives":  [
+
+                                    ]
+                    },
+                    {
+                        "rule":  {
+                                     "key":  "typescript:S8786",
+                                     "repo":  "typescript",
+                                     "name":  "Regular expressions should not cause non-linear backtracking",
+                                     "createdAt":  "2026-09-29T20:31:12+0000",
+                                     "severity":  "MAJOR",
+                                     "status":  "READY",
+                                     "isTemplate":  false,
+                                     "tags":  [
+
+                                              ],
+                                     "sysTags":  [
+                                                     "regex",
+                                                     "performance"
+                                                 ],
+                                     "lang":  "ts",
+                                     "langName":  "TypeScript",
+                                     "params":  [
+
+                                                ],
+                                     "defaultDebtRemFnType":  "CONSTANT_ISSUE",
+                                     "debtRemFnType":  "CONSTANT_ISSUE",
+                                     "type":  "CODE_SMELL",
+                                     "defaultRemFnType":  "CONSTANT_ISSUE",
+                                     "defaultRemFnBaseEffort":  "20min",
+                                     "remFnType":  "CONSTANT_ISSUE",
+                                     "remFnBaseEffort":  "20min",
+                                     "remFnOverloaded":  false,
+                                     "scope":  "MAIN",
+                                     "isExternal":  false,
+                                     "descriptionSections":  [
+                                                                 {
+                                                                     "key":  "introduction",
+                                                                     "content":  "\u003cp\u003eRegular expression engines rely on backtracking to evaluate patterns against input. Certain regex patterns lead to non-linear backtracking, where\nthe evaluation time grows polynomially with input size.\u003c/p\u003e"
+                                                                 },
+                                                                 {
+                                                                     "key":  "how_to_fix",
+                                                                     "content":  "\u003cp\u003eTo fix a regular expression with non-linear backtracking, consider the following strategies:\u003c/p\u003e\n\u003cul\u003e\n  \u003cli\u003eReplace \u003ccode\u003e.\u003c/code\u003e with negated character classes to exclude separators where applicable (e.g., \u003ccode\u003e[^,]*\u003c/code\u003e instead of\n  \u003ccode\u003e.*\u003c/code\u003e before \u003ccode\u003e,\u003c/code\u003e).\u003c/li\u003e\n  \u003cli\u003eUse bounded quantifiers such as \u003ccode\u003e{1,5}\u003c/code\u003e to limit repetitions.\u003c/li\u003e\n  \u003cli\u003eRestructure alternations and quantifiers to eliminate ambiguity â avoid patterns where multiple alternatives can match the same character.\u003c/li\u003e\n  \u003cli\u003eJavaScript does not support possessive quantifiers, but atomic grouping can be emulated using lookahead assertions and backreferences.\u003c/li\u003e\n  \u003cli\u003eUse a non-backtracking implementation such as \u003ca href=\"https://github.com/uhop/node-re2/\"\u003enode-re2\u003c/a\u003e.\u003c/li\u003e\n\u003c/ul\u003e\n\n\u003cp\u003eThe following examples illustrate two distinct causes of non-linear backtracking. The first shows a pattern that is polynomial when unanchored:\nwithout a start anchor, the engine retries the pattern at every position, leading to quadratic evaluation time when there is no match. The second\nshows ambiguous alternation, which causes quadratic backtracking regardless of anchoring because multiple alternatives can match the same input in\ndifferent ways.\u003c/p\u003e\n\u003ch4\u003eNoncompliant code example\u003c/h4\u003e\n\u003cpre data-diff-id=\"1\" data-diff-type=\"noncompliant\"\u003e\n/a+b/.test(input); // Noncompliant - polynomial backtracking when the pattern does not match\n\u003c/pre\u003e\n\u003cpre data-diff-id=\"2\" data-diff-type=\"noncompliant\"\u003e\n/(a|aa)+/.test(input); // Noncompliant - ambiguous alternation causes quadratic backtracking\n\u003c/pre\u003e\n\u003ch4\u003eCompliant solution\u003c/h4\u003e\n\u003cp\u003eAdding a start anchor prevents the engine from retrying at every position:\u003c/p\u003e\n\u003cpre data-diff-id=\"1\" data-diff-type=\"compliant\"\u003e\n/^a+b/.test(input); // Compliant - anchor eliminates redundant backtracking positions\n\u003c/pre\u003e\n\u003cp\u003eRestructuring the alternation to eliminate the overlap removes the quadratic behavior:\u003c/p\u003e\n\u003cpre data-diff-id=\"2\" data-diff-type=\"compliant\"\u003e\n/a+/.test(input); // Compliant - unambiguous\n\u003c/pre\u003e"
+                                                                 },
+                                                                 {
+                                                                     "key":  "root_cause",
+                                                                     "content":  "\u003cp\u003eRegular expression engines use backtracking to try all possible execution paths when evaluating a pattern against an input. In some cases, this\nleads to non-linear backtracking where the worst-case evaluation time grows polynomially (e.g., O(nÂ²) or O(nÂ³)) with the input size. While not as\nsevere as catastrophic backtracking, such patterns can significantly degrade application performance when processing large or untrusted inputs.\u003c/p\u003e\n\u003cp\u003eThis rule reports regular expressions that exhibit non-linear backtracking behavior.\u003c/p\u003e"
+                                                                 },
+                                                                 {
+                                                                     "key":  "resources",
+                                                                     "content":  "\u003ch3\u003eArticles \u0026amp; blog posts\u003c/h3\u003e\n\u003cul\u003e\n  \u003cli\u003e\u003ca href=\"https://owasp.org/www-community/attacks/Regular_expression_Denial_of_Service_-_ReDoS\"\u003eowasp.org\u003c/a\u003e - Regular expression Denial of\n  Service - ReDoS\u003c/li\u003e\n  \u003cli\u003e\u003ca href=\"https://www.regular-expressions.info/catastrophic.html\"\u003eregular-expressions.info\u003c/a\u003e - Runaway Regular Expressions: Catastrophic\n  Backtracking\u003c/li\u003e\n\u003c/ul\u003e\n\u003ch3\u003eRelated rules\u003c/h3\u003e\n\u003cul\u003e\n  \u003cli\u003e\u003ca href=\u0027/coding_rules#rule_key=javascript%3AS5852\u0027\u003eS5852\u003c/a\u003e - Regular expressions should not cause catastrophic backtracking\u003c/li\u003e\n\u003c/ul\u003e"
+                                                                 }
+                                                             ],
+                                     "educationPrinciples":  [
+
+                                                             ],
+                                     "updatedAt":  "2026-09-29T20:31:12+0000",
+                                     "cleanCodeAttribute":  "EFFICIENT",
+                                     "cleanCodeAttributeCategory":  "INTENTIONAL",
+                                     "impacts":  [
+                                                     {
+                                                         "softwareQuality":  "RELIABILITY",
+                                                         "severity":  "MEDIUM"
+                                                     }
+                                                 ]
+                                 },
+                        "actives":  [
+
+                                    ]
+                    }
+                ],
+    "warnings":  [
+
+                 ],
+    "count":  19
+}

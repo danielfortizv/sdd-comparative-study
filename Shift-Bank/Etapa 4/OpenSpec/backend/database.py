@@ -2,6 +2,8 @@
 import os
 import sqlite3
 from pathlib import Path
+from event_store import install_schema as install_domain_event_schema
+from account_model import initialize_account_identity
 
 DB_PATH = Path(os.environ.get("SHIFT_BANK_DB", Path(__file__).resolve().parent / "bank.db"))
 CHECKING_ACCOUNT_NAME = "Cuenta Corriente"
@@ -69,16 +71,18 @@ def init_db() -> None:
             FOREIGN KEY(schedule_id) REFERENCES recurring_schedules(id));
         CREATE INDEX IF NOT EXISTS idx_occurrence_schedule ON recurring_occurrences(schedule_id, scheduled_at);
         """)
+        install_domain_event_schema(conn)
         conn.execute("CREATE UNIQUE INDEX IF NOT EXISTS idx_transactions_occurrence ON transactions(occurrence_id) WHERE occurrence_id IS NOT NULL")
         count = conn.execute("SELECT COUNT(*) AS n FROM accounts").fetchone()["n"]
         if count == 0:
-            conn.execute("INSERT INTO accounts VALUES (?, ?, ?)", ("acc_checking", CHECKING_ACCOUNT_NAME, "5000000.00"))
-            conn.execute("INSERT INTO accounts VALUES (?, ?, ?)", ("acc_savings", SAVINGS_ACCOUNT_NAME, "15000000.00"))
+            conn.execute("INSERT INTO accounts (id,name,balance) VALUES (?, ?, ?)", ("acc_checking", CHECKING_ACCOUNT_NAME, "5000000.00"))
+            conn.execute("INSERT INTO accounts (id,name,balance) VALUES (?, ?, ?)", ("acc_savings", SAVINGS_ACCOUNT_NAME, "15000000.00"))
             conn.executemany("""INSERT INTO transactions
                 (id,source_account_id,source_account_name,destination_account_id,destination_account_name,amount,timestamp,status,completed_at)
                 VALUES(?,?,?,?,?,?,?,?,?)""", [
                 ("tx_seed_1", "acc_savings", SAVINGS_ACCOUNT_NAME, "acc_checking", CHECKING_ACCOUNT_NAME, "500000.00", "2026-09-28T10:00:00Z", "COMPLETED", "2026-09-28T10:00:00Z"),
                 ("tx_seed_2", "acc_checking", CHECKING_ACCOUNT_NAME, "acc_savings", SAVINGS_ACCOUNT_NAME, "100000.00", "2026-09-28T11:00:00Z", "COMPLETED", "2026-09-28T11:00:00Z")])
+        initialize_account_identity(conn)
         conn.execute("INSERT OR IGNORE INTO transfer_limits VALUES (?, ?, ?, ?)",
                      ("usr_101", "5000000.00", "10000000.00", "2026-11-16T00:00:00Z"))
         conn.commit()
