@@ -23,7 +23,22 @@ interface PendingAch {
   amount: string;
 }
 
-export function AchTransferForm({ beneficiaries, onCompleted }: Props) {
+// Mensaje legible según el estado de la ACH. No depende del estado del componente, por lo que
+// vive en el ámbito de módulo (no se recrea en cada render).
+function statusMessage(status: string): string {
+  switch (status) {
+    case "pending":
+      return "Transferencia ACH autorizada (pending): el monto fue debitado.";
+    case "settled":
+      return "Transferencia ACH liquidada (settled).";
+    case "pending_auth":
+      return "La transferencia ACH requiere verificación MFA.";
+    default:
+      return `Estado de la transferencia ACH: ${status}.`;
+  }
+}
+
+export function AchTransferForm({ beneficiaries, onCompleted }: Readonly<Props>) {
   const [mode, setMode] = useState<Mode>(beneficiaries.length > 0 ? "saved" : "adhoc");
   const [beneficiaryId, setBeneficiaryId] = useState("");
   const [from, setFrom] = useState<AccountKind>("checking");
@@ -54,19 +69,6 @@ export function AchTransferForm({ beneficiaries, onCompleted }: Props) {
 
   const destinationValid = mode === "saved" ? beneficiaryId !== "" : adhocValid;
   const canSubmit = destinationValid && amount.trim() !== "" && !submitting;
-
-  function statusMessage(status: string): string {
-    switch (status) {
-      case "pending":
-        return "Transferencia ACH autorizada (pending): el monto fue debitado.";
-      case "settled":
-        return "Transferencia ACH liquidada (settled).";
-      case "pending_auth":
-        return "La transferencia ACH requiere verificación MFA.";
-      default:
-        return `Estado de la transferencia ACH: ${status}.`;
-    }
-  }
 
   function resetForm() {
     setAmount("");

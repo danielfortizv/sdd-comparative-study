@@ -1,0 +1,21 @@
+{
+  "source_note": "The local evidence contains explicit labels AC-01 and AC-05 through AC-14, and Block 1 records support the grouped mapping for AC-02 through AC-04. No canonical individual definitions for AC-15 and AC-16 were found. Those rows are PARTIAL; they are not inferred as passed merely because SonarQube scans exist.",
+  "acceptance": [
+    {"id":"AC-01","status":"PASS","criterion":"Inherited banking behavior and deployed API workflows","evidence":["pruebas/E3_OPENSPEC_BLOCK2_AUDIT.md","pruebas/E3_OPENSPEC_DEPLOYMENT_ACCEPTANCE.json"]},
+    {"id":"AC-02","status":"PASS","criterion":"Authenticated encryption/decryption and tamper rejection","evidence":["pruebas/E3_OPENSPEC_BLOCK1_ENCRYPTION.md"]},
+    {"id":"AC-03","status":"PASS","criterion":"External keys fail closed; no insecure HTTP fallback","evidence":["pruebas/E3_OPENSPEC_BLOCK1_ENCRYPTION.md","pruebas/E3_OPENSPEC_BLOCK4_HTTPS_RECORDS.json"]},
+    {"id":"AC-04","status":"PASS","criterion":"Safe, idempotent legacy migration; rollback and restart compatibility","evidence":["pruebas/E3_OPENSPEC_BLOCK1_ENCRYPTION.md"]},
+    {"id":"AC-05","status":"PASS","criterion":"Cryptographic audit chain validity","evidence":["pruebas/E3_OPENSPEC_BLOCK2_AUDIT.md"]},
+    {"id":"AC-06","status":"PASS","criterion":"Tamper detection and application-level append-only enforcement under stated threat model","evidence":["pruebas/E3_OPENSPEC_BLOCK2_AUDIT.md"]},
+    {"id":"AC-07","status":"PASS","criterion":"Financial/audit atomicity under persistence and authorization failures","evidence":["pruebas/E3_OPENSPEC_BLOCK2_AUDIT.md"]},
+    {"id":"AC-08","status":"PASS","criterion":"Durable, safe MFA failure auditing","evidence":["pruebas/E3_OPENSPEC_BLOCK2_AUDIT.md"]},
+    {"id":"AC-09","status":"PASS","criterion":"Four OS processes, shared SQLite, reader/writer, restart verification","evidence":["pruebas/E3_OPENSPEC_BLOCK2_AUDIT.md"]},
+    {"id":"AC-10","status":"PASS","criterion":"Locust workload timing and observed 60/30/10 request mix","evidence":["locust/E3_OPENSPEC_LOCUST_RUN_01.json","locust/E3_OPENSPEC_LOCUST_EVALUATION.md"]},
+    {"id":"AC-11","status":"PASS","criterion":"Strict read/transfer latency and unexpected-error SLOs","evidence":["locust/E3_OPENSPEC_LOCUST_RUN_01.json","locust/E3_OPENSPEC_LOCUST_EVALUATION.md"]},
+    {"id":"AC-12","status":"PASS","criterion":"Compose, HTTPS, redirect, proxy routing, healthchecks, external secrets","evidence":["pruebas/E3_OPENSPEC_DEPLOYMENT_ACCEPTANCE.json","pruebas/E3_OPENSPEC_BLOCK4_DEPLOYMENT.md"]},
+    {"id":"AC-13","status":"PASS","criterion":"Persistent encrypted/audited storage, restart, non-root permissions and single scheduler","evidence":["pruebas/E3_OPENSPEC_DEPLOYMENT_ACCEPTANCE.json","pruebas/E3_OPENSPEC_BLOCK4_DEPLOYMENT.md"]},
+    {"id":"AC-14","status":"PASS","criterion":"Full regression, production build and strict OpenSpec validation","evidence":["sonarqube/E3_OPENSPEC_SONAR_REGRESION_POSTCORRECCION.md","pruebas/E3_OPENSPEC_BLOCK4_REGRESSION.md"]},
+    {"id":"AC-15","status":"PARTIAL","criterion":"Individual criterion unavailable in recovered protocol; initial SonarQube measurement documented separately","evidence":["sonarqube/EXTRACCION_INICIAL_20261117T141345069/ce.json","sonarqube/EXTRACCION_INICIAL_20261117T141345069/measures.json","sonarqube/EXTRACCION_INICIAL_20261117T141345069/hotspots.json"]},
+    {"id":"AC-16","status":"PARTIAL","criterion":"Individual criterion unavailable in recovered protocol; final SonarQube measurement documented separately","evidence":["sonarqube/EXTRACCION_FINAL_20261117T145759941/ce.json","sonarqube/EXTRACCION_FINAL_20261117T145759941/measures.json","sonarqube/EXTRACCION_FINAL_20261117T145759941/hotspots.json"]}
+  ]
+}

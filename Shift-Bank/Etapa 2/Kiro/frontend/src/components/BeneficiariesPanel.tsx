@@ -17,7 +17,7 @@ interface Props {
   onChanged: () => void;
 }
 
-export function BeneficiariesPanel({ beneficiaries, onChanged }: Props) {
+export function BeneficiariesPanel({ beneficiaries, onChanged }: Readonly<Props>) {
   const [name, setName] = useState("");
   const [bank, setBank] = useState("");
   const [routing, setRouting] = useState("");

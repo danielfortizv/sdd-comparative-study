@@ -1,0 +1,15 @@
+.git
+.agents
+.gemini
+**/__pycache__/
+**/*.py[cod]
+backend/tests/
+backend/*.sqlite
+backend/*.sqlite-*
+backend/bank.db*
+frontend/node_modules/
+frontend/dist/
+deployment/.env.local
+deployment/certs/
+deployment/*.pem
+deployment/*.key

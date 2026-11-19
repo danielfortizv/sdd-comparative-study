@@ -24,7 +24,7 @@ function validateAmount(raw: string): string | null {
   return null;
 }
 
-export function LimitsPanel({ limits, onChanged }: Props) {
+export function LimitsPanel({ limits, onChanged }: Readonly<Props>) {
   const [perTransfer, setPerTransfer] = useState("");
   const [daily, setDaily] = useState("");
   const [error, setError] = useState<string | null>(null);

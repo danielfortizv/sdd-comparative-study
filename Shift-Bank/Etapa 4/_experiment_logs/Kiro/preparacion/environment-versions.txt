@@ -1,0 +1,9 @@
+Preparation date: 2026-11-18
+Timezone: America/Bogota
+Python base: 3.13.2
+Python isolated backend environment: Python 3.13.2
+pip isolated environment: 24.3.1
+Node.js: v24.19.0
+npm: 11.17.0
+Backend requirements: backend/requirements-dev.txt (installed into Stage 4 local .venv)
+Frontend: package-lock.json via npm ci; Vitest 2.1.9; Vite 5.4.21

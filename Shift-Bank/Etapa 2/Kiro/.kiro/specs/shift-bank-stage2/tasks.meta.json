@@ -295,6 +295,54 @@
         "chatSessionId": "sess_7f1b54d0-e77f-4cb7-b439-d06e5aa2dca1",
         "timestamp": 1794854518849
       }
+    ],
+    "47. **(correctivo)** Corregir el bug real del scheduler (re-lanzar `CancelledError`)": [
+      {
+        "executionId": "b0e328cf-1366-4d28-a0f0-845b1fb7a59c",
+        "chatSessionId": "sess_7f1b54d0-e77f-4cb7-b439-d06e5aa2dca1",
+        "timestamp": 1794856340286
+      },
+      {
+        "executionId": "b0e328cf-1366-4d28-a0f0-845b1fb7a59c",
+        "chatSessionId": "sess_7f1b54d0-e77f-4cb7-b439-d06e5aa2dca1",
+        "timestamp": 1794856526307
+      }
+    ],
+    "48. **(correctivo)** Eliminar el literal SQL duplicado (CRITICAL)": [
+      {
+        "executionId": "b0e328cf-1366-4d28-a0f0-845b1fb7a59c",
+        "chatSessionId": "sess_7f1b54d0-e77f-4cb7-b439-d06e5aa2dca1",
+        "timestamp": 1794856529802
+      },
+      {
+        "executionId": "b0e328cf-1366-4d28-a0f0-845b1fb7a59c",
+        "chatSessionId": "sess_7f1b54d0-e77f-4cb7-b439-d06e5aa2dca1",
+        "timestamp": 1794856595206
+      }
+    ],
+    "49. **(correctivo)** Legibilidad frontend de bajo riesgo (ternarios anidados, función, props)": [
+      {
+        "executionId": "b0e328cf-1366-4d28-a0f0-845b1fb7a59c",
+        "chatSessionId": "sess_7f1b54d0-e77f-4cb7-b439-d06e5aa2dca1",
+        "timestamp": 1794856599700
+      },
+      {
+        "executionId": "b0e328cf-1366-4d28-a0f0-845b1fb7a59c",
+        "chatSessionId": "sess_7f1b54d0-e77f-4cb7-b439-d06e5aa2dca1",
+        "timestamp": 1794856701807
+      }
+    ],
+    "50. **(verificación)** Suite backend completa + build de producción del frontend tras las correcciones": [
+      {
+        "executionId": "b0e328cf-1366-4d28-a0f0-845b1fb7a59c",
+        "chatSessionId": "sess_7f1b54d0-e77f-4cb7-b439-d06e5aa2dca1",
+        "timestamp": 1794856705282
+      },
+      {
+        "executionId": "b0e328cf-1366-4d28-a0f0-845b1fb7a59c",
+        "chatSessionId": "sess_7f1b54d0-e77f-4cb7-b439-d06e5aa2dca1",
+        "timestamp": 1794856938926
+      }
     ]
   }
 }

@@ -1,0 +1,44 @@
+﻿Observed UTC: 2026-11-16T19:19:01.5274919Z
+Repository root: C:/Users/danie/Documents2/sdd-comparative-study
+HEAD: 08311b42d1d5745540af459775b4bb24de181947
+Branch: ShiftBank
+Full shared working-tree status observed during Kiro Stage 3 preparation:
+
+warning: could not open directory 'Shift-Bank/Etapa 3/Spec Kit/.sb-h810-2806d78740-5_g4ykr2/': No such file or directory
+warning: could not open directory 'Shift-Bank/Etapa 3/Spec Kit/.sb-h810-81cf99eefd-jsniyefc/': No such file or directory
+warning: could not open directory 'Shift-Bank/Etapa 3/Spec Kit/.sb-h810-967924cae6-v6rgv6n4/': No such file or directory
+warning: could not open directory 'Shift-Bank/Etapa 3/Spec Kit/.sb-h810-fabbd384ad-id4_4y1a/': No such file or directory
+## ShiftBank...origin/ShiftBank
+ M "Shift-Bank/Etapa 2/Kiro/.kiro/specs/shift-bank-stage2/tasks.md"
+ M "Shift-Bank/Etapa 2/Kiro/.kiro/specs/shift-bank-stage2/tasks.meta.json"
+ M "Shift-Bank/Etapa 2/Kiro/backend/app/repository.py"
+ M "Shift-Bank/Etapa 2/Kiro/backend/app/scheduler.py"
+ M "Shift-Bank/Etapa 2/Kiro/frontend/src/components/AccountsPanel.tsx"
+ M "Shift-Bank/Etapa 2/Kiro/frontend/src/components/AchTransferForm.tsx"
+ M "Shift-Bank/Etapa 2/Kiro/frontend/src/components/BeneficiariesPanel.tsx"
+ M "Shift-Bank/Etapa 2/Kiro/frontend/src/components/HistoryList.tsx"
+ M "Shift-Bank/Etapa 2/Kiro/frontend/src/components/LimitsPanel.tsx"
+ M "Shift-Bank/Etapa 2/Kiro/frontend/src/components/MfaDialog.tsx"
+ M "Shift-Bank/Etapa 2/Kiro/frontend/src/components/RecurringPanel.tsx"
+ M "Shift-Bank/Etapa 2/Kiro/frontend/src/components/TransferForm.tsx"
+ M "Shift-Bank/Etapa 2/_experiment_logs/Kiro/bitacora.md"
+ D "Shift-Bank/Etapa 3/Spec Kit/.sb-h810-2806d78740-5_g4ykr2/compose.override.yml"
+ D "Shift-Bank/Etapa 3/Spec Kit/.sb-h810-2806d78740-5_g4ykr2/nginx.conf"
+ D "Shift-Bank/Etapa 3/Spec Kit/.sb-h810-81cf99eefd-jsniyefc/compose.override.yml"
+ D "Shift-Bank/Etapa 3/Spec Kit/.sb-h810-81cf99eefd-jsniyefc/nginx.conf"
+ D "Shift-Bank/Etapa 3/Spec Kit/.sb-h810-967924cae6-v6rgv6n4/compose.override.yml"
+ D "Shift-Bank/Etapa 3/Spec Kit/.sb-h810-967924cae6-v6rgv6n4/nginx.conf"
+ D "Shift-Bank/Etapa 3/Spec Kit/.sb-h810-967924cae6-v6rgv6n4/resolved-compose.json"
+ D "Shift-Bank/Etapa 3/Spec Kit/.sb-h810-967924cae6-v6rgv6n4/resolved-compose.yml"
+ D "Shift-Bank/Etapa 3/Spec Kit/.sb-h810-fabbd384ad-id4_4y1a/compose.override.yml"
+ D "Shift-Bank/Etapa 3/Spec Kit/.sb-h810-fabbd384ad-id4_4y1a/nginx.conf"
+?? "Shift-Bank/Etapa 2/_experiment_logs/Kiro/sonarqube/E2_KIRO_SONAR_PRE_ISSUES.json"
+?? "Shift-Bank/Etapa 2/_experiment_logs/Kiro/sonarqube/E2_KIRO_SONAR_PRE_METRICAS.json"
+?? "Shift-Bank/Etapa 2/_experiment_logs/Kiro/sonarqube/E2_KIRO_SONAR_PRE_QUALITY_GATE.json"
+?? "Shift-Bank/Etapa 3/Kiro/"
+?? "Shift-Bank/Etapa 3/OpenSpec/"
+?? "Shift-Bank/Etapa 3/Spec Kit/.pytest-h8-06-1096d4ef49af4b5b89438541ea569d96/"
+?? "Shift-Bank/Etapa 3/Spec Kit/.pytest-h8-06-cfee7adb08294667b336955e4602acb6/"
+?? "Shift-Bank/Etapa 3/Spec Kit/.pytest-h8-07-530c7e68f5f046faa8042d16f5384abd/"
+?? "Shift-Bank/Etapa 3/_experiment_logs/Kiro/"
+?? "Shift-Bank/Etapa 3/_experiment_logs/OpenSpec/"

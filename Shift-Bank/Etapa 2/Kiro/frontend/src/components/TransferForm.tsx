@@ -12,7 +12,7 @@ interface Props {
   onPendingMfa: (reference: string, expiresAt: string, amount: string) => void;
 }
 
-export function TransferForm({ onCompleted, onPendingMfa }: Props) {
+export function TransferForm({ onCompleted, onPendingMfa }: Readonly<Props>) {
   const [from, setFrom] = useState<AccountKind>("checking");
   const [to, setTo] = useState<AccountKind>("savings");
   const [amount, setAmount] = useState("");

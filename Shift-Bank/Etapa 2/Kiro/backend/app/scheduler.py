@@ -165,7 +165,12 @@ class Scheduler:
         try:
             await task
         except asyncio.CancelledError:
-            pass
+            # Solo absorbemos la cancelación de la **tarea worker** que acabamos de cancelar
+            # (`task.cancelled()` es verdadero): es el apagado limpio esperado (Req. 10.2). Si en
+            # cambio fue **este `stop()`** quien resultó cancelado por su llamador mientras
+            # esperaba, `task` no está cancelada y la cancelación debe propagarse (S7497).
+            if not task.cancelled():
+                raise
         finally:
             self._task = None
             self._stop_event = None

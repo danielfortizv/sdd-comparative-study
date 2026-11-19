@@ -1,0 +1,19 @@
+# Dependencias SOLO de desarrollo/pruebas (Etapa 2, Tarea 1).
+# NO forman parte del runtime de la aplicación (ver requirements.txt).
+# Se instalan aparte para no contaminar las dependencias de producción heredadas de la Etapa 1.
+
+-r requirements.txt
+
+pytest==8.3.4
+httpx==0.28.1
+
+# Dependencia SOLO de pruebas (Etapa 3, Tarea 3): prueba de carga con Locust (R9, R18.1).
+# No es dependencia de runtime; no se instala en la imagen de producción.
+locust==2.47.0
+
+# Dependencias SOLO de pruebas (Etapa 3, Tarea 4): generación de cobertura para los escaneos
+# SonarQube posteriores (PRE en T32, final en T35). Producen un reporte Cobertura XML del backend
+# vía `pytest --cov=app --cov-report=xml:coverage.xml` (R19.3). No son dependencias de runtime;
+# no se instalan en la imagen de producción.
+pytest-cov==7.1.0
+coverage==7.17.3

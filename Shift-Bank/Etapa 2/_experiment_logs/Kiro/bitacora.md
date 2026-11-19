@@ -4665,3 +4665,322 @@ Durante el desarrollo se identificó una violación de clave foránea al intenta
 
 **Decisión metodológica:** utilizar la función nativa `Run all Tasks` de Kiro para las tareas 31–46, conservando la evidencia de ejecución y supervisando el consumo acumulado. La ejecución automática no implica por sí misma menor consumo de créditos.
 
+### Iteración 35 — Cierre automatizado de implementación y análisis SonarQube inicial
+
+**Fecha:** 16 de noviembre de 2026  
+**Herramienta:** Kiro, ejecución nativa de Specs  
+**Etapa:** 2 — Complejidad funcional y estado  
+**Estado:** Implementación automatizable completada; auditoría y validación manual pendientes.
+
+#### Ejecución automática de tareas restantes
+
+Se utilizó `Run all Tasks` sobre la especificación `shift-bank-stage2`.
+
+Kiro ejecutó las tareas restantes de las fases E, F y G, excepto la Tarea 43, que requiere observación humana.
+
+La implementación incluyó el scheduler autónomo, endpoints recurrentes, interfaz ACH, beneficiarios, historial unificado, límites dinámicos y controles de programaciones recurrentes.
+
+#### Resultados reportados
+
+| Indicador | Resultado |
+|---|---:|
+| Tareas principales completas | 45/46 |
+| Avance por tareas principales | 97,83 % |
+| Pruebas backend | 220/220 |
+| Regresión Etapa 1 | 51/51 |
+| Escenarios A01–A19 | Reportados conformes |
+| Build frontend | Exitoso |
+| Base histórica | SHA-256 preservado |
+| Créditos acumulados | 408/1.000 |
+| Créditos restantes | 592 |
+
+El ejecutor nativo informó 77 de 78 elementos de su lista de ejecución completados, con A21 pendiente.
+
+#### Análisis SonarQube
+
+El investigador ejecutó manualmente el primer análisis de código de Etapa 2 utilizando el proyecto:
+
+`Shift-Bank---Stage-2---Kiro`
+
+El análisis no fue iniciado por Kiro y debe atribuirse a una acción manual del investigador.
+
+Los resultados cuantitativos, el estado del Quality Gate, las condiciones evaluadas y el identificador de análisis permanecen pendientes de extracción y registro.
+
+No corresponde afirmar que el Quality Gate fue aprobado sin revisar esas evidencias.
+
+#### Decisión metodológica
+
+Se conservará este primer análisis como línea base previa a la ronda correctiva.
+
+Posteriormente se realizará una auditoría de cumplimiento con Kiro, se aprobarán los cambios de especificaciones necesarios, se implementarán las correcciones autorizadas y se ejecutará un segundo análisis SonarQube manual.
+
+Ambos resultados deberán conservarse por separado y compararse bajo el mismo perímetro.
+
+#### Validación pendiente
+
+La Tarea 43, correspondiente a A21, permanece pendiente de inspección real en navegador.
+
+No se marcará como completada hasta registrar los resultados observados.
+
+#### Cierre
+
+La implementación automatizable de Etapa 2 ha concluido según el ejecutor de Kiro. El cierre experimental definitivo requiere evidencia SonarQube, validación visual, auditoría correctiva y consolidación de métricas para la comparación entre herramientas.
+
+### Iteración 36 — Primer análisis estático de Shift Bank, Etapa 2, con SonarQube
+
+**Fecha:** 16 de noviembre de 2026  
+**Herramienta SDD evaluada:** Kiro  
+**Herramienta de análisis estático:** SonarQube  
+**Modalidad:** Ejecución manual desde PowerShell  
+**Etapa:** 2 — Complejidad funcional y estado  
+**Estado:** Análisis enviado correctamente; resultados de Quality Gate pendientes de extracción.
+
+#### 1. Objetivo
+
+Ejecutar el primer análisis estático del código de Shift Bank, desarrollado con Kiro durante la Etapa 2, para obtener una línea base de calidad previa a la revisión y corrección de posibles hallazgos.
+
+Esta ejecución corresponde a una intervención manual del investigador y no se atribuye al agente Kiro.
+
+#### 2. Preparación y dificultades encontradas
+
+Inicialmente se intentó consultar las métricas del proyecto directamente mediante la API de SonarQube.
+
+Los primeros intentos produjeron errores HTTP 401 por falta de autenticación. Posteriormente se generó un token de usuario denominado `SONAR_TOKEN_KIRO2`, que permitió autenticar las consultas.
+
+Sin embargo, los resultados iniciales mostraban:
+
+- Quality Gate: `NONE`.
+- Métricas registradas: 0.
+- Issues reportados: 0.
+
+Estos valores no se interpretaron como un resultado favorable, dado que no existían evidencias suficientes de un análisis procesado para el proyecto.
+
+Se intentó entonces ejecutar `sonar-scanner` desde PowerShell, pero el ejecutable no estaba disponible en el entorno.
+
+Finalmente se utilizó SonarScanner para NPM mediante `npx`, sin necesidad de realizar una instalación global del ejecutable.
+
+#### 3. Configuración del análisis
+
+**Clave del proyecto:**
+
+`Shift-Bank---Stage-2---Kiro`
+
+**Servidor:**
+
+`http://localhost:9000`
+
+**Directorios de código fuente:**
+
+- `backend/app`
+- `frontend/src`
+
+**Exclusiones configuradas:**
+
+- `node_modules`
+- `dist`
+- `__pycache__`
+- `.venv`
+
+**Herramientas y versiones reportadas:**
+
+| Componente | Versión |
+|---|---|
+| SonarScanner para NPM | 5.1.0 |
+| SonarQube Server | 26.9.0 |
+| Java del motor de análisis | 21.0.11 |
+| Perfiles de calidad | Sonar way |
+
+Se detectaron tres lenguajes: Python, TypeScript y CSS.
+
+#### 4. Resultados de ejecución
+
+El registro de SonarScanner informó:
+
+| Indicador | Resultado |
+|---|---:|
+| Archivos indexados | 38 |
+| Archivos Python | 24 |
+| Archivos frontend analizados | 14 |
+| Lenguajes detectados | 3 |
+| Archivos ignorados por patrones | 0 |
+| Tiempo total del análisis | 16,685 s |
+| Tamaño del reporte comprimido | 382,6 kB |
+| Estado del envío | Exitoso |
+
+El proceso finalizó con los mensajes:
+
+`ANALYSIS SUCCESSFUL`
+
+`SonarScanner Engine completed successfully`
+
+El reporte fue generado, comprimido y enviado al servidor sin errores bloqueantes.
+
+**Revisión Git asociada al análisis:**
+
+`08311b42d1d5745540af459775b4bb24de181947`
+
+**Identificador de procesamiento del reporte:**
+
+`f5d9d680-b934-467c-82c8-fac78f726fdd`
+
+#### 5. Advertencias no bloqueantes
+
+Se observaron dos condiciones relevantes:
+
+**Archivo package.json no encontrado en la raíz.**
+
+El bootstrapper de NPM intentó localizar `package.json` en la raíz de `Etapa 2/Kiro`. El archivo no estaba allí, pero esta condición no impidió ejecutar el escáner ni analizar el frontend.
+
+**Versión de Python no especificada.**
+
+SonarScanner advirtió que el análisis consideraba compatibilidad con las distintas versiones de Python. Se recomienda configurar la versión concreta en análisis posteriores para mejorar la precisión de las reglas aplicables.
+
+Adicionalmente, el comando no suministró un reporte de cobertura de pruebas ni configuró explícitamente `sonar.tests`. Por tanto, no corresponde interpretar los resultados futuros de cobertura como mediciones directas de las 220 pruebas automatizadas hasta importar el reporte correspondiente.
+
+#### 6. Evidencia conservada
+
+**Log de ejecución:**
+
+`Etapa 2/_experiment_logs/Kiro/sonarqube/E2_KIRO_SONAR_PRE_SCAN.log`
+
+**Dashboard:**
+
+`http://localhost:9000/dashboard?id=Shift-Bank---Stage-2---Kiro`
+
+Esta ejecución constituye el primer envío exitoso y verificable del análisis estático correspondiente a la Etapa 2 de Kiro.
+
+Los archivos JSON obtenidos antes de este envío, que registraban Quality Gate `NONE` y ausencia de métricas, no constituyen una línea base válida de calidad.
+
+#### 7. Limitaciones actuales
+
+Aunque el escáner confirmó que el reporte fue enviado correctamente, el registro indica que el servidor debía procesarlo antes de mostrar los resultados.
+
+Por tanto, todavía no se han documentado los valores definitivos de:
+
+- Quality Gate.
+- Issues de fiabilidad, seguridad y mantenibilidad.
+- Deuda técnica.
+- Duplicación.
+- Complejidad.
+- Líneas de código registradas por SonarQube.
+- Cobertura, si está disponible.
+
+No se declara el análisis aprobado ni libre de issues hasta consultar esas métricas.
+
+#### 8. Consumo de créditos
+
+La ejecución de SonarQube fue manual, sin intervención de Kiro.
+
+El último consumo acumulado de Kiro comunicado por el investigador fue de **408 créditos de un presupuesto de 1.000**.
+
+No se reportó consumo adicional de créditos de Kiro asociado a este análisis.
+
+#### 9. Próximas acciones
+
+1. Confirmar que SonarQube procesó satisfactoriamente el reporte.
+2. Exportar las métricas y los issues reales como evidencia inicial.
+3. Ejecutar y registrar la inspección visual A21, aún pendiente.
+4. Solicitar a Kiro una revisión de los hallazgos y requisitos incumplidos.
+5. Aplicar las correcciones aprobadas.
+6. Ejecutar manualmente un segundo análisis SonarQube para comparar los resultados.
+
+#### 10. Conclusión
+
+**El primer análisis estático de Etapa 2 fue ejecutado y enviado satisfactoriamente al servidor SonarQube.**
+
+Se verificó el procesamiento local de 38 archivos de código fuente y se conservó el registro técnico de ejecución.
+
+La fase de medición continúa pendiente de la extracción de los resultados definitivos, necesarios para evaluar la calidad del producto y documentar las correcciones de la herramienta SDD.
+
+### Iteración 37 — Resultados del primer análisis SonarQube de Etapa 2
+
+**Fecha:** 16 de noviembre de 2026  
+**Herramienta SDD:** Kiro  
+**Herramienta de análisis estático:** SonarQube 26.9.0  
+**Modalidad de ejecución:** Manual, mediante SonarScanner para NPM  
+**Proyecto:** `Shift-Bank---Stage-2---Kiro`  
+**Estado:** Análisis procesado satisfactoriamente.
+
+#### 1. Objetivo
+
+Obtener una línea base cuantitativa de calidad del código de Shift Bank al finalizar la implementación automatizable de la Etapa 2, antes de realizar correcciones mediante Kiro.
+
+#### 2. Confirmación de procesamiento
+
+El servidor SonarQube confirmó el procesamiento del análisis mediante el estado `SUCCESS`.
+
+La evaluación del Quality Gate devolvió `OK`.
+
+Se conservaron los resultados exportados mediante la API de SonarQube en:
+
+`Etapa 2/_experiment_logs/Kiro/sonarqube/`
+
+#### 3. Métricas obtenidas
+
+| Indicador | Valor |
+|---|---:|
+| Líneas de código (NCLOC) | 4.236 |
+| Bugs | 1 |
+| Code Smells | 58 |
+| Vulnerabilidades | 0 |
+| Issues reportados | 59 |
+| Densidad de duplicación | 0,0 % |
+| Complejidad cognitiva | 352 |
+| Deuda técnica | 318 minutos |
+| Cobertura reportada | 0,0 % |
+| Quality Gate | OK |
+
+#### 4. Interpretación
+
+El análisis superó las condiciones configuradas del Quality Gate.
+
+Sin embargo, identificó un bug y 58 problemas de mantenibilidad, por lo que el resultado no implica ausencia de defectos.
+
+La duplicación registrada fue del 0,0 %, mientras que la deuda técnica estimada fue de 318 minutos, equivalente a cinco horas y dieciocho minutos.
+
+La complejidad cognitiva acumulada fue de 352.
+
+El valor de cobertura del 0,0 % no puede interpretarse como cobertura real de las pruebas automatizadas, porque no se importó un informe de cobertura durante el análisis.
+
+#### 5. Evidencia experimental
+
+Se conservaron los archivos:
+
+- `E2_KIRO_SONAR_PRE_SCAN.log`
+- `E2_KIRO_SONAR_PRE_METRICAS.json`
+- `E2_KIRO_SONAR_PRE_QUALITY_GATE.json`
+- `E2_KIRO_SONAR_PRE_ISSUES.json`
+
+La ejecución del escáner y la exportación de métricas fueron actividades manuales del investigador.
+
+No se atribuyen a Kiro.
+
+#### 6. Decisión correctiva
+
+Se realizará una revisión de los 59 issues mediante Kiro.
+
+Las correcciones se priorizarán según su impacto sobre la confiabilidad, la seguridad y el cumplimiento funcional de la aplicación.
+
+No se modificará el código exclusivamente para eliminar advertencias cosméticas si esto introduce riesgos o trabajo desproporcionado.
+
+Las correcciones deberán seguir las especificaciones aprobadas y conservar las pruebas de regresión.
+
+Posteriormente se ejecutará manualmente un segundo análisis SonarQube utilizando el mismo proyecto y el mismo perímetro.
+
+#### 7. Estado del experimento
+
+- Tareas principales completadas: 45/46.
+- Pruebas backend reportadas: 220 exitosas.
+- Compilación frontend: exitosa.
+- Validación visual A21: pendiente.
+- Créditos Kiro acumulados: 408/1.000.
+- Créditos disponibles: 592.
+
+#### 8. Conclusión
+
+La Etapa 2 cuenta con una línea base válida de análisis estático.
+
+El primer análisis registró 59 issues y aprobó el Quality Gate.
+
+El siguiente paso corresponde a una corrección dirigida por Kiro, seguida de un segundo análisis manual y la inspección visual A21 para cerrar el experimento.
+

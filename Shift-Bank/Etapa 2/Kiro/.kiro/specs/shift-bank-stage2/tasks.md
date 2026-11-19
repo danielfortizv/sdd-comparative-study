@@ -520,6 +520,51 @@
     (SHA-256 `407B0E13…`, 36.864 bytes); sin código de producción modificado. Ver
     `_experiment_logs/Kiro/sesiones/E2_KIRO_SESION_31_TAREA_46.md`._
 
+
+---
+
+## Fase H — Pasada correctiva de SonarQube (PRE scan manual del investigador)
+
+> Depende de: todas las fases anteriores. Entrada: evidencia PRE en
+> `_experiment_logs/Kiro/sonarqube/` (Quality Gate OK, 1 bug, 58 code smells, 0
+> vulnerabilidades, 4.236 NCLOC, 0% duplicación, 318 min de deuda, 0% coverage sin datos
+> importados). Solo correcciones consistentes con el comportamiento aprobado (requisitos, diseño,
+> D01-D07). **No** se re-ejecuta SonarQube (el POST scan lo corre el investigador). La evidencia
+> PRE no se modifica. Preserva comportamiento heredado E1, atomicidad financiera, MFA,
+> idempotencia y contratos de API. A21 (Tarea 43) sigue pendiente de evidencia manual real.
+
+- [x] 47. **(correctivo)** Corregir el bug real del scheduler (re-lanzar `CancelledError`)
+  - `python:S7497` (BUG, RELIABILITY/HIGH) en `backend/app/scheduler.py` L167: en
+    `Scheduler.stop()` el `except asyncio.CancelledError: pass` absorbe la cancelación sin
+    re-lanzarla. Distinguir la cancelación de la **tarea worker** (esperada: se absorbe tras
+    `task.cancel()`) de la cancelación del **propio `stop()`** por el llamador (debe
+    propagarse). Preservar el apagado limpio (Req. 10.2) y las pruebas de `test_scheduler.py`.
+  - _Requisitos: 10.2_ · _Contrato: REC-05_ · _SonarQube: S7497_
+
+- [x] 48. **(correctivo)** Eliminar el literal SQL duplicado (CRITICAL)
+  - `python:S1192` (CRITICAL, MAINTAINABILITY/HIGH) en `backend/app/repository.py` L308/315/
+    479: el literal `"SELECT * FROM recurring_schedule WHERE id = ?"` aparece 3 veces. Definir
+    una constante de módulo y reutilizarla. Sin cambio de comportamiento ni de SQL emitido.
+  - _SonarQube: S1192_
+
+- [x] 49. **(correctivo)** Legibilidad frontend de bajo riesgo (ternarios anidados, función, props)
+  - `typescript:S3358` (MAJOR) ×2: extraer el ternario anidado a una variable/función en
+    `HistoryList.tsx` L65 y `RecurringPanel.tsx` L106. `typescript:S7721` (MAJOR):
+    mover `statusMessage` al scope exterior en `AchTransferForm.tsx` L58.
+    `typescript:S6759` (MINOR) ×8: marcar las props de los componentes como `Readonly<>`
+    (AccountsPanel, AchTransferForm, BeneficiariesPanel, HistoryList, LimitsPanel, MfaDialog,
+    RecurringPanel, TransferForm). Cambios no conductuales; el build de producción debe seguir
+    verde y la UI heredada intacta (A21 pendiente de evidencia manual).
+  - _Requisitos: 16.2_ · _SonarQube: S3358, S7721, S6759_
+
+- [x] 50. **(verificación)** Suite backend completa + build de producción del frontend tras las correcciones
+  - Ejecutar pruebas enfocadas (`test_scheduler.py`, repositorio/recurrentes) y la suite backend
+    completa (`pytest -q`), más `npm run build` (tsc + vite). Registrar PASS/FAIL reales, los
+    issues corregidos y los **remanentes conscientemente diferidos** (p. ej. S6772 "ambiguous
+    spacing" ×37, S107 15 parámetros, S8410/S8409 convención FastAPI, S8786 regex y S6819 en
+    componentes heredados E1) con su justificación. La evidencia PRE no se toca; el POST scan lo
+    corre el investigador. **No** marcar A21 (Tarea 43) sin evidencia manual real de navegador.
+  - _Contrato: A20, §7_ · _SonarQube: pasada correctiva_
 ---
 
 ## Resumen de dependencias

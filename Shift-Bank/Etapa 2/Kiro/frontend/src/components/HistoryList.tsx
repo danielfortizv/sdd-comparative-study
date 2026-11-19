@@ -48,7 +48,15 @@ function beneficiaryLabel(t: TransferHistoryItem): string {
   return b.account_masked ? `${header} (${b.account_masked})` : header;
 }
 
-export function HistoryList({ transfers }: Props) {
+// Texto principal de la fila: beneficiario enmascarado para ACH, "from → to" para internas
+// con dirección, y cadena vacía en cualquier otro caso. Idéntico al ternario anidado previo.
+function entryLabel(t: TransferHistoryItem): string {
+  if (t.type === "ach") return beneficiaryLabel(t);
+  if (t.direction) return `${t.direction.from} → ${t.direction.to}`;
+  return "";
+}
+
+export function HistoryList({ transfers }: Readonly<Props>) {
   return (
     <section className="card">
       <h2>Historial de transferencias</h2>
@@ -59,13 +67,7 @@ export function HistoryList({ transfers }: Props) {
           {transfers.map((t, idx) => (
             <li className="history-item" key={`${t.date}-${idx}`}>
               <div className="history-main">
-                <span className="history-direction">
-                  {t.type === "ach"
-                    ? beneficiaryLabel(t)
-                    : t.direction
-                      ? `${t.direction.from} → ${t.direction.to}`
-                      : ""}
-                </span>
+                <span className="history-direction">{entryLabel(t)}</span>
                 <span className="history-amount">COP {t.amount}</span>
               </div>
               <div className="history-meta">

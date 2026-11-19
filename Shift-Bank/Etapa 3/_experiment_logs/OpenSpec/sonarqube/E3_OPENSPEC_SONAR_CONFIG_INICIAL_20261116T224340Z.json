@@ -1,0 +1,152 @@
+{
+  "project_key": "Shift-Bank---Stage-3---OpenSpec",
+  "project_name": "Shift Bank - Stage 3 - OpenSpec",
+  "properties_file": "sonarqube/sonar-project.properties",
+  "properties_sha256": "c6d52175bc0623c3c5b64fad0dbe705fb9f8e3cbaf3862466bf8e47277f87ee1",
+  "sources": [
+    "backend/main.py",
+    "backend/banking.py",
+    "backend/database.py",
+    "backend/encryption.py",
+    "backend/audit.py",
+    "frontend/src"
+  ],
+  "tests": [
+    "backend/tests",
+    "frontend/tests"
+  ],
+  "exclusions": {
+    "sonar.exclusions": "**/.venv/**,**/node_modules/**,**/dist/**,**/__pycache__/**,**/.pytest_cache/**,**/.mypy_cache/**,**/.ruff_cache/**,**/coverage/**,**/.coverage*,**/*.sqlite*,**/*.db*,**/*-wal,**/*-shm,**/*-journal,**/.env,**/.env.*,**/certs/**,**/*.pem,**/*.key,**/.scannerwork/**,**/loadtest/**,**/locust/**,**/deployment/**,**/_experiment_logs/**,sonarqube/**",
+    "sonar.test.exclusions": "**/__pycache__/**,**/node_modules/**,**/.venv/**,**/dist/**,**/coverage/**"
+  },
+  "python_version": "3.13",
+  "node_version": "24.19.0",
+  "npm_version": "11.17.0",
+  "coverage_paths": {
+    "python": "sonarqube/reports/backend-coverage-sonar.xml",
+    "frontend_lcov": "sonarqube/reports/frontend-lcov-sonar.info"
+  },
+  "scanner_image": "sdd-sonar-scanner:frozen",
+  "scanner_image_id": "sha256:a3f4215076706c95a17a68c19322ee916e40a3acd081a8c1a1e839e0194afa57",
+  "scanner_version": "SonarScanner CLI 8.1.0.6389",
+  "server_url": "http://localhost:9000",
+  "server_version": "26.9.0.129388",
+  "rule_profiles": "to be collected from authenticated SonarQube API",
+  "source_file_count": 14,
+  "source_files": [
+    {
+      "path": "backend/main.py",
+      "sha256": "78a19a21ddb8e9b7f75d41bf0244f5c052d795a0c3f78a20675079ef67bb2e75",
+      "bytes": 7637
+    },
+    {
+      "path": "backend/banking.py",
+      "sha256": "ed45afa56da7f5624e502a50658594e8f05bf30deffe2eed6ebd364b66a1e5c4",
+      "bytes": 39729
+    },
+    {
+      "path": "backend/database.py",
+      "sha256": "6eecbe235b6c3b3d0fe285f700ed1d16e843c06006db8d14515d35e7b4a6a3c9",
+      "bytes": 5973
+    },
+    {
+      "path": "backend/encryption.py",
+      "sha256": "ea944a9b6451794e7c805ad1e546a6ef6889aced2c3f4c10e21f1ad77991cace",
+      "bytes": 7058
+    },
+    {
+      "path": "backend/audit.py",
+      "sha256": "23465d3fd84d77e8f61648b76af1d970efcc21f969508f19aba2314a89e2b6ec",
+      "bytes": 11251
+    },
+    {
+      "path": "frontend/src/api.d.mts",
+      "sha256": "6597448680d217322ac8bff3dd07e4ac93916090bd60bf627f1c48fd405a316c",
+      "bytes": 222
+    },
+    {
+      "path": "frontend/src/api.mjs",
+      "sha256": "0d1689088e12bf4bb60982763d5b3b798bb5dabd40763957690847ed646044a5",
+      "bytes": 858
+    },
+    {
+      "path": "frontend/src/App.css",
+      "sha256": "cdb1589c231092232f4b0a972d9fe0b7975932242ca6e67ab03969542eed3f81",
+      "bytes": 10463
+    },
+    {
+      "path": "frontend/src/App.tsx",
+      "sha256": "0e4316f2497b3b453d62962cc2fb88c3da07116b887f72f146ab2fe46c776cca",
+      "bytes": 25616
+    },
+    {
+      "path": "frontend/src/main.tsx",
+      "sha256": "12599d6191d85cd1bf4a5be303a12f29c7d5c74590047a6f70025da989ef78b3",
+      "bytes": 244
+    },
+    {
+      "path": "frontend/src/refreshPolling.d.mts",
+      "sha256": "3b45c84d44f7a5c28e747ded54a9f779d990d70350e4e3d0364da77d26e50849",
+      "bytes": 91
+    },
+    {
+      "path": "frontend/src/refreshPolling.mjs",
+      "sha256": "2283c073467b0efd4ab0c347a9fa055d109f0423548f564b9284c02576ee5aea",
+      "bytes": 177
+    },
+    {
+      "path": "frontend/src/validation.d.mts",
+      "sha256": "0115c7dddf46faa4d77e10d864d5beed5c4eb5f2d3934f5bf4b750d68af1e5be",
+      "bytes": 608
+    },
+    {
+      "path": "frontend/src/validation.mjs",
+      "sha256": "de09b27a478a8287379f9680569ed2ee853c071d72f2e61c8ca7d1f072d6b0da",
+      "bytes": 1784
+    }
+  ],
+  "test_dirs_classified": [
+    "backend/tests",
+    "frontend/tests"
+  ],
+  "front_ui_coverage_note": "No React TSX component is imported by the Node tests; only measured LCOV paths are eligible for imported coverage.",
+  "coverage_tools": {
+    "coverage_py": "7.17.3",
+    "frontend_reporter": "c8 12.0.0",
+    "node_native_coverage": "Node 24.19.0 built-in test coverage"
+  },
+  "frontend_coverage_scope": [
+    "frontend/src/api.mjs",
+    "frontend/src/refreshPolling.mjs",
+    "frontend/src/validation.mjs"
+  ],
+  "coverage_results": {
+    "backend_tests": 53,
+    "backend_line_coverage_percent": 89.28,
+    "backend_coverage_xml_lines_valid": 989,
+    "backend_coverage_xml_lines_covered": 883,
+    "frontend_tests": 8,
+    "frontend_lcov_included_files": 3,
+    "frontend_lcov_lines_covered_percent": 100.0,
+    "react_tsx_ui_coverage": "not measured: no React UI module is imported by the existing Node tests"
+  },
+  "coverage_commands": {
+    "backend": "python -m coverage run --data-file=../sonarqube/reports/.coverage-backend --source=main,banking,database,encryption,audit -m unittest discover -s tests -v; python -m coverage xml --data-file=../sonarqube/reports/.coverage-backend -o ../sonarqube/reports/backend-coverage.xml",
+    "frontend": "npm.cmd exec --yes --package=c8 -- c8 --reporter=lcovonly --reports-dir=../sonarqube/reports/frontend-coverage --include=src/api.mjs --include=src/validation.mjs --include=src/refreshPolling.mjs -- node --test tests/*.test.mjs"
+  },
+  "properties": "sonar.projectKey=Shift-Bank---Stage-3---OpenSpec\nsonar.projectName=Shift Bank - Stage 3 - OpenSpec\nsonar.host.url=http://host.docker.internal:9000\nsonar.sourceEncoding=UTF-8\nsonar.sources=backend/main.py,backend/banking.py,backend/database.py,backend/encryption.py,backend/audit.py,frontend/src\nsonar.tests=backend/tests,frontend/tests\nsonar.exclusions=**/.venv/**,**/node_modules/**,**/dist/**,**/__pycache__/**,**/.pytest_cache/**,**/.mypy_cache/**,**/.ruff_cache/**,**/coverage/**,**/.coverage*,**/*.sqlite*,**/*.db*,**/*-wal,**/*-shm,**/*-journal,**/.env,**/.env.*,**/certs/**,**/*.pem,**/*.key,**/.scannerwork/**,**/loadtest/**,**/locust/**,**/deployment/**,**/_experiment_logs/**,sonarqube/**\nsonar.test.exclusions=**/__pycache__/**,**/node_modules/**,**/.venv/**,**/dist/**,**/coverage/**\nsonar.python.version=3.13\nsonar.typescript.tsconfigPath=frontend/tsconfig.json\nsonar.python.coverage.reportPaths=sonarqube/reports/backend-coverage-sonar.xml\nsonar.javascript.lcov.reportPaths=sonarqube/reports/frontend-lcov-sonar.info\n",
+  "scan_status": "NOT_EXECUTED_CREDENTIAL_REQUIRED",
+  "scanner_image_digest": "sha256:a3f4215076706c95a17a68c19322ee916e40a3acd081a8c1a1e839e0194afa57",
+  "server_mapping_test": "docker container host.docker.internal:host-gateway reached SonarQube and returned version 26.9.0.129388",
+  "scanner_execution": {
+    "image": "sdd-sonar-scanner:frozen",
+    "image_id": "sha256:a3f4215076706c95a17a68c19322ee916e40a3acd081a8c1a1e839e0194afa57",
+    "host_mapping": "host.docker.internal:host-gateway",
+    "credential_transport": "inherited environment variable SONAR_TOKEN; never a command-line value",
+    "command_arguments": [
+      "-Dproject.settings=/usr/src/sonarqube/sonar-project.properties",
+      "-Dsonar.verbose=true"
+    ]
+  },
+  "scan_started_utc": "2026-11-16T22:43:40+00:00"
+}

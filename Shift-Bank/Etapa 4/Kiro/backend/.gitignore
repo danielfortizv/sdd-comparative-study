@@ -1,0 +1,7 @@
+.venv/
+__pycache__/
+*.pyc
+shift_bank.db
+.pytest_cache/
+shift_bank_test_*.db
+shift_bank_test_*.db-*
