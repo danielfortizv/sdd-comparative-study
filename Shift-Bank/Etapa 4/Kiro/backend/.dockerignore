@@ -1,0 +1,50 @@
+# .dockerignore del backend de Shift Bank (Etapa 3, Tarea 25).
+#
+# Objetivo (R12.5, AC-12/AC-13): que NINGUNA base de datos histórica ni secreto se
+# hornee en la imagen. El contexto de build excluye explícitamente la DB SQLite (y sus
+# archivos WAL/SHM), los `.env`, el material de certificados TLS, los entornos virtuales,
+# cachés y artefactos de pruebas. La DB real vive en un volumen Docker persistente
+# (montado en la ruta de DB_PATH); los secretos se inyectan por entorno en runtime
+# (Tarea 27), nunca desde el contexto de build.
+
+# Bases de datos SQLite y sus sidecars (WAL/SHM/journal) — jamás horneadas (R12.5).
+*.db
+*.db-wal
+*.db-shm
+*.db-journal
+shift_bank.db
+shift_bank_test_*.db
+shift_bank_test_*.db-*
+
+# Secretos y configuración sensible — inyectados por entorno en runtime (R2.1, R12.1).
+.env
+.env.*
+!.env.example
+
+# Material TLS / certificados — provisionado externamente, nunca en la imagen (R4.4).
+*.pem
+*.key
+*.crt
+*.p12
+*.pfx
+certs/
+
+# Entorno virtual local y cachés de Python.
+.venv/
+venv/
+__pycache__/
+*.pyc
+*.pyo
+.pytest_cache/
+
+# Artefactos de pruebas / cobertura (dev-only; no son runtime).
+.coverage
+coverage.xml
+htmlcov/
+tests/
+requirements-dev.txt
+
+# Metadatos de VCS/editor.
+.git/
+.gitignore
+.dockerignore

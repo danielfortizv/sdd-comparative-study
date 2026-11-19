@@ -1,0 +1,484 @@
+{
+  "timestamps": {
+    "verification_started_utc": "2026-11-16T20:46:17.544Z",
+    "verification_finished_utc": "2026-11-16T20:47:59.619Z"
+  },
+  "requests_and_checks": [
+    {
+      "timestamp_utc": "2026-11-16T20:46:17.549Z",
+      "method": "GET",
+      "path": "http://localhost:18080/api/history",
+      "status": null,
+      "check": "http_redirect",
+      "result": "PASS",
+      "safe_detail": "https://localhost:18443/api/history"
+    },
+    {
+      "timestamp_utc": "2026-11-16T20:46:19.601Z",
+      "method": "GET",
+      "path": "/",
+      "status": 200,
+      "check": "frontend_https",
+      "result": "PASS",
+      "safe_detail": null
+    },
+    {
+      "timestamp_utc": "2026-11-16T20:46:23.716Z",
+      "method": "GET",
+      "path": "React production asset paths",
+      "status": true,
+      "check": "production_assets",
+      "result": "PASS",
+      "safe_detail": {
+        "asset_count": 2,
+        "statuses": [
+          200,
+          200
+        ]
+      }
+    },
+    {
+      "timestamp_utc": "2026-11-16T20:46:25.773Z",
+      "method": "GET",
+      "path": "/health/live",
+      "status": null,
+      "check": "/health/live",
+      "result": "PASS",
+      "safe_detail": null
+    },
+    {
+      "timestamp_utc": "2026-11-16T20:46:27.833Z",
+      "method": "GET",
+      "path": "/health/ready",
+      "status": null,
+      "check": "/health/ready",
+      "result": "PASS",
+      "safe_detail": null
+    },
+    {
+      "timestamp_utc": "2026-11-16T20:46:29.894Z",
+      "method": "GET",
+      "path": "/api/accounts",
+      "status": 200,
+      "check": "accounts_api",
+      "result": "PASS",
+      "safe_detail": null
+    },
+    {
+      "timestamp_utc": "2026-11-16T20:46:29.894Z",
+      "method": "GET",
+      "path": "/api/accounts",
+      "status": null,
+      "check": "synthetic_initial_balances",
+      "result": "PASS",
+      "safe_detail": null
+    },
+    {
+      "timestamp_utc": "2026-11-16T20:46:31.954Z",
+      "method": "GET",
+      "path": "/api/history",
+      "status": 200,
+      "check": "history_api",
+      "result": "PASS",
+      "safe_detail": {
+        "row_count": 2
+      }
+    },
+    {
+      "timestamp_utc": "2026-11-16T20:46:33.997Z",
+      "method": "GET",
+      "path": "/api/admin/audit/verify",
+      "status": 401,
+      "check": "audit_verification_unauthorized",
+      "result": "PASS",
+      "safe_detail": null
+    },
+    {
+      "timestamp_utc": "2026-11-16T20:46:36.029Z",
+      "method": "GET",
+      "path": "/api/admin/audit/verify",
+      "status": true,
+      "check": "audit_verification_authorized",
+      "result": "PASS",
+      "safe_detail": {
+        "checked_entries": 1
+      }
+    },
+    {
+      "timestamp_utc": "2026-11-16T20:46:38.068Z",
+      "method": "POST",
+      "path": "/api/transfers",
+      "status": 422,
+      "check": "invalid_request_rejected",
+      "result": "PASS",
+      "safe_detail": null
+    },
+    {
+      "timestamp_utc": "2026-11-16T20:46:40.129Z",
+      "method": "POST",
+      "path": "/api/transfers",
+      "status": 400,
+      "check": "self_transfer_rejected",
+      "result": "PASS",
+      "safe_detail": null
+    },
+    {
+      "timestamp_utc": "2026-11-16T20:46:42.184Z",
+      "method": "POST",
+      "path": "/api/transfers",
+      "status": true,
+      "check": "valid_internal_transfer",
+      "result": "PASS",
+      "safe_detail": {
+        "transaction_id": "tx_12363410307b4796"
+      }
+    },
+    {
+      "timestamp_utc": "2026-11-16T20:46:44.232Z",
+      "method": "GET",
+      "path": "/api/accounts",
+      "status": null,
+      "check": "internal_transfer_financial_effect",
+      "result": "PASS",
+      "safe_detail": null
+    },
+    {
+      "timestamp_utc": "2026-11-16T20:46:46.315Z",
+      "method": "POST",
+      "path": "/api/beneficiaries",
+      "status": 201,
+      "check": "https_beneficiary_create",
+      "result": "PASS",
+      "safe_detail": {
+        "beneficiary_id": "ben_d55b52c76e2f4bfc"
+      }
+    },
+    {
+      "timestamp_utc": "2026-11-16T20:46:48.359Z",
+      "method": "GET",
+      "path": "/api/beneficiaries",
+      "status": true,
+      "check": "beneficiary_authorized_decryption",
+      "result": "PASS",
+      "safe_detail": {
+        "record_found": true,
+        "sensitive_values_logged": false
+      }
+    },
+    {
+      "timestamp_utc": "2026-11-16T20:46:50.417Z",
+      "method": "POST",
+      "path": "/api/ach-transfers",
+      "status": true,
+      "check": "ach_requires_mfa",
+      "result": "PASS",
+      "safe_detail": {
+        "transfer_id": "ach_7e0483f843d64e6a"
+      }
+    },
+    {
+      "timestamp_utc": "2026-11-16T20:46:52.472Z",
+      "method": "GET",
+      "path": "/api/accounts",
+      "status": null,
+      "check": "mfa_pending_no_debit",
+      "result": "PASS",
+      "safe_detail": null
+    },
+    {
+      "timestamp_utc": "2026-11-16T20:46:54.508Z",
+      "method": "POST",
+      "path": "/api/ach-transfers/ach_7e0483f843d64e6a/confirm",
+      "status": 400,
+      "check": "invalid_mfa_denied",
+      "result": "PASS",
+      "safe_detail": null
+    },
+    {
+      "timestamp_utc": "2026-11-16T20:46:56.566Z",
+      "method": "GET",
+      "path": "/api/accounts",
+      "status": null,
+      "check": "invalid_mfa_no_debit",
+      "result": "PASS",
+      "safe_detail": null
+    },
+    {
+      "timestamp_utc": "2026-11-16T20:46:58.637Z",
+      "method": "POST",
+      "path": "/api/ach-transfers/ach_7e0483f843d64e6a/confirm",
+      "status": true,
+      "check": "valid_mfa_authorizes_ach",
+      "result": "PASS",
+      "safe_detail": null
+    },
+    {
+      "timestamp_utc": "2026-11-16T20:47:31.191Z",
+      "method": "GET",
+      "path": "/api/ach-transfers",
+      "status": true,
+      "check": "ach_settles_once",
+      "result": "PASS",
+      "safe_detail": {
+        "transfer_id": "ach_7e0483f843d64e6a",
+        "settlement_observed": "2026-11-16T20:47:28.886228Z"
+      }
+    },
+    {
+      "timestamp_utc": "2026-11-16T20:47:33.240Z",
+      "method": "GET",
+      "path": "/api/accounts",
+      "status": null,
+      "check": "ach_debit_once",
+      "result": "PASS",
+      "safe_detail": null
+    },
+    {
+      "timestamp_utc": "2026-11-16T20:47:35.306Z",
+      "method": "POST",
+      "path": "/api/recurring-schedules",
+      "status": true,
+      "check": "recurring_schedule_created",
+      "result": "PASS",
+      "safe_detail": {
+        "schedule_id": "sch_e8aedfcb06ee44e5"
+      }
+    },
+    {
+      "timestamp_utc": "2026-11-16T20:47:37.376Z",
+      "method": "POST",
+      "path": "/api/recurring-schedules/sch_e8aedfcb06ee44e5/pause",
+      "status": true,
+      "check": "recurring_pause",
+      "result": "PASS",
+      "safe_detail": null
+    },
+    {
+      "timestamp_utc": "2026-11-16T20:47:39.445Z",
+      "method": "POST",
+      "path": "/api/recurring-schedules/sch_e8aedfcb06ee44e5/resume",
+      "status": true,
+      "check": "recurring_resume",
+      "result": "PASS",
+      "safe_detail": null
+    },
+    {
+      "timestamp_utc": "2026-11-16T20:47:40.040Z",
+      "method": "TEST",
+      "path": "synthetic SQLite schedule fixture",
+      "status": null,
+      "check": "due_schedule_restart_precondition",
+      "result": "PASS",
+      "safe_detail": null
+    },
+    {
+      "timestamp_utc": "2026-11-16T20:47:43.884Z",
+      "method": "GET",
+      "path": "/health/ready",
+      "status": true,
+      "check": "backend_ready_after_restart",
+      "result": "PASS",
+      "safe_detail": null
+    },
+    {
+      "timestamp_utc": "2026-11-16T20:47:45.938Z",
+      "method": "GET",
+      "path": "/api/accounts",
+      "status": null,
+      "check": "balances_persist_after_restart",
+      "result": "PASS",
+      "safe_detail": null
+    },
+    {
+      "timestamp_utc": "2026-11-16T20:47:47.974Z",
+      "method": "GET",
+      "path": "/api/history",
+      "status": false,
+      "check": "history_persists_after_restart",
+      "result": "FAIL",
+      "safe_detail": {
+        "row_count": 4
+      }
+    },
+    {
+      "timestamp_utc": "2026-11-16T20:47:50.017Z",
+      "method": "GET",
+      "path": "/api/ach-transfers",
+      "status": true,
+      "check": "ach_settlement_persists_after_restart",
+      "result": "PASS",
+      "safe_detail": {
+        "record_found": true
+      }
+    },
+    {
+      "timestamp_utc": "2026-11-16T20:47:52.066Z",
+      "method": "GET",
+      "path": "/api/admin/audit/verify",
+      "status": true,
+      "check": "audit_valid_after_restart",
+      "result": "PASS",
+      "safe_detail": {
+        "checked_entries": 13
+      }
+    },
+    {
+      "timestamp_utc": "2026-11-16T20:47:52.399Z",
+      "method": "CHECK",
+      "path": "SQLite recurring recovery",
+      "status": true,
+      "check": "recurring_due_recovered_without_occurrence",
+      "result": "PASS",
+      "safe_detail": {
+        "schedule_status": "active",
+        "recovery_events": 1
+      }
+    },
+    {
+      "timestamp_utc": "2026-11-16T20:47:52.399Z",
+      "method": "CHECK",
+      "path": "SQLite encrypted fields",
+      "status": true,
+      "check": "stored_sensitive_fields_encrypted",
+      "result": "PASS",
+      "safe_detail": {
+        "fields_checked": 8,
+        "plaintext_fields": 0
+      }
+    },
+    {
+      "timestamp_utc": "2026-11-16T20:47:55.595Z",
+      "method": "CHECK",
+      "path": "second backend restart",
+      "status": true,
+      "check": "second_restart_no_duplicate_recovery_or_occurrence",
+      "result": "PASS",
+      "safe_detail": {
+        "recovery_events": 1,
+        "occurrences": 0
+      }
+    },
+    {
+      "timestamp_utc": "2026-11-16T20:47:55.595Z",
+      "method": "CHECK",
+      "path": "audit chain",
+      "status": true,
+      "check": "audit_valid_after_second_restart",
+      "result": "PASS",
+      "safe_detail": null
+    },
+    {
+      "timestamp_utc": "2026-11-16T20:47:55.595Z",
+      "method": "CHECK",
+      "path": "account balances",
+      "status": null,
+      "check": "balances_unchanged_after_second_restart",
+      "result": "PASS",
+      "safe_detail": null
+    },
+    {
+      "timestamp_utc": "2026-11-16T20:47:55.947Z",
+      "method": "CHECK",
+      "path": "docker compose up --scale backend=2",
+      "status": true,
+      "check": "single_scheduler_service_cannot_scale",
+      "result": "PASS",
+      "safe_detail": {
+        "scale_exit_code": 1,
+        "active_backend_containers": 1,
+        "safe_error_summary": "Compose refused scale"
+      }
+    },
+    {
+      "timestamp_utc": "2026-11-16T20:47:56.020Z",
+      "method": "CHECK",
+      "path": "docker inspect network ports",
+      "status": true,
+      "check": "backend_not_published_to_host",
+      "result": "PASS",
+      "safe_detail": {
+        "8000/tcp": null
+      }
+    },
+    {
+      "timestamp_utc": "2026-11-16T20:47:56.093Z",
+      "method": "CHECK",
+      "path": "docker volume inspect",
+      "status": null,
+      "check": "persistent_volume_exists",
+      "result": "PASS",
+      "safe_detail": null
+    },
+    {
+      "timestamp_utc": "2026-11-16T20:47:56.966Z",
+      "method": "CHECK",
+      "path": "container UID and SQLite volume owner",
+      "status": true,
+      "check": "backend_non_root_and_writable_volume",
+      "result": "PASS",
+      "safe_detail": {
+        "backend_uid": "10001",
+        "volume_owner_modes": [
+          "10001:10001 755",
+          "10001:10001 644"
+        ]
+      }
+    },
+    {
+      "timestamp_utc": "2026-11-16T20:47:56.966Z",
+      "method": "CHECK",
+      "path": "frontend container UID",
+      "status": true,
+      "check": "nginx_non_root",
+      "result": "PASS",
+      "safe_detail": {
+        "uid": "101"
+      }
+    },
+    {
+      "timestamp_utc": "2026-11-16T20:47:57.150Z",
+      "method": "CHECK",
+      "path": "docker inspect health",
+      "status": null,
+      "check": "container_healthchecks",
+      "result": "FAIL",
+      "safe_detail": null
+    },
+    {
+      "timestamp_utc": "2026-11-16T20:47:59.301Z",
+      "method": "CHECK",
+      "path": "docker image config",
+      "status": null,
+      "check": "secrets_not_baked_into_backend_image",
+      "result": "PASS",
+      "safe_detail": null
+    },
+    {
+      "timestamp_utc": "2026-11-16T20:47:59.301Z",
+      "method": "CHECK",
+      "path": "deployment/.gitignore",
+      "status": true,
+      "check": "local_env_file_is_git_ignored",
+      "result": "PASS",
+      "safe_detail": null
+    },
+    {
+      "timestamp_utc": "2026-11-16T20:47:59.619Z",
+      "method": "CHECK",
+      "path": "final audit chain",
+      "status": true,
+      "check": "final_audit_verifies",
+      "result": "PASS",
+      "safe_detail": null
+    },
+    {
+      "timestamp_utc": "2026-11-16T20:47:59.619Z",
+      "method": "CHECK",
+      "path": "final balances/history",
+      "status": true,
+      "check": "final_financial_invariants",
+      "result": "PASS",
+      "safe_detail": null
+    }
+  ]
+}

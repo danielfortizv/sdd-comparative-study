@@ -8,6 +8,8 @@ import sqlite3
 import uuid
 from dataclasses import dataclass
 
+_SELECT_SCHEDULE_BY_ID = "SELECT * FROM recurring_schedule WHERE id = ?"
+
 
 @dataclass
 class Account:
@@ -305,14 +307,14 @@ def create_schedule(
     )
     conn.commit()
     row = conn.execute(
-        "SELECT * FROM recurring_schedule WHERE id = ?", (schedule_id,)
+        _SELECT_SCHEDULE_BY_ID, (schedule_id,)
     ).fetchone()
     return _row_to_schedule(row)
 
 
 def get_schedule(conn: sqlite3.Connection, schedule_id: str) -> Schedule | None:
     row = conn.execute(
-        "SELECT * FROM recurring_schedule WHERE id = ?", (schedule_id,)
+        _SELECT_SCHEDULE_BY_ID, (schedule_id,)
     ).fetchone()
     return _row_to_schedule(row) if row else None
 
@@ -476,6 +478,6 @@ def update_schedule_status(
         )
     conn.commit()
     row = conn.execute(
-        "SELECT * FROM recurring_schedule WHERE id = ?", (schedule_id,)
+        _SELECT_SCHEDULE_BY_ID, (schedule_id,)
     ).fetchone()
     return _row_to_schedule(row)

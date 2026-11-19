@@ -1,0 +1,14 @@
+{
+    "ok":  true,
+    "data":  {
+                 "projectStatus":  {
+                                       "status":  "OK",
+                                       "conditions":  [
+
+                                                      ],
+                                       "ignoredConditions":  false,
+                                       "caycStatus":  "compliant"
+                                   }
+             },
+    "http":  200
+}

@@ -1,0 +1,171 @@
+{
+  "source_note": "R02 uses the researcher-confirmed authoritative definitions from SHIFT_BANK_E3_PROTOCOLO_REPLICABLE_OTRAS_HERRAMIENTAS.docx, section 5. The DOCX is not local; supplied excerpts are authoritative. R01 PARTIAL classifications for AC-15/AC-16 are corrected to PASS after evidence audit.",
+  "acceptance": [
+    {
+      "id": "AC-01",
+      "status": "PASS",
+      "criterion": "Inherited banking behavior and deployed API workflows",
+      "evidence": [
+        "pruebas/E3_OPENSPEC_BLOCK2_AUDIT.md",
+        "pruebas/E3_OPENSPEC_DEPLOYMENT_ACCEPTANCE.json"
+      ]
+    },
+    {
+      "id": "AC-02",
+      "status": "PASS",
+      "criterion": "Authenticated encryption/decryption and tamper rejection",
+      "evidence": [
+        "pruebas/E3_OPENSPEC_BLOCK1_ENCRYPTION.md"
+      ]
+    },
+    {
+      "id": "AC-03",
+      "status": "PASS",
+      "criterion": "External keys fail closed; no insecure HTTP fallback",
+      "evidence": [
+        "pruebas/E3_OPENSPEC_BLOCK1_ENCRYPTION.md",
+        "pruebas/E3_OPENSPEC_BLOCK4_HTTPS_RECORDS.json"
+      ]
+    },
+    {
+      "id": "AC-04",
+      "status": "PASS",
+      "criterion": "Safe, idempotent legacy migration; rollback and restart compatibility",
+      "evidence": [
+        "pruebas/E3_OPENSPEC_BLOCK1_ENCRYPTION.md"
+      ]
+    },
+    {
+      "id": "AC-05",
+      "status": "PASS",
+      "criterion": "Cryptographic audit chain validity",
+      "evidence": [
+        "pruebas/E3_OPENSPEC_BLOCK2_AUDIT.md"
+      ]
+    },
+    {
+      "id": "AC-06",
+      "status": "PASS",
+      "criterion": "Tamper detection and application-level append-only enforcement under stated threat model",
+      "evidence": [
+        "pruebas/E3_OPENSPEC_BLOCK2_AUDIT.md"
+      ]
+    },
+    {
+      "id": "AC-07",
+      "status": "PASS",
+      "criterion": "Financial/audit atomicity under persistence and authorization failures",
+      "evidence": [
+        "pruebas/E3_OPENSPEC_BLOCK2_AUDIT.md"
+      ]
+    },
+    {
+      "id": "AC-08",
+      "status": "PASS",
+      "criterion": "Durable, safe MFA failure auditing",
+      "evidence": [
+        "pruebas/E3_OPENSPEC_BLOCK2_AUDIT.md"
+      ]
+    },
+    {
+      "id": "AC-09",
+      "status": "PASS",
+      "criterion": "Four OS processes, shared SQLite, reader/writer, restart verification",
+      "evidence": [
+        "pruebas/E3_OPENSPEC_BLOCK2_AUDIT.md"
+      ]
+    },
+    {
+      "id": "AC-10",
+      "status": "PASS",
+      "criterion": "Locust workload timing and observed 60/30/10 request mix",
+      "evidence": [
+        "locust/E3_OPENSPEC_LOCUST_RUN_01.json",
+        "locust/E3_OPENSPEC_LOCUST_EVALUATION.md"
+      ]
+    },
+    {
+      "id": "AC-11",
+      "status": "PASS",
+      "criterion": "Strict read/transfer latency and unexpected-error SLOs",
+      "evidence": [
+        "locust/E3_OPENSPEC_LOCUST_RUN_01.json",
+        "locust/E3_OPENSPEC_LOCUST_EVALUATION.md"
+      ]
+    },
+    {
+      "id": "AC-12",
+      "status": "PASS",
+      "criterion": "Compose, HTTPS, redirect, proxy routing, healthchecks, external secrets",
+      "evidence": [
+        "pruebas/E3_OPENSPEC_DEPLOYMENT_ACCEPTANCE.json",
+        "pruebas/E3_OPENSPEC_BLOCK4_DEPLOYMENT.md"
+      ]
+    },
+    {
+      "id": "AC-13",
+      "status": "PASS",
+      "criterion": "Persistent encrypted/audited storage, restart, non-root permissions and single scheduler",
+      "evidence": [
+        "pruebas/E3_OPENSPEC_DEPLOYMENT_ACCEPTANCE.json",
+        "pruebas/E3_OPENSPEC_BLOCK4_DEPLOYMENT.md"
+      ]
+    },
+    {
+      "id": "AC-14",
+      "status": "PASS",
+      "criterion": "Full regression, production build and strict OpenSpec validation",
+      "evidence": [
+        "sonarqube/E3_OPENSPEC_SONAR_REGRESION_POSTCORRECCION.md",
+        "pruebas/E3_OPENSPEC_BLOCK4_REGRESSION.md"
+      ]
+    },
+    {
+      "id": "AC-15",
+      "status": "PASS",
+      "criterion": "Misma configuración de scope y coverage, línea base y resultado final separados.",
+      "evidence": [
+        "sonarqube/EXTRACCION_INICIAL_20261117T141345069/ce.json",
+        "sonarqube/EXTRACCION_INICIAL_20261117T141345069/resumen.json",
+        "sonarqube/EXTRACCION_FINAL_20261117T145759941/ce.json",
+        "sonarqube/EXTRACCION_FINAL_20261117T145759941/resumen.json",
+        "sonarqube/E3_OPENSPEC_SONAR_PROPERTIES_INICIAL.properties",
+        "sonarqube/E3_OPENSPEC_SONAR_CONFIG_INICIAL.json",
+        "sonarqube/E3_OPENSPEC_SONAR_SCOPE_RECONCILIATION_ea27677b_R03.json",
+        "sonarqube/E3_OPENSPEC_SONAR_SOURCE_HASHES_INICIALES.json",
+        "sonarqube/E3_OPENSPEC_SONAR_SOURCE_HASHES_POSTCORRECTION.json",
+        "sonarqube/E3_OPENSPEC_SONAR_REGRESION_POSTCORRECCION.md",
+        "sonarqube/E3_OPENSPEC_SONAR_SCAN_20261116T193919.log",
+        "sonarqube/E3_OPENSPEC_SONAR_SCAN_20261117T145330.log"
+      ],
+      "limitation": "Initial Gate conditions are empty; final Gate has three passing conditions. Gate evaluations are not equivalent; the literal scope/coverage repeatability criterion is satisfied."
+    },
+    {
+      "id": "AC-16",
+      "status": "PASS",
+      "criterion": "Valores del informe reproducen JSON/CLI; sin suposiciones convertidas en hechos.",
+      "evidence": [
+        "E3_OPENSPEC_INFORME_FINAL_ACADEMICO_R02.md",
+        "E3_OPENSPEC_RESUMEN_METRICAS_FINALES_R02.json",
+        "E3_OPENSPEC_RECONCILIACION_HALLAZGOS_SONAR.csv",
+        "sonarqube/EXTRACCION_INICIAL_20261117T141345069/",
+        "sonarqube/EXTRACCION_FINAL_20261117T145759941/",
+        "sonarqube/E3_OPENSPEC_SONAR_SCAN_20261116T193919.log",
+        "sonarqube/E3_OPENSPEC_SONAR_SCAN_20261117T145330.log",
+        "locust/E3_OPENSPEC_LOCUST_RUN_01.json",
+        "locust/E3_OPENSPEC_LOCUST_EVALUATION.md",
+        "pruebas/E3_OPENSPEC_DEPLOYMENT_ACCEPTANCE.json",
+        "../../OpenSpec/openspec/changes/stage3-banking-security-load-deployment/"
+      ],
+      "limitation": "Hotspot detail returned HTTP 403; React TSX coverage was not measured; unavailable telemetry/metrics remain N/D or unavailable and are not inferred."
+    }
+  ],
+  "result": {
+    "pass": 16,
+    "partial": 0,
+    "fail": 0,
+    "not_executed": 0,
+    "all_acceptance_criteria_satisfied": true,
+    "qualification": "Quality Gate condition arrays differ, a methodological caveat; this does not alter the literal AC-15 scope/coverage criterion."
+  }
+}

@@ -1,0 +1,617 @@
+{
+  "pbtResults": {},
+  "executionHistory": {
+    "1. (auto) (verificación) Capturar la regresión heredada verde de partida": [
+      {
+        "executionId": "3f87bcfd-069c-49a5-ad06-bcd520559ddb",
+        "chatSessionId": "sess_7f1b54d0-e77f-4cb7-b439-d06e5aa2dca1",
+        "timestamp": 1794861381655
+      },
+      {
+        "executionId": "3f87bcfd-069c-49a5-ad06-bcd520559ddb",
+        "chatSessionId": "sess_7f1b54d0-e77f-4cb7-b439-d06e5aa2dca1",
+        "timestamp": 1794861388034
+      },
+      {
+        "executionId": "3f87bcfd-069c-49a5-ad06-bcd520559ddb",
+        "chatSessionId": "sess_7f1b54d0-e77f-4cb7-b439-d06e5aa2dca1",
+        "timestamp": 1794861534949
+      }
+    ],
+    "2. (auto) Preparar la captura de evidencia experimental de la Etapa 3": [
+      {
+        "executionId": "3f87bcfd-069c-49a5-ad06-bcd520559ddb",
+        "chatSessionId": "sess_7f1b54d0-e77f-4cb7-b439-d06e5aa2dca1",
+        "timestamp": 1794861381692
+      },
+      {
+        "executionId": "3f87bcfd-069c-49a5-ad06-bcd520559ddb",
+        "chatSessionId": "sess_7f1b54d0-e77f-4cb7-b439-d06e5aa2dca1",
+        "timestamp": 1794861543454
+      },
+      {
+        "executionId": "3f87bcfd-069c-49a5-ad06-bcd520559ddb",
+        "chatSessionId": "sess_7f1b54d0-e77f-4cb7-b439-d06e5aa2dca1",
+        "timestamp": 1794861652973
+      }
+    ],
+    "3. (auto) Añadir `cryptography` (runtime) y `locust` (solo dev) con versiones fijadas": [
+      {
+        "executionId": "3f87bcfd-069c-49a5-ad06-bcd520559ddb",
+        "chatSessionId": "sess_7f1b54d0-e77f-4cb7-b439-d06e5aa2dca1",
+        "timestamp": 1794861381755
+      },
+      {
+        "executionId": "3f87bcfd-069c-49a5-ad06-bcd520559ddb",
+        "chatSessionId": "sess_7f1b54d0-e77f-4cb7-b439-d06e5aa2dca1",
+        "timestamp": 1794861656528
+      },
+      {
+        "executionId": "3f87bcfd-069c-49a5-ad06-bcd520559ddb",
+        "chatSessionId": "sess_7f1b54d0-e77f-4cb7-b439-d06e5aa2dca1",
+        "timestamp": 1794861828140
+      }
+    ],
+    "4. (auto) (verificación) Preflight de baseline heredado y preparación de cobertura": [
+      {
+        "executionId": "3f87bcfd-069c-49a5-ad06-bcd520559ddb",
+        "chatSessionId": "sess_7f1b54d0-e77f-4cb7-b439-d06e5aa2dca1",
+        "timestamp": 1794861381790
+      },
+      {
+        "executionId": "3f87bcfd-069c-49a5-ad06-bcd520559ddb",
+        "chatSessionId": "sess_7f1b54d0-e77f-4cb7-b439-d06e5aa2dca1",
+        "timestamp": 1794861831934
+      },
+      {
+        "executionId": "3f87bcfd-069c-49a5-ad06-bcd520559ddb",
+        "chatSessionId": "sess_7f1b54d0-e77f-4cb7-b439-d06e5aa2dca1",
+        "timestamp": 1794862078542
+      }
+    ],
+    "5. (auto) Configuración externa de claves con validación fail-closed (`config.py`, `main.py`)": [
+      {
+        "executionId": "3f87bcfd-069c-49a5-ad06-bcd520559ddb",
+        "chatSessionId": "sess_7f1b54d0-e77f-4cb7-b439-d06e5aa2dca1",
+        "timestamp": 1794861381830
+      },
+      {
+        "executionId": "3f87bcfd-069c-49a5-ad06-bcd520559ddb",
+        "chatSessionId": "sess_7f1b54d0-e77f-4cb7-b439-d06e5aa2dca1",
+        "timestamp": 1794862082721
+      },
+      {
+        "executionId": "3f87bcfd-069c-49a5-ad06-bcd520559ddb",
+        "chatSessionId": "sess_7f1b54d0-e77f-4cb7-b439-d06e5aa2dca1",
+        "timestamp": 1794862415223
+      }
+    ],
+    "6. (auto) Implementar `app/crypto.py` (AEAD AES-256-GCM, formato versionado)": [
+      {
+        "executionId": "3f87bcfd-069c-49a5-ad06-bcd520559ddb",
+        "chatSessionId": "sess_7f1b54d0-e77f-4cb7-b439-d06e5aa2dca1",
+        "timestamp": 1794861381887
+      },
+      {
+        "executionId": "3f87bcfd-069c-49a5-ad06-bcd520559ddb",
+        "chatSessionId": "sess_7f1b54d0-e77f-4cb7-b439-d06e5aa2dca1",
+        "timestamp": 1794862419152
+      },
+      {
+        "executionId": "3f87bcfd-069c-49a5-ad06-bcd520559ddb",
+        "chatSessionId": "sess_7f1b54d0-e77f-4cb7-b439-d06e5aa2dca1",
+        "timestamp": 1794862724163
+      }
+    ],
+    "7. (auto) Cifrado en reposo en el repositorio (bordes de E/S)": [
+      {
+        "executionId": "3f87bcfd-069c-49a5-ad06-bcd520559ddb",
+        "chatSessionId": "sess_7f1b54d0-e77f-4cb7-b439-d06e5aa2dca1",
+        "timestamp": 1794861381924
+      },
+      {
+        "executionId": "3f87bcfd-069c-49a5-ad06-bcd520559ddb",
+        "chatSessionId": "sess_7f1b54d0-e77f-4cb7-b439-d06e5aa2dca1",
+        "timestamp": 1794862727763
+      },
+      {
+        "executionId": "3f87bcfd-069c-49a5-ad06-bcd520559ddb",
+        "chatSessionId": "sess_7f1b54d0-e77f-4cb7-b439-d06e5aa2dca1",
+        "timestamp": 1794863334581
+      }
+    ],
+    "8. (auto) Migración de cifrado idempotente y transaccional (`db.migrate_encryption`)": [
+      {
+        "executionId": "3f87bcfd-069c-49a5-ad06-bcd520559ddb",
+        "chatSessionId": "sess_7f1b54d0-e77f-4cb7-b439-d06e5aa2dca1",
+        "timestamp": 1794861381970
+      },
+      {
+        "executionId": "3f87bcfd-069c-49a5-ad06-bcd520559ddb",
+        "chatSessionId": "sess_7f1b54d0-e77f-4cb7-b439-d06e5aa2dca1",
+        "timestamp": 1794863338540
+      },
+      {
+        "executionId": "3f87bcfd-069c-49a5-ad06-bcd520559ddb",
+        "chatSessionId": "sess_7f1b54d0-e77f-4cb7-b439-d06e5aa2dca1",
+        "timestamp": 1794863585241
+      }
+    ],
+    "9. (auto) Esquema de auditoría y protección append-only (`db.migrate`)": [
+      {
+        "executionId": "3f87bcfd-069c-49a5-ad06-bcd520559ddb",
+        "chatSessionId": "sess_7f1b54d0-e77f-4cb7-b439-d06e5aa2dca1",
+        "timestamp": 1794861382013
+      },
+      {
+        "executionId": "3f87bcfd-069c-49a5-ad06-bcd520559ddb",
+        "chatSessionId": "sess_7f1b54d0-e77f-4cb7-b439-d06e5aa2dca1",
+        "timestamp": 1794863589316
+      },
+      {
+        "executionId": "3f87bcfd-069c-49a5-ad06-bcd520559ddb",
+        "chatSessionId": "sess_7f1b54d0-e77f-4cb7-b439-d06e5aa2dca1",
+        "timestamp": 1794864862351
+      }
+    ],
+    "10. (auto) Implementar `app/audit.py` (serialización canónica + cadena HMAC + ancla)": [
+      {
+        "executionId": "3f87bcfd-069c-49a5-ad06-bcd520559ddb",
+        "chatSessionId": "sess_7f1b54d0-e77f-4cb7-b439-d06e5aa2dca1",
+        "timestamp": 1794861382068
+      },
+      {
+        "executionId": "3f87bcfd-069c-49a5-ad06-bcd520559ddb",
+        "chatSessionId": "sess_7f1b54d0-e77f-4cb7-b439-d06e5aa2dca1",
+        "timestamp": 1794864866200
+      },
+      {
+        "executionId": "3f87bcfd-069c-49a5-ad06-bcd520559ddb",
+        "chatSessionId": "sess_7f1b54d0-e77f-4cb7-b439-d06e5aa2dca1",
+        "timestamp": 1794865556530
+      }
+    ],
+    "11. (auto) (verificación) Detección de manipulación y endurecimiento (`test_audit_tamper.py`)": [
+      {
+        "executionId": "3f87bcfd-069c-49a5-ad06-bcd520559ddb",
+        "chatSessionId": "sess_7f1b54d0-e77f-4cb7-b439-d06e5aa2dca1",
+        "timestamp": 1794861382104
+      },
+      {
+        "executionId": "3f87bcfd-069c-49a5-ad06-bcd520559ddb",
+        "chatSessionId": "sess_7f1b54d0-e77f-4cb7-b439-d06e5aa2dca1",
+        "timestamp": 1794865567230
+      },
+      {
+        "executionId": "3f87bcfd-069c-49a5-ad06-bcd520559ddb",
+        "chatSessionId": "sess_7f1b54d0-e77f-4cb7-b439-d06e5aa2dca1",
+        "timestamp": 1794866326021
+      }
+    ],
+    "12. (auto) Integración transaccional de auditoría en operaciones financieras": [
+      {
+        "executionId": "3f87bcfd-069c-49a5-ad06-bcd520559ddb",
+        "chatSessionId": "sess_7f1b54d0-e77f-4cb7-b439-d06e5aa2dca1",
+        "timestamp": 1794861382140
+      },
+      {
+        "executionId": "3f87bcfd-069c-49a5-ad06-bcd520559ddb",
+        "chatSessionId": "sess_7f1b54d0-e77f-4cb7-b439-d06e5aa2dca1",
+        "timestamp": 1794866330205
+      },
+      {
+        "executionId": "3f87bcfd-069c-49a5-ad06-bcd520559ddb",
+        "chatSessionId": "sess_7f1b54d0-e77f-4cb7-b439-d06e5aa2dca1",
+        "timestamp": 1794867846483
+      }
+    ],
+    "13. (auto) Auditoría de eventos de configuración sensible": [
+      {
+        "executionId": "3f87bcfd-069c-49a5-ad06-bcd520559ddb",
+        "chatSessionId": "sess_7f1b54d0-e77f-4cb7-b439-d06e5aa2dca1",
+        "timestamp": 1794861382175
+      },
+      {
+        "executionId": "3f87bcfd-069c-49a5-ad06-bcd520559ddb",
+        "chatSessionId": "sess_7f1b54d0-e77f-4cb7-b439-d06e5aa2dca1",
+        "timestamp": 1794867850807
+      },
+      {
+        "executionId": "3f87bcfd-069c-49a5-ad06-bcd520559ddb",
+        "chatSessionId": "sess_7f1b54d0-e77f-4cb7-b439-d06e5aa2dca1",
+        "timestamp": 1794869003599
+      }
+    ],
+    "14. (auto) (verificación) Atomicidad, rechazos y fail-closed (`test_audit_atomicity.py`)": [
+      {
+        "executionId": "3f87bcfd-069c-49a5-ad06-bcd520559ddb",
+        "chatSessionId": "sess_7f1b54d0-e77f-4cb7-b439-d06e5aa2dca1",
+        "timestamp": 1794861382208
+      },
+      {
+        "executionId": "3f87bcfd-069c-49a5-ad06-bcd520559ddb",
+        "chatSessionId": "sess_7f1b54d0-e77f-4cb7-b439-d06e5aa2dca1",
+        "timestamp": 1794869007969
+      },
+      {
+        "executionId": "3f87bcfd-069c-49a5-ad06-bcd520559ddb",
+        "chatSessionId": "sess_7f1b54d0-e77f-4cb7-b439-d06e5aa2dca1",
+        "timestamp": 1794875543561
+      }
+    ],
+    "15. (auto) Verificación de auditoría protegida (`routers/audit.py`)": [
+      {
+        "executionId": "3f87bcfd-069c-49a5-ad06-bcd520559ddb",
+        "chatSessionId": "sess_7f1b54d0-e77f-4cb7-b439-d06e5aa2dca1",
+        "timestamp": 1794861382252
+      },
+      {
+        "executionId": "3f87bcfd-069c-49a5-ad06-bcd520559ddb",
+        "chatSessionId": "sess_7f1b54d0-e77f-4cb7-b439-d06e5aa2dca1",
+        "timestamp": 1794875547725
+      },
+      {
+        "executionId": "3f87bcfd-069c-49a5-ad06-bcd520559ddb",
+        "chatSessionId": "sess_7f1b54d0-e77f-4cb7-b439-d06e5aa2dca1",
+        "timestamp": 1794876191637
+      }
+    ],
+    "16. (auto) (verificación) Concurrencia real SQLite lector/escritor y multiproceso": [
+      {
+        "executionId": "3f87bcfd-069c-49a5-ad06-bcd520559ddb",
+        "chatSessionId": "sess_7f1b54d0-e77f-4cb7-b439-d06e5aa2dca1",
+        "timestamp": 1794861382311
+      },
+      {
+        "executionId": "3f87bcfd-069c-49a5-ad06-bcd520559ddb",
+        "chatSessionId": "sess_7f1b54d0-e77f-4cb7-b439-d06e5aa2dca1",
+        "timestamp": 1794876196276
+      },
+      {
+        "executionId": "3f87bcfd-069c-49a5-ad06-bcd520559ddb",
+        "chatSessionId": "sess_7f1b54d0-e77f-4cb7-b439-d06e5aa2dca1",
+        "timestamp": 1794876638007
+      }
+    ],
+    "17. (auto) (verificación) Regresión heredada sobre cifrado+auditoría": [
+      {
+        "executionId": "3f87bcfd-069c-49a5-ad06-bcd520559ddb",
+        "chatSessionId": "sess_7f1b54d0-e77f-4cb7-b439-d06e5aa2dca1",
+        "timestamp": 1794861382346
+      },
+      {
+        "executionId": "3f87bcfd-069c-49a5-ad06-bcd520559ddb",
+        "chatSessionId": "sess_7f1b54d0-e77f-4cb7-b439-d06e5aa2dca1",
+        "timestamp": 1794876642417
+      },
+      {
+        "executionId": "3f87bcfd-069c-49a5-ad06-bcd520559ddb",
+        "chatSessionId": "sess_7f1b54d0-e77f-4cb7-b439-d06e5aa2dca1",
+        "timestamp": 1794876891844
+      }
+    ],
+    "18. (auto) Aislamiento de DB sintética para carga (`loadtest/isolation.py`)": [
+      {
+        "executionId": "3f87bcfd-069c-49a5-ad06-bcd520559ddb",
+        "chatSessionId": "sess_7f1b54d0-e77f-4cb7-b439-d06e5aa2dca1",
+        "timestamp": 1794861382380
+      },
+      {
+        "executionId": "3f87bcfd-069c-49a5-ad06-bcd520559ddb",
+        "chatSessionId": "sess_7f1b54d0-e77f-4cb7-b439-d06e5aa2dca1",
+        "timestamp": 1794876896663
+      },
+      {
+        "executionId": "3f87bcfd-069c-49a5-ad06-bcd520559ddb",
+        "chatSessionId": "sess_7f1b54d0-e77f-4cb7-b439-d06e5aa2dca1",
+        "timestamp": 1794877505203
+      }
+    ],
+    "19. (auto) Locustfile con la mezcla y controles preservados (`loadtest/locustfile.py`)": [
+      {
+        "executionId": "3f87bcfd-069c-49a5-ad06-bcd520559ddb",
+        "chatSessionId": "sess_7f1b54d0-e77f-4cb7-b439-d06e5aa2dca1",
+        "timestamp": 1794861382414
+      },
+      {
+        "executionId": "3f87bcfd-069c-49a5-ad06-bcd520559ddb",
+        "chatSessionId": "sess_7f1b54d0-e77f-4cb7-b439-d06e5aa2dca1",
+        "timestamp": 1794877509635
+      },
+      {
+        "executionId": "3f87bcfd-069c-49a5-ad06-bcd520559ddb",
+        "chatSessionId": "sess_7f1b54d0-e77f-4cb7-b439-d06e5aa2dca1",
+        "timestamp": 1794879059031
+      }
+    ],
+    "20. (auto) Runner de carga con configuración exacta (`loadtest/run_loadtest.py`)": [
+      {
+        "executionId": "3f87bcfd-069c-49a5-ad06-bcd520559ddb",
+        "chatSessionId": "sess_7f1b54d0-e77f-4cb7-b439-d06e5aa2dca1",
+        "timestamp": 1794861382447
+      },
+      {
+        "executionId": "3f87bcfd-069c-49a5-ad06-bcd520559ddb",
+        "chatSessionId": "sess_7f1b54d0-e77f-4cb7-b439-d06e5aa2dca1",
+        "timestamp": 1794879063986
+      },
+      {
+        "executionId": "3f87bcfd-069c-49a5-ad06-bcd520559ddb",
+        "chatSessionId": "sess_7f1b54d0-e77f-4cb7-b439-d06e5aa2dca1",
+        "timestamp": 1794884615159
+      }
+    ],
+    "21. (auto) Reporte de métricas con distribución real medida": [
+      {
+        "executionId": "3f87bcfd-069c-49a5-ad06-bcd520559ddb",
+        "chatSessionId": "sess_7f1b54d0-e77f-4cb7-b439-d06e5aa2dca1",
+        "timestamp": 1794861382482
+      },
+      {
+        "executionId": "3f87bcfd-069c-49a5-ad06-bcd520559ddb",
+        "chatSessionId": "sess_7f1b54d0-e77f-4cb7-b439-d06e5aa2dca1",
+        "timestamp": 1794884619438
+      },
+      {
+        "executionId": "3f87bcfd-069c-49a5-ad06-bcd520559ddb",
+        "chatSessionId": "sess_7f1b54d0-e77f-4cb7-b439-d06e5aa2dca1",
+        "timestamp": 1794885747579
+      }
+    ],
+    "22. (auto) (verificación) Verificación de invariantes post-carga (`loadtest/verify_invariants.py`)": [
+      {
+        "executionId": "3f87bcfd-069c-49a5-ad06-bcd520559ddb",
+        "chatSessionId": "sess_7f1b54d0-e77f-4cb7-b439-d06e5aa2dca1",
+        "timestamp": 1794861382518
+      },
+      {
+        "executionId": "3f87bcfd-069c-49a5-ad06-bcd520559ddb",
+        "chatSessionId": "sess_7f1b54d0-e77f-4cb7-b439-d06e5aa2dca1",
+        "timestamp": 1794885766733
+      },
+      {
+        "executionId": "8528622a-1bbc-47a9-88dd-0ba0564bb655",
+        "chatSessionId": "sess_7f1b54d0-e77f-4cb7-b439-d06e5aa2dca1",
+        "timestamp": 1794931744297
+      }
+    ],
+    "23. (auto) (verificación) Evaluar SLOs y preservar el primer baseline de carga": [
+      {
+        "executionId": "3f87bcfd-069c-49a5-ad06-bcd520559ddb",
+        "chatSessionId": "sess_7f1b54d0-e77f-4cb7-b439-d06e5aa2dca1",
+        "timestamp": 1794861382555
+      },
+      {
+        "executionId": "8528622a-1bbc-47a9-88dd-0ba0564bb655",
+        "chatSessionId": "sess_7f1b54d0-e77f-4cb7-b439-d06e5aa2dca1",
+        "timestamp": 1794931748857
+      },
+      {
+        "executionId": "8528622a-1bbc-47a9-88dd-0ba0564bb655",
+        "chatSessionId": "sess_7f1b54d0-e77f-4cb7-b439-d06e5aa2dca1",
+        "timestamp": 1794932323481
+      }
+    ],
+    "24. (GATE INVESTIGADOR) Revisión del primer baseline de carga (antes de optimizar)": [
+      {
+        "executionId": "3f87bcfd-069c-49a5-ad06-bcd520559ddb",
+        "chatSessionId": "sess_7f1b54d0-e77f-4cb7-b439-d06e5aa2dca1",
+        "timestamp": 1794861382591
+      },
+      {
+        "executionId": "7f29ce0b-ebeb-4319-a8ef-0b076ba8eb94",
+        "chatSessionId": "sess_7f1b54d0-e77f-4cb7-b439-d06e5aa2dca1",
+        "timestamp": 1794936551530
+      }
+    ],
+    "25. (auto) Dockerfile del backend (no root) y config de arranque": [
+      {
+        "executionId": "3f87bcfd-069c-49a5-ad06-bcd520559ddb",
+        "chatSessionId": "sess_7f1b54d0-e77f-4cb7-b439-d06e5aa2dca1",
+        "timestamp": 1794861382628
+      },
+      {
+        "executionId": "7f29ce0b-ebeb-4319-a8ef-0b076ba8eb94",
+        "chatSessionId": "sess_7f1b54d0-e77f-4cb7-b439-d06e5aa2dca1",
+        "timestamp": 1794936569618
+      },
+      {
+        "executionId": "7f29ce0b-ebeb-4319-a8ef-0b076ba8eb94",
+        "chatSessionId": "sess_7f1b54d0-e77f-4cb7-b439-d06e5aa2dca1",
+        "timestamp": 1794938146620
+      }
+    ],
+    "26. (auto) Build del frontend y servicio Nginx (TLS + proxy + redirect)": [
+      {
+        "executionId": "3f87bcfd-069c-49a5-ad06-bcd520559ddb",
+        "chatSessionId": "sess_7f1b54d0-e77f-4cb7-b439-d06e5aa2dca1",
+        "timestamp": 1794861382665
+      },
+      {
+        "executionId": "7f29ce0b-ebeb-4319-a8ef-0b076ba8eb94",
+        "chatSessionId": "sess_7f1b54d0-e77f-4cb7-b439-d06e5aa2dca1",
+        "timestamp": 1794938150824
+      },
+      {
+        "executionId": "7f29ce0b-ebeb-4319-a8ef-0b076ba8eb94",
+        "chatSessionId": "sess_7f1b54d0-e77f-4cb7-b439-d06e5aa2dca1",
+        "timestamp": 1794938464054
+      }
+    ],
+    "27. (auto) `docker-compose.yml` con red interna, volumen, secretos y un solo scheduler": [
+      {
+        "executionId": "3f87bcfd-069c-49a5-ad06-bcd520559ddb",
+        "chatSessionId": "sess_7f1b54d0-e77f-4cb7-b439-d06e5aa2dca1",
+        "timestamp": 1794861382699
+      },
+      {
+        "executionId": "7f29ce0b-ebeb-4319-a8ef-0b076ba8eb94",
+        "chatSessionId": "sess_7f1b54d0-e77f-4cb7-b439-d06e5aa2dca1",
+        "timestamp": 1794938467751
+      },
+      {
+        "executionId": "7f29ce0b-ebeb-4319-a8ef-0b076ba8eb94",
+        "chatSessionId": "sess_7f1b54d0-e77f-4cb7-b439-d06e5aa2dca1",
+        "timestamp": 1794938724327
+      },
+      {
+        "executionId": "7f29ce0b-ebeb-4319-a8ef-0b076ba8eb94",
+        "chatSessionId": "sess_7f1b54d0-e77f-4cb7-b439-d06e5aa2dca1",
+        "timestamp": 1794939122715
+      },
+      {
+        "executionId": "7f29ce0b-ebeb-4319-a8ef-0b076ba8eb94",
+        "chatSessionId": "sess_7f1b54d0-e77f-4cb7-b439-d06e5aa2dca1",
+        "timestamp": 1794940389384
+      }
+    ],
+    "28. (auto) (verificación) Smoke de despliegue: build/up/health/HTTPS/redirect/proxy": [
+      {
+        "executionId": "3f87bcfd-069c-49a5-ad06-bcd520559ddb",
+        "chatSessionId": "sess_7f1b54d0-e77f-4cb7-b439-d06e5aa2dca1",
+        "timestamp": 1794861382734
+      },
+      {
+        "executionId": "7f29ce0b-ebeb-4319-a8ef-0b076ba8eb94",
+        "chatSessionId": "sess_7f1b54d0-e77f-4cb7-b439-d06e5aa2dca1",
+        "timestamp": 1794938728110
+      },
+      {
+        "executionId": "7f29ce0b-ebeb-4319-a8ef-0b076ba8eb94",
+        "chatSessionId": "sess_7f1b54d0-e77f-4cb7-b439-d06e5aa2dca1",
+        "timestamp": 1794941035208
+      }
+    ],
+    "29. (auto) (verificación) Funcionalidad, fail-closed y persistencia tras reinicio": [
+      {
+        "executionId": "3f87bcfd-069c-49a5-ad06-bcd520559ddb",
+        "chatSessionId": "sess_7f1b54d0-e77f-4cb7-b439-d06e5aa2dca1",
+        "timestamp": 1794861382771
+      },
+      {
+        "executionId": "7f29ce0b-ebeb-4319-a8ef-0b076ba8eb94",
+        "chatSessionId": "sess_7f1b54d0-e77f-4cb7-b439-d06e5aa2dca1",
+        "timestamp": 1794941038934
+      },
+      {
+        "executionId": "7f29ce0b-ebeb-4319-a8ef-0b076ba8eb94",
+        "chatSessionId": "sess_7f1b54d0-e77f-4cb7-b439-d06e5aa2dca1",
+        "timestamp": 1794941599591
+      }
+    ],
+    "30. (auto) Configurar un Vitest mínimo solo-dev si el frontend carece de pruebas": [
+      {
+        "executionId": "3f87bcfd-069c-49a5-ad06-bcd520559ddb",
+        "chatSessionId": "sess_7f1b54d0-e77f-4cb7-b439-d06e5aa2dca1",
+        "timestamp": 1794861382809
+      },
+      {
+        "executionId": "7f29ce0b-ebeb-4319-a8ef-0b076ba8eb94",
+        "chatSessionId": "sess_7f1b54d0-e77f-4cb7-b439-d06e5aa2dca1",
+        "timestamp": 1794941604165
+      },
+      {
+        "executionId": "7f29ce0b-ebeb-4319-a8ef-0b076ba8eb94",
+        "chatSessionId": "sess_7f1b54d0-e77f-4cb7-b439-d06e5aa2dca1",
+        "timestamp": 1794941811842
+      }
+    ],
+    "31. (auto) (verificación) Regresión completa Pytest + build (+ Vitest) con evidencia": [
+      {
+        "executionId": "3f87bcfd-069c-49a5-ad06-bcd520559ddb",
+        "chatSessionId": "sess_7f1b54d0-e77f-4cb7-b439-d06e5aa2dca1",
+        "timestamp": 1794861382846
+      },
+      {
+        "executionId": "7f29ce0b-ebeb-4319-a8ef-0b076ba8eb94",
+        "chatSessionId": "sess_7f1b54d0-e77f-4cb7-b439-d06e5aa2dca1",
+        "timestamp": 1794941816904
+      },
+      {
+        "executionId": "7f29ce0b-ebeb-4319-a8ef-0b076ba8eb94",
+        "chatSessionId": "sess_7f1b54d0-e77f-4cb7-b439-d06e5aa2dca1",
+        "timestamp": 1794942077952
+      }
+    ],
+    "32. (auto) Escaneo SonarQube PRE-remediación de la Etapa 3 (después de implementar/probar; antes de corregir)": [
+      {
+        "executionId": "3f87bcfd-069c-49a5-ad06-bcd520559ddb",
+        "chatSessionId": "sess_7f1b54d0-e77f-4cb7-b439-d06e5aa2dca1",
+        "timestamp": 1794861382885
+      },
+      {
+        "executionId": "7f29ce0b-ebeb-4319-a8ef-0b076ba8eb94",
+        "chatSessionId": "sess_7f1b54d0-e77f-4cb7-b439-d06e5aa2dca1",
+        "timestamp": 1794942224589
+      },
+      {
+        "executionId": "59ed6e9c-ab3a-4947-9704-f2710fdd2df2",
+        "chatSessionId": "sess_7f1b54d0-e77f-4cb7-b439-d06e5aa2dca1",
+        "timestamp": 1794944983901
+      },
+      {
+        "executionId": "59ed6e9c-ab3a-4947-9704-f2710fdd2df2",
+        "chatSessionId": "sess_7f1b54d0-e77f-4cb7-b439-d06e5aa2dca1",
+        "timestamp": 1794945438494
+      }
+    ],
+    "33. (GATE INVESTIGADOR) Revisión del PRE-scan de la Etapa 3 antes de la fase correctiva": [
+      {
+        "executionId": "3f87bcfd-069c-49a5-ad06-bcd520559ddb",
+        "chatSessionId": "sess_7f1b54d0-e77f-4cb7-b439-d06e5aa2dca1",
+        "timestamp": 1794861382921
+      },
+      {
+        "executionId": "6658a5ae-f6dd-4256-998f-858fc2097580",
+        "chatSessionId": "sess_7f1b54d0-e77f-4cb7-b439-d06e5aa2dca1",
+        "timestamp": 1794945731927
+      }
+    ],
+    "34. (auto) Correcciones dirigidas por SonarQube (sin cambiar comportamiento aprobado)": [
+      {
+        "executionId": "3f87bcfd-069c-49a5-ad06-bcd520559ddb",
+        "chatSessionId": "sess_7f1b54d0-e77f-4cb7-b439-d06e5aa2dca1",
+        "timestamp": 1794861382958
+      },
+      {
+        "executionId": "6658a5ae-f6dd-4256-998f-858fc2097580",
+        "chatSessionId": "sess_7f1b54d0-e77f-4cb7-b439-d06e5aa2dca1",
+        "timestamp": 1794945736452
+      },
+      {
+        "executionId": "6658a5ae-f6dd-4256-998f-858fc2097580",
+        "chatSessionId": "sess_7f1b54d0-e77f-4cb7-b439-d06e5aa2dca1",
+        "timestamp": 1794946567779
+      }
+    ],
+    "35. (GATE INVESTIGADOR) (verificación) Escaneo final de SonarQube (mismo alcance/cobertura)": [
+      {
+        "executionId": "3f87bcfd-069c-49a5-ad06-bcd520559ddb",
+        "chatSessionId": "sess_7f1b54d0-e77f-4cb7-b439-d06e5aa2dca1",
+        "timestamp": 1794861382992
+      },
+      {
+        "executionId": "7a018f8b-443f-401a-8c0f-06391a04d255",
+        "chatSessionId": "sess_7f1b54d0-e77f-4cb7-b439-d06e5aa2dca1",
+        "timestamp": 1794948273834
+      },
+      {
+        "executionId": "7a018f8b-443f-401a-8c0f-06391a04d255",
+        "chatSessionId": "sess_7f1b54d0-e77f-4cb7-b439-d06e5aa2dca1",
+        "timestamp": 1794949128786
+      }
+    ],
+    "36. (auto) Consolidar la evidencia experimental final": [
+      {
+        "executionId": "3f87bcfd-069c-49a5-ad06-bcd520559ddb",
+        "chatSessionId": "sess_7f1b54d0-e77f-4cb7-b439-d06e5aa2dca1",
+        "timestamp": 1794861383029
+      },
+      {
+        "executionId": "7a018f8b-443f-401a-8c0f-06391a04d255",
+        "chatSessionId": "sess_7f1b54d0-e77f-4cb7-b439-d06e5aa2dca1",
+        "timestamp": 1794949132050
+      }
+    ]
+  }
+}

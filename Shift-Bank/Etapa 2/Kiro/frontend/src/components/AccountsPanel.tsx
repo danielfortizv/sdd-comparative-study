@@ -16,7 +16,7 @@ function formatCop(amount: string): string {
   return `COP ${withThousands},${dec}`;
 }
 
-export function AccountsPanel({ accounts }: Props) {
+export function AccountsPanel({ accounts }: Readonly<Props>) {
   return (
     <section className="card">
       <h2>Mis cuentas</h2>

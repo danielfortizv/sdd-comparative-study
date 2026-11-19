@@ -1,0 +1,15 @@
+node_modules/
+dist/
+
+# Entorno local del frontend (no versionado); el ejemplo sin secretos sí se versiona.
+.env
+.env.*
+!.env.example
+
+# Material TLS / certificados — provisionado externamente, nunca en VCS (Etapa 3, R4.4).
+*.pem
+*.key
+*.crt
+*.p12
+*.pfx
+certs/

@@ -1,0 +1,30 @@
+Shift Bank Stage 3 / OpenSpec inherited regression
+Date: 2026-11-16
+Data isolation: backend tests use TemporaryDirectory databases. Historical Stage 2 SQLite files were not opened or mutated.
+
+Backend syntax:
+  python -m py_compile backend\main.py backend\database.py backend\banking.py
+  PASS (no output)
+
+Backend suite:
+  python -m unittest discover -s tests -v  (cwd Etapa 3\OpenSpec\backend)
+  PASS — 22 tests, 2.975 seconds.
+
+Frontend suite:
+  npm.cmd --prefix frontend ci
+  PASS — installed 68 packages from the inherited lockfile; npm warned esbuild install script was not approved, but build succeeded.
+  npm.cmd --prefix frontend test
+  PASS — 5 tests, 0 failures.
+
+Production build:
+  npm.cmd run build (cwd Etapa 3\OpenSpec\frontend)
+  First sandbox attempt denied ancestor directory access in esbuild. Retried with approved escalation.
+  PASS — tsc + Vite 5.4.21; 33 modules.
+  Verification-only node_modules, dist, and Python __pycache__ outputs were removed afterward so the Stage 3 inherited copy remains free of runtime/build artifacts.
+
+OpenSpec:
+  openspec.cmd --version: 1.11.0
+  openspec.cmd list: stage2-banking-enhancements complete; remains active and unarchived.
+  openspec.cmd validate --all --strict: PASS — 5 passed, 0 failed.
+
+No SonarQube, Locust, container deployment, or Stage 3 implementation was run.

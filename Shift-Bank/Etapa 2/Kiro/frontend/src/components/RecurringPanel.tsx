@@ -52,7 +52,7 @@ function formatNextRun(iso: string): string {
   return d.toLocaleString();
 }
 
-export function RecurringPanel({ schedules, beneficiaries, onChanged }: Props) {
+export function RecurringPanel({ schedules, beneficiaries, onChanged }: Readonly<Props>) {
   // Campos comunes del formulario de creación.
   const [type, setType] = useState<TransferType>("internal");
   const [frequency, setFrequency] = useState<RecurringFrequency>("monthly");
@@ -100,12 +100,11 @@ export function RecurringPanel({ schedules, beneficiaries, onChanged }: Props) {
     validateRouting(adRouting) === null &&
     validateAccountNumber(adAccount) === null;
 
-  const destinationValid =
-    type === "internal"
-      ? from !== to
-      : beneficiaryMode === "saved"
-        ? beneficiaryId !== ""
-        : adhocValid;
+  const destinationValid = ((): boolean => {
+    if (type === "internal") return from !== to;
+    if (beneficiaryMode === "saved") return beneficiaryId !== "";
+    return adhocValid;
+  })();
 
   const canSubmit = destinationValid && amount.trim() !== "" && !submitting;
 
