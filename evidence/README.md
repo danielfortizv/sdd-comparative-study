@@ -9,6 +9,7 @@ evidence/
         └── <tool>/
             ├── prompt_logs/
             ├── screenshots/
+            ├── video/
             └── metrics/
 ```
 
@@ -18,6 +19,7 @@ The directory names are `Calculadora`, `Tetris`, `E-commerce`, and `Shift-Bank`;
 
 - **`prompt_logs/`** stores the `.jsonl` transcript of the session that generated the implementation.
 - **`screenshots/`** stores screenshots of Gemini CLI session statistics and the final functioning frontend.
+- **`video/`** stores video recordings that demonstrate the implementation in operation.
 - **`metrics/`** stores supporting metric files, such as Excel workbooks or CSV files, when the metrics cannot be obtained from the prompt logs or screenshots.
 
 Keep evidence with the case, stage, and tool it belongs to so each implementation can be inspected independently.
