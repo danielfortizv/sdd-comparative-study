@@ -6,14 +6,17 @@ This directory stores experiment evidence organized by case study, development s
 evidence/
 └── <case study>/
     └── <development stage>/
-        └── <tool>/
-            ├── prompt_logs/
-            ├── screenshots/
-            ├── video/
-            └── metrics/
+        ├── <tool>/
+        │   ├── prompt_logs/
+        │   ├── screenshots/
+        │   ├── video/
+        │   └── metrics/
+        └── metrics_stage_X.xlsx
 ```
 
 The directory names are `Calculadora`, `Tetris`, `E-commerce`, and `Shift-Bank`; `Etapa 1` through `Etapa 4`; and `OpenSpec`, `Spec Kit`, `Tessl`, `Bmad Method`, and `Kiro`.
+
+Within each case directory, every stage folder also contains an Excel workbook at the same level as the tool folders, consolidating the raw metrics collected from all implementations for that stage. For the Calculator case, the original workbook is named `metrics_stage_X.xlsx`, where X is the stage number; its sheet names and textual values remain in Spanish, the original language. Its English translation is a separate copy named `metrics_stage_X_english.xlsx`.
 
 ## Evidence Categories
 
