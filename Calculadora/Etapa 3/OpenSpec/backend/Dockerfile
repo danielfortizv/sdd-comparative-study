@@ -18,7 +18,7 @@ WORKDIR /app
 
 # Create a secure, non-root system user and group
 RUN groupadd -g 10001 appgroup && \
-    useradd -r -u 10001 -g appgroup -d /app -s /sbin/nologin appuser
+    useradd -r -u 10001 -g appgroup -m -d /home/appuser -s /sbin/nologin appuser
 
 # Copy installed dependencies and application code
 COPY --from=builder /root/.local /home/appuser/.local
@@ -28,6 +28,8 @@ COPY . /app
 RUN chown -R appuser:appgroup /app
 
 USER appuser
+ENV HOME=/home/appuser
+ENV PYTHONUSERBASE=/home/appuser/.local
 ENV PATH=/home/appuser/.local/bin:$PATH
 ENV PYTHONUNBUFFERED=1
 

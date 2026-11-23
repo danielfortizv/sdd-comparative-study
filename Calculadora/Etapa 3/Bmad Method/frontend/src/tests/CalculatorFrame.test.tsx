@@ -1,11 +1,10 @@
-import React from 'react';
 import { render, screen, fireEvent, act } from '@testing-library/react';
 import { CalculatorFrame } from '../components/CalculatorFrame';
 import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
 
 describe('CalculatorFrame Component Integration', () => {
   beforeEach(() => {
-    const mockFetch = vi.fn().mockImplementation((url, options) => {
+    const mockFetch = vi.fn().mockImplementation((_url, options) => {
       const body = options && options.body ? JSON.parse(options.body) : {};
       const expr = body.expression || '';
       let resVal = '0';

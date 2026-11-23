@@ -4,7 +4,7 @@ import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
 
 describe('useEvaluate Hook', () => {
   beforeEach(() => {
-    const mockFetch = vi.fn().mockImplementation((url, options) => {
+    const mockFetch = vi.fn().mockImplementation((_url, options) => {
       const body = options && options.body ? JSON.parse(options.body) : {};
       const expr = body.expression || '';
       let resVal = '0';

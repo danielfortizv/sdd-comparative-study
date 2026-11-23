@@ -404,7 +404,7 @@ describe('Calculator Frontend Client', () => {
     vi.spyOn(window, 'fetch').mockResolvedValue({
       ok: false,
       json: async () => { throw new Error('Bad JSON'); },
-    } as Response);
+    } as unknown as Response);
 
     render(<App />);
 

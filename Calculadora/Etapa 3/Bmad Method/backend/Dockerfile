@@ -32,10 +32,11 @@ RUN groupadd -g 10001 appgroup && \
 
 # Copy installed dependencies from Stage 1
 COPY --from=builder /root/.local /home/appuser/.local
-COPY . /app
+# Preserve the `backend.app...` package path used by the application imports.
+COPY . /app/backend
 
 # Fix directory ownership for app user
-RUN chown -r appuser:appgroup /app
+RUN chown -R appuser:appgroup /app
 
 # Put user local path in python path
 ENV PATH=/home/appuser/.local/bin:$PATH
@@ -46,4 +47,4 @@ USER appuser
 EXPOSE 8000
 
 # Start server safely
-CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000"]
+CMD ["uvicorn", "backend.app.main:app", "--host", "0.0.0.0", "--port", "8000"]
