@@ -1,0 +1,269 @@
+{
+    "total":  4,
+    "p":  1,
+    "ps":  500,
+    "paging":  {
+                   "pageIndex":  1,
+                   "pageSize":  500,
+                   "total":  4
+               },
+    "effortTotal":  25,
+    "issues":  [
+                   {
+                       "key":  "1dd96ef1-900d-41cd-87aa-c66edc633de2",
+                       "rule":  "typescript:S6759",
+                       "severity":  "MINOR",
+                       "component":  "Shift-Bank---Stage-4---Kiro:frontend/src/stage4/ConversionForm.tsx",
+                       "project":  "Shift-Bank---Stage-4---Kiro",
+                       "hash":  "ab6e7644f61d6434100f6b6c46a217e3",
+                       "textRange":  {
+                                         "startLine":  14,
+                                         "endLine":  14,
+                                         "startOffset":  31,
+                                         "endOffset":  58
+                                     },
+                       "flows":  [
+
+                                 ],
+                       "resolution":  "FIXED",
+                       "status":  "CLOSED",
+                       "message":  "Mark the props of the component as read-only.",
+                       "effort":  "5min",
+                       "debt":  "5min",
+                       "author":  "",
+                       "tags":  [
+                                    "type-dependent",
+                                    "react"
+                                ],
+                       "creationDate":  "2026-11-19T05:47:22+0000",
+                       "updateDate":  "2026-11-19T06:16:12+0000",
+                       "closeDate":  "2026-11-19T06:16:12+0000",
+                       "type":  "CODE_SMELL",
+                       "scope":  "MAIN",
+                       "quickFixAvailable":  true,
+                       "messageFormattings":  [
+
+                                              ],
+                       "codeVariants":  [
+
+                                        ],
+                       "cleanCodeAttribute":  "CONVENTIONAL",
+                       "cleanCodeAttributeCategory":  "CONSISTENT",
+                       "impacts":  [
+                                       {
+                                           "softwareQuality":  "MAINTAINABILITY",
+                                           "severity":  "LOW"
+                                       }
+                                   ],
+                       "issueStatus":  "FIXED",
+                       "prioritizedRule":  false,
+                       "fromSonarQubeUpdate":  false,
+                       "internalTags":  [
+
+                                        ],
+                       "linkedTicketStatus":  "NOT_LINKED"
+                   },
+                   {
+                       "key":  "6f57b9f8-406f-4465-b3d6-edd432eef12a",
+                       "rule":  "typescript:S6759",
+                       "severity":  "MINOR",
+                       "component":  "Shift-Bank---Stage-4---Kiro:frontend/src/stage4/MultiCurrencyDashboard.tsx",
+                       "project":  "Shift-Bank---Stage-4---Kiro",
+                       "hash":  "34da90c1bab251901b18545a3ad0b76b",
+                       "textRange":  {
+                                         "startLine":  12,
+                                         "endLine":  12,
+                                         "startOffset":  39,
+                                         "endOffset":  58
+                                     },
+                       "flows":  [
+
+                                 ],
+                       "resolution":  "FIXED",
+                       "status":  "CLOSED",
+                       "message":  "Mark the props of the component as read-only.",
+                       "effort":  "5min",
+                       "debt":  "5min",
+                       "author":  "",
+                       "tags":  [
+                                    "type-dependent",
+                                    "react"
+                                ],
+                       "creationDate":  "2026-11-19T05:47:22+0000",
+                       "updateDate":  "2026-11-19T06:16:12+0000",
+                       "closeDate":  "2026-11-19T06:16:12+0000",
+                       "type":  "CODE_SMELL",
+                       "scope":  "MAIN",
+                       "quickFixAvailable":  true,
+                       "messageFormattings":  [
+
+                                              ],
+                       "codeVariants":  [
+
+                                        ],
+                       "cleanCodeAttribute":  "CONVENTIONAL",
+                       "cleanCodeAttributeCategory":  "CONSISTENT",
+                       "impacts":  [
+                                       {
+                                           "softwareQuality":  "MAINTAINABILITY",
+                                           "severity":  "LOW"
+                                       }
+                                   ],
+                       "issueStatus":  "FIXED",
+                       "prioritizedRule":  false,
+                       "fromSonarQubeUpdate":  false,
+                       "internalTags":  [
+
+                                        ],
+                       "linkedTicketStatus":  "NOT_LINKED"
+                   },
+                   {
+                       "key":  "1c9b78d4-ed2d-4166-b344-c733fe55b666",
+                       "rule":  "typescript:S2245",
+                       "severity":  "MAJOR",
+                       "component":  "Shift-Bank---Stage-4---Kiro:frontend/src/stage4/apiV2.ts",
+                       "project":  "Shift-Bank---Stage-4---Kiro",
+                       "hash":  "7331823e0f2089bb67dc306908d0c431",
+                       "textRange":  {
+                                         "startLine":  47,
+                                         "endLine":  47,
+                                         "startOffset":  15,
+                                         "endOffset":  28
+                                     },
+                       "flows":  [
+
+                                 ],
+                       "resolution":  "FIXED",
+                       "status":  "CLOSED",
+                       "message":  "Make sure that using this pseudorandom number generator is safe here.",
+                       "effort":  "10min",
+                       "debt":  "10min",
+                       "author":  "",
+                       "tags":  [
+                                    "cwe",
+                                    "former-hotspot"
+                                ],
+                       "creationDate":  "2026-11-19T05:47:22+0000",
+                       "updateDate":  "2026-11-19T06:16:12+0000",
+                       "closeDate":  "2026-11-19T06:16:12+0000",
+                       "type":  "VULNERABILITY",
+                       "scope":  "MAIN",
+                       "quickFixAvailable":  false,
+                       "messageFormattings":  [
+
+                                              ],
+                       "codeVariants":  [
+
+                                        ],
+                       "cleanCodeAttribute":  "TRUSTWORTHY",
+                       "cleanCodeAttributeCategory":  "RESPONSIBLE",
+                       "impacts":  [
+                                       {
+                                           "softwareQuality":  "SECURITY",
+                                           "severity":  "MEDIUM"
+                                       }
+                                   ],
+                       "issueStatus":  "FIXED",
+                       "prioritizedRule":  false,
+                       "fromSonarQubeUpdate":  false,
+                       "internalTags":  [
+
+                                        ],
+                       "linkedTicketStatus":  "NOT_LINKED"
+                   },
+                   {
+                       "key":  "9a8ff686-6de5-47fc-9f00-0809c22f8a88",
+                       "rule":  "typescript:S7767",
+                       "severity":  "MAJOR",
+                       "component":  "Shift-Bank---Stage-4---Kiro:frontend/src/stage4/apiV2.ts",
+                       "project":  "Shift-Bank---Stage-4---Kiro",
+                       "hash":  "7331823e0f2089bb67dc306908d0c431",
+                       "textRange":  {
+                                         "startLine":  47,
+                                         "endLine":  47,
+                                         "startOffset":  14,
+                                         "endOffset":  38
+                                     },
+                       "flows":  [
+
+                                 ],
+                       "resolution":  "FIXED",
+                       "status":  "CLOSED",
+                       "message":  "Use `Math.trunc` instead of `| 0`.",
+                       "effort":  "5min",
+                       "debt":  "5min",
+                       "author":  "",
+                       "tags":  [
+                                    "es2015",
+                                    "confusing"
+                                ],
+                       "creationDate":  "2026-11-19T05:47:22+0000",
+                       "updateDate":  "2026-11-19T06:16:12+0000",
+                       "closeDate":  "2026-11-19T06:16:12+0000",
+                       "type":  "CODE_SMELL",
+                       "scope":  "MAIN",
+                       "quickFixAvailable":  true,
+                       "messageFormattings":  [
+
+                                              ],
+                       "codeVariants":  [
+
+                                        ],
+                       "cleanCodeAttribute":  "CLEAR",
+                       "cleanCodeAttributeCategory":  "INTENTIONAL",
+                       "impacts":  [
+                                       {
+                                           "softwareQuality":  "MAINTAINABILITY",
+                                           "severity":  "HIGH"
+                                       },
+                                       {
+                                           "softwareQuality":  "RELIABILITY",
+                                           "severity":  "HIGH"
+                                       }
+                                   ],
+                       "issueStatus":  "FIXED",
+                       "prioritizedRule":  false,
+                       "fromSonarQubeUpdate":  false,
+                       "internalTags":  [
+
+                                        ],
+                       "linkedTicketStatus":  "NOT_LINKED"
+                   }
+               ],
+    "components":  [
+                       {
+                           "key":  "Shift-Bank---Stage-4---Kiro",
+                           "enabled":  true,
+                           "qualifier":  "TRK",
+                           "name":  "Shift Bank Etapa 4 (Kiro)",
+                           "longName":  "Shift Bank Etapa 4 (Kiro)"
+                       },
+                       {
+                           "key":  "Shift-Bank---Stage-4---Kiro:frontend/src/stage4/ConversionForm.tsx",
+                           "enabled":  true,
+                           "qualifier":  "FIL",
+                           "name":  "ConversionForm.tsx",
+                           "longName":  "frontend/src/stage4/ConversionForm.tsx",
+                           "path":  "frontend/src/stage4/ConversionForm.tsx"
+                       },
+                       {
+                           "key":  "Shift-Bank---Stage-4---Kiro:frontend/src/stage4/MultiCurrencyDashboard.tsx",
+                           "enabled":  true,
+                           "qualifier":  "FIL",
+                           "name":  "MultiCurrencyDashboard.tsx",
+                           "longName":  "frontend/src/stage4/MultiCurrencyDashboard.tsx",
+                           "path":  "frontend/src/stage4/MultiCurrencyDashboard.tsx"
+                       },
+                       {
+                           "key":  "Shift-Bank---Stage-4---Kiro:frontend/src/stage4/apiV2.ts",
+                           "enabled":  true,
+                           "qualifier":  "FIL",
+                           "name":  "apiV2.ts",
+                           "longName":  "frontend/src/stage4/apiV2.ts",
+                           "path":  "frontend/src/stage4/apiV2.ts"
+                       }
+                   ],
+    "facets":  [
+
+               ]
+}

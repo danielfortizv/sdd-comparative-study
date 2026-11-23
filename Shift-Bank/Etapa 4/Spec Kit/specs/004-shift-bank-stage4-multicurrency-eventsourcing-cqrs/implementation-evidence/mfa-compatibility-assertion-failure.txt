@@ -1,0 +1,3 @@
+Command: python -m pytest tests/test_api.py::test_sensitive_transfer_insufficient_funds_at_confirmation -q --basetemp='..\\.stage4-pytest-tmp' --showlocals
+Outcome: 1 failed because inherited test expected 409 where the reviewed API contract specifies 400 INSUFFICIENT_FUNDS.
+Observed response: HTTP 400; command made no monetary debit. Correction: update the E4-copy regression assertion to the stable approved error code. Stale expected-version behavior remains separately covered as HTTP 409.

@@ -1,0 +1,13 @@
+{
+  "http_status": 403,
+  "auth_mode": "Bearer_then_Basic_403",
+  "analyses": null,
+  "response": {
+    "errors": [
+      {
+        "msg": "Insufficient privileges"
+      }
+    ]
+  },
+  "captured_utc": "2026-11-16T23:50:43+00:00"
+}

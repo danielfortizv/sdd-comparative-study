@@ -1,0 +1,226 @@
+{
+  "total": 12,
+  "issues": [
+    {
+      "file": "backend/app/auth.py",
+      "line": 23,
+      "rule": "python:S6903",
+      "severity": "CRITICAL",
+      "type": "CODE_SMELL",
+      "message": "Don't use `datetime.datetime.utcnow` to create this datetime object.",
+      "effort": "5min",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "MEDIUM"
+        },
+        {
+          "softwareQuality": "RELIABILITY",
+          "severity": "HIGH"
+        }
+      ],
+      "software_quality": [
+        "MAINTAINABILITY",
+        "RELIABILITY"
+      ]
+    },
+    {
+      "file": "backend/app/auth.py",
+      "line": 33,
+      "rule": "python:S5886",
+      "severity": "MAJOR",
+      "type": "CODE_SMELL",
+      "message": "Return a value of type \"str\" instead of \"NoneType\" or update function \"verify_access_token\" type hint.",
+      "effort": "5min",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "MEDIUM"
+        }
+      ],
+      "software_quality": [
+        "MAINTAINABILITY"
+      ]
+    },
+    {
+      "file": "backend/app/auth.py",
+      "line": 36,
+      "rule": "python:S5886",
+      "severity": "MAJOR",
+      "type": "CODE_SMELL",
+      "message": "Return a value of type \"str\" instead of \"NoneType\" or update function \"verify_access_token\" type hint.",
+      "effort": "5min",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "MEDIUM"
+        }
+      ],
+      "software_quality": [
+        "MAINTAINABILITY"
+      ]
+    },
+    {
+      "file": "frontend/src/components/ProductCard.tsx",
+      "line": 60,
+      "rule": "typescript:S7735",
+      "severity": "MINOR",
+      "type": "CODE_SMELL",
+      "message": "Unexpected negated condition.",
+      "effort": "2min",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "LOW"
+        }
+      ],
+      "software_quality": [
+        "MAINTAINABILITY"
+      ]
+    },
+    {
+      "file": "frontend/src/components/ProductCard.tsx",
+      "line": 62,
+      "rule": "typescript:S3358",
+      "severity": "MAJOR",
+      "type": "CODE_SMELL",
+      "message": "Extract this nested ternary operation into an independent statement.",
+      "effort": "5min",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "MEDIUM"
+        }
+      ],
+      "software_quality": [
+        "MAINTAINABILITY"
+      ]
+    },
+    {
+      "file": "frontend/src/components/ProductCard.tsx",
+      "line": 67,
+      "rule": "typescript:S7735",
+      "severity": "MINOR",
+      "type": "CODE_SMELL",
+      "message": "Unexpected negated condition.",
+      "effort": "2min",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "LOW"
+        }
+      ],
+      "software_quality": [
+        "MAINTAINABILITY"
+      ]
+    },
+    {
+      "file": "frontend/src/components/ProductCard.tsx",
+      "line": 69,
+      "rule": "typescript:S3358",
+      "severity": "MAJOR",
+      "type": "CODE_SMELL",
+      "message": "Extract this nested ternary operation into an independent statement.",
+      "effort": "5min",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "MEDIUM"
+        }
+      ],
+      "software_quality": [
+        "MAINTAINABILITY"
+      ]
+    },
+    {
+      "file": "frontend/src/context/AuthContext.tsx",
+      "line": 39,
+      "rule": "typescript:S6481",
+      "severity": "MAJOR",
+      "type": "CODE_SMELL",
+      "message": "The object passed as the value prop to the Context provider changes every render. To fix this consider wrapping it in a useMemo hook.",
+      "effort": "5min",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "MEDIUM"
+        }
+      ],
+      "software_quality": [
+        "MAINTAINABILITY"
+      ]
+    },
+    {
+      "file": "frontend/src/context/CartContext.tsx",
+      "line": 72,
+      "rule": "typescript:S6481",
+      "severity": "MAJOR",
+      "type": "CODE_SMELL",
+      "message": "The object passed as the value prop to the Context provider changes every render. To fix this consider wrapping it in a useMemo hook.",
+      "effort": "5min",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "MEDIUM"
+        }
+      ],
+      "software_quality": [
+        "MAINTAINABILITY"
+      ]
+    },
+    {
+      "file": "frontend/src/pages/CatalogPage.tsx",
+      "line": 21,
+      "rule": "typescript:S2486",
+      "severity": "MINOR",
+      "type": "CODE_SMELL",
+      "message": "Handle this exception or don't catch it at all.",
+      "effort": "1h",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "LOW"
+        }
+      ],
+      "software_quality": [
+        "MAINTAINABILITY"
+      ]
+    },
+    {
+      "file": "frontend/src/pages/LoginPage.tsx",
+      "line": 90,
+      "rule": "typescript:S6819",
+      "severity": "MAJOR",
+      "type": "CODE_SMELL",
+      "message": "Use <output> instead of the \"status\" role to ensure accessibility across all devices.",
+      "effort": "5min",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "MEDIUM"
+        }
+      ],
+      "software_quality": [
+        "MAINTAINABILITY"
+      ]
+    },
+    {
+      "file": "frontend/src/pages/LoginPage.tsx",
+      "line": 135,
+      "rule": "typescript:S6819",
+      "severity": "MAJOR",
+      "type": "CODE_SMELL",
+      "message": "Use <output> instead of the \"status\" role to ensure accessibility across all devices.",
+      "effort": "5min",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "MEDIUM"
+        }
+      ],
+      "software_quality": [
+        "MAINTAINABILITY"
+      ]
+    }
+  ]
+}

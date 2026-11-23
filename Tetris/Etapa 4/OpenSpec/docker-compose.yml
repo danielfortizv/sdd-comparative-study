@@ -1,0 +1,43 @@
+name: tetris-stage4-openspec
+
+services:
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: tetris-stage4-openspec-backend
+    volumes:
+      - tetris_stage4_openspec_data:/app/data
+    environment:
+      - ALLOWED_ORIGINS=http://localhost:5514,http://127.0.0.1:5514
+      - TETRIS_DB_PATH=/app/data/high-scores.sqlite3
+      - PORT=8000
+    expose:
+      - "8000"
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:8000/api/high-scores')"]
+      interval: 5s
+      timeout: 3s
+      retries: 3
+      start_period: 5s
+
+  frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile.frontend
+    container_name: tetris-stage4-openspec-frontend
+    ports:
+      - "127.0.0.1:5514:5514"
+    depends_on:
+      backend:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:5514/"]
+      interval: 5s
+      timeout: 3s
+      retries: 3
+      start_period: 5s
+
+volumes:
+  tetris_stage4_openspec_data:
+    name: tetris_stage4_openspec_data

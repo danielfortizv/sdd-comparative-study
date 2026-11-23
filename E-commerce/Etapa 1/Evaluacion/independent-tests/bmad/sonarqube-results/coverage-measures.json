@@ -1,0 +1,42 @@
+{
+  "component": {
+    "key": "bmad-s1-official-01",
+    "name": "BMAD Stage 1 Official 01",
+    "qualifier": "TRK",
+    "measures": [
+      {
+        "metric": "coverage",
+        "value": "88.6",
+        "bestValue": false
+      },
+      {
+        "metric": "lines_to_cover",
+        "value": "587"
+      },
+      {
+        "metric": "uncovered_conditions",
+        "value": "14",
+        "bestValue": false
+      },
+      {
+        "metric": "branch_coverage",
+        "value": "85.3",
+        "bestValue": false
+      },
+      {
+        "metric": "uncovered_lines",
+        "value": "64",
+        "bestValue": false
+      },
+      {
+        "metric": "conditions_to_cover",
+        "value": "95"
+      },
+      {
+        "metric": "line_coverage",
+        "value": "89.1",
+        "bestValue": false
+      }
+    ]
+  }
+}

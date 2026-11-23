@@ -1,0 +1,35 @@
+{
+  "provider": "Vertex AI",
+  "mode": "auto_edit",
+  "stage": 3,
+  "model": "gemini-3.5-flash",
+  "tool": "OpenSpec",
+  "cli_version": "0.60.0",
+  "corrections": [],
+  "seed_sha256": "B63986D4EADBB0E6AAD8AC0F21DAC5DC50CC1980F54448ECB2E39BB23451E395",
+  "started_utc": "2026-11-07T02:37:15.9809687Z",
+  "status": "interrupted-provider-429; resume required",
+  "provider_session_file": "session-2026-11-07T02-37-a81714a8.jsonl",
+  "exit_code": 1,
+  "raw_stats_status": "CLI exited on capacity errors before final JSON statistics. Token telemetry retained in native JSONL.",
+  "final_status": "specifications-and-code-complete; local validation passed",
+  "final_validation": {
+    "production_build": "passed",
+    "backend_tests": "passed",
+    "e2e_driver": "Independent experiment orchestrator executing unchanged native OpenSpec test; see local-validation-metadata.json",
+    "real_e2e": "passed",
+    "docker_runtime": "not executed: Docker unavailable",
+    "remote_github_actions": "not executed",
+    "frontend_tests": "passed"
+  },
+  "followup_prompt_files": [
+    "delivery-artifacts-prompt.txt",
+    "e2e-finalization-prompt.txt",
+    "e2e-selector-fix-prompt.txt",
+    "finish-delivery-prompt.txt",
+    "resume-capacity-prompt.txt"
+  ],
+  "final_seed_sha256": "B63986D4EADBB0E6AAD8AC0F21DAC5DC50CC1980F54448ECB2E39BB23451E395",
+  "final_collection_utc": "2026-11-07T05:06:36.6064116Z",
+  "framework_version_observed_at_collection": "1.13.2"
+}

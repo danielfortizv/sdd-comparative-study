@@ -1,0 +1,150 @@
+{
+  "source": "C:\\Users\\jeron\\OneDrive\\Escritorio\\uni\\implementacion Ecommerce\\Caso 3-Ecommerce\\Etapa 2\\Tessl",
+  "seed_sha256": "B63986D4EADBB0E6AAD8AC0F21DAC5DC50CC1980F54448ECB2E39BB23451E395",
+  "files": [
+    {
+      "path": ".gemini/settings.json",
+      "sha256": "fe0dae99241bbc7471c5bc4b4483badb3cb3def466647726d8a35ce503f863a3"
+    },
+    {
+      "path": ".tessl/RULES.md",
+      "sha256": "6c7a5640d11596b6a21e8216f36976e3cf132fd90445d2a8e3a3267d9bb209ba"
+    },
+    {
+      "path": "AGENTS.md",
+      "sha256": "49c4eb0943423eacb23348f847a9f1a96b0eca55934018c4f9ead7908760d701"
+    },
+    {
+      "path": "backend/api_test.py",
+      "sha256": "e7fa1fb2ee7896691d29ecaadfb1e4fa0eb961f3bcff30360d0eeda143acfd02"
+    },
+    {
+      "path": "backend/api_test_stage2.py",
+      "sha256": "41ae46af61034a1bb30699d23836f05c09e273e22434393c2492b5fadd7f556d"
+    },
+    {
+      "path": "backend/app/auth.py",
+      "sha256": "32cc333c7c7e92e8fdf718ca37290aa75a29a6d28e1c8111ed12a9f8acdd8253"
+    },
+    {
+      "path": "backend/app/database.py",
+      "sha256": "dc0aaba2a3ce87ae29803abcd60ac354747f74da32986915265d86b414292fd2"
+    },
+    {
+      "path": "backend/app/main.py",
+      "sha256": "060e1ad80fb07261f93c900a84f5f153a4836875f3b50b2166a61d56ea8d4d5d"
+    },
+    {
+      "path": "backend/app/models.py",
+      "sha256": "94973b9cb8e3090ca9ff752afab420cc00c4cc4692c068b45a6a5f0500347b87"
+    },
+    {
+      "path": "backend/README.md",
+      "sha256": "0b7b5953d7907e8c85f7b3c2664c2de1aac8f9340638d647ab11421583004349"
+    },
+    {
+      "path": "backend/requirements.txt",
+      "sha256": "c9802edd80d1dee0d773ceb7655b4ceb5193bfadfd10a8db6fd14687c67405aa"
+    },
+    {
+      "path": "canonical-seed-stage-2.md",
+      "sha256": "d557e3e09fd6d296349e56279d95d88c9350c8a022328c793d0a657fc7630f43"
+    },
+    {
+      "path": "canonical-seed-stage-3.md",
+      "sha256": "b63986d4eadbb0e6aad8ac0f21dac5dc50cc1980f54448ecb2e39bb23451e395"
+    },
+    {
+      "path": "especificacion-semilla-final-en.md",
+      "sha256": "45ddfded6ebffdaec9fceb5818d319a3dc3d66a79a9a6b887557aaccd64b446d"
+    },
+    {
+      "path": "frontend/index.html",
+      "sha256": "9144cba4cd432b0a3948a6679b62adc5f8cc09d8e094b681f860e18bf64ba781"
+    },
+    {
+      "path": "frontend/package-lock.json",
+      "sha256": "6ad04f2d9da8775dad14fd40d6fc546b6d48cca0d24b2ba5484f27cc9cdf55ff"
+    },
+    {
+      "path": "frontend/package.json",
+      "sha256": "9ec8e633506834c57e3471e042acc3769a4d1833b006e2d233eaf0784eef06e9"
+    },
+    {
+      "path": "frontend/README.md",
+      "sha256": "efeb5d87be2c4254479ed4549ef8ac9db9b0508dd773ec634a2ca05697a8addb"
+    },
+    {
+      "path": "frontend/src/App.tsx",
+      "sha256": "8a8134c4aa43de3f1ae898f4371c97cecb4b31de660469e1f2038cf533e0b406"
+    },
+    {
+      "path": "frontend/src/components/Auth.tsx",
+      "sha256": "b026d07af6e9abbe9fdba1ded033bbc01909d4cb6de009d1b814cb774980ca05"
+    },
+    {
+      "path": "frontend/src/components/Cart.tsx",
+      "sha256": "eb56b47bfc5b57b32d0cd85ae111dd5971c19f8dd3dbb82888dd4ddab06a5869"
+    },
+    {
+      "path": "frontend/src/components/Catalog.tsx",
+      "sha256": "a03501fb235d02d4e367e6b5a7ca78ff76157e801529fee317753bfeb048e590"
+    },
+    {
+      "path": "frontend/src/components/Checkout.tsx",
+      "sha256": "995f3930d98742557311d09799a499f175f3c1a2d24f0b443c46844489e30cac"
+    },
+    {
+      "path": "frontend/src/components/Header.tsx",
+      "sha256": "da890c0494cc3dc71e973e1f48eccfddc5e96ed93f0f24a9d4a0dd2227dfdf75"
+    },
+    {
+      "path": "frontend/src/components/Moderation.tsx",
+      "sha256": "3fecdaa3a1ba40f8ff392f875498444a52e100edb23fda9ba332f4145a4274f0"
+    },
+    {
+      "path": "frontend/src/context/AppContext.tsx",
+      "sha256": "f021c781b5c891c3a8646fb7b97eaed643bea3f426d42cf7c216ad158b9ca338"
+    },
+    {
+      "path": "frontend/src/index.css",
+      "sha256": "57b690c23480a686c856144f1d44d79309019b123f7b139d1dd4da42f4b1b3a1"
+    },
+    {
+      "path": "frontend/src/main.tsx",
+      "sha256": "1a2c80094fecd6b181676d20c622bdae01eb6680429428274d9ee37e4f96036b"
+    },
+    {
+      "path": "frontend/tsconfig.json",
+      "sha256": "37203e8f5ddeaea21d8755a6f4a0065466b2c74e526927e287e6e4421e9160e5"
+    },
+    {
+      "path": "frontend/vite.config.ts",
+      "sha256": "316afb46a887df9aead1b4fe73c2900da04e75640afc78ccd18d7616eaccbb69"
+    },
+    {
+      "path": "README.md",
+      "sha256": "a0dbdc1b93d1cbc5ea05306650fa6184adf708ec0d913358b90690981f6968c5"
+    },
+    {
+      "path": "specs/requirements.md",
+      "sha256": "923e77affae9172f7cb935ae93f552e2e48baad525fdc6f16b5c19238cac6273"
+    },
+    {
+      "path": "specs/tasks.md",
+      "sha256": "71df1b5718fc29b18bb3fccffa57b14c222801cdf1082bc61b5599b174ae9e05"
+    },
+    {
+      "path": "specs/technical_design.md",
+      "sha256": "fd5a3438438e9f5e4d0a17c3096708d8f778eacbcf591c1b953f9cccecc22c57"
+    },
+    {
+      "path": "Start-Gemini.ps1",
+      "sha256": "c62460d7476e583e3e4066e2f91611e9fa08b8d97099b38f3f460cfb23ef726f"
+    },
+    {
+      "path": "tessl.json",
+      "sha256": "b9b2c59dfc819b26b886c59eab2d9d16f2110197c07e0c2ba08d6747fd1fa885"
+    }
+  ]
+}

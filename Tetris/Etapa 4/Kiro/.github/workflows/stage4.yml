@@ -1,0 +1,143 @@
+# Isolated Stage 4 CI for the Tetris Stage 4 Option A brownfield extension.
+#
+# This workflow is a SEPARATE, isolated Stage 4 pipeline. It does NOT replace or
+# modify the inherited Stage 3 workflows (ci.yml, perf.yml); those are left
+# intact and continue to describe Stage 3. Stage 4 uses distinct job names and
+# distinct image tags (tetris-stage4-kiro-*) so a Stage 4 run is never confused
+# with a Stage 3 run, mirroring the Stage 4 container isolation (Compose project
+# tetris-stage4-kiro, frontend host port 5517).
+#
+# SCOPE / HONESTY (Req 25.5): this file is a CONFIGURATION ARTIFACT only. Its
+# presence in the repository, and any local clean-equivalent run of these same
+# commands, are NOT evidence that a hosted GitHub Actions run occurred. Do not
+# cite this file as proof of a hosted CI run.
+#
+# DATA SAFETY (Req 25.6): no job here deletes, moves, or clears data outside the
+# ephemeral, per-run temporary fixtures that the test suite itself creates and
+# tears down. The solo SQLite data is never touched by CI (the backend tests use
+# their own temporary databases), and no job sets a permissive CORS policy -- the
+# inherited restrictive HTTP CORS posture is preserved (no TETRIS_ALLOWED_ORIGINS
+# override, no wildcard origin, is introduced anywhere in this workflow).
+#
+# ISOLATION (Req 25.1, 25.4): the ordinary unit / build / image jobs run on
+# fresh, ephemeral runners and never start, stop, modify, or remove the
+# inherited Stage 3 Compose project (tetris-stage3-kiro, host 5183) or any other
+# tool's containers, volumes, or networks. Timing-sensitive performance work is
+# kept in a SEPARATE, manual-only job (see `performance` below) and is never part
+# of the ordinary pipeline.
+
+name: stage4-ci
+
+on:
+  push:
+    branches: ["**"]
+  pull_request:
+  # Allow the separate performance job (and the rest) to be triggered manually.
+  workflow_dispatch:
+
+# Pinned action versions, consistent with the inherited Stage 3 workflows
+# (actions/checkout@v4, actions/setup-python@v5, actions/setup-node@v4).
+
+jobs:
+  backend:
+    name: Stage 4 backend tests and coverage
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: backend
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          # Pin the Python MAJOR version used by the project (matches the image).
+          python-version: "3.12"
+      - name: Install the resolved DEV lock (reproducible; superset of runtime)
+        run: |
+          python -m pip install --upgrade pip
+          # Reproducible install from the complete resolved DEV lock, which pins
+          # every transitive and is a superset of requirements.lock.txt. Input
+          # manifests: requirements.txt / requirements-dev.txt; resolved locks:
+          # requirements.lock.txt / requirements-dev.lock.txt.
+          pip install --no-deps -r requirements-dev.lock.txt
+      - name: pip check
+        run: pip check
+      - name: Backend tests with coverage (produce coverage.xml)
+        # The suite creates and disposes of its own temporary SQLite fixtures; it
+        # does not touch any real solo database and sets no permissive CORS.
+        run: pytest --cov=app --cov-report=xml --cov-report=term-missing
+      - name: Dependency audit - runtime lock (report findings, no suppression)
+        run: pip-audit -r requirements.lock.txt
+      - name: Dependency audit - dev lock (report findings, no suppression)
+        run: pip-audit -r requirements-dev.lock.txt
+
+  frontend:
+    name: Stage 4 frontend tests and production build
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: frontend
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          # Pin the Node MAJOR version used by the project (matches the image).
+          node-version: "24"
+      - name: Install (reproducible, from committed lockfile)
+        run: npm ci
+      - name: Frontend tests with coverage
+        run: npx vitest run --coverage
+      - name: Production build (tsc && vite build)
+        run: npm run build
+      - name: Dependency audit (report findings, no suppression)
+        run: npm audit
+
+  images:
+    name: Stage 4 Docker image builds (no push)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      # Build only; images are NOT pushed anywhere. Stage 4-specific tags keep
+      # these distinct from the inherited Stage 3 images.
+      - name: Build Stage 4 backend image (runtime set only; no dev deps)
+        run: docker build -t tetris-stage4-kiro-backend ./backend
+      - name: Build Stage 4 frontend image (production build; nginx runtime)
+        run: docker build -t tetris-stage4-kiro-frontend ./frontend
+
+  performance:
+    name: Stage 4 performance harness (DESIGN ONLY; manual; never asserts metrics)
+    # SEPARATE performance job, kept out of the ordinary push/pull_request unit
+    # pipeline. It runs ONLY on an explicit manual dispatch so timing-sensitive
+    # work never gates ordinary CI.
+    #
+    # DESIGN-ONLY (task 20 is design only): the Stage 4 benchmark is a DESIGN
+    # extension that has NOT been executed. This job therefore does NOT run a
+    # benchmark and does NOT assert any FPS / latency / throughput metric. It
+    # only prepares the harness (install the committed lockfile) so the harness
+    # design is exercised for well-formedness. A hosted runner also has no real
+    # physical foreground display, so a hosted run could never be evidence of
+    # real display presentation; the authoritative benchmark remains the
+    # documented local manual command on a real machine.
+    if: ${{ github.event_name == 'workflow_dispatch' }}
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: perf
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "24"
+      - name: Install harness deps (reproducible, from committed lockfile)
+        run: npm ci
+      - name: Performance benchmark is DESIGN ONLY (no run, no metrics)
+        run: |
+          echo "Stage 4 performance benchmark is DESIGN ONLY (spec task 20)."
+          echo "This job intentionally does NOT execute a benchmark and asserts NO metric."
+          echo "A hosted runner has no real foreground display; it is not evidence of display presentation."
+          echo "Run the documented local manual command on a real machine for authoritative results."
+      # The actual benchmark invocation (npm run benchmark) is intentionally
+      # omitted. It is left to a documented, explicitly-invoked local run and is
+      # never fabricated or asserted here.

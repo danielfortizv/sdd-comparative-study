@@ -1,0 +1,33 @@
+# ==============================================================================
+# Shift Bank Stage 3 — Frontend & Nginx Dockerfile (E3-DEP-01, FR-027, T028)
+# Multi-stage build: Compiles React static assets and packages into Nginx
+# ==============================================================================
+
+# Stage 1: Build React TypeScript SPA
+FROM node:20-alpine AS builder
+
+WORKDIR /app
+
+# Install dependencies
+COPY frontend/package*.json ./
+RUN npm ci
+
+# Copy frontend source and compile static production build
+COPY frontend/ ./
+RUN npm run build
+
+# Stage 2: Production Nginx Web Server & Reverse Proxy
+FROM nginx:1.27-alpine
+
+# Copy compiled SPA bundle to Nginx html directory
+COPY --from=builder /app/dist /usr/share/nginx/html
+
+# Copy Nginx reverse proxy configuration
+COPY deployment/nginx.conf /etc/nginx/nginx.conf
+
+# Mount point for TLS certificates
+RUN mkdir -p /etc/nginx/certs
+
+EXPOSE 80 443
+
+CMD ["nginx", "-g", "daemon off;"]

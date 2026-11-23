@@ -1,0 +1,1385 @@
+{
+  "total": 18,
+  "p": 1,
+  "ps": 500,
+  "paging": {
+    "pageIndex": 1,
+    "pageSize": 500,
+    "total": 18
+  },
+  "effortTotal": 143,
+  "issues": [
+    {
+      "key": "78aa0c5a-05ba-40b0-a0a6-8c37422bf0ea",
+      "rule": "python:S5886",
+      "severity": "MAJOR",
+      "component": "kiro-s1-official-01:backend/app/api/auth_register.py",
+      "project": "kiro-s1-official-01",
+      "line": 87,
+      "hash": "9bc6c4c87dc60a49495a85cee2bcdae3",
+      "textRange": {
+        "startLine": 87,
+        "endLine": 95,
+        "startOffset": 15,
+        "endOffset": 9
+      },
+      "flows": [
+        {
+          "locations": [
+            {
+              "component": "kiro-s1-official-01:backend/app/api/auth_register.py",
+              "textRange": {
+                "startLine": 74,
+                "endLine": 74,
+                "startOffset": 4,
+                "endOffset": 20
+              },
+              "msg": "Function definition.",
+              "msgFormattings": []
+            }
+          ]
+        },
+        {
+          "locations": [
+            {
+              "component": "kiro-s1-official-01:backend/app/api/auth_register.py",
+              "textRange": {
+                "startLine": 74,
+                "endLine": 74,
+                "startOffset": 50,
+                "endOffset": 66
+              },
+              "msg": "Type hint.",
+              "msgFormattings": []
+            }
+          ]
+        }
+      ],
+      "status": "OPEN",
+      "message": "Return a value of type \"RegisterResponse\" instead of \"JSONResponse\" or update function \"register_account\" type hint.",
+      "effort": "5min",
+      "debt": "5min",
+      "author": "",
+      "tags": [
+        "typing"
+      ],
+      "transitions": [
+        "accept",
+        "falsepositive",
+        "confirm",
+        "resolve",
+        "wontfix"
+      ],
+      "actions": [
+        "set_type",
+        "set_tags",
+        "comment",
+        "set_severity",
+        "assign"
+      ],
+      "comments": [],
+      "creationDate": "2026-10-05T20:39:11+02:00",
+      "updateDate": "2026-10-05T20:39:11+02:00",
+      "type": "CODE_SMELL",
+      "scope": "MAIN",
+      "quickFixAvailable": false,
+      "messageFormattings": [],
+      "codeVariants": [],
+      "cleanCodeAttribute": "LOGICAL",
+      "cleanCodeAttributeCategory": "INTENTIONAL",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "MEDIUM"
+        }
+      ],
+      "issueStatus": "OPEN",
+      "prioritizedRule": false,
+      "fromSonarQubeUpdate": false,
+      "internalTags": [],
+      "linkedTicketStatus": "NOT_LINKED"
+    },
+    {
+      "key": "7c0ad857-3304-40aa-bb59-adec511627f5",
+      "rule": "python:S5886",
+      "severity": "MAJOR",
+      "component": "kiro-s1-official-01:backend/app/api/auth_register.py",
+      "project": "kiro-s1-official-01",
+      "line": 97,
+      "hash": "9bc6c4c87dc60a49495a85cee2bcdae3",
+      "textRange": {
+        "startLine": 97,
+        "endLine": 103,
+        "startOffset": 15,
+        "endOffset": 9
+      },
+      "flows": [
+        {
+          "locations": [
+            {
+              "component": "kiro-s1-official-01:backend/app/api/auth_register.py",
+              "textRange": {
+                "startLine": 74,
+                "endLine": 74,
+                "startOffset": 4,
+                "endOffset": 20
+              },
+              "msg": "Function definition.",
+              "msgFormattings": []
+            }
+          ]
+        },
+        {
+          "locations": [
+            {
+              "component": "kiro-s1-official-01:backend/app/api/auth_register.py",
+              "textRange": {
+                "startLine": 74,
+                "endLine": 74,
+                "startOffset": 50,
+                "endOffset": 66
+              },
+              "msg": "Type hint.",
+              "msgFormattings": []
+            }
+          ]
+        }
+      ],
+      "status": "OPEN",
+      "message": "Return a value of type \"RegisterResponse\" instead of \"JSONResponse\" or update function \"register_account\" type hint.",
+      "effort": "5min",
+      "debt": "5min",
+      "author": "",
+      "tags": [
+        "typing"
+      ],
+      "transitions": [
+        "accept",
+        "falsepositive",
+        "confirm",
+        "resolve",
+        "wontfix"
+      ],
+      "actions": [
+        "set_type",
+        "set_tags",
+        "comment",
+        "set_severity",
+        "assign"
+      ],
+      "comments": [],
+      "creationDate": "2026-10-05T20:39:11+02:00",
+      "updateDate": "2026-10-05T20:39:11+02:00",
+      "type": "CODE_SMELL",
+      "scope": "MAIN",
+      "quickFixAvailable": false,
+      "messageFormattings": [],
+      "codeVariants": [],
+      "cleanCodeAttribute": "LOGICAL",
+      "cleanCodeAttributeCategory": "INTENTIONAL",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "MEDIUM"
+        }
+      ],
+      "issueStatus": "OPEN",
+      "prioritizedRule": false,
+      "fromSonarQubeUpdate": false,
+      "internalTags": [],
+      "linkedTicketStatus": "NOT_LINKED"
+    },
+    {
+      "key": "fea4bd18-dd5b-42c6-941f-cb7ef2d6395f",
+      "rule": "typescript:S6759",
+      "severity": "MINOR",
+      "component": "kiro-s1-official-01:frontend/src/state/JourneyState.tsx",
+      "project": "kiro-s1-official-01",
+      "line": 65,
+      "hash": "9c55600a2f90165240c994b25bf9fc14",
+      "textRange": {
+        "startLine": 65,
+        "endLine": 65,
+        "startOffset": 32,
+        "endOffset": 69
+      },
+      "flows": [],
+      "status": "OPEN",
+      "message": "Mark the props of the component as read-only.",
+      "effort": "5min",
+      "debt": "5min",
+      "author": "",
+      "tags": [
+        "type-dependent",
+        "react"
+      ],
+      "transitions": [
+        "accept",
+        "falsepositive",
+        "confirm",
+        "resolve",
+        "wontfix"
+      ],
+      "actions": [
+        "set_type",
+        "set_tags",
+        "comment",
+        "set_severity",
+        "assign"
+      ],
+      "comments": [],
+      "creationDate": "2026-10-05T20:39:11+02:00",
+      "updateDate": "2026-10-05T20:39:11+02:00",
+      "type": "CODE_SMELL",
+      "scope": "MAIN",
+      "quickFixAvailable": true,
+      "messageFormattings": [],
+      "codeVariants": [],
+      "cleanCodeAttribute": "CONVENTIONAL",
+      "cleanCodeAttributeCategory": "CONSISTENT",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "LOW"
+        }
+      ],
+      "issueStatus": "OPEN",
+      "prioritizedRule": false,
+      "fromSonarQubeUpdate": false,
+      "internalTags": [],
+      "linkedTicketStatus": "NOT_LINKED"
+    },
+    {
+      "key": "2ee81a3a-5983-4729-9864-6a4c74d54a6c",
+      "rule": "typescript:S2486",
+      "severity": "MINOR",
+      "component": "kiro-s1-official-01:frontend/src/views/AuthView.tsx",
+      "project": "kiro-s1-official-01",
+      "line": 171,
+      "hash": "161b8313784081f5965c2da97df48970",
+      "textRange": {
+        "startLine": 171,
+        "endLine": 175,
+        "startOffset": 6,
+        "endOffset": 5
+      },
+      "flows": [],
+      "status": "OPEN",
+      "message": "Handle this exception or don't catch it at all.",
+      "effort": "1h",
+      "debt": "1h",
+      "author": "",
+      "tags": [
+        "cwe",
+        "error-handling",
+        "suspicious"
+      ],
+      "transitions": [
+        "accept",
+        "falsepositive",
+        "confirm",
+        "resolve",
+        "wontfix"
+      ],
+      "actions": [
+        "set_type",
+        "set_tags",
+        "comment",
+        "set_severity",
+        "assign"
+      ],
+      "comments": [],
+      "creationDate": "2026-10-05T20:39:11+02:00",
+      "updateDate": "2026-10-05T20:39:11+02:00",
+      "type": "CODE_SMELL",
+      "scope": "MAIN",
+      "quickFixAvailable": false,
+      "messageFormattings": [],
+      "codeVariants": [],
+      "cleanCodeAttribute": "CLEAR",
+      "cleanCodeAttributeCategory": "INTENTIONAL",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "LOW"
+        }
+      ],
+      "issueStatus": "OPEN",
+      "prioritizedRule": false,
+      "fromSonarQubeUpdate": false,
+      "internalTags": [],
+      "linkedTicketStatus": "NOT_LINKED"
+    },
+    {
+      "key": "679d38a0-2106-4e7a-a946-dd646c528a37",
+      "rule": "typescript:S6819",
+      "severity": "MAJOR",
+      "component": "kiro-s1-official-01:frontend/src/views/AuthView.tsx",
+      "project": "kiro-s1-official-01",
+      "line": 204,
+      "hash": "347088910111b0bc942d9a522a1ba2a7",
+      "textRange": {
+        "startLine": 204,
+        "endLine": 204,
+        "startOffset": 6,
+        "endOffset": 74
+      },
+      "flows": [],
+      "status": "OPEN",
+      "message": "Use <output> instead of the \"status\" role to ensure accessibility across all devices.",
+      "effort": "5min",
+      "debt": "5min",
+      "author": "",
+      "tags": [
+        "accessibility",
+        "react"
+      ],
+      "transitions": [
+        "accept",
+        "falsepositive",
+        "confirm",
+        "resolve",
+        "wontfix"
+      ],
+      "actions": [
+        "set_type",
+        "set_tags",
+        "comment",
+        "set_severity",
+        "assign"
+      ],
+      "comments": [],
+      "creationDate": "2026-10-05T20:39:11+02:00",
+      "updateDate": "2026-10-05T20:39:11+02:00",
+      "type": "CODE_SMELL",
+      "scope": "MAIN",
+      "quickFixAvailable": false,
+      "messageFormattings": [],
+      "codeVariants": [],
+      "cleanCodeAttribute": "CONVENTIONAL",
+      "cleanCodeAttributeCategory": "CONSISTENT",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "MEDIUM"
+        }
+      ],
+      "issueStatus": "OPEN",
+      "prioritizedRule": false,
+      "fromSonarQubeUpdate": false,
+      "internalTags": [],
+      "linkedTicketStatus": "NOT_LINKED"
+    },
+    {
+      "key": "76bf10a0-a763-4ac9-bc52-c769cc22ce00",
+      "rule": "typescript:S7735",
+      "severity": "MINOR",
+      "component": "kiro-s1-official-01:frontend/src/views/AuthView.tsx",
+      "project": "kiro-s1-official-01",
+      "line": 227,
+      "hash": "54ed08c217168ba4a05568d4a5b3643e",
+      "textRange": {
+        "startLine": 227,
+        "endLine": 227,
+        "startOffset": 18,
+        "endOffset": 40
+      },
+      "flows": [],
+      "status": "OPEN",
+      "message": "Unexpected negated condition.",
+      "effort": "2min",
+      "debt": "2min",
+      "author": "",
+      "tags": [
+        "readability"
+      ],
+      "transitions": [
+        "accept",
+        "falsepositive",
+        "confirm",
+        "resolve",
+        "wontfix"
+      ],
+      "actions": [
+        "set_type",
+        "set_tags",
+        "comment",
+        "set_severity",
+        "assign"
+      ],
+      "comments": [],
+      "creationDate": "2026-10-05T20:39:11+02:00",
+      "updateDate": "2026-10-05T20:39:11+02:00",
+      "type": "CODE_SMELL",
+      "scope": "MAIN",
+      "quickFixAvailable": true,
+      "messageFormattings": [],
+      "codeVariants": [],
+      "cleanCodeAttribute": "CLEAR",
+      "cleanCodeAttributeCategory": "INTENTIONAL",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "LOW"
+        }
+      ],
+      "issueStatus": "OPEN",
+      "prioritizedRule": false,
+      "fromSonarQubeUpdate": false,
+      "internalTags": [],
+      "linkedTicketStatus": "NOT_LINKED"
+    },
+    {
+      "key": "8df621ad-28b8-4f9e-9fa9-115881eb8b1e",
+      "rule": "typescript:S7735",
+      "severity": "MINOR",
+      "component": "kiro-s1-official-01:frontend/src/views/AuthView.tsx",
+      "project": "kiro-s1-official-01",
+      "line": 244,
+      "hash": "54ed08c217168ba4a05568d4a5b3643e",
+      "textRange": {
+        "startLine": 244,
+        "endLine": 244,
+        "startOffset": 18,
+        "endOffset": 40
+      },
+      "flows": [],
+      "status": "OPEN",
+      "message": "Unexpected negated condition.",
+      "effort": "2min",
+      "debt": "2min",
+      "author": "",
+      "tags": [
+        "readability"
+      ],
+      "transitions": [
+        "accept",
+        "falsepositive",
+        "confirm",
+        "resolve",
+        "wontfix"
+      ],
+      "actions": [
+        "set_type",
+        "set_tags",
+        "comment",
+        "set_severity",
+        "assign"
+      ],
+      "comments": [],
+      "creationDate": "2026-10-05T20:39:11+02:00",
+      "updateDate": "2026-10-05T20:39:11+02:00",
+      "type": "CODE_SMELL",
+      "scope": "MAIN",
+      "quickFixAvailable": true,
+      "messageFormattings": [],
+      "codeVariants": [],
+      "cleanCodeAttribute": "CLEAR",
+      "cleanCodeAttributeCategory": "INTENTIONAL",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "LOW"
+        }
+      ],
+      "issueStatus": "OPEN",
+      "prioritizedRule": false,
+      "fromSonarQubeUpdate": false,
+      "internalTags": [],
+      "linkedTicketStatus": "NOT_LINKED"
+    },
+    {
+      "key": "5a8b785e-076d-4db2-80c0-e1416b4dca3f",
+      "rule": "typescript:S6819",
+      "severity": "MAJOR",
+      "component": "kiro-s1-official-01:frontend/src/views/AuthView.tsx",
+      "project": "kiro-s1-official-01",
+      "line": 269,
+      "hash": "d6a4ef4a78a5f1097b432743c2735b3d",
+      "textRange": {
+        "startLine": 269,
+        "endLine": 269,
+        "startOffset": 14,
+        "endOffset": 81
+      },
+      "flows": [],
+      "status": "OPEN",
+      "message": "Use <output> instead of the \"status\" role to ensure accessibility across all devices.",
+      "effort": "5min",
+      "debt": "5min",
+      "author": "",
+      "tags": [
+        "accessibility",
+        "react"
+      ],
+      "transitions": [
+        "accept",
+        "falsepositive",
+        "confirm",
+        "resolve",
+        "wontfix"
+      ],
+      "actions": [
+        "set_type",
+        "set_tags",
+        "comment",
+        "set_severity",
+        "assign"
+      ],
+      "comments": [],
+      "creationDate": "2026-10-05T20:39:11+02:00",
+      "updateDate": "2026-10-05T20:39:11+02:00",
+      "type": "CODE_SMELL",
+      "scope": "MAIN",
+      "quickFixAvailable": false,
+      "messageFormattings": [],
+      "codeVariants": [],
+      "cleanCodeAttribute": "CONVENTIONAL",
+      "cleanCodeAttributeCategory": "CONSISTENT",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "MEDIUM"
+        }
+      ],
+      "issueStatus": "OPEN",
+      "prioritizedRule": false,
+      "fromSonarQubeUpdate": false,
+      "internalTags": [],
+      "linkedTicketStatus": "NOT_LINKED"
+    },
+    {
+      "key": "64db2e6f-c44d-4201-a8dd-b91228037fc4",
+      "rule": "typescript:S7735",
+      "severity": "MINOR",
+      "component": "kiro-s1-official-01:frontend/src/views/AuthView.tsx",
+      "project": "kiro-s1-official-01",
+      "line": 288,
+      "hash": "38ecb3c9a013a21c46f0dac3611d55a9",
+      "textRange": {
+        "startLine": 288,
+        "endLine": 288,
+        "startOffset": 18,
+        "endOffset": 38
+      },
+      "flows": [],
+      "status": "OPEN",
+      "message": "Unexpected negated condition.",
+      "effort": "2min",
+      "debt": "2min",
+      "author": "",
+      "tags": [
+        "readability"
+      ],
+      "transitions": [
+        "accept",
+        "falsepositive",
+        "confirm",
+        "resolve",
+        "wontfix"
+      ],
+      "actions": [
+        "set_type",
+        "set_tags",
+        "comment",
+        "set_severity",
+        "assign"
+      ],
+      "comments": [],
+      "creationDate": "2026-10-05T20:39:11+02:00",
+      "updateDate": "2026-10-05T20:39:11+02:00",
+      "type": "CODE_SMELL",
+      "scope": "MAIN",
+      "quickFixAvailable": true,
+      "messageFormattings": [],
+      "codeVariants": [],
+      "cleanCodeAttribute": "CLEAR",
+      "cleanCodeAttributeCategory": "INTENTIONAL",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "LOW"
+        }
+      ],
+      "issueStatus": "OPEN",
+      "prioritizedRule": false,
+      "fromSonarQubeUpdate": false,
+      "internalTags": [],
+      "linkedTicketStatus": "NOT_LINKED"
+    },
+    {
+      "key": "ddddb167-1e00-407d-8abc-1f1504e23d85",
+      "rule": "typescript:S7735",
+      "severity": "MINOR",
+      "component": "kiro-s1-official-01:frontend/src/views/AuthView.tsx",
+      "project": "kiro-s1-official-01",
+      "line": 305,
+      "hash": "38ecb3c9a013a21c46f0dac3611d55a9",
+      "textRange": {
+        "startLine": 305,
+        "endLine": 305,
+        "startOffset": 18,
+        "endOffset": 38
+      },
+      "flows": [],
+      "status": "OPEN",
+      "message": "Unexpected negated condition.",
+      "effort": "2min",
+      "debt": "2min",
+      "author": "",
+      "tags": [
+        "readability"
+      ],
+      "transitions": [
+        "accept",
+        "falsepositive",
+        "confirm",
+        "resolve",
+        "wontfix"
+      ],
+      "actions": [
+        "set_type",
+        "set_tags",
+        "comment",
+        "set_severity",
+        "assign"
+      ],
+      "comments": [],
+      "creationDate": "2026-10-05T20:39:11+02:00",
+      "updateDate": "2026-10-05T20:39:11+02:00",
+      "type": "CODE_SMELL",
+      "scope": "MAIN",
+      "quickFixAvailable": true,
+      "messageFormattings": [],
+      "codeVariants": [],
+      "cleanCodeAttribute": "CLEAR",
+      "cleanCodeAttributeCategory": "INTENTIONAL",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "LOW"
+        }
+      ],
+      "issueStatus": "OPEN",
+      "prioritizedRule": false,
+      "fromSonarQubeUpdate": false,
+      "internalTags": [],
+      "linkedTicketStatus": "NOT_LINKED"
+    },
+    {
+      "key": "c1ade407-5fee-4ccf-9235-a8be9f24cdec",
+      "rule": "typescript:S6819",
+      "severity": "MAJOR",
+      "component": "kiro-s1-official-01:frontend/src/views/AuthView.tsx",
+      "project": "kiro-s1-official-01",
+      "line": 330,
+      "hash": "f2177414a997075ea8688512b0ed9936",
+      "textRange": {
+        "startLine": 330,
+        "endLine": 330,
+        "startOffset": 14,
+        "endOffset": 79
+      },
+      "flows": [],
+      "status": "OPEN",
+      "message": "Use <output> instead of the \"status\" role to ensure accessibility across all devices.",
+      "effort": "5min",
+      "debt": "5min",
+      "author": "",
+      "tags": [
+        "accessibility",
+        "react"
+      ],
+      "transitions": [
+        "accept",
+        "falsepositive",
+        "confirm",
+        "resolve",
+        "wontfix"
+      ],
+      "actions": [
+        "set_type",
+        "set_tags",
+        "comment",
+        "set_severity",
+        "assign"
+      ],
+      "comments": [],
+      "creationDate": "2026-10-05T20:39:11+02:00",
+      "updateDate": "2026-10-05T20:39:11+02:00",
+      "type": "CODE_SMELL",
+      "scope": "MAIN",
+      "quickFixAvailable": false,
+      "messageFormattings": [],
+      "codeVariants": [],
+      "cleanCodeAttribute": "CONVENTIONAL",
+      "cleanCodeAttributeCategory": "CONSISTENT",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "MEDIUM"
+        }
+      ],
+      "issueStatus": "OPEN",
+      "prioritizedRule": false,
+      "fromSonarQubeUpdate": false,
+      "internalTags": [],
+      "linkedTicketStatus": "NOT_LINKED"
+    },
+    {
+      "key": "3401918f-832f-408e-a305-79bccffdc3a8",
+      "rule": "typescript:S6819",
+      "severity": "MAJOR",
+      "component": "kiro-s1-official-01:frontend/src/views/CartView.tsx",
+      "project": "kiro-s1-official-01",
+      "line": 66,
+      "hash": "082bd2af620e81b06ee4bab60591a3d0",
+      "textRange": {
+        "startLine": 66,
+        "endLine": 66,
+        "startOffset": 6,
+        "endOffset": 74
+      },
+      "flows": [],
+      "status": "OPEN",
+      "message": "Use <output> instead of the \"status\" role to ensure accessibility across all devices.",
+      "effort": "5min",
+      "debt": "5min",
+      "author": "",
+      "tags": [
+        "accessibility",
+        "react"
+      ],
+      "transitions": [
+        "accept",
+        "falsepositive",
+        "confirm",
+        "resolve",
+        "wontfix"
+      ],
+      "actions": [
+        "set_type",
+        "set_tags",
+        "comment",
+        "set_severity",
+        "assign"
+      ],
+      "comments": [],
+      "creationDate": "2026-10-05T20:39:11+02:00",
+      "updateDate": "2026-10-05T20:39:11+02:00",
+      "type": "CODE_SMELL",
+      "scope": "MAIN",
+      "quickFixAvailable": false,
+      "messageFormattings": [],
+      "codeVariants": [],
+      "cleanCodeAttribute": "CONVENTIONAL",
+      "cleanCodeAttributeCategory": "CONSISTENT",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "MEDIUM"
+        }
+      ],
+      "issueStatus": "OPEN",
+      "prioritizedRule": false,
+      "fromSonarQubeUpdate": false,
+      "internalTags": [],
+      "linkedTicketStatus": "NOT_LINKED"
+    },
+    {
+      "key": "fed6871b-109e-4cb3-acb4-b820f1589f40",
+      "rule": "typescript:S2301",
+      "severity": "MAJOR",
+      "component": "kiro-s1-official-01:frontend/src/views/CatalogView.tsx",
+      "project": "kiro-s1-official-01",
+      "line": 31,
+      "hash": "9a9b8f5467da734404a66c1aa0f01e35",
+      "textRange": {
+        "startLine": 31,
+        "endLine": 31,
+        "startOffset": 9,
+        "endOffset": 18
+      },
+      "flows": [
+        {
+          "locations": [
+            {
+              "component": "kiro-s1-official-01:frontend/src/views/CatalogView.tsx",
+              "textRange": {
+                "startLine": 30,
+                "endLine": 30,
+                "startOffset": 27,
+                "endOffset": 45
+              },
+              "msg": "Parameter \"available\" was declared here",
+              "msgFormattings": []
+            }
+          ]
+        }
+      ],
+      "status": "OPEN",
+      "message": "Provide multiple methods instead of using \"available\" to determine which action to take.",
+      "effort": "15min",
+      "debt": "15min",
+      "author": "",
+      "tags": [
+        "design",
+        "type-dependent"
+      ],
+      "transitions": [
+        "accept",
+        "falsepositive",
+        "confirm",
+        "resolve",
+        "wontfix"
+      ],
+      "actions": [
+        "set_type",
+        "set_tags",
+        "comment",
+        "set_severity",
+        "assign"
+      ],
+      "comments": [],
+      "creationDate": "2026-10-05T20:39:11+02:00",
+      "updateDate": "2026-10-05T20:39:11+02:00",
+      "type": "CODE_SMELL",
+      "scope": "MAIN",
+      "quickFixAvailable": false,
+      "messageFormattings": [],
+      "codeVariants": [],
+      "cleanCodeAttribute": "FOCUSED",
+      "cleanCodeAttributeCategory": "ADAPTABLE",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "MEDIUM"
+        }
+      ],
+      "issueStatus": "OPEN",
+      "prioritizedRule": false,
+      "fromSonarQubeUpdate": false,
+      "internalTags": [],
+      "linkedTicketStatus": "NOT_LINKED"
+    },
+    {
+      "key": "21c90591-5bc2-44d1-ba1b-fa383b6fb303",
+      "rule": "typescript:S6759",
+      "severity": "MINOR",
+      "component": "kiro-s1-official-01:frontend/src/views/CatalogView.tsx",
+      "project": "kiro-s1-official-01",
+      "line": 35,
+      "hash": "ea670059c0f527d012b3e002d7868432",
+      "textRange": {
+        "startLine": 35,
+        "endLine": 41,
+        "startOffset": 21,
+        "endOffset": 1
+      },
+      "flows": [],
+      "status": "OPEN",
+      "message": "Mark the props of the component as read-only.",
+      "effort": "5min",
+      "debt": "5min",
+      "author": "",
+      "tags": [
+        "type-dependent",
+        "react"
+      ],
+      "transitions": [
+        "accept",
+        "falsepositive",
+        "confirm",
+        "resolve",
+        "wontfix"
+      ],
+      "actions": [
+        "set_type",
+        "set_tags",
+        "comment",
+        "set_severity",
+        "assign"
+      ],
+      "comments": [],
+      "creationDate": "2026-10-05T20:39:11+02:00",
+      "updateDate": "2026-10-05T20:39:11+02:00",
+      "type": "CODE_SMELL",
+      "scope": "MAIN",
+      "quickFixAvailable": true,
+      "messageFormattings": [],
+      "codeVariants": [],
+      "cleanCodeAttribute": "CONVENTIONAL",
+      "cleanCodeAttributeCategory": "CONSISTENT",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "LOW"
+        }
+      ],
+      "issueStatus": "OPEN",
+      "prioritizedRule": false,
+      "fromSonarQubeUpdate": false,
+      "internalTags": [],
+      "linkedTicketStatus": "NOT_LINKED"
+    },
+    {
+      "key": "cf0826f1-8ee1-4f43-b560-2ff0fa1a2a4a",
+      "rule": "typescript:S6819",
+      "severity": "MAJOR",
+      "component": "kiro-s1-official-01:frontend/src/views/CatalogView.tsx",
+      "project": "kiro-s1-official-01",
+      "line": 128,
+      "hash": "7239cbe52b47e8c31ef81fa63044c203",
+      "textRange": {
+        "startLine": 128,
+        "endLine": 128,
+        "startOffset": 8,
+        "endOffset": 55
+      },
+      "flows": [],
+      "status": "OPEN",
+      "message": "Use <output> instead of the \"status\" role to ensure accessibility across all devices.",
+      "effort": "5min",
+      "debt": "5min",
+      "author": "",
+      "tags": [
+        "accessibility",
+        "react"
+      ],
+      "transitions": [
+        "accept",
+        "falsepositive",
+        "confirm",
+        "resolve",
+        "wontfix"
+      ],
+      "actions": [
+        "set_type",
+        "set_tags",
+        "comment",
+        "set_severity",
+        "assign"
+      ],
+      "comments": [],
+      "creationDate": "2026-10-05T20:39:11+02:00",
+      "updateDate": "2026-10-05T20:39:11+02:00",
+      "type": "CODE_SMELL",
+      "scope": "MAIN",
+      "quickFixAvailable": false,
+      "messageFormattings": [],
+      "codeVariants": [],
+      "cleanCodeAttribute": "CONVENTIONAL",
+      "cleanCodeAttributeCategory": "CONSISTENT",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "MEDIUM"
+        }
+      ],
+      "issueStatus": "OPEN",
+      "prioritizedRule": false,
+      "fromSonarQubeUpdate": false,
+      "internalTags": [],
+      "linkedTicketStatus": "NOT_LINKED"
+    },
+    {
+      "key": "e9b3cb74-0376-49a9-a1e6-2132fb9dc7af",
+      "rule": "typescript:S6819",
+      "severity": "MAJOR",
+      "component": "kiro-s1-official-01:frontend/src/views/CatalogView.tsx",
+      "project": "kiro-s1-official-01",
+      "line": 140,
+      "hash": "2f33aad3c82a52821d68d6a3bcd48ce9",
+      "textRange": {
+        "startLine": 140,
+        "endLine": 140,
+        "startOffset": 8,
+        "endOffset": 59
+      },
+      "flows": [],
+      "status": "OPEN",
+      "message": "Use <output> instead of the \"status\" role to ensure accessibility across all devices.",
+      "effort": "5min",
+      "debt": "5min",
+      "author": "",
+      "tags": [
+        "accessibility",
+        "react"
+      ],
+      "transitions": [
+        "accept",
+        "falsepositive",
+        "confirm",
+        "resolve",
+        "wontfix"
+      ],
+      "actions": [
+        "set_type",
+        "set_tags",
+        "comment",
+        "set_severity",
+        "assign"
+      ],
+      "comments": [],
+      "creationDate": "2026-10-05T20:39:11+02:00",
+      "updateDate": "2026-10-05T20:39:11+02:00",
+      "type": "CODE_SMELL",
+      "scope": "MAIN",
+      "quickFixAvailable": false,
+      "messageFormattings": [],
+      "codeVariants": [],
+      "cleanCodeAttribute": "CONVENTIONAL",
+      "cleanCodeAttributeCategory": "CONSISTENT",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "MEDIUM"
+        }
+      ],
+      "issueStatus": "OPEN",
+      "prioritizedRule": false,
+      "fromSonarQubeUpdate": false,
+      "internalTags": [],
+      "linkedTicketStatus": "NOT_LINKED"
+    },
+    {
+      "key": "1c10cfd4-3c96-4eeb-80cc-86e69e8a825c",
+      "rule": "typescript:S6819",
+      "severity": "MAJOR",
+      "component": "kiro-s1-official-01:frontend/src/views/CheckoutView.tsx",
+      "project": "kiro-s1-official-01",
+      "line": 95,
+      "hash": "c6cb557942a8c3e4e07671997a7287ca",
+      "textRange": {
+        "startLine": 95,
+        "endLine": 95,
+        "startOffset": 8,
+        "endOffset": 82
+      },
+      "flows": [],
+      "status": "OPEN",
+      "message": "Use <output> instead of the \"status\" role to ensure accessibility across all devices.",
+      "effort": "5min",
+      "debt": "5min",
+      "author": "",
+      "tags": [
+        "accessibility",
+        "react"
+      ],
+      "transitions": [
+        "accept",
+        "falsepositive",
+        "confirm",
+        "resolve",
+        "wontfix"
+      ],
+      "actions": [
+        "set_type",
+        "set_tags",
+        "comment",
+        "set_severity",
+        "assign"
+      ],
+      "comments": [],
+      "creationDate": "2026-10-05T20:39:11+02:00",
+      "updateDate": "2026-10-05T20:39:11+02:00",
+      "type": "CODE_SMELL",
+      "scope": "MAIN",
+      "quickFixAvailable": false,
+      "messageFormattings": [],
+      "codeVariants": [],
+      "cleanCodeAttribute": "CONVENTIONAL",
+      "cleanCodeAttributeCategory": "CONSISTENT",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "MEDIUM"
+        }
+      ],
+      "issueStatus": "OPEN",
+      "prioritizedRule": false,
+      "fromSonarQubeUpdate": false,
+      "internalTags": [],
+      "linkedTicketStatus": "NOT_LINKED"
+    },
+    {
+      "key": "aeeb24ed-2d24-4984-881c-d30706395013",
+      "rule": "typescript:S6819",
+      "severity": "MAJOR",
+      "component": "kiro-s1-official-01:frontend/src/views/CheckoutView.tsx",
+      "project": "kiro-s1-official-01",
+      "line": 201,
+      "hash": "146dbdd5219ee316f04502c175ef5c03",
+      "textRange": {
+        "startLine": 201,
+        "endLine": 201,
+        "startOffset": 16,
+        "endOffset": 83
+      },
+      "flows": [],
+      "status": "OPEN",
+      "message": "Use <output> instead of the \"status\" role to ensure accessibility across all devices.",
+      "effort": "5min",
+      "debt": "5min",
+      "author": "",
+      "tags": [
+        "accessibility",
+        "react"
+      ],
+      "transitions": [
+        "accept",
+        "falsepositive",
+        "confirm",
+        "resolve",
+        "wontfix"
+      ],
+      "actions": [
+        "set_type",
+        "set_tags",
+        "comment",
+        "set_severity",
+        "assign"
+      ],
+      "comments": [],
+      "creationDate": "2026-10-05T20:39:11+02:00",
+      "updateDate": "2026-10-05T20:39:11+02:00",
+      "type": "CODE_SMELL",
+      "scope": "MAIN",
+      "quickFixAvailable": false,
+      "messageFormattings": [],
+      "codeVariants": [],
+      "cleanCodeAttribute": "CONVENTIONAL",
+      "cleanCodeAttributeCategory": "CONSISTENT",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "MEDIUM"
+        }
+      ],
+      "issueStatus": "OPEN",
+      "prioritizedRule": false,
+      "fromSonarQubeUpdate": false,
+      "internalTags": [],
+      "linkedTicketStatus": "NOT_LINKED"
+    }
+  ],
+  "components": [
+    {
+      "key": "kiro-s1-official-01:frontend/src/views/CheckoutView.tsx",
+      "enabled": true,
+      "qualifier": "FIL",
+      "name": "CheckoutView.tsx",
+      "longName": "frontend/src/views/CheckoutView.tsx",
+      "path": "frontend/src/views/CheckoutView.tsx"
+    },
+    {
+      "key": "kiro-s1-official-01:backend/app/api/auth_register.py",
+      "enabled": true,
+      "qualifier": "FIL",
+      "name": "auth_register.py",
+      "longName": "backend/app/api/auth_register.py",
+      "path": "backend/app/api/auth_register.py"
+    },
+    {
+      "key": "kiro-s1-official-01:frontend/src/state/JourneyState.tsx",
+      "enabled": true,
+      "qualifier": "FIL",
+      "name": "JourneyState.tsx",
+      "longName": "frontend/src/state/JourneyState.tsx",
+      "path": "frontend/src/state/JourneyState.tsx"
+    },
+    {
+      "key": "kiro-s1-official-01:frontend/src/views/CatalogView.tsx",
+      "enabled": true,
+      "qualifier": "FIL",
+      "name": "CatalogView.tsx",
+      "longName": "frontend/src/views/CatalogView.tsx",
+      "path": "frontend/src/views/CatalogView.tsx"
+    },
+    {
+      "key": "kiro-s1-official-01:frontend/src/views/CartView.tsx",
+      "enabled": true,
+      "qualifier": "FIL",
+      "name": "CartView.tsx",
+      "longName": "frontend/src/views/CartView.tsx",
+      "path": "frontend/src/views/CartView.tsx"
+    },
+    {
+      "key": "kiro-s1-official-01",
+      "enabled": true,
+      "qualifier": "TRK",
+      "name": "Kiro Stage 1 Official 01",
+      "longName": "Kiro Stage 1 Official 01"
+    },
+    {
+      "key": "kiro-s1-official-01:frontend/src/views/AuthView.tsx",
+      "enabled": true,
+      "qualifier": "FIL",
+      "name": "AuthView.tsx",
+      "longName": "frontend/src/views/AuthView.tsx",
+      "path": "frontend/src/views/AuthView.tsx"
+    }
+  ],
+  "rules": [
+    {
+      "key": "typescript:S7735",
+      "name": "Negated conditions should be avoided when an else clause is present",
+      "lang": "ts",
+      "status": "READY",
+      "langName": "TypeScript"
+    },
+    {
+      "key": "typescript:S6759",
+      "name": "React props should be read-only",
+      "lang": "ts",
+      "status": "READY",
+      "langName": "TypeScript"
+    },
+    {
+      "key": "python:S5886",
+      "name": "Function return types should be consistent with their type hint",
+      "lang": "py",
+      "status": "READY",
+      "langName": "Python"
+    },
+    {
+      "key": "typescript:S2301",
+      "name": "Methods should not contain selector parameters",
+      "lang": "ts",
+      "status": "READY",
+      "langName": "TypeScript"
+    },
+    {
+      "key": "typescript:S6819",
+      "name": "Prefer tag over ARIA role",
+      "lang": "ts",
+      "status": "READY",
+      "langName": "TypeScript"
+    },
+    {
+      "key": "typescript:S2486",
+      "name": "Exceptions should not be ignored",
+      "lang": "ts",
+      "status": "READY",
+      "langName": "TypeScript"
+    }
+  ],
+  "users": [
+    {
+      "login": "admin",
+      "name": "Administrator",
+      "active": true
+    }
+  ],
+  "languages": [
+    {
+      "key": "py",
+      "name": "Python"
+    },
+    {
+      "key": "ipynb",
+      "name": "IPython Notebooks"
+    },
+    {
+      "key": "go",
+      "name": "Go"
+    },
+    {
+      "key": "kotlin",
+      "name": "Kotlin"
+    },
+    {
+      "key": "terraform",
+      "name": "Terraform"
+    },
+    {
+      "key": "cloudformation",
+      "name": "CloudFormation"
+    },
+    {
+      "key": "kubernetes",
+      "name": "Kubernetes"
+    },
+    {
+      "key": "docker",
+      "name": "Docker"
+    },
+    {
+      "key": "azureresourcemanager",
+      "name": "Azure Resource Manager"
+    },
+    {
+      "key": "yaml",
+      "name": "YAML"
+    },
+    {
+      "key": "json",
+      "name": "JSON"
+    },
+    {
+      "key": "js",
+      "name": "JavaScript"
+    },
+    {
+      "key": "ts",
+      "name": "TypeScript"
+    },
+    {
+      "key": "css",
+      "name": "CSS"
+    },
+    {
+      "key": "ruby",
+      "name": "Ruby"
+    },
+    {
+      "key": "scala",
+      "name": "Scala"
+    },
+    {
+      "key": "rust",
+      "name": "Rust"
+    },
+    {
+      "key": "cs",
+      "name": "C#"
+    },
+    {
+      "key": "java",
+      "name": "Java"
+    },
+    {
+      "key": "web",
+      "name": "HTML"
+    },
+    {
+      "key": "jsp",
+      "name": "JSP"
+    },
+    {
+      "key": "flex",
+      "name": "Flex"
+    },
+    {
+      "key": "xml",
+      "name": "XML"
+    },
+    {
+      "key": "php",
+      "name": "PHP"
+    },
+    {
+      "key": "text",
+      "name": "Text"
+    },
+    {
+      "key": "secrets",
+      "name": "Secrets"
+    },
+    {
+      "key": "vbnet",
+      "name": "VB.NET"
+    }
+  ],
+  "facets": []
+}

@@ -1,0 +1,26 @@
+PASS Identical canonical seed and initial submitted prompt
+PASS OpenSpec: inherited Stage 3 source hashes remain unchanged
+PASS OpenSpec: latest native run completed
+PASS OpenSpec: native session/statistic sources present and readable
+PASS OpenSpec: raw XML and LCOV parse
+PASS OpenSpec: Compose and workflow YAML syntax (not execution)
+PASS Kiro: inherited Stage 3 source hashes remain unchanged
+PASS Kiro: latest native run completed
+PASS Kiro: native session/statistic sources present and readable
+PASS Kiro: raw XML and LCOV parse
+PASS Kiro: Compose and workflow YAML syntax (not execution)
+PASS Tessl: inherited Stage 3 source hashes remain unchanged
+PASS Tessl: latest native run completed
+PASS Tessl: native session/statistic sources present and readable
+PASS Tessl: raw XML and LCOV parse
+PASS Tessl: Compose and workflow YAML syntax (not execution)
+PASS Spec Kit: inherited Stage 3 source hashes remain unchanged
+PASS Spec Kit: latest native run completed
+PASS Spec Kit: native session/statistic sources present and readable
+PASS Spec Kit: raw XML and LCOV parse
+PASS Spec Kit: Compose and workflow YAML syntax (not execution)
+PASS Real localhost AMQP publish/consume in stage4_openspec (temporary queue only)
+PASS Real localhost AMQP publish/consume in stage4_kiro (temporary queue only)
+PASS Real localhost AMQP publish/consume in stage4_tessl (temporary queue only)
+PASS Real localhost AMQP publish/consume in stage4_speckit (temporary queue only)
+Artifact and infrastructure verification complete. No study metrics computed.

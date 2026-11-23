@@ -1,0 +1,19 @@
+# DEV / TEST / AUDIT dependency set for Stage 3 (Option A).
+#
+# Layered on top of the production runtime set; never installed into the
+# runtime container image. Security-remediated per Requirement 19:
+#
+#   - pytest 8.3.4 -> 9.0.3: clears PYSEC-2026-1845 (CVE-2025-71176);
+#     Python >=3.10.
+#   - httpx 0.28.1 preserved (no advisory; compatible with fastapi TestClient,
+#     which pins httpx<1.0.0,>=0.23.0).
+#   - pytest-cov 7.0.0: confirmed compatible with pytest 9 (pytest 8.3.4's
+#     pin of pytest-cov 6.0.0 declared pytest<9, so pytest-cov is bumped to
+#     the nearest compatible supported release rather than pinning pytest back).
+#   - pip-audit 2.10.1: the dependency audit tool.
+-r requirements.txt
+
+pytest==9.0.3
+httpx==0.28.1
+pytest-cov==7.0.0
+pip-audit==2.10.1

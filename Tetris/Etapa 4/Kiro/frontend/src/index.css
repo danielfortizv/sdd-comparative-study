@@ -1,0 +1,32 @@
+/* Minimal global reset (M2 layout fix, Req 15.*).
+ *
+ * Two structural facts caused the 1280x900 page-bounds overflow
+ * (document.scrollHeight 940 > 900):
+ *   1. The default 8px <body> margin added vertical space outside the app box.
+ *   2. The app root used `min-height: 100vh` under the default
+ *      `box-sizing: content-box`, so its 12px top/bottom padding was ADDED to
+ *      the 100vh min-height instead of being contained within it.
+ *
+ * This reset removes the body margin and switches every element to
+ * `box-sizing: border-box` so padding is included in the element height. With
+ * border-box, a `min-height: 100vh` root plus padding no longer overflows the
+ * viewport. This is a genuine box-model fix, NOT an `overflow: hidden` mask.
+ */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  /* The app paints its own dark background; keep the page background matched so
+   * there is no light gutter if content is shorter than the viewport. */
+  background: #0b1120;
+}

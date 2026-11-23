@@ -1,0 +1,67 @@
+# Docker Compose local runner (Stage 4, Option A).
+#
+# Adapted from the inherited Stage 3 Option A compose for Stage 4 ISOLATION:
+# distinct Compose project name and a distinct external frontend host port so a
+# Stage 4 run never collides with, or is mistaken for, a Stage 3 run. Only the
+# frontend is published, now on host port 5517 (mapped to the unchanged internal
+# frontend port 5183); the backend remains reachable only on the internal
+# network and runs exactly one worker. A named volume provides durable, writable
+# storage for the backend SQLite directory. Each service defines a health check.
+# The two services use distinct non-root users (backend: tetris; frontend: nginx).
+#
+# Stage 4 vs Stage 3 (do not mix): Stage 4 external URL is http://localhost:5517
+# (Stage 3 used host port 5183). Use this file's project name tetris-stage4-kiro;
+# do not reuse any Stage 3 command/port against Stage 4.
+#
+# Compose project name: tetris-stage4-kiro (set via `-p` or COMPOSE_PROJECT_NAME).
+
+name: tetris-stage4-kiro
+
+services:
+  backend:
+    build:
+      context: ./backend
+    environment:
+      TETRIS_DB_PATH: /data/high-scores.sqlite3
+      # Restrictive CORS: the frontend proxies same-origin /api, so no browser
+      # cross-origin call is required. Stage 4 allows only the explicit Stage 4
+      # proxy origins on host port 5517; override for custom origins if needed.
+      TETRIS_ALLOWED_ORIGINS: "http://localhost:5517,http://127.0.0.1:5517"
+    volumes:
+      - highscores-data:/data
+    networks:
+      - internal
+    # No ports published: backend stays internal to the Compose network.
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request,sys; sys.exit(0 if urllib.request.urlopen('http://127.0.0.1:8000/health').status==200 else 1)"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 10s
+    restart: unless-stopped
+
+  frontend:
+    build:
+      context: ./frontend
+    depends_on:
+      backend:
+        condition: service_healthy
+    # External Stage 4 host port 5517 -> unchanged internal frontend port 5183.
+    ports:
+      - "5517:5183"
+    networks:
+      - internal
+    healthcheck:
+      test: ["CMD", "wget", "-q", "-O", "/dev/null", "http://127.0.0.1:5183/"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 10s
+    restart: unless-stopped
+
+networks:
+  internal:
+    driver: bridge
+
+volumes:
+  highscores-data:

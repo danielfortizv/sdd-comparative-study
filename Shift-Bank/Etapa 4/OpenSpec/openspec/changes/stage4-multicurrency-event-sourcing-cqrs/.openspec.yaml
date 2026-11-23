@@ -1,0 +1,4 @@
+schema: spec-driven
+created: 2026-11-18
+goal: Specify a verifiable brownfield transition while preserving approved
+  financial, audit, and compatibility invariants

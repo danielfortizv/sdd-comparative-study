@@ -1,0 +1,26 @@
+# Python virtual environments and dependencies
+venv/
+.venv/
+
+# Caches and tests
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.pytest_cache/
+.coverage
+htmlcov/
+tests/
+
+# Local databases and locks
+*.sqlite3
+*.sqlite3-journal
+*.sqlite3-wal
+
+# Environment and secrets
+.env
+.env.*
+
+# OS files
+.DS_Store
+Thumbs.db

@@ -1,0 +1,51 @@
+name: tetris-stage3-tessl
+
+services:
+  tetris-stage3-tessl-backend:
+    container_name: tetris-stage3-tessl-backend
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    user: "10001:10001"
+    environment:
+      - TETRIS_DB_PATH=/app/data/high-scores.sqlite3
+    volumes:
+      - tetris-stage3-tessl-db-vol:/app/data
+    networks:
+      - tetris-stage3-tessl-net
+    expose:
+      - "8000"
+    healthcheck:
+      test: ["CMD-SHELL", "python -c 'import urllib.request; urllib.request.urlopen(\"http://localhost:8000/\")' || exit 1"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+      start_period: 5s
+
+  tetris-stage3-tessl-frontend:
+    container_name: tetris-stage3-tessl-frontend
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    user: "101:101"
+    ports:
+      - "5183:5183"
+    networks:
+      - tetris-stage3-tessl-net
+    depends_on:
+      tetris-stage3-tessl-backend:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD-SHELL", "wget --spider -q http://127.0.0.1:5183/ || exit 1"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+      start_period: 5s
+
+volumes:
+  tetris-stage3-tessl-db-vol:
+    name: tetris-stage3-tessl-db-vol
+
+networks:
+  tetris-stage3-tessl-net:
+    name: tetris-stage3-tessl-net

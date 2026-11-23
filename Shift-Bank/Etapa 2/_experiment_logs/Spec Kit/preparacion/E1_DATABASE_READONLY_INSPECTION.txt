@@ -1,0 +1,9 @@
+Stage 1 SQLite read-only inspection
+Date: 2026-11-14
+Path: Shift-Bank/Etapa 1/Spec Kit/backend/shift_bank.db
+Git-tracked: yes; `git diff --quiet HEAD -- <path>` returned 0 (unchanged).
+SHA-256: 2FCD0C707E161807AC2AE54752D821ED0A95E1082F61BB5EDB6E10921FD5038A
+Read-only query: SQLite URI mode=ro; SELECT table names, row counts, and records from accounts/transfers.
+Observed tables: accounts, transfers. Account rows: 2; Checking balance 4000000.00 COP; Savings balance 16000000.00 COP. Transfer rows: 5 (the two code-seeded history rows plus three additional runtime/history records, including EXPIRED and COMPLETED states).
+The code-defined fresh-database seed in backend/src/database.py is Checking 5000000.00 COP, Savings 15000000.00 COP, and two historical transfer rows. The tracked current database therefore contains mutated/historical state not reproduced by the fresh seed.
+Disposition: the mutable database was not copied to Stage 2. Stage 1 remains intact. Its current runtime state is retained in Stage 1 but is not reproduced in Stage 2; a human decision is required if Stage 2 is expected to migrate this state rather than start from the reproducible code seed. Stage 2 regression tests generated their own database under the Stage 2 project.

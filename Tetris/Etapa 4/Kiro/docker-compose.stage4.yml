@@ -1,0 +1,121 @@
+# Docker Compose local runner — ISOLATED Stage 4 stack (Option A).
+#
+# This is the clearly-named, standalone Stage 4 Compose file for task 19.1. It
+# is mirrored on the inherited Stage 3 structure (see docs/baseline/source/
+# docker-compose.yml — project tetris-stage3-kiro, host 5183) but is fully
+# ISOLATED from it: a distinct Compose project name and a distinct external
+# frontend host port so a Stage 4 run never collides with, mutates, or is
+# mistaken for a Stage 3 run.
+#
+# COHERENCE WITH THE CANONICAL FILE (task 34.1): this standalone file is kept
+# ALIGNED with the canonical docker-compose.yml at the repository root. Both use
+# the SAME Compose project (tetris-stage4-kiro), the SAME named volume
+# (highscores-data -> actual resource tetris-stage4-kiro_highscores-data, the
+# accepted solo SQLite volume verified in docs/final/docker/m3-native-01), and
+# the SAME network (internal). Running either file therefore reuses the one
+# accepted durable volume; neither file creates a new/foreign volume. The
+# canonical command is documented in backend/README.md.
+#
+# Isolation guarantees (Req 25.1–25.4):
+#   * Project name        : tetris-stage4-kiro   (Stage 3 uses tetris-stage3-kiro)
+#   * Published port       : ONLY the frontend, host 5517 -> internal 5183
+#                            (Stage 3 uses host 5183); the backend publishes NO
+#                            port and is reachable only on the internal network.
+#   * Network              : internal (distinct from any Stage 3 network; shared
+#                            with the canonical docker-compose.yml under the same
+#                            project, NOT with Stage 3)
+#   * Volume               : highscores-data (the accepted solo SQLite volume;
+#                            same resource as the canonical docker-compose.yml)
+#   * Non-root users       : backend runs as user "tetris", frontend as user
+#                            "nginx" — two DISTINCT non-root users, each created
+#                            in its own Dockerfile and pinned here explicitly.
+#   * Backend workers      : exactly one (--workers 1) so the single worker owns
+#                            both solo games and the in-memory duel rooms.
+#   * SQLite path          : TETRIS_DB_PATH resolves INSIDE the named volume
+#                            (/data on the highscores-data mount).
+#
+# This file NEVER starts, stops, modifies, or removes the inherited Stage 3
+# resources (project tetris-stage3-kiro, host 5183) or any other tool's
+# containers, volumes, or networks: it declares only its own Stage 4
+# (tetris-stage4-kiro) resources, shared with the canonical docker-compose.yml.
+#
+# Stage 4 vs Stage 3 (do not mix): the Stage 4 external URL is
+# http://localhost:5517. The canonical command (see backend/README.md) uses the
+# root docker-compose.yml with `-p tetris-stage4-kiro`; this aligned standalone
+# file can be used equivalently, e.g.:
+#   docker compose -f docker-compose.stage4.yml up --build
+# (the `name:` below sets the project to tetris-stage4-kiro automatically, so it
+# reuses the same accepted highscores-data volume and internal network).
+
+name: tetris-stage4-kiro
+
+services:
+  backend:
+    build:
+      context: ./backend
+    # Distinct non-root user A (created in backend/Dockerfile as a system user
+    # that owns /data). Pinned here so the non-root posture is explicit and
+    # verifiable at the Compose layer, not only inside the image.
+    user: tetris
+    environment:
+      # SQLite database file resolves INSIDE the named volume mounted at /data.
+      TETRIS_DB_PATH: /data/high-scores.sqlite3
+      # Restrictive CORS: the frontend proxies same-origin /api, so no browser
+      # cross-origin call is required. Stage 4 allows only the explicit Stage 4
+      # proxy origins on host port 5517; override for custom origins if needed.
+      TETRIS_ALLOWED_ORIGINS: "http://localhost:5517,http://127.0.0.1:5517"
+    volumes:
+      # Named volume -> backend SQLite directory. Durable, writable, and shared
+      # with the canonical docker-compose.yml (the accepted solo SQLite volume).
+      - highscores-data:/data
+    networks:
+      - internal
+    # Exactly ONE worker: the single worker owns both solo games and duel rooms
+    # (the in-memory solo store and the in-memory duel rooms are single-process).
+    command: ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000", "--workers", "1"]
+    # No ports published: the backend stays internal to the Stage 4 network.
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request,sys; sys.exit(0 if urllib.request.urlopen('http://127.0.0.1:8000/health').status==200 else 1)"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 10s
+    restart: unless-stopped
+
+  frontend:
+    build:
+      context: ./frontend
+    # Distinct non-root user B (the unprivileged "nginx" user shipped by
+    # nginx:alpine and used in frontend/Dockerfile). Distinct from user A above.
+    user: nginx
+    depends_on:
+      backend:
+        condition: service_healthy
+    # The ONLY published port in the Stage 4 stack: external host 5517 maps to
+    # the unchanged internal frontend port 5183 that the non-root nginx binds.
+    # nginx preserves the real Host/Origin (localhost:5517) through to /api and
+    # /ws/duel, so the backend sees the correct same-origin value; the internal
+    # listen port stays 5183 and the Stage 3 nginx (host 5183) is unaffected.
+    ports:
+      - "5517:5183"
+    networks:
+      - internal
+    healthcheck:
+      test: ["CMD", "wget", "-q", "-O", "/dev/null", "http://127.0.0.1:5183/"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 10s
+    restart: unless-stopped
+
+networks:
+  # Bridge network for the Stage 4 stack. Same name/resource as the canonical
+  # docker-compose.yml under project tetris-stage4-kiro; distinct from Stage 3.
+  internal:
+    driver: bridge
+
+volumes:
+  # The accepted solo SQLite volume (tetris-stage4-kiro_highscores-data). Same
+  # named volume as the canonical docker-compose.yml, so both files reuse the
+  # one accepted durable volume instead of creating a new/foreign volume.
+  highscores-data:

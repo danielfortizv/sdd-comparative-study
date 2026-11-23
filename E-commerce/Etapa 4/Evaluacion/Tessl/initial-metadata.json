@@ -1,0 +1,26 @@
+{
+  "runtime": {
+    "gateway_port": 18400,
+    "identity_port": 18401,
+    "commerce_port": 18402,
+    "reviews_port": 18403,
+    "frontend_port": 18500,
+    "amqp_url": "amqp://ecommerce:stage4-demo@127.0.0.1:5672/stage4_tessl",
+    "event_namespace": "stage4.tessl",
+    "broker_note": "Real RabbitMQ 3.12.1 in Ubuntu/WSL, exposed through an owned localhost-only TCP forwarder; real Windows publish/consume verified. Broker is shared, vhosts isolated: test outages by stopping only your own consumer/connection, not the global broker. Demo credentials only. Docker unavailable."
+  },
+  "prompt_sha256": "553ECEDC46B356989795D94B2E57D38CDC865165ED5D16D7FE6725B50AB6D937",
+  "stage": 4,
+  "completed_utc": "2026-11-07T09:39:57.6929452Z",
+  "model": "gemini-3.5-flash",
+  "wall_seconds": 1172.4777521,
+  "cli_version": "0.60.0",
+  "seed_sha256": "8BDC6F77CE23CA124B1013621855A405AFCD0E38259EDDF519971CCCA1AB5D26",
+  "tool": "Tessl",
+  "exit_code": 0,
+  "prompt_file": "initial-prompt.txt",
+  "mode": "yolo; single-run preauthorized local implementation",
+  "attempt": "initial",
+  "provider": "Vertex AI",
+  "started_utc": "2026-11-07T09:20:25.2176387Z"
+}

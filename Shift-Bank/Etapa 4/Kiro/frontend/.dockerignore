@@ -1,0 +1,31 @@
+# .dockerignore del frontend de Shift Bank (Etapa 3, Tarea 26).
+#
+# Objetivo: un contexto de build mínimo y SIN secretos ni material TLS. Las dependencias se
+# reinstalan dentro de la imagen con `npm ci` (a partir de package-lock.json), y los assets se
+# recompilan con `npm run build`; por eso se excluyen node_modules y dist locales. Los
+# certificados y los `.env` NUNCA entran en la imagen (R4.4, R12.5).
+
+# Dependencias y artefactos de build locales (se regeneran dentro de la imagen).
+node_modules/
+dist/
+*.tsbuildinfo
+
+# Secretos y configuración de entorno — nunca horneados; el default de la API es RELATIVO.
+.env
+.env.*
+!.env.example
+
+# Material TLS / certificados — provisionado externamente, montado en runtime (R4.4).
+*.pem
+*.key
+*.crt
+*.p12
+*.pfx
+certs/
+
+# Metadatos de VCS/editor y cachés.
+.git/
+.gitignore
+.dockerignore
+npm-debug.log*
+.DS_Store

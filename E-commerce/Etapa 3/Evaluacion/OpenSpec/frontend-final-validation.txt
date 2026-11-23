@@ -1,0 +1,43 @@
+
+> stage-1-ecommerce-frontend@1.0.0 test
+> vitest run --coverage
+
+
+ RUN  v1.6.1 C:/Users/jeron/OneDrive/Escritorio/uni/implementacion Ecommerce/Caso 3-Ecommerce/Etapa 3/OpenSpec/frontend
+      Coverage enabled with v8
+
+ ✓ src/components/FormInput.test.tsx  (3 tests) 450ms
+
+ Test Files  1 passed (1)
+      Tests  3 passed (3)
+   Start at  23:48:59
+   Duration  11.65s (transform 167ms, setup 1.55s, collect 242ms, tests 450ms, environment 6.34s, prepare 993ms)
+
+ % Coverage report from v8
+-------------------|---------|----------|---------|---------|-------------------
+File               | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s 
+-------------------|---------|----------|---------|---------|-------------------
+All files          |    2.73 |    29.16 |   11.11 |    2.73 |                   
+ frontend          |       0 |        0 |       0 |       0 |                   
+  ...ght.config.ts |       0 |        0 |       0 |       0 | 1-21              
+  ...css.config.js |       0 |        0 |       0 |       0 | 1-6               
+  ...ind.config.js |       0 |        0 |       0 |       0 | 1-11              
+ frontend/src      |       0 |        0 |       0 |       0 |                   
+  App.tsx          |       0 |        0 |       0 |       0 | 1-65              
+  main.tsx         |       0 |        0 |       0 |       0 | 1-10              
+ ...src/components |   17.33 |       70 |      50 |   17.33 |                   
+  FormInput.tsx    |     100 |     87.5 |     100 |     100 | 30                
+  Header.tsx       |       0 |        0 |       0 |       0 | 1-174             
+  ProductCard.tsx  |       0 |        0 |       0 |       0 | 1-93              
+ ...nd/src/context |       0 |        0 |       0 |       0 |                   
+  AuthContext.tsx  |       0 |        0 |       0 |       0 | 1-62              
+  CartContext.tsx  |       0 |        0 |       0 |       0 | 1-93              
+ ...tend/src/pages |       0 |        0 |       0 |       0 |                   
+  CartPage.tsx     |       0 |        0 |       0 |       0 | 1-145             
+  CatalogPage.tsx  |       0 |        0 |       0 |       0 | 1-101             
+  CheckoutPage.tsx |       0 |        0 |       0 |       0 | 1-100             
+  ...ationPage.tsx |       0 |        0 |       0 |       0 | 1-88              
+  LoginPage.tsx    |       0 |        0 |       0 |       0 | 1-221             
+  ...ationPage.tsx |       0 |        0 |       0 |       0 | 1-290             
+  ...etailPage.tsx |       0 |        0 |       0 |       0 | 1-513             
+-------------------|---------|----------|---------|---------|-------------------

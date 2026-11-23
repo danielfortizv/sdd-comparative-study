@@ -1,0 +1,11 @@
+{
+  "tool": "Tessl",
+  "host_pid": 30528,
+  "shell": "Windows PowerShell 5.1",
+  "frontend_http": 200,
+  "owned_ports_remaining": 0,
+  "gateway_http": 200,
+  "completed_utc": "2026-11-07T09:56:01.8213753Z",
+  "driver": "independent wrapper smoke; no application/test source changes",
+  "started_utc": "2026-11-07T09:55:48.3563328Z"
+}

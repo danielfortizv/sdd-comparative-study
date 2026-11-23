@@ -1,0 +1,269 @@
+ The rigorous, read-only consistency, semantic traceability, dependency, and coverage analysis across the approved
+  Stage 1 artifacts and .specify/memory/constitution.md has been completed.
+
+  Below is the structured report detailing the findings, severities, and remediation recommendations.
+
+  ---
+
+  Specification Analysis Report
+
+  1. Core Verification Findings
+
+  A. Semantic Mismatches in Requirement Mappings
+   - Task ID: T006
+     - Requirement ID: FR-011
+     - Type: Incorrect Mapping (HIGH Severity)
+     - Finding: T006 implements the backend in-memory store for user accounts, but incorrectly references FR-011 ("The
+       shopping cart MUST be managed locally by the application.").
+     - Correction: Map only to FR-024 (account creation) and FR-040 (academic secure data).
+   - Task ID: T007
+     - Requirement ID: FR-034
+     - Type: Incorrect Mapping (HIGH Severity)
+     - Finding: T007 implements secure password hashing, but incorrectly references FR-034 ("Registration MUST NOT cause
+       an unjustified loss of the active shopping cart.").
+     - Correction: Map only to FR-039 (no plaintext password storage) and FR-040 (academic secure data).
+   - Task ID: T037
+     - Requirement ID: FR-014
+     - Type: Incorrect Mapping (HIGH Severity)
+     - Finding: T037 performs the English language audit, but incorrectly references FR-014 ("The shopping cart MUST
+       clearly communicate product quantities.").
+     - Correction: Map to ATC-009 through ATC-013.
+
+  B. Requirements Coverage Gaps (Missing Task References)
+   - Task ID: N/A
+     - Requirement ID: FR-059
+     - Type: Omission (CRITICAL Severity)
+     - Finding: No task in tasks.md references or tests FR-059 ("Quantities MUST remain consistent when moving across
+       all views (catalog, cart, and simulated checkout).").
+     - Correction: Add FR-059 to T011 (automated tests), T016 (cart component implementation), and T038 (final
+       validation).
+   - Task ID: T034, T035, T036
+     - Requirement ID: FR-073 through FR-077
+     - Type: Omission / Obsolete Numbering (CRITICAL Severity)
+     - Finding: Due to the renumbering in our final corrected spec.md, the mapping in tasks.md became obsolete. T034
+       incorrectly references FR-068/FR-069 (empty states) instead of FR-073/FR-074 (UI usability/responsiveness). T035
+       incorrectly references FR-070/FR-071 (error states) instead of FR-075/FR-076 (understandable names, label
+       associations). T036 incorrectly references FR-072 (error messages details) instead of FR-077 (keyboard
+       navigation).
+     - Correction: Consistently map:
+       - T034 to FR-073 and FR-074.
+       - T035 to FR-075 and FR-076.
+       - T036 to FR-077.
+       - Map T017 to FR-068 through FR-071 to handle the actual empty and error states.
+
+  C. Missing User Story 4 Phase
+   - Task ID: Phase 6
+     - Requirement ID: N/A
+     - Type: Omission (MEDIUM Severity)
+     - Finding: tasks.md omits a dedicated phase for "User Story 4" from the spec (User Story 4 - Overall System
+       Behavior, Feedback, & Accessibility). It groups its tasks under the general Polish phase instead, losing
+       story-level testability.
+     - Correction: Explicitly structure Phase 6 as "Phase 6: User Story 4 - Overall System Behavior, Feedback, &
+       Accessibility", defining its goal and independent test criteria.
+
+  D. Unspecified Post-Registration Session Behavior Violation
+   - Task ID: US2 Independent Test Block
+     - Requirement ID: FR-022, FR-023
+     - Type: Scope Expansion (HIGH Severity)
+     - Finding: The independent-test statement in Phase 4 of tasks.md states: "verify session does not automatically
+       sign in (post-registration session status remains unspecified)". Requiring the verification that it does not sign
+       in violates the rule to leave post-registration session behavior unspecified.
+     - Correction: Remove "verify session does not automatically sign in" and rewrite to end the registration
+       verification strictly with successful account creation.
+
+  E. Optional Expanded Product View Turned Mandatory
+   - Task ID: T014
+     - Requirement ID: FR-009, FR-010
+     - Type: Scope Expansion (HIGH Severity)
+     - Finding: Including T014 as a standard task forces the optional expanded product view into mandatory scope.
+     - Correction: Label T014 as explicitly conditional or mock-only, stating that it must only be implemented if the
+       optional view is requested.
+
+  F. Missing Frontend Tasks for Sign-Out Control & Visible Session State
+   - Task ID: Phase 4 Tasks
+     - Requirement ID: FR-028, FR-029
+     - Type: Omission (MEDIUM Severity)
+     - Finding: While T023 creates the AuthContext state manager to support sign-out, there is no explicit frontend
+       component task to render the visible session status and the sign-out trigger button in the UI.
+     - Correction: Add an actionable frontend layout task (e.g., in T026 or as a new task) to add the session indicators
+       and sign-out controls.
+
+  G. Unsafe Parallel [P] Execution Claims & Main File Conflicts
+   - Task ID: T012, T020, T021, T022, T029
+     - Requirement ID: ATC-003, ATC-004
+     - Type: Dependency/Merge Conflict (HIGH Severity)
+     - Finding: T012 is marked parallel [P], but it modifies backend/src/main.py. Since T005, T020, T021, T022, and T029
+       also modify backend/src/main.py, they cannot safely run concurrently without git/file write collisions.
+     - Correction: Remove the [P] parallel marker from T012. Only mark tasks as parallel when they operate on completely
+       independent files. The actual safe [P] count is 20 instead of 21.
+
+  H. Misleading or Unapproved Concepts
+   - Task ID: T004, Phase 6 Description
+     - Requirement ID: ATC-008
+     - Type: Terminology Drift (LOW Severity)
+     - Finding: T004 uses the word "database" for the static JSON file, which is misleading. Phase 6 intro refers to
+       "translations" which implies multi-lingual localization (unapproved).
+     - Correction: Replace "JSON catalog database file" with "JSON catalog static data file" and remove any reference to
+       "translations".
+
+  I. Automated Testing Metrics & Coverage Execution Task
+   - Task ID: N/A
+     - Requirement ID: ATC-007
+     - Type: Omission (MEDIUM Severity)
+     - Finding: There is no task in tasks.md to run test coverage (using pytest or Jest coverage utilities) and output
+       or preserve the coverage metric.
+     - Correction: Add a task under Phase 6 (Polish) to run test coverage on the frontend and backend components and
+       verify that results are logged/preserved, without importing any external test catalogs.
+
+  ---
+
+  2. Comprehensive Finding Analysis Table
+
+  ┌────┬───────────────┬──────────┬──────────────┬───────────────────────────────┬─────────────────────────────────┐
+  │ ID │ Category      │ Severity │ Location(s)  │ Summary                       │ Recommendation                  │
+  ├────┼───────────────┼──────────┼──────────────┼───────────────────────────────┼─────────────────────────────────┤
+  │ C1 │ Coverage Gaps │ CRITICAL │ tasks.md     │ FR-059 has zero task          │ Add FR-059 to T011, T016, and   │
+  │    │               │          │              │ coverage.                     │ T038.                           │
+  │ C2 │ Coverage Gaps │ CRITICAL │ tasks.md     │ FR-073 to FR-077 have no      │ Remap T034 (to FR-073, FR-074), │
+  │    │               │          │              │ actual task mappings due to   │ T035 (to FR-075, FR-076), T036  │
+  │    │               │          │              │ numbering out-of-sync.        │ (to FR-077), and map T017 to    │
+  │    │               │          │              │                               │ FR-068 to FR-071.               │
+  │ I1 │ Inconsistency │ HIGH     │ tasks.md     │ Mismatched functional         │ Correct the references to align │
+  │    │               │          │ (T006, T007, │ requirements references (e.g. │ with final renumbered           │
+  │    │               │          │ T037)        │ FR-014 used for English and   │ requirements.                   │
+  │    │               │          │              │ Cart quantities).             │                                 │
+  │ S1 │ Scope         │ HIGH     │ tasks.md     │ Independent test requires     │ Rewrite US2 test block to end   │
+  │    │ Expansion     │          │ (US2 test    │ post-registration session not │ strictly with successful        │
+  │    │               │          │ block)       │ to login (should be           │ account creation.               │
+  │    │               │          │              │ unspecified).                 │                                 │
+  │ S2 │ Scope         │ HIGH     │ tasks.md     │ Forces optional product       │ Mark T014 explicitly as         │
+  │    │ Expansion     │          │ (T014)       │ expanded view into mandatory  │ optional/conditional.           │
+  │    │               │          │              │ scope.                        │                                 │
+  │ D1 │ Dependency    │ HIGH     │ tasks.md     │ Unsafe [P] parallel marker on │ Remove [P] from T012. Correct   │
+  │    │               │          │ (T012)       │ task modifying                │ the parallel count.             │
+  │    │               │          │              │ backend/src/main.py.          │                                 │
+  │ O1 │ Omission      │ MEDIUM   │ tasks.md     │ US4 has no identifiable and   │ Structure Phase 6 explicitly as │
+  │    │               │          │ (Phase 6)    │ testable phase block.         │ "Phase 6: User Story 4".        │
+  │ O2 │ Omission      │ MEDIUM   │ tasks.md     │ No actionable frontend task   │ Add a task in Phase 4 to        │
+  │    │               │          │ (Phase 4)    │ for visible sign-out and      │ implement sign-out controls and │
+  │    │               │          │              │ session indicators.           │ active session header fields.   │
+  │ O3 │ Omission      │ MEDIUM   │ tasks.md     │ No task to run and preserve   │ Add an explicit coverage task   │
+  │    │               │          │ (Phase 6)    │ automated test coverage       │ in Polish.                      │
+  │    │               │          │              │ metrics.                      │                                 │
+  │ T1 │ Terminology   │ LOW      │ tasks.md     │ Uses "database" for JSON      │ Standardize on "JSON static     │
+  │    │               │          │ (T004, Phase │ file; mentions unapproved     │ file" and "English-only         │
+  │    │               │          │ 6)           │ "translations".               │ validation".                    │
+  └────┴───────────────┴──────────┴──────────────┴───────────────────────────────┴─────────────────────────────────┘
+   - Total Requirements: 77 Functional Requirements (FR) + 13 Architecture Constraints (ATC) = 90 Total.
+   - Total Tasks: 38 Tasks.
+   - Coverage %: 92.2% (83 / 90 requirements covered directly; remaining 7 are currently omitted or incorrectly mapped).
+   - Ambiguity Count: 0.
+   - Duplication Count: 0.
+   - Critical Issues Count: 2.
+
+  ---
+
+  4. Next Actions
+
+  I recommend resolving the identified CRITICAL and HIGH severity mapping, coverage, and parallel-safety issues before
+  proceeding to implementation.
+
+  Suggested Command:
+  You should run /speckit.tasks to regenerate and adjust tasks.md to restore strict, renumbered, and parallel-safe
+  synchronization.
+
+  ---
+
+  5. Approval Recommendation
+
+  Status: REJECTED WITH COMMENTS
+
+  The technical plan and data models are excellent and highly seed-faithful. However, tasks.md is currently out-of-sync
+  with the renumbered requirements of spec.md (resulting in coverage omissions), contains unsafe parallelization
+  assumptions on backend/src/main.py, and prescribes post-registration validation rules that violate the specification.
+
+  Regenerating the task list will fully resolve these gaps and align the workflow for clean execution.
+▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄
+ > /stats
+▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀
+╭──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
+│                                                                                                                      │
+│  Session Stats                                                                                                       │
+│                                                                                                                      │
+│  Interaction Summary                                                                                                 │
+│  Session ID:                 1bc711ec-5417-4546-a723-352e97ba5333                                                    │
+│  Auth Method:                vertex-ai                                                                               │
+│  Tool Calls:                 75 ( ✓ 75 x 0 )                                                                         │
+│  Success Rate:               100.0%                                                                                  │
+│  User Agreement:             100.0% (75 reviewed)                                                                    │
+│  Code Changes:               +2458 -1633                                                                             │
+│                                                                                                                      │
+│  Performance                                                                                                         │
+│  Wall Time:                  21h 6m 3s                                                                               │
+│  Agent Active:               19h 48m 27s                                                                             │
+│    » API Time:               16m 46s (1.4%)                                                                          │
+│    » Tool Time:              19h 31m 40s (98.6%)                                                                     │
+│                                                                                                                      │
+│                                                                                                                      │
+│  Model Usage                                                                                                         │
+│  Use /model to view model quota information                                                                          │
+│                                                                                                                      │
+│  Model                           Reqs  Input Tokens   Cache Reads Output Tokens                                      │
+│  ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────  │
+│  gemini-3.5-flash                  85     8.004.095     6.651.673        54.155                                      │
+│    ↳ main                          85     8.004.095     6.651.673        54.155                                      │
+╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄
+ > /stats model
+▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀
+╭──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
+│                                                                                                                      │
+│  Model Stats For Nerds                                                                                               │
+│                                                                                                                      │
+│  Auth Method:                vertex-ai                                                                               │
+│                                                                                                                      │
+│  Metric                      gemini-3.5-flash                                                                        │
+│  ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────  │
+│  API                                                                                                                 │
+│  Requests                    85                                                                                      │
+│  Errors                      1 (1.2%)                                                                                │
+│  Avg Latency                 11.8s                                                                                   │
+│  Tokens                                                                                                              │
+│  Total                       8.115.042                                                                               │
+│    ↳ Input                   1.352.422                                                                               │
+│    ↳ Cache Reads             6.651.673 (83.1%)                                                                       │
+│    ↳ Thoughts                56.792                                                                                  │
+│    ↳ Output                  54.155                                                                                  │
+│  Roles                                                                                                               │
+│  main                                                                                                                │
+│    ↳ Requests                85                                                                                      │
+│    ↳ Input                   1.352.422                                                                               │
+│    ↳ Output                  54.155                                                                                  │
+│    ↳ Cache Reads             6.651.673                                                                               │
+╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄
+ > /stats tools
+▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀
+╭────────────────────────────────────────────────────────────────────╮
+│                                                                    │
+│  Tool Stats For Nerds                                              │
+│                                                                    │
+│  Tool Name                   Calls   Success Rate   Avg Duration   │
+│  ────────────────────────────────────────────────────────────────  │
+│  update_topic                   21         100.0%            2ms   │
+│  glob                            2         100.0%           26ms   │
+│  read_file                      10         100.0%           53ms   │
+│  list_directory                  2         100.0%           21ms   │
+│  write_file                     32         100.0%           39ms   │
+│  exit_plan_mode                  1         100.0%          50.1s   │
+│  run_shell_command               3         100.0%     6h 30m 15s   │
+│  grep_search                     4         100.0%          104ms   │
+│                                                                    │
+│  User Decision Summary                                             │
+│  Total Reviewed Suggestions:                                  73   │
+│   » Accepted:                                                 73   │
+│   » Rejected:                                                  0   │
+│   » Modified:                                                  0   │
+│  ────────────────────────────────────────────────────────────────  │
+│   Overall Agreement Rate:                                 100.0%   │
+╰────────────────────────────────────────────────────────────────────╯

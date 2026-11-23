@@ -1,0 +1,100 @@
+version: '3.8'
+
+services:
+  rabbitmq:
+    image: rabbitmq:3-management-alpine
+    container_name: stage4-rabbitmq
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    environment:
+      - RABBITMQ_DEFAULT_USER=ecommerce
+      - RABBITMQ_DEFAULT_PASS=stage4-demo
+      - RABBITMQ_DEFAULT_VHOST=stage4_openspec
+    networks:
+      - stage4-network
+
+  identity:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: stage4-identity
+    ports:
+      - "18001:18001"
+    command: ["uvicorn", "app.identity.main:app", "--host", "0.0.0.0", "--port", "18001"]
+    environment:
+      - PYTHONUNBUFFERED=1
+    networks:
+      - stage4-network
+
+  commerce:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: stage4-commerce
+    ports:
+      - "18002:18002"
+    command: ["uvicorn", "app.commerce.main:app", "--host", "0.0.0.0", "--port", "18002"]
+    environment:
+      - PYTHONUNBUFFERED=1
+      - AMQP_URL=amqp://ecommerce:stage4-demo@rabbitmq:5672/stage4_openspec
+      - EVENT_NAMESPACE=stage4.openspec
+    depends_on:
+      - rabbitmq
+    networks:
+      - stage4-network
+
+  reviews:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: stage4-reviews
+    ports:
+      - "18003:18003"
+    command: ["uvicorn", "app.reviews.main:app", "--host", "0.0.0.0", "--port", "18003"]
+    environment:
+      - PYTHONUNBUFFERED=1
+      - AMQP_URL=amqp://ecommerce:stage4-demo@rabbitmq:5672/stage4_openspec
+      - EVENT_NAMESPACE=stage4.openspec
+    depends_on:
+      - rabbitmq
+    networks:
+      - stage4-network
+
+  gateway:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: stage4-gateway
+    ports:
+      - "18000:18000"
+    command: ["uvicorn", "app.gateway.main:app", "--host", "0.0.0.0", "--port", "18000"]
+    environment:
+      - PYTHONUNBUFFERED=1
+      - IDENTITY_SERVICE_URL=http://identity:18001
+      - COMMERCE_SERVICE_URL=http://commerce:18002
+      - REVIEWS_SERVICE_URL=http://reviews:18003
+    depends_on:
+      - identity
+      - commerce
+      - reviews
+    networks:
+      - stage4-network
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+      args:
+        - VITE_API_URL=http://localhost:18000
+    container_name: stage4-frontend
+    ports:
+      - "18100:80"
+    depends_on:
+      - gateway
+    networks:
+      - stage4-network
+
+networks:
+  stage4-network:
+    driver: bridge

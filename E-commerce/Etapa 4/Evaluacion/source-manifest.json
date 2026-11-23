@@ -1,0 +1,632 @@
+{
+  "collected_utc": "2026-11-07T10:15:24.379354+00:00",
+  "stage": 4,
+  "scope": "Option A: independent services and real RabbitMQ moderation events",
+  "notes": [
+    "No cost, quality, coverage percentage or interaction metrics calculated.",
+    "Native raw sessions and console outputs may overlap; ZIP and uncompressed Kiro events are duplicates, not separate usage.",
+    "Interrupted sessions can lack final console statistics. Missing telemetry is unavailable, not zero.",
+    "Gemini auxiliary model roles must remain separate from the fixed main model.",
+    "Follow-up prompts preserve operational recovery and corrections; inspect all attempts.",
+    "Local WSL RabbitMQ provisioning and TCP forwarding were driver work, outside tool application generation.",
+    "Docker and remote CI execution are not claimed; consult raw native logs and validation records."
+  ],
+  "sources": [
+    {
+      "path": "Evaluacion/SEED-4.md",
+      "tool": null,
+      "role": "common-seed",
+      "bytes": 4840,
+      "sha256": "8bdc6f77ce23ca124b1013621855a405afcd0e38259eddf519971ccca1ab5d26"
+    },
+    {
+      "path": "Evaluacion/broker-runtime-metadata.json",
+      "tool": null,
+      "role": "driver-infrastructure",
+      "bytes": 646,
+      "sha256": "f7937b487809a86cc321ee9ce719a5e3ebacc46abca3779182583e85e38efc2e"
+    },
+    {
+      "path": "Evaluacion/driver-interventions.md",
+      "tool": null,
+      "role": "driver-provenance",
+      "bytes": 5717,
+      "sha256": "60e9b4911efcac46819107fe20a554139008648ead5d60b0bd154e71649f5d88"
+    },
+    {
+      "path": "Evaluacion/driver-scheduling.jsonl",
+      "tool": null,
+      "role": "driver-scheduling-events",
+      "bytes": 361,
+      "sha256": "5c1dfd05868fd20ccec12e8c7d4acc418e640cbbf7e1dd355d590ab5330ad761"
+    },
+    {
+      "path": "Evaluacion/driver-final-validation-metadata.json",
+      "tool": null,
+      "role": "independent-artifact-infrastructure-validation",
+      "bytes": 3836,
+      "sha256": "f4c177404f08d9bee0882e7ee11c042cc798d175f27421f2f6df9f1a4a75a5a3"
+    },
+    {
+      "path": "Evaluacion/driver-final-validation.txt",
+      "tool": null,
+      "role": "independent-validation-output",
+      "bytes": 1564,
+      "sha256": "4de26324101481a9f5c78b09df4b439b21e3de028b523ca3dca058aedb7c660d"
+    },
+    {
+      "path": "Evaluacion/OpenSpec/ci-metadata.json",
+      "tool": "OpenSpec",
+      "role": "run-provenance",
+      "bytes": 1178,
+      "sha256": "52df7b3e531e33d8f8aa319f1b88e962696e820f22d9681e8bc94e21ae8d5d87"
+    },
+    {
+      "path": "Evaluacion/OpenSpec/ci-prompt.txt",
+      "tool": "OpenSpec",
+      "role": "submitted-prompt",
+      "bytes": 1308,
+      "sha256": "5caba73ac4e1164038eb8590a22c8ad09b13e47c89b9d7c698b9c6b0f992ba2b"
+    },
+    {
+      "path": "Evaluacion/OpenSpec/ci-run.json",
+      "tool": "OpenSpec",
+      "role": "raw-console-statistics-and-response",
+      "bytes": 4783,
+      "sha256": "09f65d95229f24ea1b305143d271294d32c613499cb50d04970238ed5f3dd9a5"
+    },
+    {
+      "path": "Evaluacion/OpenSpec/ci-stderr.txt",
+      "tool": "OpenSpec",
+      "role": "raw-console-errors",
+      "bytes": 485,
+      "sha256": "37741c9844ab0bac7dc5f5c03d5ed8d83e2af14bc6ee5fe78c02ee19a4d0e123"
+    },
+    {
+      "path": "Evaluacion/OpenSpec/complete-metadata.json",
+      "tool": "OpenSpec",
+      "role": "run-provenance",
+      "bytes": 1192,
+      "sha256": "c16cc156135c26346002e760f681db171c4a23657a60f17e8a073c3f7126690c"
+    },
+    {
+      "path": "Evaluacion/OpenSpec/complete-prompt.txt",
+      "tool": "OpenSpec",
+      "role": "submitted-prompt",
+      "bytes": 2754,
+      "sha256": "06a53ef5f138c6ce41d7333aeed5eb13e88bebfa2bef771c22c2e6c7353956cb"
+    },
+    {
+      "path": "Evaluacion/OpenSpec/complete-run.json",
+      "tool": "OpenSpec",
+      "role": "raw-console-statistics-and-response",
+      "bytes": 9776,
+      "sha256": "01f28a61687a99d944220640761a329f9af5301ce6533161e24e5acaa625d02b"
+    },
+    {
+      "path": "Evaluacion/OpenSpec/complete-stderr.txt",
+      "tool": "OpenSpec",
+      "role": "raw-console-errors",
+      "bytes": 485,
+      "sha256": "37741c9844ab0bac7dc5f5c03d5ed8d83e2af14bc6ee5fe78c02ee19a4d0e123"
+    },
+    {
+      "path": "Evaluacion/OpenSpec/driver-wrapper-start.err.log",
+      "tool": "OpenSpec",
+      "role": "raw-console-statistics-and-response",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "Evaluacion/OpenSpec/driver-wrapper-start.out.log",
+      "tool": "OpenSpec",
+      "role": "raw-console-statistics-and-response",
+      "bytes": 2053,
+      "sha256": "0e67f736607b300f311f16432b6d3847f57d4b7ea8a2d4ac4e18340337c660aa"
+    },
+    {
+      "path": "Evaluacion/OpenSpec/driver-wrapper-validation-metadata.json",
+      "tool": "OpenSpec",
+      "role": "run-provenance",
+      "bytes": 348,
+      "sha256": "a10a772984f7414066038cb5d7ecad9e45c6cd79244f43cd954a80e3dea37041"
+    },
+    {
+      "path": "Evaluacion/OpenSpec/initial-metadata.json",
+      "tool": "OpenSpec",
+      "role": "run-provenance",
+      "bytes": 1021,
+      "sha256": "41b2fe09737446747288c25fc3415dee6d706556789d912fef400818aa16c3f7"
+    },
+    {
+      "path": "Evaluacion/OpenSpec/initial-prompt.txt",
+      "tool": "OpenSpec",
+      "role": "submitted-prompt",
+      "bytes": 2070,
+      "sha256": "553ecedc46b356989795d94b2e57d38cdc865165ed5d16d7fe6725b50ab6d937"
+    },
+    {
+      "path": "Evaluacion/OpenSpec/initial-run.json",
+      "tool": "OpenSpec",
+      "role": "raw-console-statistics-and-response",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "Evaluacion/OpenSpec/initial-stderr.txt",
+      "tool": "OpenSpec",
+      "role": "raw-console-errors",
+      "bytes": 3228,
+      "sha256": "afa93a6a5ded337d3fe3798a16428139669d90bde6a6f56505de4695f363b6fd"
+    },
+    {
+      "path": "Evaluacion/OpenSpec/reliability-metadata.json",
+      "tool": "OpenSpec",
+      "role": "run-provenance",
+      "bytes": 1198,
+      "sha256": "210d879918cbf9a086ed14302d50472f4319adfa9ff93f56054d268b602aa8f9"
+    },
+    {
+      "path": "Evaluacion/OpenSpec/reliability-prompt.txt",
+      "tool": "OpenSpec",
+      "role": "submitted-prompt",
+      "bytes": 3129,
+      "sha256": "a91513b2403304aec7f1a7ab7dde78576eb8b84bb6671d8ee28f04f6d50824b7"
+    },
+    {
+      "path": "Evaluacion/OpenSpec/reliability-run.json",
+      "tool": "OpenSpec",
+      "role": "raw-console-statistics-and-response",
+      "bytes": 9151,
+      "sha256": "55daf7929bd62465e0703900bfd2828b7b5c2d76c95eb86244cb2100ac327efc"
+    },
+    {
+      "path": "Evaluacion/OpenSpec/reliability-stderr.txt",
+      "tool": "OpenSpec",
+      "role": "raw-console-errors",
+      "bytes": 605,
+      "sha256": "7ce3dce559e4bb413b5cfb22b75979b930432af1f4a3d042a025694644ef9881"
+    },
+    {
+      "path": "Evaluacion/OpenSpec/sessions/ci/session-2026-11-07T09-36-1ad28b13.jsonl",
+      "tool": "OpenSpec",
+      "role": "native-session-events",
+      "bytes": 435164,
+      "sha256": "2a7175955a538ca1173fedd634564abc7b9e017beea3ec64923e193b90c9f866"
+    },
+    {
+      "path": "Evaluacion/OpenSpec/sessions/complete/session-2026-11-07T09-08-d1a086a2.jsonl",
+      "tool": "OpenSpec",
+      "role": "native-session-events",
+      "bytes": 2382428,
+      "sha256": "2d1c44b70834f28ec71b422ec811e49d602a3eebc2b9ff628afbd5c77a859a13"
+    },
+    {
+      "path": "Evaluacion/OpenSpec/sessions/initial/session-2026-11-07T08-53-2f0e000a.jsonl",
+      "tool": "OpenSpec",
+      "role": "native-session-events",
+      "bytes": 1251440,
+      "sha256": "6d9892340f53023463359700671585e52c08cb2dbc8e2aa0b758ea1924c58d03"
+    },
+    {
+      "path": "Evaluacion/OpenSpec/sessions/reliability/session-2026-11-07T09-19-c75c1d33.jsonl",
+      "tool": "OpenSpec",
+      "role": "native-session-events",
+      "bytes": 2403637,
+      "sha256": "fb8030517db3c16c85559e436c10f7ef1eae6081c3c087b6d3f9fe9aa58f883b"
+    },
+    {
+      "path": "Evaluacion/OpenSpec/starting-snapshot.json",
+      "tool": "OpenSpec",
+      "role": "inherited-source-hashes",
+      "bytes": 12412,
+      "sha256": "da7a7d0b01ed9e282e2604cd642fe56c02ca4a80c4d7ba68f316b11c3c334c3d"
+    },
+    {
+      "path": "OpenSpec/backend/coverage.xml",
+      "tool": "OpenSpec",
+      "role": "raw-coverage",
+      "bytes": 42006,
+      "sha256": "993389f24517bb5c32b1131a05d2c8273347bd76f671d5715720a100c1d92b9e"
+    },
+    {
+      "path": "OpenSpec/frontend/coverage/lcov.info",
+      "tool": "OpenSpec",
+      "role": "raw-coverage",
+      "bytes": 19525,
+      "sha256": "1f9e99668c09fe0d2685eaf4f5c4830bfb63aa35383b71a1f46db1b9731585d1"
+    },
+    {
+      "path": "Evaluacion/Kiro/driver-wrapper-start.err.log",
+      "tool": "Kiro",
+      "role": "raw-console-statistics-and-response",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "Evaluacion/Kiro/driver-wrapper-start.out.log",
+      "tool": "Kiro",
+      "role": "raw-console-statistics-and-response",
+      "bytes": 1153,
+      "sha256": "8aa7566522d5e1d46067b040461ce03650ee7efea594a2dbe70a914f702441be"
+    },
+    {
+      "path": "Evaluacion/Kiro/driver-wrapper-validation-metadata.json",
+      "tool": "Kiro",
+      "role": "run-provenance",
+      "bytes": 344,
+      "sha256": "9a3ad765a329c33f8b2bceb7966971876a3a9d2e6fa4b878a7e133423b780e52"
+    },
+    {
+      "path": "Evaluacion/Kiro/initial-metadata.json",
+      "tool": "Kiro",
+      "role": "run-provenance",
+      "bytes": 955,
+      "sha256": "aebea3fac9d75f8b1d99b9ac65a7e3d82d9fde6646dbac6ab0a81cc4a4d3e53d"
+    },
+    {
+      "path": "Evaluacion/Kiro/initial-prompt.txt",
+      "tool": "Kiro",
+      "role": "submitted-prompt",
+      "bytes": 2070,
+      "sha256": "553ecedc46b356989795d94b2e57d38cdc865165ed5d16d7fe6725b50ab6d937"
+    },
+    {
+      "path": "Evaluacion/Kiro/initial-session.zip",
+      "tool": "Kiro",
+      "role": "kiro-session-archive",
+      "bytes": 289599,
+      "sha256": "5b9c046bf0f6afb64cdcccf24131500eae993a0fce40bdbe3b120d1ff5bca95c"
+    },
+    {
+      "path": "Evaluacion/Kiro/initial-stats-raw.json",
+      "tool": "Kiro",
+      "role": "raw-console-statistics-and-response",
+      "bytes": 261,
+      "sha256": "8c2aca2bc15bd6ee04c866cbd9a4c873abe15b3b0d09c02c0c5a5ec390ce78e0"
+    },
+    {
+      "path": "Evaluacion/Kiro/initial-stderr.txt",
+      "tool": "Kiro",
+      "role": "raw-console-errors",
+      "bytes": 70,
+      "sha256": "e571484c917e2549b3b7a4b2c8d678885a3782f80ccee5b1cc565fa7c36a5f8a"
+    },
+    {
+      "path": "Evaluacion/Kiro/initial-stream.jsonl",
+      "tool": "Kiro",
+      "role": "native-session-events",
+      "bytes": 3653424,
+      "sha256": "7d9d980f549777807a6a6b8961b424135ed09470380dd36d188dd72efe2d84ab"
+    },
+    {
+      "path": "Evaluacion/Kiro/launcher-metadata.json",
+      "tool": "Kiro",
+      "role": "run-provenance",
+      "bytes": 1127,
+      "sha256": "ef1635ac635633fc78c321cd9ae954647e1b7a8bd4d77179c9e84ff863af75a3"
+    },
+    {
+      "path": "Evaluacion/Kiro/launcher-prompt.txt",
+      "tool": "Kiro",
+      "role": "submitted-prompt",
+      "bytes": 2269,
+      "sha256": "a0c489943c1e6c4639b7df6eeb225682e7558e450de7f59011f0cd23b6107ed1"
+    },
+    {
+      "path": "Evaluacion/Kiro/launcher-session.zip",
+      "tool": "Kiro",
+      "role": "kiro-session-archive",
+      "bytes": 83245,
+      "sha256": "9d36f6e4b1c54014677c155882c3820bce46219a8e53ddbb0a747f86c6eec817"
+    },
+    {
+      "path": "Evaluacion/Kiro/launcher-stats-raw.json",
+      "tool": "Kiro",
+      "role": "raw-console-statistics-and-response",
+      "bytes": 261,
+      "sha256": "6353334d8a5881e2767a745a43342044ccc0cd89210cd25346ed8ce805404b27"
+    },
+    {
+      "path": "Evaluacion/Kiro/launcher-stderr.txt",
+      "tool": "Kiro",
+      "role": "raw-console-errors",
+      "bytes": 70,
+      "sha256": "e571484c917e2549b3b7a4b2c8d678885a3782f80ccee5b1cc565fa7c36a5f8a"
+    },
+    {
+      "path": "Evaluacion/Kiro/launcher-stream.jsonl",
+      "tool": "Kiro",
+      "role": "native-session-events",
+      "bytes": 1033428,
+      "sha256": "f85b6d4db45c05f86a3d7e3277b61f7b45a9e65793c8d302fff471a495c5be6b"
+    },
+    {
+      "path": "Evaluacion/Kiro/packaging-metadata.json",
+      "tool": "Kiro",
+      "role": "run-provenance",
+      "bytes": 1129,
+      "sha256": "3e387e1693e15b7182a484903e6ee1098a01f2cd41ecad1e0210dd5e0bb0329b"
+    },
+    {
+      "path": "Evaluacion/Kiro/packaging-prompt.txt",
+      "tool": "Kiro",
+      "role": "submitted-prompt",
+      "bytes": 1282,
+      "sha256": "6390d7aad6b5ce1b138b9f491da42bccfe4ecbbd16421d4124026bb20181c4f1"
+    },
+    {
+      "path": "Evaluacion/Kiro/packaging-session.zip",
+      "tool": "Kiro",
+      "role": "kiro-session-archive",
+      "bytes": 42589,
+      "sha256": "133684b23e161a07c622da4a10d3af8825c21509cf8aaab33c72beaeaaea4d40"
+    },
+    {
+      "path": "Evaluacion/Kiro/packaging-stats-raw.json",
+      "tool": "Kiro",
+      "role": "raw-console-statistics-and-response",
+      "bytes": 262,
+      "sha256": "8d2fb3f8f9be461238638291d5934ee8dd28323dfbebee94b0f932446b467ab9"
+    },
+    {
+      "path": "Evaluacion/Kiro/packaging-stderr.txt",
+      "tool": "Kiro",
+      "role": "raw-console-errors",
+      "bytes": 71,
+      "sha256": "a58a130eebbe123025e2eda52837fc9e773a065c504fc9cefb1f23a7b6d6cf93"
+    },
+    {
+      "path": "Evaluacion/Kiro/packaging-stream.jsonl",
+      "tool": "Kiro",
+      "role": "native-session-events",
+      "bytes": 430792,
+      "sha256": "c682eb81dc4fa62e8eceb968ad9bcfe6af16689f15fa63119f15c31ba52fa236"
+    },
+    {
+      "path": "Evaluacion/Kiro/starting-snapshot.json",
+      "tool": "Kiro",
+      "role": "inherited-source-hashes",
+      "bytes": 22215,
+      "sha256": "65b98f85c46c33dcfb5a7e69197d486bf2d18e9873a26f8576ac1f08b3ad6337"
+    },
+    {
+      "path": "Kiro/coverage.xml",
+      "tool": "Kiro",
+      "role": "raw-coverage",
+      "bytes": 70630,
+      "sha256": "ae682dbc6e8e022a5dfce26d15582d69b97a81e95eb0bebf55161d66c95aa003"
+    },
+    {
+      "path": "Kiro/frontend/coverage/lcov.info",
+      "tool": "Kiro",
+      "role": "raw-coverage",
+      "bytes": 11618,
+      "sha256": "ba6dc18bcde1a054f58dee464365d8c1d975c0db9212ea60870e42c9f67517f7"
+    },
+    {
+      "path": "Evaluacion/Tessl/driver-wrapper-start.err.log",
+      "tool": "Tessl",
+      "role": "raw-console-statistics-and-response",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "Evaluacion/Tessl/driver-wrapper-start.out.log",
+      "tool": "Tessl",
+      "role": "raw-console-statistics-and-response",
+      "bytes": 1318,
+      "sha256": "dfeb7acabb93f5596dcdecbb2a267d21c27cba88078bec0d1b0b9c36679e3e0b"
+    },
+    {
+      "path": "Evaluacion/Tessl/driver-wrapper-validation-metadata.json",
+      "tool": "Tessl",
+      "role": "run-provenance",
+      "bytes": 345,
+      "sha256": "20c4c1412e9cd09f195289521596c1d5ef8fe733b04da805013e2560a3eb96e1"
+    },
+    {
+      "path": "Evaluacion/Tessl/initial-metadata.json",
+      "tool": "Tessl",
+      "role": "run-provenance",
+      "bytes": 1182,
+      "sha256": "632d37436378f8a807ca5758f6e2177cb034d7dc52e1f8fd9e2f883efb363d7f"
+    },
+    {
+      "path": "Evaluacion/Tessl/initial-prompt.txt",
+      "tool": "Tessl",
+      "role": "submitted-prompt",
+      "bytes": 2070,
+      "sha256": "553ecedc46b356989795d94b2e57d38cdc865165ed5d16d7fe6725b50ab6d937"
+    },
+    {
+      "path": "Evaluacion/Tessl/initial-run.json",
+      "tool": "Tessl",
+      "role": "raw-console-statistics-and-response",
+      "bytes": 7114,
+      "sha256": "2ed31841ba4ec8e11d95cf4204cc849ad951c941af090152d7d34207a4d39dd4"
+    },
+    {
+      "path": "Evaluacion/Tessl/initial-stderr.txt",
+      "tool": "Tessl",
+      "role": "raw-console-errors",
+      "bytes": 485,
+      "sha256": "37741c9844ab0bac7dc5f5c03d5ed8d83e2af14bc6ee5fe78c02ee19a4d0e123"
+    },
+    {
+      "path": "Evaluacion/Tessl/reliability-metadata.json",
+      "tool": "Tessl",
+      "role": "run-provenance",
+      "bytes": 1189,
+      "sha256": "63e9fc1d958001e486397f7be13c6644f79f88c3a7346fe6f7c7ef014b915fef"
+    },
+    {
+      "path": "Evaluacion/Tessl/reliability-prompt.txt",
+      "tool": "Tessl",
+      "role": "submitted-prompt",
+      "bytes": 3025,
+      "sha256": "726493686060cf77ca3f82b9af4bcc4876187cb76b34f555c24e8fc70817076c"
+    },
+    {
+      "path": "Evaluacion/Tessl/reliability-run.json",
+      "tool": "Tessl",
+      "role": "raw-console-statistics-and-response",
+      "bytes": 13996,
+      "sha256": "47f0376f59eadc33492a933ee869a877721edfd9987fff05f627cf4153a4c65d"
+    },
+    {
+      "path": "Evaluacion/Tessl/reliability-stderr.txt",
+      "tool": "Tessl",
+      "role": "raw-console-errors",
+      "bytes": 11039,
+      "sha256": "533c923375fbe1db471d8515f5ed5525a176f5a88eee83923e496564f2748044"
+    },
+    {
+      "path": "Evaluacion/Tessl/sessions/initial/session-2026-11-07T09-20-57843fc6.jsonl",
+      "tool": "Tessl",
+      "role": "native-session-events",
+      "bytes": 5839011,
+      "sha256": "3aefda7d1cb714ed48292261e03cd55dfc2b9db9aca5ba7b06a80368cacaa9aa"
+    },
+    {
+      "path": "Evaluacion/Tessl/sessions/reliability/session-2026-11-07T09-40-c4121fe2.jsonl",
+      "tool": "Tessl",
+      "role": "native-session-events",
+      "bytes": 2644199,
+      "sha256": "75b4858f1608ed7c8594e2af6d7416ea0b7e331a0f0b86c407d6250cd3393f9f"
+    },
+    {
+      "path": "Evaluacion/Tessl/starting-snapshot.json",
+      "tool": "Tessl",
+      "role": "inherited-source-hashes",
+      "bytes": 7586,
+      "sha256": "5dd0a5b0d37cd189c650b3ebc7a694f13624346fc319cab50f89bc5012c308d8"
+    },
+    {
+      "path": "Tessl/backend/coverage.xml",
+      "tool": "Tessl",
+      "role": "raw-coverage",
+      "bytes": 53680,
+      "sha256": "55c02ea8c052e22e4a2bf07ca68231b6c4ba3882b01d051cb9ae408d67ebfd19"
+    },
+    {
+      "path": "Tessl/frontend/coverage/lcov.info",
+      "tool": "Tessl",
+      "role": "raw-coverage",
+      "bytes": 13155,
+      "sha256": "e3f94d2dc1e6429cc06d026f5b623a7314d98d896930eb7c80f39f087fa5227d"
+    },
+    {
+      "path": "Evaluacion/Spec Kit/complete-metadata.json",
+      "tool": "Spec Kit",
+      "role": "run-provenance",
+      "bytes": 1191,
+      "sha256": "b610a1acc4faf6e806b1728df291f4ffbd82783307152760e7e555bd0e861a2f"
+    },
+    {
+      "path": "Evaluacion/Spec Kit/complete-prompt.txt",
+      "tool": "Spec Kit",
+      "role": "submitted-prompt",
+      "bytes": 3467,
+      "sha256": "db6dfc0e1ae57113e7a7bfe4f43b13ccda898319a90f07e444bbb7ec6b130894"
+    },
+    {
+      "path": "Evaluacion/Spec Kit/complete-run.json",
+      "tool": "Spec Kit",
+      "role": "raw-console-statistics-and-response",
+      "bytes": 8090,
+      "sha256": "feffd853c0e4e0070954a035a17967ce61c5bcaafb5c7ed17552b9ee0492a9a9"
+    },
+    {
+      "path": "Evaluacion/Spec Kit/complete-stderr.txt",
+      "tool": "Spec Kit",
+      "role": "raw-console-errors",
+      "bytes": 16316,
+      "sha256": "ba6461928079dc7a3c7ac2d3f82efc803a02a24bff0ed22c996b31d68d871c6c"
+    },
+    {
+      "path": "Evaluacion/Spec Kit/driver-wrapper-start.err.log",
+      "tool": "Spec Kit",
+      "role": "raw-console-statistics-and-response",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "Evaluacion/Spec Kit/driver-wrapper-start.out.log",
+      "tool": "Spec Kit",
+      "role": "raw-console-statistics-and-response",
+      "bytes": 1787,
+      "sha256": "678e7a87f939bb2f4fa6387476372bd4e4ebe7c983ef2326c786d54996c61b06"
+    },
+    {
+      "path": "Evaluacion/Spec Kit/driver-wrapper-validation-metadata.json",
+      "tool": "Spec Kit",
+      "role": "run-provenance",
+      "bytes": 348,
+      "sha256": "d15b2e5ad0a8e3b54f3ff2bee0e6705b806719b0e9f5f5d68518bd21a2690492"
+    },
+    {
+      "path": "Evaluacion/Spec Kit/initial-metadata.json",
+      "tool": "Spec Kit",
+      "role": "run-provenance",
+      "bytes": 1188,
+      "sha256": "b832bbf03e37efb2414a77cc3459ea50acc9eb55956973fe180b4cdb46bf0361"
+    },
+    {
+      "path": "Evaluacion/Spec Kit/initial-prompt.txt",
+      "tool": "Spec Kit",
+      "role": "submitted-prompt",
+      "bytes": 2070,
+      "sha256": "553ecedc46b356989795d94b2e57d38cdc865165ed5d16d7fe6725b50ab6d937"
+    },
+    {
+      "path": "Evaluacion/Spec Kit/initial-run.json",
+      "tool": "Spec Kit",
+      "role": "raw-console-statistics-and-response",
+      "bytes": 8317,
+      "sha256": "a1aac870fe6afad6ab7153062889c46b146c407f5d58d3f0e2a56fcdfd692cdd"
+    },
+    {
+      "path": "Evaluacion/Spec Kit/initial-stderr.txt",
+      "tool": "Spec Kit",
+      "role": "raw-console-errors",
+      "bytes": 485,
+      "sha256": "37741c9844ab0bac7dc5f5c03d5ed8d83e2af14bc6ee5fe78c02ee19a4d0e123"
+    },
+    {
+      "path": "Evaluacion/Spec Kit/sessions/complete/session-2026-11-07T09-43-d65fdeac.jsonl",
+      "tool": "Spec Kit",
+      "role": "native-session-events",
+      "bytes": 2693603,
+      "sha256": "7c72f9108337a927052cc1425581c90cbb8d90eefd27fd747264941a9bbc6e48"
+    },
+    {
+      "path": "Evaluacion/Spec Kit/sessions/initial/session-2026-11-07T09-33-1150ca84.jsonl",
+      "tool": "Spec Kit",
+      "role": "native-session-events",
+      "bytes": 3118129,
+      "sha256": "f93e23e586a89aaada205b552e5b0caf09104b13a6ab41a3c7d65ddc7348fdc4"
+    },
+    {
+      "path": "Evaluacion/Spec Kit/starting-snapshot.json",
+      "tool": "Spec Kit",
+      "role": "inherited-source-hashes",
+      "bytes": 18236,
+      "sha256": "3898d40548f211f9346ced3ab8a0775231ce07aa96989c1b0684bcf3b115a462"
+    },
+    {
+      "path": "Spec Kit/backend/coverage.xml",
+      "tool": "Spec Kit",
+      "role": "raw-coverage",
+      "bytes": 33063,
+      "sha256": "a3a25bd279d6bf358e0a9b4671aaf44da7dcfc0a55c55b12e2f6ad9ecf611417"
+    },
+    {
+      "path": "Spec Kit/frontend/coverage/lcov.info",
+      "tool": "Spec Kit",
+      "role": "raw-coverage",
+      "bytes": 12810,
+      "sha256": "f30c5b0c1fe933970c9b1a2ef0bca126f4a62eb63672e081b4e23fe33f5af8f3"
+    }
+  ]
+}

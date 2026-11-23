@@ -1,0 +1,23 @@
+# .gitignore de la raíz del workspace Kiro (Etapa 3, Tarea 27).
+#
+# Diseño §4.3 (R12.5, AC-12/AC-13): NUNCA versionar bases de datos, secretos de entorno ni
+# material TLS. Complementa los .gitignore por carpeta (backend/, frontend/) sin reemplazarlos.
+
+# Bases de datos SQLite y sus sidecars (WAL/SHM/journal).
+*.db
+*.db-wal
+*.db-shm
+*.db-journal
+
+# Secretos de entorno del despliegue Compose (NO versionado); el ejemplo SÍ se versiona.
+.env
+.env.*
+!.env.example
+
+# Material TLS / certificados — provisionado externamente, montado en runtime (R4.4).
+certs/
+*.pem
+*.key
+*.crt
+*.p12
+*.pfx

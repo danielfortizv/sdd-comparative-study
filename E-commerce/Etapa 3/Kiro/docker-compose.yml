@@ -1,0 +1,52 @@
+# Local orchestration for the Stage 3 demonstration stack (Requirements 4.3,
+# 4.4). One command starts both services on a shared user-defined bridge
+# network:
+#
+#     docker compose up --build
+#
+# Ports are published to the host so the existing frontend API base URL
+# (http://localhost:8000) keeps working unchanged:
+#   - backend:  host 8000 -> container 8000 (FastAPI / uvicorn)
+#   - frontend: host 8080 -> container 80   (nginx serving the built SPA)
+#
+# No external/paid service is used and nothing is deployed anywhere.
+
+services:
+  backend:
+    build:
+      context: ./backend
+    image: ecommerce-stage3-backend
+    ports:
+      - "8000:8000"
+    networks:
+      - ecommerce
+    # Readiness strategy: poll the backend's /health endpoint (Requirement 4.4).
+    healthcheck:
+      test:
+        [
+          "CMD",
+          "python",
+          "-c",
+          "import urllib.request,sys; sys.exit(0 if urllib.request.urlopen('http://127.0.0.1:8000/health').status==200 else 1)",
+        ]
+      interval: 10s
+      timeout: 3s
+      retries: 5
+      start_period: 10s
+
+  frontend:
+    build:
+      context: ./frontend
+    image: ecommerce-stage3-frontend
+    ports:
+      - "8080:80"
+    networks:
+      - ecommerce
+    # Start the frontend only once the backend reports healthy.
+    depends_on:
+      backend:
+        condition: service_healthy
+
+networks:
+  ecommerce:
+    driver: bridge

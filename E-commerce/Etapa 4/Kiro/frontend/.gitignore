@@ -1,0 +1,16 @@
+node_modules/
+dist/
+dist-ssr/
+*.local
+.vite/
+coverage/
+
+# Stage 3: Playwright E2E artifacts
+playwright-report/
+test-results/
+.playwright/
+
+# Preserve the archived raw LCOV evidence.
+!/coverage/
+/coverage/*
+!/coverage/lcov.info

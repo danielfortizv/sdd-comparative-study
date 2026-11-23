@@ -1,0 +1,19 @@
+Stage 2 to Stage 3 OpenSpec copy exclusions
+
+No Stage 2 evidence tree or Git internal metadata was copied.
+
+Excluded directories/artifact classes:
+- backend/.venv and any venv/.venv
+- frontend/node_modules
+- frontend/dist and other generated dist output
+- __pycache__, .pytest_cache, .mypy_cache, .ruff_cache, .cache
+- .sonar and scanner caches
+- nested .git directories
+- SQLite runtime databases and sidecars: .db, .sqlite, .sqlite3, -wal, -shm
+- Python bytecode: .pyc, .pyo
+- runtime secrets: .env and .env.*
+- private keys and certificate/key bundles: .pem, .key, .p12, .pfx
+
+The frontend node_modules, dist, and Python __pycache__ directories created only for Stage 3 verification were removed after the successful test/build runs. No historical SQLite database existed in the copied Stage 3 project; regression tests used TemporaryDirectory databases.
+
+Intentional extra project files copied outside the 50-entry Stage 2 final inventory are the 12 `.gemini` OpenSpec command/skill adapter files. They contain OpenSpec workflow adapters, not implementations from Tessl, BMAD, Kiro, or Spec Kit. Their exact paths and SHA-256 values appear in E3_OPENSPEC_BASELINE_SHA256.csv.

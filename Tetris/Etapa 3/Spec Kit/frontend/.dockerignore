@@ -1,0 +1,17 @@
+# Node dependencies and build output
+node_modules/
+dist/
+build/
+
+# Caches and test evidence
+.eslintcache
+.npm
+tests/
+
+# Environment and secrets
+.env
+.env.*
+
+# OS files
+.DS_Store
+Thumbs.db

@@ -1,0 +1,11 @@
+{
+  "gateway_http": 200,
+  "host_pid": 36388,
+  "started_utc": "2026-11-07T10:13:16.0820654Z",
+  "tool": "Spec Kit",
+  "driver": "independent wrapper smoke; no application/test source changes",
+  "completed_utc": "2026-11-07T10:13:34.9950795Z",
+  "frontend_http": 200,
+  "shell": "Windows PowerShell 5.1",
+  "owned_ports_remaining": 0
+}

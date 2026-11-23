@@ -1,0 +1,17 @@
+{
+  "model": {
+    "name": "gemini-3.5-flash"
+  },
+  "general": {
+    "defaultApprovalMode": "plan",
+    "plan": {
+      "modelRouting": false
+    },
+    "enableAutoUpdate": false
+  },
+  "security": {
+    "auth": {
+      "selectedType": "vertex-ai"
+    }
+  }
+}

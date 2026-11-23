@@ -1,0 +1,10 @@
+{
+  "gateway_port": 18600,
+  "identity_port": 18601,
+  "commerce_port": 18602,
+  "reviews_port": 18603,
+  "frontend_port": 18700,
+  "amqp_url": "amqp://ecommerce:stage4-demo@127.0.0.1:5672/stage4_speckit",
+  "event_namespace": "stage4.speckit",
+  "broker_note": "Real RabbitMQ 3.12.1 in Ubuntu/WSL, exposed through an owned localhost-only TCP forwarder; real Windows publish/consume verified. Broker is shared, vhosts isolated: test outages by stopping only your own consumer/connection, not the global broker. Demo credentials only. Docker unavailable."
+}

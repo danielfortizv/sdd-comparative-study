@@ -1,0 +1,3 @@
+Command: python -m pytest tests/test_stage4_migration.py tests/test_stage4_events.py tests/test_stage4_currency.py tests/test_stage4_concurrency.py tests/test_stage4_api_contracts.py tests/test_stage4_atomicity.py tests/test_api.py tests/test_stage2_regression.py -q --basetemp='..\\.stage4-pytest-tmp'
+Outcome: 29 passed, 5 failed.
+All failures were inherited E4-copy assertions against the superseded unstructured error strings or precedence. Stage 4 returns stable detail.code objects. D-14 expected-version conflict is checked before current balance on MFA confirmation, so an intervening account command yields ACCOUNT_VERSION_CONFLICT. Preserve this intentional contract change and update assertions accordingly.

@@ -1,0 +1,46 @@
+{
+  "paging": {
+    "pageIndex": 1,
+    "pageSize": 500,
+    "total": 1
+  },
+  "hotspots": [
+    {
+      "key": "c29ba451-a544-4728-90f0-f03c198d86c4",
+      "component": "kiro-s1-official-01:frontend/src/views/AuthView.tsx",
+      "project": "kiro-s1-official-01",
+      "securityCategory": "auth",
+      "vulnerabilityProbability": "HIGH",
+      "status": "TO_REVIEW",
+      "line": 26,
+      "message": "Review this potentially hard-coded password.",
+      "author": "",
+      "creationDate": "2026-10-05T20:39:11+02:00",
+      "updateDate": "2026-10-05T20:39:11+02:00",
+      "textRange": {
+        "startLine": 26,
+        "endLine": 26,
+        "startOffset": 12,
+        "endOffset": 22
+      },
+      "flows": [],
+      "ruleKey": "typescript:S2068",
+      "messageFormattings": []
+    }
+  ],
+  "components": [
+    {
+      "key": "kiro-s1-official-01",
+      "qualifier": "TRK",
+      "name": "Kiro Stage 1 Official 01",
+      "longName": "Kiro Stage 1 Official 01"
+    },
+    {
+      "key": "kiro-s1-official-01:frontend/src/views/AuthView.tsx",
+      "qualifier": "FIL",
+      "name": "AuthView.tsx",
+      "longName": "frontend/src/views/AuthView.tsx",
+      "path": "frontend/src/views/AuthView.tsx"
+    }
+  ]
+}

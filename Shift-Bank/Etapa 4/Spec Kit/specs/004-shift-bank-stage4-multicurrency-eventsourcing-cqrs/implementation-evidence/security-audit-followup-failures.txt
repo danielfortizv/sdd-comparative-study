@@ -1,0 +1,4 @@
+Command: python -m pytest tests/test_crypto.py tests/test_audit.py tests/test_concurrency_invariants.py -q --basetemp='..\\.stage4-pytest-tmp'
+Outcome: 27 passed, 2 failed.
+1. An encrypted MFA test helper omitted the new confirmation expected_versions field, and test transport did not attach Idempotency-Key to an already-encrypted envelope. Adapt test request metadata.
+2. Tail truncation test still deleted hard-coded audit sequence 2 despite capturing the actual ledger head. Delete the captured head sequence.

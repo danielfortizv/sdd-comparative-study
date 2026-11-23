@@ -1,0 +1,96 @@
+
+> shift-bank-frontend@1.0.0 test
+> vitest run
+
+
+[7m[1m[36m RUN [39m[22m[27m [36mv1.6.1[39m [90mC:/Users/danie/Documents2/sdd-comparative-study/Shift-Bank/Etapa 4/Tessl/frontend[39m
+
+ [32m✓[39m src/__tests__/AccountSummary.test.tsx [2m ([22m[2m5 tests[22m[2m)[22m[90m 114[2mms[22m[39m
+ [33m❯[39m src/__tests__/crypto.test.ts [2m ([22m[2m4 tests[22m [2m|[22m [31m2 failed[39m[2m)[22m[90m 299[2mms[22m[39m
+[31m   [33m❯[31m src/__tests__/crypto.test.ts[2m > [22mFrontend Web Crypto Client[2m > [22mfetches server public key and encrypts sensitive fields into EncryptedFieldPayload envelope[39m
+[31m     → Failed to execute 'importKey' on 'SubtleCrypto': 2nd argument is not instance of ArrayBuffer, Buffer, TypedArray, or DataView.[39m
+[31m   [33m❯[31m src/__tests__/crypto.test.ts[2m > [22mFrontend Web Crypto Client[2m > [22mretries with refreshed public key when server returns KEY_EXPIRED without sending plaintext[39m
+[31m     → Client-side encryption failure: Unable to secure sensitive coordinates. Request aborted before transmission.[39m
+ [32m✓[39m src/__tests__/MfaModal.test.tsx [2m ([22m[2m6 tests[22m[2m)[22m[90m 138[2mms[22m[39m
+ [32m✓[39m src/__tests__/TransactionHistory.test.tsx [2m ([22m[2m6 tests[22m[2m)[22m[90m 155[2mms[22m[39m
+ [32m✓[39m src/__tests__/RecurringPayments.test.tsx [2m ([22m[2m4 tests[22m[2m)[22m[90m 170[2mms[22m[39m
+[90mstderr[2m | src/__tests__/RecurringPayments.test.tsx[2m > [22m[2mRecurringPayments Component[2m > [22m[2mallows opening schedule creation form and submitting a new recurring payment[22m[39m
+Warning: An update to RecurringPayments inside a test was not wrapped in act(...).
+
+When testing, code that causes React state updates should be wrapped into act(...):
+
+act(() => {
+  /* fire events that update state */
+});
+/* assert on the output */
+
+This ensures that you're testing the behavior the user would see in the browser. Learn more at https://reactjs.org/link/wrap-tests-with-act
+    at RecurringPayments (C:\Users\danie\Documents2\sdd-comparative-study\Shift-Bank\Etapa 4\Tessl\frontend\src\components\RecurringPayments.tsx:6:3)
+Warning: An update to RecurringPayments inside a test was not wrapped in act(...).
+
+When testing, code that causes React state updates should be wrapped into act(...):
+
+act(() => {
+  /* fire events that update state */
+});
+/* assert on the output */
+
+This ensures that you're testing the behavior the user would see in the browser. Learn more at https://reactjs.org/link/wrap-tests-with-act
+    at RecurringPayments (C:\Users\danie\Documents2\sdd-comparative-study\Shift-Bank\Etapa 4\Tessl\frontend\src\components\RecurringPayments.tsx:6:3)
+Warning: An update to RecurringPayments inside a test was not wrapped in act(...).
+
+When testing, code that causes React state updates should be wrapped into act(...):
+
+act(() => {
+  /* fire events that update state */
+});
+/* assert on the output */
+
+This ensures that you're testing the behavior the user would see in the browser. Learn more at https://reactjs.org/link/wrap-tests-with-act
+    at RecurringPayments (C:\Users\danie\Documents2\sdd-comparative-study\Shift-Bank\Etapa 4\Tessl\frontend\src\components\RecurringPayments.tsx:6:3)
+
+ [32m✓[39m src/__tests__/TransferLimits.test.tsx [2m ([22m[2m3 tests[22m[2m)[22m[90m 128[2mms[22m[39m
+ [32m✓[39m src/__tests__/TransferModal.test.tsx [2m ([22m[2m11 tests[22m[2m)[22m[90m 277[2mms[22m[39m
+
+[31m⎯⎯⎯⎯⎯⎯⎯[1m[7m Failed Tests 2 [27m[22m⎯⎯⎯⎯⎯⎯⎯[39m
+
+[31m[1m[7m FAIL [27m[22m[39m src/__tests__/crypto.test.ts[2m > [22mFrontend Web Crypto Client[2m > [22mfetches server public key and encrypts sensitive fields into EncryptedFieldPayload envelope
+[31m[1mTypeError[22m: Failed to execute 'importKey' on 'SubtleCrypto': 2nd argument is not instance of ArrayBuffer, Buffer, TypedArray, or DataView.[39m
+[36m [2m❯[22m getActiveServerPublicKey src/api/crypto.ts:[2m62:36[22m[39m
+    [90m 60| [39m
+    [90m 61| [39m  [35mconst[39m subtle [33m=[39m ([35mtypeof[39m window [33m!==[39m [32m'undefined'[39m [33m?[39m window[33m.[39mcrypto [33m:[39m glob…
+    [90m 62| [39m  [35mconst[39m importedKey [33m=[39m [35mawait[39m subtle[33m.[39m[34mimportKey[39m(
+    [90m   | [39m                                   [31m^[39m
+    [90m 63| [39m    [32m'spki'[39m[33m,[39m
+    [90m 64| [39m    spkiBuffer[33m,[39m
+[90m [2m❯[22m Module.encryptField src/api/crypto.ts:[2m98:43[22m[39m
+[90m [2m❯[22m src/__tests__/crypto.test.ts:[2m38:22[22m[39m
+
+[31m[2m⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[22m[39m
+[31m[1mSerialized Error:[22m[39m [90m{ code: 'ERR_INVALID_ARG_TYPE' }[39m
+[31m[2m⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/2]⎯[22m[39m
+
+[31m[1m[7m FAIL [27m[22m[39m src/__tests__/crypto.test.ts[2m > [22mFrontend Web Crypto Client[2m > [22mretries with refreshed public key when server returns KEY_EXPIRED without sending plaintext
+[31m[1mApiError[22m: Client-side encryption failure: Unable to secure sensitive coordinates. Request aborted before transmission.[39m
+[36m [2m❯[22m secureField src/api/client.ts:[2m83:13[22m[39m
+    [90m 81| [39m      [35mreturn[39m [35mawait[39m [34mencryptField[39m(trimmed)[33m;[39m
+    [90m 82| [39m    } [35mcatch[39m (err[33m:[39m any) {
+    [90m 83| [39m      [35mthrow[39m [35mnew[39m [33mApiError[39m(
+    [90m   | [39m            [31m^[39m
+    [90m 84| [39m        [34m0[39m[33m,[39m
+    [90m 85| [39m        [32m'Client-side encryption failure: Unable to secure sensitive co[39m…
+[90m [2m❯[22m src/api/client.ts:[2m148:23[22m[39m
+[90m [2m❯[22m withEncryptionRetry src/api/client.ts:[2m101:12[22m[39m
+[90m [2m❯[22m src/__tests__/crypto.test.ts:[2m191:17[22m[39m
+
+[31m[2m⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[22m[39m
+[31m[1mSerialized Error:[22m[39m [90m{ status: +0, data: { originalError: 'Failed to execute \'importKey\' on \'SubtleCrypto\': 2nd argument is not instance of ArrayBuffer, Buffer, TypedArray, or DataView.' } }[39m
+[31m[2m⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/2]⎯[22m[39m
+
+[2m Test Files [22m [1m[31m1 failed[39m[22m[2m | [22m[1m[32m6 passed[39m[22m[90m (7)[39m
+[2m      Tests [22m [1m[31m2 failed[39m[22m[2m | [22m[1m[32m37 passed[39m[22m[90m (39)[39m
+[2m   Start at [22m 19:05:37
+[2m   Duration [22m 2.42s[2m (transform 441ms, setup 1.21s, collect 2.33s, tests 1.28s, environment 7.19s, prepare 1.89s)[22m
+
+
+Exit code: 1

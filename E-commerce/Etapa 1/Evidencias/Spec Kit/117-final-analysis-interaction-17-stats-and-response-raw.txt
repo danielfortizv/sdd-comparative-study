@@ -1,0 +1,173 @@
+ I have conducted the final, rigorous, read-only consistency, semantic traceability, dependency, scope, and coverage
+  analysis across all approved Stage 1 artifacts.
+
+  No files were created or modified during this analysis.
+
+  ---
+
+  Specification Analysis Report
+
+  1. Traceability & Consistency Verification
+
+  A. Semantic Mappings (Traceability Index Verification)
+   - T034 Row Mismatch (FR-072):
+     - Finding: Row FR-072 ("Error messages useful & non-sensitive") lists T034, but T034 is the integrated journey test
+       (frontend/src/tests/JourneyIntegration.test.tsx) mapping only FR-055 through FR-060 in its task line.
+     - Severity: LOW (Non-blocking documentation discrepancy).
+     - Correction: Remove T034 from the FR-072 row in the Traceability Index. FR-072 is already fully covered by T035
+       and T037.
+   - SC-004 Row Mismatch (Cart Preservation):
+     - Finding: Row SC-004 ("Authentication preserves active cart") lists T025 (the session indicator/sign-out control).
+       However, SC-004 concerns cart preservation during registration/sign-in rather than sign-out. Cart preservation on
+       sign-out is an approved technical-plan choice, not a functional requirement.
+     - Severity: LOW (Non-blocking documentation discrepancy).
+     - Correction: Remove T025 from the SC-004 row in the index, mapping it only to T018 and T026 (which actually
+       implement and verify authentication cart preservation).
+   - SC-005 Row Mismatch (Post-Checkout State):
+     - Finding: Row SC-005 ("Post-checkout comprehensible starting state") lists T032 (the checkout confirmation visual
+       panel). However, the visual panel alone does not establish or govern the post-checkout system state; that state
+       is managed by the controller page T033 (CheckoutPage.tsx), verified in T028 (Checkout.test.tsx), and validated
+       end-to-end in T041 (quickstart.md).
+     - Severity: LOW (Non-blocking documentation discrepancy).
+     - Correction: Remove T032 from the SC-005 row, mapping it to T028, T033, and T041.
+   - Address Book Exclusions on T032:
+     - Finding: Rows FR-046 and FR-047 (address book exclusions) list T032 (ConfirmationScreen). However, the
+       confirmation panel does not implement address-book exclusions.
+  B. Parallel Execution [P] Safety Analysis
+   - T004 [P] vs T001: T004 creates catalog.json in the directory initialized by T001. While T004 is marked parallel, it
+     has a logical dependency on T001's directories setup, which is resolved sequentially by execution order.
+   - T025 [P] vs T022: T025 implements AuthStatus.tsx using AuthContext.tsx (T022). They do not have target-file
+     conflicts (different files), making concurrent development structurally safe.
+   - Actual safe [P] count: Exactly 26 task-line markers.
+
+  ---
+
+  2. Comprehensive Analysis Table
+
+  ┌────┬───────────────┬──────────┬────────────────┬─────────────────────────────────┬───────────────────────────┐
+  │ ID │ Category      │ Severity │ Location(s)    │ Summary                         │ Correction Recommendation │
+  ├────┼───────────────┼──────────┼────────────────┼─────────────────────────────────┼───────────────────────────┤
+  │ D1 │ Inconsistency │ LOW      │ tasks.md       │ T034 is listed under FR-072 but │ Remove T034 from the      │
+  │    │               │          │ (FR-072 Index) │ doesn't test error detail       │ FR-072 index row          │
+  │    │               │          │                │ visibility.                     │ (non-blocking).           │
+  │ D2 │ Inconsistency │ LOW      │ tasks.md       │ T025 is listed under SC-004     │ Remove T025 from the      │
+  │    │               │          │ (SC-004 Index) │ (signin cart preservation) but  │ SC-004 index row          │
+  │    │               │          │                │ implements sign-out.            │ (non-blocking).           │
+  │ D3 │ Inconsistency │ LOW      │ tasks.md       │ T032 (visual panel) is listed   │ Remove T032 and map to    │
+  │    │               │          │ (SC-005 Index) │ under SC-005 (checkout starting │ T028, T033, and T041      │
+  │    │               │          │                │ state).                         │ (non-blocking).           │
+  │ D4 │ Inconsistency │ LOW      │ tasks.md       │ T032 (ConfirmationScreen) is    │ Remove T032 from FR-046   │
+  │    │               │          │ (FR-046/047    │ listed under address-book       │ and FR-047 rows           │
+  │    │               │          │ Index)         │ exclusions.                     │ (non-blocking).           │
+  └────┴───────────────┴──────────┴────────────────┴─────────────────────────────────┴───────────────────────────┘
+  ---
+
+  3. Core Metrics Verification
+
+   - Total Tasks: 44 Tasks (Exact)
+   - Safe [P] Marker Count: 26 (Exact)
+   - Active Identifiers: 88 (FR-001 through FR-077, ATC-001 through ATC-013, minus conditional FR-009/FR-010) (Exact)
+   - Non-activated Conditional Identifiers: 2 (FR-009 and FR-010) (Exact)
+   - Source Artifact Hashes: 100% unchanged (Verified)
+   - Application Implementation/Scaffolding: Absent (Verified)
+
+  ---
+
+  4. Final Assessment
+
+  All 10 verification concerns raised in your prompt have been audited. The identified documentation discrepancies are
+  strictly low severity and non-blocking, which can be easily cleaned up during execution without affecting any baseline
+  technology-neutral interfaces, separate-component structures, or functional boundaries.
+
+  The implementation task list completely covers the canonical seed especificacion-semilla-final-en.md with absolute
+  fidelity, maintains clean P1–P4 story isolation, and incorporates all of your local technical choices without any
+  unapproved parameters.
+
+  ---
+
+  APPROVED FOR EXPLICIT IMPLEMENTATION AUTHORIZATION
+▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄
+ > /stats
+▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀
+╭──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
+│                                                                                                                      │
+│  Session Stats                                                                                                       │
+│                                                                                                                      │
+│  Interaction Summary                                                                                                 │
+│  Session ID:                 1bc711ec-5417-4546-a723-352e97ba5333                                                    │
+│  Auth Method:                vertex-ai                                                                               │
+│  Tool Calls:                 80 ( ✓ 80 x 0 )                                                                         │
+│  Success Rate:               100.0%                                                                                  │
+│  User Agreement:             100.0% (80 reviewed)                                                                    │
+│  Code Changes:               +3082 -2131                                                                             │
+│                                                                                                                      │
+│  Performance                                                                                                         │
+│  Wall Time:                  30h 9m 46s                                                                              │
+│  Agent Active:               19h 52m 42s                                                                             │
+│    » API Time:               21m 1s (1.8%)                                                                           │
+│    » Tool Time:              19h 31m 40s (98.2%)                                                                     │
+│                                                                                                                      │
+│                                                                                                                      │
+│  Model Usage                                                                                                         │
+│  Use /model to view model quota information                                                                          │
+│                                                                                                                      │
+│  Model                           Reqs  Input Tokens   Cache Reads Output Tokens                                      │
+│  ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────  │
+│  gemini-3.5-flash                  93     9.836.481     7.912.188        77.197                                      │
+│    ↳ main                          93     9.836.481     7.912.188        77.197                                      │
+╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄
+ > /stats model
+▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀
+╭──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
+│                                                                                                                      │
+│  Model Stats For Nerds                                                                                               │
+│                                                                                                                      │
+│  Auth Method:                vertex-ai                                                                               │
+│                                                                                                                      │
+│  Metric                      gemini-3.5-flash                                                                        │
+│  ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────  │
+│  API                                                                                                                 │
+│  Requests                    93                                                                                      │
+│  Errors                      1 (1.1%)                                                                                │
+│  Avg Latency                 13.6s                                                                                   │
+│  Tokens                                                                                                              │
+│  Total                       9.991.129                                                                               │
+│    ↳ Input                   1.924.293                                                                               │
+│    ↳ Cache Reads             7.912.188 (80.4%)                                                                       │
+│    ↳ Thoughts                77.451                                                                                  │
+│    ↳ Output                  77.197                                                                                  │
+│  Roles                                                                                                               │
+│  main                                                                                                                │
+│    ↳ Requests                93                                                                                      │
+│    ↳ Input                   1.924.293                                                                               │
+│    ↳ Output                  77.197                                                                                  │
+│    ↳ Cache Reads             7.912.188                                                                               │
+╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄
+ > /stats tools
+▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀
+╭────────────────────────────────────────────────────────────────────╮
+│                                                                    │
+│  Tool Stats For Nerds                                              │
+│                                                                    │
+│  Tool Name                   Calls   Success Rate   Avg Duration   │
+│  ────────────────────────────────────────────────────────────────  │
+│  update_topic                   24         100.0%            3ms   │
+│  glob                            2         100.0%           26ms   │
+│  read_file                      10         100.0%           53ms   │
+│  list_directory                  2         100.0%           21ms   │
+│  write_file                     34         100.0%           46ms   │
+│  exit_plan_mode                  1         100.0%          50.1s   │
+│  run_shell_command               3         100.0%     6h 30m 15s   │
+│  grep_search                     4         100.0%          104ms   │
+│                                                                    │
+│  User Decision Summary                                             │
+│  Total Reviewed Suggestions:                                  78   │
+│   » Accepted:                                                 78   │
+│   » Rejected:                                                  0   │
+│   » Modified:                                                  0   │
+│  ────────────────────────────────────────────────────────────────  │
+│   Overall Agreement Rate:                                 100.0%   │
+╰────────────────────────────────────────────────────────────────────╯
+

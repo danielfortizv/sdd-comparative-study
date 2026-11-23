@@ -1,0 +1,28 @@
+﻿npm.cmd : node:fs:2729
+En línea: 2 Carácter: 239
++ ... start=Get-Date -Format o; & 'C:\nvm4w\nodejs\npm.cmd' ci 2>&1 | Out-F ...
++                               ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (node:fs:2729:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+      const stats = binding.lstat(baseLong, true, undefined, true /* throwIfNoEntry */);
+                            ^
+
+Error: EPERM: operation not permitted, lstat 'C:\Users\danie'
+    at Object.realpathSync (node:fs:2729:29)
+    at toRealPath (node:internal/modules/helpers:58:13)
+    at Module._findPath (node:internal/modules/cjs/loader:753:22)
+    at resolveMainPath (node:internal/modules/run_main:35:23)
+    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:160:24)
+    at node:internal/main/run_main_module:28:49 {
+  errno: -4048,
+  code: 'EPERM',
+  syscall: 'lstat',
+  path: 'C:\\Users\\danie'
+}
+
+Node.js v20.17.0
+
+start=2026-11-15T18:36:58.0996223-05:00
+end=2026-11-15T18:36:58.3659707-05:00
+exit_code=1

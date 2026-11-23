@@ -1,0 +1,414 @@
+{
+  "source": "C:\\Users\\jeron\\OneDrive\\Escritorio\\uni\\implementacion Ecommerce\\Caso 3-Ecommerce\\Etapa 1\\Kiro",
+  "note": "Current Stage 1 working tree copied before Stage 2; not a claim of corrected or fully validated Stage 1. OpenSpec includes its documented later corrections. Dependencies, runtime data, docs and caches excluded.",
+  "files": [
+    {
+      "path": ".kiro/specs/ecommerce-stage1/.config.kiro",
+      "sha256": "ee1340a630aacf1031d0d6cee5644fc86ab4aef49dc706aecd4edd07f44a3658"
+    },
+    {
+      "path": ".kiro/specs/ecommerce-stage1/design.md",
+      "sha256": "94db516f35e332859fe7327b1d95ff3241c17c33c5ec63b5defb6b099b1be0ed"
+    },
+    {
+      "path": ".kiro/specs/ecommerce-stage1/requirements.md",
+      "sha256": "d74e8be7b61260a1ad9a9e17ec3fbd02e8de7da9df1bf098ccca6a275deb8109"
+    },
+    {
+      "path": ".kiro/specs/ecommerce-stage1/tasks.md",
+      "sha256": "ccf09aa03ecb9e101724105176059a37be038260908966b17a365446c898b816"
+    },
+    {
+      "path": ".kiro/specs/ecommerce-stage1/tasks.meta.json",
+      "sha256": "37a3780d922667c58518606b30c42b83f89fc7b6455c389f8fdbc2d7cdea27eb"
+    },
+    {
+      "path": "backend/.gitignore",
+      "sha256": "d2966bc71b185c442feaf90922642004a61013929cac83d9cc7d321707c7867b"
+    },
+    {
+      "path": "backend/app/__init__.py",
+      "sha256": "34eee87d8aecb0dc695ae60c4bceed090c5fa4ba9c41935c2dcd526d8171394f"
+    },
+    {
+      "path": "backend/app/api/__init__.py",
+      "sha256": "335a213d588a0a0dcd4903a8099c79d2a6d694e5c2624b566878fe2dc9ccf120"
+    },
+    {
+      "path": "backend/app/api/auth_register.py",
+      "sha256": "3aa988866be4281e87f314942a99c1489e35322ca602965d158ae0461a82e1f9"
+    },
+    {
+      "path": "backend/app/api/auth_signin.py",
+      "sha256": "ae906d0c6fd46dfc7782a16cdfcb1ba75313395a6ef804fa0599993391e28aee"
+    },
+    {
+      "path": "backend/app/api/catalog.py",
+      "sha256": "9de293ae7f040dfa073f88d1521662cec88aa3e2da037681ac0716334eeb9cb5"
+    },
+    {
+      "path": "backend/app/api/checkout.py",
+      "sha256": "912fce94a3875ab6036c1b15c3594d82b3b55fe9490f4f1470e6e0fe2c7b26bc"
+    },
+    {
+      "path": "backend/app/data/__init__.py",
+      "sha256": "c2499c0a23220d5745ee30352f4df8d5c9296e68a0ef493c4eb7965084a2fd39"
+    },
+    {
+      "path": "backend/app/data/accounts.py",
+      "sha256": "694ee4aeabd413a6b61321c7699c7dcc79fc20469eb59223c5a9643b43f4234d"
+    },
+    {
+      "path": "backend/app/data/catalog.py",
+      "sha256": "fa9f6f5e436b811c72c58eb222043065812f2a38e16a27096a909a576ca8ada4"
+    },
+    {
+      "path": "backend/app/main.py",
+      "sha256": "b90bebc1639433154eab4085d06fc6155f1cf5320ed02484d7923c16e717581f"
+    },
+    {
+      "path": "backend/app/models/__init__.py",
+      "sha256": "81d8e22ba39d1703a6cfc801e86f6569c6c971e50ecbd8d882965eccd425a0f2"
+    },
+    {
+      "path": "backend/app/models/checkout.py",
+      "sha256": "b5ed75edc0774d1a8a5d3e100ece37b1feb9a40c7d9c993d8d12e46c599d17eb"
+    },
+    {
+      "path": "backend/app/models/customer.py",
+      "sha256": "659414229970b7350e44025f10724ef5403f10e590130521639b3aecb20ce456"
+    },
+    {
+      "path": "backend/app/models/product.py",
+      "sha256": "a82ec18668629d6f30a5e5984d0fe59df657cb36110741d1778951cc00d33953"
+    },
+    {
+      "path": "backend/app/models/session.py",
+      "sha256": "5cdb1f220f841ae359046302359a37a4926725a597c6e229bd23687ddd31c96d"
+    },
+    {
+      "path": "backend/app/services/__init__.py",
+      "sha256": "3913494777efffee6fe31ff738de74483f2c1f365f30597e9bd0ccca806927ee"
+    },
+    {
+      "path": "backend/app/services/catalog_service.py",
+      "sha256": "790ffeb15015a7975375b07107a1238845b4f42a98fac241fd5e7b7631da07a2"
+    },
+    {
+      "path": "backend/app/services/checkout_service.py",
+      "sha256": "7e4c77a7b27c35afdb4ee130009d08fe1c517401a6e747ed65f0bdc06ca5a7c5"
+    },
+    {
+      "path": "backend/app/services/password.py",
+      "sha256": "d41ae136fef217cba1aa777ca9a21f2451a6178d46672036bcdaf72eea8e9644"
+    },
+    {
+      "path": "backend/app/services/password_verify.py",
+      "sha256": "3fda46660280856ad36b4c69dbe3b7ca2dc7af24ef030abc2b2908395a1bdbc1"
+    },
+    {
+      "path": "backend/app/services/registration_service.py",
+      "sha256": "0cdc3ebdb64744d2749191b2a0717cde930044b8f34fc73e869e6f643d97b5d3"
+    },
+    {
+      "path": "backend/app/services/signin_service.py",
+      "sha256": "4c2c6a80723accba2448e867efe43b35fa15caf74574d55caaacf4d694975c59"
+    },
+    {
+      "path": "backend/pyproject.toml",
+      "sha256": "77d046fc47f99a50f973612acdc5f38118dadfab23e75f9edcec7ca3bf1dbf90"
+    },
+    {
+      "path": "backend/README.md",
+      "sha256": "39a53624effcf25860e91d555e2027b0b5da614bc7c07438fa49436ae94744bc"
+    },
+    {
+      "path": "backend/requirements.txt",
+      "sha256": "cf8625ed01a78432e55d5760c24180d6f80d6b56d54fb60bfd5318865a3803e8"
+    },
+    {
+      "path": "backend/tests/__init__.py",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "backend/tests/test_auth_error_content.py",
+      "sha256": "37d3415aaa46d0edb922ffc42f72467af828c580350a1bc727b4c52155e00ff0"
+    },
+    {
+      "path": "backend/tests/test_auth_register.py",
+      "sha256": "b3e20b0dadad3fa2e778fc014a90f2d44b567bd1683e9db1a4793897e02e4bbd"
+    },
+    {
+      "path": "backend/tests/test_catalog_endpoints.py",
+      "sha256": "4cabdbbf045b0d0445aaa62f4c4a022a90f8a6163c78e3cbc71b504e7e629a4d"
+    },
+    {
+      "path": "backend/tests/test_catalog_endpoints_smoke.py",
+      "sha256": "ec8e0a762e422a03972342ae4dc50354b0ad2679b280801fbd7de11b57812825"
+    },
+    {
+      "path": "backend/tests/test_checkout_confirm.py",
+      "sha256": "6024e48d5fa0c6f0494debf8123870c2d56004bd4db48fa46331ec935368999f"
+    },
+    {
+      "path": "backend/tests/test_checkout_nonpersistence.py",
+      "sha256": "2a6e4574dee8f3e187c66918a10ccf40b602c6dfda6ddccbfbc534a67820df98"
+    },
+    {
+      "path": "backend/tests/test_data_accounts.py",
+      "sha256": "e06b7ff33ae80d04ecd4cc750a8ec0822124fc1502117cf5f1a3d92fc700e3be"
+    },
+    {
+      "path": "backend/tests/test_data_catalog.py",
+      "sha256": "5f4316dde268e93b6fec48335c28ab4fc3a566063bc3160518765abaf47f14ad"
+    },
+    {
+      "path": "backend/tests/test_prop_confirmation_derivation.py",
+      "sha256": "134416e3bca0918611cc320a3e35064dde762522f2fd8c04062e21ef826c627f"
+    },
+    {
+      "path": "backend/tests/test_prop_password_storage.py",
+      "sha256": "7888e9e28502c824ef38528977e3fc63c111dac68b96c0852cb24dfaef1de01d"
+    },
+    {
+      "path": "backend/tests/test_prop_register_signin_roundtrip.py",
+      "sha256": "82a2d16cf7ce9536ed03ecdc0cd24164e6ede2ed0b41be61776befc6b6cbef36"
+    },
+    {
+      "path": "backend/tests/test_prop_registration_error_safety.py",
+      "sha256": "351d41e60770beabd83a91a8780f34aa12437b70b1266ddca0333e20fb568bd1"
+    },
+    {
+      "path": "backend/tests/test_prop_registration_validation.py",
+      "sha256": "7f82356409ead6fbe9a182504943f010e504de6e219afaeefce5a272462ffa9b"
+    },
+    {
+      "path": "backend/tests/test_prop_signin_validation.py",
+      "sha256": "a47a7725651d3116f4429b41083a95761f9436c8717eb092d7fc9f15e537d69c"
+    },
+    {
+      "path": "backend/tests/test_prop_signout.py",
+      "sha256": "2684279355c9e90ce07958de46e28eba7948b3fa8dcebb15e46aca0cad1b6a7b"
+    },
+    {
+      "path": "backend/tests/test_prop_valid_registration.py",
+      "sha256": "4a1232d3e362434f7bc08d1970170d86c021c712b37b96253add3c708606f8b7"
+    },
+    {
+      "path": "backend/tests/test_signin.py",
+      "sha256": "b98244a52c44872e551275e7a3f6f2adf6453fc6384e3b17f5c5f718e162d0a4"
+    },
+    {
+      "path": "backend/tests/test_smoke.py",
+      "sha256": "43c51ea8b25fc314fec1da457bc562a83091accccbd9af1583ec03af1d920363"
+    },
+    {
+      "path": "backend/tests/test_structure_smoke.py",
+      "sha256": "e9bfd7c250d676c93a8a7323b1f70e8d1573cf548e2b3d1fc9d9ae6278288050"
+    },
+    {
+      "path": "canonical-seed-stage-2.md",
+      "sha256": "ba49a54d4c938a8a15d153b0b395f7ed21876a721452364b425d791776ec3564"
+    },
+    {
+      "path": "canonical-seed.md",
+      "sha256": "45ddfded6ebffdaec9fceb5818d319a3dc3d66a79a9a6b887557aaccd64b446d"
+    },
+    {
+      "path": "frontend/.gitignore",
+      "sha256": "51dc687adb175b5982cefcfb7abb926ea6a99e20791c97ac7002daa831601fbe"
+    },
+    {
+      "path": "frontend/index.html",
+      "sha256": "cf0ea21312770ad8ee19efde474b8f99218a27effc119da7615cd17dbb793a69"
+    },
+    {
+      "path": "frontend/package-lock.json",
+      "sha256": "ec2553963b0894a918e8868ac80f319c29086c13bd0cd825d95e0a77f4318804"
+    },
+    {
+      "path": "frontend/package.json",
+      "sha256": "fcecddeeaa7b67d66a29133b3a65191015a4b767e2dadd621bc3fb28a0d91da0"
+    },
+    {
+      "path": "frontend/README.md",
+      "sha256": "33d02e4b67aca4ea42fefb658782c5d802970b76ebdec7096443e6794290c088"
+    },
+    {
+      "path": "frontend/src/api/client.test.ts",
+      "sha256": "40f9c0355bdccfdfa53e459d33875a0a8638215526e48735fe5a745d0008e878"
+    },
+    {
+      "path": "frontend/src/api/client.ts",
+      "sha256": "79b712fd1ff6175c5be0b51933909fae4102b220c878c5c1a4028f63421e7f5c"
+    },
+    {
+      "path": "frontend/src/App.integration.test.tsx",
+      "sha256": "9cb8d8a57d9673851ff351339686b4297c20bfc877cb23ab1d1a75d2bf23221c"
+    },
+    {
+      "path": "frontend/src/App.journey.integration.test.tsx",
+      "sha256": "51a8e5f190033cfa70b5397fe1f65566008c846cd718ce879c5355485f33009a"
+    },
+    {
+      "path": "frontend/src/App.test.tsx",
+      "sha256": "621c386c6584c9f1bbc0943e51375512bcdf6194c0e4fb5dfe15d0016d31aef7"
+    },
+    {
+      "path": "frontend/src/App.tsx",
+      "sha256": "d4b03f5ec877673eb2cd1548a9c41683a49e0a469ed1e6267465c7e91e2e4172"
+    },
+    {
+      "path": "frontend/src/main.tsx",
+      "sha256": "cdc77b81c4c8de8728bad0dc60113a0543fef5ed114f5a207a6069c8d1db6d5a"
+    },
+    {
+      "path": "frontend/src/responsive.smoke.test.tsx",
+      "sha256": "6cf27571b850cb1c9d18a7a83f4f43a22570e8f2671375b0ee76de15f89630b6"
+    },
+    {
+      "path": "frontend/src/state/auth-preserves-cart.property.test.tsx",
+      "sha256": "063167b67e9619b55817e222ef921d90e511a56285201446e806d43476529c9d"
+    },
+    {
+      "path": "frontend/src/state/cart-checkout.consistency.property.test.ts",
+      "sha256": "e6054fc3a8cd0ce4da5f2fcbb87907d064d7c0197a047f89cbeb21f3425c46b8"
+    },
+    {
+      "path": "frontend/src/state/cart.add.property.test.ts",
+      "sha256": "5c1f123d3a53053562b38692ec657c6cf35f6a57d9bb5df5f44c3f076a1bc0a4"
+    },
+    {
+      "path": "frontend/src/state/cart.property.test.ts",
+      "sha256": "db58caece445996076bac5f48cb08f2d5ae2eaac191e0357d5aaff0b2ba4cbae"
+    },
+    {
+      "path": "frontend/src/state/cart.remove.property.test.ts",
+      "sha256": "3d090a7947dc22384ebb94a25364c79b0f4e7d1a72b0e33eb7f18fa670394df2"
+    },
+    {
+      "path": "frontend/src/state/cart.test.ts",
+      "sha256": "36b2462f17678890b6f9a7ef6ed73b33e1c64f0314cfeb640a1dd0e6299176ec"
+    },
+    {
+      "path": "frontend/src/state/cart.ts",
+      "sha256": "fa2bad5abbf9a23d1134fa8af044c39c56503bb17bc574382a08679a65bee4ca"
+    },
+    {
+      "path": "frontend/src/state/catalog-cart.identity.property.test.ts",
+      "sha256": "6f9a30b3bdd6a23c136e151c7cd4e8f0b9c6476932c8c8d72bee718d6ab86bbb"
+    },
+    {
+      "path": "frontend/src/state/journey.property.test.tsx",
+      "sha256": "66d737af429f9dabd5cd446a75b35e3bf826912330bc75702629b86a270abf71"
+    },
+    {
+      "path": "frontend/src/state/JourneyState.tsx",
+      "sha256": "847f0e05adc20ffdb8c381706643090118fdbae01972f24d9a0e3ad731c9783b"
+    },
+    {
+      "path": "frontend/src/structure.smoke.test.ts",
+      "sha256": "6a4fdc5ad2765775965ad47d84755ca7d7a9b6a0a1be1f90c1a7e7a2823b9544"
+    },
+    {
+      "path": "frontend/src/styles.css",
+      "sha256": "99522e2ed7c03dd8b9a245ca384cbccb3ea5235a2cdb9cffcd52dc6c3d026744"
+    },
+    {
+      "path": "frontend/src/test/setup.ts",
+      "sha256": "89e7e6742a4e86823f67b453a6faf928a69efebf6ec83fad10c7cebfe47641d1"
+    },
+    {
+      "path": "frontend/src/types.ts",
+      "sha256": "3c3e800366f755bfc299a3e29f6774b40ba8ea8ac09c0101fac31533b23d20b2"
+    },
+    {
+      "path": "frontend/src/views/accessibility.test.tsx",
+      "sha256": "c006f4c7966f93819649ac8f82ddbc61ca96ea7b8ee9b693b8f1f41beaaf82de"
+    },
+    {
+      "path": "frontend/src/views/AuthView.fields.test.tsx",
+      "sha256": "8b3444ba101eb6d9002079f058aa61be5b38d9ed37501e4080f20d483da28b12"
+    },
+    {
+      "path": "frontend/src/views/AuthView.password.property.test.tsx",
+      "sha256": "6dcbf7eef8750b0662bfb5baf9ef60a3739b7a18a7919f2e1d7864c6dea781e0"
+    },
+    {
+      "path": "frontend/src/views/AuthView.test.tsx",
+      "sha256": "44081b138d2d78a1fae9d05467741d65beac627b67421dd64799def08b61f349"
+    },
+    {
+      "path": "frontend/src/views/AuthView.tsx",
+      "sha256": "f41433596589a3812f7e0a8beb29d32d01df6a669860ebab07a55c09074a706b"
+    },
+    {
+      "path": "frontend/src/views/CartView.feedback.test.tsx",
+      "sha256": "28d5eeecdf924e042ed5c10f01eebc98adbd22b471032f8e195a0e0f2a58f1c2"
+    },
+    {
+      "path": "frontend/src/views/CartView.test.tsx",
+      "sha256": "a1abaa71c08165bc7f40ba8de5ed52de5f3132498a0742355cb34760c86614f1"
+    },
+    {
+      "path": "frontend/src/views/CartView.tsx",
+      "sha256": "2156aaedb630cc4d9f8b7087e3a36c1c6521068450c420c648a1bc1ca9a8a388"
+    },
+    {
+      "path": "frontend/src/views/CatalogView.test.tsx",
+      "sha256": "e5b526eec92bc068fc95cdcb4e6d3b4fad09915844f2f9059857535ac1c43a6c"
+    },
+    {
+      "path": "frontend/src/views/CatalogView.tsx",
+      "sha256": "1d70bc6648ef988dc5aafd5ceb230584bb13edd608d9dcf78ab2fb542d50553a"
+    },
+    {
+      "path": "frontend/src/views/CheckoutView.gate.property.test.tsx",
+      "sha256": "cfe3d9cd833632264591c460a0e092f3f51374988c4a64642651e974d1c155bf"
+    },
+    {
+      "path": "frontend/src/views/CheckoutView.nonempty.property.test.tsx",
+      "sha256": "956bb98d1b261ad4c86ec3c19e3d96968bd1d3ac5d3ec97b27fdb6f2d3c88071"
+    },
+    {
+      "path": "frontend/src/views/CheckoutView.notice.test.tsx",
+      "sha256": "eccf98ee633ecb9505e66274109d9a5cfe0139ee2317d807243d790db2ab1c7b"
+    },
+    {
+      "path": "frontend/src/views/CheckoutView.reset.property.test.tsx",
+      "sha256": "b43477fc3ea836572e8330ad9995d02d423c4be2a0e2974de3df5f3040ea9a7d"
+    },
+    {
+      "path": "frontend/src/views/CheckoutView.test.tsx",
+      "sha256": "28238222abd128f6dd897578846a2d77af8a57fe7a148988db54fd1b6944ccc4"
+    },
+    {
+      "path": "frontend/src/views/CheckoutView.tsx",
+      "sha256": "45d064c16debbac94a29b75c02e81f05dbc4d5e784b18c0cd4b1d7b029324cf2"
+    },
+    {
+      "path": "frontend/src/views/feedback.states.test.tsx",
+      "sha256": "7818fee5db4a36dcbe288f107dfddd42432a9c74168aab5e7121320465d72ae1"
+    },
+    {
+      "path": "frontend/src/vite-env.d.ts",
+      "sha256": "65996936fbb042915f7b74a200fcdde7e410f32a669b1ab9597cfaa4b0faddb5"
+    },
+    {
+      "path": "frontend/tsconfig.json",
+      "sha256": "8f437028208741d5c0d74afaee438f828c62d3b136de72251dc91c51e775088b"
+    },
+    {
+      "path": "frontend/tsconfig.tsbuildinfo",
+      "sha256": "bb85c743ac12b9e38d8773ee0e2cee30080e6c5249f02fdb3a1eab47ab87f852"
+    },
+    {
+      "path": "frontend/vite.config.ts",
+      "sha256": "46245d5fdd8273a61aa5f8a9f5ca0a9d16d0773f9ad88b65355442c101f54e67"
+    },
+    {
+      "path": "README.md",
+      "sha256": "71ed882ef67c9394b0b1492345ab9b16f41a460c6a336eddb7d1049193be91ee"
+    }
+  ]
+}

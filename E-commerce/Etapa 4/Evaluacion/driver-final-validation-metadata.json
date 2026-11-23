@@ -1,0 +1,137 @@
+{
+  "started_utc": "2026-11-07T10:14:11.175981+00:00",
+  "scope": "Artifact integrity, frozen Stage 3 hashes, YAML syntax and temporary AMQP round trips; not additional native application tests.",
+  "checks": [
+    {
+      "check": "Identical canonical seed and initial submitted prompt",
+      "status": "passed"
+    },
+    {
+      "check": "OpenSpec: inherited Stage 3 source hashes remain unchanged",
+      "status": "passed"
+    },
+    {
+      "check": "OpenSpec: latest native run completed",
+      "status": "passed",
+      "attempt": "ci"
+    },
+    {
+      "check": "OpenSpec: native session/statistic sources present and readable",
+      "status": "passed"
+    },
+    {
+      "check": "OpenSpec: raw XML and LCOV parse",
+      "status": "passed",
+      "xml": [
+        "OpenSpec/backend/coverage.xml"
+      ],
+      "lcov": [
+        "OpenSpec/frontend/coverage/lcov.info"
+      ]
+    },
+    {
+      "check": "OpenSpec: Compose and workflow YAML syntax (not execution)",
+      "status": "passed"
+    },
+    {
+      "check": "Kiro: inherited Stage 3 source hashes remain unchanged",
+      "status": "passed"
+    },
+    {
+      "check": "Kiro: latest native run completed",
+      "status": "passed",
+      "attempt": "packaging"
+    },
+    {
+      "check": "Kiro: native session/statistic sources present and readable",
+      "status": "passed"
+    },
+    {
+      "check": "Kiro: raw XML and LCOV parse",
+      "status": "passed",
+      "xml": [
+        "Kiro/coverage.xml"
+      ],
+      "lcov": [
+        "Kiro/frontend/coverage/lcov.info"
+      ]
+    },
+    {
+      "check": "Kiro: Compose and workflow YAML syntax (not execution)",
+      "status": "passed"
+    },
+    {
+      "check": "Tessl: inherited Stage 3 source hashes remain unchanged",
+      "status": "passed"
+    },
+    {
+      "check": "Tessl: latest native run completed",
+      "status": "passed",
+      "attempt": "reliability"
+    },
+    {
+      "check": "Tessl: native session/statistic sources present and readable",
+      "status": "passed"
+    },
+    {
+      "check": "Tessl: raw XML and LCOV parse",
+      "status": "passed",
+      "xml": [
+        "Tessl/backend/coverage.xml"
+      ],
+      "lcov": [
+        "Tessl/frontend/coverage/lcov.info"
+      ]
+    },
+    {
+      "check": "Tessl: Compose and workflow YAML syntax (not execution)",
+      "status": "passed"
+    },
+    {
+      "check": "Spec Kit: inherited Stage 3 source hashes remain unchanged",
+      "status": "passed"
+    },
+    {
+      "check": "Spec Kit: latest native run completed",
+      "status": "passed",
+      "attempt": "complete"
+    },
+    {
+      "check": "Spec Kit: native session/statistic sources present and readable",
+      "status": "passed"
+    },
+    {
+      "check": "Spec Kit: raw XML and LCOV parse",
+      "status": "passed",
+      "xml": [
+        "Spec Kit/backend/coverage.xml"
+      ],
+      "lcov": [
+        "Spec Kit/frontend/coverage/lcov.info"
+      ]
+    },
+    {
+      "check": "Spec Kit: Compose and workflow YAML syntax (not execution)",
+      "status": "passed"
+    },
+    {
+      "check": "Real localhost AMQP publish/consume in stage4_openspec (temporary queue only)",
+      "status": "passed"
+    },
+    {
+      "check": "Real localhost AMQP publish/consume in stage4_kiro (temporary queue only)",
+      "status": "passed"
+    },
+    {
+      "check": "Real localhost AMQP publish/consume in stage4_tessl (temporary queue only)",
+      "status": "passed"
+    },
+    {
+      "check": "Real localhost AMQP publish/consume in stage4_speckit (temporary queue only)",
+      "status": "passed"
+    }
+  ],
+  "docker_executed": false,
+  "remote_ci_executed": false,
+  "completed_utc": "2026-11-07T10:14:13.623774+00:00"
+}

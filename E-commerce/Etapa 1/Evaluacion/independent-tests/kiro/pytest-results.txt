@@ -1,0 +1,62 @@
+..F....                                                                  [100%]
+================================== FAILURES ===================================
+_________ test_registration_validation_and_password_storage_are_safe __________
+
+    def test_registration_validation_and_password_storage_are_safe() -> None:
+        incomplete = client.post("/auth/register", json={})
+        assert incomplete.status_code == 422
+        assert set(incomplete.json()["emptyFields"]) == {"identifier", "password"}
+    
+        # Pydantic rejects non-text values without leaking their values.
+        invalid = client.post(
+            "/auth/register", json={"identifier": ["secret-id"], "password": {"raw": "secret"}}
+        )
+        assert invalid.status_code == 422
+>       assert "secret-id" not in invalid.text and '"raw":"secret"' not in invalid.text
+E       assert ('secret-id' not in '{"detail":[..."secret"}}]}'
+E         
+E         'secret-id' is contained here:
+E           "input":["secret-id"]},{"type":"string_type","loc":["body","password"],"msg":"Input should be a valid string","input":{"raw":"secret"}}]}
+E         ?           +++++++++)
+
+test_backend.py:51: AssertionError
+============================== warnings summary ===============================
+..\..\..\Kiro\backend\.venv\Lib\site-packages\starlette\testclient.py:40
+  C:\Users\jeron\OneDrive\Escritorio\uni\implementacion Ecommerce\Caso 3-Ecommerce\Etapa 1\Kiro\backend\.venv\Lib\site-packages\starlette\testclient.py:40: DeprecationWarning: The anyio.abc.BlockingPortal alias is deprecated, use anyio.from_thread.BlockingPortal instead.
+    _PortalFactoryType = typing.Callable[[], typing.ContextManager[anyio.abc.BlockingPortal]]
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=============================== tests coverage ================================
+_______________ coverage: platform win32, python 3.13.9-final-0 _______________
+
+Name                                                                                                                                         Stmts   Miss  Cover
+----------------------------------------------------------------------------------------------------------------------------------------------------------------
+C:\Users\jeron\OneDrive\Escritorio\uni\implementacion Ecommerce\Caso 3-Ecommerce\Etapa 1\Kiro\backend\app\__init__.py                            0      0   100%
+C:\Users\jeron\OneDrive\Escritorio\uni\implementacion Ecommerce\Caso 3-Ecommerce\Etapa 1\Kiro\backend\app\api\__init__.py                        0      0   100%
+C:\Users\jeron\OneDrive\Escritorio\uni\implementacion Ecommerce\Caso 3-Ecommerce\Etapa 1\Kiro\backend\app\api\auth_register.py                  24      0   100%
+C:\Users\jeron\OneDrive\Escritorio\uni\implementacion Ecommerce\Caso 3-Ecommerce\Etapa 1\Kiro\backend\app\api\auth_signin.py                    22      0   100%
+C:\Users\jeron\OneDrive\Escritorio\uni\implementacion Ecommerce\Caso 3-Ecommerce\Etapa 1\Kiro\backend\app\api\catalog.py                        15      0   100%
+C:\Users\jeron\OneDrive\Escritorio\uni\implementacion Ecommerce\Caso 3-Ecommerce\Etapa 1\Kiro\backend\app\api\checkout.py                       11      0   100%
+C:\Users\jeron\OneDrive\Escritorio\uni\implementacion Ecommerce\Caso 3-Ecommerce\Etapa 1\Kiro\backend\app\data\__init__.py                       3      0   100%
+C:\Users\jeron\OneDrive\Escritorio\uni\implementacion Ecommerce\Caso 3-Ecommerce\Etapa 1\Kiro\backend\app\data\accounts.py                      20      1    95%
+C:\Users\jeron\OneDrive\Escritorio\uni\implementacion Ecommerce\Caso 3-Ecommerce\Etapa 1\Kiro\backend\app\data\catalog.py                       10      0   100%
+C:\Users\jeron\OneDrive\Escritorio\uni\implementacion Ecommerce\Caso 3-Ecommerce\Etapa 1\Kiro\backend\app\main.py                               16      0   100%
+C:\Users\jeron\OneDrive\Escritorio\uni\implementacion Ecommerce\Caso 3-Ecommerce\Etapa 1\Kiro\backend\app\models\__init__.py                     4      0   100%
+C:\Users\jeron\OneDrive\Escritorio\uni\implementacion Ecommerce\Caso 3-Ecommerce\Etapa 1\Kiro\backend\app\models\checkout.py                    21      0   100%
+C:\Users\jeron\OneDrive\Escritorio\uni\implementacion Ecommerce\Caso 3-Ecommerce\Etapa 1\Kiro\backend\app\models\customer.py                     8      0   100%
+C:\Users\jeron\OneDrive\Escritorio\uni\implementacion Ecommerce\Caso 3-Ecommerce\Etapa 1\Kiro\backend\app\models\product.py                     11      0   100%
+C:\Users\jeron\OneDrive\Escritorio\uni\implementacion Ecommerce\Caso 3-Ecommerce\Etapa 1\Kiro\backend\app\models\session.py                      7      0   100%
+C:\Users\jeron\OneDrive\Escritorio\uni\implementacion Ecommerce\Caso 3-Ecommerce\Etapa 1\Kiro\backend\app\services\__init__.py                   0      0   100%
+C:\Users\jeron\OneDrive\Escritorio\uni\implementacion Ecommerce\Caso 3-Ecommerce\Etapa 1\Kiro\backend\app\services\catalog_service.py           14      0   100%
+C:\Users\jeron\OneDrive\Escritorio\uni\implementacion Ecommerce\Caso 3-Ecommerce\Etapa 1\Kiro\backend\app\services\checkout_service.py          22      0   100%
+C:\Users\jeron\OneDrive\Escritorio\uni\implementacion Ecommerce\Caso 3-Ecommerce\Etapa 1\Kiro\backend\app\services\password.py                  16      3    81%
+C:\Users\jeron\OneDrive\Escritorio\uni\implementacion Ecommerce\Caso 3-Ecommerce\Etapa 1\Kiro\backend\app\services\password_verify.py           15     11    27%
+C:\Users\jeron\OneDrive\Escritorio\uni\implementacion Ecommerce\Caso 3-Ecommerce\Etapa 1\Kiro\backend\app\services\registration_service.py      46      4    91%
+C:\Users\jeron\OneDrive\Escritorio\uni\implementacion Ecommerce\Caso 3-Ecommerce\Etapa 1\Kiro\backend\app\services\signin_service.py            25      1    96%
+----------------------------------------------------------------------------------------------------------------------------------------------------------------
+TOTAL                                                                                                                                          310     20    94%
+Coverage XML written to file coverage-backend.xml
+Coverage JSON written to file coverage-backend.json
+=========================== short test summary info ===========================
+FAILED test_backend.py::test_registration_validation_and_password_storage_are_safe
+1 failed, 6 passed, 1 warning in 2.56s

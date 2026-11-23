@@ -1,0 +1,7 @@
+fastapi==0.115.5
+uvicorn==0.32.1
+pydantic==2.10.3
+
+# Dependencia de runtime (Etapa 3, Tarea 3): cifrado de campos sensibles en reposo
+# (AES-256-GCM vía app/crypto.py). Biblioteca criptográfica estándar y revisada (R18.2).
+cryptography==50.0.2

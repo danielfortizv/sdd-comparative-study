@@ -1,0 +1,29 @@
+{
+  "seed_sha256": "B63986D4EADBB0E6AAD8AC0F21DAC5DC50CC1980F54448ECB2E39BB23451E395",
+  "tool": "Kiro",
+  "stage": 3,
+  "corrections": [],
+  "usage_meter_before": "49.11 / 1000, UI updated 1m ago; not session cost",
+  "started_utc": "2026-11-07T02:39:45.8961701Z",
+  "model": "Auto",
+  "mode": "Spec",
+  "ide_session_id": "sess_4fe6f58e-feb9-4bae-94a3-c0d3944c8e04",
+  "surface_change": "IDE 1.1.14 to CLI 3.1.0 at researcher request to reduce UI overhead. IDE session was blocked before writing specs or code; native records preserved separately. Same initial prompt restarted on CLI.",
+  "cli_version": "3.1.0",
+  "cli_started_utc": "2026-11-07T02:53:27.481679Z",
+  "cli_mode": "v3 spec, auto, session tool approval",
+  "cli_completed_utc": "2026-11-07T03:25:15.2712919Z",
+  "cli_exit_code": 0,
+  "final_status": "specifications-and-code-complete; local validation passed",
+  "final_validation": {
+    "production_build": "passed",
+    "backend_tests": "passed",
+    "real_e2e": "passed",
+    "docker_runtime": "not executed: Docker unavailable",
+    "remote_github_actions": "not executed",
+    "frontend_tests": "passed"
+  },
+  "followup_prompt_files": [],
+  "final_seed_sha256": "B63986D4EADBB0E6AAD8AC0F21DAC5DC50CC1980F54448ECB2E39BB23451E395",
+  "final_collection_utc": "2026-11-07T05:06:36.6942982Z"
+}

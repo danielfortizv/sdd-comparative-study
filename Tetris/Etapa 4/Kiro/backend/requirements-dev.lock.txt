@@ -1,0 +1,82 @@
+# RESOLVED DEV / TEST / AUDIT lock for Stage 3 (Option A).
+#
+# This is a RESOLVED LOCK, not an input manifest. The human-authored INPUT
+# manifest with direct pins and remediation rationale is `requirements-dev.txt`
+# (which layers on `requirements.txt`). This file pins EVERY transitive and is
+# the exact set installed for local development, CI tests, coverage, and the
+# dependency audits. It is a SUPERSET of `requirements.lock.txt`. It is NEVER
+# installed into the runtime Docker image.
+#
+# Resolved by installing `requirements-dev.txt` into a clean CPython 3.12.14
+# virtual environment and freezing the result (see
+# docs/native-checks/04/22-dev-resolved-freeze.txt). `pip check` passed.
+# Regenerate with:
+#   python -m venv .lockenv && .lockenv/Scripts/pip install -r requirements-dev.txt
+#   .lockenv/Scripts/pip freeze
+#
+# Platform note: `colorama` is required only on Windows terminals; `tomli` is
+# resolved here for CPython 3.12 as an audit-tool transitive. Markers keep the
+# lock valid across platforms.
+#
+# Stage 4 M3 (tasks 11.2 / 15.2): `jsonschema==4.26.0` is declared in
+# requirements-dev.txt because `tests/test_stage4_contract.py` imports it; its
+# resolved core transitives are pinned here so a fresh isolated env built ONLY
+# from this dev lock can run the contract tests: `attrs`,
+# `jsonschema-specifications`, `referencing`, `rpds-py` (jsonschema's `format` /
+# `format-nongpl` extras are NOT requested, so none of their packages appear).
+# `typing_extensions` (a `referencing` transitive on Python <3.13) was already
+# pinned above. These are dev/test only and are NEVER installed into the runtime
+# image.
+annotated-doc==0.0.5
+annotated-types==0.8.0
+anyio==4.16.0
+attrs==26.1.0
+boolean.py==5.0
+CacheControl==0.14.4
+certifi==2026.10.23
+charset-normalizer==3.5.2
+click==8.5.0
+colorama==0.4.6 ; platform_system == "Windows"
+coverage==7.17.0
+cyclonedx-python-lib==11.12.0
+defusedxml==0.7.1
+fastapi==0.137.2
+filelock==4.2.7
+h11==0.16.0
+httpcore==1.0.9
+httpx==0.28.1
+hypothesis==6.170.14
+idna==3.20
+iniconfig==2.3.1
+jsonschema==4.26.0
+jsonschema-specifications==2025.9.1
+license-expression==30.4.4
+markdown-it-py==4.2.0
+mdurl==0.1.2
+msgpack==1.2.4
+packageurl-python==0.17.6
+packaging==26.3
+pip-requirements-parser==32.0.1
+pip_api==0.0.35
+pip_audit==2.10.1
+platformdirs==4.14.3
+pluggy==1.7.0
+py-serializable==2.1.0
+pydantic==2.10.4
+pydantic_core==2.27.2
+Pygments==2.21.0
+pyparsing==3.3.3
+pytest==9.0.3
+pytest-cov==7.0.0
+referencing==0.37.0
+requests==2.34.2
+rich==15.0.0
+rpds-py==2026.9.1
+sortedcontainers==2.4.0
+starlette==1.3.1
+tomli==2.5.0
+tomli_w==1.2.0
+typing-inspection==0.4.4
+typing_extensions==4.16.0
+urllib3==2.8.0
+uvicorn==0.34.0

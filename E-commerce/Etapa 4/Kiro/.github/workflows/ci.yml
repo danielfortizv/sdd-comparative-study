@@ -1,0 +1,129 @@
+# CI pipeline (Stage 4 — microservices + real RabbitMQ).
+#
+# Installs dependencies, runs the per-service unit tests with backend coverage,
+# runs the REAL multi-process, real-broker acceptance suite against a RabbitMQ
+# service container, runs the frontend unit tests with coverage, and builds the
+# frontend production bundle. It uploads coverage and the Playwright report as
+# artifacts but does NOT publish or deploy anywhere (Requirement 6.4).
+
+name: CI
+
+on:
+  push:
+    branches: ["**"]
+  pull_request:
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+
+    # Real broker for the acceptance suite, provisioned with the Stage 4 vhost.
+    services:
+      rabbitmq:
+        image: rabbitmq:3.13
+        env:
+          RABBITMQ_DEFAULT_USER: ecommerce
+          RABBITMQ_DEFAULT_PASS: stage4-demo
+          RABBITMQ_DEFAULT_VHOST: stage4_kiro
+        ports:
+          - 5672:5672
+        options: >-
+          --health-cmd "rabbitmq-diagnostics -q ping"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 10
+
+    env:
+      AMQP_URL: amqp://ecommerce:stage4-demo@127.0.0.1:5672/stage4_kiro
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Set up Node 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "npm"
+          cache-dependency-path: frontend/package-lock.json
+
+      # --- Backend services: install into a shared venv ---------------------
+      - name: Install service dependencies
+        working-directory: services
+        run: |
+          python -m venv .venv
+          . .venv/bin/activate
+          pip install --upgrade pip
+          pip install -r requirements.txt
+          pip install -e ./contracts
+
+      # --- Per-service unit tests with combined coverage (R6.4, R7.1) -------
+      - name: Run service unit tests with coverage
+        env:
+          COVERAGE_RCFILE: .coveragerc
+        run: |
+          . services/.venv/bin/activate
+          rm -f .coverage*
+          for svc in contracts identity commerce reviews gateway; do
+            coverage run -p -m pytest "services/$svc/tests" -q
+          done
+          coverage combine
+          coverage xml -o coverage.xml
+
+      # --- Real multi-process, real-broker acceptance (R7.2, R7.3) ----------
+      - name: Run real-broker distributed acceptance tests
+        run: |
+          . services/.venv/bin/activate
+          python -m pytest tests_e2e -q
+
+      # --- Frontend: install, unit tests with coverage, build (R6.4, R7.4) --
+      - name: Install frontend dependencies
+        working-directory: frontend
+        run: npm ci
+
+      - name: Run frontend unit tests with coverage
+        working-directory: frontend
+        run: npm run test:coverage
+
+      - name: Build the frontend
+        working-directory: frontend
+        run: npm run build
+
+      # --- Frontend E2E against the distributed stack (R7.2) ----------------
+      - name: Install Playwright browser
+        working-directory: frontend
+        run: npx playwright install --with-deps chromium
+
+      - name: Run Playwright E2E against the Stage 4 stack
+        working-directory: frontend
+        env:
+          CI: "true"
+        run: npm run test:e2e
+
+      # --- Artifacts only; no deployment (R6.4) -----------------------------
+      - name: Upload backend coverage
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: backend-coverage
+          path: coverage.xml
+
+      - name: Upload frontend coverage
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: frontend-coverage
+          path: frontend/coverage/lcov.info
+
+      - name: Upload Playwright report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: playwright-report
+          path: frontend/playwright-report

@@ -1,0 +1,8 @@
+Command: python -m pytest tests/test_crypto.py tests/test_audit.py tests/test_concurrency_invariants.py -q --basetemp='..\\.stage4-pytest-tmp'
+Outcome: 20 passed, 9 failed.
+Findings for correction:
+- Direct crypto test helper built encrypted transfer bodies before adding required expected_versions; adapt E4 tests/client helper. (3 failures)
+- Rejected monetary commands did not write the inherited separate rejection audit record. Implement auditable rejection after rollback. (1 failure)
+- Success audit event name changed from inherited TRANSFER_COMPLETED; preserve that audit vocabulary. (1 failure)
+- Audit-focused tests assumed an empty ledger, but Stage 4 migration correctly appends one cutover audit record. Make tests use the actual sequence checkpoint. (2 failures)
+- Inherited concurrent-transfer suites create requests with stale/no D-14 versions, so some are correctly rejected; adapt the test scenarios and assert conservation under optimistic concurrency. (2 failures)

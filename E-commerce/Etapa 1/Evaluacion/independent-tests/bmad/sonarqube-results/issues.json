@@ -1,0 +1,494 @@
+{
+  "total": 9,
+  "p": 1,
+  "ps": 500,
+  "paging": {
+    "pageIndex": 1,
+    "pageSize": 500,
+    "total": 9
+  },
+  "effortTotal": 39,
+  "issues": [
+    {
+      "key": "11df7218-5c18-4034-943e-d390e28c66fe",
+      "rule": "python:S1192",
+      "severity": "CRITICAL",
+      "component": "bmad-s1-official-01:backend/main.py",
+      "project": "bmad-s1-official-01",
+      "line": 45,
+      "hash": "1bcae977ee87416882ceb4fda8c297d7",
+      "textRange": {
+        "startLine": 45,
+        "endLine": 45,
+        "startOffset": 24,
+        "endOffset": 34
+      },
+      "flows": [
+        {
+          "locations": [
+            {
+              "component": "bmad-s1-official-01:backend/main.py",
+              "textRange": {
+                "startLine": 53,
+                "endLine": 53,
+                "startOffset": 24,
+                "endOffset": 34
+              },
+              "msg": "Duplication",
+              "msgFormattings": []
+            }
+          ]
+        },
+        {
+          "locations": [
+            {
+              "component": "bmad-s1-official-01:backend/main.py",
+              "textRange": {
+                "startLine": 61,
+                "endLine": 61,
+                "startOffset": 24,
+                "endOffset": 34
+              },
+              "msg": "Duplication",
+              "msgFormattings": []
+            }
+          ]
+        }
+      ],
+      "status": "OPEN",
+      "message": "Define a constant instead of duplicating this literal \"In Stock\" 3 times.",
+      "effort": "6min",
+      "debt": "6min",
+      "author": "",
+      "tags": [
+        "design"
+      ],
+      "creationDate": "2026-10-05T14:44:25+02:00",
+      "updateDate": "2026-10-05T14:44:25+02:00",
+      "type": "CODE_SMELL",
+      "scope": "MAIN",
+      "quickFixAvailable": false,
+      "messageFormattings": [],
+      "codeVariants": [],
+      "cleanCodeAttribute": "DISTINCT",
+      "cleanCodeAttributeCategory": "ADAPTABLE",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "HIGH"
+        }
+      ],
+      "issueStatus": "OPEN",
+      "prioritizedRule": false,
+      "fromSonarQubeUpdate": false,
+      "internalTags": [],
+      "linkedTicketStatus": "NOT_LINKED"
+    },
+    {
+      "key": "6e1e9bdc-3f38-4bf0-a3f3-01128ab79842",
+      "rule": "typescript:S1128",
+      "severity": "MINOR",
+      "component": "bmad-s1-official-01:frontend/src/App.tsx",
+      "project": "bmad-s1-official-01",
+      "line": 3,
+      "hash": "ee8c6afead3d211e31b8a2af284c1321",
+      "textRange": {
+        "startLine": 3,
+        "endLine": 3,
+        "startOffset": 32,
+        "endOffset": 40
+      },
+      "flows": [],
+      "status": "OPEN",
+      "message": "Remove this unused import of 'CartItem'.",
+      "effort": "1min",
+      "debt": "1min",
+      "author": "",
+      "tags": [
+        "es2015",
+        "type-dependent",
+        "unused"
+      ],
+      "creationDate": "2026-10-05T14:44:25+02:00",
+      "updateDate": "2026-10-05T14:44:25+02:00",
+      "type": "CODE_SMELL",
+      "scope": "MAIN",
+      "quickFixAvailable": true,
+      "messageFormattings": [],
+      "codeVariants": [],
+      "cleanCodeAttribute": "CLEAR",
+      "cleanCodeAttributeCategory": "INTENTIONAL",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "LOW"
+        }
+      ],
+      "issueStatus": "OPEN",
+      "prioritizedRule": false,
+      "fromSonarQubeUpdate": false,
+      "internalTags": [],
+      "linkedTicketStatus": "NOT_LINKED"
+    },
+    {
+      "key": "e576498f-9f21-401a-ab89-7cf128bbbe48",
+      "rule": "typescript:S7735",
+      "severity": "MINOR",
+      "component": "bmad-s1-official-01:frontend/src/App.tsx",
+      "project": "bmad-s1-official-01",
+      "line": 138,
+      "hash": "2ad14cfd70282f39e8e4cf310d2396b8",
+      "textRange": {
+        "startLine": 138,
+        "endLine": 138,
+        "startOffset": 8,
+        "endOffset": 24
+      },
+      "flows": [],
+      "status": "OPEN",
+      "message": "Unexpected negated condition.",
+      "effort": "2min",
+      "debt": "2min",
+      "author": "",
+      "tags": [
+        "readability"
+      ],
+      "creationDate": "2026-10-05T14:44:25+02:00",
+      "updateDate": "2026-10-05T14:44:25+02:00",
+      "type": "CODE_SMELL",
+      "scope": "MAIN",
+      "quickFixAvailable": true,
+      "messageFormattings": [],
+      "codeVariants": [],
+      "cleanCodeAttribute": "CLEAR",
+      "cleanCodeAttributeCategory": "INTENTIONAL",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "LOW"
+        }
+      ],
+      "issueStatus": "OPEN",
+      "prioritizedRule": false,
+      "fromSonarQubeUpdate": false,
+      "internalTags": [],
+      "linkedTicketStatus": "NOT_LINKED"
+    },
+    {
+      "key": "694fb58e-62a8-4157-a896-7a757278d777",
+      "rule": "typescript:S1082",
+      "severity": "MINOR",
+      "component": "bmad-s1-official-01:frontend/src/App.tsx",
+      "project": "bmad-s1-official-01",
+      "line": 203,
+      "hash": "e31f00e9346b290c6025e0c252b301c6",
+      "textRange": {
+        "startLine": 203,
+        "endLine": 203,
+        "startOffset": 8,
+        "endOffset": 79
+      },
+      "flows": [],
+      "status": "OPEN",
+      "message": "Visible, non-interactive elements with click handlers must have at least one keyboard listener.",
+      "effort": "5min",
+      "debt": "5min",
+      "author": "",
+      "tags": [
+        "accessibility",
+        "react"
+      ],
+      "creationDate": "2026-10-05T14:44:25+02:00",
+      "updateDate": "2026-10-05T14:44:25+02:00",
+      "type": "BUG",
+      "scope": "MAIN",
+      "quickFixAvailable": false,
+      "messageFormattings": [],
+      "codeVariants": [],
+      "cleanCodeAttribute": "COMPLETE",
+      "cleanCodeAttributeCategory": "INTENTIONAL",
+      "impacts": [
+        {
+          "softwareQuality": "RELIABILITY",
+          "severity": "LOW"
+        }
+      ],
+      "issueStatus": "OPEN",
+      "prioritizedRule": false,
+      "fromSonarQubeUpdate": false,
+      "internalTags": [],
+      "linkedTicketStatus": "NOT_LINKED"
+    },
+    {
+      "key": "cd20ee0c-c31f-47f1-9e63-93cb466f018f",
+      "rule": "typescript:S6848",
+      "severity": "MAJOR",
+      "component": "bmad-s1-official-01:frontend/src/App.tsx",
+      "project": "bmad-s1-official-01",
+      "line": 203,
+      "hash": "e31f00e9346b290c6025e0c252b301c6",
+      "textRange": {
+        "startLine": 203,
+        "endLine": 203,
+        "startOffset": 8,
+        "endOffset": 79
+      },
+      "flows": [],
+      "status": "OPEN",
+      "message": "Avoid non-native interactive elements. If using native HTML is not possible, add an appropriate role and support for tabbing, mouse, keyboard, and touch inputs to an interactive content element.",
+      "effort": "5min",
+      "debt": "5min",
+      "author": "",
+      "tags": [
+        "accessibility",
+        "react"
+      ],
+      "creationDate": "2026-10-05T14:44:25+02:00",
+      "updateDate": "2026-10-05T14:44:25+02:00",
+      "type": "CODE_SMELL",
+      "scope": "MAIN",
+      "quickFixAvailable": false,
+      "messageFormattings": [],
+      "codeVariants": [],
+      "cleanCodeAttribute": "CONVENTIONAL",
+      "cleanCodeAttributeCategory": "CONSISTENT",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "LOW"
+        },
+        {
+          "softwareQuality": "RELIABILITY",
+          "severity": "MEDIUM"
+        }
+      ],
+      "issueStatus": "OPEN",
+      "prioritizedRule": false,
+      "fromSonarQubeUpdate": false,
+      "internalTags": [],
+      "linkedTicketStatus": "NOT_LINKED"
+    },
+    {
+      "key": "4cd4f3b5-bd4c-43f7-ba89-6db6d8c4f1eb",
+      "rule": "typescript:S3358",
+      "severity": "MAJOR",
+      "component": "bmad-s1-official-01:frontend/src/App.tsx",
+      "project": "bmad-s1-official-01",
+      "line": 257,
+      "hash": "f4d5715ade4ff1485a237c23ef808783",
+      "textRange": {
+        "startLine": 257,
+        "endLine": 290,
+        "startOffset": 16,
+        "endOffset": 13
+      },
+      "flows": [],
+      "status": "OPEN",
+      "message": "Extract this nested ternary operation into an independent statement.",
+      "effort": "5min",
+      "debt": "5min",
+      "author": "",
+      "tags": [
+        "confusing"
+      ],
+      "creationDate": "2026-10-05T14:44:25+02:00",
+      "updateDate": "2026-10-05T14:44:25+02:00",
+      "type": "CODE_SMELL",
+      "scope": "MAIN",
+      "quickFixAvailable": false,
+      "messageFormattings": [],
+      "codeVariants": [],
+      "cleanCodeAttribute": "CLEAR",
+      "cleanCodeAttributeCategory": "INTENTIONAL",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "MEDIUM"
+        }
+      ],
+      "issueStatus": "OPEN",
+      "prioritizedRule": false,
+      "fromSonarQubeUpdate": false,
+      "internalTags": [],
+      "linkedTicketStatus": "NOT_LINKED"
+    },
+    {
+      "key": "3ae4da83-a201-409a-b911-148366444f98",
+      "rule": "typescript:S3358",
+      "severity": "MAJOR",
+      "component": "bmad-s1-official-01:frontend/src/App.tsx",
+      "project": "bmad-s1-official-01",
+      "line": 402,
+      "hash": "017e485ae6aebc491afb49064ea89666",
+      "textRange": {
+        "startLine": 402,
+        "endLine": 402,
+        "startOffset": 54,
+        "endOffset": 107
+      },
+      "flows": [],
+      "status": "OPEN",
+      "message": "Extract this nested ternary operation into an independent statement.",
+      "effort": "5min",
+      "debt": "5min",
+      "author": "",
+      "tags": [
+        "confusing"
+      ],
+      "creationDate": "2026-10-05T14:44:25+02:00",
+      "updateDate": "2026-10-05T14:44:25+02:00",
+      "type": "CODE_SMELL",
+      "scope": "MAIN",
+      "quickFixAvailable": false,
+      "messageFormattings": [],
+      "codeVariants": [],
+      "cleanCodeAttribute": "CLEAR",
+      "cleanCodeAttributeCategory": "INTENTIONAL",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "MEDIUM"
+        }
+      ],
+      "issueStatus": "OPEN",
+      "prioritizedRule": false,
+      "fromSonarQubeUpdate": false,
+      "internalTags": [],
+      "linkedTicketStatus": "NOT_LINKED"
+    },
+    {
+      "key": "c66bc4df-83dd-461c-b046-b09ed17b024f",
+      "rule": "typescript:S6481",
+      "severity": "MAJOR",
+      "component": "bmad-s1-official-01:frontend/src/context/AuthContext.tsx",
+      "project": "bmad-s1-official-01",
+      "line": 24,
+      "hash": "1ab4f18e814e8d932d3c2ca2a2787998",
+      "textRange": {
+        "startLine": 24,
+        "endLine": 24,
+        "startOffset": 33,
+        "endOffset": 81
+      },
+      "flows": [],
+      "status": "OPEN",
+      "message": "The object passed as the value prop to the Context provider changes every render. To fix this consider wrapping it in a useMemo hook.",
+      "effort": "5min",
+      "debt": "5min",
+      "author": "",
+      "tags": [
+        "performance",
+        "react",
+        "jsx"
+      ],
+      "creationDate": "2026-10-05T14:44:25+02:00",
+      "updateDate": "2026-10-05T14:44:25+02:00",
+      "type": "CODE_SMELL",
+      "scope": "MAIN",
+      "quickFixAvailable": false,
+      "messageFormattings": [],
+      "codeVariants": [],
+      "cleanCodeAttribute": "EFFICIENT",
+      "cleanCodeAttributeCategory": "INTENTIONAL",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "MEDIUM"
+        }
+      ],
+      "issueStatus": "OPEN",
+      "prioritizedRule": false,
+      "fromSonarQubeUpdate": false,
+      "internalTags": [],
+      "linkedTicketStatus": "NOT_LINKED"
+    },
+    {
+      "key": "5754c450-3ebb-4bac-a827-7f8892f504d1",
+      "rule": "typescript:S6481",
+      "severity": "MAJOR",
+      "component": "bmad-s1-official-01:frontend/src/context/CartContext.tsx",
+      "project": "bmad-s1-official-01",
+      "line": 102,
+      "hash": "67a8a13e3c41d46fa1510212abb1a4af",
+      "textRange": {
+        "startLine": 102,
+        "endLine": 112,
+        "startOffset": 13,
+        "endOffset": 7
+      },
+      "flows": [],
+      "status": "OPEN",
+      "message": "The object passed as the value prop to the Context provider changes every render. To fix this consider wrapping it in a useMemo hook.",
+      "effort": "5min",
+      "debt": "5min",
+      "author": "",
+      "tags": [
+        "performance",
+        "react",
+        "jsx"
+      ],
+      "creationDate": "2026-10-05T14:44:25+02:00",
+      "updateDate": "2026-10-05T14:44:25+02:00",
+      "type": "CODE_SMELL",
+      "scope": "MAIN",
+      "quickFixAvailable": false,
+      "messageFormattings": [],
+      "codeVariants": [],
+      "cleanCodeAttribute": "EFFICIENT",
+      "cleanCodeAttributeCategory": "INTENTIONAL",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "MEDIUM"
+        }
+      ],
+      "issueStatus": "OPEN",
+      "prioritizedRule": false,
+      "fromSonarQubeUpdate": false,
+      "internalTags": [],
+      "linkedTicketStatus": "NOT_LINKED"
+    }
+  ],
+  "components": [
+    {
+      "key": "bmad-s1-official-01:frontend/src/context/CartContext.tsx",
+      "enabled": true,
+      "qualifier": "FIL",
+      "name": "CartContext.tsx",
+      "longName": "frontend/src/context/CartContext.tsx",
+      "path": "frontend/src/context/CartContext.tsx"
+    },
+    {
+      "key": "bmad-s1-official-01",
+      "enabled": true,
+      "qualifier": "TRK",
+      "name": "BMAD Stage 1 Official 01",
+      "longName": "BMAD Stage 1 Official 01"
+    },
+    {
+      "key": "bmad-s1-official-01:frontend/src/App.tsx",
+      "enabled": true,
+      "qualifier": "FIL",
+      "name": "App.tsx",
+      "longName": "frontend/src/App.tsx",
+      "path": "frontend/src/App.tsx"
+    },
+    {
+      "key": "bmad-s1-official-01:frontend/src/context/AuthContext.tsx",
+      "enabled": true,
+      "qualifier": "FIL",
+      "name": "AuthContext.tsx",
+      "longName": "frontend/src/context/AuthContext.tsx",
+      "path": "frontend/src/context/AuthContext.tsx"
+    },
+    {
+      "key": "bmad-s1-official-01:backend/main.py",
+      "enabled": true,
+      "qualifier": "FIL",
+      "name": "main.py",
+      "longName": "backend/main.py",
+      "path": "backend/main.py"
+    }
+  ],
+  "facets": []
+}

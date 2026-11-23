@@ -1,0 +1,134 @@
+{
+  "source": "C:\\Users\\jeron\\OneDrive\\Escritorio\\uni\\implementacion Ecommerce\\Caso 3-Ecommerce\\Etapa 1\\Tessl",
+  "note": "Current Stage 1 working tree copied before Stage 2; not a claim of corrected or fully validated Stage 1. OpenSpec includes its documented later corrections. Dependencies, runtime data, docs and caches excluded.",
+  "files": [
+    {
+      "path": ".gemini/settings.json",
+      "sha256": "2265fcb3e3d3f8bfc95f117c5680f92b94bec665d0191cde532d4dd32cbdc48c"
+    },
+    {
+      "path": ".tessl/RULES.md",
+      "sha256": "6c7a5640d11596b6a21e8216f36976e3cf132fd90445d2a8e3a3267d9bb209ba"
+    },
+    {
+      "path": "AGENTS.md",
+      "sha256": "49c4eb0943423eacb23348f847a9f1a96b0eca55934018c4f9ead7908760d701"
+    },
+    {
+      "path": "backend/api_test.py",
+      "sha256": "e7fa1fb2ee7896691d29ecaadfb1e4fa0eb961f3bcff30360d0eeda143acfd02"
+    },
+    {
+      "path": "backend/app/auth.py",
+      "sha256": "32cc333c7c7e92e8fdf718ca37290aa75a29a6d28e1c8111ed12a9f8acdd8253"
+    },
+    {
+      "path": "backend/app/database.py",
+      "sha256": "50fc82e5a153f81009f5b70361d7ce1401514988f83551e4d3faf46c2ef5d59a"
+    },
+    {
+      "path": "backend/app/main.py",
+      "sha256": "f8a0d4bec52fbf904b0b1a905aee18e6549b78841bb9effa2d67bff4cd68f9b7"
+    },
+    {
+      "path": "backend/app/models.py",
+      "sha256": "774e75a026690398893bdd5842794f711734d593cf7d4624be60ae1d572eb951"
+    },
+    {
+      "path": "backend/README.md",
+      "sha256": "0b7b5953d7907e8c85f7b3c2664c2de1aac8f9340638d647ab11421583004349"
+    },
+    {
+      "path": "backend/requirements.txt",
+      "sha256": "c9802edd80d1dee0d773ceb7655b4ceb5193bfadfd10a8db6fd14687c67405aa"
+    },
+    {
+      "path": "canonical-seed-stage-2.md",
+      "sha256": "ba49a54d4c938a8a15d153b0b395f7ed21876a721452364b425d791776ec3564"
+    },
+    {
+      "path": "especificacion-semilla-final-en.md",
+      "sha256": "45ddfded6ebffdaec9fceb5818d319a3dc3d66a79a9a6b887557aaccd64b446d"
+    },
+    {
+      "path": "frontend/index.html",
+      "sha256": "9144cba4cd432b0a3948a6679b62adc5f8cc09d8e094b681f860e18bf64ba781"
+    },
+    {
+      "path": "frontend/package-lock.json",
+      "sha256": "6ad04f2d9da8775dad14fd40d6fc546b6d48cca0d24b2ba5484f27cc9cdf55ff"
+    },
+    {
+      "path": "frontend/package.json",
+      "sha256": "9ec8e633506834c57e3471e042acc3769a4d1833b006e2d233eaf0784eef06e9"
+    },
+    {
+      "path": "frontend/README.md",
+      "sha256": "efeb5d87be2c4254479ed4549ef8ac9db9b0508dd773ec634a2ca05697a8addb"
+    },
+    {
+      "path": "frontend/src/App.tsx",
+      "sha256": "cf2a674dbc20e97780f8de932b3e83540718de0b5db59afc9fe1db75dee7bb1d"
+    },
+    {
+      "path": "frontend/src/components/Auth.tsx",
+      "sha256": "b026d07af6e9abbe9fdba1ded033bbc01909d4cb6de009d1b814cb774980ca05"
+    },
+    {
+      "path": "frontend/src/components/Cart.tsx",
+      "sha256": "eb56b47bfc5b57b32d0cd85ae111dd5971c19f8dd3dbb82888dd4ddab06a5869"
+    },
+    {
+      "path": "frontend/src/components/Catalog.tsx",
+      "sha256": "238ca9cbffce554d20338d699f74e9b6319a51b871a91e0b16f9d5a923a59f7e"
+    },
+    {
+      "path": "frontend/src/components/Checkout.tsx",
+      "sha256": "995f3930d98742557311d09799a499f175f3c1a2d24f0b443c46844489e30cac"
+    },
+    {
+      "path": "frontend/src/components/Header.tsx",
+      "sha256": "011834924a2187db973d87b40bec593d4a5f0097d5673113f8122fa24bab899a"
+    },
+    {
+      "path": "frontend/src/context/AppContext.tsx",
+      "sha256": "76a62b49ac1468649719a413239fa2bfe3d94feae32a9952db65920bda510368"
+    },
+    {
+      "path": "frontend/src/index.css",
+      "sha256": "1228607a1496fc4408327a397f2d55a3ad9a453cb62665b1435543fcf886a08e"
+    },
+    {
+      "path": "frontend/src/main.tsx",
+      "sha256": "1a2c80094fecd6b181676d20c622bdae01eb6680429428274d9ee37e4f96036b"
+    },
+    {
+      "path": "frontend/tsconfig.json",
+      "sha256": "37203e8f5ddeaea21d8755a6f4a0065466b2c74e526927e287e6e4421e9160e5"
+    },
+    {
+      "path": "frontend/vite.config.ts",
+      "sha256": "316afb46a887df9aead1b4fe73c2900da04e75640afc78ccd18d7616eaccbb69"
+    },
+    {
+      "path": "README.md",
+      "sha256": "a7f90f4960cba932dd3b3be0bcd08fda5ca29af80779100fb2c1dd4fe593c9ab"
+    },
+    {
+      "path": "specs/requirements.md",
+      "sha256": "2913c82e0f27fabda607354e8ebebf9a1026f00deeb857383cf5e6085119e018"
+    },
+    {
+      "path": "specs/tasks.md",
+      "sha256": "4d1dde4b3640b93bfdcd3eca6cbd5358e71f770c98060ec8f63c513edfe90512"
+    },
+    {
+      "path": "specs/technical_design.md",
+      "sha256": "014b0d71b5d2814bb20a3acc9ec162af5dc766158f6665e44538702ec956ac26"
+    },
+    {
+      "path": "tessl.json",
+      "sha256": "b9b2c59dfc819b26b886c59eab2d9d16f2110197c07e0c2ba08d6747fd1fa885"
+    }
+  ]
+}

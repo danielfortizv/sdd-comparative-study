@@ -1,0 +1,17 @@
+{
+  "frontend": {
+    "covered_lines": 788,
+    "executable_lines": 890,
+    "line_coverage_percent": 88.53
+  },
+  "backend": {
+    "covered_lines": 124,
+    "executable_lines": 138,
+    "line_coverage_percent": 89.85507246376811
+  },
+  "combined": {
+    "covered_lines": 912,
+    "executable_lines": 1028,
+    "line_coverage_percent": 88.716
+  }
+}

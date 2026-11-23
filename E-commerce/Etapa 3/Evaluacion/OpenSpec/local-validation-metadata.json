@@ -1,0 +1,8 @@
+{
+  "driver": "Independent experiment-orchestrator validation of the native OpenSpec test suite; no application or test source edited",
+  "backend_port": 8005,
+  "exit_code": 0,
+  "completed_utc": "2026-11-07T04:25:50.3028141Z",
+  "started_utc": "2026-11-07T04:25:29.1019182Z",
+  "frontend_port": 5173
+}

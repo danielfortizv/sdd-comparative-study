@@ -1,0 +1,45 @@
+{
+  "timestamp": "2026-11-13T21:49:55.214065+00:00",
+  "total_users": 30,
+  "duration_seconds": 60.0,
+  "total_requests": 1792,
+  "successful_requests": 1792,
+  "business_rejections_count": 0,
+  "unexpected_failures_count": 0,
+  "unexpected_error_rate_percentage": 0.0,
+  "throughput_rps": 29.9,
+  "traffic_distribution": {
+    "read_requests_count": 1597,
+    "read_requests_percentage": 89.1,
+    "target_read_percentage": "90% (60% balance + 30% tx history)",
+    "transfer_requests_count": 195,
+    "transfer_requests_percentage": 10.9,
+    "target_transfer_percentage": "10%"
+  },
+  "latencies_ms": {
+    "p50": 4,
+    "p90": 8,
+    "p95": 9,
+    "p99": 15,
+    "read_p95": 11,
+    "transfer_p95": 12
+  },
+  "sla_evaluations": {
+    "read_p95_under_200ms": {
+      "threshold_ms": 200.0,
+      "actual_ms": 11,
+      "passed": true
+    },
+    "transfer_p95_under_500ms": {
+      "threshold_ms": 500.0,
+      "actual_ms": 12,
+      "passed": true
+    },
+    "unexpected_error_rate_under_1_percent": {
+      "threshold_percentage": 1.0,
+      "actual_percentage": 0.0,
+      "passed": true
+    }
+  },
+  "passed": true
+}

@@ -1,0 +1,58 @@
+# =============================================================================
+# Configuración del escáner SonarQube — Shift Bank Etapa 4 (Kiro)
+# Registrada en la Tarea 26 para REUSO por:
+#   - T27/T28: PRE-scan de la Etapa 4 (antes de la fase correctiva)
+#   - T30: escaneo final (idéntico alcance/cobertura, comparable 1:1 con el PRE)
+#
+# ESTE ARCHIVO NO DISPARA NINGÚN ESCANEO. Es la configuración exacta que los
+# escaneos de la Etapa 4 reutilizarán. El investigador ejecuta SonarQube
+# autenticado contra su instancia local (localhost:9000).
+#
+# IMPORTANTE (condición del investigador): la clave de proyecto es la de la
+# ETAPA 4 y NUNCA la de la Etapa 3. El archivo de la Etapa 3 se preserva aparte
+# como referencia histórica.
+# =============================================================================
+
+# --- Identidad del proyecto (misma clave en PRE y final para comparar 1:1) ---
+sonar.projectKey=Shift-Bank---Stage-4---Kiro
+sonar.projectName=Shift Bank Etapa 4 (Kiro)
+sonar.projectVersion=4.0
+
+# --- Alcance de código fuente (backend Python + frontend TS/React) ---
+# Rutas relativas al raíz del proyecto `Etapa 4/Kiro/`.
+sonar.sources=backend/app,frontend/src
+
+# --- Rutas de pruebas ---
+sonar.tests=backend/tests,frontend/src
+sonar.test.inclusions=backend/tests/**/*.py,frontend/src/**/*.test.ts,frontend/src/**/*.test.tsx,frontend/src/**/*.spec.ts,frontend/src/**/*.spec.tsx
+
+# --- Codificación / lenguaje ---
+sonar.sourceEncoding=UTF-8
+
+# --- Cobertura backend (Cobertura XML de pytest-cov / coverage.py) ---
+# Generada en la Tarea 23 con (desde backend/, venv):
+#   python -m pytest --cov=app --cov-report=xml:coverage.xml
+sonar.python.coverage.reportPaths=backend/coverage.xml
+sonar.python.version=3.13
+
+# --- Cobertura frontend (LCOV de Vitest v8) ---
+# Generar con (desde frontend/):
+#   vitest run --coverage      # produce frontend/coverage/lcov.info
+sonar.javascript.lcov.reportPaths=frontend/coverage/lcov.info
+
+# --- Exclusiones (no son código de producción a evaluar ni deben contar en cobertura) ---
+sonar.exclusions=\
+  **/node_modules/**,\
+  **/dist/**,\
+  **/.venv/**,\
+  **/__pycache__/**,\
+  **/*.db,\
+  frontend/vite.config.ts,\
+  backend/app/seed.py
+
+sonar.coverage.exclusions=\
+  backend/tests/**,\
+  frontend/src/**/*.test.*,\
+  frontend/src/**/*.spec.*
+
+sonar.cpd.exclusions=backend/tests/**,frontend/src/**/*.test.*,frontend/src/**/*.spec.*

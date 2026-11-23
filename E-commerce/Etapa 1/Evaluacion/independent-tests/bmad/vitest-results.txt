@@ -1,0 +1,25 @@
+
+ RUN  v2.1.9 C:/Users/jeron/OneDrive/Escritorio/uni/implementacion Ecommerce/Caso 3-Ecommerce/Etapa 1/Bmad Method/frontend
+      Coverage enabled with v8
+
+ ✓ ../../Evaluacion/independent-tests/bmad/frontend.test.tsx (3 tests) 3367ms
+   ✓ BMAD Stage 1 frontend > completes the visitor-to-confirmation journey and preserves the cart 2562ms
+   ✓ BMAD Stage 1 frontend > shows useful validation and authentication errors 705ms
+
+ Test Files  1 passed (1)
+      Tests  3 passed (3)
+   Start at  14:52:30
+   Duration  11.06s (transform 471ms, setup 684ms, collect 1.52s, tests 3.37s, environment 3.31s, prepare 431ms)
+
+ % Coverage report from v8
+------------------|---------|----------|---------|---------|--------------------
+File              | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s  
+------------------|---------|----------|---------|---------|--------------------
+All files         |   88.38 |    85.26 |   61.76 |   88.38 |                    
+ src              |   93.36 |     87.5 |   56.52 |   93.36 |                    
+  App.tsx         |   95.91 |     88.6 |   59.09 |   95.91 | ...172,179,300-303 
+  main.tsx        |       0 |        0 |       0 |       0 | 1-10               
+ src/context      |   70.47 |    73.33 |   72.72 |   70.47 |                    
+  AuthContext.tsx |   81.81 |       75 |      75 |   81.81 | 20-21,33-34        
+  CartContext.tsx |   67.46 |    72.72 |   71.42 |   67.46 | ...3,86-91,122-123 
+------------------|---------|----------|---------|---------|--------------------

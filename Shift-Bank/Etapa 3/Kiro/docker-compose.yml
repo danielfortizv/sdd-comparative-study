@@ -1,0 +1,148 @@
+# docker-compose.yml de Shift Bank (Etapa 3, Tarea 27).
+#
+# Decisión D-E3-04 (MUST): despliegue LOCAL con Docker Compose — backend + Nginx, red
+# interna aislada, secretos por entorno + `.env.example`, fail-closed, volumen persistente,
+# UN SOLO scheduler (exactamente una réplica de backend), usuario no root, SOLO verificación
+# local (sin hosting externo/K8s/CI-CD). Diseño §4.1 y §4.3.
+#
+# Ubicación: raíz del workspace Kiro. Elegida (en vez de la carpeta `deploy/` sugerida por el
+# diseño §4.1) porque los Dockerfiles ya viven en `backend/` y `frontend/` y el proxy de Nginx
+# apunta al upstream `backend` por nombre de servicio; colocar el compose en la raíz permite
+# contextos de build directos (`./backend`, `./frontend`) sin duplicar ni mover artefactos.
+#
+# Topología (§4.1):
+#   [host] --443/80--> (nginx) --red interna shiftnet--> (backend:8000)
+#   - Solo `nginx` publica puertos al host (443 HTTPS, 80 redirección). (R11.1)
+#   - `backend` NO publica NINGÚN puerto al host: solo es alcanzable por la red interna
+#     aislada `shiftnet` (R11.2, R4.3, AC-12).
+#   - Red `shiftnet` con `internal: true`: sin acceso saliente a Internet ni ruta al host;
+#     el tráfico este-oeste nginx<->backend va por DNS interno de Compose (`backend`).
+#     Las imágenes se CONSTRUYEN localmente (`build:`), no se descargan en runtime sobre esta
+#     red, de modo que `internal: true` no impide el arranque. (R11.5)
+#   - Nginx está en DOS redes: `shiftnet` (interna, para alcanzar `backend`) Y `edge` (red
+#     bridge NO interna). En este motor Docker, un contenedor cuya ÚNICA red es `internal: true`
+#     NO puede enlazar sus puertos publicados al host (no existe ruta de NAT host <-> red
+#     interna; `docker port` queda vacío). Por eso nginx necesita la red no interna `edge` para
+#     que 443/80 se publiquen de verdad al host. El `backend` NO está en `edge`: permanece SOLO
+#     en `shiftnet` (interna) y por tanto sigue inalcanzable desde el host (R11.2, AC-12).
+#
+# Secretos (§4.3, R12.1): el backend recibe SHIFT_ENC_KEYS / SHIFT_ENC_ACTIVE_KID /
+#   SHIFT_AUDIT_HMAC_KEY / SHIFT_ADMIN_TOKEN desde el archivo `.env` (NO versionado). Aquí NO
+#   hay literales de secretos: `env_file` + `environment` con interpolación `${VAR}` (sin valor
+#   por defecto) inyectan los valores en runtime. `.env.example` (versionado) documenta los
+#   NOMBRES sin valores reales.
+#
+# Un solo scheduler (§4.3, R11.3, R17.3): el servicio `backend` corre como UNA SOLA instancia.
+#   NO se define `deploy.replicas` (>1 rompería la garantía) ni `--scale backend=N`. El
+#   `lifespan` heredado lanza exactamente un scheduler de fondo por proceso; con un único
+#   contenedor hay exactamente un scheduler. Escalar el backend queda FUERA de alcance y
+#   violaría la exactitud-una-vez de las ocurrencias recurrentes/settlement ACH.
+#
+# Persistencia (§4.3, R12.3, R13.4): volumen Docker nombrado `shift_db_data` montado en /data
+#   del backend; respalda `DB_PATH` (el entrypoint enlaza /app/shift_bank.db -> /data/...). El
+#   archivo SQLite (y sus sidecars WAL/SHM), incluidas `audit_log`/`audit_anchor`, sobrevive a
+#   reinicios. Imágenes sin DB ni secretos horneados (R12.5): los `.dockerignore` ya excluyen
+#   *.db, .env y certs.
+#
+# NOTA: este archivo define la topología y debe validar con `docker compose config`. El `up`
+# completo + smoke de HTTPS/redirección/proxy/reinicio/fail-closed son las Tareas 28 y 29.
+
+services:
+  # ---------------------------------------------------------------------------
+  # backend — FastAPI/uvicorn. Sin puertos al host; solo red interna; una réplica.
+  # ---------------------------------------------------------------------------
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    image: shift-bank-backend:stage3
+    # NINGÚN bloque `ports:` -> el backend NO es alcanzable desde el host (R11.2, AC-12).
+    # El upstream Nginx lo contacta por `http://backend:8000` en la red interna.
+    networks:
+      - shiftnet
+    # Inyección de secretos por entorno (R12.1). `.env` NO versionado provee los valores; la
+    # interpolación `${VAR}` sin default falla-cerrado en `config config` si el .env falta,
+    # y el `lifespan` aborta el arranque si una clave es inválida (R12.2, fail-closed).
+    env_file:
+      - .env
+    environment:
+      SHIFT_ENC_KEYS: ${SHIFT_ENC_KEYS}
+      SHIFT_ENC_ACTIVE_KID: ${SHIFT_ENC_ACTIVE_KID}
+      SHIFT_AUDIT_HMAC_KEY: ${SHIFT_AUDIT_HMAC_KEY}
+      SHIFT_ADMIN_TOKEN: ${SHIFT_ADMIN_TOKEN}
+    # Volumen persistente para DB_PATH (R12.3, R13.4). Punto de montaje /data definido en el
+    # Dockerfile del backend; el entrypoint enlaza la DB real al volumen.
+    volumes:
+      - shift_db_data:/data
+    # Reinicio acotado para el despliegue local; sin políticas de orquestación externas.
+    restart: unless-stopped
+    # El HEALTHCHECK está horneado en la imagen (GET /api/accounts). Se reafirma aquí para que
+    # `depends_on: condition: service_healthy` de nginx sea explícito y legible en el config.
+    healthcheck:
+      test: ["CMD", "curl", "-fsS", "http://127.0.0.1:8000/api/accounts"]
+      interval: 15s
+      timeout: 5s
+      retries: 5
+      start_period: 20s
+
+  # ---------------------------------------------------------------------------
+  # nginx (frontend) — TLS 443, redirección 80->443, reverse-proxy /api -> backend.
+  # Único servicio con puertos publicados al host.
+  # ---------------------------------------------------------------------------
+  nginx:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    image: shift-bank-frontend:stage3
+    # Único servicio expuesto al host: 443 (HTTPS) y 80 (redirección a HTTPS). (R11.1, AC-12)
+    ports:
+      - "443:443"
+      - "80:80"
+    # DOS redes: `shiftnet` (interna) para reach al upstream `backend`, y `edge` (NO interna)
+    # para que los puertos publicados 443/80 se enlacen al host. Sin `edge`, un contenedor cuya
+    # única red es `internal: true` no obtiene binding de host (puertos sin publicar de verdad).
+    networks:
+      - shiftnet
+      - edge
+    # Certificados TLS MONTADOS externamente, de solo lectura (R4.4). NO se hornean en la imagen
+    # (el .dockerignore del frontend excluye *.crt/*.key/certs/). Coloca server.crt y server.key
+    # en ./certs del host (directorio git-ignorado). Las Tareas 28/29 generan los certs de prueba.
+    volumes:
+      - ./certs:/etc/nginx/certs:ro
+    restart: unless-stopped
+    # Arrancar solo cuando el backend esté SANO (healthcheck en verde). Si el backend falla-cerrado
+    # por claves ausentes/ inválidas, nunca pasa a healthy y nginx no arranca su dependencia.
+    depends_on:
+      backend:
+        condition: service_healthy
+
+# -----------------------------------------------------------------------------
+# Redes (§4.1, R4.3, R11.2).
+#
+# `shiftnet` — red interna aislada entre nginx y backend.
+#   `internal: true` => sin gateway al host ni salida a Internet para los contenedores de esta
+#   red. El `backend` está SOLO aquí, por lo que queda inalcanzable desde el host; únicamente
+#   nginx (en la misma red) lo contacta por DNS interno (`http://backend:8000`). Las imágenes se
+#   construyen localmente (no se extraen por esta red), así que `internal: true` no rompe el build.
+#
+# `edge` — red bridge NO interna, SOLO para nginx.
+#   CORRECCIÓN de topología (defecto probado por la Tarea 28): una red `internal: true` NO tiene
+#   ruta de NAT al host, de modo que un contenedor cuya única red es interna NO consigue enlazar
+#   sus puertos publicados al host (`docker port` vacío; `.NetworkSettings.Ports` sin bindings,
+#   todo check host-facing devuelve 000). nginx necesita esta red NO interna para que 443/80 se
+#   publiquen de verdad al host. El `backend` NO se adjunta a `edge`: sigue aislado en `shiftnet`.
+# -----------------------------------------------------------------------------
+networks:
+  shiftnet:
+    driver: bridge
+    internal: true
+  edge:
+    driver: bridge
+    internal: false
+
+# -----------------------------------------------------------------------------
+# Volumen nombrado persistente para la DB SQLite del backend (§4.3, R12.3, R13.4).
+# -----------------------------------------------------------------------------
+volumes:
+  shift_db_data:
+    driver: local

@@ -1,0 +1,25 @@
+{
+  "runtime": {
+    "gateway_port": 18200,
+    "identity_port": 18201,
+    "commerce_port": 18202,
+    "reviews_port": 18203,
+    "frontend_port": 18300,
+    "amqp_url": "amqp://ecommerce:stage4-demo@127.0.0.1:5672/stage4_kiro",
+    "event_namespace": "stage4.kiro",
+    "broker_note": "Local RabbitMQ in Ubuntu/WSL. This account is a local demonstration credential only. Docker is unavailable on this host."
+  },
+  "completed_utc": "2026-11-07T09:27:41.6836436Z",
+  "cli_version": "kiro-cli 3.1.0",
+  "stage": 4,
+  "prompt_sha256": "553ECEDC46B356989795D94B2E57D38CDC865165ED5D16D7FE6725B50AB6D937",
+  "wall_seconds": 2013.561728,
+  "mode": "v3 spec; session tool approval",
+  "tool": "Kiro",
+  "attempt": "initial",
+  "model": "Auto",
+  "seed_sha256": "8BDC6F77CE23CA124B1013621855A405AFCD0E38259EDDF519971CCCA1AB5D26",
+  "exit_code": 0,
+  "prompt_file": "initial-prompt.txt",
+  "started_utc": "2026-11-07T08:54:08.1249556Z"
+}

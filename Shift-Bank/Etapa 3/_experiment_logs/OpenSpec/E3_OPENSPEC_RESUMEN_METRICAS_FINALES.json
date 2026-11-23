@@ -1,0 +1,112 @@
+{
+  "study": "Shift Bank Stage 3 — OpenSpec",
+  "project_key": "Shift-Bank---Stage-3---OpenSpec",
+  "generated_date": "2026-11-17",
+  "analysis": {
+    "initial": {
+      "task_id": "ea27677b-df48-4d54-9b89-25ac686bce41",
+      "analysis_id": "5242ca1c-0d7b-4acc-961a-e538fb54f1f1",
+      "status": "SUCCESS",
+      "executed_at": "2026-11-17T00:40:14+0000",
+      "extraction": "sonarqube/EXTRACCION_INICIAL_20261117T141345069"
+    },
+    "final": {
+      "task_id": "82f9f447-63ba-462a-8d43-f71582e4f365",
+      "analysis_id": "1a39a34f-ee2e-44f5-9a1c-f569e22bf717",
+      "status": "SUCCESS",
+      "executed_at": "2026-11-17T19:54:29+0000",
+      "extraction": "sonarqube/EXTRACCION_FINAL_20261117T145759941"
+    }
+  },
+  "metric_definitions": {
+    "hallazgos": "bugs + vulnerabilities + code_smells",
+    "hallazgos_per_kloc": "hallazgos / (ncloc / 1000)",
+    "relative_reduction_percent": "(initial - final) / initial * 100; undefined when initial is zero"
+  },
+  "d2": {
+    "ncloc": {"initial": 1859, "final": 1866, "absolute_delta": 7, "relative_change_percent": 0.3765},
+    "physical_lines": {"initial": 2219, "final": 2226, "absolute_delta": 7, "relative_change_percent": 0.3155},
+    "bugs": {"initial": 5, "final": 0, "absolute_delta": -5, "reduction_percent": 100.0},
+    "vulnerabilities": {"initial": 0, "final": 0, "absolute_delta": 0, "reduction_percent": null},
+    "code_smells": {"initial": 47, "final": 34, "absolute_delta": -13, "reduction_percent": 27.6596},
+    "traditional_findings": {"initial": 52, "final": 34, "absolute_delta": -18, "reduction_percent": 34.6154},
+    "findings_per_kloc": {"initial": 27.972, "final": 18.221, "absolute_delta": -9.751, "reduction_percent": 34.8607},
+    "technical_debt_minutes": {"initial": 301, "final": 223, "absolute_delta": -78, "reduction_percent": 25.9136},
+    "cyclomatic_complexity": {"initial": 528, "final": 528, "absolute_delta": 0},
+    "cognitive_complexity": {"initial": 464, "final": 464, "absolute_delta": 0},
+    "duplicated_lines_density_percent": {"initial": 0.0, "final": 0.0, "absolute_delta_percentage_points": 0.0},
+    "coverage_percent": {"initial": 80.7, "final": 80.8, "absolute_delta_percentage_points": 0.1},
+    "line_coverage_percent": {"initial": 80.8, "final": 80.9, "absolute_delta_percentage_points": 0.1},
+    "lines_to_cover": {"initial": 1163, "final": 1170, "absolute_delta": 7},
+    "uncovered_lines": {"initial": 223, "final": 223, "absolute_delta": 0},
+    "reliability_rating": {"initial": "C", "final": "A"},
+    "security_rating": {"initial": "A", "final": "A"},
+    "maintainability_rating": {"initial": "A", "final": "A"},
+    "mqr_issue_counts": {
+      "reliability": {"initial": 5, "final": 0},
+      "security": {"initial": 0, "final": 0},
+      "maintainability": {"initial": 47, "final": 34}
+    },
+    "software_quality_maintainability_debt": {"initial": null, "final": null, "availability": "unsupported; unavailable, not zero"},
+    "security_hotspots_metric": {"initial": 0, "final": 0, "detail_http_status": 403, "reviewed": false},
+    "quality_gate": {
+      "initial": {"status": "OK", "conditions": []},
+      "final": {
+        "status": "OK",
+        "conditions": [
+          {"metric": "new_coverage", "threshold": "80", "observed": "84.1", "status": "OK"},
+          {"metric": "new_duplicated_lines_density", "threshold": "3", "observed": "0.0", "status": "OK"},
+          {"metric": "new_violations", "threshold": "0", "observed": "0", "status": "OK"}
+        ]
+      },
+      "configuration_comparability": "condition arrays differ in extracts; cause not established"
+    }
+  },
+  "scope": {
+    "properties_sha256": "c6d52175bc0623c3c5b64fad0dbe705fb9f8e3cbaf3862466bf8e47277f87ee1",
+    "production_files_initial": 14,
+    "production_files_final": 14,
+    "indexed_files_initial": 20,
+    "indexed_files_final": 21,
+    "test_files_initial": 6,
+    "test_files_final": 7,
+    "additional_test_file": "frontend/tests/button-types.test.mjs",
+    "production_scope_changed": false,
+    "profiles_both_scans": ["css: Sonar way", "js: Sonar way", "py: Sonar way", "ts: Sonar way"],
+    "coverage_instrumentation": "coverage.py 7.17.3 and c8 12.0.0; same analyzed modules and scanner report paths; final Cobertura source path normalized for Docker mount"
+  },
+  "issue_reconciliation": {
+    "initial_active": 52,
+    "final_export_records_including_closed": 53,
+    "resolved_initial_keys": 19,
+    "persistent_initial_keys": 33,
+    "new_open_keys": 1,
+    "persistent_keys_with_line_shift": 6,
+    "final_active": 34,
+    "new_issue": {
+      "key": "28eea554-7c34-4d1e-959b-9ee8c19a3805",
+      "rule": "python:S1481",
+      "type": "CODE_SMELL",
+      "severity": "MINOR",
+      "component": "backend/banking.py",
+      "line": 342,
+      "message": "Remove the unused local variable rec."
+    }
+  },
+  "other_verification": {
+    "backend_tests": "54 passed",
+    "frontend_tests": "9 passed",
+    "production_build": "passed",
+    "openspec_strict_validation": "6 passed, 0 failed",
+    "openspec_tasks": "21/21 complete",
+    "locust": "RUN_01 preserved; not rerun in closure",
+    "docker_acceptance": "50/50 preserved; not rerun in closure"
+  },
+  "limitations": [
+    "no verified token, cost, tool-call, or normalized intervention telemetry",
+    "Security Hotspots details unavailable with HTTP 403",
+    "initial and final Quality Gate condition arrays differ",
+    "AC-15 and AC-16 definitions absent from available protocol/evidence; marked PARTIAL in acceptance matrix",
+    "React TSX coverage not measured"
+  ]
+}

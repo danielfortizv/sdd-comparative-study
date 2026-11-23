@@ -1,0 +1,17 @@
+# Exclude files not needed in the image build context.
+**/node_modules
+**/.venv
+**/__pycache__
+**/*.pyc
+**/.pytest_cache
+**/.vitest
+**/coverage
+**/dist
+**/.git
+**/.gitignore
+docs
+perf
+data
+*.sqlite3
+*.md
+.github

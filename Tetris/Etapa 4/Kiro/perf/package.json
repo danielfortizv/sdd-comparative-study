@@ -1,0 +1,19 @@
+{
+  "name": "tetris-stage3-perf-harness",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "description": "Playwright-Chromium browser performance benchmark harness, extended for Stage 4 (Option A): Canvas 200-cell pixel oracle, solo + duel trials, production URL http://127.0.0.1:5517, headful production Chrome channel. Timing-sensitive; measured trials are separately authorized and run manually, never in ordinary unit CI.",
+  "scripts": {
+    "validate:instrument": "node validate-instrument.mjs",
+    "self-check": "node self-check.mjs",
+    "install:browser": "playwright install chromium",
+    "benchmark:solo": "node benchmark.mjs solo",
+    "benchmark:duel": "node benchmark.mjs duel",
+    "benchmark:all": "node benchmark.mjs all",
+    "benchmark": "node benchmark.mjs"
+  },
+  "dependencies": {
+    "playwright": "1.56.0"
+  }
+}
