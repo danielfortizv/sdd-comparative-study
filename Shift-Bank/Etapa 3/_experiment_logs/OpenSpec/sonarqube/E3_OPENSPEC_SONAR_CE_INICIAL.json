@@ -1,6 +1,0 @@
-{
-  "status": "NOT_EXECUTED",
-  "reason": "NOT_EXECUTED: SONAR_TOKEN_OPENSPEC3 is absent from process, user and machine environments; the hidden local prompt was opened but no input was supplied. No scanner run or analysis ID exists.",
-  "compute_engine_task": null,
-  "analysis_id": null
-}

@@ -1,0 +1,50 @@
+{
+  "schemaVersion": "1.0.0",
+  "dataModelVersion": 1,
+  "id": "sess_2cb3317b-80ff-4e77-bd0c-5d3852b4a649",
+  "title": "Build Shift Bank Transfer Application",
+  "agentMode": "vibe",
+  "workspacePaths": [
+    "c:\\Users\\danie\\Documents2\\sdd-comparative-study\\Shift-Bank\\Etapa 1\\Kiro"
+  ],
+  "rootPaths": [
+    "c:\\Users\\danie\\Documents2\\sdd-comparative-study\\Shift-Bank\\Etapa 1\\Kiro"
+  ],
+  "createdAt": "2026-10-02T00:16:40.912Z",
+  "lastModifiedAt": "2026-10-13T20:00:02.807Z",
+  "modelId": "auto",
+  "autopilot": false,
+  "contextSnapshotModelDisplay": {
+    "modelId": "auto",
+    "display": "Auto (model selected dynamically on the server)"
+  },
+  "semanticReviewEnabled": true,
+  "disableAutoCompaction": false,
+  "ftaEnabled": false,
+  "workflowsEnabled": true,
+  "specPlanEnabled": false,
+  "specWorkflow": "quick",
+  "specSkipClarificationEnabled": true,
+  "memoryConfig": {
+    "mode": "read_write",
+    "reflection": true
+  },
+  "status": "idle",
+  "_meta": {
+    "kiro": {
+      "policyPreset": [
+        "edit-workspace"
+      ],
+      "shellType": "powershell",
+      "settings": {
+        "workflows": {
+          "enabled": true
+        },
+        "goal": {
+          "enabled": true
+        }
+      },
+      "language": "Spanish"
+    }
+  }
+}

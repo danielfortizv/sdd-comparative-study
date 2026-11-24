@@ -1,0 +1,123 @@
+{
+  "kind": "Sanitized derived telemetry and metadata; no original message content",
+  "stage": 1,
+  "tool": "Bmad Method",
+  "sources": [
+    {
+      "source_path": "~/.gemini/tmp/bmad-method/chats/session-2026-10-20T15-23-ad3a58b6.jsonl",
+      "source_sha256": "9b908cbba12b2e71a23816a03b6627fa1dfb93abb88ab5a237d1cddfccd4983b",
+      "disposition": "restricted",
+      "attribution": "Registro de proyectos Gemini: bmad-method. Revisión: email. Original conservado en origen.",
+      "session_id": "ad3a58b6-b43a-4d9c-946e-2c30962f3761",
+      "first_message_utc": "2026-10-20T15:23:52.237Z",
+      "last_message_utc": "2026-10-24T21:28:46.257Z",
+      "message_window_seconds": 367494.02,
+      "state_operations": {
+        "message_snapshots": 9,
+        "patch_records": 13,
+        "rewind_records": 51,
+        "rewind_target_not_in_fragment": 1
+      },
+      "final_active_records": 773,
+      "observed_message_records_by_type": {
+        "user": 2033,
+        "info": 14,
+        "gemini": 1849,
+        "error": 107,
+        "warning": 1
+      },
+      "user_text_records_excluding_tool_results": 294,
+      "distinct_user_text_hash_count": 27,
+      "observed_tool_ids": 394,
+      "model_metrics": {
+        "gemini-3.8-flash": {
+          "input": 107362370,
+          "cached": 92699749,
+          "output": 179741,
+          "thoughts": 116971,
+          "tool": 0,
+          "total": 107659082,
+          "records_with_tokens": 404
+        },
+        "gemini-3.1-pro-preview": {
+          "input": 2566028,
+          "cached": 2023630,
+          "output": 1044,
+          "thoughts": 0,
+          "tool": 0,
+          "total": 2567072,
+          "records_with_tokens": 6
+        }
+      },
+      "scope": "Observed journal only. Captured auxiliary model usage may be incomplete"
+    },
+    {
+      "source_path": "~/.gemini/tmp/bmad-method/chats/session-2026-10-24T17-29-51a133dd.jsonl",
+      "source_sha256": "04cc9206200f5222120922164b84ad9c31eab61a06ad923a189ea0d13aac171b",
+      "disposition": "recover",
+      "attribution": "Registro de proyectos Gemini: bmad-method.",
+      "canonical_export": "evidence/Shift-Bank/Etapa 1/Bmad Method/prompt_logs/session-2026-10-24T17-29-51a133dd.jsonl",
+      "session_id": "51a133dd-f0dc-4685-9658-632d06717b75",
+      "first_message_utc": "2026-10-24T17:29:40.404Z",
+      "last_message_utc": "2026-10-24T17:30:18.875Z",
+      "message_window_seconds": 38.471,
+      "state_operations": {},
+      "final_active_records": 3,
+      "observed_message_records_by_type": {
+        "user": 2,
+        "gemini": 1
+      },
+      "user_text_records_excluding_tool_results": 2,
+      "distinct_user_text_hash_count": 2,
+      "observed_tool_ids": 0,
+      "model_metrics": {
+        "gemini-3.8-flash": {
+          "input": 16642,
+          "cached": 0,
+          "output": 22,
+          "thoughts": 231,
+          "tool": 0,
+          "total": 16895,
+          "records_with_tokens": 1
+        }
+      },
+      "scope": "Observed journal only. Captured auxiliary model usage may be incomplete"
+    },
+    {
+      "source_path": "~/.gemini/tmp/bmad-method/chats/session-2026-10-24T21-41-e3146c3e.jsonl",
+      "source_sha256": "43d51231eb54044b84d720e7ecf215d6862801f67e2bd7a2ca2d5c5c5ccf4bdd",
+      "disposition": "restricted",
+      "attribution": "Registro de proyectos Gemini: bmad-method. Revisión: email. Original conservado en origen.",
+      "session_id": "e3146c3e-b7f5-4bdc-92dd-2b41ee4e545b",
+      "first_message_utc": "2026-10-24T21:41:10.192Z",
+      "last_message_utc": "2026-10-24T22:19:03.868Z",
+      "message_window_seconds": 2273.676,
+      "state_operations": {
+        "patch_records": 1,
+        "rewind_records": 1
+      },
+      "final_active_records": 50,
+      "observed_message_records_by_type": {
+        "user": 27,
+        "gemini": 23,
+        "error": 3,
+        "info": 1
+      },
+      "user_text_records_excluding_tool_results": 4,
+      "distinct_user_text_hash_count": 3,
+      "observed_tool_ids": 25,
+      "model_metrics": {
+        "gemini-3.8-flash": {
+          "input": 831010,
+          "cached": 691595,
+          "output": 1222,
+          "thoughts": 2181,
+          "tool": 0,
+          "total": 834413,
+          "records_with_tokens": 23
+        }
+      },
+      "scope": "Observed journal only. Captured auxiliary model usage may be incomplete"
+    }
+  ]
+}

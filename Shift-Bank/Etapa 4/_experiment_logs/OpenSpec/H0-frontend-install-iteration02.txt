@@ -1,6 +1,0 @@
-﻿Command: npm.cmd ci
-Working directory: Etapa 4/OpenSpec/frontend
-Exit code: 0
-Output: added 68 packages in 3s; 7 packages are looking for funding.
-Warning: esbuild@0.21.5 postinstall was not covered by npm allowScripts. The subsequent inherited build nevertheless completed successfully.
-No package.json or package-lock.json change was observed.

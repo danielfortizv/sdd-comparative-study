@@ -1,0 +1,68 @@
+{
+  "kind": "Sanitized derived telemetry and metadata; no original message content",
+  "stage": 2,
+  "tool": "Kiro",
+  "sources": [
+    {
+      "source_path": "~/Downloads/kiro-session-sess_89c2c877-a67b-4c35-8b38-74c0cfad5529.zip",
+      "source_sha256": "6038815af91f27d36e85c02d8bf4bca818441d8fd7990b14cb123e82a7f8d9e8",
+      "disposition": "restricted",
+      "attribution": " Revisión: email. Original conservado en origen.",
+      "session_id": "sess_89c2c877-a67b-4c35-8b38-74c0cfad5529",
+      "main_events": {
+        "agent_note": 1,
+        "user": 33,
+        "turn_start": 33,
+        "assistant": 552,
+        "tool_call": 313,
+        "tool_result": 313,
+        "session_metadata": 301,
+        "pending_interaction": 88,
+        "interaction_resolved": 88,
+        "usage_summary": 33,
+        "session_event": 33,
+        "turn_end": 33,
+        "session_start": 1
+      },
+      "subexecution_events": {},
+      "first_event_utc": "2026-11-16T13:49:43.686Z",
+      "last_event_utc": "2026-11-16T17:19:50.391Z",
+      "usage_summary_count": 33,
+      "credits": 248.14156454179104,
+      "elapsed_seconds": 7975.081
+    },
+    {
+      "source_path": "~/Downloads/kiro-session-sess_2cd5be7f-f327-404e-858a-f678de8604c6.zip",
+      "source_sha256": "ed8aaf37faf73b147b20d692a1b73c0e8051cf5e9bde93aeee2bc15f1e0daa00",
+      "disposition": "restricted",
+      "attribution": " Revisión: email. Original conservado en origen.",
+      "session_id": "sess_2cd5be7f-f327-404e-858a-f678de8604c6",
+      "main_events": {
+        "user": 4,
+        "turn_start": 4,
+        "assistant": 48,
+        "tool_call": 33,
+        "tool_result": 33,
+        "session_metadata": 25,
+        "sub_agent_start": 4,
+        "pending_interaction": 17,
+        "interaction_resolved": 17,
+        "sub_agent_complete": 4,
+        "usage_summary": 4,
+        "session_event": 4,
+        "turn_end": 4,
+        "agent_note": 1
+      },
+      "subexecution_events": {
+        "assistant": 200,
+        "tool_call": 134,
+        "tool_result": 134
+      },
+      "first_event_utc": "2026-11-16T17:24:11.628Z",
+      "last_event_utc": "2026-11-16T17:54:34.494Z",
+      "usage_summary_count": 4,
+      "credits": 34.3118193655058,
+      "elapsed_seconds": 1311.651
+    }
+  ]
+}

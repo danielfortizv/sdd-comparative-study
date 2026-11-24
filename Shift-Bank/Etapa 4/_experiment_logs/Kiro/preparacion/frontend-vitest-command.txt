@@ -1,1 +1,0 @@
-﻿npm.cmd test (cwd: Etapa 4/Kiro/frontend)

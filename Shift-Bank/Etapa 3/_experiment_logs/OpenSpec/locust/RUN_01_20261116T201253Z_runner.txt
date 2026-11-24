@@ -1,3 +1,0 @@
-RUN_ID=RUN_01_20261116T201253Z
-HTTPS_TARGET=https://127.0.0.1:54426
-READINESS={"ready_at_utc": "2026-11-16T20:12:55.164Z", "accounts_http_status": 200, "audit_http_status": 200}

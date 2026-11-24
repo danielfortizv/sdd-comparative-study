@@ -1,0 +1,112 @@
+{
+  "benchmark_id": "bench_20261116_024200",
+  "execution_metadata": {
+    "timestamp": "2026-11-16T02:43:08.675412+00:00",
+    "target_url": "https://127.0.0.1:8443",
+    "is_https": true,
+    "wall_time_seconds": 66.2
+  },
+  "metrics": {
+    "timestamp": "2026-11-16T02:43:08.675412+00:00",
+    "target_concurrency": 30,
+    "observed_concurrency": 0,
+    "spawn_rate": 5.0,
+    "ramp_up_duration_seconds": 5.03,
+    "steady_state_target_seconds": 60.0,
+    "steady_state_actual_seconds": 60.0,
+    "total_requests_all": 7775,
+    "steady_state_total_requests": 7394,
+    "steady_state_rps": 123.23,
+    "configured_weights": {
+      "balance_reads": 60,
+      "history_reads": 30,
+      "internal_transfers": 10
+    },
+    "observed_distribution": {
+      "balance_reads_count": 4432,
+      "balance_reads_pct": 59.94,
+      "history_reads_count": 2232,
+      "history_reads_pct": 30.19,
+      "internal_transfers_count": 725,
+      "internal_transfers_pct": 9.81
+    },
+    "response_classification": {
+      "success_count": 7394,
+      "successful_transfers": 725,
+      "expected_rejections_count": 0,
+      "unexpected_errors_count": 0,
+      "unexpected_error_rate_pct": 0.0
+    },
+    "latencies_ms": {
+      "read_operations": {
+        "count": 6664,
+        "p50": 17.2,
+        "p95": 122.65,
+        "p99": 217.99,
+        "mean": 32.69,
+        "max": 527.06
+      },
+      "transfer_operations": {
+        "count": 725,
+        "p50": 93.6,
+        "p95": 270.38,
+        "p99": 380.76,
+        "mean": 120.61,
+        "max": 790.4
+      },
+      "overall_steady_state": {
+        "count": 7394,
+        "p50": 18.81,
+        "p95": 157.12,
+        "p99": 267.45,
+        "mean": 41.36,
+        "max": 790.4
+      }
+    },
+    "threshold_evaluations": {
+      "read_p95_under_200ms": true,
+      "transfer_p95_under_500ms": true,
+      "unexpected_error_rate_under_1pct": true,
+      "steady_state_duration_met": true,
+      "verdict": "PASS"
+    }
+  },
+  "post_run_verification": {
+    "funds_conservation": {
+      "is_conserved": false,
+      "total_funds": 600000800.0,
+      "expected_funds": 600000000.0,
+      "accounts": {
+        "acc_checking_123": {
+          "name": "Checking",
+          "balance": "100000400.00"
+        },
+        "acc_savings_456": {
+          "name": "Savings",
+          "balance": "100000200.00"
+        },
+        "acc_synth_001": {
+          "name": "Synthetic Account 1",
+          "balance": "99999400.00"
+        },
+        "acc_synth_002": {
+          "name": "Synthetic Account 2",
+          "balance": "99997900.00"
+        },
+        "acc_synth_003": {
+          "name": "Synthetic Account 3",
+          "balance": "99999700.00"
+        },
+        "acc_synth_004": {
+          "name": "Synthetic Account 4",
+          "balance": "100003200.00"
+        }
+      }
+    },
+    "audit_ledger_integrity": {
+      "is_valid": true,
+      "verified_records": 755,
+      "details": "Audit chain verified intact from genesis to head."
+    }
+  }
+}

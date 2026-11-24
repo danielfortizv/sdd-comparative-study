@@ -1,0 +1,121 @@
+{
+  "schema_version": "1.0",
+  "report_kind": "shift-bank-stage3-loadtest-metrics",
+  "generated_at": "2026-11-16T22:19:16-0500",
+  "source_csv": {
+    "stats": "loadtest\\results\\locust_smoke_20261116T220006_stats.csv",
+    "stats_history": "loadtest\\results\\locust_smoke_20261116T220006_stats_history.csv",
+    "failures": "loadtest\\results\\locust_smoke_20261116T220006_failures.csv",
+    "exceptions": "loadtest\\results\\locust_smoke_20261116T220006_exceptions.csv"
+  },
+  "environment": {
+    "python_version": "3.13.2",
+    "os": "Windows-11-10.0.26300-SP0",
+    "locust_version": "2.47.0"
+  },
+  "run_params": {
+    "users": 30,
+    "spawn_rate": 5,
+    "steady_seconds": 60,
+    "ramp_up_seconds": 6
+  },
+  "request_counts": {
+    "by_route": {
+      "GET /api/accounts": 216,
+      "GET /api/transfers": 103,
+      "POST /api/transfers": 37
+    },
+    "by_type": {
+      "read": 319,
+      "transfer": 37
+    },
+    "total": 356
+  },
+  "throughput_rps": {
+    "by_route": {
+      "GET /api/accounts": 21.36590543402458,
+      "GET /api/transfers": 10.188371572706165,
+      "POST /api/transfers": 3.6599004678653215
+    },
+    "by_type": {
+      "read": 31.554277006730743,
+      "transfer": 3.6599004678653215
+    },
+    "aggregated": 35.21417747459606
+  },
+  "latency_ms": {
+    "by_route": {
+      "GET /api/accounts": {
+        "p50_ms": 8.0,
+        "p95_ms": 1500.0,
+        "p99_ms": 1700.0
+      },
+      "GET /api/transfers": {
+        "p50_ms": 6.0,
+        "p95_ms": 1500.0,
+        "p99_ms": 1600.0
+      },
+      "POST /api/transfers": {
+        "p50_ms": 80.0,
+        "p95_ms": 4600.0,
+        "p99_ms": 5400.0
+      }
+    },
+    "by_type": {
+      "read": {
+        "p50_ms": 8.0,
+        "p95_ms": 1500.0,
+        "p99_ms": 1700.0
+      },
+      "transfer": {
+        "p50_ms": 80.0,
+        "p95_ms": 4600.0,
+        "p99_ms": 5400.0
+      }
+    },
+    "aggregated": {
+      "p50_ms": 10.0,
+      "p95_ms": 1600.0,
+      "p99_ms": 4200.0
+    },
+    "note": "p50/p95/p99 por ruta y agregado se leen directamente de las columnas 50%/95%/99% del stats CSV de Locust. El percentil 'by_type' para 'read' (2 rutas) es la cota superior (máximo entre rutas) por no disponer de la distribución de latencias combinada; 'transfer' (1 ruta) es exacto."
+  },
+  "rejections": {
+    "expected_business_rejections": 0,
+    "unexpected_errors": 0,
+    "harness_exceptions": 0,
+    "unexpected_total_including_exceptions": 0,
+    "unexpected_error_rate": 0.0,
+    "business_rejection_detail": {},
+    "unexpected_error_detail": {},
+    "classification_note": "Rechazos de negocio ESPERADOS = fallos con etiqueta 'BusinessRejection:*' (4xx de dominio bien formado). Errores INESPERADOS = etiquetas 'UnexpectedError:*' (5xx / transporte / 4xx no reconocido) + excepciones del arnés. Prefijos definidos por el locustfile (Tarea 19)."
+  },
+  "distribution": {
+    "measured_vs_target": [
+      {
+        "route": "GET /api/accounts",
+        "request_count": 216,
+        "measured_pct": 60.6742,
+        "target_pct": 60.0
+      },
+      {
+        "route": "GET /api/transfers",
+        "request_count": 103,
+        "measured_pct": 28.9326,
+        "target_pct": 30.0
+      },
+      {
+        "route": "POST /api/transfers",
+        "request_count": 37,
+        "measured_pct": 10.3933,
+        "target_pct": 10.0
+      }
+    ],
+    "target_distribution_pct": {
+      "GET /api/accounts": 60.0,
+      "GET /api/transfers": 30.0,
+      "POST /api/transfers": 10.0
+    },
+    "note": "La distribución 'measured_pct' es la REAL observada (Request Count por ruta / total real * 100), no los pesos nominales de Locust (R9.4)."
+  }
+}

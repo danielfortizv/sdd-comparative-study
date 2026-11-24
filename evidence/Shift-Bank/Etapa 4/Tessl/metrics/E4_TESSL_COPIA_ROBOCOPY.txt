@@ -1,0 +1,317 @@
+﻿
+-------------------------------------------------------------------------------
+   ROBOCOPY     ::     Herramienta para copia eficaz de archivos         
+-------------------------------------------------------------------------------
+
+  Iniciado : viernes, 13 de noviembre de 2026 7:06:34 p. m.
+   Origen : C:\Users\danie\Documents2\sdd-comparative-study\Shift-Bank\Etapa 3\Tessl\
+     Destino : C:\Users\danie\Documents2\sdd-comparative-study\Shift-Bank\Etapa 4\Tessl\
+
+    Archivos: *.*
+	    
+Arch. ejecutables: .coverage
+	    coverage.xml
+	    *.db
+	    *.db-shm
+	    *.db-wal
+	    *.pyc
+	    *.pyo
+	    *.log
+	    *.tmp
+	    *.temp
+	    *.pid
+	    
+ Dirs. de ejecutables: .pytest_cache
+	    .scannerwork
+	    node_modules
+	    dist
+	    .venv
+	    venv
+	    env
+	    .tox
+	    .mypy_cache
+	    .ruff_cache
+	    build
+	    coverage
+	    __pycache__
+	    
+  Opciones: *.* /S /E /DCOPY:DAT /COPY:DAT /XJ /R:0 /W:0 
+
+------------------------------------------------------------------------------
+
+	                  11	C:\Users\danie\Documents2\sdd-comparative-study\Shift-Bank\Etapa 3\Tessl\
+	    Nuevo arch		     713	.env.example
+100%  
+	    Nuevo arch		     487	.gitignore
+100%  
+	    Nuevo arch		     100	AGENTS.md
+100%  
+	    Nuevo arch		    1151	docker-compose.yml
+100%  
+	    Nuevo arch		    8689	README.md
+100%  
+	    Nuevo arch		     945	sonar-project.properties
+100%  
+	    Nuevo arch		     226	tessl.json
+100%  
+	   Nuevo dir       0	C:\Users\danie\Documents2\sdd-comparative-study\Shift-Bank\Etapa 3\Tessl\.agents\
+	   Nuevo dir       0	C:\Users\danie\Documents2\sdd-comparative-study\Shift-Bank\Etapa 3\Tessl\.agents\skills\
+	   Nuevo dir       1	C:\Users\danie\Documents2\sdd-comparative-study\Shift-Bank\Etapa 3\Tessl\.codex\
+	    Nuevo arch		      79	config.toml
+100%  
+	   Nuevo dir       0	C:\Users\danie\Documents2\sdd-comparative-study\Shift-Bank\Etapa 3\Tessl\.codex\skills\
+	   Nuevo dir       1	C:\Users\danie\Documents2\sdd-comparative-study\Shift-Bank\Etapa 3\Tessl\.gemini\
+	    Nuevo arch		     151	settings.json
+100%  
+	   Nuevo dir       1	C:\Users\danie\Documents2\sdd-comparative-study\Shift-Bank\Etapa 3\Tessl\.github\
+	    Nuevo arch		     151	mcp.json
+100%  
+	   Nuevo dir       0	C:\Users\danie\Documents2\sdd-comparative-study\Shift-Bank\Etapa 3\Tessl\.github\skills\
+	   Nuevo dir       1	C:\Users\danie\Documents2\sdd-comparative-study\Shift-Bank\Etapa 3\Tessl\.tessl\
+	    Nuevo arch		     883	RULES.md
+100%  
+	   Nuevo dir       0	C:\Users\danie\Documents2\sdd-comparative-study\Shift-Bank\Etapa 3\Tessl\.tessl\plugins\
+	   Nuevo dir       0	C:\Users\danie\Documents2\sdd-comparative-study\Shift-Bank\Etapa 3\Tessl\.tessl\plugins\tessl-labs\
+	   Nuevo dir       3	C:\Users\danie\Documents2\sdd-comparative-study\Shift-Bank\Etapa 3\Tessl\.tessl\plugins\tessl-labs\spec-driven-development\
+	    Nuevo arch		    9513	README.md
+100%  
+	    Nuevo arch		      73	tessl-package.json
+100%  
+	    Nuevo arch		     901	tile.json
+100%  
+	   Nuevo dir       3	C:\Users\danie\Documents2\sdd-comparative-study\Shift-Bank\Etapa 3\Tessl\.tessl\plugins\tessl-labs\spec-driven-development\docs\
+	    Nuevo arch		    1044	index.md
+100%  
+	    Nuevo arch		    1734	spec-format.md
+100%  
+	    Nuevo arch		     498	spec-styleguide.md
+100%  
+	   Nuevo dir       3	C:\Users\danie\Documents2\sdd-comparative-study\Shift-Bank\Etapa 3\Tessl\.tessl\plugins\tessl-labs\spec-driven-development\rules\
+	    Nuevo arch		    1198	one-question-at-a-time.md
+100%  
+	    Nuevo arch		    1136	spec-before-code.md
+100%  
+	    Nuevo arch		    1195	spec-format-compliance.md
+100%  
+	   Nuevo dir       0	C:\Users\danie\Documents2\sdd-comparative-study\Shift-Bank\Etapa 3\Tessl\.tessl\plugins\tessl-labs\spec-driven-development\skills\
+	   Nuevo dir       1	C:\Users\danie\Documents2\sdd-comparative-study\Shift-Bank\Etapa 3\Tessl\.tessl\plugins\tessl-labs\spec-driven-development\skills\requirement-gathering\
+	    Nuevo arch		    3019	SKILL.md
+100%  
+	   Nuevo dir       1	C:\Users\danie\Documents2\sdd-comparative-study\Shift-Bank\Etapa 3\Tessl\.tessl\plugins\tessl-labs\spec-driven-development\skills\spec-verification\
+	    Nuevo arch		    3478	SKILL.md
+100%  
+	   Nuevo dir       1	C:\Users\danie\Documents2\sdd-comparative-study\Shift-Bank\Etapa 3\Tessl\.tessl\plugins\tessl-labs\spec-driven-development\skills\spec-writer\
+	    Nuevo arch		    3250	SKILL.md
+100%  
+	   Nuevo dir       1	C:\Users\danie\Documents2\sdd-comparative-study\Shift-Bank\Etapa 3\Tessl\.tessl\plugins\tessl-labs\spec-driven-development\skills\work-review\
+	    Nuevo arch		    3086	SKILL.md
+100%  
+	   Nuevo dir       1	C:\Users\danie\Documents2\sdd-comparative-study\Shift-Bank\Etapa 3\Tessl\.vscode\
+	    Nuevo arch		     148	mcp.json
+100%  
+	   Nuevo dir       0	C:\Users\danie\Documents2\sdd-comparative-study\Shift-Bank\Etapa 3\Tessl\.vscode\skills\
+	   Nuevo dir       4	C:\Users\danie\Documents2\sdd-comparative-study\Shift-Bank\Etapa 3\Tessl\backend\
+	    Nuevo arch		     974	Dockerfile
+100%  
+	    Nuevo arch		     139	requirements.txt
+100%  
+	    Nuevo arch		     129	run.py
+100%  
+	   Nuevo dir       5	C:\Users\danie\Documents2\sdd-comparative-study\Shift-Bank\Etapa 3\Tessl\backend\app\
+	    Nuevo arch		     961	database.py
+100%  
+	    Nuevo arch		    3554	main.py
+100%  
+	    Nuevo arch		    9674	models.py
+100%  
+	    Nuevo arch		   11485	schemas.py
+100%  
+	    Nuevo arch		      47	__init__.py
+100%  
+	   Nuevo dir       9	C:\Users\danie\Documents2\sdd-comparative-study\Shift-Bank\Etapa 3\Tessl\backend\app\routers\
+	    Nuevo arch		     937	accounts.py
+100%  
+	    Nuevo arch		    1518	audit.py
+100%  
+	    Nuevo arch		    2965	beneficiaries.py
+100%  
+	    Nuevo arch		     762	crypto.py
+100%  
+	    Nuevo arch		    1171	limits.py
+100%  
+	    Nuevo arch		    2748	recurring.py
+100%  
+	    Nuevo arch		     849	transactions.py
+100%  
+	    Nuevo arch		    2556	transfers.py
+100%  
+	    Nuevo arch		      31	__init__.py
+100%  
+	   Nuevo dir      10	C:\Users\danie\Documents2\sdd-comparative-study\Shift-Bank\Etapa 3\Tessl\backend\app\services\
+	    Nuevo arch		    5109	account_service.py
+100%  
+	    Nuevo arch		   11828	audit_service.py
+100%  
+	    Nuevo arch		   10425	crypto_service.py
+100%  
+	    Nuevo arch		    4781	limit_service.py
+100%  
+	    Nuevo arch		    4224	mfa_service.py
+100%  
+	    Nuevo arch		    8909	migration_service.py
+100%  
+	    Nuevo arch		   17019	recurring_service.py
+100%  
+	    Nuevo arch		    1690	scheduler.py
+100%  
+	    Nuevo arch		   15740	transfer_service.py
+100%  
+	    Nuevo arch		      28	__init__.py
+100%  
+	   Nuevo dir      14	C:\Users\danie\Documents2\sdd-comparative-study\Shift-Bank\Etapa 3\Tessl\backend\tests\
+	    Nuevo arch		    2243	conftest.py
+100%  
+	    Nuevo arch		    1857	test_accounts.py
+100%  
+	    Nuevo arch		   17337	test_ach_transfers.py
+100%  
+	    Nuevo arch		   23738	test_audit_log.py
+100%  
+	    Nuevo arch		    9499	test_deployment_config.py
+100%  
+	    Nuevo arch		   15456	test_encryption.py
+100%  
+	    Nuevo arch		    7583	test_live_deployment_smoke.py
+100%  
+	    Nuevo arch		    1908	test_load_performance.py
+100%  
+	    Nuevo arch		    2659	test_mfa.py
+100%  
+	    Nuevo arch		   13328	test_recurring_payments.py
+100%  
+	    Nuevo arch		    3180	test_transactions.py
+100%  
+	    Nuevo arch		    8936	test_transfers.py
+100%  
+	    Nuevo arch		    3510	test_transfer_limits.py
+100%  
+	    Nuevo arch		      38	__init__.py
+100%  
+	   Nuevo dir       3	C:\Users\danie\Documents2\sdd-comparative-study\Shift-Bank\Etapa 3\Tessl\backend\tests\load\
+	    Nuevo arch		    1166	load_benchmark_report.json
+100%  
+	    Nuevo arch		    2645	locustfile.py
+100%  
+	    Nuevo arch		   13284	run_load_test.py
+100%  
+	   Nuevo dir       1	C:\Users\danie\Documents2\sdd-comparative-study\Shift-Bank\Etapa 3\Tessl\docs\
+	    Nuevo arch		       6	STAGE3_TECHNICAL.md
+100%  
+	   Nuevo dir       6	C:\Users\danie\Documents2\sdd-comparative-study\Shift-Bank\Etapa 3\Tessl\frontend\
+	    Nuevo arch		     604	Dockerfile
+100%  
+	    Nuevo arch		     764	index.html
+100%  
+	    Nuevo arch		  128623	package-lock.json
+100%  
+	    Nuevo arch		     643	package.json
+100%  
+	    Nuevo arch		     576	tsconfig.json
+100%  
+	    Nuevo arch		     436	vite.config.ts
+100%  
+	   Nuevo dir       3	C:\Users\danie\Documents2\sdd-comparative-study\Shift-Bank\Etapa 3\Tessl\frontend\src\
+	    Nuevo arch		   13840	App.tsx
+100%  
+	    Nuevo arch		     257	main.tsx
+100%  
+	    Nuevo arch		      37	setupTests.ts
+100%  
+	   Nuevo dir       3	C:\Users\danie\Documents2\sdd-comparative-study\Shift-Bank\Etapa 3\Tessl\frontend\src\api\
+	    Nuevo arch		    6932	client.ts
+100%  
+	    Nuevo arch		    4588	crypto.ts
+100%  
+	    Nuevo arch		    4103	types.ts
+100%  
+	   Nuevo dir       7	C:\Users\danie\Documents2\sdd-comparative-study\Shift-Bank\Etapa 3\Tessl\frontend\src\components\
+	    Nuevo arch		    3938	AccountSummary.tsx
+100%  
+	    Nuevo arch		    5451	MfaModal.tsx
+100%  
+	    Nuevo arch		    2363	Navbar.tsx
+100%  
+	    Nuevo arch		   18669	RecurringPayments.tsx
+100%  
+	    Nuevo arch		    5685	TransactionHistory.tsx
+100%  
+	    Nuevo arch		    6253	TransferLimits.tsx
+100%  
+	    Nuevo arch		   17423	TransferModal.tsx
+100%  
+	   Nuevo dir       1	C:\Users\danie\Documents2\sdd-comparative-study\Shift-Bank\Etapa 3\Tessl\frontend\src\styles\
+	    Nuevo arch		   15220	index.css
+100%  
+	   Nuevo dir       7	C:\Users\danie\Documents2\sdd-comparative-study\Shift-Bank\Etapa 3\Tessl\frontend\src\__tests__\
+	    Nuevo arch		    3394	AccountSummary.test.tsx
+100%  
+	    Nuevo arch		    6786	crypto.test.ts
+100%  
+	    Nuevo arch		    4442	MfaModal.test.tsx
+100%  
+	    Nuevo arch		    5273	RecurringPayments.test.tsx
+100%  
+	    Nuevo arch		    5440	TransactionHistory.test.tsx
+100%  
+	    Nuevo arch		    2876	TransferLimits.test.tsx
+100%  
+	    Nuevo arch		   10081	TransferModal.test.tsx
+100%  
+	   Nuevo dir       2	C:\Users\danie\Documents2\sdd-comparative-study\Shift-Bank\Etapa 3\Tessl\nginx\
+	    Nuevo arch		    2672	generate_certs.py
+100%  
+	    Nuevo arch		    1773	nginx.conf
+100%  
+	   Nuevo dir       2	C:\Users\danie\Documents2\sdd-comparative-study\Shift-Bank\Etapa 3\Tessl\nginx\certs\
+	    Nuevo arch		    1241	server.crt
+100%  
+	    Nuevo arch		    1679	server.key
+100%  
+	   Nuevo dir      11	C:\Users\danie\Documents2\sdd-comparative-study\Shift-Bank\Etapa 3\Tessl\specs\
+	    Nuevo arch		    2285	accounts.spec.md
+100%  
+	    Nuevo arch		    8463	ach_transfers.spec.md
+100%  
+	    Nuevo arch		    9049	audit_log.spec.md
+100%  
+	    Nuevo arch		    5865	deployment.spec.md
+100%  
+	    Nuevo arch		   10269	encryption.spec.md
+100%  
+	    Nuevo arch		    6260	load_testing.spec.md
+100%  
+	    Nuevo arch		    3972	mfa.spec.md
+100%  
+	    Nuevo arch		    8298	recurring_payments.spec.md
+100%  
+	    Nuevo arch		    2414	transactions.spec.md
+100%  
+	    Nuevo arch		    4714	transfers.spec.md
+100%  
+	    Nuevo arch		    3791	transfer_limits.spec.md
+100%  
+
+------------------------------------------------------------------------------
+
+               Total   Copiado   OmitidoNo coincidencia     ERROR    Extras
+Director.:        64        36        28         0         0         0
+ Archivos:       117       112         5         0         0         0
+    Bytes:   923.0 k   624.9 k   298.1 k         0         0         0
+   Tiempo:   0:00:00   0:00:00                       0:00:00   0:00:00
+
+
+Velocidad:           7.998.950 Bytes/s
+Velocidad:             457,704 Megabytes/min
+   Finalizado: viernes, 13 de noviembre de 2026 7:06:35 p. m.
+
+Robocopy exit code: 1

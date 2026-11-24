@@ -1,0 +1,121 @@
+{
+  "kind": "Sanitized derived telemetry and metadata; no original message content",
+  "stage": 1,
+  "tool": "OpenSpec",
+  "sources": [
+    {
+      "source_path": "~/.gemini/tmp/openspec/chats/session-2026-09-29T18-55-6edc5432.jsonl",
+      "source_sha256": "4b305ef0671dcbf553341e01e2ebaf58247e3de147f2537c7acf0b6141d9a533",
+      "disposition": "recover",
+      "attribution": "Registro de proyectos Gemini: openspec.",
+      "canonical_export": "evidence/Shift-Bank/Etapa 1/OpenSpec/prompt_logs/session-2026-09-29T18-55-6edc5432.jsonl",
+      "session_id": "6edc5432-a111-41c8-aa8b-951508558976",
+      "first_message_utc": "2026-09-29T18:55:24.100Z",
+      "last_message_utc": "2026-09-29T19:06:29.509Z",
+      "message_window_seconds": 665.409,
+      "state_operations": {
+        "message_snapshots": 1
+      },
+      "final_active_records": 14,
+      "observed_message_records_by_type": {
+        "user": 5,
+        "info": 3,
+        "gemini": 5,
+        "error": 1
+      },
+      "user_text_records_excluding_tool_results": 4,
+      "distinct_user_text_hash_count": 3,
+      "observed_tool_ids": 1,
+      "model_metrics": {
+        "gemini-3.5-flash": {
+          "input": 48624,
+          "cached": 29041,
+          "output": 137,
+          "thoughts": 499,
+          "tool": 0,
+          "total": 49260,
+          "records_with_tokens": 3
+        },
+        "unknown": {
+          "input": 17277,
+          "cached": 15481,
+          "output": 0,
+          "thoughts": 0,
+          "tool": 0,
+          "total": 17277,
+          "records_with_tokens": 1
+        }
+      },
+      "scope": "Observed journal only. Captured auxiliary model usage may be incomplete"
+    },
+    {
+      "source_path": "~/.gemini/tmp/openspec/chats/session-2026-09-29T19-09-a7342cd8.jsonl",
+      "source_sha256": "e7ea404f31cb3c8e3dc98c529c4d5dd60ed50e85f9b3c5d3c95f73ed398691bd",
+      "disposition": "recover",
+      "attribution": "Registro de proyectos Gemini: openspec.",
+      "canonical_export": "evidence/Shift-Bank/Etapa 1/OpenSpec/prompt_logs/session-2026-09-29T19-09-a7342cd8.jsonl",
+      "session_id": "a7342cd8-6853-4e7f-a17c-1362fee1f802",
+      "first_message_utc": "2026-09-29T19:09:09.903Z",
+      "last_message_utc": "2026-09-29T19:11:46.149Z",
+      "message_window_seconds": 156.246,
+      "state_operations": {
+        "message_snapshots": 1
+      },
+      "final_active_records": 20,
+      "observed_message_records_by_type": {
+        "user": 10,
+        "info": 1,
+        "gemini": 9
+      },
+      "user_text_records_excluding_tool_results": 3,
+      "distinct_user_text_hash_count": 3,
+      "observed_tool_ids": 10,
+      "model_metrics": {
+        "gemini-3.5-flash": {
+          "input": 161055,
+          "cached": 116237,
+          "output": 1458,
+          "thoughts": 2947,
+          "tool": 0,
+          "total": 165460,
+          "records_with_tokens": 9
+        }
+      },
+      "scope": "Observed journal only. Captured auxiliary model usage may be incomplete"
+    },
+    {
+      "source_path": "~/.gemini/tmp/openspec/chats/session-2026-09-29T19-18-0a108080.jsonl",
+      "source_sha256": "c9ee725a7c65991ece10ed9fdc7dd4c1cdc97abad5e57ec948828d03e5940edc",
+      "disposition": "restricted",
+      "attribution": "Registro de proyectos Gemini: openspec. Revisión: email. Original conservado en origen.",
+      "session_id": "0a108080-123c-4d22-ab95-1095a87431c3",
+      "first_message_utc": "2026-09-29T19:18:32.100Z",
+      "last_message_utc": "2026-09-29T21:45:37.467Z",
+      "message_window_seconds": 8825.367,
+      "state_operations": {
+        "message_snapshots": 1
+      },
+      "final_active_records": 192,
+      "observed_message_records_by_type": {
+        "user": 96,
+        "gemini": 95,
+        "info": 1
+      },
+      "user_text_records_excluding_tool_results": 12,
+      "distinct_user_text_hash_count": 12,
+      "observed_tool_ids": 94,
+      "model_metrics": {
+        "gemini-3.5-flash": {
+          "input": 7648630,
+          "cached": 5921842,
+          "output": 28846,
+          "thoughts": 33754,
+          "tool": 0,
+          "total": 7711230,
+          "records_with_tokens": 95
+        }
+      },
+      "scope": "Observed journal only. Captured auxiliary model usage may be incomplete"
+    }
+  ]
+}

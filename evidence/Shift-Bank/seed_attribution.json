@@ -1,0 +1,76 @@
+[
+  {
+    "stage": 1,
+    "common_original_verified": false,
+    "variants": [
+      {
+        "tool": "OpenSpec",
+        "source": "Shift-Bank/Etapa 1/_experiment_logs/OpenSpec/01_seed_prompt.md",
+        "source_sha256": "9c1bdaa6b4ea4f81be748ba3a1fe17f5fe712d882ab2992671e30b7c4d0c42ae",
+        "exact_normalized_containment_in_own_session": false,
+        "same_normalized_document_body_as_openspec": true,
+        "number_of_prompt_records_checked": 19
+      },
+      {
+        "tool": "Spec Kit",
+        "source": "Shift-Bank/Etapa 1/_experiment_logs/Spec Kit/01_seed_prompt.md",
+        "source_sha256": "e37126f915ed3db0ee99247185018af3b4cb95816f4625965468dd9d01e4ae4a",
+        "exact_normalized_containment_in_own_session": true,
+        "same_normalized_document_body_as_openspec": false,
+        "number_of_prompt_records_checked": 69
+      },
+      {
+        "tool": "Kiro",
+        "source": "Shift-Bank/Etapa 1/_experiment_logs/Kiro/01_seed_prompt.md",
+        "source_sha256": "d55588abe676ec6ab3776eb1f0397ba4a39e2b47320c9f7ccd2975ae5926436c",
+        "exact_normalized_containment_in_own_session": true,
+        "same_normalized_document_body_as_openspec": false,
+        "number_of_prompt_records_checked": 8
+      },
+      {
+        "tool": "Tessl",
+        "source": "Shift-Bank/Etapa 1/_experiment_logs/Tessl/SEEED-1.md",
+        "source_sha256": "64cf4e2060bf1d9a43f1b499f0ddfc3fa464a3a894f6217d4a5818d2095eaa55",
+        "exact_normalized_containment_in_own_session": true,
+        "same_normalized_document_body_as_openspec": false,
+        "number_of_prompt_records_checked": 15
+      },
+      {
+        "tool": "Bmad Method",
+        "source": "Shift-Bank/Etapa 1/_experiment_logs/Bmad/01_seed_prompt.md",
+        "source_sha256": "66e3c159584d4b8da08742009f2eee2eabba038cb958b10f3ee16e7911bcf320",
+        "exact_normalized_containment_in_own_session": false,
+        "same_normalized_document_body_as_openspec": false,
+        "number_of_prompt_records_checked": 300
+      }
+    ],
+    "interpretation": "Tool adaptations and actual prompts corroborate shared themes, but no source establishes one common original delivered across all five tools.",
+    "central": "seeds/Etapa 1/Shift-Bank/SEED.md",
+    "source": "evidence/Shift-Bank/Etapa 1/Tessl/prompt_logs/SEEED-1.md",
+    "sha256": "64cf4e2060bf1d9a43f1b499f0ddfc3fa464a3a894f6217d4a5818d2095eaa55",
+    "status": "historical Tessl variant used as a reference, common original unverified"
+  },
+  {
+    "stage": 2,
+    "common_original_verified": false,
+    "source": "evidence/Shift-Bank/Etapa 2/SEED-2.md",
+    "scope": "Historical proposal preserved as support",
+    "central": "seeds/Etapa 2/Shift-Bank/SEED-2.md",
+    "sha256": "698eb96655c4b02e436db732c773dbf6080ffe4057d4f59c08ee5c0a391bbf55",
+    "status": "historical proposal, common approval unverified"
+  },
+  {
+    "stage": 3,
+    "central": "seeds/Etapa 3/Shift-Bank/SEED-3.md",
+    "source": "Shift-Bank/Etapa 3/SEED-3.md",
+    "sha256": "99d23b7aee6eeb775fdc1617fff46a5409f10cb779ebcf411245e4602fabf1d9",
+    "common_original_verified": true
+  },
+  {
+    "stage": 4,
+    "central": "seeds/Etapa 4/Shift-Bank/SEED-4.md",
+    "source": "Shift-Bank/Etapa 4/SEED-4.md",
+    "sha256": "8d7e32d3cb359b3d1c442b0f71d83dfd6bde5eb31e9af62d74581d47f0fd3047",
+    "common_original_verified": true
+  }
+]

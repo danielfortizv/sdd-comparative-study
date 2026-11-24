@@ -1,0 +1,354 @@
+[
+  {
+    "stage": 1,
+    "tool": "Bmad Method",
+    "dimension": "D4",
+    "source": {
+      "path": "evidence/Shift-Bank/Etapa 1/Bmad Method/metrics/06_validation.md",
+      "sha256": "16bed4d4c7dae16c4d353d769c0178add583afd9cd4bd9be3c79eababd6fb679",
+      "historical_path": "Shift-Bank/Etapa 1/_experiment_logs/Bmad/06_validation.md"
+    },
+    "availability_status": "PARTIAL",
+    "observation": "Validación de planificación; ejecución interrumpida por costo.",
+    "scope": "Tool-specific historical evidence"
+  },
+  {
+    "stage": 1,
+    "tool": "Kiro",
+    "dimension": "D4",
+    "source": {
+      "path": "evidence/Shift-Bank/Etapa 1/Kiro/metrics/06_validation.md",
+      "sha256": "33cd3cabd731f5c5f03d49df9e31d171a3991bd9e2694484c0f01a34b6879c48",
+      "historical_path": "Shift-Bank/Etapa 1/_experiment_logs/Kiro/06_validation.md"
+    },
+    "availability_status": "AVAILABLE",
+    "observation": "Validación manual documentada de cuentas, transferencias, historial y MFA.",
+    "scope": "Tool-specific historical evidence"
+  },
+  {
+    "stage": 1,
+    "tool": "OpenSpec",
+    "dimension": "D4",
+    "source": {
+      "path": "evidence/Shift-Bank/Etapa 1/OpenSpec/metrics/06_validation.md",
+      "sha256": "584f05bd8e848e78a80ca6a7f6a40cd52fc5d3876f3064d5f65ff73368bd9abf",
+      "historical_path": "Shift-Bank/Etapa 1/_experiment_logs/OpenSpec/06_validation.md"
+    },
+    "availability_status": "AVAILABLE",
+    "observation": "Validación manual documentada y captura de interfaz.",
+    "scope": "Tool-specific historical evidence"
+  },
+  {
+    "stage": 1,
+    "tool": "Spec Kit",
+    "dimension": "D4",
+    "source": {
+      "path": "evidence/Shift-Bank/Etapa 1/Spec Kit/metrics/06_validation.md",
+      "sha256": "4ce0b950e819705c7dcbc8d2a15f8456032e857e0fc3b4ab2d1903bed6264aac",
+      "historical_path": "Shift-Bank/Etapa 1/_experiment_logs/Spec Kit/06_validation.md"
+    },
+    "availability_status": "AVAILABLE",
+    "observation": "Escenarios T036 verificados manualmente, con comportamiento residual documentado.",
+    "scope": "Tool-specific historical evidence"
+  },
+  {
+    "stage": 1,
+    "tool": "Tessl",
+    "dimension": "D4",
+    "source": {
+      "path": "evidence/Shift-Bank/Etapa 1/Tessl/metrics/docs/E1_TESSL_VALIDACION_FUNCIONAL_FINAL.md",
+      "sha256": "710cd5001ea32cb097a6ebeaf9e40dcf894f05a4706ce342c33769a8a7c55e5b",
+      "historical_path": "Shift-Bank/Etapa 1/_experiment_logs/Tessl/docs/E1_TESSL_VALIDACION_FUNCIONAL_FINAL.md"
+    },
+    "availability_status": "PARTIAL",
+    "observation": "Pruebas de pantalla, historial y transferencias; casos negativos pendientes.",
+    "scope": "Tool-specific historical evidence"
+  },
+  {
+    "stage": 2,
+    "tool": "Kiro",
+    "dimension": "D4",
+    "source": {
+      "path": "evidence/Shift-Bank/Etapa 2/Kiro/metrics/pruebas/E2_KIRO_EVIDENCIA_ESTANDARIZADA.md",
+      "sha256": "4f0907992518018d52b21e60785e52fd0db1ee5e67ee304d99c7875e2cb81fea",
+      "historical_path": "Shift-Bank/Etapa 2/_experiment_logs/Kiro/pruebas/E2_KIRO_EVIDENCIA_ESTANDARIZADA.md"
+    },
+    "availability_status": "PARTIAL",
+    "observation": "Pruebas y correcciones; A21 no acreditado.",
+    "scope": "Tool-specific historical evidence"
+  },
+  {
+    "stage": 2,
+    "tool": "OpenSpec",
+    "dimension": "D4",
+    "source": {
+      "path": "evidence/Shift-Bank/Etapa 2/OpenSpec/metrics/E2_OPENSPEC_VALIDACION_MANUAL.md",
+      "sha256": "d5de33715eee5d0c6de9023906809cfff1b67b4b703038f731f67b1caf47c9a9",
+      "historical_path": "Shift-Bank/Etapa 2/_experiment_logs/OpenSpec/E2_OPENSPEC_VALIDACION_MANUAL.md"
+    },
+    "availability_status": "PARTIAL",
+    "observation": "Registrar resultados automatizados y pendientes manuales.",
+    "scope": "Tool-specific historical evidence"
+  },
+  {
+    "stage": 2,
+    "tool": "Spec Kit",
+    "dimension": "D4",
+    "source": {
+      "path": "evidence/Shift-Bank/Etapa 2/Spec Kit/metrics/E2_SPECKIT_MANUAL_VALIDATION.md",
+      "sha256": "7be55839976283ba3a6e7206d85c73ae02765f1192129e0c590d1c41825ca9ae",
+      "historical_path": "Shift-Bank/Etapa 2/_experiment_logs/Spec Kit/E2_SPECKIT_MANUAL_VALIDATION.md"
+    },
+    "availability_status": "AVAILABLE",
+    "observation": "Revisión global de navegador informada por el investigador; sin pasos individuales preservados.",
+    "scope": "Tool-specific historical evidence"
+  },
+  {
+    "stage": 2,
+    "tool": "Tessl",
+    "dimension": "D4",
+    "source": {
+      "path": "evidence/Shift-Bank/Etapa 2/Tessl/metrics/01_INFORME_CIERRE_E2_TESSL.md",
+      "sha256": "82d7afd7dcb03b00cd217a1944ea8b3105eaf4254dd24e4d5a15aae8b310fd17",
+      "historical_path": "Shift-Bank/Etapa 2/_experiment_logs/Tessl/01_INFORME_CIERRE_E2_TESSL.md"
+    },
+    "availability_status": "PARTIAL",
+    "observation": "Pruebas, auditorías y cierre del alcance documentado.",
+    "scope": "Tool-specific historical evidence"
+  },
+  {
+    "stage": 1,
+    "tool": "Bmad Method",
+    "dimension": "D5",
+    "source": {
+      "path": "evidence/Shift-Bank/Etapa 1/Bmad Method/prompt_logs/03_corrections.md",
+      "sha256": "65d567217db71fee636dff0193d1ec17717c73475bff5e60ce1a080d0f6106a9",
+      "historical_path": "Shift-Bank/Etapa 1/_experiment_logs/Bmad/03_corrections.md"
+    },
+    "availability_status": "AVAILABLE",
+    "observation": "Correcciones al PRD y flujo nativo; preservar la ejecución interrumpida.",
+    "scope": "Historical record or report"
+  },
+  {
+    "stage": 1,
+    "tool": "Kiro",
+    "dimension": "D5",
+    "source": {
+      "path": "evidence/Shift-Bank/Etapa 1/Kiro/prompt_logs/03_corrections.md",
+      "sha256": "c20717dfe030aec6493e45f18209f8ac26b2c9dc4a5430d0bd0f11870906ee6f",
+      "historical_path": "Shift-Bank/Etapa 1/_experiment_logs/Kiro/03_corrections.md"
+    },
+    "availability_status": "AVAILABLE",
+    "observation": "Aclaraciones y correcciones de requisitos y tareas.",
+    "scope": "Historical record or report"
+  },
+  {
+    "stage": 1,
+    "tool": "OpenSpec",
+    "dimension": "D5",
+    "source": {
+      "path": "evidence/Shift-Bank/Etapa 1/OpenSpec/prompt_logs/03_corrections.md",
+      "sha256": "d89f7b1d7ec9be1a0d6d322c9f7d2c63f23b4e9b7fbcba4cf5374d3795ed7747",
+      "historical_path": "Shift-Bank/Etapa 1/_experiment_logs/OpenSpec/03_corrections.md"
+    },
+    "availability_status": "AVAILABLE",
+    "observation": "Intervenciones documentadas durante especificación e implementación.",
+    "scope": "Historical record or report"
+  },
+  {
+    "stage": 1,
+    "tool": "Spec Kit",
+    "dimension": "D5",
+    "source": {
+      "path": "evidence/Shift-Bank/Etapa 1/Spec Kit/prompt_logs/03_corrections.md",
+      "sha256": "d4943c9421bbe108daa5d78e37d88d83951454a7e6562f2ed3a5a2823c72e9af",
+      "historical_path": "Shift-Bank/Etapa 1/_experiment_logs/Spec Kit/03_corrections.md"
+    },
+    "availability_status": "AVAILABLE",
+    "observation": "Correcciones de constitución, alcance y comportamiento MFA.",
+    "scope": "Historical record or report"
+  },
+  {
+    "stage": 1,
+    "tool": "Tessl",
+    "dimension": "D5",
+    "source": {
+      "path": "evidence/Shift-Bank/Etapa 1/Tessl/metrics/docs/E1_TESSL_CORRECCION_01_SPECS.md",
+      "sha256": "55f247d5490386fdc3d4d59637f129f3259bbc2626940dace1b3c9c3a0197082",
+      "historical_path": "Shift-Bank/Etapa 1/_experiment_logs/Tessl/docs/E1_TESSL_CORRECCION_01_SPECS.md"
+    },
+    "availability_status": "AVAILABLE",
+    "observation": "Refinamiento correctivo de especificaciones.",
+    "scope": "Historical record or report"
+  },
+  {
+    "stage": 2,
+    "tool": "Kiro",
+    "dimension": "D5",
+    "source": {
+      "path": "evidence/Shift-Bank/Etapa 2/Kiro/metrics/bitacora.md",
+      "sha256": "e5ee04eb5843c41fa347977236691e2533d584d6874c1ed282071eb47ad3ad61",
+      "historical_path": "Shift-Bank/Etapa 2/_experiment_logs/Kiro/bitacora.md"
+    },
+    "availability_status": "AVAILABLE",
+    "observation": "Decisiones y correcciones registradas por fase.",
+    "scope": "Historical record or report"
+  },
+  {
+    "stage": 2,
+    "tool": "OpenSpec",
+    "dimension": "D5",
+    "source": {
+      "path": "evidence/Shift-Bank/Etapa 2/OpenSpec/metrics/E2_OPENSPEC_AUDITORIAS_CORRECCIONES.md",
+      "sha256": "1a044aebddc78b13bb1da3ca3da145bb017b4178b21ceba9cdfde042b7439f63",
+      "historical_path": "Shift-Bank/Etapa 2/_experiment_logs/OpenSpec/E2_OPENSPEC_AUDITORIAS_CORRECCIONES.md"
+    },
+    "availability_status": "AVAILABLE",
+    "observation": "Auditorías y correcciones delimitadas.",
+    "scope": "Historical record or report"
+  },
+  {
+    "stage": 2,
+    "tool": "Spec Kit",
+    "dimension": "D5",
+    "source": {
+      "path": "evidence/Shift-Bank/Etapa 2/Spec Kit/metrics/E2_SPECKIT_REGISTRO_02_DESCUBRIMIENTO.md",
+      "sha256": "cf14f3ebf75b79782a5b559411c4d1c53988b3c16810375adbb97803bd777750",
+      "historical_path": "Shift-Bank/Etapa 2/_experiment_logs/Spec Kit/E2_SPECKIT_REGISTRO_02_DESCUBRIMIENTO.md"
+    },
+    "availability_status": "AVAILABLE",
+    "observation": "Descubrimiento y revisión. Complementar con cierre y sesiones.",
+    "scope": "Historical record or report"
+  },
+  {
+    "stage": 2,
+    "tool": "Tessl",
+    "dimension": "D5",
+    "source": {
+      "path": "evidence/Shift-Bank/Etapa 2/Tessl/metrics/05_REGISTRO_AUDITORIAS_CORRECCIONES.md",
+      "sha256": "76a3846162c038fd2f6cd559f5cf9d5bf5a586f8ead5f2ce7f0f80aeb0f74624",
+      "historical_path": "Shift-Bank/Etapa 2/_experiment_logs/Tessl/05_REGISTRO_AUDITORIAS_CORRECCIONES.md"
+    },
+    "availability_status": "AVAILABLE",
+    "observation": "Intervenciones de auditoría y corrección.",
+    "scope": "Historical record or report"
+  },
+  {
+    "stage": 3,
+    "tool": "Kiro",
+    "dimension": "D5",
+    "source": {
+      "path": "evidence/Shift-Bank/Etapa 3/Kiro/metrics/REPORTE_FINAL_ETAPA3_KIRO.md",
+      "sha256": "0c0a3529e1c596cc0744715062c4345f0a88926048290f2cd221d398633bcabb",
+      "historical_path": "Shift-Bank/Etapa 3/_experiment_logs/Kiro/REPORTE_FINAL_ETAPA3_KIRO.md"
+    },
+    "availability_status": "AVAILABLE",
+    "observation": "Correcciones y limitaciones conservadas en informe final.",
+    "scope": "Historical record or report"
+  },
+  {
+    "stage": 3,
+    "tool": "OpenSpec",
+    "dimension": "D5",
+    "source": {
+      "path": "evidence/Shift-Bank/Etapa 3/OpenSpec/prompt_logs/E3_OPENSPEC_REGISTRO_INTERACCIONES.md",
+      "sha256": "90cba1b8190de1501b0cc9364f54d71c7ed39cc1d960be547e8cb2fa5855caaa",
+      "historical_path": "Shift-Bank/Etapa 3/_experiment_logs/OpenSpec/E3_OPENSPEC_REGISTRO_INTERACCIONES.md"
+    },
+    "availability_status": "AVAILABLE",
+    "observation": "Clarificaciones y decisiones cronológicas.",
+    "scope": "Historical record or report"
+  },
+  {
+    "stage": 3,
+    "tool": "Spec Kit",
+    "dimension": "D5",
+    "source": {
+      "path": "evidence/Shift-Bank/Etapa 3/Spec Kit/metrics/E3_SPECKIT_BITACORA_EXPERIMENTAL.md",
+      "sha256": "3872c3b00fd57972e878eac693ea7d47e50a7315274f33959e906171d8d89eca",
+      "historical_path": "Shift-Bank/Etapa 3/_experiment_logs/Spec Kit/E3_SPECKIT_BITACORA_EXPERIMENTAL.md"
+    },
+    "availability_status": "AVAILABLE",
+    "observation": "Incidentes, reintentos y decisiones, con evaluación H9.",
+    "scope": "Historical record or report"
+  },
+  {
+    "stage": 3,
+    "tool": "Tessl",
+    "dimension": "D5",
+    "source": {
+      "path": "evidence/Shift-Bank/Etapa 3/Tessl/metrics/E3_TESSL_INFORME_INVESTIGADOR.md",
+      "sha256": "5638c893247db8db1cc7df3ac019523a215a6edcc3b0c7694f52755fb3f9c706",
+      "historical_path": "Shift-Bank/Etapa 3/_experiment_logs/Tessl/E3_TESSL_INFORME_INVESTIGADOR.md"
+    },
+    "availability_status": "AVAILABLE",
+    "observation": "Clasificaciones del investigador y Quality Gate fallido preservados.",
+    "scope": "Historical record or report"
+  },
+  {
+    "stage": 4,
+    "tool": "Kiro",
+    "dimension": "D5",
+    "source": {
+      "path": "evidence/Shift-Bank/Etapa 4/Kiro/metrics/E4_KIRO_FINAL_REPORT.md",
+      "sha256": "3bdbb7e75c30197f217ed111df2d823a7baaf7c198e3d9cc0e138807b1228992",
+      "historical_path": "Shift-Bank/Etapa 4/_experiment_logs/Kiro/E4/E4_KIRO_FINAL_REPORT.md"
+    },
+    "availability_status": "AVAILABLE",
+    "observation": "Decisiones de fixture, compatibilidad y remediación.",
+    "scope": "Historical record or report"
+  },
+  {
+    "stage": 4,
+    "tool": "OpenSpec",
+    "dimension": "D5",
+    "source": {
+      "path": "evidence/Shift-Bank/Etapa 4/OpenSpec/metrics/bitacora.md",
+      "sha256": "ddbe599ea3422d1d34ab77050e21deaf1720a217eec484668a3dbc37f50639d8",
+      "historical_path": "Shift-Bank/Etapa 4/_experiment_logs/OpenSpec/bitacora.md"
+    },
+    "availability_status": "AVAILABLE",
+    "observation": "Decisiones, aprobaciones y límites H3.",
+    "scope": "Historical record or report"
+  },
+  {
+    "stage": 4,
+    "tool": "Spec Kit",
+    "dimension": "D5",
+    "source": {
+      "path": "evidence/Shift-Bank/Etapa 4/Spec Kit/metrics/acceptance/E4-SK-07-corrections-and-failures.md",
+      "sha256": "cf1a54dfa91c135d0414cf2cecee3fafc3c5dc6d92067814042331ff0157f55e",
+      "historical_path": "Shift-Bank/Etapa 4/_experiment_logs/Spec Kit/acceptance/E4-SK-07-corrections-and-failures.md"
+    },
+    "availability_status": "AVAILABLE",
+    "observation": "Correcciones y fallas de pruebas, despliegue y rendimiento.",
+    "scope": "Historical record or report"
+  },
+  {
+    "stage": 4,
+    "tool": "Tessl",
+    "dimension": "D5",
+    "source": {
+      "path": "evidence/Shift-Bank/Etapa 4/Tessl/prompt_logs/Interaccion.md",
+      "sha256": "55a1c6b3f7cdb547c0e94a2504d34d7db92bfaed387dec3f4587ced1d743be3d",
+      "historical_path": "Shift-Bank/Etapa 4/_experiment_logs/Tessl/Interaccion.md"
+    },
+    "availability_status": "AVAILABLE",
+    "observation": "Aprobaciones, solicitudes de corrección y límites de verificación.",
+    "scope": "Historical record or report"
+  },
+  {
+    "stage": 4,
+    "tool": "Spec Kit",
+    "dimension": "D4",
+    "source": {
+      "path": "evidence/Shift-Bank/Etapa 4/Spec Kit/metrics/acceptance/E4-SK-08-AC45-locust-metrics.json",
+      "sha256": "4073a6c43376957f4f4231dc22f7f947b56a405e5059ac9bb45b827be8e8c9d6",
+      "historical_path": "Shift-Bank/Etapa 4/_experiment_logs/Spec Kit/acceptance/E4-SK-08-AC45-locust-metrics.json"
+    },
+    "availability_status": "AVAILABLE",
+    "original_state": "FAIL",
+    "observation": "AC-45: p95 de transferencias 2803,02 ms con umbral <500 ms.",
+    "scope": "Resultado de carga del perfil aprobado, distinto de la decisión de cierre."
+  }
+]

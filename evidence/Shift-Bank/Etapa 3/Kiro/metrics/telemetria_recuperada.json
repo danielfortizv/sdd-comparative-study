@@ -1,0 +1,74 @@
+{
+  "kind": "Sanitized derived telemetry and metadata; no original message content",
+  "stage": 3,
+  "tool": "Kiro",
+  "sources": [
+    {
+      "source_path": "~/Downloads/kiro-session-sess_7f1b54d0-e77f-4cb7-b439-d06e5aa2dca1.zip",
+      "source_sha256": "8b5817a1ff18dde124f09a5c05307d6e181c2635d67b9d29b45a81c7b3c31775",
+      "disposition": "restricted",
+      "attribution": "Export multietapa con segmentos E2/E3. Revisión: email, known-token, sensitive-value. Original conservado en origen.",
+      "session_id": "sess_7f1b54d0-e77f-4cb7-b439-d06e5aa2dca1",
+      "segments": {
+        "Etapa 2": {
+          "main_events": {
+            "user": 2,
+            "turn_start": 2,
+            "assistant": 176,
+            "session_metadata": 102,
+            "tool_call": 155,
+            "tool_result": 155,
+            "sub_agent_start": 19,
+            "pending_interaction": 80,
+            "interaction_resolved": 80,
+            "sub_agent_complete": 19,
+            "usage_summary": 2,
+            "session_event": 2,
+            "turn_end": 2,
+            "agent_note": 1
+          },
+          "subexecution_events": {
+            "assistant": 621,
+            "tool_call": 478,
+            "tool_result": 478
+          },
+          "first_event_utc": "2026-11-16T17:57:02.024Z",
+          "last_event_utc": "2026-11-16T19:23:01.806Z",
+          "usage_summary_count": 2,
+          "credits": 100.90634824543943,
+          "elapsed_seconds": 4092.689
+        },
+        "Etapa 3": {
+          "main_events": {
+            "user": 15,
+            "turn_start": 15,
+            "assistant": 494,
+            "session_metadata": 282,
+            "tool_call": 459,
+            "tool_result": 459,
+            "usage_summary": 14,
+            "session_event": 14,
+            "turn_end": 15,
+            "pending_interaction": 280,
+            "interaction_resolved": 279,
+            "sub_agent_start": 36,
+            "sub_agent_complete": 36,
+            "tombstone": 1,
+            "agent_note": 1
+          },
+          "subexecution_events": {
+            "assistant": 1968,
+            "tool_call": 1357,
+            "tool_result": 1357
+          },
+          "first_event_utc": "2026-11-16T19:36:25.080Z",
+          "last_event_utc": "2026-11-17T20:59:17.266Z",
+          "usage_summary_count": 14,
+          "credits": 201.9295345139304,
+          "elapsed_seconds": 12417.229
+        }
+      },
+      "segment_attribution": "Historical E3 start in E3_KIRO_D1_METODO.md. Subexecution events may close later; use indexed turn attribution for final E2/E3 aggregates."
+    }
+  ]
+}

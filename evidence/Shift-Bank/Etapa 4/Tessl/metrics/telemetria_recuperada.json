@@ -1,0 +1,297 @@
+{
+  "kind": "Sanitized derived telemetry and metadata; no original message content",
+  "stage": 4,
+  "tool": "Tessl",
+  "sources": [
+    {
+      "source_path": "~/.gemini/tmp/tessl-3/chats/session-2026-11-14T00-59-8d090ca6.jsonl",
+      "source_sha256": "3297b1f1059cffd1d4eccb0670eaf76cd15cc741f0bedb3a99d474eefe68b3a6",
+      "disposition": "restricted",
+      "attribution": "Registro de proyectos Gemini: tessl-3. Revisión: email, sensitive-value. Original conservado en origen.",
+      "session_id": "8d090ca6-3adf-4041-ae2c-848be94bed16",
+      "first_message_utc": "2026-11-14T00:59:15.971Z",
+      "last_message_utc": "2026-11-14T03:38:18.921Z",
+      "message_window_seconds": 9542.95,
+      "state_operations": {
+        "patch_records": 7
+      },
+      "final_active_records": 520,
+      "observed_message_records_by_type": {
+        "user": 1450,
+        "gemini": 1577,
+        "info": 3,
+        "error": 1
+      },
+      "user_text_records_excluding_tool_results": 176,
+      "distinct_user_text_hash_count": 23,
+      "observed_tool_ids": 243,
+      "model_metrics": {
+        "gemini-3.8-flash": {
+          "input": 61283509,
+          "cached": 54833498,
+          "output": 203177,
+          "thoughts": 94672,
+          "tool": 0,
+          "total": 61581358,
+          "records_with_tokens": 249
+        }
+      },
+      "scope": "Historical E4 workspace. Distinguish implementation, reviews and closure before stage aggregation",
+      "phase_evidence": {
+        "implementation_prompt_mentions": 152,
+        "closure_prompt_mentions": 0,
+        "limitation": "Diagnostic keyword matches after removing tool-result records, not human interaction counts."
+      }
+    },
+    {
+      "source_path": "~/.gemini/tmp/tessl-3/chats/session-2026-11-14T03-39-34ba9496.jsonl",
+      "source_sha256": "5496d1539ced30eee7f2c15ee49ea8d56c12b73afcb0be16c55393cdb9c3c0e2",
+      "disposition": "restricted",
+      "attribution": "Registro de proyectos Gemini: tessl-3. Revisión: email, sensitive-value. Original conservado en origen.",
+      "session_id": "34ba9496-8b74-4ec1-b41b-69ba6c63803f",
+      "first_message_utc": "2026-11-14T03:39:39.637Z",
+      "last_message_utc": "2026-11-14T04:36:53.950Z",
+      "message_window_seconds": 3434.313,
+      "state_operations": {
+        "patch_records": 4
+      },
+      "final_active_records": 398,
+      "observed_message_records_by_type": {
+        "user": 564,
+        "gemini": 577,
+        "info": 4,
+        "error": 10
+      },
+      "user_text_records_excluding_tool_results": 17,
+      "distinct_user_text_hash_count": 5,
+      "observed_tool_ids": 181,
+      "model_metrics": {
+        "gemini-3.8-flash": {
+          "input": 23670531,
+          "cached": 22067084,
+          "output": 34837,
+          "thoughts": 45946,
+          "tool": 0,
+          "total": 23751314,
+          "records_with_tokens": 176
+        }
+      },
+      "scope": "Historical E4 workspace. Distinguish implementation, reviews and closure before stage aggregation",
+      "phase_evidence": {
+        "implementation_prompt_mentions": 14,
+        "closure_prompt_mentions": 0,
+        "limitation": "Diagnostic keyword matches after removing tool-result records, not human interaction counts."
+      }
+    },
+    {
+      "source_path": "~/.gemini/tmp/tessl-3/chats/session-2026-11-14T04-37-43a92009.jsonl",
+      "source_sha256": "b1945988b6c5ad701dc8bce0f4a320be8882d9cf645b97320b30ffa92b45b786",
+      "disposition": "restricted",
+      "attribution": "Registro de proyectos Gemini: tessl-3. Revisión: email. Original conservado en origen.",
+      "session_id": "43a92009-cb18-47e8-bbbc-27c0e5349f50",
+      "first_message_utc": "2026-11-14T04:37:07.868Z",
+      "last_message_utc": "2026-11-14T05:10:26.179Z",
+      "message_window_seconds": 1998.311,
+      "state_operations": {
+        "patch_records": 9,
+        "rewind_records": 2
+      },
+      "final_active_records": 472,
+      "observed_message_records_by_type": {
+        "user": 1379,
+        "gemini": 1367,
+        "info": 3,
+        "error": 15
+      },
+      "user_text_records_excluding_tool_results": 31,
+      "distinct_user_text_hash_count": 7,
+      "observed_tool_ids": 243,
+      "model_metrics": {
+        "gemini-3.8-flash": {
+          "input": 37512370,
+          "cached": 35640221,
+          "output": 62831,
+          "thoughts": 71517,
+          "tool": 0,
+          "total": 37646718,
+          "records_with_tokens": 228
+        }
+      },
+      "scope": "Historical E4 workspace. Distinguish implementation, reviews and closure before stage aggregation",
+      "phase_evidence": {
+        "implementation_prompt_mentions": 27,
+        "closure_prompt_mentions": 0,
+        "limitation": "Diagnostic keyword matches after removing tool-result records, not human interaction counts."
+      }
+    },
+    {
+      "source_path": "~/.gemini/tmp/tessl-3/chats/session-2026-11-14T05-13-4e98ef39.jsonl",
+      "source_sha256": "7809ebd70852cb247ce9d6d493b12a1ffb8a53192267fb5c86a414feae54a220",
+      "disposition": "restricted",
+      "attribution": "Registro de proyectos Gemini: tessl-3. Revisión: email, sensitive-value. Original conservado en origen.",
+      "session_id": "4e98ef39-1769-4a52-9e18-529b0c27fe71",
+      "first_message_utc": "2026-11-14T05:13:09.455Z",
+      "last_message_utc": "2026-11-14T05:28:20.720Z",
+      "message_window_seconds": 911.265,
+      "state_operations": {
+        "patch_records": 2
+      },
+      "final_active_records": 135,
+      "observed_message_records_by_type": {
+        "user": 70,
+        "gemini": 68,
+        "info": 2,
+        "error": 7
+      },
+      "user_text_records_excluding_tool_results": 11,
+      "distinct_user_text_hash_count": 5,
+      "observed_tool_ids": 66,
+      "model_metrics": {
+        "gemini-3.8-flash": {
+          "input": 4721634,
+          "cached": 4297542,
+          "output": 13579,
+          "thoughts": 27492,
+          "tool": 0,
+          "total": 4762705,
+          "records_with_tokens": 60
+        },
+        "unknown": {
+          "input": 25014,
+          "cached": 21604,
+          "output": 0,
+          "thoughts": 0,
+          "tool": 0,
+          "total": 25014,
+          "records_with_tokens": 1
+        }
+      },
+      "scope": "Historical E4 workspace. Distinguish implementation, reviews and closure before stage aggregation",
+      "phase_evidence": {
+        "implementation_prompt_mentions": 6,
+        "closure_prompt_mentions": 0,
+        "limitation": "Diagnostic keyword matches after removing tool-result records, not human interaction counts."
+      }
+    },
+    {
+      "source_path": "~/.gemini/tmp/tessl-3/chats/session-2026-11-14T05-28-410941fe.jsonl",
+      "source_sha256": "8ff84067140cc82c4372a3aaa7ec055a851ebc381f3b6e8681bf918e9819ace3",
+      "disposition": "restricted",
+      "attribution": "Registro de proyectos Gemini: tessl-3. Revisión: email. Original conservado en origen.",
+      "session_id": "410941fe-9a75-4434-bcfa-a5175603df60",
+      "first_message_utc": "2026-11-14T05:28:38.300Z",
+      "last_message_utc": "2026-11-14T05:55:35.823Z",
+      "message_window_seconds": 1617.523,
+      "state_operations": {
+        "patch_records": 4
+      },
+      "final_active_records": 170,
+      "observed_message_records_by_type": {
+        "user": 336,
+        "info": 6,
+        "gemini": 336
+      },
+      "user_text_records_excluding_tool_results": 21,
+      "distinct_user_text_hash_count": 7,
+      "observed_tool_ids": 104,
+      "model_metrics": {
+        "gemini-3.8-flash": {
+          "input": 13725777,
+          "cached": 12462125,
+          "output": 55269,
+          "thoughts": 79041,
+          "tool": 0,
+          "total": 13860087,
+          "records_with_tokens": 85
+        }
+      },
+      "scope": "Historical E4 workspace. Distinguish implementation, reviews and closure before stage aggregation",
+      "phase_evidence": {
+        "implementation_prompt_mentions": 20,
+        "closure_prompt_mentions": 0,
+        "limitation": "Diagnostic keyword matches after removing tool-result records, not human interaction counts."
+      }
+    },
+    {
+      "source_path": "~/.gemini/tmp/tessl-3/chats/session-2026-11-14T13-20-cbdee1dc.jsonl",
+      "source_sha256": "882a6fc033552782a7c2ea147c0b6f1b56a58f0462e472d883cdc8fbfce17513",
+      "disposition": "restricted",
+      "attribution": "Registro de proyectos Gemini: tessl-3. Revisión: email, sensitive-value. Original conservado en origen.",
+      "session_id": "cbdee1dc-b3ca-4008-a771-899dfac1d186",
+      "first_message_utc": "2026-11-14T13:20:51.273Z",
+      "last_message_utc": "2026-11-14T15:20:51.621Z",
+      "message_window_seconds": 7200.348,
+      "state_operations": {
+        "patch_records": 29
+      },
+      "final_active_records": 537,
+      "observed_message_records_by_type": {
+        "user": 7038,
+        "gemini": 7023,
+        "info": 5,
+        "error": 15
+      },
+      "user_text_records_excluding_tool_results": 259,
+      "distinct_user_text_hash_count": 25,
+      "observed_tool_ids": 571,
+      "model_metrics": {
+        "gemini-3.8-flash": {
+          "input": 171317272,
+          "cached": 159532189,
+          "output": 159308,
+          "thoughts": 287019,
+          "tool": 0,
+          "total": 171763599,
+          "records_with_tokens": 590
+        }
+      },
+      "scope": "Historical E4 workspace. Distinguish implementation, reviews and closure before stage aggregation",
+      "phase_evidence": {
+        "implementation_prompt_mentions": 256,
+        "closure_prompt_mentions": 0,
+        "limitation": "Diagnostic keyword matches after removing tool-result records, not human interaction counts."
+      }
+    },
+    {
+      "source_path": "~/.gemini/tmp/tessl-3/chats/session-2026-11-14T15-21-68e6065d.jsonl",
+      "source_sha256": "d5857ab6061eff95c8fc6d19986891d79d9597355b525aa90b75387565d3567a",
+      "disposition": "restricted",
+      "attribution": "Registro de proyectos Gemini: tessl-3. Revisión: email. Original conservado en origen.",
+      "session_id": "68e6065d-16bd-49e2-af4d-7bd7faefd410",
+      "first_message_utc": "2026-11-14T15:21:33.372Z",
+      "last_message_utc": "2026-11-14T16:09:53.216Z",
+      "message_window_seconds": 2899.844,
+      "state_operations": {
+        "patch_records": 7,
+        "rewind_records": 1
+      },
+      "final_active_records": 245,
+      "observed_message_records_by_type": {
+        "user": 613,
+        "gemini": 600,
+        "error": 14,
+        "info": 2
+      },
+      "user_text_records_excluding_tool_results": 31,
+      "distinct_user_text_hash_count": 6,
+      "observed_tool_ids": 159,
+      "model_metrics": {
+        "gemini-3.8-flash": {
+          "input": 16672894,
+          "cached": 15467750,
+          "output": 38714,
+          "thoughts": 34744,
+          "tool": 0,
+          "total": 16746352,
+          "records_with_tokens": 132
+        }
+      },
+      "scope": "Historical E4 workspace. Distinguish implementation, reviews and closure before stage aggregation",
+      "phase_evidence": {
+        "implementation_prompt_mentions": 28,
+        "closure_prompt_mentions": 3,
+        "limitation": "Diagnostic keyword matches after removing tool-result records, not human interaction counts."
+      }
+    }
+  ]
+}

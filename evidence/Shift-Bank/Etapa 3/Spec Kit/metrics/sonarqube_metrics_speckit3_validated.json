@@ -1,0 +1,63 @@
+{
+    "component":  {
+                      "key":  "Shift-Bank---Stage-3---Spec-Kit",
+                      "name":  "Shift Bank - Stage 3 - Spec Kit",
+                      "qualifier":  "TRK",
+                      "measures":  [
+                                       {
+                                           "metric":  "coverage",
+                                           "value":  "0.0",
+                                           "bestValue":  false
+                                       },
+                                       {
+                                           "metric":  "bugs",
+                                           "value":  "3",
+                                           "bestValue":  false
+                                       },
+                                       {
+                                           "metric":  "reliability_rating",
+                                           "value":  "3.0",
+                                           "bestValue":  false
+                                       },
+                                       {
+                                           "metric":  "code_smells",
+                                           "value":  "70",
+                                           "bestValue":  false
+                                       },
+                                       {
+                                           "metric":  "duplicated_lines_density",
+                                           "value":  "0.0",
+                                           "bestValue":  true
+                                       },
+                                       {
+                                           "metric":  "security_rating",
+                                           "value":  "2.0",
+                                           "bestValue":  false
+                                       },
+                                       {
+                                           "metric":  "ncloc",
+                                           "value":  "6204"
+                                       },
+                                       {
+                                           "metric":  "vulnerabilities",
+                                           "value":  "1",
+                                           "bestValue":  false
+                                       },
+                                       {
+                                           "metric":  "security_hotspots",
+                                           "value":  "0",
+                                           "bestValue":  true
+                                       },
+                                       {
+                                           "metric":  "sqale_index",
+                                           "value":  "508",
+                                           "bestValue":  false
+                                       },
+                                       {
+                                           "metric":  "sqale_rating",
+                                           "value":  "1.0",
+                                           "bestValue":  true
+                                       }
+                                   ]
+                  }
+}

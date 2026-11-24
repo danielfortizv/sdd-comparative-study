@@ -1,0 +1,17 @@
+{
+  "coverage_report_imported": false,
+  "measures": {},
+  "measures_http": 401,
+  "project_key": "shiftbank-stage4-e4sk07",
+  "quality_gate": null,
+  "quality_gate_conditions": [],
+  "quality_gate_http": 401,
+  "scanner_exit_code": 0,
+  "server_version": "26.9.0.129388",
+  "sources": [
+    "backend/src",
+    "frontend/src"
+  ],
+  "temporary_admin_password_rotated_away": true,
+  "temporary_token_revoked": true
+}
