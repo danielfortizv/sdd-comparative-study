@@ -1,0 +1,18 @@
+SOURCE = C:\Users\danie\Documents2\sdd-comparative-study\Shift-Bank\Etapa 1\OpenSpec
+DESTINATION = C:\Users\danie\Documents2\sdd-comparative-study\Shift-Bank\Etapa 2\OpenSpec
+LOG_DIR = C:\Users\danie\Documents2\sdd-comparative-study\Shift-Bank\Etapa 2\_experiment_logs\OpenSpec
+Git repo status: repo is on branch ShiftBank (plus unrelated uncommitted changes under Shift-Bank/Etapa 2/Kiro and logs; no changes in target OpenSpec copy)
+Python: 
+Python 3.13.2
+Node.js: 
+v20.17.0
+npm: 
+11.6.3
+OpenSpec CLI: 
+1.9.0
+Codex CLI: 
+codex-cli 0.168.0
+Backend tests: none found in Stage 1 OpenSpec; no pytest configuration or test files detected
+Frontend build: passed via npm run build in destination/frontend
+OpenSpec structure: list --specs succeeded and shows specs bank-accounts, mfa, transaction-history, transfers
+Codex integration: openspec init --tools codex succeeded and generated .agents/skills in destination

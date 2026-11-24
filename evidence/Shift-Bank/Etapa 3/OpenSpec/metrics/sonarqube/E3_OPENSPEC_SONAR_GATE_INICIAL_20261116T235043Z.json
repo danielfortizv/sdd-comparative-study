@@ -1,0 +1,5 @@
+{
+  "status": "NOT_EXECUTED",
+  "analysis_id": null,
+  "reason": "Pre-scan history could not be authenticated (HTTP 403); no analysis was started."
+}

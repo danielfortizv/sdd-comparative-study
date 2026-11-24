@@ -1,0 +1,141 @@
+{
+  "kind": "Sanitized derived telemetry and metadata; no original message content",
+  "stage": 2,
+  "tool": "Tessl",
+  "sources": [
+    {
+      "source_path": "~/.gemini/tmp/tessl-1/chats/session-2026-11-13T16-24-2212b15f.jsonl",
+      "source_sha256": "4a1e1415825a51f682a2612cbb999a0669e135652d7c904a644a94c75ef8e58c",
+      "disposition": "recover",
+      "attribution": "Registro de proyectos Gemini: tessl-1.",
+      "canonical_export": "evidence/Shift-Bank/Etapa 2/Tessl/prompt_logs/session-2026-11-13T16-24-2212b15f.jsonl",
+      "session_id": "2212b15f-fd2a-4c2c-bd4e-6fdb85251713",
+      "first_message_utc": "2026-11-13T16:24:49.704Z",
+      "last_message_utc": "2026-11-13T16:26:36.171Z",
+      "message_window_seconds": 106.467,
+      "state_operations": {},
+      "final_active_records": 4,
+      "observed_message_records_by_type": {
+        "user": 2,
+        "info": 1,
+        "gemini": 1
+      },
+      "user_text_records_excluding_tool_results": 2,
+      "distinct_user_text_hash_count": 2,
+      "observed_tool_ids": 0,
+      "model_metrics": {
+        "gemini-3.8-flash": {
+          "input": 19518,
+          "cached": 0,
+          "output": 55,
+          "thoughts": 566,
+          "tool": 0,
+          "total": 20139,
+          "records_with_tokens": 1
+        }
+      },
+      "scope": "Observed journal only. Captured auxiliary model usage may be incomplete"
+    },
+    {
+      "source_path": "~/.gemini/tmp/tessl-1/chats/session-2026-11-13T16-30-4920cec4.jsonl",
+      "source_sha256": "e0a911edcf3eb7488cf7545606ab5682abf7b3bdf10beb0de7d4289742ba28f7",
+      "disposition": "recover",
+      "attribution": "Registro de proyectos Gemini: tessl-1.",
+      "canonical_export": "evidence/Shift-Bank/Etapa 2/Tessl/prompt_logs/session-2026-11-13T16-30-4920cec4.jsonl",
+      "session_id": "4920cec4-dc9f-46af-b50b-0a8f5310d55f",
+      "first_message_utc": "2026-11-13T16:30:55.097Z",
+      "last_message_utc": "2026-11-13T16:41:30.295Z",
+      "message_window_seconds": 635.198,
+      "state_operations": {
+        "message_snapshots": 1
+      },
+      "final_active_records": 4,
+      "observed_message_records_by_type": {
+        "user": 2,
+        "info": 1,
+        "gemini": 1
+      },
+      "user_text_records_excluding_tool_results": 2,
+      "distinct_user_text_hash_count": 2,
+      "observed_tool_ids": 0,
+      "model_metrics": {
+        "gemini-3.5-flash": {
+          "input": 19544,
+          "cached": 0,
+          "output": 1,
+          "thoughts": 321,
+          "tool": 0,
+          "total": 19866,
+          "records_with_tokens": 1
+        }
+      },
+      "scope": "Observed journal only. Captured auxiliary model usage may be incomplete"
+    },
+    {
+      "source_path": "~/.gemini/tmp/tessl-1/chats/session-2026-11-13T16-45-42bc44ee.jsonl",
+      "source_sha256": "ab86a8619bbe24804adeba0eb30484e1ad5c2598eb0712da5ba5dbb2fbb13d17",
+      "disposition": "restricted",
+      "attribution": "Registro de proyectos Gemini: tessl-1. Revisión: email. Original conservado en origen.",
+      "session_id": "42bc44ee-b2c5-4042-8524-a249ef3b692f",
+      "first_message_utc": "2026-11-13T16:45:23.240Z",
+      "last_message_utc": "2026-11-13T17:06:31.789Z",
+      "message_window_seconds": 1268.549,
+      "state_operations": {},
+      "final_active_records": 190,
+      "observed_message_records_by_type": {
+        "user": 95,
+        "gemini": 94,
+        "info": 1
+      },
+      "user_text_records_excluding_tool_results": 2,
+      "distinct_user_text_hash_count": 2,
+      "observed_tool_ids": 108,
+      "model_metrics": {
+        "gemini-3.8-flash": {
+          "input": 9990626,
+          "cached": 9583054,
+          "output": 56122,
+          "thoughts": 37394,
+          "tool": 0,
+          "total": 10084142,
+          "records_with_tokens": 94
+        }
+      },
+      "scope": "Observed journal only. Captured auxiliary model usage may be incomplete"
+    },
+    {
+      "source_path": "~/.gemini/tmp/tessl-1/chats/session-2026-11-13T17-14-3ab073d2.jsonl",
+      "source_sha256": "7e14074590b9f4d36491657d9e88360e0aa611cb6b9c0c64c1927b012f7fa194",
+      "disposition": "restricted",
+      "attribution": "Registro de proyectos Gemini: tessl-1. Revisión: email. Original conservado en origen.",
+      "session_id": "3ab073d2-76fc-43d7-a3aa-1c0e322ec468",
+      "first_message_utc": "2026-11-13T17:14:23.631Z",
+      "last_message_utc": "2026-11-13T18:18:49.014Z",
+      "message_window_seconds": 3865.383,
+      "state_operations": {
+        "patch_records": 2
+      },
+      "final_active_records": 176,
+      "observed_message_records_by_type": {
+        "user": 211,
+        "info": 2,
+        "gemini": 210
+      },
+      "user_text_records_excluding_tool_results": 13,
+      "distinct_user_text_hash_count": 7,
+      "observed_tool_ids": 129,
+      "model_metrics": {
+        "gemini-3.8-flash": {
+          "input": 12148493,
+          "cached": 10864250,
+          "output": 35536,
+          "thoughts": 81121,
+          "tool": 0,
+          "total": 12265150,
+          "records_with_tokens": 88
+        }
+      },
+      "scope": "Observed journal only. Captured auxiliary model usage may be incomplete"
+    }
+  ]
+}

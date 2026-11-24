@@ -1,0 +1,23 @@
+{
+    "id":  "efcafc55-e576-41f4-9825-51480d372088",
+    "type":  "REPORT",
+    "componentId":  "222970ae-f6d0-4574-a323-ddf3538de7f7",
+    "componentKey":  "Shift-Bank---Stage-2---OpenSpec",
+    "componentName":  "Shift Bank - Stage 2 - OpenSpec",
+    "componentQualifier":  "TRK",
+    "analysisId":  "74358b40-4391-4280-83df-9ae09061e287",
+    "status":  "SUCCESS",
+    "submittedAt":  "2026-11-16T17:57:14+0000",
+    "submitterLogin":  "admin",
+    "startedAt":  "2026-11-16T17:57:15+0000",
+    "executedAt":  "2026-11-16T17:57:16+0000",
+    "executionTimeMs":  1634,
+    "hasScannerContext":  true,
+    "warningCount":  1,
+    "warnings":  [
+                     "SCM provider autodetection failed. Please use \"sonar.scm.provider\" to define SCM of your project, or disable the SCM Sensor in the project settings."
+                 ],
+    "infoMessages":  [
+
+                     ]
+}

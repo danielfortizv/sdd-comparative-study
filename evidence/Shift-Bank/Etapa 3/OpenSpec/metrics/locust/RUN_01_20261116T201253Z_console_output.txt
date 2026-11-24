@@ -1,0 +1,16 @@
+﻿{
+  "run_id": "RUN_01_20261116T201253Z",
+  "status": "complete",
+  "report": "C:\\Users\\danie\\Documents2\\sdd-comparative-study\\Shift-Bank\\Etapa 3\\_experiment_logs\\OpenSpec\\locust\\E3_OPENSPEC_LOCUST_RUN_01.json",
+  "steady_state_seconds": 60.00300650000281,
+  "acceptance": {
+    "balance_read_p95_below_200ms": true,
+    "history_read_p95_below_200ms": true,
+    "combined_read_p95_below_200ms": true,
+    "transfer_p95_below_500ms": true,
+    "unexpected_error_rate_below_1_percent": true,
+    "overall_performance_pass": true,
+    "financial_integrity_pass": true
+  },
+  "error": null
+}

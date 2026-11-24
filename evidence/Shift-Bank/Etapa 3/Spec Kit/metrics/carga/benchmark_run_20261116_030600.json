@@ -1,0 +1,146 @@
+{
+  "benchmark_id": "bench_20261116_030600",
+  "execution_metadata": {
+    "timestamp": "2026-11-16T03:07:08.717486+00:00",
+    "target_url": "https://127.0.0.1:8443",
+    "is_https": true,
+    "tls_verification": "trusted_local_certificate",
+    "wall_time_seconds": 66.59
+  },
+  "metrics": {
+    "timestamp": "2026-11-16T03:07:08.717486+00:00",
+    "target_concurrency": 30,
+    "observed_concurrency": 30,
+    "spawn_rate": 5.0,
+    "ramp_up_duration_seconds": 5.05,
+    "steady_state_target_seconds": 60.0,
+    "steady_state_actual_seconds": 60.0,
+    "total_requests_all": 7518,
+    "steady_state_total_requests": 7081,
+    "steady_state_rps": 118.02,
+    "configured_weights": {
+      "balance_reads": 60,
+      "history_reads": 30,
+      "internal_transfers": 10
+    },
+    "observed_distribution": {
+      "balance_reads_count": 4226,
+      "balance_reads_pct": 59.72,
+      "history_reads_count": 2129,
+      "history_reads_pct": 30.09,
+      "internal_transfers_count": 721,
+      "internal_transfers_pct": 10.19
+    },
+    "request_reconciliation": {
+      "total_steady_state_requests": 7081,
+      "banking_workload_requests": 7076,
+      "operational_distribution": {
+        "balance_reads": {
+          "count": 4226,
+          "pct_of_workload": 59.72
+        },
+        "history_reads": {
+          "count": 2129,
+          "pct_of_workload": 30.09
+        },
+        "internal_transfers": {
+          "count": 721,
+          "pct_of_workload": 10.19
+        }
+      },
+      "initialization_handshake_requests": {
+        "public_key_fetches": 5,
+        "pct_of_total": 0.07
+      },
+      "uncategorized_requests": 0,
+      "reconciliation_discrepancy": 0
+    },
+    "concurrency_audit": {
+      "target_users": 30,
+      "min_observed_concurrency": 30,
+      "max_observed_concurrency": 30,
+      "mean_observed_concurrency": 30.0,
+      "sample_count": 60,
+      "sustained_full_concurrency": true
+    },
+    "response_classification": {
+      "success_count": 7081,
+      "successful_transfers": 721,
+      "expected_rejections_count": 0,
+      "unexpected_errors_count": 0,
+      "unexpected_error_rate_pct": 0.0
+    },
+    "latencies_ms": {
+      "read_operations": {
+        "count": 6355,
+        "p50": 18.17,
+        "p95": 138.84,
+        "p99": 238.01,
+        "mean": 38.33,
+        "max": 416.37
+      },
+      "transfer_operations": {
+        "count": 721,
+        "p50": 128.19,
+        "p95": 357.77,
+        "p99": 483.95,
+        "mean": 160.33,
+        "max": 740.48
+      },
+      "overall_steady_state": {
+        "count": 7081,
+        "p50": 22.26,
+        "p95": 192.58,
+        "p99": 331.22,
+        "mean": 50.74,
+        "max": 740.48
+      }
+    },
+    "threshold_evaluations": {
+      "read_p95_under_200ms": true,
+      "transfer_p95_under_500ms": true,
+      "unexpected_error_rate_under_1pct": true,
+      "steady_state_duration_met": true,
+      "sustained_30_users_throughout_window": true,
+      "verdict": "PASS"
+    }
+  },
+  "post_run_verification": {
+    "funds_conservation": {
+      "is_conserved": true,
+      "total_funds": 600000000.0,
+      "expected_funds": 600000000.0,
+      "accounts": {
+        "acc_checking_123": {
+          "name": "Checking",
+          "balance": "99997700.00"
+        },
+        "acc_savings_456": {
+          "name": "Savings",
+          "balance": "99999600.00"
+        },
+        "acc_synth_001": {
+          "name": "Synthetic Account 1",
+          "balance": "100001000.00"
+        },
+        "acc_synth_002": {
+          "name": "Synthetic Account 2",
+          "balance": "100000700.00"
+        },
+        "acc_synth_003": {
+          "name": "Synthetic Account 3",
+          "balance": "99999800.00"
+        },
+        "acc_synth_004": {
+          "name": "Synthetic Account 4",
+          "balance": "100001200.00"
+        }
+      }
+    },
+    "audit_ledger_integrity": {
+      "is_valid": true,
+      "verified_records": 757,
+      "details": "Audit chain verified intact from genesis to head."
+    }
+  }
+}

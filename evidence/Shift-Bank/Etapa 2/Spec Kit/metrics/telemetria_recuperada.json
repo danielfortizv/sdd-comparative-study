@@ -1,0 +1,192 @@
+{
+  "kind": "Sanitized derived telemetry and metadata; no original message content",
+  "stage": 2,
+  "tool": "Spec Kit",
+  "sources": [
+    {
+      "source_path": "~/.gemini/tmp/spec-kit-1/chats/session-2026-11-14T17-18-f52d4c11.jsonl",
+      "source_sha256": "dc3770214595089315cf3ef42623d05a7e7e0a37910c4ab3fd83436fb95597dc",
+      "disposition": "restricted",
+      "attribution": "Registro de proyectos Gemini: spec-kit-1. Revisión: email. Original conservado en origen.",
+      "session_id": "f52d4c11-3f33-4667-8b68-f76b443d510d",
+      "first_message_utc": "2026-11-14T17:18:20.288Z",
+      "last_message_utc": "2026-11-14T18:22:56.126Z",
+      "message_window_seconds": 3875.838,
+      "state_operations": {
+        "patch_records": 5,
+        "rewind_records": 1
+      },
+      "final_active_records": 226,
+      "observed_message_records_by_type": {
+        "user": 260,
+        "gemini": 256,
+        "info": 5,
+        "error": 6
+      },
+      "user_text_records_excluding_tool_results": 33,
+      "distinct_user_text_hash_count": 20,
+      "observed_tool_ids": 106,
+      "model_metrics": {
+        "gemini-3.8-flash": {
+          "input": 14742383,
+          "cached": 13697083,
+          "output": 117188,
+          "thoughts": 60710,
+          "tool": 0,
+          "total": 14920281,
+          "records_with_tokens": 108
+        },
+        "unknown": {
+          "input": 291407,
+          "cached": 283086,
+          "output": 0,
+          "thoughts": 0,
+          "tool": 0,
+          "total": 291407,
+          "records_with_tokens": 1
+        }
+      },
+      "scope": "Observed journal only. Captured auxiliary model usage may be incomplete"
+    },
+    {
+      "source_path": "~/.gemini/tmp/spec-kit-1/chats/session-2026-11-14T18-24-fe272589.jsonl",
+      "source_sha256": "e1c94c1bb78165c1dce2e068295bb287370f1e2244a4c6a754ad835392196d7a",
+      "disposition": "restricted",
+      "attribution": "Registro de proyectos Gemini: spec-kit-1. Revisión: email. Original conservado en origen.",
+      "session_id": "fe272589-bd7f-4c7d-8205-4f821865bbc9",
+      "first_message_utc": "2026-11-14T18:24:44.420Z",
+      "last_message_utc": "2026-11-14T23:52:56.247Z",
+      "message_window_seconds": 19691.827,
+      "state_operations": {
+        "patch_records": 24
+      },
+      "final_active_records": 299,
+      "observed_message_records_by_type": {
+        "user": 5595,
+        "gemini": 5594,
+        "info": 2
+      },
+      "user_text_records_excluding_tool_results": 144,
+      "distinct_user_text_hash_count": 23,
+      "observed_tool_ids": 486,
+      "model_metrics": {
+        "gemini-3.8-flash": {
+          "input": 123496903,
+          "cached": 107818450,
+          "output": 274971,
+          "thoughts": 181797,
+          "tool": 0,
+          "total": 123953671,
+          "records_with_tokens": 482
+        }
+      },
+      "scope": "Observed journal only. Captured auxiliary model usage may be incomplete"
+    },
+    {
+      "source_path": "~/.gemini/tmp/spec-kit-1/chats/session-2026-11-14T23-59-99ea3c2c.jsonl",
+      "source_sha256": "c57ce3bcdd3e2654e8e4d9c505827ac34cc5931507c120b00d4d1216110cc744",
+      "disposition": "recover",
+      "attribution": "Registro de proyectos Gemini: spec-kit-1.",
+      "canonical_export": "evidence/Shift-Bank/Etapa 2/Spec Kit/prompt_logs/session-2026-11-14T23-59-99ea3c2c.jsonl",
+      "session_id": "99ea3c2c-8122-48d3-9c54-16b3e9aadc02",
+      "first_message_utc": "2026-11-14T23:59:26.141Z",
+      "last_message_utc": "2026-11-15T04:20:01.120Z",
+      "message_window_seconds": 15634.979,
+      "state_operations": {
+        "patch_records": 2
+      },
+      "final_active_records": 388,
+      "observed_message_records_by_type": {
+        "user": 472,
+        "gemini": 472,
+        "info": 1
+      },
+      "user_text_records_excluding_tool_results": 11,
+      "distinct_user_text_hash_count": 6,
+      "observed_tool_ids": 190,
+      "model_metrics": {
+        "gemini-3.8-flash": {
+          "input": 29402812,
+          "cached": 27791129,
+          "output": 107802,
+          "thoughts": 53535,
+          "tool": 0,
+          "total": 29564149,
+          "records_with_tokens": 194
+        }
+      },
+      "scope": "Observed journal only. Captured auxiliary model usage may be incomplete"
+    },
+    {
+      "source_path": "~/.gemini/tmp/spec-kit-1/chats/session-2026-11-15T21-54-8e35a600.jsonl",
+      "source_sha256": "6262df521caa647e907ecc18d8ff31f30e3a30d5aa89fb9bec8bb50ee26f4679",
+      "disposition": "recover",
+      "attribution": "Registro de proyectos Gemini: spec-kit-1.",
+      "canonical_export": "evidence/Shift-Bank/Etapa 2/Spec Kit/prompt_logs/session-2026-11-15T21-54-8e35a600.jsonl",
+      "session_id": "8e35a600-8503-480e-beaf-ea242a6b7d22",
+      "first_message_utc": "2026-11-15T21:54:53.449Z",
+      "last_message_utc": "2026-11-15T21:55:28.152Z",
+      "message_window_seconds": 34.703,
+      "state_operations": {
+        "patch_records": 3,
+        "rewind_records": 3
+      },
+      "final_active_records": 88,
+      "observed_message_records_by_type": {
+        "user": 86,
+        "gemini": 43,
+        "error": 44,
+        "info": 4
+      },
+      "user_text_records_excluding_tool_results": 46,
+      "distinct_user_text_hash_count": 4,
+      "observed_tool_ids": 79,
+      "model_metrics": {
+        "gemini-3.8-flash": {
+          "input": 718270,
+          "cached": 527955,
+          "output": 5367,
+          "thoughts": 9049,
+          "tool": 0,
+          "total": 732686,
+          "records_with_tokens": 39
+        }
+      },
+      "scope": "Observed journal only. Captured auxiliary model usage may be incomplete"
+    },
+    {
+      "source_path": "~/.gemini/tmp/spec-kit-1/chats/session-2026-11-15T21-55-af5b9190.jsonl",
+      "source_sha256": "092026d6307f476b0290c55cf2bb48ebfa65e78a10b8ea6a971cd4cb85299f35",
+      "disposition": "restricted",
+      "attribution": "Registro de proyectos Gemini: spec-kit-1. Revisión: email. Original conservado en origen.",
+      "session_id": "af5b9190-d850-4910-96b5-daadc705bf1a",
+      "first_message_utc": "2026-11-15T21:55:37.865Z",
+      "last_message_utc": "2026-11-15T22:13:47.820Z",
+      "message_window_seconds": 1089.955,
+      "state_operations": {
+        "patch_records": 1
+      },
+      "final_active_records": 140,
+      "observed_message_records_by_type": {
+        "user": 116,
+        "gemini": 115,
+        "info": 1
+      },
+      "user_text_records_excluding_tool_results": 4,
+      "distinct_user_text_hash_count": 4,
+      "observed_tool_ids": 72,
+      "model_metrics": {
+        "gemini-3.8-flash": {
+          "input": 7581855,
+          "cached": 6931904,
+          "output": 49487,
+          "thoughts": 25046,
+          "tool": 0,
+          "total": 7656388,
+          "records_with_tokens": 70
+        }
+      },
+      "scope": "Observed journal only. Captured auxiliary model usage may be incomplete"
+    }
+  ]
+}

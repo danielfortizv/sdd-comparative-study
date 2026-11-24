@@ -1,0 +1,16 @@
+﻿
+usage: sonar-scanner [options]
+
+Options:
+ -D,--define <arg>     Define property
+ -h,--help             Display help information
+docker.exe : 17:44:02.785 ERROR Unrecognized option: .projectKey=shift-bank-stage2-openspec
+En línea: 2 Carácter: 243
++ ... ; $output = & docker run --rm --add-host host.docker.internal:host-ga ...
++                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (17:44:02.785 ER...stage2-openspec:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+ -v,--version          Display version information
+ -X,--debug            Produce execution debug output
+SCANNER_EXIT_CODE=1

@@ -1,1 +1,0 @@
-﻿npm.cmd run build (cwd: Etapa 4/Kiro/frontend)

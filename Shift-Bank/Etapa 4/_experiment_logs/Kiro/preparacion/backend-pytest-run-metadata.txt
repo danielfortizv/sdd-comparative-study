@@ -1,7 +1,0 @@
-﻿START=2026-11-18T22:04:16.2000246-05:00
-EXIT_CODE=0
-END=2026-11-18T22:04:40.8988364-05:00
-DATABASES=per-test temporary SQLite via inherited isolated_db_path fixture
-BASETEMP=C:\Users\danie\Documents2\sdd-comparative-study\Shift-Bank\_tmp\kiro-pytest-stage4-rerun
-SECRETS=cryptographically random process-only AES-256 and HMAC; values not logged
-ADMIN_TOKEN=inherited expected mock test token required by unchanged test contract

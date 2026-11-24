@@ -1,0 +1,1 @@
+[uvicorn-launcher] DB sintética parcheada: C:\Users\danie\AppData\Local\Temp\shift_bank_loadtest_757a2810ca5248029b345739e0f061a7.db

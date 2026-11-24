@@ -1,0 +1,35 @@
+{
+  "kind": "Sanitized derived telemetry and metadata; no original message content",
+  "stage": 4,
+  "tool": "Kiro",
+  "sources": [
+    {
+      "source_path": "~/Downloads/kiro-session-sess_1ff6a378-9e70-41c4-88b1-a77db18ef81f.zip",
+      "source_sha256": "3d7c9322de5377647911c7c7c520d5901698f6d423c342b1f26b03b569d54ccd",
+      "disposition": "restricted",
+      "attribution": " Revisión: email, sensitive-value. Original conservado en origen.",
+      "session_id": "sess_1ff6a378-9e70-41c4-88b1-a77db18ef81f",
+      "main_events": {
+        "agent_note": 1,
+        "user": 13,
+        "turn_start": 13,
+        "session_metadata": 579,
+        "assistant": 541,
+        "tool_call": 317,
+        "tool_result": 317,
+        "pending_interaction": 28,
+        "interaction_resolved": 28,
+        "usage_summary": 13,
+        "session_event": 13,
+        "turn_end": 13,
+        "session_start": 1
+      },
+      "subexecution_events": {},
+      "first_event_utc": "2026-11-19T04:01:26.786Z",
+      "last_event_utc": "2026-11-19T06:28:24.276Z",
+      "usage_summary_count": 13,
+      "credits": 191.22650499701493,
+      "elapsed_seconds": 4908.465
+    }
+  ]
+}

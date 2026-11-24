@@ -1,0 +1,75 @@
+{
+  "kind": "Sanitized derived telemetry and metadata; no original message content",
+  "stage": 1,
+  "tool": "Tessl",
+  "sources": [
+    {
+      "source_path": "~/.gemini/tmp/tessl/chats/session-2026-11-01T23-23-f7e1369b.jsonl",
+      "source_sha256": "9ab729751f89e796433c12c91f061fe03802d4bd26c6a06fc4d196329a61300a",
+      "disposition": "restricted",
+      "attribution": "Registro de proyectos Gemini: tessl. Revisión: email. Original conservado en origen.",
+      "session_id": "f7e1369b-b67f-4997-b9a9-2a228c9ecd17",
+      "first_message_utc": "2026-11-01T23:23:25.572Z",
+      "last_message_utc": "2026-11-02T02:06:26.406Z",
+      "message_window_seconds": 9780.834,
+      "state_operations": {
+        "patch_records": 1,
+        "rewind_records": 1
+      },
+      "final_active_records": 289,
+      "observed_message_records_by_type": {
+        "user": 145,
+        "info": 3,
+        "gemini": 144,
+        "error": 4
+      },
+      "user_text_records_excluding_tool_results": 10,
+      "distinct_user_text_hash_count": 7,
+      "observed_tool_ids": 153,
+      "model_metrics": {
+        "gemini-3.8-flash": {
+          "input": 16593024,
+          "cached": 15464495,
+          "output": 70736,
+          "thoughts": 59877,
+          "tool": 0,
+          "total": 16723637,
+          "records_with_tokens": 140
+        }
+      },
+      "scope": "Observed journal only. Captured auxiliary model usage may be incomplete"
+    },
+    {
+      "source_path": "~/.gemini/tmp/tessl/chats/session-2026-11-02T02-07-e41d1519.jsonl",
+      "source_sha256": "e277460dcbeec56c38b5efa00bf5147d364db8b3c2d161f82d5d9165f7693638",
+      "disposition": "restricted",
+      "attribution": "Registro de proyectos Gemini: tessl. Revisión: email. Original conservado en origen.",
+      "session_id": "e41d1519-8f91-4cce-8818-0eb7ed7acdb6",
+      "first_message_utc": "2026-11-02T02:07:17.576Z",
+      "last_message_utc": "2026-11-02T03:03:15.277Z",
+      "message_window_seconds": 3357.701,
+      "state_operations": {},
+      "final_active_records": 160,
+      "observed_message_records_by_type": {
+        "user": 80,
+        "info": 1,
+        "gemini": 79
+      },
+      "user_text_records_excluding_tool_results": 5,
+      "distinct_user_text_hash_count": 5,
+      "observed_tool_ids": 75,
+      "model_metrics": {
+        "gemini-3.8-flash": {
+          "input": 6814268,
+          "cached": 6144289,
+          "output": 16459,
+          "thoughts": 18526,
+          "tool": 0,
+          "total": 6849253,
+          "records_with_tokens": 79
+        }
+      },
+      "scope": "Observed journal only. Captured auxiliary model usage may be incomplete"
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+﻿Command: openspec validate --all --strict
+CLI: installed OpenSpec CLI, invoked via C:\Users\danie\AppData\Roaming\npm\openspec.cmd
+Exit code: 0
+- Validating...
+✓ spec/bank-accounts
+✓ spec/mfa
+✓ change/stage2-banking-enhancements
+✓ change/stage3-banking-security-load-deployment
+✓ spec/transaction-history
+✓ spec/transfers
+Totals: 6 passed, 0 failed (6 items)
+Interpretation: all current non-archived inherited specs and changes validate in strict all-target mode. This does not establish archived change validation or runtime correctness. Earlier default strict invocation reported Nothing to validate; preserve that historical observation. The explicit --all invocation is supported and validates six items.

@@ -1,0 +1,98 @@
+{
+  "concurrency_audit": {
+    "max_observed_concurrency": 30,
+    "mean_observed_concurrency": 30.0,
+    "min_observed_concurrency": 30,
+    "sample_count": 60,
+    "sustained_full_concurrency": true,
+    "target_users": 30
+  },
+  "configured_weights": {
+    "balance_reads": 60,
+    "history_reads": 30,
+    "internal_transfers": 10
+  },
+  "latencies_ms": {
+    "overall_steady_state": {
+      "count": 12979,
+      "max": 12267.65,
+      "mean": 113.74,
+      "p50": 52.01,
+      "p95": 242.01,
+      "p99": 1383.46
+    },
+    "read_operations": {
+      "count": 11684,
+      "max": 455.15,
+      "mean": 63.59,
+      "p50": 48.18,
+      "p95": 172.57,
+      "p99": 279.34
+    },
+    "transfer_operations": {
+      "count": 1290,
+      "max": 12267.65,
+      "mean": 568.13,
+      "p50": 182.43,
+      "p95": 2803.02,
+      "p99": 6349.29
+    }
+  },
+  "observed_concurrency": 30,
+  "observed_distribution": {
+    "balance_reads_count": 7788,
+    "balance_reads_pct": 60.03,
+    "history_reads_count": 3896,
+    "history_reads_pct": 30.03,
+    "internal_transfers_count": 1290,
+    "internal_transfers_pct": 9.94
+  },
+  "ramp_up_duration_seconds": 5.03,
+  "request_reconciliation": {
+    "banking_workload_requests": 12974,
+    "initialization_handshake_requests": {
+      "pct_of_total": 0.04,
+      "public_key_fetches": 5
+    },
+    "operational_distribution": {
+      "balance_reads": {
+        "count": 7788,
+        "pct_of_workload": 60.03
+      },
+      "history_reads": {
+        "count": 3896,
+        "pct_of_workload": 30.03
+      },
+      "internal_transfers": {
+        "count": 1290,
+        "pct_of_workload": 9.94
+      }
+    },
+    "reconciliation_discrepancy": 0,
+    "total_steady_state_requests": 12979,
+    "uncategorized_requests": 0
+  },
+  "response_classification": {
+    "expected_rejections_count": 1234,
+    "success_count": 11745,
+    "successful_transfers": 56,
+    "unexpected_error_rate_pct": 0.0,
+    "unexpected_errors_count": 0
+  },
+  "spawn_rate": 5.0,
+  "steady_state_actual_seconds": 60.0,
+  "steady_state_rps": 216.32,
+  "steady_state_target_seconds": 60.0,
+  "steady_state_total_requests": 12979,
+  "target_concurrency": 30,
+  "threshold_evaluations": {
+    "read_p95_under_200ms": true,
+    "steady_state_duration_met": true,
+    "sustained_30_users_throughout_window": true,
+    "transfer_p95_under_500ms": false,
+    "unexpected_error_rate_under_1pct": true,
+    "verdict": "FAIL"
+  },
+  "timestamp": "2026-11-16T15:05:29.795810+00:00",
+  "total_requests_all": 14156
+}

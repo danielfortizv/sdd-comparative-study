@@ -1,0 +1,30 @@
+{
+  "kind": "Sanitized derived telemetry and metadata; no original message content",
+  "stage": 4,
+  "tool": "Spec Kit",
+  "sources": [
+    {
+      "source_path": "~/.codex/sessions/2026/11/16/rollout-2026-11-16T05-19-36-01a1e3de-8e7a-7d90-b663-dffaba067317.jsonl",
+      "source_sha256": "d573c5713ff547e2ee9b9c3f341e452a5ba474f67223435be68dd5d3966bdb5d",
+      "disposition": "restricted",
+      "attribution": "Rollout histórico citado; alcance delimitado en D1. Revisión: email, known-token, sensitive-value, url-userinfo. Original conservado en origen.",
+      "first_event_utc": "2026-11-16T10:19:41.372Z",
+      "last_event_utc": "2026-11-16T15:14:22.641Z",
+      "event_window_seconds": 17681.269,
+      "observed_record_counts": {
+        "user_role_records": 33,
+        "assistant_role_records": 72,
+        "tool_request_records": 709,
+        "token_count_records": 730
+      },
+      "last_cumulative_usage_observed": {
+        "input_tokens": 105024622,
+        "cached_input_tokens": 103443456,
+        "output_tokens": 485334,
+        "reasoning_output_tokens": 204528,
+        "total_tokens": 105509956
+      },
+      "scope": "Whole rollout, diagnostic only. Use the cited historical extraction for attributed windows."
+    }
+  ]
+}

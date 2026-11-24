@@ -1,0 +1,4 @@
+﻿PowerShell setup: generate ephemeral 32-byte AES key and 32-byte HMAC key using System.Security.Cryptography.RandomNumberGenerator; export SHIFT_ENC_KEYS, SHIFT_ENC_ACTIVE_KID, SHIFT_AUDIT_HMAC_KEY; use inherited SHIFT_ADMIN_TOKEN test fixture value.
+Executable: .\.venv\Scripts\python.exe -m pytest -q "--basetemp=C:\Users\danie\Documents2\sdd-comparative-study\Shift-Bank\_tmp\kiro-pytest-stage4-rerun"
+Working directory: Etapa 4\Kiro\backend
+Temporary SQLite: inherited per-test isolated_db_path fixture. Secret values intentionally not persisted.
